@@ -1,0 +1,19 @@
+{
+  "name": "artificer",
+  "version": "0.0.0",
+  "description": "Shitting Dicknipples",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/maldrasen/artificer",
+  "keywords": [
+    "Horsecocks",
+    "Shitting Dicknipples"
+  ],
+  "author": "Maldrasen",
+  "license": "GNU General Public License v3.0 or later",
+  "devDependencies": {
+    "electron": "^6.0.9"
+  }
+}
