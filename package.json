@@ -4,7 +4,10 @@
   "description": "Shitting Dicknipples",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "spec": "mocha spec/**/*-spec.js -c --recursive --timeout 1000",
+    "spec-cov": "nyc --reporter=html mocha spec/**/*-spec.js -c --recursive --timeout 1000"
+
   },
   "repository": "https://github.com/maldrasen/artificer",
   "keywords": [
