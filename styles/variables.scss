@@ -1,0 +1,156 @@
+
+// Z Indices
+
+// $z-dummy: 1;
+// $z-bottom-status: 6000;
+// $z-status-shadow: 6050;
+// $z-side-status: 6100;
+//
+// $z-dialog-shadow: 1000;
+// $z-dialog: 1001;
+// $z-dialog-window: 1002;
+//
+// $z-blocker: 30000;
+// $z-modal:   31000;
+// $z-effects: 60000;
+// $z-floating-frame: 61000;
+
+// Fonts
+
+$fs-huge: 18pt;
+$fs-bigger: 14pt;
+$fs-big: 12pt;
+$fs-body: 10pt;
+$fs-small: 9pt;
+$fs-tiny: 8pt;
+
+$fs-h1: 14pt;
+$fs-h2: 12pt;
+$fs-h3: 12pt;
+$fs-h4: 10pt;
+$fs-h5: 10pt;
+
+$fg-body: rgb(225,225,225);
+$fg-strong: rgb(250,250,250);
+$fg-weak: rgb(150,150,150);
+$fg-very-weak: rgba(150,150,150,0.5);
+$fg-link: rgb(200,200,250);
+$fg-link-hover: rgb(225,225,250);
+$fg-link-active: rgb(250,250,250);
+
+// $fg-button-default: rgb(200,200,200);
+// $fg-button-primary: rgb(150,150,250);
+// $fg-button-secondary: rgb(128, 175, 213);
+// $fg-button-danger: rgb(250,100,100);
+// $fg-button-warning: rgb(153,112,77);
+// $fg-button-success: rgb(127,201,127);
+//
+// $fg-ecstasy:     rgb(200,200,200);
+// $fg-agony:       rgb(189,69,69);
+// $fg-degradation: rgb(124,152,57);
+// $fg-corruption:  rgb(69,69,69);
+// $fg-domination:  rgb(45,99,155);
+// $fg-stamina:     rgb(224,224,135);
+// $fg-victory:     rgb(101,49,172);
+// $fg-energy:      rgb(226,110,64);
+// $fg-pleasure:    rgb(207,173,203);
+// $fg-width:       rgb(174,106,133);
+//
+// $fg-success: rgb(90,150,60);
+// $fg-failure: rgb(200,20,0);
+//
+// $fg-very-bad: rgb(250,50,50);
+// $fg-tooltip: rgb(223,201,172);
+// $fg-quote: rgb(150,150,250);
+//
+// $fg-bright-yellow: rgb(250,225,200);
+// $fg-negative: rgb(220,100,100);
+//
+$bg-body: rgb(33,30,32);
+// $bg-body-darker: rgb(29,26,28);
+// $bg-page: rgb(26,23,25);
+//
+// $bg-header: rgb(50,0,0);
+// $bg-panel: rgb(50,0,0);
+//
+// $bg-title-bar: rgba(0,0,0,0.5);
+// $bg-subtitle-bar: rgba(0,0,0,0.3);
+// $bg-subpanel: rgba(0,0,0,0.2);
+// $bg-tooltip: rgba(0,0,0,0.8);
+// $bg-blocker: rgba(0,0,0,0.666);
+//
+// $bg-danger: rgba(250,0,0,0.1);
+// $bg-danger-title: rgba(250,0,0,0.2);
+//
+// $shadow-deep: 0 10px 20px rgba(0,0,0,0.8);
+// $shadow-dark: 0 10px 10px rgb(0,0,0);
+// $shadow-frame: 0 5px 10px rgba(0,0,0,0.5);
+// $shadow-inset: 0 3px 6px rgba(0,0,0,0.4) inset;
+// $shadow-inset-button: 0 3px 5px rgba(0,0,0,0.8) inset;
+// $shadow-shallow: 0 2px 3px rgba(0,0,0,0.9);
+//
+// $shadow-shallow-pit: -5px -5px 5px rgba(250,250,250,0.05) inset,
+//                       5px  5px 5px rgba(0,0,0,0.2) inset;
+// $shadow-big-raised: 16px  16px 20px rgba(250,250,250,0.1) inset,
+//                    -16px -16px 20px rgba(0,0,0,0.5) inset;
+
+$border-very-light: 1px solid rgba(250,250,250,0.05);
+$border-light: 1px solid rgba(250,250,250,0.1);
+$border-normal: 1px solid rgba(250,250,250,0.2);
+$border-heavy: 1px solid rgba(250,250,250,0.3);
+
+// Forms
+//
+// $bg-input: rgba(250,250,250,0.05);
+// $border-input: 1px solid rgba(250,250,250,0.1);
+// $border-input-hover: 1px solid rgba(250,250,250,0.3);
+// $border-input-focus: 1px solid rgba(250,250,250,0.8);
+//
+// // Radio Buttons
+// $fg-radio-button-on: rgb(250,250,250);
+// $bg-radio-button-on: rgba(100,50,0,0.05);
+// $glow-radio-button-on:  0 0 3px rgb(200,100,50);
+//
+// Dialog
+//
+// $fg-dialog-title: rgb(150,150,150);
+//
+// $bg-dialog-shadow: rgba(0,0,0,0.33);
+// $bg-dialog: rgb(20,20,20);
+// $bg-dialog-title: rgb(30,30,30);
+// $bg-dialog-footer: rgb(30,30,30);
+//
+// $shadow-dialog: 0 10px 20px rgba(0,0,0,0.8);
+//
+// $bg-modal: rgb(35,30,25);
+// $bg-modal-header: rgba(0,0,0,0.333);
+// $bg-modal-footer: rgba(0,0,0,0.333);
+//
+// Scrolling Panel
+//
+// $bg-scrolling-panel-track: rgba(0,0,0,0.2);
+// $bg-scrolling-panel-thumb: rgb(50,50,50);
+// $bg-scrolling-panel-thumb-hover: rgb(70,60,50);
+//
+// $border-scrolling-panel-thumb-top: 1px solid rgba(250,250,250,0.1);
+// $border-scrolling-panel-thumb-bottom: 1px solid rgba(0,0,0,0.5);
+//
+// $shadow-scrolling-panel-track: 2px 2px 4px rgb(0,0,0) inset;
+// $shadow-scrolling-panel-thumb: -2px -2px 5px rgba(0,0,0,0.4) inset,
+//                                2px 2px 5px rgba(250,250,250,0.2) inset;
+//
+// Tabs
+//
+// $fg-tab: rgba(250,250,250,0.75);
+// $fg-tab-active: rgb(250,250,250);
+// $bg-tab-active: rgba(0,0,0,0.4);
+// $shadow-tab-active: 0px 3px 2px rgba(0,0,0,0.3) inset;
+// $shadow-tab-content: 0 5px 10px rgba(0,0,0,0.4) inset;
+// $bg-tab-content: rgba(0,0,0,0.1);
+//
+// Chooser
+//
+// $bg-chooser: rgba(0,0,0,0.1);
+// $bg-chooser-title: rgb(0,0,0);
+// $bg-chooser-active-choice: rgba(0,0,0,0.33);
+// $bg-chooser-detail-body: rgba(0,0,0,0.66);

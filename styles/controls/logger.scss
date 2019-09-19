@@ -1,0 +1,33 @@
+
+$fg-debug: rgb(140,140,140);
+$fg-info: rgb(150,150,200);
+$fg-warning: rgb(200,150,100);
+$fg-error: rgb(250,125,125);
+
+#logContent {
+  margin: 10px;
+  font-family: roboto-mono;
+
+  .level-debug { color: $fg-debug; }
+  .level-info { color: $fg-info; }
+  .level-warning { color: $fg-warning; }
+  .level-error { color: $fg-error; }
+
+  .log-event {
+    margin-top: 5px;
+
+    .severity {
+      font-family: roboto-mono-medium;
+      font-size: 80%;
+    }
+
+    .logger-name {
+      font-family: roboto-mono-bold;
+    }
+
+    .payload {
+      margin-left: 10px;
+      font-family: monospace;
+    }
+  }
+}
