@@ -1,4 +1,6 @@
 
+assets/compiled/
+
 .nyc_output
 .npm
 coverage/
