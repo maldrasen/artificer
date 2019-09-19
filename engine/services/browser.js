@@ -8,10 +8,7 @@ global.Browser = (function() {
     mainWindow = new electron.BrowserWindow({
       width: (DEBUG ? 2400 : 1000),
       height: (DEBUG ? 1100 : 600),
-      webPreferences: {
-        preload: `${ROOT}/client/boot-client.js`,
-        nodeIntegration: true
-      },
+      webPreferences: { nodeIntegration:true },
     });
 
     mainWindow.loadURL(`file://${ROOT}/client/views/index.html`);
@@ -20,7 +17,7 @@ global.Browser = (function() {
     if (DEBUG) {
       mainWindow.webContents.openDevTools();
       mainWindow.webContents.executeJavaScript('window.DEBUG = true;');
-      Logger.openLog(mainWindow);
+      LoggerService.openLog(mainWindow);
     }
 
     mainWindow.on('closed', () => {

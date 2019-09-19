@@ -1,2 +1,2 @@
 
-console.log("=== Booting Shared ===")
+console.log("> Booting Shared")

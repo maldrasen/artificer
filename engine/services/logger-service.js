@@ -1,4 +1,10 @@
-global.Logger = (function() {
+
+// =============================================================================
+// The LoggerService opens the log window. It also passes messages from the
+// Logger in the render thread to the logger window, writing messages to the log
+// =============================================================================
+
+global.LoggerService = (function() {
   let logWindow;
 
   ipcMain.on('log.open',  function(event) { openLog(); });
@@ -18,10 +24,7 @@ global.Logger = (function() {
       height: 150,
       x:0,
       y:0,
-      webPreferences: {
-        preload: `${ROOT}/engine/services/logger-window.js`,
-        nodeIntegration: true
-      },
+      webPreferences: { nodeIntegration:true },
     });
 
     logWindow.setMenu(null);

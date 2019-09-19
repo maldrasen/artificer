@@ -7,7 +7,6 @@
     "start": "electron .",
     "spec": "mocha spec/**/*-spec.js -c --recursive --timeout 1000",
     "spec-cov": "nyc --reporter=html mocha spec/**/*-spec.js -c --recursive --timeout 1000"
-
   },
   "repository": "https://github.com/maldrasen/artificer",
   "keywords": [
@@ -17,6 +16,7 @@
   "author": "Maldrasen",
   "license": "GNU General Public License v3.0 or later",
   "dependencies": {
+    "jquery": "^3.4.1",
     "sequelize": "^5.18.4",
     "sqlite3": "^4.1.0"
   },

@@ -8,8 +8,9 @@ global.Configuration = {
   metric: false
 };
 
-// require(`${ROOT}/engine/boot-engine.js`);
+console.log('=== Booting Spec Process ===');
 require(`${ROOT}/shared/boot-shared.js`);
+require(`${ROOT}/engine/boot-engine.js`);
 
 // Require Helpers if needed.
 // require(`${appPath}/main/spec/helpers/character-helper`);

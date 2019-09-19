@@ -1,9 +1,13 @@
+
+// ==========================================
+// This script is included in the logger.html
+// ==========================================
+
+global.$ = global.jQuery = require('jquery');
+
 let electron = require('electron');
 let ipcRenderer = electron.ipcRenderer;
 let util = require('util');
-
-window.jQuery = require('./client/external/jquery.3.3.1.min.js');
-window.$ = window.jQuery;
 
 ipcRenderer.on('log.write', (event, message) => { writeToLog(message) });
 ipcRenderer.on('log.clear', (event) => { clearLog() });

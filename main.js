@@ -6,4 +6,4 @@ global.VERSION = '0.0';
 global.DEBUG = true;
 global.ROOT = require('path').normalize(`${__dirname}`);
 
-require(`${ROOT}/engine/boot-engine.js`);
+require(`${ROOT}/engine/boot-main.js`);
