@@ -37,7 +37,10 @@ require(`${ROOT}/shared/models/pussy.js`);
 require(`${ROOT}/shared/models/tits.js`);
 
 // === Utilities ===
+require(`${ROOT}/shared/utilities/array-utility.js`);
 require(`${ROOT}/shared/utilities/conversion-utility.js`);
 require(`${ROOT}/shared/utilities/english-utility.js`);
 require(`${ROOT}/shared/utilities/math-utility.js`);
+require(`${ROOT}/shared/utilities/object-utility.js`);
+require(`${ROOT}/shared/utilities/random.js`);
 require(`${ROOT}/shared/utilities/text-utility.js`);
