@@ -7,8 +7,13 @@ global.Renderer = (function() {
 
   function init() {
     initActions();
-    buildInitialContent();
+    initMessages();
+    buildLoadingScreen();
     renderPartials();
+  }
+
+  function initMessages() {
+    ipcRenderer.on('engine.ready', buildMainContent);
   }
 
   function initActions() {
@@ -20,10 +25,15 @@ global.Renderer = (function() {
   //   $(document).on('click','.action.debug-start',  Elements.buttonAction(function() { debugStart($(this).data('view'));   }));
   }
 
-  function buildInitialContent() {
-    document.title = `Artificer`;
-    let body = $('body').attr('style','').empty();
-    body.append($('<div>',{ id:'mainContent' }).append($('<div>',{ class:'partial' }).data('url',VIEWS.mainMenu.path)));
+  function buildLoadingScreen() {
+    $('body').attr('style','').empty().append($('<div>').append("Loading Renderer..."))
+  }
+
+  function buildMainContent() {
+
+    console.log("Build Main Content Now...")
+
+    // body.append($('<div>',{ id:'mainContent' }).append($('<div>',{ class:'partial' }).data('url',VIEWS.mainMenu.path)));
     // body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/layers.html`));
     // body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates.html`));
   }

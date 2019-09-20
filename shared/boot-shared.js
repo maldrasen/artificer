@@ -1,6 +1,8 @@
 
 console.log("> Booting Shared")
 
+global.extend = require('extend');
+
 // === Superclasses ===
 require(`${ROOT}/shared/models/model.js`);
 require(`${ROOT}/shared/forms/form.js`);
@@ -14,9 +16,9 @@ require(`${ROOT}/shared/forms/item.js`);
 require(`${ROOT}/shared/forms/location.js`);
 require(`${ROOT}/shared/forms/mission.js`);
 require(`${ROOT}/shared/forms/project.js`);
-require(`${ROOT}/shared/forms/race.js`);
 require(`${ROOT}/shared/forms/report.js`);
 require(`${ROOT}/shared/forms/role.js`);
+require(`${ROOT}/shared/forms/species.js`);
 
 // === Models ===
 require(`${ROOT}/shared/models/animal.js`);

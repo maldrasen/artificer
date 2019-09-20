@@ -1,0 +1,24 @@
+===============================
+Development Setup - For Windows
+===============================
+
+1. Install Node
+  Currently using v10.16.3
+
+2. Install Build Tools
+
+  (windows-build-tools has to be run as Administrator from CMD or PowerShell)
+  $ npm install --global --production windows-build-tools
+
+  $ npm install --global node-gyp
+
+3. Install Sqlite3 using this script.
+
+  $ bin/install-sqlite.sh
+
+4. Compile Assets
+
+  The assets are compiled by calling either of the style scripts, which are
+  just shorthand for the more complicated sass commands.
+  $ bin/compile_style.sh
+  $ bin/watch_style.sh

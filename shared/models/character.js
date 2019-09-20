@@ -8,7 +8,7 @@ global.Character = class Character extends Model {
     this._preName = data.preName;
     this._givenName = data.givenName;
     this._postName = data.postName;
-    this._race = data.race;
+    this._species = data.species;
     this._physical = data.physical;
     this._mental = data.mental;
     this._personal = data.personal;
@@ -24,7 +24,7 @@ global.Character = class Character extends Model {
       givenName: this._givenName,
       postName: this._postName,
       fullName: this.fullName,
-      race: this._race,
+      species: this._species,
       physical: this._physical,
       mental: this._mental,
       personal: this._personal,
@@ -51,7 +51,7 @@ global.Character = class Character extends Model {
   get isMale() { return this.gender.code == 'male'; }
   get isFemale() { return this.gender.code == 'female'; }
   get role() { return Role.lookup(this._role); }
-  get race() { return Race.lookup(this._race); }
+  get species() { return Species.lookup(this._species); }
   get physical() { return this._physical; }
   get mental()   { return this._mental; }
   get personal() { return this._personal; }

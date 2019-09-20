@@ -2,7 +2,6 @@ global.Browser = (function() {
   "use strict";
 
   let mainWindow;
-  let logWindow;
 
   function open() {
     mainWindow = new electron.BrowserWindow({
@@ -34,10 +33,15 @@ global.Browser = (function() {
     app.quit();
   }
 
+  function send(message, content) {
+    mainWindow.webContents.send(message, content);
+  }
+
   return {
     open: open,
     quit: quit,
     activate: activate,
+    send: send,
   };
 
 })();

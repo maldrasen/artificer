@@ -1,4 +1,4 @@
-global.Race = class Race extends Form {
+global.Species = class Species extends Form {
   constructor(data) {
     super();
     this.build(data);
