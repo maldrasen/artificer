@@ -4,5 +4,6 @@ assets/compiled/
 .nyc_output
 .npm
 coverage/
+log/
 node_modules/
 npm-debug.log
