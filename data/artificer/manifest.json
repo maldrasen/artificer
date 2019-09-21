@@ -1,10 +1,6 @@
 {
-  "sharedFiles":[
-    "sharedtest"
-  ],
-  "clientFiles":[
-    "clientsidetest"
-  ],
+  "sharedFiles":[],
+  "clientFiles":[],
   "engineFiles":[
     "forms/species"
   ]

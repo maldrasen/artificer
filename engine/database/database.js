@@ -1,6 +1,5 @@
 const fs = require('fs');
 const sql = require('sqlite3').verbose();
-const Sequelize = require('sequelize');
 
 global.Database = (function() {
   let database;
@@ -14,8 +13,8 @@ global.Database = (function() {
       logging: writeToLog,
     });
 
-    Schema.init(database);
-    DatabaseObjects.init();
+    require(`${ROOT}/engine/models/anus`);
+    require(`${ROOT}/engine/models/balls`);
 
     database.sync().then(callback);
   }
@@ -38,8 +37,13 @@ global.Database = (function() {
     });
   }
 
+  function instance() {
+    return database;
+  }
+
   return {
     createDatabase: createDatabase,
+    instance: instance,
   };
 
 })();

@@ -1,4 +1,3 @@
-"use strict";
 
 global.VERSION = 0;
 global.ROOT = require('path').normalize(`${__dirname}/..`);
@@ -17,13 +16,15 @@ require(`${ROOT}/engine/boot-database.js`);
 // require(`${appPath}/main/spec/helpers/character-helper`);
 // require(`${appPath}/main/spec/helpers/spec-helper`);
 
+// If the before function returns a Promise, Mocha will ensure that the Promise
+// will finish before any of the specs are run. Including this in the global
+// spec before step ensures that all the data objects can be used in tests.
 before(function() {
-
+  return new Promise((resolve)=>{
+    Database.createDatabase(() => {
+      ModLoader.loadAllData(resolve);
+    });
+  });
 });
 
-beforeEach(function() {
-  // Config maybe?
-  // global.Configuration = {
-  //   metric: false,
-  // };
-});
+// An after each will be needed to clean up any models added to the database.

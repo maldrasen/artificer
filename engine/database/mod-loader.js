@@ -44,7 +44,9 @@ global.ModLoader = (function() {
         require(`${ROOT}/data/${name}/${file}`);
       });
 
-      Browser.send('engine.mod-loaded',{ name:name, clientFiles:clientFiles });
+      if (typeof Browser != 'undefined') {
+        Browser.send('engine.mod-loaded',{ name:name, clientFiles:clientFiles });
+      }
     }
   }
 
