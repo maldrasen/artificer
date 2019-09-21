@@ -12,7 +12,8 @@ global.Renderer = (function() {
 
   function initMessages() {
     ipcRenderer.on('engine.ready', buildMainContent);
-    ipcRenderer.on('render', render);
+    ipcRenderer.on('render.file', renderFile);
+    ipcRenderer.on('render.location', renderLocation);
   }
 
   function initActions() {
@@ -20,6 +21,8 @@ global.Renderer = (function() {
   }
 
   function buildMainContent() {
+    document.title = `Artificer`
+
     let body = $('body').removeClass('main-loading').empty();
     body.append($('<div>',{ id:'mainContent' }).append($('<div>',{ class:'partial' }).data('url',VIEWS.mainMenu.path)));
     body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/layers.html`));
@@ -49,13 +52,23 @@ global.Renderer = (function() {
     lock();
   }
 
-  function render(transport, options) {
-    if (options.view) {
-      loadFile(`${ROOT}/${options.view}`, (data) => {
-        $('#mainContent').empty().append(data);
-        constructView();
-      });
-    }
+  // Render file simply loads the content of an HTML file into the #mainContent
+  // element, replacing the view entirely. Arguments:
+  //    path (required) - Path to the HTML file.
+  function renderFile(transport, options) {
+    loadFile(`${ROOT}/${options.path}`, (data) => {
+      $('#mainContent').empty().append(data);
+      constructView();
+    });
+  }
+
+  function renderLocation(transport, view) {
+    let location = $($('#locationTemplate').html())
+        location.find('.location-name').append(view.name);
+        location.find('.location-description').append(view.description);
+
+    $('#mainContent').empty().append(location);
+    constructView();
   }
 
   function lock() { $('#viewLock').removeClass('hide'); }
@@ -70,7 +83,7 @@ global.Renderer = (function() {
   function renderPartial() {
     let partial = $($('.partial')[0]);
     loadFile(partial.data('url'), (data)=>{
-      partial.removeClass('partial').empty().append(data);
+      partial.replaceWith(data);
       constructView();
     });
   }

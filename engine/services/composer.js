@@ -6,7 +6,17 @@ global.Composer = (function(){
   // will need to create a document object that the client will need to turn
   // into an actual html view.
   function render() {
-    console.log("Render Current State...")
+    Game.instance(game => {
+
+      // If there's no active event or anything like that:
+      renderLocation(game.location)
+    });
+  }
+
+  function renderLocation(code) {
+    Location.lookup(code).buildView(view => {
+      Browser.send('render.location',view);
+    })
   }
 
   return {

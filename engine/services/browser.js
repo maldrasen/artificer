@@ -5,8 +5,8 @@ global.Browser = (function() {
 
   function open() {
     mainWindow = new electron.BrowserWindow({
-      width: (DEBUG ? 2400 : 1000),
-      height: (DEBUG ? 1100 : 600),
+      width: (DEBUG ? 1600 : 800),
+      height: (DEBUG ? 800 : 600),
       webPreferences: { nodeIntegration:true },
     });
 
