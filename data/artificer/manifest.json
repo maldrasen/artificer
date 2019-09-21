@@ -2,6 +2,7 @@
   "sharedFiles":[],
   "clientFiles":[],
   "engineFiles":[
-    "forms/species"
+    "forms/species",
+    "locations/courtyard.js"
   ]
 }
