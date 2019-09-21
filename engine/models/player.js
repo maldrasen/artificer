@@ -54,6 +54,7 @@ function saveCustomGender(player, options) {
   }
 }
 
+// Will be needed when a game is loaded. Might just do it on demand as well.
 function loadCustomGender() {
 
 }
