@@ -15,6 +15,7 @@ global.Database = (function() {
 
     require(`${ROOT}/engine/models/anus`);
     require(`${ROOT}/engine/models/balls`);
+    require(`${ROOT}/engine/models/player`);
     require(`${ROOT}/engine/models/game`);
 
     database.sync().then(callback);

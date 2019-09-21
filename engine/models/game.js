@@ -10,7 +10,7 @@ Game.instance = function(callback) {
 }
 
 Game.start = function(callback) {
-  Game.instance((game) => {
+  Game.instance(game => {
     if (game != null) { throw "Cannot start a new Game. A Game currently exists." }
 
     Game.create({
@@ -25,8 +25,9 @@ Game.start = function(callback) {
 Game.startView = 'client/views/game/start.html';
 
 Game.prototype.createPlayer = function(options) {
-  console.log("Game: Create Player",options);
-  Composer.render();
+  Player.forge(options, player => {
+    Composer.render();
+  });
 }
 
 // The game model responds to several events from the client. These triggers

@@ -1,3 +1,6 @@
+
+// Body can be for player, character, or animal
+
 // global.Body = class Body extends Model {
 //
 //   constructor(data) {
