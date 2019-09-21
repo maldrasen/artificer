@@ -23,6 +23,11 @@ global.Elements = (function() {
       $(this).blur();
       e.stopPropagation();
       e.preventDefault();
+
+      if ($(this).hasClass('disabled')) {
+        return false;
+      }
+
       callback.apply(this);
     }
   }

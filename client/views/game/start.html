@@ -1,24 +1,166 @@
+
+<script type="text/javascript">
+  $(document).on('click','.game-start-complete',Elements.buttonAction(()=>{
+    let options = {
+      firstName: $("#firstName").val().trim(),
+      lastName: $("#lastName").val().trim(),
+      gender: $('#genderSelect').val(),
+    }
+
+    if (options.gender == 'custom') {
+      extend(options,{
+        genderDick: $('#genderDick').val(),
+        genderTits: $('#genderTits').val(),
+        genderPussy: $('#genderPussy').val(),
+        genderName: $('#genderName').val(),
+        genderPlural: $('#genderPlural').val(),
+        genderSubject: $('#genderSubject').val(),
+        genderObject: $('#genderObject').val(),
+        genderPossessive: $('#genderPossessive').val(),
+        genderAbsolute: $('#genderAbsolute').val(),
+      });
+    }
+
+    Renderer.sendCommand('game.create-player',options);
+  }));
+
+  $(document).on('click','.game-start-check-name',Elements.buttonAction(()=>{
+    let first = $("#firstName").val().trim();
+    let last = $("#lastName").val().trim();
+
+    if (first.length == 0 || last.length == 0) {
+      return false;
+    }
+
+    if (first.length > 20 || last.length > 20) {
+      return false;
+    }
+
+    Elements.PagedContent.showNextPage();
+  }));
+
+  $(document).on('change', '#genderSelect', (e) => {
+    $('.gender-detail').addClass('hide');
+    let selected = $('#genderSelect').val();
+    $(`.gender-detail.${selected}`).removeClass('hide');
+  });
+
+</script>
+
 <div class='paged-content'>
+  <form id='playerForm'>
 
-  <div class='page active'>
-    <p>
-      You're dead mother fucker.
-    </p>
-    <div class='page-footer page-footer-continue'></div>
-  </div>
+    <div class='page active'>
+      <p>
+        You're dead mother fucker.
+      </p>
+      <div class='page-footer page-footer-continue'></div>
+    </div>
 
-  <div class='page'>
-    <p>
-      Fuck load of questions.
-    </p>
-    <div class='page-footer'></div>
-  </div>
+    <div class='page'>
+      <ul>
+        <li>
+          <label>Title</label>
+          <input type='text' id='title' value='Master'/>
+        </li>
+        <li>
+          <label>First Name</label>
+          <input type='text' id='firstName' value='Synder'/>
+        </li>
+        <li>
+          <label>Last Name</label>
+          <input type='text' id='lastName' value='Rhysh'/>
+        </li>
+        <li>
+          <label>Species</label>
+        </li>
+      </ul>
+      <div class='page-footer'>
+        <a href='#' class="game-start-check-name">Continue</a>
+      </div>
+    </div>
 
-  <div class='page'>
-    <p>
-      Summary and stuff.
-    </p>
-    <div class='page-footer page-footer-complete'></div>
-  </div>
+    <div class='page'>
+      <div class='gender-questions'>
+        <h1>Gender</h1>
 
+        <select id='genderSelect'>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="futa">Futa</option>
+          <option value="custom">It's Complicated...</option>
+        </select>
+
+        <div class='gender-detail male'>
+          Standard male. You use male pronouns and have a dick.
+        </div>
+
+        <div class='gender-detail female hide'>
+          Standard female. You use female pronouns, have tits and a pussy.
+        </div>
+
+        <div class='gender-detail futa hide'>
+          Both male and female. You're pronouns are shi and hir. You have
+          everything; tits, dick, and pussy.
+        </div>
+
+        <div class='gender-detail custom hide'>
+          OK, tell me everything then:
+          <ul>
+            <li>
+              <label>Dick</label>
+              <input type='text' id='genderDick' value='no'/>
+            </li>
+            <li>
+              <label>Tits</label>
+              <input type='text' id='genderTits' value='no'/>
+            </li>
+            <li>
+              <label>Pussy</label>
+              <input type='text' id='genderPussy' value='no'/>
+            </li>
+            <li>
+              <label>Name (man/woman)</label>
+              <input type='text' id='genderName' value='elf'/>
+            </li>
+            <li>
+              <label>Plural (men/women)</label>
+              <input type='text' id='genderPlural' value='elves'/>
+            </li>
+            <li>
+              <label>Subject (he/she)</label>
+              <input type='text' id='genderSubject' value='xe'/>
+            </li>
+            <li>
+              <label>Object (him/her)</label>
+              <input type='text' id='genderObject' value='xem'/>
+            </li>
+            <li>
+              <label>Possessive (his/her)</label>
+              <input type='text' id='genderPossessive' value='xyr'/>
+            </li>
+            <li>
+              <label>Absolute Possessive (his/hers)</label>
+              <input type='text' id='genderAbsolute' value='xyrs'/>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class='page-footer'>
+        <a href='#' class="game-start-check-name">Continue</a>
+      </div>
+    </div>
+
+
+    <div class='page'>
+      <p>
+        Summary and stuff.
+      </p>
+      <div class='page-footer'>
+        <a href='#' class='game-start-complete'>Complete</a>
+      </div>
+    </div>
+
+  </form>
 </div>

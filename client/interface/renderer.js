@@ -16,7 +16,7 @@ global.Renderer = (function() {
   }
 
   function initActions() {
-    $(document).on('click', '.send-command', Elements.buttonAction(sendCommand));
+    $(document).on('click', '.send-command', Elements.buttonAction(sendCommandButton));
   }
 
   function buildMainContent() {
@@ -35,13 +35,17 @@ global.Renderer = (function() {
   // This will send a command down to the main thread. Commands will probably
   // also need to support a number of other data attributes that are used as
   // arguments. They'll be added as we find them.
-  function sendCommand() {
+  function sendCommandButton() {
     let data = $(this).data();
     let options = {};
 
     if (data.id) { options.id = data.id; }
 
-    ipcRenderer.send(data.command,options);
+    sendCommand(data.command, options)
+  }
+
+  function sendCommand(command, options) {
+    ipcRenderer.send(command,options);
     lock();
   }
 
@@ -84,6 +88,7 @@ global.Renderer = (function() {
 
   return {
     init: init,
+    sendCommand: sendCommand,
   };
 
 })();

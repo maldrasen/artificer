@@ -18,13 +18,14 @@ Elements.PagedContent = (function() {
   }
 
   function showNextPage() {
-    let currentPage = $(this).closest('.page').removeClass('active');
-    currentPage.next('.page').addClass('active');
+    let currentPage = $('.paged-content .page.active').removeClass('active');
+        currentPage.next('.page').addClass('active');
   }
 
   return {
     init: init,
     build: build,
+    showNextPage: showNextPage,
   };
 
 })()
