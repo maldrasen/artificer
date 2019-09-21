@@ -17,5 +17,15 @@ $(document).ready(function() {
   // === Interface ===
   Renderer.init();
 
+  ipcRenderer.on('engine.mod-loaded', (transport, mod)=>{
+    console.log(`> Loading ${mod.name}`);
+    each(mod.clientFiles, (file) => {
+      console.log(`   - ${file}`);
+      require(`${ROOT}/data/${mod.name}/${file}`);
+    });
+  })
+
+  ipcRenderer.send('client.ready');
+
   console.log('=== Done ===');
 });

@@ -1,0 +1,11 @@
+{
+  "sharedFiles":[
+    "sharedtest"
+  ],
+  "clientFiles":[
+    "clientsidetest"
+  ],
+  "engineFiles":[
+    "forms/species"
+  ]
+}

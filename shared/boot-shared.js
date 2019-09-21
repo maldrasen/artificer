@@ -2,6 +2,7 @@
 console.log("> Booting Shared")
 
 global.extend = require('extend');
+global.each = require('iterate-object');
 
 // === Superclasses ===
 require(`${ROOT}/shared/models/model.js`);
