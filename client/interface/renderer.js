@@ -8,92 +8,55 @@ global.Renderer = (function() {
   function init() {
     initActions();
     initMessages();
-    buildLoadingScreen();
-    renderPartials();
   }
 
   function initMessages() {
     ipcRenderer.on('engine.ready', buildMainContent);
+    ipcRenderer.on('render.page', renderPage);
   }
 
   function initActions() {
-  //   $(document).on('click', '#startNewGame',       Elements.buttonAction(function() { startNewGame();                     }));
-  //   $(document).on('click', '.action.end-event',   Elements.buttonAction(function() { endEvent($(this).data('view'));     }));
-  //   $(document).on('click', '.action.add-event',   Elements.buttonAction(function() { addEvent($(this).data('code'), {}); }));
-  //   $(document).on('click', '.action.set-view',    Elements.buttonAction(function() { setView($(this).data('code'));      }));
-  //   $(document).on('click', '.action.change-page', Elements.buttonAction(function() { changePage($(this).data('page'));   }));
-  //   $(document).on('click','.action.debug-start',  Elements.buttonAction(function() { debugStart($(this).data('view'));   }));
-  }
-
-  function buildLoadingScreen() {
-    $('body').attr('style','').empty().append($('<div>').append("Loading Renderer..."))
+    $(document).on('click', '.send-command', Elements.buttonAction(sendCommand));
   }
 
   function buildMainContent() {
+    let body = $('body').removeClass('main-loading').empty();
+    body.append($('<div>',{ id:'mainContent' }).append($('<div>',{ class:'partial' }).data('url',VIEWS.mainMenu.path)));
+    body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/layers.html`));
+    body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates.html`));
 
-    console.log("Build Main Content Now...")
-
-    // body.append($('<div>',{ id:'mainContent' }).append($('<div>',{ class:'partial' }).data('url',VIEWS.mainMenu.path)));
-    // body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/layers.html`));
-    // body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates.html`));
+    renderPartials();
   }
 
-  // // === View Setters ===
+  // The standard view link will look something like this:
   //
-  // function startNewGame() {
-  //   Game.startNewGame();
-  //   render();
-  // }
+  //   <a href='#' class='send-command' data-command='model.action'>Title</a>
   //
-  // function addEvent(code,state) {
-  //   EventQueue.addEvent(code, state);
-  //   render();
-  // }
-  //
-  // function endEvent(view) {
-  //   if (view) {
-  //     Game.setView(view);
-  //   }
-  //   EventQueue.endEvent();
-  //   render();
-  // }
-  //
-  // function setView(view,state) {
-  //   Game.setView(view);
-  //   render();
-  // }
-  //
-  // function debugStart(view) {
-  //   if (Game.hasStarted() == false) { Game.setupGame(); }
-  //   ({ encounter: Encounter.startDebug }[view])();
-  //   render();
-  // }
-  //
-  // // === Rendering ===
-  //
-  // function render() {
-  //   $('#mainContent').empty();
-  //
-  //   let path;
-  //   let initScript;
-  //
-  //   if (Game.getView() == 'event') {
-  //     path = EventQueue.getEvent().view;
-  //     initScript = InitScripts[EventQueue.getEvent().code];
-  //   } else {
-  //     path = VIEWS[Game.getView()].path;
-  //     initScript = InitScripts[Game.getView()];
-  //   }
-  //
-  //   loadView(path, function(data) {
-  //     $('#mainContent').empty();
-  //     $('#mainContent').append($(data));
-  //
-  //     renderPartials();
-  //
-  //     if (initScript) { initScript.init(); }
-  //   });
-  // }
+  // This will send a command down to the main thread. Commands will probably
+  // also need to support a number of other data attributes that are used as
+  // arguments. They'll be added as we find them.
+  function sendCommand() {
+    let data = $(this).data();
+    let options = {};
+
+    if (data.id) { options.id = data.id; }
+
+    ipcRenderer.send(data.command,options);
+    lock();
+  }
+
+  function lock() { $('#viewLock').removeClass('hide'); }
+  function unlock() { $('#viewLock').addClass('hide'); }
+
+  function renderPage(transport, options) {
+    loadView(`${ROOT}/${options.path}`, (data) => {
+      $('#mainContent').empty().append(data);
+      unlock();
+    });
+  }
+
+  function render() {
+  }
 
   function loadView(viewPath, callback) {
     logger.info(`Load ${viewPath}`);
@@ -114,33 +77,8 @@ global.Renderer = (function() {
     });
   }
 
-  // // === Event Paging ===
-  //
-  // function changePage(id) {
-  //   let page = $('#'+id);
-  //
-  //   logger.info('Rendering Page', { page:`${EventQueue.getEventCode()} : ${id}` });
-  //
-  //   if (page.length == 0) {
-  //     throw "No page with id "+id;
-  //   }
-  //
-  //   if (page.data('on-display')) {
-  //     PageFunctions[page.data('on-display')]();
-  //   }
-  //
-  //   $('.page.active').removeClass('active');
-  //   page.addClass('active');
-  // }
-  //
   return {
     init: init,
-    // addEvent: addEvent,
-    // endEvent: endEvent,
-    // setView: setView,
-    // loadView: loadView,
-    // renderPartials: renderPartials,
-    // render: render,
   };
 
 })();

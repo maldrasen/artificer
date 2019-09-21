@@ -10,3 +10,6 @@ global.$ = global.jQuery = require('jquery');
 // === Interface ===
 require(`${ROOT}/client/interface/logger.js`);
 require(`${ROOT}/client/interface/renderer.js`);
+
+// === Elements ===
+require(`${ROOT}/client/interface/elements/elements.js`);

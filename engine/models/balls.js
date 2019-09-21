@@ -1,8 +1,8 @@
 global.Balls = Database.instance().define('balls', {
-  character_id: Sequelize.INTEGER,
-  width: Sequelize.INTEGER,
-  internal: Sequelize.BOOLEAN,
-  productionMultiplier: Sequelize.DOUBLE,
+  character_id:         { type:Sequelize.INTEGER },
+  width:                { type:Sequelize.INTEGER },
+  internal:             { type:Sequelize.BOOLEAN },
+  productionMultiplier: { type:Sequelize.DOUBLE  },
 },{
   timestamps: false,
   getterMethods: {

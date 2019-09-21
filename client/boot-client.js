@@ -12,20 +12,24 @@ require(`${ROOT}/client/boot-system.js`);
 require(`${ROOT}/client/boot-interface.js`);
 
 $(document).ready(function() {
-  console.log('=== Ready ===');
 
-  // === Interface ===
+  // === Init Elements ===
+  Elements.init();
+
+  // === Init Interface ===
   Renderer.init();
 
+  // View mods should be pretty rare I think...
   ipcRenderer.on('engine.mod-loaded', (transport, mod)=>{
-    console.log(`> Loading ${mod.name}`);
+    console.log(`> Loading Mod [${mod.name}]`);
     each(mod.clientFiles, (file) => {
       console.log(`   - ${file}`);
       require(`${ROOT}/data/${mod.name}/${file}`);
     });
-  })
+  });
 
   ipcRenderer.send('client.ready');
 
-  console.log('=== Done ===');
+  console.log('=== Client Booted ===');
+
 });
