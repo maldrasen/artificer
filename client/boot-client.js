@@ -15,6 +15,7 @@ $(document).ready(function() {
 
   // === Init Elements ===
   Elements.init();
+  Elements.PagedContent.init();
 
   // === Init Interface ===
   Renderer.init();

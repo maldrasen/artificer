@@ -12,7 +12,7 @@ global.Renderer = (function() {
 
   function initMessages() {
     ipcRenderer.on('engine.ready', buildMainContent);
-    ipcRenderer.on('render.page', renderPage);
+    ipcRenderer.on('render', render);
   }
 
   function initActions() {
@@ -25,7 +25,7 @@ global.Renderer = (function() {
     body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/layers.html`));
     body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates.html`));
 
-    renderPartials();
+    constructView();
   }
 
   // The standard view link will look something like this:
@@ -45,20 +45,33 @@ global.Renderer = (function() {
     lock();
   }
 
+  function render(transport, options) {
+    if (options.view) {
+      loadFile(`${ROOT}/${options.view}`, (data) => {
+        $('#mainContent').empty().append(data);
+        constructView();
+      });
+    }
+  }
+
   function lock() { $('#viewLock').removeClass('hide'); }
   function unlock() { $('#viewLock').addClass('hide'); }
 
-  function renderPage(transport, options) {
-    loadView(`${ROOT}/${options.path}`, (data) => {
-      $('#mainContent').empty().append(data);
-      unlock();
+  function constructView() {
+    if ($('.partial').length > 0) { return renderPartial(); }
+    Elements.PagedContent.build();
+    unlock();
+  }
+
+  function renderPartial() {
+    let partial = $($('.partial')[0]);
+    loadFile(partial.data('url'), (data)=>{
+      partial.removeClass('partial').empty().append(data);
+      constructView();
     });
   }
 
-  function render() {
-  }
-
-  function loadView(viewPath, callback) {
+  function loadFile(viewPath, callback) {
     logger.info(`Load ${viewPath}`);
 
     fs.readFile(viewPath, 'utf8', function(err, data) {
@@ -66,14 +79,6 @@ global.Renderer = (function() {
         throw err;
       }
       callback(data.replace(/@ROOT/g,ROOT));
-    });
-  }
-
-  function renderPartials() {
-    $.each($('.partial'), function(i, element) {
-      loadView($(element).data('url'), function(data) {
-        $(element).removeClass('partial').empty().append(data);
-      });
     });
   }
 

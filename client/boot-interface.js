@@ -13,3 +13,4 @@ require(`${ROOT}/client/interface/renderer.js`);
 
 // === Elements ===
 require(`${ROOT}/client/interface/elements/elements.js`);
+require(`${ROOT}/client/interface/elements/paged-content.js`);

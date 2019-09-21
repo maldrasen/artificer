@@ -27,7 +27,7 @@ Game.startView = 'client/views/game/start.html';
 if (typeof ipcMain != 'undefined') {
   ipcMain.on('game.start', () => {
     Game.start(game => {
-      Browser.send('render.page',{ path:Game.startView });
+      Browser.send('render',{ view:Game.startView });
     });
   });
 }
