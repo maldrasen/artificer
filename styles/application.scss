@@ -7,12 +7,15 @@
 @import 'base.scss';
 @import 'renderer.scss';
 @import 'development.scss';
+@import 'events.scss';
+
 @import 'general.scss';
 @import 'forms.scss';
 @import 'panels.scss';
 
 @import 'elements/buttons.scss';
 @import 'elements/chooser.scss';
+@import 'elements/paged-content.scss';
 @import 'elements/scrolling-panel.scss';
 
 @import 'controls/logger.scss';

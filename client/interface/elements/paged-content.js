@@ -43,6 +43,8 @@ Elements.PagedContent = (function() {
 
     if (page.data('darken-background')) { darkenBackground(page.data('darken-background')); }
     if (page.data('set-background'))    { setBackground(page.data('set-background')); }
+
+    adjustPage(page);
   }
 
   // === Effects ===
@@ -56,7 +58,33 @@ Elements.PagedContent = (function() {
     if ($('.paged-content-background').length == 0) {
       $('#mainContent').append($('<div>',{ class:'paged-content-background' }));
     }
-    $('.paged-content-background').css({ "background-image":`url(${url})` });
+    $('.paged-content-background').css({ "background-image":`url(${url})`, filter:'' });
+  }
+
+  // === Paging Control ===
+
+  // It's better to handle most of these content choices in the engine rather
+  // than the view, but sometimes it's just easier to take care of this way.
+  function adjustPage(page) {
+    if (page.find('.select')) {
+      $.each(page.find('.select'), (i,select) => { resolveSelect($(select)); })
+    }
+  }
+
+  // This could be a lot simpler of course, I'm anticipating the need to add
+  // more conditions that the select will need to keep off of though.
+  function resolveSelect(element) {
+    let key = element.data('show-if') || element.data('show-if-not')
+    let shouldDisplay;
+
+    if (key == 'config.metric') { shouldDisplay = Configuration.metric }
+
+    if (key == null) { throw `A select needs a condition key.` }
+    if (shouldDisplay == null) { throw `Unknown select condition key [${key}]` }
+
+    if (element.data('show-if-not')) { shouldDisplay = !shouldDisplay }
+
+    shouldDisplay ? element.removeClass('hide') : element.addClass('hide');
   }
 
   return {

@@ -4,14 +4,14 @@ global.GameStartControl = (function() {
   let genderChooser;
 
   function init() {
-    Elements.PagedContent.setBackground("../../data/artificer/client/game-start/bg-1.png");
+    Elements.PagedContent.setBackground("../../data/artificer/client/images/bg-void.png");
     Elements.PagedContent.darkenBackground(100);
     Elements.RadioButtons.wire();
 
     initSpeciesControl();
     initGenderControl();
 
-    $(document).on('click','.game-start-complete',Elements.buttonAction(complete));
+    $(document).on('click','.title-frame',Elements.buttonAction(complete));
     $(document).on('click','.check-name',Elements.buttonAction(checkName));
     $(document).on('click','.check-custom-gender',Elements.buttonAction(checkCustomGender));
     $(document).on('click','.accept-species-choice',Elements.buttonAction(speciesChosen));
@@ -112,6 +112,11 @@ global.GameStartControl = (function() {
     Elements.PagedContent.showPage(
       (genderChooser.selectedValue == 'custom') ? '.custom-gender-page' : '.after-gender-page'
     );
+
+    // We can't use the standard loom to fill in the title here because the
+    // player doesn't actually exist yet. This has to be done after the name
+    // step, but before the page is shown.
+    $('.title-fill').append($('#title').val().trim());
   }
 
   function checkCustomGender() {

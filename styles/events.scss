@@ -1,0 +1,18 @@
+
+// === Game Start ===
+.title-frame {
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  width: 100%;
+  bottom: 0;
+  top: 0;
+}
+.title {
+  margin: auto;
+  text-align: center;
+  align-items: center;
+  font-family: roboto-black;
+  font-size: 250px;
+  text-shadow: 5px 5px 10px black;
+}
