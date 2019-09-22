@@ -10,8 +10,15 @@ require(`${ROOT}/engine/forms/location`);
 require(`${ROOT}/engine/forms/species`);
 
 require(`${ROOT}/engine/services/composer`);
-require(`${ROOT}/engine/services/character-builder/character-builder`);
+
+// === Builders ===
+require(`${ROOT}/engine/services/character-builder/anus-builder`);
 require(`${ROOT}/engine/services/character-builder/body-builder`);
+require(`${ROOT}/engine/services/character-builder/character-builder`);
+require(`${ROOT}/engine/services/character-builder/cock-builder`);
+require(`${ROOT}/engine/services/character-builder/mouth-builder`);
+require(`${ROOT}/engine/services/character-builder/pussy-builder`);
+require(`${ROOT}/engine/services/character-builder/tits-builder`);
 
 // === Utilities ===
 require(`${ROOT}/engine/utilities/array-utility.js`);

@@ -1,15 +1,14 @@
 
-// The interface-boot loads the javascripts needed for interface components.
-// These scripts aren't tested in the unit tests, so they should have
-// integration tests written for them.
-console.log("> Booting Interface");
-
-// === External ===
+// === Dependencies ===
 global.$ = global.jQuery = require('jquery');
 global.each = require('iterate-object');
+global.electron = require('electron');
 global.extend = require('extend');
+global.fs = require('fs');
+global.ipcRenderer = electron.ipcRenderer;
 
 // === Interface ===
+require(`${ROOT}/client/interface/client`);
 require(`${ROOT}/client/interface/logger`);
 require(`${ROOT}/client/interface/renderer`);
 

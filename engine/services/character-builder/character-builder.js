@@ -34,7 +34,15 @@ global.CharacterBuilder = (function() {
   function addBody(character, options, callback) {
     BodyBuilder.build(character, options, body => {
       character.update({ body_id:body.id }).then(() => {
-        callback(character);
+        Promise.all([
+          AnusBuilder.build(character, options),
+          CockBuilder.build(character, options),
+          MouthBuilder.build(character, options),
+          PussyBuilder.build(character, options),
+          TitsBuilder.build(character, options),
+        ]).then(()=>{
+          callback(character);
+        });
       });
     });
   }
