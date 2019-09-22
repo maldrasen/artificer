@@ -28,6 +28,18 @@ describe('BodyFactory', function() {
         });
       });
     });
+
+    it('Calculates finger and fist widths and areas based on body height', function(done) {
+      CharacterBuilder.build({ species:'elf', body:{ height:1800 }}, character => {
+        character.getBody(body => {
+          expect(body.fistWidth).to.equal(88);
+          expect(body.fingerWidth).to.equal(19);
+          expect(body.fistArea).to.equal(6082);
+          expect(body.fingerArea).to.equal(284);
+          done();
+        });
+      });
+    });
   });
 
   describe('Skin Color', function() {
