@@ -3,11 +3,15 @@ global.Player = Database.instance().define('player', {
   title:              { type:Sequelize.STRING },
   firstName:          { type:Sequelize.STRING },
   lastName:           { type:Sequelize.STRING },
-  gender:             { type:Sequelize.STRING },
+  genderCode:         { type:Sequelize.STRING },
   genderOptions:      { type:Sequelize.STRING },
-  species_id:         { type:Sequelize.INTEGER },
+  speciesCode:        { type:Sequelize.STRING },
 },{
   timestamps: false,
+  getterMethods: {
+    species() { return Species.lookup(this.speciesCode); },
+    gender()  { return Gender[this.genderCode]; },
+  }
 });
 
 Player.instance = function(callback) {
@@ -20,9 +24,11 @@ Player.forge = function(options, callback) {
 
     Player.create({
       id: 1,
+      title: options.title,
       firstName: options.firstName,
       lastName: options.lastName,
-      gender: options.gender,
+      genderCode: options.gender,
+      speciesCode: options.species,
     }).then(player => {
       saveCustomGender(player, options);
       callback();
