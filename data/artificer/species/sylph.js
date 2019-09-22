@@ -1,7 +1,28 @@
-// // TODO: flexible should be an aspect I think, but not a decision making aspect,
-// //       maybe needs to be another class?
-// addRace('sylph',{
-//   name: 'Sylph',
+let sylph = Species.build('sylph', {
+  name: 'Sylph',
+
+  bodyOptions: {
+    baseHeight: 1350,
+    heightRange: 300,
+    maleHeightAdjust: 100,
+    skinColors: ['blue'],
+    hairColors: ['white','light-blue','blue','dark-blue','black'],
+    tits: {
+      averageSize: 100,
+    },
+    cocks: {
+      averageSize: 120,
+    },
+    pussy: {
+      elasticity: 7,
+      cervixElasticity: 3,
+    },
+    anus: {
+      elasticity: 6,
+    },
+  },
+});
+
 //   flags: ['fae'],
 //   personalities: {
 //     average: 50,
@@ -17,25 +38,3 @@
 //   mental:   30,
 //   magical:  20,
 //   genderRatio: { female:75, futa:20, male:5 },
-//   bodyOptions: {
-//     bmi: 18,
-//     baseHeight: 1350,
-//     heightRange: 300,
-//     maleHeightAdjust: 100,
-//     skinColors: ['blue'],
-//     hairColors: ['white','light-blue','blue','dark-blue','black'],
-//     tits:{
-//       averageSize: 100,
-//     },
-//     cocks: {
-//       averageSize: 120,
-//     },
-//     pussy: {
-//       elasticity: 7,
-//       cervixElasticity: 3,
-//     },
-//     anus: {
-//       elasticity: 6,
-//     },
-//   },
-// });

@@ -1,5 +1,21 @@
-// addRace('gnome',{
-//   name: 'Gnome',
+let gnome = Species.build('gnome', {
+  name: 'Gnome',
+
+  bodyOptions: {
+    baseHeight: 1200,
+    heightRange: 300,
+    maleHeightAdjust: 100,
+    skinColors: ['human'],
+    hairColors: ['human'],
+    tits: {
+      averageSize: 500,
+    },
+    cocks: {
+      averageSize: 130,
+    },
+  },
+});
+
 //   flags: ['fae'],
 //   personalities: {
 //     average: 50,
@@ -12,18 +28,3 @@
 //   mental:   20,
 //   magical:  20,
 //   genderRatio: { female:35, futa:5, male:60 },
-//   bodyOptions: {
-//     bmi: 24,
-//     baseHeight: 1200,
-//     heightRange: 300,
-//     maleHeightAdjust: 100,
-//     skinColors: ['human'],
-//     hairColors: ['human'],
-//     tits:{
-//       averageSize: 500,
-//     },
-//     cocks: {
-//       averageSize: 130,
-//     },
-//   },
-// });

@@ -1,5 +1,18 @@
-// addRace('elf',{
-//   name: 'Elf',
+let elf = Species.build('elf', {
+  name: 'Elf',
+
+  bodyOptions: {
+    skinColors: ['human'],
+    hairColors: ['human'],
+    tits: {
+      averageSize: 450,
+    },
+    cocks: {
+      averageSize: 150,
+    },
+  },
+});
+
 //   flags: ['elf'],
 //   personalities: {
 //     average: 100,
@@ -12,14 +25,3 @@
 //   personal: 20,
 //   mental:   20,
 //   magical:  20,
-//   bodyOptions: {
-//     skinColors: ['human'],
-//     hairColors: ['human'],
-//     tits:{
-//       averageSize: 450,
-//     },
-//     cocks: {
-//       averageSize: 150,
-//     },
-//   },
-// });

@@ -1,5 +1,23 @@
-// addRace('wood-elf',{
-//   name: 'Wood Elf',
+
+let woodElf = Species.build('wood-elf', {
+  name: 'Wood Elf',
+
+  bodyOptions: {
+    baseHeight: 1350,
+    heightRange: 300,
+    maleHeightAdjust: 100,
+    skinColors: ['human'],
+    hairColors: ['human'],
+    tailShape: 'dog',
+    tits: {
+      averageSize: 500,
+    },
+    cocks: {
+      averageSize: 150,
+    },
+  },
+});
+
 //   flags: ['elf'],
 //   personalities: {
 //     average: 100,
@@ -15,18 +33,3 @@
 //   personal: 20,
 //   mental:   20,
 //   magical:  10,
-//   bodyOptions: {
-//     baseHeight: 1350,
-//     heightRange: 300,
-//     maleHeightAdjust: 100,
-//     skinColors: ['human'],
-//     hairColors: ['human'],
-//     tailShape: 'dog',
-//     tits:{
-//       averageSize: 500,
-//     },
-//     cocks: {
-//       averageSize: 150,
-//     },
-//   },
-// });

@@ -1,5 +1,20 @@
-// addRace('neko',{
-//   name: 'Neko',
+let neko = Species.build('neko', {
+  name: 'Neko',
+
+  bodyOptions: {
+    furColors: ['brown','red'],
+    skinColors: ['human'],
+    hairColors: ['human'],
+    tailShape: 'cat',
+    tits: {
+      averageSize: 600,
+    },
+    cocks: {
+      averageSize: 180,
+    },
+  },
+});
+
 //   flags: ['elf'],
 //   personalities: {
 //     average: 100,
@@ -14,17 +29,3 @@
 //   personal: 30,
 //   mental:   20,
 //   magical:  20,
-//   bodyOptions: {
-//     bmi: 24,
-//     furColors: ['brown','red'],
-//     skinColors: ['human'],
-//     hairColors: ['human'],
-//     tailShape: 'cat',
-//     tits:{
-//       averageSize: 600,
-//     },
-//     cocks: {
-//       averageSize: 180,
-//     },
-//   },
-// });

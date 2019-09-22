@@ -1,5 +1,18 @@
-// addRace('dark-elf',{
-//   name: 'Dark Elf',
+let darkElf = Species.build('dark-elf', {
+  name: 'Dark Elf',
+
+  bodyOptions: {
+    skinColor: 'black',
+    hairColor: 'white',
+    tits: {
+      averageSize: 600,
+    },
+    cocks: {
+      averageSize: 200,
+    },
+  },
+});
+
 //   flags: ['elf'],
 //   personalities: {
 //     average: 100,
@@ -15,14 +28,3 @@
 //   personal: 20,
 //   mental:   30,
 //   magical:  40,
-//   bodyOptions: {
-//     skinColor: 'black',
-//     hairColor: 'white',
-//     tits:{
-//       averageSize: 600,
-//     },
-//     cocks: {
-//       averageSize: 200,
-//     },
-//   },
-// });

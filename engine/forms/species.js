@@ -1,13 +1,7 @@
-global.Species = Database.instance().define('species',{
+global.Species = class Species extends Form {
 
-});
+};
 
-// global.Species = class Species extends Form {
-//   constructor(data) {
-//     super();
-//     this.build(data);
-//   }
-//
 //   get code() { return this._code; }
 //   get name() { return this._name; }
 //   get description() { return this._description; }

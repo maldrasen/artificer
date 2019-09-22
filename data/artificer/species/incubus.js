@@ -1,5 +1,29 @@
-// addRace('incubus',{
-//   name: 'Incubus',
+let incubus = Species.build('incubus', {
+  name: 'Incubus',
+
+  bodyOptions: {
+    skinColors: ['red'],
+    hairColors: ['red','black','purple','white'],
+    tailShape: 'demon',
+    mouth: {
+      elasticity: 4,
+      tongueShape: 'forked',
+      averageTongueLength: 80,
+      averageThroatWidth: 60,
+    },
+    cocks: {
+      averageSize: 250,
+      strangeCocks: true,
+    },
+    balls: {
+      extraProduction: 2,
+    },
+    anus: {
+      elasticity: 6,
+    },
+  },
+});
+
 //   flags: ['demon'],
 //   personalities: {
 //     demonic: 100,
@@ -40,26 +64,3 @@
 //   mental:   20,
 //   magical:  40,
 //   genderRatio: { female:0, futa:0, male:100 },
-//   bodyOptions: {
-//     bmi: 28,
-//     skinColors: ['red'],
-//     hairColors: ['red','black','purple','white'],
-//     tailShape: 'demon',
-//     mouth: {
-//       elasticity: 4,
-//       tongueShape: 'forked',
-//       averageTongueLength: 80,
-//       averageThroatWidth: 60,
-//     },
-//     cocks: {
-//       averageSize: 250,
-//       strangeCocks: true,
-//     },
-//     balls: {
-//       extraProduction: 2,
-//     },
-//     anus: {
-//       elasticity: 6,
-//     },
-//   },
-// });

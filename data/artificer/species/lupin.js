@@ -1,5 +1,30 @@
-// addRace('lupin',{
-//   name: 'Lupin',
+let lupin = Species.build('lupin', {
+  name: 'Lupin',
+
+  bodyOptions: {
+    furColors: ['gray','brown'],
+    skinColors: ['human','red','black'],
+    tailShape: 'dog',
+    mouth: {
+      shape: 'muzzle',
+      averageSize: 360,
+      averageTongueLength: 120,
+    },
+    tits: {
+      averageSize: 400,
+      count: 6,
+    },
+    cocks: {
+      averageSize: 150,
+      shape: 'dog',
+      sheath: 'fur',
+    },
+    pussy: {
+      shape: 'dog',
+    },
+  },
+});
+
 //   flags: ['furry'],
 //   personalities: {
 //     average: 100,
@@ -15,27 +40,3 @@
 //   personal: 20,
 //   mental:   20,
 //   magical:  10,
-//   bodyOptions: {
-//     bmi: 28,
-//     furColors: ['gray','brown'],
-//     skinColors: ['human','red','black'],
-//     tailShape: 'dog',
-//     mouth: {
-//       shape: 'muzzle',
-//       averageSize: 360,
-//       averageTongueLength: 120,
-//     },
-//     tits:{
-//       averageSize: 400,
-//       count: 6,
-//     },
-//     cocks: {
-//       averageSize: 150,
-//       shape: 'dog',
-//       sheath: 'fur',
-//     },
-//     pussy: {
-//       shape: 'dog',
-//     },
-//   },
-// });

@@ -1,5 +1,30 @@
-// addRace('vulpine',{
-//   name: 'Vulpine',
+let vulpine = Species.build('vulpine', {
+  name: 'Vulpine',
+
+  bodyOptions: {
+    furColors: ['gray','brown','red'],
+    skinColors: ['human','red','black'],
+    tailShape: 'fox',
+    mouth: {
+      shape: 'muzzle',
+      averageSize: 360,
+      averageTongueLength: 120,
+    },
+    tits: {
+      averageSize: 700,
+      count: 6,
+    },
+    cocks: {
+      averageSize: 150,
+      shape: 'dog',
+      sheath: 'fur',
+    },
+    pussy: {
+      shape: 'dog',
+    },
+  },
+});
+
 //   flags: ['furry'],
 //   personalities: {
 //     average: 100,
@@ -16,27 +41,3 @@
 //   personal: 30,
 //   mental:   20,
 //   magical:  10,
-//   bodyOptions: {
-//     bmi: 26,
-//     furColors: ['gray','brown','red'],
-//     skinColors: ['human','red','black'],
-//     tailShape: 'fox',
-//     mouth: {
-//       shape: 'muzzle',
-//       averageSize: 360,
-//       averageTongueLength: 120,
-//     },
-//     tits:{
-//       averageSize: 700,
-//       count: 6,
-//     },
-//     cocks: {
-//       averageSize: 150,
-//       shape: 'dog',
-//       sheath: 'fur',
-//     },
-//     pussy: {
-//       shape: 'dog',
-//     },
-//   },
-// });

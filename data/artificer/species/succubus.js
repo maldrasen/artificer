@@ -1,5 +1,36 @@
-// addRace('succubus',{
-//   name: 'Succubus',
+let succubus = Species.build('succubus', {
+  name: 'Succubus',
+
+  bodyOptions: {
+    skinColors: ['red'],
+    hairColors: ['red','black','purple','white'],
+    tailShape: 'demon',
+    mouth: {
+      elasticity: 4,
+      tongueShape: 'forked',
+      averageTongueLength: 80,
+      averageThroatWidth: 60,
+    },
+    tits: {
+      averageSize: 750,
+    },
+    cocks: {
+      averageSize: 275,
+      strangeCocks: true,
+    },
+    balls: {
+      extraProduction: 2,
+    },
+    pussy: {
+      elasticity: 8,
+      cervixElasticity: 4,
+    },
+    anus: {
+      elasticity: 6,
+    },
+  },
+});
+
 //   flags: ['demon'],
 //   personalities: {
 //     demonic: 100,
@@ -40,33 +71,3 @@
 //   mental:   20,
 //   magical:  30,
 //   genderRatio: { female:35, futa:65, male:0 },
-//   bodyOptions: {
-//     bmi: 24,
-//     skinColors: ['red'],
-//     hairColors: ['red','black','purple','white'],
-//     tailShape: 'demon',
-//     mouth: {
-//       elasticity: 4,
-//       tongueShape: 'forked',
-//       averageTongueLength: 80,
-//       averageThroatWidth: 60,
-//     },
-//     tits:{
-//       averageSize: 750,
-//     },
-//     cocks: {
-//       averageSize: 275,
-//       strangeCocks: true,
-//     },
-//     balls: {
-//       extraProduction: 2,
-//     },
-//     pussy: {
-//       elasticity: 8,
-//       cervixElasticity: 4,
-//     },
-//     anus: {
-//       elasticity: 6,
-//     },
-//   },
-// });

@@ -1,5 +1,28 @@
-// addRace('nymph',{
-//   name: 'Nymph',
+let nymph = Species.build('nymph', {
+  name: 'Nymph',
+
+  bodyOptions: {
+    baseHeight: 1400,
+    heightRange: 300,
+    maleHeightAdjust: 100,
+    skinColors: ['human'],
+    hairColors: ['chestnut','auburn','platinum-blond','golden-blond','strawberry-blond','red','copper','light-blue','blue','purple'],
+    tits: {
+      averageSize: 750,
+    },
+    cocks: {
+      averageSize: 220,
+    },
+    balls: {
+      extraProduction: 1,
+    },
+    pussy: {
+      elasticity: 5,
+      cervixElasticity: 2,
+    },
+  },
+});
+
 //   flags: ['fae'],
 //   aspects: ['emotional','lascivious','submissive'],
 //   personalities: {
@@ -19,25 +42,3 @@
 //   mental:   10,
 //   magical:  20,
 //   genderRatio: { female:60, futa:40, male:0 },
-//   bodyOptions: {
-//     bmi: 20,
-//     baseHeight: 1400,
-//     heightRange: 300,
-//     maleHeightAdjust: 100,
-//     skinColors: ['human'],
-//     hairColors: ['chestnut','auburn','platinum-blond','golden-blond','strawberry-blond','red','copper','light-blue','blue','purple'],
-//     tits:{
-//       averageSize: 750,
-//     },
-//     cocks: {
-//       averageSize: 220,
-//     },
-//     balls: {
-//       extraProduction: 1,
-//     },
-//     pussy: {
-//       elasticity: 5,
-//       cervixElasticity: 2,
-//     },
-//   },
-// });
