@@ -1,0 +1,96 @@
+
+@mixin button($color) {
+  display: inline-block;
+  font-family: roboto-medium;
+  padding: 0 10px;
+  line-height: 30px;
+  cursor: pointer;
+
+  color: transparentize($color, 0.25) !important;
+  border: 1px solid transparentize($color, 0.8);
+  border-radius: 3px;
+
+  &:focus {
+    color: transparentize($color, 0.25) !important;
+    border-color: transparentize($color, 0.8);
+  }
+  &:hover {
+    color: $color !important;
+    border-color: transparentize($color, 0.7);
+  }
+  &:active {
+    box-shadow: $shadow-inset-button;
+  }
+
+  &:before { content:''; }
+  &:after { content:''; }
+}
+
+.button { @include button($fg-button-default); }
+.button-danger { @include button($fg-button-danger); }
+.button-warning { @include button($fg-button-warning); }
+.button-success { @include button($fg-button-success); }
+.button-primary { @include button($fg-button-primary); }
+.button-secondary { @include button($fg-button-secondary); }
+
+.button-small {
+  padding: 0 8px;
+  line-height: 18px;
+  font-size: $fs-small;
+}
+
+.button-tiny {
+  padding: 0 8px;
+  line-height: 16px;
+  font-size: $fs-tiny;
+}
+
+.disabled-button {
+  cursor: default;
+  color: $fg-very-weak !important;
+  border: 1px solid transparentize($fg-very-weak, 0.4);
+
+  &:hover, &:active, &:focus {
+    box-shadow: none;
+    color: $fg-very-weak !important;
+    border: 1px solid transparentize($fg-very-weak, 0.4);
+  }
+}
+
+.radio-buttons {
+  display: inline-block;
+  height: 40px;
+  padding: 5px;
+  box-shadow: $shadow-inset;
+  border-radius: 5px;
+}
+
+.radio-button {
+  @include button($fg-button-default);
+
+  line-height: 29px;
+  border-right-width: 0;
+  border-radius: 0;
+
+  &:last-child {
+    border-right-width: 1px;
+    border-radius: 0 3px 3px 0;
+  }
+  &:first-child {
+    border-radius: 3px 0 0 3px;
+  }
+  &.on {
+    color: $fg-radio-button-on !important;
+    background-color: $bg-radio-button-on;
+    text-shadow: $glow-radio-button-on;
+    box-shadow: $shadow-inset-button;
+  }
+}
+.radio-button.disabled {
+  cursor: default;
+  color: $fg-very-weak !important;
+  border: 1px solid transparentize($fg-very-weak, 0.3);
+  &:hover {  }
+  &:active { box-shadow:none; }
+  &:focus {  }
+}
