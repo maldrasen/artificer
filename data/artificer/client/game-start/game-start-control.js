@@ -1,10 +1,12 @@
 global.GameStartControl = (function() {
+  let logger = new Logger('Game Start', 'rgb(150,50,100)');
   let speciesChooser;
   let genderChooser;
 
   function init() {
     Elements.PagedContent.setBackground("../../data/artificer/client/game-start/bg-1.png");
     Elements.PagedContent.darkenBackground(100);
+    Elements.RadioButtons.wire();
 
     initSpeciesControl();
     initGenderControl();
@@ -52,11 +54,12 @@ global.GameStartControl = (function() {
   // === Name ===
 
   function checkName() {
+    let title = $("#title").val().trim();
     let first = $("#firstName").val().trim();
     let last = $("#lastName").val().trim();
 
-    if (first.length == 0 || last.length == 0) { return false; }
-    if (first.length > 20 || last.length > 20) { return false; }
+    if (first.length == 0 || last.length == 0 || title.length == 0) { return false; }
+    if (first.length > 20 || last.length > 20 || title.length > 20) { return false; }
 
     Elements.PagedContent.showNextPage();
   }
@@ -114,9 +117,6 @@ global.GameStartControl = (function() {
   function checkCustomGender() {
     let valid = true;
     let fields = [
-      '#genderDick',
-      '#genderTits',
-      '#genderPussy',
       '#genderName',
       '#genderPlural',
       '#genderDescriptive',
@@ -140,14 +140,16 @@ global.GameStartControl = (function() {
     let options = {
       firstName: $("#firstName").val().trim(),
       lastName: $("#lastName").val().trim(),
-      gender: $('#genderSelect').val(),
+      title: $('#title').val().trim(),
+      gender: genderChooser.selectedValue,
+      species: speciesChooser.selectedValue,
     }
 
     if (options.gender == 'custom') {
       extend(options,{
-        genderDick: $('#genderDick').val(),
-        genderTits: $('#genderTits').val(),
-        genderPussy: $('#genderPussy').val(),
+        genderDick: $('#genderDick').data('value'),
+        genderTits: $('#genderTits').data('value'),
+        genderPussy: $('#genderPussy').data('value'),
         genderName: $('#genderName').val(),
         genderPlural: $('#genderPlural').val(),
         genderDescriptive: $('#genderDescriptive').val(),
@@ -157,6 +159,8 @@ global.GameStartControl = (function() {
         genderAbsolute: $('#genderAbsolute').val(),
       });
     }
+
+    logger.info("Creating Player",options);
 
     Renderer.sendCommand('game.create-player',options);
   }

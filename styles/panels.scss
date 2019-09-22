@@ -1,0 +1,23 @@
+
+.small-centered-panel {
+  margin: 100px auto 0;
+  width: 300px;
+  padding: 10px;
+  border: $border-light;
+  box-shadow: $shadow-frame;
+  background: $bg-panel;
+}
+.form-list {
+  white-space: nowrap;
+  li { margin-bottom: 5px; }
+  li:last-child { margin-bottom: 0; }
+  label { display: inline-block; }
+}
+.form-list.species {
+  label { width: 100px; }
+  input[type='text'] { width: 184px; }
+}
+.form-list.gender {
+  label { width: 200px; }
+  input[type='text'] { width: 84px; }
+}

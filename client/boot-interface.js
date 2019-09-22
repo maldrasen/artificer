@@ -15,4 +15,5 @@ require(`${ROOT}/client/interface/renderer`);
 require(`${ROOT}/client/interface/elements/elements`);
 require(`${ROOT}/client/interface/elements/chooser`);
 require(`${ROOT}/client/interface/elements/paged-content`);
+require(`${ROOT}/client/interface/elements/radio-buttons`);
 require(`${ROOT}/client/interface/elements/scrolling-panel`);
