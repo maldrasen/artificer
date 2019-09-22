@@ -5,7 +5,7 @@ let vulpine = Species.build('vulpine', {
   personal: 30,
   mental:   20,
   magical:  10,
-  
+
   violenceAverage: 15,
   violenceRange: 10,
 
@@ -13,8 +13,8 @@ let vulpine = Species.build('vulpine', {
     furColors: ['gray','brown','red'],
     skinColors: ['human','red','black'],
     tailShape: 'fox',
+    faceShape: 'fox',
     mouth: {
-      shape: 'muzzle',
       averageSize: 360,
       averageTongueLength: 120,
     },

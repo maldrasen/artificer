@@ -10,8 +10,8 @@ let caprien = Species.build('caprien', {
   violenceRange: 25,
 
   bodyOptions: {
-    skinColors: ['human'],
-    hairColors: ['human'],
+    tailShape: 'goat',
+    hornShapes: ['curved-ram','curved-back'],
     tits: {
       averageSize: 400,
     },

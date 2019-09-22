@@ -13,11 +13,11 @@ let rat = Species.build('rat', {
     baseHeight: 660,
     heightRange: 300,
     maleHeightAdjust: 100,
-    furColors: ['gray','brown'],
+    furColors: ['gray','brown','black','white'],
     skinColors: ['human'],
     tailShape: 'rat',
+    faceShape: 'rat',
     mouth: {
-      shape: 'muzzle',
       averageSize: 150,
       averageTongueLength: 50,
       averageThroatWidth: 20,

@@ -14,6 +14,7 @@ let incubus = Species.build('incubus', {
     skinColors: ['red'],
     hairColors: ['red','black','purple','white'],
     tailShape: 'demon',
+    hornShapes: ['curved-ram','forward-cow','curved-back'],
     mouth: {
       elasticity: 4,
       tongueShape: 'forked',

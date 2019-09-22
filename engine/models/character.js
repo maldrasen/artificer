@@ -16,6 +16,7 @@ global.Character = Database.instance().define('character', {
   mental:      { type:Sequelize.INTEGER, validate:{ min:0 }},
   personal:    { type:Sequelize.INTEGER, validate:{ min:0 }},
   magical:     { type:Sequelize.INTEGER, validate:{ min:0 }},
+  body_id:     { type:Sequelize.INTEGER },
 },{
   timestamps: false,
   getterMethods: {
@@ -38,4 +39,8 @@ global.Character = Database.instance().define('character', {
 // the Loom when fetching character names.
 Character.prototype.getFirstName = function(possessive) {
   return (possessive) ? EnglishUtility.possessive(this.firstName) : this.firstName;
+}
+
+Character.prototype.getBody = function(callback) {
+  Body.findByPk(this.body_id).then(body => { callback(body) });
 }

@@ -17,6 +17,7 @@ let dryad = Species.build('dryad', {
     maleHeightAdjust: 100,
     skinColors: ['pale-green'],
     hairColors: ['dark-brown','brown','light-brown','light-green','green','dark-green'],
+    hornShapes: ['deer'],
     tits: {
       averageSize: 200,
     },

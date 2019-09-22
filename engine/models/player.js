@@ -1,11 +1,12 @@
 
 global.Player = Database.instance().define('player', {
-  title:              { type:Sequelize.STRING },
-  firstName:          { type:Sequelize.STRING },
-  lastName:           { type:Sequelize.STRING },
-  genderCode:         { type:Sequelize.STRING },
-  genderOptions:      { type:Sequelize.STRING },
-  speciesCode:        { type:Sequelize.STRING },
+  title:         { type:Sequelize.STRING  },
+  firstName:     { type:Sequelize.STRING  },
+  lastName:      { type:Sequelize.STRING  },
+  genderCode:    { type:Sequelize.STRING  },
+  genderOptions: { type:Sequelize.STRING  },
+  speciesCode:   { type:Sequelize.STRING  },
+  body_id:       { type:Sequelize.INTEGER },
 },{
   timestamps: false,
   getterMethods: {
@@ -36,6 +37,10 @@ Player.forge = function(options, callback) {
       });
     });
   });
+}
+
+Player.prototype.getBody = function(callback) {
+  Body.findByPk(this.body_id).then(body => { callback(body) });
 }
 
 function saveCustomGender(player, options) {

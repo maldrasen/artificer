@@ -30,21 +30,46 @@ global.Species = class Species extends Form {
     return base;
   }
 
-};
+  randomHeight(gender) {
+    let base =   this.bodyOptions.baseHeight || 1500;
+    let range =  this.bodyOptions.heightRange || 300;
+    let adjust = this.bodyOptions.maleHeightAdjust || 100;
 
-//   get isFurry() { return this.flags.indexOf('furry') >= 0; }
-//   get isDemon() { return this.flags.indexOf('demon') >= 0; }
-//   get isGoblin() { return this.flags.indexOf('goblin') >= 0; }
+    let height = base + Random.upTo(range);
+    if (gender == 'male') { height += adjust; }
+    if (gender == 'futa') { height += adjust/2; }
 
-//   randomHeight(gender) {
-//     let base =   this.bodyOptions.baseHeight || 1500;
-//     let range =  this.bodyOptions.heightRange || 300;
-//     let adjust = this.bodyOptions.maleHeightAdjust || 100;
-//
-//     let height = base + Random.upTo(range);
-//     if (gender == 'male') { height += adjust; }
-//     if (gender == 'futa') { height += adjust/2; }
-//
-//     return height;
-//   }
-// }
+    return height;
+  }
+
+  // Caprien females look nothing like the males. The women have slighly
+  // goaty features like small horns while the men are furry goat morphs.
+  randomColorFor(part, gender) {
+    if (this.code == 'caprien') {
+      if (part == 'skin')                       { return 'human' }
+      if (part == 'hair' && gender == 'female') { return 'human' }
+      if (part == 'fur'  && gender == 'male')   { return Random.from(['black','brown','gray','white']) }
+    }
+
+    let colors = {
+      skin:  this.bodyOptions.skinColors,
+      fur:   this.bodyOptions.furColors,
+      scale: this.bodyOptions.scaleColors,
+      hair:  this.bodyOptions.hairColors,
+    }[part];
+
+    return (colors == null) ? null : Random.from(colors);
+  }
+
+  randomHornShape() {
+    return Random.from(this.bodyOptions.hornShapes) || null;
+  }
+
+  // Caprien and Dryad females have elven looking faces while the males of
+  // their species have goat and deer faces respectivly.
+  getFaceShape(gender) {
+    if (this.code == 'caprien') { return gender == 'male' ? 'goat' : 'elf' }
+    if (this.code == 'dryad')   { return gender == 'male' ? 'deer' : 'elf' }
+    return this.bodyOptions.faceShape || 'elf';
+  }
+}

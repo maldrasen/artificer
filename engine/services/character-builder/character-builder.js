@@ -24,8 +24,6 @@ global.CharacterBuilder = (function() {
       happiness:   options.happiness || Random.roll(20,0),   // assume they're afraid of you and unhappy.
     };
 
-    console.log("\nBuild character with options:",params)
-
     Character.create(params).then(character => {
       addBody(character, options, () => {
         callback(character);
@@ -34,8 +32,11 @@ global.CharacterBuilder = (function() {
   }
 
   function addBody(character, options, callback) {
-    // console.log("Add body to ",character)
-    callback(character);
+    BodyBuilder.build(character, options, body => {
+      character.update({ body_id:body.id }).then(() => {
+        callback(character);
+      });
+    });
   }
 
   return {

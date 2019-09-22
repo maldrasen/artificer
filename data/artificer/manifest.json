@@ -9,6 +9,7 @@
 
   "engineFiles":[
     "locations/courtyard",
+    "species/caprien",
     "species/centaur",
     "species/dark-elf",
     "species/dragon",
@@ -31,6 +32,7 @@
     "species/selkie",
     "species/succubus",
     "species/sylph",
+    "species/viera",
     "species/vulpine",
     "species/wood-elf"
   ]

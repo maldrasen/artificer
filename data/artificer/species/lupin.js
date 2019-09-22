@@ -13,8 +13,8 @@ let lupin = Species.build('lupin', {
     furColors: ['gray','brown'],
     skinColors: ['human','red','black'],
     tailShape: 'dog',
+    faceShape: 'dog',
     mouth: {
-      shape: 'muzzle',
       averageSize: 360,
       averageTongueLength: 120,
     },

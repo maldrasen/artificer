@@ -16,8 +16,8 @@ let selkie = Species.build('selkie', {
     furColors: ['brown','gray'],
     skinColors: ['human','black'],
     tailShape: 'seal',
+    faceShape: 'seal',
     mouth: {
-      shape: 'muzzle',
       averageSize: 240,
       averageTongueLength: 80,
     },

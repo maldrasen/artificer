@@ -16,8 +16,9 @@ let dragon = Species.build('dragon', {
     scaleColors: ['red','gold','green','blue','purple','black','white'],
     skinColors: ['red','green','blue','purple','black'],
     tailShape: 'dragon',
+    faceShape: 'dragon',
+    hornShapes: ['curved-back'],
     mouth: {
-      shape: 'dragon',
       tongueShape: 'forked',
       averageTongueLength: 250,
       averageSize: 500,

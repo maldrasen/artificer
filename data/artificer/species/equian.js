@@ -18,8 +18,8 @@ let equian = Species.build('equian', {
     skinColors: ['human','black'],
     hairColors: ['black','dark-brown','brown','light-brown'],
     tailShape: 'horse',
+    faceShape: 'horse',
     mouth: {
-      shape: 'horse',
       averageSize: 120,
       averageTongueLength: 90,
       averageThroatWidth: 40,

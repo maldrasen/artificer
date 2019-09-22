@@ -10,8 +10,8 @@ let darkElf = Species.build('dark-elf', {
   violenceRange: 30,
 
   bodyOptions: {
-    skinColor: 'black',
-    hairColor: 'white',
+    skinColors: ['black'],
+    hairColors: ['white'],
     tits: {
       averageSize: 600,
     },

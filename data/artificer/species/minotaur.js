@@ -17,8 +17,9 @@ let minotaur = Species.build('minotaur', {
     skinColors: ['human','black'],
     hairColors: ['black','dark-brown','red'],
     tailShape: 'cow',
+    faceShape: 'cow',
+    hornShapes: ['forward-cow','wide-buffalo'],
     mouth: {
-      shape: 'horse',
       averageSize: 140,
       averageTongueLength: 120,
       averageThroatWidth: 40,
