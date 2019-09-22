@@ -1,6 +1,14 @@
 let darkElf = Species.build('dark-elf', {
   name: 'Dark Elf',
 
+  physical: 30,
+  personal: 20,
+  mental:   30,
+  magical:  40,
+
+  violenceAverage: 50,
+  violenceRange: 30,
+
   bodyOptions: {
     skinColor: 'black',
     hairColor: 'white',
@@ -24,7 +32,3 @@ let darkElf = Species.build('dark-elf', {
 //     'perverted': 40,
 //     'sadist':    60
 //   },
-//   physical: 30,
-//   personal: 20,
-//   mental:   30,
-//   magical:  40,

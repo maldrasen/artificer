@@ -1,6 +1,14 @@
 let elf = Species.build('elf', {
   name: 'Elf',
 
+  physical: 20,
+  personal: 20,
+  mental:   20,
+  magical:  20,
+
+  violenceAverage: 0,
+  violenceRange: 30,
+
   bodyOptions: {
     skinColors: ['human'],
     hairColors: ['human'],
@@ -21,7 +29,3 @@ let elf = Species.build('elf', {
 //     slut: 10,
 //   },
 //   aspects: {},
-//   physical: 20,
-//   personal: 20,
-//   mental:   20,
-//   magical:  20,

@@ -1,6 +1,14 @@
 let kobold = Species.build('kobold', {
   name: 'Kobold',
 
+  physical: 15,
+  personal: 10,
+  mental:   10,
+  magical:  10,
+
+  violenceAverage: 30,
+  violenceRange: 20,
+
   bodyOptions: {
     baseHeight: 750,
     heightRange: 300,

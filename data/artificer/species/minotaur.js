@@ -1,6 +1,14 @@
 let minotaur = Species.build('minotaur', {
   name: 'Minotaur',
 
+  physical: 50,
+  personal: 10,
+  mental:   10,
+  magical:  10,
+
+  violenceAverage: 30,
+  violenceRange: 20,
+
   bodyOptions: {
     baseHeight: 1850,
     heightRange: 600,
@@ -53,7 +61,3 @@ let minotaur = Species.build('minotaur', {
 //     'beast-lover': 100,
 //     'vegetarian': 100,
 //   },
-//   physical: 50,
-//   personal: 10,
-//   mental:   10,
-//   magical:  10,

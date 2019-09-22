@@ -1,6 +1,14 @@
 let goblin = Species.build('goblin', {
   name: 'Goblin',
 
+  physical: 20,
+  personal: 10,
+  mental:   10,
+  magical:  0,
+
+  violenceAverage: 25,
+  violenceRange: 50,
+
   bodyOptions: {
     baseHeight: 900,
     heightRange: 300,
@@ -41,7 +49,3 @@ let goblin = Species.build('goblin', {
 //     'lascivious': 40,
 //     'perverted':  30,
 //   },
-//   physical: 20,
-//   personal: 10,
-//   mental:   10,
-//   magical:  0,

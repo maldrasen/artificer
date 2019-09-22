@@ -1,6 +1,15 @@
 let equian = Species.build('equian', {
   name: 'Equian',
 
+  physical: 30,
+  personal: 20,
+  mental:   20,
+  magical:  10,
+  genderRatio: { female:30, futa:20, male:50 },
+
+  violenceAverage: 10,
+  violenceRange: 20,
+
   bodyOptions: {
     baseHeight: 1750,
     heightRange: 600,
@@ -52,8 +61,3 @@ let equian = Species.build('equian', {
 //     'beast-lover': 100,
 //     'vegetarian': 100,
 //   },
-//   physical: 30,
-//   personal: 20,
-//   mental:   20,
-//   magical:  10,
-//   genderRatio: { female:30, futa:20, male:50 },

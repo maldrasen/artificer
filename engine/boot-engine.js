@@ -7,3 +7,4 @@ require(`${ROOT}/engine/forms/location`);
 require(`${ROOT}/engine/forms/species`);
 
 require(`${ROOT}/engine/services/composer`);
+require(`${ROOT}/engine/services/character-builder/character-builder`);

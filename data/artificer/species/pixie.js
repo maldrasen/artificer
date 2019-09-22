@@ -1,6 +1,15 @@
 let pixie = Species.build('pixie', {
   name: 'Pixie',
 
+  physical: 0,
+  personal: 30,
+  mental:   30,
+  magical:  30,
+  genderRatio: { female:100, futa:0, male:0 },
+
+  violenceAverage: -30,
+  violenceRange: 10,
+
   bodyOptions: {
     baseHeight: 550,
     heightRange: 100,
@@ -43,8 +52,3 @@ let pixie = Species.build('pixie', {
 //     'emotional': 50,
 //     'shameless': 100,
 //   },
-//   physical: 0,
-//   personal: 30,
-//   mental:   30,
-//   magical:  30,
-//   genderRatio: { female:100, futa:0, male:0 },

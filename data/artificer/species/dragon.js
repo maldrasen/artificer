@@ -1,6 +1,14 @@
 let dragon = Species.build('dragon', {
   name: 'Dragon',
 
+  physical: 40,
+  personal: 30,
+  mental:   30,
+  magical:  40,
+
+  violenceAverage: 25,
+  violenceRange: 25,
+
   bodyOptions: {
     baseHeight: 2000,
     heightRange: 800,
@@ -46,7 +54,3 @@ let dragon = Species.build('dragon', {
 //     'dominant': 60,
 //     'solo-act': 40,
 //   },
-//   physical: 40,
-//   personal: 30,
-//   mental:   30,
-//   magical:  40,

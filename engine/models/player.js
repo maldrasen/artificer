@@ -31,7 +31,9 @@ Player.forge = function(options, callback) {
       speciesCode: options.species,
     }).then(player => {
       saveCustomGender(player, options);
-      callback();
+      CharacterBuilder.addBody(player, {}, body => {
+        callback();
+      });
     });
   });
 }

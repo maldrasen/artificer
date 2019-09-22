@@ -29,12 +29,6 @@ global.CharacterBuilder = (function() {
         Character.load(id, resolve)
       }).
       then((character) => {
-        character.setRole(options.role || 'temp');
-        character.setGender(selectGender(character, options, race));
-        character.setPhysical(randomizeAttribute(race, 'physical'));
-        character.setPersonal(randomizeAttribute(race, 'personal'));
-        character.setMental(randomizeAttribute(race, 'mental'));
-        character.setMagical(randomizeAttribute(race, 'magical'));
         return character;
       }).then((character) => {
         return BodyFactory.build(character, options.body);
@@ -60,22 +54,6 @@ global.CharacterBuilder = (function() {
     });
   }
 
-  function randomizeAttribute(race, attribute) {
-    let value = race[attribute] + Random.upTo(18) - 9;
-    if (value<0) { value=0; }
-    return value;
-  }
 
-  // Character Gender
-  //   gender: gender code
-  //   race: race used to randomly choose otherwise.
-  function selectGender(character, options, race) {
-    if (options.gender) { return options.gender; }
-    return Random.fromFrequencyMap(race.genderRatio);
-  }
-
-  return {
-    build: build,
-  };
 
 })();

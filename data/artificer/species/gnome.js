@@ -1,6 +1,15 @@
 let gnome = Species.build('gnome', {
   name: 'Gnome',
 
+  physical: 15,
+  personal: 15,
+  mental:   30,
+  magical:  30,
+  genderRatio: { female:35, futa:5, male:60 },
+
+  violenceAverage: -10,
+  violenceRange: 10,
+
   bodyOptions: {
     baseHeight: 1200,
     heightRange: 300,
@@ -23,8 +32,3 @@ let gnome = Species.build('gnome', {
 //     motherly: 25,
 //   },
 //   aspects: {},
-//   physical: 20,
-//   personal: 20,
-//   mental:   20,
-//   magical:  20,
-//   genderRatio: { female:35, futa:5, male:60 },

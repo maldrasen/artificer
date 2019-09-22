@@ -1,6 +1,15 @@
 let nymph = Species.build('nymph', {
   name: 'Nymph',
 
+  physical: 10,
+  personal: 40,
+  mental:   10,
+  magical:  20,
+  genderRatio: { female:60, futa:40, male:0 },
+
+  violenceAverage: -50,
+  violenceRange: 25,
+
   bodyOptions: {
     baseHeight: 1400,
     heightRange: 300,
@@ -37,8 +46,3 @@ let nymph = Species.build('nymph', {
 //     'lascivious': 40,
 //     'submissive': 30,
 //   },
-//   physical: 10,
-//   personal: 40,
-//   mental:   10,
-//   magical:  20,
-//   genderRatio: { female:60, futa:40, male:0 },

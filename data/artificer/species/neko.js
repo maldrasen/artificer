@@ -1,6 +1,14 @@
 let neko = Species.build('neko', {
   name: 'Neko',
 
+  physical: 10,
+  personal: 30,
+  mental:   20,
+  magical:  20,
+
+  violenceAverage: -10,
+  violenceRange: 20,
+
   bodyOptions: {
     furColors: ['brown','red'],
     skinColors: ['human'],
@@ -25,7 +33,3 @@ let neko = Species.build('neko', {
 //     'carnivore': 30,
 //     'emotional': 50,
 //   },
-//   physical: 10,
-//   personal: 30,
-//   mental:   20,
-//   magical:  20,

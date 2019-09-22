@@ -1,6 +1,15 @@
 let dryad = Species.build('dryad', {
   name: 'Dryad',
 
+  physical: 10,
+  personal: 20,
+  mental:   20,
+  magical:  30,
+  genderRatio: { female:75, futa:20, male:5 },
+
+  violenceAverage: -30,
+  violenceRange: 20,
+
   bodyOptions: {
     shape:'quadruped',
     baseHeight: 1350,
@@ -26,8 +35,3 @@ let dryad = Species.build('dryad', {
 //   aspects: {
 //     'vegetarian': 100,
 //   },
-//   physical: 10,
-//   personal: 20,
-//   mental:   20,
-//   magical:  30,
-//   genderRatio: { female:75, futa:20, male:5 },

@@ -1,6 +1,15 @@
 let incubus = Species.build('incubus', {
   name: 'Incubus',
 
+  physical: 10,
+  personal: 30,
+  mental:   20,
+  magical:  40,
+  genderRatio: { female:0, futa:0, male:100 },
+
+  violenceAverage: 25,
+  violenceRange: 25,
+
   bodyOptions: {
     skinColors: ['red'],
     hairColors: ['red','black','purple','white'],
@@ -59,8 +68,3 @@ let incubus = Species.build('incubus', {
 //     'tit-lover':     100,
 //     'tit-slut':      100
 //   },
-//   physical: 10,
-//   personal: 30,
-//   mental:   20,
-//   magical:  40,
-//   genderRatio: { female:0, futa:0, male:100 },

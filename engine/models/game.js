@@ -19,7 +19,11 @@ Game.start = function(callback) {
       location: Configuration.gameStartLocation,
       anger: 0,
       frustration: 0
-    }).then(callback);
+    }).then(game => {
+      buildStartingMinions(game, () => {
+        callback(game);
+      });
+    });
   });
 }
 
@@ -44,4 +48,21 @@ if (typeof ipcMain != 'undefined') {
       game.createPlayer(options)
     });
   });
+}
+
+function buildStartingMinions(game, callback) {
+  let startingCharacters = [
+    { type:'minion', species:'rat', gender:'male',   fear:Random.roll(10,60), love:Random.roll(10,0), happiness:Random.roll(20,10) },
+    { type:'minion', species:'rat', gender:'male',   fear:Random.roll(10,75), love:Random.roll(10,0), happiness:Random.roll(20,10) },
+    { type:'minion', species:'rat', gender:'male',   fear:Random.roll(10,75), love:Random.roll(10,0), happiness:Random.roll(20,10) },
+    { type:'minion', species:'rat', gender:'female', fear:Random.roll(10,80), love:Random.roll(10,0), happiness:Random.roll(20,10) },
+    { type:'minion', species:'rat', gender:'female', fear:Random.roll(10,80), love:Random.roll(10,0), happiness:Random.roll(20,10) },
+    { type:'minion', species:'rat', gender:'female', fear:Random.roll(10,90), love:Random.roll(10,0), happiness:Random.roll(20,10) },
+  ];
+
+  Promise.all(startingCharacters.map((options) => {
+    return new Promise((resolve, reject) => {
+      CharacterBuilder.build(options, resolve);
+    })
+  })).then(callback);
 }

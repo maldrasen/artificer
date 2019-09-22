@@ -1,6 +1,14 @@
 let naga = Species.build('naga', {
   name: 'Naga',
 
+  physical: 20,
+  personal: 10,
+  mental:   30,
+  magical:  30,
+
+  violenceAverage: 40,
+  violenceRange: 20,
+
   bodyOptions: {
     baseHeight: 1600,
     heightRange: 800,
@@ -44,7 +52,3 @@ let naga = Species.build('naga', {
 //     'sadist': 60,
 //     'dominant': 80
 //   },
-//   physical: 20,
-//   personal: 10,
-//   mental:   30,
-//   magical:  30,

@@ -1,6 +1,14 @@
 let rat = Species.build('rat', {
   name: 'Rat',
 
+  physical: 10,
+  personal: 5,
+  mental:   5,
+  magical:  0,
+
+  violenceAverage: 10,
+  violenceRange: 20,
+
   bodyOptions: {
     baseHeight: 660,
     heightRange: 300,
@@ -48,7 +56,3 @@ let rat = Species.build('rat', {
 //     'orgy-director': 40,
 //     'shameless':     40,
 //   },
-//   physical: 15,
-//   personal: 10,
-//   mental:   10,
-//   magical:  0,

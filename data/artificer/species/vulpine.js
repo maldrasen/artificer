@@ -1,6 +1,14 @@
 let vulpine = Species.build('vulpine', {
   name: 'Vulpine',
 
+  physical: 20,
+  personal: 30,
+  mental:   20,
+  magical:  10,
+  
+  violenceAverage: 15,
+  violenceRange: 10,
+
   bodyOptions: {
     furColors: ['gray','brown','red'],
     skinColors: ['human','red','black'],
@@ -37,7 +45,3 @@ let vulpine = Species.build('vulpine', {
 //     'lascivious':  30,
 //     'carnivore': 100,
 //   },
-//   physical: 20,
-//   personal: 30,
-//   mental:   20,
-//   magical:  10,

@@ -1,6 +1,14 @@
 let centaur = Species.build('centaur', {
   name: 'Centaur',
 
+  physical: 40,
+  personal: 20,
+  mental:   20,
+  magical:  20,
+
+  violenceAverage: -10,
+  violenceRange: 20,
+
   bodyOptions: {
     baseHeight: 1700,
     heightRange: 800,
@@ -43,7 +51,3 @@ let centaur = Species.build('centaur', {
 //     'beast-lover': 100,
 //     'solo-act': 75
 //   },
-//   physical: 40,
-//   personal: 20,
-//   mental:   20,
-//   magical:  20,

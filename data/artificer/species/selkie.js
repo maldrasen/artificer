@@ -1,6 +1,14 @@
 let selkie = Species.build('selkie', {
   name: 'Selkie',
 
+  physical: 10,
+  personal: 30,
+  mental:   20,
+  magical:  20,
+
+  violenceAverage: -20,
+  violenceRange: 10,
+
   bodyOptions: {
     baseHeight: 800,
     heightRange: 250,
@@ -42,7 +50,3 @@ let selkie = Species.build('selkie', {
 //     'lascivious':  20,
 //     'size-queen': 75,
 //   },
-//   physical: 10,
-//   personal: 30,
-//   mental:   20,
-//   magical:  20,

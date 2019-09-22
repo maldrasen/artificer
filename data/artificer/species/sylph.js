@@ -1,6 +1,15 @@
 let sylph = Species.build('sylph', {
   name: 'Sylph',
 
+  physical: 10,
+  personal: 20,
+  mental:   30,
+  magical:  20,
+  genderRatio: { female:75, futa:20, male:5 },
+
+  violenceAverage: -30,
+  violenceRange: 20,
+
   bodyOptions: {
     baseHeight: 1350,
     heightRange: 300,
@@ -33,8 +42,3 @@ let sylph = Species.build('sylph', {
 //     'vegetarian': 100,
 //     'emotional': 50,
 //   },
-//   physical: 10,
-//   personal: 20,
-//   mental:   30,
-//   magical:  20,
-//   genderRatio: { female:75, futa:20, male:5 },

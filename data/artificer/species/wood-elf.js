@@ -2,6 +2,14 @@
 let woodElf = Species.build('wood-elf', {
   name: 'Wood Elf',
 
+  physical: 30,
+  personal: 20,
+  mental:   20,
+  magical:  10,
+
+  violenceAverage: 10,
+  violenceRange: 20,
+
   bodyOptions: {
     baseHeight: 1350,
     heightRange: 300,
@@ -29,7 +37,3 @@ let woodElf = Species.build('wood-elf', {
 //     'carnivore': 20,
 //     'beast-lover': 75,
 //   },
-//   physical: 30,
-//   personal: 20,
-//   mental:   20,
-//   magical:  10,

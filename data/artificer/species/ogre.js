@@ -1,6 +1,14 @@
 let ogre = Species.build('ogre', {
   name: 'Ogre',
 
+  physical: 70,
+  personal: 10,
+  mental:   0,
+  magical:  0,
+
+  violenceAverage: 50,
+  violenceRange: 20,
+
   bodyOptions: {
     baseHeight: 2000,
     heightRange: 700,
@@ -40,7 +48,3 @@ let ogre = Species.build('ogre', {
 //     'perverted': 40,
 //     'sadist':    60
 //   },
-//   physical: 70,
-//   personal: 10,
-//   mental:   0,
-//   magical:  0,

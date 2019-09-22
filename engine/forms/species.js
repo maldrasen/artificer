@@ -1,26 +1,41 @@
 global.Species = class Species extends Form {
 
+  // Pick a random gender code based on a species' gender frequency map.
+  randomGender() {
+    return Random.fromFrequencyMap(this.genderRatio || { female:45, futa:10, male:45 });
+  }
+
+  randomizedAttribute(attribute) {
+    let value = this[attribute] + Random.upTo(18) - 9;
+    if (value<0) { value=0; }
+    return value;
+  }
+
+  randomizedViolenceProclivity(gender) {
+    let base = Random.roll(this.violenceRange, this.violenceAverage);
+
+    // Unless you're a drow, men are slightly more violent and female are
+    // slightly more passive, with futa being unchanged.
+    if (this.code == 'dark-elf') {
+      if (gender == 'male')   { base -= 10; }
+      if (gender == 'female') { base += 10; }
+    } else {
+      if (gender == 'male')   { base += 10; }
+      if (gender == 'female') { base -= 10; }
+    }
+
+    if (base > 100)  { base = 100;  }
+    if (base < -100) { base = -100; }
+
+    return base;
+  }
+
 };
 
-//   get code() { return this._code; }
-//   get name() { return this._name; }
-//   get description() { return this._description; }
-//   get flags() { return this._flags; }
-//   get personalities() { return this._personalities; }
-//   get aspects() { return this._aspects; }
-//   get physical() { return this._physical; }
-//   get personal() { return this._personal; }
-//   get mental() { return this._mental; }
-//   get magical() { return this._magical; }
-//   get genderRatio() {return this._genderRatio || { male:45, futa:10, female:45 }; }
-//   get bodyOptions() { return this._bodyOptions; }
-//   get nameFamily() { return this._nameFamily; }
-//
 //   get isFurry() { return this.flags.indexOf('furry') >= 0; }
 //   get isDemon() { return this.flags.indexOf('demon') >= 0; }
 //   get isGoblin() { return this.flags.indexOf('goblin') >= 0; }
-//
-//   // Used during character generation.
+
 //   randomHeight(gender) {
 //     let base =   this.bodyOptions.baseHeight || 1500;
 //     let range =  this.bodyOptions.heightRange || 300;

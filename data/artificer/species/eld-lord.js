@@ -1,6 +1,14 @@
 let elfLord = Species.build('elf-lord', {
   name: 'Elf Lord',
 
+  physical: 20,
+  personal: 30,
+  mental:   30,
+  magical:  50,
+
+  violenceAverage: -20,
+  violenceRange: 10,
+
   bodyOptions: {
     baseHeight: 1700,
     heightRange: 300,
@@ -26,7 +34,3 @@ let elfLord = Species.build('elf-lord', {
 //     'dominant': 80,
 //     'solo-act': 60,
 //   },
-//   physical: 20,
-//   personal: 30,
-//   mental:   30,
-//   magical:  50,

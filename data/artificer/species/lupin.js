@@ -1,6 +1,14 @@
 let lupin = Species.build('lupin', {
   name: 'Lupin',
 
+  physical: 30,
+  personal: 20,
+  mental:   20,
+  magical:  10,
+
+  violenceAverage: 20,
+  violenceRange: 10,
+
   bodyOptions: {
     furColors: ['gray','brown'],
     skinColors: ['human','red','black'],
@@ -36,7 +44,3 @@ let lupin = Species.build('lupin', {
 //     'beast-lover': 100,
 //     'carnivore': 100,
 //   },
-//   physical: 30,
-//   personal: 20,
-//   mental:   20,
-//   magical:  10,
