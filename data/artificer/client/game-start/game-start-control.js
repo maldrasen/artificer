@@ -3,6 +3,8 @@ global.GameStartControl = (function() {
   let genderChooser;
 
   function init() {
+    Elements.PagedContent.darkenBackground(100);
+
     initSpeciesControl();
     initGenderControl();
 

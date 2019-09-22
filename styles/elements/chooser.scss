@@ -32,7 +32,6 @@
   .choice-detail {
     display: none;
     align-items: flex-end;
-    box-shadow: $shadow-big-raised;
   }
   .choice-detail.active {
     display: flex;

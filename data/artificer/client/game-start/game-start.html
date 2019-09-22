@@ -2,25 +2,27 @@
   GameStartControl.init();
 </script>
 
+<div class='paged-content-background' style='background-image:url("../../data/artificer/client/game-start/bg-1.png")'></div>
+
 <div class='paged-content'>
   <form id='playerForm'>
 
     <div class='click-advance'>
       <div class='page active'>I'm dead.</div>
       <div class='page'>No, that's not right.</div>
-      <div class='page'>I'm alive.</div>
-      <div class='page'>Maybe?</div>
-      <div class='page'>I can't remember.</div>
-      <div class='page'>I can't remember anything.</div>
-      <div class='page'>...</div>
-      <div class='page'>Who am I?</div>
-      <div class='page'>...</div>
-      <div class='page'>Where is my body?</div>
-      <div class='page'>...</div>
-      <div class='page'>I think.</div>
-      <div class='page'>I think I must reform myself.</div>
-      <div class='page'>A new body.</div>
-      <div class='page'>A new name.</div>
+      <div class='page' data-darken-background=98>I'm alive.</div>
+      <div class='page' data-darken-background=95>Maybe?</div>
+      <div class='page' data-darken-background=90>I can't remember.</div>
+      <div class='page' data-darken-background=85>I can't remember anything.</div>
+      <div class='page' data-darken-background=80>...</div>
+      <div class='page' data-darken-background=75>Who am I?</div>
+      <div class='page' data-darken-background=65>...</div>
+      <div class='page' data-darken-background=50>Where is my body?</div>
+      <div class='page' data-darken-background=40>...</div>
+      <div class='page' data-darken-background=30>I think.</div>
+      <div class='page' data-darken-background=20>I think I must reform myself.</div>
+      <div class='page' data-darken-background=10>A new body.</div>
+      <div class='page' data-darken-background=0>A new name.</div>
       <div class='page'>That is the first step.</div>
     </div>
 
@@ -37,20 +39,22 @@
     </div>
 
     <div class='page'>
-      <ul>
-        <li>
-          <label>Title</label>
-          <input type='text' id='title' value='Master'/>
-        </li>
-        <li>
-          <label>First Name</label>
-          <input type='text' id='firstName' value='Synder'/>
-        </li>
-        <li>
-          <label>Last Name</label>
-          <input type='text' id='lastName' value='Rhysh'/>
-        </li>
-      </ul>
+      <div class='small-centered-panel'>
+        <ul class='form-list species'>
+          <li>
+            <label>Title</label>
+            <input type='text' id='title' value='Master'/>
+          </li>
+          <li>
+            <label>First Name</label>
+            <input type='text' id='firstName' value='Synder'/>
+          </li>
+          <li>
+            <label>Last Name</label>
+            <input type='text' id='lastName' value='Rhysh'/>
+          </li>
+        </ul>
+      </div>
       <div class='bottom-frame'>
         <p>
           <span class='species-choice-comment'></span> A being needs a name
@@ -75,49 +79,50 @@
     </div>
 
     <div class='page custom-gender-page'>
-      <ul>
-        <li>
-          <label>Dick</label>
-          <input type='text' id='genderDick' value='no'/>
-        </li>
-        <li>
-          <label>Tits</label>
-          <input type='text' id='genderTits' value='no'/>
-        </li>
-        <li>
-          <label>Pussy</label>
-          <input type='text' id='genderPussy' value='no'/>
-        </li>
-        <li>
-          <label>Name (man/woman)</label>
-          <input type='text' id='genderName' value='elf'/>
-        </li>
-        <li>
-          <label>Plural (men/women)</label>
-          <input type='text' id='genderPlural' value='elves'/>
-        </li>
-        <li>
-          <label>Descriptive (male/female)</label>
-          <input type='text' id='genderDescriptive' value='elven'/>
-        </li>
-        <li>
-          <label>Subject (he/she)</label>
-          <input type='text' id='genderSubject' value='xe'/>
-        </li>
-        <li>
-          <label>Object (him/her)</label>
-          <input type='text' id='genderObject' value='xem'/>
-        </li>
-        <li>
-          <label>Possessive (his/her)</label>
-          <input type='text' id='genderPossessive' value='xyr'/>
-        </li>
-        <li>
-          <label>Absolute Possessive (his/hers)</label>
-          <input type='text' id='genderAbsolute' value='xyrs'/>
-        </li>
-      </ul>
-
+      <div class='small-centered-panel'>
+        <ul class='form-list gender'>
+          <li>
+            <label>Dick</label>
+            <input type='text' id='genderDick' value='no'/>
+          </li>
+          <li>
+            <label>Tits</label>
+            <input type='text' id='genderTits' value='no'/>
+          </li>
+          <li>
+            <label>Pussy</label>
+            <input type='text' id='genderPussy' value='no'/>
+          </li>
+          <li>
+            <label>Name (man/woman)</label>
+            <input type='text' id='genderName' value='elf'/>
+          </li>
+          <li>
+            <label>Plural (men/women)</label>
+            <input type='text' id='genderPlural' value='elves'/>
+          </li>
+          <li>
+            <label>Descriptive (male/female)</label>
+            <input type='text' id='genderDescriptive' value='elven'/>
+          </li>
+          <li>
+            <label>Subject (he/she)</label>
+            <input type='text' id='genderSubject' value='xe'/>
+          </li>
+          <li>
+            <label>Object (him/her)</label>
+            <input type='text' id='genderObject' value='xem'/>
+          </li>
+          <li>
+            <label>Possessive (his/her)</label>
+            <input type='text' id='genderPossessive' value='xyr'/>
+          </li>
+          <li>
+            <label>Absolute Possessive (his/hers)</label>
+            <input type='text' id='genderAbsolute' value='xyrs'/>
+          </li>
+        </ul>
+      </div>
       <div class='bottom-frame'>
         <p>Well now. What pronouns shall I insist that my subjects refer to me by, under pain of death?</p>
         <div class='page-footer'>

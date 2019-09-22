@@ -40,6 +40,17 @@ Elements.PagedContent = (function() {
 
     page.addClass('active');
     page.closest('.click-advance').removeClass('hide');
+
+    if (page.data('darken-background')) {
+      darkenBackground(page.data('darken-background'))
+    }
+  }
+
+  // === Effects ===
+
+  function darkenBackground(value) {
+    let brightness = 100 - value
+    $('.paged-content-background').css({filter:`brightness(${brightness}%)`});
   }
 
   return {
@@ -47,6 +58,7 @@ Elements.PagedContent = (function() {
     build: build,
     showPage: showPage,
     showNextPage: showNextPage,
+    darkenBackground: darkenBackground,
   };
 
 })()
