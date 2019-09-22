@@ -182,7 +182,7 @@ global.GameStartControl = (function() {
 GameStartControl.playerSpecies = [
   { code:'elf', name:'Elf', image:'../../data/artificer/client/game-start/elf.png',
     comment: 'An elf. Yes, better to not stand out.',
-    description: 'The elves are a versatile people, found in every profession and walk of life in the Rhysh.' },
+    description: 'The Elves are a versatile people, found in every profession and walk of life in the Rhysh.' },
 
   { code:'dark-elf', name:'Dark Elf', image:'../../data/artificer/client/game-start/dark-elf.png',
     comment: 'Yes, one of the deep elves, to terrify those who oppose me.',
@@ -206,7 +206,7 @@ GameStartControl.playerSpecies = [
 
   { code:'caprien', name:'Caprien', image:'../../data/artificer/client/game-start/caprien.png',
     comment: 'Yes, only a Caprien can fully harness the powers of the underworld.',
-    description:'The Caprien are goat spirits seen by some as having demonic origins.' },
+    description:'The Caprien are goat spirits seen by some as having demonic origins. The males of the species are particularly goat like.' },
 
   { code:'dragon', name:'Dragon', image:'../../data/artificer/client/game-start/dragon.png',
     comment: 'Yes, only a dragon is fit to rule over these lands.',

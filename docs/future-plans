@@ -25,3 +25,9 @@ will only result in a soulless twisted abomination that if allowed to live will 
 === More Body Mods ===
 
 I'd like to include support for tattoos and piercings at some point.
+
+=== Backlog? ===
+
+In case you click past some important text we should keep a running text backlog on the client side. In order to do
+this, I think I need to copy the rendered text out of every page as it's viewed. This could be tricky though, and I'd
+have to be sure to skip hidden text, or ensure that it stays hidden. Also styles would need to be copied.
