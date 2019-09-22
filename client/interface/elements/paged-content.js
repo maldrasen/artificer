@@ -18,24 +18,34 @@ Elements.PagedContent = (function() {
     return $('<a>',{ href:'#', class:'page-action-continue' }).append('Continue');
   }
 
+  // Show page by selector.
+  function showPage(selector) {
+    activatePage($(`${selector}.page`))
+  }
+
+  // Advance the page by determining the index of the currently active page.
   function showNextPage() {
-    $('.click-advance').addClass('hide');
-
-    // Advance the page by determining the index of the currently active page.
     let pages = $('.paged-content .page');
-    let index = pages.index($('.paged-content .page.active').removeClass('active'));
-    let current = $(pages[index+1]).addClass('active');
+    let index = pages.index($('.paged-content .page.active'));
+    activatePage($(pages[index+1]));
+  }
 
-    // Every page turn we disable any click advance areas, then if we find
-    // we're still within one we reshow it. Click advance areas take up the
-    // entire page, so it will break things if we move out of it but keep it
-    // enabled.
-    current.closest('.click-advance').removeClass('hide');
+  // Every page turn we disable any click advance areas, then if we find
+  // we're still within one we reshow it. Click advance areas take up the
+  // entire page, so it will break things if we move out of it but keep it
+  // enabled.
+  function activatePage(page) {
+    $('.click-advance').addClass('hide');
+    $('.active.page').removeClass('active');
+
+    page.addClass('active');
+    page.closest('.click-advance').removeClass('hide');
   }
 
   return {
     init: init,
     build: build,
+    showPage: showPage,
     showNextPage: showNextPage,
   };
 

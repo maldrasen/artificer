@@ -8,4 +8,4 @@ npm-debug.log
 
 assets/compiled/
 
-data/artificer/species/images
+data/artificer/**/*.png
