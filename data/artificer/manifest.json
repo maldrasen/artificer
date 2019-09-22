@@ -1,8 +1,37 @@
 {
-  "sharedFiles":[],
-  "clientFiles":[],
+  "clientFiles":[
+    "client/game-start/game-start-control"
+  ],
+
+  "sharedFiles":[
+    "configuration"
+  ],
+
   "engineFiles":[
-    "forms/species",
-    "locations/courtyard.js"
+    "locations/courtyard",
+    "species/centaur",
+    "species/dark-elf",
+    "species/dragon",
+    "species/dryad",
+    "species/eld-lord",
+    "species/elf",
+    "species/equian",
+    "species/gnome",
+    "species/goblin",
+    "species/incubus",
+    "species/kobold",
+    "species/lupin",
+    "species/minotaur",
+    "species/naga",
+    "species/neko",
+    "species/nymph",
+    "species/ogre",
+    "species/pixie",
+    "species/rat",
+    "species/selkie",
+    "species/succubus",
+    "species/sylph",
+    "species/vulpine",
+    "species/wood-elf"
   ]
 }

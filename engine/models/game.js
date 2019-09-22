@@ -6,9 +6,6 @@ global.Game = Database.instance().define('game', {
   timestamps: false,
 });
 
-Game.startView = 'client/views/game/start.html';
-Game.startLocation = 'courtyard';
-
 Game.instance = function(callback) {
   Game.findByPk(1).then(callback);
 }
@@ -19,7 +16,7 @@ Game.start = function(callback) {
 
     Game.create({
       id: 1,
-      location: Game.startLocation,
+      location: Configuration.gameStartLocation,
       anger: 0,
       frustration: 0
     }).then(callback);
@@ -38,7 +35,7 @@ Game.prototype.createPlayer = function(options) {
 if (typeof ipcMain != 'undefined') {
   ipcMain.on('game.start', () => {
     Game.start(game => {
-      Browser.send('render.file',{ path:Game.startView });
+      Browser.send('render.file',{ path:Configuration.gameStartView });
     });
   });
 

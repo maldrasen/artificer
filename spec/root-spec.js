@@ -3,10 +3,6 @@ global.VERSION = 0;
 global.ROOT = require('path').normalize(`${__dirname}/..`);
 global.expect = require('chai').expect;
 
-global.Configuration = {
-  metric: false
-};
-
 console.log('=== Booting Spec Process ===');
 require(`${ROOT}/shared/boot-shared.js`);
 require(`${ROOT}/engine/boot-engine.js`);

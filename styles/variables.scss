@@ -71,7 +71,7 @@ $bg-body: rgb(33,30,32);
 // $bg-page: rgb(26,23,25);
 //
 // $bg-header: rgb(50,0,0);
-// $bg-panel: rgb(50,0,0);
+$bg-panel: rgba(22,20,21,0.75);
 //
 // $bg-title-bar: rgba(0,0,0,0.5);
 // $bg-subtitle-bar: rgba(0,0,0,0.3);
@@ -84,15 +84,15 @@ $bg-body: rgb(33,30,32);
 //
 // $shadow-deep: 0 10px 20px rgba(0,0,0,0.8);
 // $shadow-dark: 0 10px 10px rgb(0,0,0);
-// $shadow-frame: 0 5px 10px rgba(0,0,0,0.5);
+$shadow-frame: 0 5px 10px rgba(0,0,0,0.5);
 // $shadow-inset: 0 3px 6px rgba(0,0,0,0.4) inset;
 // $shadow-inset-button: 0 3px 5px rgba(0,0,0,0.8) inset;
-// $shadow-shallow: 0 2px 3px rgba(0,0,0,0.9);
-//
+$shadow-shallow: 0 2px 3px rgba(0,0,0,0.9);
+
 // $shadow-shallow-pit: -5px -5px 5px rgba(250,250,250,0.05) inset,
 //                       5px  5px 5px rgba(0,0,0,0.2) inset;
-// $shadow-big-raised: 16px  16px 20px rgba(250,250,250,0.1) inset,
-//                    -16px -16px 20px rgba(0,0,0,0.5) inset;
+$shadow-big-raised: 16px  16px 20px rgba(250,250,250,0.1) inset,
+                   -16px -16px 20px rgba(0,0,0,0.5) inset;
 
 $border-very-light: 1px solid rgba(250,250,250,0.05);
 $border-light: 1px solid rgba(250,250,250,0.1);
@@ -126,19 +126,19 @@ $border-heavy: 1px solid rgba(250,250,250,0.3);
 // $bg-modal-header: rgba(0,0,0,0.333);
 // $bg-modal-footer: rgba(0,0,0,0.333);
 //
-// Scrolling Panel
-//
-// $bg-scrolling-panel-track: rgba(0,0,0,0.2);
-// $bg-scrolling-panel-thumb: rgb(50,50,50);
-// $bg-scrolling-panel-thumb-hover: rgb(70,60,50);
-//
-// $border-scrolling-panel-thumb-top: 1px solid rgba(250,250,250,0.1);
-// $border-scrolling-panel-thumb-bottom: 1px solid rgba(0,0,0,0.5);
-//
-// $shadow-scrolling-panel-track: 2px 2px 4px rgb(0,0,0) inset;
-// $shadow-scrolling-panel-thumb: -2px -2px 5px rgba(0,0,0,0.4) inset,
-//                                2px 2px 5px rgba(250,250,250,0.2) inset;
-//
+// === Scrolling Panel ===
+
+$bg-scrolling-panel-track: rgba(0,0,0,0.2);
+$bg-scrolling-panel-thumb: rgb(50,50,50);
+$bg-scrolling-panel-thumb-hover: rgb(70,60,50);
+
+$border-scrolling-panel-thumb-top: 1px solid rgba(250,250,250,0.1);
+$border-scrolling-panel-thumb-bottom: 1px solid rgba(0,0,0,0.5);
+
+$shadow-scrolling-panel-track: 2px 2px 4px rgb(0,0,0) inset;
+$shadow-scrolling-panel-thumb: -2px -2px 5px rgba(0,0,0,0.4) inset,
+                               2px 2px 5px rgba(250,250,250,0.2) inset;
+
 // Tabs
 //
 // $fg-tab: rgba(250,250,250,0.75);
@@ -147,10 +147,10 @@ $border-heavy: 1px solid rgba(250,250,250,0.3);
 // $shadow-tab-active: 0px 3px 2px rgba(0,0,0,0.3) inset;
 // $shadow-tab-content: 0 5px 10px rgba(0,0,0,0.4) inset;
 // $bg-tab-content: rgba(0,0,0,0.1);
-//
-// Chooser
-//
-// $bg-chooser: rgba(0,0,0,0.1);
-// $bg-chooser-title: rgb(0,0,0);
-// $bg-chooser-active-choice: rgba(0,0,0,0.33);
-// $bg-chooser-detail-body: rgba(0,0,0,0.66);
+
+// === Chooser ===
+
+$bg-chooser: rgba(0,0,0,0.1);
+$bg-chooser-title: rgb(0,0,0);
+$bg-chooser-active-choice: rgba(0,0,0,0.33);
+$bg-chooser-detail-body: rgba(0,0,0,0.66);

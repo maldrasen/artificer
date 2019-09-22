@@ -8,15 +8,10 @@ global.Elements = (function() {
   // function closeAll() {
   //   $('.floating-menu-frame').removeClass('active');
   // }
-  //
-  // function clearSelection() {
-  //   if (document.selection) {
-  //     return document.selection.empty();
-  //   }
-  //   if (window.getSelection) {
-  //     return window.getSelection().removeAllRanges();
-  //   }
-  // }
+
+  function clearSelection() {
+    if (document.selection) { return document.selection.empty(); }
+  }
 
   function buttonAction(callback) {
     return function(e) {
@@ -71,7 +66,7 @@ global.Elements = (function() {
     init: init,
     buttonAction: buttonAction,
     // closeAll: closeAll,
-    // clearSelection: clearSelection,
+    clearSelection: clearSelection,
     // elementAtMousePosition: elementAtMousePosition,
   };
 

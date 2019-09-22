@@ -7,6 +7,7 @@
 .float-left { float: left; }
 .float-right { float: right; }
 .clear { clear: both; }
+.auto-margin { margin: auto; }
 
 .no-margin { margin: 0; }
 .no-margin-top { margin-top: 0; }
@@ -83,16 +84,16 @@
 //   li { padding-bottom: 5px; }
 //   li:last-child { padding-bottom: 0; }
 // }
-//
+
 // Flex Container Classes
-// .flex { display:flex;  }
-// .flex-center { justify-content: center; } // Align Horizontally
-// .flex-middle { align-items: center; } // Align Vertically
-// .flex-wrap { flex-wrap: wrap; }
-//
+.flex { display:flex;  }
+.flex-center { justify-content: center; } // Align Horizontally
+.flex-middle { align-items: center; } // Align Vertically
+.flex-wrap { flex-wrap: wrap; }
+
 // Flex Item Classes
-// .flex-grow { flex-grow:1; }
-//
+.flex-grow { flex-grow:1; }
+
 // .border-light-bottom { border-bottom: $border-light; }
 //
 // .badge {

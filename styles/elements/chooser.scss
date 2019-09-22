@@ -1,0 +1,48 @@
+.chooser {
+  border: $border-light;
+  box-shadow: $shadow-frame;
+  background-color: $bg-chooser;
+
+  .chooser-title {
+    background-color: $bg-chooser-title;
+    font-size: $fs-big;
+    padding: 5px;
+    height: 25px;
+  }
+  .chooser-panel {
+    display: flex;
+  }
+  .choice {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    padding-left: 5px;
+    box-sizing: content-box;
+    margin: 5px;
+    cursor: pointer;
+  }
+  .choice.locked {
+    cursor: default;
+    color: $fg-very-weak;
+  }
+  .choice.active {
+    background-color: $bg-chooser-active-choice;
+    box-shadow: $shadow-shallow;
+  }
+  .choice-detail {
+    display: none;
+    align-items: flex-end;
+    box-shadow: $shadow-big-raised;
+  }
+  .choice-detail.active {
+    display: flex;
+  }
+  .choice-detail-body {
+    width: 100%;
+    margin: 20px;
+    padding: 5px;
+    background-color: $bg-chooser-detail-body;
+    box-shadow: $shadow-shallow;
+    border: $border-light;
+  }
+}

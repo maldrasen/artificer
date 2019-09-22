@@ -1,0 +1,43 @@
+// addRace('nymph',{
+//   name: 'Nymph',
+//   flags: ['fae'],
+//   aspects: ['emotional','lascivious','submissive'],
+//   personalities: {
+//     average: 50,
+//     fun: 60,
+//     motherly: 40,
+//     slut: 20,
+//   },
+//   aspects: {
+//     'vegetarian': 50,
+//     'emotional':  50,
+//     'lascivious': 40,
+//     'submissive': 30,
+//   },
+//   physical: 10,
+//   personal: 40,
+//   mental:   10,
+//   magical:  20,
+//   genderRatio: { female:60, futa:40, male:0 },
+//   bodyOptions: {
+//     bmi: 20,
+//     baseHeight: 1400,
+//     heightRange: 300,
+//     maleHeightAdjust: 100,
+//     skinColors: ['human'],
+//     hairColors: ['chestnut','auburn','platinum-blond','golden-blond','strawberry-blond','red','copper','light-blue','blue','purple'],
+//     tits:{
+//       averageSize: 750,
+//     },
+//     cocks: {
+//       averageSize: 220,
+//     },
+//     balls: {
+//       extraProduction: 1,
+//     },
+//     pussy: {
+//       elasticity: 5,
+//       cervixElasticity: 2,
+//     },
+//   },
+// });

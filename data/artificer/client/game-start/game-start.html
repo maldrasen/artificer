@@ -1,61 +1,42 @@
-
 <script type="text/javascript">
-  $(document).on('click','.game-start-complete',Elements.buttonAction(()=>{
-    let options = {
-      firstName: $("#firstName").val().trim(),
-      lastName: $("#lastName").val().trim(),
-      gender: $('#genderSelect').val(),
-    }
-
-    if (options.gender == 'custom') {
-      extend(options,{
-        genderDick: $('#genderDick').val(),
-        genderTits: $('#genderTits').val(),
-        genderPussy: $('#genderPussy').val(),
-        genderName: $('#genderName').val(),
-        genderPlural: $('#genderPlural').val(),
-        genderDescriptive: $('#genderDescriptive').val(),
-        genderSubject: $('#genderSubject').val(),
-        genderObject: $('#genderObject').val(),
-        genderPossessive: $('#genderPossessive').val(),
-        genderAbsolute: $('#genderAbsolute').val(),
-      });
-    }
-
-    Renderer.sendCommand('game.create-player',options);
-  }));
-
-  $(document).on('click','.game-start-check-name',Elements.buttonAction(()=>{
-    let first = $("#firstName").val().trim();
-    let last = $("#lastName").val().trim();
-
-    if (first.length == 0 || last.length == 0) {
-      return false;
-    }
-
-    if (first.length > 20 || last.length > 20) {
-      return false;
-    }
-
-    Elements.PagedContent.showNextPage();
-  }));
-
-  $(document).on('change', '#genderSelect', (e) => {
-    $('.gender-detail').addClass('hide');
-    let selected = $('#genderSelect').val();
-    $(`.gender-detail.${selected}`).removeClass('hide');
-  });
-
+  GameStartControl.init();
 </script>
 
 <div class='paged-content'>
   <form id='playerForm'>
 
-    <div class='page active'>
-      <p>
-        You're dead mother fucker.
-      </p>
-      <div class='page-footer page-footer-continue'></div>
+    <div class='click-advance'>
+      <div class='page active'>I'm dead.</div>
+      <!-- <div class='page'>No, that's not right.</div>
+      <div class='page'>I'm alive.</div>
+      <div class='page'>Maybe?</div>
+      <div class='page'>I can't remember.</div>
+      <div class='page'>I can't remember anything.</div>
+      <div class='page'>...</div>
+      <div class='page'>Who am I?</div>
+      <div class='page'>...</div>
+      <div class='page'>Where is my body?</div>
+      <div class='page'>...</div>
+      <div class='page'>I think.</div>
+      <div class='page'>I think I must reform myself.</div>
+      <div class='page'>A new body.</div>
+      <div class='page'>A new name.</div>
+      <div class='page'>That's the first step.</div> -->
+    </div>
+
+    <div class='page'>
+      <div style='margin-top:40px;'>
+        <div id="speciesChooser" class='auto-margin'></div>
+      </div>
+
+      <div class='bottom-frame'>
+        <p>
+          What manner of creature was I? Or more importantly what do I wish to become?
+        </p>
+        <div class='page-footer'>
+          <a href='#' class="game-start-check-name">Continue</a>
+        </div>
+      </div>
     </div>
 
     <div class='page'>
@@ -71,9 +52,6 @@
         <li>
           <label>Last Name</label>
           <input type='text' id='lastName' value='Rhysh'/>
-        </li>
-        <li>
-          <label>Species</label>
         </li>
       </ul>
       <div class='page-footer'>

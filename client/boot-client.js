@@ -2,9 +2,6 @@
 // The Root is relative to the index.html file that loads this.
 global.ROOT = `${__dirname}/../..`
 
-// Configuration should be pulled from elsewhere eventually.
-global.Configuration = { metric:false };
-
 console.log('=== Booting Client Process ===');
 
 require(`${ROOT}/shared/boot-shared.js`);
@@ -16,6 +13,8 @@ $(document).ready(function() {
   // === Init Elements ===
   Elements.init();
   Elements.PagedContent.init();
+  Elements.Chooser.init();
+  Elements.ScrollingPanel.init();
 
   // === Init Interface ===
   Renderer.init();

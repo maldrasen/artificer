@@ -8,9 +8,11 @@ console.log("> Booting Interface");
 global.$ = global.jQuery = require('jquery');
 
 // === Interface ===
-require(`${ROOT}/client/interface/logger.js`);
-require(`${ROOT}/client/interface/renderer.js`);
+require(`${ROOT}/client/interface/logger`);
+require(`${ROOT}/client/interface/renderer`);
 
 // === Elements ===
-require(`${ROOT}/client/interface/elements/elements.js`);
-require(`${ROOT}/client/interface/elements/paged-content.js`);
+require(`${ROOT}/client/interface/elements/elements`);
+require(`${ROOT}/client/interface/elements/chooser`);
+require(`${ROOT}/client/interface/elements/paged-content`);
+require(`${ROOT}/client/interface/elements/scrolling-panel`);
