@@ -64,7 +64,7 @@ Elements.Chooser = class Chooser {
     let detail = $('<div>',{ class:'choice-detail' });
     detail.append($('<div>',{ class:'choice-detail-body' }).append(options.body));
     detail.css({
-      height: (this._height-2),
+      height: (this._height),
       'background-image': `url(${options.image})`,
       'background-size': `${this._imageWidth}px ${this._height}px`
     });

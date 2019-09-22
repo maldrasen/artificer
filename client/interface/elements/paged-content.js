@@ -41,9 +41,8 @@ Elements.PagedContent = (function() {
     page.addClass('active');
     page.closest('.click-advance').removeClass('hide');
 
-    if (page.data('darken-background')) {
-      darkenBackground(page.data('darken-background'))
-    }
+    if (page.data('darken-background')) { darkenBackground(page.data('darken-background')); }
+    if (page.data('set-background'))    { setBackground(page.data('set-background')); }
   }
 
   // === Effects ===
@@ -53,12 +52,20 @@ Elements.PagedContent = (function() {
     $('.paged-content-background').css({filter:`brightness(${brightness}%)`});
   }
 
+  function setBackground(url) {
+    if ($('.paged-content-background').length == 0) {
+      $('#mainContent').append($('<div>',{ class:'paged-content-background' }));
+    }
+    $('.paged-content-background').css({ "background-image":`url(${url})` });
+  }
+
   return {
     init: init,
     build: build,
     showPage: showPage,
     showNextPage: showNextPage,
     darkenBackground: darkenBackground,
+    setBackground: setBackground,
   };
 
 })()

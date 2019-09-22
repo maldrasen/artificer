@@ -3,6 +3,7 @@ global.GameStartControl = (function() {
   let genderChooser;
 
   function init() {
+    Elements.PagedContent.setBackground("../../data/artificer/client/game-start/bg-1.png");
     Elements.PagedContent.darkenBackground(100);
 
     initSpeciesControl();
@@ -188,7 +189,7 @@ GameStartControl.playerSpecies = [
 
   { code:'viera', name:'Viera', image:'../../data/artificer/client/game-start/viera.png',
     comment: 'Have I been a sexy rabbit before? I should be a sexy rabbit.',
-    description:"Originally from Ivalice, the Viera a rabbit hybrids that have recently settled in the Rhysh." },
+    description:"Originally from Ivalice, the Viera are rabbit hybrids that have recently settled in the Rhysh." },
 
   { code:'gnome', name:'Gnome', image:'../../data/artificer/client/game-start/gnome.png',
     comment: 'A gnome, a spirit of the earth. Yes, as a master of crafts.',
@@ -199,7 +200,7 @@ GameStartControl.playerSpecies = [
     description:'The Caprien are goat spirits seen by some as having demonic origins.' },
 
   { code:'dragon', name:'Dragon', image:'../../data/artificer/client/game-start/dragon.png',
-    comment: 'Yes, a Dragon is fit to rule over these lands/',
+    comment: 'Yes, only a dragon is fit to rule over these lands.',
     description:'The Dragons are fearsome and powerful creatures of the ancient world.' },
 
   { code:'equian', name:'Equian', image:'../../data/artificer/client/game-start/equian.png',
