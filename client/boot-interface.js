@@ -6,6 +6,8 @@ console.log("> Booting Interface");
 
 // === External ===
 global.$ = global.jQuery = require('jquery');
+global.each = require('iterate-object');
+global.extend = require('extend');
 
 // === Interface ===
 require(`${ROOT}/client/interface/logger`);

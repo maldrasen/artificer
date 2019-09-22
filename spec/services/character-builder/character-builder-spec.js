@@ -1,4 +1,4 @@
-describe.only('CharacterBuilder', function() {
+describe('CharacterBuilder', function() {
 
   it('builds a completely random character given a species', function(done) {
     CharacterBuilder.build({ species:'rat' }, character => {

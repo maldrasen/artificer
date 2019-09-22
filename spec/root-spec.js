@@ -4,7 +4,6 @@ global.ROOT = require('path').normalize(`${__dirname}/..`);
 global.expect = require('chai').expect;
 
 console.log('=== Booting Spec Process ===');
-require(`${ROOT}/shared/boot-shared.js`);
 require(`${ROOT}/engine/boot-engine.js`);
 require(`${ROOT}/engine/boot-database.js`);
 
