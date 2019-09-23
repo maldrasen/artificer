@@ -7,9 +7,9 @@ global.Anus = Database.instance().define('anus', {
 },{
   timestamps: false,
   getterMethods: {
-    area()                    { return MathUtility.widthToArea(this.getDataValue('width')); },
-    convertedProlapseLength() { return ConversionUtility.milliToInches(this.getDataValue('prolapseLength')); },
-    convertedWidth()          { return ConversionUtility.milliToInches(this.getDataValue('width')); },
+    area()                    { return MathUtility.widthToArea(this.width); },
+    convertedProlapseLength() { return ConversionUtility.milliToInches(this.prolapseLength); },
+    convertedWidth()          { return ConversionUtility.milliToInches(this.width); },
   }
 });
 

@@ -13,6 +13,18 @@ global.CockBuilder = (function() {
 })();
 
 
+// This needs to be done in the builder
+   // get widthRatio() { return this._widthRatio || Cock.WIDTH_RATIOS[this._shape]; }
+// Cock.WIDTH_RATIOS = {
+//   snake:  0.75,
+//   horse:  0.9,
+//   normal: 1,
+//   demon:  1.2,
+//   dog:    1.4,
+//   dragon: 1.6 };
+
+
+
 // global.CockFactory = (function(){
 //   "use strict";
 //
