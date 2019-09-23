@@ -1,4 +1,4 @@
-describe.only('CockBuilder', function() {
+describe('CockBuilder', function() {
 
   it("does nothing to character's without cocks", function(done) {
     CharacterBuilder.build({ species:'vulpine', gender:'female' }, character => {

@@ -39,10 +39,6 @@ Player.forge = function(options, callback) {
   });
 }
 
-Player.prototype.getBody = function(callback) {
-  Body.findByPk(this.body_id).then(body => { callback(body) });
-}
-
 function saveCustomGender(player, options) {
   if (options.gender == 'custom') {
     let genderOptions = {
@@ -71,3 +67,5 @@ function saveCustomGender(player, options) {
 function loadCustomGender() {
 
 }
+
+HasBody.isAppliedTo(Player);
