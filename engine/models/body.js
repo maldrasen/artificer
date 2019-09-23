@@ -3,7 +3,7 @@ const SCALE_COLORS = ['red','gold','green','blue','purple','black','gray','white
 const TAIL_SHAPES = ['rat','dog','fox','horse','seal','cow','snake','dragon','cat','demon','goat'];
 const SKIN_COLORS = ['human','red','black','green','pale-green','gray','blue','purple'];
 const HORN_SHAPES = ['deer','curved-ram','forward-cow','curved-back','wide-buffalo','dicks'];
-const FACE_SHAPES = ['elf','deer','goat','dragon','horse','dog','seal','cow','snake','rat'];
+const FACE_SHAPES = ['elf','deer','goat','dragon','horse','dog','seal','cow','snake','rat','fox'];
 
 global.Body = Database.instance().define('body', {
   height:     { type:Sequelize.INTEGER },

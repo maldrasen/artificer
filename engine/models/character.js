@@ -45,8 +45,16 @@ Character.prototype.getAnus = function(callback) {
   Anus.findOne({ where:{ character_id:this.id }}).then(anus => { callback(anus) });
 }
 
+Character.prototype.getBalls = function(callback) {
+  Balls.findOne({ where:{ character_id:this.id }}).then(balls => { callback(balls) });
+}
+
 Character.prototype.getBody = function(callback) {
   Body.findByPk(this.body_id).then(body => { callback(body) });
+}
+
+Character.prototype.getCock = function(callback) {
+  Cock.findOne({ where:{ character_id:this.id }}).then(cock => { callback(cock) });
 }
 
 Character.prototype.getMouth = function(callback) {

@@ -20,3 +20,17 @@ global.Cock = Database.instance().define('cock', {
     urethraArea() { return MathUtility.widthToArea(this.urethraWidth); }
   }
 });
+
+// The width ratio is set when the cock is built. It can be increased or
+// otherwise adjusted later. If the cock shape changes though the width ratio
+// should be reset.
+Cock.getWidthRatio = function(shape) {
+  return {
+    snake:  0.75,
+    horse:  0.9,
+    normal: 1,
+    demon:  1.2,
+    dog:    1.4,
+    dragon: 1.6,
+  }[shape]
+}
