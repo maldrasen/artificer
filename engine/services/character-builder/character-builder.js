@@ -46,6 +46,7 @@ global.CharacterBuilder = (function() {
           CockBuilder.build(character, options),
           MouthBuilder.build(character, options),
           PussyBuilder.build(character, options),
+          NipplesBuilder.build(character, options),
           TitsBuilder.build(character, options),
         ]).then(()=>{
           callback(character);

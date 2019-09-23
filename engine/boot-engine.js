@@ -22,6 +22,7 @@ require(`${ROOT}/engine/services/character-builder/body-builder`);
 require(`${ROOT}/engine/services/character-builder/character-builder`);
 require(`${ROOT}/engine/services/character-builder/cock-builder`);
 require(`${ROOT}/engine/services/character-builder/mouth-builder`);
+require(`${ROOT}/engine/services/character-builder/nipples-builder`);
 require(`${ROOT}/engine/services/character-builder/pussy-builder`);
 require(`${ROOT}/engine/services/character-builder/tits-builder`);
 

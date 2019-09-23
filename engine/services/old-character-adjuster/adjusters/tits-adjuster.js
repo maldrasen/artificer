@@ -1,5 +1,23 @@
 // === Adjustment Flags ===
 
+// Lactation should also increase nipple size. We'll probably eventually move
+// this out of the factory once there's a more direct way to make a character
+// start lactating. This should do for now though.
+function getProduction(species) {
+  return 0.5 + (Random.upTo(100)/100) + (ObjectUtility.fetch(species, 'bodyOptions', 'tits', 'extraProduction') || 0);
+}
+
+// Randomly induce lactation in 2.5% of random characters and in 20% of
+// minotaurs because cows.
+if (params.productionMultiplier == null) {
+  if (Random.upTo(40)==0 || (character.species.code=='minotaur' && Random.upTo(5)==0)) {
+    params.productionMultiplier = getProduction(species);
+  }
+}
+
+
+
+
 static adjustmentFlags() {
   return [
     'small-tits',
