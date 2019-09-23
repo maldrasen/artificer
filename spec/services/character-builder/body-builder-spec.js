@@ -15,7 +15,7 @@ describe('BodyFactory', function() {
       });
     });
 
-    it('generates random values based on race and gender', function(done) {
+    it('generates random values based on species and gender', function(done) {
       CharacterBuilder.build({ species:'dragon', gender:'futa' }, character => {
         character.getBody(body => {
           Configuration.metric = true;
@@ -76,7 +76,7 @@ describe('BodyFactory', function() {
       });
     });
 
-    it('fetches values from race otherwise', function(done) {
+    it('fetches values from species otherwise', function(done) {
       CharacterBuilder.build({ species:'rat' }, character => {
         character.getBody(body => {
           expect(body.furColor).to.be.oneOf(['black','white','brown','gray']);
@@ -121,7 +121,7 @@ describe('BodyFactory', function() {
       });
     });
 
-    it('fetches values from race otherwise', function(done) {
+    it('fetches values from species otherwise', function(done) {
       CharacterBuilder.build({ species:'naga' }, character => {
         character.getBody(body => {
           expect(body.scaleColor).to.be.oneOf(['green','gray']);
@@ -141,7 +141,7 @@ describe('BodyFactory', function() {
       });
     });
 
-    it('fetches values from race next', function(done) {
+    it('fetches values from species next', function(done) {
       CharacterBuilder.build({ species:'dark-elf' }, character => {
         character.getBody(body => {
           expect(body.hairColor).to.equal('white');
@@ -150,7 +150,7 @@ describe('BodyFactory', function() {
       });
     });
 
-    it('fetches values from the race hair color list otherwise', function(done) {
+    it('fetches values from the species hair color list otherwise', function(done) {
       CharacterBuilder.build({ species:'minotaur' }, character => {
         character.getBody(body => {
           expect(body.hairColor).to.be.oneOf(['red','dark-brown','black']);
@@ -180,7 +180,7 @@ describe('BodyFactory', function() {
       });
     });
 
-    it ('uses the tail shape from the race', function(done) {
+    it ('uses the tail shape from the species', function(done) {
       CharacterBuilder.build({ species:'centaur' }, character => {
         character.getBody(body => {
           expect(body.tailShape).to.equal('horse');

@@ -18,7 +18,7 @@
 //   });
 //
 //   it('generates a width based on average cock width (smaller)', function(done) {
-//     let options = { race:'elf', gender:'futa', givenName:'F', postName:'L',
+//     let options = { species:'elf', gender:'futa', givenName:'F', postName:'L',
 //                     cock:{ length:200 }};
 //
 //     CharacterHelper.withTestCharacter(options, (character) => {
@@ -30,7 +30,7 @@
 //   });
 //
 //   it('generates a width based on average cock width (bigger)', function(done) {
-//     let options = { race:'elf', gender:'futa', givenName:'F', postName:'L',
+//     let options = { species:'elf', gender:'futa', givenName:'F', postName:'L',
 //                     cock:{ length:400 }};
 //
 //     CharacterHelper.withTestCharacter(options, (character) => {
@@ -42,7 +42,7 @@
 //   });
 //
 //   it('generates a random production multiplier (elf)', function(done) {
-//     CharacterHelper.withTestCharacter({ race:'elf', gender:'futa'}, (character) => {
+//     CharacterHelper.withTestCharacter({ species:'elf', gender:'futa'}, (character) => {
 //       character.withBalls((balls) => {
 //         expect(balls.productionMultiplier).to.be.within(1,2);
 //         done();
@@ -51,7 +51,7 @@
 //   });
 //
 //   it('generates a random production multiplier (minotaur)', function(done) {
-//     CharacterHelper.withTestCharacter({ race:'minotaur', gender:'futa'}, (character) => {
+//     CharacterHelper.withTestCharacter({ species:'minotaur', gender:'futa'}, (character) => {
 //       character.withBalls((balls) => {
 //         expect(balls.productionMultiplier).to.be.within(2,4);
 //         done();
@@ -60,7 +60,7 @@
 //   });
 //
 //   it('generates a random production multiplier (rat)', function(done) {
-//     CharacterHelper.withTestCharacter({ race:'rat', gender:'futa'}, (character) => {
+//     CharacterHelper.withTestCharacter({ species:'rat', gender:'futa'}, (character) => {
 //       character.withBalls((balls) => {
 //         expect(balls.productionMultiplier).to.be.within(4,5);
 //         done();
@@ -69,7 +69,7 @@
 //   });
 //
 //   it('gives naga internal balls', function(done) {
-//     CharacterHelper.withTestCharacter({ race:'naga', gender:'futa'}, (character) => {
+//     CharacterHelper.withTestCharacter({ species:'naga', gender:'futa'}, (character) => {
 //       character.withBalls((balls) => {
 //         expect(balls.internal).to.equal(true);
 //         done();

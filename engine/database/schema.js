@@ -1,43 +1,4 @@
 
-
-
-
-
-  global.Body = Database.instance().define('body', {
-    character_id: Sequelize.INTEGER,
-    height: Sequelize.INTEGER,
-    weight: Sequelize.INTEGER,
-    furColor: Sequelize.STRING,
-    furShade: Sequelize.INTEGER,
-    hairColor: Sequelize.STRING,
-    scaleColor: Sequelize.STRING,
-    skinColor: Sequelize.STRING,
-    skinShade: Sequelize.INTEGER,
-    tailShape: Sequelize.STRING,
-  },{
-    timestamps: false,
-  });
-
-  global.Character = Database.instance().define('character', {
-    master_id: Sequelize.INTEGER,
-    role: Sequelize.STRING,
-    preName: Sequelize.STRING,
-    givenName: Sequelize.STRING,
-    postName: Sequelize.STRING,
-    fullName: Sequelize.STRING,
-    gender: Sequelize.STRING,
-    profession: Sequelize.STRING,
-    district: Sequelize.STRING,
-    stamina: Sequelize.INTEGER,
-    race: Sequelize.STRING,
-    physical: Sequelize.INTEGER,
-    mental: Sequelize.INTEGER,
-    personal: Sequelize.INTEGER,
-    magical: Sequelize.INTEGER,
-  },{
-    timestamps: false,
-  });
-
   global.CharacterAspect = Database.instance().define('character_aspect', {
     character_id: Sequelize.INTEGER,
     code: Sequelize.STRING,
@@ -86,19 +47,6 @@
   global.Flag = Database.instance().define('flag',{
     code: { type:Sequelize.STRING, primaryKey:true },
     value: Sequelize.STRING,
-  },{
-    timestamps: false,
-  });
-
-  global.Mouth = Database.instance().define('mouth', {
-    character_id: Sequelize.INTEGER,
-    shape: Sequelize.STRING,
-    width: Sequelize.INTEGER,
-    elasticity: Sequelize.INTEGER,
-    throatWidth: Sequelize.INTEGER,
-    throatElasticity: Sequelize.INTEGER,
-    tongueLength: Sequelize.INTEGER,
-    tongueShape: Sequelize.STRING,
   },{
     timestamps: false,
   });

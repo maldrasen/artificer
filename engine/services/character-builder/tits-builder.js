@@ -2,6 +2,8 @@ global.TitsBuilder = (function() {
 
   function build(character, options) {
     return new Promise((resolve, reject) => {
+      if (character.id == null) { reject('Character must be persisted.'); }
+
       resolve(null);
     });
   }

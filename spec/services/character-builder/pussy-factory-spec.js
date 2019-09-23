@@ -10,7 +10,7 @@
 //   });
 //
 //   it('uses the all the options if present', function(done) {
-//     let options = { gender:'female', race:'elf', pussy:{
+//     let options = { gender:'female', species:'elf', pussy:{
 //       shape: 'horse',
 //       width: 50,
 //       cervixWidth: 30,
@@ -44,8 +44,8 @@
 //     });
 //   });
 //
-//   it('gets the shape from the race', function(done) {
-//     CharacterHelper.withTestCharacter({ gender:'female', race:'equian'}, (character) => {
+//   it('gets the shape from the species', function(done) {
+//     CharacterHelper.withTestCharacter({ gender:'female', species:'equian'}, (character) => {
 //       character.withPussy((pussy) => {
 //         expect(pussy.shape).to.equal('horse');
 //         done();
@@ -53,8 +53,8 @@
 //     });
 //   });
 //
-//   it('sets the elasticity from the race (elf)', function(done) {
-//     CharacterHelper.withTestCharacter({ gender:'female', race:'elf'}, (character) => {
+//   it('sets the elasticity from the species (elf)', function(done) {
+//     CharacterHelper.withTestCharacter({ gender:'female', species:'elf'}, (character) => {
 //       character.withPussy((pussy) => {
 //         expect(pussy.elasticity).to.equal(4);
 //         expect(pussy.cervixElasticity).to.equal(1);
@@ -63,8 +63,8 @@
 //     });
 //   });
 //
-//   it('sets the elasticity from the race (pixie)', function(done) {
-//     CharacterHelper.withTestCharacter({ gender:'female', race:'pixie'}, (character) => {
+//   it('sets the elasticity from the species (pixie)', function(done) {
+//     CharacterHelper.withTestCharacter({ gender:'female', species:'pixie'}, (character) => {
 //       character.withPussy((pussy) => {
 //         expect(pussy.elasticity).to.equal(12);
 //         expect(pussy.cervixElasticity).to.equal(6);
@@ -74,8 +74,8 @@
 //   });
 //
 //   describe('Pussy Widths', function() {
-//     function testPussyWidth(race, low, high, done) {
-//       CharacterHelper.withTestCharacter({ gender:'female', race:race }, (character) => {
+//     function testPussyWidth(species, low, high, done) {
+//       CharacterHelper.withTestCharacter({ gender:'female', species:species }, (character) => {
 //         character.withPussy((pussy) => {
 //           expect(pussy.width).to.be.within(low,high);
 //           done();
@@ -83,33 +83,33 @@
 //       });
 //     }
 //
-//     it('sets the width according to race (elf)', function(done) {
+//     it('sets the width according to species (elf)', function(done) {
 //       testPussyWidth('elf',35,50,done);
 //     });
 //
-//     it('sets the width according to race (equian)', function(done) {
+//     it('sets the width according to species (equian)', function(done) {
 //       testPussyWidth('equian',70,90,done);
 //     });
 //
-//     it('sets the width according to race (dragon)', function(done) {
+//     it('sets the width according to species (dragon)', function(done) {
 //       testPussyWidth('dragon',80,120,done);
 //     });
 //
-//     it('sets the width according to race (ogre)', function(done) {
+//     it('sets the width according to species (ogre)', function(done) {
 //       testPussyWidth('ogre',70,90,done);
 //     });
 //
-//     it('sets the width according to race (goblin)', function(done) {
+//     it('sets the width according to species (goblin)', function(done) {
 //       testPussyWidth('goblin',30,40,done);
 //     });
 //
-//     it('sets the width according to race (pixie)', function(done) {
+//     it('sets the width according to species (pixie)', function(done) {
 //       testPussyWidth('pixie',10,25,done);
 //     });
 //   });
 //
 //   it('sets random labia and clit sizes', function(done) {
-//     CharacterHelper.withTestCharacter({ gender:'female', race:'elf' }, (character) => {
+//     CharacterHelper.withTestCharacter({ gender:'female', species:'elf' }, (character) => {
 //       character.withPussy((pussy) => {
 //         expect(pussy.outerLabiaSize).to.be.within(1,5);
 //         expect(pussy.innerLabiaLength).to.be.within(10,90);

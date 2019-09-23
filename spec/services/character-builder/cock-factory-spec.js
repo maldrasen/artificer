@@ -11,7 +11,7 @@
 //     });
 //
 //     it('uses the all the options if present', function(done) {
-//       let options = { gender:'male', race:'elf', cock:{
+//       let options = { gender:'male', species:'elf', cock:{
 //         shape: 'horse',
 //         sheath: 'fur',
 //         count: 2,
@@ -43,8 +43,8 @@
 //       });
 //     });
 //
-//     it("builds a cock of average length for that character's race (centaur)", function(done) {
-//       CharacterHelper.withTestCharacter({ gender:'male', race:'centaur' }, (character) => {
+//     it("builds a cock of average length for that character's species (centaur)", function(done) {
+//       CharacterHelper.withTestCharacter({ gender:'male', species:'centaur' }, (character) => {
 //         character.withCock((cock) => {
 //           expect(cock.convertedLength).to.be.within(10,35);
 //           done();
@@ -52,8 +52,8 @@
 //       });
 //     });
 //
-//     it("builds a cock of average length for that character's race (rat)", function(done) {
-//       CharacterHelper.withTestCharacter({ gender:'male', race:'rat' }, (character) => {
+//     it("builds a cock of average length for that character's species (rat)", function(done) {
+//       CharacterHelper.withTestCharacter({ gender:'male', species:'rat' }, (character) => {
 //         character.withCock((cock) => {
 //           expect(cock.convertedLength).to.be.within(2,6);
 //           done();
@@ -62,7 +62,7 @@
 //     });
 //
 //     it("sets a random knot width ratio if it's missing on a dog cock", function(done) {
-//       CharacterHelper.withTestCharacter({ gender:'male', race:'lupin' }, (character) => {
+//       CharacterHelper.withTestCharacter({ gender:'male', species:'lupin' }, (character) => {
 //         character.withCock((cock) => {
 //           expect(cock.knotWidthRatio).to.be.within(1,2);
 //           done();
@@ -73,7 +73,7 @@
 //
 //   describe('desecrate', function() {
 //     it('does nothing if the no-random-features flag is set', function(done) {
-//       let options = { gender:'male', race:'incubus', cock:{ 'no-random-features':true }};
+//       let options = { gender:'male', species:'incubus', cock:{ 'no-random-features':true }};
 //       CharacterHelper.withTestCharacter(options, (character) => {
 //         character.withCock((cock) => {
 //           expect(cock.shape).to.equal('normal');
@@ -83,7 +83,7 @@
 //     });
 //
 //     it('at least changes the shape.', function(done) {
-//       CharacterHelper.withTestCharacter({ gender:'male', race:'incubus' }, (character) => {
+//       CharacterHelper.withTestCharacter({ gender:'male', species:'incubus' }, (character) => {
 //         character.withCock((cock) => {
 //           expect(cock.shape).to.not.equal('normal');
 //           done();

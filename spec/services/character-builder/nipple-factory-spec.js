@@ -27,7 +27,7 @@
 //     });
 //
 //     it('randomizes male nipples', function(done) {
-//       CharacterHelper.withTestCharacter({ race:'elf', gender:'male' }, (character) => {
+//       CharacterHelper.withTestCharacter({ species:'elf', gender:'male' }, (character) => {
 //         character.withNipples((nipples) => {
 //           expect(nipples.count).to.equal(1);
 //           expect(nipples.length).to.be.within(1,5);
@@ -42,7 +42,7 @@
 //     });
 //
 //     it('randomizes female nipples', function(done) {
-//       CharacterHelper.withTestCharacter({ race:'elf', gender:'female' }, (character) => {
+//       CharacterHelper.withTestCharacter({ species:'elf', gender:'female' }, (character) => {
 //         character.withNipples((nipples) => {
 //           expect(nipples.count).to.equal(1);
 //           expect(nipples.length).to.be.within(1,5);
@@ -55,7 +55,7 @@
 //     });
 //
 //     it('builds puffy nipples', function(done) {
-//       CharacterHelper.withTestCharacter({ race:'elf', gender:'female', nipples:{ shape:'puffy' }}, (character) => {
+//       CharacterHelper.withTestCharacter({ species:'elf', gender:'female', nipples:{ shape:'puffy' }}, (character) => {
 //         character.withNipples((nipples) => {
 //           expect(nipples.width).to.be.within(18,55);
 //           expect(nipples.length).to.equal(nipples.width);
@@ -66,7 +66,7 @@
 //     });
 //
 //     it('builds inverted nipples', function(done) {
-//       CharacterHelper.withTestCharacter({ race:'elf', gender:'female', nipples:{ shape:'inverted' }}, (character) => {
+//       CharacterHelper.withTestCharacter({ species:'elf', gender:'female', nipples:{ shape:'inverted' }}, (character) => {
 //         character.withNipples((nipples) => {
 //           expect(nipples.width).to.be.within(18,55);
 //           expect(nipples.length).to.equal(1);
@@ -77,7 +77,7 @@
 //     });
 //
 //     it('builds star shaped nipples', function(done) {
-//       CharacterHelper.withTestCharacter({ race:'elf', gender:'female', nipples:{ shape:'star' }}, (character) => {
+//       CharacterHelper.withTestCharacter({ species:'elf', gender:'female', nipples:{ shape:'star' }}, (character) => {
 //         character.withNipples((nipples) => {
 //           expect(nipples.width).to.be.within(38,105);
 //           expect(nipples.shape).to.equal('star');
@@ -87,7 +87,7 @@
 //     });
 //
 //     it('builds star heart nipples', function(done) {
-//       CharacterHelper.withTestCharacter({ race:'elf', gender:'female', nipples:{ shape:'heart' }}, (character) => {
+//       CharacterHelper.withTestCharacter({ species:'elf', gender:'female', nipples:{ shape:'heart' }}, (character) => {
 //         character.withNipples((nipples) => {
 //           expect(nipples.width).to.be.within(38,105);
 //           expect(nipples.shape).to.equal('heart');
@@ -97,7 +97,7 @@
 //     });
 //
 //     it('builds teats', function(done) {
-//       CharacterHelper.withTestCharacter({ race:'minotaur', gender:'female' }, (character) => {
+//       CharacterHelper.withTestCharacter({ species:'minotaur', gender:'female' }, (character) => {
 //         character.withNipples((nipples) => {
 //           expect(nipples.width).to.be.within(20,70);
 //           expect(nipples.length).to.be.within(40,330);

@@ -19,7 +19,7 @@
 //     });
 //
 //     it('randomizes options otherwise', function(done) {
-//       CharacterHelper.withTestCharacter({ gender:'futa', race:'nymph' }, (character) => {
+//       CharacterHelper.withTestCharacter({ gender:'futa', species:'nymph' }, (character) => {
 //         character.withTits((tits) => {
 //           expect(tits.count).to.equal(2);
 //           expect(tits.size).to.be.within(400,1100);

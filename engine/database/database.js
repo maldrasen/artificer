@@ -19,6 +19,7 @@ global.Database = (function() {
     require(`${ROOT}/engine/models/body`);
     require(`${ROOT}/engine/models/player`);
     require(`${ROOT}/engine/models/game`);
+    require(`${ROOT}/engine/models/mouth`);
 
     database.sync().then(callback);
   }

@@ -12,3 +12,6 @@ global.Anus = Database.instance().define('anus', {
     convertedWidth()          { return ConversionUtility.milliToInches(this.getDataValue('width')); },
   }
 });
+
+// TODO: I think this had depth measurements at some point. May want to include
+//       something like that again.
