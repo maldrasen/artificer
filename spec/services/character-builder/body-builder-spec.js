@@ -1,4 +1,4 @@
-describe('BodyFactory', function() {
+describe('BodyBuilder', function() {
 
   describe('Height and Weight', function() {
     it('uses the height and weight in the options if present', function(done) {

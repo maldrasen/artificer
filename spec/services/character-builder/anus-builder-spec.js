@@ -1,4 +1,4 @@
-describe.only('AnusFactory', function() {
+describe('AnusBuilder', function() {
 
   it('uses the all the options if present', function(done) {
     let options = { gender:'male', species:'elf', anus:{

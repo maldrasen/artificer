@@ -1,4 +1,4 @@
-// describe('PussyFactory', function() {
+// describe('PussyBuilder', function() {
 //
 //   it("does nothing to character's without a pussy", function(done) {
 //     CharacterHelper.withTestCharacter({ gender:'male' }, (character) => {
