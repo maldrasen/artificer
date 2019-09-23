@@ -51,7 +51,7 @@ global.Random = {
   // chosen number can deviate from the average number.
   tightlyBound: function(average, fuzz) {
     let base = average - (fuzz / 2);
-    let cut = geometric(50) * (fuzz/100);
+    let cut = Random.geometric(50) * (fuzz/100);
     return Math.round(cut + base)
   },
 
@@ -60,10 +60,10 @@ global.Random = {
   // and tallying and fuzzing the result. There are probably way better ways to
   // do this, but I'm not a math guy.
   geometric: function(average) {
-    let result = upTo(20)-10;
+    let result = Random.upTo(20)-10;
 
     for (let i=0; i<10; i++) {
-      if (upTo(100) <= average) {
+      if (Random.upTo(100) <= average) {
         result += 10;
       }
     }
