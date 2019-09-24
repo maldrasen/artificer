@@ -49,8 +49,10 @@ global.CharacterBuilder = (function() {
           NipplesBuilder.build(character, options),
           TitsBuilder.build(character, options),
         ]).then(()=>{
+          NameBuilder.build(character, options);
+        }).then(()=>{
           callback(character);
-        });
+        })
       });
     });
   }

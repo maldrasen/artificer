@@ -18,6 +18,8 @@ let kobold = Species.build('kobold', {
     tailShape: 'dragon',
     faceShape: 'dragon',
     hornShapes: ['curved-back'],
+    tits: false,
+    nipples: false,
     mouth: {
       tongueShape: 'forked',
       averageTongueLength: 100,
@@ -40,4 +42,5 @@ let kobold = Species.build('kobold', {
       elasticity: 6,
     },
   },
+  nameGenerator: KoboldNameGenerator,
 });

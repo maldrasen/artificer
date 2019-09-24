@@ -32,6 +32,7 @@ let incubus = Species.build('incubus', {
       elasticity: 6,
     },
   },
+  nameGenerator: DemonNameGenerator,
 });
 
 //   flags: ['demon'],

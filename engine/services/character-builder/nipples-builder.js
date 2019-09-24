@@ -3,6 +3,7 @@ global.NipplesBuilder = (function() {
   function build(character, options) {
     return new Promise((resolve, reject) => {
       if (character.id == null) { reject('Character must be persisted.'); }
+      if (character.species.bodyOptions.nipples == false) { return resolve(); }
 
       let params = CharacterBuilder.baseline('nipples', options, character.species, {
         character_id: character.id,

@@ -1,4 +1,4 @@
-Names.RatNames = [
+let names = [
   { name:"Ceree" },
   { name:"Cereet" },
   { name:"Ceriit" },
@@ -100,3 +100,7 @@ Names.RatNames = [
   { name:"Wripee" },
   { name:"Writ" },
 ];
+
+each(names, (name)=>{
+  Name.add(name, { species:'rat' });
+});

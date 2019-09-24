@@ -25,5 +25,4 @@ global.Location = class Location extends Form {
   buildDescription(callback) { callback('[TODO]'); }
   buildAttributes(callback) { callback([]); }
   buildFlavor(callback) { callback([]); }
-
 }

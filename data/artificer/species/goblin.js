@@ -38,6 +38,7 @@ let goblin = Species.build('goblin', {
       elasticity: 5,
     },
   },
+  nameGenerator: GoblinNameGenerator,
 });
 
 //   flags: ['goblin'],

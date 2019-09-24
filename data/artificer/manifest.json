@@ -9,6 +9,9 @@
 
   "engineFiles":[
     "locations/courtyard",
+
+    "names/rat-names",
+
     "species/caprien",
     "species/centaur",
     "species/dark-elf",

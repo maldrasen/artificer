@@ -1,0 +1,28 @@
+global.Name = Database.instance().define('name', {
+  name:          { type:Sequelize.STRING },
+  species:       { type:Sequelize.STRING },
+  triggers_json: { type:Sequelize.STRING },
+  aspects_json:  { type:Sequelize.STRING },
+  events_json:   { type:Sequelize.STRING },
+  restriction:   { type:Sequelize.STRING, validate:{ isIn:[['male','female','not-male','not-female','has-cock','has-pussy','has-tits']] }},
+  position:      { type:Sequelize.STRING, validate:{ isIn:[['pre','first','last']] }},
+},{
+  timestamps: false,
+  getterMethods: {
+    triggers() { return JSON.parse(this.triggers_json) },
+    aspects()  { return JSON.parse(this.aspect_json)   },
+    events()   { return JSON.parse(this.events_json)   },
+  }
+});
+
+Name.add = function(data, options) {
+  Name.create({
+    name:          data.name,
+    species:       options.species || 'elf',
+    triggers_json: JSON.stringify(data.triggers),
+    aspects_json:  JSON.stringify(data.aspects),
+    events_json:   JSON.stringify(data.events),
+    restriction:   data.restriction || options.restriction,
+    position:      data.position || options.position,
+  })
+}

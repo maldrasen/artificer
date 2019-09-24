@@ -44,6 +44,7 @@ let rat = Species.build('rat', {
       elasticity: 6,
     },
   },
+  nameGenerator: RatNameGenerator,
 });
 
 //   flags: ['furry'],

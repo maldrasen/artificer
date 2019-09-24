@@ -18,6 +18,7 @@ global.Database = (function() {
     require(`${ROOT}/engine/models/body`);
     require(`${ROOT}/engine/models/character`);
     require(`${ROOT}/engine/models/cock`);
+    require(`${ROOT}/engine/models/name`);
     require(`${ROOT}/engine/models/nipples`);
     require(`${ROOT}/engine/models/player`);
     require(`${ROOT}/engine/models/game`);

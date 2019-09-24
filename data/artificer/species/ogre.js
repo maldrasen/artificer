@@ -35,6 +35,7 @@ let ogre = Species.build('ogre', {
       urethraWidth: 3,
     }
   },
+  nameGenerator: GoblinNameGenerator,
 });
 
 //   flags: ['goblin'],

@@ -4,6 +4,7 @@ global.TitsBuilder = (function() {
     return new Promise((resolve, reject) => {
       if (character.id == null) { reject('Character must be persisted.'); }
       if (character.gender.tits == false) { return resolve(); }
+      if (character.species.bodyOptions.tits == false) { return resolve(); }
 
       let params = CharacterBuilder.baseline('tits', options, character.species, {
         character_id: character.id,
