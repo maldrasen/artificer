@@ -10,6 +10,7 @@
   "engineFiles":[
     "locations/courtyard",
 
+    "names/kobold-names",
     "names/rat-names",
 
     "species/caprien",

@@ -307,3 +307,7 @@ let names = [
  { name:"Wind-On-Her-Scales" },
  { name:"Writes-On-Walls" },
 ];
+
+each(names, (name)=>{
+  Name.add(name, { species:'kobold' });
+});

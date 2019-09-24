@@ -18,11 +18,11 @@ global.Name = Database.instance().define('name', {
 Name.add = function(data, options) {
   Name.create({
     name:          data.name,
-    species:       options.species || 'elf',
+    species:       options.species,
+    restriction:   data.restriction || options.restriction,
+    position:      data.position    || options.position,
     triggers_json: JSON.stringify(data.triggers),
     aspects_json:  JSON.stringify(data.aspects),
     events_json:   JSON.stringify(data.events),
-    restriction:   data.restriction || options.restriction,
-    position:      data.position || options.position,
   })
 }
