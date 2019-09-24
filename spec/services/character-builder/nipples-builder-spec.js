@@ -26,6 +26,15 @@ describe('NippleBuilder', function() {
       });
     });
 
+    it("doesn't give nipples to Kobolds", function(done) {
+      CharacterBuilder.build({ species:'kobold', gender:'female' }, character => {
+        character.getNipples(nipples => {
+          expect(nipples).to.not.exist
+          done();
+        });
+      });
+    });
+
     it('randomizes male nipples', function(done) {
       CharacterBuilder.build({ species:'elf', gender:'male' }, character => {
         character.getNipples(nipples => {

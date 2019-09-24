@@ -31,6 +31,7 @@ global.CharacterBuilder = (function() {
       happiness:   options.happiness || Random.roll(20,0),   // assume they're afraid of you and unhappy.
     };
 
+
     Character.create(params).then(character => {
       addBody(character, options, () => {
         callback(character);
@@ -48,9 +49,8 @@ global.CharacterBuilder = (function() {
           PussyBuilder.build(character, options),
           NipplesBuilder.build(character, options),
           TitsBuilder.build(character, options),
+          NameBuilder.build(character, options),
         ]).then(()=>{
-          NameBuilder.build(character, options);
-        }).then(()=>{
           callback(character);
         })
       });
