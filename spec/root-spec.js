@@ -1,5 +1,6 @@
 
 global.VERSION = 0;
+global.DEBUG = false;
 global.ROOT = require('path').normalize(`${__dirname}/..`);
 global.expect = require('chai').expect;
 

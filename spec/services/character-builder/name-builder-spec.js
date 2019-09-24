@@ -1,12 +1,13 @@
 describe('NameBuilder', function() {
 
   let namePrinter = function(options, done) {
-    let tests = []
+    console.log(`\n    [${options.species} names]`)
 
-    for (let i=0; i<5; i++) {
+    let tests = []
+    for (let i=0; i<10; i++) {
       tests.push(new Promise((resolve, reject) => {
         CharacterBuilder.build(options, character => {
-          console.log(`    > ${character.name}`)
+          console.log(`      (${character.gender.male}) > ${character.name}`)
           resolve();
         });
       }));
@@ -17,5 +18,4 @@ describe('NameBuilder', function() {
 
   it('names rats', function(done)    { namePrinter({ species:'rat'    }, done); });
   it('names kobolds', function(done) { namePrinter({ species:'kobold' }, done); });
-
 });

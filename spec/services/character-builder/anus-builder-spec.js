@@ -65,7 +65,7 @@ describe('AnusBuilder', function() {
     });
 
     it('sets the width according to species (dragon)', function(done) {
-      testAnalWidth('dragon',80,100,done);
+      testAnalWidth('dragon',75,100,done);
     });
 
     it('sets the width according to species (ogre)', function(done) {

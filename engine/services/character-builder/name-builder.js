@@ -5,11 +5,7 @@ global.NameBuilder = (function() {
       if (character.id == null) { reject('Character must be persisted.'); }
 
       selectNames(0, character, (character.species.nameGenerator || ElfNameGenerator), names => {
-        character.update({
-          preName: names.pre,
-          firstName: names.first,
-          lastName: names.last,
-        }).then(resolve);
+        character.update(nameMap(names)).then(resolve);
       });
     });
   }
@@ -26,8 +22,7 @@ global.NameBuilder = (function() {
         callback(names);
       }).catch(invalid => {
         if (failureCount++ < 10) {
-          // This is going to be noisy until all the name builds are built
-          // console.log(`\n(Warning) Rejected Name [${names.pre} ${names.first} ${names.last}] ${invalid}`)
+          warningMessage(names, invalid);
           selectNames(failureCount, character, nameGenerator, callback)
         } else {
           callback(names);
@@ -36,26 +31,71 @@ global.NameBuilder = (function() {
     });
   }
 
+  // Print a warning to the log if we're in DEBUG mode.
+  function warningMessage(names, invalid) {
+    let p = (name) => { return (name == null) ? '' : name.name; }
+    if (DEBUG) {
+      console.log(`(Warning) Rejected Name ${p(names.pre)} ${p(names.first)} ${p(names.last)} > ${invalid}`)
+    }
+  }
+
+
   // Check to see if a name is valid for this character. This promise should
   // reject on an invalid name.
   function validate(character, names) {
     return new Promise((resolve, reject) => {
-      nameIsUnique(names).then(resolve).catch(reject);
+      nameIsUnique({ names:names, character:character }).then(noNamesRestricted).then(resolve).catch(reject);
     });
   }
 
   // Reject if there exists a character with this exact name.
-  function nameIsUnique(names) {
+  function nameIsUnique(chain) {
     return new Promise((resolve, reject) => {
-      let query = {};
-      if (names.pre != null)   { query.preName =   names.pre;   }
-      if (names.first != null) { query.firstName = names.first; }
-      if (names.last != null)  { query.lastName =  names.last;  }
-
-      Character.findOne({ where:query }).then(character => {
-        (character == null) ? resolve() : reject("Name is not unique")
+      Character.findOne({ where:nameMap(chain.names) }).then(character => {
+        (character == null) ? resolve(chain) : reject("Name is not unique")
       });
     });
+  }
+
+  function noNamesRestricted(chain) {
+    return new Promise((resolve, reject) => {
+      if (chain.names.pre && allowed(chain.character, chain.names.pre)) {
+        reject(`Name (${chain.names.pre.name}) is restricted to ${chain.names.pre.restriction}`);
+      }
+      if (chain.names.first && allowed(chain.character, chain.names.first)) {
+        reject(`Name (${chain.names.first.name}) is restricted to ${chain.names.first.restriction}`);
+      }
+      if (chain.names.last && allowed(chain.character, chain.names.last)) {
+        reject(`Name (${chain.names.last.name}) is restricted to ${chain.names.last.restriction}`);
+      }
+      resolve(chain)
+    });
+  }
+
+  // Check to see if a name is allowed. These are all gender restrictions for
+  // the time being. I'm basing the presence of a cock or pussy on the gender,
+  // otherwise I'd have to mix more async shit into this than there already is.
+  function allowed(character, name) {
+    if (name.restriction != null) {
+      if (name.restriction == 'male')       { return character.genderCode == 'male'   }
+      if (name.restriction == 'female')     { return character.genderCode == 'female' }
+      if (name.restriction == 'not-male')   { return character.genderCode != 'male'   }
+      if (name.restriction == 'not-female') { return character.genderCode != 'female' }
+      if (name.restriction == 'has-cock')   { return character.gender.cock  }
+      if (name.restriction == 'has-pussy')  { return character.gender.pussy }
+      if (name.restriction == 'has-tits')   { return character.gender.tite  }
+    }
+    return false;
+  }
+
+
+
+  function nameMap(names) {
+    let map = {};
+    if (names.pre != null)   { map.preName =   names.pre.name;   }
+    if (names.first != null) { map.firstName = names.first.name; }
+    if (names.last != null)  { map.lastName =  names.last.name;  }
+    return map;
   }
 
   return { build:build };

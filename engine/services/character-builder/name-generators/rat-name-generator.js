@@ -10,9 +10,10 @@ global.RatNameGenerator = (function() {
         order: Sequelize.literal('random()'),
         limit: 2,
       }).then(names => {
+        names[1].name = `e'${names[1].name}`;
         resolve({
-          first:names[0].name,
-          last:`e'${names[1].name}`,
+          first: names[0],
+          last: names[1],
         })
       });
     });

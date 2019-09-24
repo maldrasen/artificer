@@ -21,7 +21,7 @@ describe('TitsBuilder', function() {
     CharacterBuilder.build({ gender:'futa', species:'nymph' }, character => {
       character.getTits(tits => {
         expect(tits.count).to.equal(2);
-        expect(tits.size).to.be.within(400,1100);
+        expect(tits.size).to.be.within(400,1150);
         expect(tits.shape).to.exist;
         done();
       });
