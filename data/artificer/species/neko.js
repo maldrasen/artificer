@@ -21,7 +21,7 @@ let neko = Species.build('neko', {
       small: 20,
       average: 25,
       big: 25,
-      huge: 10,
+      huge: 5,
     }},
 
     // cocks: {

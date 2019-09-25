@@ -17,7 +17,7 @@ let viera = Species.build('viera', {
     tits:{ size:{
       average: 30,
       big: 50,
-      huge: 20,
+      huge: 10,
     }},
 
     // cocks: {

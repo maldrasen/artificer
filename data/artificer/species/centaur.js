@@ -23,7 +23,7 @@ let centaur = Species.build('centaur', {
     tits:{ size:{
       average: 20,
       big: 60,
-      huge: 20,
+      huge: 10,
     }},
 
     // cocks: {

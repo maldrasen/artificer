@@ -27,7 +27,6 @@ let succubus = Species.build('succubus', {
       tiny: 10,
       big: 20,
       huge: 40,
-      monster: 10,
     }},
 
     // cocks: {

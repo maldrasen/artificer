@@ -23,8 +23,7 @@ let ogre = Species.build('ogre', {
 
     tits:{ size:{
       big: 60,
-      huge: 35,
-      monster: 5,
+      huge: 20,
     }},
 
     // cocks: {

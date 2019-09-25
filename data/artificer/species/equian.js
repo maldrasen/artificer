@@ -29,7 +29,7 @@ let equian = Species.build('equian', {
     tits:{ size:{
       average: 20,
       big: 60,
-      huge: 20,
+      huge: 10,
     }},
 
     // nipples: {

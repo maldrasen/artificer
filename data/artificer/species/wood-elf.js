@@ -24,7 +24,7 @@ let woodElf = Species.build('wood-elf', {
       small: 20,
       average: 20,
       big: 20,
-      huge: 10,
+      huge: 5,
     }},
 
     // cocks: {

@@ -23,7 +23,7 @@ let vulpine = Species.build('vulpine', {
       count: 6,
       size: {
         big: 60,
-        huge: 30,
+        huge: 20,
       },
     },
 

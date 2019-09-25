@@ -18,9 +18,9 @@ let gnome = Species.build('gnome', {
     // hairColors: ['human'],
 
     tits:{ size:{
-      average: 20,
+      average: 30,
       big: 50,
-      huge: 30,
+      huge: 10,
     }},
 
     // cocks: {

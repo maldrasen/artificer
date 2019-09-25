@@ -34,7 +34,7 @@ let dragon = Species.build('dragon', {
       small: 10,
       average: 10,
       big: 30,
-      huge: 20,
+      huge: 10,
     }},
 
     // cocks: {

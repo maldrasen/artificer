@@ -29,7 +29,6 @@ let minotaur = Species.build('minotaur', {
     tits:{ size:{
       big: 50,
       huge: 50,
-      monster: 5,
     }},
 
     // nipples: {

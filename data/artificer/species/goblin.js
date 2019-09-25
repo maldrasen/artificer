@@ -21,9 +21,9 @@ let goblin = Species.build('goblin', {
     // },
 
     tits:{ size:{
+      average: 20,
       big: 60,
-      huge: 35,
-      monster: 5,
+      huge: 20,
     }},
 
     // cocks: {

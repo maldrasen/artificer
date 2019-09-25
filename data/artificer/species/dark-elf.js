@@ -25,7 +25,7 @@ let darkElf = Species.build('dark-elf', {
       small: 15,
       average: 30,
       big: 30,
-      huge: 20,
+      huge: 5,
     }},
 
     // cocks: {
