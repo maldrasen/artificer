@@ -34,3 +34,6 @@ Cock.getWidthRatio = function(shape) {
     dragon: 1.6,
   }[shape]
 }
+
+
+// Centaur 500 ~20

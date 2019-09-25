@@ -12,12 +12,19 @@ let elf = Species.build('elf', {
   bodyOptions: {
     skinColors: ['human'],
     hairColors: ['human'],
-    tits: {
-      averageSize: 450,
-    },
-    cocks: {
-      averageSize: 150,
-    },
+
+    tits:{ size:{
+      zero: 5,
+      tiny: 10,
+      small: 20,
+      average: 35,
+      big: 15,
+      huge: 5,
+    }},
+
+    // cocks: {
+    //   averageSize: 150,
+    // },
   },
 });
 

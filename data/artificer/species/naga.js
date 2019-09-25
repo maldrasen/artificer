@@ -14,32 +14,38 @@ let naga = Species.build('naga', {
     heightRange: 800,
     maleHeightAdjust: 300,
     shape: 'half-snake',
-    scaleColors: ['green','gray'],
-    skinColors: ['red','green','black'],
     tailShape: 'snake',
     faceShape: 'snake',
-    mouth: {
-      tongueShape: 'forked',
-      elasticity: 10,
-      averageTongueLength: 300,
-      averageSize: 600,
-      averageThroatWidth: 400,
-    },
-    tits: {
-      averageSize: 300,
-    },
-    cocks: {
-      count: 2,
-      averageSize: 250,
-      shape: 'snake',
-    },
-    balls: {
-      internal: true,
-    },
-    pussy: {
-      shape: 'snake',
-      averageSize: 100,
-    }
+
+    // scaleColors: ['green','gray'],
+    // skinColors: ['red','green','black'],
+    // mouth: {
+    //   tongueShape: 'forked',
+    //   elasticity: 10,
+    //   averageTongueLength: 300,
+    //   averageSize: 600,
+    //   averageThroatWidth: 400,
+    // },
+
+    tits:{ size:{
+      tiny: 30,
+      small: 20,
+      average: 10,
+      big: 5,
+    }},
+
+    // cocks: {
+    //   count: 2,
+    //   averageSize: 250,
+    //   shape: 'snake',
+    // },
+    // balls: {
+    //   internal: true,
+    // },
+    // pussy: {
+    //   shape: 'snake',
+    //   averageSize: 100,
+    // }
   },
 });
 

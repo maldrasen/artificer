@@ -11,26 +11,27 @@ let incubus = Species.build('incubus', {
   violenceRange: 25,
 
   bodyOptions: {
-    skinColors: ['red'],
-    hairColors: ['red','black','purple','white'],
     tailShape: 'demon',
-    hornShapes: ['curved-ram','forward-cow','curved-back'],
-    mouth: {
-      elasticity: 4,
-      tongueShape: 'forked',
-      averageTongueLength: 80,
-      averageThroatWidth: 60,
-    },
-    cocks: {
-      averageSize: 250,
-      strangeCocks: true,
-    },
-    balls: {
-      extraProduction: 2,
-    },
-    anus: {
-      elasticity: 6,
-    },
+    
+    // skinColors: ['red'],
+    // hairColors: ['red','black','purple','white'],
+    // hornShapes: ['curved-ram','forward-cow','curved-back'],
+    // mouth: {
+    //   elasticity: 4,
+    //   tongueShape: 'forked',
+    //   averageTongueLength: 80,
+    //   averageThroatWidth: 60,
+    // },
+    // cocks: {
+    //   averageSize: 250,
+    //   strangeCocks: true,
+    // },
+    // balls: {
+    //   extraProduction: 2,
+    // },
+    // anus: {
+    //   elasticity: 6,
+    // },
   },
   nameGenerator: DemonNameGenerator,
 });

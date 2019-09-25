@@ -13,27 +13,32 @@ let ogre = Species.build('ogre', {
     baseHeight: 2000,
     heightRange: 700,
     maleHeightAdjust: 200,
-    skinColors: ['green','gray'],
-    hairColors: ['black','gray','light-green','green','dark-green'],
-    mouth: {
-      averageTongueLength: 80,
-      averageThroatWidth: 50,
-    },
-    tits: {
-      averageSize: 650,
-    },
-    cocks: {
-      averageSize: 380,
-      urethraWidth: 3,
-      widthRatio: 1.15,
-    },
-    balls: {
-      extraProduction: 1,
-    },
-    pussy: {
-      averageSize: 80,
-      urethraWidth: 3,
-    }
+    // skinColors: ['green','gray'],
+    // hairColors: ['black','gray','light-green','green','dark-green'],
+    // mouth: {
+    //   averageTongueLength: 80,
+    //   averageThroatWidth: 50,
+    // },
+    //
+
+    tits:{ size:{
+      big: 60,
+      huge: 35,
+      monster: 5,
+    }},
+
+    // cocks: {
+    //   averageSize: 380,
+    //   urethraWidth: 3,
+    //   widthRatio: 1.15,
+    // },
+    // balls: {
+    //   extraProduction: 1,
+    // },
+    // pussy: {
+    //   averageSize: 80,
+    //   urethraWidth: 3,
+    // }
   },
   nameGenerator: GoblinNameGenerator,
 });

@@ -14,21 +14,26 @@ let nymph = Species.build('nymph', {
     baseHeight: 1400,
     heightRange: 300,
     maleHeightAdjust: 100,
-    skinColors: ['human'],
-    hairColors: ['chestnut','auburn','platinum-blond','golden-blond','strawberry-blond','red','copper','light-blue','blue','purple'],
-    tits: {
-      averageSize: 750,
-    },
-    cocks: {
-      averageSize: 220,
-    },
-    balls: {
-      extraProduction: 1,
-    },
-    pussy: {
-      elasticity: 5,
-      cervixElasticity: 2,
-    },
+    // skinColors: ['human'],
+    // hairColors: ['chestnut','auburn','platinum-blond','golden-blond','strawberry-blond','red','copper','light-blue','blue','purple'],
+
+    tits:{ size:{
+      average: 20,
+      big: 40,
+      huge: 50,
+      monster: 10,
+    }},
+
+    // cocks: {
+    //   averageSize: 220,
+    // },
+    // balls: {
+    //   extraProduction: 1,
+    // },
+    // pussy: {
+    //   elasticity: 5,
+    //   cervixElasticity: 2,
+    // },
   },
 });
 

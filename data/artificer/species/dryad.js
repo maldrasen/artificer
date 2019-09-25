@@ -15,15 +15,19 @@ let dryad = Species.build('dryad', {
     baseHeight: 1350,
     heightRange: 300,
     maleHeightAdjust: 100,
-    skinColors: ['pale-green'],
-    hairColors: ['dark-brown','brown','light-brown','light-green','green','dark-green'],
-    hornShapes: ['deer'],
-    tits: {
-      averageSize: 200,
-    },
-    cocks: {
-      averageSize: 150,
-    },
+    // skinColors: ['pale-green'],
+    // hairColors: ['dark-brown','brown','light-brown','light-green','green','dark-green'],
+    // hornShapes: ['deer'],
+
+    tits:{ size:{
+      tiny: 20,
+      small: 40,
+      average: 20,
+    }},
+
+    // cocks: {
+    //   averageSize: 150,
+    // },
   },
 });
 

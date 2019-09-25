@@ -10,26 +10,31 @@ let vulpine = Species.build('vulpine', {
   violenceRange: 10,
 
   bodyOptions: {
-    furColors: ['gray','brown','red'],
-    skinColors: ['human','red','black'],
     tailShape: 'fox',
     faceShape: 'fox',
-    mouth: {
-      averageSize: 360,
-      averageTongueLength: 120,
-    },
+    // furColors: ['gray','brown','red'],
+    // skinColors: ['human','red','black'],
+    // mouth: {
+    //   averageSize: 360,
+    //   averageTongueLength: 120,
+    // },
+
     tits: {
-      averageSize: 700,
       count: 6,
+      size: {
+        big: 60,
+        huge: 30,
+      },
     },
-    cocks: {
-      averageSize: 150,
-      shape: 'dog',
-      sheath: 'fur',
-    },
-    pussy: {
-      shape: 'dog',
-    },
+
+    // cocks: {
+    //   averageSize: 150,
+    //   shape: 'dog',
+    //   sheath: 'fur',
+    // },
+    // pussy: {
+    //   shape: 'dog',
+    // },
   },
 });
 

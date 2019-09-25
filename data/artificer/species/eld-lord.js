@@ -13,11 +13,16 @@ let elfLord = Species.build('elf-lord', {
     baseHeight: 1700,
     heightRange: 300,
     maleHeightAdjust: 100,
-    skinColors: ['human'],
-    hairColors: ['human'],
-    tits: {
-      averageSize: 300,
-    },
+    // skinColors: ['human'],
+    // hairColors: ['human'],
+
+    tits:{ size:{
+      zero: 10,
+      tiny: 20,
+      small: 30,
+      average: 20,
+    }},
+
     cocks: {
       averageSize: 150,
     },

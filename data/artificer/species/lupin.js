@@ -10,26 +10,33 @@ let lupin = Species.build('lupin', {
   violenceRange: 10,
 
   bodyOptions: {
-    furColors: ['gray','brown'],
-    skinColors: ['human','red','black'],
-    tailShape: 'dog',
     faceShape: 'dog',
-    mouth: {
-      averageSize: 360,
-      averageTongueLength: 120,
-    },
+    tailShape: 'dog',
+
+    // furColors: ['gray','brown'],
+    // skinColors: ['human','red','black'],
+    // mouth: {
+    //   averageSize: 360,
+    //   averageTongueLength: 120,
+    // },
+
     tits: {
-      averageSize: 400,
       count: 6,
+      size: {
+        average: 20,
+        big: 60,
+        huge: 10,
+      },
     },
-    cocks: {
-      averageSize: 150,
-      shape: 'dog',
-      sheath: 'fur',
-    },
-    pussy: {
-      shape: 'dog',
-    },
+
+    // cocks: {
+    //   averageSize: 150,
+    //   shape: 'dog',
+    //   sheath: 'fur',
+    // },
+    // pussy: {
+    //   shape: 'dog',
+    // },
   },
 });
 

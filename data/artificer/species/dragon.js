@@ -13,34 +13,44 @@ let dragon = Species.build('dragon', {
     baseHeight: 2000,
     heightRange: 800,
     maleHeightAdjust: 200,
-    scaleColors: ['red','gold','green','blue','purple','black','white'],
-    skinColors: ['red','green','blue','purple','black'],
     tailShape: 'dragon',
     faceShape: 'dragon',
-    hornShapes: ['curved-back'],
-    mouth: {
-      tongueShape: 'forked',
-      averageTongueLength: 250,
-      averageSize: 500,
-      averageThroatWidth: 300,
-    },
-    tits: {
-      averageSize: 450,
-    },
-    cocks: {
-      averageSize: 500,
-      urethraWidth: 4,
-      shape: 'dragon',
-      sheath: 'scales',
-    },
-    balls: {
-      extraProduction: 1,
-    },
-    pussy: {
-      shape: 'snake',
-      averageSize: 100,
-      urethraWidth: 4,
-    }
+
+    // scaleColors: ['red','gold','green','blue','purple','black','white'],
+    // skinColors: ['red','green','blue','purple','black'],
+    // hornShapes: ['curved-back'],
+    // TODO: Dragons Eye Color should complement scale color.
+
+    // mouth: {
+    //   tongueShape: 'forked',
+    //   averageTongueLength: 250,
+    //   averageSize: 500,
+    //   averageThroatWidth: 300,
+    // },
+
+    tits:{ size:{
+      zero: 30,
+      tiny: 20,
+      small: 10,
+      average: 10,
+      big: 30,
+      huge: 20,
+    }},
+
+    // cocks: {
+    //   averageSize: 500,
+    //   urethraWidth: 4,
+    //   shape: 'dragon',
+    //   sheath: 'scales',
+    // },
+    // balls: {
+    //   extraProduction: 1,
+    // },
+    // pussy: {
+    //   shape: 'snake',
+    //   averageSize: 100,
+    //   urethraWidth: 4,
+    // }
   },
 });
 

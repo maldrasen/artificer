@@ -28,3 +28,6 @@ global.Pussy = Database.instance().define('pussy', {
     urethraArea()               { return MathUtility.widthToArea(this.urethraWidth); },
   }
 });
+
+
+// centaur / 100 / huge

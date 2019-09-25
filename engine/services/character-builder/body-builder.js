@@ -53,6 +53,12 @@ global.BodyBuilder = (function() {
     });
   }
 
+  // eyeColors: {
+  //   brown: 40,
+  //   black: 40,
+  //   red: 20,
+  // },
+
   return {
     build: build,
   };

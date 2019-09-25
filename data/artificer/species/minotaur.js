@@ -13,42 +13,46 @@ let minotaur = Species.build('minotaur', {
     baseHeight: 1850,
     heightRange: 600,
     maleHeightAdjust: 300,
-    furColors: ['brown','gray'],
-    skinColors: ['human','black'],
-    hairColors: ['black','dark-brown','red'],
     tailShape: 'cow',
     faceShape: 'cow',
-    hornShapes: ['forward-cow','wide-buffalo'],
-    mouth: {
-      averageSize: 140,
-      averageTongueLength: 120,
-      averageThroatWidth: 40,
-    },
-    tits: {
-      averageSize: 800,
-      extraProduction: 2,
-    },
-    nipples: {
-      count: 4,
-      shape: 'teat',
-    },
-    cocks: {
-      averageSize: 400,
-      urethraWidth: 3,
-      shape: 'horse',
-      sheath: 'skin',
-    },
-    balls: {
-      extraProduction: 1.5,
-    },
-    pussy: {
-      shape: 'horse',
-      averageSize: 90,
-      urethraWidth: 3,
-    },
-    anus: {
-      shape: 'horse',
-    },
+
+    // furColors: ['brown','gray'],
+    // skinColors: ['human','black'],
+    // hairColors: ['black','dark-brown','red'],
+    // hornShapes: ['forward-cow','wide-buffalo'],
+    // mouth: {
+    //   averageSize: 140,
+    //   averageTongueLength: 120,
+    //   averageThroatWidth: 40,
+    // },
+
+    tits:{ size:{
+      big: 50,
+      huge: 50,
+      monster: 5,
+    }},
+
+    // nipples: {
+    //   count: 4,
+    //   shape: 'teat',
+    // },
+    // cocks: {
+    //   averageSize: 400,
+    //   urethraWidth: 3,
+    //   shape: 'horse',
+    //   sheath: 'skin',
+    // },
+    // balls: {
+    //   extraProduction: 1.5,
+    // },
+    // pussy: {
+    //   shape: 'horse',
+    //   averageSize: 90,
+    //   urethraWidth: 3,
+    // },
+    // anus: {
+    //   shape: 'horse',
+    // },
   },
 });
 

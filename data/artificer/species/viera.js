@@ -13,11 +13,15 @@ let viera = Species.build('viera', {
   bodyOptions: {
     skinColors: ['human'],
     hairColors: ['human'],
-    tits: {
-      averageSize: 700,
-    },
-    cocks: {
-      averageSize: 150,
-    },
+
+    tits:{ size:{
+      average: 30,
+      big: 50,
+      huge: 20,
+    }},
+
+    // cocks: {
+    //   averageSize: 150,
+    // },
   },
 });

@@ -13,36 +13,44 @@ let rat = Species.build('rat', {
     baseHeight: 660,
     heightRange: 300,
     maleHeightAdjust: 100,
-    furColors: ['gray','brown','black','white'],
-    skinColors: ['human'],
     tailShape: 'rat',
     faceShape: 'rat',
-    mouth: {
-      averageSize: 150,
-      averageTongueLength: 50,
-      averageThroatWidth: 20,
-    },
+
+    // furColors: ['gray','brown','black','white'],
+    // skinColors: ['human'],
+    // mouth: {
+    //   averageSize: 150,
+    //   averageTongueLength: 50,
+    //   averageThroatWidth: 20,
+    // },
+
     tits: {
-      averageSize: 250,
       count: 12,
+      size: {
+        zero: 10,
+        tiny: 20,
+        small: 30,
+        average: 10,
+      },
     },
-    cocks: {
-      averageSize: 100,
-      urethraWidth: 1,
-      sheath: 'fur',
-    },
-    balls: {
-      extraProduction: 3,
-    },
-    pussy: {
-      averageSize: 30,
-      urethraWidth: 1,
-      elasticity: 6,
-      cervixElasticity: 3,
-    },
-    anus: {
-      elasticity: 6,
-    },
+
+    // cocks: {
+    //   averageSize: 100,
+    //   urethraWidth: 1,
+    //   sheath: 'fur',
+    // },
+    // balls: {
+    //   extraProduction: 3,
+    // },
+    // pussy: {
+    //   averageSize: 30,
+    //   urethraWidth: 1,
+    //   elasticity: 6,
+    //   cervixElasticity: 3,
+    // },
+    // anus: {
+    //   elasticity: 6,
+    // },
   },
   nameGenerator: RatNameGenerator,
 });
