@@ -24,10 +24,14 @@ let dryad = Species.build('dryad', {
       small: 40,
       average: 20,
     }},
-
-    // cocks: {
-    //   averageSize: 150,
-    // },
+    cock: {
+      sheath: 'fur',
+      size: {
+        small: 20,
+        average: 40,
+        big: 10,
+      }
+    }
   },
 });
 

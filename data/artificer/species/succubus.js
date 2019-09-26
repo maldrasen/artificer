@@ -28,11 +28,11 @@ let succubus = Species.build('succubus', {
       big: 20,
       huge: 40,
     }},
+    cock:{ size:{
+      big: 90,
+      huge: 10,
+    }},
 
-    // cocks: {
-    //   averageSize: 275,
-    //   strangeCocks: true,
-    // },
     // balls: {
     //   extraProduction: 2,
     // },

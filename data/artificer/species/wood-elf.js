@@ -26,10 +26,11 @@ let woodElf = Species.build('wood-elf', {
       big: 20,
       huge: 5,
     }},
-
-    // cocks: {
-    //   averageSize: 150,
-    // },
+    cock:{ size:{
+      small: 10,
+      average: 50,
+      big: 30,
+    }},
   },
 });
 

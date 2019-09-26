@@ -9,13 +9,6 @@ global.CharacterBuilder = (function() {
   function build(options, callback) {
     if (options.species == null) { throw 'Species is required' }
 
-    // The option is 'cocks', because you can have multiple cocks, but I often
-    // forget that's the case. I'll accept it either way though.
-    if (options.cock != null) {
-      options.cocks = options.cock;
-      delete options.cock;
-    }
-
     let species = Species.lookup(options.species);
     let gender = Gender[options.gender || species.randomGender()];
     let params = {

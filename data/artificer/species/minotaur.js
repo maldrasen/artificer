@@ -30,19 +30,25 @@ let minotaur = Species.build('minotaur', {
       big: 50,
       huge: 50,
     }},
+    cock: {
+      shape: 'horse',
+      sheath: 'skin',
+      urethraWidth: 3,
+      minimumWidth: 30,
+      size: {
+        small: 10,
+        average: 30,
+        big: 20,
+        huge: 10,
+      }
+    },
+    // balls: {
+      //   extraProduction: 1.5,
+      // },
 
     // nipples: {
     //   count: 4,
     //   shape: 'teat',
-    // },
-    // cocks: {
-    //   averageSize: 400,
-    //   urethraWidth: 3,
-    //   shape: 'horse',
-    //   sheath: 'skin',
-    // },
-    // balls: {
-    //   extraProduction: 1.5,
     // },
     // pussy: {
     //   shape: 'horse',

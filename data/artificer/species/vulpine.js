@@ -26,12 +26,16 @@ let vulpine = Species.build('vulpine', {
         huge: 20,
       },
     },
+    cock: {
+      shape: 'dog',
+      sheath: 'fur',
+      size: {
+        small: 10,
+        average: 50,
+        big: 25,
+      }
+    },
 
-    // cocks: {
-    //   averageSize: 150,
-    //   shape: 'dog',
-    //   sheath: 'fur',
-    // },
     // pussy: {
     //   shape: 'dog',
     // },

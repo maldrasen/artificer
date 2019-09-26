@@ -22,10 +22,11 @@ let nymph = Species.build('nymph', {
       big: 40,
       huge: 20,
     }},
-
-    // cocks: {
-    //   averageSize: 220,
-    // },
+    cock:{ size:{
+      small: 10,
+      average: 50,
+      big: 30,
+    }},
     // balls: {
     //   extraProduction: 1,
     // },

@@ -1,4 +1,4 @@
-describe.only('TitsBuilder', function() {
+describe('TitsBuilder', function() {
 
   it('builds tits using all options', function(done) {
     let options = { species:'rat', gender:'futa', tits:{

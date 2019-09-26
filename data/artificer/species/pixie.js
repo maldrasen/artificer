@@ -28,11 +28,15 @@ let pixie = Species.build('pixie', {
       tiny: 20,
       small: 10,
     }},
+    cock: {
+      minimumWidth: 6,
+      size: {
+        average: 50,
+        big: 25,
+        huge: 10,
+      }
+    },
 
-    // cocks: {
-    //   averageSize: 50,
-    //   urethraWidth: 1,
-    // },
     // pussy: {
     //   averageSize: 20,
     //   elasticity: 12,

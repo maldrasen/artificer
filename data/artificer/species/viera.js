@@ -19,9 +19,11 @@ let viera = Species.build('viera', {
       big: 50,
       huge: 10,
     }},
+    cock:{ size:{
+      small: 10,
+      average: 30,
+      big: 60,
+    }},
 
-    // cocks: {
-    //   averageSize: 150,
-    // },
   },
 });

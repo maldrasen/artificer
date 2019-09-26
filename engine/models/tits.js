@@ -12,8 +12,6 @@ global.Tits = Database.instance().define('tits', {
   getterMethods: {
     size() {
       let range = Tits.SizeRanges[this.sizeClass]
-      console.log("Getting Range - ",this.sizeClass);
-      console.log("   min",range.min,'max',range.max)
       return (this.sizeScale/100)*(range.max-range.min) + range.min
     }
   }

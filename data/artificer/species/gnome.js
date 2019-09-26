@@ -22,10 +22,11 @@ let gnome = Species.build('gnome', {
       big: 50,
       huge: 10,
     }},
-
-    // cocks: {
-    //   averageSize: 130,
-    // },
+    cock:{ size:{
+      average: 30,
+      big: 60,
+      huge: 10,
+    }},
   },
 });
 

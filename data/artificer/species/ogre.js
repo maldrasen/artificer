@@ -25,12 +25,18 @@ let ogre = Species.build('ogre', {
       big: 60,
       huge: 20,
     }},
+    cock: {
+      urethraWidth: 3,
+      widthRatio: 1.15,
+      minimumWidth: 40, // 1.5 inch min with for ogres
+      size: {
+        average: 40,
+        big: 20,
+        huge: 10,
+      }
+    },
 
-    // cocks: {
-    //   averageSize: 380,
-    //   urethraWidth: 3,
-    //   widthRatio: 1.15,
-    // },
+
     // balls: {
     //   extraProduction: 1,
     // },

@@ -28,17 +28,21 @@ let rat = Species.build('rat', {
       count: 12,
       size: {
         zero: 10,
-        tiny: 20,
-        small: 30,
-        average: 10,
+        tiny: 30,
+        small: 10,
       },
     },
+    cock: {
+      sheath: 'fur',
+      urethraWidth: 1,
+      minimumWidth: 12,
+      size: {
+        small: 10,
+        average: 40,
+        big: 10,
+      }
+    },
 
-    // cocks: {
-    //   averageSize: 100,
-    //   urethraWidth: 1,
-    //   sheath: 'fur',
-    // },
     // balls: {
     //   extraProduction: 3,
     // },

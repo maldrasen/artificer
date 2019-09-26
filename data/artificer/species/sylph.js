@@ -22,6 +22,10 @@ let sylph = Species.build('sylph', {
       tiny: 20,
       small: 10,
     }},
+    cock:{ size:{
+      small: 20,
+      average: 20,
+    }},
 
     // cocks: {
     //   averageSize: 120,

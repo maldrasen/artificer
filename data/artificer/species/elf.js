@@ -21,10 +21,11 @@ let elf = Species.build('elf', {
       big: 15,
       huge: 5,
     }},
-
-    // cocks: {
-    //   averageSize: 150,
-    // },
+    cock:{ size:{
+      small: 10,
+      average: 50,
+      big: 30,
+    }},
   },
 });
 

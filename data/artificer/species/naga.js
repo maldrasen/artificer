@@ -33,12 +33,17 @@ let naga = Species.build('naga', {
       average: 10,
       big: 5,
     }},
+    cock: {
+      count: 2,
+      shape: 'snake',
+      size: {
+        small: 10,
+        average: 50,
+        big: 25,
+        huge: 5,
+      }
+    },
 
-    // cocks: {
-    //   count: 2,
-    //   averageSize: 250,
-    //   shape: 'snake',
-    // },
     // balls: {
     //   internal: true,
     // },

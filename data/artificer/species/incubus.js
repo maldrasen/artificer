@@ -12,7 +12,7 @@ let incubus = Species.build('incubus', {
 
   bodyOptions: {
     tailShape: 'demon',
-    
+
     // skinColors: ['red'],
     // hairColors: ['red','black','purple','white'],
     // hornShapes: ['curved-ram','forward-cow','curved-back'],
@@ -22,10 +22,13 @@ let incubus = Species.build('incubus', {
     //   averageTongueLength: 80,
     //   averageThroatWidth: 60,
     // },
-    // cocks: {
-    //   averageSize: 250,
-    //   strangeCocks: true,
-    // },
+
+    cock:{ size:{
+      average: 10,
+      big: 30,
+      huge: 50,
+    }},
+
     // balls: {
     //   extraProduction: 2,
     // },

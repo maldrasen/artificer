@@ -27,11 +27,15 @@ let selkie = Species.build('selkie', {
       zero: 40,
       tiny: 20,
     }},
+    cock: {
+      sheath: 'fur',
+      size: {
+        small: 20,
+        average: 60,
+        big: 30,
+      }
+    },
 
-    // cocks: {
-    //   averageSize: 100,
-    //   sheath: 'fur',
-    // },
     // pussy: {
     //   elasticity: 7,
     // },

@@ -25,11 +25,12 @@ let goblin = Species.build('goblin', {
       big: 60,
       huge: 20,
     }},
+    cock:{ size:{
+      average: 30,
+      big: 20,
+      huge: 10,
+    }},
 
-    // cocks: {
-    //   averageSize: 130,
-    //   widthRatio: 1.25,
-    // },
     // balls: {
     //   extraProduction: 1,
     // },

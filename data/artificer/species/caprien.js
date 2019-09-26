@@ -23,8 +23,12 @@ let caprien = Species.build('caprien', {
       average: 30,
       big: 50,
     }},
+    cock:{ size:{
+      small: 10,
+      average: 60,
+      big: 20,
+    }},
 
-    // cocks:{ sizeClasses:['average','big'] },
     // balls:{ sizeClasses:['big','huge','monster'] },
   },
 });
