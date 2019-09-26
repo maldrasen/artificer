@@ -30,7 +30,6 @@ let kobold = Species.build('kobold', {
     //   averageThroatWidth: 30,
     // },
 
-
     cock: {
       shape: 'dragon',
       sheath: 'scales',
@@ -41,10 +40,8 @@ let kobold = Species.build('kobold', {
       }
     },
 
-
     // pussy: {
     //   averageSize: 50,
-    //   urethraWidth: 1,
     //   elasticity: 8,
     //   cervixElasticity: 5,
     // },

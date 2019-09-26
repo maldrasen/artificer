@@ -34,7 +34,6 @@ let equian = Species.build('equian', {
     cock: {
       shape: 'horse',
       sheath: 'skin',
-      urethraWidth: 3,
       minimumWidth: 30,
       size: {
         average: 30,
@@ -43,9 +42,6 @@ let equian = Species.build('equian', {
       }
     },
 
-    // balls: {
-      //   extraProduction: 1,
-      // },
     // nipples: {
     //   shade: 0,
     //   shape: 'teat',
@@ -53,7 +49,6 @@ let equian = Species.build('equian', {
     // pussy: {
     //   shape: 'horse',
     //   averageSize: 80,
-    //   urethraWidth: 3,
     // },
     // anus: {
     //   shape: 'horse',

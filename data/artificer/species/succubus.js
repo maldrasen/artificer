@@ -33,9 +33,6 @@ let succubus = Species.build('succubus', {
       huge: 10,
     }},
 
-    // balls: {
-    //   extraProduction: 2,
-    // },
     // pussy: {
     //   elasticity: 8,
     //   cervixElasticity: 4,
@@ -44,7 +41,7 @@ let succubus = Species.build('succubus', {
     //   elasticity: 6,
     // },
   },
-  nameGenerator: DemonNameGenerator,
+  nameGenerator: DemonNameGenerator
 });
 
 //   flags: ['demon'],

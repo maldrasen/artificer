@@ -43,9 +43,6 @@ let rat = Species.build('rat', {
       }
     },
 
-    // balls: {
-    //   extraProduction: 3,
-    // },
     // pussy: {
     //   averageSize: 30,
     //   urethraWidth: 1,
@@ -56,7 +53,7 @@ let rat = Species.build('rat', {
     //   elasticity: 6,
     // },
   },
-  nameGenerator: RatNameGenerator,
+  nameGenerator: RatNameGenerator
 });
 
 //   flags: ['furry'],

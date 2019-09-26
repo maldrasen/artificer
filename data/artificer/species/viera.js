@@ -23,7 +23,6 @@ let viera = Species.build('viera', {
       small: 10,
       average: 30,
       big: 60,
-    }},
-
-  },
+    }}
+  }
 });

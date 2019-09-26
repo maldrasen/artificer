@@ -31,9 +31,7 @@ let goblin = Species.build('goblin', {
       huge: 10,
     }},
 
-    // balls: {
-    //   extraProduction: 1,
-    // },
+
     // pussy: {
     //   averageSize: 35,
     //   elasticity: 6,

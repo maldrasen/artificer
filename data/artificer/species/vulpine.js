@@ -39,7 +39,7 @@ let vulpine = Species.build('vulpine', {
     // pussy: {
     //   shape: 'dog',
     // },
-  },
+  }
 });
 
 //   flags: ['furry'],

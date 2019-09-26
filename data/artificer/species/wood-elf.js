@@ -30,8 +30,8 @@ let woodElf = Species.build('wood-elf', {
       small: 10,
       average: 50,
       big: 30,
-    }},
-  },
+    }}
+  }
 });
 
 //   flags: ['elf'],

@@ -2,21 +2,20 @@ const COCK_SIZES = ['small','average','big','huge','monster'];
 
 global.Cock = Database.instance().define('cock', {
   character_id:      { type:Sequelize.INTEGER },
+  placement:         { type:Sequelize.STRING, validate:{ isIn:[['normal','nipple','tongue']] }},
   count:             { type:Sequelize.INTEGER },
-  glow:              { type:Sequelize.STRING  },
+  shape:             { type:Sequelize.STRING  },
+  sheath:            { type:Sequelize.STRING  },
   sizeClass:         { type:Sequelize.STRING, validate:{ isIn:[COCK_SIZES] }},
   sizeScale:         { type:Sequelize.DOUBLE, validate:{ min:0, max:100 }},
   sizeFactor:        { type:Sequelize.DOUBLE  },
-  placement:         { type:Sequelize.STRING, validate:{ isIn:[['normal','nipple','tongue']] }},
-  shape:             { type:Sequelize.STRING  },
-  sheath:            { type:Sequelize.STRING  },
   widthRatio:        { type:Sequelize.INTEGER },
   minimumWidth:      { type:Sequelize.INTEGER },
   knotWidthRatio:    { type:Sequelize.INTEGER },
   knobHeightRatio:   { type:Sequelize.INTEGER },
   spineHeightRatio:  { type:Sequelize.INTEGER },
-  urethraElasticity: { type:Sequelize.INTEGER },
-  urethraWidth:      { type:Sequelize.INTEGER },
+  ballsSizeFactor:   { type:Sequelize.DOUBLE  },
+  internalBalls:     { type:Sequelize.BOOLEAN },
 },{
   timestamps: false,
   getterMethods: {
@@ -55,13 +54,14 @@ global.Cock = Database.instance().define('cock', {
     convertedSpineHeight() { return ConversionUtility.milliToInches(this.spineHeight); },
     convertedKnobHeight()  { return ConversionUtility.milliToInches(this.knobHeight); },
 
-    convertedUrethraWidth() { return ConversionUtility.milliToInches(this.urethraWidth); },
-    urethraArea() { return MathUtility.widthToArea(this.urethraWidth); },
+    testicleWidth()          { return this.width * this.ballsSizeFactor; },
+    scrotumWidth()           { return this.testicleWidth*3; },
+    convertedTesticleWidth() { return ConversionUtility.milliToInches(this.testicleWidth); },
+    convertedScrotumWidth()  { return ConversionUtility.milliToInches(this.scrotumWidth); },
 
     inspect() {
       return `${this.sizeClass} ${this.shape} cock [${this.sizeScale}% *${this.sizeFactor}] (${this.length}mm/${this.width}mm) (${this.convertedLength}in/${this.convertedWidth}in)`
     }
-
   }
 });
 

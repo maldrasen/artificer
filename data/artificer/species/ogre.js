@@ -37,9 +37,6 @@ let ogre = Species.build('ogre', {
     },
 
 
-    // balls: {
-    //   extraProduction: 1,
-    // },
     // pussy: {
     //   averageSize: 80,
     //   urethraWidth: 3,

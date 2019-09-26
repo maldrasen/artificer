@@ -27,17 +27,14 @@ let sylph = Species.build('sylph', {
       average: 20,
     }},
 
-    // cocks: {
-    //   averageSize: 120,
-    // },
     // pussy: {
     //   elasticity: 7,
     //   cervixElasticity: 3,
     // },
     // anus: {
     //   elasticity: 6,
-    // },
-  },
+    // }
+  }
 });
 
 //   flags: ['fae'],

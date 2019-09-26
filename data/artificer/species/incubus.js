@@ -29,9 +29,6 @@ let incubus = Species.build('incubus', {
       huge: 50,
     }},
 
-    // balls: {
-    //   extraProduction: 2,
-    // },
     // anus: {
     //   elasticity: 6,
     // },

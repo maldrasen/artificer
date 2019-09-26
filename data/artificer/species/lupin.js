@@ -31,7 +31,6 @@ let lupin = Species.build('lupin', {
     cock: {
       shape: 'dog',
       sheath: 'fur',
-      urethraWidth: 3,
       size: {
         small: 10,
         average: 40,

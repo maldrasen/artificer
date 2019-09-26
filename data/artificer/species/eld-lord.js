@@ -27,10 +27,6 @@ let elfLord = Species.build('elf-lord', {
       average: 30,
       big: 10,
     }},
-
-    // cocks: {
-    //   averageSize: 150,
-    // },
   },
 });
 

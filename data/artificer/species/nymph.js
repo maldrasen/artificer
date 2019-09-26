@@ -27,9 +27,7 @@ let nymph = Species.build('nymph', {
       average: 50,
       big: 30,
     }},
-    // balls: {
-    //   extraProduction: 1,
-    // },
+
     // pussy: {
     //   elasticity: 5,
     //   cervixElasticity: 2,

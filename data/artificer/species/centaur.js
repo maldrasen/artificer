@@ -28,7 +28,6 @@ let centaur = Species.build('centaur', {
     cock: {
       shape: 'horse',
       sheath: 'skin',
-      urethraWidth: 4,
       minimumWidth: 30,
       size: {
         small: 20,
@@ -38,13 +37,9 @@ let centaur = Species.build('centaur', {
       }
     },
 
-    // balls: {
-    //   extraProduction: 2,
-    // },
     // pussy: {
     //   sizeClasses:['huge'],
     //   shape: 'horse',
-    //   urethraWidth: 4,
     // },
     // anus: {
     //   shape: 'horse',

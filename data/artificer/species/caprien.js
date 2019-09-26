@@ -28,7 +28,5 @@ let caprien = Species.build('caprien', {
       average: 60,
       big: 20,
     }},
-
-    // balls:{ sizeClasses:['big','huge','monster'] },
-  },
+  }
 });

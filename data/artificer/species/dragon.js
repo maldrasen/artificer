@@ -39,7 +39,6 @@ let dragon = Species.build('dragon', {
     cock: {
       shape: 'dragon',
       sheath: 'scales',
-      urethraWidth: 4,
       minimumWidth: 30,
       size: {
         average: 30,
@@ -48,13 +47,9 @@ let dragon = Species.build('dragon', {
       }
     },
 
-    // balls: {
-    //   extraProduction: 1,
-    // },
     // pussy: {
     //   shape: 'snake',
     //   averageSize: 100,
-    //   urethraWidth: 4,
     // }
   },
 });

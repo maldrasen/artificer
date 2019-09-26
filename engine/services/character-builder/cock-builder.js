@@ -5,7 +5,7 @@ global.CockBuilder = (function() {
       if (character.id == null) { reject('Character must be persisted.'); }
       if (character.gender.cock == false) { return resolve(); }
 
-      let cockParams = CharacterBuilder.baseline('cock', options, character.species, {
+      let params = CharacterBuilder.baseline('cock', options, character.species, {
         character_id: character.id,
         shape: "normal",
         placement: 'normal',
@@ -17,37 +17,30 @@ global.CockBuilder = (function() {
         knotWidthRatio: null,
         knobHeightRatio: null,
         spineHeightRatio: null,
-        glow: null,
-        urethraWidth: 2,
-        urethraElasticity: 1,
         minimumWidth: 20,
+        ballsSizeFactor: 1,
+        internalBalls: false,
       });
 
-      let ballsParams = CharacterBuilder.baseline('balls', options, character.species, {
-        character_id: character.id,
-        width: null,
-        internal: false,
-        productionMultiplier: null
-      });
+      params.sizeFactor = getSizeFactor(character.species);
 
-      cockParams.sizeFactor = getSizeFactor(character.species);
-
-      if (cockParams.sizeClass == null)  { cockParams.sizeClass = Random.fromFrequencyMap(character.species.bodyOptions.cock.size); }
-      if (cockParams.sizeScale == null)  { cockParams.sizeScale = Random.upTo(100); }
-			if (cockParams.widthRatio == null) { cockParams.widthRatio = Cock.getWidthRatio(cockParams.shape); }
-
-      if (ballsParams.width == null)                { ballsParams.width = aboutCockWidth(cockParams); }
+      if (params.sizeClass == null)  { params.sizeClass = Random.fromFrequencyMap(character.species.bodyOptions.cock.size); }
+      if (params.sizeScale == null)  { params.sizeScale = Random.upTo(100); }
+			if (params.widthRatio == null) { params.widthRatio = Cock.getWidthRatio(params.shape); }
 
       // If this is supposed to be a dog cock, but the width ratio isn't set we
       // generate a random width. Should be somewhere between 1.3 and 2.
-      if (cockParams.shape == 'dog' && cockParams.knotWidthRatio == null) {
-        cockParams.knotWidthRatio = 1.3 + (Random.upTo(70)/100);
+      if (params.shape == 'dog' && params.knotWidthRatio == null) {
+        params.knotWidthRatio = 1.3 + (Random.upTo(70)/100);
       }
 
-			Promise.all([
-				Cock.create(cockParams),
-				Balls.create(ballsParams)
-			]).then(resolve);
+      // The Caprien's have huge dangling goat balls. If a ballsSizeFactor
+      // wasn't set, generate one between 1.2 and 1.8.
+      if (character.species.code == 'caprien' && options.ballsSizeFactor == null) {
+        params.ballsSizeFactor = 1.2 + (Random.upTo(60)/100);
+      }
+
+      Cock.create(params).then(resolve);
     });
   }
 
