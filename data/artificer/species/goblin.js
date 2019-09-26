@@ -13,8 +13,24 @@ let goblin = Species.build('goblin', {
     baseHeight: 900,
     heightRange: 300,
     maleHeightAdjust: 100,
-    // skinColors: ['green','gray'],
-    // hairColors: ['black','gray','light-green','green','dark-green'],
+
+    skinColors: {
+      green: 30,
+      gray:  10
+    },
+    hairColors: {
+      'black':       30,
+      'gray':        5,
+      'light-green': 20,
+      'green':       15,
+      'dark-green':  10,
+    },
+    eyeColors: {
+      amber: 20,
+      green: 40,
+      gray:  20,
+    },
+
     // mouth: {
     //   elasticity: 2,
     //   averageTongueLength: 50,
@@ -22,13 +38,13 @@ let goblin = Species.build('goblin', {
 
     tits:{ size:{
       average: 20,
-      big: 60,
-      huge: 20,
+      big:     60,
+      huge:    20,
     }},
     cock:{ size:{
       average: 30,
-      big: 20,
-      huge: 10,
+      big:     20,
+      huge:    10,
     }},
 
 

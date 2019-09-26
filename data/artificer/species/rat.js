@@ -13,11 +13,22 @@ let rat = Species.build('rat', {
     baseHeight: 660,
     heightRange: 300,
     maleHeightAdjust: 100,
+
     tailShape: 'rat',
     faceShape: 'rat',
+    skinColors: 'human',
+    furColors: {
+      black: 20,
+      brown: 50,
+      gray:  20,
+      white: 10,
+    },
+    eyeColors: {
+      black: 20,
+      red: 40,
+      pink:  20,
+    },
 
-    // furColors: ['gray','brown','black','white'],
-    // skinColors: ['human'],
     // mouth: {
     //   averageSize: 150,
     //   averageTongueLength: 50,
@@ -27,8 +38,8 @@ let rat = Species.build('rat', {
     tits: {
       count: 12,
       size: {
-        zero: 10,
-        tiny: 30,
+        zero:  10,
+        tiny:  30,
         small: 10,
       },
     },
@@ -37,9 +48,9 @@ let rat = Species.build('rat', {
       urethraWidth: 1,
       minimumWidth: 12,
       size: {
-        small: 10,
+        small:   10,
         average: 40,
-        big: 10,
+        big:     10,
       }
     },
 

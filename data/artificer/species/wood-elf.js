@@ -14,9 +14,11 @@ let woodElf = Species.build('wood-elf', {
     baseHeight: 1350,
     heightRange: 300,
     maleHeightAdjust: 100,
+
     tailShape: 'dog',
-    // skinColors: ['human'],
-    // hairColors: ['human'],
+    skinColors: 'human',
+    hairColors: 'human',
+    eyeColors: 'human',
 
     tits:{ size:{
       zero: 5,

@@ -8,26 +8,33 @@ global.BodyBuilder = (function() {
     let bodyOptions = options.body || {};
     let params = {
       height:     bodyOptions.height     || character.species.randomHeight(character.genderCode),
-      scaleColor: bodyOptions.scaleColor || character.species.randomColorFor('scale',character.genderCode),
+      eyeColor:   bodyOptions.eyeColor   || character.species.random('eye'),
+      scaleColor: bodyOptions.scaleColor || character.species.random('scale'),
       tailShape:  bodyOptions.tailShape  || character.species.bodyOptions.tailShape || null,
-      hornShape:  bodyOptions.hornShape  || character.species.randomHornShape(),
+      hornShape:  bodyOptions.hornShape  || character.species.random('horn'),
       faceShape:  character.species.getFaceShape(character.genderCode),
     }
 
-    let skinColor =  bodyOptions.skinColor || character.species.randomColorFor('skin',character.genderCode);
+    let skinColor =  bodyOptions.skinColor || character.species.random('skin',character.genderCode);
     if (skinColor) {
       params.skinShade = bodyOptions.skinShade || Random.upTo(5)+1;
       params.skinColor = skinColor;
     }
 
-    let furColor =   bodyOptions.furColor || character.species.randomColorFor('fur',character.genderCode);
+    let furColor =   bodyOptions.furColor || character.species.random('fur',character.genderCode);
     if (furColor) {
       params.furShade = bodyOptions.furShade || Random.upTo(5)+1
       params.furColor = furColor;
     }
 
-    let hairColor =  bodyOptions.hairColor || character.species.randomColorFor('hair',character.genderCode);
+    let hairColor =  bodyOptions.hairColor || character.species.random('hair',character.genderCode);
     params.hairColor = (hairColor == 'human') ? randomHumanHairColor() : hairColor;
+
+    if (params.skinColor == 'dragon') { params.skinColor = params.scaleColor; }
+    if (params.eyeColor == 'dragon') { params.eyeColor = params.scaleColor; }
+    if (params.eyeColor == 'human') { params.eyeColor = randomHumanEyeColor(); }
+
+// console.log("Params:",params)
 
     Body.create(params).then(body => {
       callback(body);
@@ -53,11 +60,15 @@ global.BodyBuilder = (function() {
     });
   }
 
-  // eyeColors: {
-  //   brown: 40,
-  //   black: 40,
-  //   red: 20,
-  // },
+  function randomHumanEyeColor() {
+    return Random.fromFrequencyMap({
+      'brown': 60,
+      'blue': 10,
+      'hazel': 5,
+      'amber': 5,
+      'green': 2,
+    });
+  }
 
   return {
     build: build,

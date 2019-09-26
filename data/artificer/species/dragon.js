@@ -13,13 +13,20 @@ let dragon = Species.build('dragon', {
     baseHeight: 2000,
     heightRange: 800,
     maleHeightAdjust: 200,
-    tailShape: 'dragon',
-    faceShape: 'dragon',
 
-    // scaleColors: ['red','gold','green','blue','purple','black','white'],
-    // skinColors: ['red','green','blue','purple','black'],
-    // hornShapes: ['curved-back'],
-    // TODO: Dragons Eye Color should complement scale color.
+    tailShape:  'dragon',
+    faceShape:  'dragon',
+    eyeColors:  'dragon',
+    skinColors: 'dragon',
+    hornShapes: 'curved-back',
+    scaleColors: {
+      black:  30,
+      blue:   5,
+      gold:   10,
+      green:  30,
+      purple: 5,
+      red:    50,
+    },
 
     // mouth: {
     //   tongueShape: 'forked',
@@ -29,12 +36,12 @@ let dragon = Species.build('dragon', {
     // },
 
     tits:{ size:{
-      zero: 30,
-      tiny: 20,
-      small: 10,
+      zero:    30,
+      tiny:    20,
+      small:   10,
       average: 10,
-      big: 30,
-      huge: 10,
+      big:     30,
+      huge:    10,
     }},
     cock: {
       shape: 'dragon',
@@ -42,8 +49,8 @@ let dragon = Species.build('dragon', {
       minimumWidth: 30,
       size: {
         average: 30,
-        big: 20,
-        huge: 10,
+        big:     20,
+        huge:    10,
       }
     },
 

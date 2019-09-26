@@ -14,10 +14,11 @@ let kobold = Species.build('kobold', {
     heightRange: 300,
     maleHeightAdjust: 100,
 
+    tailShape: 'dragon',
+    faceShape: 'dragon',
+    eyeColors: 'dragon',
     // scaleColors: ['red','gold','green','blue','purple','black','white'],
     // skinColors: ['red','green','blue','purple','black'],
-    // tailShape: 'dragon',
-    // faceShape: 'dragon',
     // hornShapes: ['curved-back'],
 
     tits: false,
@@ -36,7 +37,7 @@ let kobold = Species.build('kobold', {
       minimumWidth: 12,
       size: {
         average: 10,
-        big: 30,
+        big:     30,
       }
     },
 

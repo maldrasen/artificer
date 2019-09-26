@@ -15,6 +15,14 @@ let succubus = Species.build('succubus', {
     // skinColors: ['red'],
     // hairColors: ['red','black','purple','white'],
     // hornShapes: ['curved-ram','forward-cow','curved-back'],
+
+    eyeColors: {
+      black:  20,
+      gold:   20,
+      purple: 20,
+      red:    40,
+    },
+
     // mouth: {
     //   elasticity: 4,
     //   tongueShape: 'forked',
@@ -25,11 +33,11 @@ let succubus = Species.build('succubus', {
     tits:{ size:{
       zero: 30,
       tiny: 10,
-      big: 20,
+      big:  20,
       huge: 40,
     }},
     cock:{ size:{
-      big: 90,
+      big:  90,
       huge: 10,
     }},
 

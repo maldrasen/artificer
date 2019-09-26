@@ -14,18 +14,21 @@ let nymph = Species.build('nymph', {
     baseHeight: 1400,
     heightRange: 300,
     maleHeightAdjust: 100,
-    // skinColors: ['human'],
+
+    skinColors: 'human',
+    eyeColors: 'human',
+
     // hairColors: ['chestnut','auburn','platinum-blond','golden-blond','strawberry-blond','red','copper','light-blue','blue','purple'],
 
     tits:{ size:{
       average: 20,
-      big: 40,
-      huge: 20,
+      big:     40,
+      huge:    20,
     }},
     cock:{ size:{
-      small: 10,
+      small:   10,
       average: 50,
-      big: 30,
+      big:     30,
     }},
 
     // pussy: {

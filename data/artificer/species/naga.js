@@ -13,12 +13,20 @@ let naga = Species.build('naga', {
     baseHeight: 1600,
     heightRange: 800,
     maleHeightAdjust: 300,
+
     shape: 'half-snake',
     tailShape: 'snake',
     faceShape: 'snake',
+    scaleColors: { green:30, gray:10  },
+    skinColors:  { green:20, black:10 },
+    eyeColors: {
+      amber: 10,
+      black: 10,
+      gray:  20,
+      green: 50,
+      red:   10,
+    },
 
-    // scaleColors: ['green','gray'],
-    // skinColors: ['red','green','black'],
     // mouth: {
     //   tongueShape: 'forked',
     //   elasticity: 10,

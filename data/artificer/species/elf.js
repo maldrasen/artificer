@@ -10,21 +10,22 @@ let elf = Species.build('elf', {
   violenceRange: 30,
 
   bodyOptions: {
-    skinColors: ['human'],
-    hairColors: ['human'],
+    skinColors: 'human',
+    hairColors: 'human',
+    eyeColors: 'human',
 
     tits:{ size:{
-      zero: 5,
-      tiny: 10,
-      small: 20,
+      zero:    5,
+      tiny:    10,
+      small:   20,
       average: 35,
-      big: 15,
-      huge: 5,
+      big:     15,
+      huge:    5,
     }},
     cock:{ size:{
-      small: 10,
+      small:   10,
       average: 50,
-      big: 30,
+      big:     30,
     }},
   },
 });

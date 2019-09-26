@@ -13,9 +13,10 @@ let selkie = Species.build('selkie', {
     baseHeight: 800,
     heightRange: 250,
     maleHeightAdjust: 50,
+
     tailShape: 'seal',
     faceShape: 'seal',
-
+    eyeColors: 'black',
     // furColors: ['brown','gray'],
     // skinColors: ['human','black'],
     // mouth: {
@@ -30,9 +31,9 @@ let selkie = Species.build('selkie', {
     cock: {
       sheath: 'fur',
       size: {
-        small: 20,
+        small:   20,
         average: 60,
-        big: 30,
+        big:     30,
       }
     },
 

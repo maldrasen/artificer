@@ -15,6 +15,13 @@ let ogre = Species.build('ogre', {
     maleHeightAdjust: 200,
     // skinColors: ['green','gray'],
     // hairColors: ['black','gray','light-green','green','dark-green'],
+
+    eyeColors: {
+      amber: 20,
+      green: 40,
+      gray:  20,
+    },
+
     // mouth: {
     //   averageTongueLength: 80,
     //   averageThroatWidth: 50,

@@ -11,22 +11,23 @@ let neko = Species.build('neko', {
 
   bodyOptions: {
     tailShape: 'cat',
+    skinColors: 'human',
+    hairColors: 'human',
+    eyeColors: 'human',
     // furColors: ['brown','red'],
-    // skinColors: ['human'],
-    // hairColors: ['human'],
 
     tits:{ size:{
-      zero: 5,
-      tiny: 10,
-      small: 20,
+      zero:    5,
+      tiny:    10,
+      small:   20,
       average: 25,
-      big: 25,
-      huge: 5,
+      big:     25,
+      huge:    5,
     }},
     cock:{ size:{
-      small: 10,
+      small:   10,
       average: 50,
-      big: 30,
+      big:     30,
     }},
   },
 });

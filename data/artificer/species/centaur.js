@@ -10,30 +10,31 @@ let centaur = Species.build('centaur', {
   violenceRange: 20,
 
   bodyOptions: {
+    shape:'quadruped',
     baseHeight: 1700,
     heightRange: 800,
     maleHeightAdjust: 300,
-    shape:'quadruped',
-    tailShape: 'horse',
 
-    // furColors: ['brown','gray'],
-    // skinColors: ['human'],
-    // hairColors: ['human'],
+    tailShape: 'horse',
+    skinColors: 'human',
+    hairColors: 'human',
+    eyeColors: 'human',
+    furColors: { brown:30, gray:10 },
 
     tits:{ size:{
       average: 20,
-      big: 60,
-      huge: 10,
+      big:     60,
+      huge:    10,
     }},
     cock: {
       shape: 'horse',
       sheath: 'skin',
       minimumWidth: 30,
       size: {
-        small: 20,
+        small:   20,
         average: 40,
-        big: 20,
-        huge: 10,
+        big:     20,
+        huge:    10,
       }
     },
 

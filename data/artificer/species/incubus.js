@@ -16,6 +16,14 @@ let incubus = Species.build('incubus', {
     // skinColors: ['red'],
     // hairColors: ['red','black','purple','white'],
     // hornShapes: ['curved-ram','forward-cow','curved-back'],
+
+    eyeColors: {
+      black:  20,
+      gold:   20,
+      purple: 20,
+      red:    40,
+    },
+
     // mouth: {
     //   elasticity: 4,
     //   tongueShape: 'forked',
@@ -25,8 +33,8 @@ let incubus = Species.build('incubus', {
 
     cock:{ size:{
       average: 10,
-      big: 30,
-      huge: 50,
+      big:     30,
+      huge:    50,
     }},
 
     // anus: {

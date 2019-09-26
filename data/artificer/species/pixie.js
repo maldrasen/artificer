@@ -14,8 +14,19 @@ let pixie = Species.build('pixie', {
     baseHeight: 550,
     heightRange: 100,
     maleHeightAdjust: 10,
+
     // skinColors: ['human','blue','purple'],
     // hairColors: ['white','light-blue','blue','dark-blue','light-purple','purple','dark-purple','black'],
+    eyeColors: {
+      amber:  20,
+      blue:   30,
+      gold:   20,
+      green:  30,
+      hazel:  30,
+      pink:   5,
+      purple: 10,
+    },
+
     // mouth: {
     //   averageSize: 10,
     //   throatWidth: 5,

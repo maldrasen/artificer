@@ -10,30 +10,29 @@ let darkElf = Species.build('dark-elf', {
   violenceRange: 30,
 
   bodyOptions: {
-    skinColors: ['black'],
-    hairColors: ['white'],
-
+    skinColors: 'black',
+    hairColors: 'white',
     eyeColors: {
-      black: 40,
-      red: 10,
-      purple: 10,
-      green: 10,
-      blue: 10,
+      red:    20,
+      purple: 15,
+      green:  10,
+      blue:   10,
+      gold:   10,
     },
+
     tits:{ size:{
-      tiny: 10,
-      small: 15,
+      tiny:    10,
+      small:   15,
       average: 30,
-      big: 30,
-      huge: 5,
+      big:     30,
+      huge:    5,
     }},
     cock:{ size:{
-      small: 10,
+      small:   10,
       average: 30,
-      big: 20,
-    }},
-
-  },
+      big:     20,
+    }}
+  }
 });
 
 //   flags: ['elf'],

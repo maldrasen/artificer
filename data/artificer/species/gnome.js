@@ -14,18 +14,20 @@ let gnome = Species.build('gnome', {
     baseHeight: 1200,
     heightRange: 300,
     maleHeightAdjust: 100,
-    // skinColors: ['human'],
-    // hairColors: ['human'],
+
+    skinColors: 'human',
+    hairColors: 'human',
+    eyeColors: 'human',
 
     tits:{ size:{
       average: 30,
-      big: 50,
-      huge: 10,
+      big:     50,
+      huge:    10,
     }},
     cock:{ size:{
       average: 30,
-      big: 60,
-      huge: 10,
+      big:     60,
+      huge:    10,
     }},
   },
 });

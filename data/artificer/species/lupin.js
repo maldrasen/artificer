@@ -15,6 +15,15 @@ let lupin = Species.build('lupin', {
 
     // furColors: ['gray','brown'],
     // skinColors: ['human','red','black'],
+
+    eyeColors: {
+      brown: 50,
+      blue:  20,
+      amber: 10,
+      gold:  10,
+      hazel: 10,
+    },
+
     // mouth: {
     //   averageSize: 360,
     //   averageTongueLength: 120,

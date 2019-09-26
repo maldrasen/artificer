@@ -14,12 +14,32 @@ let equian = Species.build('equian', {
     baseHeight: 1750,
     heightRange: 600,
     maleHeightAdjust: 200,
+
     tailShape: 'horse',
     faceShape: 'horse',
+    furColors: {
+      brown: 30,
+      black: 20,
+      gray:  10,
+    },
+    skinColors: {
+      human: 30,
+      black: 10
+    },
+    hairColors: {
+      'black':       10,
+      'dark-brown':  20,
+      'brown':       40,
+      'light-brown': 30,
+    },
+    eyeColors: {
+      brown: 50,
+      blue:  20,
+      amber: 10,
+      green: 10,
+      hazel: 10,
+    },
 
-    // furColors: ['brown','gray'],
-    // skinColors: ['human','black'],
-    // hairColors: ['black','dark-brown','brown','light-brown'],
     // mouth: {
     //   averageSize: 120,
     //   averageTongueLength: 90,
@@ -28,8 +48,8 @@ let equian = Species.build('equian', {
 
     tits:{ size:{
       average: 20,
-      big: 60,
-      huge: 10,
+      big:     60,
+      huge:    10,
     }},
     cock: {
       shape: 'horse',
@@ -37,8 +57,8 @@ let equian = Species.build('equian', {
       minimumWidth: 30,
       size: {
         average: 30,
-        big: 20,
-        huge: 10,
+        big:     20,
+        huge:    10,
       }
     },
 
