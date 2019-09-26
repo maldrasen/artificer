@@ -17,8 +17,19 @@ let nymph = Species.build('nymph', {
 
     skinColors: 'human',
     eyeColors: 'human',
-
-    // hairColors: ['chestnut','auburn','platinum-blond','golden-blond','strawberry-blond','red','copper','light-blue','blue','purple'],
+    hairColors: {
+      'chestnut':         30,
+      'auburn':           20,
+      'platinum-blond':   10,
+      'golden-blond':     10,
+      'strawberry-blond': 10,
+      'red':              30,
+      'copper':           30,
+      'light-blue':       5,
+      'blue':             5,
+      'purple':           5,
+      'light-purple':     5,
+    },
 
     tits:{ size:{
       average: 20,

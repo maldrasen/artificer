@@ -17,9 +17,14 @@ let kobold = Species.build('kobold', {
     tailShape: 'dragon',
     faceShape: 'dragon',
     eyeColors: 'dragon',
-    // scaleColors: ['red','gold','green','blue','purple','black','white'],
-    // skinColors: ['red','green','blue','purple','black'],
-    // hornShapes: ['curved-back'],
+    skinColors: 'dragon',
+    hornShapes:'curved-back',
+    scaleColors: {
+      black:  30,
+      green:  30,
+      red:    60,
+      gray:   10,
+    },
 
     tits: false,
     nipples: false,

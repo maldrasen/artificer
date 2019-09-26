@@ -12,10 +12,18 @@ let succubus = Species.build('succubus', {
 
   bodyOptions: {
     tailShape: 'demon',
-    // skinColors: ['red'],
-    // hairColors: ['red','black','purple','white'],
-    // hornShapes: ['curved-ram','forward-cow','curved-back'],
-
+    skinColors: 'red',
+    hornShapes: {
+      'curved-ram':  40,
+      'forward-cow': 20,
+      'curved-back': 20,
+    },
+    hairColors: {
+      'black':  40,
+      'purple': 10,
+      'red':    50,
+      'white':  20,
+    },
     eyeColors: {
       black:  20,
       gold:   20,

@@ -13,9 +13,17 @@ let lupin = Species.build('lupin', {
     faceShape: 'dog',
     tailShape: 'dog',
 
-    // furColors: ['gray','brown'],
-    // skinColors: ['human','red','black'],
-
+    furColors: {
+      gray:  30,
+      brown: 40,
+      black: 20,
+      white: 10,
+    },
+    skinColors: {
+      human: 20,
+      red:   40,
+      black: 20 ,
+    },
     eyeColors: {
       brown: 50,
       blue:  20,

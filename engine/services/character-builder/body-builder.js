@@ -33,6 +33,7 @@ global.BodyBuilder = (function() {
     if (params.skinColor == 'dragon') { params.skinColor = params.scaleColor; }
     if (params.eyeColor == 'dragon') { params.eyeColor = params.scaleColor; }
     if (params.eyeColor == 'human') { params.eyeColor = randomHumanEyeColor(); }
+    if (params.furColor == 'matchHair') { params.furColor = params.hairColor; }
 
 // console.log("Params:",params)
 

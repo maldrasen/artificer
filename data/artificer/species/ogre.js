@@ -13,9 +13,18 @@ let ogre = Species.build('ogre', {
     baseHeight: 2000,
     heightRange: 700,
     maleHeightAdjust: 200,
-    // skinColors: ['green','gray'],
-    // hairColors: ['black','gray','light-green','green','dark-green'],
 
+    skinColors: {
+      green: 50,
+      gray:  10,
+    },
+    hairColors: {
+      'black':       30,
+      'dark-green':  10,
+      'gray':        20,
+      'green':       10,
+      'light-green': 10,
+    },
     eyeColors: {
       amber: 20,
       green: 40,

@@ -15,8 +15,14 @@ let sylph = Species.build('sylph', {
     heightRange: 300,
     maleHeightAdjust: 100,
 
-    // skinColors: ['blue'],
-    // hairColors: ['white','light-blue','blue','dark-blue','black'],
+    skinColors: 'blue',
+    hairColors: {
+      'black':      10,
+      'dark-blue':  30,
+      'blue':       20,
+      'light-blue': 40,
+      'white':      10,
+    },
     eyeColors: {
       blue:   40,
       green:  10,

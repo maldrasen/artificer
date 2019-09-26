@@ -94,10 +94,11 @@ describe.only('BodyBuilder', function() {
     });
   });
 
-  it('uses scale color value from options first', function(done) {
+  it('uses scale color value from options first, and matches eye color', function(done) {
     CharacterBuilder.build({ species:'dragon', body:{ scaleColor:'purple' }}, character => {
       character.getBody(body => {
         expect(body.scaleColor).to.equal('purple');
+        expect(body.eyeColor).to.equal('purple');
         done();
       });
     });
@@ -107,10 +108,21 @@ describe.only('BodyBuilder', function() {
     CharacterBuilder.build({ species:'naga' }, character => {
       character.getBody(body => {
         expect(body.scaleColor).to.be.oneOf(['green','gray']);
+        expect(body.scaleColor).to.equal(body.eyeColor);
         done();
       });
     });
   });
+
+  it('matchs fur and tail color', function(done) {
+    CharacterBuilder.build({ species:'neko', gender:'futa' }, character => {
+      character.getBody(body => {
+        expect(body.furColor).to.equal(body.hairColor);
+        done();
+      });
+    });
+  });
+
 
   it('uses hair color value from options first', function(done) {
     CharacterBuilder.build({ species:'elf', body:{ hairColor:'purple' }}, character => {

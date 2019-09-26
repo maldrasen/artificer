@@ -12,9 +12,15 @@ let vulpine = Species.build('vulpine', {
   bodyOptions: {
     tailShape: 'fox',
     faceShape: 'fox',
-
-    // furColors: ['gray','brown','red'],
-    // skinColors: ['human','red','black'],
+    furColors: {
+      gray: 10,
+      brown: 40,
+      red: 60,
+    },
+    skinColors: {
+      human: 30,
+      black: 10,
+    },
     eyeColors: {
       brown: 50,
       red:   20,

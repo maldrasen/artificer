@@ -19,6 +19,7 @@ let woodElf = Species.build('wood-elf', {
     skinColors: 'human',
     hairColors: 'human',
     eyeColors: 'human',
+    furColors: 'matchHair',
 
     tits:{ size:{
       zero: 5,

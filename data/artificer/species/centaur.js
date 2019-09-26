@@ -19,7 +19,7 @@ let centaur = Species.build('centaur', {
     skinColors: 'human',
     hairColors: 'human',
     eyeColors: 'human',
-    furColors: { brown:30, gray:10 },
+    furColors: { brown:30, gray:10, black:20 },
 
     tits:{ size:{
       average: 20,

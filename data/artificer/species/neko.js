@@ -14,7 +14,7 @@ let neko = Species.build('neko', {
     skinColors: 'human',
     hairColors: 'human',
     eyeColors: 'human',
-    // furColors: ['brown','red'],
+    furColors: 'matchHair',
 
     tits:{ size:{
       zero:    5,
