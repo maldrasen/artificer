@@ -13,28 +13,35 @@ let selkie = Species.build('selkie', {
     baseHeight: 800,
     heightRange: 250,
     maleHeightAdjust: 50,
-    furColors: ['brown','gray'],
-    skinColors: ['human','black'],
+
     tailShape: 'seal',
     faceShape: 'seal',
+    eyeColors: 'black',
+    furColors: {
+      brown: 50,
+      gray:  10,
+    },
+    skinColors: {
+      human: 30,
+      black: 10,
+    },
+
     mouth: {
-      averageSize: 240,
       averageTongueLength: 80,
     },
-    tits: {
-      averageSize: 0,
-    },
-    cocks: {
-      averageSize: 100,
+    tits:{ size:{
+      zero: 40,
+      tiny: 20,
+    }},
+    cock: {
       sheath: 'fur',
-    },
-    pussy: {
-      elasticity: 7,
-    },
-    anus: {
-      elasticity: 5,
-    },
-  },
+      size: {
+        small:   20,
+        average: 60,
+        big:     30,
+      }
+    }
+  }
 });
 
 //   flags: ['furry'],

@@ -42,13 +42,26 @@ global.Species = class Species extends Form {
     return height;
   }
 
+  sizeFactor() {
+    if (this.bodyOptions.shape == 'quadruped') { return 2; }
+    return (this.bodyOptions.baseHeight || 1500) / 1500
+  }
+
+
   // Caprien females look nothing like the males. The women have slighly
   // goaty features like small horns while the men are furry goat morphs.
-  randomColorFor(part, gender) {
+  random(part, gender) {
     if (this.code == 'caprien') {
       if (part == 'skin')                       { return 'human' }
       if (part == 'hair' && gender == 'female') { return 'human' }
-      if (part == 'fur'  && gender == 'male')   { return Random.from(['black','brown','gray','white']) }
+      if (part == 'fur'  && gender == 'male')   {
+        return Random.fromFrequencyMap({
+          black: 20,
+          brown: 50,
+          gray:  30,
+          white: 10
+        });
+      }
     }
 
     let colors = {
@@ -56,13 +69,14 @@ global.Species = class Species extends Form {
       fur:   this.bodyOptions.furColors,
       scale: this.bodyOptions.scaleColors,
       hair:  this.bodyOptions.hairColors,
+      eye:   this.bodyOptions.eyeColors,
+      horn:  this.bodyOptions.hornShapes
     }[part];
 
-    return (colors == null) ? null : Random.from(colors);
-  }
+    if (colors == null) { return null; }
+    if (typeof colors == 'string') { return colors; }
 
-  randomHornShape() {
-    return Random.from(this.bodyOptions.hornShapes) || null;
+    return Random.fromFrequencyMap(colors);
   }
 
   // Caprien and Dryad females have elven looking faces while the males of

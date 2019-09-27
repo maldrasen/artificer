@@ -14,31 +14,46 @@ let pixie = Species.build('pixie', {
     baseHeight: 550,
     heightRange: 100,
     maleHeightAdjust: 10,
-    skinColors: ['human','blue','purple'],
-    hairColors: ['white','light-blue','blue','dark-blue','light-purple','purple','dark-purple','black'],
+
+    skinColors: {
+      'human': 30,
+      'blue':  10,
+      'green': 10,
+    },
+    hairColors: {
+      'blond':        30,
+      'light-blue':   20,
+      'light-green':  20,
+      'light-purple': 20,
+      'white':        10,
+    },
+    eyeColors: {
+      amber:  20,
+      blue:   30,
+      gold:   20,
+      green:  30,
+      hazel:  30,
+      pink:   5,
+      purple: 10,
+    },
+
     mouth: {
-      averageSize: 10,
-      throatWidth: 5,
-      elasticity: 6,
       averageTongueLength: 10,
     },
-    tits: {
-      averageSize: 300,
-    },
-    cocks: {
-      averageSize: 50,
-      urethraWidth: 1,
-    },
-    pussy: {
-      averageSize: 20,
-      elasticity: 12,
-      cervixElasticity: 6,
-      urethraWidth: 1,
-    },
-    anus: {
-      elasticity: 10,
-    },
-  },
+    tits:{ size:{
+      zero: 30,
+      tiny: 20,
+      small: 10,
+    }},
+    cock: {
+      minimumWidth: 6,
+      size: {
+        average: 50,
+        big: 25,
+        huge: 10,
+      }
+    }
+  }
 });
 
 //   flags: ['fae'],

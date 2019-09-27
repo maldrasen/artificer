@@ -14,22 +14,34 @@ let nymph = Species.build('nymph', {
     baseHeight: 1400,
     heightRange: 300,
     maleHeightAdjust: 100,
-    skinColors: ['human'],
-    hairColors: ['chestnut','auburn','platinum-blond','golden-blond','strawberry-blond','red','copper','light-blue','blue','purple'],
-    tits: {
-      averageSize: 750,
+
+    skinColors: 'human',
+    eyeColors: 'human',
+    hairColors: {
+      'chestnut':         30,
+      'auburn':           20,
+      'platinum-blond':   10,
+      'golden-blond':     10,
+      'strawberry-blond': 10,
+      'red':              30,
+      'copper':           30,
+      'light-blue':       5,
+      'blue':             5,
+      'purple':           5,
+      'light-purple':     5,
     },
-    cocks: {
-      averageSize: 220,
-    },
-    balls: {
-      extraProduction: 1,
-    },
-    pussy: {
-      elasticity: 5,
-      cervixElasticity: 2,
-    },
-  },
+
+    tits:{ size:{
+      average: 20,
+      big:     40,
+      huge:    20,
+    }},
+    cock:{ size:{
+      small:   10,
+      average: 50,
+      big:     30,
+    }}
+  }
 });
 
 //   flags: ['fae'],

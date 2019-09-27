@@ -10,14 +10,35 @@ let elf = Species.build('elf', {
   violenceRange: 30,
 
   bodyOptions: {
-    skinColors: ['human'],
-    hairColors: ['human'],
-    tits: {
-      averageSize: 450,
-    },
-    cocks: {
-      averageSize: 150,
-    },
+    skinColors: 'human',
+    hairColors: 'human',
+    eyeColors: 'human',
+
+    tits:{ size:{
+      zero:    5,
+      tiny:    10,
+      small:   20,
+      average: 35,
+      big:     15,
+      huge:    5,
+    }},
+    cock:{ size:{
+      small:   10,
+      average: 50,
+      big:     30,
+    }},
+    pussy:{ condition:{
+      virgin: 5,
+      tight: 25,
+      average: 75,
+      loose: 15,
+    }},
+    anus:{ condition:{
+      virgin: 20,
+      tight: 60,
+      average: 30,
+      loose: 10,
+    }}
   },
 });
 

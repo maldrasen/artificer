@@ -11,35 +11,42 @@ let succubus = Species.build('succubus', {
   violenceRange: 60,
 
   bodyOptions: {
-    skinColors: ['red'],
-    hairColors: ['red','black','purple','white'],
     tailShape: 'demon',
-    hornShapes: ['curved-ram','forward-cow','curved-back'],
+    skinColors: 'red',
+    hornShapes: {
+      'curved-ram':  40,
+      'forward-cow': 20,
+      'curved-back': 20,
+    },
+    hairColors: {
+      'black':  40,
+      'purple': 10,
+      'red':    50,
+      'white':  20,
+    },
+    eyeColors: {
+      black:  20,
+      gold:   20,
+      purple: 20,
+      red:    40,
+    },
+
     mouth: {
-      elasticity: 4,
       tongueShape: 'forked',
       averageTongueLength: 80,
-      averageThroatWidth: 60,
     },
-    tits: {
-      averageSize: 750,
-    },
-    cocks: {
-      averageSize: 275,
-      strangeCocks: true,
-    },
-    balls: {
-      extraProduction: 2,
-    },
-    pussy: {
-      elasticity: 8,
-      cervixElasticity: 4,
-    },
-    anus: {
-      elasticity: 6,
-    },
+    tits:{ size:{
+      zero: 30,
+      tiny: 10,
+      big:  20,
+      huge: 40,
+    }},
+    cock:{ size:{
+      big:  90,
+      huge: 10,
+    }}
   },
-  nameGenerator: DemonNameGenerator,
+  nameGenerator: DemonNameGenerator
 });
 
 //   flags: ['demon'],

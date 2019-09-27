@@ -14,7 +14,6 @@ global.Database = (function() {
     });
 
     require(`${ROOT}/engine/models/anus`);
-    require(`${ROOT}/engine/models/balls`);
     require(`${ROOT}/engine/models/body`);
     require(`${ROOT}/engine/models/character`);
     require(`${ROOT}/engine/models/cock`);

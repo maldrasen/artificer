@@ -1,17 +1,47 @@
-const FUR_COLORS = ['brown','gray','red','purple','white','black'];
-const SCALE_COLORS = ['red','gold','green','blue','purple','black','gray','white'];
-const TAIL_SHAPES = ['rat','dog','fox','horse','seal','cow','snake','dragon','cat','demon','goat'];
-const SKIN_COLORS = ['human','red','black','green','pale-green','gray','blue','purple'];
-const HORN_SHAPES = ['deer','curved-ram','forward-cow','curved-back','wide-buffalo','dicks'];
+
+const HAIR_COLORS = [
+  'auburn',
+  'black',
+  'blond',
+  'blue',
+  'brown',
+  'chestnut',
+  'copper',
+  'dark-blond',
+  'dark-blue',
+  'dark-brown',
+  'dark-green',
+  'dark-purple',
+  'golden-blond',
+  'gray',
+  'green',
+  'light-blue',
+  'light-brown',
+  'light-green',
+  'light-purple',
+  'platinum-blond',
+  'purple',
+  'red',
+  'strawberry-blond',
+  'white',
+];
+
+const EYE_COLORS = ['amber','black','blue','brown','gold','gray','green','hazel','pink','purple','red'];
 const FACE_SHAPES = ['elf','deer','goat','dragon','horse','dog','seal','cow','snake','rat','fox'];
+
+const HORN_SHAPES = ['deer','curved-ram','forward-cow','curved-back','wide-buffalo','dicks'];
+const SCALE_COLORS = ['red','gold','green','blue','purple','black','gray','white'];
+const SKIN_COLORS = ['human','red','black','green','pale-green','gray','blue','purple','gold'];
+const TAIL_SHAPES = ['rat','dog','fox','horse','seal','cow','snake','dragon','cat','demon','goat'];
 
 global.Body = Database.instance().define('body', {
   height:     { type:Sequelize.INTEGER },
   bodyType:   { type:Sequelize.INTEGER },
-  furColor:   { type:Sequelize.STRING, validate:{ isIn:[FUR_COLORS] }},
-  furShade:   { type:Sequelize.INTEGER, validate:{ min:1, max:5 }},
-  hairColor:  { type:Sequelize.STRING  },
+  eyeColor:   { type:Sequelize.STRING, validate:{ isIn:[EYE_COLORS] }},
   scaleColor: { type:Sequelize.STRING, validate:{ isIn:[SCALE_COLORS] }},
+  hairColor:  { type:Sequelize.STRING, validate:{ isIn:[HAIR_COLORS] }},
+  furColor:   { type:Sequelize.STRING, validate:{ isIn:[HAIR_COLORS] }},
+  furShade:   { type:Sequelize.INTEGER, validate:{ min:1, max:5 }},
   skinColor:  { type:Sequelize.STRING, validate:{ isIn:[SKIN_COLORS] }},
   skinShade:  { type:Sequelize.INTEGER, validate:{ min:1, max:5 }},
   tailShape:  { type:Sequelize.STRING, validate:{ isIn:[TAIL_SHAPES] }},

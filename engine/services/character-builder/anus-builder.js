@@ -5,27 +5,25 @@ global.AnusBuilder = (function() {
       if (character.id == null) { reject('Character must be persisted.'); }
 
       let params = CharacterBuilder.baseline('anus', options, character.species, {
-        character_id: character.id,
-        shape: "normal",
-        width: null,
+        character_id:   character.id,
+        shape:          "normal",
+        conditon:       randomCondition(character.species),
+        sizeClass:      Random.fromFrequencyMap(character.species.bodyOptions.cock.size),
+        sizeScale:      Random.upTo(100),
         prolapseLength: 0,
-        elasticity: 3,
       });
 
-      if (params.width == null) {
-        params.width = getWidth(character.species);
-      }
+      params.sizeFactor = character.species.sizeFactor();
 
       Anus.create(params).then(resolve);
     });
   }
 
-  // When getting the random width for the anus, use 85% of the race's random
-  // pussy size.
-  function getWidth(species) {
-    let average = Math.round((ObjectUtility.fetch(species, 'bodyOptions', 'pussy', 'averageSize') || 40) * 0.85);
-    let width = Random.tightlyBound(average, Math.round(average/4));
-    return Math.round(width);
+  // Only a couple species have condition maps set, the default map to use is the elf map.
+  function randomCondition(species) {
+    return Random.fromFrequencyMap(
+      ObjectUtility.fetch(species, 'bodyOptions', 'anus', 'condition') ||
+      Species.lookup('elf').bodyOptions.anus.condition);
   }
 
   return { build:build }

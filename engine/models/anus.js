@@ -1,17 +1,34 @@
+const ANUS_SIZES = ['small','average','big','huge','monster'];
+const ANUS_CONDITIONS = ['virgin','tight','average','loose','gaping'];
+
 global.Anus = Database.instance().define('anus', {
   character_id:    { type:Sequelize.INTEGER },
   shape:           { type:Sequelize.STRING, validate:{ isIn:[['normal','horse','mouth']] }},
-  elasticity:      { type:Sequelize.INTEGER },
-  width:           { type:Sequelize.INTEGER },
+  conditon:        { type:Sequelize.STRING, validate:{ isIn:[ANUS_CONDITIONS] }},
+  sizeClass:       { type:Sequelize.STRING, validate:{ isIn:[ANUS_SIZES] }},
+  sizeScale:       { type:Sequelize.DOUBLE, validate:{ min:0, max:100 }},
+  sizeFactor:      { type:Sequelize.DOUBLE  },
   prolapseLength:  { type:Sequelize.INTEGER },
 },{
   timestamps: false,
   getterMethods: {
+
+    width() {
+      let range = Anus.SizeRanges[this.sizeClass]
+      return Math.round(this.sizeFactor * ((this.sizeScale/100)*(range.max-range.min) + range.min))
+    },
+
     area()                    { return MathUtility.widthToArea(this.width); },
     convertedProlapseLength() { return ConversionUtility.milliToInches(this.prolapseLength); },
     convertedWidth()          { return ConversionUtility.milliToInches(this.width); },
   }
 });
 
-// TODO: I think this had depth measurements at some point. May want to include
-//       something like that again.
+// The Anus size classes are just like the pussies, but about 20% smaller.
+Anus.SizeRanges = {
+  small:   { min:16, max:22 }, // 0.62 - 0.87 inches
+  average: { min:22, max:28 }, // 0.87 - 1.10 inches
+  big:     { min:28, max:38 }, // 1.10 - 1.50 inches
+  huge:    { min:38, max:50 }, // 1.50 - 1.97 inches
+  monster: { min:50, max:75 }, // 1.97 - 2.95 inches
+}

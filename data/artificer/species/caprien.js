@@ -11,16 +11,26 @@ let caprien = Species.build('caprien', {
 
   bodyOptions: {
     tailShape: 'goat',
-    hornShapes: ['curved-ram','curved-back'],
-    tits: {
-      averageSize: 400,
+    hornShapes: {
+      'curved-ram':  50,
+      'curved-back': 50
     },
-    cocks: {
-      averageSize: 200,
+    eyeColors: {
+      blue:  100,
+      brown: 40,
+      gold:  20,
+      red:   20,
     },
-    balls: {
-      // Bigger size as well would be good.
-      extraProduction: 2,
-    },
-  },
+
+    tits:{ size:{
+      small:   20,
+      average: 30,
+      big:     50,
+    }},
+    cock:{ size:{
+      small:   10,
+      average: 60,
+      big:     20,
+    }},
+  }
 });

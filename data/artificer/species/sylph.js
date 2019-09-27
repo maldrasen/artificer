@@ -14,22 +14,31 @@ let sylph = Species.build('sylph', {
     baseHeight: 1350,
     heightRange: 300,
     maleHeightAdjust: 100,
-    skinColors: ['blue'],
-    hairColors: ['white','light-blue','blue','dark-blue','black'],
-    tits: {
-      averageSize: 100,
+
+    skinColors: 'blue',
+    hairColors: {
+      'black':      10,
+      'dark-blue':  30,
+      'blue':       20,
+      'light-blue': 40,
+      'white':      10,
     },
-    cocks: {
-      averageSize: 120,
+    eyeColors: {
+      blue:   40,
+      green:  10,
+      purple: 20,
     },
-    pussy: {
-      elasticity: 7,
-      cervixElasticity: 3,
-    },
-    anus: {
-      elasticity: 6,
-    },
-  },
+
+    tits:{ size:{
+      zero: 30,
+      tiny: 20,
+      small: 10,
+    }},
+    cock:{ size:{
+      small: 20,
+      average: 20,
+    }}
+  }
 });
 
 //   flags: ['fae'],

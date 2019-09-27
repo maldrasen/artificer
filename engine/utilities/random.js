@@ -31,7 +31,9 @@ global.Random = {
 
     for (let i=0; i<keys.length; i++) {
       index += map[keys[i]];
-      if (random < index) { return keys[i]; }
+      if (random < index) {
+        return keys[i];
+      }
     }
 
     throw 'Invalid frequency map';
