@@ -1,5 +1,4 @@
-
-let woodElf = Species.build('wood-elf', {
+Species.build('wood-elf', {
   name: 'Wood Elf',
 
   physical: 30,

@@ -11,25 +11,6 @@ global.Species = class Species extends Form {
     return value;
   }
 
-  randomizedViolenceProclivity(gender) {
-    let base = Random.roll(this.violenceRange, this.violenceAverage);
-
-    // Unless you're a drow, men are slightly more violent and female are
-    // slightly more passive, with futa being unchanged.
-    if (this.code == 'dark-elf') {
-      if (gender == 'male')   { base -= 10; }
-      if (gender == 'female') { base += 10; }
-    } else {
-      if (gender == 'male')   { base += 10; }
-      if (gender == 'female') { base -= 10; }
-    }
-
-    if (base > 100)  { base = 100;  }
-    if (base < -100) { base = -100; }
-
-    return base;
-  }
-
   randomHeight(gender) {
     let base =   this.bodyOptions.baseHeight || 1500;
     let range =  this.bodyOptions.heightRange || 300;

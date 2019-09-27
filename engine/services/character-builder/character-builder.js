@@ -18,12 +18,7 @@ global.CharacterBuilder = (function() {
       personal:    options.personal  || species.randomizedAttribute('personal'),
       mental:      options.mental    || species.randomizedAttribute('mental'),
       magical:     options.magical   || species.randomizedAttribute('magical'),
-      violent:     options.violent   || species.randomizedViolenceProclivity(gender.code),
-      fear:        options.fear      || Random.roll(20,40),  // I can't really guess how this character came to be a
-      love:        options.love      || Random.roll(10,0),   // minion, so unless fear, love, and happiness are set,
-      happiness:   options.happiness || Random.roll(20,0),   // assume they're afraid of you and unhappy.
     };
-
 
     Character.create(params).then(character => {
       addBody(character, options, () => {
@@ -75,3 +70,26 @@ global.CharacterBuilder = (function() {
   }
 
 })();
+
+
+
+// TODO: This needs to attach an aspect instead after a character is built
+
+// randomizedViolenceProclivity(gender) {
+//   let base = Random.roll(this.violenceRange, this.violenceAverage);
+//
+//   // Unless you're a drow, men are slightly more violent and female are
+//   // slightly more passive, with futa being unchanged.
+//   if (this.code == 'dark-elf') {
+//     if (gender == 'male')   { base -= 10; }
+//     if (gender == 'female') { base += 10; }
+//   } else {
+//     if (gender == 'male')   { base += 10; }
+//     if (gender == 'female') { base -= 10; }
+//   }
+//
+//   if (base > 100)  { base = 100;  }
+//   if (base < -100) { base = -100; }
+//
+//   return base;
+// }

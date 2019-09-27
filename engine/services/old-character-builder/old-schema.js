@@ -1,11 +1,4 @@
 
-  global.CharacterAspect = Database.instance().define('character_aspect', {
-    character_id: Sequelize.INTEGER,
-    code: Sequelize.STRING,
-    strength: Sequelize.INTEGER,
-  },{
-    timestamps: false,
-  });
 
   global.Equipment = Database.instance().define('equipment', {
     equipped_by_id: Sequelize.INTEGER,

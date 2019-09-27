@@ -1,4 +1,4 @@
-let vulpine = Species.build('vulpine', {
+Species.build('vulpine', {
   name: 'Vulpine',
 
   physical: 20,

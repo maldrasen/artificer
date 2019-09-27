@@ -1,4 +1,4 @@
-let gnome = Species.build('gnome', {
+Species.build('gnome', {
   name: 'Gnome',
 
   physical: 15,

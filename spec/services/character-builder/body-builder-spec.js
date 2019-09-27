@@ -108,7 +108,6 @@ describe('BodyBuilder', function() {
     CharacterBuilder.build({ species:'naga' }, character => {
       character.getBody(body => {
         expect(body.scaleColor).to.be.oneOf(['green','gray']);
-        expect(body.scaleColor).to.equal(body.eyeColor);
         done();
       });
     });

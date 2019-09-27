@@ -1,4 +1,4 @@
-let elfLord = Species.build('elf-lord', {
+Species.build('elf-lord', {
   name: 'Elf Lord',
 
   physical: 20,

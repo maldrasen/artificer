@@ -1,4 +1,4 @@
-let viera = Species.build('viera', {
+Species.build('viera', {
   name: 'Viera',
 
   physical: 30,
