@@ -49,6 +49,12 @@ let goblin = Species.build('goblin', {
       average: 40,
       loose: 20,
       gaping: 10,
+    }},
+    anus:{ condition:{
+      tight: 40,
+      average: 30,
+      loose: 10,
+      gaping: 5,
     }}
   },
   nameGenerator: GoblinNameGenerator,

@@ -25,15 +25,12 @@ global.PussyBuilder = (function() {
     });
   }
 
-  // Only a couple species have condition maps set, the default map to use is
-  // the elf map.
+  // Only a couple species have condition maps set, the default map to use is the elf map.
   function randomCondition(species) {
-    let frequency = ObjectUtility.fetch(species, 'bodyOptions', 'pussy', 'condition') ||
-                    Species.lookup('elf').bodyOptions.pussy.condition;
-
-    return Random.fromFrequencyMap(frequency);
+    return Random.fromFrequencyMap(
+      ObjectUtility.fetch(species, 'bodyOptions', 'pussy', 'condition') ||
+      Species.lookup('elf').bodyOptions.pussy.condition);
   }
-
 
   return { build:build }
 

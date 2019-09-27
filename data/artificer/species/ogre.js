@@ -39,7 +39,6 @@ let ogre = Species.build('ogre', {
       huge: 20,
     }},
     cock: {
-      urethraWidth: 3,
       widthRatio: 1.15,
       minimumWidth: 40,
       size: {
@@ -53,6 +52,12 @@ let ogre = Species.build('ogre', {
       average: 30,
       loose: 20,
       gaping: 10,
+    }},
+    anus:{ condition:{
+      tight: 40,
+      average: 30,
+      loose: 10,
+      gaping: 5,
     }}
   },
   nameGenerator: GoblinNameGenerator,
