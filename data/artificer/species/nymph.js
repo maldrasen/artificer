@@ -40,13 +40,8 @@ let nymph = Species.build('nymph', {
       small:   10,
       average: 50,
       big:     30,
-    }},
-
-    // pussy: {
-    //   elasticity: 5,
-    //   cervixElasticity: 2,
-    // },
-  },
+    }}
+  }
 });
 
 //   flags: ['fae'],

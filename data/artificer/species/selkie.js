@@ -42,15 +42,8 @@ let selkie = Species.build('selkie', {
         average: 60,
         big:     30,
       }
-    },
-
-    // pussy: {
-    //   elasticity: 7,
-    // },
-    // anus: {
-    //   elasticity: 5,
-    // },
-  },
+    }
+  }
 });
 
 //   flags: ['furry'],

@@ -45,15 +45,7 @@ let kobold = Species.build('kobold', {
         big:     30,
       }
     },
-
-    // pussy: {
-    //   averageSize: 50,
-    //   elasticity: 8,
-    //   cervixElasticity: 5,
-    // },
-    // anus: {
-    //   elasticity: 6,
-    // },
+    pussy:{ shape:'dragon' }
   },
   nameGenerator: KoboldNameGenerator,
 });

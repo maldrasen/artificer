@@ -42,11 +42,7 @@ let incubus = Species.build('incubus', {
       average: 10,
       big:     30,
       huge:    50,
-    }},
-
-    // anus: {
-    //   elasticity: 6,
-    // },
+    }}
   },
   nameGenerator: DemonNameGenerator,
 });

@@ -46,16 +46,12 @@ let goblin = Species.build('goblin', {
       big:     20,
       huge:    10,
     }},
-
-
-    // pussy: {
-    //   averageSize: 35,
-    //   elasticity: 6,
-    //   cervixElasticity: 3,
-    // },
-    // anus: {
-    //   elasticity: 5,
-    // },
+    pussy:{ condition:{
+      tight: 20,
+      average: 40,
+      loose: 20,
+      gaping: 10,
+    }}
   },
   nameGenerator: GoblinNameGenerator,
 });

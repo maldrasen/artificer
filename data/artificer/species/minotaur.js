@@ -53,6 +53,10 @@ let minotaur = Species.build('minotaur', {
       big: 50,
       huge: 50,
     }},
+    // nipples: {
+    //   count: 4,
+    //   shape: 'teat',
+    // },
     cock: {
       shape: 'horse',
       sheath: 'skin',
@@ -64,18 +68,8 @@ let minotaur = Species.build('minotaur', {
         huge: 10,
       }
     },
-
-    // nipples: {
-    //   count: 4,
-    //   shape: 'teat',
-    // },
-    // pussy: {
-    //   shape: 'horse',
-    //   averageSize: 90,
-    // },
-    // anus: {
-    //   shape: 'horse',
-    // },
+    pussy:{ shape:'horse' },
+    anus:{  shape:'horse' }
   },
 });
 

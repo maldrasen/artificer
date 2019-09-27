@@ -56,18 +56,8 @@ let pixie = Species.build('pixie', {
         big: 25,
         huge: 10,
       }
-    },
-
-    // pussy: {
-    //   averageSize: 20,
-    //   elasticity: 12,
-    //   cervixElasticity: 6,
-    //   urethraWidth: 1,
-    // },
-    // anus: {
-    //   elasticity: 10,
-    // },
-  },
+    }
+  }
 });
 
 //   flags: ['fae'],

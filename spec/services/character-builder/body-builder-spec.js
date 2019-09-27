@@ -1,4 +1,4 @@
-describe.only('BodyBuilder', function() {
+describe('BodyBuilder', function() {
 
   it('uses the height options if present', function(done) {
     CharacterBuilder.build({ species:'rat', body:{ height:1500 }}, character => {

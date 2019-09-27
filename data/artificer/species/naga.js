@@ -52,11 +52,7 @@ let naga = Species.build('naga', {
         huge: 5,
       },
     },
-
-    // pussy: {
-    //   shape: 'snake',
-    //   averageSize: 100,
-    // }
+    pussy:{ shape:'snake' },
   },
 });
 

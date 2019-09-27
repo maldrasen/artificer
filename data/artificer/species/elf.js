@@ -27,6 +27,12 @@ let elf = Species.build('elf', {
       average: 50,
       big:     30,
     }},
+    pussy:{ condition:{
+      virgin: 5,
+      tight: 25,
+      average: 75,
+      loose: 15,
+    }}
   },
 });
 

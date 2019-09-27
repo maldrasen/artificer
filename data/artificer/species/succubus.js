@@ -47,15 +47,7 @@ let succubus = Species.build('succubus', {
     cock:{ size:{
       big:  90,
       huge: 10,
-    }},
-
-    // pussy: {
-    //   elasticity: 8,
-    //   cervixElasticity: 4,
-    // },
-    // anus: {
-    //   elasticity: 6,
-    // },
+    }}
   },
   nameGenerator: DemonNameGenerator
 });

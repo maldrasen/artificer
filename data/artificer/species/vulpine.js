@@ -50,10 +50,7 @@ let vulpine = Species.build('vulpine', {
         big:     25,
       }
     },
-
-    // pussy: {
-    //   shape: 'dog',
-    // },
+    pussy: { shape:'dog' }
   }
 });
 

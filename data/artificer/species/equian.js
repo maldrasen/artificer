@@ -51,6 +51,10 @@ let equian = Species.build('equian', {
       big:     60,
       huge:    10,
     }},
+    // nipples: {
+    //   shade: 0,
+    //   shape: 'teat',
+    // },
     cock: {
       shape: 'horse',
       sheath: 'skin',
@@ -61,18 +65,8 @@ let equian = Species.build('equian', {
         huge:    10,
       }
     },
-
-    // nipples: {
-    //   shade: 0,
-    //   shape: 'teat',
-    // },
-    // pussy: {
-    //   shape: 'horse',
-    //   averageSize: 80,
-    // },
-    // anus: {
-    //   shape: 'horse',
-    // },
+    pussy:{ shape:'horse' },
+    anus:{  shape:'horse' }
   },
 });
 

@@ -55,10 +55,7 @@ let lupin = Species.build('lupin', {
         huge: 5,
       }
     },
-
-    // pussy: {
-    //   shape: 'dog',
-    // },
+    pussy: { shape:'dog' }
   },
 });
 

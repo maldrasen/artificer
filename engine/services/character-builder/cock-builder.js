@@ -6,27 +6,26 @@ global.CockBuilder = (function() {
       if (character.gender.cock == false) { return resolve(); }
 
       let params = CharacterBuilder.baseline('cock', options, character.species, {
-        character_id: character.id,
-        shape: "normal",
-        placement: 'normal',
-        sheath: null,
-        count: 1,
-        sizeClass: null,
-        sizeScale: null,
-        widthRatio: null,
-        knotWidthRatio: null,
-        knobHeightRatio: null,
+        character_id:     character.id,
+        shape:            "normal",
+        placement:        "normal",
+        sheath:           null,
+        count:            1,
+        sizeClass:        Random.fromFrequencyMap(character.species.bodyOptions.cock.size),
+        sizeScale:        Random.upTo(100),
+        sizeFactor:       character.species.sizeFactor(),
+        widthRatio:       null,
+        knotWidthRatio:   null,
+        knobHeightRatio:  null,
         spineHeightRatio: null,
-        minimumWidth: 20,
-        ballsSizeFactor: 1,
-        internalBalls: false,
+        minimumWidth:     20,
+        ballsSizeFactor:  1,
+        internalBalls:    false,
       });
 
-      params.sizeFactor = getSizeFactor(character.species);
-
-      if (params.sizeClass == null)  { params.sizeClass = Random.fromFrequencyMap(character.species.bodyOptions.cock.size); }
-      if (params.sizeScale == null)  { params.sizeScale = Random.upTo(100); }
-			if (params.widthRatio == null) { params.widthRatio = Cock.getWidthRatio(params.shape); }
+			if (params.widthRatio == null) {
+        params.widthRatio = Cock.getWidthRatio(params.shape);
+      }
 
       // If this is supposed to be a dog cock, but the width ratio isn't set we
       // generate a random width. Should be somewhere between 1.3 and 2.
@@ -44,10 +43,6 @@ global.CockBuilder = (function() {
     });
   }
 
-  function getSizeFactor(species) {
-    if (species.bodyOptions.shape == 'quadruped') { return 2; }
-    return (species.bodyOptions.baseHeight || 1500) / 1500
-  }
 
   // Each ball width is about the width of the character's cock.... which isn't going to work now because there is no size here...
   function aboutCockWidth(cockParams) {

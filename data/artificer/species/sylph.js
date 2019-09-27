@@ -37,15 +37,7 @@ let sylph = Species.build('sylph', {
     cock:{ size:{
       small: 20,
       average: 20,
-    }},
-
-    // pussy: {
-    //   elasticity: 7,
-    //   cervixElasticity: 3,
-    // },
-    // anus: {
-    //   elasticity: 6,
-    // }
+    }}
   }
 });
 

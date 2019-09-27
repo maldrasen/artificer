@@ -53,11 +53,7 @@ let dragon = Species.build('dragon', {
         huge:    10,
       }
     },
-
-    // pussy: {
-    //   shape: 'snake',
-    //   averageSize: 100,
-    // }
+    pussy:{ shape:'dragon' }
   },
 });
 

@@ -37,14 +37,8 @@ let centaur = Species.build('centaur', {
         huge:    10,
       }
     },
-
-    // pussy: {
-    //   sizeClasses:['huge'],
-    //   shape: 'horse',
-    // },
-    // anus: {
-    //   shape: 'horse',
-    // },
+    pussy:{ shape:'horse' },
+    anus:{  shape:'horse' }
   },
 });
 

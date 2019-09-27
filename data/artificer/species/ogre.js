@@ -51,12 +51,12 @@ let ogre = Species.build('ogre', {
         huge: 10,
       }
     },
-
-
-    // pussy: {
-    //   averageSize: 80,
-    //   urethraWidth: 3,
-    // }
+    pussy:{ condition:{
+      tight: 10,
+      average: 30,
+      loose: 20,
+      gaping: 10,
+    }}
   },
   nameGenerator: GoblinNameGenerator,
 });

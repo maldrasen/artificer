@@ -52,17 +52,7 @@ let rat = Species.build('rat', {
         average: 40,
         big:     10,
       }
-    },
-
-    // pussy: {
-    //   averageSize: 30,
-    //   urethraWidth: 1,
-    //   elasticity: 6,
-    //   cervixElasticity: 3,
-    // },
-    // anus: {
-    //   elasticity: 6,
-    // },
+    }
   },
   nameGenerator: RatNameGenerator
 });
