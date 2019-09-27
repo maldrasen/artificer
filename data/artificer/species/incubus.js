@@ -31,13 +31,10 @@ let incubus = Species.build('incubus', {
       red:    40,
     },
 
-    // mouth: {
-    //   elasticity: 4,
-    //   tongueShape: 'forked',
-    //   averageTongueLength: 80,
-    //   averageThroatWidth: 60,
-    // },
-
+    mouth: {
+      tongueShape: 'forked',
+      averageTongueLength: 80,
+    },
     cock:{ size:{
       average: 10,
       big:     30,

@@ -29,11 +29,9 @@ let vulpine = Species.build('vulpine', {
       hazel: 10,
     },
 
-    // mouth: {
-    //   averageSize: 360,
-    //   averageTongueLength: 120,
-    // },
-
+    mouth: {
+      averageTongueLength: 120,
+    },
     tits: {
       count: 6,
       size: {

@@ -43,20 +43,17 @@ let minotaur = Species.build('minotaur', {
       hazel: 10,
     },
 
-    // mouth: {
-    //   averageSize: 140,
-    //   averageTongueLength: 120,
-    //   averageThroatWidth: 40,
-    // },
-
+    mouth: {
+      averageTongueLength: 120,
+    },
     tits:{ size:{
       big: 50,
       huge: 50,
     }},
-    // nipples: {
-    //   count: 4,
-    //   shape: 'teat',
-    // },
+    nipples: {
+      count: 4,
+      shape: 'teat',
+    },
     cock: {
       shape: 'horse',
       sheath: 'skin',

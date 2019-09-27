@@ -31,12 +31,9 @@ let ogre = Species.build('ogre', {
       gray:  20,
     },
 
-    // mouth: {
-    //   averageTongueLength: 80,
-    //   averageThroatWidth: 50,
-    // },
-    //
-
+    mouth: {
+      averageTongueLength: 80,
+    },
     tits:{ size:{
       big: 60,
       huge: 20,
@@ -44,7 +41,7 @@ let ogre = Species.build('ogre', {
     cock: {
       urethraWidth: 3,
       widthRatio: 1.15,
-      minimumWidth: 40, // 1.5 inch min with for ogres
+      minimumWidth: 40,
       size: {
         average: 40,
         big: 20,

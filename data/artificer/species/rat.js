@@ -29,12 +29,9 @@ let rat = Species.build('rat', {
       pink:  20,
     },
 
-    // mouth: {
-    //   averageSize: 150,
-    //   averageTongueLength: 50,
-    //   averageThroatWidth: 20,
-    // },
-
+    mouth: {
+      averageTongueLength: 50,
+    },
     tits: {
       count: 12,
       size: {

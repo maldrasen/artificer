@@ -28,14 +28,10 @@ let kobold = Species.build('kobold', {
 
     tits: false,
     nipples: false,
-
-    // mouth: {
-    //   tongueShape: 'forked',
-    //   averageTongueLength: 100,
-    //   averageSize: 150,
-    //   averageThroatWidth: 30,
-    // },
-
+    mouth: {
+      tongueShape: 'forked',
+      averageTongueLength: 100,
+    },
     cock: {
       shape: 'dragon',
       sheath: 'scales',

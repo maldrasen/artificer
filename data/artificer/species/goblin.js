@@ -31,11 +31,9 @@ let goblin = Species.build('goblin', {
       gray:  20,
     },
 
-    // mouth: {
-    //   elasticity: 2,
-    //   averageTongueLength: 50,
-    // },
-
+    mouth: {
+      averageTongueLength: 50,
+    },
     tits:{ size:{
       average: 20,
       big:     60,

@@ -28,13 +28,10 @@ let dragon = Species.build('dragon', {
       red:    50,
     },
 
-    // mouth: {
-    //   tongueShape: 'forked',
-    //   averageTongueLength: 250,
-    //   averageSize: 500,
-    //   averageThroatWidth: 300,
-    // },
-
+    mouth: {
+      tongueShape: 'forked',
+      averageTongueLength: 250,
+    },
     tits:{ size:{
       zero:    30,
       tiny:    20,

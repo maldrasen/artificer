@@ -26,11 +26,9 @@ let selkie = Species.build('selkie', {
       black: 10,
     },
 
-    // mouth: {
-    //   averageSize: 240,
-    //   averageTongueLength: 80,
-    // },
-
+    mouth: {
+      averageTongueLength: 80,
+    },
     tits:{ size:{
       zero: 40,
       tiny: 20,

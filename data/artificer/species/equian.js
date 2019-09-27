@@ -40,21 +40,18 @@ let equian = Species.build('equian', {
       hazel: 10,
     },
 
-    // mouth: {
-    //   averageSize: 120,
-    //   averageTongueLength: 90,
-    //   averageThroatWidth: 40,
-    // },
-
+    mouth: {
+      averageTongueLength: 90,
+    },
     tits:{ size:{
       average: 20,
       big:     60,
       huge:    10,
     }},
-    // nipples: {
-    //   shade: 0,
-    //   shape: 'teat',
-    // },
+    nipples: {
+      shade: 0,
+      shape: 'teat',
+    },
     cock: {
       shape: 'horse',
       sheath: 'skin',

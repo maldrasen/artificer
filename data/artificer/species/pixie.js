@@ -37,13 +37,9 @@ let pixie = Species.build('pixie', {
       purple: 10,
     },
 
-    // mouth: {
-    //   averageSize: 10,
-    //   throatWidth: 5,
-    //   elasticity: 6,
-    //   averageTongueLength: 10,
-    // },
-
+    mouth: {
+      averageTongueLength: 10,
+    },
     tits:{ size:{
       zero: 30,
       tiny: 20,

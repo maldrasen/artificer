@@ -27,14 +27,10 @@ let naga = Species.build('naga', {
       red:   10,
     },
 
-    // mouth: {
-    //   tongueShape: 'forked',
-    //   elasticity: 10,
-    //   averageTongueLength: 300,
-    //   averageSize: 600,
-    //   averageThroatWidth: 400,
-    // },
-
+    mouth: {
+      tongueShape: 'forked',
+      averageTongueLength: 300,
+    },
     tits:{ size:{
       tiny: 30,
       small: 20,
