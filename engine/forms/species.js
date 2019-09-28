@@ -1,5 +1,12 @@
 global.Species = class Species extends Form {
 
+  get isFurry()  { return this.hasFlag('furry');  }
+  get isFae()    { return this.hasFlag('fae');    }
+  get isElf()    { return this.hasFlag('elf');    }
+  get isDemon()  { return this.hasFlag('demon');  }
+  get isScalie() { return this.hasFlag('scalie'); }
+  hasFlag(flag)  { return (this.flags||[]).indexOf(flag) >= 0; }
+
   // Pick a random gender code based on a species' gender frequency map.
   randomGender() {
     return Random.fromFrequencyMap(this.genderRatio || { female:45, futa:10, male:45 });

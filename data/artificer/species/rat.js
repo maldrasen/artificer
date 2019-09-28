@@ -51,10 +51,11 @@ Species.build('rat', {
       }
     }
   },
-  nameGenerator: RatNameGenerator
+
+  nameGenerator: RatNameGenerator,
+  flags: ['furry']
 });
 
-//   flags: ['furry'],
 //   personalities: {
 //     skivering: 100,
 //   },

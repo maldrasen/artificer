@@ -30,9 +30,10 @@ Species.build('gnome', {
       huge:    10,
     }},
   },
+
+  flags: ['fae']
 });
 
-//   flags: ['fae'],
 //   personalities: {
 //     average: 50,
 //     fun: 25,

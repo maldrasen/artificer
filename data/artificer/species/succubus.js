@@ -46,10 +46,11 @@ Species.build('succubus', {
       huge: 10,
     }}
   },
-  nameGenerator: DemonNameGenerator
+
+  nameGenerator: DemonNameGenerator,
+  flags: ['demon']
 });
 
-//   flags: ['demon'],
 //   personalities: {
 //     demonic: 100,
 //   },

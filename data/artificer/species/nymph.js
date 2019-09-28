@@ -41,10 +41,11 @@ Species.build('nymph', {
       average: 50,
       big:     30,
     }}
-  }
+  },
+
+  flags: ['fae']
 });
 
-//   flags: ['fae'],
 //   aspects: ['emotional','lascivious','submissive'],
 //   personalities: {
 //     average: 50,

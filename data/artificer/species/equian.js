@@ -65,6 +65,8 @@ Species.build('equian', {
     pussy:{ shape:'horse' },
     anus:{  shape:'horse' }
   },
+
+  flags: ['furry']
 });
 
 //   flags: ['furry'],

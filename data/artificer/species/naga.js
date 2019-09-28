@@ -50,9 +50,10 @@ Species.build('naga', {
     },
     pussy:{ shape:'snake' },
   },
+
+  flags: ['furry','scalie']
 });
 
-//   flags: ['scalie'],
 //   personalities: {
 //     average: 30,
 //     vicious: 70,

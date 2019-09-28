@@ -49,10 +49,11 @@ Species.build('vulpine', {
       }
     },
     pussy: { shape:'dog' }
-  }
+  },
+
+  flags: ['furry']
 });
 
-//   flags: ['furry'],
 //   personalities: {
 //     average: 100,
 //     fun: 40,

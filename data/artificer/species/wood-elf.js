@@ -33,10 +33,11 @@ Species.build('wood-elf', {
       average: 50,
       big: 30,
     }}
-  }
+  },
+
+  flags: ['elf']
 });
 
-//   flags: ['elf'],
 //   personalities: {
 //     average: 100,
 //     fun: 20,

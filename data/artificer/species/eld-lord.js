@@ -28,10 +28,11 @@ Species.build('elf-lord', {
       average: 30,
       big:     10,
     }}
-  }
+  },
+
+  flags: ['elf']
 });
 
-//   flags: ['elf'],
 //   personalities: {
 //     aloof: 75,
 //     average: 25,

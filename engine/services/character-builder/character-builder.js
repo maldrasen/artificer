@@ -14,6 +14,9 @@ global.CharacterBuilder = (function() {
     let params = {
       speciesCode: species.code,
       genderCode:  gender.code,
+      preName:     options.preName,
+      firstName:   options.firstName,
+      lastName:    options.lastName,
       physical:    options.physical  || species.randomizedAttribute('physical'),
       personal:    options.personal  || species.randomizedAttribute('personal'),
       mental:      options.mental    || species.randomizedAttribute('mental'),

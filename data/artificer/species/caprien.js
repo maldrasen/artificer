@@ -32,5 +32,7 @@ Species.build('caprien', {
       average: 60,
       big:     20,
     }},
-  }
+  },
+
+  flags: ['furry']
 });

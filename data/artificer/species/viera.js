@@ -25,5 +25,7 @@ Species.build('viera', {
       average: 30,
       big:     60,
     }}
-  }
+  },
+
+  flags: ['elf']
 });

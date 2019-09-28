@@ -37,4 +37,5 @@ Character.prototype.getFirstName = function(possessive) {
   return (possessive) ? EnglishUtility.possessive(this.firstName) : this.firstName;
 }
 
+HasAspects.isAppliedTo(Character);
 HasBody.isAppliedTo(Character);

@@ -40,9 +40,10 @@ Species.build('centaur', {
     pussy:{ shape:'horse' },
     anus:{  shape:'horse' }
   },
+
+  flags: ['furry']
 });
 
-//   flags: ['furry'],
 //   personalities: {
 //     average: 100,
 //     motherly: 10,

@@ -5,6 +5,7 @@ global.extend = require('extend');
 global.each = require('iterate-object');
 
 // === Concerns ===
+require(`${ROOT}/engine/concerns/has-aspects`);
 require(`${ROOT}/engine/concerns/has-body`);
 
 // === Forms ===

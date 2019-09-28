@@ -52,9 +52,10 @@ Species.build('dragon', {
     },
     pussy:{ shape:'dragon' }
   },
+
+  flags: ['furry','scalie']
 });
 
-//   flags: ['scalie'],
 //   personalities: {
 //     average: 100,
 //     vicious: 30,

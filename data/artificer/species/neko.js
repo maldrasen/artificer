@@ -30,9 +30,10 @@ Species.build('neko', {
       big:     30,
     }},
   },
+
+  flags: ['elf'],
 });
 
-//   flags: ['elf'],
 //   personalities: {
 //     average: 100,
 //     fun: 100,

@@ -48,9 +48,10 @@ Species.build('dryad', {
       }
     }
   },
+
+  flags: ['fae','furry']
 });
 
-//   flags: ['fae'],
 //   personalities: {
 //     average: 50,
 //     aloof: 25,

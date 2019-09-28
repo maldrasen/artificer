@@ -57,10 +57,11 @@ Species.build('goblin', {
       gaping: 5,
     }}
   },
+
   nameGenerator: GoblinNameGenerator,
+  flags: ['goblin']
 });
 
-//   flags: ['goblin'],
 //   personalities: {
 //     insane: 100,
 //     vicious: 20,

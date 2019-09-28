@@ -40,6 +40,8 @@ Species.build('elf', {
       loose: 10,
     }}
   },
+
+  flags: ['elf']
 });
 
 //   flags: ['elf'],

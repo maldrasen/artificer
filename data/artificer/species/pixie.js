@@ -53,10 +53,11 @@ Species.build('pixie', {
         huge: 10,
       }
     }
-  }
+  },
+
+  flags: ['fae']
 });
 
-//   flags: ['fae'],
 //   personalities: {
 //     average: 25,
 //     fun: 25,
