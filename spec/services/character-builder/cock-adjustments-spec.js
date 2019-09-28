@@ -97,4 +97,13 @@ describe('Adjustments - Cock', function() {
     });
   });
 
+  it ('gives a cock tonugue', function(done) {
+    CharacterBuilder.build({ species:'elf', gender:'male', triggers:['cock-tongue'] }).then(character => {
+      character.getMouth().then(mouth => {
+        expect(mouth.tongueShape).to.equal('cock');
+        done();
+      });
+    });
+  });
+
 });

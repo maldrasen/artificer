@@ -90,3 +90,15 @@ Adjustment.build('multi-cock', {
     });
   })}
 });
+
+// TODO: I need to also make an actual cock model to go along with the tongue
+//       and set it's placement to tongue. Will implement cock tongue, nipple
+//       cunts and all that shit together at once.
+Adjustment.build('cock-tongue', {
+  apply: (character) => { return new Promise(resolve => {
+    character.getMouth().then(mouth => {
+      mouth.tongueShape = 'cock';
+      mouth.save().then(resolve);
+    })
+  })}
+});

@@ -29,6 +29,27 @@ Adjustment.build('white-hair', {
   })}
 });
 
+Adjustment.build('amber-eyes', {
+  apply: (character) => { return new Promise(resolve => {
+    character.eyeColor = 'amber';
+    character.save().then(resolve)
+  })}
+});
+
+Adjustment.build('black-eyes', {
+  apply: (character) => { return new Promise(resolve => {
+    character.eyeColor = 'black';
+    character.save().then(resolve)
+  })}
+});
+
+Adjustment.build('gray-eyes', {
+  apply: (character) => { return new Promise(resolve => {
+    character.eyeColor = 'gray';
+    character.save().then(resolve)
+  })}
+});
+
 // TODO: These Adjustments will change the bodytype once we implement that.
 
 Adjustment.build('thicc', {
