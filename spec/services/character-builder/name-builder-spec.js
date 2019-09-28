@@ -7,8 +7,11 @@ describe('NameBuilder', function() {
     for (let i=0; i<10; i++) {
       tests.push(new Promise((resolve, reject) => {
         CharacterBuilder.build(options).then(character => {
-          console.log(`      (${character.gender.male}) > ${character.name}`)
-          resolve();
+          character.getCharacterAspects().then(aspects => {
+            let aspectList = aspects.map((aspect) => { return `${aspect.code}.${aspect.level}` }).join(', ')
+            console.log(`      (${character.gender.male}) > ${character.name} > (${aspectList})`)
+            resolve();
+          });
         });
       }));
     }
@@ -18,5 +21,5 @@ describe('NameBuilder', function() {
 
   it('names rats', function(done)    { namePrinter({ species:'rat'    }, done); });
   it('names kobolds', function(done) { namePrinter({ species:'kobold' }, done); });
-  it('names goblins', function(done) { namePrinter({ species:'goblin', aspects:'violent.3' }, done); });
+  it('names goblins', function(done) { namePrinter({ species:'goblin' }, done); });
 });

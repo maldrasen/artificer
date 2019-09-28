@@ -9,9 +9,11 @@
 
   "engineFiles":[
     "adjusters/body-adjusters",
-    "adjusters/body-part-adjusters",
-    "adjusters/body-special-adjusters",
-    "adjusters/character-attribute-adjusters",
+    "adjusters/character-adjusters",
+    "adjusters/cock-adjusters",
+    "adjusters/nipples-adjusters",
+    "adjusters/pussy-adjusters",
+    "adjusters/tits-adjusters",
 
     "aspects/personality/emotional",
     "aspects/personality/fearful",

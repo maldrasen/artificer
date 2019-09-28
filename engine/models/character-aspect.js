@@ -11,7 +11,12 @@ global.CharacterAspect = Database.instance().define('character_aspect', {
       if (this.strength < 1400) { return 2; }
       return 3;
     }
-  }
+  },
+  uniqueKeys:[{
+    name:' One aspect per character',
+    singleField: false,
+    fields: ['character_id','code']
+  }]
 });
 
 // === Instance Functions ===

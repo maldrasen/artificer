@@ -36,7 +36,7 @@ global.Tits = Database.instance().define('tits', {
 Tits.SizeRanges = {
   zero:    { min:0, max:0 },
   tiny:    { min:0, max:30 },
-  small:   { min:0, max:100 },
+  small:   { min:30, max:100 },
   average: { min:50, max:300 },
   big:     { min:300, max:600 },
   huge:    { min:600, max:1000 },

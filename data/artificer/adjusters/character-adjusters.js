@@ -1,11 +1,40 @@
 
-Adjustment.build('strong',{});
-Adjustment.build('weak',{});
-Adjustment.build('smart',{});
-Adjustment.build('stupid',{});
-Adjustment.build('beautiful',{});
-Adjustment.build('ugly',{});
-Adjustment.build('magical',{});
+Adjustment.build('strong', {
+  apply: (character) => { return new Promise(resolve => {
+    console.log(character.name,'gets strong');
+  })}
+});
+Adjustment.build('weak', {
+  apply: (character) => { return new Promise(resolve => {
+    console.log(character.name,'gets weak');
+  })}
+});
+Adjustment.build('smart', {
+  apply: (character) => { return new Promise(resolve => {
+    console.log(character.name,'gets smart');
+  })}
+});
+Adjustment.build('stupid', {
+  apply: (character) => { return new Promise(resolve => {
+    console.log(character.name,'gets stupid');
+  })}
+});
+Adjustment.build('beautiful', {
+  apply: (character) => { return new Promise(resolve => {
+    console.log(character.name,'gets beautiful');
+  })}
+});
+Adjustment.build('ugly', {
+  apply: (character) => { return new Promise(resolve => {
+    console.log(character.name,'gets ugly');
+  })}
+});
+Adjustment.build('magical', {
+  apply: (character) => { return new Promise(resolve => {
+    console.log(character.name,'gets magical');
+  })}
+});
+
 
 // if (adjustment == 'strong')    { return applyPhysical(character, adjustmentsMade[character.id], 'strong');    }
 // if (adjustment == 'weak')      { return applyPhysical(character, adjustmentsMade[character.id], 'weak');      }
