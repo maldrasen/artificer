@@ -28,6 +28,7 @@ require(`${ROOT}/engine/services/character-builder/name-builder`);
 require(`${ROOT}/engine/services/character-builder/nipples-builder`);
 require(`${ROOT}/engine/services/character-builder/pussy-builder`);
 require(`${ROOT}/engine/services/character-builder/tits-builder`);
+require(`${ROOT}/engine/services/character-builder/adjusters/character-adjuster`);
 require(`${ROOT}/engine/services/character-builder/name-generators/demon-name-generator`);
 require(`${ROOT}/engine/services/character-builder/name-generators/elf-name-generator`);
 require(`${ROOT}/engine/services/character-builder/name-generators/goblin-name-generator`);

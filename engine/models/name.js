@@ -9,13 +9,24 @@ global.Name = Database.instance().define('name', {
 },{
   timestamps: false,
   getterMethods: {
-    triggers() { return JSON.parse(this.triggers_json) },
-    aspects()  { return JSON.parse(this.aspect_json)   },
-    events()   { return JSON.parse(this.events_json)   },
+    triggers() { return JSON.parse(this.triggers_json||'[]') },
+    aspects()  { return JSON.parse(this.aspects_json||'[]')   },
+    events()   { return JSON.parse(this.events_json||'[]')   },
   }
 });
 
 Name.add = function(data, options) {
+
+  each(data.aspects, (code) => {
+    Aspect.lookup(code.match(/([^.]*)\.?/)[1]);
+  })
+
+  each(data.triggers, (code) => {
+    if (CharacterAdjuster.TRIGGERS.indexOf(code) < 0) {
+      throw `Unknown Character Adjuster Trigger - ${code}`
+    }
+  });
+
   Name.create({
     name:          data.name,
     species:       options.species,

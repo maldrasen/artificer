@@ -1,12 +1,14 @@
 global.NameBuilder = (function() {
 
-  function build(character) {
+  function build(character, options) {
     return new Promise((resolve, reject) => {
       if (character.id == null) { reject('Character must be persisted.'); }
       if (character.firstName) { return resolve(); }
 
       selectNames(0, character, (character.species.nameGenerator || ElfNameGenerator), names => {
-        character.update(nameMap(names)).then(resolve);
+        character.update(nameMap(names)).then(() => {
+          resolve(allAdjustments(names));
+        });
       });
     });
   }
@@ -18,7 +20,7 @@ global.NameBuilder = (function() {
   // again. If the function fails to find a valid name after ten tries, it gives
   // up and just returns an invalid name.
   function selectNames(failureCount, character, nameGenerator, callback) {
-    nameGenerator.getNames().then(names => {
+    nameGenerator.getNames(character).then(names => {
       validate(character, names).then(valid => {
         callback(names);
       }).catch(invalid => {
@@ -89,14 +91,38 @@ global.NameBuilder = (function() {
     return false;
   }
 
-
-
   function nameMap(names) {
     let map = {};
     if (names.pre != null)   { map.preName =   names.pre.name;   }
     if (names.first != null) { map.firstName = names.first.name; }
     if (names.last != null)  { map.lastName =  names.last.name;  }
     return map;
+  }
+
+  function allAdjustments(names) {
+    let adjustments = {
+      aspects:[],
+      triggers:[],
+      events:[],
+    }
+
+    if (names.pre) {
+      each(names.pre.aspects, code =>    { adjustments.aspects.push(code);  });
+      each(names.pre.triggers, code =>   { adjustments.triggers.push(code); });
+      each(names.pre.events, code =>     { adjustments.events.push(code);   });
+    }
+    if (names.first) {
+      each(names.first.aspects, code =>  { adjustments.aspects.push(code);  });
+      each(names.first.triggers, code => { adjustments.triggers.push(code); });
+      each(names.first.events, code =>   { adjustments.events.push(code);   });
+    }
+    if (names.last) {
+      each(names.last.aspects, code =>   { adjustments.aspects.push(code);  });
+      each(names.last.triggers, code =>  { adjustments.triggers.push(code); });
+      each(names.last.events, code =>    { adjustments.events.push(code);   });
+    }
+
+    return adjustments;
   }
 
   return { build:build };

@@ -91,6 +91,9 @@
 
     "locations/courtyard",
 
+    "names/goblin-female-first-names",
+    "names/goblin-last-names",
+    "names/goblin-male-first-names",
     "names/kobold-names",
     "names/rat-names",
 
