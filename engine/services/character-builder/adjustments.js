@@ -7,9 +7,10 @@ global.Adjustments = (function() {
       let triggers = nameAdjustments.triggers.concat(options.triggers||[]);
       let aspects = nameAdjustments.aspects.concat(options.aspects||[]);
 
-      // console.log(`\n=== Adjust ${character.name} ===`)
+      resolve();
 
-      applyAspects(character,aspects).then(resolve)
+      // console.log(`\n=== Adjust ${character.name} ===`)
+      // applyAspects(character,aspects).then(resolve)
       // applyTriggers(character, triggers).
       // //   then().
       // //   then(resolve);

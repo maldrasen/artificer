@@ -1,2 +1,1 @@
-global.Aspect = class Aspect extends Form {
-}
+global.Aspect = class Aspect extends Form {}

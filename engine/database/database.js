@@ -26,9 +26,6 @@ global.Database = (function() {
     require(`${ROOT}/engine/models/pussy`);
     require(`${ROOT}/engine/models/tits`);
 
-    console.log("=========Why ==============")
-    console.log(Character.prototype)
-
     database.sync().then(callback);
   }
 

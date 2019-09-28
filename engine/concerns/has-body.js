@@ -1,28 +1,55 @@
 global.HasBody = { isAppliedTo: function(model) {
 
-  model.prototype.getBody = function(callback) {
-    Body.findByPk(this.body_id).then(body => { callback(body); });
+  model.prototype.getBody = function() {
+    return Body.findByPk(this.body_id)
   }
-  model.prototype.getAnus = function(callback) {
-    Anus.findOne({ where:{ character_id:this.id }}).then(anus => { callback(anus); });
+  model.prototype.getAnus = function() {
+    return Anus.findOne({ where:{ character_id:this.id }});
   }
-  model.prototype.getBalls = function(callback) {
-    Balls.findOne({ where:{ character_id:this.id }}).then(balls => { callback(balls); });
+  model.prototype.getBalls = function() {
+    return Balls.findOne({ where:{ character_id:this.id }});
   }
-  model.prototype.getCock = function(callback) {
-    Cock.findOne({ where:{ character_id:this.id }}).then(cock => { callback(cock); });
+  model.prototype.getCock = function() {
+    return Cock.findOne({ where:{ character_id:this.id }});
   }
-  model.prototype.getMouth = function(callback) {
-    Mouth.findOne({ where:{ character_id:this.id }}).then(mouth => { callback(mouth); });
+  model.prototype.getMouth = function() {
+    return Mouth.findOne({ where:{ character_id:this.id }});
   }
-  model.prototype.getNipples = function(callback) {
-    Nipples.findOne({ where:{ character_id:this.id }}).then(nipples => { callback(nipples); });
+  model.prototype.getNipples = function() {
+    return Nipples.findOne({ where:{ character_id:this.id }});
   }
-  model.prototype.getPussy = function(callback) {
-    Pussy.findOne({ where:{ character_id:this.id }}).then(pussy => { callback(pussy); });
+  model.prototype.getPussy = function() {
+    return Pussy.findOne({ where:{ character_id:this.id }});
   }
-  model.prototype.getTits = function(callback) {
-    Tits.findOne({ where:{ character_id:this.id }}).then(tits => { callback(tits); });
+  model.prototype.getTits = function() {
+    return Tits.findOne({ where:{ character_id:this.id }});
   }
+
+  model.prototype.getCompleteBody = function() {
+    return new Promise(resolve => {
+      Promise.all([
+        model.getBody(),
+        model.getAnus(),
+        model.getBalls(),
+        model.getCock(),
+        model.getMouth(),
+        model.getNipples(),
+        model.getPussy(),
+        model.getTits()
+      ]).then(parts => {
+        resolve({
+          body:    parts[0],
+          anus:    parts[1],
+          balls:   parts[2],
+          cock:    parts[3],
+          mouth:   parts[4],
+          nipples: parts[5],
+          pussy:   parts[6],
+          tits:    parts[7],
+        });
+      });
+    });
+  }
+
 
 }};

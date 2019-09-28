@@ -5,4 +5,4 @@ Aspect.build('anal-sensitive', {
   refutes: [
     { aspect:'anal-insensitive' }
   ]
- });
+});

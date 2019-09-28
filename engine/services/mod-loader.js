@@ -30,7 +30,7 @@ global.ModLoader = (function() {
       let clientFiles = [];
 
       each(manifest.sharedFiles||[], (file)=>{
-        console.log(`   - ${file}`);
+        // console.log(`   - ${file}`);
         require(`${ROOT}/data/${name}/${file}`);
         clientFiles.push(file);
       });
@@ -40,7 +40,7 @@ global.ModLoader = (function() {
       });
 
       each(manifest.engineFiles||[], (file)=>{
-        console.log(`   - ${file}`);
+        // console.log(`   - ${file}`);
         require(`${ROOT}/data/${name}/${file}`);
       });
 

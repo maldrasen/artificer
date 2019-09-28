@@ -10,7 +10,7 @@ describe('AnusBuilder', function() {
     }};
 
     CharacterBuilder.build(options, character => {
-      character.getAnus(anus => {
+      character.getAnus().then(anus => {
         expect(anus.shape).to.equal('horse');
         expect(anus.prolapseLength).to.equal(400);
         expect(anus.conditon).to.equal('gaping');
@@ -23,7 +23,7 @@ describe('AnusBuilder', function() {
 
   it('gets the shape from the species', function(done) {
     CharacterBuilder.build({ gender:'male', species:'equian' }, character => {
-      character.getAnus(anus => {
+      character.getAnus().then(anus => {
         expect(anus.shape).to.equal('horse');
         done();
       });
@@ -33,7 +33,7 @@ describe('AnusBuilder', function() {
   describe('Anus Widths', function() {
     function testAnalWidth(species, low, high, done) {
       CharacterBuilder.build({ gender:'male', species:species }, character => {
-        character.getAnus(anus => {
+        character.getAnus().then(anus => {
           expect(anus.width).to.be.within(low,high);
           done();
         });
