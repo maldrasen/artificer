@@ -42,9 +42,9 @@ global.CharacterBuilder = (function() {
           TitsBuilder.build(character, options),
           NameBuilder.build(character, options),
         ]).then(results => {
-          CharacterAdjuster.build(character, options, results[6]);
-        }).then(()=>{
-          callback(character);
+          Adjustments.apply(character, options, results[6]).then(()=>{
+            callback(character);
+          });
         });
       });
     });

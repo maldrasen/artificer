@@ -10,6 +10,7 @@ require(`${ROOT}/engine/concerns/has-body`);
 
 // === Forms ===
 require(`${ROOT}/engine/forms/form`);
+require(`${ROOT}/engine/forms/adjustment`);
 require(`${ROOT}/engine/forms/aspect`);
 require(`${ROOT}/engine/forms/gender`);
 require(`${ROOT}/engine/forms/location`);
@@ -19,6 +20,7 @@ require(`${ROOT}/engine/forms/species`);
 require(`${ROOT}/engine/services/composer`);
 
 // === Builders ===
+require(`${ROOT}/engine/services/character-builder/adjustments`);
 require(`${ROOT}/engine/services/character-builder/anus-builder`);
 require(`${ROOT}/engine/services/character-builder/body-builder`);
 require(`${ROOT}/engine/services/character-builder/character-builder`);
@@ -28,7 +30,6 @@ require(`${ROOT}/engine/services/character-builder/name-builder`);
 require(`${ROOT}/engine/services/character-builder/nipples-builder`);
 require(`${ROOT}/engine/services/character-builder/pussy-builder`);
 require(`${ROOT}/engine/services/character-builder/tits-builder`);
-require(`${ROOT}/engine/services/character-builder/adjusters/character-adjuster`);
 require(`${ROOT}/engine/services/character-builder/name-generators/demon-name-generator`);
 require(`${ROOT}/engine/services/character-builder/name-generators/elf-name-generator`);
 require(`${ROOT}/engine/services/character-builder/name-generators/goblin-name-generator`);

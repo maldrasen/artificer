@@ -20,15 +20,18 @@ global.HasAspects = (function() {
       checkRequirements(code, options, this, (pass) => {
         if (pass == false) { return callback(false);}
 
-        let characterAspect = new CharacterAspect({
+        let params = {
           character_id: this.id,
           code: code
-        });
+        };
 
-        if (options.strength) { characterAspect.strength = options.strength; }
-        if (options.level) { characterAspect.setLevel(options.level); }
+        if (options.strength) { params.strength = options.strength; }
+        if (options.level === 0) { params.strength = 0; }
+        if (options.level === 1) { params.strength = 400; }
+        if (options.level === 2) { params.strength = 1000; }
+        if (options.level === 3) { params.strength = 2200; }
 
-        characterAspect.save().then(callback);
+        CharacterAspect.create(params).then(callback);
       });
     });
   }

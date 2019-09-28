@@ -15,16 +15,17 @@ global.Name = Database.instance().define('name', {
   }
 });
 
+
 Name.add = function(data, options) {
 
+  // This looks complicated because the aspects can have their strength
+  // included with the aspect code. Anything after a dot needs to be stripped.
   each(data.aspects, (code) => {
     Aspect.lookup(code.match(/([^.]*)\.?/)[1]);
   })
 
   each(data.triggers, (code) => {
-    if (CharacterAdjuster.TRIGGERS.indexOf(code) < 0) {
-      throw `Unknown Character Adjuster Trigger - ${code}`
-    }
+    Adjustment.lookup(code)
   });
 
   Name.create({

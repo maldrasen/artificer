@@ -1,4 +1,4 @@
-describe('HasAspects', function() {
+describe.only('HasAspects', function() {
 
   function withJada(callback) {
     CharacterBuilder.build({ firstName:'Jada', lastName:'Fire', species:'elf', gender:'futa' }, jada => {
