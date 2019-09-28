@@ -12,7 +12,7 @@ describe('NippleBuilder', function() {
         orificeElasticity: 3,
       }};
 
-      CharacterBuilder.build(options, character => {
+      CharacterBuilder.build(options).then(character => {
         character.getNipples().then(nipples => {
           expect(nipples.count).to.equal(3);
           expect(nipples.length).to.equal(10);
@@ -27,7 +27,7 @@ describe('NippleBuilder', function() {
     });
 
     it("doesn't give nipples to Kobolds", function(done) {
-      CharacterBuilder.build({ species:'kobold', gender:'female' }, character => {
+      CharacterBuilder.build({ species:'kobold', gender:'female' }).then(character => {
         character.getNipples().then(nipples => {
           expect(nipples).to.not.exist
           done();
@@ -36,7 +36,7 @@ describe('NippleBuilder', function() {
     });
 
     it('randomizes male nipples', function(done) {
-      CharacterBuilder.build({ species:'elf', gender:'male' }, character => {
+      CharacterBuilder.build({ species:'elf', gender:'male' }).then(character => {
         character.getNipples().then(nipples => {
           expect(nipples.count).to.equal(1);
           expect(nipples.length).to.be.within(1,5);
@@ -51,7 +51,7 @@ describe('NippleBuilder', function() {
     });
 
     it('randomizes female nipples', function(done) {
-      CharacterBuilder.build({ species:'elf', gender:'female' }, character => {
+      CharacterBuilder.build({ species:'elf', gender:'female' }).then(character => {
         character.getNipples().then(nipples => {
           expect(nipples.count).to.equal(1);
           expect(nipples.length).to.be.within(1,5);
@@ -64,7 +64,7 @@ describe('NippleBuilder', function() {
     });
 
     it('builds puffy nipples', function(done) {
-      CharacterBuilder.build({ species:'elf', gender:'female', nipples:{ shape:'puffy' }}, character => {
+      CharacterBuilder.build({ species:'elf', gender:'female', nipples:{ shape:'puffy' }}).then(character => {
         character.getNipples().then(nipples => {
           expect(nipples.width).to.be.within(18,55);
           expect(nipples.length).to.equal(nipples.width);
@@ -75,7 +75,7 @@ describe('NippleBuilder', function() {
     });
 
     it('builds inverted nipples', function(done) {
-      CharacterBuilder.build({ species:'elf', gender:'female', nipples:{ shape:'inverted' }}, character => {
+      CharacterBuilder.build({ species:'elf', gender:'female', nipples:{ shape:'inverted' }}).then(character => {
         character.getNipples().then(nipples => {
           expect(nipples.width).to.be.within(18,55);
           expect(nipples.length).to.equal(1);
@@ -86,7 +86,7 @@ describe('NippleBuilder', function() {
     });
 
     it('builds star shaped nipples', function(done) {
-      CharacterBuilder.build({ species:'elf', gender:'female', nipples:{ shape:'star' }}, character => {
+      CharacterBuilder.build({ species:'elf', gender:'female', nipples:{ shape:'star' }}).then(character => {
         character.getNipples().then(nipples => {
           expect(nipples.width).to.be.within(38,105);
           expect(nipples.shape).to.equal('star');
@@ -96,7 +96,7 @@ describe('NippleBuilder', function() {
     });
 
     it('builds star heart nipples', function(done) {
-      CharacterBuilder.build({ species:'elf', gender:'female', nipples:{ shape:'heart' }}, character => {
+      CharacterBuilder.build({ species:'elf', gender:'female', nipples:{ shape:'heart' }}).then(character => {
         character.getNipples().then(nipples => {
           expect(nipples.width).to.be.within(38,105);
           expect(nipples.shape).to.equal('heart');
@@ -106,7 +106,7 @@ describe('NippleBuilder', function() {
     });
 
     it('builds teats', function(done) {
-      CharacterBuilder.build({ species:'minotaur', gender:'female' }, character => {
+      CharacterBuilder.build({ species:'minotaur', gender:'female' }).then(character => {
         character.getNipples().then(nipples => {
           expect(nipples.width).to.be.within(20,70);
           expect(nipples.length).to.be.within(40,330);

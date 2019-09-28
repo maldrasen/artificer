@@ -6,7 +6,7 @@ describe('NameBuilder', function() {
     let tests = []
     for (let i=0; i<10; i++) {
       tests.push(new Promise((resolve, reject) => {
-        CharacterBuilder.build(options, character => {
+        CharacterBuilder.build(options).then(character => {
           console.log(`      (${character.gender.male}) > ${character.name}`)
           resolve();
         });

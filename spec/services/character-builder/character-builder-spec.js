@@ -1,7 +1,7 @@
 describe('CharacterBuilder', function() {
 
   it('builds a completely random character given a species', function(done) {
-    CharacterBuilder.build({ species:'rat' }, character => {
+    CharacterBuilder.build({ species:'rat' }).then(character => {
       expect(character.species).to.exist;
       expect(character.gender).to.exist;
       expect(character.physical).to.exist;
@@ -22,7 +22,7 @@ describe('CharacterBuilder', function() {
       magical: 40,
     };
 
-    CharacterBuilder.build(options, character => {
+    CharacterBuilder.build(options).then(character => {
       expect(character.gender.code).to.equal('futa');
       expect(character.species.code).to.equal('elf-lord');
       expect(character.physical).to.equal(10);

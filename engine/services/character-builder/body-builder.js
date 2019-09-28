@@ -35,8 +35,6 @@ global.BodyBuilder = (function() {
     if (params.eyeColor == 'human') { params.eyeColor = randomHumanEyeColor(); }
     if (params.furColor == 'matchHair') { params.furColor = params.hairColor; }
 
-// console.log("Params:",params)
-
     Body.create(params).then(body => {
       callback(body);
     });

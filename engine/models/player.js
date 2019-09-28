@@ -15,25 +15,25 @@ global.Player = Database.instance().define('player', {
   }
 });
 
-Player.instance = function(callback) {
-  Player.findByPk(1).then(callback);
+Player.instance = function() {
+  return Player.findByPk(1);
 }
 
-Player.forge = function(options, callback) {
-  Player.instance(player => {
-    if (player != null) { throw "Cannot create player. The Player already exists." }
+Player.forge = function(options) {
+  return new Promise((resolve, reject) => {
+    Player.instance().then(player => {
+      if (player != null) { return reject("Cannot create player. The Player already exists."); }
 
-    Player.create({
-      id: 1,
-      title: options.title,
-      firstName: options.firstName,
-      lastName: options.lastName,
-      genderCode: options.gender,
-      speciesCode: options.species,
-    }).then(player => {
-      saveCustomGender(player, options);
-      CharacterBuilder.addBody(player, {}, body => {
-        callback();
+      Player.create({
+        id: 1,
+        title: options.title,
+        firstName: options.firstName,
+        lastName: options.lastName,
+        genderCode: options.gender,
+        speciesCode: options.species,
+      }).then(player => {
+        saveCustomGender(player, options);
+        CharacterBuilder.addBody(player, {}).then(resolve);
       });
     });
   });

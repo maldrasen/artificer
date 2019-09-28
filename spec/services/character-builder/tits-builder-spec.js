@@ -8,7 +8,7 @@ describe('TitsBuilder', function() {
       shape: 'bell',
     }};
 
-    CharacterBuilder.build(options, character => {
+    CharacterBuilder.build(options).then(character => {
       character.getTits().then(tits => {
         expect(tits.count).to.equal(3);
         expect(tits.sizeClass).to.equal('monster');
@@ -20,7 +20,7 @@ describe('TitsBuilder', function() {
   });
 
   it("doesn't give tits to Kobolds", function(done) {
-    CharacterBuilder.build({ species:'kobold', gender:'female' }, character => {
+    CharacterBuilder.build({ species:'kobold', gender:'female' }).then(character => {
       character.getTits().then(tits => {
         expect(tits).to.not.exist
         done();
@@ -29,7 +29,7 @@ describe('TitsBuilder', function() {
   });
 
   it('randomizes options otherwise', function(done) {
-    CharacterBuilder.build({ gender:'futa', species:'sylph' }, character => {
+    CharacterBuilder.build({ gender:'futa', species:'sylph' }).then(character => {
       character.getTits().then(tits => {
         expect(tits.count).to.equal(2);
         expect(tits.size).to.be.within(0,100);

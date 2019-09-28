@@ -6,8 +6,7 @@ global.Composer = (function(){
   // will need to create a document object that the client will need to turn
   // into an actual html view.
   function render() {
-    Game.instance(game => {
-
+    Game.instance().then(game => {
       // If there's no active event or anything like that:
       renderLocation(game.location)
     });

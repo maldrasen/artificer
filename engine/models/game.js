@@ -6,29 +6,32 @@ global.Game = Database.instance().define('game', {
   timestamps: false,
 });
 
-Game.instance = function(callback) {
-  Game.findByPk(1).then(callback);
+Game.instance = function() {
+  return Game.findByPk(1);
 }
 
-Game.start = function(callback) {
-  Game.instance(game => {
-    if (game != null) { throw "Cannot start a new Game. A Game currently exists." }
+Game.start = function() {
+  return new Promise((resolve, reject) => {
+    Game.instance().then(game => {
+      if (game != null) { return reject("Cannot start a new Game. A Game currently exists.") }
 
-    Game.create({
-      id: 1,
-      location: Configuration.gameStartLocation,
-      anger: 0,
-      frustration: 0
-    }).then(game => {
-      buildStartingMinions(game, () => {
-        callback(game);
+      Game.create({
+        id: 1,
+        location: Configuration.gameStartLocation,
+        anger: 0,
+        frustration: 0
+      }).then(game => {
+        buildStartingMinions(game).then(() => {
+          resolve(game);
+        });
       });
     });
+
   });
 }
 
 Game.prototype.createPlayer = function(options) {
-  Player.forge(options, player => {
+  Player.forge(options).then(player => {
     Composer.render();
   });
 }
@@ -38,31 +41,31 @@ Game.prototype.createPlayer = function(options) {
 // spec context.
 if (typeof ipcMain != 'undefined') {
   ipcMain.on('game.start', () => {
-    Game.start(game => {
+    Game.start().then(game => {
       Browser.send('render.file',{ path:Configuration.gameStartView });
     });
   });
 
   ipcMain.on('game.create-player', (event, options) => {
-    Game.instance(game => {
+    Game.instance().then(game => {
       game.createPlayer(options)
     });
   });
 }
 
-function buildStartingMinions(game, callback) {
-  let startingCharacters = [
-    { type:'minion', species:'rat', gender:'male'   },
-    { type:'minion', species:'rat', gender:'male'   },
-    { type:'minion', species:'rat', gender:'male'   },
-    { type:'minion', species:'rat', gender:'female' },
-    { type:'minion', species:'rat', gender:'female' },
-    { type:'minion', species:'rat', gender:'female' },
-  ];
+function buildStartingMinions(game) {
+  return new Promise(resolve => {
+    let startingCharacters = [
+      { type:'minion', species:'rat', gender:'male'   },
+      { type:'minion', species:'rat', gender:'male'   },
+      { type:'minion', species:'rat', gender:'male'   },
+      { type:'minion', species:'rat', gender:'female' },
+      { type:'minion', species:'rat', gender:'female' },
+      { type:'minion', species:'rat', gender:'female' },
+    ];
 
-  Promise.all(startingCharacters.map((options) => {
-    return new Promise((resolve, reject) => {
-      CharacterBuilder.build(options, resolve);
-    })
-  })).then(callback);
+    Promise.all(startingCharacters.map((options) => {
+      return CharacterBuilder.build(options);
+    })).then(resolve);
+  })
 }

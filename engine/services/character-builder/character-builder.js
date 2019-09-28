@@ -6,44 +6,46 @@ global.CharacterBuilder = (function() {
   // lastName:           { type:Sequelize.STRING },
   // A complete character function needs to set the current health to the character's max health
 
-  function build(options, callback) {
-    if (options.species == null) { throw 'Species is required' }
+  function build(options) {
+    return new Promise((resolve, reject) => {
+      if (options.species == null) { return reject('Species is required') }
 
-    let species = Species.lookup(options.species);
-    let gender = Gender[options.gender || species.randomGender()];
-    let params = {
-      speciesCode: species.code,
-      genderCode:  gender.code,
-      preName:     options.preName,
-      firstName:   options.firstName,
-      lastName:    options.lastName,
-      physical:    options.physical  || species.randomizedAttribute('physical'),
-      personal:    options.personal  || species.randomizedAttribute('personal'),
-      mental:      options.mental    || species.randomizedAttribute('mental'),
-      magical:     options.magical   || species.randomizedAttribute('magical'),
-    };
+      let species = Species.lookup(options.species);
+      let gender = Gender[options.gender || species.randomGender()];
+      let params = {
+        speciesCode: species.code,
+        genderCode:  gender.code,
+        preName:     options.preName,
+        firstName:   options.firstName,
+        lastName:    options.lastName,
+        physical:    options.physical  || species.randomizedAttribute('physical'),
+        personal:    options.personal  || species.randomizedAttribute('personal'),
+        mental:      options.mental    || species.randomizedAttribute('mental'),
+        magical:     options.magical   || species.randomizedAttribute('magical'),
+      };
 
-    Character.create(params).then(character => {
-      addBody(character, options, () => {
-        callback(character);
+      Character.create(params).then(character => {
+        addBody(character, options).then(resolve);
       });
     });
   }
 
-  function addBody(character, options, callback) {
-    BodyBuilder.build(character, options, body => {
-      character.update({ body_id:body.id }).then(() => {
-        Promise.all([
-          AnusBuilder.build(character, options),
-          CockBuilder.build(character, options),
-          MouthBuilder.build(character, options),
-          PussyBuilder.build(character, options),
-          NipplesBuilder.build(character, options),
-          TitsBuilder.build(character, options),
-          NameBuilder.build(character, options),
-        ]).then(results => {
-          Adjustments.apply(character, options, results[6]).then(()=>{
-            callback(character);
+  function addBody(character, options) {
+    return new Promise(resolve => {
+      BodyBuilder.build(character, options, body => {
+        character.update({ body_id:body.id }).then(() => {
+          Promise.all([
+            AnusBuilder.build(character, options),
+            CockBuilder.build(character, options),
+            MouthBuilder.build(character, options),
+            PussyBuilder.build(character, options),
+            NipplesBuilder.build(character, options),
+            TitsBuilder.build(character, options),
+            NameBuilder.build(character, options),
+          ]).then(results => {
+            Adjustments.apply(character, options, results[6]).then(()=>{
+              resolve(character);
+            });
           });
         });
       });
