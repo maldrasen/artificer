@@ -32,6 +32,6 @@ function growTits(tits, size) {
   tits.sizeClass = size;
   tits.sizeScale = 50;
   if (['round','dangling','bell'].indexOf(tits.shape) < 0) {
-    this.shape = Random.fromFrequencyMap({ round:50, dangling:100, bell:80 });
+    tits.shape = Random.fromFrequencyMap({ round:50, dangling:100, bell:80 });
   }
 }
