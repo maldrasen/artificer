@@ -13,9 +13,9 @@ global.Composer = (function(){
   }
 
   function renderLocation(code) {
-    Location.lookup(code).buildView(view => {
+    Location.lookup(code).buildView().then(view => {
       Browser.send('render.location',view);
-    })
+    });
   }
 
   return {
