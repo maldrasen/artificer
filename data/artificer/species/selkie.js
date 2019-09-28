@@ -1,4 +1,4 @@
-let selkie = Species.build('selkie', {
+Species.build('selkie', {
   name: 'Selkie',
 
   physical: 10,
@@ -41,10 +41,11 @@ let selkie = Species.build('selkie', {
         big:     30,
       }
     }
-  }
+  },
+
+  flags: ['furry']
 });
 
-//   flags: ['furry'],
 //   personalities: {
 //     average: 100,
 //     fun: 30,

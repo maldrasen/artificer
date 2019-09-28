@@ -1,4 +1,4 @@
-let minotaur = Species.build('minotaur', {
+Species.build('minotaur', {
   name: 'Minotaur',
 
   physical: 50,
@@ -68,9 +68,10 @@ let minotaur = Species.build('minotaur', {
     pussy:{ shape:'horse' },
     anus:{  shape:'horse' }
   },
+
+  flags: ['furry']
 });
 
-//   flags: ['furry'],
 //   personalities: {
 //     average: 100,
 //     motherly: 10,

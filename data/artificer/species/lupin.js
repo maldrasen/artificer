@@ -1,4 +1,4 @@
-let lupin = Species.build('lupin', {
+Species.build('lupin', {
   name: 'Lupin',
 
   physical: 30,
@@ -55,9 +55,10 @@ let lupin = Species.build('lupin', {
     },
     pussy: { shape:'dog' }
   },
+
+  flags: ['furry']
 });
 
-//   flags: ['furry'],
 //   personalities: {
 //     average: 100,
 //     fun: 30,

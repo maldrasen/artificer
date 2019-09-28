@@ -16,6 +16,7 @@ global.Database = (function() {
     require(`${ROOT}/engine/models/anus`);
     require(`${ROOT}/engine/models/body`);
     require(`${ROOT}/engine/models/character`);
+    require(`${ROOT}/engine/models/character-aspect`);
     require(`${ROOT}/engine/models/cock`);
     require(`${ROOT}/engine/models/name`);
     require(`${ROOT}/engine/models/nipples`);
@@ -24,6 +25,9 @@ global.Database = (function() {
     require(`${ROOT}/engine/models/mouth`);
     require(`${ROOT}/engine/models/pussy`);
     require(`${ROOT}/engine/models/tits`);
+
+    console.log("=========Why ==============")
+    console.log(Character.prototype)
 
     database.sync().then(callback);
   }

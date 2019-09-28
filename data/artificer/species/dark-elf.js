@@ -1,4 +1,4 @@
-let darkElf = Species.build('dark-elf', {
+Species.build('dark-elf', {
   name: 'Dark Elf',
 
   physical: 30,
@@ -32,10 +32,11 @@ let darkElf = Species.build('dark-elf', {
       average: 30,
       big:     20,
     }}
-  }
+  },
+
+  flags: ['elf'],
 });
 
-//   flags: ['elf'],
 //   personalities: {
 //     average: 100,
 //     slut: 10,

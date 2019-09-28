@@ -1,4 +1,4 @@
-let neko = Species.build('neko', {
+Species.build('neko', {
   name: 'Neko',
 
   physical: 10,
@@ -30,9 +30,10 @@ let neko = Species.build('neko', {
       big:     30,
     }},
   },
+
+  flags: ['elf'],
 });
 
-//   flags: ['elf'],
 //   personalities: {
 //     average: 100,
 //     fun: 100,

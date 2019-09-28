@@ -1,4 +1,4 @@
-let goblin = Species.build('goblin', {
+Species.build('goblin', {
   name: 'Goblin',
 
   physical: 20,
@@ -57,10 +57,11 @@ let goblin = Species.build('goblin', {
       gaping: 5,
     }}
   },
+
   nameGenerator: GoblinNameGenerator,
+  flags: ['goblin']
 });
 
-//   flags: ['goblin'],
 //   personalities: {
 //     insane: 100,
 //     vicious: 20,

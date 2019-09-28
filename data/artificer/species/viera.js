@@ -1,4 +1,4 @@
-let viera = Species.build('viera', {
+Species.build('viera', {
   name: 'Viera',
 
   physical: 30,
@@ -25,5 +25,7 @@ let viera = Species.build('viera', {
       average: 30,
       big:     60,
     }}
-  }
+  },
+
+  flags: ['elf']
 });

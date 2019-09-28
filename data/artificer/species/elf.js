@@ -1,4 +1,4 @@
-let elf = Species.build('elf', {
+Species.build('elf', {
   name: 'Elf',
 
   physical: 20,
@@ -40,6 +40,8 @@ let elf = Species.build('elf', {
       loose: 10,
     }}
   },
+
+  flags: ['elf']
 });
 
 //   flags: ['elf'],

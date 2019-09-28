@@ -1,4 +1,4 @@
-let nymph = Species.build('nymph', {
+Species.build('nymph', {
   name: 'Nymph',
 
   physical: 10,
@@ -41,10 +41,11 @@ let nymph = Species.build('nymph', {
       average: 50,
       big:     30,
     }}
-  }
+  },
+
+  flags: ['fae']
 });
 
-//   flags: ['fae'],
 //   aspects: ['emotional','lascivious','submissive'],
 //   personalities: {
 //     average: 50,

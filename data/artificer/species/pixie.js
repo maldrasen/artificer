@@ -1,4 +1,4 @@
-let pixie = Species.build('pixie', {
+Species.build('pixie', {
   name: 'Pixie',
 
   physical: 0,
@@ -53,10 +53,11 @@ let pixie = Species.build('pixie', {
         huge: 10,
       }
     }
-  }
+  },
+
+  flags: ['fae']
 });
 
-//   flags: ['fae'],
 //   personalities: {
 //     average: 25,
 //     fun: 25,

@@ -1,4 +1,4 @@
-let ogre = Species.build('ogre', {
+Species.build('ogre', {
   name: 'Ogre',
 
   physical: 70,
@@ -60,10 +60,11 @@ let ogre = Species.build('ogre', {
       gaping: 5,
     }}
   },
+
   nameGenerator: GoblinNameGenerator,
+  flags: ['goblin']
 });
 
-//   flags: ['goblin'],
 //   personalities: {
 //     brutish: 100,
 //     average: 10,

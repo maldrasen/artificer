@@ -1,4 +1,4 @@
-let gnome = Species.build('gnome', {
+Species.build('gnome', {
   name: 'Gnome',
 
   physical: 15,
@@ -30,9 +30,10 @@ let gnome = Species.build('gnome', {
       huge:    10,
     }},
   },
+
+  flags: ['fae']
 });
 
-//   flags: ['fae'],
 //   personalities: {
 //     average: 50,
 //     fun: 25,

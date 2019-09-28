@@ -3,6 +3,7 @@ global.NameBuilder = (function() {
   function build(character) {
     return new Promise((resolve, reject) => {
       if (character.id == null) { reject('Character must be persisted.'); }
+      if (character.firstName) { return resolve(); }
 
       selectNames(0, character, (character.species.nameGenerator || ElfNameGenerator), names => {
         character.update(nameMap(names)).then(resolve);

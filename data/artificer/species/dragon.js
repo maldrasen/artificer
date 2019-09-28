@@ -1,4 +1,4 @@
-let dragon = Species.build('dragon', {
+Species.build('dragon', {
   name: 'Dragon',
 
   physical: 40,
@@ -52,9 +52,10 @@ let dragon = Species.build('dragon', {
     },
     pussy:{ shape:'dragon' }
   },
+
+  flags: ['furry','scalie']
 });
 
-//   flags: ['scalie'],
 //   personalities: {
 //     average: 100,
 //     vicious: 30,

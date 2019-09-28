@@ -1,4 +1,4 @@
-let kobold = Species.build('kobold', {
+Species.build('kobold', {
   name: 'Kobold',
 
   physical: 15,
@@ -43,5 +43,7 @@ let kobold = Species.build('kobold', {
     },
     pussy:{ shape:'dragon' }
   },
+
   nameGenerator: KoboldNameGenerator,
+  flags: ['furry','scalie']
 });

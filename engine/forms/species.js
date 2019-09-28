@@ -1,5 +1,12 @@
 global.Species = class Species extends Form {
 
+  get isFurry()  { return this.hasFlag('furry');  }
+  get isFae()    { return this.hasFlag('fae');    }
+  get isElf()    { return this.hasFlag('elf');    }
+  get isDemon()  { return this.hasFlag('demon');  }
+  get isScalie() { return this.hasFlag('scalie'); }
+  hasFlag(flag)  { return (this.flags||[]).indexOf(flag) >= 0; }
+
   // Pick a random gender code based on a species' gender frequency map.
   randomGender() {
     return Random.fromFrequencyMap(this.genderRatio || { female:45, futa:10, male:45 });
@@ -9,25 +16,6 @@ global.Species = class Species extends Form {
     let value = this[attribute] + Random.upTo(18) - 9;
     if (value<0) { value=0; }
     return value;
-  }
-
-  randomizedViolenceProclivity(gender) {
-    let base = Random.roll(this.violenceRange, this.violenceAverage);
-
-    // Unless you're a drow, men are slightly more violent and female are
-    // slightly more passive, with futa being unchanged.
-    if (this.code == 'dark-elf') {
-      if (gender == 'male')   { base -= 10; }
-      if (gender == 'female') { base += 10; }
-    } else {
-      if (gender == 'male')   { base += 10; }
-      if (gender == 'female') { base -= 10; }
-    }
-
-    if (base > 100)  { base = 100;  }
-    if (base < -100) { base = -100; }
-
-    return base;
   }
 
   randomHeight(gender) {

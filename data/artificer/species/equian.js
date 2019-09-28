@@ -1,4 +1,4 @@
-let equian = Species.build('equian', {
+Species.build('equian', {
   name: 'Equian',
 
   physical: 30,
@@ -65,6 +65,8 @@ let equian = Species.build('equian', {
     pussy:{ shape:'horse' },
     anus:{  shape:'horse' }
   },
+
+  flags: ['furry']
 });
 
 //   flags: ['furry'],

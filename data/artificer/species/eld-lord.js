@@ -1,4 +1,4 @@
-let elfLord = Species.build('elf-lord', {
+Species.build('elf-lord', {
   name: 'Elf Lord',
 
   physical: 20,
@@ -28,10 +28,11 @@ let elfLord = Species.build('elf-lord', {
       average: 30,
       big:     10,
     }}
-  }
+  },
+
+  flags: ['elf']
 });
 
-//   flags: ['elf'],
 //   personalities: {
 //     aloof: 75,
 //     average: 25,

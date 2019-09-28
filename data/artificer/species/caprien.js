@@ -1,4 +1,4 @@
-let caprien = Species.build('caprien', {
+Species.build('caprien', {
   name: 'Caprien',
 
   physical: 20,
@@ -32,5 +32,7 @@ let caprien = Species.build('caprien', {
       average: 60,
       big:     20,
     }},
-  }
+  },
+
+  flags: ['furry']
 });

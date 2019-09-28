@@ -1,4 +1,4 @@
-let succubus = Species.build('succubus', {
+Species.build('succubus', {
   name: 'Succubus',
 
   physical: 10,
@@ -46,10 +46,11 @@ let succubus = Species.build('succubus', {
       huge: 10,
     }}
   },
-  nameGenerator: DemonNameGenerator
+
+  nameGenerator: DemonNameGenerator,
+  flags: ['demon']
 });
 
-//   flags: ['demon'],
 //   personalities: {
 //     demonic: 100,
 //   },

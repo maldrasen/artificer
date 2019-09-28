@@ -1,4 +1,4 @@
-let naga = Species.build('naga', {
+Species.build('naga', {
   name: 'Naga',
 
   physical: 20,
@@ -50,9 +50,10 @@ let naga = Species.build('naga', {
     },
     pussy:{ shape:'snake' },
   },
+
+  flags: ['furry','scalie']
 });
 
-//   flags: ['scalie'],
 //   personalities: {
 //     average: 30,
 //     vicious: 70,

@@ -5,10 +5,12 @@ global.extend = require('extend');
 global.each = require('iterate-object');
 
 // === Concerns ===
+require(`${ROOT}/engine/concerns/has-aspects`);
 require(`${ROOT}/engine/concerns/has-body`);
 
 // === Forms ===
 require(`${ROOT}/engine/forms/form`);
+require(`${ROOT}/engine/forms/aspect`);
 require(`${ROOT}/engine/forms/gender`);
 require(`${ROOT}/engine/forms/location`);
 require(`${ROOT}/engine/forms/species`);
