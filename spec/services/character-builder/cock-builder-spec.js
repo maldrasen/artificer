@@ -10,7 +10,7 @@ describe('CockBuilder', function() {
   });
 
   it('uses the all the options if present', function(done) {
-    let options = { gender:'male', species:'dragon', cock:{
+    let options = { firstName:'X', gender:'male', species:'dragon', cock:{
       shape: 'horse',
       sheath: 'fur',
       count: 2,
@@ -43,7 +43,7 @@ describe('CockBuilder', function() {
   });
 
   it("builds a cock of average length for that character's species (elf)", function(done) {
-    CharacterBuilder.build({ gender:'male', species:'elf' }).then(character => {
+    CharacterBuilder.build({ firstName:'X', gender:'male', species:'elf' }).then(character => {
       character.getCock().then(cock => {
         expect(cock.internalBalls).to.equal(false);
         expect(cock.convertedLength).to.be.within(5,12);
@@ -55,7 +55,7 @@ describe('CockBuilder', function() {
   });
 
   it("builds a cock of average length for that character's species (centaur)", function(done) {
-    CharacterBuilder.build({ gender:'futa', species:'centaur' }).then(character => {
+    CharacterBuilder.build({ firstName:'X', gender:'futa', species:'centaur' }).then(character => {
       character.getCock().then(cock => {
         expect(cock.convertedLength).to.be.within(10,32);
         expect(cock.convertedWidth).to.be.within(1.5,4.5);
@@ -66,7 +66,7 @@ describe('CockBuilder', function() {
   });
 
   it("builds a cock of average length for that character's species (rat)", function(done) {
-    CharacterBuilder.build({ gender:'male', species:'rat' }).then(character => {
+    CharacterBuilder.build({ firstName:'X', gender:'male', species:'rat' }).then(character => {
       character.getCock().then(cock => {
         expect(cock.convertedLength).to.be.within(2,7);
         expect(cock.convertedWidth).to.be.within(0.5,1);
@@ -77,7 +77,7 @@ describe('CockBuilder', function() {
   });
 
   it("sets a random knot width ratio if it's missing on a dog cock", function(done) {
-    CharacterBuilder.build({ gender:'futa', species:'lupin' }).then(character => {
+    CharacterBuilder.build({ firstName:'X', gender:'futa', species:'lupin' }).then(character => {
       character.getCock().then(cock => {
         expect(cock.convertedLength).to.be.within(5,16);
         expect(cock.convertedWidth).to.be.within(1,3.5);
@@ -90,7 +90,7 @@ describe('CockBuilder', function() {
   });
 
   it("sets a random knot width ratio if it's missing on a dog cock", function(done) {
-    CharacterBuilder.build({ gender:'male', species:'caprien' }).then(character => {
+    CharacterBuilder.build({ firstName:'X', gender:'male', species:'caprien' }).then(character => {
       character.getCock().then(cock => {
         expect(cock.convertedLength).to.be.within(5,14);
         expect(cock.convertedWidth).to.be.within(0.75,1.75);
@@ -102,7 +102,7 @@ describe('CockBuilder', function() {
   });
 
   it('gives naga internal balls and two cocks', function(done) {
-    CharacterBuilder.build({ gender:'futa', species:'naga' }).then(character => {
+    CharacterBuilder.build({ firstName:'X', gender:'futa', species:'naga' }).then(character => {
       character.getCock().then(cock => {
         expect(cock.count).to.equal(2);
         expect(cock.internalBalls).to.equal(true);

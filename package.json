@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "spec": "mocha spec/**/*-spec.js -c --recursive --timeout 1000",
+    "spec": "mocha spec/**/*-spec.js -c --recursive --timeout 2000",
     "spec-cov": "nyc --reporter=html mocha spec/**/*-spec.js -c --recursive --timeout 1000"
   },
   "repository": "https://github.com/maldrasen/artificer",

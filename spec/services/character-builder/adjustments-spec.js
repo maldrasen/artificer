@@ -30,9 +30,9 @@ describe("Adjustments", function() {
   });
 
   it('only adds one aspect', function(done) {
-    buildJada({ aspects:['milky.2']}).then(character => {
+    buildJada({ aspects:['milky.2','milky.3','milky.1']}).then(character => {
       character.getCharacterAspects().then(aspects => {
-        expect(flattenAspects(aspects)).to.eql(['milky(2)'])
+        expect(flattenAspects(aspects)).to.eql(['milky(3)'])
         done();
       });
     });

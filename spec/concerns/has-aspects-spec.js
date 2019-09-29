@@ -78,7 +78,7 @@ describe('HasAspects', function() {
     });
 
     it('is false if refuted by a furry character', function(done) {
-      CharacterBuilder.build({ species:'lupin' }).then(character => {
+      CharacterBuilder.build({ firstName:'Test', species:'lupin' }).then(character => {
         character.canAddAspect('beast-repulsed').then(possible => {
           expect(possible).to.equal(false);
           done();
@@ -98,7 +98,7 @@ describe('HasAspects', function() {
     });
 
     it('can require a pussy', function(done) {
-      CharacterBuilder.build({ species:'elf', gender:'male' }).then(character => {
+      CharacterBuilder.build({ firstName:'Test', species:'elf', gender:'male' }).then(character => {
         character.canAddAspect('pussy-slut').then(possible => {
           expect(possible).to.equal(false);
           done();
@@ -107,7 +107,7 @@ describe('HasAspects', function() {
     });
 
     it('can require a cock', function(done) {
-      CharacterBuilder.build({ species:'elf', gender:'female' }).then(character => {
+      CharacterBuilder.build({ firstName:'Test', species:'elf', gender:'female' }).then(character => {
         character.canAddAspect('cock-slut').then(possible => {
           expect(possible).to.equal(false);
           done();
@@ -116,7 +116,7 @@ describe('HasAspects', function() {
     });
 
     it('can require tits', function(done) {
-      CharacterBuilder.build({ species:'elf', gender:'male' }).then(character => {
+      CharacterBuilder.build({ firstName:'Test', species:'elf', gender:'male' }).then(character => {
         character.canAddAspect('tit-slut').then(possible => {
           expect(possible).to.equal(false);
           done();
