@@ -155,7 +155,7 @@ let names = [
  { name:"Makes-An-Arrow" },
  { name:"Makes-Honey", aspects:['peaceful.2','pussy-slut.3','golden.2'], restriction:'not-male' },
  { name:"Marks-The-Prey", aspects:['violent'], triggers:['smart']},
- { name:"Meat-Stick", triggers:['big-cock']},
+ { name:"Meat-Stick", triggers:['big-cock'], restriction:'has-cock' },
  { name:"Milks-A-Goat", aspects:['beast-lover','tit-lover.2','milky.2']},
  { name:"Misses-The-Target", triggers:['stupid']},
 

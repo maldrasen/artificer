@@ -5,8 +5,10 @@ global.Adjustments = (function() {
       let triggers = nameAdjustments.triggers.concat(options.triggers||[]);
       let aspects =  nameAdjustments.aspects.concat(options.aspects||[]);
 
-      // === Leave this debug message in ===
-      if (triggers.length > 0 || aspects.length > 0) {
+      // If an adjustment fails because it's invalid for some reason, there's
+      // probably something wrong with how the name is set up. That can be
+      // nearly impossible to track down though.
+      if (DEBUG && (triggers.length > 0 || aspects.length > 0)) {
         console.log(`\n=== Adjusting ${character.name} (${character.gender.code}) ===`)
         console.log(triggers);
         console.log(aspects);
