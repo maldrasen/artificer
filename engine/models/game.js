@@ -45,23 +45,6 @@ Game.prototype.createPlayer = function(options) {
   });
 }
 
-// The game model responds to several events from the client. These triggers
-// are only included when Electron is present, so they won't be included in the
-// spec context.
-if (typeof ipcMain != 'undefined') {
-  ipcMain.on('game.start', () => {
-    Game.start().then(game => {
-      Browser.send('render.file',{ path:Configuration.gameStartView });
-    });
-  });
-
-  ipcMain.on('game.create-player', (event, options) => {
-    Game.instance().then(game => {
-      game.createPlayer(options)
-    });
-  });
-}
-
 function buildStartingMinions(game) {
   return new Promise(resolve => {
     let startingCharacters = [

@@ -8,9 +8,11 @@ global.fs = require('fs');
 global.ipcRenderer = electron.ipcRenderer;
 
 // === Interface ===
+require(`${ROOT}/client/interface/alerts`);
 require(`${ROOT}/client/interface/client`);
 require(`${ROOT}/client/interface/logger`);
 require(`${ROOT}/client/interface/renderer`);
+require(`${ROOT}/client/interface/renderer-commands`);
 
 // === Elements ===
 require(`${ROOT}/client/interface/elements/elements`);

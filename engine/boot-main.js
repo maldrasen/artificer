@@ -9,6 +9,7 @@ ipcMain.on('client.ready', () => {
   Database.createDatabase(() => {
     ModLoader.loadAllData(() => {
       console.log("\n=== Ready ===\n")
+      BrowserCommands.init();
       Browser.send('engine.ready');
     });
   });

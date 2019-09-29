@@ -1,6 +1,4 @@
 global.Browser = (function() {
-  "use strict";
-
   let mainWindow;
 
   function open() {

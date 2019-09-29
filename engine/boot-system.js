@@ -4,4 +4,5 @@
 console.log('> Booting System')
 
 require(`${ROOT}/engine/services/browser.js`);
+require(`${ROOT}/engine/services/browser-commands.js`);
 require(`${ROOT}/engine/services/logger-service.js`);

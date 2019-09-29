@@ -17,5 +17,7 @@ $(document).ready(function() {
 
   // === Init Interface ===
   Renderer.init();
+  RendererCommands.init();
   Client.init();
+
 });
