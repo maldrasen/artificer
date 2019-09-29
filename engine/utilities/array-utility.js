@@ -9,4 +9,8 @@ global.ArrayUtility = {
     each(array, function(item) { target.push(item); });
   },
 
+  unique: function(array) {
+    return [...new Set(array)];
+  }
+
 };

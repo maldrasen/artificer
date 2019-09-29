@@ -92,7 +92,7 @@ describe('CockBuilder', function() {
   it("sets a random knot width ratio if it's missing on a dog cock", function(done) {
     CharacterBuilder.build({ gender:'male', species:'caprien' }).then(character => {
       character.getCock().then(cock => {
-        expect(cock.convertedLength).to.be.within(5,12);
+        expect(cock.convertedLength).to.be.within(5,14);
         expect(cock.convertedWidth).to.be.within(0.75,1.75);
         expect(cock.convertedScrotumWidth).to.be.within(2.75,10)
         expect(cock.ballsSizeFactor).to.be.within(1.2,1.8);

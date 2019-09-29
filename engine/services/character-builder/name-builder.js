@@ -44,7 +44,6 @@ global.NameBuilder = (function() {
     }
   }
 
-
   // Check to see if a name is valid for this character. This promise should
   // reject on an invalid name.
   function validate(character, names) {
@@ -64,14 +63,14 @@ global.NameBuilder = (function() {
 
   function noNamesRestricted(chain) {
     return new Promise((resolve, reject) => {
-      if (chain.names.pre && allowed(chain.character, chain.names.pre)) {
-        reject(`Name (${chain.names.pre.name}) is restricted to ${chain.names.pre.restriction}`);
+      if (chain.names.pre && !allowed(chain.character, chain.names.pre)) {
+        return reject(`Name (${chain.names.pre.name}) is restricted to ${chain.names.pre.restriction}`);
       }
-      if (chain.names.first && allowed(chain.character, chain.names.first)) {
-        reject(`Name (${chain.names.first.name}) is restricted to ${chain.names.first.restriction}`);
+      if (chain.names.first && !allowed(chain.character, chain.names.first)) {
+        return reject(`Name (${chain.names.first.name}) is restricted to ${chain.names.first.restriction}`);
       }
-      if (chain.names.last && allowed(chain.character, chain.names.last)) {
-        reject(`Name (${chain.names.last.name}) is restricted to ${chain.names.last.restriction}`);
+      if (chain.names.last && !allowed(chain.character, chain.names.last)) {
+        return reject(`Name (${chain.names.last.name}) is restricted to ${chain.names.last.restriction}`);
       }
       resolve(chain)
     });
@@ -90,7 +89,7 @@ global.NameBuilder = (function() {
       if (name.restriction == 'has-pussy')  { return character.gender.pussy }
       if (name.restriction == 'has-tits')   { return character.gender.tite  }
     }
-    return false;
+    return true;
   }
 
   function nameMap(names) {

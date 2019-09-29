@@ -3,7 +3,11 @@ global.Adjustments = (function() {
   function apply(character, options, nameAdjustments) {
     return new Promise((resolve, reject) => {
       let triggers = nameAdjustments.triggers.concat(options.triggers||[]);
-      let aspects = nameAdjustments.aspects.concat(options.aspects||[]);
+      let aspects =  ArrayUtility.unique(nameAdjustments.aspects.concat(options.aspects||[]));
+
+// console.log(`\n=== Adjusting ${character.name} (${character.gender}) ===`)
+// console.log(triggers);
+// console.log(aspects);
 
       applyAspects(character,aspects).then(()=>{
         applyTriggers(character, triggers).then(resolve);

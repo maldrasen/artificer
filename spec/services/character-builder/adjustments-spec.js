@@ -29,6 +29,15 @@ describe("Adjustments", function() {
     });
   });
 
+  it('only adds one aspect', function(done) {
+    buildJada({ aspects:['milky.2']}).then(character => {
+      character.getCharacterAspects().then(aspects => {
+        expect(flattenAspects(aspects)).to.eql(['milky(2)'])
+        done();
+      });
+    });
+  });
+
   it('checks aspect requirements', function(done) {
     buildJada({ gender:'female', aspects:['pussy-slut','cock-slut']}).then(character => {
       character.getCharacterAspects().then(aspects => {
