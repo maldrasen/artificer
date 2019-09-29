@@ -88,6 +88,7 @@ global.NameBuilder = (function() {
       if (name.restriction == 'has-cock')   { return character.gender.cock  }
       if (name.restriction == 'has-pussy')  { return character.gender.pussy }
       if (name.restriction == 'has-tits')   { return character.gender.tite  }
+      if (name.restriction == 'has-scales') { return character.species.code == 'dragon' }
     }
     return true;
   }

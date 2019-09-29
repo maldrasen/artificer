@@ -31,7 +31,7 @@ names = [
 ];
 
 each(names, (name)=>{
-  Name.add(name, { species:'elf', position:'pre', restriction:'non-male' });
+  Name.add(name, { species:'elf', position:'pre', restriction:'not-male' });
 });
 
 // --- Male Pre Names ---

@@ -4,7 +4,7 @@ global.Name = Database.instance().define('name', {
   triggers_json: { type:Sequelize.STRING },
   aspects_json:  { type:Sequelize.STRING },
   events_json:   { type:Sequelize.STRING },
-  restriction:   { type:Sequelize.STRING, validate:{ isIn:[['male','female','not-male','not-female','has-cock','has-pussy','has-tits']] }},
+  restriction:   { type:Sequelize.STRING, validate:{ isIn:[['male','female','not-male','not-female','has-cock','has-pussy','has-tits','has-scales']] }},
   position:      { type:Sequelize.STRING, validate:{ isIn:[['pre','first','last']] }},
 },{
   timestamps: false,
@@ -14,7 +14,6 @@ global.Name = Database.instance().define('name', {
     events()   { return JSON.parse(this.events_json||'[]')   },
   }
 });
-
 
 Name.add = function(data, options) {
 
