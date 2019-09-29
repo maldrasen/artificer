@@ -1,6 +1,5 @@
 global.GoblinNameGenerator = (function() {
 
-  // Temp Kobold, because shit breaks without actual names
   function getNames(character) {
     return new Promise((resolve, reject) => {
       let restriction = (character.genderCode == 'male') ? 'male' : 'not-male'

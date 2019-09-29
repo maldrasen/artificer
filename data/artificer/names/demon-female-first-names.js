@@ -1,4 +1,4 @@
-Names.GivenDemonNames['female'] = [
+let names = [
   { name:"Abaddonia" },
   { name:"Abhorrence" },
   { name:"Abygail" },
@@ -19,20 +19,20 @@ Names.GivenDemonNames['female'] = [
   { name:"Atrocitia" },
   { name:"Avarice" },
   { name:"Baphometria" },
-  { name:"Beastialitrix" },
+  { name:"Beastialitrix", aspects:['beast-lover.3']},
   { name:"Beelzebria" },
   { name:"Behemotha" },
   { name:"Belphegoria" },
   { name:"Blasphemia" },
   { name:"Cadaveria" },
   { name:"Christfuck" },
-  { name:"Clitoria" },
+  { name:"Clitoria", triggers:['monster-clit']},
   { name:"Cloven" },
   { name:"Concubine" },
   { name:"Coven" },
   { name:"Dagondris" },
   { name:"Decarabris" },
-  { name:"Defecatris" },
+  { name:"Defecatris", aspects:['revolting.3']},
   { name:"Demiurge" },
   { name:"Demogorgia" },
   { name:"Demonica" },
@@ -41,7 +41,7 @@ Names.GivenDemonNames['female'] = [
   { name:"Deviantrix" },
   { name:"Devilwoman" },
   { name:"Dismemberia" },
-  { name:"Engorgia" },
+  { name:"Engorgia", triggers:['monster-clit']},
   { name:"Fellatia" },
   { name:"Gehenna" },
   { name:"Glasya" },
@@ -52,7 +52,8 @@ Names.GivenDemonNames['female'] = [
   { name:"Iniquitrix" },
   { name:"Legionia" },
   { name:"Leviathis" },
-  { name:"Leviticunt" },
+  { name:"Leviacunt", triggers:['monster-pussy']},
+  { name:"Leviticunt", triggers:['big-pussy']},
   { name:"Lilith" },
   { name:"Luci" },
   { name:"Lucifix" },
@@ -66,7 +67,7 @@ Names.GivenDemonNames['female'] = [
   { name:"Massacra" },
   { name:"Mephistophelia" },
   { name:"Metalica" },
-  { name:"Minotauria" },
+  { name:"Minotauria", triggers:['big-tits']},
   { name:"Monstrositia" },
   { name:"Moraxia" },
   { name:"Murmuris" },
@@ -110,3 +111,7 @@ Names.GivenDemonNames['female'] = [
   { name:"Valeforia" },
   { name:"Vapula" },
 ];
+
+each(names, (name)=>{
+  Name.add(name, { species:'demon', position:'first', restriction:'not-male' });
+});

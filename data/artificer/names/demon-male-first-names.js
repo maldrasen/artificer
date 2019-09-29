@@ -1,4 +1,4 @@
-Names.GivenDemonNames['male'] = [
+let names = [
   { name:"Abaddon" },
   { name:"Abysmal" },
   { name:"Abyssal" },
@@ -25,9 +25,9 @@ Names.GivenDemonNames['male'] = [
   { name:"Baron" },
   { name:"Omega" },
   { name:"Demandred" },
-  { name:"Beastiality" },
+  { name:"Beastiality", aspects:['beast-lover.3']},
   { name:"Beelzebub" },
-  { name:"Behemoth" },
+  { name:"Behemoth", triggers:['big-cock']},
   { name:"Belial" },
   { name:"Belphegor" },
   { name:"Bifrons" },
@@ -37,7 +37,7 @@ Names.GivenDemonNames['male'] = [
   { name:"Caassimolar" },
   { name:"Dagon" },
   { name:"Decarabia" },
-  { name:"Defecation" },
+  { name:"Defecation", aspects:['revolting.3']},
   { name:"Demiurge" },
   { name:"Demiurge" },
   { name:"Demogorgon" },
@@ -50,7 +50,7 @@ Names.GivenDemonNames['male'] = [
   { name:"Doom" },
   { name:"Duromast" },
   { name:"Engorgio" },
-  { name:"Fellatio" },
+  { name:"Fellatio", aspects:['cock-lover.3','cock-slut.3','oral-lover.3','oral-slut.3','cum-lover.3']},
   { name:"Focalor" },
   { name:"Foras" },
   { name:"Gorgoroth" },
@@ -121,7 +121,7 @@ Names.GivenDemonNames['male'] = [
   { name:"Shax" },
   { name:"Sigtrygg" },
   { name:"Sodom" },
-  { name:"Sodomy" },
+  { name:"Sodomy", aspects:['anal-slut.3','anal-lover.3']},
   { name:"Sturmgeist" },
   { name:"Tormentor" },
   { name:"Tourniquet" },
@@ -133,3 +133,7 @@ Names.GivenDemonNames['male'] = [
   { name:"Vual" },
   { name:"Yoggomoth" },
 ];
+
+each(names, (name)=>{
+  Name.add(name, { species:'demon', position:'first', restriction:'male' });
+});

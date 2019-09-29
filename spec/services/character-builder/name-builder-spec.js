@@ -1,4 +1,4 @@
-describe('NameBuilder', function() {
+describe.only('NameBuilder', function() {
 
   let namePrinter = function(options, done) {
     console.log(`\n    [${options.species} names]`)
@@ -19,7 +19,10 @@ describe('NameBuilder', function() {
     Promise.all(tests).then(()=>{ done(); });
   }
 
-  it('names rats', function(done)    { namePrinter({ species:'rat'    }, done); });
-  it('names kobolds', function(done) { namePrinter({ species:'kobold' }, done); });
-  it('names goblins', function(done) { namePrinter({ species:'goblin' }, done); });
+  it('names rats',     function(done) { namePrinter({ species:'rat'      }, done); });
+  it('names kobolds',  function(done) { namePrinter({ species:'kobold'   }, done); });
+  it('names goblins',  function(done) { namePrinter({ species:'goblin'   }, done); });
+  it('names incubus',  function(done) { namePrinter({ species:'incubus'  }, done); });
+  it('names succubus', function(done) { namePrinter({ species:'succubus' }, done); });
+
 });

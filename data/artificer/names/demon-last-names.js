@@ -1,4 +1,4 @@
-Names.DemonNames = [
+let names = [
   { name:"Cannibalcorpse" },
   { name:"Corpserape" },
   { name:"Deadgod" },
@@ -14,7 +14,7 @@ Names.DemonNames = [
   { name:"Gorerotted" },
   { name:"Graveworm" },
   { name:"Hatewhisper" },
-  { name:"Hellcock" },
+  { name:"Hellcock", triggers:['monster-cock'], restriction:'has-cock'},
   { name:"Hellfyre" },
   { name:"Hellscream" },
   { name:"Hellspawned" },
@@ -24,7 +24,7 @@ Names.DemonNames = [
   { name:"Moonspell" },
   { name:"Morningstar" },
   { name:"Mourningstar" },
-  { name:"Murdercock" },
+  { name:"Murdercock", triggers:['big-cock'], restriction:'has-cock'},
   { name:"Murderfuck" },
   { name:"Necroflesh" },
   { name:"Necromonger" },
@@ -36,13 +36,17 @@ Names.DemonNames = [
   { name:"Runemagick" },
   { name:"Slaughtercult" },
   { name:"Slaughterfuck" },
-  { name:"the Cunt Destroyer" },
+  { name:"the Cunt Destroyer", triggers:['monster-cock'], restriction:'has-cock'},
   { name:"the Defiled" },
   { name:"the Festering" },
-  { name:"the Pelvis Splitter" },
+  { name:"the Pelvis Splitter", triggers:['monster-cock'], restriction:'has-cock'},
   { name:"the Unclean" },
   { name:"Thirdmoon" },
   { name:"Todestriebe" },
   { name:"Tristwood" },
   { name:"Wolfchant" },
 ];
+
+each(names, (name)=>{
+  Name.add(name, { species:'demon', position:'last' });
+});
