@@ -80,7 +80,7 @@ global.CharacterBuilder = (function() {
 
 
 
-// TODO: This needs to attach an aspect instead after a character is built
+// TODO: This needs to attach an aspect instead after (or before...) a character is built
 
 // randomizedViolenceProclivity(gender) {
 //   let base = Random.roll(this.violenceRange, this.violenceAverage);
