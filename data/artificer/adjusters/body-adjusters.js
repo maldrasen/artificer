@@ -1,4 +1,6 @@
 
+// --- Skin Shade ---
+
 Adjustment.build('dark-skin', {
   apply: (character) => { return new Promise(resolve => {
     applySkinShade(character,1).then(resolve);
@@ -10,6 +12,8 @@ Adjustment.build('light-skin', {
     applySkinShade(character,5).then(resolve);
   })}
 });
+
+// --- Hair Color ---
 
 Adjustment.build('red-hair', {
   apply: (character) => { return new Promise(resolve => {
@@ -28,6 +32,66 @@ Adjustment.build('white-hair', {
     applyHairColor(character,'white').then(resolve);
   })}
 });
+
+// --- Scale Color ---
+
+  Adjustment.build('black-scales', {
+  apply: (character) => { return new Promise(resolve => {
+    character.scaleColor = 'black';
+    character.save().then(resolve)
+  })}
+});
+
+Adjustment.build('blue-scales', {
+  apply: (character) => { return new Promise(resolve => {
+    character.scaleColor = 'blue';
+    character.save().then(resolve)
+  })}
+});
+
+Adjustment.build('gold-scales', {
+  apply: (character) => { return new Promise(resolve => {
+    character.scaleColor = 'gold';
+    character.save().then(resolve)
+  })}
+});
+
+Adjustment.build('gray-scales', {
+  apply: (character) => { return new Promise(resolve => {
+    character.scaleColor = 'gray';
+    character.save().then(resolve)
+  })}
+});
+
+Adjustment.build('green-scales', {
+  apply: (character) => { return new Promise(resolve => {
+    character.scaleColor = 'green';
+    character.save().then(resolve)
+  })}
+});
+
+Adjustment.build('purple-scales', {
+  apply: (character) => { return new Promise(resolve => {
+    character.scaleColor = 'purple';
+    character.save().then(resolve)
+  })}
+});
+
+Adjustment.build('red-scales', {
+  apply: (character) => { return new Promise(resolve => {
+    character.scaleColor = 'red';
+    character.save().then(resolve)
+  })}
+});
+
+Adjustment.build('white-scales', {
+  apply: (character) => { return new Promise(resolve => {
+    character.scaleColor = 'white';
+    character.save().then(resolve)
+  })}
+});
+
+/// --- Eye Color ---
 
 Adjustment.build('amber-eyes', {
   apply: (character) => { return new Promise(resolve => {
@@ -50,6 +114,7 @@ Adjustment.build('gray-eyes', {
   })}
 });
 
+// --- Body Type ---
 // TODO: These Adjustments will change the bodytype once we implement that.
 
 Adjustment.build('thicc', {
@@ -61,6 +126,40 @@ Adjustment.build('thicc', {
 Adjustment.build('thin', {
   apply: (character) => { return new Promise(resolve => {
     resolve();
+  })}
+});
+
+// TODO: These base values are copied out of the species class. I suppose they
+//       should be made into functions or constants, but I don't think I use
+//       them often.
+Adjustment.build('short', {
+  apply: (character) => { return new Promise(resolve => {
+    character.getBody().then(body => {
+      let height = character.species.bodyOptions.baseHeight || 1500;
+      let adjust = character.species.bodyOptions.maleHeightAdjust || 100;
+
+      if (character.gender.code == 'male') { height += adjust; }
+      if (character.gender.code == 'futa') { height += adjust/2; }
+
+      body.height = Math.round(height * 0.9);
+      body.save().then(resolve);
+    })
+  })}
+});
+
+Adjustment.build('tall', {
+  apply: (character) => { return new Promise(resolve => {
+    character.getBody().then(body => {
+      let height = character.species.bodyOptions.baseHeight || 1500;
+      let range = character.species.bodyOptions.heightRange || 300;
+      let adjust = character.species.bodyOptions.maleHeightAdjust || 100;
+
+      if (character.gender.code == 'male') { height += adjust; }
+      if (character.gender.code == 'futa') { height += adjust/2; }
+
+      body.height = Math.round((height+range) * 1.1);
+      body.save().then(resolve);
+    })
   })}
 });
 
@@ -85,49 +184,3 @@ function applyHairColor(character, color) {
     })
   });
 }
-
-// TODO
-//   if (flag == 'short')         { this.applyShort(adjustments);  }
-//   if (flag == 'tall')          { this.applyTall(adjustments);   }
-
-//   if (flag == 'red-scales')    { this.setScaleColor('red');     }
-//   if (flag == 'gold-scales')   { this.setScaleColor('gold');    }
-//   if (flag == 'green-scales')  { this.setScaleColor('green');   }
-//   if (flag == 'blue-scales')   { this.setScaleColor('blue');    }
-//   if (flag == 'purple-scales') { this.setScaleColor('purple');  }
-//   if (flag == 'black-scales')  { this.setScaleColor('black');   }
-//   if (flag == 'gray-scales')   { this.setScaleColor('gray');    }
-//   if (flag == 'white-scales')  { this.setScaleColor('white');   }
-//
-// applyShort(adjustments) {
-//   if (adjustments.indexOf('tall') >= 0) {
-//     throw `Contradicting body adjustment, can't apply short`;
-//   }
-//
-//   let height = BodyFactory.randomHeight(this.getCharacter(),'min');
-//   let bmi = this.bmi;
-//
-//   if (adjustments.indexOf('short') >= 0) {
-//     height = Math.round(height*0.75);
-//   }
-//
-//   this.setHeight(height);
-//   this.setBMI(bmi);
-// }
-//
-// applyTall(adjustments) {
-//   if (adjustments.indexOf('short') >= 0) {
-//     throw `Contradicting body adjustment, can't apply tall`;
-//   }
-//
-//   let height = BodyFactory.randomHeight(this.getCharacter(),'max');
-//   let bmi = this.bmi;
-//
-//   if (adjustments.indexOf('tall') >= 0) {
-//     height = Math.round(height*1.25);
-//   }
-//
-//   this.setHeight(height);
-//   this.setBMI(bmi);
-// }
-//

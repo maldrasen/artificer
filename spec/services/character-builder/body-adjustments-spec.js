@@ -63,4 +63,22 @@ describe('Adjustments - Body', function() {
     });
   });
 
+  it ('makes short', function(done) {
+    CharacterBuilder.build({ species:'kobold', gender:'female', triggers:['short'] }).then(character => {
+      character.getBody().then(body => {
+        expect(body.height).to.equal(675);
+        done();
+      });
+    });
+  });
+
+  it ('makes tall', function(done) {
+    CharacterBuilder.build({ species:'kobold', gender:'male', triggers:['tall'] }).then(character => {
+      character.getBody().then(body => {
+        expect(body.height).to.equal(1265);
+        done();
+      });
+    });
+  });
+
 });
