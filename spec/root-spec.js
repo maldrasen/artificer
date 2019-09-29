@@ -23,4 +23,7 @@ before(function() {
   });
 });
 
-// An after each will be needed to clean up any models added to the database.
+// An after each is needed to clean up any models added to the database.
+afterEach(function() {
+  Game.clear();
+})

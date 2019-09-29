@@ -3,6 +3,7 @@ const sql = require('sqlite3').verbose();
 
 global.Database = (function() {
   let database;
+  let persistedModels;
 
   function createDatabase(callback) {
     resetLog();
@@ -25,6 +26,23 @@ global.Database = (function() {
     require(`${ROOT}/engine/models/mouth`);
     require(`${ROOT}/engine/models/pussy`);
     require(`${ROOT}/engine/models/tits`);
+
+    // This array cannot be built until these model classes are all required.
+    // Game needs to remain the first model in the list. The load function will
+    // itterate through this list in a Promise.all and expect to have the Game
+    // load as the first result.
+    persistedModels = [
+      Game,
+      Anus,
+      Body,
+      Character,
+      CharacterAspect,
+      Cock,
+      Nipples,
+      Player,
+      Mouth,
+      Pussy,
+      Tits];
 
     database.sync().then(callback);
   }
@@ -52,6 +70,7 @@ global.Database = (function() {
   }
 
   return {
+    getPersistedModels: () => { return persistedModels; },
     createDatabase: createDatabase,
     instance: instance,
   };

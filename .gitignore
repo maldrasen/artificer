@@ -3,6 +3,7 @@
 .npm
 coverage/
 log/
+saves/
 node_modules/
 npm-debug.log
 

@@ -1,5 +1,6 @@
 global.Game = Database.instance().define('game', {
   location:    { type:Sequelize.STRING },
+  dayNumber:   { type:Sequelize.INTEGER },
   anger:       { type:Sequelize.INTEGER },
   frustration: { type:Sequelize.INTEGER },
 },{
@@ -18,6 +19,7 @@ Game.start = function() {
       Game.create({
         id: 1,
         location: Configuration.gameStartLocation,
+        dayNumber: 1,
         anger: 0,
         frustration: 0
       }).then(game => {
@@ -26,7 +28,14 @@ Game.start = function() {
         });
       });
     });
+  });
+}
 
+Game.clear = function() {
+  return new Promise(resolve => {
+    Promise.all(Database.getPersistedModels().map(model => {
+      return model.destroy({ where:{}, truncate:true })
+    })).then(resolve);
   });
 }
 
