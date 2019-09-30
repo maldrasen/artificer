@@ -7,6 +7,8 @@ global.RendererCommands = (function() {
     ipcRenderer.on('render.file', Renderer.renderFile);
     ipcRenderer.on('render.main-menu', Renderer.showMainMenu);
     ipcRenderer.on('render.location', Renderer.renderLocation);
+    
+    ipcRenderer.on('game.file-list', Components.SavedGames.showSaves);
   }
 
   return {

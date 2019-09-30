@@ -32,18 +32,27 @@ global.BrowserCommands = (function() {
       });
     });
 
-    ipcMain.on('game.load', (filename) => {
+    ipcMain.on('game.load', (event, filename) => {
       Records.loadFromFile(filename).then(()=>{
-        Game.instance().then(game => {
-          Composer.renderLocation(game.location)
-        })
+        Composer.render();
       });
+    });
+
+    ipcMain.on('game.quick-load', (event) => {
+      Records.quickLoad().then(() => {
+        console.log("Quick Loaded...")
+        Composer.render();
+      })
     });
 
     ipcMain.on('game.list-save-files',() => {
       Records.listSaveFiles().then(fileList => {
         Browser.send('game.file-list', fileList);
       });
+    });
+
+    ipcMain.on('game.delete-save', (event, filename) => {
+      Records.deleteSaveFile(filename);
     });
   }
 

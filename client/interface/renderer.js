@@ -84,7 +84,6 @@ global.Renderer = (function() {
 
   function sendCommand(command, options) {
     ipcRenderer.send(command,options);
-    lock();
   }
 
   // === Rendering ===
@@ -106,7 +105,6 @@ global.Renderer = (function() {
   function constructView() {
     if ($('.partial').length > 0) { return renderPartial(); }
     Elements.PagedContent.build();
-    unlock();
   }
 
   function renderPartial() {
@@ -139,6 +137,9 @@ global.Renderer = (function() {
     showSavedGames: showSavedGames,
     renderFile: renderFile,
     renderLocation: renderLocation,
+    lock: lock,
+    unlock: unlock,
+    removeOverlay: removeOverlay,
   };
 
 })();

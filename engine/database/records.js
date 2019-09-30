@@ -35,6 +35,14 @@ global.Records = (function() {
     });
   }
 
+  function quickLoad() {
+    return new Promise(resolve => {
+      Player.instance().then(player => {
+        loadFromFile(`${player.firstName}.Quick_Save`);
+      });
+    });
+  }
+
   function loadFromFile(filename) {
     return new Promise((resolve,reject) => {
       Game.clear().then(() => {
@@ -95,6 +103,7 @@ global.Records = (function() {
 
   return {
     saveToFile: saveToFile,
+    quickLoad: quickLoad,
     loadFromFile: loadFromFile,
     listSaveFiles: listSaveFiles,
     deleteSaveFile: deleteSaveFile,

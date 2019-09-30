@@ -1,0 +1,24 @@
+#savedGames {
+
+  .saved-game {
+    display: flex;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: $border-light;
+    box-shadow: $shadow-frame;
+    background-color: rgba(250,0,250,0.01);
+  }
+  .saved-game:last-child {
+    margin: 0;
+  }
+  .game-name {
+    flex-grow: 1;
+  }
+  label {
+    margin-right: 5px;
+    font-family: roboto-thin;
+    color: $fg-weak;
+  }
+
+
+}

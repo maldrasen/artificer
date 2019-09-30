@@ -1,6 +1,6 @@
 
 // === Game Start ===
-.title-frame {
+#gameTitleFrame {
   cursor: pointer;
   position: absolute;
   display: flex;
@@ -8,7 +8,7 @@
   bottom: 0;
   top: 0;
 }
-.title {
+#gameTitle {
   margin: auto;
   text-align: center;
   align-items: center;
