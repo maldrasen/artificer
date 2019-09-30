@@ -94,7 +94,9 @@
 // Flex Item Classes
 .flex-grow { flex-grow:1; }
 
-// .border-light-bottom { border-bottom: $border-light; }
+.border-heavy-bottom { border-bottom: $border-heavy; }
+.border-heavy-top { border-top: $border-heavy; }
+.border-light-bottom { border-bottom: $border-light; }
 //
 // .badge {
 //   background-color: rgb(20,20,20);

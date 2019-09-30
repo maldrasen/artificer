@@ -14,4 +14,39 @@
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: $z-lock;
+}
+
+#overlayFrame {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-overlay;
+  background-color: $bg-overlay-frame;
+  #overlayContent {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 30px;
+    padding: 20px;
+    background-color: $bg-overlay-content;
+    border: $border-light;
+    box-shadow: $shadow-frame;
+  }
+  #overlayClose {
+    position: absolute;
+    top: 38px;
+    right: 42px;
+    z-index: calc(#{$z-overlay} + 1);
+
+    a {
+      font-size: 20px;
+      font-family: roboto-black;
+      color: rgb(200,200,200);
+    }
+  }
 }

@@ -15,6 +15,10 @@ $(document).ready(function() {
   Elements.ScrollingPanel.init();
   Elements.RadioButtons.init();
 
+  // === Init Components ===
+  Components.MainMenu.init();
+  Components.SavedGames.init();
+
   // === Init Interface ===
   Renderer.init();
   RendererCommands.init();

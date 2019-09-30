@@ -1,19 +1,8 @@
 
 // Z Indices
 
-// $z-dummy: 1;
-// $z-bottom-status: 6000;
-// $z-status-shadow: 6050;
-// $z-side-status: 6100;
-//
-// $z-dialog-shadow: 1000;
-// $z-dialog: 1001;
-// $z-dialog-window: 1002;
-//
-// $z-blocker: 30000;
-// $z-modal:   31000;
-// $z-effects: 60000;
-// $z-floating-frame: 61000;
+$z-overlay: 1000;
+$z-lock: 10000;
 
 // Fonts
 
@@ -24,7 +13,6 @@ $fs-body: 10pt;
 $fs-small: 9pt;
 $fs-tiny: 8pt;
 
-$fs-h1: 14pt;
 $fs-h2: 12pt;
 $fs-h3: 12pt;
 $fs-h4: 10pt;
@@ -70,12 +58,11 @@ $fg-player-quote: rgb(187, 137, 205);
 // $fg-negative: rgb(220,100,100);
 //
 $bg-body: rgb(33,30,32);
-// $bg-body-darker: rgb(29,26,28);
-// $bg-page: rgb(26,23,25);
-//
-// $bg-header: rgb(50,0,0);
+$bg-body-darker: rgb(29,26,28);
+$bg-overlay-frame: rgba(0,0,0,0.5);
+$bg-overlay-content: rgba(33,30,32,0.90);
 $bg-panel: rgba(22,20,21,0.75);
-//
+
 // $bg-title-bar: rgba(0,0,0,0.5);
 // $bg-subtitle-bar: rgba(0,0,0,0.3);
 // $bg-subpanel: rgba(0,0,0,0.2);
@@ -100,7 +87,7 @@ $shadow-shallow: 0 2px 3px rgba(0,0,0,0.9);
 $border-very-light: 1px solid rgba(250,250,250,0.05);
 $border-light: 1px solid rgba(250,250,250,0.1);
 $border-normal: 1px solid rgba(250,250,250,0.2);
-$border-heavy: 1px solid rgba(250,250,250,0.3);
+$border-heavy: 2px solid rgba(250,250,250,0.3);
 
 // === Forms ===
 

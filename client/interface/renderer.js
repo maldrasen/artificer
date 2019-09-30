@@ -2,11 +2,20 @@ global.Renderer = (function() {
   const logger = new Logger('Renderer', 'rgb(150,200,200)');
 
   const VIEWS = {
-    mainMenu: { path:`${ROOT}/client/views/screens/main-menu.html` },
+    mainMenu:   { path:`${ROOT}/client/views/screens/main-menu.html` },
+    savedGames: { path:`${ROOT}/client/views/screens/saved-games.html`, build:Components.SavedGames.build },
   };
 
   function init() {
     $(document).on('click', '.send-command', Elements.buttonAction(sendCommandButton));
+    $(document).on('click', '.close-overlay', Elements.buttonAction(removeOverlay));
+    $(document).on('keydown', handleKeypress);
+  }
+
+  function handleKeypress(e) {
+    if (e.key == 'Escape') {
+      if ($('#overlayFrame').hasClass('hide') == false) { removeOverlay(); }
+    }
   }
 
   function ready() {
@@ -35,11 +44,24 @@ global.Renderer = (function() {
   // === Views ===
 
   function showMainMenu() { showView(VIEWS.mainMenu); }
+  function showSavedGames() { showOverlay(VIEWS.savedGames); }
 
   function showView(view) {
     $('#mainContent').empty().append($('<div>',{ class:'partial' }).data('url',view.path))
-    if (view.init) { view.init() }
+    if (view.build) { view.build(); }
     constructView();
+  }
+
+  function showOverlay(view) {
+    $('#overlayFrame').removeClass('hide')
+    $('#overlayContent').append($('<div>',{ class:'partial' }).data('url',view.path));
+    if (view.build) { view.build(); }
+    constructView();
+  }
+
+  function removeOverlay() {
+    $('#overlayFrame').addClass('hide')
+    $('#overlayContent').empty();
   }
 
   // === Shared Button Actions ===
@@ -114,6 +136,7 @@ global.Renderer = (function() {
     sendCommand: sendCommand,
     ready: ready,
     showMainMenu: showMainMenu,
+    showSavedGames: showSavedGames,
     renderFile: renderFile,
     renderLocation: renderLocation,
   };
