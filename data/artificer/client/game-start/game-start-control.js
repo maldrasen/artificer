@@ -11,7 +11,7 @@ global.GameStartControl = (function() {
     initSpeciesControl();
     initGenderControl();
 
-    $(document).on('click','.title-frame',Elements.buttonAction(complete));
+    $(document).on('click','#gameTitleFrame',Elements.buttonAction(complete));
     $(document).on('click','.check-name',Elements.buttonAction(checkName));
     $(document).on('click','.check-custom-gender',Elements.buttonAction(checkCustomGender));
     $(document).on('click','.accept-species-choice',Elements.buttonAction(speciesChosen));

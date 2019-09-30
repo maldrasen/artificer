@@ -3,7 +3,8 @@ global.Renderer = (function() {
 
   const VIEWS = {
     mainMenu:   { path:`${ROOT}/client/views/screens/main-menu.html` },
-    savedGames: { path:`${ROOT}/client/views/screens/saved-games.html`, build:Components.SavedGames.build },
+    savedGames: { path:`${ROOT}/client/views/screens/saved-games.html`, title:'Load Game', build:Components.SavedGames.buildLoad },
+    saveGame:   { path:`${ROOT}/client/views/screens/save-game.html`, title:'Save Game', build:Components.SavedGames.buildSave },
   };
 
   function init() {
@@ -43,8 +44,9 @@ global.Renderer = (function() {
 
   // === Views ===
 
-  function showMainMenu() { showView(VIEWS.mainMenu); }
+  function showMainMenu()   { showView(VIEWS.mainMenu);      }
   function showSavedGames() { showOverlay(VIEWS.savedGames); }
+  function showSaveGame()   { showOverlay(VIEWS.saveGame);   }
 
   function showView(view) {
     $('#mainContent').empty().append($('<div>',{ class:'partial' }).data('url',view.path))
@@ -53,7 +55,7 @@ global.Renderer = (function() {
   }
 
   function showOverlay(view) {
-    $('#overlayFrame').removeClass('hide')
+    $('#overlayFrame').removeClass('hide').find('.title').empty().append(view.title);
     $('#overlayContent').append($('<div>',{ class:'partial' }).data('url',view.path));
     if (view.build) { view.build(); }
     constructView();
@@ -134,6 +136,7 @@ global.Renderer = (function() {
     sendCommand: sendCommand,
     ready: ready,
     showMainMenu: showMainMenu,
+    showSaveGame: showSaveGame,
     showSavedGames: showSavedGames,
     renderFile: renderFile,
     renderLocation: renderLocation,

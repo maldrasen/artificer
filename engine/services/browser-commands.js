@@ -22,13 +22,19 @@ global.BrowserCommands = (function() {
 
     ipcMain.on('game.create-player', (event, options) => {
       Game.instance().then(game => {
-        game.createPlayer(options)
+        game.createPlayer(options);
+      });
+    });
+
+    ipcMain.on('game.save', (event, gameName) => {
+      Records.saveToFile(gameName).then(()=>{
+        Browser.send('alert',{ messsage:'Save Successful.' });
       });
     });
 
     ipcMain.on('game.quick-save', () => {
       Records.saveToFile("Quick Save").then(()=>{
-        Browser.send('alert',{ messsage:'Quick Save Successful.' })
+        Browser.send('alert',{ messsage:'Quick Save Successful.' });
       });
     });
 
@@ -40,7 +46,6 @@ global.BrowserCommands = (function() {
 
     ipcMain.on('game.quick-load', (event) => {
       Records.quickLoad().then(() => {
-        console.log("Quick Loaded...")
         Composer.render();
       })
     });
