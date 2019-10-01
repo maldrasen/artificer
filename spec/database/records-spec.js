@@ -1,4 +1,4 @@
-describe.only('Records', function() {
+describe('Records', function() {
 
   function setupTestGame() {
     let testPlayer = {

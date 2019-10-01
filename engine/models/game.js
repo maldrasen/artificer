@@ -3,8 +3,16 @@ global.Game = Database.instance().define('game', {
   dayNumber:   { type:Sequelize.INTEGER },
   anger:       { type:Sequelize.INTEGER },
   frustration: { type:Sequelize.INTEGER },
+  eventQueue_json:  { type:Sequelize.STRING  },
 },{
   timestamps: false,
+  getterMethods: {
+    eventQueue() { return JSON.parse(this.eventQueue_json||'[]') },
+    nextEvent() { return this.eventQueue[0]; }
+  },
+  setterMethods: {
+    eventQueue(queue) { this.setDataValue('eventQueue_json',JSON.stringify(queue)) }
+  }
 });
 
 Game.instance = function() {
@@ -23,10 +31,12 @@ Game.start = function() {
         anger: 0,
         frustration: 0
       }).then(game => {
-        buildStartingMinions(game).then(() => {
+        game.enqueueEvent('game-start').then(() => {
+          Composer.render(game);
           resolve(game);
         });
       });
+
     });
   });
 }
@@ -45,19 +55,36 @@ Game.prototype.createPlayer = function(options) {
   });
 }
 
-function buildStartingMinions(game) {
-  return new Promise(resolve => {
-    let startingCharacters = [
-      { type:'minion', species:'rat', gender:'male'   },
-      { type:'minion', species:'rat', gender:'male'   },
-      { type:'minion', species:'rat', gender:'male'   },
-      { type:'minion', species:'rat', gender:'female' },
-      { type:'minion', species:'rat', gender:'female' },
-      { type:'minion', species:'rat', gender:'female' },
-    ];
+// === Event Queue ===
 
-    Promise.all(startingCharacters.map((options) => {
-      return CharacterBuilder.build(options);
-    })).then(resolve);
+// TODO: I might need more event queues at some point for different types of
+//       events that should fire at different times. This should be sufficient
+//       for now. These events always fire immeadietly.
+
+Game.prototype.enqueueEvent = function(code, state) {
+  return new Promise((resolve,reject) => {
+    try { Event.lookup(code) } catch(e) { reject(e) }
+
+    let queue = this.eventQueue;
+        queue.push({ code:code, state:(state||{}) });
+
+    this.eventQueue = queue;
+    this.save().then(resolve);
+  });
+}
+
+Game.prototype.unqueueEvent = function() {
+  return new Promise(resolve => {
+    let queue = this.eventQueue;
+    let event = queue.shift();
+
+    if (event == null) {
+      resolve(null);
+    } else {
+      this.eventQueue = queue;
+      this.save().then(()=>{
+        resolve(event);
+      });
+    }
   })
 }

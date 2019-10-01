@@ -29,5 +29,19 @@ global.Form = class Form {
     return form;
   }
 
-  get code() { return code; }
+  // The problem with building immutable objects by defining properties like
+  // this is that it breaks the console inspector, the JSON.stringify function,
+  // Electron's IPC messages, and probably any other object serialization
+  // function. To prevent this from causing problems, call this properties
+  // function to get a POJO of the properties. We can't just do this every time
+  // though because then we lose the prototype. So really this function is only
+  // used for printing things and sending forms to the browser. Seems like
+  // something that should just fucking be included in the language. Maybe it
+  // is. I don't know, I'm not good at JavaScript.
+  get properties() {
+    let props = {};
+    each(Object.getOwnPropertyNames(this), name => { props[name] = this[name]; });
+    return props;
+  }
+
 }

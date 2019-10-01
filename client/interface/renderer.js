@@ -42,6 +42,10 @@ global.Renderer = (function() {
     constructView();
   }
 
+  function renderEvent(transport, event) {
+    console.log("Render Event: ",event)
+  }
+
   // === Views ===
 
   function showMainMenu()   { showView(VIEWS.mainMenu);      }
@@ -135,11 +139,15 @@ global.Renderer = (function() {
     init: init,
     sendCommand: sendCommand,
     ready: ready,
+
     showMainMenu: showMainMenu,
     showSaveGame: showSaveGame,
     showSavedGames: showSavedGames,
+
     renderFile: renderFile,
     renderLocation: renderLocation,
+    renderEvent: renderEvent,
+
     lock: lock,
     unlock: unlock,
     removeOverlay: removeOverlay,

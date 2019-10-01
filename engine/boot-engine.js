@@ -12,6 +12,7 @@ require(`${ROOT}/engine/concerns/has-body`);
 require(`${ROOT}/engine/forms/form`);
 require(`${ROOT}/engine/forms/adjustment`);
 require(`${ROOT}/engine/forms/aspect`);
+require(`${ROOT}/engine/forms/event`);
 require(`${ROOT}/engine/forms/gender`);
 require(`${ROOT}/engine/forms/location`);
 require(`${ROOT}/engine/forms/species`);
@@ -35,6 +36,9 @@ require(`${ROOT}/engine/services/character-builder/name-generators/elf-name-gene
 require(`${ROOT}/engine/services/character-builder/name-generators/goblin-name-generator`);
 require(`${ROOT}/engine/services/character-builder/name-generators/kobold-name-generator`);
 require(`${ROOT}/engine/services/character-builder/name-generators/rat-name-generator`);
+
+// === Weavers ===
+require(`${ROOT}/engine/services/weavers/weaver`);
 
 // === Utilities ===
 require(`${ROOT}/engine/utilities/array-utility.js`);

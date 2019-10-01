@@ -9,9 +9,7 @@ global.BrowserCommands = (function() {
   function initGameMessages() {
 
     ipcMain.on('game.start', () => {
-      Game.start().then(game => {
-        Browser.send('render.file',{ path:Configuration.gameStartView });
-      });
+      Game.start();
     });
 
     ipcMain.on('game.quit', () => {

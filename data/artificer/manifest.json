@@ -1,7 +1,5 @@
 {
-  "clientFiles":[
-    "client/game-start/game-start-control"
-  ],
+  "clientFiles":[],
 
   "sharedFiles":[
     "configuration"
@@ -95,6 +93,9 @@
     "aspects/skills/finesse",
     "aspects/skills/oral",
     "aspects/skills/sorcery",
+
+    "events/game-start",
+    "events/no-longer-naked",
 
     "locations/courtyard",
 
