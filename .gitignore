@@ -1,15 +1,12 @@
 
 .nyc_output
 .npm
+
+assets/compiled/
 coverage/
 log/
+node_modules/
 resources/
 saves/
 
-node_modules/
 npm-debug.log
-
-assets/compiled/
-
-data/artificer/**/*.png
-data/artificer/**/*.jpg
