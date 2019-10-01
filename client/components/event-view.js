@@ -6,9 +6,11 @@ Components.EventView = (function() {
   let pageIndex;
 
   function init() {
+    $(document).on('click', '.click-advance', nextPage);
+
     $(document).on('click','.close-warning',Elements.buttonAction(() => {
       $('#warningFrame').remove();
-      nextPage();
+      nextStage();
     }));
   }
 
@@ -17,23 +19,76 @@ Components.EventView = (function() {
     stageIndex = 0;
     pageIndex = 0;
 
+    if (event.background != null) { setBackground(event.background); }
+    if (event.darkenBackground != null) { darkenBackground(event.darkenBackground); }
+
+    $('#mainContent').empty().append($('<div>',{ id:'currentEvent' }).append($($('#eventTemplate').html())));
+
     buildStage();
 
-    $('#mainContent').empty().append($($('#eventTemplate').html()));
   }
 
   function buildStage() {
-    let stage = eventData.stages[stageIndex];
-    logger.info("Building Stage",stage)
+    let stage = currentStage();
+    if (stage.pages) { return buildPagedView(); }
+    if (stage.warningPage) { return buildWarningPage(); }
+    throw "Unrecognized Stage Type"
+  }
 
-    if (stage.warningPage) { buildWarningPage(); }
+
+  function nextStage() {
+    if (stageIndex < eventData.stages.length-1) {
+      stageIndex += 1;
+      buildStage();
+    } else {
+      console.log("No more stages.")
+    }
   }
 
   function nextPage() {
-    console.log("Next Page")
+    if (pageIndex < currentStage().pages.length-1) {
+      pageIndex += 1;
+      buildPage();
+    } else {
+      pageIndex = 0;
+      $('#currentEvent .event-text-frame').addClass('hide');
+      $('#currentEvent .click-advance').addClass('hide');
+      nextStage();
+    }
+  }
+
+  function currentStage() {
+    return eventData.stages[stageIndex];
+  }
+
+  function currentPage() {
+    return (currentStage().pages||[])[pageIndex];
+  }
+
+  // === Effects ===
+
+  function setBackground(url) {
+    $('.full-screen-background').css({ "background-image":`url(${url})`, filter:'' });
+  }
+
+  function darkenBackground(value) {
+    $('.full-screen-background').css({filter:`brightness(${100-value}%)`});
   }
 
   // === Special Pages ===
+
+  function buildPagedView() {
+    $('#currentEvent .event-text-frame').removeClass('hide');
+    $('#currentEvent .click-advance').removeClass('hide');
+    buildPage();
+  }
+
+  function buildPage() {
+    let page = currentPage();
+    if (page.background != null) { setBackground(page.background); }
+    if (page.darkenBackground != null) { darkenBackground(page.darkenBackground); }
+    $('#currentEvent .event-text-frame').empty().append(page.text)
+  }
 
   // The warning page is essentially a javascript alert. It shows a message that
   // must be dismissed by pressing the button. I don't think this is used
@@ -45,7 +100,7 @@ Components.EventView = (function() {
       thing, it would probably be best to just to not play this at all. Seriously. Trust me. This shit's going to be
       fucked up.`);
 
-    $('.event-content').
+    $('#currentEvent .event-content').
       append($('<div>',{ id:'warningFrame' }).
       append($('<div>',{ class:'flex' }).
       append($('<div>',{ class:'warning-image' })).

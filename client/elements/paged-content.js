@@ -1,8 +1,7 @@
 Elements.PagedContent = (function() {
 
   function init() {
-    $(document).on('click', '.page-action-continue', Elements.buttonAction(showNextPage));
-    $(document).on('click', '.click-advance', showNextPage);
+    // $(document).on('click', '.page-action-continue', Elements.buttonAction(showNextPage));
   }
 
   // There should only ever be one paged content element on a page at a time.
@@ -49,17 +48,7 @@ Elements.PagedContent = (function() {
 
   // === Effects ===
 
-  function darkenBackground(value) {
-    let brightness = 100 - value
-    $('.paged-content-background').css({filter:`brightness(${brightness}%)`});
-  }
 
-  function setBackground(url) {
-    if ($('.paged-content-background').length == 0) {
-      $('#mainContent').append($('<div>',{ class:'paged-content-background' }));
-    }
-    $('.paged-content-background').css({ "background-image":`url(${url})`, filter:'' });
-  }
 
   // === Paging Control ===
 
@@ -92,8 +81,6 @@ Elements.PagedContent = (function() {
     build: build,
     showPage: showPage,
     showNextPage: showNextPage,
-    darkenBackground: darkenBackground,
-    setBackground: setBackground,
   };
 
 })()

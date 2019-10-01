@@ -10,6 +10,7 @@
     right: 0;
     cursor: pointer;
     user-select: none;
+    z-index: calc(#{$z-event-frame} + 10);
   }
 
   .event-text-frame {
@@ -22,6 +23,7 @@
     border: $border-light;
     box-shadow: $shadow-frame;
     background-color: $bg-panel;
+    z-index: $z-event-frame;
 
     .footer {
       position: absolute;
@@ -31,6 +33,7 @@
       height: 32px;
       line-height: 30px;
       text-align: right;
+      z-index: calc(#{$z-event-frame} + 1);
     }
   }
 }

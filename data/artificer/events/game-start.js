@@ -1,10 +1,12 @@
 Event.build('game-start', {
 
+  background: '../../assets/images/backgrounds/bg-void.png',
+  darkenBackground: 100,
+
   stages:[
     {
       warningPage: true
     },{
-      background:{ url:'{{ ROOT }}/assets/images/backgrounds/bg-void.png' },
       pages: [
         { text:"I'm dead." },
         { text:"No, that's not right." },
