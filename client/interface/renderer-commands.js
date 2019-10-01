@@ -5,7 +5,7 @@ global.RendererCommands = (function() {
 
     ipcRenderer.on('engine.ready', Renderer.ready);
     ipcRenderer.on('render.file', Renderer.renderFile);
-    ipcRenderer.on('render.event', Renderer.renderEvent);
+    ipcRenderer.on('render.event', Components.EventView.build);
     ipcRenderer.on('render.main-menu', Renderer.showMainMenu);
     ipcRenderer.on('render.location', Renderer.renderLocation);
 

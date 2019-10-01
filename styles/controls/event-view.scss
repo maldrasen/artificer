@@ -1,0 +1,39 @@
+
+.event-content {
+  font-size: $fs-big;
+
+  .click-advance {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .event-text-frame {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    height: 100px;
+    padding: 10px;
+    border: $border-light;
+    box-shadow: $shadow-frame;
+    background-color: $bg-panel;
+
+    .footer {
+      position: absolute;
+      top: 78px;
+      left: 10px;
+      right: 10px;
+      height: 32px;
+      line-height: 30px;
+      text-align: right;
+    }
+  }
+}
+
+.minion-quote { color:$fg-minion-quote; }
+.player-quote { color:$fg-player-quote; }

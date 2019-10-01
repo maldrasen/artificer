@@ -10,12 +10,13 @@ $(document).ready(function() {
 
   // === Init Elements ===
   Elements.init();
-  Elements.PagedContent.init();
   Elements.Chooser.init();
-  Elements.ScrollingPanel.init();
+  Elements.PagedContent.init();
   Elements.RadioButtons.init();
+  Elements.ScrollingPanel.init();
 
   // === Init Components ===
+  Components.EventView.init();
   Components.MainMenu.init();
   Components.SavedGames.init();
 

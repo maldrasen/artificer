@@ -65,13 +65,14 @@
 .font-light { font-family: roboto-light; }
 .font-thin { font-family: roboto-thin; }
 
-// .fg-body { color: $fg-body; }
-// .fg-strong { color: $fg-strong; }
-// .fg-weak { color: $fg-weak; }
-// .fg-very-weak { color: $fg-very-weak; }
-// .fg-danger { color:$fg-button-danger; }
-// .fg-warning { color:$fg-button-warning; }
-// .fg-success { color:$fg-button-success; }
+.fg-body { color: $fg-body; }
+.fg-strong { color: $fg-strong; }
+.fg-weak { color: $fg-weak; }
+.fg-very-weak { color: $fg-very-weak; }
+.fg-danger { color:$fg-button-danger; }
+.fg-warning { color:$fg-button-warning; }
+.fg-success { color:$fg-button-success; }
+
 //
 // .fs-huge { font-size: $fs-huge; }
 // .fs-bigger { font-size: $fs-bigger; }
