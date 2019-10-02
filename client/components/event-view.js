@@ -4,23 +4,29 @@ Components.EventView = (function() {
   let eventData;
   let stageIndex;
   let pageIndex;
+  let choices;
 
   function init() {
-    $(document).on('click', '.click-advance', nextPage);
+    $(document).on('click', '#currentEvent .click-advance', nextPage);
+    $(document).on('click', '#currentEvent .chooser-accept', acceptChoice);
 
-    $(document).on('click','.close-warning',Elements.buttonAction(() => {
+    $(document).on('click','#currentEvent .close-warning',Elements.buttonAction(() => {
       $('#warningFrame').remove();
       nextStage();
     }));
   }
 
   function build(transport, event) {
+    Components.EventView.Page = {};
+
     eventData = event;
     stageIndex = 0;
     pageIndex = 0;
+    choices = {};
 
     if (event.background != null) { setBackground(event.background); }
     if (event.darkenBackground != null) { darkenBackground(event.darkenBackground); }
+    if (event.pageScript != null) { require(event.pageScript); }
 
     $('#mainContent').empty().append($('<div>',{ id:'currentEvent' }).append($($('#eventTemplate').html())));
 
@@ -32,9 +38,9 @@ Components.EventView = (function() {
     let stage = currentStage();
     if (stage.pages) { return buildPagedView(); }
     if (stage.warningPage) { return buildWarningPage(); }
+    if (stage.chooserPage) { return buildChooserPage(); }
     throw "Unrecognized Stage Type"
   }
-
 
   function nextStage() {
     if (stageIndex < eventData.stages.length-1) {
@@ -65,17 +71,8 @@ Components.EventView = (function() {
     return (currentStage().pages||[])[pageIndex];
   }
 
-  // === Effects ===
 
-  function setBackground(url) {
-    $('.full-screen-background').css({ "background-image":`url(${url})`, filter:'' });
-  }
-
-  function darkenBackground(value) {
-    $('.full-screen-background').css({filter:`brightness(${100-value}%)`});
-  }
-
-  // === Special Pages ===
+  // === Paged View ===
 
   function buildPagedView() {
     $('#currentEvent .event-text-frame').removeClass('hide');
@@ -89,6 +86,52 @@ Components.EventView = (function() {
     if (page.darkenBackground != null) { darkenBackground(page.darkenBackground); }
     $('#currentEvent .event-text-frame').empty().append(page.text)
   }
+
+  // === Chooser Pages ===
+
+  // A chooser page has the following arguments on the stage:
+  //     chooserTitle: (*) Title
+  //     choices:      (*) List of choices with the following attributes:
+  //       - value:    (*) value to set.
+  //       - label:    (*) label name,
+  //       - body:     (*) choice description,
+  //       - image:    (*) image path,
+  //       - locked:   Show the option, but make it non-selectable.
+  //     text:         Text to display in the footer.
+  //     name:         Name under which to save the chosen value.
+  //     onAccept:     Calls a function in Components.EventView.Page with the
+  //                   chosen value when the choice is accepted.
+  function buildChooserPage() {
+    let stage = currentStage();
+    let content = $('#currentEvent .event-content').empty().append($($("#chooserPageTemplate").html()));
+
+    stage.chooser = new Elements.Chooser({
+      title: stage.chooserTitle,
+      element: $('#currentEvent .chooser-target'),
+      height: (stage.chooserHeight || 500),
+      width: (stage.chooserWidth || 800),
+      imageWidth: (stage.imageWidth || 500),
+    });
+
+    each(stage.choices, choice => {
+      stage.chooser.addChoice(choice);
+    });
+
+    content.find('.chooser-frame').css({ width:(stage.chooserWidth || 800) });
+    content.find('.text').append(stage.text);
+  }
+
+  function acceptChoice() {
+    let stage = currentStage();
+    let value = stage.chooser.selectedValue;
+
+    if (stage.name) { choices[stage.name] = value }
+    if (stage.onAccept) { Components.EventView.Page[stage.onAccept](value); }
+
+    nextStage();
+  }
+
+  // === Special Pages ===
 
   // The warning page is essentially a javascript alert. It shows a message that
   // must be dismissed by pressing the button. I don't think this is used
@@ -108,6 +151,16 @@ Components.EventView = (function() {
       append($('<div>',{ class:'warning-footer' }).append(
         $('<a>',{ href:'#', class:'button-warning close-warning' }).append('Acknowledged'))
       ));
+  }
+
+  // === Effects ===
+
+  function setBackground(url) {
+    $('.full-screen-background').css({ "background-image":`url(${url})`, filter:'' });
+  }
+
+  function darkenBackground(value) {
+    $('.full-screen-background').css({filter:`brightness(${100-value}%)`});
   }
 
   return {
