@@ -15,6 +15,8 @@ require(`${ROOT}/client/components/components`);
 require(`${ROOT}/client/components/event-view`);
 require(`${ROOT}/client/components/main-menu`);
 require(`${ROOT}/client/components/saved-games`);
+require(`${ROOT}/client/components/event-views/name-form`);
+require(`${ROOT}/client/components/event-views/warning`);
 
 // === Elements ===
 require(`${ROOT}/client/elements/elements`);

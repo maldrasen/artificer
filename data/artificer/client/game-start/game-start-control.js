@@ -15,14 +15,6 @@
   // === Name ===
 
   function checkName() {
-    let title = $("#title").val().trim();
-    let first = $("#firstName").val().trim();
-    let last = $("#lastName").val().trim();
-
-    if (first.length == 0 || last.length == 0 || title.length == 0) { return false; }
-    if (first.length > 20 || last.length > 20 || title.length > 20) { return false; }
-
-    Elements.PagedContent.showNextPage();
   }
 
   // === Gender ===

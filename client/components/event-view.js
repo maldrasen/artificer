@@ -8,12 +8,9 @@ Components.EventView = (function() {
 
   function init() {
     $(document).on('click', '#currentEvent .click-advance', nextPage);
-    $(document).on('click', '#currentEvent .chooser-accept', acceptChoice);
-
-    $(document).on('click','#currentEvent .close-warning',Elements.buttonAction(() => {
-      $('#warningFrame').remove();
-      nextStage();
-    }));
+    $(document).on('click', '#currentEvent .chooser-accept', Elements.buttonAction(acceptChoice));
+    $(document).on('click', '#currentEvent .name-accept', Elements.buttonAction(Components.EventView.NameForm.accept));
+    $(document).on('click', '#currentEvent .close-warning',Elements.buttonAction(Components.EventView.Warning.accept));
   }
 
   function build(transport, event) {
@@ -31,14 +28,14 @@ Components.EventView = (function() {
     $('#mainContent').empty().append($('<div>',{ id:'currentEvent' }).append($($('#eventTemplate').html())));
 
     buildStage();
-
   }
 
   function buildStage() {
     let stage = currentStage();
     if (stage.pages) { return buildPagedView(); }
-    if (stage.warningPage) { return buildWarningPage(); }
-    if (stage.chooserPage) { return buildChooserPage(); }
+    if (stage.chooserPage)  { return buildChooserPage(); }
+    if (stage.nameFormPage) { return Components.EventView.NameForm.build(); }
+    if (stage.warningPage)  { return Components.EventView.Warning.build();  }
     throw "Unrecognized Stage Type"
   }
 
@@ -103,7 +100,7 @@ Components.EventView = (function() {
   //                   chosen value when the choice is accepted.
   function buildChooserPage() {
     let stage = currentStage();
-    let content = $('#currentEvent .event-content').empty().append($($("#chooserPageTemplate").html()));
+    let content = $('#currentEvent .chooser-content').removeClass('hide').append($($("#chooserPageTemplate").html()));
 
     stage.chooser = new Elements.Chooser({
       title: stage.chooserTitle,
@@ -128,30 +125,12 @@ Components.EventView = (function() {
     if (stage.name) { choices[stage.name] = value }
     if (stage.onAccept) { Components.EventView.Page[stage.onAccept](value); }
 
+    $('#currentEvent .chooser-content').empty().addClass('hide');
     nextStage();
   }
 
-  // === Special Pages ===
-
-  // The warning page is essentially a javascript alert. It shows a message that
-  // must be dismissed by pressing the button. I don't think this is used
-  // anywhere but the first page of the first event.
-  function buildWarningPage() {
-    let warningMessage = $('<div>',{ class:'warning-message' }).append(`
-      <span class="fg-danger">Warning.</span> The main character of Artificer is an extremely perverse sexual sadist.
-      While some of this game's most extreme content is avoidable the majority of it really isn't. If that's not your
-      thing, it would probably be best to just to not play this at all. Seriously. Trust me. This shit's going to be
-      fucked up.`);
-
-    $('#currentEvent .event-content').
-      append($('<div>',{ id:'warningFrame' }).
-      append($('<div>',{ class:'flex' }).
-      append($('<div>',{ class:'warning-image' })).
-      append(warningMessage)).
-      append($('<div>',{ class:'warning-footer' }).append(
-        $('<a>',{ href:'#', class:'button-warning close-warning' }).append('Acknowledged'))
-      ));
-  }
+  function updateChoices(map) { choices = extend(choices,map); }
+  function getChoices() { return choices; }
 
   // === Effects ===
 
@@ -166,6 +145,9 @@ Components.EventView = (function() {
   return {
     init: init,
     build: build,
+    nextStage: nextStage,
+    updateChoices: updateChoices,
+    getChoices: getChoices,
   };
 
 })();

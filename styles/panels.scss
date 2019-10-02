@@ -1,24 +1,39 @@
 
-.small-centered-panel {
+.medium-centered-area {
+  margin: 100px auto 0;
+  width: 500px;
+}
+.small-centered-area {
   margin: 100px auto 0;
   width: 300px;
+}
+
+.panel {
   padding: 10px;
   border: $border-light;
   box-shadow: $shadow-frame;
   background: $bg-panel;
   font-size: $fs-body;
 }
+.offset-panel-footer {
+  margin: 0 5px;
+  padding: 10px;
+  background-color: rgba(0,0,0,0.6);
+  border: $border-normal;
+  border-top: none;
+  box-shadow: $shadow-frame;
+  .text { float:left; }
+  .action { text-align:right; }
+  .action a { margin-top:10px; }
+}
+
 .form-list {
   white-space: nowrap;
   li { margin-bottom: 5px; }
   li:last-child { margin-bottom: 0; }
   label { display: inline-block; }
-}
-.form-list.species {
-  label { width: 100px; }
-  input[type='text'] { width: 184px; }
-}
-.form-list.gender {
-  label { width: 200px; }
-  input[type='text'] { width: 84px; }
+
+  &.label-size-6 label  { width: 6em; }
+  &.label-size-10 label { width: 10em; }
+  &.input-size-12 input  { width: 12em; }
 }

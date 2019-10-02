@@ -83,12 +83,16 @@ Event.build('game-start', {
       choices: speciesChoices,
       name: 'species',
       text: "What manner of creature was I? Or more importantly what do I wish to become?",
-      onAccept: 'onSpeciesChoice',
+    },{
+      nameFormPage: true
     },{
       chooserPage: true,
       choices: genderChoices,
       name: 'gender',
-      text: "With that settled, how would I describe my gender?"
+      text: "With that settled, how would I describe my gender?",
+      // onAccept: 'onGenderChoice',
+    },{
+      genderFormPage: true
     }
   ]
 });

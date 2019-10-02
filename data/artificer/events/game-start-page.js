@@ -15,8 +15,4 @@ Components.EventView.Page = {
     'vulpine':  "Yes. When seaking to outwit the world, you could do worse than a fox.",
   },
 
-  onSpeciesChoice(code) {
-    console.log(`Append the ${code} comment - ${Components.EventView.Page.speciesComments[code]}`)
-  },
-
 };

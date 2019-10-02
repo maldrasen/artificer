@@ -36,21 +36,9 @@
       z-index: calc(#{$z-event-frame} + 1);
     }
   }
+
+  .chooser-frame { margin: 50px auto 0; }
 }
 
 .minion-quote { color:$fg-minion-quote; }
 .player-quote { color:$fg-player-quote; }
-
-.chooser-page {
-  .chooser-frame { margin: 50px auto 0; }
-  .chooser-footer {
-    margin: 0 5px;
-    padding: 10px;
-    background-color: rgba(0,0,0,0.8);
-    border: $border-normal;
-    border-top: none;
-    box-shadow: $shadow-frame
-  }
-  .text { float:left; }
-  .action { text-align:right; }
-}
