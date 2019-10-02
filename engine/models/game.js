@@ -32,11 +32,12 @@ Game.start = function() {
         frustration: 0
       }).then(game => {
         game.enqueueEvent('game-start').then(() => {
-          Composer.render(game);
-          resolve(game);
+          buildStartingMinions(game).then(() => {
+            Composer.render(game);
+            resolve(game);
+          });
         });
       });
-
     });
   });
 }
@@ -52,6 +53,24 @@ Game.clear = function() {
 Game.prototype.createPlayer = function(options) {
   Player.forge(options).then(player => {
     Composer.render();
+  });
+}
+
+
+function buildStartingMinions(game) {
+  return new Promise(resolve => {
+    let startingCharacters = [
+      { type:'minion', species:'rat', gender:'male'   },
+      { type:'minion', species:'rat', gender:'male'   },
+      { type:'minion', species:'rat', gender:'male'   },
+      { type:'minion', species:'rat', gender:'female' },
+      { type:'minion', species:'rat', gender:'female' },
+      { type:'minion', species:'rat', gender:'female' },
+    ];
+
+    Promise.all(startingCharacters.map((options) => {
+      return CharacterBuilder.build(options);
+    })).then(resolve);
   });
 }
 

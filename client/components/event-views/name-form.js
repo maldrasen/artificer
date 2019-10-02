@@ -7,8 +7,8 @@ Components.EventView.NameForm = {
         <div class='margin-bottom padding-bottom border-light-bottom'>${comment} A being needs a name as well. What should I call myself?</div>
         <ul class='form-list label-size-6 input-size-12 margin-auto' style='width:252px;'>
           <li><label>Title</label><input type='text' id='title' value='Master'/></li>
-          <li><label>First Name</label><input type='text' id='firstName' value='Synder'/></li>
-          <li><label>Last Name</label><input type='text' id='lastName' value='Rhysh'/></li>
+          <li><label>First Name</label><input type='text' id='firstName' value='Horsecock'/></li>
+          <li><label>Last Name</label><input type='text' id='lastName' value='Murderface'/></li>
         </ul>
         <div class='align-right margin-top padding-top border-light-top'><a href='#' class="button-primary name-accept">Accept</a></div>
       </div>

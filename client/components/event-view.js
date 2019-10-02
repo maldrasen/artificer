@@ -12,6 +12,7 @@ Components.EventView = (function() {
     $(document).on('click', '#currentEvent .gender-accept', Elements.buttonAction(Components.EventView.GenderForm.accept));
     $(document).on('click', '#currentEvent .name-accept', Elements.buttonAction(Components.EventView.NameForm.accept));
     $(document).on('click', '#currentEvent .close-warning',Elements.buttonAction(Components.EventView.Warning.accept));
+    $(document).on('click', '#gameTitleFrame',Elements.buttonAction(Components.EventView.Splash.complete));
   }
 
   function build(transport, event) {
@@ -35,9 +36,9 @@ Components.EventView = (function() {
     let stage = currentStage();
     if (stage.pages)          { return buildPagedView();   }
     if (stage.chooserPage)    { return buildChooserPage(); }
-    if (stage.splashPage)     { return buildSplashPage();  }
     if (stage.genderFormPage) { return Components.EventView.GenderForm.build(); }
     if (stage.nameFormPage)   { return Components.EventView.NameForm.build();   }
+    if (stage.splashPage)     { return Components.EventView.Splash.build();     }
     if (stage.warningPage)    { return Components.EventView.Warning.build();    }
     throw "Unrecognized Stage Type"
   }
@@ -154,13 +155,6 @@ Components.EventView = (function() {
   function updateChoices(map) { choices = extend(choices,map); }
   function getChoices() { return choices; }
 
-  // === Special Pages ===
-
-  function buildSplashPage() {
-    setBackground('../../resources/game-start/bg-splash.jpg');
-    $('#currentEvent .event-content').append(`<div id='gameTitleFrame'><div id='gameTitle'>Artificer</div></div>`);
-  }
-
   // === Effects ===
 
   function setBackground(url) {
@@ -180,6 +174,7 @@ Components.EventView = (function() {
     setPageText: setPageText,
     updateChoices: updateChoices,
     getChoices: getChoices,
+    setBackground: setBackground,
   };
 
 })();

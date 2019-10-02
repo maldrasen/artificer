@@ -44,17 +44,17 @@ Components.EventView.GenderForm = {
     let valid = true;
     let values = {};
     let fields = [
-      '#genderName',
-      '#genderPlural',
-      '#genderDescriptive',
-      '#genderSubject',
-      '#genderObject',
-      '#genderPossessive',
-      '#genderAbsolute'
+      'genderName',
+      'genderPlural',
+      'genderDescriptive',
+      'genderSubject',
+      'genderObject',
+      'genderPossessive',
+      'genderAbsolute'
     ]
 
     each(fields, id => {
-      values[id] = $(id).val().trim();
+      values[id] = $(`#${id}`).val().trim();
       if (values[id].length == 0) { valid = false; }
     });
 

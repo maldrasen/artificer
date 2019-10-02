@@ -17,7 +17,9 @@ Components.EventView.Page = {
 
   onGenderChoice(code) {
     Components.EventView.setStage(code == 'custom' ? 'custom-gender-page' : 'after-gender-page')
-    Components.EventView.setPageText(6,59,Components.EventView.getPageText(6,59).replace(/MASTER/,Components.EventView.getChoices().title));
+    try {
+      Components.EventView.setPageText(6,59,Components.EventView.getPageText(6,59).replace(/MASTER/,Components.EventView.getChoices().title));
+    } catch(e) {}
   }
 
 };

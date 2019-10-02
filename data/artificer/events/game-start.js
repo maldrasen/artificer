@@ -171,20 +171,3 @@ function describeRats() {
   return `${Configuration.metric ? "They're a little over a meter tall or so," : "They range from about three to four feet tall,"}
     and their bodies are covered in thick brown and black fur and wear clothing made from various animal hides.`
 }
-
-// function buildStartingMinions(game) {
-//   return new Promise(resolve => {
-//     let startingCharacters = [
-//       { type:'minion', species:'rat', gender:'male'   },
-//       { type:'minion', species:'rat', gender:'male'   },
-//       { type:'minion', species:'rat', gender:'male'   },
-//       { type:'minion', species:'rat', gender:'female' },
-//       { type:'minion', species:'rat', gender:'female' },
-//       { type:'minion', species:'rat', gender:'female' },
-//     ];
-//
-//     Promise.all(startingCharacters.map((options) => {
-//       return CharacterBuilder.build(options);
-//     })).then(resolve);
-//   })
-// }
