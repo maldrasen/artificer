@@ -15,4 +15,8 @@ Components.EventView.Page = {
     'vulpine':  "Yes. When seaking to outwit the world, you could do worse than a fox.",
   },
 
+  onGenderChoice(code) {
+    Components.EventView.setStage(code == 'custom' ? 'custom-gender-page' : 'after-gender-page')
+  }
+
 };

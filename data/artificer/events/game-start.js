@@ -90,13 +90,18 @@ Event.build('game-start', {
       choices: genderChoices,
       name: 'gender',
       text: "With that settled, how would I describe my gender?",
-      // onAccept: 'onGenderChoice',
+      onAccept: 'onGenderChoice',
     },{
+      id:'custom-gender-page',
       genderFormPage: true
+    },{
+      id:'after-gender-page',
+      pages: [
+        { text:'OK, after gender' }
+      ]
     }
   ]
 });
-
 
 // function buildStartingMinions(game) {
 //   return new Promise(resolve => {

@@ -9,6 +9,7 @@ Components.EventView = (function() {
   function init() {
     $(document).on('click', '#currentEvent .click-advance', nextPage);
     $(document).on('click', '#currentEvent .chooser-accept', Elements.buttonAction(acceptChoice));
+    $(document).on('click', '#currentEvent .gender-accept', Elements.buttonAction(Components.EventView.GenderForm.accept));
     $(document).on('click', '#currentEvent .name-accept', Elements.buttonAction(Components.EventView.NameForm.accept));
     $(document).on('click', '#currentEvent .close-warning',Elements.buttonAction(Components.EventView.Warning.accept));
   }
@@ -32,10 +33,11 @@ Components.EventView = (function() {
 
   function buildStage() {
     let stage = currentStage();
-    if (stage.pages) { return buildPagedView(); }
-    if (stage.chooserPage)  { return buildChooserPage(); }
-    if (stage.nameFormPage) { return Components.EventView.NameForm.build(); }
-    if (stage.warningPage)  { return Components.EventView.Warning.build();  }
+    if (stage.pages)          { return buildPagedView();   }
+    if (stage.chooserPage)    { return buildChooserPage(); }
+    if (stage.genderFormPage) { return Components.EventView.GenderForm.build(); }
+    if (stage.nameFormPage)   { return Components.EventView.NameForm.build();   }
+    if (stage.warningPage)    { return Components.EventView.Warning.build();    }
     throw "Unrecognized Stage Type"
   }
 
@@ -46,6 +48,15 @@ Components.EventView = (function() {
     } else {
       console.log("No more stages.")
     }
+  }
+
+  function setStage(id) {
+    let index = eventData.stages.map(s => { return s.id }).indexOf(id);
+    if (index < 0) {
+      throw `There is no stage with ID:${id}`;
+    }
+    stageIndex = index;
+    buildStage();
   }
 
   function nextPage() {
@@ -124,9 +135,8 @@ Components.EventView = (function() {
 
     if (stage.name) { choices[stage.name] = value }
     if (stage.onAccept) { Components.EventView.Page[stage.onAccept](value); }
-
     $('#currentEvent .chooser-content').empty().addClass('hide');
-    nextStage();
+    if (stage.onAccept == null) { nextStage(); }
   }
 
   function updateChoices(map) { choices = extend(choices,map); }
@@ -146,6 +156,7 @@ Components.EventView = (function() {
     init: init,
     build: build,
     nextStage: nextStage,
+    setStage: setStage,
     updateChoices: updateChoices,
     getChoices: getChoices,
   };

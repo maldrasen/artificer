@@ -21,34 +21,9 @@
 
 
   function genderChosen() {
-    Elements.PagedContent.showPage(
-      (genderChooser.selectedValue == 'custom') ? '.custom-gender-page' : '.after-gender-page'
-    );
-
-    // We can't use the standard loom to fill in the title here because the
-    // player doesn't actually exist yet. This has to be done after the name
-    // step, but before the page is shown.
-    $('.title-fill').append($('#title').val().trim());
   }
 
   function checkCustomGender() {
-    let valid = true;
-    let fields = [
-      '#genderName',
-      '#genderPlural',
-      '#genderDescriptive',
-      '#genderSubject',
-      '#genderObject',
-      '#genderPossessive',
-      '#genderAbsolute']
-
-    each(fields, id => {
-      if ($(id).val().trim().length == 0) { valid = false; }
-    });
-
-    if (valid) {
-      Elements.PagedContent.showNextPage();
-    }
   }
 
   // === Complete ===
