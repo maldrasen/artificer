@@ -35,6 +35,7 @@ Components.EventView = (function() {
     let stage = currentStage();
     if (stage.pages)          { return buildPagedView();   }
     if (stage.chooserPage)    { return buildChooserPage(); }
+    if (stage.splashPage)     { return buildSplashPage();  }
     if (stage.genderFormPage) { return Components.EventView.GenderForm.build(); }
     if (stage.nameFormPage)   { return Components.EventView.NameForm.build();   }
     if (stage.warningPage)    { return Components.EventView.Warning.build();    }
@@ -79,6 +80,17 @@ Components.EventView = (function() {
     return (currentStage().pages||[])[pageIndex];
   }
 
+  function getPageText(stage,page) {
+    try {
+      return eventData.stages[stage].pages[page].text;
+    } catch(e) { return null;}
+  }
+
+  function setPageText(stage,page,text) {
+    try {
+      eventData.stages[stage].pages[page].text = text;
+    } catch(e) {}
+  }
 
   // === Paged View ===
 
@@ -142,6 +154,13 @@ Components.EventView = (function() {
   function updateChoices(map) { choices = extend(choices,map); }
   function getChoices() { return choices; }
 
+  // === Special Pages ===
+
+  function buildSplashPage() {
+    setBackground('../../resources/game-start/bg-splash.jpg');
+    $('#currentEvent .event-content').append(`<div id='gameTitleFrame'><div id='gameTitle'>Artificer</div></div>`);
+  }
+
   // === Effects ===
 
   function setBackground(url) {
@@ -157,6 +176,8 @@ Components.EventView = (function() {
     build: build,
     nextStage: nextStage,
     setStage: setStage,
+    getPageText: getPageText,
+    setPageText: setPageText,
     updateChoices: updateChoices,
     getChoices: getChoices,
   };
