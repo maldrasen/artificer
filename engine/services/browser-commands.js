@@ -24,6 +24,8 @@ global.BrowserCommands = (function() {
       });
     });
 
+    // === Save & Load ===
+
     ipcMain.on('game.save', (event, gameName) => {
       Records.saveToFile(gameName).then(()=>{
         Browser.send('alert',{ messsage:'Save Successful.' });
@@ -56,6 +58,12 @@ global.BrowserCommands = (function() {
 
     ipcMain.on('game.delete-save', (event, filename) => {
       Records.deleteSaveFile(filename);
+    });
+
+    // === Events ===
+
+    ipcMain.on('game.end-event', (event, choices)=>{
+      Composer.render();
     });
   }
 

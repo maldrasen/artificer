@@ -12,7 +12,6 @@ Components.EventView = (function() {
     $(document).on('click', '#currentEvent .gender-accept', Elements.buttonAction(Components.EventView.GenderForm.accept));
     $(document).on('click', '#currentEvent .name-accept', Elements.buttonAction(Components.EventView.NameForm.accept));
     $(document).on('click', '#currentEvent .close-warning',Elements.buttonAction(Components.EventView.Warning.accept));
-    $(document).on('click', '#gameTitleFrame',Elements.buttonAction(Components.EventView.Splash.complete));
   }
 
   function build(transport, event) {
@@ -23,22 +22,29 @@ Components.EventView = (function() {
     pageIndex = 0;
     choices = {};
 
+    $('#mainContent').empty().append($('<div>',{ id:'currentEvent' }).append($($('#eventTemplate').html())));
+
     if (event.background != null) { setBackground(event.background); }
     if (event.darkenBackground != null) { darkenBackground(event.darkenBackground); }
     if (event.pageScript != null) { require(event.pageScript); }
 
-    $('#mainContent').empty().append($('<div>',{ id:'currentEvent' }).append($($('#eventTemplate').html())));
-
     buildStage();
+  }
+
+  function endEvent() {
+    Renderer.sendCommand((eventData.onCompleteSend == null ? 'game.end-event' : eventData.onCompleteSend),choices);
   }
 
   function buildStage() {
     let stage = currentStage();
+
+    if (stage.background != null) { setBackground(stage.background); }
+
     if (stage.pages)          { return buildPagedView();   }
     if (stage.chooserPage)    { return buildChooserPage(); }
+    if (stage.customPage)     { return buildCustomPage();  }
     if (stage.genderFormPage) { return Components.EventView.GenderForm.build(); }
     if (stage.nameFormPage)   { return Components.EventView.NameForm.build();   }
-    if (stage.splashPage)     { return Components.EventView.Splash.build();     }
     if (stage.warningPage)    { return Components.EventView.Warning.build();    }
     throw "Unrecognized Stage Type"
   }
@@ -46,9 +52,10 @@ Components.EventView = (function() {
   function nextStage() {
     if (stageIndex < eventData.stages.length-1) {
       stageIndex += 1;
+      closeStage();
       buildStage();
     } else {
-      console.log("No more stages.")
+      endEvent();
     }
   }
 
@@ -58,17 +65,23 @@ Components.EventView = (function() {
       throw `There is no stage with ID:${id}`;
     }
     stageIndex = index;
+    closeStage();
     buildStage();
   }
 
+  function closeStage() {
+    $('#currentEvent .chooser-content').addClass('hide');
+    $('#currentEvent .event-text-frame').addClass('hide');
+    $('#currentEvent .click-advance').addClass('hide');
+    $('#currentEvent .custom-content').addClass('hide');
+  }
+
   function nextPage() {
-    if (pageIndex < currentStage().pages.length-1) {
+    if (currentStage().pages && pageIndex < currentStage().pages.length-1) {
       pageIndex += 1;
       buildPage();
     } else {
       pageIndex = 0;
-      $('#currentEvent .event-text-frame').addClass('hide');
-      $('#currentEvent .click-advance').addClass('hide');
       nextStage();
     }
   }
@@ -124,7 +137,7 @@ Components.EventView = (function() {
   //                   chosen value when the choice is accepted.
   function buildChooserPage() {
     let stage = currentStage();
-    let content = $('#currentEvent .chooser-content').removeClass('hide').append($($("#chooserPageTemplate").html()));
+    let content = $('#currentEvent .chooser-content').empty().removeClass('hide').append($($("#chooserPageTemplate").html()));
 
     stage.chooser = new Elements.Chooser({
       title: stage.chooserTitle,
@@ -142,13 +155,28 @@ Components.EventView = (function() {
     content.find('.text').append(stage.text);
   }
 
+  // === Custom Pages ===
+
+  function buildCustomPage() {
+    let stage = currentStage();
+
+    $('#currentEvent .custom-content').removeClass('hide').empty().append($(stage.html));
+
+    if (stage.clickAdvance) {
+      $('#currentEvent .click-advance').removeClass('hide');
+    }
+  }
+
+  // === Choices ===
+  // The choices object is updated as the event progresses. When the event is
+  // complete the choices the player has made are send to the engine.
+
   function acceptChoice() {
     let stage = currentStage();
     let value = stage.chooser.selectedValue;
 
     if (stage.name) { choices[stage.name] = value }
     if (stage.onAccept) { Components.EventView.Page[stage.onAccept](value); }
-    $('#currentEvent .chooser-content').empty().addClass('hide');
     if (stage.onAccept == null) { nextStage(); }
   }
 
@@ -158,11 +186,11 @@ Components.EventView = (function() {
   // === Effects ===
 
   function setBackground(url) {
-    $('.full-screen-background').css({ "background-image":`url(${url})`, filter:'' });
+    $('#currentEvent .full-screen-background').css({ "background-image":`url(${url})`, filter:'' });
   }
 
   function darkenBackground(value) {
-    $('.full-screen-background').css({filter:`brightness(${100-value}%)`});
+    $('#currentEvent .full-screen-background').css({filter:`brightness(${100-value}%)`});
   }
 
   return {

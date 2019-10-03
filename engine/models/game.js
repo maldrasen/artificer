@@ -23,7 +23,6 @@ Game.start = function() {
   return new Promise((resolve, reject) => {
     Game.instance().then(game => {
       if (game != null) { return reject("Cannot start a new Game. A Game currently exists.") }
-
       Game.create({
         id: 1,
         location: Configuration.gameStartLocation,
@@ -31,7 +30,7 @@ Game.start = function() {
         anger: 0,
         frustration: 0
       }).then(game => {
-        game.enqueueEvent('game-start').then(() => {
+        game.enqueueEvents(Configuration.gameStartEvents).then(() => {
           buildStartingMinions(game).then(() => {
             Composer.render(game);
             resolve(game);
@@ -79,6 +78,17 @@ function buildStartingMinions(game) {
 // TODO: I might need more event queues at some point for different types of
 //       events that should fire at different times. This should be sufficient
 //       for now. These events always fire immeadietly.
+
+Game.prototype.enqueueEvents = function(codes) {
+  return new Promise(resolve => {
+    Promise.all(codes.map(code => {
+      return new Promise(res => {
+        this.enqueueEvent(code).then(res);
+      });
+    })).then(resolve);
+  });
+}
+
 
 Game.prototype.enqueueEvent = function(code, state) {
   return new Promise((resolve,reject) => {

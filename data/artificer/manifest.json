@@ -95,6 +95,8 @@
     "aspects/skills/sorcery",
 
     "events/game-start",
+    "events/game-start-chase",
+    "events/game-start-rats",
     "events/no-longer-naked",
 
     "locations/courtyard",

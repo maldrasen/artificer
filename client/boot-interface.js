@@ -18,7 +18,6 @@ require(`${ROOT}/client/components/saved-games`);
 
 require(`${ROOT}/client/components/event-views/gender-form`);
 require(`${ROOT}/client/components/event-views/name-form`);
-require(`${ROOT}/client/components/event-views/splash`);
 require(`${ROOT}/client/components/event-views/warning`);
 
 // === Elements ===
