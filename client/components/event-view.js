@@ -118,6 +118,8 @@ Components.EventView = (function() {
     let page = currentPage();
     if (page.background != null) { setBackground(page.background); }
     if (page.darkenBackground != null) { darkenBackground(page.darkenBackground); }
+    if (page.showCenterImage) { showCenterImage(page.showCenterImage); }
+    if (page.hideCenterImage) { hideCenterImage(); }
     $('#currentEvent .event-text-frame').empty().append(page.text)
   }
 
@@ -184,6 +186,15 @@ Components.EventView = (function() {
   function getChoices() { return choices; }
 
   // === Effects ===
+
+  function showCenterImage(url) {
+    $('#currentEvent .center-image-frame').removeClass('hide');
+    $('#currentEvent .center-image').css({ "background-image":`url(${url})`, filter:'' });
+  }
+
+  function hideCenterImage() {
+    $('#currentEvent .center-image-frame').addClass('hide');
+  }
 
   function setBackground(url) {
     $('#currentEvent .full-screen-background').css({ "background-image":`url(${url})`, filter:'' });

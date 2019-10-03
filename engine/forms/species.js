@@ -35,7 +35,6 @@ global.Species = class Species extends Form {
     return (this.bodyOptions.baseHeight || 1500) / 1500
   }
 
-
   // Caprien females look nothing like the males. The women have slighly
   // goaty features like small horns while the men are furry goat morphs.
   random(part, gender) {

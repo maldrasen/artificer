@@ -4,7 +4,7 @@ global.Weaver = (function() {
     return new Promise(resolve => {
       let event = Event.lookup(queuedEvent.code).properties;
       lookupContext(event).then(context => {
-        updateEventPages(event, context);
+        transformEvent(event, context);
         resolve(event);
       })
     });
@@ -48,18 +48,68 @@ global.Weaver = (function() {
     });
   }
 
-  function updateEventPages(event, context) {
-    for (let s=0; s<event.stages.length; s++) {
-      let stage = event.stages[s];
-      if (stage.pages) {
-        for (let p=0; p<stage.pages.length; p++) {
-          let page = stage.pages[p];
-          if (page.text) {
-            stage.pages[p].text = weave(page.text, context);
-          }
-        }
+  // === Event Transformation  ===
+
+  // Part of what the weaver needs to do is transform the immutable event
+  // object into an actual event based on the current game context. To do that
+  // it itterates through the stages and pages here, replacing text and only
+  // including the branches that have their requirements met.
+
+  function transformEvent(event, context) {
+    let transformedStages = [];
+
+    each(event.stages, stage => {
+      if (meetsRequirements(stage.requires, context)) {
+        transformStage(stage, context)
+        transformedStages.push(stage);
       }
+    });
+
+    event.stages = transformedStages;
+  }
+
+  function transformStage(stage, context) {
+    if (stage.pages) {
+      let transformedPages = [];
+
+      each(stage.pages, page => {
+        if (page.text && meetsRequirements(page.requires, context)) {
+          page.text = weave(page.text, context)
+          transformedPages.push(page);
+        }
+      });
+
+      stage.pages = transformedPages;
     }
+  }
+
+  // The page's requires attribute can be either a string or an array of
+  // strings. This may turn into a huge number of functions. May need to
+  // create the scrutinizers again for this.
+
+  function meetsRequirements(requires, context) {
+    if (requires == null) { return true; }
+
+    return ((typeof requires == "string") ? [requires] : requires).map(requirement => {
+      return meetsRequirement(requirement, context);
+    }).indexOf(false) < 0;
+  }
+
+  function meetsRequirement(requirement, context) {
+    if (requirement == 'player.furry')            { return context.P.character.species.isFurry; }
+    if (requirement == 'player.not-furry')        { return !context.P.character.species.isFurry; }
+    if (requirement == 'player.has-cock')         { return context.P.cock != null; }
+    if (requirement == 'player.no-cock')          { return context.P.cock == null; }
+    if (requirement == 'player.has-pussy')        { return context.P.pussy != null; }
+    if (requirement == 'player.no-pussy')         { return context.P.pussy == null; }
+    if (requirement == 'player.has-tits')         { return context.P.tits != null; }
+    if (requirement == 'player.no-tits')          { return context.P.tits == null; }
+    if (requirement == 'player.has-average-tits') { return context.P.tits && context.P.tits.sizeClass == 'average'}
+
+    if (requirement == 'player.has-smaller-than-average-tits') { return context.P.tits && ['zero','tiny','small'].indexOf(context.P.tits.sizeClass) >= 0 }
+    if (requirement == 'player.has-bigger-than-average-tits')  { return context.P.tits && ['big','huge','monster'].indexOf(context.P.tits.sizeClass) >= 0 }
+
+    throw `Unknown Requirement - ${requirement}`;
   }
 
   // The weave function takes a string and recursivly itterates over it,

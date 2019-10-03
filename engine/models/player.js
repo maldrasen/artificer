@@ -16,8 +16,12 @@ global.Player = Database.instance().define('player', {
   }
 });
 
+// The relationships from all the body parts to the player and character models
+// are all polymorphic and share the same ID space. I should really just add a
+// type column to every body part, but setting the player ID to 1 billion
+// should work just fine too.
 Player.instance = function() {
-  return Player.findByPk(1);
+  return Player.findByPk(1000000000);
 }
 
 Player.forge = function(options) {
@@ -26,7 +30,7 @@ Player.forge = function(options) {
       if (player != null) { return reject("Cannot create player. The Player already exists."); }
 
       Player.create({
-        id: 1,
+        id: 1000000000,
         title: options.title,
         firstName: options.firstName,
         lastName: options.lastName,
