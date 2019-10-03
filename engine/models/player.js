@@ -10,6 +10,7 @@ global.Player = Database.instance().define('player', {
 },{
   timestamps: false,
   getterMethods: {
+    name()    { return `${this.title} ${this.firstName} ${this.lastName}` },
     species() { return Species.lookup(this.speciesCode); },
     gender()  { return Gender[this.genderCode]; },
   }

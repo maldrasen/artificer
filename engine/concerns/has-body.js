@@ -28,24 +28,22 @@ global.HasBody = { isAppliedTo: function(model) {
   model.prototype.getCompleteBody = function() {
     return new Promise(resolve => {
       Promise.all([
-        model.getBody(),
-        model.getAnus(),
-        model.getBalls(),
-        model.getCock(),
-        model.getMouth(),
-        model.getNipples(),
-        model.getPussy(),
-        model.getTits()
+        this.getBody(),
+        this.getAnus(),
+        this.getCock(),
+        this.getMouth(),
+        this.getNipples(),
+        this.getPussy(),
+        this.getTits()
       ]).then(parts => {
         resolve({
           body:    parts[0],
           anus:    parts[1],
-          balls:   parts[2],
-          cock:    parts[3],
-          mouth:   parts[4],
-          nipples: parts[5],
-          pussy:   parts[6],
-          tits:    parts[7],
+          cock:    parts[2],
+          mouth:   parts[3],
+          nipples: parts[4],
+          pussy:   parts[5],
+          tits:    parts[6],
         });
       });
     });

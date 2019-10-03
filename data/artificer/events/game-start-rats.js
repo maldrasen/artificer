@@ -14,7 +14,7 @@ Event.build('game-start-rats', {
 });
 
 
-// { text:"I bolt upright. I still feel sluggish, like I've just woken up after a long sleep.", background:"../../resources/backgrounds/bg-field-1.png" },
+// { text:"I bolt upright. I still feel sluggish, like I've just woken up after a long sleep.",  },
 // { text:"I'm standing in some sort of field." },
 // { text:"The barren landscape is cold and windy, and I'm completely naked." },
 // { text:"I need to find shelter before I freeze to death and have to reform myself yet again." },
