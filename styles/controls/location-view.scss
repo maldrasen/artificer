@@ -1,0 +1,19 @@
+#currentLocation {
+  margin-top: 50px;
+
+  .location-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 5px;
+    height: 30px;
+    line-height: 20px;
+    background-color: rgba(0,0,0,0.5);
+    border-bottom: $border-light;
+    box-sizing: border-box;
+    box-shadow: $shadow-frame;
+
+    a { margin: 0 5px; }
+  }
+}
