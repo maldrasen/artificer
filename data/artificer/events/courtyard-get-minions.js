@@ -40,7 +40,6 @@ Event.build('courtyard-get-minions', {
 
     await game.setFlags({
       'locationMenu.minions' : 'unlocked',
-      'project.clear-great-hall' : 'available',
       'mission.explore-hinterlands' : 'available',
       'mission.gather-stone' : 'available',
       'mission.gather-timber' : 'available',

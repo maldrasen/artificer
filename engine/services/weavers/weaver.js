@@ -1,13 +1,12 @@
 global.Weaver = (function() {
 
-  function updateEvent(queuedEvent) {
-    return new Promise(resolve => {
-      let event = Event.lookup(queuedEvent.code).properties;
-      lookupContext(event).then(context => {
-        transformEvent(event, context);
-        resolve(event);
-      })
-    });
+  async function updateEvent(queuedEvent) {
+    let event = Event.lookup(queuedEvent.code).properties;
+    let context = await lookupContext(event);
+
+    transformEvent(event, context);
+
+    return event;
   }
 
   // We want to lookup the context in one big promise, but until the event is
@@ -15,24 +14,30 @@ global.Weaver = (function() {
   // We therefor need to build this operations array that includes the index
   // values of the operations that the promise is going to run, because
   // Promise.all() returns the results in an array, and we need a map.
-  function lookupContext(event) {
-    return new Promise(resolve => {
+  async function lookupContext(event) {
+    let index = 0;
+    let operations = [
+      { key:'P', index:index++, prom:lookupPlayer() },
+    ];
 
-      let index = 0;
-      let operations = [
-        { key:'P', index:index++, prom:lookupPlayer() },
-      ];
-
-      Promise.all(operations.map(operation => { return operation.prom })).then(results => {
-        let context = {};
-        each(operations, operation => {
-          if (results[operation.index]) {
-            context[operation.key] = results[operation.index];
-          }
-        });
-        resolve(context);
-      });
+    each((event.actors||[]), (descriptive, key) => {
+      operations.push({
+        key:   key,
+        index: index++,
+        prom:  findActor(descriptive)
+      })
     });
+
+    let context = {};
+    let results = await Promise.all(operations.map(operation => { return operation.prom }));
+
+    each(operations, operation => {
+      if (results[operation.index]) {
+        context[operation.key] = results[operation.index];
+      }
+    });
+
+    return context;
   }
 
   // The lookupPlayer() function get's the player and every player bodypart.
@@ -46,6 +51,21 @@ global.Weaver = (function() {
         }
       })
     });
+  }
+
+  async function findActor(descriptive) {
+    let character;
+
+    if (descriptive == 'the-smartest-rat') {
+      character = await Character.findOne({ where:{ speciesCode:'rat' }, order:[['mental','DESC']]});
+    }
+
+    if (character == null) {
+      throw `Cannot find a character that matches ${descriptive}`;
+    }
+
+    let everything = await character.getCompleteBody();
+    return extend(everything, { character:character });
   }
 
   // === Event Transformation  ===
@@ -141,7 +161,7 @@ global.Weaver = (function() {
     // if (token.startsWith('body')) { return BodyLoom.findValue(subject, token, context); }
     if (token.startsWith('character')) { return CharacterLoom.findValue(subject, token, context); }
     // if (token.startsWith('equipment')) { return EquipmentLoom.findValue(subject, token, context); }
-    // if (token.startsWith('gender')) { return GenderLoom.findValue(subject, token, context); }
+    if (token.startsWith('gender')) { return GenderLoom.findValue(subject, token, context); }
     // if (token.startsWith('race')) { return RaceLoom.findValue(subject, token, context); }
     return error(`BadToken(${subject}::${token})`);
   }

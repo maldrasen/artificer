@@ -40,6 +40,7 @@ require(`${ROOT}/engine/services/character-builder/name-generators/rat-name-gene
 // === Weavers ===
 require(`${ROOT}/engine/services/weavers/weaver`);
 require(`${ROOT}/engine/services/weavers/character-loom`);
+require(`${ROOT}/engine/services/weavers/gender-loom`);
 
 // === Utilities ===
 require(`${ROOT}/engine/utilities/array-utility.js`);
