@@ -13,6 +13,7 @@ global.CharacterLoom = (function() {
     if (token == "character.firstName's") { return `<span class='name'>${EnglishUtility.possessive(character.firstName)}</span>`; }
     if (token == "character.preName")     { return `<span class='name'>${character.preName}</span>`; }
     if (token == "character.lastName")    { return `<span class='name'>${character.lastName}</span>`; }
+    if (token == "character.title")       { return `<span class='title'>${character.title}</span>`; }
 
     return Weaver.error(`Bad character token(${token})`);
   }
