@@ -1,6 +1,6 @@
 global.BodyBuilder = (function() {
 
-  function build(character, options, callback) {
+  function build(character, options) {
     if (character.gender == null)  { throw 'Gender must be set before body can be built.'; }
     if (character.species == null) { throw 'Species must be set before body can be built.'; }
     if (character.id == null)      { throw 'Character must be persisted.'; }
@@ -35,9 +35,7 @@ global.BodyBuilder = (function() {
     if (params.eyeColor == 'human') { params.eyeColor = randomHumanEyeColor(); }
     if (params.furColor == 'matchHair') { params.furColor = params.hairColor; }
 
-    Body.create(params).then(body => {
-      callback(body);
-    });
+    return Body.create(params);
   }
 
   function randomHumanHairColor() {

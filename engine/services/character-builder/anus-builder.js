@@ -1,22 +1,20 @@
 global.AnusBuilder = (function() {
 
   function build(character, options) {
-    return new Promise((resolve, reject) => {
-      if (character.id == null) { reject('Character must be persisted.'); }
+    if (character.id == null) { throw 'Character must be persisted.'; }
 
-      let params = CharacterBuilder.baseline('anus', options, character.species, {
-        character_id:   character.id,
-        shape:          "normal",
-        conditon:       randomCondition(character.species),
-        sizeClass:      Random.fromFrequencyMap(character.species.bodyOptions.cock.size),
-        sizeScale:      Random.upTo(100),
-        prolapseLength: 0,
-      });
-
-      params.sizeFactor = character.species.sizeFactor();
-
-      Anus.create(params).then(resolve);
+    let params = CharacterBuilder.baseline('anus', options, character.species, {
+      character_id:   character.id,
+      shape:          "normal",
+      conditon:       randomCondition(character.species),
+      sizeClass:      Random.fromFrequencyMap(character.species.bodyOptions.cock.size),
+      sizeScale:      Random.upTo(100),
+      prolapseLength: 0,
     });
+
+    params.sizeFactor = character.species.sizeFactor();
+
+    return Anus.create(params);
   }
 
   // Only a couple species have condition maps set, the default map to use is the elf map.

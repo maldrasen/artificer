@@ -1,19 +1,17 @@
 global.MouthBuilder = (function() {
 
   function build(character, options) {
-    return new Promise((resolve, reject) => {
-      if (character.id == null) { reject('Character must be persisted.'); }
+    if (character.id == null) { throw 'Character must be persisted.'; }
 
-      let params = CharacterBuilder.baseline('mouth', options, character.species, {
-        character_id: character.id,
-        tongueShape: 'normal',
-        tongueLength: null,
-      });
-
-      if (params.tongueLength == null) { params.tongueLength = getTongueLength(character.species); }
-
-      Mouth.create(params).then(resolve);
+    let params = CharacterBuilder.baseline('mouth', options, character.species, {
+      character_id: character.id,
+      tongueShape: 'normal',
+      tongueLength: null,
     });
+
+    if (params.tongueLength == null) { params.tongueLength = getTongueLength(character.species); }
+
+    return Mouth.create(params);
   }
 
   function getTongueLength(species) {

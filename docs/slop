@@ -1,1 +1,22 @@
 
+
+// TODO: This needs to attach an aspect instead after (or before...) a character is built
+
+// randomizedViolenceProclivity(gender) {
+//   let base = Random.roll(this.violenceRange, this.violenceAverage);
+//
+//   // Unless you're a drow, men are slightly more violent and female are
+//   // slightly more passive, with futa being unchanged.
+//   if (this.code == 'dark-elf') {
+//     if (gender == 'male')   { base -= 10; }
+//     if (gender == 'female') { base += 10; }
+//   } else {
+//     if (gender == 'male')   { base += 10; }
+//     if (gender == 'female') { base -= 10; }
+//   }
+//
+//   if (base > 100)  { base = 100;  }
+//   if (base < -100) { base = -100; }
+//
+//   return base;
+// }

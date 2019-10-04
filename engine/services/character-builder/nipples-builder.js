@@ -1,40 +1,38 @@
 global.NipplesBuilder = (function() {
 
   function build(character, options) {
-    return new Promise((resolve, reject) => {
-      if (character.id == null) { reject('Character must be persisted.'); }
-      if (character.species.bodyOptions.nipples == false) { return resolve(); }
+    if (character.id == null) { throw 'Character must be persisted.'; }
+    if (character.species.bodyOptions.nipples == false) { return; }
 
-      let params = CharacterBuilder.baseline('nipples', options, character.species, {
-        character_id: character.id,
-        count: 1,
-        width: null,
-        length: null,
-        shade: Random.upTo(5)+1,
-        shape: 'normal',
-        orificeWidth: 0,
-        orificeElasticity: 0,
-      });
-
-      // Set a default shape for the character's gender. Males by default have
-      // small boring nipples.
-      if (params.shape == null) {
-        params.shape = (character.gender.code == 'male') ? 'normal' : randomFemaleNippleShape();
-      }
-
-      // Also, ensure that even minotaur males have normal nipples.
-      if (params.shape == 'teat' && character.gender.code == 'male') {
-        params.shape = 'normal';
-      }
-
-      // If width or length is null go ahead and randomize both. If the size is
-      // important then both attributes should be set.
-      if (params.width == null || params.length == null) {
-        randomNippleSize(params, character);
-      }
-
-      Nipples.create(params).then(resolve);
+    let params = CharacterBuilder.baseline('nipples', options, character.species, {
+      character_id: character.id,
+      count: 1,
+      width: null,
+      length: null,
+      shade: Random.upTo(5)+1,
+      shape: 'normal',
+      orificeWidth: 0,
+      orificeElasticity: 0,
     });
+
+    // Set a default shape for the character's gender. Males by default have
+    // small boring nipples.
+    if (params.shape == null) {
+      params.shape = (character.gender.code == 'male') ? 'normal' : randomFemaleNippleShape();
+    }
+
+    // Also, ensure that even minotaur males have normal nipples.
+    if (params.shape == 'teat' && character.gender.code == 'male') {
+      params.shape = 'normal';
+    }
+
+    // If width or length is null go ahead and randomize both. If the size is
+    // important then both attributes should be set.
+    if (params.width == null || params.length == null) {
+      randomNippleSize(params, character);
+    }
+
+    return Nipples.create(params);
   }
 
   function randomFemaleNippleShape() {
