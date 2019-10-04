@@ -1,17 +1,17 @@
 global.Random = {
 
   // Random number between 0 and the limit.
-  upTo: function(limit) {
+  upTo(limit) {
     return Math.floor(Math.random() * limit);
   },
 
   // Roll 1d(rand)+plus, rand or plus can be undefined.
-  roll: function(rand, plus) {
+  roll(rand, plus) {
     return Random.upTo(rand||0)+(plus||0);
   },
 
   // Select a random element in an array.
-  from: function(array) {
+  from(array) {
     if (array && array.length) {
       return array[Random.upTo(array.length)];
     }
@@ -24,7 +24,7 @@ global.Random = {
   //
   // It doesn't matter what the values of the keys add up to or what they are
   // the ratios between the numbers determine the probability
-  fromFrequencyMap: function(map) {
+  fromFrequencyMap(map) {
     let index = 0;
     let keys = ObjectUtility.keys(map);
     let random = Random.upTo(ObjectUtility.values(map).reduce(function(a,v) { return a+v; }));
@@ -40,7 +40,7 @@ global.Random = {
   },
 
   // Randomize an array, usually so it can be itterated through in a random order.
-  shuffle: function(array) {
+  shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
@@ -51,7 +51,7 @@ global.Random = {
   // This generates a random number, near the average number in a tight bell
   // curve distribution. The amount of fuzz is the ammount that the randomly
   // chosen number can deviate from the average number.
-  tightlyBound: function(average, fuzz) {
+  tightlyBound(average, fuzz) {
     let base = average - (fuzz / 2);
     let cut = Random.geometric(50) * (fuzz/100);
     return Math.round(cut + base)
@@ -61,7 +61,7 @@ global.Random = {
   // distribution around the average number by rolling 10d10 against the average
   // and tallying and fuzzing the result. There are probably way better ways to
   // do this, but I'm not a math guy.
-  geometric: function(average) {
+  geometric(average) {
     let result = Random.upTo(20)-10;
 
     for (let i=0; i<10; i++) {

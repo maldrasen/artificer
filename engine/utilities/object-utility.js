@@ -5,7 +5,7 @@ global.ObjectUtility = {
   // function uses the varargs as keys. For instance:
   //   ObjectUtility.fetch({ foo:{ bar:{ yarp:1 }}}, 'foo', 'bar', 'yarp') == 1
   //   ObjectUtility.fetch({ foo:{ bar:{ yarp:1 }}}, 'foo', 'nope', 'wat') == null
-  fetch: function(object) {
+  fetch(object) {
     let chain = null;
 
     if (typeof object != 'object') {
@@ -19,7 +19,7 @@ global.ObjectUtility = {
   },
 
   // Quick and dirty, get keys of an object.
-  keys: function(object) {
+  keys(object) {
     let keys = [];
     each(object, function(value, key) {
       keys.push(key);
@@ -28,7 +28,7 @@ global.ObjectUtility = {
   },
 
   // Quick and dirty, get values of an object.
-  values: function(object) {
+  values(object) {
     let values = [];
     each(object, function(value, key) {
       values.push(value);
@@ -37,7 +37,7 @@ global.ObjectUtility = {
   },
 
   // Filter an object, returning only the properties with keys in the allowedKeys array.
-  filter: function(object, allowedKeys) {
+  filter(object, allowedKeys) {
     let filtered = {};
     each(allowedKeys, function(key) {
       if (typeof object[key] != 'undefined') { filtered[key] = object[key]; }
@@ -46,7 +46,7 @@ global.ObjectUtility = {
   },
 
   // Check to see if an object has no properties.
-  isEmpty: function(object) {
+  isEmpty(object) {
     for (let key in object) {
       if (object.hasOwnProperty(key)) {
         return false;

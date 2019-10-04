@@ -1,21 +1,21 @@
 global.EnglishUtility = {
 
   // Prepends an a/an to the beginning of the string if it starts with a vowel.
-  a_an: function(string) {
+  a_an(string) {
     return string.match(/^[aeiou]/i) ? `an ${string}` : `a ${string}`;
   },
 
-  possessive: function(name) {
+  possessive(name) {
     return (name.match(/(.)$/)[1] == 's') ? `${name}'` : `${name}'s`;
   },
 
   // Prepends an A/An to the beginning of the string if it starts with a vowel.
-  A_An: function(string) {
+  A_An(string) {
     return string.match(/^[aeiou]/i) ? `An ${string}` : `A ${string}`;
   },
 
   // For phrases where there you might be acting on 'both things', or on 'all things'
-  all_both: function(number) {
+  all_both(number) {
     if (number <= 1) { return Loom.error(`English.all_both(${number}) must be greater than 1`); }
     return (number > 2) ? 'both' : 'all';
   },
@@ -23,7 +23,7 @@ global.EnglishUtility = {
   // Returns a number from one to twenty one in English. If an :or option is
   // specified then that is returned for "one" in cases where "a" or "an" would
   // sound better in a phrase.
-  numberInEnglish: function(number, options)  {
+  numberInEnglish(number, options)  {
     if (number == 1 && options && options.or) { return options.or; }
     if (number == 0 ) { return "zero" }
     if (number == 1 ) { return "one" }
@@ -62,7 +62,7 @@ global.EnglishUtility = {
   // length. At that point the function only returns the number of inches
   // it's given.
 
-  inchesInEnglish: function(value, plural) {
+  inchesInEnglish(value, plural) {
     let inch = (plural && number != 1) ? 'inches' : 'inch'
     let foot = (plural && number != 12) ? 'feet' : 'foot'
 
@@ -115,7 +115,7 @@ global.EnglishUtility = {
 
   // Because you sometimes need to compare the size of round things to other
   // things that are round.
-  roundWidthComparator: function(width) {
+  roundWidthComparator(width) {
     if (width < 0.2) { return Random.from(['pea', 'peanut', 'pearl', 'bean']); }
     if (width < 0.5) { return Random.from(['olive', 'acorn', 'cherry', 'grape', 'marble', 'cranberry', 'hazelnut']); }
     if (width < 1)   { return Random.from(['walnut', 'cherry tomato', 'brazil nut']); }
@@ -142,7 +142,7 @@ global.EnglishUtility = {
   // Because you sometimes need to compare the size of round things... in plural!
   // I wish I could think of a better way to do this rather than just copying and
   // editing the list, but plurals like "heads of lettuce" make it tricky.
-  pluralRoundWidthComparator: function(width) {
+  pluralRoundWidthComparator(width) {
     if (width < 0.2) { return Random.from(['peas', 'peanuts', 'pearls', 'beans']); }
     if (width < 0.5) { return Random.from(['olives', 'acorns', 'cherries', 'grapes', 'marbles', 'cranberries', 'hazelnuts']); }
     if (width < 1)   { return Random.from(['walnuts', 'cherry tomatoes', 'brazil nuts']); }
