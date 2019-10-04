@@ -62,8 +62,10 @@ global.BrowserCommands = (function() {
 
     // === Events ===
 
-    ipcMain.on('game.end-event', (event, choices)=>{
-      Composer.render();
+    ipcMain.on('game.end-event', (event, choices) => {
+      Event.finish(choices).then(() => {
+        Composer.render();
+      });
     });
 
     ipcMain.on('game.start-location-event', () => {

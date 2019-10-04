@@ -13,7 +13,7 @@ Event.build('courtyard-get-minions', {
         { text:"I let off a flash of bright light that illuminates the entire courtyard in a harsh white glare.", darkenBackground:0 },
         { text:"I'm surrounded by small, rat-like creatures." },
         { text:"Well, surrounded is not quite the right word..." },
-        { text:"The rats cower away from me, clearly terrified that I might incinerate or otherwise magically assult them in some way." },
+        { text:"The rats cower away from me, clearly terrified that I might incinerate or otherwise magically assault them in some way." },
         { text:"They have a fairly humanoid shape, though their faces remain very rat-like, with short muzzles and twitching whiskers." },
         { text:describeRats() },
         { text:`The boldest of these rats crawls towards me.` },
@@ -33,7 +33,21 @@ Event.build('courtyard-get-minions', {
         { text:`And with that declaration I am now lord of this place.` },
       ]
     }
-  ]
+  ],
+
+  finish: async choices => {
+    let game = await Game.instance()
+
+    await game.setFlags({
+      'locationMenu.minions' : 'unlocked',
+      'project.clear-great-hall' : 'available',
+      'mission.explore-hinterlands' : 'available',
+      'mission.gather-stone' : 'available',
+      'mission.gather-timber' : 'available',
+    });
+
+    await game.enqueueLocationEvent('courtyard-walk-on-walls');
+  }
 });
 
 function describeRats() {

@@ -19,10 +19,10 @@ Components.EventView = (function() {
 
     Components.EventView.Page = {};
 
+    choices = { event:event.code };
     eventData = event;
     stageIndex = 0;
     pageIndex = 0;
-    choices = {};
 
     $('#mainContent').empty().append($('<div>',{ id:'currentEvent' }).append($($('#eventTemplate').html())));
 

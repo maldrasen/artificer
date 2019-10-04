@@ -94,6 +94,7 @@
     "aspects/skills/oral",
     "aspects/skills/sorcery",
 
+    "events/courtyard-walk-on-walls",
     "events/courtyard-get-minions",
     "events/game-start",
     "events/game-start-chase",
