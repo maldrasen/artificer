@@ -88,7 +88,7 @@ Event.build('game-start-chase', {
         { text:"They're running towards me." },
         { text:"Oh shit." },
         { text:"I don't know who they are, but I start running too, and it looks like the keep is my only option." },
-        { text:"I see one of my pursuers off to the left.", showCenterImage:'../../resources/game-start/abomination.jpg' },
+        { text:"I see one of my pursuers off to the left." },
         { text:"Even from this distance I can see that its gait is wrong." },
         { text:"It's impossibly fast for something that ought to either be running on two or four legs but is using three." },
         { text:"It's a misshapen thing, twisted and asymmetrical with too many teeth and horns and claws and too little skin, as though it had forgotten that bone and muscle should have something covering it." },
@@ -107,7 +107,7 @@ Event.build('game-start-chase', {
         { text:"Instinctively I follow that up with a quick horizontal slash, severing it's legs at the knees with nothing but a blade of compressed air." },
         { text:"It lands on it's back, kicking and vomiting bile." },
         { text:"The concussive blast was enough to burst its guts, its entrails tangling loosely around its remaining limbs as it thrashes wildly." },
-        { text:"I look down at my hands in wonder.", hideCenterImage:true },
+        { text:"I look down at my hands in wonder." },
         { text:"Holy Shit." },
         { text:"I'm a wizard?" },
         { text:"I feel faint though." },
@@ -139,6 +139,11 @@ Event.build('game-start-chase', {
         { text:" ", darkenBackground:75 },
         { text:" ", darkenBackground:100 },
       ]
+    },{
+      customPage: true,
+      clickAdvance: true,
+      background: '../../resources/game-start/bg-splash.jpg',
+      html:`<div id='gameTitleFrame'><div id='gameTitle'>Artificer</div></div>`
     }
   ]
 });

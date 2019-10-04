@@ -3,15 +3,20 @@ global.Game = Database.instance().define('game', {
   dayNumber:   { type:Sequelize.INTEGER },
   anger:       { type:Sequelize.INTEGER },
   frustration: { type:Sequelize.INTEGER },
-  eventQueue_json:  { type:Sequelize.STRING  },
+  gameEventQueue_json:      { type:Sequelize.STRING  },
+  locationEventQueue_json:  { type:Sequelize.STRING  },
+
 },{
   timestamps: false,
   getterMethods: {
-    eventQueue() { return JSON.parse(this.eventQueue_json||'[]') },
-    nextEvent() { return this.eventQueue[0]; }
+    gameEventQueue()     { return JSON.parse(this.gameEventQueue_json||'[]') },
+    locationEventQueue() { return JSON.parse(this.locationEventQueue_json||'[]') },
+    nextGameEvent()      { return this.gameEventQueue[0]; },
+    nextLocationEvent()  { return this.locationEventQueue[this.location][0]; },
   },
   setterMethods: {
-    eventQueue(queue) { this.setDataValue('eventQueue_json',JSON.stringify(queue)) }
+    gameEventQueue(queue) { this.setDataValue('gameEventQueue_json',JSON.stringify(queue)) },
+    locationEventQueue(queue) { this.setDataValue('locationEventQueue_json',JSON.stringify(queue)) },
   }
 });
 
@@ -28,12 +33,16 @@ Game.start = function() {
         location: Configuration.gameStartLocation,
         dayNumber: 1,
         anger: 0,
-        frustration: 0
+        frustration: 0,
+        gameEventQueue_json: "[]",
+        locationEventQueue_json: "{}",
       }).then(game => {
         game.enqueueEvents(Configuration.gameStartEvents).then(() => {
-          buildStartingMinions(game).then(() => {
-            Composer.render(game);
-            resolve(game);
+          game.setFlags(Configuration.gameStartFlags).then(() => {
+            buildStartingMinions(game).then(() => {
+              Composer.render(game);
+              resolve(game);
+            });
           });
         });
       });
@@ -73,44 +82,102 @@ function buildStartingMinions(game) {
   });
 }
 
-// === Event Queue ===
+// === Game Flags ===
 
-// TODO: I might need more event queues at some point for different types of
-//       events that should fire at different times. This should be sufficient
-//       for now. These events always fire immeadietly.
-
-Game.prototype.enqueueEvents = function(codes) {
+Game.prototype.setFlags = function(flags) {
   return new Promise(resolve => {
-    Promise.all(codes.map(code => {
+    let operations = []
+    each(flags, (value,code) => {
       return new Promise(res => {
-        this.enqueueEvent(code).then(res);
+        Flag.create({ code:code, value:value }).then(res);
+      });
+    });
+    Promise.all(operations).then(resolve);
+  });
+}
+
+Game.prototype.getFlags = function() {
+  return new Promise(resolve => {
+    Flag.findAll({ where:{} }).then(flags => {
+      let compact = {};
+      each(flags, flag => {
+        compact[flag.code] = flag.value
+      });
+      resolve(compact);
+    })
+  });
+}
+
+// === Event Queues ===
+
+Game.prototype.enqueueEvents = function(events) {
+  return new Promise(resolve => {
+    Promise.all(events.map(event => {
+      return new Promise(res => {
+        if (event.type == 'gameEvent') {
+          this.enqueueGameEvent(event.code).then(res);
+        } else if (event.type == 'locationEvent') {
+          this.enqueueLocationEvent(event.code).then(res);
+        } else {
+          throw `Unrecognized Event Type : ${event.type}`
+        }
       });
     })).then(resolve);
   });
 }
 
-
-Game.prototype.enqueueEvent = function(code, state) {
+Game.prototype.enqueueGameEvent = function(code, state) {
   return new Promise((resolve,reject) => {
     try { Event.lookup(code) } catch(e) { reject(e) }
 
-    let queue = this.eventQueue;
+    let queue = this.gameEventQueue;
         queue.push({ code:code, state:(state||{}) });
 
-    this.eventQueue = queue;
+
+    this.gameEventQueue = queue;
     this.save().then(resolve);
   });
 }
 
-Game.prototype.unqueueEvent = function() {
+Game.prototype.unqueueGameEvent = function() {
   return new Promise(resolve => {
-    let queue = this.eventQueue;
+    let queue = this.gameEventQueue;
     let event = queue.shift();
 
     if (event == null) {
       resolve(null);
     } else {
-      this.eventQueue = queue;
+      this.gameEventQueue = queue;
+      this.save().then(()=>{
+        resolve(event);
+      });
+    }
+  })
+}
+
+Game.prototype.enqueueLocationEvent = function(code, state) {
+  return new Promise((resolve,reject) => {
+    let event = Event.lookup(code);
+    let location = Location.lookup(event.location);
+    let queue = this.locationEventQueue;
+
+    if (queue[location.code]==null) { queue[location.code]=[]; }
+    queue[location.code].push({ code:code, state:(state||{}) });
+
+    this.locationEventQueue = queue;
+    this.save().then(resolve);
+  });
+}
+
+Game.prototype.unqueueLocationEvent = function() {
+  return new Promise(resolve => {
+    let queue = this.locationEventQueue;
+    let event = (queue[this.location]||[]).shift();
+
+    if (event == null) {
+      resolve(null);
+    } else {
+      this.locationEventQueue = queue;
       this.save().then(()=>{
         resolve(event);
       });

@@ -94,9 +94,9 @@
     "aspects/skills/oral",
     "aspects/skills/sorcery",
 
+    "events/courtyard-get-minions",
     "events/game-start",
     "events/game-start-chase",
-    "events/game-start-rats",
     "events/no-longer-naked",
 
     "locations/courtyard",
