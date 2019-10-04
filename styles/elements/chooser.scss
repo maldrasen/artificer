@@ -14,23 +14,29 @@
   }
   .choice {
     display: flex;
+    font-size: $fs-big;
     align-items: center;
     height: 30px;
     padding-left: 5px;
     box-sizing: content-box;
     margin: 5px;
     cursor: pointer;
+    border: $border-transparent;
   }
   .choice.locked {
     cursor: default;
     color: $fg-very-weak;
   }
   .choice.active {
-    background-color: $bg-chooser-active-choice;
-    box-shadow: $shadow-shallow;
+    border: $border-normal;
+    border-radius: 3px;
+  }
+  .choice:hover {
+    color: $fg-strong;
   }
   .choice-detail {
     display: none;
+    font-size: $fs-body;
     align-items: flex-end;
   }
   .choice-detail.active {

@@ -1,14 +1,12 @@
 Elements.PagedContent = (function() {
 
   function init() {
-    $(document).on('click', '.page-action-continue', Elements.buttonAction(showNextPage));
-    $(document).on('click', '.click-advance', showNextPage);
+    // $(document).on('click', '.page-action-continue', Elements.buttonAction(showNextPage));
   }
 
   // There should only ever be one paged content element on a page at a time.
   function build() {
     if ($('.paged-content').length != 1) { return false; }
-
     $.each($('.page-footer-continue'), (i,footer)=>{
       $(footer).append(buildContinueFooter());
     });
@@ -23,12 +21,6 @@ Elements.PagedContent = (function() {
     activatePage($(`${selector}.page`))
   }
 
-  // Advance the page by determining the index of the currently active page.
-  function showNextPage() {
-    let pages = $('.paged-content .page');
-    let index = pages.index($('.paged-content .page.active'));
-    activatePage($(pages[index+1]));
-  }
 
   // Every page turn we disable any click advance areas, then if we find
   // we're still within one we reshow it. Click advance areas take up the
@@ -49,17 +41,7 @@ Elements.PagedContent = (function() {
 
   // === Effects ===
 
-  function darkenBackground(value) {
-    let brightness = 100 - value
-    $('.paged-content-background').css({filter:`brightness(${brightness}%)`});
-  }
 
-  function setBackground(url) {
-    if ($('.paged-content-background').length == 0) {
-      $('#mainContent').append($('<div>',{ class:'paged-content-background' }));
-    }
-    $('.paged-content-background').css({ "background-image":`url(${url})`, filter:'' });
-  }
 
   // === Paging Control ===
 
@@ -90,10 +72,6 @@ Elements.PagedContent = (function() {
   return {
     init: init,
     build: build,
-    showPage: showPage,
-    showNextPage: showNextPage,
-    darkenBackground: darkenBackground,
-    setBackground: setBackground,
   };
 
 })()

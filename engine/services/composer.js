@@ -25,8 +25,14 @@ global.Composer = (function(){
   }
 
   function _render(game) {
-    // First render a view from the game's event queue if one exists.
-    if (game.nextEvent != null) { return renderEvent(game) }
+    // First render a view from the game's event queue if one exists. Location
+    // events should only be run when triggered from a link at the location.
+    // Other events however will need to be triggered like this too.
+    if (game.nextGameEvent != null) {
+      return game.unqueueGameEvent().then(event => {
+        renderEvent(event);
+      });
+    }
 
     // If there's no active event or anything like that:
     renderLocation(game.location)
@@ -35,12 +41,10 @@ global.Composer = (function(){
   // If an event has an init promise that promise will be resolved first. The
   // event is then sent to the weaver for template replacement. Once that's
   // done the brower is sent the completed event object.
-  function renderEvent(game) {
-    game.unqueueEvent().then(event => {
-      (event.init ? event.init() : Promise.resolve(0)).then(() => {
-        Weaver.updateEvent(event).then(woven => {
-          Browser.send('render.event',woven);
-        });
+  function renderEvent(event) {
+    (event.init ? event.init() : Promise.resolve(0)).then(() => {
+      Weaver.updateEvent(event).then(woven => {
+        Browser.send('render.event',woven);
       });
     });
   }

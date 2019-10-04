@@ -1,6 +1,7 @@
 
 // Z Indices
 
+$z-event-frame: 100;
 $z-overlay: 1000;
 $z-lock: 10000;
 
@@ -18,7 +19,7 @@ $fs-h3: 12pt;
 $fs-h4: 10pt;
 $fs-h5: 10pt;
 
-$fg-body: rgb(225,225,225);
+$fg-body: rgb(206,208,187);
 $fg-strong: rgb(250,250,250);
 $fg-weak: rgb(150,150,150);
 $fg-very-weak: rgba(150,150,150,0.5);
@@ -84,6 +85,7 @@ $shadow-shallow: 0 2px 3px rgba(0,0,0,0.9);
 // $shadow-big-raised: 16px  16px 20px rgba(250,250,250,0.1) inset,
 //                    -16px -16px 20px rgba(0,0,0,0.5) inset;
 
+$border-transparent: 1px solid transparent;
 $border-very-light: 1px solid rgba(250,250,250,0.05);
 $border-light: 1px solid rgba(250,250,250,0.1);
 $border-normal: 1px solid rgba(250,250,250,0.2);

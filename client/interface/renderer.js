@@ -26,6 +26,7 @@ global.Renderer = (function() {
     body.append($('<div>',{ id:'mainContent' }));
     body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/layers.html`));
     body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/chooser.html`));
+    body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/event.html`));
     body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/location.html`));
     showMainMenu();
   }
@@ -40,10 +41,6 @@ global.Renderer = (function() {
 
     $('#mainContent').empty().append(location);
     constructView();
-  }
-
-  function renderEvent(transport, event) {
-    console.log("Render Event: ",event)
   }
 
   // === Views ===
@@ -146,7 +143,6 @@ global.Renderer = (function() {
 
     renderFile: renderFile,
     renderLocation: renderLocation,
-    renderEvent: renderEvent,
 
     lock: lock,
     unlock: unlock,
