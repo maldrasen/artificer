@@ -38,6 +38,12 @@ global.Composer = (function(){
     renderLocation(game.location)
   }
 
+  async function renderLocationEvent() {
+    const game = await Game.instance();
+    const event = await game.unqueueLocationEvent();
+    renderEvent(event);
+  }
+
   // If an event has an init promise that promise will be resolved first. The
   // event is then sent to the weaver for template replacement. Once that's
   // done the brower is sent the completed event object.
@@ -56,7 +62,8 @@ global.Composer = (function(){
   }
 
   return {
-    render: render
+    render: render,
+    renderLocationEvent: renderLocationEvent
   };
 
 })();

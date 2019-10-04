@@ -31,18 +31,6 @@ global.Renderer = (function() {
     showMainMenu();
   }
 
-  // === Fatter Views? ===
-  // These could probably just be views right?
-
-  function renderLocation(transport, view) {
-    let location = $($('#locationTemplate').html())
-        location.find('.location-name').append(view.name);
-        location.find('.location-description').append(view.description);
-
-    $('#mainContent').empty().append(location);
-    constructView();
-  }
-
   // === Views ===
 
   function showMainMenu()   { showView(VIEWS.mainMenu);      }
@@ -142,7 +130,6 @@ global.Renderer = (function() {
     showSavedGames: showSavedGames,
 
     renderFile: renderFile,
-    renderLocation: renderLocation,
 
     lock: lock,
     unlock: unlock,

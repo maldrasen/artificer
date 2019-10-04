@@ -24,38 +24,32 @@ Game.instance = function() {
   return Game.findByPk(1);
 }
 
-Game.start = function() {
-  return new Promise((resolve, reject) => {
-    Game.instance().then(game => {
-      if (game != null) { return reject("Cannot start a new Game. A Game currently exists.") }
-      Game.create({
-        id: 1,
-        location: Configuration.gameStartLocation,
-        dayNumber: 1,
-        anger: 0,
-        frustration: 0,
-        gameEventQueue_json: "[]",
-        locationEventQueue_json: "{}",
-      }).then(game => {
-        game.enqueueEvents(Configuration.gameStartEvents).then(() => {
-          game.setFlags(Configuration.gameStartFlags).then(() => {
-            buildStartingMinions(game).then(() => {
-              Composer.render(game);
-              resolve(game);
-            });
-          });
-        });
-      });
-    });
+Game.start = async function() {
+  if (await Game.instance() != null) { throw "Cannot start a new Game. A Game currently exists." }
+
+  const game = await Game.create({
+    id: 1,
+    location: Configuration.gameStartLocation,
+    dayNumber: 1,
+    anger: 0,
+    frustration: 0,
+    gameEventQueue_json: "[]",
+    locationEventQueue_json: "{}",
   });
+
+  await game.enqueueEvents(Configuration.gameStartEvents)
+  await game.setFlags(Configuration.gameStartFlags)
+  await buildStartingMinions(game);
+
+  Composer.render(game);
+
+  return game;
 }
 
-Game.clear = function() {
-  return new Promise(resolve => {
-    Promise.all(Database.getPersistedModels().map(model => {
-      return model.destroy({ where:{}, truncate:true })
-    })).then(resolve);
-  });
+Game.clear = async function() {
+  await Promise.all(Database.getPersistedModels().map(model => {
+    return model.destroy({ where:{}, truncate:true })
+  }));
 }
 
 Game.prototype.createPlayer = function(options) {
@@ -64,123 +58,95 @@ Game.prototype.createPlayer = function(options) {
   });
 }
 
-
-function buildStartingMinions(game) {
-  return new Promise(resolve => {
-    let startingCharacters = [
-      { type:'minion', species:'rat', gender:'male'   },
-      { type:'minion', species:'rat', gender:'male'   },
-      { type:'minion', species:'rat', gender:'male'   },
-      { type:'minion', species:'rat', gender:'female' },
-      { type:'minion', species:'rat', gender:'female' },
-      { type:'minion', species:'rat', gender:'female' },
-    ];
-
-    Promise.all(startingCharacters.map((options) => {
-      return CharacterBuilder.build(options);
-    })).then(resolve);
-  });
-}
-
 // === Game Flags ===
 
-Game.prototype.setFlags = function(flags) {
-  return new Promise(resolve => {
-    let operations = []
-    each(flags, (value,code) => {
-      return new Promise(res => {
-        Flag.create({ code:code, value:value }).then(res);
-      });
-    });
-    Promise.all(operations).then(resolve);
+Game.prototype.setFlags = async function(flags) {
+  let operations = []
+  each(flags, (value,code) => {
+    return Flag.create({ code:code, value:value })
   });
+
+  return await Promise.all(operations);
 }
 
-Game.prototype.getFlags = function() {
-  return new Promise(resolve => {
-    Flag.findAll({ where:{} }).then(flags => {
-      let compact = {};
-      each(flags, flag => {
-        compact[flag.code] = flag.value
-      });
-      resolve(compact);
-    })
+Game.prototype.getFlags = async function() {
+  let flags = await Flag.findAll({ where:{} })
+
+  let compact = {};
+  each(flags, flag => {
+    compact[flag.code] = flag.value
   });
+
+  return compact;
 }
 
 // === Event Queues ===
 
-Game.prototype.enqueueEvents = function(events) {
-  return new Promise(resolve => {
-    Promise.all(events.map(event => {
-      return new Promise(res => {
-        if (event.type == 'gameEvent') {
-          this.enqueueGameEvent(event.code).then(res);
-        } else if (event.type == 'locationEvent') {
-          this.enqueueLocationEvent(event.code).then(res);
-        } else {
-          throw `Unrecognized Event Type : ${event.type}`
-        }
-      });
-    })).then(resolve);
-  });
+Game.prototype.enqueueEvents = async function(events) {
+  await Promise.all(events.map(async event => {
+    if (event.type == 'gameEvent')     { return await this.enqueueGameEvent(event.code); }
+    if (event.type == 'locationEvent') { return await this.enqueueLocationEvent(event.code); }
+    throw `Unrecognized Event Type : ${event.type}`
+  }));
 }
 
-Game.prototype.enqueueGameEvent = function(code, state) {
-  return new Promise((resolve,reject) => {
-    try { Event.lookup(code) } catch(e) { reject(e) }
+Game.prototype.enqueueGameEvent = async function(code, state) {
+  Event.lookup(code)
 
-    let queue = this.gameEventQueue;
-        queue.push({ code:code, state:(state||{}) });
+  let queue = this.gameEventQueue;
+      queue.push({ code:code, state:(state||{}) });
 
-
-    this.gameEventQueue = queue;
-    this.save().then(resolve);
-  });
+  this.gameEventQueue = queue;
+  await this.save()
+  return;
 }
 
-Game.prototype.unqueueGameEvent = function() {
-  return new Promise(resolve => {
-    let queue = this.gameEventQueue;
-    let event = queue.shift();
+Game.prototype.unqueueGameEvent = async function() {
+  let queue = this.gameEventQueue;
+  let event = queue.shift();
+  if (event == null) { return null; }
 
-    if (event == null) {
-      resolve(null);
-    } else {
-      this.gameEventQueue = queue;
-      this.save().then(()=>{
-        resolve(event);
-      });
-    }
-  })
+  this.gameEventQueue = queue;
+  await this.save();
+  return event;
 }
 
-Game.prototype.enqueueLocationEvent = function(code, state) {
-  return new Promise((resolve,reject) => {
-    let event = Event.lookup(code);
-    let location = Location.lookup(event.location);
-    let queue = this.locationEventQueue;
+Game.prototype.enqueueLocationEvent = async function(code, state) {
+  let event = Event.lookup(code);
+  let location = Location.lookup(event.location);
+  let queue = this.locationEventQueue;
 
-    if (queue[location.code]==null) { queue[location.code]=[]; }
-    queue[location.code].push({ code:code, state:(state||{}) });
+  if (queue[location.code]==null) { queue[location.code]=[]; }
+  queue[location.code].push({ code:code, state:(state||{}) });
 
-    this.locationEventQueue = queue;
-    this.save().then(resolve);
-  });
+  this.locationEventQueue = queue;
+  await this.save();
+  return;
 }
 
-Game.prototype.unqueueLocationEvent = function() {
-  return new Promise(resolve => {
-    let queue = this.locationEventQueue;
-    let event = (queue[this.location]||[]).shift();
+Game.prototype.unqueueLocationEvent = async function() {
+  let queue = this.locationEventQueue;
+  let event = (queue[this.location]||[]).shift();
+  if (event == null) { return null; }
 
-    if (event == null) {
-      resolve(null);
-    } else {
-      this.locationEventQueue = queue;
-      this.save().then(()=>{
-        resolve(event);
-      });
-    }
-  })
+  this.locationEventQueue = queue;
+  await this.save();
+  return event;
+}
+
+// === Private Functions ===
+
+async function buildStartingMinions(game) {
+  let startingCharacters = [
+    { type:'minion', species:'rat', gender:'male'   },
+    { type:'minion', species:'rat', gender:'male'   },
+    { type:'minion', species:'rat', gender:'male'   },
+    { type:'minion', species:'rat', gender:'female' },
+    { type:'minion', species:'rat', gender:'female' },
+    { type:'minion', species:'rat', gender:'female' },
+  ];
+
+  return await Promise.all(startingCharacters.map((options) => {
+    return CharacterBuilder.build(options);
+  }));
 }

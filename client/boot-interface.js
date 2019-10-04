@@ -13,6 +13,7 @@ require(`${ROOT}/client/interface/logger`);
 // === Components ===
 require(`${ROOT}/client/components/components`);
 require(`${ROOT}/client/components/event-view`);
+require(`${ROOT}/client/components/location-view`);
 require(`${ROOT}/client/components/main-menu`);
 require(`${ROOT}/client/components/saved-games`);
 

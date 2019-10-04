@@ -15,6 +15,8 @@ Components.EventView = (function() {
   }
 
   function build(transport, event) {
+    logger.info("Build Event", event.code);
+
     Components.EventView.Page = {};
 
     eventData = event;

@@ -1,17 +1,19 @@
 <div id='locationTemplate' class='hide'>
-  <div class='location-actions margin-bottom'>
-    <!-- <a href='#'>Map</a> -->
-    <!-- <a href='#'>Minions</a> -->
-
-    <a href='#' class='menu-show-save'>Save</a> |
-    <a href='#' class='menu-show-load'>Load</a> |
-    <a href='#' class='send-command' data-command='game.quick-save'>Quick Save</a> |
-    <a href='#' class='send-command' data-command='game.quick-load'>Quick Load</a> |
+  <div class='location-menu'>
+    <a href='#' class='menu-show-save'>Save</a>
+    <a href='#' class='menu-show-load'>Load</a>
+    <a href='#' class='send-command' data-command='game.quick-save'>Quick Save</a>
+    <a href='#' class='send-command' data-command='game.quick-load'>Quick Load</a>
     <a href='#' class='send-command' data-command='game.quit'>Quit</a>
-
+    <a href='#' class='menu-show-map hide'>Map</a>
+    <a href='#' class='menu-show-minions hide'>Minions</a>
   </div>
+
   <div class='location'>
     <h1 class='location-name'></h1>
     <div class='location-description'></div>
+    <div class='active-event-notification big-margin-top hide'>
+      <a href='#' class='send-command button-primary' data-command='game.start-location-event'>(!) Event</a>
+    </div>
   </div>
 </div>
