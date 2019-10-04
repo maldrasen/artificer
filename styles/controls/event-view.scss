@@ -38,7 +38,29 @@
     }
   }
 
-  .chooser-frame { margin: 50px auto 0; }
+  .chooser-frame { margin: 10px; }
+
+  .chooser-centered-panel {
+    margin: 50px auto;
+    width: 820px;
+    height: 580px;
+    border: $border-light;
+    box-shadow: $shadow-frame;
+    background-color: $bg-overpanel;
+  }
+  .chooser-centered-footer {
+    position: relative;
+    height: 60px;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 100px;
+
+    .action {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+    }
+  }
 
   .center-image-frame {
     position: absolute;

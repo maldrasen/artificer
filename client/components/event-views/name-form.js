@@ -3,14 +3,18 @@ Components.EventView.NameForm = {
   build() {
     let comment = Components.EventView.Page.speciesComments[Components.EventView.getChoices().species];
     $('#currentEvent .event-content').append(`
-      <div id='nameFormPage' class='medium-centered-area panel'>
-        <div class='margin-bottom padding-bottom border-light-bottom'>${comment} A being needs a name as well. What should I call myself?</div>
-        <ul class='form-list label-size-6 input-size-12 margin-auto' style='width:252px;'>
-          <li><label>Title</label><input type='text' id='title' value='Master'/></li>
-          <li><label>First Name</label><input type='text' id='firstName' value='Horsecock'/></li>
-          <li><label>Last Name</label><input type='text' id='lastName' value='Murderface'/></li>
-        </ul>
-        <div class='align-right margin-top padding-top border-light-top'><a href='#' class="button-primary name-accept">Accept</a></div>
+      <div id='nameFormPage' class='chooser-centered-panel'>
+        <div class='small-centered-area panel', style='margin-top:100px; margin-bottom:244px;'>
+          <ul class='form-list label-size-6 input-size-12 margin-auto big-padding' style='width:252px;'>
+            <li><label>Title</label><input type='text' id='title' value='Master'/></li>
+            <li><label>First Name</label><input type='text' id='firstName' value='Horsecock'/></li>
+            <li><label>Last Name</label><input type='text' id='lastName' value='Murderface'/></li>
+          </ul>
+        </div>
+        <div class='chooser-centered-footer'>
+          ${comment} A being needs a name as well. What should I call myself?
+          <div class='action'><a href='#' class="button-primary name-accept">Accept</a></div>
+        </div>
       </div>
     `)
   },

@@ -2,9 +2,7 @@ Event.build('courtyard-walk-on-walls', {
   location: 'courtyard',
   background: '../../resources/backgrounds/bg-courtyard-ruined.png',
 
-  actors: {
-    'R': 'the-smartest-rat'
-  },
+  actors: { 'R':'the-smartest-rat' },
 
   stages:[
     {
