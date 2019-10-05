@@ -7,6 +7,8 @@ Components.PlanView = (function() {
     $(document).on('click', '#planView .helper-minion', Elements.buttonAction(toggleHelperMinion));
     $(document).on('click', '#planView .minion-select-cancel', Elements.buttonAction(cancelMinionSelect));
     $(document).on('click', '#planView .minion-select-confirm', Elements.buttonAction(confirmSelectProject));
+    $(document).on('click', '#planView .plan-cancel', Elements.buttonAction(cancelPlan));
+    $(document).on('click', '#planView .plan-confirm', Elements.buttonAction(confirmPlan));
   }
 
   function build(event, planData) {
@@ -14,9 +16,6 @@ Components.PlanView = (function() {
 
     $('#mainContent').empty().append($('<div>',{ id:"planView" }).append($('#planTemplate').html()));
     $('#planView').data('planData', planData);
-
-    console.log("=== Build Plan ===")
-    console.log(planData);
 
     buildCurrentProject(planData);
     buildAvailableProjects(planData);
@@ -27,6 +26,7 @@ Components.PlanView = (function() {
     let progress = $('#planView .current-progress');
 
     if (planData.currentProject == null) {
+      $('#planView').data('workingProjects',[]);
       current.append("Nothing (0/4)");
       current.data('committed',0);
     }
@@ -73,11 +73,12 @@ Components.PlanView = (function() {
   // Most projects will have an effort level of 10 or more required hours.
   //   Half day projects take 4 effort.
   //   Quarter day projects take 2 effort.
+  // The committed value represents quarter chunks of the day.
   function availableHoursFor(project) {
     let committed = $('#planView .current-project').data('committed');
     if (project.effort > 4) { return committed == 0; }
-    if (project.effort == 4) { return comitted <= 4; }
-    if (project.effort == 2) { return comitted <= 6; }
+    if (project.effort == 4) { return comitted <= 2; }
+    if (project.effort == 2) { return comitted <= 3; }
     throw `Bad number of hours in project ${project.code} effort - ${project.effort}`
   }
 
@@ -151,10 +152,13 @@ Components.PlanView = (function() {
     setHelpStatus(getSelectedProject());
   }
 
+  // Wow, an actual use for the spread operator! But only because jQuery is
+  // being stupid here, thinking I want to map jQuery elements to other wrapped
+  // elements I think.
   function getSelectedHelperMinions() {
-    return $('#planView .helper-minion.selected').map((i,element) => {
+    return [...$('#planView .helper-minion.selected').map((i,element) => {
       return $(element).data('id');
-    });
+    })];
   }
 
   function cancelMinionSelect() {
@@ -162,15 +166,68 @@ Components.PlanView = (function() {
     $('#planView .modal-cover').addClass('hide');
   }
 
+  // TODO: When minions are selected to work on a project they should be updated
+  //       elsewhere in the view so that they're not added to missions and such
+  //       also.
   function confirmSelectProject() {
+    let working = $('#planView').data('workingProjects');
+    let current = $('#planView .current-project').empty();
+    let committed = current.data('committed');
 
+    let project = getSelectedProject()
+    let minions = getSelectedHelperMinions();
+
+    if (project.effort > 4)  { committed += 4; }
+    if (project.effort == 4) { committed += 2; }
+    if (project.effort == 2) { committed += 1; }
+    current.data('committed',committed);
+
+    working.push({
+      code: project.code,
+      minions: minions
+    });
+
+    (working.length == 1) ?
+      current.append(`${project.name} (${committed}/4)`):
+      current.append(`Multiple Projects (${committed}/4)`);
+
+    $('#planView').data('workingProjects',working);
+
+    if (committed == 4) {
+      $('#planView .projects .lower-frame').addClass('hide');
+    }
+
+    cancelMinionSelect();
+  }
+
+  // === Plan Actions ===
+
+  function cancelPlan() {
+    Renderer.sendCommand('game.cancel');
+  }
+
+  function confirmPlan() {
+    let committed = $('#planView .current-project').data('committed');
+
+    let message = (committed < 4) ?
+      `You're going to have plenty of idle time today. Are you sure you don't want to plan to work on something else too?`:
+      `Are you sure this is what you want to work on today?`;
+
+    let plan = {
+      projectWork: $('#planView').data('workingProjects')
+    }
+
+    Elements.Confirm.showConfirm({
+      message: message,
+      yes: () => {
+        logger.info("End Day",plan);
+        Renderer.sendCommand('game.end-day',plan);
+      }
+    })
   }
 
   function getSelectedProject() { return $('.available-project.selected').data('project'); }
   function getPlanData() { return $('#planView').data('planData'); }
-
-
-
 
   return {
     init: init,

@@ -11,6 +11,7 @@ $(document).ready(function() {
   // === Init Elements ===
   Elements.init();
   Elements.Chooser.init();
+  Elements.Confirm.init();
   Elements.PagedContent.init();
   Elements.RadioButtons.init();
   Elements.ScrollingPanel.init();

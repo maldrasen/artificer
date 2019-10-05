@@ -72,10 +72,23 @@ global.BrowserCommands = (function() {
       Composer.renderLocationEvent();
     });
 
-    // === Other Views ===
+    // === Plan and Reports ===
 
     ipcMain.on('game.open-plan-view', () => {
       Composer.renderPlanView();
+    });
+
+    ipcMain.on('game.end-day', (event, plan) => {
+      console.log("=== Plan Submitted ===")
+      console.log(plan)
+      Composer.render();
+    });
+
+    // === Other Views ===
+
+
+    ipcMain.on('game.cancel', () => {
+      Composer.render();
     });
   }
 
