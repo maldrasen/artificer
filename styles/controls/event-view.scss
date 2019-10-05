@@ -38,6 +38,21 @@
     }
   }
 
+  .event-text-actions {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 5px;
+    text-align: right;
+    font-size: $fs-small;
+    border: $border-light;
+    background-color: rgba(0, 0, 0, 0.33);
+    z-index: calc(#{$z-event-frame} + 20);
+  }
+
   .chooser-frame { margin: 10px; }
 
   .chooser-centered-panel {

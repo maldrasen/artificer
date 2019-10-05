@@ -37,14 +37,18 @@ global.Database = (function() {
     // load as the first result.
     persistedModels = [
       Game,
-      Anus,
-      Body,
+      Flag,
+      AvailableEvent,
+      AvailableMission,
+      AvailableProject,
+      Player,
       Character,
       CharacterAspect,
+      Body,
+      Anus,
       Cock,
-      Nipples,
-      Player,
       Mouth,
+      Nipples,
       Pussy,
       Tits];
 

@@ -15,6 +15,14 @@ Components.LocationView = (function() {
     if (view.flags.eventActive) { location.find('.active-event-notification').removeClass('hide') }
 
     $('#mainContent').empty().append(location);
+
+    if (DEBUG) {
+      let flagList = $('#currentLocation #debugFlags');
+      each(view.flags.all, (value,key)=>{
+        flagList.append($('<dt>').append(key));
+        flagList.append($('<dd>').append(value));
+      });
+    }
   }
 
   return {

@@ -1,13 +1,17 @@
 Components.EventView = (function() {
   const logger = new Logger('EventView', 'rgb(190,150,200)');
 
+  let skipActive = false;
+  let skipRate = 50;
+
   let eventData;
   let stageIndex;
   let pageIndex;
   let choices;
 
   function init() {
-    $(document).on('click', '#currentEvent .click-advance', nextPage);
+    $(document).on('click', '#currentEvent .click-advance', clickAdvance);
+    $(document).on('click', '#currentEvent .activate-skip', Elements.buttonAction(activateSkip));
     $(document).on('click', '#currentEvent .chooser-accept', Elements.buttonAction(acceptChoice));
     $(document).on('click', '#currentEvent .gender-accept', Elements.buttonAction(Components.EventView.GenderForm.accept));
     $(document).on('click', '#currentEvent .name-accept', Elements.buttonAction(Components.EventView.NameForm.accept));
@@ -19,6 +23,7 @@ Components.EventView = (function() {
 
     Components.EventView.Page = {};
 
+    skipActive = false;
     choices = { event:event.code };
     eventData = event;
     stageIndex = 0;
@@ -33,21 +38,47 @@ Components.EventView = (function() {
     buildStage();
   }
 
+  function clickAdvance() {
+    skipActive = false;
+    nextPage();
+  }
+
+  function activateSkip() {
+    skipActive = true;
+    doSkip();
+  }
+
+  function doSkip() {
+    setTimeout(()=>{
+      if (skipActive) {
+        nextPage();
+        doSkip();
+      }
+    },skipRate);
+  }
+
   function endEvent() {
+    skipActive = false;
     Renderer.sendCommand((eventData.onCompleteSend == null ? 'game.end-event' : eventData.onCompleteSend),choices);
   }
 
   function buildStage() {
     let stage = currentStage();
 
+    // Stage Building
     if (stage.background != null) { setBackground(stage.background); }
 
-    if (stage.pages)          { return buildPagedView();   }
+    // These views can be skipped through.
+    if (stage.pages) { return buildPagedView(); }
+
+    // These views cannot be skipped through.
+    skipActive = false;
     if (stage.chooserPage)    { return buildChooserPage(); }
     if (stage.customPage)     { return buildCustomPage();  }
     if (stage.genderFormPage) { return Components.EventView.GenderForm.build(); }
     if (stage.nameFormPage)   { return Components.EventView.NameForm.build();   }
     if (stage.warningPage)    { return Components.EventView.Warning.build();    }
+
     throw "Unrecognized Stage Type"
   }
 
@@ -74,6 +105,7 @@ Components.EventView = (function() {
   function closeStage() {
     $('#currentEvent .chooser-content').addClass('hide');
     $('#currentEvent .event-text-frame').addClass('hide');
+    $('#currentEvent .event-text-actions').addClass('hide');
     $('#currentEvent .click-advance').addClass('hide');
     $('#currentEvent .custom-content').addClass('hide');
   }
@@ -112,6 +144,7 @@ Components.EventView = (function() {
 
   function buildPagedView() {
     $('#currentEvent .event-text-frame').removeClass('hide');
+    $('#currentEvent .event-text-actions').removeClass('hide');
     $('#currentEvent .click-advance').removeClass('hide');
     buildPage();
   }

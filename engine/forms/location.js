@@ -33,6 +33,7 @@ global.Location = class Location extends Form {
     let flags = await game.getFlags();
 
     return {
+      all: flags,
       showMapMenu: (flags['locationMenu.map'] != 'locked'),
       showMinionMenu: (flags['locationMenu.minions'] != 'locked'),
       eventActive: game.nextLocationEvent != null
