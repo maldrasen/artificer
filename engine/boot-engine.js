@@ -22,6 +22,9 @@ require(`${ROOT}/engine/forms/species`);
 // === Helpers ===
 require(`${ROOT}/engine/helpers/character-agent`);
 
+// === Report ===
+require(`${ROOT}/engine/reports/plan`);
+
 // === Scrutinizers ===
 require(`${ROOT}/engine/scrutinizers/central-scrutinizer`);
 require(`${ROOT}/engine/scrutinizers/synchronized-scrutinizer`);

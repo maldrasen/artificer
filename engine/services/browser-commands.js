@@ -78,14 +78,13 @@ global.BrowserCommands = (function() {
       Composer.renderPlanView();
     });
 
-    ipcMain.on('game.end-day', (event, plan) => {
-      console.log("=== Plan Submitted ===")
-      console.log(plan)
-      Composer.render();
+    ipcMain.on('game.end-day', (event, planData) => {
+      new Plan(planData).execute().then(() => {
+        Composer.render();
+      });
     });
 
     // === Other Views ===
-
 
     ipcMain.on('game.cancel', () => {
       Composer.render();
