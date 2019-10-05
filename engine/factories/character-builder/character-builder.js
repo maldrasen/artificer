@@ -43,7 +43,7 @@ global.CharacterBuilder = (function() {
       NameBuilder.build(character, options),
     ]);
 
-    await Adjustments.apply(character, options, results[6])
+    await CharacterAdjuster.apply(character, options, results[6])
 
     return character
   }

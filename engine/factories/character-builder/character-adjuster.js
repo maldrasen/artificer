@@ -1,4 +1,4 @@
-global.Adjustments = (function() {
+global.CharacterAdjuster = (function() {
 
   async function apply(character, options, nameAdjustments) {
     let triggers = nameAdjustments.triggers.concat(options.triggers||[]);

@@ -30,10 +30,10 @@ require(`${ROOT}/engine/scrutinizers/synchronized-scrutinizer`);
 require(`${ROOT}/engine/services/composer`);
 
 // === Factories ===
-require(`${ROOT}/engine/factories/character-builder/adjustments`);
+require(`${ROOT}/engine/factories/character-builder/character-builder`);
+require(`${ROOT}/engine/factories/character-builder/character-adjuster`);
 require(`${ROOT}/engine/factories/character-builder/anus-builder`);
 require(`${ROOT}/engine/factories/character-builder/body-builder`);
-require(`${ROOT}/engine/factories/character-builder/character-builder`);
 require(`${ROOT}/engine/factories/character-builder/cock-builder`);
 require(`${ROOT}/engine/factories/character-builder/mouth-builder`);
 require(`${ROOT}/engine/factories/character-builder/name-builder`);
