@@ -1,11 +1,12 @@
 global.Game = Database.instance().define('game', {
-  location:    { type:Sequelize.STRING },
-  dayNumber:   { type:Sequelize.INTEGER },
-  anger:       { type:Sequelize.INTEGER },
-  frustration: { type:Sequelize.INTEGER },
+  location:                 { type:Sequelize.STRING  },
+  dayNumber:                { type:Sequelize.INTEGER },
+  anger:                    { type:Sequelize.INTEGER },
+  frustration:              { type:Sequelize.INTEGER },
   gameEventQueue_json:      { type:Sequelize.STRING  },
   locationEventQueue_json:  { type:Sequelize.STRING  },
-
+  currentProject:           { type:Sequelize.STRING  },
+  currentProjectProgress:   { type:Sequelize.INTEGER },
 },{
   timestamps: false,
   getterMethods: {

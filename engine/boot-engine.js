@@ -19,6 +19,9 @@ require(`${ROOT}/engine/forms/mission`);
 require(`${ROOT}/engine/forms/project`);
 require(`${ROOT}/engine/forms/species`);
 
+// === Scrutinizers ===
+require(`${ROOT}/engine/scrutinizers/synchronized-scrutinizer`);
+
 // === Services ===
 require(`${ROOT}/engine/services/composer`);
 
@@ -39,11 +42,6 @@ require(`${ROOT}/engine/services/character-builder/name-generators/goblin-name-g
 require(`${ROOT}/engine/services/character-builder/name-generators/kobold-name-generator`);
 require(`${ROOT}/engine/services/character-builder/name-generators/rat-name-generator`);
 
-// === Weavers ===
-require(`${ROOT}/engine/services/weavers/weaver`);
-require(`${ROOT}/engine/services/weavers/character-loom`);
-require(`${ROOT}/engine/services/weavers/gender-loom`);
-
 // === Utilities ===
 require(`${ROOT}/engine/utilities/array-utility.js`);
 require(`${ROOT}/engine/utilities/conversion-utility.js`);
@@ -52,3 +50,8 @@ require(`${ROOT}/engine/utilities/math-utility.js`);
 require(`${ROOT}/engine/utilities/object-utility.js`);
 require(`${ROOT}/engine/utilities/random.js`);
 require(`${ROOT}/engine/utilities/text-utility.js`);
+
+// === Weavers ===
+require(`${ROOT}/engine/weavers/weaver`);
+require(`${ROOT}/engine/weavers/character-loom`);
+require(`${ROOT}/engine/weavers/gender-loom`);

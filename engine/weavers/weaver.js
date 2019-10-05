@@ -53,6 +53,9 @@ global.Weaver = (function() {
     });
   }
 
+  // This looks like something that probably belongs to another class as well.
+  // Casting Agent or something perhaps...
+
   async function findActor(descriptive) {
     let character;
 
@@ -79,7 +82,7 @@ global.Weaver = (function() {
     let transformedStages = [];
 
     each(event.stages, stage => {
-      if (meetsRequirements(stage.requires, context)) {
+      if (SynchronizedScrutinizer.meetsRequirements(stage.requires, context)) {
         transformStage(stage, context)
         transformedStages.push(stage);
       }
@@ -93,7 +96,7 @@ global.Weaver = (function() {
       let transformedPages = [];
 
       each(stage.pages, page => {
-        if (page.text && meetsRequirements(page.requires, context)) {
+        if (page.text && SynchronizedScrutinizer.meetsRequirements(page.requires, context)) {
           page.text = weave(page.text, context)
           transformedPages.push(page);
         }
@@ -101,35 +104,6 @@ global.Weaver = (function() {
 
       stage.pages = transformedPages;
     }
-  }
-
-  // The page's requires attribute can be either a string or an array of
-  // strings. This may turn into a huge number of functions. May need to
-  // create the scrutinizers again for this.
-
-  function meetsRequirements(requires, context) {
-    if (requires == null) { return true; }
-
-    return ((typeof requires == "string") ? [requires] : requires).map(requirement => {
-      return meetsRequirement(requirement, context);
-    }).indexOf(false) < 0;
-  }
-
-  function meetsRequirement(requirement, context) {
-    if (requirement == 'player.furry')            { return context.P.character.species.isFurry; }
-    if (requirement == 'player.not-furry')        { return !context.P.character.species.isFurry; }
-    if (requirement == 'player.has-cock')         { return context.P.cock != null; }
-    if (requirement == 'player.no-cock')          { return context.P.cock == null; }
-    if (requirement == 'player.has-pussy')        { return context.P.pussy != null; }
-    if (requirement == 'player.no-pussy')         { return context.P.pussy == null; }
-    if (requirement == 'player.has-tits')         { return context.P.tits != null; }
-    if (requirement == 'player.no-tits')          { return context.P.tits == null; }
-    if (requirement == 'player.has-average-tits') { return context.P.tits && context.P.tits.sizeClass == 'average'}
-
-    if (requirement == 'player.has-smaller-than-average-tits') { return context.P.tits && ['zero','tiny','small'].indexOf(context.P.tits.sizeClass) >= 0 }
-    if (requirement == 'player.has-bigger-than-average-tits')  { return context.P.tits && ['big','huge','monster'].indexOf(context.P.tits.sizeClass) >= 0 }
-
-    throw `Unknown Requirement - ${requirement}`;
   }
 
   // The weave function takes a string and recursivly itterates over it,
@@ -169,7 +143,6 @@ global.Weaver = (function() {
   function error(message) {
     return `<span class='weaver-error error'>Error(${message})</span>`;
   }
-
 
   return {
     updateEvent: updateEvent,
