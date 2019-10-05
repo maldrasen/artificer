@@ -61,9 +61,21 @@ global.Composer = (function(){
     });
   }
 
+  async function renderPlanView() {
+    let game = await Game.instance();
+    let projects = await AvailableProject.all();
+
+    Browser.send('render.plan',{
+      currentProject: game.currentProject,
+      currentProjectProgress: game.currentProjectProgress,
+      projects: projects,
+    });
+  }
+
   return {
     render: render,
-    renderLocationEvent: renderLocationEvent
+    renderLocationEvent: renderLocationEvent,
+    renderPlanView: renderPlanView,
   };
 
 })();

@@ -63,7 +63,7 @@ global.BrowserCommands = (function() {
     // === Events ===
 
     ipcMain.on('game.end-event', (event, choices) => {
-      Event.finish(choices).then(() => {
+      Event.onFinish(choices).then(() => {
         Composer.render();
       });
     });
@@ -72,12 +72,10 @@ global.BrowserCommands = (function() {
       Composer.renderLocationEvent();
     });
 
-    // === Views ===
+    // === Other Views ===
 
     ipcMain.on('game.open-plan-view', () => {
-      Location.gatherPlanData().then(data => {
-        Browser.send('render.plan',data);
-      });
+      Composer.renderPlanView();
     });
   }
 

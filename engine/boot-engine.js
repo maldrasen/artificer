@@ -20,6 +20,7 @@ require(`${ROOT}/engine/forms/project`);
 require(`${ROOT}/engine/forms/species`);
 
 // === Scrutinizers ===
+require(`${ROOT}/engine/scrutinizers/central-scrutinizer`);
 require(`${ROOT}/engine/scrutinizers/synchronized-scrutinizer`);
 
 // === Services ===

@@ -35,7 +35,7 @@ Event.build('courtyard-get-minions', {
     }
   ],
 
-  finish: async choices => {
+  onFinish: async choices => {
     let game = await Game.instance();
     let chief = await CharacterAgent.findActor('rat-chief');
 

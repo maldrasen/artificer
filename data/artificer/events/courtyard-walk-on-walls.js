@@ -62,7 +62,7 @@ Event.build('courtyard-walk-on-walls', {
     }
   ],
 
-  finish: async choices => {
+  onFinish: async choices => {
     let game = await Game.instance();
     await game.setFlags({
       'location.currentStudy':'courtyard',

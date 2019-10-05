@@ -1,7 +1,7 @@
 global.Event = class Event extends Form {
 
-  static async finish(choices) {
-    let finishFunction = Event.lookup(choices.event).finish;
+  static async onFinish(choices) {
+    let finishFunction = Event.lookup(choices.event).onFinish;
     if (finishFunction) {
       await finishFunction(choices);
     }

@@ -1,4 +1,4 @@
-global.SynchronizedScrutinizer = (function(){
+global.SynchronizedScrutinizer = (function() {
 
   // This might only be used by the Weaver, but it's possible that something
   // else in that chain may need to get it's requirements analyzed. This
@@ -29,9 +29,6 @@ global.SynchronizedScrutinizer = (function(){
     throw `Unknown Requirement - ${requirement}`;
   }
 
-  return {
-    meetsRequirements: meetsRequirements,
-    meetsRequirement: meetsRequirement,
-  };
+  return { meetsRequirements:meetsRequirements };
 
 })();

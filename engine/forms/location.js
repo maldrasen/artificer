@@ -18,10 +18,6 @@ global.Location = class Location extends Form {
     };
   }
 
-  static async gatherPlanData() {
-    return "[PLAN DATA]"
-  }
-
   // The names and descriptions of all of the locations will probably always be
   // based on the current game state, a variety of game flags and so forth.
   // Additionally the way each location determines it's name is unique to that
