@@ -5,13 +5,11 @@
 @import 'reset.scss';
 
 @import 'base.scss';
-@import 'renderer.scss';
-@import 'development.scss';
-@import 'events.scss';
-
 @import 'general.scss';
+@import 'events.scss';
 @import 'forms.scss';
 @import 'panels.scss';
+@import 'renderer.scss';
 
 @import 'elements/buttons.scss';
 @import 'elements/chooser.scss';
@@ -20,4 +18,5 @@
 @import 'controls/event-view.scss';
 @import 'controls/location-view.scss';
 @import 'controls/logger.scss';
+@import 'controls/plan-view.scss';
 @import 'controls/saved-games.scss';
