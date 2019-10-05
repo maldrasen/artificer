@@ -79,6 +79,26 @@
     border: $border-light;
   }
 
+  .notification-frame {
+    position: absolute;
+    top: 40vh;
+    width: 100%;
+    z-index: calc(#{$z-event-frame} + 3);
+  }
+  .notification {
+    margin: 0 auto;
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+    font-size: $fs-bigger;
+    background-color: rgba(0,0,0,0.66);
+    border: $border-normal;
+    box-shadow: $shadow-frame;
+    .boom {
+      color: $fg-strong;
+      font-family: roboto-medium;
+    }
+  }
 }
 
 .minion-quote { color:$fg-minion-quote; }
