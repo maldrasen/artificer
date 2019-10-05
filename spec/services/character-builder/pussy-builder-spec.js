@@ -10,7 +10,7 @@ describe('PussyBuilder', function() {
   });
 
   it('uses the all the options if present', function(done) {
-    let options = { gender:'female', species:'elf', pussy:{
+    let options = { firstName:'X', gender:'female', species:'elf', pussy:{
       shape: 'horse',
       sizeClass: 'monster',
       sizeScale: 100,
@@ -39,7 +39,7 @@ describe('PussyBuilder', function() {
   });
 
   it('gets the shape from the species', function(done) {
-    CharacterBuilder.build({ gender:'female', species:'equian'}).then(character => {
+    CharacterBuilder.build({ firstName:'X', gender:'female', species:'equian'}).then(character => {
       character.getPussy().then(pussy => {
         expect(pussy.shape).to.equal('horse');
         done();
@@ -49,7 +49,7 @@ describe('PussyBuilder', function() {
 
   describe('Pussy Widths', function() {
     function testPussyWidth(species, low, high, done) {
-      CharacterBuilder.build({ gender:'female', species:species }).then(character => {
+      CharacterBuilder.build({ firstName:'X', gender:'female', species:species }).then(character => {
         character.getPussy().then(pussy => {
           expect(pussy.width).to.be.within(low,high);
           done();
@@ -83,7 +83,7 @@ describe('PussyBuilder', function() {
   });
 
   it('sets random labia and clit sizes', function(done) {
-    CharacterBuilder.build({ gender:'female', species:'elf' }).then(character => {
+    CharacterBuilder.build({ firstName:'X', gender:'female', species:'elf' }).then(character => {
       character.getPussy().then(pussy => {
         expect(pussy.outerLabiaSize).to.be.within(1,5);
         expect(pussy.innerLabiaLength).to.be.within(10,90);

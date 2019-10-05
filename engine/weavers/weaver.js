@@ -53,20 +53,8 @@ global.Weaver = (function() {
     });
   }
 
-  // This looks like something that probably belongs to another class as well.
-  // Casting Agent or something perhaps...
-
   async function findActor(descriptive) {
-    let character;
-
-    if (descriptive == 'the-smartest-rat') {
-      character = await Character.findOne({ where:{ speciesCode:'rat' }, order:[['mental','DESC']]});
-    }
-
-    if (character == null) {
-      throw `Cannot find a character that matches ${descriptive}`;
-    }
-
+    let character = await CharacterAgent.findActor(descriptive);
     let everything = await character.getCompleteBody();
     return extend(everything, { character:character });
   }

@@ -36,9 +36,13 @@ Event.build('courtyard-get-minions', {
   ],
 
   finish: async choices => {
-    let game = await Game.instance()
+    let game = await Game.instance();
+    let chief = await CharacterAgent.findActor('rat-chief');
 
-    await game.setFlags({ 'locationMenu.minions':'unlocked' });
+    await game.setFlags({
+      'locationMenu.minions':'unlocked',
+      'character.rat-chief': chief.id,
+    });
     await game.enqueueLocationEvent('courtyard-walk-on-walls');
 
     await AvailableMission.addAll([

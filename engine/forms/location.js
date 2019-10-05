@@ -4,6 +4,7 @@ global.Location = class Location extends Form {
     let results = await Promise.all([
       this.buildName(),
       this.buildDescription(),
+      this.buildActions(),
       this.buildFlags(),
       this.buildAttributes(),
       this.buildFlavor(),
@@ -12,9 +13,10 @@ global.Location = class Location extends Form {
     return {
       name: results[0],
       description: results[1],
-      flags: results[2],
-      attributes: results[3],
-      flavor: results[4],
+      actions: results[2],
+      flags: results[3],
+      attributes: results[4],
+      flavor: results[5],
     };
   }
 
@@ -27,6 +29,10 @@ global.Location = class Location extends Form {
   async buildDescription() { return '[TODO]'; }
   async buildAttributes()  { return []; }
   async buildFlavor()      { return []; }
+
+  async buildActions() {
+    return [];
+  }
 
   async buildFlags() {
     let game =  await Game.instance();

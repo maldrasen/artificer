@@ -38,9 +38,9 @@ Game.start = async function() {
     locationEventQueue_json: "{}",
   });
 
-  await game.enqueueEvents(Configuration.gameStartEvents)
-  await game.setFlags(Configuration.gameStartFlags)
   await buildStartingMinions(game);
+  await game.enqueueEvents(Configuration.gameStartEvents);
+  await game.setFlags(Configuration.gameStartFlags);
 
   Composer.render(game);
 
@@ -142,7 +142,6 @@ async function buildStartingMinions(game) {
     { type:'minion', species:'rat', gender:'male'   },
     { type:'minion', species:'rat', gender:'male'   },
     { type:'minion', species:'rat', gender:'male'   },
-    { type:'minion', species:'rat', gender:'female' },
     { type:'minion', species:'rat', gender:'female' },
     { type:'minion', species:'rat', gender:'female' },
   ];

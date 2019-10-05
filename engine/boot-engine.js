@@ -24,6 +24,7 @@ require(`${ROOT}/engine/scrutinizers/synchronized-scrutinizer`);
 
 // === Services ===
 require(`${ROOT}/engine/services/composer`);
+require(`${ROOT}/engine/services/character-agent`);
 
 // === Builders ===
 require(`${ROOT}/engine/services/character-builder/adjustments`);

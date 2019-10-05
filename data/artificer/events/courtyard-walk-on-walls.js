@@ -64,12 +64,11 @@ Event.build('courtyard-walk-on-walls', {
 
   finish: async choices => {
     let game = await Game.instance();
-    await game.setFlags({ 'minion.rename':'unlocked' });
+    await game.setFlags({
+      'location.currentStudy':'courtyard',
+      'minion.rename':'unlocked',
+    });
     await AvailableProject.add({ code:'clear-great-hall' });
   },
-
-
-
-
 
 });

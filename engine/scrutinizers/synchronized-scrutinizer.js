@@ -1,10 +1,10 @@
-global.SynchronizedScrutinizer = class SynchronizedScrutinizer {
+global.SynchronizedScrutinizer = (function(){
 
   // This might only be used by the Weaver, but it's possible that something
   // else in that chain may need to get it's requirements analyzed. This
   // scrutinizer requires a fully built context. The requires argument can be
   // either a string or an array of strings.
-  static meetsRequirements(requires, context) {
+  function meetsRequirements(requires, context) {
     if (requires == null) { return true; }
 
     return ((typeof requires == "string") ? [requires] : requires).map(requirement => {
@@ -12,7 +12,7 @@ global.SynchronizedScrutinizer = class SynchronizedScrutinizer {
     }).indexOf(false) < 0;
   }
 
-  static meetsRequirement(requirement, context) {
+  function meetsRequirement(requirement, context) {
     if (requirement == 'player.furry')            { return context.P.character.species.isFurry; }
     if (requirement == 'player.not-furry')        { return !context.P.character.species.isFurry; }
     if (requirement == 'player.has-cock')         { return context.P.cock != null; }
@@ -28,4 +28,10 @@ global.SynchronizedScrutinizer = class SynchronizedScrutinizer {
 
     throw `Unknown Requirement - ${requirement}`;
   }
-}
+
+  return {
+    meetsRequirements: meetsRequirements,
+    meetsRequirement: meetsRequirement,
+  };
+
+})();
