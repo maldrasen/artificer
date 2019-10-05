@@ -1,6 +1,6 @@
 
-location.currentStudy     | Game.start                  | (code) Set to the code of the location where the study actions can be performed.
+location.currentStudy     | courtyard-walk-on-walls     | (code) Set to the code of the location where the study actions can be performed.
 locationMenu.map          |                             | (unlocked) Turns on the map menu
 locationMenu.minions      | courtyard-get-minions       | (unlocked) Turns on the minion menu
 minion.rename             | courtyard-walk-on-walls     | (unlocked) Turns on the ability to rename minions in the minion menu.
-character.rat-chief       | Game.start                  | (id) ID of the strongest alive rat serving as chief. This flag should be checked every day to see if the chief changes.
+character.rat-chief       | courtyard-get-minions       | (id) ID of the strongest alive rat serving as chief. This flag should be checked every day to see if the chief changes.

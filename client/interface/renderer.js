@@ -2,6 +2,7 @@ global.Renderer = (function() {
   const logger = new Logger('Renderer', 'rgb(150,200,200)');
 
   const VIEWS = {
+    createPlan: { path:`${ROOT}/client/views/screens/create-plan.html`, title:"Create Today's Plan" },
     mainMenu:   { path:`${ROOT}/client/views/screens/main-menu.html` },
     savedGames: { path:`${ROOT}/client/views/screens/saved-games.html`, title:'Load Game', build:Components.SavedGames.buildLoad },
     saveGame:   { path:`${ROOT}/client/views/screens/save-game.html`, title:'Save Game', build:Components.SavedGames.buildSave },
@@ -34,6 +35,7 @@ global.Renderer = (function() {
   // === Views ===
 
   function showMainMenu()   { showView(VIEWS.mainMenu);      }
+  function showCreatePlan() { showOverlay(VIEWS.createPlan); }
   function showSavedGames() { showOverlay(VIEWS.savedGames); }
   function showSaveGame()   { showOverlay(VIEWS.saveGame);   }
 
@@ -125,6 +127,7 @@ global.Renderer = (function() {
     sendCommand: sendCommand,
     ready: ready,
 
+    showCreatePlan: showCreatePlan,
     showMainMenu: showMainMenu,
     showSaveGame: showSaveGame,
     showSavedGames: showSavedGames,

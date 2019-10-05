@@ -4,7 +4,6 @@ global.Location = class Location extends Form {
     let results = await Promise.all([
       this.buildName(),
       this.buildDescription(),
-      this.buildActions(),
       this.buildFlags(),
       this.buildAttributes(),
       this.buildFlavor(),
@@ -13,11 +12,14 @@ global.Location = class Location extends Form {
     return {
       name: results[0],
       description: results[1],
-      actions: results[2],
-      flags: results[3],
-      attributes: results[4],
-      flavor: results[5],
+      flags: results[2],
+      attributes: results[3],
+      flavor: results[4],
     };
+  }
+
+  static async gatherPlanData() {
+    return "[PLAN DATA]"
   }
 
   // The names and descriptions of all of the locations will probably always be
@@ -30,9 +32,6 @@ global.Location = class Location extends Form {
   async buildAttributes()  { return []; }
   async buildFlavor()      { return []; }
 
-  async buildActions() {
-    return [];
-  }
 
   async buildFlags() {
     let game =  await Game.instance();
@@ -40,6 +39,7 @@ global.Location = class Location extends Form {
 
     return {
       all: flags,
+      showPlanAction: (flags['location.currentStudy'] == game.location),
       showMapMenu: (flags['locationMenu.map'] != 'locked'),
       showMinionMenu: (flags['locationMenu.minions'] != 'locked'),
       eventActive: game.nextLocationEvent != null
