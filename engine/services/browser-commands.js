@@ -2,7 +2,6 @@ global.BrowserCommands = (function() {
 
   function init() {
     initGameMessages();
-    initLocationMessages();
   }
 
   // The game messages are primarily concerned with starting, stopping,
@@ -72,12 +71,12 @@ global.BrowserCommands = (function() {
     ipcMain.on('game.start-location-event', () => {
       Composer.renderLocationEvent();
     });
-  }
 
-  function initLocationMessages() {
-    ipcMain.on('location.show-create-plan', () => {
+    // === Views ===
+
+    ipcMain.on('game.open-plan-view', () => {
       Location.gatherPlanData().then(data => {
-        Browser.send('create-plan.show',data);
+        Browser.send('render.plan',data);
       });
     });
   }

@@ -19,6 +19,7 @@ $(document).ready(function() {
   Components.EventView.init();
   Components.LocationView.init();
   Components.MainMenu.init();
+  Components.PlanView.init();
   Components.SavedGames.init();
 
   // === Init Interface ===

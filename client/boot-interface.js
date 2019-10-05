@@ -12,10 +12,10 @@ require(`${ROOT}/client/interface/logger`);
 
 // === Components ===
 require(`${ROOT}/client/components/components`);
-require(`${ROOT}/client/components/create-plan`);
 require(`${ROOT}/client/components/event-view`);
 require(`${ROOT}/client/components/location-view`);
 require(`${ROOT}/client/components/main-menu`);
+require(`${ROOT}/client/components/plan-view`);
 require(`${ROOT}/client/components/saved-games`);
 
 require(`${ROOT}/client/components/event-views/gender-form`);

@@ -8,7 +8,7 @@ Components.LocationView = (function() {
   function build(transport, view) {
     logger.info("Build Location",view.name);
 
-    let location = $('<div>',{ id:"currentLocation" }).append($($('#locationTemplate').html()));
+    let location = $('<div>',{ id:"locationView" }).append($('#locationTemplate').html());
         location.find('.location-name').append(view.name);
         location.find('.location-description').append(view.description);
 
@@ -24,14 +24,13 @@ Components.LocationView = (function() {
 
   function appendDebug(view) {
     if (DEBUG) {
-      let flagList = $('#currentLocation #debugFlags');
+      let flagList = $('#locationView #debugFlags');
       each(view.flags.all, (value,key)=>{
         flagList.append($('<dt>').append(key));
         flagList.append($('<dd>').append(value));
       });
     }
   }
-
 
   return {
     init: init,

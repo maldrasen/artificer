@@ -29,6 +29,7 @@ global.Renderer = (function() {
     body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/chooser.html`));
     body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/event.html`));
     body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/location.html`));
+    body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/plan.html`));
     showMainMenu();
   }
 

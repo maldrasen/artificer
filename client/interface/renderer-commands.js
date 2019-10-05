@@ -7,9 +7,9 @@ global.RendererCommands = (function() {
     ipcRenderer.on('render.file', Renderer.renderFile);
     ipcRenderer.on('render.event', Components.EventView.build);
     ipcRenderer.on('render.location', Components.LocationView.build);
+    ipcRenderer.on('render.plan', Components.PlanView.build);
     ipcRenderer.on('render.main-menu', Renderer.showMainMenu);
     ipcRenderer.on('game.file-list', Components.SavedGames.showSaves);
-    ipcRenderer.on('create-plan.show', Components.CreatePlan.build);
   }
 
   return {
