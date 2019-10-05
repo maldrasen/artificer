@@ -17,10 +17,12 @@ global.CharacterBuilder = (function() {
       preName:     options.preName,
       firstName:   options.firstName,
       lastName:    options.lastName,
+      type:        options.type      || 'minion',
       physical:    options.physical  || species.randomizedAttribute('physical'),
       personal:    options.personal  || species.randomizedAttribute('personal'),
       mental:      options.mental    || species.randomizedAttribute('mental'),
       magical:     options.magical   || species.randomizedAttribute('magical'),
+      currentTask: 'free',
     };
 
     let character = await Character.create(params)

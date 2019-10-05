@@ -1,5 +1,6 @@
 global.Character = Database.instance().define('character', {
   type:        { type:Sequelize.STRING, validate:{ isIn:[['minion','hero']] }},
+  currentTask: { type:Sequelize.STRING, validate:{ isIn:[['free','project','mission']] }},
   roleCode:    { type:Sequelize.STRING },
   genderCode:  { type:Sequelize.STRING },
   speciesCode: { type:Sequelize.STRING },
@@ -30,6 +31,22 @@ global.Character = Database.instance().define('character', {
     }
   }
 });
+
+// This function will need to select all the minions and format them as POJOs
+// for the plan view. We're going to display all the minions here on the view
+// so you know what their status is, but if a minion is already assigned to a
+// project or on a mission we need to mark them as unavailable.
+Character.allForPlan = async function() {
+  const minions = await Character.findAll({ where:{ type:'minion' } });
+
+  return minions.map(minion => {
+    return {
+      id: minion.id,
+      name: minion.name,
+      currentTask: minion.currentTask,
+    };
+  });
+}
 
 HasAspects.isAppliedTo(Character);
 HasBody.isAppliedTo(Character);

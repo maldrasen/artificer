@@ -62,13 +62,15 @@ global.Composer = (function(){
   }
 
   async function renderPlanView() {
-    let game = await Game.instance();
-    let projects = await AvailableProject.all();
+    const game = await Game.instance();
+    const projects = await AvailableProject.all();
+    const minions = await Character.allForPlan();
 
     Browser.send('render.plan',{
       currentProject: game.currentProject,
       currentProjectProgress: game.currentProjectProgress,
       projects: projects,
+      minions: minions,
     });
   }
 

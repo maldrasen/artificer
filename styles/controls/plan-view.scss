@@ -1,25 +1,22 @@
 
 #planView {
+
   .projects {
-    margin: 10px;
+    margin: 20px 10px;
     padding: 10px;
     border: $border-light;
   }
-
   .current-frame {
     margin: 5px;
     padding: 5px;
     border: $border-light;
-
   }
-
   .lower-frame {
     display: flex;
     margin: 5px;
     padding: 5px;
     border: $border-light;
   }
-
   .available-projects {
     border-right: $border-light;
     padding-right: 5px;
@@ -34,11 +31,24 @@
   }
   .available-project.selected {
     border: $border-normal;
+    background-color: rgba(0,0,0,0.5);
   }
-
   .selected-project {
     margin: 10px;
   }
+
+  .plan-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.33);
+    padding: 10px;
+    text-align: right;
+  }
+
+  // === Minion Select ===
+  $minion-panel-width: 480px;
 
   .minion-select-frame {
     position: absolute;
@@ -48,12 +58,28 @@
   }
   .minion-select-panel {
     margin: auto;
-    width: 800px;
-    height: 80vh;
+    width: $minion-panel-width;
+    // height: 80vh; // When we have enough minions we should figure out the
+                     // scrolling for this element. Should lock it to 80%
+                     // height and include a scrolling panel, probably.
     background-color: $bg-overlay-content;
     border: $border-light;
     box-shadow: $shadow-overlay;
     overflow: hidden;
+  }
+  .minion-select-area {
+    margin: 0 10px 50px;
+  }
+  .minion-select-footer {
+    position: absolute;
+    bottom: 0;
+    width: $minion-panel-width;
+    background-color: rgba(0,0,0,0.33);
+
+    .actions {
+      padding: 5px;
+      text-align: right;
+    }
   }
   .modal-cover {
     position: absolute;
@@ -64,4 +90,22 @@
     background-color: $bg-overlay-frame;
     z-index: $z-overlay;
   }
+  .helper-minion {
+    border: $border-transparent;
+    margin-bottom: 5px;
+    padding: 2px 10px;
+    height: 30px;
+    line-height: 26px;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  .helper-minion:last-child {
+    margin-bottom: 0;
+  }
+  .helper-minion.selected {
+    border: $border-normal;
+    background-color: rgba(0,0,0,0.5);
+  }
+
+
 }
