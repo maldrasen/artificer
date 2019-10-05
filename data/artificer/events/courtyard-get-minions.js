@@ -38,14 +38,14 @@ Event.build('courtyard-get-minions', {
   finish: async choices => {
     let game = await Game.instance()
 
-    await game.setFlags({
-      'locationMenu.minions' : 'unlocked',
-      'mission.explore-hinterlands' : 'available',
-      'mission.gather-stone' : 'available',
-      'mission.gather-timber' : 'available',
-    });
-
+    await game.setFlags({ 'locationMenu.minions':'unlocked' });
     await game.enqueueLocationEvent('courtyard-walk-on-walls');
+
+    await AvailableMission.addAll([
+      { code:'mission.explore-hinterlands' },
+      { code:'mission.gather-stone' },
+      { code:'mission.gather-timber' },
+    ]);
   }
 });
 

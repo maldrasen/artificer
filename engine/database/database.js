@@ -15,6 +15,9 @@ global.Database = (function() {
     });
 
     require(`${ROOT}/engine/models/anus`);
+    require(`${ROOT}/engine/models/available-event`);
+    require(`${ROOT}/engine/models/available-mission`);
+    require(`${ROOT}/engine/models/available-project`);
     require(`${ROOT}/engine/models/body`);
     require(`${ROOT}/engine/models/character`);
     require(`${ROOT}/engine/models/character-aspect`);

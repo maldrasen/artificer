@@ -15,6 +15,8 @@ require(`${ROOT}/engine/forms/aspect`);
 require(`${ROOT}/engine/forms/event`);
 require(`${ROOT}/engine/forms/gender`);
 require(`${ROOT}/engine/forms/location`);
+require(`${ROOT}/engine/forms/mission`);
+require(`${ROOT}/engine/forms/project`);
 require(`${ROOT}/engine/forms/species`);
 
 // === Services ===

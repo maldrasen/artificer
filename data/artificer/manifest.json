@@ -102,6 +102,10 @@
 
     "locations/courtyard",
 
+    "missions/explore-hinterlands",
+    "missions/gather-stone",
+    "missions/gather-timber",
+
     "names/demon-female-first-names",
     "names/demon-male-first-names",
     "names/demon-last-names",
@@ -114,6 +118,8 @@
     "names/goblin-male-first-names",
     "names/kobold-names",
     "names/rat-names",
+
+    "projects/clear-great-hall",
 
     "species/caprien",
     "species/centaur",
