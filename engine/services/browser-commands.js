@@ -85,6 +85,12 @@ global.BrowserCommands = (function() {
       });
     });
 
+    ipcMain.on('game.start-day', () => {
+      global.preparedReport.postprocess().then(() => {
+        Composer.render();
+      });
+    });
+
     // === Other Views ===
 
     ipcMain.on('game.cancel', () => {
@@ -99,7 +105,6 @@ global.BrowserCommands = (function() {
         Composer.render();
       });
     });
-
   }
 
   return { init:init }

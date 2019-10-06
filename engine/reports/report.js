@@ -1,16 +1,14 @@
-global.preparedReport = null;
-
 global.Report = class Report {
 
   constructor(plan) {
     this.plan = plan;
+    this.project = {};
+    this.postActions = [];
+  }
 
-    // Save the finished report on the global scope. (No where else to really
-    // stick it.)
-    global.preparedReport = {
-      project: {},
-      postActions: [],
-    };
+  // Package the report so that it can be sent to the client.
+  get package() {
+    return { project:this.project }
   }
 
   async buildReport() {
@@ -22,10 +20,25 @@ global.Report = class Report {
       await this.workShortProjects(game);
     }
 
+    await game.save();
+  }
+
+  // The postprocess() function is executed after the report is read and
+  // represents the start of a new day. When the postprocess() function is
+  // finished the preparedReport is destroyed.
+  async postprocess() {
+    const game = await Game.instance();
+
     // Need to do all the daily tasks here.
     game.dayNumber += 1;
 
+    await Promise.all(this.postActions.map(async action => {
+      await action();
+    }));
+
     await game.save();
+
+    global.preparedReport = null;
   }
 
   // This function will do work on the project. If a project is set on the game
@@ -41,7 +54,7 @@ global.Report = class Report {
     }
 
     if (typeof project.onFinish == 'function') {
-      global.preparedReport.postActions.push(project.onFinish)
+      this.postActions.push(project.onFinish)
     }
 
     game.currentProject = null;
@@ -63,13 +76,11 @@ global.Report = class Report {
     if (minions.length == 1) { text += `${minions[0].firstName} and I've made some progress, but there's still work to do.` }
     if (minions.length > 1)  { text += `${EnglishUtility.NumberInEnglish(minions.length)} of my minions and I have made some progress, but there's still work to do.` }
 
-    global.preparedReport.project = { text:text };
+    this.project = { text:text };
   }
 
   setProjectCompletedText(project) {
-    global.preparedReport.project = {
-      text: `I've completed work on ${project.workingName}.`
-    };
+    this.project = { text:`I've completed work on ${project.workingName}.` };
   }
 
   // This function checks to see if there are any half or quarter day projects

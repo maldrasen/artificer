@@ -13,7 +13,6 @@ global.Plan = class Plan {
 
     await this.preProcess();
     await this.buildReport();
-    await this.postProcess();
   }
 
   async preProcess() {
@@ -23,12 +22,11 @@ global.Plan = class Plan {
     await game.save();
   }
 
-  async buildReport() {
-    let report =  new Report(this)
-    await report.buildReport();
-  }
-
-  async postProcess() {
+  buildReport() {
+    return new Promise(resolve => {
+      global.preparedReport = new Report(this)
+      global.preparedReport.buildReport().then(resolve);
+    });
   }
 
   // === Projects ===

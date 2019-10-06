@@ -58,10 +58,8 @@ global.Composer = (function(){
     });
   }
 
-  // The report is destroyed immeadietly after sending.
   function renderReport() {
-    Browser.send('render.report', global.preparedReport);
-    global.preparedReport = null;
+    Browser.send('render.report', global.preparedReport.package);
   }
 
   function renderLocation(code) {
