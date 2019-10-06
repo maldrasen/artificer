@@ -58,6 +58,7 @@ global.Location = class Location extends Form {
         locations.push({
           code: location.code,
           name: location.name,
+          current: location.code == this.code,
         });
       }
     })

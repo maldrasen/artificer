@@ -32,14 +32,16 @@ Components.LocationView = (function() {
     let list = $('#overlayFrame #mapView .locations').empty();
 
     each(mapData.locations, location => {
-      let link = $('<a>',{ href:'#', class:'send-command' }).
-        data('command','location.change').
-        data('code',location.code).
-        append(location.name);
-      list.append($('<li>').append(link))
+      list.append((location.current == false) ? buildMapLink(location) : $('<li>').append(location.name));
     });
   }
 
+  function buildMapLink(location) {
+    return $('<li>').append($('<a>',{ href:'#', class:'send-command' }).
+      data('command','location.change').
+      data('code',location.code).
+      append(location.name));
+  }
 
   function appendDebug(view) {
     if (DEBUG) {
