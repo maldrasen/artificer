@@ -1,5 +1,15 @@
-#currentLocation {
+#locationView {
   margin-top: 50px;
+
+  .header {
+    border-bottom: $border-normal;
+    .location-name {
+      font-size: $fs-bigger;
+      font-family: roboto-bold;
+      color: $fg-strong;
+      margin-right: 10px;
+    }
+  }
 
   .location-menu {
     position: absolute;
@@ -15,5 +25,10 @@
     box-shadow: $shadow-frame;
 
     a { margin: 0 5px; }
+  }
+
+  .location-actions {
+    margin-top: 100px;
+    text-align: center;
   }
 }

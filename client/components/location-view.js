@@ -11,6 +11,7 @@ Components.LocationView = (function() {
     let location = $('<div>',{ id:"locationView" }).append($('#locationTemplate').html());
         location.find('.location-name').append(view.name);
         location.find('.location-description').append(view.description);
+        location.find('.date').append(`Day ${view.dates.day}`);
 
     if (view.flags.showMapMenu) { location.find('.menu-show-map').removeClass('hide') }
     if (view.flags.showMinionMenu) { location.find('.menu-show-minions').removeClass('hide') }
@@ -19,7 +20,8 @@ Components.LocationView = (function() {
 
     $('#mainContent').empty().append(location);
 
-    appendDebug(view);
+    // Only needed when I'm trying to figure something out.
+    // appendDebug(view);
   }
 
   function appendDebug(view) {
