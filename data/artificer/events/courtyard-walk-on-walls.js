@@ -13,7 +13,8 @@ Event.build('courtyard-walk-on-walls', {
         { text:`One of my rat minions has decided to join me up here, quickly scaling the wall to come and stand at my side.` },
         { text:`{{R::gender.He}} squeaks out what might be {{R::gender.his}} name to me.` },
         { text:`{{R::character.firstName}}, or something equally unpronounceable.`},
-        { text:`I may have to start naming them myself as their own names are difficult and nearly indistinguishable.`},
+        { text:`I may have to start naming them myself as their own names are difficult and nearly indistinguishable.`,
+          notification:"<span class='boom'>Unlocked:</span> Rename Minion"},
         { text:`This little rat though I think is one of the more cleaver of the bunch.` },
         { text:`{{R::gender.He}} may be able to tell me more about these lands.` },
         { text:`I look out over the landscape.` },
@@ -33,37 +34,42 @@ Event.build('courtyard-walk-on-walls', {
         { text:`From the trail of blood it looks like it's been pacing for some time.` },
         { text:`All around the fortress are other such trails.` },
         { text:`They approach the keep, seem to look for a way in, and eventually wander off.` },
-        { text:`<span class='player-quote'>"What is that creature down there?"</span> I ask my rodent companion.` },
-        { text:`<span class='minion-quote'>"Skinless,"</span> {{R::gender.he}} says.` },
-        { text:`<span class='minion-quote'>"They hunt always for {{P::character.title}}."</span>` },
-        { text:`<span class='minion-quote'>"Always hungry for magic."</span>` },
-        { text:`<span class='player-quote'>"Magic?"</span> I ask.` },
-        { text:`<span class='minion-quote'>"Yes, your magic calls them."</span>` },
-        { text:`<span class='minion-quote'>"They wants it."</span>` },
-        { text:`<span class='minion-quote'>"Makes them crazy."</span>` },
-        { text:`<span class='player-quote'>"They won't attack you then?"</span>` },
-        { text:`<span class='minion-quote'>"No. No. They like to kill rats."</span>` },
-        { text:`<span class='minion-quote'>"Rats fun to kill."</span>` },
-        { text:`<span class='minion-quote'>"But rats are sneaky quiet."</span>` },
-        { text:`<span class='minion-quote'>"They don't find us."</span>` },
-        { text:`<span class='player-quote'>"How do you know all this?"</span>` },
-        { text:`<span class='minion-quote'>"Rat tribe had a bone woman once."</span>` },
-        { text:`<span class='minion-quote'>"She called the fog and fixed skin."</span>` },
-        { text:`<span class='minion-quote'>"Skinless always wanted her."</span>` },
-        { text:`<span class='minion-quote'>"One day... Snap!"</span>` },
-        { text:`<span class='minion-quote'>"Ate her up."</span>` },
+        { playerSpeaker:true, text:`<span class='player-quote'>"What is that creature down there?"</span> I ask my rodent companion.` },
+        { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"Skinless,"</span> {{R::gender.he}} says.` },
+        { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"They hunt always for {{P::character.title}}."</span>` },
+        { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"Always hungry for magic."</span>` },
+        { playerSpeaker:true, text:`<span class='player-quote'>"Magic?"</span> I ask.` },
+        { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"Yes, your magic calls them."</span>` },
+        { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"They wants it."</span>` },
+        { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"Makes them crazy."</span>` },
+        { playerSpeaker:true, text:`<span class='player-quote'>"They won't attack you then?"</span>` },
+        { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"No. No. They like to kill rats."</span>` },
+        { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"Rats fun to kill."</span>` },
+        { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"But rats are sneaky quiet."</span>` },
+        { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"They don't find us."</span>` },
+        { playerSpeaker:true, text:`<span class='player-quote'>"How do you know all this?"</span>` },
+        { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"Rat tribe had a bone woman once."</span>` },
+        { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"She called the fog and fixed skin."</span>` },
+        { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"Skinless always wanted her."</span>` },
+        { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"One day... Snap!"</span>` },
+        { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"Ate her up."</span>` },
         { text:`He starts laughing as though finding the story more humorous than frightening or tragic.` },
         { text:`Now that it's of no obvious threat to you the 'Skinless' creature fascinates you more than anything.` },
         { text:`It looks like nothing more than a loosely assembled pile of body parts, and should be incapable of survival by mere biological means.` },
         { text:`That it must sustain itself on magical energy is really the only way to explain it.` },
         { text:`With a nod to {{R::character.firstName}} you jump back down to the courtyard below to start the day's work.` },
+        { text:`(I can now plan the day's work. I should begin by cleaning out the Keep's Great Hall.)`, notification:"<span class='boom'>Unlocked:</span> Working on Projects" }
       ]
     }
   ],
 
-  finish: async choices => {
+  onFinish: async choices => {
     let game = await Game.instance();
-    await game.setFlags({ 'project.clear-great-hall':'available' });
+    await game.setFlags({
+      'location.currentStudy':'courtyard',
+      'minion.rename':'unlocked',
+    });
+    await AvailableProject.add({ code:'clear-great-hall' });
   },
 
 });

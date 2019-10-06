@@ -11,6 +11,7 @@ $(document).ready(function() {
   // === Init Elements ===
   Elements.init();
   Elements.Chooser.init();
+  Elements.Confirm.init();
   Elements.PagedContent.init();
   Elements.RadioButtons.init();
   Elements.ScrollingPanel.init();
@@ -19,6 +20,8 @@ $(document).ready(function() {
   Components.EventView.init();
   Components.LocationView.init();
   Components.MainMenu.init();
+  Components.PlanView.init();
+  Components.ReportView.init();
   Components.SavedGames.init();
 
   // === Init Interface ===

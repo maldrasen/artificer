@@ -1,21 +1,29 @@
 global.Location = class Location extends Form {
 
   async buildView() {
+    const game =  await Game.instance();
+
     let results = await Promise.all([
       this.buildName(),
       this.buildDescription(),
-      this.buildFlags(),
+      this.buildFlags(game),
       this.buildAttributes(),
       this.buildFlavor(),
     ]);
 
-    return {
+    let view = {
       name: results[0],
       description: results[1],
       flags: results[2],
       attributes: results[3],
       flavor: results[4],
     };
+
+    view.dates = {
+      day: game.dayNumber,
+    };
+
+    return view;
   }
 
   // The names and descriptions of all of the locations will probably always be
@@ -28,11 +36,12 @@ global.Location = class Location extends Form {
   async buildAttributes()  { return []; }
   async buildFlavor()      { return []; }
 
-  async buildFlags() {
-    let game =  await Game.instance();
-    let flags = await game.getFlags();
 
+  async buildFlags(game) {
+    const flags = await game.getFlags();
     return {
+      all: flags,
+      showPlanAction: (flags['location.currentStudy'] == game.location),
       showMapMenu: (flags['locationMenu.map'] != 'locked'),
       showMinionMenu: (flags['locationMenu.minions'] != 'locked'),
       eventActive: game.nextLocationEvent != null

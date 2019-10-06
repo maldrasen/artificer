@@ -10,10 +10,22 @@
   </div>
 
   <div class='location'>
-    <h1 class='location-name'></h1>
-    <div class='location-description'></div>
-    <div class='active-event-notification big-margin-top hide'>
-      <a href='#' class='send-command button-primary' data-command='game.start-location-event'>(!) Event</a>
+
+    <div class='location-info'>
+      <div class='header'>
+        <span class='location-name'></span>
+        <span class='date'></span>
+      </div>
+      <div class='location-description'></div>
+    </div>
+
+    <div class='location-actions'>
+      <a href='#' class='active-event-notification send-command button-primary hide' data-command='game.start-location-event'>(!) Event</a>
+      <a href='#' class='send-command create-plan-action button-primary hide' data-command='game.open-plan-view'>Create Today's Plan</a>
+    </div>
+
+    <div id='debug' class='big-margin font-mono'>
+      <dl id='debugFlags'></dl>
     </div>
   </div>
 </div>

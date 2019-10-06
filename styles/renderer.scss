@@ -8,6 +8,10 @@
   font-family: roboto-light;
 }
 
+#mainContent {
+  margin: 10px;
+}
+
 #viewLock {
   position: absolute;
   top: 0;
@@ -35,7 +39,7 @@
     line-height: 30px;
     padding: 0 6px;
     background-color: rgba(0,0,0,0.9);
-    box-shadow: $shadow-frame;
+    box-shadow: $shadow-overlay;
     border: $border-normal;
     border-bottom: none;
     z-index: calc(#{$z-overlay} + 1);

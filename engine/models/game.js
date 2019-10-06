@@ -1,11 +1,12 @@
 global.Game = Database.instance().define('game', {
-  location:    { type:Sequelize.STRING },
-  dayNumber:   { type:Sequelize.INTEGER },
-  anger:       { type:Sequelize.INTEGER },
-  frustration: { type:Sequelize.INTEGER },
+  location:                 { type:Sequelize.STRING  },
+  dayNumber:                { type:Sequelize.INTEGER },
+  anger:                    { type:Sequelize.INTEGER },
+  frustration:              { type:Sequelize.INTEGER },
   gameEventQueue_json:      { type:Sequelize.STRING  },
   locationEventQueue_json:  { type:Sequelize.STRING  },
-
+  currentProject:           { type:Sequelize.STRING  },
+  currentProjectProgress:   { type:Sequelize.INTEGER },
 },{
   timestamps: false,
   getterMethods: {
@@ -37,9 +38,9 @@ Game.start = async function() {
     locationEventQueue_json: "{}",
   });
 
-  await game.enqueueEvents(Configuration.gameStartEvents)
-  await game.setFlags(Configuration.gameStartFlags)
   await buildStartingMinions(game);
+  await game.enqueueEvents(Configuration.gameStartEvents);
+  await game.setFlags(Configuration.gameStartFlags);
 
   Composer.render(game);
 
@@ -134,6 +135,16 @@ Game.prototype.unqueueLocationEvent = async function() {
   return event;
 }
 
+// === Projects ===
+
+Game.prototype.startProject = function(code) {
+  return new Promise(resolve => {
+    this.currentProject = code;
+    this.currentProjectProgress = 0;
+    this.save().then(resolve);
+  });
+}
+
 // === Private Functions ===
 
 async function buildStartingMinions(game) {
@@ -141,7 +152,6 @@ async function buildStartingMinions(game) {
     { type:'minion', species:'rat', gender:'male'   },
     { type:'minion', species:'rat', gender:'male'   },
     { type:'minion', species:'rat', gender:'male'   },
-    { type:'minion', species:'rat', gender:'female' },
     { type:'minion', species:'rat', gender:'female' },
     { type:'minion', species:'rat', gender:'female' },
   ];

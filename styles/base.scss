@@ -8,7 +8,7 @@ body {
   line-height: 1.5;
   min-width: 1000px;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 a {
@@ -71,3 +71,10 @@ p:first-child { margin-top: 0; }
 p:last-child { margin-bottom: 0; }
 
 ul { margin: 0; }
+
+dl {
+  dt {
+    float: left;
+    width: 16em;
+  }
+}

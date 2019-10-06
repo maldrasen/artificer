@@ -63,13 +63,31 @@ global.BrowserCommands = (function() {
     // === Events ===
 
     ipcMain.on('game.end-event', (event, choices) => {
-      Event.finish(choices).then(() => {
+      Event.onFinish(choices).then(() => {
         Composer.render();
       });
     });
 
     ipcMain.on('game.start-location-event', () => {
       Composer.renderLocationEvent();
+    });
+
+    // === Plan and Reports ===
+
+    ipcMain.on('game.open-plan-view', () => {
+      Composer.renderPlanView();
+    });
+
+    ipcMain.on('game.end-day', (event, planData) => {
+      new Plan(planData).execute().then(() => {
+        Composer.render();
+      });
+    });
+
+    // === Other Views ===
+
+    ipcMain.on('game.cancel', () => {
+      Composer.render();
     });
   }
 

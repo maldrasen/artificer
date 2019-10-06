@@ -94,13 +94,19 @@
     "aspects/skills/oral",
     "aspects/skills/sorcery",
 
-    "events/courtyard-walk-on-walls",
     "events/courtyard-get-minions",
+    "events/courtyard-walk-on-walls",
     "events/game-start",
     "events/game-start-chase",
+    "events/great-hall-talk-to-rat-chief",
     "events/no-longer-naked",
+    "events/warm-rats",
 
     "locations/courtyard",
+
+    "missions/explore-hinterlands",
+    "missions/gather-stone",
+    "missions/gather-timber",
 
     "names/demon-female-first-names",
     "names/demon-male-first-names",
@@ -114,6 +120,8 @@
     "names/goblin-male-first-names",
     "names/kobold-names",
     "names/rat-names",
+
+    "projects/clear-great-hall",
 
     "species/caprien",
     "species/centaur",

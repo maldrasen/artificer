@@ -15,6 +15,8 @@ require(`${ROOT}/client/components/components`);
 require(`${ROOT}/client/components/event-view`);
 require(`${ROOT}/client/components/location-view`);
 require(`${ROOT}/client/components/main-menu`);
+require(`${ROOT}/client/components/plan-view`);
+require(`${ROOT}/client/components/report-view`);
 require(`${ROOT}/client/components/saved-games`);
 
 require(`${ROOT}/client/components/event-views/gender-form`);
@@ -24,6 +26,7 @@ require(`${ROOT}/client/components/event-views/warning`);
 // === Elements ===
 require(`${ROOT}/client/elements/elements`);
 require(`${ROOT}/client/elements/chooser`);
+require(`${ROOT}/client/elements/confirm`);
 require(`${ROOT}/client/elements/paged-content`);
 require(`${ROOT}/client/elements/radio-buttons`);
 require(`${ROOT}/client/elements/scrolling-panel`);

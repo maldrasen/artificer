@@ -7,10 +7,7 @@ global.expect = require('chai').expect;
 console.log('=== Booting Spec Process ===');
 require(`${ROOT}/engine/boot-engine.js`);
 require(`${ROOT}/engine/boot-database.js`);
-
-// Require Helpers if needed.
-// require(`${appPath}/main/spec/helpers/character-helper`);
-// require(`${appPath}/main/spec/helpers/spec-helper`);
+require(`${ROOT}/spec/game-helper.js`);
 
 // If the before function returns a Promise, Mocha will ensure that the Promise
 // will finish before any of the specs are run. Including this in the global

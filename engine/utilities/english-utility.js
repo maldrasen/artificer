@@ -16,7 +16,7 @@ global.EnglishUtility = {
 
   // For phrases where there you might be acting on 'both things', or on 'all things'
   all_both(number) {
-    if (number <= 1) { return Loom.error(`English.all_both(${number}) must be greater than 1`); }
+    if (number <= 1) { return Weaver.error(`English.all_both(${number}) must be greater than 1`); }
     return (number > 2) ? 'both' : 'all';
   },
 
@@ -47,7 +47,12 @@ global.EnglishUtility = {
     if (number == 19) { return "nineteen" }
     if (number == 20) { return "twenty" }
     if (number == 21) { return "twenty one" }
-    return Loom.error(`English.numberInEnglish(${number}) needs more numbers!`)
+    return Weaver.error(`English.numberInEnglish(${number}) needs more numbers!`)
+  },
+
+  // Same as numberInEnglish(), but upper case.
+  NumberInEnglish(number, options) {
+    return TextUtility.titlecase(EnglishUtility.numberInEnglish(number, options));
   },
 
   // This is a rather ugly and complex function that takes a measurement and

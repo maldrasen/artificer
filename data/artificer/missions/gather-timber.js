@@ -1,0 +1,2 @@
+Mission.build('gather-timber', {
+});
