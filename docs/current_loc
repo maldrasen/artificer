@@ -1,0 +1,25 @@
+
+I'm going to periodically update this file, perhaps weekly or so with the LOC
+stats, just to keep a running total. Then I can just look through the git
+versions of this file to see the history, growth rate etc. I know, LOC is a
+terrible measure of progress and doneness normally, but this project involves a
+ton of writing, so knowing how many lines this has is actually useful. I'm
+thinking once we approach 500,000 lines we'll be close to done.
+
+Prickle-Prickle, the 60th day of Bureaucracy in the YOLD 3185 / 6 Oct 2019
+
+---------- Result ------------
+
+            Physical :  13621
+              Source :  11326
+             Comment :  909
+ Single-line comment :  904
+       Block comment :  5
+               Mixed :  23
+ Empty block comment :  0
+               Empty :  1409
+               To Do :  12
+
+Number of files read :  284
+
+----------------------------
