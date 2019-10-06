@@ -17,7 +17,10 @@ global.Plan = class Plan {
   }
 
   async preProcess() {
-    await this.startProjects();
+    const game = await Game.instance();
+    await this.startProjects(game);
+    await game.enqueueAvailableEvents();
+    await game.save();
   }
 
   async buildReport() {
@@ -35,20 +38,17 @@ global.Plan = class Plan {
   // whereas when if multiple projects are selected they will all be done in
   // the same day. If everything is finished in a day we don't need to set
   // anything in the game or update the minions.
-  async startProjects() {
+  async startProjects(game) {
     if (this.projectWork && this.projectWork.length == 1) {
       let project = Project.lookup(this.projectWork[0].code);
       let minions = await Character.findAll({ where:{ id:this.projectWork[0].minions }});
-      await this.startLongProject(project, minions);
+      await this.startLongProject(game, project, minions);
     }
   }
 
-  async startLongProject(project, minions) {
-    const game = await Game.instance();
-          game.currentProject = project.code;
-          game.currentProjectProgress = 0;
-
-    await game.save();
+  async startLongProject(game, project, minions) {
+    game.currentProject = project.code;
+    game.currentProjectProgress = 0;
 
     // All the minions who were assigned to this project should have their
     // current task set to project. This will prevent them from getting

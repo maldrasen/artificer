@@ -83,6 +83,15 @@ Game.prototype.getFlags = async function() {
 
 // === Event Queues ===
 
+// This function just finds all the available events and attempts to enqueue
+// each one of them.
+Game.prototype.enqueueAvailableEvents = async function() {
+  const events = await AvailableEvent.findAll({ where:{} });
+  await Promise.all(events.map(async event => {
+    await enqueueAvailableEvent(this, event)
+  }));
+}
+
 Game.prototype.enqueueEvents = async function(events) {
   await Promise.all(events.map(async event => {
     if (event.type == 'gameEvent')     { return await this.enqueueGameEvent(event.code); }
@@ -149,4 +158,20 @@ async function buildStartingMinions(game) {
   return await Promise.all(startingCharacters.map((options) => {
     return CharacterBuilder.build(options);
   }));
+}
+
+async function enqueueAvailableEvent(game, event) {
+  const valid = await CentralScrutinizer.meetsRequirements(event.requires)
+
+  if (valid && Random.upTo(100) <= event.chance) {
+    if (event.eventType == 'location') {
+      await game.enqueueLocationEvent(event.code, event.state);
+    } else {
+      await game.enqueueGameEvent(event.code, event.state);
+    }
+  }
+
+  if (event.repeat == false) {
+    await AvailableEvent.destroy({ where:{ code:event.code }})
+  }
 }
