@@ -101,6 +101,7 @@
     "events/location/courtyard-walk-on-walls",
     "events/location/great-hall-talk-to-rat-chief",
 
+    "events/project/clear-great-hall-done",
     "events/project/clear-great-hall-start",
     "events/project/clear-great-hall-sleep-no",
     "events/project/clear-great-hall-sleep-sex-cock",
@@ -128,6 +129,8 @@
     "names/rat-names",
 
     "projects/clear-great-hall",
+    "projects/make-hide-bedding.js",
+    "projects/make-hide-clothing.js",
 
     "species/caprien",
     "species/centaur",

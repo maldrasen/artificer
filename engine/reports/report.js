@@ -3,32 +3,29 @@ global.preparedReport = null;
 global.Report = class Report {
 
   constructor(plan) {
-    this.logger = new Logger('Report', 'rgb(67, 107, 98)');
     this.plan = plan;
-    this.segments = {
-      project:{},
+
+    // Save the finished report on the global scope. (No where else to really
+    // stick it.)
+    global.preparedReport = {
+      project: {},
+      postActions: [],
     };
   }
 
   async buildReport() {
     const game = await Game.instance();
 
-    this.logger.info("Build Report");
-
     if (game.currentProject) {
-      this.segments.project = await this.workLongProject(game)
+      await this.workLongProject(game)
     } else {
-      this.segments.project = await this.workShortProjects(game);
+      await this.workShortProjects(game);
     }
 
     // Need to do all the daily tasks here.
     game.dayNumber += 1;
 
     await game.save();
-
-    // Save the finished report on the global scope. (No where else to really
-    // stick it.)
-    global.preparedReport = this.segments;
   }
 
   // This function will do work on the project. If a project is set on the game
@@ -40,7 +37,11 @@ global.Report = class Report {
     // 10 hours for playrer + 5 each assigned minion.
     game.currentProjectProgress += (minions.length * 5) + 10;
     if (game.currentProjectProgress < project.effort) {
-      return { text:this.projectProgressText(project, minions) }
+      return this.setProjectProgressText(project, minions);
+    }
+
+    if (typeof project.onFinish == 'function') {
+      global.preparedReport.postActions.push(project.onFinish)
     }
 
     game.currentProject = null;
@@ -53,19 +54,22 @@ global.Report = class Report {
       minion.save();
     });
 
-    return { text:this.projectCompletedText(project) }
+    this.setProjectCompletedText(project)
   }
 
-  projectProgressText(project, minions) {
+  setProjectProgressText(project, minions) {
     let text = `I'm working on ${project.workingName}. `
     if (minions.length == 0) { text += `I've made some progress, but there's still work to do.` }
     if (minions.length == 1) { text += `${minions[0].firstName} and I've made some progress, but there's still work to do.` }
     if (minions.length > 1)  { text += `${EnglishUtility.NumberInEnglish(minions.length)} of my minions and I have made some progress, but there's still work to do.` }
-    return text;
+
+    global.preparedReport.project = { text:text };
   }
 
-  projectCompletedText(project) {
-    return `I've completed work on ${project.workingName}.`
+  setProjectCompletedText(project) {
+    global.preparedReport.project = {
+      text: `I've completed work on ${project.workingName}.`
+    };
   }
 
   // This function checks to see if there are any half or quarter day projects

@@ -12,8 +12,8 @@ global.AvailableProject = Database.instance().define('available_project', {
 });
 
 AvailableProject.addAll = async function(projects) {
-  return await Promise.all(projects.map(async event => {
-    return await AvailableProject.add(event);
+  return await Promise.all(projects.map(async project => {
+    return await AvailableProject.add(project);
   }));
 }
 

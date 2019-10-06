@@ -14,10 +14,12 @@ Project.build('clear-great-hall', {
   },
 
   onFinish: async () => {
-    console.log("Todo: Great Hall onFinish events")
-    // enqueue move into great hall
-    // add project make hide clothing
-    // add project make hide bedding
+    let game = await Game.instance();
+    await game.enqueueGameEvent('clear-great-hall-done');
+    await AvailableProject.addAll([
+      { code:'make-hide-clothing' },
+      { code:'make-hide-bedding' },
+    ]);
   },
 
 });

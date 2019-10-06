@@ -18,7 +18,7 @@ describe('Plan', function() {
                 expect(game.currentProjectProgress).to.equal(0);
                 expect(minions[0].currentTask).to.equal('project');
                 expect(minions[1].currentTask).to.equal('project');
-                expect(event.requires).to.equal('game.dayNumber=3')
+                expect(event.requires).to.equal('game.dayNumber=2')
                 done();
               });
             });
