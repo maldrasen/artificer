@@ -31,6 +31,7 @@ require(`${ROOT}/engine/scrutinizers/synchronized-scrutinizer`);
 
 // === Services ===
 require(`${ROOT}/engine/services/composer`);
+require(`${ROOT}/engine/services/logger`);
 
 // === Factories ===
 require(`${ROOT}/engine/factories/character-builder/character-builder`);
