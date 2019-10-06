@@ -85,7 +85,11 @@ global.Weaver = (function() {
 
       each(stage.pages, page => {
         if (page.text && SynchronizedScrutinizer.meetsRequirements(page.requires, context)) {
-          page.text = weave(page.text, context)
+          page.text = weave(page.text, context);
+
+          if (page.playerSpeaker) { page.playerSpeaker = context['P'].character.firstName; }
+          if (page.minionSpeaker) { page.minionSpeaker = weave(page.minionSpeaker, context); }
+
           transformedPages.push(page);
         }
       });

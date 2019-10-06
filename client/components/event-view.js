@@ -156,9 +156,16 @@ Components.EventView = (function() {
     if (page.showCenterImage) { showCenterImage(page.showCenterImage); }
     if (page.hideCenterImage) { hideCenterImage(); }
 
+    showSpeaker(page.minionSpeaker, page.playerSpeaker)
     showNotification(page.notification);
 
     $('#currentEvent .event-text-frame').empty().append(page.text)
+  }
+
+  function showSpeaker(minionName, playerName) {
+    let speaker = $('#currentEvent .event-text-speaker').empty().addClass('hide').removeClass('minion').removeClass('player');
+    if (minionName) { speaker.removeClass('hide').addClass('minion').append(minionName); }
+    if (playerName) { speaker.removeClass('hide').addClass('player').append(playerName); }
   }
 
   // === Chooser Pages ===

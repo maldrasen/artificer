@@ -19,7 +19,7 @@
     left: 10px;
     right: 10px;
     height: 100px;
-    padding: 20px;
+    padding: 30px 40px;
     font-size: $fs-bigger;
     border: $border-light;
     box-shadow: $shadow-frame;
@@ -38,17 +38,31 @@
     }
   }
 
+  .event-text-speaker {
+    position: absolute;
+    bottom: 151px;
+    right: 8px;
+    height: 20px;
+    line-height: 21px;
+    padding: 2px 20px;
+    border: $border-normal;
+    background-color: $bg-body;
+    font-family: roboto-bold;
+    z-index: calc(#{$z-event-frame} + 10);
+  }
+  .event-text-speaker.player { color:$fg-player-quote }
+  .event-text-speaker.minion { color:$fg-minion-quote }
+
   .event-text-actions {
     position: absolute;
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
     height: 20px;
     line-height: 20px;
     padding: 0 5px;
     text-align: right;
     font-size: $fs-small;
-    border: $border-light;
     background-color: rgba(0, 0, 0, 0.33);
     z-index: calc(#{$z-event-frame} + 20);
   }
