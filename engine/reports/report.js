@@ -49,7 +49,7 @@ global.Report = class Report {
     // It 'should' be safe to save them without waiting here. I don't think we
     // need to read this value again until sometime after the report is done.
     each(minions, minion => {
-      minion.currentTask = 'Free'
+      minion.currentTask = 'free'
       minion.save();
     });
 

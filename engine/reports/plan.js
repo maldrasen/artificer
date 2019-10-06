@@ -22,9 +22,7 @@ global.Plan = class Plan {
 
   async buildReport() {
     let report =  new Report(this)
-    let reportSegments = await report.buildReport();
-
-    console.log("Report: ",reportSegments);
+    await report.buildReport();
   }
 
   async postProcess() {
@@ -38,7 +36,7 @@ global.Plan = class Plan {
   // the same day. If everything is finished in a day we don't need to set
   // anything in the game or update the minions.
   async startProjects() {
-    if (this.projectWork.length == 1) {
+    if (this.projectWork && this.projectWork.length == 1) {
       let project = Project.lookup(this.projectWork[0].code);
       let minions = await Character.findAll({ where:{ id:this.projectWork[0].minions }});
       await this.startLongProject(project, minions);
