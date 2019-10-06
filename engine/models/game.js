@@ -13,7 +13,7 @@ global.Game = Database.instance().define('game', {
     gameEventQueue()     { return JSON.parse(this.gameEventQueue_json||'[]') },
     locationEventQueue() { return JSON.parse(this.locationEventQueue_json||'[]') },
     nextGameEvent()      { return this.gameEventQueue[0]; },
-    nextLocationEvent()  { return this.locationEventQueue[this.location][0]; },
+    nextLocationEvent()  { return (this.locationEventQueue[this.location]||[])[0]; },
   },
   setterMethods: {
     gameEventQueue(queue) { this.setDataValue('gameEventQueue_json',JSON.stringify(queue)) },
@@ -57,6 +57,12 @@ Game.prototype.createPlayer = function(options) {
   Player.forge(options).then(player => {
     Composer.render();
   });
+}
+
+Game.updateLocation = async function(code) {
+  const game = await Game.instance();
+        game.location = Location.lookup(code).code;
+  await game.save();
 }
 
 // === Game Flags ===

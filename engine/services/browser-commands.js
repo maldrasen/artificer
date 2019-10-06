@@ -94,10 +94,12 @@ global.BrowserCommands = (function() {
 
   // Commands for things that can be done from locations
   function initLocationMessages() {
-    ipcMain.on('location.change', (event, code) => {
-      console.log("Change Location : ",code)
-      Composer.render();
-    })
+    ipcMain.on('location.change', (event, data) => {
+      Game.updateLocation(data.code).then(()=>{
+        Composer.render();
+      });
+    });
+
   }
 
   return { init:init }

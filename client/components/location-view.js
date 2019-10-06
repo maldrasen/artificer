@@ -37,10 +37,10 @@ Components.LocationView = (function() {
   }
 
   function buildMapLink(location) {
-    return $('<li>').append($('<a>',{ href:'#', class:'send-command' }).
-      data('command','location.change').
-      data('code',location.code).
-      append(location.name));
+    return $('<li>').append($('<a>',{ href:'#' }).append(location.name).on('click',Elements.buttonAction(()=>{
+      Renderer.removeOverlay();
+      Renderer.sendCommand('location.change', { code:location.code }) ;
+    })));
   }
 
   function appendDebug(view) {
