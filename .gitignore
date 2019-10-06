@@ -4,9 +4,9 @@
 
 assets/compiled/
 coverage/
+graphics/might-use/
 log/
 node_modules/
 resources/
 saves/
-
 npm-debug.log

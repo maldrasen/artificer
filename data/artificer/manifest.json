@@ -94,13 +94,15 @@
     "aspects/skills/oral",
     "aspects/skills/sorcery",
 
-    "events/courtyard-get-minions",
-    "events/courtyard-walk-on-walls",
-    "events/game-start",
-    "events/game-start-chase",
-    "events/great-hall-talk-to-rat-chief",
-    "events/no-longer-naked",
-    "events/warm-rats",
+    "events/global/game-start",
+    "events/global/game-start-chase",
+
+    "events/location/courtyard-get-minions",
+    "events/location/courtyard-walk-on-walls",
+    "events/location/great-hall-talk-to-rat-chief",
+    
+    "events/project/no-longer-naked",
+    "events/project/warm-rats",
 
     "locations/courtyard",
 
