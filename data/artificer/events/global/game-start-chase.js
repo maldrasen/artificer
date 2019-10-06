@@ -58,7 +58,7 @@ Event.build('game-start-chase', {
         { text:"It's a good dick, shrunken a bit though now in the cold autumn air." },
       ]
     },{
-      requires:['player.no-cock','player.has-pussy','player.no-tits'],
+      requires:['player.no-cock','player.no-tits'],
       pages: [
         { text:"I look down at my slender, androgynous body." },
         { text:"My chest is slightly muscular and completely flat." },
@@ -66,16 +66,6 @@ Event.build('game-start-chase', {
         { text:"Just to make sure everything was formed as I had intended." },
         { text:"I shudder slightly when I find my clit." },
         { text:"Yes, everything seems to be in order." },
-      ]
-    },{
-      requires:['player.no-cock','player.no-pussy'],
-      pages: [
-        { text:"The area between my legs is completely bare of all but my fur.", requires:"player.furry" },
-        { text:"The area between my legs is completely bare.", requires:"player.not-furry" },
-        { text:"Well..." },
-        { text:"It's a good thing I love getting fucked in the ass." },
-        { text:"..." },
-        { text:"I think." },
       ]
     },{
       pages: [

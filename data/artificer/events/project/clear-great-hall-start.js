@@ -68,14 +68,35 @@ Event.build('clear-great-hall-start', {
         { text:`Well, it's one way of staying warm at least.` },
         { text:`Should I allow them?` },
       ]
+    },{
+      selectionPage: true,
+      selectionKey: 'ratPile',
+      selections:[
+        { text:'Shoo them away.',                value:'no',   effects:{ fear:'+' }},
+        { text:'Allow it, but I need my sleep.', value:'yes',  effects:{ loyal:'+',  rat:'+' }},
+        { text:'Allow it, and make it sexy.',    value:'sexy', effects:{ loyal:'++', rat:'++', orgy:'++' }},
+      ]
     }
   ],
 
   onFinish: async choices => {
-
-    console.log("Finish:",choices)
-
     let game = await Game.instance();
+    let player = await Player.instance();
+
+    if (choices.ratPile == 'no') {
+      console.log("Enqueue no rat pile")
+      // clear-great-hall-sleep-no
+    }
+    if (choices.ratPile == 'yes') {
+      console.log("Enqueue rat pile")
+      // clear-great-hall-sleep-yes
+    }
+    if (choices.ratPile == 'sexy') {
+      console.log("Enqueue rat pile sex");
+      // clear-great-hall-sleep-sex-cock
+      // clear-great-hall-sleep-sex-pussy
+    }
+
     await game.setFlags({
       'locationMenu.map':'unlocked',
       'player.fucksMen': choices.men,

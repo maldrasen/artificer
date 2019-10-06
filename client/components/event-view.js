@@ -13,6 +13,7 @@ Components.EventView = (function() {
     $(document).on('click', '#currentEvent .click-advance', clickAdvance);
     $(document).on('click', '#currentEvent .activate-skip', Elements.buttonAction(activateSkip));
     $(document).on('click', '#currentEvent .chooser-accept', Elements.buttonAction(acceptChoice));
+    $(document).on('click', '#currentEvent .selection-button', Elements.buttonAction(acceptSelection));
     $(document).on('click', '#genderFormPage .accept', Elements.buttonAction(Components.EventView.GenderForm.accept));
     $(document).on('click', '#nameFormPage .accept', Elements.buttonAction(Components.EventView.NameForm.accept));
     $(document).on('click', '#sexualityFormPage .accept', Elements.buttonAction(Components.EventView.SexualityForm.accept));
@@ -74,8 +75,9 @@ Components.EventView = (function() {
 
     // These views cannot be skipped through.
     skipActive = false;
-    if (stage.chooserPage)       { return buildChooserPage(); }
-    if (stage.customPage)        { return buildCustomPage();  }
+    if (stage.chooserPage)       { return buildChooserPage();   }
+    if (stage.selectionPage)     { return buildSelectionPage(); }
+    if (stage.customPage)        { return buildCustomPage();    }
     if (stage.genderFormPage)    { return Components.EventView.GenderForm.build();    }
     if (stage.nameFormPage)      { return Components.EventView.NameForm.build();      }
     if (stage.warningPage)       { return Components.EventView.Warning.build();       }
@@ -201,6 +203,44 @@ Components.EventView = (function() {
 
     content.find('.chooser-frame').css({ width:(stage.chooserWidth || 800) });
     content.find('.text').append(stage.text);
+  }
+
+  // === Selection Page ===
+  // Selection Pages are for normal multiple choice options in an event.
+  // Selection can have effect badges which can be displayed on the selection.
+  // They are created like this:
+  //
+  //   selectionPage: true,
+  //   selectionKey: 'question',
+  //   selections:[
+  //     { text:'Yes.', value:'no',   effects:{ 'fear':'+' }},
+  //     { text:'No.',  value:'yes',  effects:{ 'loyal':'++' }},
+
+  function buildSelectionPage() {
+    $('#currentEvent .selection-content').removeClass('hide');
+    each(currentStage().selections, selection => {
+      $('#currentEvent .selection-list').append(buildSelection(selection));
+    });
+  }
+
+  function buildSelection(selection) {
+    let badges = $('<span>', { class:'badges' })
+    let button = $('<a>',{ href:'#', class:'button selection-button' }).append(
+      $('<span>',{ class:'text' }).append(selection.text)
+    ).data('value',selection.value).append(badges);
+
+    each(selection.effects, (value, key) => {
+      badges.append($('<span>',{ class:'badge' }).append(key).append(value))
+    });
+
+    return $('<li>',{ class:'selection'}).append(button);
+  }
+
+  function acceptSelection() {
+    choices[currentStage().selectionKey] = $(this).data('value')
+    $('#currentEvent .selection-content').addClass('hide');
+    $('#currentEvent .selection-list').empty();
+    nextStage();
   }
 
   // === Custom Pages ===

@@ -91,6 +91,45 @@
     }
   }
 
+  .selection-content {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    .selection {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .selection:last-child { margin:0; }
+
+    .selection a {
+      height: 50px;
+      width: 400px;
+      line-height: 50px;
+      background-color: rgba(60,50,56,0.8);
+      box-shadow: $shadow-frame;
+      &:active {
+        box-shadow: $shadow-inset-button;
+      }
+    }
+
+    .badges {
+      position: absolute;
+      bottom: -14px;
+      right: 5px;
+      font-size: $fs-small;
+      opacity: 0.5;
+    }
+    .badge {
+      margin-left: 5px;
+    }
+  }
+
   .center-image-frame {
     position: absolute;
     bottom: 172px;

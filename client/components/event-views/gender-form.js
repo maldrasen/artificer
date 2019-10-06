@@ -62,6 +62,10 @@ Components.EventView.GenderForm = {
     values.genderTits = $('#genderTits').data('value') || 'no';
     values.genderPussy = $('#genderPussy').data('value') || 'no';
 
+    // Yeah, I'm really going to have no idea what to do with a player if they
+    // don't have at least one sex organ.
+    if (values.genderDick == 'no' && values.genderPussy == 'no') { valid = false; }
+
     if (valid) {
       $('#genderFormPage').remove();
       Components.EventView.updateChoices(values);
