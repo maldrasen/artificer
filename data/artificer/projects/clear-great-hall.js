@@ -5,8 +5,12 @@ Project.build('clear-great-hall', {
   help: { max:4, min:0 },
 
   onStart: async () => {
-    console.log("Todo: Great Hall onStart events")
-    // enqueue talk with rat chief
+    const game = await Game.instance();
+
+    await AvailableEvent.add({
+      code: 'great-hall-talk-to-rat-chief',
+      requires: `game.dayNumber=${game.dayNumber+2}`
+    });
   },
 
   onFinish: async () => {
