@@ -34,6 +34,9 @@ global.Composer = (function(){
       });
     }
 
+    // If there are no events happening, but a report is ready, show the report.
+    if (global.preparedReport) { return renderReport(); }
+
     // If there's no active event or anything like that:
     renderLocation(game.location)
   }
@@ -53,6 +56,12 @@ global.Composer = (function(){
         Browser.send('render.event',woven);
       });
     });
+  }
+
+  // The report is destroyed immeadietly after sending.
+  function renderReport() {
+    Browser.send('render.report', global.preparedReport);
+    global.preparedReport = null;
   }
 
   function renderLocation(code) {

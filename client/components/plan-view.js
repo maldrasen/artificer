@@ -107,17 +107,17 @@ Components.PlanView = (function() {
     let selectedHelp = getSelectedHelperMinions();
     let status = `This project will take approximately ${project.effort} man hours of work to complete. `;
 
-    if (project.help.min == 0 && project.help.max == 0) { status += 'No one can help you on this project. '; }
-    if (project.help.min == 0 && project.help.max == 1) { status += 'A single one of your minions can help you. ' }
-    if (project.help.min == 0 && project.help.max > 1)  { status += `Up to ${project.help.max} of your minions can help you work to complete it. ` }
-    if (project.help.min == 1 && project.help.max == 1) { status += `You'll need the help of one of your minions to complete it. ` }
-    if (project.help.min >= 1 && project.help.max > 1)  { status += `You'll need the help of ${project.help.min} to ${project.help.max} of your minions to complete it. ` }
+    if (project.help.min == 0 && project.help.max == 0) { status += 'No one can help me on this project. '; }
+    if (project.help.min == 0 && project.help.max == 1) { status += 'A single one of my minions can help you. ' }
+    if (project.help.min == 0 && project.help.max > 1)  { status += `Up to ${project.help.max} of my minions can help me work to complete it. ` }
+    if (project.help.min == 1 && project.help.max == 1) { status += `I'll need the help of one of my minions to complete it. ` }
+    if (project.help.min >= 1 && project.help.max > 1)  { status += `I'll need the help of ${project.help.min} to ${project.help.max} of my minions to complete it. ` }
 
     if (selectedHelp.length == 0) {
       let days = Math.ceil(project.effort/10);
       status += (days > 1) ?
-        `Working by yourself, this project will take <span class='fg-strong'>${days} days</span> to complete.`:
-        `Working by yourself, this project will take <span class='fg-strong'>a day</span> to complete.`;
+        `Working by myself, this project will take <span class='fg-strong'>${days} days</span> to complete.`:
+        `Working by myself, this project will take <span class='fg-strong'>a day</span> to complete.`;
     } else {
       let work = (selectedHelp.length * 5) + 10;
       let days = Math.ceil(project.effort/work);

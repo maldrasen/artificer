@@ -1,0 +1,25 @@
+#reportView {
+
+  .report-frame {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    right: 50px;
+    bottom: 50px;
+    padding: 20px;
+    background-color: $bg-body-darker;
+    opacity: 0.90;
+    border: $border-light;
+    box-shadow: $shadow-overlay;
+  }
+  .footer {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    right: 50px;
+    padding: 10px;
+    text-align: right;
+    background-color: rgba(0,0,0,0.33);
+  }
+
+}

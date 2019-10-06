@@ -24,6 +24,7 @@ require(`${ROOT}/engine/helpers/character-agent`);
 
 // === Report ===
 require(`${ROOT}/engine/reports/plan`);
+require(`${ROOT}/engine/reports/report`);
 
 // === Scrutinizers ===
 require(`${ROOT}/engine/scrutinizers/central-scrutinizer`);

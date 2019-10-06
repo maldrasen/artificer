@@ -137,10 +137,12 @@ Game.prototype.unqueueLocationEvent = async function() {
 
 // === Projects ===
 
-Game.prototype.startProject = async function(code) {
-  this.currentProject = code;
-  this.currentProjectProgress = 0;
-  await this.save();
+Game.prototype.startProject = function(code) {
+  return new Promise(resolve => {
+    this.currentProject = code;
+    this.currentProjectProgress = 0;
+    this.save().then(resolve);
+  });
 }
 
 // === Private Functions ===

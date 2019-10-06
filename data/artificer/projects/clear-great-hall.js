@@ -1,5 +1,6 @@
 Project.build('clear-great-hall', {
   name: 'Clear the Great Hall',
+  workingName: `clearing the Keep's Great Hall`,
   description: "I need to clear the keep's Great Hall of debris before I can move my camp inside.",
   effort: 40,
   help: { max:4, min:0 },

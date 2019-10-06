@@ -1,10 +1,11 @@
 global.Plan = class Plan {
 
   constructor(data) {
-    this.projectWork = data.projectWork;
+    this._projectWork = data.projectWork;
     this.logger = new Logger('Plan', 'rgb(97, 107, 67)');
   }
 
+  get projectWork() { return this._projectWork; }
 
   async execute() {
     this.logger.info("=== Execute Plan ===");
@@ -20,6 +21,10 @@ global.Plan = class Plan {
   }
 
   async buildReport() {
+    let report =  new Report(this)
+    let reportSegments = await report.buildReport();
+
+    console.log("Report: ",reportSegments);
   }
 
   async postProcess() {
