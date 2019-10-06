@@ -20,7 +20,7 @@ describe('Game', function() {
 
     it("Can add events with state", function(done) {
       Game.start().then(game => {
-        game.enqueueGameEvent('no-longer-naked',{ horse:'cock' }).then(()=>{
+        game.enqueueGameEvent('great-hall-talk-to-rat-chief',{ horse:'cock' }).then(()=>{
           expect(game.gameEventQueue[2].state.horse).to.equal('cock');
           done();
         });

@@ -60,7 +60,7 @@ global.Plan = class Plan {
     }));
 
     // Execute the project's onStart() function if it has one.
-    if (typeof onStart == 'function') {
+    if (typeof project.onStart == 'function') {
       await project.onStart();
     }
 

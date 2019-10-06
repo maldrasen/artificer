@@ -100,9 +100,8 @@
     "events/location/courtyard-get-minions",
     "events/location/courtyard-walk-on-walls",
     "events/location/great-hall-talk-to-rat-chief",
-    
-    "events/project/no-longer-naked",
-    "events/project/warm-rats",
+
+    "events/project/clear-great-hall-start",
 
     "locations/courtyard",
 
