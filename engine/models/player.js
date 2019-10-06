@@ -44,6 +44,16 @@ Player.forge = function(options) {
   });
 }
 
+Player.hasCock = async function() {
+  return await Cock.findOne({ where:{ character_id:1000000000 }}) != null;
+}
+Player.hasPussy = async function() {
+  return await Pussy.findOne({ where:{ character_id:1000000000 }}) != null;
+}
+Player.hasTits = async function() {
+  return await Tits.findOne({ where:{ character_id:1000000000 }}) != null;
+}
+
 function saveCustomGender(player, options) {
   if (options.gender == 'custom') {
     let genderOptions = {

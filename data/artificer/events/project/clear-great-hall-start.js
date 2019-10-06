@@ -81,20 +81,19 @@ Event.build('clear-great-hall-start', {
 
   onFinish: async choices => {
     let game = await Game.instance();
-    let player = await Player.instance();
+    let cock = await Player.hasCock();
 
     if (choices.ratPile == 'no') {
-      console.log("Enqueue no rat pile")
-      // clear-great-hall-sleep-no
+      await game.enqueueGameEvent('clear-great-hall-sleep-no');
     }
     if (choices.ratPile == 'yes') {
-      console.log("Enqueue rat pile")
-      // clear-great-hall-sleep-yes
+      await game.enqueueGameEvent('clear-great-hall-sleep-yes');
     }
     if (choices.ratPile == 'sexy') {
-      console.log("Enqueue rat pile sex");
-      // clear-great-hall-sleep-sex-cock
-      // clear-great-hall-sleep-sex-pussy
+      let code = cock ? 'clear-great-hall-sleep-sex-cock':
+                        'clear-great-hall-sleep-sex-pussy';
+
+      await game.enqueueGameEvent(code);
     }
 
     await game.setFlags({

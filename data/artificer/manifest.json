@@ -102,6 +102,10 @@
     "events/location/great-hall-talk-to-rat-chief",
 
     "events/project/clear-great-hall-start",
+    "events/project/clear-great-hall-sleep-no",
+    "events/project/clear-great-hall-sleep-sex-cock",
+    "events/project/clear-great-hall-sleep-sex-pussy",
+    "events/project/clear-great-hall-sleep-yes",
 
     "locations/courtyard",
     "locations/great-hall",
