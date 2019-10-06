@@ -64,10 +64,14 @@ Components.PlanView = (function() {
   }
 
   function displaySelectedProject(project) {
-    let selected = $('#planView .selected-project').append(`
+    let assistance = (project.help.max == 0) ?
+      `Assistance: I'll have to do this myself.`:
+      `Assistance: ${project.help.min} - ${project.help.max} minions.`
+
+    let selected = $('#planView .selected-project').empty().append(`
       <div class='description'>${project.description}</div>
       <div class='effort'>${project.effort} man hours</div>
-      <div class='help'>Assistance: ${project.help.min} - ${project.help.max} minions.</div>
+      <div class='help'>${assistance}</div>
     `)
 
     if (project.readyState.ready && availableHoursFor(project)) {
@@ -92,7 +96,7 @@ Components.PlanView = (function() {
     let minions = getPlanData().minions;
 
     // If this project doesn't allow helpers just add the project, no need to select minions
-    if (project.help.max == 0) { return; }
+    if (project.help.max == 0) { return confirmSelectProject(); }
 
     $('#planView .minion-select-frame').removeClass('hide');
     $('#planView .modal-cover').removeClass('hide');
