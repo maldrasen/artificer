@@ -33,12 +33,12 @@ AvailableEvent.add = async function(data) {
   let event = Event.lookup(data.code);
   let eventType = (event.location != null) ? 'location' : event.eventType;
 
-  return AvailableEvent.create({
+  return await AvailableEvent.create({
     code:          data.code,
     eventType:     eventType,
     state_json:    JSON.stringify(data.state||{}),
     requires_json: JSON.stringify(data.requires||[]),
     chance:        data.chance || 100,
     repeat:        data.repeat === true,
-  })
+  });
 }

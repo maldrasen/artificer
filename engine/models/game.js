@@ -170,14 +170,18 @@ async function enqueueAvailableEvent(game, event) {
   const valid = await CentralScrutinizer.meetsRequirements(event.requires)
 
   if (valid && Random.upTo(100) <= event.chance) {
+
+    // The event is valid so enqueue it as either a location or a game event.
     if (event.eventType == 'location') {
       await game.enqueueLocationEvent(event.code, event.state);
     } else {
       await game.enqueueGameEvent(event.code, event.state);
     }
-  }
 
-  if (event.repeat == false) {
-    await AvailableEvent.destroy({ where:{ code:event.code }})
+    // If this event was queued it should no longer be available, unless it's
+    // a repeatable event.
+    if (event.repeat == false) {
+      await AvailableEvent.destroy({ where:{ code:event.code }})
+    }
   }
 }
