@@ -104,6 +104,7 @@
     "events/project/clear-great-hall-start",
 
     "locations/courtyard",
+    "locations/great-hall",
 
     "missions/explore-hinterlands",
     "missions/gather-stone",
