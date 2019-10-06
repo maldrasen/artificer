@@ -75,12 +75,20 @@ global.Composer = (function(){
     const projects = await AvailableProject.all();
     const minions = await Character.allForPlan();
 
-    Browser.send('render.plan',{
+    let planData = {
       currentProject: game.currentProject,
       currentProjectProgress: game.currentProjectProgress,
       projects: projects,
       minions: minions,
-    });
+    }
+
+    if (game.currentProject) {
+      let current = Project.lookup(game.currentProject);
+      planData.currentProjectName = current.name;
+      planData.currentProjectEffort = current.effort;
+    }
+
+    Browser.send('render.plan',planData);
   }
 
   return {

@@ -29,6 +29,11 @@ Components.PlanView = (function() {
       $('#planView').data('workingProjects',[]);
       current.append("Nothing (0/4)");
       current.data('committed',0);
+    } else {
+      let progressPercent = Math.floor(planData.currentProjectProgress / planData.currentProjectEffort * 100)
+      current.append(`${planData.currentProjectName} (${progressPercent}% complete)`)
+      current.data('committed',4);
+      $('#planView .projects .lower-frame').addClass('hide');
     }
   }
 

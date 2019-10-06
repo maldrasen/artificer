@@ -135,16 +135,6 @@ Game.prototype.unqueueLocationEvent = async function() {
   return event;
 }
 
-// === Projects ===
-
-Game.prototype.startProject = function(code) {
-  return new Promise(resolve => {
-    this.currentProject = code;
-    this.currentProjectProgress = 0;
-    this.save().then(resolve);
-  });
-}
-
 // === Private Functions ===
 
 async function buildStartingMinions(game) {

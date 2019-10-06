@@ -45,13 +45,28 @@ global.Plan = class Plan {
 
   async startLongProject(project, minions) {
     const game = await Game.instance();
-    await game.startProject(project.code);
+          game.currentProject = project.code;
+          game.currentProjectProgress = 0;
 
+    await game.save();
+
+    // All the minions who were assigned to this project should have their
+    // current task set to project. This will prevent them from getting
+    // assigned to other tasks while the project is being worked on. It's also
+    // used when calculating project progress.
     await Promise.all(minions.map(async minion => {
       minion.currentTask = 'project';
       await minion.save();
     }));
 
-    await project.onStart();
+    // Execute the project's onStart() function if it has one.
+    if (typeof onStart == 'function') {
+      await project.onStart();
+    }
+
+    // Finally (unless this project is repeatable, which none of them are yet)
+    // destroy the AvailableProject so that it can't be started again. I
+    // shouldn't need to wait for this to complete.
+    AvailableProject.destroy({ where:{ code:project.code }});
   }
 }
