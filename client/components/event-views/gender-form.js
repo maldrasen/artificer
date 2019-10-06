@@ -34,7 +34,7 @@ Components.EventView.GenderForm = {
         </div>
         <div class='chooser-centered-footer'>
           Well now. What pronouns shall I insist that my subjects refer to me by, under pain of death?
-          <div class='action'><a href='#' class="button-primary gender-accept">Accept</a></div>
+          <div class='action'><a href='#' class="button-primary accept">Accept</a></div>
         </div>
       </div>
     `);

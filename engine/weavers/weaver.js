@@ -18,6 +18,7 @@ global.Weaver = (function() {
     let index = 0;
     let operations = [
       { key:'P', index:index++, prom:lookupPlayer() },
+      { key:'minionData', index:index++, prom:getMinionData() },
     ];
 
     each((event.actors||[]), (descriptive, key) => {
@@ -57,6 +58,29 @@ global.Weaver = (function() {
     let character = await CharacterAgent.findActor(descriptive);
     let everything = await character.getCompleteBody();
     return extend(everything, { character:character });
+  }
+
+  // I don't want to include all the minions in the context, but I still
+  // occationally need various data points, how many minions are doing what,
+  // that sort of thing. I'll compile all that here.
+  async function getMinionData() {
+    const minions = await Character.findAll();
+
+    let data = {
+      totalCount: 0,
+      freeCount: 0,
+      missionCount: 0,
+      workingCount: 0,
+    }
+
+    each(minions, minion => {
+      data.totalCount++;
+      if (minion.currentTask == 'free') { data.freeCount++ }
+      if (minion.currentTask == 'mission') { data.missionCount++ }
+      if (minion.currentTask == 'project') { data.workingCount++ }
+    });
+
+    return data;
   }
 
   // === Event Transformation  ===

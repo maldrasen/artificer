@@ -26,7 +26,21 @@ global.SynchronizedScrutinizer = (function() {
     if (requirement == 'player.has-smaller-than-average-tits') { return context.P.tits && ['zero','tiny','small'].indexOf(context.P.tits.sizeClass) >= 0 }
     if (requirement == 'player.has-bigger-than-average-tits')  { return context.P.tits && ['big','huge','monster'].indexOf(context.P.tits.sizeClass) >= 0 }
 
+    if (requirement.match(/minions.working-project/)) { return checkWorkingMinionCount(requirement, context); }
+
     throw `Unknown Requirement - ${requirement}`;
+  }
+
+  // To check how many menions are working on a project. This requirement has
+  // the format: "minions.working-project>1" and can use < or >
+  function checkWorkingMinionCount(requirement, context) {
+    if (requirement.indexOf('<') > 0) {
+      return context.minionData.workingCount < parseInt(requirement.split('<')[1])
+    }
+    if (requirement.indexOf('>') > 0) {
+      return context.minionData.workingCount > parseInt(requirement.split('<')[1])
+    }
+    throw `No operation in minion count requirement.`
   }
 
   return { meetsRequirements:meetsRequirements };

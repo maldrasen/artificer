@@ -9,7 +9,7 @@ Project.build('clear-great-hall', {
     const game = await Game.instance();
     await AvailableEvent.addAll([
       { code: 'clear-great-hall-start' },
-      { code: 'great-hall-talk-to-rat-chief', requires: `game.dayNumber=${game.dayNumber+2}` },
+      { code: 'great-hall-talk-to-rat-chief', requires: `game.dayNumber=${game.dayNumber+1}` },
     ]);
   },
 

@@ -13,7 +13,7 @@ Components.EventView.NameForm = {
         </div>
         <div class='chooser-centered-footer'>
           ${comment} A being needs a name as well. What should I call myself?
-          <div class='action'><a href='#' class="button-primary name-accept">Accept</a></div>
+          <div class='action'><a href='#' class="button-primary accept">Accept</a></div>
         </div>
       </div>
     `)

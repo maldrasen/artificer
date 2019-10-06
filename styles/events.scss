@@ -48,3 +48,18 @@
     right: 50px;
   }
 }
+
+#sexualityFormPage {
+  .form {
+    margin: 50px auto;
+    width: 350px;
+    white-space: nowrap;
+  }
+  .row {
+    margin-bottom: 10px;
+    label {
+      width:150px;
+      display: inline-block;
+    }
+  }
+}

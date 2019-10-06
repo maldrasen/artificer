@@ -13,7 +13,7 @@ Components.EventView.Warning = {
           that's not your thing, it would probably be best to just to not play this at all. Seriously. Trust me. This
           shit's going to be fucked up.
         </div></div>
-        <div class="warning-footer"><a href="#" class="button-warning close-warning">Acknowledged</a></div>
+        <div class="warning-footer"><a href="#" class="button-warning close">Acknowledged</a></div>
       </div>`);
   },
 

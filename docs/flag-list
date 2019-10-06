@@ -4,3 +4,6 @@ locationMenu.map          | clear-great-hall-start      | (unlocked) Turns on th
 locationMenu.minions      | courtyard-get-minions       | (unlocked) Turns on the minion menu
 minion.rename             | courtyard-walk-on-walls     | (unlocked) Turns on the ability to rename minions in the minion menu.
 character.rat-chief       | courtyard-get-minions       | (id) ID of the strongest alive rat serving as chief. This flag should be checked every day to see if the chief changes.
+player.fucksMen           | clear-great-hall-start      | (always,maybe,never) The player's gender preferences.
+player.fucksFutas         | clear-great-hall-start      | (always,maybe,never)
+player.fucksWomen         | clear-great-hall-start      | (always,maybe,never)

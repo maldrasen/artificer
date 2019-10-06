@@ -13,9 +13,10 @@ Components.EventView = (function() {
     $(document).on('click', '#currentEvent .click-advance', clickAdvance);
     $(document).on('click', '#currentEvent .activate-skip', Elements.buttonAction(activateSkip));
     $(document).on('click', '#currentEvent .chooser-accept', Elements.buttonAction(acceptChoice));
-    $(document).on('click', '#currentEvent .gender-accept', Elements.buttonAction(Components.EventView.GenderForm.accept));
-    $(document).on('click', '#currentEvent .name-accept', Elements.buttonAction(Components.EventView.NameForm.accept));
-    $(document).on('click', '#currentEvent .close-warning',Elements.buttonAction(Components.EventView.Warning.accept));
+    $(document).on('click', '#genderFormPage .accept', Elements.buttonAction(Components.EventView.GenderForm.accept));
+    $(document).on('click', '#nameFormPage .accept', Elements.buttonAction(Components.EventView.NameForm.accept));
+    $(document).on('click', '#sexualityFormPage .accept', Elements.buttonAction(Components.EventView.SexualityForm.accept));
+    $(document).on('click', '#warningFrame .close',Elements.buttonAction(Components.EventView.Warning.accept));
   }
 
   function build(transport, event) {
@@ -73,12 +74,12 @@ Components.EventView = (function() {
 
     // These views cannot be skipped through.
     skipActive = false;
-    if (stage.chooserPage)    { return buildChooserPage(); }
-    if (stage.customPage)     { return buildCustomPage();  }
-    if (stage.genderFormPage) { return Components.EventView.GenderForm.build(); }
-    if (stage.nameFormPage)   { return Components.EventView.NameForm.build();   }
-    if (stage.warningPage)    { return Components.EventView.Warning.build();    }
-
+    if (stage.chooserPage)       { return buildChooserPage(); }
+    if (stage.customPage)        { return buildCustomPage();  }
+    if (stage.genderFormPage)    { return Components.EventView.GenderForm.build();    }
+    if (stage.nameFormPage)      { return Components.EventView.NameForm.build();      }
+    if (stage.warningPage)       { return Components.EventView.Warning.build();       }
+    if (stage.sexualityFormPage) { return Components.EventView.SexualityForm.build(); }
     throw "Unrecognized Stage Type"
   }
 
