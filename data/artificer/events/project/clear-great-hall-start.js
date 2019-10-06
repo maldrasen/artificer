@@ -12,7 +12,6 @@ Event.build('clear-great-hall-start', {
 
   onFinish: async choices => {
     let game = await Game.instance();
-
     await game.setFlags({
       'locationMenu.map':'unlocked',
     });

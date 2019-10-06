@@ -1,12 +1,13 @@
 global.Location = class Location extends Form {
 
   async buildView() {
-    const game =  await Game.instance();
+    const game = await Game.instance();
+    const flags = await game.getFlags();
 
     let results = await Promise.all([
       this.buildName(),
       this.buildDescription(),
-      this.buildFlags(game),
+      this.buildFlags(game, flags),
       this.buildAttributes(),
       this.buildFlavor(),
     ]);
@@ -17,10 +18,8 @@ global.Location = class Location extends Form {
       flags: results[2],
       attributes: results[3],
       flavor: results[4],
-    };
-
-    view.dates = {
-      day: game.dayNumber,
+      mapData: this.buildMapData(flags),
+      dates: { day:game.dayNumber }
     };
 
     return view;
@@ -37,8 +36,7 @@ global.Location = class Location extends Form {
   async buildFlavor()      { return []; }
 
 
-  async buildFlags(game) {
-    const flags = await game.getFlags();
+  async buildFlags(game, flags) {
     return {
       all: flags,
       showPlanAction: (flags['location.currentStudy'] == game.location),
@@ -46,6 +44,25 @@ global.Location = class Location extends Form {
       showMinionMenu: (flags['locationMenu.minions'] != 'locked'),
       eventActive: game.nextLocationEvent != null
     };
+  }
+
+  // We build the locations for the map when building the location view. Right
+  // now we only need a name and a code, but eventually I think the map will
+  // need to be more graphical, so this will need to carry a lot more map state
+  // data and image positioning and stuff.
+  buildMapData(flags) {
+    let locations = [];
+
+    each(Location.instances, (location, code) => {
+      if (location.unlockFlag == null || flags[location.unlockFlag]) {
+        locations.push({
+          code: location.code,
+          name: location.name,
+        });
+      }
+    })
+
+    return { locations:locations };
   }
 
 }

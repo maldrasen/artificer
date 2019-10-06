@@ -2,6 +2,7 @@ global.BrowserCommands = (function() {
 
   function init() {
     initGameMessages();
+    initLocationMessages();
   }
 
   // The game messages are primarily concerned with starting, stopping,
@@ -89,6 +90,14 @@ global.BrowserCommands = (function() {
     ipcMain.on('game.cancel', () => {
       Composer.render();
     });
+  }
+
+  // Commands for things that can be done from locations
+  function initLocationMessages() {
+    ipcMain.on('location.change', (event, code) => {
+      console.log("Change Location : ",code)
+      Composer.render();
+    })
   }
 
   return { init:init }

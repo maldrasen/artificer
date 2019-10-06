@@ -19,7 +19,6 @@ $(document).ready(function() {
   // === Init Components ===
   Components.EventView.init();
   Components.LocationView.init();
-  Components.MainMenu.init();
   Components.PlanView.init();
   Components.ReportView.init();
   Components.SavedGames.init();

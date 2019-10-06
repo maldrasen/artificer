@@ -2,10 +2,11 @@ global.Renderer = (function() {
   const logger = new Logger('Renderer', 'rgb(150,200,200)');
 
   const VIEWS = {
-    createPlan: { path:`${ROOT}/client/views/screens/create-plan.html`, title:"Create Today's Plan" },
-    mainMenu:   { path:`${ROOT}/client/views/screens/main-menu.html` },
-    savedGames: { path:`${ROOT}/client/views/screens/saved-games.html`, title:'Load Game', build:Components.SavedGames.buildLoad },
-    saveGame:   { path:`${ROOT}/client/views/screens/save-game.html`, title:'Save Game', build:Components.SavedGames.buildSave },
+    mainMenu:   { template:'#mainMenuTemplate' },
+    createPlan: { template:'#planTemplate',     title:"Create Today's Plan" },
+    map:        { template:'#mapTemplate',      title:"Keep Map",  build:Components.LocationView.buildMap },
+    loadGame:   { template:'#loadGameTemplate', title:'Load Game', build:Components.SavedGames.buildLoad  },
+    saveGame:   { template:'#saveGameTemplate', title:'Save Game', build:Components.SavedGames.buildSave  },
   };
 
   function init() {
@@ -23,14 +24,25 @@ global.Renderer = (function() {
   function ready() {
     document.title = `Artificer`
 
-    let body = $('body').removeClass('main-loading').empty();
+    let body = $('body');
+
+    body.find('.loading').empty().append('Loading Views...');
     body.append($('<div>',{ id:'mainContent' }));
     body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/layers.html`));
-    body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/chooser.html`));
-    body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/event.html`));
+    body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/main-menu.html`));
+    body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/save-game.html`));
+    body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/load-game.html`));
     body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/location.html`));
     body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/plan.html`));
     body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/report.html`));
+    body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/event.html`));
+    body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/map.html`));
+    body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/chooser.html`));
+    constructView();
+  }
+
+  function finishedLoading() {
+    $('body').removeClass('main-loading').find('.loading').remove();
     showMainMenu();
   }
 
@@ -38,20 +50,19 @@ global.Renderer = (function() {
 
   function showMainMenu()   { showView(VIEWS.mainMenu);      }
   function showCreatePlan() { showOverlay(VIEWS.createPlan); }
-  function showSavedGames() { showOverlay(VIEWS.savedGames); }
+  function showLoadGame()   { showOverlay(VIEWS.loadGame); }
   function showSaveGame()   { showOverlay(VIEWS.saveGame);   }
+  function showMap()        { showOverlay(VIEWS.map);        }
 
   function showView(view) {
-    $('#mainContent').empty().append($('<div>',{ class:'partial' }).data('url',view.path))
+    $('#mainContent').empty().append($(view.template).html())
     if (view.build) { view.build(); }
-    constructView();
   }
 
   function showOverlay(view) {
     $('#overlayFrame').removeClass('hide').find('.title').empty().append(view.title);
-    $('#overlayContent').append($('<div>',{ class:'partial' }).data('url',view.path));
+    $('#overlayContent').append($(view.template).html());
     if (view.build) { view.build(); }
-    constructView();
   }
 
   function removeOverlay() {
@@ -73,6 +84,7 @@ global.Renderer = (function() {
     let options = {};
 
     if (data.id) { options.id = data.id; }
+    if (data.code) { options.code = data.code; }
 
     sendCommand(data.command, options)
   }
@@ -99,6 +111,7 @@ global.Renderer = (function() {
 
   function constructView() {
     if ($('.partial').length > 0) { return renderPartial(); }
+    finishedLoading();
     Elements.PagedContent.build();
   }
 
@@ -131,8 +144,9 @@ global.Renderer = (function() {
 
     showCreatePlan: showCreatePlan,
     showMainMenu: showMainMenu,
+    showLoadGame: showLoadGame,
     showSaveGame: showSaveGame,
-    showSavedGames: showSavedGames,
+    showMap: showMap,
 
     renderFile: renderFile,
 

@@ -2,7 +2,9 @@ Components.LocationView = (function() {
   const logger = new Logger('LocationView', 'rgb(230, 170, 140)');
 
   function init() {
-    // Probably will need this?
+    $(document).on('click','.menu-show-load',Elements.buttonAction(Renderer.showLoadGame));
+    $(document).on('click','.menu-show-save',Elements.buttonAction(Renderer.showSaveGame));
+    $(document).on('click','.menu-show-map',Elements.buttonAction(Renderer.showMap));
   }
 
   function build(transport, view) {
@@ -12,6 +14,7 @@ Components.LocationView = (function() {
         location.find('.location-name').append(view.name);
         location.find('.location-description').append(view.description);
         location.find('.date').append(`Day ${view.dates.day}`);
+        location.data('mapData',view.mapData);
 
     if (view.flags.showMapMenu) { location.find('.menu-show-map').removeClass('hide') }
     if (view.flags.showMinionMenu) { location.find('.menu-show-minions').removeClass('hide') }
@@ -23,6 +26,20 @@ Components.LocationView = (function() {
     // Only needed when I'm trying to figure something out.
     // appendDebug(view);
   }
+
+  function buildMap() {
+    let mapData = $('#locationView').data('mapData');
+    let list = $('#overlayFrame #mapView .locations').empty();
+
+    each(mapData.locations, location => {
+      let link = $('<a>',{ href:'#', class:'send-command' }).
+        data('command','location.change').
+        data('code',location.code).
+        append(location.name);
+      list.append($('<li>').append(link))
+    });
+  }
+
 
   function appendDebug(view) {
     if (DEBUG) {
@@ -37,6 +54,7 @@ Components.LocationView = (function() {
   return {
     init: init,
     build: build,
+    buildMap: buildMap,
   };
 
 })();
