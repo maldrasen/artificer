@@ -1,5 +1,5 @@
 global.Character = Database.instance().define('character', {
-  type:        { type:Sequelize.STRING, validate:{ isIn:[['minion','hero']] }},
+  type:        { type:Sequelize.STRING, validate:{ isIn:[['minion','hero','useless','enforcer','slave']] }},
   currentTask: { type:Sequelize.STRING, validate:{ isIn:[['free','project','mission']] }},
   roleCode:    { type:Sequelize.STRING },
   genderCode:  { type:Sequelize.STRING },
