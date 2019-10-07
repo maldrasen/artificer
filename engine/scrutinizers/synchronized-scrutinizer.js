@@ -13,24 +13,24 @@ global.SynchronizedScrutinizer = (function() {
   }
 
   function meetsRequirement(requirement, context) {
-    if (requirement == 'player.furry')            { return context.P.character.species.isFurry; }
-    if (requirement == 'player.not-furry')        { return !context.P.character.species.isFurry; }
-    if (requirement == 'player.has-cock')         { return context.P.cock != null; }
-    if (requirement == 'player.no-cock')          { return context.P.cock == null; }
-    if (requirement == 'player.has-pussy')        { return context.P.pussy != null; }
-    if (requirement == 'player.no-pussy')         { return context.P.pussy == null; }
-    if (requirement == 'player.has-tits')         { return context.P.tits != null; }
-    if (requirement == 'player.no-tits')          { return context.P.tits == null; }
-    if (requirement == 'player.has-average-tits') { return context.P.tits && context.P.tits.sizeClass == 'average'}
-
-    if (requirement == 'player.has-smaller-than-average-tits') { return context.P.tits && ['zero','tiny','small'].indexOf(context.P.tits.sizeClass) >= 0 }
-    if (requirement == 'player.has-bigger-than-average-tits')  { return context.P.tits && ['big','huge','monster'].indexOf(context.P.tits.sizeClass) >= 0 }
-
-    if (requirement == 'player.prefers-men')                   { return playerPrefersMen(context); }
-    if (requirement == 'player.prefers-women')                 { return playerPrefersWomen(context); }
-    if (requirement == 'player.prefers-men-over-women')        { return playerPrefersMenOverWomen(context); }
-    if (requirement == 'player.prefers-women-over-men')        { return playerPrefersWomenOverMen(context); }
-    if (requirement == 'player.prefers-neither-men-nor-women') { return playerPrefersNeitherMenNorWomen(context); }
+    if (requirement == 'player.furry')                           { return context.P.character.species.isFurry; }
+    if (requirement == 'player.not-furry')                       { return !context.P.character.species.isFurry; }
+    if (requirement == 'player.cock-sheath')                     { return context.P.character.species.hasCockSheath; }
+    if (requirement == 'player.no-cock-sheath')                  { return !context.P.character.species.hasCockSheath; }
+    if (requirement == 'player.has-cock')                        { return context.P.cock != null; }
+    if (requirement == 'player.no-cock')                         { return context.P.cock == null; }
+    if (requirement == 'player.has-pussy')                       { return context.P.pussy != null; }
+    if (requirement == 'player.no-pussy')                        { return context.P.pussy == null; }
+    if (requirement == 'player.has-tits')                        { return context.P.tits != null; }
+    if (requirement == 'player.no-tits')                         { return context.P.tits == null; }
+    if (requirement == 'player.has-average-tits')                { return context.P.tits && context.P.tits.sizeClass == 'average'}
+    if (requirement == 'player.has-smaller-than-average-tits')   { return context.P.tits && ['zero','tiny','small'].indexOf(context.P.tits.sizeClass) >= 0 }
+    if (requirement == 'player.has-bigger-than-average-tits')    { return context.P.tits && ['big','huge','monster'].indexOf(context.P.tits.sizeClass) >= 0 }
+    if (requirement == 'player.prefers-men')                     { return playerPrefersMen(context); }
+    if (requirement == 'player.prefers-women')                   { return playerPrefersWomen(context); }
+    if (requirement == 'player.prefers-men-over-women')          { return playerPrefersMenOverWomen(context); }
+    if (requirement == 'player.prefers-women-over-men')          { return playerPrefersWomenOverMen(context); }
+    if (requirement == 'player.prefers-neither-men-nor-women')   { return playerPrefersNeitherMenNorWomen(context); }
 
     if (requirement.match(/minions.working-project/)) { return checkWorkingMinionCount(requirement, context); }
 
