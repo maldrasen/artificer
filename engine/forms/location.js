@@ -2,7 +2,7 @@ global.Location = class Location extends Form {
 
   async buildView() {
     const game = await Game.instance();
-    const flags = await game.getFlags();
+    const flags = await Flag.getAll();
 
     let results = await Promise.all([
       this.buildName(),

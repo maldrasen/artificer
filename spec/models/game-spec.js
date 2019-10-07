@@ -51,7 +51,7 @@ describe('Game', function() {
   describe("Game Flags", function() {
     it("adds flags at game start", function(done) {
       Game.start().then(game => {
-        game.getFlags().then(flags => {
+        Flag.getAll().then(flags => {
           expect(flags['locationMenu.map']).to.equal('locked');
           done();
         });

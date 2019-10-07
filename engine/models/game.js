@@ -76,17 +76,6 @@ Game.prototype.setFlags = async function(flags) {
   return await Promise.all(operations);
 }
 
-Game.prototype.getFlags = async function() {
-  let flags = await Flag.findAll({ where:{} })
-
-  let compact = {};
-  each(flags, flag => {
-    compact[flag.code] = flag.value
-  });
-
-  return compact;
-}
-
 // === Event Queues ===
 
 // This function just finds all the available events and attempts to enqueue
