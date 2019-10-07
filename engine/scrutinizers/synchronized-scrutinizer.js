@@ -26,9 +26,56 @@ global.SynchronizedScrutinizer = (function() {
     if (requirement == 'player.has-smaller-than-average-tits') { return context.P.tits && ['zero','tiny','small'].indexOf(context.P.tits.sizeClass) >= 0 }
     if (requirement == 'player.has-bigger-than-average-tits')  { return context.P.tits && ['big','huge','monster'].indexOf(context.P.tits.sizeClass) >= 0 }
 
+    if (requirement == 'player.prefers-men')                   { return playerPrefersMen(context); }
+    if (requirement == 'player.prefers-women')                 { return playerPrefersWomen(context); }
+    if (requirement == 'player.prefers-men-over-women')        { return playerPrefersMenOverWomen(context); }
+    if (requirement == 'player.prefers-women-over-men')        { return playerPrefersWomenOverMen(context); }
+    if (requirement == 'player.prefers-neither-men-nor-women') { return playerPrefersNeitherMenNorWomen(context); }
+
     if (requirement.match(/minions.working-project/)) { return checkWorkingMinionCount(requirement, context); }
 
     throw `Unknown Requirement - ${requirement}`;
+  }
+
+  // These functions need to look at the sexuality flags to determine if any
+  // gender is more preferred than another. These will only be true if they
+  // have an actual preference.
+
+  function playerPrefersMen(context) {
+    let scores = genderPreferenceScores(context);
+    return (scores.male > scores.female) && (scores.male > scores.futa)
+  }
+  function playerPrefersMenOverWomen(context) {
+    let scores = genderPreferenceScores(context);
+    return (scores.male > scores.female)
+  }
+  function playerPrefersWomen(context) {
+    let scores = genderPreferenceScores(context);
+    return (scores.female > scores.male) && (scores.female > scores.futa)
+  }
+  function playerPrefersWomenOverMen(context) {
+    let scores = genderPreferenceScores(context);
+    return (scores.female > scores.male)
+  }
+
+  // There won't be too many futa characters, so early events are usually
+  // written with male or female paths. If the player has no preference for
+  // either gender though, bisexual paths wind up here.
+  function playerPrefersNeitherMenNorWomen(context) {
+    return !playerPrefersWomen(context) && !playerPrefersMen(context);
+  }
+
+  // This is the same preferenceScores function that's in the Flag class, but
+  // works of the context so that it's synchronous.
+  function genderPreferenceScores(context) {
+    let scores = { male:0, female:0, futa:0 };
+    if (context.flags['player.fucksMen'] == 'always')   { scores.male += 2; }
+    if (context.flags['player.fucksMen'] == 'maybe')    { scores.male += 1; }
+    if (context.flags['player.fucksWomen'] == 'always') { scores.female += 2; }
+    if (context.flags['player.fucksWomen'] == 'maybe')  { scores.female += 1; }
+    if (context.flags['player.fucksFutas'] == 'always')  { scores.futa += 2; }
+    if (context.flags['player.fucksFutas'] == 'maybe')   { scores.futa += 1; }
+    return scores;
   }
 
   // To check how many menions are working on a project. This requirement has

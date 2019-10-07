@@ -37,3 +37,17 @@ Flag.maybeFuckGenderList = async function() {
 
   return maybe;
 }
+
+Flag.genderPreferenceScores = async function() {
+  let flags = await Flag.getAll();
+  let scores = { male:0, female:0, futa:0 };
+
+  if (flags['player.fucksMen'] == 'always')   { scores.male = 2; }
+  if (flags['player.fucksMen'] == 'maybe')    { scores.male = 1; }
+  if (flags['player.fucksWomen'] == 'always') { scores.female = 2; }
+  if (flags['player.fucksWomen'] == 'maybe')  { scores.female = 1; }
+  if (flags['player.fucksFutas'] == 'always') { scores.futa = 2; }
+  if (flags['player.fucksFutas'] == 'maybe')  { scores.futa = 1; }
+
+  return scores;
+}

@@ -19,6 +19,7 @@ global.Weaver = (function() {
     let operations = [
       { key:'P', index:index++, prom:lookupPlayer() },
       { key:'minionData', index:index++, prom:getMinionData() },
+      { key:'flags', index:index++, prom:Flag.getAll() },
     ];
 
     each((event.actors||[]), (descriptive, key) => {

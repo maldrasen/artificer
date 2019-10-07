@@ -11,6 +11,7 @@ global.GenderLoom = (function() {
     if (gender == null) { return Weaver.error(`Subject without gender`); }
     if (token == 'gender.man')  { return gender.man;  }
     if (token == 'gender.men')  { return gender.men;  }
+    if (token == 'gender.boys') { return gender.boys; }
     if (token == 'gender.male') { return gender.male; }
     if (token == 'gender.he')   { return gender.he;   }
     if (token == 'gender.him')  { return gender.him;  }
@@ -18,6 +19,7 @@ global.GenderLoom = (function() {
     if (token == 'gender.hers') { return gender.hers; }
     if (token == 'gender.Man')  { return gender.Man;  }
     if (token == 'gender.Men')  { return gender.Men;  }
+    if (token == 'gender.Boys') { return gender.Boys; }
     if (token == 'gender.Male') { return gender.Male; }
     if (token == 'gender.He')   { return gender.He;   }
     if (token == 'gender.Him')  { return gender.Him;  }
