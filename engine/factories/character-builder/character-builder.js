@@ -18,6 +18,7 @@ global.CharacterBuilder = (function() {
       firstName:   options.firstName,
       lastName:    options.lastName,
       type:        options.type      || 'minion',
+      roleCode:    options.roleCode  || 'rest',
       physical:    options.physical  || species.randomizedAttribute('physical'),
       personal:    options.personal  || species.randomizedAttribute('personal'),
       mental:      options.mental    || species.randomizedAttribute('mental'),

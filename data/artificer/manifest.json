@@ -129,8 +129,11 @@
     "names/rat-names",
 
     "projects/clear-great-hall",
-    "projects/make-hide-bedding.js",
-    "projects/make-hide-clothing.js",
+    "projects/make-hide-bedding",
+    "projects/make-hide-clothing",
+
+    "roles/hunter",
+    "roles/rest",
 
     "species/caprien",
     "species/centaur",
