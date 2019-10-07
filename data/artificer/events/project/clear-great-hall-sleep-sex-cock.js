@@ -55,7 +55,7 @@ Event.build('clear-great-hall-sleep-sex-cock', {
         { text:`{{R::gender.He}} doesn't seem to have minded the rough treatment though.` },
         { text:`{{R::gender.He}} and the other rat start swapping the overabundance of cum between themselves while another rat starts fucking {{R::gender.him}} roughly from behind.` },
         { text:`Feeling completly spent, I lean back and find a rat to lay my head against.` },
-        { text:`It doesn't take long before I'm asleep, using {{R::gender.his}} as a pillow, while the rest of the rats continue to fuck all around me.` },
+        { text:`It doesn't take long before I'm asleep, using {{R::gender.his}} ass as a pillow, while the rest of the rats continue to fuck all around me.` },
     ]}
   ]
 });

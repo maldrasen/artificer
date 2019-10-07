@@ -26,6 +26,9 @@ global.SynchronizedScrutinizer = (function() {
     if (requirement == 'player.has-average-tits')                { return context.P.tits && context.P.tits.sizeClass == 'average'}
     if (requirement == 'player.has-smaller-than-average-tits')   { return context.P.tits && ['zero','tiny','small'].indexOf(context.P.tits.sizeClass) >= 0 }
     if (requirement == 'player.has-bigger-than-average-tits')    { return context.P.tits && ['big','huge','monster'].indexOf(context.P.tits.sizeClass) >= 0 }
+
+    if (requirement == 'player.accepts-men')                     { return genderPreferenceScores(context).male > 0 }
+    if (requirement == 'player.accepts-no-men')                  { return genderPreferenceScores(context).male == 0 }
     if (requirement == 'player.prefers-men')                     { return playerPrefersMen(context); }
     if (requirement == 'player.prefers-women')                   { return playerPrefersWomen(context); }
     if (requirement == 'player.prefers-men-over-women')          { return playerPrefersMenOverWomen(context); }
