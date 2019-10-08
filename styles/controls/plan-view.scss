@@ -107,5 +107,40 @@
     background-color: rgba(0,0,0,0.5);
   }
 
+  // === Minion Frame ===
+  .minion-frame {
+    margin: 10px;
+    padding: 10px;
+    border: $border-normal;
+
+    .minion {
+      margin: 5px;
+      padding: 5px;
+      border: $border-light;
+    }
+
+    .minion.free {
+      .mission-status { display: none; }
+      .project-status { display: none; }
+    }
+    .minion.project {
+      opacity: 0.33;
+      .role-select-area { display: none; }
+      .mission-status { display: none; }
+    }
+    .minion.mission {
+      opacity: 0.33;
+      .role-select-area { display: none; }
+      .project-status { display: none; }
+    }
+
+    .top-row { display: flex; }
+    .name-row { flex-grow: 1; }
+    .name { font-size: $fs-big; color: $fg-strong; }
+    .gender { font-size: $fs-small; margin-left:10px; }
+    .species { font-size: $fs-small; }
+    .label { margin-left: 10px; }
+    .value { margin-left: 5px; }
+  }
 
 }
