@@ -57,5 +57,18 @@ Event.build('clear-great-hall-sleep-sex-cock', {
         { text:`Feeling completly spent, I lean back and find a rat to lay my head against.` },
         { text:`It doesn't take long before I'm asleep, using {{R::gender.his}} ass as a pillow, while the rest of the rats continue to fuck all around me.` },
     ]}
-  ]
+  ],
+
+  onFinish: async choices => {
+    const game = await Game.instance();
+    const player = await Player.instance();
+
+    AvailableEvent.addAll([{
+      code: (player.species.isFurry) ? 'got-fleas-furry' : 'got-fleas-hair',
+      requires:[`game.dayNumber=${game.dayNumber+2}`]}
+    ]);
+
+    game.setFlags({'history.courtyard-rat-orgy':'true'});
+  }
+
 });
