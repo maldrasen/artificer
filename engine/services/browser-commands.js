@@ -2,6 +2,7 @@ global.BrowserCommands = (function() {
 
   function init() {
     initGameMessages();
+    initResolverMessages();
     initLocationMessages();
   }
 
@@ -73,30 +74,28 @@ global.BrowserCommands = (function() {
       Composer.renderLocationEvent();
     });
 
-    // === Plan and Reports ===
+    // === Other Views ===
 
     ipcMain.on('game.open-plan-view', () => {
       Composer.renderPlanView();
     });
 
-    ipcMain.on('game.end-day', (event, planData) => {
-      new Plan(planData).execute().then(() => {
-        Composer.render();
-      });
-    });
-
-    ipcMain.on('game.start-day', () => {
-      global.preparedReport.postprocess().then(() => {
-        Composer.render();
-      });
-    });
-
-    // === Other Views ===
-
     ipcMain.on('game.cancel', () => {
       Composer.render();
     });
   }
+
+  // Commands for the resolver commands
+  function initResolverMessages() {
+    ipcMain.on('resolver.start-work', (event, plan) => {
+      Resolver.startWork(plan);
+    });
+
+    ipcMain.on('resolver.start-day', () => {
+      Resolver.startDay();
+    });
+  }
+
 
   // Commands for things that can be done from locations
   function initLocationMessages() {

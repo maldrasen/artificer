@@ -10,6 +10,7 @@ require(`${ROOT}/engine/concerns/has-body`);
 
 // === Devices ===
 require(`${ROOT}/engine/devices/composer`);
+require(`${ROOT}/engine/devices/resolver`);
 
 // === Forms ===
 require(`${ROOT}/engine/forms/form`);
@@ -27,10 +28,6 @@ require(`${ROOT}/engine/forms/species`);
 
 // === Helpers ===
 require(`${ROOT}/engine/helpers/character-agent`);
-
-// === Report ===
-require(`${ROOT}/engine/reports/plan`);
-require(`${ROOT}/engine/reports/report`);
 
 // === Scrutinizers ===
 require(`${ROOT}/engine/scrutinizers/central-scrutinizer`);

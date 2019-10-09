@@ -35,7 +35,7 @@ global.Composer = (function(){
     }
 
     // If there are no events happening, but a report is ready, show the report.
-    if (global.preparedReport) { return renderReport(); }
+    if (Resolver.currentReport() != null) { return renderReport(); }
 
     // If there's no active event or anything like that:
     renderLocation(game.location)
@@ -59,7 +59,7 @@ global.Composer = (function(){
   }
 
   function renderReport() {
-    Browser.send('render.report', global.preparedReport.package);
+    Browser.send('render.report', Resolver.currentReport());
   }
 
   function renderLocation(code) {
