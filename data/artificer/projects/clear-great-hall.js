@@ -3,7 +3,7 @@ Project.build('clear-great-hall', {
   workingName: `clearing the Keep's Great Hall`,
   description: "I need to clear the keep's Great Hall of debris before I can move my camp inside.",
   effort: 40,
-  help: { max:4, min:0 },
+  help: { max:2, min:0 },
 
   onStart: async () => {
     const game = await Game.instance();
@@ -14,8 +14,9 @@ Project.build('clear-great-hall', {
   },
 
   onFinish: async () => {
-    let game = await Game.instance();
+    const game = await Game.instance();
     await game.enqueueGameEvent('clear-great-hall-done');
+
     await AvailableProject.addAll([
       { code:'make-hide-clothing' },
       { code:'make-hide-bedding' },

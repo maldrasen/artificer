@@ -17,6 +17,8 @@ global.Plan = class Plan {
 
   async preProcess() {
     const game = await Game.instance();
+    game.time = 'afternoon';
+
     await this.startProjects(game);
     await game.enqueueAvailableEvents();
     await game.save();

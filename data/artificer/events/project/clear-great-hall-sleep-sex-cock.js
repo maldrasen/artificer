@@ -61,14 +61,9 @@ Event.build('clear-great-hall-sleep-sex-cock', {
 
   onFinish: async choices => {
     const game = await Game.instance();
-    const player = await Player.instance();
-
-    AvailableEvent.addAll([{
-      code: (player.species.isFurry) ? 'got-fleas-furry' : 'got-fleas-hair',
-      requires:[`game.dayNumber=${game.dayNumber+2}`]}
-    ]);
-
-    game.setFlags({'history.courtyard-rat-orgy':'true'});
+    game.setFlags({
+      'history.courtyard-rat-orgy':'yes'
+    });
   }
 
 });

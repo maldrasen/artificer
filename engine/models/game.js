@@ -1,6 +1,7 @@
 global.Game = Database.instance().define('game', {
   location:                 { type:Sequelize.STRING  },
   dayNumber:                { type:Sequelize.INTEGER },
+  time:                     { type:Sequelize.STRING, validate:{ isIn:[['morning','afternoon']] }},
   anger:                    { type:Sequelize.INTEGER },
   frustration:              { type:Sequelize.INTEGER },
   gameEventQueue_json:      { type:Sequelize.STRING  },
@@ -21,6 +22,9 @@ global.Game = Database.instance().define('game', {
   }
 });
 
+Game.logger = new Logger('Game', 'rgb(105, 100, 163)');
+
+
 Game.instance = function() {
   return Game.findByPk(1);
 }
@@ -32,6 +36,7 @@ Game.start = async function() {
     id: 1,
     location: Configuration.gameStartLocation,
     dayNumber: 1,
+    time: 'morning',
     anger: 0,
     frustration: 0,
     gameEventQueue_json: "[]",
@@ -68,6 +73,8 @@ Game.updateLocation = async function(code) {
 // === Game Flags ===
 
 Game.prototype.setFlags = async function(flags) {
+  Game.logger.info(`Set Flags`,flags);
+
   let operations = []
   each(flags, (value,code) => {
     return Flag.create({ code:code, value:value })
@@ -83,7 +90,7 @@ Game.prototype.setFlags = async function(flags) {
 Game.prototype.enqueueAvailableEvents = async function() {
   const events = await AvailableEvent.findAll({ where:{} });
   await Promise.all(events.map(async event => {
-    await enqueueAvailableEvent(this, event)
+    await enqueueAvailableEvent(event);
   }));
 }
 
@@ -96,6 +103,7 @@ Game.prototype.enqueueEvents = async function(events) {
 }
 
 Game.prototype.enqueueGameEvent = async function(code, state) {
+  Game.logger.info(`Enqueued Game Event ${code}`,state);
   Event.lookup(code)
 
   let queue = this.gameEventQueue;
@@ -103,6 +111,7 @@ Game.prototype.enqueueGameEvent = async function(code, state) {
 
   this.gameEventQueue = queue;
   await this.save()
+
   return;
 }
 
@@ -117,6 +126,7 @@ Game.prototype.unqueueGameEvent = async function() {
 }
 
 Game.prototype.enqueueLocationEvent = async function(code, state) {
+  Game.logger.info(`Enqueued Location Event ${code}`,state);
   let event = Event.lookup(code);
   let location = Location.lookup(event.location);
   let queue = this.locationEventQueue;
@@ -148,6 +158,7 @@ async function buildStartingMinions(game) {
     { type:'minion', species:'rat', gender:'male'   },
     { type:'minion', species:'rat', gender:'female' },
     { type:'minion', species:'rat', gender:'female' },
+    { type:'minion', species:'rat', gender:'female' },
   ];
 
   return await Promise.all(startingCharacters.map((options) => {
@@ -155,9 +166,12 @@ async function buildStartingMinions(game) {
   }));
 }
 
-async function enqueueAvailableEvent(game, event) {
-  const valid = await CentralScrutinizer.meetsRequirements(event.requires)
+async function enqueueAvailableEvent(event) {
+  const game = await Game.instance();
+  const eventForm = Event.lookup(event.code)
+  if (eventForm.time && eventForm.time != game.time) { return false; }
 
+  const valid = await CentralScrutinizer.meetsRequirements(event.requires)
   if (valid && Random.upTo(100) <= event.chance) {
 
     // The event is valid so enqueue it as either a location or a game event.

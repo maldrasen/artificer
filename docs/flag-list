@@ -7,4 +7,4 @@ character.rat-chief           | courtyard-get-minions       | (id) ID of the str
 player.fucksMen               | clear-great-hall-start      | (always,maybe,never) The player's gender preferences.
 player.fucksFutas             | clear-great-hall-start      | (always,maybe,never)
 player.fucksWomen             | clear-great-hall-start      | (always,maybe,never)
-history.courtyard-rat-orgy    | clear-great-hall-sleep-sex  | (true) if it happened. Unset if not.
+history.courtyard-rat-orgy    | clear-great-hall-sleep-sex  | (yes) if it happened. Unset if not.

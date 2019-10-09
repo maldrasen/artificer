@@ -31,11 +31,14 @@ global.Report = class Report {
 
     // Need to do all the daily tasks here.
     game.dayNumber += 1;
+    game.time = 'morning';
+    await game.save();
 
     await Promise.all(this.postActions.map(async action => {
       await action();
     }));
 
+    await game.enqueueAvailableEvents();
     await game.save();
 
     global.preparedReport = null;

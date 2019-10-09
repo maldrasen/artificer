@@ -96,8 +96,7 @@
 
     "events/global/game-start",
     "events/global/game-start-chase",
-    "events/global/got-fleas-furry",
-    "events/global/got-fleas-hair",
+    "events/global/got-fleas",
 
     "events/location/courtyard-get-minions",
     "events/location/courtyard-walk-on-walls",
