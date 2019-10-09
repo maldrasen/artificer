@@ -63,7 +63,11 @@ Components.PlanView = (function() {
 
     let roleSelect = $('<select>',{ class:'role-select' });
     each(minion.availableRoles, role => {
-      roleSelect.append($('<option>',{ value:role.code }).append(role.name))
+      let option = $('<option>',{ value:role.code });
+      if (role.code == minion.role) {
+        option.prop('selected', true)
+      }
+      roleSelect.append(option.append(role.name))
     });
 
     let element = $(`<div class='minion ${minion.currentTask} minion-${minion.id}' data-id='${minion.id}'>

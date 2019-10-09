@@ -65,6 +65,7 @@ Character.allForPlan = async function() {
       personal: minion.personal,
       magical: minion.magical,
       currentTask: minion.currentTask,
+      role: minion.roleCode,
       availableRoles: [
         { code:'rest',   name:'Rest'   },
         { code:'hunter', name:'Hunter' },
