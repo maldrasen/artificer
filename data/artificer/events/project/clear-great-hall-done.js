@@ -11,5 +11,17 @@ Event.build('clear-great-hall-done', {
       { text:`I don't think I'll be making furniture for myself anytime soon though.` },
       { text:`Given that I'm still naked and sleeping on the floor, I think my next task is to find a way to remedy that.` },
     ]}
-  ]
+  ],
+
+  onFinish: async () => {
+    const flag = await Flag.lookup('history.courtyard-rat-orgy');
+    const game = await Game.instance();
+
+    if (flag) {
+      AvailableEvent.addAll([
+        { code:'got-fleas', requires:`game.dayNumber=${game.dayNumber+1}` },
+      ]);
+    }
+  },
+
 });

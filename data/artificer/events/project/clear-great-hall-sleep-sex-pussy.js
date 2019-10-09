@@ -93,5 +93,13 @@ Event.build('clear-great-hall-sleep-sex-pussy', {
         { text:`Feeling completly spent, I lean back and find a rat to lay my head against.` },
         { text:`It doesn't take long before I'm asleep, using {{R::gender.his}} ass as a pillow, while the rest of the rats continue to fuck all around me.` },
     ]}
-  ]
+  ],
+
+  onFinish: async choices => {
+    const game = await Game.instance();
+    game.setFlags({
+      'history.courtyard-rat-orgy':'yes'
+    });
+  }
+
 });

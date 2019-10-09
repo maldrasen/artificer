@@ -5,6 +5,10 @@ global.Flag = Database.instance().define('flag', {
   timestamps: false,
 });
 
+Flag.lookup = async function(code) {
+  return await Flag.findOne({ where:{ code:code } });
+}
+
 Flag.getAll = async function() {
   let flags = await Flag.findAll({ where:{} })
 

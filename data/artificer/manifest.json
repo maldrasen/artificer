@@ -96,6 +96,7 @@
 
     "events/global/game-start",
     "events/global/game-start-chase",
+    "events/global/got-fleas",
 
     "events/location/courtyard-get-minions",
     "events/location/courtyard-walk-on-walls",
@@ -129,8 +130,11 @@
     "names/rat-names",
 
     "projects/clear-great-hall",
-    "projects/make-hide-bedding.js",
-    "projects/make-hide-clothing.js",
+    "projects/make-hide-bedding",
+    "projects/make-hide-clothing",
+
+    "roles/hunter",
+    "roles/rest",
 
     "species/caprien",
     "species/centaur",

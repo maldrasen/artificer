@@ -12,11 +12,14 @@ require(`${ROOT}/engine/concerns/has-body`);
 require(`${ROOT}/engine/forms/form`);
 require(`${ROOT}/engine/forms/adjustment`);
 require(`${ROOT}/engine/forms/aspect`);
+require(`${ROOT}/engine/forms/area`);
 require(`${ROOT}/engine/forms/event`);
 require(`${ROOT}/engine/forms/gender`);
+require(`${ROOT}/engine/forms/item`);
 require(`${ROOT}/engine/forms/location`);
 require(`${ROOT}/engine/forms/mission`);
 require(`${ROOT}/engine/forms/project`);
+require(`${ROOT}/engine/forms/role`);
 require(`${ROOT}/engine/forms/species`);
 
 // === Helpers ===
