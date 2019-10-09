@@ -1,7 +1,12 @@
 global.Resolver = (function() {
 
   function startWork(plan) {
-    Composer.render();
+    console.log("=== Start Work ===")
+    console.log(plan);
+
+    await Resolver.Projects.startProjects();
+    await Resolver.Roles.assignRoles();
+    await Composer.render();
   }
 
   function startDay() {
