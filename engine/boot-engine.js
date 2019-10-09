@@ -11,6 +11,8 @@ require(`${ROOT}/engine/concerns/has-body`);
 // === Devices ===
 require(`${ROOT}/engine/devices/composer`);
 require(`${ROOT}/engine/devices/resolver`);
+require(`${ROOT}/engine/devices/resolver-projects`);
+require(`${ROOT}/engine/devices/resolver-roles`);
 
 // === Forms ===
 require(`${ROOT}/engine/forms/form`);

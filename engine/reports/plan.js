@@ -1,25 +1,10 @@
 global.Plan = class Plan {
 
-  // The plan data will arrive in this format:
-  //
-  //     assignedRoles: [
-  //       { id:1, role:'hunter' }
-  //     projectWork: [
-  //       { code:'clear-great-hall', minions:[2,3]}
-  //
   constructor(data) {
     this.logger = new Logger('Plan', 'rgb(97, 107, 67)');
-    this._assignedRoles = data.assignedRoles;
-    this._projectWork = data.projectWork;
   }
 
-  get projectWork() { return this._projectWork; }
-  get assignedRoles() { return this._assignedRoles; }
-
   async execute() {
-    this.logger.info("=== Execute Plan ===");
-    this.logger.info("Projects",this.projectWork);
-    this.logger.info("Assignments",this.assignedRoles);
     await this.preProcess();
     await this.buildReport();
   }
@@ -41,17 +26,6 @@ global.Plan = class Plan {
     });
   }
 
-  // === Roles ===
-
-  // This will also need to set role options too I think.
-  async assignRoles() {
-    await Promise.all(this.assignedRoles.map(async assignment => {
-      const character = await Character.findByPk(assignment.id);
-            character.roleCode = assignment.role;
-
-      return await character.save();
-    }));
-  }
 
   // === Projects ===
 
