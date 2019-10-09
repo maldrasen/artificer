@@ -7,7 +7,7 @@ require(`${ROOT}/engine/boot-database.js`);
 
 ipcMain.on('client.ready', () => {
   Database.createDatabase(() => {
-    ModLoader.loadAllData(() => {
+    Loader.loadAllData(() => {
       console.log("\n=== Ready ===\n")
       BrowserCommands.init();
       Browser.send('engine.ready');

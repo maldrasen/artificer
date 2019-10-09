@@ -8,6 +8,9 @@ global.each = require('iterate-object');
 require(`${ROOT}/engine/concerns/has-aspects`);
 require(`${ROOT}/engine/concerns/has-body`);
 
+// === Devices ===
+require(`${ROOT}/engine/devices/composer`);
+
 // === Forms ===
 require(`${ROOT}/engine/forms/form`);
 require(`${ROOT}/engine/forms/adjustment`);
@@ -34,7 +37,6 @@ require(`${ROOT}/engine/scrutinizers/central-scrutinizer`);
 require(`${ROOT}/engine/scrutinizers/synchronized-scrutinizer`);
 
 // === Services ===
-require(`${ROOT}/engine/services/composer`);
 require(`${ROOT}/engine/services/logger`);
 
 // === Factories ===
