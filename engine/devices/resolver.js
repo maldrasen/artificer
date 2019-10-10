@@ -11,13 +11,18 @@ global.Resolver = (function() {
     console.log("=== Start Work ===")
     console.log(plan);
 
-    await Resolver.Projects.startProjects(plan.projectWork);
+    await Resolver.Game.becomeAfternoon();
     await Resolver.Roles.assignRoles(plan.assignedRoles);
+    await Resolver.Projects.startProjects(plan.projectWork);
+    await Resolver.Events.enqueueAvailable();
+    await Resolver.Report.buildReport();
     await Composer.render();
   }
 
   async function startDay() {
-    Composer.render();
+    await Resolver.Game.becomeMorning();
+    await Resolver.Events.enqueueAvailable();
+    await Composer.render();
   }
 
   function currentReport() {
