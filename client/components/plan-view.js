@@ -286,8 +286,7 @@ Components.PlanView = (function() {
     Elements.Confirm.showConfirm({
       message: message,
       yes: () => {
-        logger.info("End Day",plan);
-        Renderer.sendCommand('game.end-day',plan);
+        Renderer.sendCommand('resolver.start-work',plan);
       }
     })
   }

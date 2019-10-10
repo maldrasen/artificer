@@ -8,6 +8,16 @@ global.each = require('iterate-object');
 require(`${ROOT}/engine/concerns/has-aspects`);
 require(`${ROOT}/engine/concerns/has-body`);
 
+// === Devices ===
+require(`${ROOT}/engine/devices/composer`);
+require(`${ROOT}/engine/devices/resolver`);
+require(`${ROOT}/engine/devices/resolver-events`);
+require(`${ROOT}/engine/devices/resolver-game`);
+require(`${ROOT}/engine/devices/resolver-missions`);
+require(`${ROOT}/engine/devices/resolver-projects`);
+require(`${ROOT}/engine/devices/resolver-report`);
+require(`${ROOT}/engine/devices/resolver-roles`);
+
 // === Forms ===
 require(`${ROOT}/engine/forms/form`);
 require(`${ROOT}/engine/forms/adjustment`);
@@ -25,16 +35,11 @@ require(`${ROOT}/engine/forms/species`);
 // === Helpers ===
 require(`${ROOT}/engine/helpers/character-agent`);
 
-// === Report ===
-require(`${ROOT}/engine/reports/plan`);
-require(`${ROOT}/engine/reports/report`);
-
 // === Scrutinizers ===
 require(`${ROOT}/engine/scrutinizers/central-scrutinizer`);
 require(`${ROOT}/engine/scrutinizers/synchronized-scrutinizer`);
 
 // === Services ===
-require(`${ROOT}/engine/services/composer`);
 require(`${ROOT}/engine/services/logger`);
 
 // === Factories ===

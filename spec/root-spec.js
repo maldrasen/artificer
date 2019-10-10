@@ -15,7 +15,7 @@ require(`${ROOT}/spec/game-helper.js`);
 before(function() {
   return new Promise((resolve)=>{
     Database.createDatabase(() => {
-      ModLoader.loadAllData(resolve);
+      Loader.loadAllData(resolve);
     });
   });
 });

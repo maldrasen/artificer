@@ -85,15 +85,6 @@ Game.prototype.setFlags = async function(flags) {
 
 // === Event Queues ===
 
-// This function just finds all the available events and attempts to enqueue
-// each one of them.
-Game.prototype.enqueueAvailableEvents = async function() {
-  const events = await AvailableEvent.findAll({ where:{} });
-  await Promise.all(events.map(async event => {
-    await enqueueAvailableEvent(event);
-  }));
-}
-
 Game.prototype.enqueueEvents = async function(events) {
   await Promise.all(events.map(async event => {
     if (event.type == 'gameEvent')     { return await this.enqueueGameEvent(event.code); }
@@ -104,15 +95,26 @@ Game.prototype.enqueueEvents = async function(events) {
 
 Game.prototype.enqueueGameEvent = async function(code, state) {
   Game.logger.info(`Enqueued Game Event ${code}`,state);
-  Event.lookup(code)
+  Event.lookup(code);
 
   let queue = this.gameEventQueue;
       queue.push({ code:code, state:(state||{}) });
 
   this.gameEventQueue = queue;
   await this.save()
+}
 
-  return;
+// Exactly the same as enqueue event, except the event is added to the front
+// of the queue.
+Game.prototype.setNextEvent = async function(code, state) {
+  Game.logger.info(`Set Next Event ${code}`,state);
+  Event.lookup(code);
+
+  let queue = this.gameEventQueue;
+      queue.unshift({ code:code, state:(state||{}) });
+
+  this.gameEventQueue = queue;
+  await this.save()
 }
 
 Game.prototype.unqueueGameEvent = async function() {
@@ -164,27 +166,4 @@ async function buildStartingMinions(game) {
   return await Promise.all(startingCharacters.map((options) => {
     return CharacterBuilder.build(options);
   }));
-}
-
-async function enqueueAvailableEvent(event) {
-  const game = await Game.instance();
-  const eventForm = Event.lookup(event.code)
-  if (eventForm.time && eventForm.time != game.time) { return false; }
-
-  const valid = await CentralScrutinizer.meetsRequirements(event.requires)
-  if (valid && Random.upTo(100) <= event.chance) {
-
-    // The event is valid so enqueue it as either a location or a game event.
-    if (event.eventType == 'location') {
-      await game.enqueueLocationEvent(event.code, event.state);
-    } else {
-      await game.enqueueGameEvent(event.code, event.state);
-    }
-
-    // If this event was queued it should no longer be available, unless it's
-    // a repeatable event.
-    if (event.repeat == false) {
-      await AvailableEvent.destroy({ where:{ code:event.code }})
-    }
-  }
 }

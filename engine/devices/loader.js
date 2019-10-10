@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-global.ModLoader = (function() {
+global.Loader = (function() {
 
   // Load all of the mods in the /data directory. Artificer's standard content
   // is loaded by the mod loader in order to ensure that the mod content can
