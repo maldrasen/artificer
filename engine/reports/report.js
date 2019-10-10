@@ -1,5 +1,0 @@
-global.Report = class Report {
-
-
-
-}
