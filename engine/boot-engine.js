@@ -33,7 +33,9 @@ require(`${ROOT}/engine/forms/role`);
 require(`${ROOT}/engine/forms/species`);
 
 // === Helpers ===
+require(`${ROOT}/engine/helpers/calendar.js`);
 require(`${ROOT}/engine/helpers/character-agent`);
+require(`${ROOT}/engine/helpers/random.js`);
 
 // === Scrutinizers ===
 require(`${ROOT}/engine/scrutinizers/central-scrutinizer`);
@@ -66,7 +68,6 @@ require(`${ROOT}/engine/utilities/conversion-utility.js`);
 require(`${ROOT}/engine/utilities/english-utility.js`);
 require(`${ROOT}/engine/utilities/math-utility.js`);
 require(`${ROOT}/engine/utilities/object-utility.js`);
-require(`${ROOT}/engine/utilities/random.js`);
 require(`${ROOT}/engine/utilities/text-utility.js`);
 
 // === Weavers ===

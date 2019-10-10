@@ -1,4 +1,4 @@
-describe.only('Resolver', function() {
+describe('Resolver', function() {
 
   it("assigns roles to characters", function(done) {
     GameHelper.setupTestGame().then(() => {
@@ -37,7 +37,7 @@ describe.only('Resolver', function() {
             Character.findAll({ where:{ id:[id_1,id_2] }}).then(minions => {
               AvailableEvent.findOne({ where:{ code:'great-hall-talk-to-rat-chief' }}).then(event => {
                 expect(game.currentProject).to.equal('clear-great-hall');
-                expect(game.currentProjectProgress).to.equal(0);
+                expect(game.currentProjectProgress).to.equal(20);
                 expect(game.time).to.equal('afternoon');
                 expect(minions[0].currentTask).to.equal('project');
                 expect(minions[1].currentTask).to.equal('project');
