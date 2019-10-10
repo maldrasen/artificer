@@ -13,6 +13,16 @@ Resolver.Projects = (function() {
     }
   }
 
+  function workProjects() {
+    return new Promise(resolve => {
+      Game.instance().then(game => {
+        game.currentProject ?
+          workLongProject(game).then(resolve):
+          workShortProjects(game).then(resolve);
+      });
+    });
+  }
+
   async function startLongProject(project, minions) {
     const game = await Game.instance();
     game.currentProject = project.code;
@@ -39,8 +49,52 @@ Resolver.Projects = (function() {
     AvailableProject.destroy({ where:{ code:project.code }});
   }
 
+  // This function will do work on the project. If a project has been set on the
+  // game then it's a long running project and is either updated, or completed.
+  async function workLongProject(game) {
+    const minions = await Character.findAll({ where:{ currentTask:'project' }});
+    const project = Project.lookup(game.currentProject);
+
+    // Do Work. 10 hours for player + 5 each assigned minion.
+    game.currentProjectProgress += (minions.length * 5) + 10;
+    await game.save();
+
+    if (game.currentProjectProgress < project.effort) {
+      Resolver.Report.setProjectProgressText(project, minions);
+    }
+    else {
+
+      // === The Project Has Been Completed ===
+      if (typeof project.onFinish == 'function') {
+        Resolver.addFinisher(project.onFinish);
+      }
+
+      game.currentProject = null;
+      game.currentProjectProgress = 0;
+      await game.save();
+
+      // It 'should' be safe to update the minion's current tasks without waiting
+      // here. I don't think we need to read this value again until sometime
+      // after the report is done.
+      each(minions, minion => {
+        minion.currentTask = 'free'
+        minion.save();
+      });
+
+      Resolver.Report.setProjectCompletedText(project)
+    }
+  }
+
+  // This function checks to see if there are any half or quarter day projects
+  // in the plan. If so they're completed immeadietly. It's also possible that
+  // there are not projects planned at all.
+  async function workShortProjects(game) {
+    Resolver.Report.setProjectIdleText();
+  }
+
   return {
     startProjects: startProjects,
+    workProjects: workProjects,
   }
 
 })();

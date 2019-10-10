@@ -10,8 +10,13 @@ Resolver.Roles = (function() {
     }));
   }
 
+  async function workRoles() {
+    // TODO: Work Roles
+  }
+
   return {
     assignRoles: assignRoles,
+    workRoles: workRoles,
   }
 
 })();
