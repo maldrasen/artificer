@@ -27,6 +27,7 @@ global.Database = (function() {
     require(`${ROOT}/engine/models/nipples`);
     require(`${ROOT}/engine/models/player`);
     require(`${ROOT}/engine/models/game`);
+    require(`${ROOT}/engine/models/injury`);
     require(`${ROOT}/engine/models/mouth`);
     require(`${ROOT}/engine/models/pussy`);
     require(`${ROOT}/engine/models/tits`);
@@ -44,6 +45,7 @@ global.Database = (function() {
       Player,
       Character,
       CharacterAspect,
+      Injury,
       Body,
       Anus,
       Cock,

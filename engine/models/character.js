@@ -76,3 +76,4 @@ Character.allForPlan = async function() {
 
 HasAspects.isAppliedTo(Character);
 HasBody.isAppliedTo(Character);
+HasInjuries.isAppliedTo(Character);

@@ -1,4 +1,4 @@
-describe.only('Role: Hunter', function() {
+describe('Role: Hunter', function() {
 
   describe('successChance()', function() {
     it("A weak character has a low chance of success", function() {
