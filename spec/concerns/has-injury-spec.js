@@ -8,15 +8,11 @@ describe.only('HasInjury', function() {
     });
   }
 
-  it('can add an injury to a character', function(done) {
+  it('can add a critical injury to a character', function(done) {
     buildJada().then(jada => {
-      jada.addInjury({
-        severity:   'painful',
-        level:      3,
-        location:   'tits',
-        damageType: 'burn'
+      jada.addCriticalInjury({ location:'head', type:'burn' }).then(() => {
+        done();
       });
-      done();
     });
   });
 

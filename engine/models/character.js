@@ -9,7 +9,6 @@ global.Character = Database.instance().define('character', {
   firstName:        { type:Sequelize.STRING },
   lastName:         { type:Sequelize.STRING },
   forcedName:       { type:Sequelize.STRING },
-  health:           { type:Sequelize.INTEGER, validate:{ min:0 }},
   physical:         { type:Sequelize.INTEGER, validate:{ min:0 }},
   mental:           { type:Sequelize.INTEGER, validate:{ min:0 }},
   personal:         { type:Sequelize.INTEGER, validate:{ min:0 }},
@@ -24,17 +23,11 @@ global.Character = Database.instance().define('character', {
     roleOptions() { return JSON.parse(this.roleOptions_json||'{}') },
     isMale()      { return this.genderCode == 'male'; },
     isFemale()    { return this.genderCode == 'female'; },
-    maxHealth()   { return physical == 0 ? 10 : this.physical*10; },
 
     name() {
       return this.forcedName || `${this.preName||''} ${this.firstName} ${this.lastName||''}`.trim();
     },
 
-    // TODO: Need to figure out what the different health levels will be.
-    healthWord() {
-      if (this.health == 100) { return 'Healthy'; }
-      return "Not Healthy?"
-    },
   },
   setterMethods: {
     roleOptions(json) { this.setDataValue('roleOptions_json',JSON.stringify(json)) },
