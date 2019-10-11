@@ -26,16 +26,21 @@ require(`${ROOT}/engine/forms/area`);
 require(`${ROOT}/engine/forms/event`);
 require(`${ROOT}/engine/forms/gender`);
 require(`${ROOT}/engine/forms/item`);
+require(`${ROOT}/engine/forms/item-flavor`);
 require(`${ROOT}/engine/forms/location`);
 require(`${ROOT}/engine/forms/mission`);
 require(`${ROOT}/engine/forms/project`);
-require(`${ROOT}/engine/forms/role`);
 require(`${ROOT}/engine/forms/species`);
 
 // === Helpers ===
 require(`${ROOT}/engine/helpers/calendar.js`);
 require(`${ROOT}/engine/helpers/character-agent`);
 require(`${ROOT}/engine/helpers/random.js`);
+
+// === Units ===
+require(`${ROOT}/engine/units/role`);
+require(`${ROOT}/engine/units/roles/hunter`);
+require(`${ROOT}/engine/units/roles/rest`);
 
 // === Scrutinizers ===
 require(`${ROOT}/engine/scrutinizers/central-scrutinizer`);
