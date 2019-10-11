@@ -29,6 +29,18 @@ global.Form = class Form {
     return form;
   }
 
+  // Get all forms that match the properties. There's prolly a way to map and
+  // filter on an object like on an array?
+  static where(filter) {
+    let results = []
+    each(this.instances, (instance, code) => {
+      if (filter(instance)) {
+        results.push(instance);
+      }
+    })
+    return results
+  }
+
   // The problem with building immutable objects by defining properties like
   // this is that it breaks the console inspector, the JSON.stringify function,
   // Electron's IPC messages, and probably any other object serialization

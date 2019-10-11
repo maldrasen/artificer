@@ -10,6 +10,12 @@ global.Random = {
     return Random.upTo(rand||0)+(plus||0);
   },
 
+  // Rolls between the new numbers inclusive, meaning min or max value could be
+  // chosen.
+  between(min, max) {
+    return Random.roll(max-min+1,min);
+  },
+
   // Select a random element in an array.
   from(array) {
     if (array && array.length) {

@@ -6,12 +6,15 @@ Resolver.Roles = (function() {
             character.roleCode = assignment.role;
             character.roleOptions = assignment.options || {};
 
-      return await character.save();
+      await character.save();
     }));
   }
 
   async function workRoles() {
-    // TODO: Work Roles
+    let characters = await Character.findAll({ where:{ currentTask:'free' }});
+    await Promise.all(characters.map(async character => {
+      await Role.lookup(character.roleCode).work(character);
+    }));
   }
 
   return {
