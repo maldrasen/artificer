@@ -1,9 +1,13 @@
 Abuser.TitsAbuser = (function() {
 
-  function addInjury(character, options) {
-
+  function updateDetails(injury) {
+    return { todo:'tits-details' };
   }
 
-  return { addInjury };
+  function buildDescription(details) {
+    return "TODO: Tits Injury Description"
+  }
+
+  return { updateDetails, buildDescription };
 
 })();

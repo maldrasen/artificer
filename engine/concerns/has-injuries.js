@@ -1,13 +1,14 @@
 global.HasInjuries = { isAppliedTo: function(model) {
 
   // When adding an injury you should specify these options
-  //   level:      1 through 5, or will be 1-5 randomly.
-  //   location:   body, head
+  //   location:   body, head, anus, cock, mouth, nipples, pussy, tits
+  //               (The location of the injury will set its severity)
   //   type:       burn, cut, pierce, or smash
-  model.prototype.addCriticalInjury = async function(options) {
+  //   level:      1 through 5, or will be 1-5 randomly.
+  model.prototype.addInjury = async function(options) {
 
     if (options.location == null)   { throw 'Must specify location';    }
-    if (['body','head'].indexOf(options.location) < 0) {
+    if (['body','head','anus','cock','mouth','nipples','pussy','tits'].indexOf(options.location) < 0) {
       throw `Critical Damage is limited to the body and head.`
     }
 
@@ -16,10 +17,37 @@ global.HasInjuries = { isAppliedTo: function(model) {
       throw `Critical Damage is limited to burn, cut, pierce, or smash.`
     }
 
-    Abuser.lookup(options.location).addInjury(this, {
-      level: options.level || Random.upTo(5),
-      type: options.type,
-    });
+    let severity = (['body','head'].indexOf(options.location) < 0) ? 'painful' : 'critical';
+    let level = options.level || Random.upTo(5);
+
+    let injury = await Injury.findOne({ where:{
+      character_id: this.id,
+      location: options.location,
+      damageType: options.type,
+    }});
+
+    if (injury == null) {
+      injury = await Injury.create({
+        character_id: this.id,
+        location: options.location,
+        damageType: options.type,
+        severity: 'critical',
+        level: 0,
+      });
+    }
+
+    injury.healed = 0;
+    injury.level += level ;
+
+    let abuser = Abuser.lookup(options.location);
+    let details = abuser.updateDetails(injury);
+
+    injury.description = abuser.buildDescription(details);
+    injury.details = details;
+
+    await injury.save();
+
+    return injury;
   }
 
   // Get the overall health level (somewhere between 0 and 100) for this

@@ -1,8 +1,13 @@
 Abuser.AnusAbuser = (function() {
 
-  function addInjury(character, options) {
-
+  function updateDetails(injury) {
+    return { todo:'anus-details' };
   }
 
-  return { addInjury };
+  function buildDescription(details) {
+    return "TODO: Anus Injury Description"
+  }
+
+  return { updateDetails, buildDescription };
+
 })();

@@ -1,9 +1,13 @@
 Abuser.MouthAbuser = (function() {
 
-  function addInjury(character, options) {
-
+  function updateDetails(injury) {
+    return { todo:'mouth-details' };
   }
 
-  return { addInjury };
+  function buildDescription(details) {
+    return "TODO: Mouth Injury Description"
+  }
+
+  return { updateDetails, buildDescription };
 
 })();

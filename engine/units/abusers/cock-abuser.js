@@ -1,9 +1,13 @@
 Abuser.CockAbuser = (function() {
 
-  function addInjury(character, options) {
-
+  function updateDetails(injury) {
+    return { todo:'cock-details' };
   }
 
-  return { addInjury };
+  function buildDescription(details) {
+    return "TODO: Cock Injury Description"
+  }
+
+  return { updateDetails, buildDescription };
 
 })();

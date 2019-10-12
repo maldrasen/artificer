@@ -1,9 +1,13 @@
 Abuser.PussyAbuser = (function() {
 
-  function addInjury(character, options) {
-
+  function updateDetails(injury) {
+    return { todo:'pussy-details' };
   }
 
-  return { addInjury };
+  function buildDescription(details) {
+    return "TODO: Pussy Injury Description"
+  }
+
+  return { updateDetails, buildDescription };
 
 })();

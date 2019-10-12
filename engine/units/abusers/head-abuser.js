@@ -1,9 +1,13 @@
 Abuser.HeadAbuser = (function() {
 
-  function addInjury(character, options) {
-
+  function updateDetails(injury) {
+    return { todo:'head-details' };
   }
 
-  return { addInjury };
+  function buildDescription(details) {
+    return "TODO: Head Injury Description"
+  }
+
+  return { updateDetails, buildDescription };
 
 })();

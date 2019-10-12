@@ -8,9 +8,10 @@ describe.only('HasInjury', function() {
     });
   }
 
-  it('can add a critical injury to a character', function(done) {
+  it('can add an injury to a character', function(done) {
     buildJada().then(jada => {
-      jada.addCriticalInjury({ location:'head', type:'burn' }).then(() => {
+      jada.addInjury({ location:'head', type:'burn' }).then(injury => {
+        console.log(injury)
         done();
       });
     });

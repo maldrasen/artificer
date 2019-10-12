@@ -1,8 +1,13 @@
 Abuser.BodyAbuser = (function() {
 
-  function addInjury(character, options) {
-
+  function updateDetails(injury) {
+    return { todo:'body-details' };
   }
 
-  return { addInjury };
+  function buildDescription(details) {
+    return "TODO: Body Injury Description"
+  }
+
+  return { updateDetails, buildDescription };
+
 })();
