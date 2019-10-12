@@ -18,7 +18,7 @@ global.HasInjuries = { isAppliedTo: function(model) {
     }
 
     let severity = (['body','head'].indexOf(options.location) < 0) ? 'painful' : 'critical';
-    let level = options.level || Random.upTo(5);
+    let level = options.level || Random.between(1,5);
 
     let injury = await Injury.findOne({ where:{
       character_id: this.id,
@@ -37,7 +37,7 @@ global.HasInjuries = { isAppliedTo: function(model) {
     }
 
     injury.healed = 0;
-    injury.level += level ;
+    injury.level = injury.level + level;
 
     let abuser = Abuser.lookup(options.location);
     let details = abuser.updateDetails(injury);
@@ -53,8 +53,8 @@ global.HasInjuries = { isAppliedTo: function(model) {
   // Get the overall health level (somewhere between 0 and 100) for this
   // character.
   model.prototype.getHealth = async function() {
-    let painfulLevels = totalPainfulLevels(this);
-    let criticalLevels = totalCriticalLevels(this);
+    let painfulLevels = await totalPainfulLevels(this);
+    let criticalLevels = await totalCriticalLevels(this);
 
     // Painful: 100% - 25% Effectiveness for 0 - 61 total painful injury levels.
     // Critical: 100% - 0% Effectiveness for 0 - 9 total critical injury levels.
@@ -62,7 +62,7 @@ global.HasInjuries = { isAppliedTo: function(model) {
     let critical = Math.min(100, Math.ceil(43 * Math.log(criticalLevels+1)));
         critical += Math.ceil(painful/10);
 
-    return Math.min(100, Math.max(painful, critical));
+    return 100 - Math.min(100, Math.max(painful, critical));
   }
 
   // TODO: Need to figure out what the different health levels will be.
@@ -81,7 +81,7 @@ global.HasInjuries = { isAppliedTo: function(model) {
     const injuries = await Injury.findAll({ where:{ character_id:id, severity:severity }});
     return injuries.reduce((total, injury) => {
       return total + injury.level;
-    });
+    },0);
   }
 
 }};
