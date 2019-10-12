@@ -9,12 +9,12 @@ global.HasInjuries = { isAppliedTo: function(model) {
 
     if (options.location == null)   { throw 'Must specify location';    }
     if (['body','head','anus','cock','mouth','nipples','pussy','tits'].indexOf(options.location) < 0) {
-      throw `Critical Damage is limited to the body and head.`
+      throw `Invalid Location.`
     }
 
     if (options.type == null) { throw 'Must specify damage type'; }
-    if (['burn', 'cut', 'pierce', 'smash'].indexOf(options.type) < 0) {
-      throw `Critical Damage is limited to burn, cut, pierce, or smash.`
+    if (['burn','cut','pierce','rip','smash'].indexOf(options.type) < 0) {
+      throw `Invalid Damage Type.`
     }
 
     let severity = (['body','head'].indexOf(options.location) < 0) ? 'painful' : 'critical';
@@ -31,7 +31,7 @@ global.HasInjuries = { isAppliedTo: function(model) {
         character_id: this.id,
         location: options.location,
         damageType: options.type,
-        severity: 'critical',
+        severity: severity,
         level: 0,
       });
     }
@@ -53,29 +53,42 @@ global.HasInjuries = { isAppliedTo: function(model) {
   // Get the overall health level (somewhere between 0 and 100) for this
   // character.
   model.prototype.getHealth = async function() {
-    let painfulLevels = await totalPainfulLevels(this);
-    let criticalLevels = await totalCriticalLevels(this);
+    const levels = await this.getHealthLevels();
 
     // Painful: 100% - 25% Effectiveness for 0 - 61 total painful injury levels.
     // Critical: 100% - 0% Effectiveness for 0 - 9 total critical injury levels.
-    let painful = Math.min(75, Math.ceil(18 * Math.log(painfulLevels+1)));
-    let critical = Math.min(100, Math.ceil(43 * Math.log(criticalLevels+1)));
+    let painful = Math.min(75, Math.ceil(18 * Math.log(levels.painful+1)));
+    let critical = Math.min(100, Math.ceil(43 * Math.log(levels.critical+1)));
         critical += Math.ceil(painful/10);
 
     return 100 - Math.min(100, Math.max(painful, critical));
   }
 
-  // TODO: Need to figure out what the different health levels will be.
+  // The health levels should be:
+  //   0      Mostly Dead, but still somewhat alive
+  //   1-25   Critically Injured
+  //   26-50  Horribly Injured
+  //   51-75  Badly injured
+  //   76-99  Injured
+  //   100    Healthy
   model.prototype.getHealthWord = async function() {
     const health = await this.getHealth();
+    if (health == 0) { return "Mostly Dead"; }
+    if (health > 0  && health <= 25) { return "Critically Injured"; }
+    if (health > 25 && health <= 50) { return "Horribly Injured"; }
+    if (health > 50 && health <= 75) { return "Badly Injured"; }
+    if (health > 75 && health < 100) { return "Injured"; }
     if (health == 100) { return 'Healthy'; }
     return "Not Healthy?"
   }
 
-  // === Private Functions ===
+  model.prototype.getHealthLevels = async function() {
+    const painful = await totalLevels(this.id, 'painful');
+    const critical = await totalLevels(this.id, 'critical');
+    return { painful, critical };
+  }
 
-  async function totalPainfulLevels(character)  { return await totalLevels(character.id, 'painful');  }
-  async function totalCriticalLevels(character) { return await totalLevels(character.id, 'critical'); }
+  // === Private Functions ===
 
   async function totalLevels(id, severity) {
     const injuries = await Injury.findAll({ where:{ character_id:id, severity:severity }});
