@@ -1,4 +1,4 @@
-describe.only('HasInjury', function() {
+describe('HasInjury', function() {
 
   function buildJada(options) {
     return new Promise(resolve => {
