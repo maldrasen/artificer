@@ -5,6 +5,14 @@ global.HasInjuries = { isAppliedTo: function(model) {
   //               (The location of the injury will set its severity)
   //   type:       burn, cut, pierce, or smash
   //   level:      1 through 5, or will be 1-5 randomly.
+  //
+  // Warning Non-Attomic Operation : Even though we do this in the spec,
+  // multiple injuries to the same part and of the same damage time should not
+  // be added in a Promise.all(). This puts us in that same situation where we
+  // add something to the database, immeadietly query for it, and find it's not
+  // there. That shouldn't occurr in real game play though, so long as injury
+  // adders don't try to apply the same injury multiple times in a single
+  // action.
   model.prototype.addInjury = async function(options) {
 
     if (options.location == null)   { throw 'Must specify location';    }
@@ -19,6 +27,7 @@ global.HasInjuries = { isAppliedTo: function(model) {
 
     let severity = (['body','head'].indexOf(options.location) < 0) ? 'painful' : 'critical';
     let level = options.level || Random.between(1,5);
+    let levelMax = (severity == 'critical') ? 9 : 20;
 
     let injury = await Injury.findOne({ where:{
       character_id: this.id,
@@ -36,12 +45,11 @@ global.HasInjuries = { isAppliedTo: function(model) {
       });
     }
 
-    injury.healed = 0;
-    injury.level = injury.level + level;
-
     let abuser = Abuser.lookup(options.location);
     let details = abuser.updateDetails(injury);
 
+    injury.healed = 0;
+    injury.level = Math.min(levelMax,(injury.level + level));
     injury.description = abuser.buildDescription(details);
     injury.details = details;
 
