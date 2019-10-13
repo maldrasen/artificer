@@ -22,8 +22,9 @@ global.Game = Database.instance().define('game', {
   }
 });
 
-Game.logger = new Logger('Game', 'rgb(105, 100, 163)');
+HasEventQueues.addToGame();
 
+Game.logger = new Logger('Game', 'rgb(105, 100, 163)');
 
 Game.instance = function() {
   return Game.findByPk(1);
@@ -81,74 +82,6 @@ Game.prototype.setFlags = async function(flags) {
   });
 
   return await Promise.all(operations);
-}
-
-// === Event Queues ===
-
-Game.prototype.enqueueEvents = async function(events) {
-  await Promise.all(events.map(async event => {
-    if (event.type == 'gameEvent')     { return await this.enqueueGameEvent(event.code); }
-    if (event.type == 'locationEvent') { return await this.enqueueLocationEvent(event.code); }
-    throw `Unrecognized Event Type : ${event.type}`
-  }));
-}
-
-Game.prototype.enqueueGameEvent = async function(code, state) {
-  Game.logger.info(`Enqueued Game Event ${code}`,state);
-  Event.lookup(code);
-
-  let queue = this.gameEventQueue;
-      queue.push({ code:code, state:(state||{}) });
-
-  this.gameEventQueue = queue;
-  await this.save()
-}
-
-// Exactly the same as enqueue event, except the event is added to the front
-// of the queue.
-Game.prototype.setNextEvent = async function(code, state) {
-  Game.logger.info(`Set Next Event ${code}`,state);
-  Event.lookup(code);
-
-  let queue = this.gameEventQueue;
-      queue.unshift({ code:code, state:(state||{}) });
-
-  this.gameEventQueue = queue;
-  await this.save()
-}
-
-Game.prototype.unqueueGameEvent = async function() {
-  let queue = this.gameEventQueue;
-  let event = queue.shift();
-  if (event == null) { return null; }
-
-  this.gameEventQueue = queue;
-  await this.save();
-  return event;
-}
-
-Game.prototype.enqueueLocationEvent = async function(code, state) {
-  Game.logger.info(`Enqueued Location Event ${code}`,state);
-  let event = Event.lookup(code);
-  let location = Location.lookup(event.location);
-  let queue = this.locationEventQueue;
-
-  if (queue[location.code]==null) { queue[location.code]=[]; }
-  queue[location.code].push({ code:code, state:(state||{}) });
-
-  this.locationEventQueue = queue;
-  await this.save();
-  return;
-}
-
-Game.prototype.unqueueLocationEvent = async function() {
-  let queue = this.locationEventQueue;
-  let event = (queue[this.location]||[]).shift();
-  if (event == null) { return null; }
-
-  this.locationEventQueue = queue;
-  await this.save();
-  return event;
 }
 
 // === Private Functions ===

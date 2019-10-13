@@ -6,6 +6,7 @@ global.each = require('iterate-object');
 
 // === Concerns ===
 require(`${ROOT}/engine/concerns/has-aspects`);
+require(`${ROOT}/engine/concerns/has-event-queues`);
 require(`${ROOT}/engine/concerns/has-body`);
 require(`${ROOT}/engine/concerns/has-injuries`);
 
