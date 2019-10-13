@@ -110,7 +110,9 @@
     "events/project/clear-great-hall-sleep-sex-pussy",
     "events/project/clear-great-hall-sleep-yes",
 
-    "item-flavors/meats.js",
+    "item-flavors/hunting.js",
+
+    "items/crafting.js",
 
     "locations/courtyard",
     "locations/great-hall",

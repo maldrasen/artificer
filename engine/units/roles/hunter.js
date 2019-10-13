@@ -12,11 +12,18 @@ Role.Hunter = (function() {
     let chance = successChance(character.physical, skill);
     let success = Random.roll(100) < chance
 
-    return (success) ? huntingSuccess(character,tier,skill) : huntingFailure(character,tier,skill);
+    if (success) {
+      return await huntingSuccess(character,tier,skill)
+    } else {
+      return await huntingFailure(character,tier,skill);
+    }
   }
 
   async function huntingSuccess(character,tier,skill) {
-    let results = resolveResults(huntingResults(tier, skill));
+    const flavors = resolveResults(huntingResults(tier, skill))
+    const items = ItemFlavor.itemize(flavors);
+
+    return { flavors, items };
   }
 
   async function huntingFailure(character,tier,skill) {
@@ -88,15 +95,16 @@ Role.Hunter = (function() {
   }
 
   return {
-    code: code,
-    name: name,
-    description: description,
-    work: work,
+    code,
+    name,
+    description,
+    work,
 
     // === Hunter specific or for specs ===
-    successChance: successChance,
-    injuryChance: injuryChance,
-    huntingResults: huntingResults,
+    successChance,
+    injuryChance,
+    huntingResults,
+    resolveResults,
   };
 
 })();

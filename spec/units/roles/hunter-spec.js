@@ -46,4 +46,15 @@ describe('Role: Hunter', function() {
     });
   });
 
+  // Not much I can do to test this, it's completely random what flavors will
+  // show up after all. Just make sure it doesn't blow up mostly I guess.
+  describe('resolveResults()', function() {
+    it('selects item flavors based on results', function() {
+      let flavors = Role.Hunter.resolveResults([
+        { min:4, max:4, type:'small-game' }
+      ]);
+      expect(Object.keys(flavors).length).to.be.within(1,4);
+    });
+  });
+
 });

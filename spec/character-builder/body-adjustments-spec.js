@@ -1,7 +1,7 @@
 describe('Adjustments - Body', function() {
 
   it ('gives dark skin', function(done) {
-    CharacterBuilder.build({ species:'nymph', triggers:['dark-skin'] }).then(character => {
+    CharacterBuilder.build({ firstName:'X', species:'nymph', triggers:['dark-skin'] }).then(character => {
       character.getBody().then(body => {
         expect(body.skinShade).to.equal(1);
         done();
@@ -10,7 +10,7 @@ describe('Adjustments - Body', function() {
   });
 
   it ('gives light skin', function(done) {
-    CharacterBuilder.build({ species:'nymph', triggers:['light-skin'] }).then(character => {
+    CharacterBuilder.build({ firstName:'X', species:'nymph', triggers:['light-skin'] }).then(character => {
       character.getBody().then(body => {
         expect(body.skinShade).to.equal(5);
         done();
@@ -19,7 +19,7 @@ describe('Adjustments - Body', function() {
   });
 
   it ('gives furries dark fur', function(done) {
-    CharacterBuilder.build({ species:'lupin', triggers:['dark-skin'] }).then(character => {
+    CharacterBuilder.build({ firstName:'X', species:'lupin', triggers:['dark-skin'] }).then(character => {
       character.getBody().then(body => {
         expect(body.furShade).to.equal(1);
         done();
@@ -28,7 +28,7 @@ describe('Adjustments - Body', function() {
   });
 
   it ('gives red hair', function(done) {
-    CharacterBuilder.build({ species:'nymph', triggers:['red-hair'] }).then(character => {
+    CharacterBuilder.build({ firstName:'X', species:'nymph', triggers:['red-hair'] }).then(character => {
       character.getBody().then(body => {
         expect(body.hairColor).to.equal('red');
         done();
@@ -37,7 +37,7 @@ describe('Adjustments - Body', function() {
   });
 
   it ('gives purple hair', function(done) {
-    CharacterBuilder.build({ species:'nymph', triggers:['purple-hair'] }).then(character => {
+    CharacterBuilder.build({ firstName:'X', species:'nymph', triggers:['purple-hair'] }).then(character => {
       character.getBody().then(body => {
         expect(body.hairColor).to.equal('purple');
         done();
@@ -46,7 +46,7 @@ describe('Adjustments - Body', function() {
   });
 
   it ('gives white hair', function(done) {
-    CharacterBuilder.build({ species:'nymph', triggers:['white-hair'] }).then(character => {
+    CharacterBuilder.build({ firstName:'X', species:'nymph', triggers:['white-hair'] }).then(character => {
       character.getBody().then(body => {
         expect(body.hairColor).to.equal('white');
         done();
@@ -55,7 +55,7 @@ describe('Adjustments - Body', function() {
   });
 
   it ('gives white fur', function(done) {
-    CharacterBuilder.build({ species:'lupin', triggers:['white-hair'] }).then(character => {
+    CharacterBuilder.build({ firstName:'X', species:'lupin', triggers:['white-hair'] }).then(character => {
       character.getBody().then(body => {
         expect(body.furColor).to.equal('white');
         done();
@@ -64,7 +64,7 @@ describe('Adjustments - Body', function() {
   });
 
   it ('makes short', function(done) {
-    CharacterBuilder.build({ species:'kobold', gender:'female', triggers:['short'] }).then(character => {
+    CharacterBuilder.build({ firstName:'X', species:'kobold', gender:'female', triggers:['short'] }).then(character => {
       character.getBody().then(body => {
         expect(body.height).to.equal(675);
         done();
@@ -73,7 +73,7 @@ describe('Adjustments - Body', function() {
   });
 
   it ('makes tall', function(done) {
-    CharacterBuilder.build({ species:'kobold', gender:'male', triggers:['tall'] }).then(character => {
+    CharacterBuilder.build({ firstName:'X', species:'kobold', gender:'male', triggers:['tall'] }).then(character => {
       character.getBody().then(body => {
         expect(body.height).to.equal(1265);
         done();

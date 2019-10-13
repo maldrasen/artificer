@@ -8,11 +8,10 @@ Role.Rest = (function() {
   }
 
   return {
-    code: code,
-    name: name,
-    description: description,
-    work: work,
+    code,
+    name,
+    description,
+    work,
   };
-
 
 })();
