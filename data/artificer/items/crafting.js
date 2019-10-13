@@ -1,4 +1,4 @@
 
 Item.build('hide', {
-  name: 'Hide',
+  name:'Hide',
 });
