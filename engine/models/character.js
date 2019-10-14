@@ -1,6 +1,6 @@
 global.Character = Database.instance().define('character', {
   type:             { type:Sequelize.STRING, validate:{ isIn:[['minion','hero','useless','enforcer','slave']] }},
-  currentTask:      { type:Sequelize.STRING, validate:{ isIn:[['free','project','mission']] }},
+  currentTask:      { type:Sequelize.STRING, validate:{ isIn:[['free','project','mission','missing','dead']] }},
   roleCode:         { type:Sequelize.STRING },
   roleOptions_json: { type:Sequelize.STRING },
   genderCode:       { type:Sequelize.STRING },
@@ -45,14 +45,17 @@ global.Character = Database.instance().define('character', {
 Character.allForPlan = async function() {
   const minions = await Character.findAll({ where:{ type:'minion' } });
 
-  return minions.map(minion => {
+  return await Promise.all(minions.map(async minion => {
+    const health = await minion.getHealth();
+    const healthWord = await minion.getHealthWord();
+
     return {
       id: minion.id,
       name: minion.name,
       gender: minion.gender.Male,
       species: minion.species.name,
-      health: minion.health,
-      healthWord: minion.healthWord,
+      health: health,
+      healthWord: healthWord,
       physical: minion.physical,
       mental: minion.mental,
       personal: minion.personal,
@@ -64,7 +67,7 @@ Character.allForPlan = async function() {
         { code:'hunter', name:'Hunter' },
       ]
     };
-  });
+  }));
 }
 
 HasAspects.isAppliedTo(Character);

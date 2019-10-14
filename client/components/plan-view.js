@@ -60,6 +60,7 @@ Components.PlanView = (function() {
   }
 
   function buildMinion(minion) {
+    let healthClass = minion.healthWord.toLowerCase().replace(/\s/g,'-');
 
     let roleSelect = $('<select>',{ class:'role-select' });
     each(minion.availableRoles, role => {
@@ -82,7 +83,7 @@ Components.PlanView = (function() {
         <div class='project-status'>Working on a project.</div>
       </div>
       <div class='attributes'>
-        <span class='health ${minion.healthWord.toLowerCase()}'>
+        <span class='health ${healthClass}'>
           <span class='label'>Health</span>
           <span class='health-word'>${minion.healthWord}</span>
           <span class='health-value'>(${minion.health})</span>

@@ -52,6 +52,8 @@ require(`${ROOT}/engine/units/abusers/tits-abuser`);
 
 require(`${ROOT}/engine/units/role`);
 require(`${ROOT}/engine/units/roles/hunter`);
+require(`${ROOT}/engine/units/roles/hunter-injuries`);
+require(`${ROOT}/engine/units/roles/hunter-stories`);
 require(`${ROOT}/engine/units/roles/rest`);
 
 // === Scrutinizers ===

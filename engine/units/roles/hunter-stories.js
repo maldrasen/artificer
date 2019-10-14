@@ -1,0 +1,3 @@
+Role.Hunter.Stories = (function() {
+
+})();

@@ -42,7 +42,7 @@ global.Weaver = (function() {
     return context;
   }
 
-  // The lookupPlayer() function get's the player and every player bodypart.
+  // The lookupPlayer() function gets the player and every player bodypart.
   function lookupPlayer() {
     return new Promise(resolve => {
       Player.instance().then(player => {

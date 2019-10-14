@@ -3,6 +3,15 @@ Role.Hunter = (function() {
   const name = 'Hunter';
   const description = 'A hunter will hunt animals for meat and hides. They can also capture animals.';
 
+  let _logger;
+
+  function logger() {
+    if (_logger == null) {
+      _logger = new Logger('Role.Hunter', 'rgb(172, 120, 120)');
+    }
+    return _logger;
+  }
+
   // TODO: Tier is set to 0 now, but this will be based entirely on the
   //       character's equipment. Tier 0 is the baseline though, and indicates
   //       that the character has no equipment at all.
@@ -22,12 +31,16 @@ Role.Hunter = (function() {
   async function huntingSuccess(character,tier,skill) {
     const flavors = resolveResults(huntingResults(tier, skill))
     const items = ItemFlavor.itemize(flavors);
+    const injury = Role.Hunter.Injuries.resolve(character, skill, tier, true)
+    // const story = Role.Hunter.Stories.generateSuccess(flavors,injury);
 
     return { flavors, items };
   }
 
   async function huntingFailure(character,tier,skill) {
+    const injury = Role.Hunter.Injuries.resolve(character, skill, tier, false)
 
+    return {  };
   }
 
   // Get an ItemFlavor of the item type. The flavors we get from hunting are
@@ -81,19 +94,6 @@ Role.Hunter = (function() {
     return [30,50,60,65,70,75,80,83,86,89,90][bonus];
   }
 
-  // Hunting is a slightly dangerous job, and there's a chance that you'll be
-  // wounded. Having good equipment, physical strength, skill, and success all
-  // reduce the chance of injury. This will fall somewhere beteen 0 and 30%,
-  // though dropping completely to 0 requires maxed physical.
-  function injuryChance(physical, skillLevel, tierLevel, success) {
-    let danger  = 5 - Math.min(5, Math.floor(physical/20));
-        danger += 6 - (skillLevel*2);
-        danger += 9 - (tierLevel*3);
-        danger += success ? 0 : 10;
-
-    return danger;
-  }
-
   return {
     code,
     name,
@@ -101,8 +101,8 @@ Role.Hunter = (function() {
     work,
 
     // === Hunter specific or for specs ===
+    logger,
     successChance,
-    injuryChance,
     huntingResults,
     resolveResults,
   };
