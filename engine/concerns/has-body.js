@@ -6,9 +6,6 @@ global.HasBody = { isAppliedTo: function(model) {
   model.prototype.getAnus = function() {
     return Anus.findOne({ where:{ character_id:this.id }});
   }
-  model.prototype.getBalls = function() {
-    return Balls.findOne({ where:{ character_id:this.id }});
-  }
   model.prototype.getCock = function() {
     return Cock.findOne({ where:{ character_id:this.id }});
   }

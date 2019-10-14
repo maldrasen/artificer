@@ -31,14 +31,14 @@ Role.Hunter = (function() {
   async function huntingSuccess(character,tier,skill) {
     const flavors = resolveResults(huntingResults(tier, skill))
     const items = ItemFlavor.itemize(flavors);
-    const injury = Role.Hunter.Injuries.resolve(character, skill, tier, true)
+    const injury = Role.Hunter.Injuries.resolve({ character:character, skill:skill, tier:tier, success:true });
     // const story = Role.Hunter.Stories.generateSuccess(flavors,injury);
 
     return { flavors, items };
   }
 
   async function huntingFailure(character,tier,skill) {
-    const injury = Role.Hunter.Injuries.resolve(character, skill, tier, false)
+    const injury = Role.Hunter.Injuries.resolve({ character:character, skill:skill, tier:tier, success:false });
 
     return {  };
   }

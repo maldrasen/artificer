@@ -1,5 +1,16 @@
 global.Weaver = (function() {
 
+  // Shortcut function for when you want to do some token replacement on a
+  // single string and you only have a single character to put in the context.
+  // Don't do this in a loop, adding a character looks up all of their body
+  // parts and shit after all.
+  async function weaveWithCharacter(text, key, character) {
+    const context = new WeaverContext();
+    await context.addCharacter(key, character);
+
+    return weave(text, context);
+  }
+
   // The weave function takes a string and recursivly itterates over it,
   // looking for {{ templates }} to replace with actual values. The context
   // defines things like which actors are in which position and so forth. If
@@ -34,6 +45,6 @@ global.Weaver = (function() {
     return `<span class='weaver-error error'>Error(${message})</span>`;
   }
 
-  return { weave, error };
+  return { weaveWithCharacter, weave, error };
 
 })();
