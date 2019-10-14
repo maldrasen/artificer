@@ -1,8 +1,11 @@
+const locations = ['body','head','anus','cock','mouth','nipples','pussy','tits']
+const types =  ['burn','cut','pierce','rip','smash','blight']
+
 global.Injury = Database.instance().define('injury', {
   character_id: { type:Sequelize.INTEGER },
   severity:     { type:Sequelize.STRING,  validate:{ isIn:[['painful','critical']] }},
-  location:     { type:Sequelize.STRING,  validate:{ isIn:[['body','head','anus','cock','mouth','nipples','pussy','tits']] }},
-  damageType:   { type:Sequelize.STRING,  validate:{ isIn:[['burn','cut','pierce','rip','smash']] }},
+  location:     { type:Sequelize.STRING,  validate:{ isIn:[locations] }},
+  damageType:   { type:Sequelize.STRING,  validate:{ isIn:[types] }},
   healed:       { type:Sequelize.INTEGER, validate:{ min:0, max:20 }},
   level:        { type:Sequelize.INTEGER },
   description:  { type:Sequelize.STRING  },
@@ -16,3 +19,6 @@ global.Injury = Database.instance().define('injury', {
     details(json) { this.setDataValue('details_json',JSON.stringify(json)) },
   }
 });
+
+Injury.LOCATIONS = locations;
+Injury.DAMAGE_TYPES = types;

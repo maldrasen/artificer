@@ -52,8 +52,8 @@ global.Composer = (function(){
   // done the brower is sent the completed event object.
   function renderEvent(event) {
     (event.init ? event.init() : Promise.resolve(0)).then(() => {
-      Weaver.updateEvent(event).then(woven => {
-        Browser.send('render.event',woven);
+      Event.prepare(event).then(prepared => {
+        Browser.send('render.event',prepared);
       });
     });
   }

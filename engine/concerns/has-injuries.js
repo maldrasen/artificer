@@ -3,7 +3,7 @@ global.HasInjuries = { isAppliedTo: function(model) {
   // When adding an injury you should specify these options
   //   location:   body, head, anus, cock, mouth, nipples, pussy, tits
   //               (The location of the injury will set its severity)
-  //   type:       burn, cut, pierce, or smash
+  //   type:       burn, cut, pierce, rip, smash, blight
   //   level:      1 through 5, or will be 1-5 randomly.
   //
   // Warning Non-Attomic Operation : Even though we do this in the spec,
@@ -14,16 +14,10 @@ global.HasInjuries = { isAppliedTo: function(model) {
   // adders don't try to apply the same injury multiple times in a single
   // action.
   model.prototype.addInjury = async function(options) {
-
-    if (options.location == null)   { throw 'Must specify location';    }
-    if (['body','head','anus','cock','mouth','nipples','pussy','tits'].indexOf(options.location) < 0) {
-      throw `Invalid Location.`
-    }
-
-    if (options.type == null) { throw 'Must specify damage type'; }
-    if (['burn','cut','pierce','rip','smash'].indexOf(options.type) < 0) {
-      throw `Invalid Damage Type.`
-    }
+    if (options.location == null) { throw 'Must specify location'; }
+    if (options.type == null)     { throw 'Must specify damage type'; }
+    if (Injury.LOCATIONS.indexOf(options.location) < 0) { throw `Invalid Location - ${options.location}` }
+    if (Injury.DAMAGE_TYPES.indexOf(options.type) < 0)  { throw `Invalid Damage Type - ${options.type}` }
 
     let severity = (['body','head'].indexOf(options.location) < 0) ? 'painful' : 'critical';
     let level = options.level || Random.between(1,5);

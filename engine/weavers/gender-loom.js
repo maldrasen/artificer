@@ -4,9 +4,9 @@ global.GenderLoom = (function() {
   //   {{ actor::gender.his }}
   //
   function findValue(subject, token, context) {
-    if (context[subject] == null) { return Weaver.error(`Subject(${subject}) not in context`); }
+    if (context.get(subject) == null) { return Weaver.error(`Subject(${subject}) not in context`); }
 
-    var gender = context[subject].character.gender;
+    var gender = context.get(subject).character.gender;
 
     if (gender == null) { return Weaver.error(`Subject without gender`); }
     if (token == 'gender.man')  { return gender.man;  }

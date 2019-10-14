@@ -91,5 +91,6 @@ require(`${ROOT}/engine/utilities/text-utility.js`);
 
 // === Weavers ===
 require(`${ROOT}/engine/weavers/weaver`);
+require(`${ROOT}/engine/weavers/weaver-context`);
 require(`${ROOT}/engine/weavers/character-loom`);
 require(`${ROOT}/engine/weavers/gender-loom`);

@@ -1,4 +1,21 @@
 Role.Hunter.Injuries = (function() {
+  let possibleInjuries = [];
+
+  // Add an injury and its story to the array of possible injuries to pull
+  // from. We validate a lot of these arguments because they're coming in from
+  // the /data folder.
+  function addPossibleInjury(data) {
+    if (data.location == null) { throw "An injury location is required" }
+    if (data.type == null)     { throw "An injury damage type is required" }
+    if (data.level == null)    { throw "An injury level is required" }
+    if (data.story == null)    { throw "An injury story is required" }
+
+    if (Injury.LOCATIONS.indexOf(data.location) < 0) { throw `Bad location for injury: ${data.location}`; }
+    if (Injury.DAMAGE_TYPES.indexOf(data.type) < 0) { throw `Bad location for injury: ${data.location}`; }
+    if (data.level < 1 || data.level > 5) { throw `level should be between 1 and 5.`; }
+
+    possibleInjuries.push(data);
+  }
 
   async function resolve(character, skill, tier, success) {
     const chance = injuryChance(character.physical, skill, tier, success);
@@ -10,10 +27,61 @@ Role.Hunter.Injuries = (function() {
   }
 
   async function generateInjury(character) {
-    Role.Hunter.logger().info(`${character.name} was injured`);
-
-    return { injury:'Something' }
+    let roll = Random.upTo(100);
+    if (roll < 5) { return await killMinion(character); }
+    if (roll < 25) { return await generateCriticalInjury(character); }
+    return await generatePainfulInjury(character);
   }
+
+  // TODO: When injured while out hunting a minion has a 5% chance of dying, or
+  //       at least getting mostly killed. Killing minsions needs to be
+  //       implemented though before this can be done.
+  async function killMinion(character) {
+    Role.Hunter.logger().info(`${character.name} was killed`);
+    return null;
+  }
+
+  async function generateCriticalInjury(character) {
+    Role.Hunter.logger().info(`${character.name} was critically injured`);
+    return null;
+  }
+
+  async function generatePainfulInjury(character) {
+    Role.Hunter.logger().info(`${character.name} was painfully injured`);
+
+    let pick = Random.from(possibleInjuries);
+
+    let injury = await character.addInjury({
+      location: pick.location,
+      type: pick.type,
+      level: pick.level,
+    });
+
+    let context = new WeaverContext();
+    await context.addCharacter('H',character)
+    let story = Weaver.weave(pick.story, context);
+
+    Role.Hunter.logger().info(`Story: ${story}`,injury);
+
+    return { injury, story }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // Hunting is a slightly dangerous job, and there's a chance that you'll be
   // wounded. Having good equipment, physical strength, skill, and success all
@@ -28,6 +96,10 @@ Role.Hunter.Injuries = (function() {
     return danger;
   }
 
-  return { resolve, injuryChance };
+  return {
+    resolve,
+    injuryChance,
+    addPossibleInjury,
+  };
 
 })();

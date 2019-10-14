@@ -163,6 +163,8 @@
     "species/sylph",
     "species/viera",
     "species/vulpine",
-    "species/wood-elf"
+    "species/wood-elf",
+
+    "units/hunting-injuries"
   ]
 }
