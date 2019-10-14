@@ -83,14 +83,20 @@ global.Records = (function() {
     return new Promise((resolve,reject) => {
       fs.readdir(`${ROOT}/saves/`, (error, files) => {
         if (error) { reject(error) } else {
-          resolve(files.map(filename => {
-            let parts = filename.split('.')
-            return {
-              filename: `${parts[0]}.${parts[1]}`,
-              playerName: parts[0],
-              gameName: parts[1].replace(/_/g,' ')
+          let fileList = [];
+
+          each(files, filename => {
+            let parts = filename.split('.');
+            if (parts.length == 3 && parts[2] == 'json') {
+              fileList.push({
+                filename: `${parts[0]}.${parts[1]}`,
+                playerName: parts[0],
+                gameName: parts[1].replace(/_/g,' ')
+              });
             }
-          }))
+          });
+
+          resolve(fileList);
         }
       });
     });
