@@ -1,4 +1,4 @@
-global.GenderLoom = (function() {
+Weaver.GenderLoom = (function() {
 
   // Replaces token placeholders in the form of:
   //   {{ actor::gender.his }}
@@ -29,6 +29,6 @@ global.GenderLoom = (function() {
     return Weaver.error(`Bad gender token(${token})`);
   }
 
-  return { findValue:findValue };
+  return { findValue };
 
 })();

@@ -1,4 +1,4 @@
-global.CharacterLoom = (function() {
+Weaver.CharacterLoom = (function() {
 
   // Replaces token placeholders in the form of:
   //   {{actor::character.name}}
@@ -18,6 +18,6 @@ global.CharacterLoom = (function() {
     return Weaver.error(`Bad character token(${token})`);
   }
 
-  return { findValue:findValue };
+  return { findValue };
 
 })();

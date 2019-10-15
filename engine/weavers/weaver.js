@@ -23,11 +23,14 @@ global.Weaver = (function() {
     var working = true;
 
     while(working) {
-      var match = text.match(/{{([^}]+)::([^}]+)}}/)
-      if (match) {
-        text = text.replace(match[0], findValue(match[1].trim(), match[2].trim(), context));
-      }
-      else {
+      var actorMatch = text.match(/{{([^}]+)::([^}]+)}}/)
+      var utilityMatch = text.match(/{{([^}]+)\|([^}]+)}}/)
+
+      if (actorMatch) {
+        text = text.replace(actorMatch[0], actorValue(actorMatch[1].trim(), actorMatch[2].trim(), context));
+      } else if (utilityMatch) {
+        text = text.replace(utilityMatch[0], utilityValue(utilityMatch[1].trim(), utilityMatch[2].trim()))
+      } else {
         working = false;
       }
     }
@@ -35,10 +38,15 @@ global.Weaver = (function() {
     return text;
   }
 
-  function findValue(subject, token, context) {
-    if (token.startsWith('character')) { return CharacterLoom.findValue(subject, token, context); }
-    if (token.startsWith('gender')) { return GenderLoom.findValue(subject, token, context); }
+  function actorValue(subject, token, context) {
+    if (token.startsWith('character')) { return Weaver.CharacterLoom.findValue(subject, token, context); }
+    if (token.startsWith('gender')) { return Weaver.GenderLoom.findValue(subject, token, context); }
     return error(`BadToken(${subject}::${token})`);
+  }
+
+  function utilityValue(utility, argument) {
+    if (utility.toLowerCase().startsWith('random')) { return Weaver.RandomLoom.findValue(utility, argument); }
+    return error(`BadToken(${utility}|${argument})`);
   }
 
   function error(message) {

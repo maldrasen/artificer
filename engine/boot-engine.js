@@ -94,3 +94,4 @@ require(`${ROOT}/engine/weavers/weaver`);
 require(`${ROOT}/engine/weavers/weaver-context`);
 require(`${ROOT}/engine/weavers/character-loom`);
 require(`${ROOT}/engine/weavers/gender-loom`);
+require(`${ROOT}/engine/weavers/random-loom`);
