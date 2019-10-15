@@ -44,7 +44,7 @@ global.HasInjuries = { isAppliedTo: function(model) {
 
     injury.healed = 0;
     injury.level = Math.min(levelMax,(injury.level + level));
-    injury.description = abuser.buildDescription(details);
+    injury.description = abuser.buildDescription(injury, details);
     injury.details = details;
 
     await injury.save();

@@ -55,12 +55,30 @@ Role.Hunter.Injuries.addPossibleInjury({ location:'pussy', type:'pierce', level:
           sharpened stick completely through one of {{H::gender.his}} exposed labia and flew away laughing.`,
 });
 
+Role.Hunter.Injuries.addPossibleInjury({ location:'pussy', type:'rip', level:4,
+  story: `While out hunting, {{H::character.firstName}} was taken captive by a lupin hunting band. They agreed to let
+          {{H::gender.him}} go only if {{H::gender.he}} would fuck them all. Their large knotted cocks left
+          {{H::gender.his}} pussy ripped asunder.`,
+});
+
+Role.Hunter.Injuries.addPossibleInjury({ location:'tits', type:'smash', level:2,
+  story: `{{H::character.firstName}} had a wild boar cornered and was going in for the kill when it suddenly charged.
+          {{H::gender.He}} tride to dodge to the side, but the boar crashed into {{H::gender.his}} chest, crushing
+          {{H::gender.his}} tits with it's tusks.`,
+});
+
 // === Critical Injuries ===
 
 Role.Hunter.Injuries.addPossibleInjury({ location:'body', type:'smash', level:1,
   story: `{{H::character.firstName}} had to flee from an Abomination as {{H::gender.he}} was returning home from
           {{H::gender.his}} hunt. Although he {{H::gender.he}} managed to get away, {{H::gender.he}} had to jump down
           into a deep ravine and broke several ribs.`,
+});
+
+Role.Hunter.Injuries.addPossibleInjury({ location:'body', type:'blight', level:1,
+  story: `While out hunting, {{H::character.firstName}} came across a patch of edible looking mushrooms. Within an hour
+          of eating the strange mushrooms though {{H::gender.he}} became violently ill, uncontrollably vomiting and
+          shitting.`
 });
 
 Role.Hunter.Injuries.addPossibleInjury({ location:'head', type:'smash', level:1,
