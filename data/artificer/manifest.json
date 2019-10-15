@@ -98,11 +98,9 @@
     "events/global/game-start",
     "events/global/game-start-chase",
     "events/global/got-fleas",
-
     "events/location/courtyard-get-minions",
     "events/location/courtyard-walk-on-walls",
     "events/location/great-hall-talk-to-rat-chief",
-
     "events/project/clear-great-hall-done",
     "events/project/clear-great-hall-start",
     "events/project/clear-great-hall-sleep-no",
@@ -110,9 +108,11 @@
     "events/project/clear-great-hall-sleep-sex-pussy",
     "events/project/clear-great-hall-sleep-yes",
 
-    "item-flavors/hunting.js",
+    "hazards/hunting-hazards",
 
-    "items/crafting.js",
+    "item-flavors/hunting",
+
+    "items/crafting",
 
     "locations/courtyard",
     "locations/great-hall",
@@ -163,8 +163,6 @@
     "species/sylph",
     "species/viera",
     "species/vulpine",
-    "species/wood-elf",
-
-    "units/hunting-injuries"
+    "species/wood-elf"
   ]
 }

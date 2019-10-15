@@ -1,4 +1,4 @@
-describe.only('Random Loom', function() {
+describe('Random Loom', function() {
   let context = new WeaverContext();
 
   it('gets a random digit', function() {
