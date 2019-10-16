@@ -6,20 +6,20 @@ terrible measure of progress and doneness normally, but this project involves a
 ton of writing, so knowing how many lines this has is actually useful. I'm
 thinking once we approach 500,000 lines we'll be close to done.
 
-Prickle-Prickle, the 60th day of Bureaucracy in the YOLD 3185 / 6 Oct 2019
+Pungenday, the 69th day of Bureaucracy in the YOLD 3185 / 15 Oct 2019
 
 ---------- Result ------------
 
-            Physical :  13621
-              Source :  11326
-             Comment :  909
- Single-line comment :  904
+            Physical :  15713
+              Source :  13015
+             Comment :  1023
+ Single-line comment :  1018
        Block comment :  5
                Mixed :  23
  Empty block comment :  0
-               Empty :  1409
-               To Do :  12
+               Empty :  1698
+               To Do :  67
 
-Number of files read :  284
+Number of files read :  328
 
 ----------------------------
