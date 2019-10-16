@@ -11,15 +11,16 @@ Resolver.Roles = (function() {
   }
 
   async function workRoles() {
-    let characters = await Character.findAll({ where:{ currentTask:'free' }});
+    const characters = await Character.findAll({ where:{ currentTask:'free' }});
+
     await Promise.all(characters.map(async character => {
-      await Role.lookup(character.roleCode).work(character);
+      let result = await Role.lookup(character.roleCode).work(character);
+      Resolver.Items.add(result.items);
+      Resolver.Report.setMinionData(character,'name',character.name);
+      Resolver.Report.setMinionData(character,'work',result);
     }));
   }
 
-  return {
-    assignRoles: assignRoles,
-    workRoles: workRoles,
-  }
+  return { assignRoles, workRoles }
 
 })();

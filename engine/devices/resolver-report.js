@@ -17,10 +17,19 @@ Resolver.Report = (function() {
     Resolver.currentReport().project = { text:`I decided to take a day off, and was idle for most of the day.` };
   }
 
+  function setMinionData(character, key, data) {
+    let report = Resolver.currentReport();
+    if (report.minions[character.id] == null) {
+      report.minions[character.id] = {};
+    }
+    report.minions[character.id][key] = data;
+  }
+
   return {
-    setProjectProgressText: setProjectProgressText,
-    setProjectCompletedText: setProjectCompletedText,
-    setProjectIdleText: setProjectIdleText,
+    setProjectProgressText,
+    setProjectCompletedText,
+    setProjectIdleText,
+    setMinionData,
   }
 
 })();

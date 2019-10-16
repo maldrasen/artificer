@@ -13,7 +13,20 @@ global.Injury = Database.instance().define('injury', {
 },{
   timestamps: false,
   getterMethods: {
-    details() { return JSON.parse(this.details_json||'{}') }
+    details() { return JSON.parse(this.details_json||'{}') },
+
+    properties() {
+      return {
+        severity: this.severity,
+        location: this.location,
+        type: this.damageType,
+        healed: this.healed,
+        level: this.level,
+        description: this.description,
+        details: this.details
+      }
+    },
+
   },
   setterMethods: {
     details(json) { this.setDataValue('details_json',JSON.stringify(json)) },

@@ -45,5 +45,5 @@ ItemFlavor.build('racoon-pelt', {
   name: 'Racoon Pelt',
   type: 'small-game-pelt',
   becomes: 'hide',
-  hide: 1,
+  becomesCount: 1,
 });

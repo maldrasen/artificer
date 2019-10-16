@@ -2,7 +2,6 @@ global.Hazard = class Hazard extends Form {
 
   static buildHazard(data) {
     data.severity = (['body','head'].indexOf(data.location) < 0) ? 'painful' : 'critical';
-    console.log(" --- ",data.severity)
     super.build(null,data);
   }
 

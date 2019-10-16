@@ -30,6 +30,7 @@ global.Database = (function() {
     require(`${ROOT}/engine/models/injury`);
     require(`${ROOT}/engine/models/mouth`);
     require(`${ROOT}/engine/models/pussy`);
+    require(`${ROOT}/engine/models/resource`);
     require(`${ROOT}/engine/models/tits`);
 
     // This array cannot be built until these model classes are all required.
@@ -52,7 +53,8 @@ global.Database = (function() {
       Mouth,
       Nipples,
       Pussy,
-      Tits];
+      Tits,
+      Resource];
 
     database.sync().then(callback);
   }

@@ -8,8 +8,9 @@ global.Resolver = (function() {
   //       { code:'blood-enema', minions:[2,3]}
   //
   async function startWork(plan) {
-    Resolver._currentReport = {};
+    Resolver._currentReport = { minions:{} };
     Resolver._finishers = [];
+    Resolver._itemsToAdd = {};
 
     await Resolver.Game.becomeAfternoon();
     await Resolver.Roles.assignRoles(plan.assignedRoles);
@@ -19,6 +20,7 @@ global.Resolver = (function() {
     await Resolver.Roles.workRoles();
     await Resolver.Projects.workProjects();
     await Resolver.Missions.workMissions();
+    await Resolver.Items.commit();
     await Composer.render();
   }
 
@@ -37,12 +39,14 @@ global.Resolver = (function() {
 
   function addFinisher(finisher) { Resolver._finishers.push(finisher); }
   function currentReport() { return Resolver._currentReport; }
+  function itemsToAdd() { return Resolver._itemsToAdd; }
 
   return {
-    addFinisher: addFinisher,
-    currentReport: currentReport,
-    startDay: startDay,
-    startWork: startWork,
+    addFinisher,
+    currentReport,
+    itemsToAdd,
+    startDay,
+    startWork,
   }
 
 })();

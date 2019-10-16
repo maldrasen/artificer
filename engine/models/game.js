@@ -4,10 +4,12 @@ global.Game = Database.instance().define('game', {
   time:                     { type:Sequelize.STRING, validate:{ isIn:[['morning','afternoon']] }},
   anger:                    { type:Sequelize.INTEGER },
   frustration:              { type:Sequelize.INTEGER },
+  food:                     { type:Sequelize.INTEGER },
   gameEventQueue_json:      { type:Sequelize.STRING  },
   locationEventQueue_json:  { type:Sequelize.STRING  },
   currentProject:           { type:Sequelize.STRING  },
   currentProjectProgress:   { type:Sequelize.INTEGER },
+
 },{
   timestamps: false,
   getterMethods: {
@@ -40,6 +42,7 @@ Game.start = async function() {
     time: 'morning',
     anger: 0,
     frustration: 0,
+    food: 30,
     gameEventQueue_json: "[]",
     locationEventQueue_json: "{}",
   });

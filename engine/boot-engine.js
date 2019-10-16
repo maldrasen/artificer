@@ -16,6 +16,7 @@ require(`${ROOT}/engine/devices/composer`);
 require(`${ROOT}/engine/devices/resolver`);
 require(`${ROOT}/engine/devices/resolver-events`);
 require(`${ROOT}/engine/devices/resolver-game`);
+require(`${ROOT}/engine/devices/resolver-items`);
 require(`${ROOT}/engine/devices/resolver-missions`);
 require(`${ROOT}/engine/devices/resolver-projects`);
 require(`${ROOT}/engine/devices/resolver-report`);
