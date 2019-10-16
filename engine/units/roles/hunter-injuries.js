@@ -1,32 +1,11 @@
 Role.Hunter.Injuries = (function() {
-  let painfulInjuries = [];
-  let criticalInjuries = [];
-
-  // Add an injury and its story to the array of possible injuries to pull
-  // from. We validate a lot of these arguments because they're coming in from
-  // the /data folder.
-
-  function addPossibleInjury(data) {
-    if (data.location == null) { throw "An injury location is required" }
-    if (data.type == null)     { throw "An injury damage type is required" }
-    if (data.level == null)    { throw "An injury level is required" }
-    if (data.story == null)    { throw "An injury story is required" }
-
-    if (Injury.LOCATIONS.indexOf(data.location) < 0) { throw `Bad location for injury: ${data.location}`; }
-    if (Injury.DAMAGE_TYPES.indexOf(data.type) < 0) { throw `Bad location for injury: ${data.location}`; }
-    if (data.level < 1 || data.level > 5) { throw `level should be between 1 and 5.`; }
-
-    (['head','body'].indexOf(data.location) < 0) ?
-      painfulInjuries.push(data):
-      criticalInjuries.push(data);
-  }
 
   async function resolve(options) {
     if (Random.roll(100) < injuryChance(options)) {
       let roll = Random.upTo(100);
       if (roll < 5)  { return await killMinion(options); }
-      if (roll < 25) { return await addInjury(criticalInjuries, options); }
-                       return await addInjury(painfulInjuries, options);
+      if (roll < 25) { return await addInjury(Hazard.criticalHinterlandsHunting(), options); }
+                       return await addInjury(Hazard.painfulHinterlandsHunting(), options);
     }
   }
 
@@ -37,27 +16,17 @@ Role.Hunter.Injuries = (function() {
     console.log(`TODO: ${options.character.name} was killed while out hunting`);
   }
 
-  // Add an injury to the character.
   async function addInjury(possibleInjuries, options) {
     let cock = await options.character.getCock();
     let pussy = await options.character.getPussy();
     let tits = await options.character.getTits();
 
-    let pick = Random.from(possibleInjuries.filter(possible => {
+    let hazard = Random.from(possibleInjuries.filter(possible => {
       return meetsRequirement(possible, extend(options,{ cock, pussy, tits }));
     }));
 
-    let injury = await options.character.addInjury({
-      location: pick.location,
-      type: pick.type,
-      level: pick.level,
-    });
-
-    let story = await Weaver.weaveWithCharacter(pick.story,'H',options.character);
-
-    console.log("=== Hunting Injury ===")
-    console.log(story)
-    console.log(injury)
+    let injury = await options.character.addInjury(hazard);
+    let story = await Weaver.weaveWithCharacter(hazard.story,'H',options.character);
 
     return { injury, story }
   }
@@ -99,10 +68,6 @@ Role.Hunter.Injuries = (function() {
     return valid;
   }
 
-  return {
-    resolve,
-    injuryChance,
-    addPossibleInjury,
-  };
+  return { resolve, injuryChance };
 
 })();

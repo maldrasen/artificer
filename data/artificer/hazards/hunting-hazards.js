@@ -3,7 +3,7 @@
 
 // --- Anus : Cut ---
 
-Role.Hunter.Injuries.addPossibleInjury({ location:'anus', type:'cut', level:2,
+Hazard.buildHazard({ activity:'hunting-hinterlands', location:'anus', type:'cut', level:2,
   requires: ['tier-0','success'],
   story: `{{H::character.firstName}} has already finished hunting and was on {{H::gender.his}} way back to the keep
           when {{H::gender.he}} decided to take a short break. {{H::gender.He}} plopped down onto a comfortable looking
@@ -11,7 +11,7 @@ Role.Hunter.Injuries.addPossibleInjury({ location:'anus', type:'cut', level:2,
           knife opened a nasty, ragged looking gash right along {{H::gender.his}} anus.`
 });
 
-Role.Hunter.Injuries.addPossibleInjury({ location:'anus', type:'cut', level:5,
+Hazard.buildHazard({ activity:'hunting-hinterlands', location:'anus', type:'cut', level:5,
   requires: ['tier-0','failure'],
   story: `{{H::character.firstName}} was climbing up a tree, chasing a squirrel, when the branch {{H::gender.he}} was
           on snapped. {{H::gender.He}} fell directly onto a small sapling and somehow managed to get the entire young
@@ -21,7 +21,7 @@ Role.Hunter.Injuries.addPossibleInjury({ location:'anus', type:'cut', level:5,
 
 // --- Anus : Pierce ---
 
-Role.Hunter.Injuries.addPossibleInjury({ location:'anus', type:'pierce', level:1,
+Hazard.buildHazard({ activity:'hunting-hinterlands', location:'anus', type:'pierce', level:1,
   requires: ['tier-0'],
   story: `While {{H::character.firstName}} was hiding in a bush, a pixie snuck  up behind {{H::gender.him}} and jabbed a
           sharpened stick right up {{H::gender.his}} exposed ass and flew away laughing.`
@@ -29,7 +29,7 @@ Role.Hunter.Injuries.addPossibleInjury({ location:'anus', type:'pierce', level:1
 
 // --- Anus : Rip ---
 
-Role.Hunter.Injuries.addPossibleInjury({ location:'anus', type:'rip', level:2,
+Hazard.buildHazard({ activity:'hunting-hinterlands', location:'anus', type:'rip', level:2,
   requires: ['failure','species-rat'],
   story: `{{H::character.firstName}} was found and captured by a group of Kobolds who were also out hunting. They tied
           {{H::gender.him}} to a tree and made a game out of guessing how many pine cones they could fit into
@@ -37,14 +37,14 @@ Role.Hunter.Injuries.addPossibleInjury({ location:'anus', type:'rip', level:2,
           with a stretched and bleeding asshole.`
 });
 
-Role.Hunter.Injuries.addPossibleInjury({ location:'anus', type:'rip', level:3,
+Hazard.buildHazard({ activity:'hunting-hinterlands', location:'anus', type:'rip', level:3,
   requires: ['failure'],
   story: `As {{H::character.firstName}} was stalking {{H::gender.his}} prey {{H::gender.he}} was attacked by a
           ferocious Dick Wolf. The beast spent most of the afternoon anally raping {{H::gender.him}} until
           {{H::gender.he}} was finally able to escape.`
 });
 
-Role.Hunter.Injuries.addPossibleInjury({ location:'anus', type:'rip', level:4,
+Hazard.buildHazard({ activity:'hunting-hinterlands', location:'anus', type:'rip', level:4,
   requires: ['tier-0','failure'],
   story: `{{H::character.firstName}} was chasing a rabbit and tried to follow it into its burrow, but got
           {{H::gender.his}} head stuck in the tight hole. {{H::gender.He}} struggled there for quite a while with
@@ -55,7 +55,7 @@ Role.Hunter.Injuries.addPossibleInjury({ location:'anus', type:'rip', level:4,
 
 // --- Nipples : Blight ---
 
-Role.Hunter.Injuries.addPossibleInjury({ location:'nipples', type:'blight', level:2,
+Hazard.buildHazard({ activity:'hunting-hinterlands', location:'nipples', type:'blight', level:2,
   requires: ['failure'],
   story: `While {{H::character.firstName}} was stalking {{H::gender.his}} prey through some deep brush {{H::gender.he}}
           felt a sudden stabbing pain in his chest. A spider had attached itself to one of {{H::gender.his}} nipples
@@ -65,7 +65,8 @@ Role.Hunter.Injuries.addPossibleInjury({ location:'nipples', type:'blight', leve
 
 // --- Cock : Blight ---
 
-Role.Hunter.Injuries.addPossibleInjury({ location:'cock', type:'blight', level:5,
+// TODO: Use actual cock description here.
+Hazard.buildHazard({ activity:'hunting-hinterlands', location:'cock', type:'blight', level:5,
   requires: ['failure','tier-0','species-rat'],
   story: `{{H::character.firstName}} was chasing a fox through the nearby woods when {{H::gender.he}} ran face first
           into a massive spiderweb, becoming immediately entangled. One of the local dryads, tired of your rats
@@ -77,7 +78,7 @@ Role.Hunter.Injuries.addPossibleInjury({ location:'cock', type:'blight', level:5
 
 // --- Pussy : Pierce ---
 
-Role.Hunter.Injuries.addPossibleInjury({ location:'pussy', type:'pierce', level:3,
+Hazard.buildHazard({ activity:'hunting-hinterlands', location:'pussy', type:'pierce', level:3,
   requires: ['tier-0'],
   story: `While {{H::character.firstName}} was hiding in a bush, a pixie snuck up behind {{H::gender.him}} and jabbed a
           sharpened stick completely through one of {{H::gender.his}} exposed labia and flew away laughing.`
@@ -85,7 +86,7 @@ Role.Hunter.Injuries.addPossibleInjury({ location:'pussy', type:'pierce', level:
 
 // --- Pussy : Rip ---
 
-Role.Hunter.Injuries.addPossibleInjury({ location:'pussy', type:'rip', level:2,
+Hazard.buildHazard({ activity:'hunting-hinterlands', location:'pussy', type:'rip', level:2,
   requires: ['failure','species-rat'],
   story: `{{H::character.firstName}} was found and captured by a group of Kobolds who were also out hunting. They tied
           {{H::gender.him}} to a tree and made a game out of guessing how many river stones they could fit into
@@ -93,7 +94,7 @@ Role.Hunter.Injuries.addPossibleInjury({ location:'pussy', type:'rip', level:2,
           with a stretched and bleeding cunt.`
 });
 
-Role.Hunter.Injuries.addPossibleInjury({ location:'pussy', type:'rip', level:4,
+Hazard.buildHazard({ activity:'hunting-hinterlands', location:'pussy', type:'rip', level:4,
   story: `While out hunting, {{H::character.firstName}} was taken captive by a lupin hunting band. They agreed to let
           {{H::gender.him}} go only if {{H::gender.he}} would fuck them all. Their large knotted cocks left
           {{H::gender.his}} pussy ripped asunder.`
@@ -101,7 +102,7 @@ Role.Hunter.Injuries.addPossibleInjury({ location:'pussy', type:'rip', level:4,
 
 // --- Tits : Smash ---
 
-Role.Hunter.Injuries.addPossibleInjury({ location:'tits', type:'smash', level:2,
+Hazard.buildHazard({ activity:'hunting-hinterlands', location:'tits', type:'smash', level:2,
   story: `{{H::character.firstName}} had a wild boar cornered and was going in for the kill when it suddenly charged.
           {{H::gender.He}} tride to dodge to the side, but the boar crashed into {{H::gender.his}} chest, crushing
           {{H::gender.his}} tits with it's tusks.`
@@ -109,19 +110,19 @@ Role.Hunter.Injuries.addPossibleInjury({ location:'tits', type:'smash', level:2,
 
 // === Critical Injuries ===
 
-Role.Hunter.Injuries.addPossibleInjury({ location:'body', type:'smash', level:1,
+Hazard.buildHazard({ activity:'hunting-hinterlands', location:'body', type:'smash', level:1,
   story: `{{H::character.firstName}} had to flee from an Abomination as {{H::gender.he}} was returning home from
-          {{H::gender.his}} hunt. Although he {{H::gender.he}} managed to get away, {{H::gender.he}} had to jump down
+          {{H::gender.his}} hunt. Although {{H::gender.he}} managed to get away, {{H::gender.he}} had to jump down
           into a deep ravine and broke several ribs.`
 });
 
-Role.Hunter.Injuries.addPossibleInjury({ location:'body', type:'blight', level:1,
+Hazard.buildHazard({ activity:'hunting-hinterlands', location:'body', type:'blight', level:1,
   story: `While out hunting, {{H::character.firstName}} came across a patch of edible looking mushrooms. Within an hour
           of eating the strange mushrooms though {{H::gender.he}} became violently ill, uncontrollably vomiting and
           shitting.`
 });
 
-Role.Hunter.Injuries.addPossibleInjury({ location:'head', type:'smash', level:1,
+Hazard.buildHazard({ activity:'hunting-hinterlands', location:'head', type:'smash', level:1,
   story: `{{H::character.firstName}} was stalking {{H::gender.his}} prey through a deep ravine, when a loose rock fell
           from the cliffs above, striking {{H::gender.him}} in the head.`
 });

@@ -15,9 +15,13 @@ global.Form = class Form {
   static build(code, data) {
     if (this.name == 'Form') { throw "The build() function should only be called on a subclass of Form." }
     if (this.instances == null) { this.instances = {}; }
+    if (code == null) { code = hash(data); }
 
     let instance = new this(code,data);
+        instance.validate();
+
     this.instances[code] = instance;
+
     return instance;
   }
 
@@ -55,5 +59,8 @@ global.Form = class Form {
     each(Object.getOwnPropertyNames(this), name => { props[name] = this[name]; });
     return props;
   }
+
+  // Child classes should overwrite this function to validate forms.
+  validate() {}
 
 }

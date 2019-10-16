@@ -3,6 +3,7 @@ console.log('> Booting Engine')
 
 global.extend = require('extend');
 global.each = require('iterate-object');
+global.hash = require('object-hash');
 
 // === Concerns ===
 require(`${ROOT}/engine/concerns/has-aspects`);
@@ -27,6 +28,7 @@ require(`${ROOT}/engine/forms/aspect`);
 require(`${ROOT}/engine/forms/area`);
 require(`${ROOT}/engine/forms/event`);
 require(`${ROOT}/engine/forms/gender`);
+require(`${ROOT}/engine/forms/hazard`);
 require(`${ROOT}/engine/forms/item`);
 require(`${ROOT}/engine/forms/item-flavor`);
 require(`${ROOT}/engine/forms/location`);

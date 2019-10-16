@@ -10,11 +10,11 @@ describe('HasInjury', function() {
 
   it('can add an injury to a character', function(done) {
     buildJada().then(jada => {
-      jada.addInjury({ location:'head', type:'burn' }).then(injury => {
+      jada.addInjury({ severity:'critical', location:'head', type:'burn', level:2 }).then(injury => {
         expect(injury.location).to.equal('head');
         expect(injury.damageType).to.equal('burn');
         expect(injury.severity).to.equal('critical');
-        expect(injury.level).to.be.within(1,5);
+        expect(injury.level).to.equal(2);
         expect(injury.description).to.exist;
         done();
       });
@@ -24,8 +24,8 @@ describe('HasInjury', function() {
   it('if a character is alreay injured it increases the injury level', function(done) {
     buildJada().then(jada => {
       Promise.all([
-        jada.addInjury({ location:'head', type:'burn', level:2 }),
-        jada.addInjury({ location:'head', type:'burn', level:3 })
+        jada.addInjury({ severity:'critical', location:'head', type:'burn', level:2 }),
+        jada.addInjury({ severity:'critical', location:'head', type:'burn', level:3 })
       ]).then(() => {
         jada.getHealth().then(health => {
           jada.getHealthWord().then(word => {
@@ -45,10 +45,10 @@ describe('HasInjury', function() {
   it('can add a mix of painful and critical injuries', function(done) {
     buildJada().then(jada => {
       Promise.all([
-        jada.addInjury({ location:'head', type:'burn', level:1 }),
-        jada.addInjury({ location:'mouth', type:'pierce', level:3 }),
-        jada.addInjury({ location:'anus', type:'rip', level:5 }),
-        jada.addInjury({ location:'mouth', type:'smash', level:4 }),
+        jada.addInjury({ severity:'critical', location:'head',  type:'burn',   level:1 }),
+        jada.addInjury({ severity:'painful',  location:'mouth', type:'pierce', level:3 }),
+        jada.addInjury({ severity:'painful',  location:'anus',  type:'rip',    level:5 }),
+        jada.addInjury({ severity:'painful',  location:'mouth', type:'smash',  level:4 }),
       ]).then(() => {
         jada.getHealth().then(health => {
           jada.getHealthWord().then(word => {
@@ -68,14 +68,14 @@ describe('HasInjury', function() {
   it('can just add painful injuries', function(done) {
     buildJada().then(jada => {
       Promise.all([
-        jada.addInjury({ location:'tits', type:'smash', level:5 }),
-        jada.addInjury({ location:'tits', type:'smash', level:5 }),
-        jada.addInjury({ location:'tits', type:'burn', level:5 }),
-        jada.addInjury({ location:'tits', type:'burn', level:5 }),
-        jada.addInjury({ location:'anus', type:'rip', level:5 }),
-        jada.addInjury({ location:'anus', type:'rip', level:5 }),
-        jada.addInjury({ location:'pussy', type:'rip', level:5 }),
-        jada.addInjury({ location:'pussy', type:'rip', level:5 }),
+        jada.addInjury({ severity:'painful', location:'tits',  type:'smash', level:5 }),
+        jada.addInjury({ severity:'painful', location:'tits',  type:'smash', level:5 }),
+        jada.addInjury({ severity:'painful', location:'tits',  type:'burn',  level:5 }),
+        jada.addInjury({ severity:'painful', location:'tits',  type:'burn',  level:5 }),
+        jada.addInjury({ severity:'painful', location:'anus',  type:'rip',   level:5 }),
+        jada.addInjury({ severity:'painful', location:'anus',  type:'rip',   level:5 }),
+        jada.addInjury({ severity:'painful', location:'pussy', type:'rip',   level:5 }),
+        jada.addInjury({ severity:'painful', location:'pussy', type:'rip',   level:5 }),
       ]).then(() => {
         jada.getHealth().then(health => {
           jada.getHealthWord().then(word => {
