@@ -4,6 +4,7 @@ ItemFlavor.build('rabbit-meat', {
   type: 'small-game',
   becomes: 'food',
   becomesCount: 2,
+  storyWord: 'rabbit',
 });
 
 ItemFlavor.build('squirrel-meat', {
@@ -11,6 +12,7 @@ ItemFlavor.build('squirrel-meat', {
   type: 'small-game',
   becomes: 'food',
   becomesCount: 1,
+  storyWord: 'squirrel',
 });
 
 ItemFlavor.build('rat-meat', {
@@ -18,6 +20,7 @@ ItemFlavor.build('rat-meat', {
   type: 'small-game',
   becomes: 'food',
   becomesCount: 1,
+  storyWord: 'rat',
 });
 
 ItemFlavor.build('other-meat', {
@@ -25,6 +28,7 @@ ItemFlavor.build('other-meat', {
   type: 'small-game',
   becomes: 'food',
   becomesCount: 1,
+  storyWord: 'squirming thing',
 });
 
 ItemFlavor.build('rabbit-pelt', {
@@ -32,6 +36,7 @@ ItemFlavor.build('rabbit-pelt', {
   type: 'small-game-pelt',
   becomes: 'hide',
   becomesCount: 1,
+  storyWord: 'hare',
 });
 
 ItemFlavor.build('fox-pelt', {
@@ -39,6 +44,8 @@ ItemFlavor.build('fox-pelt', {
   type: 'small-game-pelt',
   becomes: 'hide',
   becomesCount: 1,
+  storyWord: 'fox',
+  storyWords: 'foxes',
 });
 
 ItemFlavor.build('racoon-pelt', {
@@ -46,4 +53,5 @@ ItemFlavor.build('racoon-pelt', {
   type: 'small-game-pelt',
   becomes: 'hide',
   becomesCount: 1,
+  storyWord: 'racoon',
 });

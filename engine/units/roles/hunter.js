@@ -32,23 +32,26 @@ Role.Hunter = (function() {
     const flavors = resolveResults(huntingResults(tier, skill))
     const items = ItemFlavor.itemize(flavors);
     const injury = await Role.Hunter.Injuries.resolve({ character:character, skill:skill, tier:tier, success:true });
-    // const story = Role.Hunter.Stories.generateSuccess(flavors,injury);
+    const story = Role.Hunter.Stories.tell(true,flavors,injury);
 
-    let result = { flavors, items };
-
-    if (injury) {
-      result.injury = {
-        story: injury.story,
-        properties: injury.injury.properties };
-    }
-
-    return result;
+    return forReport({ flavors, items, story, injury });
   }
 
   async function huntingFailure(character,tier,skill) {
-    const injury = Role.Hunter.Injuries.resolve({ character:character, skill:skill, tier:tier, success:false });
+    const injury = await Role.Hunter.Injuries.resolve({ character:character, skill:skill, tier:tier, success:false });
+    const story = Role.Hunter.Stories.tell(false,{},injury);
 
-    return {  };
+    return forReport({ story, injury })
+  }
+
+  function forReport(raw) {
+    let result = { story:raw.story }
+
+    if (raw.items)   { result.items = raw.items; }
+    if (raw.flavors) { result.flavors = raw.flavors; }
+    if (raw.injury)  { result.injury = { story:raw.injury.story, properties:raw.injury.injury.properties }}
+
+    return result;
   }
 
   // Get an ItemFlavor of the item type. The flavors we get from hunting are

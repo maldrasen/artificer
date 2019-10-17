@@ -1,4 +1,4 @@
-describe.only('listify()', function() {
+describe('listify()', function() {
 
   it("gets a single word", function() {
     expect(listify([{ word:'dick', count:1 }])).to.equal('a single dick');
