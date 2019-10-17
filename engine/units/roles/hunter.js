@@ -33,6 +33,7 @@ Role.Hunter = (function() {
     const items = ItemFlavor.itemize(flavors);
     const injury = await Role.Hunter.Injuries.resolve({ character:character, skill:skill, tier:tier, success:true });
     const story = await Role.Hunter.Stories.tell(true,flavors,injury,character);
+    // TODO: Add hunting experience to character.
 
     return forReport({ flavors, items, story, injury });
   }
@@ -40,6 +41,7 @@ Role.Hunter = (function() {
   async function huntingFailure(character,tier,skill) {
     const injury = await Role.Hunter.Injuries.resolve({ character:character, skill:skill, tier:tier, success:false });
     const story = await Role.Hunter.Stories.tell(false,{},injury,character);
+    // TODO: Add hunting experience to character.
 
     return forReport({ story, injury })
   }
