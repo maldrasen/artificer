@@ -32,14 +32,14 @@ Role.Hunter = (function() {
     const flavors = resolveResults(huntingResults(tier, skill))
     const items = ItemFlavor.itemize(flavors);
     const injury = await Role.Hunter.Injuries.resolve({ character:character, skill:skill, tier:tier, success:true });
-    const story = Role.Hunter.Stories.tell(true,flavors,injury);
+    const story = await Role.Hunter.Stories.tell(true,flavors,injury,character);
 
     return forReport({ flavors, items, story, injury });
   }
 
   async function huntingFailure(character,tier,skill) {
     const injury = await Role.Hunter.Injuries.resolve({ character:character, skill:skill, tier:tier, success:false });
-    const story = Role.Hunter.Stories.tell(false,{},injury);
+    const story = await Role.Hunter.Stories.tell(false,{},injury,character);
 
     return forReport({ story, injury })
   }

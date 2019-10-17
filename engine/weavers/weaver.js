@@ -29,7 +29,7 @@ global.Weaver = (function() {
       if (actorMatch) {
         text = text.replace(actorMatch[0], actorValue(actorMatch[1].trim(), actorMatch[2].trim(), context));
       } else if (utilityMatch) {
-        text = text.replace(utilityMatch[0], utilityValue(utilityMatch[1].trim(), utilityMatch[2].trim()))
+        text = text.replace(utilityMatch[0], utilityValue(utilityMatch[1].trim(), utilityMatch[2].trim(), context));
       } else {
         working = false;
       }
@@ -44,7 +44,8 @@ global.Weaver = (function() {
     return error(`BadToken(${subject}::${token})`);
   }
 
-  function utilityValue(utility, argument) {
+  function utilityValue(utility, argument, context) {
+    if (utility.toLowerCase().startsWith('flag')) { return Weaver.FlagLoom.findValue(utility, argument, context); }
     if (utility.toLowerCase().startsWith('random')) { return Weaver.RandomLoom.findValue(utility, argument); }
     return error(`BadToken(${utility}|${argument})`);
   }

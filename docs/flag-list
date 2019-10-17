@@ -1,5 +1,7 @@
 
 location.currentStudy         | courtyard-walk-on-walls     | (code) Set to the code of the location where the study actions can be performed.
+location.hinterlandsName      |                             | (name) Set by the player to name the surrounding countryside. Set to The Hinterlands by default.
+location.keepName             |                             | (name) Set by the player to name their keep. Set to Faingorn Keep by default.
 locationMenu.map              | clear-great-hall-start      | (unlocked) Turns on the map menu
 locationMenu.minions          | courtyard-get-minions       | (unlocked) Turns on the minion menu
 minion.rename                 | courtyard-walk-on-walls     | (unlocked) Turns on the ability to rename minions in the minion menu.
