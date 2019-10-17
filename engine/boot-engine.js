@@ -40,6 +40,7 @@ require(`${ROOT}/engine/forms/species`);
 // === Helpers ===
 require(`${ROOT}/engine/helpers/calendar.js`);
 require(`${ROOT}/engine/helpers/character-agent`);
+require(`${ROOT}/engine/helpers/listify.js`);
 require(`${ROOT}/engine/helpers/random.js`);
 
 // === Units ===
