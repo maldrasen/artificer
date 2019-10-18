@@ -55,7 +55,7 @@ Role.Hunter = (function() {
 
     let aspect = await character.getCharacterAspect('hunting');
     if (aspect != null) {
-      return addExperienceToAspect(aspect, experience);
+      return addExperienceToAspect(character, aspect, experience);
     }
 
     character.addAspect('hunting', { strength:experience });
@@ -63,7 +63,7 @@ Role.Hunter = (function() {
     return { skill:'hunting', experience:experience };
   }
 
-  function addExperienceToAspect(aspect, experience) {
+  function addExperienceToAspect(character, aspect, experience) {
     let currentLevel = aspect.level;
     let currentStrength = aspect.strength;
 
@@ -89,9 +89,19 @@ Role.Hunter = (function() {
     let result = { story:raw.story }
 
     if (raw.items)         { result.items = raw.items; }
-    if (raw.flavors)       { result.flavors = raw.flavors; }
     if (raw.notifications) { result.notifications = raw.notifications; }
-    if (raw.injury)        { result.injury = { story:raw.injury.story, properties:raw.injury.injury.properties }}
+    if (raw.injury)        { result.injury = raw.injury.story }
+
+    if (raw.flavors) {
+      result.flavors = Object.keys(raw.flavors).map(code => {
+        let flavor = ItemFlavor.lookup(code);
+        return {
+          code: code,
+          count: raw.flavors[code],
+          name: flavor.name,
+          icon: flavor.icon };
+      });
+    }
 
     return result;
   }

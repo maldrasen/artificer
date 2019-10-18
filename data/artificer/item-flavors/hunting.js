@@ -6,6 +6,7 @@ ItemFlavor.build('rabbit-meat', {
   becomesCount: 2,
   storyWord: 'rabbit',
   xp: 2,
+  icon: '../../resources/icons/rabbit-meat.png',
 });
 
 ItemFlavor.build('squirrel-meat', {
@@ -15,6 +16,7 @@ ItemFlavor.build('squirrel-meat', {
   becomesCount: 1,
   storyWord: 'squirrel',
   xp: 1,
+  icon: '../../resources/icons/squirrel-meat.png',
 });
 
 ItemFlavor.build('rat-meat', {
@@ -24,6 +26,7 @@ ItemFlavor.build('rat-meat', {
   becomesCount: 1,
   storyWord: 'rat',
   xp: 1,
+  icon: '../../resources/icons/rat-meat.png',
 });
 
 ItemFlavor.build('other-meat', {
@@ -33,6 +36,7 @@ ItemFlavor.build('other-meat', {
   becomesCount: 1,
   storyWord: 'squirming thing',
   xp: 0,
+  icon: '../../resources/icons/other-meat.png',
 });
 
 ItemFlavor.build('rabbit-pelt', {
@@ -42,6 +46,7 @@ ItemFlavor.build('rabbit-pelt', {
   becomesCount: 1,
   storyWord: 'hare',
   xp: 3,
+  icon: '../../resources/icons/rabbit-pelt.png',
 });
 
 ItemFlavor.build('fox-pelt', {
@@ -52,13 +57,15 @@ ItemFlavor.build('fox-pelt', {
   storyWord: 'fox',
   storyWords: 'foxes',
   xp: 4,
+  icon: '../../resources/icons/fox-pelt.png',
 });
 
-ItemFlavor.build('racoon-pelt', {
-  name: 'Racoon Pelt',
+ItemFlavor.build('raccoon-pelt', {
+  name: 'Raccoon Pelt',
   type: 'small-game-pelt',
   becomes: 'hide',
   becomesCount: 1,
-  storyWord: 'racoon',
+  storyWord: 'raccoon',
   xp: 3,
+  icon: '../../resources/icons/raccoon-pelt.png',
 });
