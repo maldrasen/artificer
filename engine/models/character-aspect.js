@@ -19,10 +19,6 @@ global.CharacterAspect = Database.instance().define('character_aspect', {
   }]
 });
 
-// === Instance Functions ===
-// The Character Aspects should only be modified by the HasAspects concern because the aspect validations are
-// complicated and depend on things external to the class.
-
 CharacterAspect.prototype.adjustStrength = function(amount) {
   let value = this.strength + amount;
   if (value < 0)    { value = 0; }

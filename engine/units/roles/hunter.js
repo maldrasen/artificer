@@ -33,25 +33,65 @@ Role.Hunter = (function() {
     const items = ItemFlavor.itemize(flavors);
     const injury = await Role.Hunter.Injuries.resolve({ character:character, skill:skill, tier:tier, success:true });
     const story = await Role.Hunter.Stories.tell(true,flavors,injury,character);
-    // TODO: Add hunting experience to character.
+    const notifications = await addExperience(character, flavors);
 
-    return forReport({ flavors, items, story, injury });
+    return forReport({ flavors, items, story, injury, notifications });
   }
 
   async function huntingFailure(character,tier,skill) {
     const injury = await Role.Hunter.Injuries.resolve({ character:character, skill:skill, tier:tier, success:false });
     const story = await Role.Hunter.Stories.tell(false,{},injury,character);
-    // TODO: Add hunting experience to character.
+    const notifications = await addExperience(character, {});
 
-    return forReport({ story, injury })
+    return forReport({ story, injury, notifications })
+  }
+
+  // Every hunter gets a minimum of 5xp. They then get xp for each item that
+  // they return with. Each item flavor has it's own XP value.
+  async function addExperience(character, flavors) {
+    let experience = Object.keys(flavors).reduce((total, code) => {
+      return total + (flavors[code] * (ItemFlavor.lookup(code).xp || 0));
+    },0) + 5;
+
+    let aspect = await character.getCharacterAspect('hunting');
+    if (aspect != null) {
+      return addExperienceToAspect(aspect, experience);
+    }
+
+    character.addAspect('hunting', { strength:experience });
+
+    return { skill:'hunting', experience:experience };
+  }
+
+  function addExperienceToAspect(aspect, experience) {
+    let currentLevel = aspect.level;
+    let currentStrength = aspect.strength;
+
+    aspect.adjustStrength(experience);
+
+    // Rats and kobolds are capped at level 1 skill. Goblins and ogres are capped at level 2.
+    if (character.speciesCode == 'rat'    && aspect.strength > 200) { aspect.strength = 200; }
+    if (character.speciesCode == 'kobold' && aspect.strength > 200) { aspect.strength = 200; }
+    if (character.speciesCode == 'goblin' && aspect.strength > 600) { aspect.strength = 600; }
+    if (character.speciesCode == 'ogre'   && aspect.strength > 600) { aspect.strength = 600; }
+
+    // If the character's skill aspect didn't change there's no need to say
+    // they've earned any experience.
+    if (currentStrength == aspect.strength) { return null; }
+
+    aspect.save();
+    return (currentLevel == aspect.level) ?
+      { skill:'hunting', experience:experience }:
+      { skill:'hunting', experience:experience, gainedLevel:aspect.level };
   }
 
   function forReport(raw) {
     let result = { story:raw.story }
 
-    if (raw.items)   { result.items = raw.items; }
-    if (raw.flavors) { result.flavors = raw.flavors; }
-    if (raw.injury)  { result.injury = { story:raw.injury.story, properties:raw.injury.injury.properties }}
+    if (raw.items)         { result.items = raw.items; }
+    if (raw.flavors)       { result.flavors = raw.flavors; }
+    if (raw.notifications) { result.notifications = raw.notifications; }
+    if (raw.injury)        { result.injury = { story:raw.injury.story, properties:raw.injury.injury.properties }}
 
     return result;
   }
