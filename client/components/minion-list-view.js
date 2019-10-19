@@ -24,9 +24,13 @@ Components.MinionListView = (function() {
     frame.find('.top-row .name').append(minion.name);
     frame.find('.top-row .gender').append(minion.gender);
     frame.find('.top-row .species').append(minion.species);
-    frame.find('.top-row .health-value').append(`[${minion.health}]`);
+    frame.find('.top-row .health-value').append(minion.health);
     frame.find('.top-row .health-word').append(minion.healthWord);
     frame.find('.top-row .health-section').addClass(`fg-health-${minion.healthClass}`);
+    frame.find('.attributes dd.physical').append(minion.physical);
+    frame.find('.attributes dd.personal').append(minion.personal);
+    frame.find('.attributes dd.mental').append(minion.mental);
+    frame.find('.attributes dd.magical').append(minion.magical);
 
     return frame;
   }
@@ -34,10 +38,3 @@ Components.MinionListView = (function() {
   return { init, build, buildMinionFrame };
 
 })();
-
-
-
-// physical: minion.physical,
-// mental: minion.mental,
-// personal: minion.personal,
-// magical: minion.magical,

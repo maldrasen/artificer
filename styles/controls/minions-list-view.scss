@@ -9,8 +9,14 @@
   background-position: center;
   background-size: cover;
 
-  .minion-list { margin-top: 30px; }
-  .minion-frame { margin: 20px 20px 40px; }
+  .minion-list {
+    margin-top: 30px;
+    text-align: center;
+  }
+  .minion-frame {
+    width: 600px;
+    margin: 40px auto;
+  }
 
   .back-bar {
     position: fixed;
@@ -41,6 +47,8 @@
   padding-right: 100px;
   cursor: pointer;
   box-sizing: border-box;
+  transition-duration: 250ms;
+  transition-timing-function: ease-out;
 
   .portrait-frame {
     position: absolute;
@@ -67,10 +75,32 @@
     }
 
     .name { margin-right: 5px; }
-    .name-section { min-width: 300px; }
+    .name-section { min-width: 327px; }
     .health-section .attr { color: inherit; }
-    .health-value { opacity: 0.5; }
+    .health-word { opacity: 0.75; }
+    .health-value { font-family: roboto-bold; }
   }
 
-  &:hover { border: $border-normal; }
+  .lower-row { text-align: left; }
+
+  .attributes {
+    dt {
+      display: inline-block;
+      float: none;
+      width: auto;
+      margin-right: 5px;
+      opacity: 0.75;
+    }
+    dd {
+      display: inline-block;
+      width: 50px;
+      font-family: roboto-bold;
+    }
+    .physical { color:$fg-physical; }
+    .personal { color:$fg-personal; }
+    .mental { color:$fg-mental; }
+    .magical { color:$fg-magical; }
+  }
+
+  &:hover { transform: scale(1.1); }
 }
