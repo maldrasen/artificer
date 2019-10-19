@@ -27,16 +27,14 @@ Components.ReportView = (function() {
     }
 
     console.log("=== Build Minion Frame ===")
-    // console.log(story);
-    // console.log(injury);
-    // console.log(flavors);
-    // console.log(notifications);
+    console.log(notifications);
 
     let minionFrame = $('<li>',{class: 'minion-frame' }).
       append(topRow).
       append(storyRow);
 
     if (flavors) { minionFrame.append(buildSpoilsRow(flavors)); }
+    if (notifications) { minionFrame.append(buildNotificationsRow(notifications)); }
 
     $('#reportView').find('.minion-list').append(minionFrame);
   }
@@ -56,6 +54,39 @@ Components.ReportView = (function() {
     });
 
     return row;
+  }
+
+  function buildNotificationsRow(notifications) {
+    let frame = $('<div>',{ class:'notifications-frame' });
+    let row = $('<div>',{ class:'notifications-row' }).append(frame);
+
+    each(notifications, notification => {
+      if (notification.skill)       { frame.append(buildExperienceNotification(notification)); }
+      if (notification.gainedLevel) { frame.append(buildLevelNotification(notification)); }
+    });
+
+    return row;
+  }
+
+  function buildExperienceNotification(notification) {
+    return $(`
+      <div class='notification experience'>
+        <span class='head ${notification.skill}'>${notification.skill}</span>
+        <span class='tail ${notification.skill}'>
+          <span class='value'>${notification.experience}</span>
+          <span class='unit'>xp</span>
+        </span>
+      </div>
+    `.replace(/\>\s+\</g,'').trim());
+  }
+
+  function buildLevelNotification(notification) {
+    return $(`
+      <div class='notification level'>
+        <span class='head ${notification.skill}'>${notification.skill}</span>
+        <span class='tail ${notification.skill}'>Now Level ${notification.gainedLevel}</span>
+      </div>
+    `.replace(/\>\s+\</g,'').trim());
   }
 
   return {

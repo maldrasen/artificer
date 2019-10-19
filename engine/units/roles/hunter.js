@@ -33,7 +33,7 @@ Role.Hunter = (function() {
     const items = ItemFlavor.itemize(flavors);
     const injury = await Role.Hunter.Injuries.resolve({ character:character, skill:skill, tier:tier, success:true });
     const story = await Role.Hunter.Stories.tell(true,flavors,injury,character);
-    const notifications = await addExperience(character, flavors);
+    const notifications = [await addExperience(character, flavors)];
 
     return forReport({ flavors, items, story, injury, notifications });
   }

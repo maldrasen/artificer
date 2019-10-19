@@ -9,7 +9,6 @@ require(`${ROOT}/client/boot-interface.js`);
 $(document).ready(function() {
 
   // === Init Elements ===
-  Elements.init();
   Elements.Chooser.init();
   Elements.Confirm.init();
   Elements.PagedContent.init();
