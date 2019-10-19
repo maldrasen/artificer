@@ -107,6 +107,8 @@ global.Renderer = (function() {
     ipcRenderer.send(command,options);
   }
 
+  function sendCancel() { sendCommand('game.cancel'); }
+
   // === Rendering ===
 
   // Render file simply loads the content of an HTML file into the #mainContent
@@ -154,6 +156,7 @@ global.Renderer = (function() {
   return {
     init,
     sendCommand,
+    sendCancel,
     ready,
 
     showCreatePlan,

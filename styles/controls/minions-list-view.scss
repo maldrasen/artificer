@@ -1,6 +1,6 @@
 #minionListView {
   position: absolute;
-  top: 0;
+  top: 31px;
   bottom: 0;
   left: 0;
   right: 0;
@@ -11,6 +11,24 @@
 
   .minion-frame {
     margin: 20px 30px 30px 20px;
+  }
+
+  .back-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background-color: $bg-body-even-darker;
+    box-shadow: $shadow-frame;
+    border-bottom: $border-normal;
+    z-index: 100;
+    .back-button {
+      position: relative;
+      top: 5px;
+      left: 5px;
+      padding: 0 20px;
+    }
   }
 }
 
@@ -31,6 +49,10 @@
     width: 150px;
     box-shadow: $shadow-portrait;
     img { height:150px; width:150px; }
+  }
+  .top-row {
+    display: flex;
+    border-bottom: $border-light;
   }
 
 }

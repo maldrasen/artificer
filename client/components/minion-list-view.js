@@ -1,6 +1,12 @@
 Components.MinionListView = (function() {
 
-  function init() {}
+  function init() {
+    $(document).on('click','#minionListView .back-button', Elements.buttonAction(Renderer.sendCancel));
+
+    $(document).on('keydown', (e)=> {
+      if (e.code == "Escape" && $('#minionListView').length > 0) { Renderer.sendCancel(); }
+    });
+  }
 
   function build(event, minions) {
     $('#mainContent').empty().append($('<div>',{ id:"minionListView" }).append($('#minionListTemplate').html()));
@@ -13,7 +19,9 @@ Components.MinionListView = (function() {
 
   function buildMinionFrame(minion) {
     let frame = $($('#minionFrameTemplate').html());
-        frame.find('.portrait-frame').append($('<img>',{ src:minion.portrait }));
+    frame.data('id',minion.id);
+    frame.find('.portrait-frame').append($('<img>',{ src:minion.portrait }));
+    frame.find('h2.name').append(minion.name);
 
     return frame;
   }
