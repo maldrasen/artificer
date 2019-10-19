@@ -24,9 +24,19 @@ Components.MinionDetailView = (function() {
     view.find('.attributes dd.mental').append(minion.mental);
     view.find('.attributes dd.magical').append(minion.magical);
 
+    addAspects(minion.skillAspects,       view.find('.skill-aspects'));
+    addAspects(minion.personalityAspects, view.find('.personality-aspects'));
+    addAspects(minion.sexualAspects,      view.find('.sexual-aspects'));
+
     Elements.ScrollingPanel.build($('#overlayContent .scrolling-panel'));
   }
 
+  function addAspects(aspects, element) {
+    each(aspects, aspect => { element.
+      append($('<dt>').append(aspect.name)).
+      append($('<dd>').append(`<span class='level'>Level ${aspect.level}</span><span class='strength'>${aspect.strength} xp</span>`));
+    });
+  }
 
   return { init, open, build };
 

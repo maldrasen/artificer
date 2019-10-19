@@ -44,6 +44,7 @@
 
   .top-row {
     border-bottom: $border-normal;
+    min-width: 500px;
     .attr {
       font-size: $fs-small;
       margin-right: 5px;
@@ -69,11 +70,28 @@
 
   .list-row {
     display: flex;
+    flex-wrap: wrap;
   }
 
   .attributes {
     width: 120px;
     margin: 10px;
-    dt { width: 6em; }
+    dt { width: 5em; }
+  }
+  .aspect-list {
+    margin: 10px;
+    width: 180px;
+    dt {
+      opacity: 0.75;
+      width: 5em;
+    }
+    .level {
+      margin-right: 5px;
+      font-family: roboto-bold;
+    }
+    .strength {
+      font-size: $fs-tiny;
+      color: $fg-weak;
+    }
   }
 }
