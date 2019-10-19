@@ -44,35 +44,44 @@ Character.allForClient = async function() {
   const minions = await Character.findAll({ where:{ type:'minion' } });
 
   return await Promise.all(minions.map(async minion => {
-    const health = await minion.getHealth();
-    const healthClass = await minion.getHealthClass();
-    const healthWord = await minion.getHealthWord();
-
-    // TODO: This is just here temporarily, until the portrait is actually
-    //       saved on the minion itself.
-    const portrait = await CharacterPortraits.lookup(minion);
-
-    return {
-      id: minion.id,
-      name: minion.name,
-      gender: minion.gender.Male,
-      species: minion.species.name,
-      portrait: portrait,
-      health: health,
-      healthClass: healthClass,
-      healthWord: healthWord,
-      physical: minion.physical,
-      mental: minion.mental,
-      personal: minion.personal,
-      magical: minion.magical,
-      currentTask: minion.currentTask,
-      role: minion.roleCode,
-      availableRoles: [
-        { code:'rest',   name:'Rest'   },
-        { code:'hunter', name:'Hunter' },
-      ]
-    };
+    return await minion.properties();
   }));
+}
+
+Character.prototype.properties = async function() {
+  const health = await this.getHealth();
+  const healthClass = await this.getHealthClass();
+  const healthWord = await this.getHealthWord();
+
+  // TODO: This is just here temporarily, until the portrait is actually
+  //       saved on the minion itself.
+  const portrait = await CharacterPortraits.lookup(this);
+
+  return {
+    id: this.id,
+    name: this.name,
+    gender: this.gender.Male,
+    species: this.species.name,
+    portrait: portrait,
+    health: health,
+    healthClass: healthClass,
+    healthWord: healthWord,
+    physical: this.physical,
+    mental: this.mental,
+    personal: this.personal,
+    magical: this.magical,
+    currentTask: this.currentTask,
+    role: this.roleCode,
+    availableRoles: [
+      { code:'rest',   name:'Rest'   },
+      { code:'hunter', name:'Hunter' },
+    ]
+  };
+}
+
+Character.prototype.detailForClient = async function() {
+  let properties = await this.properties();
+  return properties;
 }
 
 HasAspects.isAppliedTo(Character);

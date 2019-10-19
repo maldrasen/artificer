@@ -3,8 +3,13 @@ Components.MinionListView = (function() {
   function init() {
     $(document).on('click','#minionListView .back-button', Elements.buttonAction(Renderer.sendCancel));
 
+    $(document).on('click','#minionListView .minion-frame', function() {
+      Renderer.lock();
+      Renderer.sendCommand('location.showMinion',$(this).data('id'))
+    });
+
     $(document).on('keydown', (e)=> {
-      if (e.code == "Escape" && $('#minionListView').length > 0) { Renderer.sendCancel(); }
+      if (e.code == "Escape" && $('#minionListView').length > 0 && $('#overlayContent .minion-detail-view').length == 0) { Renderer.sendCancel(); }
     });
   }
 

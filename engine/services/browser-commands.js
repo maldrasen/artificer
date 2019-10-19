@@ -107,7 +107,13 @@ global.BrowserCommands = (function() {
 
     ipcMain.on('location.showMinions', async () => {
       const minions = await Character.allForClient();
-      Browser.send('render.minions',minions);
+      Browser.send('render.minions', minions);
+    });
+
+    ipcMain.on('location.showMinion', async (event, id) => {
+      const minion = await Character.findByPk(id);
+      const details = await minion.detailForClient();
+      Browser.send('render.minion', details);
     });
 
     ipcMain.on('location.showInventory', async () => {

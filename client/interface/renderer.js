@@ -3,11 +3,12 @@ global.Renderer = (function() {
 
   const VIEWS = {
     mainMenu:   { template:'#mainMenuTemplate' },
-    createPlan: { template:'#planTemplate',      title:"Create Today's Plan" },
-    inventory:  { template:'#inventoryTemplate', title:"Inventory", build:Components.InventoryView.build   },
-    map:        { template:'#mapTemplate',       title:"Keep Map",  build:Components.LocationView.buildMap },
-    loadGame:   { template:'#loadGameTemplate',  title:'Load Game', build:Components.SavedGames.buildLoad  },
-    saveGame:   { template:'#saveGameTemplate',  title:'Save Game', build:Components.SavedGames.buildSave  },
+    createPlan: { template:'#planTemplate',         title:"Create Today's Plan" },
+    inventory:  { template:'#inventoryTemplate',    title:"Inventory",     build:Components.InventoryView.build    },
+    map:        { template:'#mapTemplate',          title:"Keep Map",      build:Components.LocationView.buildMap  },
+    minion:     { template:'#minionDetailTemplate', title:"Minion Detail", build:Components.MinionDetailView.build },
+    loadGame:   { template:'#loadGameTemplate',     title:'Load Game',     build:Components.SavedGames.buildLoad   },
+    saveGame:   { template:'#saveGameTemplate',     title:'Save Game',     build:Components.SavedGames.buildSave   },
   };
 
   const TEMPLATES = [
@@ -25,7 +26,6 @@ global.Renderer = (function() {
     'report',
     'save-game',
   ];
-
 
   function init() {
     $(document).on('click', '.send-command', Elements.buttonAction(sendCommandButton));
@@ -64,6 +64,7 @@ global.Renderer = (function() {
   function showMainMenu()   { showView(VIEWS.mainMenu);      }
   function showCreatePlan() { showOverlay(VIEWS.createPlan); }
   function showInventory()  { showOverlay(VIEWS.inventory);  }
+  function showMinion()     { showOverlay(VIEWS.minion);     }
   function showLoadGame()   { showOverlay(VIEWS.loadGame);   }
   function showSaveGame()   { showOverlay(VIEWS.saveGame);   }
   function showMap()        { showOverlay(VIEWS.map);        }
@@ -162,6 +163,7 @@ global.Renderer = (function() {
     showCreatePlan,
     showInventory,
     showMainMenu,
+    showMinion,
     showLoadGame,
     showSaveGame,
     showMap,

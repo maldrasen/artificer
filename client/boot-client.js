@@ -20,7 +20,7 @@ $(document).ready(function() {
   Components.InventoryView.init();
   Components.LocationView.init();
   Components.MinionListView.init();
-  Components.MinionView.init();
+  Components.MinionDetailView.init();
   Components.PlanView.init();
   Components.ReportView.init();
   Components.SavedGames.init();
