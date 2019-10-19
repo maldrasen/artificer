@@ -1,4 +1,5 @@
 #reportView {
+  h2 { font-size: $fs-bigger; }
 
   .report-frame {
     position: absolute;
@@ -23,6 +24,11 @@
     background-color: $bg-body-even-darker;
   }
 
+  .projects {
+    margin: 30px;
+    margin-bottom: 50px;
+  }
+
   .minion-frame {
     position: relative;
     border: $border-light;
@@ -40,7 +46,7 @@
     top: -10px;
     height: 150px;
     width: 150px;
-    box-shadow: $shadow-frame;
+    box-shadow: $shadow-portrait;
     img { height:150px; width:150px; }
   }
 
@@ -52,6 +58,7 @@
   .spoils-frame {
     display: inline-flex;
     margin: 10px;
+    margin-top: 0;
     padding: 5px;
     border-bottom: $border-very-light;
     border-right: $border-very-light;
@@ -94,4 +101,33 @@
     }
   }
 
+  .story-row { margin-bottom: 20px; }
+  .notifications-frame { margin: 10px; }
+}
+
+.notification {
+  display: inline-block;
+  height: 20px;
+  line-height: 20px;
+  margin-right: 10px;
+  font-size: $fs-small;
+  color: $fg-strong;
+  border-radius: 10px;
+  box-shadow: $shadow-shallow;
+  .head {
+    padding-left: 10px;
+    padding-right: 5px;
+    display: inline-block;
+    border-radius: 10px 0 0 10px;
+  }
+  .tail {
+    padding-left: 5px;
+    padding-right: 10px;
+    display: inline-block;
+    background-color: rgb(0,0,0);
+    border-radius: 0 10px 10px 0;
+  }
+}
+.notification {
+  .head.hunting { background-color:$bg-hunting }
 }

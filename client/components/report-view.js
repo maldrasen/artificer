@@ -65,22 +65,22 @@ Components.ReportView = (function() {
   function buildExperienceNotification(notification) {
     return $(`
       <div class='notification experience'>
-        <span class='head ${notification.skill}'>${notification.skill}</span>
-        <span class='tail ${notification.skill}'>
+        <span class='head ${notification.skill.toLowerCase()}'>${notification.skill}</span><span
+              class='tail ${notification.skill.toLowerCase()}'>
           <span class='value'>${notification.experience}</span>
           <span class='unit'>xp</span>
         </span>
       </div>
-    `.replace(/\>\s+\</g,'').trim());
+    `);
   }
 
   function buildLevelNotification(notification) {
     return $(`
       <div class='notification level'>
-        <span class='head ${notification.skill}'>${notification.skill}</span>
-        <span class='tail ${notification.skill}'>Now Level ${notification.gainedLevel}</span>
+        <span class='head ${notification.skill.toLowerCase()}'>${notification.skill}</span><span
+              class='tail ${notification.skill.toLowerCase()}'>Now Level ${notification.gainedLevel}</span>
       </div>
-    `.replace(/\>\s+\</g,'').trim());
+    `);
   }
 
   return {

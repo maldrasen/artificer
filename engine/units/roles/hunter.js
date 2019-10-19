@@ -41,7 +41,7 @@ Role.Hunter = (function() {
   async function huntingFailure(character,tier,skill) {
     const injury = await Role.Hunter.Injuries.resolve({ character:character, skill:skill, tier:tier, success:false });
     const story = await Role.Hunter.Stories.tell(false,{},injury,character);
-    const notifications = await addExperience(character, {});
+    const notifications = [await addExperience(character, {})];
 
     return forReport({ story, injury, notifications })
   }
@@ -60,7 +60,7 @@ Role.Hunter = (function() {
 
     character.addAspect('hunting', { strength:experience });
 
-    return { skill:'hunting', experience:experience };
+    return { skill:'Hunting', experience:experience };
   }
 
   function addExperienceToAspect(character, aspect, experience) {
@@ -81,8 +81,8 @@ Role.Hunter = (function() {
 
     aspect.save();
     return (currentLevel == aspect.level) ?
-      { skill:'hunting', experience:experience }:
-      { skill:'hunting', experience:experience, gainedLevel:aspect.level };
+      { skill:'Hunting', experience:experience }:
+      { skill:'Hunting', experience:experience, gainedLevel:aspect.level };
   }
 
   function forReport(raw) {

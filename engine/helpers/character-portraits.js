@@ -2,14 +2,12 @@ global.CharacterPortraits = (function() {
 
   // This should eventually return a real character portrait. Just fake this
   // out for now though...
+  // TODO: For when a portrait cannot be found...
+  // return (character.genderCode == 'male') ?
+  //   '../../assets/images/portraits/missing-m.png':
+  //   '../../assets/images/portraits/missing-f.png';
   async function lookup(character) {
     let id;
-
-    if (Random.upTo(10) == 0) {
-      return (character.genderCode == 'male') ?
-        '../../assets/images/portraits/missing-m.png':
-        '../../assets/images/portraits/missing-f.png';
-    }
 
     if (character.genderCode == 'male') {
       id = Random.upTo(10)+1;
