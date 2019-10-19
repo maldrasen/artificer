@@ -23,6 +23,7 @@ Components.MinionDetailView = (function() {
     view.find('.attributes dd.personal').append(minion.personal);
     view.find('.attributes dd.mental').append(minion.mental);
     view.find('.attributes dd.magical').append(minion.magical);
+    view.find('.description-row').append(minion.description);
 
     addAspects(minion.skillAspects,       view.find('.skill-aspects'));
     addAspects(minion.personalityAspects, view.find('.personality-aspects'));

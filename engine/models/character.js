@@ -86,6 +86,7 @@ Character.prototype.detailForClient = async function() {
   properties.skillAspects = [];
   properties.personalityAspects = [];
   properties.sexualAspects = [];
+  properties.description = await CharacterDescriber.fullDescription(this);
 
   each(aspects, characterAspect => {
     let aspect = Aspect.lookup(characterAspect.code);

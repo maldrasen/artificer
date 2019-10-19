@@ -11,6 +11,9 @@ require(`${ROOT}/engine/concerns/has-event-queues`);
 require(`${ROOT}/engine/concerns/has-body`);
 require(`${ROOT}/engine/concerns/has-injuries`);
 
+// === Describers ===
+require(`${ROOT}/engine/describers/character-describer`);
+
 // === Devices ===
 require(`${ROOT}/engine/devices/composer`);
 require(`${ROOT}/engine/devices/resolver`);
