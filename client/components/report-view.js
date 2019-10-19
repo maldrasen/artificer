@@ -34,12 +34,12 @@ Components.ReportView = (function() {
   }
 
   function buildSpoilsRow(flavors) {
-    let frame = $('<div>',{ class:'spoils-frame' });
+    let frame = $('<div>',{ class:'spoils-frame icon-pit' });
     let row = $('<div>',{ class:'spoils-row' }).append(frame);
 
     each(flavors, flavor => {
       frame.append($(`
-        <div class='flavor-icon large-icon'>
+        <div class='item-icon large-icon'>
           <span class='count'>${flavor.count}</span>
           <span class='name'>${flavor.name}</span>
           <img src='${flavor.icon}' height=40 width=40/>
@@ -64,7 +64,7 @@ Components.ReportView = (function() {
 
   function buildExperienceNotification(notification) {
     return $(`
-      <div class='notification experience'>
+      <div class='split-badge experience'>
         <span class='head ${notification.skill.toLowerCase()}'>${notification.skill}</span><span
               class='tail ${notification.skill.toLowerCase()}'>
           <span class='value'>${notification.experience}</span>
@@ -76,7 +76,7 @@ Components.ReportView = (function() {
 
   function buildLevelNotification(notification) {
     return $(`
-      <div class='notification level'>
+      <div class='split-badge level'>
         <span class='head ${notification.skill.toLowerCase()}'>${notification.skill}</span><span
               class='tail ${notification.skill.toLowerCase()}'>Now Level ${notification.gainedLevel}</span>
       </div>
