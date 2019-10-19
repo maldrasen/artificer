@@ -7,7 +7,6 @@
     right: 50px;
     bottom: 108px;
     background-color: $bg-body-darker;
-    opacity: 0.90;
     border: $border-light;
     box-shadow: $shadow-overlay;
   }
@@ -21,8 +20,78 @@
     text-align: right;
     border: $border-light;
     box-shadow: $shadow-overlay;
-
     background-color: $bg-body-even-darker;
+  }
+
+  .minion-frame {
+    position: relative;
+    border: $border-light;
+    box-shadow: $shadow-frame;
+    margin: 20px;
+    margin-bottom: 30px;
+    padding: 10px;
+    padding-right: 160px;
+    min-height: 130px;
+    background-color: rgba(0,0,0,0.25);
+  }
+  .portrait-frame {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    height: 150px;
+    width: 150px;
+    box-shadow: $shadow-frame;
+    img { height:150px; width:150px; }
+  }
+
+  .minion-name {
+    color: $fg-strong;
+    font-size: $fs-big;
+  }
+
+  .spoils-frame {
+    display: inline-flex;
+    margin: 10px;
+    padding: 5px;
+    border-bottom: $border-very-light;
+    border-right: $border-very-light;
+    box-shadow: $shadow-inset;
+    background-color: rgba(0,0,0,0.25);
+    border-radius: 10px;
+
+    .flavor-icon {
+      position: relative;
+      margin: 5px;
+      height: 40px;
+      width: 40px;
+      border: $border-very-light;
+      border-radius: 5px;
+      box-shadow: $shadow-shallow;
+
+      .name {
+        display: none;
+      }
+      .count {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 16px;
+        width: 16px;
+        line-height: 16px;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 5px 0 5px 0;
+        color: $fg-strong;
+        font-size: $fs-tiny;
+        text-shadow: 1px 1px 1px rgb(0,0,0);
+      }
+
+      img {
+        height: 40px;
+        width: 40px;
+        border-radius: 5px;
+      }
+    }
   }
 
 }
