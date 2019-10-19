@@ -55,7 +55,7 @@ Components.PlanView = (function() {
 
   function buildMinionFrame(planData) {
     each(planData.minions, minion => {
-      $('#planView .minion-frame').append(buildMinion(minion));
+      $('#planView .plan-minion-list').append(buildMinion(minion));
     });
   }
 
@@ -252,7 +252,7 @@ Components.PlanView = (function() {
     }
 
     each(minions, id => {
-      $(`.minion-frame .minion-${id}`).removeClass('free').addClass('project');
+      $(`.plan-minion-list .minion-${id}`).removeClass('free').addClass('project');
     })
 
     cancelMinionSelect();
@@ -272,7 +272,7 @@ Components.PlanView = (function() {
       `Are you sure this is what you want to work on today?`;
 
     let roles = [];
-    $.each($('.minion-frame .minion.free'), (i, element) => {
+    $.each($('.plan-minion-list .minion.free'), (i, element) => {
       roles.push({
         id:   $(element).data('id'),
         role: $(element).find('.role-select').val()
