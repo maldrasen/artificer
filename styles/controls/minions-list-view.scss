@@ -1,0 +1,36 @@
+#minionListView {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  background-image: url('../../resources/backgrounds/bg-great-hall-ruined.png');
+  background-position: center;
+  background-size: cover;
+
+  .minion-frame {
+    margin: 20px 30px 30px 20px;
+  }
+}
+
+.minion-frame {
+  position: relative;
+  height: 150px;
+  border: $border-light;
+  box-shadow: $shadow-overlay;
+  background-color: $bg-body-even-darker;
+  padding: 10px;
+  padding-right: 150px;
+
+  .portrait-frame {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    height: 150px;
+    width: 150px;
+    box-shadow: $shadow-portrait;
+    img { height:150px; width:150px; }
+  }
+
+}

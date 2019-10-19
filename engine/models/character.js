@@ -47,11 +47,16 @@ Character.allForClient = async function() {
     const health = await minion.getHealth();
     const healthWord = await minion.getHealthWord();
 
+    // TODO: This is just here temporarily, until the portrait is actually
+    //       saved on the minion itself.
+    const portrait = await CharacterPortraits.lookup(minion);
+
     return {
       id: minion.id,
       name: minion.name,
       gender: minion.gender.Male,
       species: minion.species.name,
+      portrait: portrait,
       health: health,
       healthWord: healthWord,
       physical: minion.physical,
