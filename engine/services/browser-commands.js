@@ -111,9 +111,10 @@ global.BrowserCommands = (function() {
     });
 
     ipcMain.on('location.showInventory', async () => {
+      const game = await Game.instance();
       const resources = await Resource.allForClient();
       const possessions = [];
-      Browser.send('render.inventory',{ resources, possessions });
+      Browser.send('render.inventory',{ resources, possessions, food:game.food });
     });
   }
 

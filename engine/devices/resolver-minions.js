@@ -1,6 +1,17 @@
 Resolver.Minions = (function() {
 
-  async function applyHealing() {
+  async function dailyUpdate() {
+    const minions = await Character.findAll({ where:{ type:'minion' } });
+
+    await eatFood(minions);
+    await applyHealing(minions);
+  }
+
+  async function eatFood(minions) {
+    // TODO: Minions Eat Food.
+  }
+
+  async function applyHealing(minions) {
     // TODO: Heal minoins.
   }
 
@@ -21,6 +32,6 @@ Resolver.Minions = (function() {
     Resolver.currentReport().minions[id].portrait = await CharacterPortraits.lookup(character);
   }
 
-  return { applyHealing, complete };
+  return { dailyUpdate, complete };
 
 })();
