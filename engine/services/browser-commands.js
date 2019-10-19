@@ -105,14 +105,16 @@ global.BrowserCommands = (function() {
       });
     });
 
-    ipcMain.on('location.showMinions', () => {
-      Browser.send('render.minions',['MINION']);
+    ipcMain.on('location.showMinions', async () => {
+      const minions = await Character.allForClient();
+      Browser.send('render.minions',minions);
     });
 
-    ipcMain.on('location.showInventory', () => {
-      Browser.send('render.inventory',['ITEM']);
+    ipcMain.on('location.showInventory', async () => {
+      const resources = await Resource.allForClient();
+      const possessions = [];
+      Browser.send('render.inventory',{ resources, possessions });
     });
-
   }
 
   return { init:init }

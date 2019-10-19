@@ -35,14 +35,12 @@ global.Character = Database.instance().define('character', {
 });
 
 // This function will need to select all the minions and format them as POJOs
-// for the plan view. We're going to display all the minions here on the view
-// so you know what their status is, but if a minion is already assigned to a
-// project or on a mission we need to mark them as unavailable.
+// for any client view that shows all the minions.
 //
-// We'll eventually need to do something to calculate the availableRoles. Not
-// every minion will be able to work every role, but that's not the case right
-// now.
-Character.allForPlan = async function() {
+// TODO: Plan View Specific. We'll eventually need to do something to calculate
+//       the availableRoles. Not every minion will be able to work every role,
+//       but that's not the case right now.
+Character.allForClient = async function() {
   const minions = await Character.findAll({ where:{ type:'minion' } });
 
   return await Promise.all(minions.map(async minion => {
