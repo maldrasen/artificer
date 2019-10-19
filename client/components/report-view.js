@@ -14,27 +14,21 @@ Components.ReportView = (function() {
   }
 
   function addMinionFrame(minion) {
-    const story = minion.work.story;
-    const injury = minion.work.injury;
-    const flavors = minion.work.flavors;
-    const notifications = minion.work.notifications;
-
+    let portrait = $(`<div class='portrait-frame'><img src='${minion.portrait}'/></div>`)
     let topRow = $(`<div class='top-row'><div class='minion-name'>${minion.name}</div></div>`);
-    let storyRow = $(`<div class='story-row'><span class='story'>${story}</span></div>`);
+    let storyRow = $(`<div class='story-row'><span class='story'>${minion.work.story}</span></div>`);
 
-    if (injury) {
-      storyRow.append($('<span>',{ class:'injury-story' }).append(` ${injury}`));
+    if (minion.work.injury) {
+      storyRow.append($('<span>',{ class:'injury-story' }).append(` ${minion.work.injury}`));
     }
 
-    console.log("=== Build Minion Frame ===")
-    console.log(notifications);
-
     let minionFrame = $('<li>',{class: 'minion-frame' }).
+      append(portrait).
       append(topRow).
       append(storyRow);
 
-    if (flavors) { minionFrame.append(buildSpoilsRow(flavors)); }
-    if (notifications) { minionFrame.append(buildNotificationsRow(notifications)); }
+    if (minion.work.flavors) { minionFrame.append(buildSpoilsRow(minion.work.flavors)); }
+    if (minion.work.notifications) { minionFrame.append(buildNotificationsRow(minion.work.notifications)); }
 
     $('#reportView').find('.minion-list').append(minionFrame);
   }

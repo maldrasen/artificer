@@ -9,7 +9,10 @@ saves/
 
 assets/compiled/
 coverage/
-graphics/might-use/
+graphics/orig/
 node_modules/
+
 resources/
+data/image-resources/
+
 npm-debug.log

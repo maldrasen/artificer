@@ -13,6 +13,7 @@ global.Resolver = (function() {
     Resolver._itemsToAdd = {};
 
     await Resolver.Game.becomeAfternoon();
+    await Resolver.Minions.applyHealing();
     await Resolver.Roles.assignRoles(plan.assignedRoles);
     await Resolver.Projects.startProjects(plan.projectWork);
     await Resolver.Missions.startMissions(plan.missionOrders);
@@ -21,6 +22,7 @@ global.Resolver = (function() {
     await Resolver.Projects.workProjects();
     await Resolver.Missions.workMissions();
     await Resolver.Items.commit();
+    await Resolver.Minions.complete();
     await Composer.render();
   }
 
