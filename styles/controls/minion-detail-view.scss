@@ -1,0 +1,79 @@
+
+.minion-detail-view {
+  .portrait-frame {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    height: 300px;
+    width: 300px;
+    box-sizing: border-box;
+    box-shadow: $shadow-portrait;
+    img { height:300px; width:300px; }
+  }
+  .actions-frame {
+    position: absolute;
+    right: 20px;
+    top: 340px;
+    bottom: 20px;
+    width: 300px;
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: $shadow-frame;
+    border: $border-normal;
+    background-color: rgba(0,0,0,0.666);
+  }
+  .info-frame {
+    position: absolute;
+    top: 20px;
+    bottom: 20px;
+    right: 340px;
+    left: 20px;
+    box-sizing: border-box;
+    box-shadow: $shadow-frame;
+    border: $border-normal;
+    background-color: rgba(0,0,0,0.5);
+  }
+  .info-content {
+    padding: 5px 10px;
+  }
+
+  h2 {
+    font-size: $fs-bigger;
+    margin-right: 8px;
+  }
+
+  .top-row {
+    border-bottom: $border-normal;
+    .attr {
+      font-size: $fs-small;
+      margin-right: 5px;
+      color: $fg-weak;
+    }
+    .section {
+      display: flex;
+      align-items: flex-end;
+    }
+  }
+
+  .health-section {
+    float: right;
+    position: relative;
+    top: 10px;
+    .attr { color: inherit; }
+    .health-word { opacity: 0.75; }
+    .health-value {
+      margin: 0;
+      font-family: roboto-bold;
+    }
+  }
+
+  .list-row {
+    display: flex;
+  }
+
+  .attributes {
+    width: 120px;
+    margin: 10px;
+    dt { width: 6em; }
+  }
+}

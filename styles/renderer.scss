@@ -57,7 +57,6 @@
     box-shadow: $shadow-frame;
     border: $border-light;
     border-top: none;
-    overflow: auto;
     z-index: calc(#{$z-overlay} + 2);
   }
 

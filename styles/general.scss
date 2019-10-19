@@ -118,3 +118,26 @@
 //   border-radius: 4px;
 //   box-shadow: $shadow-shallow;
 // }
+
+.attributes {
+  .physical { color:$fg-physical; }
+  .personal { color:$fg-personal; }
+  .mental { color:$fg-mental; }
+  .magical { color:$fg-magical; }
+
+  dt { opacity: 0.75; }
+  dd { font-family: roboto-bold; }
+}
+
+.attributes.attributes-inline {
+  dt {
+    display: inline-block;
+    float: none;
+    width: auto;
+    margin-right: 5px;
+  }
+  dd {
+    display: inline-block;
+    width: 50px;
+  }
+}
