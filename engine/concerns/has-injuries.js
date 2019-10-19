@@ -69,15 +69,26 @@ global.HasInjuries = { isAppliedTo: function(model) {
   //   51-75  Badly injured
   //   76-99  Injured
   //   100    Healthy
-  model.prototype.getHealthWord = async function() {
+  model.prototype.getHealthClass = async function() {
     const health = await this.getHealth();
-    if (health == 0) { return "Mostly Dead"; }
-    if (health > 0  && health <= 25) { return "Critically Injured"; }
-    if (health > 25 && health <= 50) { return "Horribly Injured"; }
-    if (health > 50 && health <= 75) { return "Badly Injured"; }
-    if (health > 75 && health < 100) { return "Injured"; }
-    if (health == 100) { return 'Healthy'; }
-    return "Not Healthy?"
+    if (health == 0) { return "dead"; }
+    if (health > 0  && health <= 25) { return "critical"; }
+    if (health > 25 && health <= 50) { return "horrible"; }
+    if (health > 50 && health <= 75) { return "bad"; }
+    if (health > 75 && health < 100) { return "injured"; }
+    if (health == 100) { return 'healthy'; }
+  }
+
+  model.prototype.getHealthWord = async function() {
+    let classname = await this.getHealthClass();
+    return {
+      healthy: 'Healthy',
+      injured: 'Injured',
+      bad: 'Badly Injured',
+      horrible: 'Horribly Injured',
+      critical: 'Critically Injured',
+      dead: 'Mostly Dead',
+    }[classname];
   }
 
   model.prototype.getHealthLevels = async function() {

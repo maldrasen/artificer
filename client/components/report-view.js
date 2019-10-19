@@ -17,18 +17,21 @@ Components.ReportView = (function() {
     let portrait = $(`<div class='portrait-frame'><img src='${minion.portrait}'/></div>`)
     let topRow = $(`<div class='top-row'><div class='minion-name'>${minion.name}</div></div>`);
     let storyRow = $(`<div class='story-row'><span class='story'>${minion.work.story}</span></div>`);
+    let lowerRow = $(`<div class='lower-row flex'></div>`);
+
+    if (minion.work.flavors) { lowerRow.append(buildSpoilsRow(minion.work.flavors)); }
+    if (minion.work.notifications) { lowerRow.append(buildNotificationsFrame(minion.work.notifications)); }
 
     if (minion.work.injury) {
       storyRow.append($('<span>',{ class:'injury-story' }).append(` ${minion.work.injury}`));
     }
 
-    let minionFrame = $('<li>',{class: 'minion-frame' }).
+    let minionFrame = $('<li>',{class: 'report-minion-frame' }).
       append(portrait).
       append(topRow).
-      append(storyRow);
+      append(storyRow).
+      append(lowerRow);
 
-    if (minion.work.flavors) { minionFrame.append(buildSpoilsRow(minion.work.flavors)); }
-    if (minion.work.notifications) { minionFrame.append(buildNotificationsRow(minion.work.notifications)); }
 
     $('#reportView').find('.minion-list').append(minionFrame);
   }
@@ -50,16 +53,15 @@ Components.ReportView = (function() {
     return row;
   }
 
-  function buildNotificationsRow(notifications) {
+  function buildNotificationsFrame(notifications) {
     let frame = $('<div>',{ class:'notifications-frame' });
-    let row = $('<div>',{ class:'notifications-row' }).append(frame);
 
     each(notifications, notification => {
       if (notification.skill)       { frame.append(buildExperienceNotification(notification)); }
       if (notification.gainedLevel) { frame.append(buildLevelNotification(notification)); }
     });
 
-    return row;
+    return frame;
   }
 
   function buildExperienceNotification(notification) {

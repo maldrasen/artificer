@@ -45,6 +45,7 @@ Character.allForClient = async function() {
 
   return await Promise.all(minions.map(async minion => {
     const health = await minion.getHealth();
+    const healthClass = await minion.getHealthClass();
     const healthWord = await minion.getHealthWord();
 
     // TODO: This is just here temporarily, until the portrait is actually
@@ -58,6 +59,7 @@ Character.allForClient = async function() {
       species: minion.species.name,
       portrait: portrait,
       health: health,
+      healthClass: healthClass,
       healthWord: healthWord,
       physical: minion.physical,
       mental: minion.mental,

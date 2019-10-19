@@ -21,7 +21,12 @@ Components.MinionListView = (function() {
     let frame = $($('#minionFrameTemplate').html());
     frame.data('id',minion.id);
     frame.find('.portrait-frame').append($('<img>',{ src:minion.portrait }));
-    frame.find('h2.name').append(minion.name);
+    frame.find('.top-row .name').append(minion.name);
+    frame.find('.top-row .gender').append(minion.gender);
+    frame.find('.top-row .species').append(minion.species);
+    frame.find('.top-row .health-value').append(`[${minion.health}]`);
+    frame.find('.top-row .health-word').append(minion.healthWord);
+    frame.find('.top-row .health-section').addClass(`fg-health-${minion.healthClass}`);
 
     return frame;
   }
@@ -32,16 +37,7 @@ Components.MinionListView = (function() {
 
 
 
-// id: minion.id,
-// name: minion.name,
-// gender: minion.gender.Male,
-// species: minion.species.name,
-// portrait: portrait,
-// health: health,
-// healthWord: healthWord,
 // physical: minion.physical,
 // mental: minion.mental,
 // personal: minion.personal,
 // magical: minion.magical,
-// currentTask: minion.currentTask,
-// role: minion.roleCode,

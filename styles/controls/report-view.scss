@@ -29,7 +29,7 @@
     margin-bottom: 50px;
   }
 
-  .minion-frame {
+  .report-minion-frame {
     position: relative;
     border: $border-light;
     box-shadow: $shadow-frame;
@@ -56,5 +56,9 @@
   }
 
   .story-row { margin-bottom: 20px; }
-  .notifications-frame { margin: 10px; }
+
+  .notifications-frame {
+    align-self: flex-end;
+    margin-bottom: 11px;
+  }
 }

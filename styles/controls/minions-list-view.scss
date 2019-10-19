@@ -9,9 +9,8 @@
   background-position: center;
   background-size: cover;
 
-  .minion-frame {
-    margin: 20px 30px 30px 20px;
-  }
+  .minion-list { margin-top: 30px; }
+  .minion-frame { margin: 20px 20px 40px; }
 
   .back-bar {
     position: fixed;
@@ -34,25 +33,44 @@
 
 .minion-frame {
   position: relative;
-  height: 150px;
+  height: 70px;
   border: $border-light;
   box-shadow: $shadow-overlay;
   background-color: $bg-body-even-darker;
   padding: 10px;
-  padding-right: 150px;
+  padding-right: 100px;
+  cursor: pointer;
+  box-sizing: border-box;
 
   .portrait-frame {
     position: absolute;
-    right: -10px;
-    top: -10px;
-    height: 150px;
-    width: 150px;
+    right: 10px;
+    top: -20px;
+    height: 80px;
+    width: 80px;
     box-shadow: $shadow-portrait;
-    img { height:150px; width:150px; }
+    img { height:80px; width:80px; }
   }
+
   .top-row {
     display: flex;
     border-bottom: $border-light;
+
+    .attr {
+      font-size: $fs-small;
+      margin-right: 5px;
+      color: $fg-weak;
+    }
+    .section {
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .name { margin-right: 5px; }
+    .name-section { min-width: 300px; }
+    .health-section .attr { color: inherit; }
+    .health-value { opacity: 0.5; }
   }
 
+  &:hover { border: $border-normal; }
 }
