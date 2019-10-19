@@ -62,10 +62,10 @@ Components.SavedGames = (function() {
   }
 
   return {
-    init: init,
-    buildLoad: buildLoad,
-    buildSave: buildSave,
-    showSaves: showSaves,
-  }
+    init,
+    buildLoad,
+    buildSave,
+    showSaves,
+  };
 
 })();

@@ -138,21 +138,21 @@ global.Renderer = (function() {
   function unlock() { $('#viewLock').addClass('hide'); }
 
   return {
-    init: init,
-    sendCommand: sendCommand,
-    ready: ready,
+    init,
+    sendCommand,
+    ready,
 
-    showCreatePlan: showCreatePlan,
-    showMainMenu: showMainMenu,
-    showLoadGame: showLoadGame,
-    showSaveGame: showSaveGame,
-    showMap: showMap,
+    showCreatePlan,
+    showMainMenu,
+    showLoadGame,
+    showSaveGame,
+    showMap,
 
-    renderFile: renderFile,
+    renderFile,
 
-    lock: lock,
-    unlock: unlock,
-    removeOverlay: removeOverlay,
+    lock,
+    unlock,
+    removeOverlay,
   };
 
 })();

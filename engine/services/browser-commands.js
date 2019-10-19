@@ -104,6 +104,15 @@ global.BrowserCommands = (function() {
         Composer.render();
       });
     });
+
+    ipcMain.on('location.showMinions', () => {
+      Browser.send('render.minions',['MINION']);
+    });
+
+    ipcMain.on('location.showInventory', () => {
+      Browser.send('render.inventory',['ITEM']);
+    });
+
   }
 
   return { init:init }

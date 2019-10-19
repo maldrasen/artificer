@@ -300,15 +300,15 @@ Components.EventView = (function() {
   }
 
   return {
-    init: init,
-    build: build,
-    nextStage: nextStage,
-    setStage: setStage,
-    getPageText: getPageText,
-    setPageText: setPageText,
-    updateChoices: updateChoices,
-    getChoices: getChoices,
-    setBackground: setBackground,
+    init,
+    build,
+    nextStage,
+    setStage,
+    getPageText,
+    setPageText,
+    updateChoices,
+    getChoices,
+    setBackground,
   };
 
 })();

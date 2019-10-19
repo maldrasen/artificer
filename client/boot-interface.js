@@ -13,7 +13,10 @@ require(`${ROOT}/client/interface/logger`);
 // === Components ===
 require(`${ROOT}/client/components/components`);
 require(`${ROOT}/client/components/event-view`);
+require(`${ROOT}/client/components/inventory-view`);
 require(`${ROOT}/client/components/location-view`);
+require(`${ROOT}/client/components/minion-list-view`);
+require(`${ROOT}/client/components/minion-view`);
 require(`${ROOT}/client/components/plan-view`);
 require(`${ROOT}/client/components/report-view`);
 require(`${ROOT}/client/components/saved-games`);

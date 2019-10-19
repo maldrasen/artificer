@@ -2,9 +2,11 @@ Components.LocationView = (function() {
   const logger = new Logger('LocationView', 'rgb(230, 170, 140)');
 
   function init() {
-    $(document).on('click','.menu-show-load',Elements.buttonAction(Renderer.showLoadGame));
-    $(document).on('click','.menu-show-save',Elements.buttonAction(Renderer.showSaveGame));
-    $(document).on('click','.menu-show-map',Elements.buttonAction(Renderer.showMap));
+    $(document).on('click','.menu-show-load',      Elements.buttonAction(Renderer.showLoadGame));
+    $(document).on('click','.menu-show-save',      Elements.buttonAction(Renderer.showSaveGame));
+    $(document).on('click','.menu-show-map',       Elements.buttonAction(Renderer.showMap));
+    $(document).on('click','.menu-show-minions',   Elements.buttonAction(() => { Renderer.sendCommand('location.showMinions'); }));
+    $(document).on('click','.menu-show-inventory', Elements.buttonAction(() => { Renderer.sendCommand('location.showInventory'); }));
   }
 
   function build(transport, view) {

@@ -83,9 +83,6 @@ Components.ReportView = (function() {
     `);
   }
 
-  return {
-    init: init,
-    build: build,
-  };
+  return { init, build };
 
 })();

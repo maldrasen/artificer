@@ -295,9 +295,6 @@ Components.PlanView = (function() {
   function getSelectedProject() { return $('.available-project.selected').data('project'); }
   function getPlanData() { return $('#planView').data('planData'); }
 
-  return {
-    init: init,
-    build: build,
-  };
+  return { init, build };
 
 })();

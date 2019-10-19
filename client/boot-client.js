@@ -17,7 +17,10 @@ $(document).ready(function() {
 
   // === Init Components ===
   Components.EventView.init();
+  Components.InventoryView.init();
   Components.LocationView.init();
+  Components.MinionListView.init();
+  Components.MinionView.init();
   Components.PlanView.init();
   Components.ReportView.init();
   Components.SavedGames.init();
