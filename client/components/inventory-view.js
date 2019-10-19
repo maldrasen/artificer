@@ -1,11 +1,17 @@
 Components.InventoryView = (function() {
+  let inventory;
 
   function init() {}
 
-  function build(event, items) {
-    console.log("Build Inventory View:", items)
+  function open(event, items) {
+    inventory = items;
+    Renderer.showInventory();
   }
 
-  return { init, build };
+  function build() {
+    console.log("Build",inventory)
+  }
+
+  return { init, open, build };
 
 })();

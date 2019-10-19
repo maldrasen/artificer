@@ -3,11 +3,28 @@ global.Renderer = (function() {
 
   const VIEWS = {
     mainMenu:   { template:'#mainMenuTemplate' },
-    createPlan: { template:'#planTemplate',     title:"Create Today's Plan" },
-    map:        { template:'#mapTemplate',      title:"Keep Map",  build:Components.LocationView.buildMap },
-    loadGame:   { template:'#loadGameTemplate', title:'Load Game', build:Components.SavedGames.buildLoad  },
-    saveGame:   { template:'#saveGameTemplate', title:'Save Game', build:Components.SavedGames.buildSave  },
+    createPlan: { template:'#planTemplate',      title:"Create Today's Plan" },
+    inventory:  { template:'#inventoryTemplate', title:"Inventory", build:Components.InventoryView.build   },
+    map:        { template:'#mapTemplate',       title:"Keep Map",  build:Components.LocationView.buildMap },
+    loadGame:   { template:'#loadGameTemplate',  title:'Load Game', build:Components.SavedGames.buildLoad  },
+    saveGame:   { template:'#saveGameTemplate',  title:'Save Game', build:Components.SavedGames.buildSave  },
   };
+
+  const TEMPLATES = [
+    'chooser',
+    'event',
+    'inventory',
+    'load-game',
+    'location',
+    'main-menu',
+    'map',
+    'minion-list',
+    'minion',
+    'plan',
+    'report',
+    'save-game',
+  ];
+
 
   function init() {
     $(document).on('click', '.send-command', Elements.buttonAction(sendCommandButton));
@@ -25,19 +42,14 @@ global.Renderer = (function() {
     document.title = `Artificer`
 
     let body = $('body');
-
     body.find('.loading').empty().append('Loading Views...');
     body.append($('<div>',{ id:'mainContent' }));
     body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/layers.html`));
-    body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/main-menu.html`));
-    body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/save-game.html`));
-    body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/load-game.html`));
-    body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/location.html`));
-    body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/plan.html`));
-    body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/report.html`));
-    body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/event.html`));
-    body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/map.html`));
-    body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/chooser.html`));
+
+    each(TEMPLATES, template => {
+      body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/${template}.html`));
+    });
+
     constructView();
   }
 
@@ -50,7 +62,8 @@ global.Renderer = (function() {
 
   function showMainMenu()   { showView(VIEWS.mainMenu);      }
   function showCreatePlan() { showOverlay(VIEWS.createPlan); }
-  function showLoadGame()   { showOverlay(VIEWS.loadGame); }
+  function showInventory()  { showOverlay(VIEWS.inventory);  }
+  function showLoadGame()   { showOverlay(VIEWS.loadGame);   }
   function showSaveGame()   { showOverlay(VIEWS.saveGame);   }
   function showMap()        { showOverlay(VIEWS.map);        }
 
@@ -143,6 +156,7 @@ global.Renderer = (function() {
     ready,
 
     showCreatePlan,
+    showInventory,
     showMainMenu,
     showLoadGame,
     showSaveGame,
