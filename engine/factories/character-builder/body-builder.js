@@ -15,13 +15,13 @@ global.BodyBuilder = (function() {
       faceShape:  character.species.getFaceShape(character.genderCode),
     }
 
-    let skinColor =  bodyOptions.skinColor || character.species.random('skin',character.genderCode);
+    let skinColor = bodyOptions.skinColor || character.species.random('skin',character.genderCode);
     if (skinColor) {
       params.skinShade = bodyOptions.skinShade || Random.upTo(5)+1;
       params.skinColor = skinColor;
     }
 
-    let furColor =   bodyOptions.furColor || character.species.random('fur',character.genderCode);
+    let furColor = bodyOptions.furColor || character.species.random('fur',character.genderCode);
     if (furColor) {
       params.furShade = bodyOptions.furShade || Random.upTo(5)+1
       params.furColor = furColor;

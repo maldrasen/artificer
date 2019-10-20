@@ -14,6 +14,8 @@ Weaver.BodyLoom = (function() {
     if (token == "body.furColor")          { return furColorWord(body); }
     if (token == "body.skinColor")         { return skinColorWord(body); }
     if (token == "body.scaleColor")        { return scaleColorWord(body); }
+    if (token == "body.eyeColor")          { return eyeColorWord(body); }
+    if (token == "body.hairColor")         { return hairColorWord(body); }
     if (token == "body.fiftyPound")        { return weightMeasurement(body, false); }
     if (token == "body.fiftyPounds")       { return weightMeasurement(body, true); }
 
@@ -126,16 +128,37 @@ Weaver.BodyLoom = (function() {
   }
 
   function scaleColorWord(body) {
-    if (body.scaleColor == 'red') { return Random.from(["blood red","crimson","garnet","ruby"]) }
-    if (body.scaleColor == 'gold') { return Random.from(["golden"]) }
-    if (body.scaleColor == 'green') { return Random.from(["emerald","jade"]) }
-    if (body.scaleColor == 'blue') { return Random.from(["sapphire"]) }
+    if (body.scaleColor == 'red')    { return Random.from(["blood red","crimson","garnet","ruby"]) }
+    if (body.scaleColor == 'gold')   { return Random.from(["golden"]) }
+    if (body.scaleColor == 'green')  { return Random.from(["emerald","jade"]) }
+    if (body.scaleColor == 'blue')   { return Random.from(["sapphire"]) }
     if (body.scaleColor == 'purple') { return Random.from(["amethyst","violet"]) }
-    if (body.scaleColor == 'black') { return Random.from(["obsidian","onyx"]) }
-    if (body.scaleColor == 'gray') { return Random.from(["ashen","slate","stone"]) }
-    if (body.scaleColor == 'white') { return Random.from(["alabaster"]) }
+    if (body.scaleColor == 'black')  { return Random.from(["obsidian","onyx"]) }
+    if (body.scaleColor == 'gray')   { return Random.from(["ashen","slate","stone"]) }
+    if (body.scaleColor == 'white')  { return Random.from(["alabaster"]) }
+    return Weaver.error(`Need to describe ${body.scaleColor} as a scale color.`);
+  }
 
-    return Weaver.error(`Need to describe ${color} as a scale color.`);
+  function eyeColorWord(body) {
+    if (body.eyeColor == 'pink')   { return Random.from(['pink','bright pink']); }
+    if (body.eyeColor == 'red')    { return Random.from(['red','garnet','ruby']); }
+    if (body.eyeColor == 'amber')  { return Random.from(['amber','bronze']); }
+    if (body.eyeColor == 'gold')   { return Random.from(['golden','bright gold']); }
+    if (body.eyeColor == 'brown')  { return Random.from(['brown','dark brown','deep brown']); }
+    if (body.eyeColor == 'green')  { return Random.from(['green','emerald','jade']); }
+    if (body.eyeColor == 'hazel')  { return Random.from(['hazel']); }
+    if (body.eyeColor == 'blue')   { return Random.from(['blue','sapphire blue']); }
+    if (body.eyeColor == 'purple') { return Random.from(['purple','deep purple','amethyst']); }
+    if (body.eyeColor == 'gray')   { return Random.from(['gray','cool gray','ashen']); }
+    if (body.eyeColor == 'black')  { return Random.from(['black','onyx']); }
+    return Weaver.error(`Need to describe ${body.eyeColor} as an eye color.`);
+  }
+
+  // There are a lot of hair colors, just use the code as the hair color word.
+  // Some hair colors like dark-blond are hyphenated, so replace dashes with
+  // spaces.
+  function hairColorWord(body) {
+    return (body.hairColor != "") ? body.hairColor.replace(/-/,' ') : Weaver.error(`Body.hairColor is blank.`);
   }
 
   return { findValue };

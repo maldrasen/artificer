@@ -1,5 +1,9 @@
 global.HasInjuries = { isAppliedTo: function(model) {
 
+  model.prototype.getAllInjuries = function() {
+    return Injury.findAll({ where:{ character_id:this.id }});
+  }
+
   // Add an injury from a hazard form.
   //
   // === Warning Non-Attomic Operation ===

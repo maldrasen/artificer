@@ -110,4 +110,18 @@ describe('Body Loom', function() {
     });
   });
 
+  it("gets an eye color", function(done) {
+    buildContext({ eyeColor:'hazel' }).then(context => {
+      expect(Weaver.weave(`{{C::body.eyeColor}}`,context)).to.equal(`hazel`);
+      done();
+    });
+  });
+
+  it("gets a hair color", function(done) {
+    buildContext({ hairColor:'light-purple' }).then(context => {
+      expect(Weaver.weave(`{{C::body.hairColor}}`,context)).to.equal(`light purple`);
+      done();
+    });
+  });
+
 })
