@@ -54,13 +54,9 @@ Body.prototype.getWeight = async function() {
     female: 90,
   }[character.genderCode]
 
-  let weight
-
-  if (this.height < 1520) {
-    weight = base * this.height/1520;
-  } else {
-    weight = (perCentimeter * (this.height - 1520)) + base;
-  }
+  let weight = (this.height < 1520) ?
+    (base * this.height/1520):
+    ((perCentimeter * (this.height - 1520)) + base);
 
   if (character.speciesCode == 'pixie') { return weight/2; }
   if (character.speciesCode == 'dryad') { return weight*1.8; }

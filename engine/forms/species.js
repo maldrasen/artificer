@@ -7,6 +7,15 @@ global.Species = class Species extends Form {
   get isScalie() { return this.hasFlag('scalie'); }
   get hasCockSheath() { return this.bodyOptions.cock.sheath != null }
 
+  get pluralName() {
+    if (this.code == 'dark-elf') { return 'Dark Elves'; }
+    if (this.code == 'elf')      { return 'Elves'; }
+    if (this.code == 'incubus')  { return 'Incubi'; }
+    if (this.code == 'succubus') { return 'Succubi'; }
+    if (this.code == 'wood-elf') { return 'Wood Elves'; }
+    return `${this.name}s`
+  }
+
   hasFlag(flag)  { return (this.flags||[]).indexOf(flag) >= 0; }
 
   // Pick a random gender code based on a species' gender frequency map.
@@ -26,6 +35,18 @@ global.Species = class Species extends Form {
     let adjust = this.bodyOptions.maleHeightAdjust || 100;
 
     let height = base + Random.upTo(range);
+    if (gender == 'male') { height += adjust; }
+    if (gender == 'futa') { height += adjust/2; }
+
+    return height;
+  }
+
+  averageHeight(gender) {
+    let base =   this.bodyOptions.baseHeight || 1520;
+    let range =  this.bodyOptions.heightRange || 300;
+    let adjust = this.bodyOptions.maleHeightAdjust || 100;
+
+    let height = base + Math.round(range/2);
     if (gender == 'male') { height += adjust; }
     if (gender == 'futa') { height += adjust/2; }
 

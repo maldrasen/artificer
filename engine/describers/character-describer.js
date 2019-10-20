@@ -43,12 +43,100 @@ global.CharacterDescriber = (function() {
     return desc;
   }
 
-
   function bodyDescription(character,parts) {
-    let desc = `{{C::gender.He}} is {{C::body.five-foot-ten-inches}} tall, and weighs {{C::body.fifty-pounds}}, `
-    desc += ` which is about average for a ${character.species.name}.`
-    return desc;
+    return `${heightAndWeight()}, ${comparativeHeight(character,parts)}.
+            ${objectiveBeauty(character)} ${comparativeBeauty(character)}
+            ${skinDescription(character,parts)}`;
   }
+
+  function heightAndWeight() {
+    return `{{C::gender.He}} is {{C::body.fiveFootTenInches}} tall, and weighs {{C::body.fiftyPounds}}`;
+  }
+
+  function comparativeHeight(character,parts) {
+    let average = character.species.averageHeight();
+    let height = parts.body.height;
+
+    if (height < average * 0.8) { return `which is short for a ${character.species.name}`; }
+    if (height < average * 0.9) { return `which is a little short for a ${character.species.name}`; }
+    if (height > average * 1.1) { return `which makes {{C::gender.him}} a bit large for a ${character.species.name}`; }
+    if (height > average * 1.2) { return `which makes {{C::gender.him}} larger then most ${character.species.pluralName}`; }
+    return` which is about average for a ${character.species.name}`;
+  }
+
+  function faceDescription(character,parts) {
+
+  }
+
+  function objectiveBeauty(character) {
+    let sentences = [];
+
+    if (character.personal == 0) { ArrayUtility.addAll(sentences,[
+      `{{C::character.firstName}} is flat out ugly. Just disgusting to look at, like dog shit given a face if you could call it that. Seriously. Uglier than a bag of smashed horse assholes, with all the pretty ones taken out.`,
+    ]); }
+
+    if (character.personal > 0 && character.personal < 10) { ArrayUtility.addAll(sentences,[
+      `{{C::character.firstName}} is not at all attractive with weirdly asymmetrical facial features.`,
+      `{{C::character.firstName}} is hopelessly unattractive with a face that looks like it was put together in the dark.`,
+      `{{C::character.firstName}} has a face that was made for a gimp mask, or for doggy style, or really any activity that has {{C::gender.him}} facing away from me.`,
+    ]); }
+
+    if (character.personal >= 10 && character.personal < 20) { ArrayUtility.addAll(sentences,[
+      `{{C::character.firstName}} is rather plain looking, nondescript an inoffensive.`,
+      `{{C::character.firstName}} is rather average looking. {{C::gender.He}}'s not the sort of person who would stand out in a crowd.`,
+      `{{C::character.firstName}} could be called homely, not unattractive per se, but certinally not beautiful.`,
+    ]); }
+
+    if (character.personal >= 20 && character.personal < 30) { ArrayUtility.addAll(sentences,[
+      `{{C::character.firstName}} is a lovely young ${character.species.name}.`
+    ]); }
+
+    if (character.genderCode == 'male') {
+      if (character.personal > 0 && character.personal < 10) { ArrayUtility.addAll(sentences,[
+        `{{C::character.firstName}} has a face that looks like it's been through a few fights, moreover that {{C::gender.he}}'s lost every single one of them.`,
+        `{{C::character.firstName}} has a very punchable looking face. I'm not sure what it is. Every time I see {{C::gender.him}} I feel like knocking a few of {{C::gender.his}} teeth out.`,
+      ]); }
+    }
+
+    if (character.genderCode != 'male') {
+      if (character.personal > 0 && character.personal < 10) { ArrayUtility.addAll(sentences,[
+        `{{C::character.firstName}} is not an attractive ${character.species.name}. {{C::gender.He}} has the sort of face that could only be improved by repeatedly slapping it.`,
+      ]); }
+
+      if (character.personal >= 10 && character.personal < 20) { ArrayUtility.addAll(sentences,[
+        `{{C::character.firstName}} is not unattractive, but not what anyone would consider beautiful either.`,
+      ]); }
+
+      if (character.personal >= 20 && character.personal < 30) { ArrayUtility.addAll(sentences,[
+        `I would call {{C::character.firstName}} pretty. {{C::gender.His}} face has a certain charming quality to it.`,
+      ]); }
+    }
+
+    return Random.from(sentences);
+  }
+
+  function comparativeBeauty(character) {
+    if (character.speciesCode == 'rat') {
+      if (character.personal < 3)  { return `{{C::gender.He}}'s even uglier than most rats, which is really saying a lot.`; }
+      if (character.personal < 10) { return `For a rat though, {{C::gender.he}}'s about average looking.`; }
+      return `For a rat though, {{C::gender.he}}'s far better looking than most of {{C::gender.his}} species.`;
+    }
+  }
+
+  function skinDescription(character,parts) {
+    return "";
+  }
+
+  // eyeColor
+  // scaleColor
+  // hairColor
+  // furColor
+  // furShade
+  // skinColor
+  // skinShade
+  // tailShape
+  // hornShape
+  // faceShape
 
   return { fullDescription };
 
