@@ -1,10 +1,16 @@
 global.PussyDescriber = (function() {
 
-  function fullDescription(character, parts, injuries) {
+  async function fullDescription(character) {
+    const parts = await character.getCompleteBody();
+    const injuries = await character.getAllInjuries();
+    return syncFullDescription(character, parts, injuries);
+  }
+
+  function syncFullDescription(character, parts, injuries) {
     return "PUSSY!"
   }
 
-  return { fullDescription }
+  return { fullDescription, syncFullDescription }
 
 })();
 

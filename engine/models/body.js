@@ -38,9 +38,16 @@ global.Body = Database.instance().define('body', {
 // In grams, uses the Hamwi formula
 //   Male ideal body weight = 48 kilograms + 110 grams × (height (mm) − 1520)
 //   Female ideal body weight = 45.4 kilograms + 90 grams × (height (mm) − 1520)
+//
 // Futa characters are assumed to be midway between male and female weight.
+// This function can also be called durning events where a character has no
+// gender yet, but are put into a weaver context. Just return 0 when that
+// happens.
 Body.prototype.getWeight = async function() {
   const character = await Character.findOne({ where:{ body_id:this.id }});
+
+  if (character == null) { return 0; }
+  if (character.genderCode == null) { return 0; }
 
   const base = {
     male:   48000,

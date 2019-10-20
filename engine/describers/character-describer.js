@@ -12,28 +12,26 @@ global.CharacterDescriber = (function() {
 
     if (character.genderCode == 'female') { description += `
       <div class='sex-description'>
-        ${TitsDescriber.fullDescription(character,parts,injuries)}
-        ${NipplesDescriber.fullDescription(character,parts,injuries)}
-        ${PussyDescriber.fullDescription(character,parts,injuries)}
-        ${AnusDescriber.fullDescription(character,parts,injuries)}
+        ${TitsDescriber.syncFullDescription(character,parts,injuries)}
+        ${PussyDescriber.syncFullDescription(character,parts,injuries)}
+        ${AnusDescriber.syncFullDescription(character,parts,injuries)}
       </div>
     `; }
 
     if (character.genderCode == 'futa') { description += `
       <div class='sex-description'>
-        ${TitsDescriber.fullDescription(character,parts,injuries)}
-        ${NipplesDescriber.fullDescription(character,parts,injuries)}
-        ${CockDescriber.fullDescription(character,parts,injuries)}
-        ${PussyDescriber.fullDescription(character,parts,injuries)}
-        ${AnusDescriber.fullDescription(character,parts,injuries)}
+        ${TitsDescriber.syncFullDescription(character,parts,injuries)}
+        ${CockDescriber.syncFullDescription(character,parts,injuries)}
+        ${PussyDescriber.syncFullDescription(character,parts,injuries)}
+        ${AnusDescriber.syncFullDescription(character,parts,injuries)}
       </div>
     `; }
 
     if (character.genderCode == 'male') { description += `
       <div class='sex-description'>
-        ${NipplesDescriber.fullDescription(character,parts,injuries)}
-        ${CockDescriber.fullDescription(character,parts,injuries)}
-        ${AnusDescriber.fullDescription(character,parts,injuries)}
+        ${TitsDescriber.syncFullDescription(character,parts,injuries)}
+        ${CockDescriber.syncFullDescription(character,parts,injuries)}
+        ${AnusDescriber.syncFullDescription(character,parts,injuries)}
       </div>
     `; }
 

@@ -53,10 +53,11 @@ Hazard.buildHazard({ activity:'hunting-hinterlands', location:'anus', type:'rip'
           chance to rape {{H::gender.his}} exposed asshole. Even the rabbit {{H::gender.he}} was chasing took a turn.`
 });
 
-// --- Nipples : Blight ---
+// --- Tits : Blight ---
 
-Hazard.buildHazard({ activity:'hunting-hinterlands', location:'nipples', type:'blight', level:2,
+Hazard.buildHazard({ activity:'hunting-hinterlands', location:'tits', type:'blight', level:2,
   requires: ['failure'],
+  details: { nipple:1 },
   story: `While {{H::gender.he}} was stalking {{H::gender.his}} prey through some deep brush {{H::gender.he}}
           felt a sudden stabbing pain in his chest. A spider had attached itself to one of {{H::gender.his}} nipples
           and was pumping it full of venom. {{H::gender.He}} managed to brush it off, but not until {{H::gender.his}}

@@ -15,7 +15,6 @@ require(`${ROOT}/engine/concerns/has-injuries`);
 require(`${ROOT}/engine/describers/anus-describer`);
 require(`${ROOT}/engine/describers/character-describer`);
 require(`${ROOT}/engine/describers/cock-describer`);
-require(`${ROOT}/engine/describers/nipples-describer`);
 require(`${ROOT}/engine/describers/pussy-describer`);
 require(`${ROOT}/engine/describers/tits-describer`);
 
@@ -59,7 +58,6 @@ require(`${ROOT}/engine/units/abusers/anus-abuser`);
 require(`${ROOT}/engine/units/abusers/body-abuser`);
 require(`${ROOT}/engine/units/abusers/cock-abuser`);
 require(`${ROOT}/engine/units/abusers/head-abuser`);
-require(`${ROOT}/engine/units/abusers/nipples-abuser`);
 require(`${ROOT}/engine/units/abusers/pussy-abuser`);
 require(`${ROOT}/engine/units/abusers/tits-abuser`);
 
