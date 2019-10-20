@@ -60,7 +60,7 @@ describe('Adjustments - Cock', function() {
       character.getCock().then(cock => {
         expect(cock.shape).to.equal('horse');
         expect(cock.sizeScale).to.equal(75);
-        expect(cock.convertedLength).to.equal(17.5);
+        expect(cock.convertedLength).to.equal(17.25);
         done();
       });
     });

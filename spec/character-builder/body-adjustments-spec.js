@@ -66,7 +66,7 @@ describe('Adjustments - Body', function() {
   it ('makes short', function(done) {
     CharacterBuilder.build({ firstName:'X', species:'kobold', gender:'female', triggers:['short'] }).then(character => {
       character.getBody().then(body => {
-        expect(body.height).to.equal(675);
+        expect(body.height).to.equal(765);
         done();
       });
     });

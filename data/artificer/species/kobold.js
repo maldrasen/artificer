@@ -10,8 +10,8 @@ Species.build('kobold', {
   violenceRange: 20,
 
   bodyOptions: {
-    baseHeight: 750,
-    heightRange: 300,
+    baseHeight: 850,
+    heightRange: 200,
     maleHeightAdjust: 100,
 
     tailShape: 'dragon',

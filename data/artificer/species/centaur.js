@@ -10,7 +10,7 @@ Species.build('centaur', {
   violenceRange: 20,
 
   bodyOptions: {
-    shape:'quadruped',
+    shape: 'quadruped',
     baseHeight: 1700,
     heightRange: 800,
     maleHeightAdjust: 300,

@@ -11,8 +11,8 @@ Species.build('pixie', {
   violenceRange: 10,
 
   bodyOptions: {
-    baseHeight: 550,
-    heightRange: 100,
+    baseHeight: 300,
+    heightRange: 50,
     maleHeightAdjust: 10,
 
     skinColors: {

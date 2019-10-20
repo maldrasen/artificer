@@ -12,7 +12,6 @@ const TAIL_SHAPES = ['rat','dog','fox','horse','seal','cow','snake','dragon','ca
 
 global.Body = Database.instance().define('body', {
   height:     { type:Sequelize.INTEGER },
-  bodyType:   { type:Sequelize.INTEGER },
   eyeColor:   { type:Sequelize.STRING, validate:{ isIn:[EYE_COLORS] }},
   scaleColor: { type:Sequelize.STRING, validate:{ isIn:[SCALE_COLORS] }},
   hairColor:  { type:Sequelize.STRING, validate:{ isIn:[HAIR_COLORS] }},
@@ -35,3 +34,37 @@ global.Body = Database.instance().define('body', {
     fingerArea()  { return MathUtility.widthToArea(this.fingerWidth); },
   }
 });
+
+// In grams, uses the Hamwi formula
+//   Male ideal body weight = 48 kilograms + 110 grams × (height (mm) − 1520)
+//   Female ideal body weight = 45.4 kilograms + 90 grams × (height (mm) − 1520)
+// Futa characters are assumed to be midway between male and female weight.
+Body.prototype.getWeight = async function() {
+  const character = await Character.findOne({ where:{ body_id:this.id }});
+
+  const base = {
+    male:   48000,
+    futa:   46700,
+    female: 45400,
+  }[character.genderCode]
+
+  const perCentimeter = {
+    male:   110,
+    futa:   100,
+    female: 90,
+  }[character.genderCode]
+
+  let weight
+
+  if (this.height < 1520) {
+    weight = base * this.height/1520;
+  } else {
+    weight = (perCentimeter * (this.height - 1520)) + base;
+  }
+
+  if (character.speciesCode == 'pixie') { return weight/2; }
+  if (character.speciesCode == 'dryad') { return weight*1.8; }
+  if (character.speciesCode == 'centaur') { return weight*4; }
+
+  return weight;
+}

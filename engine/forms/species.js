@@ -21,7 +21,7 @@ global.Species = class Species extends Form {
   }
 
   randomHeight(gender) {
-    let base =   this.bodyOptions.baseHeight || 1500;
+    let base =   this.bodyOptions.baseHeight || 1520;
     let range =  this.bodyOptions.heightRange || 300;
     let adjust = this.bodyOptions.maleHeightAdjust || 100;
 
@@ -34,7 +34,7 @@ global.Species = class Species extends Form {
 
   sizeFactor() {
     if (this.bodyOptions.shape == 'quadruped') { return 2; }
-    return (this.bodyOptions.baseHeight || 1500) / 1500
+    return (this.bodyOptions.baseHeight || 1520) / 1520
   }
 
   // Caprien females look nothing like the males. The women have slighly

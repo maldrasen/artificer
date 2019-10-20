@@ -10,8 +10,8 @@ Species.build('rat', {
   violenceRange: 20,
 
   bodyOptions: {
-    baseHeight: 660,
-    heightRange: 300,
+    baseHeight: 760,
+    heightRange: 200,
     maleHeightAdjust: 100,
 
     tailShape: 'rat',

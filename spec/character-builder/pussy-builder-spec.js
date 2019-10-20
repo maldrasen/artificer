@@ -78,7 +78,7 @@ describe('PussyBuilder', function() {
     });
 
     it('sets the width according to species (pixie)', function(done) {
-      testPussyWidth('pixie',10,23,done);
+      testPussyWidth('pixie',6,12,done);
     });
   });
 

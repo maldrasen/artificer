@@ -34,9 +34,9 @@ describe('CockBuilder', function() {
         expect(cock.knotWidthRatio).to.equal(1.2);
         expect(cock.knobHeightRatio).to.equal(1.4);
         expect(cock.spineHeightRatio).to.equal(1.1);
-        expect(cock.length).to.equal(812);
-        expect(cock.width).to.equal(189);
-        expect(cock.scrotumWidth).to.equal(1134);
+        expect(cock.length).to.equal(801);
+        expect(cock.width).to.equal(186);
+        expect(cock.scrotumWidth).to.equal(1116);
         done();
       });
     });

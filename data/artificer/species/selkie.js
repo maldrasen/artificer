@@ -10,7 +10,7 @@ Species.build('selkie', {
   violenceRange: 10,
 
   bodyOptions: {
-    baseHeight: 800,
+    baseHeight: 900,
     heightRange: 250,
     maleHeightAdjust: 50,
 

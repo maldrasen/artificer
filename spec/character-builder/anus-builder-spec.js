@@ -45,7 +45,7 @@ describe('AnusBuilder', function() {
     });
 
     it('sets the width according to species (equian)', function(done) {
-      testAnalWidth('equian',26,58,done);
+      testAnalWidth('equian',25,58,done);
     });
 
     it('sets the width according to species (dragon)', function(done) {
@@ -57,11 +57,11 @@ describe('AnusBuilder', function() {
     });
 
     it('sets the width according to species (goblin)', function(done) {
-      testAnalWidth('goblin',13,30,done);
+      testAnalWidth('goblin',14,33,done);
     });
 
     it('sets the width according to species (pixie)', function(done) {
-      testAnalWidth('pixie',8,18,done);
+      testAnalWidth('pixie',4,10,done);
     });
   });
 });

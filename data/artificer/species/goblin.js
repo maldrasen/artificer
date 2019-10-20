@@ -10,7 +10,7 @@ Species.build('goblin', {
   violenceRange: 50,
 
   bodyOptions: {
-    baseHeight: 900,
+    baseHeight: 1000,
     heightRange: 300,
     maleHeightAdjust: 100,
 

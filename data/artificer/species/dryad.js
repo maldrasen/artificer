@@ -11,7 +11,7 @@ Species.build('dryad', {
   violenceRange: 20,
 
   bodyOptions: {
-    shape:'quadruped',
+    shape: 'quadruped',
     baseHeight: 1350,
     heightRange: 300,
     maleHeightAdjust: 100,
