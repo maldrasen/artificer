@@ -27,12 +27,12 @@ Abuser.BodyAbuser = (function() {
     throw `Unknown damage type ${injury.damageType}`;
   }
 
-  function describeBlight(injury, details) { return `(TODO: Describe Body Blight - ${injury.level})`; }
-  function describeBurn(injury, details)   { return `(TODO: Describe Body Burn - ${injury.level})`; }
-  function describeCut(injury, details)    { return `(TODO: Describe Body Cut - ${injury.level})`; }
-  function describePierce(injury, details) { return `(TODO: Describe Body Pierce - ${injury.level})`; }
-  function describeRip(injury, details)    { return `(TODO: Describe Body Rip - ${injury.level})`; }
-  function describeSmash(injury, details)  { return `(TODO: Describe Body Smash - ${injury.level})`; }
+  function describeBlight(injury, details) { return `(UPDATED Body Blight - ${injury.level})`; }
+  function describeBurn(injury, details)   { return `(UPDATED Body Burn - ${injury.level})`; }
+  function describeCut(injury, details)    { return `(UPDATED Body Cut - ${injury.level})`; }
+  function describePierce(injury, details) { return `(UPDATED Body Pierce - ${injury.level})`; }
+  function describeRip(injury, details)    { return `(UPDATED Body Rip - ${injury.level})`; }
+  function describeSmash(injury, details)  { return `(UPDATED Body Smash - ${injury.level})`; }
 
   return { updateDetails, buildDescription };
 

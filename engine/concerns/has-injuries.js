@@ -41,10 +41,11 @@ global.HasInjuries = { isAppliedTo: function(model) {
 
     let abuser = Abuser.lookup(hazard.location);
     let details = abuser.updateDetails(injury);
+    let raw = abuser.buildDescription(injury, details);
 
     injury.healed = 0;
     injury.level = Math.min(levelMax,(injury.level + hazard.level));
-    injury.description = abuser.buildDescription(injury, details);
+    injury.description = await Weaver.weaveWithCharacter(raw, 'C', this);
     injury.details = details;
 
     await injury.save();

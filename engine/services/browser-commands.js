@@ -4,6 +4,7 @@ global.BrowserCommands = (function() {
     initGameMessages();
     initResolverMessages();
     initLocationMessages();
+    initDebugMessages();
   }
 
   // The game messages are primarily concerned with starting, stopping,
@@ -96,7 +97,6 @@ global.BrowserCommands = (function() {
     });
   }
 
-
   // Commands for things that can be done from locations
   function initLocationMessages() {
     ipcMain.on('location.change', (event, data) => {
@@ -121,6 +121,14 @@ global.BrowserCommands = (function() {
       const resources = await Resource.allForClient();
       const possessions = [];
       Browser.send('render.inventory',{ resources, possessions, food:game.food });
+    });
+  }
+
+  function initDebugMessages() {
+    ipcMain.on('debug.injuries.redescribe', () => {
+      Injury.redescribeAll().then(()=>{
+        Browser.send('alert',{ messsage:'Injuries have been redescribed.' });
+      });
     });
   }
 

@@ -37,5 +37,6 @@ require(`${ROOT}/client/elements/scrolling-panel`);
 // === Interface ===
 require(`${ROOT}/client/interface/alerts`);
 require(`${ROOT}/client/interface/client`);
+require(`${ROOT}/client/interface/debug`);
 require(`${ROOT}/client/interface/renderer`);
 require(`${ROOT}/client/interface/renderer-commands`);

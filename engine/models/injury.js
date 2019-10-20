@@ -35,3 +35,22 @@ global.Injury = Database.instance().define('injury', {
 
 Injury.LOCATIONS = locations;
 Injury.DAMAGE_TYPES = types;
+
+// redescribeAll() is just a debugger function, for when I have an existing
+// game, but I want to update the injury descriptions to reflect changes I've
+// made to the abusers.
+Injury.redescribeAll = async function() {
+  const injuries = await Injury.findAll();
+
+  console.log("=== Updating Injury Descriptions ===")
+  await Promise.all(injuries.map(async injury => {
+    const character = await Character.findByPk(injury.character_id);
+    const abuser = Abuser.lookup(injury.location);
+    const raw = abuser.buildDescription(injury, injury.details);
+
+    injury.description = await Weaver.weaveWithCharacter(raw,'C',character);
+    injury.save();
+
+    console.log(`[${injury.id}] ${injury.location} ${injury.damageType}:${injury.level} > ${injury.description}`)
+  }));
+}
