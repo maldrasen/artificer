@@ -1,3 +1,13 @@
+global.NipplesDescriber = (function() {
+
+  function fullDescription(character, parts, injuries) {
+    return "NIPPLES!"
+  }
+
+  return { fullDescription }
+
+})();
+
 // class Bodies::Describers::NippleDescriber
 //   include Language
 //

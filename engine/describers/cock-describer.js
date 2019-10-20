@@ -1,3 +1,13 @@
+global.CockDescriber = (function() {
+
+  function fullDescription(character, parts, injuries) {
+    return "COCK!"
+  }
+
+  return { fullDescription }
+
+})();
+
 // class Bodies::Describers::CockDescriber
 //   include Language
 //

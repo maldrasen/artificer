@@ -6,7 +6,6 @@ global.Abuser = (function() {
       body: Abuser.BodyAbuser,
       cock: Abuser.CockAbuser,
       head: Abuser.HeadAbuser,
-      mouth: Abuser.MouthAbuser,
       nipples: Abuser.NipplesAbuser,
       pussy: Abuser.PussyAbuser,
       tits: Abuser.TitsAbuser,

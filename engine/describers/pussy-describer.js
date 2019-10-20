@@ -1,3 +1,12 @@
+global.PussyDescriber = (function() {
+
+  function fullDescription(character, parts, injuries) {
+    return "PUSSY!"
+  }
+
+  return { fullDescription }
+
+})();
 
 // I think I need to make some changes on how both pussies and asses are
 // implemented. We currently have the pussy condition, size, and scale, but I'm

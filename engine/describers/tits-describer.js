@@ -1,3 +1,13 @@
+global.TitsDescriber = (function() {
+
+  function fullDescription(character, parts, injuries) {
+    return "TITS!"
+  }
+
+  return { fullDescription }
+
+})();
+
 // class Bodies::Describers::BreastDescriber
 //   include Language
 //

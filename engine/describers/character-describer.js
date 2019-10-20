@@ -10,31 +10,38 @@ global.CharacterDescriber = (function() {
         ${bodyDescription(character,parts,injuries)}
       </div>`;
 
+    if (character.genderCode == 'female') { description += `
+      <div class='sex-description'>
+        ${TitsDescriber.fullDescription(character,parts,injuries)}
+        ${NipplesDescriber.fullDescription(character,parts,injuries)}
+        ${PussyDescriber.fullDescription(character,parts,injuries)}
+        ${AnusDescriber.fullDescription(character,parts,injuries)}
+      </div>
+    `; }
+
+    if (character.genderCode == 'futa') { description += `
+      <div class='sex-description'>
+        ${TitsDescriber.fullDescription(character,parts,injuries)}
+        ${NipplesDescriber.fullDescription(character,parts,injuries)}
+        ${CockDescriber.fullDescription(character,parts,injuries)}
+        ${PussyDescriber.fullDescription(character,parts,injuries)}
+        ${AnusDescriber.fullDescription(character,parts,injuries)}
+      </div>
+    `; }
+
+    if (character.genderCode == 'male') { description += `
+      <div class='sex-description'>
+        ${NipplesDescriber.fullDescription(character,parts,injuries)}
+        ${CockDescriber.fullDescription(character,parts,injuries)}
+        ${AnusDescriber.fullDescription(character,parts,injuries)}
+      </div>
+    `; }
+
     return await Weaver.weaveWithCharacter(description,'C',character);
   }
 
-  // 'The Lupin are wolf spirits known for their ferocious attitudes.',
-  // 'The Vulpine are fox spirits with a friendy and often sultry demeanor.',
-  // 'The Selkie are small, good natured seal spirits.',
-  // 'The Equian are large horse spirits renowned for their strength, but really famous for their massive cocks.',
-  // 'The Minotaur are huge muscular cow spirits.',
-  // 'The Centaur are half elves with the body and legs of a horse.',
-  // 'The Naga are serpent spirits, known for their cunning, wisdom, and cruelity.',
-  // 'The Dragons are fearsome and powerful creatures of the ancient world.',
-  // 'A Succubus is a depraved and seductive demon summoned from the Abyss.',
-  // 'An Incubus is a perverse and seductive demon summoned from the Abyss.',
-  // 'Goblins are short barbaric fun-loving fae, responsible for countless disasters in the city.',
-  // 'The Orges are gigantic, brutal and dimwitted fae related to the goblins.',
-  // 'Nymphs are water and fertility spirits, renowned for both their beauty and libido.',
-  // 'The dryad are playful tree spirits with the lower body of a deer.',
-  // 'Sylphs are thoughtful and curious wind spirits with unbelievable flexibility',
-  // 'Pixies are tiny flying spirits with mischievous natures.',
-  // 'The Neko are half-elf cat spirits with cat-like ears, tails, and attitudes',
-  // 'The Wood Elves are short, muscular, wolf-blooded elves from the Greenwood outside of the city.',
-  // 'The common city dwelling elves.',
-  // 'The Dark Elves are a race of malevolent elves from deep underground.',
-  // 'The Elf Lords are ancient and immortal elves, as arrogant as they are powerful.',
-
+  // TODO: The general description should also include things like the
+  //       character's loyality and general attitude towards the player.
   function generalDescription(character,parts) {
     let desc;
 
@@ -145,6 +152,7 @@ global.CharacterDescriber = (function() {
     return Weaver.error(`TODO: comparativeBeauty() doesn't have the species ${character.speciesCode}`);
   }
 
+  // TODO: Also should include hornShape
   function headDescription(character) {
     if (character.speciesCode == 'rat') {
       return `{{C::gender.His}} face is unsurprisingly rat-like with {{C::body.eyeColor}} eyes, a short muzzle, long whiskers and a twitchy pink nose.`
@@ -156,7 +164,7 @@ global.CharacterDescriber = (function() {
   }
 
   // The skin description also includes a general body description so it also
-  // includes body injury descriptions.
+  // includes body injury descriptions. Should also include tailShape?
   function skinDescription(character) {
     // TODO: caprien, dryad, and nekos to name a few will need custom fur descriptions
 
@@ -182,17 +190,6 @@ global.CharacterDescriber = (function() {
       return ` ${injury.description}`;
     });
   }
-
-  // eyeColor
-  // scaleColor
-  // hairColor
-  // furColor
-  // furShade
-  // skinColor
-  // skinShade
-  // tailShape
-  // hornShape
-  // faceShape
 
   return { fullDescription };
 

@@ -1,4 +1,4 @@
-const locations = ['body','head','anus','cock','mouth','nipples','pussy','tits']
+const locations = ['body','head','anus','cock','nipples','pussy','tits']
 const types =  ['burn','cut','pierce','rip','smash','blight']
 
 global.Injury = Database.instance().define('injury', {
