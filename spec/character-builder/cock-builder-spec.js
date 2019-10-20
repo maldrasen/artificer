@@ -70,7 +70,7 @@ describe('CockBuilder', function() {
       character.getCock().then(cock => {
         expect(cock.convertedLength).to.be.within(2,7);
         expect(cock.convertedWidth).to.be.within(0.5,1);
-        expect(cock.convertedScrotumWidth).to.be.within(1.5,2.5)
+        expect(cock.convertedScrotumWidth).to.be.within(1.5,2.75)
         done();
       });
     });
