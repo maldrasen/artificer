@@ -10,10 +10,6 @@ class Bodies::Describers::BreastDescriber
     Loom::Weaver.new(actor: @body.character).resolve(description)
   end
 
-
-
-
-
 private
 
   def word_for_breasts

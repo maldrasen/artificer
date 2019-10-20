@@ -20,7 +20,9 @@ before(function() {
   });
 });
 
-// An after each is needed to clean up any models added to the database.
+// An after each is needed to clean up any models added to the database, and
+// set the mode back to non-metric.
 afterEach(function() {
+  Configuration.metric = false;
   Game.clear();
 })
