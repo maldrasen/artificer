@@ -14,9 +14,8 @@ Weaver.BodyLoom = (function() {
     if (token == "body.furColor")          { return furColorWord(body); }
     if (token == "body.skinColor")         { return skinColorWord(body); }
     if (token == "body.scaleColor")        { return scaleColorWord(body); }
-
-    // TODO: Figure out how to add weight back in.
-    if (token == "body.fifty-pounds")         { return `fifty pounds`; }
+    if (token == "body.fiftyPound")        { return weightMeasurement(body, false); }
+    if (token == "body.fiftyPounds")       { return weightMeasurement(body, true); }
 
     return Weaver.error(`Bad body token(${token})`);
   }
@@ -28,6 +27,15 @@ Weaver.BodyLoom = (function() {
     let high = Math.floor(inches / 12);
     let low = Math.floor(inches % 12);
     return `${high}'${low}"`
+  }
+
+  // Body normally doesn't have a weight attribute. This weight property is
+  // added when we build the weaver context to avoid the asynchronous
+  // getWeight() function. Also nested ternaries: ( •_•)>⌐□-□ (⌐□_□)
+  function weightMeasurement(body, plural) {
+    return (Configuration.metric) ?
+      `${Math.round(body.weight/1000)} ${plural ? 'kilograms' : 'kilogram'}`:
+      `${ConversionUtility.gramToPound(body.weight)} ${plural ? 'pounds' : 'pound'}`;
   }
 
   function englishHeightMeasurement(height, plural) {

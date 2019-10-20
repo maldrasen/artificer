@@ -25,6 +25,8 @@ global.WeaverContext = class WeaverContext {
 
   async addCharacter(key, character) {
     const everything = await character.getCompleteBody();
+          everything.body.weight = await everything.body.getWeight();
+
     this.set(key, extend(everything, { character:character }));
   }
 

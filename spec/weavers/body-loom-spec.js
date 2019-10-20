@@ -1,16 +1,47 @@
-describe('Body Loom', function() {
+describe.only('Body Loom', function() {
 
   function buildContext(options) {
     const context = new WeaverContext();
 
     return new Promise(resolve => {
-      CharacterBuilder.build({ firstName:'Jada', lastName:'Fire', species:'elf', body:options}).then(character => {
+      CharacterBuilder.build({ firstName:'Jada', lastName:'Fire', species:'elf', gender:'female', body:options}).then(character => {
         context.addCharacter('C',character).then(()=>{
           resolve(context);
         });
       });
     });
   }
+
+  describe("Gets weight", function() {
+    it('tiny', function(done) {
+      buildContext({ height:1520 }).then(context => {
+        expect(Weaver.weave('{{C::body.fiftyPound}}',context)).to.equal('100 pound');
+        done();
+      });
+    });
+
+    it('average', function(done) {
+      buildContext({ height:1800 }).then(context => {
+        expect(Weaver.weave('{{C::body.fiftyPound}}',context)).to.equal('156 pound');
+        done();
+      });
+    });
+
+    it('heavy', function(done) {
+      buildContext({ height:2500 }).then(context => {
+        expect(Weaver.weave('{{C::body.fiftyPounds}}',context)).to.equal('295 pounds');
+        done();
+      });
+    });
+
+    it('average metric', function(done) {
+      Configuration.metric = true;
+      buildContext({ height:1800 }).then(context => {
+        expect(Weaver.weave('{{C::body.fiftyPounds}}',context)).to.equal('71 kilograms');
+        done();
+      });
+    });
+  });
 
   describe("Gets height in feet and inches", function() {
     it('shorty', function(done) {
