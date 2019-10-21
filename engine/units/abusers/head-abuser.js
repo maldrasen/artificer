@@ -1,24 +1,24 @@
 Abuser.HeadAbuser = (function() {
 
-  function updateDetails(injury) {
-    if (injury.damageType == 'blight') { return updateBlight(injury); }
-    if (injury.damageType == 'burn')   { return updateBurn(injury);   }
-    if (injury.damageType == 'cut')    { return updateCut(injury);    }
-    if (injury.damageType == 'pierce') { return updatePierce(injury); }
-    if (injury.damageType == 'rip')    { return updateRip(injury);    }
-    if (injury.damageType == 'smash')  { return updateSmash(injury);  }
+  function updateDetails(injury, hazard) {
+    if (injury.damageType == 'blight') { return updateBlight(injury, hazard); }
+    if (injury.damageType == 'burn')   { return updateBurn(injury, hazard);   }
+    if (injury.damageType == 'cut')    { return updateCut(injury, hazard);    }
+    if (injury.damageType == 'pierce') { return updatePierce(injury, hazard); }
+    if (injury.damageType == 'rip')    { return updateRip(injury, hazard);    }
+    if (injury.damageType == 'smash')  { return updateSmash(injury, hazard);  }
     throw `Unknown damage type ${injury.damageType}`;
   }
 
-  function updateBlight(injury) { return {}; }
-  function updateBurn(injury)   { return {}; }
-  function updateCut(injury)    { return {}; }
-  function updatePierce(injury) { return {}; }
-  function updateRip(injury)    { return {}; }
+  function updateBlight(injury, hazard) { return {}; }
+  function updateBurn(injury, hazard)   { return {}; }
+  function updateCut(injury, hazard)    { return {}; }
+  function updatePierce(injury, hazard) { return {}; }
+  function updateRip(injury, hazard)    { return {}; }
 
   // If injury level is higher than three then assume some teeth have been
   // knocked out. Otherwise details can remain blank.
-  function updateSmash(injury)  {
+  function updateSmash(injury, hazard)  {
     let details = injury.details;
 
     if (injury.level < 3) { return details; }
@@ -34,25 +34,25 @@ Abuser.HeadAbuser = (function() {
     return details;
   }
 
-  function buildDescription(injury, details) {
-    if (injury.damageType == 'blight') { return describeBlight(injury, details); }
-    if (injury.damageType == 'burn')   { return describeBurn(injury, details);   }
-    if (injury.damageType == 'cut')    { return describeCut(injury, details);    }
-    if (injury.damageType == 'pierce') { return describePierce(injury, details); }
-    if (injury.damageType == 'rip')    { return describeRip(injury, details);    }
-    if (injury.damageType == 'smash')  { return describeSmash(injury, details);  }
+  async function buildDescription(injury, details) {
+    if (injury.damageType == 'blight') { return await describeBlight(injury, details); }
+    if (injury.damageType == 'burn')   { return await describeBurn(injury, details);   }
+    if (injury.damageType == 'cut')    { return await describeCut(injury, details);    }
+    if (injury.damageType == 'pierce') { return await describePierce(injury, details); }
+    if (injury.damageType == 'rip')    { return await describeRip(injury, details);    }
+    if (injury.damageType == 'smash')  { return await describeSmash(injury, details);  }
     throw `Unknown damage type ${injury.damageType}`;
   }
 
-  function describeBlight(injury, details) { return `(TODO: Describe Head Blight - ${injury.level})`; }
-  function describeBurn(injury, details)   { return `(TODO: Describe Head Burn - ${injury.level})`; }
-  function describeCut(injury, details)    { return `(TODO: Describe Head Cut - ${injury.level})`; }
-  function describePierce(injury, details) { return `(TODO: Describe Head Pierce - ${injury.level})`; }
-  function describeRip(injury, details)    { return `(TODO: Describe Head Rip - ${injury.level})`; }
+  async function describeBlight(injury, details) { return `(TODO: Describe Head Blight - ${injury.level})`; }
+  async function describeBurn(injury, details)   { return `(TODO: Describe Head Burn - ${injury.level})`; }
+  async function describeCut(injury, details)    { return `(TODO: Describe Head Cut - ${injury.level})`; }
+  async function describePierce(injury, details) { return `(TODO: Describe Head Pierce - ${injury.level})`; }
+  async function describeRip(injury, details)    { return `(TODO: Describe Head Rip - ${injury.level})`; }
 
   // If there are no details, assume a bruised face, like a black eye. Details
   // can specify mouth damage, such as missing teeth.
-  function describeSmash(injury, details)  {
+  async function describeSmash(injury, details)  {
     let desc = smashPartOne(injury.level);
 
     if (details.missingTeeth == 1) { desc += `It looks like {{C::gender.he}}'s missing a tooth as well.` }

@@ -1,38 +1,38 @@
 Abuser.BodyAbuser = (function() {
 
-  function updateDetails(injury) {
-    if (injury.damageType == 'blight') { return updateBlight(injury); }
-    if (injury.damageType == 'burn')   { return updateBurn(injury);   }
-    if (injury.damageType == 'cut')    { return updateCut(injury);    }
-    if (injury.damageType == 'pierce') { return updatePierce(injury); }
-    if (injury.damageType == 'rip')    { return updateRip(injury);    }
-    if (injury.damageType == 'smash')  { return updateSmash(injury);  }
+  function updateDetails(injury, hazard) {
+    if (injury.damageType == 'blight') { return updateBlight(injury, hazard); }
+    if (injury.damageType == 'burn')   { return updateBurn(injury, hazard);   }
+    if (injury.damageType == 'cut')    { return updateCut(injury, hazard);    }
+    if (injury.damageType == 'pierce') { return updatePierce(injury, hazard); }
+    if (injury.damageType == 'rip')    { return updateRip(injury, hazard);    }
+    if (injury.damageType == 'smash')  { return updateSmash(injury, hazard);  }
     throw `Unknown damage type ${injury.damageType}`;
   }
 
-  function updateBlight(injury) { return {}; }
-  function updateBurn(injury)   { return {}; }
-  function updateCut(injury)    { return {}; }
-  function updatePierce(injury) { return {}; }
-  function updateRip(injury)    { return {}; }
-  function updateSmash(injury)  { return {}; }
+  function updateBlight(injury, hazard) { return {}; }
+  function updateBurn(injury, hazard)   { return {}; }
+  function updateCut(injury, hazard)    { return {}; }
+  function updatePierce(injury, hazard) { return {}; }
+  function updateRip(injury, hazard)    { return {}; }
+  function updateSmash(injury, hazard)  { return {}; }
 
-  function buildDescription(injury, details) {
-    if (injury.damageType == 'blight') { return describeBlight(injury, details); }
-    if (injury.damageType == 'burn')   { return describeBurn(injury, details);   }
-    if (injury.damageType == 'cut')    { return describeCut(injury, details);    }
-    if (injury.damageType == 'pierce') { return describePierce(injury, details); }
-    if (injury.damageType == 'rip')    { return describeRip(injury, details);    }
-    if (injury.damageType == 'smash')  { return describeSmash(injury, details);  }
+  async function buildDescription(injury, details) {
+    if (injury.damageType == 'blight') { return await describeBlight(injury, details); }
+    if (injury.damageType == 'burn')   { return await describeBurn(injury, details);   }
+    if (injury.damageType == 'cut')    { return await describeCut(injury, details);    }
+    if (injury.damageType == 'pierce') { return await describePierce(injury, details); }
+    if (injury.damageType == 'rip')    { return await describeRip(injury, details);    }
+    if (injury.damageType == 'smash')  { return await describeSmash(injury, details);  }
     throw `Unknown damage type ${injury.damageType}`;
   }
 
-  function describeBlight(injury, details) { return `(UPDATED Body Blight - ${injury.level})`; }
-  function describeBurn(injury, details)   { return `(UPDATED Body Burn - ${injury.level})`; }
-  function describeCut(injury, details)    { return `(UPDATED Body Cut - ${injury.level})`; }
-  function describePierce(injury, details) { return `(UPDATED Body Pierce - ${injury.level})`; }
-  function describeRip(injury, details)    { return `(UPDATED Body Rip - ${injury.level})`; }
-  function describeSmash(injury, details)  { return `(UPDATED Body Smash - ${injury.level})`; }
+  async function describeBlight(injury, details) { return `(TODO: Describe Body Blight - ${injury.level})`; }
+  async function describeBurn(injury, details)   { return `(TODO: Describe Body Burn - ${injury.level})`; }
+  async function describeCut(injury, details)    { return `(TODO: Describe Body Cut - ${injury.level})`; }
+  async function describePierce(injury, details) { return `(TODO: Describe Body Pierce - ${injury.level})`; }
+  async function describeRip(injury, details)    { return `(TODO: Describe Body Rip - ${injury.level})`; }
+  async function describeSmash(injury, details)  { return `(TODO: Describe Body Smash - ${injury.level})`; }
 
   return { updateDetails, buildDescription };
 

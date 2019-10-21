@@ -8,6 +8,7 @@ console.log('=== Booting Spec Process ===');
 require(`${ROOT}/engine/boot-engine.js`);
 require(`${ROOT}/engine/boot-database.js`);
 require(`${ROOT}/spec/game-helper.js`);
+require(`${ROOT}/spec/spec-helper.js`);
 
 // If the before function returns a Promise, Mocha will ensure that the Promise
 // will finish before any of the specs are run. Including this in the global

@@ -15,7 +15,7 @@ global.TitsDescriber = (function() {
     if (blighted) { return `${blighted.description} ${wounds}`; }
 
     if (parts.tits == null) { return `${maleDescription(character, parts)} ${wounds}` }
-    if (character.speciesCode == 'rat') { return `${ratTits(character,parts)} ${ratNipples(character,parts)} ${wounds}` }
+    if (character.speciesCode == 'rat') { return `${ratTits(character, parts.tits)} ${ratNipples(character, parts.nipples)} ${wounds}` }
 
     return Weaver.error('Needs more tits!')
   }
@@ -26,9 +26,7 @@ global.TitsDescriber = (function() {
 
   // Rats are unique among the characters because they have 12 tits, arranged
   // in two rows. They're usually flat chested, but can have prominent nipples.
-  function ratTits(character, parts) {
-    let tits = parts.tits;
-
+  function ratTits(character, tits) {
     if (tits.shape == 'flat' && tits.sizeClass == 'zero') { return Random.from([
       `{{C::character.firstName}} has a completely flat chest. {{C::gender.His}} chest is lean and muscular and could easily be mistaken for a man's if not for {{C::gender.his}} many prominent nipples.`,
       `{{C::character.firstName}} has a lean muscular chest that could easily be mistaken for a man's if not for {{C::gender.his}} many prominent nipples.`,
@@ -96,7 +94,12 @@ global.TitsDescriber = (function() {
     return Random.fromFrequencyMap({ breast:3, tit:4, boob:1 });
   }
 
-  return { fullDescription, syncFullDescription }
+  return {
+    fullDescription,
+    syncFullDescription,
+    ratTits,
+    ratNipples,
+  }
 
 })();
 
