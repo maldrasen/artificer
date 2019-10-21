@@ -69,7 +69,7 @@ global.TitsDescriber = (function() {
       `{{C::character.firstName}} has twelve small round ${_tits()}. Each of {{C::gender.his}} tits are slightly larger than a lemon and capped with a thick prominent nipple.`,
     ]); }
 
-    return Weaver.error(`TODO: Describe rat tits of larger sizes.`)
+    return Weaver.error(`TODO: Describe rat tits of larger sizes. Shape:${tits.shape} Size:${tits.sizeClass}`)
   }
 
   // Get general nipple descriptions.
