@@ -2,11 +2,10 @@ global.CockDescriber = (function() {
 
   async function fullDescription(character) {
     const parts = await character.getCompleteBody();
-    const injuries = await character.getAllInjuries();
-    return syncFullDescription(character, parts, injuries);
+    return syncFullDescription(character, parts);
   }
 
-  function syncFullDescription(character, parts, injuries) {
+  function syncFullDescription(character, parts) {
     return "COCK!"
   }
 

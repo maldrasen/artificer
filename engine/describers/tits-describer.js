@@ -2,20 +2,19 @@ global.TitsDescriber = (function() {
 
   async function fullDescription(character) {
     const parts = await character.getCompleteBody();
-    const injuries = await character.getAllInjuries();
-    return syncFullDescription(character, parts, injuries);
+    return syncFullDescription(character, parts);
   }
 
-  function syncFullDescription(character, parts, injuries) {
-    const blighted = injuries.filter(injury => { return injury.location == 'tits' && injury.damageType == 'blight' })[0];
-    const wounds = injuryDescriptions(injuries);
+  function syncFullDescription(character, parts) {
+    // const blighted = injuries.filter(injury => { return injury.location == 'tits' && injury.damageType == 'blight' })[0];
+    // const wounds = injuryDescriptions(injuries);
 
     // The blighted description supercedes the normal tits description, though
     // other injury descriptions are still tacked on at the end.
-    if (blighted) { return `${blighted.description} ${wounds}`; }
+    // if (blighted) { return `${blighted.description} ${wounds}`; }
 
-    if (parts.tits == null) { return `${maleDescription(character, parts)} ${wounds}` }
-    if (character.speciesCode == 'rat') { return `${ratTits(character, parts.tits)} ${describeNipples(character, parts.nipples)} ${wounds}` }
+    if (parts.tits == null) { return `${maleDescription(character, parts)}` }
+    if (character.speciesCode == 'rat') { return `${ratTits(character, parts.tits)} ${describeNipples(character, parts.nipples)}` }
 
     return Weaver.error('Needs more tits!')
   }
@@ -96,15 +95,6 @@ global.TitsDescriber = (function() {
       Weaver.error(`TODO: Needs more nipples!`);
   }
 
-  // Collect all of the injury descriptions, except for the blight description.
-  function injuryDescriptions(injuries) {
-    return injuries.filter(injury => {
-      return injury.location == 'tits' && injury.damageType != 'blight'
-    }).map(injury => {
-      return ` ${injury.description}`;
-    });
-  }
-
   // Synonym Generators
   function _tits() { return Random.fromFrequencyMap({ breasts:10, tits:10, boobs:1, knockers:1 }); }
   function _tit() { return Random.fromFrequencyMap({ breast:3, tit:4, boob:1 }); }
@@ -118,6 +108,15 @@ global.TitsDescriber = (function() {
 
 })();
 
+
+
+// function injuryDescriptions(injuries) {
+//   return injuries.filter(injury => {
+//     return injury.location == 'tits' && injury.damageType != 'blight'
+//   }).map(injury => {
+//     return ` ${injury.description}`;
+//   });
+// }
 
 //   def describe_multiple_breasts
 //
