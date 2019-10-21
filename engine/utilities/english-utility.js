@@ -20,7 +20,7 @@ global.EnglishUtility = {
     return (number > 2) ? 'both' : 'all';
   },
 
-  // Returns a number from one to twenty one in English. If an :or option is
+  // Returns a number from one to twenty one in English. If an or option is
   // specified then that is returned for "one" in cases where "a" or "an" would
   // sound better in a phrase.
   numberInEnglish(number, options)  {
@@ -67,11 +67,11 @@ global.EnglishUtility = {
   // it's given.
 
   inchesInEnglish(value, plural) {
-    let inch = (plural && number != 1) ? 'inches' : 'inch'
-    let foot = (plural && number != 12) ? 'feet' : 'foot'
-
     let number = Math.floor(value);
     let part = Math.floor((value-number)*10)
+
+    let inch = (plural && number != 1) ? 'inches' : 'inch'
+    let foot = (plural && number != 12) ? 'feet' : 'foot'
 
     // Oh shit, why is this here?
     if(part > 6 && inch == 'inch' && plural) { inch = 'inches'; }
@@ -83,21 +83,21 @@ global.EnglishUtility = {
       return "a fraction of an inch";
     }
     if (number < 6) {
-      if (part > 6) { return `${numberInEnglish(number)} and three quarter ${inch}`; }
-      if (part > 4) { return `${numberInEnglish(number)} and a half ${inch}`; }
-      if (part > 1) { return `${numberInEnglish(number)} and a quarter ${inch}`; }
-      return `${numberInEnglish(number)} ${inch}`;
+      if (part > 6) { return `${EnglishUtility.numberInEnglish(number)} and three quarter ${inch}`; }
+      if (part > 4) { return `${EnglishUtility.numberInEnglish(number)} and a half ${inch}`; }
+      if (part > 1) { return `${EnglishUtility.numberInEnglish(number)} and a quarter ${inch}`; }
+      return `${EnglishUtility.numberInEnglish(number)} ${inch}`;
     }
     if (number < 12) {
-      if (part > 4) { return `${numberInEnglish(number)} and a half ${inch}`; }
-      return `${numberInEnglish(number)} ${inch}`;
+      if (part > 4) { return `${EnglishUtility.numberInEnglish(number)} and a half ${inch}`; }
+      return `${EnglishUtility.numberInEnglish(number)} ${inch}`;
     }
     if (number == 12 && Random.upTo(2)==0) {
       return "one foot";
     }
     if (number < 18) {
-      if (part > 4) { return `${numberInEnglish(number)} and a half ${inch}`; }
-      return `${numberInEnglish(number)} ${inch}`;
+      if (part > 4) { return `${EnglishUtility.numberInEnglish(number)} and a half ${inch}`; }
+      return `${EnglishUtility.numberInEnglish(number)} ${inch}`;
     }
     if (number == 18) {
       return Random.from([`eighteen ${inch}`,'a foot and a half']);

@@ -42,6 +42,7 @@ global.Weaver = (function() {
     if (token.startsWith('body')) { return Weaver.BodyLoom.findValue(subject, token, context); }
     if (token.startsWith('character')) { return Weaver.CharacterLoom.findValue(subject, token, context); }
     if (token.startsWith('gender')) { return Weaver.GenderLoom.findValue(subject, token, context); }
+    if (token.startsWith('nipples')) { return Weaver.NipplesLoom.findValue(subject, token, context); }
 
     return error(`BadToken(${subject}::${token})`);
   }
