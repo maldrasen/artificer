@@ -64,6 +64,11 @@ global.NipplesBuilder = (function() {
     if (params.shape == 'heart')    { width = width*2; }
     if (params.shape == 'teat')     { length = (2+Random.upTo(2))*width; }
 
+    let extraLength = ObjectUtility.fetch(character.species.bodyOptions,'nipples','extraLength')
+    let extraWidth = ObjectUtility.fetch(character.species.bodyOptions,'nipples','extraWidth')
+    if (extraLength) { width += Random.upTo(extraWidth) }
+    if (extraWidth)  { width += Random.upTo(extraLength) }
+
     params.width = Math.round(width);
     params.length = Math.round(length);
   }

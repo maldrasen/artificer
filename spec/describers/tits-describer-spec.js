@@ -1,6 +1,6 @@
 describe('Describer: Tits', function() {
 
-  it('describes rat tits', function(done) {
+  it.only('describes rat tits', function(done) {
     SpecHelper.tenTimes(done, resolve => {
       CharacterBuilder.build({ firstName:'Ratty', gender:'female', species:'rat' }).then(character => {
         TitsDescriber.fullDescription(character).then(raw => {

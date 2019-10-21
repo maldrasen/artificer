@@ -40,6 +40,11 @@ Species.build('rat', {
         small: 10,
       },
     },
+    nipples: {
+      shape: 'puffy',
+      extraLength: 10,
+      extraWidth: 10,
+    },
     cock: {
       sheath: 'fur',
       urethraWidth: 1,

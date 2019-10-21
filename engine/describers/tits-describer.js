@@ -72,8 +72,24 @@ global.TitsDescriber = (function() {
     return Weaver.error(`TODO: Describe rat tits of larger sizes.`)
   }
 
-  function ratNipples(character,parts) {
-    return "[TODO: Rat Nipples]"
+
+  //
+  function ratNipples(character,nipples) {
+    if (nipples.shape == 'puffy') {
+      console.log('=== Describe Rat Nipples ===')
+      console.log('Shade  ',nipples.shade)
+      console.log('Width  ',nipples.width)
+      console.log('Length ',nipples.length)
+
+
+
+      return Random.from([
+        `{{C::gender.His}} {{C::nipple.color}} nipples protrude `
+      ]);
+
+    }
+
+    return Weaver.error(`TODO: Rat tits with other than normal nipples.`);
   }
 
   // Collect all of the injury descriptions, except for the blight description.
@@ -193,17 +209,6 @@ global.TitsDescriber = (function() {
 // end
 
 
-//
-//   # --- Nipples ----------------------------------------------------------------
-//
-//   # The short nipple description is a phrase describing the character's nipples
-//   # that can be included in another description or used by itself. The phrase
-//   # will be in a form like:
-//   #
-//   #   large nipples
-//   #   long black nipples
-//   #   pale nipples the size of her thumbs
-//
 //   def describe_nipples_short
 //
 //     color = nipple_shade_string

@@ -58,8 +58,7 @@ global.EnglishUtility = {
   // This is a rather ugly and complex function that takes a measurement and
   // returns a phrase describing that measurement in inches or feet.
   //
-  //   Number: The number of inches
-  //   Part: A number 0-9, represents a tenth of an inch.
+  //   Number: The number in inches
   //   Plural: Use feet and inches, or foot and inch.
   //
   // This is used mostly by the CockDescriber, but I could see it being used
