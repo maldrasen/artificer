@@ -106,4 +106,4 @@ Character.prototype.detailForClient = async function() {
 
 HasAspects.isAppliedTo(Character);
 HasBody.isAppliedTo(Character);
-// HasInjuries.isAppliedTo(Character);
+HasInjuries.isAppliedTo(Character);

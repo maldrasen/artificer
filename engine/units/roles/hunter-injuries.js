@@ -16,6 +16,9 @@ Role.Hunter.Injuries = (function() {
     console.log(`TODO: ${options.character.name} was killed while out hunting`);
   }
 
+  // This function finds an appropriate hazard from and adds it to the
+  // character. It then weaves the story from the hazard and returns it for
+  // display in the report.
   async function addInjury(possibleInjuries, options) {
     let cock = await options.character.getCock();
     let pussy = await options.character.getPussy();
@@ -25,10 +28,15 @@ Role.Hunter.Injuries = (function() {
       return meetsRequirement(possible, extend(options,{ cock, pussy, tits }));
     }));
 
+    // This might happen in dev for a while, but will eventually stop happening
+    // once I've added enough hazards. This should eventually throw an exception
+    // instead.
+    if (hazard == null) { return false; }
+
     let injury = await options.character.addInjury(hazard);
     let story = await Weaver.weaveWithCharacter(hazard.story,'H',options.character);
 
-    return { injury, story }
+    return { hazard, story };
   }
 
   // Hunting is a slightly dangerous job, and there's a chance that you'll be
@@ -47,27 +55,36 @@ Role.Hunter.Injuries = (function() {
   // We need to filter the list of all possible injuries down to the ones
   // that can be applied to this character. The requirements for hunting
   // injuries are unique to the class. I don't think they're used anywhere
-  // else, but if they are they can be moved into the central scrutinizer
-  // I suppose.
+  // else.
   //
-  // Recognized Requirements: success, failure, tier-0, species-rat
-  function meetsRequirement(possibleInjury, options) {
+  // Recognized Requirements:
+  //    success         The hunt was successful
+  //    failure         The hunt was a failure
+  //    tier-0          The hunter has exactly tier 0 equipment (no equipment)
+  //    species-rat     A rat is hunting
+  //    species-biter   The hunter has a bite attack
+  function meetsRequirement(hazard, options) {
     let valid = true;
 
-    if (possibleInjury.location == 'cock'  && options.cock == null)  { valid = false; }
-    if (possibleInjury.location == 'pussy' && options.pussy == null) { valid = false; }
-    if (possibleInjury.location == 'tits'  && options.tits == null)  { valid = false; }
+    if (hazard.location == 'cock'  && options.cock == null)  { valid = false; }
+    if (hazard.location == 'pussy' && options.pussy == null) { valid = false; }
+    if (hazard.location == 'tits'  && options.tits == null)  { valid = false; }
 
-    each((possibleInjury.requires||[]), requirement => {
-      if (requirement == 'failure'     && options.success) { valid = false; }
-      if (requirement == 'success'     && !options.success) { valid = false; }
-      if (requirement == 'tier-0'      && options.tier != 0) { valid = false; }
-      if (requirement == 'species-rat' && options.character.speciesCode != 'rat') { valid = false; }
+    each((hazard.requires||[]), requirement => {
+      if (requirement == 'failure'       && options.success) { valid = false; }
+      if (requirement == 'success'       && !options.success) { valid = false; }
+      if (requirement == 'tier-0'        && options.tier != 0) { valid = false; }
+      if (requirement == 'species-rat'   && options.character.speciesCode != 'rat') { valid = false; }
+      if (requirement == 'species-biter' && options.character.biter == false) { valid = false; }
     });
 
     return valid;
   }
 
-  return { resolve, injuryChance };
+  return {
+    resolve,
+    injuryChance,
+    meetsRequirement
+  };
 
 })();

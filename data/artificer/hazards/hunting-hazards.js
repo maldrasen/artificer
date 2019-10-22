@@ -1,6 +1,5 @@
 
 
-// Disable for now...
 
 // // === Painful Injuries ===
 //
@@ -105,13 +104,25 @@
 // });
 //
 // // --- Tits : Smash ---
-//
-// Hazard.buildHazard({ activity:'hunting-hinterlands', location:'tits', type:'smash', level:2,
-//   story: `{{H::gender.He}} had a wild boar cornered and was going in for the kill when it suddenly charged.
-//           {{H::gender.He}} tride to dodge to the side, but the boar crashed into {{H::gender.his}} chest, crushing
-//           {{H::gender.his}} tits with it's tusks.`
-// });
-//
+
+Hazard.buildHazard('hunt-tit-smash-001', { activity:'hunting-hinterlands', location:'tits', type:'smash', level:3,
+  requires: ['tier-0','species-biter','failure'],
+  details: { tits:'single' },
+  story: `{{H::gender.He}} had carefully stalked a deer into a secluded glade. Even though {{H::gender.he}} didn't have
+          any weapons on {{H::gender.he}}, {{H::gender.he}} thought that perhaps {{H::gender.he}} could jump onto the
+          deer's back and bite its throat. The deer noticed {{H::gender.him}} though before {{H::gender.he}} could
+          attack and kicked {{H::gender.him}} hard, right in one of {{H::gender.his}} {{H::tits.adjective}} {{tits}},
+          leaving {{H::gender.him}} clutching {{H::gender.his}} crushed {{tit}} and gasping for air as the deer lept
+          away.`
+});
+
+Hazard.buildHazard('hunt-tit-smash-002', { activity:'hunting-hinterlands', location:'tits', type:'smash', level:2,
+  details: { tits:'all' },
+  story: `{{H::gender.He}} had a wild boar cornered and was going in for the kill when it suddenly charged.
+          {{H::gender.He}} tride to dodge to the side, but the boar crashed into {{H::gender.his}} chest, crushing
+          {{H::gender.his}} tits with its tusks.`
+});
+
 // // === Critical Injuries ===
 //
 // Hazard.buildHazard({ activity:'hunting-hinterlands', location:'body', type:'smash', level:1,

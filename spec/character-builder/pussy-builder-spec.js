@@ -74,7 +74,7 @@ describe('PussyBuilder', function() {
     });
 
     it('sets the width according to species (goblin)', function(done) {
-      testPussyWidth('goblin',17,38,done);
+      testPussyWidth('goblin',17,39,done);
     });
 
     it('sets the width according to species (pixie)', function(done) {

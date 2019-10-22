@@ -1,8 +1,8 @@
 global.HasInjuries = { isAppliedTo: function(model) {
 
-  model.prototype.getAllInjuries = function() {
-    return Injury.findAll({ where:{ character_id:this.id }});
-  }
+  // model.prototype.getAllInjuries = function() {
+  //   return Injury.findAll({ where:{ character_id:this.id }});
+  // }
 
   // Add an injury from a hazard form.
   //
@@ -21,38 +21,42 @@ global.HasInjuries = { isAppliedTo: function(model) {
   //       until the abusers are implemented at all though.
   //
   model.prototype.addInjury = async function(hazard) {
-    let levelMax = (hazard.severity == 'critical') ? 9 : 20;
-
-    let injury = await Injury.findOne({ where:{
-      character_id: this.id,
-      location: hazard.location,
-      damageType: hazard.type,
-    }});
-
-    if (injury == null) {
-      injury = await Injury.create({
-        character_id: this.id,
-        location: hazard.location,
-        damageType: hazard.type,
-        severity: hazard.severity,
-        level: 0,
-      });
-    }
-
-    injury.healed = 0;
-    injury.level = Math.min(levelMax,(injury.level + hazard.level));
-
-    let abuser = Abuser.lookup(hazard.location);
-    let details = abuser.updateDetails(injury, hazard);
-    let raw = await abuser.buildDescription(injury, details)
-
-    injury.description = await Weaver.weaveWithCharacter(raw, 'C', this);
-    injury.details = details;
-
-    await injury.save();
-
-    return injury;
+  //   let levelMax = (hazard.severity == 'critical') ? 9 : 20;
+  //
+  //   let injury = await Injury.findOne({ where:{
+  //     character_id: this.id,
+  //     location: hazard.location,
+  //     damageType: hazard.type,
+  //   }});
+  //
+  //   if (injury == null) {
+  //     injury = await Injury.create({
+  //       character_id: this.id,
+  //       location: hazard.location,
+  //       damageType: hazard.type,
+  //       severity: hazard.severity,
+  //       level: 0,
+  //     });
+  //   }
+  //
+  //   injury.healed = 0;
+  //   injury.level = Math.min(levelMax,(injury.level + hazard.level));
+  //
+  //   let abuser = Abuser.lookup(hazard.location);
+  //   let details = abuser.updateDetails(injury, hazard);
+  //   let raw = await abuser.buildDescription(injury, details)
+  //
+  //   injury.description = await Weaver.weaveWithCharacter(raw, 'C', this);
+  //   injury.details = details;
+  //
+  //   await injury.save();
+  //
+  //   return injury;
+  // return injured part now.
   }
+
+
+
 
   // Get the overall health level (somewhere between 0 and 100) for this
   // character.
@@ -105,11 +109,13 @@ global.HasInjuries = { isAppliedTo: function(model) {
 
   // === Private Functions ===
 
+  // This will need redone.
   async function totalLevels(id, severity) {
-    const injuries = await Injury.findAll({ where:{ character_id:id, severity:severity }});
-    return injuries.reduce((total, injury) => {
-      return total + injury.level;
-    },0);
+    // const injuries = await Injury.findAll({ where:{ character_id:id, severity:severity }});
+    // return injuries.reduce((total, injury) => {
+    //   return total + injury.level;
+    // },0);
+    return 0;
   }
 
 }};
