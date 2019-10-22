@@ -56,20 +56,36 @@ global.HasInjuries = { isAppliedTo: function(model) {
   }
 
   model.prototype.getHealthLevels = async function() {
-    const painful = await totalLevels(this.id, 'painful');
-    const critical = await totalLevels(this.id, 'critical');
+    const painful = await totalPainfulLevels(this);
+    const critical = await totalCriticalLevels(this);
     return { painful, critical };
   }
 
   // === Private Functions ===
 
-  // This will need redone.
-  async function totalLevels(id, severity) {
-    // const injuries = await Injury.findAll({ where:{ character_id:id, severity:severity }});
-    // return injuries.reduce((total, injury) => {
-    //   return total + injury.level;
-    // },0);
-    return 0;
+  // TODO: Add in the other damage types as I add them to the body model.
+  async function totalCriticalLevels(character) {
+    let total = 0;
+
+    const body = character.getBody();
+
+    return total;
+  }
+
+  // TODO: Add in the other damage types as I add them to the other models.
+  async function totalPainfulLevels(character) {
+    let total = 0;
+
+    const anus = await character.getAnus();
+    const cock = await character.getCock();
+    const pussy = await character.getPussy();
+    const tits = await character.getTits();
+
+    total += tits.blightLevel;
+    total += tits.burnLevel;
+    total += tits.smashLevel;
+
+    return total;
   }
 
 }};
