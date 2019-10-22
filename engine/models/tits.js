@@ -11,7 +11,7 @@ global.Tits = Database.instance().define('tits', {
   burnLevel:     { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
   smashLevel:    { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
   smashCount:    { type:Sequelize.INTEGER },
-  smashLocation: { type:Sequelize.STRING, validate:{ isIn:[['left','right','all']] }},
+  smashPlace:    { type:Sequelize.STRING, validate:{ isIn:[['left','right','all']] }},
   smashHealing:  { type:Sequelize.INTEGER },
   smashShape:    { type:Sequelize.STRING },
   description:   { type:Sequelize.STRING },

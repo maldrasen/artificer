@@ -7,7 +7,9 @@ Abuser.TitsAbuser = (function() {
     if (hazard.type == 'burn')   { addBurnInjury(character, tits, hazard);   }
     if (hazard.type == 'smash')  { addSmashInjury(character, tits, hazard);  }
 
-    await TitsDescriber.updateDescription(character, tits);
+    let describer = await new TitsDescriber(character, tits)
+                    await describer.updateDescription();
+
     return tits;
   }
 
@@ -33,7 +35,7 @@ Abuser.TitsAbuser = (function() {
     tits.smashLevel += hazard.level;
     tits.smashCount += 1;
     tits.smashHealing = 0;
-    tits.smashLocation = leftRightOrAll(tits.smashLocation, place)
+    tits.smashPlace = leftRightOrAll(tits.smashPlace, place)
 
     if (tits.smashLevel > 5) { tits.smashLevel = 5;}
     if (shape) { tits.smashShape = shape; }

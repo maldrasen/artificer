@@ -35,6 +35,7 @@ require(`${ROOT}/engine/forms/form`);
 require(`${ROOT}/engine/forms/adjustment`);
 require(`${ROOT}/engine/forms/aspect`);
 require(`${ROOT}/engine/forms/area`);
+require(`${ROOT}/engine/forms/description`);
 require(`${ROOT}/engine/forms/event`);
 require(`${ROOT}/engine/forms/gender`);
 require(`${ROOT}/engine/forms/hazard`);

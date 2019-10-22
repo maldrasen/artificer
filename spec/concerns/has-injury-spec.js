@@ -7,7 +7,7 @@ describe('HasInjury', function() {
         expect(tits.smashCount).to.equal(1);
         expect(tits.smashHealing).to.equal(0);
         expect(tits.smashShape).to.equal('hoof');
-        expect(tits.smashLocation).to.be.oneOf(['left','right']);
+        expect(tits.smashPlace).to.be.oneOf(['left','right']);
         expect(tits.description).to.exist;
         jada.getHealth().then(health => {
           jada.getHealthWord().then(word => {

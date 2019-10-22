@@ -15,7 +15,7 @@ global.TitsBuilder = (function() {
       burnLevel: 0,
       smashLevel: 0,
       smashCount: 0,
-      smashLocation: null,
+      smashPlace: null,
       smashHealing: 0,
       smashShape: null,
       description: null,

@@ -95,6 +95,8 @@
     "aspects/skills/oral",
     "aspects/skills/sorcery",
 
+    "descriptions/tits-descriptions",
+
     "events/global/game-start",
     "events/global/game-start-chase",
     "events/global/got-fleas",
