@@ -59,7 +59,7 @@ require(`${ROOT}/engine/units/abuser`);
 // require(`${ROOT}/engine/units/abusers/cock-abuser`);
 // require(`${ROOT}/engine/units/abusers/head-abuser`);
 // require(`${ROOT}/engine/units/abusers/pussy-abuser`);
-// require(`${ROOT}/engine/units/abusers/tits-abuser`);
+require(`${ROOT}/engine/units/abusers/tits-abuser`);
 
 require(`${ROOT}/engine/units/role`);
 require(`${ROOT}/engine/units/roles/hunter`);

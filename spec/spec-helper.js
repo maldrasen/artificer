@@ -1,8 +1,15 @@
 global.SpecHelper = (function() {
 
+  function buildJada(options) {
+    return new Promise(resolve => {
+      CharacterBuilder.build(
+        extend({ firstName:'Jada', lastName:'Fire', species:'elf', gender:'futa' },options)
+      ).then(resolve);
+    });
+  }
+
   function tenTimes(done, testFunction) {
     let tests = [];
-
     for (let i=0; i<10; i++) {
       tests.push(new Promise(resolve => {
         testFunction(resolve);
@@ -12,6 +19,6 @@ global.SpecHelper = (function() {
     Promise.all(tests).then(()=>{ done(); });
   }
 
-  return { tenTimes };
+  return { buildJada, tenTimes };
 
 })();

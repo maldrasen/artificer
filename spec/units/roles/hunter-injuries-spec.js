@@ -1,4 +1,4 @@
-describe.only('Role: Hunter.Injuries', function() {
+describe('Role: Hunter.Injuries', function() {
 
   describe('injuryChance()', function() {
     it('is dangerous if you suck', function() {

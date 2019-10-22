@@ -1,5 +1,33 @@
 global.TitsDescriber = (function() {
 
+  // The updateDescription() function takes all of the attributes on the tits
+  // and builds a description, which it then caches on the tits model itself.
+  async function updateDescription(character, tits) {
+    if (tits == null) { tits = await character.getTits(); }
+
+    let attributes = []
+    if (tits.smashLevel > 0)  { attributes.push({ injury:'smash',  level:tits.smashLevel  }); }
+    if (tits.blightLevel > 0) { attributes.push({ injury:'blight', level:tits.blightLevel }); }
+    if (tits.burnLevel > 0)   { attributes.push({ injury:'burn',   level:tits.burnLevel   }); }
+
+    // console.log("Attribute List:",attributes)
+
+    // Sort the existing attributes.
+    attributes.sort((a,b) => {
+      if (a.injury == 'blight') { return 1000; }
+      if (a.injury && b.injury) { return a.level - b.level; }
+      return 0;
+    })
+
+    // console.log("Sorted List:",attributes)
+
+    tits.description = 'Working on it...'
+
+    await tits.save();
+  }
+
+
+
   async function fullDescription(character) {
     const parts = await character.getCompleteBody();
     return syncFullDescription(character, parts);
@@ -100,10 +128,7 @@ global.TitsDescriber = (function() {
   function _tit() { return Random.fromFrequencyMap({ breast:3, tit:4, boob:1 }); }
 
   return {
-    fullDescription,
-    syncFullDescription,
-    ratTits,
-    describeNipples,
+    updateDescription,
   }
 
 })();

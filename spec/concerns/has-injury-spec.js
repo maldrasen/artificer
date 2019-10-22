@@ -1,26 +1,19 @@
-// describe('HasInjury', function() {
-//
-//   function buildJada(options) {
-//     return new Promise(resolve => {
-//       CharacterBuilder.build(
-//         extend({ firstName:'Jada', lastName:'Fire', species:'elf', gender:'futa' },options)
-//       ).then(resolve);
-//     });
-//   }
-//
-//   it('can add an injury to a character', function(done) {
-//     buildJada().then(jada => {
-//       jada.addInjury({ severity:'critical', location:'head', type:'burn', level:2 }).then(injury => {
-//         expect(injury.location).to.equal('head');
-//         expect(injury.damageType).to.equal('burn');
-//         expect(injury.severity).to.equal('critical');
-//         expect(injury.level).to.equal(2);
-//         expect(injury.description).to.exist;
-//         done();
-//       });
-//     });
-//   });
-//
+describe.only('HasInjury', function() {
+
+  it('can add an injury to a character', function(done) {
+    SpecHelper.buildJada().then(jada => {
+      jada.addInjury(Hazard.lookup('hunt-tit-smash-001')).then(tits => {
+        expect(tits.smashLevel).to.equal(3);
+        expect(tits.smashCount).to.equal(1);
+        expect(tits.smashHealing).to.equal(0);
+        expect(tits.smashShape).to.equal('hoof');
+        expect(tits.smashLocation).to.be.oneOf(['left','right']);
+        expect(tits.description).to.exist;
+        done();
+      });
+    });
+  });
+
 //   it('if a character is alreay injured it increases the injury level', function(done) {
 //     buildJada().then(jada => {
 //       Promise.all([
@@ -92,4 +85,4 @@
 //     });
 //   });
 //
-// });
+});
