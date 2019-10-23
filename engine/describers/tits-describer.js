@@ -57,49 +57,25 @@ global.TitsDescriber = class TitsDescriber {
   }
 
   d_rat_tits() {
-    if (this.tits.shape == 'flat' && this.tits.sizeClass == 'zero') { return Random.from([
-      `{{C::character.firstName}} has a completely flat chest. {{C::gender.His}} chest is lean and muscular and could easily be mistaken for a man's if not for {{C::gender.his}} many prominent nipples.`,
-      `{{C::character.firstName}} has a lean muscular chest that could easily be mistaken for a man's if not for {{C::gender.his}} many prominent nipples.`,
-      `{{C::character.firstName's}} chest is washboard flat, with absolutely no {{tits}} to speak of.`,
-    ]); }
+    let descriptions = Description.where(description => {
+      let valid = description.type == 'tits';
 
-    if (this.tits.shape == 'conical' && this.tits.sizeClass == 'tiny') { return Random.from([
-      `{{C::character.firstName's}} chest is studded with twelve tiny conical {{tits}}. {{C::gender.his}} {{tits}} are too small to do much more than push {{C::gender.his}} many prominent nipples out just a bit further.`,
-      `{{C::character.firstName}} has twelve tiny cone shaped {{tits}}. They're each quite small and don't do much other than press {{C::gender.his}} many prominent nipples out just a bit further.`,
-      `{{C::character.firstName}} has six rows of tiny conical {{tits}}. Each of {{C::gender.his}} {{tits}} is capped by a prominent nipple almost as large as the {{tit}} itself.`,
-    ]); }
+      if (this.tits.sizeClass == 'zero') {
+        if (description.requirements.indexOf('size-zero') < 0) { valid = false; }
+      }
 
-    if (this.tits.shape == 'conical' && this.tits.sizeClass == 'small') { return Random.from([
-      `{{C::character.firstName's}} chest is studded with twelve small conical {{tits}}. {{C::gender.his}} {{tits}} are wide at the base and come to a narrow tip, which makes {{C::gender.his}} prominent nipples seem to poke out even further.`,
-      `{{C::character.firstName}} has twelve small cone shaped {{tits}}. Each of {{C::gender.his}} small {{tits}} are wide at the base and come to a narrow tip, then capped with a thick and prominent nipple.`,
-      `{{C::character.firstName}} has six rows of small conical {{tits}}. Each of {{C::gender.his}} {{tits}} is capped by a prominent nipple almost as large as the {{tit}} itself.`,
-    ]); }
+      each(description.requirements, req => {
+        if (this.titsMatchRequirement(req) == false) { valid = false; }
+      });
+      return valid;
+    });
 
-    if (this.tits.shape == 'perky' && this.tits.sizeClass == 'tiny') { return Random.from([
-      `{{C::character.firstName's}} {{tits}} are tiny and perky, with prominent upturned nipples set high on each of {{C::gender.his}} {{tits}}.`,
-      `{{C::character.firstName's}} chest is adorned with twelve tiny {{tits}}. Each of {{C::gender.his}} perky upturned {{tits}} is too small to do much more than push {{C::gender.his}} many prominent nipples out just a bit further.`,
-      `{{C::character.firstName}} has six rows of tiny {{tits}}. {{C::gender.His}} twelve prominent nipples are set high on each of {{C::gender.his}} perky tits, making them look even more jutting and pinchable.`
-    ]); }
+    if (descriptions.length == 0) {
+      console.log("Nope",this.tits)
+      return `Error: No descriptions available.`
+    }
 
-    if (this.tits.shape == 'perky' && this.tits.sizeClass == 'small') { return Random.from([
-      `{{C::character.firstName's}} {{tits}} are small and perky, with prominent upturned nipples set high on each of {{C::gender.his}} {{tits}}.`,
-      `{{C::character.firstName's}} chest is adorned with twelve small {{tits}}. Each of {{C::gender.his}} perky upturned {{tits}} pushes {{C::gender.his}} prominent nipples upward proudly.`,
-      `{{C::character.firstName}} has six rows of small {{tits}}. {{C::gender.His}} twelve prominent nipples are set high on each of {{C::gender.his}} perky tits, making them look even more jutting and pinchable.`
-    ]); }
-
-    if (this.tits.shape == 'round' && this.tits.sizeClass == 'tiny') { return Random.from([
-      `{{C::character.firstName's}} {{tits}} are round but tiny. Each of {{C::gender.his}} tiny round orbs is slightly smaller than a lemon and capped with a thick prominent nipple.`,
-      `{{C::character.firstName's}} chest is studded with twelve tiny {{tits}}. Each of {{C::gender.his}} round {{tits}} are slightly smaller than a lemon and capped with a thick prominent nipple.`,
-      `{{C::character.firstName}} has twelve round but tiny {{tits}}. Each of {{C::gender.his}} tits are slightly smaller than a lemon and capped with a thick prominent nipple.`,
-    ]); }
-
-    if (this.tits.shape == 'round' && this.tits.sizeClass == 'small') { return Random.from([
-      `{{C::character.firstName's}} {{tits}} are small and round. Each of {{C::gender.his}} round {{tits}} is slightly larger than a lemon and capped with a thick prominent nipple.`,
-      `{{C::character.firstName's}} chest is studded with twelve small {{tits}}. Each of {{C::gender.his}} round {{tits}} are slightly larger than a lemon and capped with a thick prominent nipple.`,
-      `{{C::character.firstName}} has twelve small round {{tits}}. Each of {{C::gender.his}} tits are slightly larger than a lemon and capped with a thick prominent nipple.`,
-    ]); }
-
-    return Weaver.error(`TODO: Describe rat tits of larger sizes. Shape:${this.tits.shape} Size:${this.tits.sizeClass}`)
+    return Random.from(descriptions).d;
   }
 
   d_normal() {
@@ -184,6 +160,19 @@ global.TitsDescriber = class TitsDescriber {
       `{{C::gender.His}} other {{tit}} has also been`,
     ]); }
   }
+
+  titsMatchRequirement(req) {
+    if (req == 'species-rat')   { return this.character.speciesCode == 'rat' }
+    if (req == 'size-zero')     { return this.tits.sizeClass == 'zero' }
+    if (req == 'size-tiny')     { return this.tits.sizeClass == 'tiny' }
+    if (req == 'shape-conical') { return this.tits.shape == 'conical' }
+    if (req == 'shape-perky')   { return this.tits.shape == 'perky' }
+    if (req == 'shape-perky')   { return this.tits.shape == 'perky' }
+    if (req == 'nipple-as-large-as-breast') { return true; }
+
+    throw `Unknown Description Requirement - ${req}`
+  }
+
 }
 
 
@@ -191,9 +180,6 @@ global.TitsDescriber = class TitsDescriber {
 
 
 //
-//   // Get general nipple descriptions.
-//   function describeNipples(character,nipples) {
-//     let pile = []
 //
 //     if (nipples.shape == 'puffy') {
 //       ArrayUtility.addAll(pile,[
@@ -210,27 +196,8 @@ global.TitsDescriber = class TitsDescriber {
 //       ]); }
 //     }
 //
-//     return (pile.length > 0) ?
-//       Random.from(pile):
-//       Weaver.error(`TODO: Needs more nipples!`);
-//   }
-//
-//
-//   return {
-//     updateDescription,
-//   }
-//
-// })();
 
 
-
-// function injuryDescriptions(injuries) {
-//   return injuries.filter(injury => {
-//     return injury.location == 'tits' && injury.damageType != 'blight'
-//   }).map(injury => {
-//     return ` ${injury.description}`;
-//   });
-// }
 
 //   def describe_multiple_breasts
 //
@@ -286,36 +253,6 @@ global.TitsDescriber = class TitsDescriber {
 //     end
 //
 //     "#{Roll.random_from(phrases)}, with #{describe_nipples_short}."
-//   end
-//
-//
-//   def breast_size_comparative_singular size=nil
-//     size = @breast_size if size.nil?
-//
-//     Roll.random_from case size
-//       when 0..5    then ["golf ball","half a lemon"]
-//       when 6..15   then ['avacado',"lemon","tennis ball","half an apple","half an orange"]
-//       when 16..25  then ["baseball","orange","peach","apple","fist"]
-//       when 26..40  then ["grapefruit","softball","small melon"]
-//       when 41..60  then ["melon","large melon","half a watermelon","pumpkin"]
-//       when 61..80  then ["bowling ball","basketball"]
-//       when 81..100 then ["watermelon","beachball"]
-//       else ["[TODO: Breasts are too big > #{size}]"]
-//     end
-//   end
-//
-//   def breast_size_adjective
-//     Roll.random_from case @breast_size
-//       when 0..5    then ["flat","miniature","boyish","undeveloped"]
-//       when 6..15   then ["tiny","little","very small","petite"]
-//       when 16..25  then ["little","small","cute","modest"]
-//       when 26..40  then ["average","plump","shapely","full"]
-//       when 41..60  then ["large","big","fat"]
-//       when 61..80  then ["very large","huge","very big"]
-//       when 81..90  then ["gigantic","immense","giant","enormous","massive"]
-//       when 91..100 then ["titanic","colossal","gargantuan","monstrous","tremendous"]
-//       else ["[TODO: Breasts are too big > #{size}]"]
-//     end
 //   end
 //
 // end
