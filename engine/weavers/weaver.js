@@ -23,13 +23,16 @@ global.Weaver = (function() {
     var working = true;
 
     while(working) {
-      var actorMatch = text.match(/{{([^}]+)::([^}]+)}}/)
-      var utilityMatch = text.match(/{{([^}]+)\|([^}]+)}}/)
+      var actorMatch = text.match(/{{([^}]+)::([^}]+)}}/);
+      var utilityMatch = text.match(/{{([^}]+)\|([^}]+)}}/);
+      var simpleMatch = text.match(/{{([^}]+)}}/);
 
       if (actorMatch) {
         text = text.replace(actorMatch[0], actorValue(actorMatch[1].trim(), actorMatch[2].trim(), context));
       } else if (utilityMatch) {
         text = text.replace(utilityMatch[0], utilityValue(utilityMatch[1].trim(), utilityMatch[2].trim(), context));
+      } else if (simpleMatch) {
+        text = text.replace(simpleMatch[0], simpleValue(simpleMatch[1].trim()));
       } else {
         working = false;
       }
@@ -51,6 +54,12 @@ global.Weaver = (function() {
     if (utility.toLowerCase().startsWith('flag')) { return Weaver.FlagLoom.findValue(utility, argument, context); }
     if (utility.toLowerCase().startsWith('random')) { return Weaver.RandomLoom.findValue(utility, argument); }
     return error(`BadToken(${utility}|${argument})`);
+  }
+
+  function simpleValue(token) {
+    if (token == 'tit')  { return Random.fromFrequencyMap({ breast:3, tit:4, boob:1 }); }
+    if (token == 'tits') { return Random.fromFrequencyMap({ breasts:10, tits:10, boobs:1, knockers:1 }); }
+    return error(`BadToken(${token})`);
   }
 
   function error(message) {

@@ -1,5 +1,16 @@
 describe.only('Describer: Tits', function() {
 
+  it('describes rat tits', function(done) {
+    SpecHelper.tenTimes(done, resolve => {
+      SpecHelper.buildJada({ species:'rat' }).then(jada => {
+        new TitsDescriber({ character:jada }).updateDescription().then(tits => {
+          console.log(`   (rat) > ${tits.description}`)
+          resolve();
+        });
+      });
+    });
+  });
+
   it('describes smashed tits', function(done) {
     SpecHelper.tenTimes(done, resolve => {
       SpecHelper.buildJada().then(jada => {
@@ -10,36 +21,5 @@ describe.only('Describer: Tits', function() {
       });
     });
   });
-
-  // it('describes rat tits', function(done) {
-  //   SpecHelper.tenTimes(done, resolve => {
-  //     CharacterBuilder.build({ firstName:'Ratty', gender:'female', species:'rat' }).then(character => {
-  //       TitsDescriber.fullDescription(character).then(raw => {
-  //         Weaver.weaveWithCharacter(raw,'C',character).then(description => {
-  //           console.log(`      (rat) > ${description}`)
-  //           resolve();
-  //         });
-  //       });
-  //     });
-  //   });
-  // });
-
-  // TODO: Work in progress here.
-  // it.only('describes blighted rat tits', function(done) {
-  //   let hazard = Hazard.buildHazard({ location:'tits', type:'blight', level:1, details:{ nipples:'single' }, story:'' });
-  //
-  //   SpecHelper.tenTimes(done, resolve => {
-  //     CharacterBuilder.build({ firstName:'Ratty', gender:'female', species:'rat' }).then(character => {
-  //       character.addInjury(hazard).then(injury => {
-  //         TitsDescriber.fullDescription(character).then(raw => {
-  //           Weaver.weaveWithCharacter(raw,'C',character).then(description => {
-  //             console.log(`      (blight-rat) > ${description}`)
-  //             resolve();
-  //           });
-  //         });
-  //       });
-  //     });
-  //   });
-  // });
 
 });

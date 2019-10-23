@@ -7,8 +7,8 @@ Abuser.TitsAbuser = (function() {
     if (hazard.type == 'burn')   { addBurnInjury(character, tits, hazard);   }
     if (hazard.type == 'smash')  { addSmashInjury(character, tits, hazard);  }
 
-    let describer = await new TitsDescriber(character, tits)
-                    await describer.updateDescription();
+    const describer = new TitsDescriber({ character, tits });
+    await describer.updateDescription();
 
     return tits;
   }

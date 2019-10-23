@@ -1,72 +1,173 @@
 global.TitsDescriber = class TitsDescriber {
 
-  constructor(character, tits) {
-    this._character = character;
-    this._tits = tits;
+  constructor(options) {
+    if (options.character == null) { throw `The Character must at least be set.` }
+
+    this._character = options.character;
+    this._tits = options.tits;
+    this._nipples = options.nipples;
+    this._previousInjury = null;
   }
 
-  get tits() { return this._tits; }
   get character() { return this._character; }
+  get nipples() { return this._nipples; }
+  get tits() { return this._tits; }
+  get previousInjury() { return this._previousInjury; }
+  set previousInjury(i) { this._previousInjury = i; }
 
   async updateDescription() {
-    let mask = `
-      ${this.tits.blightLevel > 0 ? 1 : 0}
-      ${this.tits.burnLevel > 0 ? 1 : 0}
-      ${this.tits.smashLevel > 0 ? 1 : 0}
-    `.replace(/\s+/g,'');
+    if (this.tits == null) { this._tits = await this.character.getTits(); }
+    if (this.nipples == null) { this._nipples = await this.character.getNipples(); }
 
-    this.tits.description = null;
-    if (mask == '000') { this.tits.description = `${this.d_normal('init')}`; }
-    if (mask == '001') { this.tits.description = `${this.d_normal('init')} ${this.d_smashed('firstInjury')}`; }
+    let description = `
+      ${this.describeTits()}
+      ${this.describeInjuries()}
+      ${this.describeNipples()}
+    `.replace(/\n/g,'').replace(/\s+/g,' ');
 
-    if (this.tits.description != null) { await this.tits.save(); } else {
-      throw `Unable to describe tits with bit mask [${mask}]`
-    }
+    this.tits.description = await Weaver.weaveWithCharacter(description,'C',this.character);
+
+    await this.tits.save();
+    return this.tits;
   }
 
   // === Descriptions ===
 
-  d_normal(position) {
+  describeTits() {
+    if (this.tits == null) { return this.d_male_tits(); }
+    if (this.character.speciesCode == 'rat') { return this.d_rat_tits(); }
+    return this.d_normal();
+  }
+
+  describeInjuries() {
+    return `
+      ${this.d_blight()}
+      ${this.d_burn()}
+      ${this.d_smash()}
+    `;
+  }
+
+  describeNipples() {
+    if (this.previousInjury != null) { return ''; }
+    return `[TODO: Nipples!]`
+  }
+
+  d_male_tits() {
+    return "[TODO: Male Nipples]"
+  }
+
+  d_rat_tits() {
+    return "[Rat Tits, again]"
+  }
+
+  d_normal() {
     if (Random.upTo(1) == 0) {
-      return `${this.c_objective(position)} has big tits.`
+      return `{{C::character.firstName}} has big tits.`
     } else {
-      return `${this.c_possessive(position)} tits are big.`
+      return `{{C::character.firstName's}} tits are big.`
     }
   }
 
-  d_smashed(position) {
-    return `${this.s_injuryStart(position,this.tits.smashPlace)} smashed.`
+  d_blight() {
+    if (this.tits.blightLevel == 0) { return ''; }
+    let herTitsHaveBeen = this.s_injuryStart(this.tits.smashPlace);
+
+    this.previousInjury = {
+      type: 'blight',
+      place: this.tits.blightPlace,
+    }
+
+    return `TODO: ${herTitsHaveBeen} blighted.`
+  }
+
+  d_burn() {
+    if (this.tits.burnLevel == 0) { return ''; }
+    let herTitsHaveBeen = this.s_injuryStart(this.tits.smashPlace);
+
+    this.previousInjury = {
+      type: 'burn',
+      place: this.tits.burnPlace,
+    }
+
+    return `TODO: ${herTitsHaveBeen} burnt.`
+  }
+
+  d_smash() {
+    if (this.tits.smashLevel == 0) { return ''; }
+    let herTitsHaveBeen = this.s_injuryStart(this.tits.smashPlace);
+
+    this.previousInjury = {
+      type: 'smash',
+      place: this.tits.smashPlace,
+    }
+
+    return `TODO: ${herTitsHaveBeen} smashed.`
   }
 
   // === Segments ===
 
-  c_objective(position) {
-    return (position == 'init') ? '{{C::character.firstName}}' : '{{C::gender.He}}'
-  }
-  c_possessive(position) {
-    return (position == 'init') ? `{{C::character.firstName's}}` : '{{C::gender.His}}'
-  }
-
-  s_injuryStart(position,place,previous) {
-    if (position == 'firstInjury') {
+  // The injury start segment considers the previous injury described, and
+  // notes if this injury was on the same breast as the last.
+  s_injuryStart(place) {
+    if (this.previousInjury == null) {
       if (place == 'all') { return Random.from([
         '{{C::gender.His}} {{tits}} have been',
         'It looks like {{C::gender.his}} {{tits}} have been',
       ]); }
 
       return Random.from([
+        `{{C::gender.His}} ${place} {{tit}} has been`,
         `One of {{C::gender.his}} {{tits}} has been`,
         `It looks like one of {{C::gender.his}} {{tits}} has been`,
       ]);
     }
-    if (position == 'nextInjury') {
-      // 'The same tit has also been'
-      // 'Her other tit has also been'
-      // "They've also been"
-      // "Then, her tits have also been"
-    }
+
+    if (place == 'all' && this.previousInjury.place == 'all') { return Random.from([
+      `They've also been`,
+      `Then, {{C::gender.his}} {{tits}} have also been`
+    ]); }
+
+    if (place != 'all' && this.previousInjury.place == 'all') { return Random.from([
+      `Then, {{C::gender.his}} ${place} {{tit}} has also been`,
+      `One of {{C::gender.his}} {{tits}} has also been`,
+    ]); }
+
+    if (place == this.previousInjury.place) { return Random.from([
+      `Then, the same {{tit}} has also been`,
+      `The same {{tit}} has also been`,
+    ]); }
+
+    if (place != this.previousInjury.place) { return Random.from([
+      `Then, {{C::gender.his}} other {{tit}} has also been`,
+      `{{C::gender.His}} other {{tit}} has also been`,
+    ]); }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // let key = `smash.${tits.smashLevel}`
@@ -183,9 +284,6 @@ global.TitsDescriber = class TitsDescriber {
 //       Weaver.error(`TODO: Needs more nipples!`);
 //   }
 //
-//   // Synonym Generators
-//   function _tits() { return Random.fromFrequencyMap({ breasts:10, tits:10, boobs:1, knockers:1 }); }
-//   function _tit() { return Random.fromFrequencyMap({ breast:3, tit:4, boob:1 }); }
 //
 //   return {
 //     updateDescription,
