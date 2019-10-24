@@ -34,9 +34,7 @@ global.TitsDescriber = class TitsDescriber {
   // === Descriptions ===
 
   describeTits() {
-    if (this.tits == null) { return this.d_male_tits(); }
-    if (this.character.speciesCode == 'rat') { return this.d_rat_tits(); }
-    return this.d_normal();
+    return Random.from(Description.validForTits(this.character, this.tits)).d;
   }
 
   describeInjuries() {
@@ -50,40 +48,6 @@ global.TitsDescriber = class TitsDescriber {
   describeNipples() {
     if (this.previousInjury != null) { return ''; }
     return `[TODO: Nipples!]`
-  }
-
-  d_male_tits() {
-    return "[TODO: Male Nipples]"
-  }
-
-  d_rat_tits() {
-    let descriptions = Description.where(description => {
-      let valid = description.type == 'tits';
-
-      if (this.tits.currentSizeClass == 'zero') {
-        if (description.requirements.indexOf('size-zero') < 0) { valid = false; }
-      }
-
-      each(description.requirements, req => {
-        if (this.titsMatchRequirement(req) == false) { valid = false; }
-      });
-      return valid;
-    });
-
-    if (descriptions.length == 0) {
-      console.log("Nope",this.tits)
-      return `Error: No descriptions available.`
-    }
-
-    return Random.from(descriptions).d;
-  }
-
-  d_normal() {
-    if (Random.upTo(1) == 0) {
-      return `{{C::character.firstName}} has big tits.`
-    } else {
-      return `{{C::character.firstName's}} tits are big.`
-    }
   }
 
   d_blight() {
@@ -159,18 +123,6 @@ global.TitsDescriber = class TitsDescriber {
       `Then, {{C::gender.his}} other {{tit}} has also been`,
       `{{C::gender.His}} other {{tit}} has also been`,
     ]); }
-  }
-
-  titsMatchRequirement(req) {
-    if (req == 'species-rat')   { return this.character.speciesCode == 'rat' }
-    if (req == 'size-zero')     { return this.tits.currentSizeClass == 'zero' }
-    if (req == 'size-tiny')     { return this.tits.currentSizeClass == 'tiny' }
-    if (req == 'shape-conical') { return this.tits.shape == 'conical' }
-    if (req == 'shape-perky')   { return this.tits.shape == 'perky' }
-    if (req == 'shape-perky')   { return this.tits.shape == 'perky' }
-    if (req == 'nipple-as-large-as-breast') { return true; }
-
-    throw `Unknown Description Requirement - ${req}`
   }
 
 }

@@ -40,7 +40,7 @@ Weaver.TitsLoom = (function() {
       bell:     ['heavy','swinging','bulbous'],
       conical:  ['conical','cone shaped','tapered','pointed','pear shaped'],
       dangling: ['bell shaped','dangling','soft','swaying'],
-      perky:    ['perky','perky upturned'],
+      perky:    ['perky'],
       round:    ['round','plump','shapely','full','apple shaped'],
     }[tits.shape]);
   }
