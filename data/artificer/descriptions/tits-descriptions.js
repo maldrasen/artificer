@@ -70,7 +70,7 @@ Description.buildTits({ requirements: ['species-rat','shape-perky'],
 });
 
 Description.buildTits({ requirements: ['species-rat','shape-conical'],
-  d: `{{C::character.firstName's}} chest is studded with twelve {{C::tits.sizeShape}} {{tits}}. {{C::gender.his}}
+  d: `{{C::character.firstName's}} chest is studded with twelve {{C::tits.sizeShape}} {{tits}}. {{C::gender.His}}
       {{tits}} are wide at the base and come to a narrow tip, which makes {{C::gender.his}}
       {{C::nipples.thickNipples}} seem to poke out even further.`,
 });

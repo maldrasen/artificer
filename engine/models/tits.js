@@ -26,8 +26,24 @@ global.Tits = Database.instance().define('tits', {
   getterMethods: {
     size() {
       let range = Tits.SizeRanges[this.sizeClass]
+      // TODO: Adjust for blight and pregnancy.
+      //       Pregnancy progress will need to update tits and pussy models because we want this to stay sync.
+      //       Also add lactation factor again.
       return (this.sizeScale/100)*(range.max-range.min) + range.min
     },
+
+    // The size class influences how tits grow in size, the current size though is used to determine what their
+    // current class is now.
+    currentSizeClass() {
+      let size = this.size;
+      if (size == 0) { return 'zero'; }
+      if (size < 30) { return 'tiny'; }
+      if (size < 100) { return 'small'; }
+      if (size < 300) { return 'average'; }
+      if (size < 600) { return 'big'; }
+      if (size < 1000) { return 'huge'; }
+      return 'monster'
+    }
   },
   setterMethods: {
   }

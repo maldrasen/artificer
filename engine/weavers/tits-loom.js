@@ -1,74 +1,104 @@
+Weaver.TitsLoom = (function() {
 
-  // {{C::tits.sizeAndShape}}
-  s_tits_sizeAndShape() {
-    // small and perky
-    // small and round
-    // tiny and perky
-  }
-
-  // {{C::tits.sizeShape}}
-  s_tits_sizeShape() {
-    // small round
-    // tiny conical
-    // round but tiny
-    // tiny cone shaped
-  }
-
-  // {{C::tits.size}}
-  s_tits_size() {
-    // tiny
-    // small
-  }
-
-  // {{C::tits.shape}}
-  s_tits_shape() {
-    // perky upturned
-    // round
-  }
-
-  // {{C::tits.sizeComp}}
-  s_tits_sizeComp() {
-    // slightly larger than a lemon
-    // slightly smaller than a lemon
-  }
-
-  // {{C::nipples.thickNipple}}
-  s_thickNipple() {
-    // thick prominent nipple
-    // thick and prominent nipple
-  }
-
-  // {{C::nipples.thickNipples}}
-  s_thickNipples() {
-    // prominent nipples
-    // prominent upturned nipples
-  }
-
-  //   def breast_size_comparative_singular size=nil
-  //     size = @breast_size if size.nil?
+  // Replaces token placeholders in the form of:
+  //   {{actor::tits.sizeAndShape}}
   //
-  //     Roll.random_from case size
-  //       when 0..5    then ["golf ball","half a lemon"]
-  //       when 6..15   then ['avacado',"lemon","tennis ball","half an apple","half an orange"]
-  //       when 16..25  then ["baseball","orange","peach","apple","fist"]
-  //       when 26..40  then ["grapefruit","softball","small melon"]
-  //       when 41..60  then ["melon","large melon","half a watermelon","pumpkin"]
-  //       when 61..80  then ["bowling ball","basketball"]
-  //       when 81..100 then ["watermelon","beachball"]
-  //       else ["[TODO: Breasts are too big > #{size}]"]
-  //     end
-  //   end
-  //
-  //   def breast_size_adjective
-  //     Roll.random_from case @breast_size
-  //       when 0..5    then ["flat","miniature","boyish","undeveloped"]
-  //       when 6..15   then ["tiny","little","very small","petite"]
-  //       when 16..25  then ["little","small","cute","modest"]
-  //       when 26..40  then ["average","plump","shapely","full"]
-  //       when 41..60  then ["large","big","fat"]
-  //       when 61..80  then ["very large","huge","very big"]
-  //       when 81..90  then ["gigantic","immense","giant","enormous","massive"]
-  //       when 91..100 then ["titanic","colossal","gargantuan","monstrous","tremendous"]
-  //       else ["[TODO: Breasts are too big > #{size}]"]
-  //     end
-  //   end
+  function findValue(subject, token, context) {
+    if (context.get(subject) == null) { return Weaver.error(`Subject(${subject}) not in context`); }
+
+    let body = context.get(subject).body;
+    let tits = context.get(subject).tits;
+
+    if (token == "tits.sizeAndShape") { return sizeAndShape(tits); }
+    if (token == "tits.sizeShape")    { return sizeShape(tits); }
+    if (token == "tits.size")         { return size(tits); }
+    if (token == "tits.shape")        { return shape(tits); }
+    if (token == "tits.sizeComp")     { return sizeComp(tits,false); }
+    if (token == "tits.sizeComps")    { return sizeComp(tits,true); }
+
+    return Weaver.error(`Bad tits token(${token})`);
+  }
+
+  function sizeAndShape(tits) { return `${size(tits)} and ${shape(tits)}` }
+  function sizeShape(tits) { return `${size(tits)} ${shape(tits)}` }
+
+  function size(tits) {
+    return Random.from({
+      zero:    ['miniature','boyish','undeveloped','minimal'],
+      tiny:    ['tiny','tiny','tiny','little','little','very small','petite'],
+      small:   ['small','small','small','little','little','cute'],
+      average: ['average','nice','normal','typical','medium'],
+      big:     ['big','big','big','large','large','fat','wide','heavy','ample','sizable'],
+      huge:    ['huge','huge','huge','very large','very big','giant','massive'],
+      monster: ['gigantic','immense','enormous','titanic','colossal','gargantuan','monstrous'],
+    }[tits.currentSizeClass]);
+  }
+
+  function shape(tits) {
+    return Random.from({
+      flat:     ['flat','completely flat','nonexistent'],
+      bell:     ['heavy','swinging','bulbous'],
+      conical:  ['conical','cone shaped','tapered','pointed','pear shaped'],
+      dangling: ['bell shaped','dangling','soft','swaying'],
+      perky:    ['perky','perky upturned'],
+      round:    ['round','plump','shapely','full','apple shaped'],
+    }[tits.shape]);
+  }
+
+  function sizeComp(tits, plural) {
+    if (tits.size < 33)   { return `slightly smaller than ${tinyComp(plural)}` }
+    if (tits.size < 66)   { return `about as large as ${tinyComp(plural)}` }
+    if (tits.size < 100)  { return `slightly larger than ${tinyComp(plural)}` }
+    if (tits.size < 133)  { return `slightly smaller than ${smallComp(plural)}` }
+    if (tits.size < 166)  { return `about as large as ${smallComp(plural)}` }
+    if (tits.size < 200)  { return `slightly larger than ${smallComp(plural)}` }
+    if (tits.size < 233)  { return `slightly smaller than ${averageComp(plural)}` }
+    if (tits.size < 266)  { return `about as large as ${averageComp(plural)}` }
+    if (tits.size < 300)  { return `slightly larger than ${averageComp(plural)}` }
+    if (tits.size < 400)  { return `a bit smaller than ${largeComp(plural)}` }
+    if (tits.size < 500)  { return `about as large as ${largeComp(plural)}` }
+    if (tits.size < 600)  { return `bigger than ${largeComp(plural)}` }
+    if (tits.size < 733)  { return `a bit smaller than ${hugeComp(plural)}` }
+    if (tits.size < 866)  { return `about as large as ${hugeComp(plural)}` }
+    if (tits.size < 1000) { return `bigger than ${hugeComp(plural)}` }
+    if (tits.size < 1500) { return `far larger than ${hugeComp(plural)}` }
+    if (tits.size < 2000) { return `twice the size of ${hugeComp(plural)}` }
+    if (tits.size < 3000) { return `three times as large as ${hugeComp(plural)}` }
+    return Weaver.error(`Can't compare tit size above 3000.`)
+  }
+
+  function tinyComp(plural) {
+    return plural ?
+      aPairOf() + Random.from(['lemons','limes','plums','avacados']) :
+      Random.from(['a lemon','a lime','a plum','an avacado','half an apple','half an orange'])
+  }
+
+  function smallComp(plural) {
+    return plural ?
+      aPairOf() + Random.from(['oranges','peaches','apples','pears']) :
+      Random.from(['an orange','a peach','an apple','a pear',])
+  }
+
+  function averageComp(plural) {
+    return plural ?
+      aPairOf() + Random.from(['grapefruits','large oranges','large applies','handfulls']) :
+      Random.from(['a grapefruit','a large orange','a large apple','a handfull'])
+  }
+
+  function largeComp(plural) {
+    return plural ?
+      aPairOf() + Random.from(['heads of lettuce','coconuts','heads of cabbage']) :
+      Random.from(['half a watermelon','a head of lettuce','a coconut','a head of cabbage'])
+  }
+
+  function hugeComp(plural) {
+    return plural ?
+      aPairOf() + Random.from(['watermelons','winter mellons','pumpkins','pineapples','honeydew mellons']) :
+      Random.from(['a watermelon','a winter mellon','a pumpkin','their head','a pineapple','a honeydew mellon'])
+  }
+
+  function aPairOf() { return Random.from(['a couple of','a pair of','two']) }
+
+  return { findValue };
+
+})();

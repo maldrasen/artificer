@@ -60,7 +60,7 @@ global.TitsDescriber = class TitsDescriber {
     let descriptions = Description.where(description => {
       let valid = description.type == 'tits';
 
-      if (this.tits.sizeClass == 'zero') {
+      if (this.tits.currentSizeClass == 'zero') {
         if (description.requirements.indexOf('size-zero') < 0) { valid = false; }
       }
 
@@ -163,8 +163,8 @@ global.TitsDescriber = class TitsDescriber {
 
   titsMatchRequirement(req) {
     if (req == 'species-rat')   { return this.character.speciesCode == 'rat' }
-    if (req == 'size-zero')     { return this.tits.sizeClass == 'zero' }
-    if (req == 'size-tiny')     { return this.tits.sizeClass == 'tiny' }
+    if (req == 'size-zero')     { return this.tits.currentSizeClass == 'zero' }
+    if (req == 'size-tiny')     { return this.tits.currentSizeClass == 'tiny' }
     if (req == 'shape-conical') { return this.tits.shape == 'conical' }
     if (req == 'shape-perky')   { return this.tits.shape == 'perky' }
     if (req == 'shape-perky')   { return this.tits.shape == 'perky' }
