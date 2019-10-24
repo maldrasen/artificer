@@ -20,6 +20,7 @@ global.CockBuilder = (function() {
       minimumWidth:     20,
       ballsSizeFactor:  1,
       internalBalls:    false,
+      description:      null,
     });
 
 		if (params.widthRatio == null) {

@@ -16,6 +16,7 @@ global.Cock = Database.instance().define('cock', {
   spineHeightRatio:  { type:Sequelize.INTEGER },
   ballsSizeFactor:   { type:Sequelize.DOUBLE  },
   internalBalls:     { type:Sequelize.BOOLEAN },
+  description:       { type:Sequelize.STRING },
 },{
   timestamps: false,
   getterMethods: {

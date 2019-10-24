@@ -11,26 +11,25 @@ global.CharacterDescriber = (function() {
 
     if (character.genderCode == 'female') { description += `
       <div class='sex-description'>
-        ${TitsDescriber.syncFullDescription(character,parts)}
-        ${PussyDescriber.syncFullDescription(character,parts)}
-        ${AnusDescriber.syncFullDescription(character,parts)}
+        ${parts.tits.description}
+        ${parts.pussy.description}
+        ${parts.anus.description}
       </div>
     `; }
 
     if (character.genderCode == 'futa') { description += `
       <div class='sex-description'>
-        ${TitsDescriber.syncFullDescription(character,parts)}
-        ${CockDescriber.syncFullDescription(character,parts)}
-        ${PussyDescriber.syncFullDescription(character,parts)}
-        ${AnusDescriber.syncFullDescription(character,parts)}
+        ${parts.tits.description}
+        ${parts.cock.description}
+        ${parts.pussy.description}
+        ${parts.anus.description}
       </div>
     `; }
 
     if (character.genderCode == 'male') { description += `
       <div class='sex-description'>
-        ${TitsDescriber.syncFullDescription(character,parts)}
-        ${CockDescriber.syncFullDescription(character,parts)}
-        ${AnusDescriber.syncFullDescription(character,parts)}
+        ${parts.cock.description}
+        ${parts.anus.description}
       </div>
     `; }
 

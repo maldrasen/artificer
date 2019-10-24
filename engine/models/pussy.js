@@ -15,6 +15,7 @@ global.Pussy = Database.instance().define('pussy', {
   innerLabiaLength:  { type:Sequelize.INTEGER },
   outerLabiaSize:    { type:Sequelize.INTEGER },
   prolapseLength:    { type:Sequelize.INTEGER },
+  description:       { type:Sequelize.STRING },
 },{
   timestamps: false,
   getterMethods: {
