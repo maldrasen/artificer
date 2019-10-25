@@ -3,6 +3,17 @@ global.CockDescriber = class CockDescriber {
   constructor(options) {
     if (options.character == null) { throw `The Character must at least be set.` }
     this._character = options.character;
+    this._cock = options.cock;
+  }
+
+  get character() { return this._character; }
+  get cock() { return this._cock; }
+
+  async updateDescription() {
+    if (this.cock == null) { this._cock = await this.character.getCock(); }
+    if (this.cock == null) { return ""; }
+
+    return "[TODO: Cock description]"
   }
 
 }

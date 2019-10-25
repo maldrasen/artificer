@@ -19,6 +19,10 @@ global.TitsDescriber = class TitsDescriber {
     if (this.tits == null) { this._tits = await this.character.getTits(); }
     if (this.nipples == null) { this._nipples = await this.character.getNipples(); }
 
+    if (this.tits == null) {
+      return "[TODO: Male chest description]"
+    }
+
     let description = `
       ${this.describeTits()}
       ${this.describeInjuries()}
@@ -34,21 +38,33 @@ global.TitsDescriber = class TitsDescriber {
   // === Descriptions ===
 
   describeTits() {
-    return Random.from(Description.validForTits({
+    let description = Random.from(Description.validForTits({
       character: this.character,
       tits: this.tits,
       nipples: this.nipples
-    })).d;
+    }));
+
+    if (description == null) {
+      return Weaver.error(`Unable to find a tits description`)
+    }
+
+    return description.d
   }
 
   describeNipples() {
     if (this.previousInjury != null) { return ''; }
 
-    return Random.from(Description.validForNipples({
+    let description = Random.from(Description.validForNipples({
       character: this.character,
       tits: this.tits,
       nipples: this.nipples
-    })).d;
+    }));
+
+    if (description == null) {
+      return Weaver.error(`Unable to find a nipple description`)
+    }
+
+    return description.d
   }
 
   describeInjuries() {

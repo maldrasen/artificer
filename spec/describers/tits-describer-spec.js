@@ -1,4 +1,4 @@
-describe.only('Describer: Tits', function() {
+describe('Describer: Tits', function() {
 
   function printTits(type, tits) {
     console.log(`   ${type}(${tits.size}/${tits.shape}) > ${tits.description}`)

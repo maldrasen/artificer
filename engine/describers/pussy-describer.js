@@ -3,6 +3,17 @@ global.PussyDescriber = class PussyDescriber {
   constructor(options) {
     if (options.character == null) { throw `The Character must at least be set.` }
     this._character = options.character;
+    this._pussy = options.pussy;
+  }
+
+  get character() { return this._character; }
+  get pussy() { return this._pussy; }
+
+  async updateDescription() {
+    if (this.pussy == null) { this._pussy = await this.character.getPussy(); }
+    if (this.pussy == null) { return ""; }
+
+    return "[TODO: Pussy description]"
   }
 
 }
