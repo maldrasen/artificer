@@ -11,6 +11,20 @@ global.TitsBuilder = (function() {
       sizeClass: null,
       sizeScale: null,
       shape: null,
+      blightLevel: 0,
+      blightPlace: null,
+      blightCount: 0,
+      blightHealing: 0,
+      burnLevel: 0,
+      burnPlace: null,
+      burnCount: 0,
+      burnHealing: 0,
+      smashLevel: 0,
+      smashCount: 0,
+      smashPlace: null,
+      smashHealing: 0,
+      smashShape: null,
+      description: null,
     });
 
     if (params.sizeClass == null) { params.sizeClass = Random.fromFrequencyMap(character.species.bodyOptions.tits.size); }

@@ -1,18 +1,22 @@
-global.PussyDescriber = (function() {
+global.PussyDescriber = class PussyDescriber {
 
-  async function fullDescription(character) {
-    const parts = await character.getCompleteBody();
-    const injuries = await character.getAllInjuries();
-    return syncFullDescription(character, parts, injuries);
+  constructor(options) {
+    if (options.character == null) { throw `The Character must at least be set.` }
+    this._character = options.character;
+    this._pussy = options.pussy;
   }
 
-  function syncFullDescription(character, parts, injuries) {
-    return "PUSSY!"
+  get character() { return this._character; }
+  get pussy() { return this._pussy; }
+
+  async updateDescription() {
+    if (this.pussy == null) { this._pussy = await this.character.getPussy(); }
+    if (this.pussy == null) { return ""; }
+
+    return "[TODO: Pussy description]"
   }
 
-  return { fullDescription, syncFullDescription }
-
-})();
+}
 
 // I think I need to make some changes on how both pussies and asses are
 // implemented. We currently have the pussy condition, size, and scale, but I'm

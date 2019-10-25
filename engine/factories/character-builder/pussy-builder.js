@@ -16,6 +16,7 @@ global.PussyBuilder = (function() {
       clitLength:       Random.geometric(15),
       clitWidth:        Random.upTo(10)+5,
       prolapseLength:   0,
+      description:      null,
     });
 
     params.sizeFactor = character.species.sizeFactor();

@@ -1,18 +1,22 @@
-global.CockDescriber = (function() {
+global.CockDescriber = class CockDescriber {
 
-  async function fullDescription(character) {
-    const parts = await character.getCompleteBody();
-    const injuries = await character.getAllInjuries();
-    return syncFullDescription(character, parts, injuries);
+  constructor(options) {
+    if (options.character == null) { throw `The Character must at least be set.` }
+    this._character = options.character;
+    this._cock = options.cock;
   }
 
-  function syncFullDescription(character, parts, injuries) {
-    return "COCK!"
+  get character() { return this._character; }
+  get cock() { return this._cock; }
+
+  async updateDescription() {
+    if (this.cock == null) { this._cock = await this.character.getCock(); }
+    if (this.cock == null) { return ""; }
+
+    return "[TODO: Cock description]"
   }
 
-  return { fullDescription, syncFullDescription }
-
-})();
+}
 
 // class Bodies::Describers::CockDescriber
 //   include Language

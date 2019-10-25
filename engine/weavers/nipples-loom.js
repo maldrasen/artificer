@@ -9,12 +9,14 @@ Weaver.NipplesLoom = (function() {
     let body = context.get(subject).body;
     let nipples = context.get(subject).nipples;
 
-    if (token == "nipples.color")  { return nippleColor(body,nipples); }
-    if (token == "nipples.grape")  { return nippleComparative(nipples,false); }
-    if (token == "nipples.grapes") { return nippleComparative(nipples,true); }
-    if (token == "nipples.large")  { return nippleAdjective(nipples); }
-    if (token == "nipples.length") { return lengthMeasure(nipples); }
-    if (token == "nipples.width")  { return widthMeasure(nipples); }
+    if (token == "nipples.color")        { return nippleColor(body,nipples); }
+    if (token == "nipples.grape")        { return nippleComparative(nipples,false); }
+    if (token == "nipples.grapes")       { return nippleComparative(nipples,true); }
+    if (token == "nipples.large")        { return nippleAdjective(nipples); }
+    if (token == "nipples.length")       { return lengthMeasure(nipples); }
+    if (token == "nipples.width")        { return widthMeasure(nipples); }
+    if (token == "nipples.thickNipple")  { return shortDescription(nipples,false); }
+    if (token == "nipples.thickNipples") { return shortDescription(nipples,true); }
 
     return Weaver.error(`Bad nipples token(${token})`);
   }
@@ -71,13 +73,17 @@ Weaver.NipplesLoom = (function() {
   function nippleAdjective(nipples) {
     if (nipples.length < 2)  { return Random.from(['flat','perfectly flat']); }
     if (nipples.length < 5)  { return Random.from(['tiny','small','little','cute']); }
-    if (nipples.length < 10) { return Random.from(['plump','pinchable','suckable','lovely']); }
-    if (nipples.length < 15) { return Random.from(['plump','wrinkled','prominent','protruding']); }
-    if (nipples.length < 20) { return Random.from(['big','bulging','swollen','wrinkled','large']); }
-    if (nipples.length < 25) { return Random.from(['sizable','very large','thick','long']); }
-    if (nipples.length < 30) { return Random.from(['huge','immense','very long','long and thick']); }
+    if (nipples.length < 10) { return Random.from(['plump','pinchable','suckable','lovely','plump and pinchable','plump and suckable']); }
+    if (nipples.length < 15) { return Random.from(['plump','wrinkled','prominent','protruding','plump wrinkled','thick prominent','thick wrinkled']); }
+    if (nipples.length < 20) { return Random.from(['big','bulging','swollen','wrinkled','large','big wrinkled','large wrinkled','big prominent']); }
+    if (nipples.length < 25) { return Random.from(['sizable','very large','thick','long','thing and long','thick prominent']); }
+    if (nipples.length < 30) { return Random.from(['huge','immense','very long','long and thick','huge thick']); }
     if (nipples.length < 40) { return Random.from(['monstrously huge','massively long and thick','enormously huge','huge']); }
     return Random.from(['monstrously colossal','massive, titanic','enormous, gigantic','gargantuan']);
+  }
+
+  function shortDescription(nipples, plural) {
+    return `${nippleAdjective(nipples)} ${plural ? "nipples" : "nipple"}`
   }
 
   return { findValue };

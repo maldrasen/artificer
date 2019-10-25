@@ -23,13 +23,16 @@ global.Weaver = (function() {
     var working = true;
 
     while(working) {
-      var actorMatch = text.match(/{{([^}]+)::([^}]+)}}/)
-      var utilityMatch = text.match(/{{([^}]+)\|([^}]+)}}/)
+      var actorMatch = text.match(/{{([^}]+)::([^}]+)}}/);
+      var utilityMatch = text.match(/{{([^}]+)\|([^}]+)}}/);
+      var simpleMatch = text.match(/{{([^}]+)}}/);
 
       if (actorMatch) {
         text = text.replace(actorMatch[0], actorValue(actorMatch[1].trim(), actorMatch[2].trim(), context));
       } else if (utilityMatch) {
         text = text.replace(utilityMatch[0], utilityValue(utilityMatch[1].trim(), utilityMatch[2].trim(), context));
+      } else if (simpleMatch) {
+        text = text.replace(simpleMatch[0], simpleValue(simpleMatch[1].trim()));
       } else {
         working = false;
       }
@@ -43,6 +46,7 @@ global.Weaver = (function() {
     if (token.startsWith('character')) { return Weaver.CharacterLoom.findValue(subject, token, context); }
     if (token.startsWith('gender')) { return Weaver.GenderLoom.findValue(subject, token, context); }
     if (token.startsWith('nipples')) { return Weaver.NipplesLoom.findValue(subject, token, context); }
+    if (token.startsWith('tits')) { return Weaver.TitsLoom.findValue(subject, token, context); }
 
     return error(`BadToken(${subject}::${token})`);
   }
@@ -51,6 +55,12 @@ global.Weaver = (function() {
     if (utility.toLowerCase().startsWith('flag')) { return Weaver.FlagLoom.findValue(utility, argument, context); }
     if (utility.toLowerCase().startsWith('random')) { return Weaver.RandomLoom.findValue(utility, argument); }
     return error(`BadToken(${utility}|${argument})`);
+  }
+
+  function simpleValue(token) {
+    if (token == 'tit')  { return Random.from(['breast','tit']); }
+    if (token == 'tits') { return Random.from(['breasts','tits']); }
+    return error(`BadToken(${token})`);
   }
 
   function error(message) {

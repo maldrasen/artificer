@@ -72,7 +72,7 @@ Role.Hunter.Stories = (function() {
     ];
 
     // TODO: Add more of these for each injury location and damage type.
-    if (['anus','pussy'].indexOf(injury.location) >= 0) {
+    if (['anus','pussy'].indexOf(injury.hazard.location) >= 0) {
       ArrayUtility.addAll(stories,[
         `. {{H::gender.He}} was badly injured and limped slowly home in defeat.`,
         `. {{H::gender.He}} was badly hurt but somehow managed to limp back home.`,

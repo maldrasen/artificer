@@ -7,15 +7,52 @@ global.Tits = Database.instance().define('tits', {
   sizeScale:     { type:Sequelize.DOUBLE, validate:{ min:0, max:100 }},
   shape:         { type:Sequelize.STRING, validate:{ isIn:[TITS_SHAPES] }},
   count:         { type:Sequelize.INTEGER },
+  blightLevel:   { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
+  blightPlace:   { type:Sequelize.STRING, validate:{ isIn:[['left','right','all']] }},
+  blightCount:   { type:Sequelize.INTEGER },
+  blightHealing: { type:Sequelize.INTEGER },
+  burnLevel:     { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
+  burnPlace:     { type:Sequelize.STRING, validate:{ isIn:[['left','right','all']] }},
+  burnCount:     { type:Sequelize.INTEGER },
+  burnHealing:   { type:Sequelize.INTEGER },
+  smashLevel:    { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
+  smashCount:    { type:Sequelize.INTEGER },
+  smashPlace:    { type:Sequelize.STRING, validate:{ isIn:[['left','right','all']] }},
+  smashHealing:  { type:Sequelize.INTEGER },
+  smashShape:    { type:Sequelize.STRING },
+  description:   { type:Sequelize.STRING },
 },{
   timestamps: false,
   getterMethods: {
     size() {
       let range = Tits.SizeRanges[this.sizeClass]
-      return (this.sizeScale/100)*(range.max-range.min) + range.min
+      // TODO: Adjust for blight and pregnancy.
+      //       Pregnancy progress will need to update tits and pussy models because we want this to stay sync.
+      //       Also add lactation factor again.
+      let size = (this.sizeScale/100)*(range.max-range.min) + range.min
+      return Math.round(size);
+    },
+
+    // The size class influences how tits grow in size, the current size though is used to determine what their
+    // current class is now.
+    currentSizeClass() {
+      let size = this.size;
+      if (size == 0) { return 'zero'; }
+      if (size < 30) { return 'tiny'; }
+      if (size < 100) { return 'small'; }
+      if (size < 300) { return 'average'; }
+      if (size < 600) { return 'big'; }
+      if (size < 1000) { return 'huge'; }
+      return 'monster'
     }
+  },
+  setterMethods: {
   }
 });
+
+// blightEffects() { return JSON.parse(this.blightEffects_json||'[]') }
+// blightEffects(effects) { this.setDataValue('blightEffects_json',JSON.stringify(effects)) }
+
 
 // The breast sizes are abstract values. Because the species in the Rhysh have
 // such dramatically different sizes, from pixies to ogres, we measure breast

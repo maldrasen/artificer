@@ -2,36 +2,34 @@ global.CharacterDescriber = (function() {
 
   async function fullDescription(character) {
     const parts = await character.getCompleteBody();
-    const injuries = await character.getAllInjuries();
 
     let description = `
       <div class='full-description'>
         ${generalDescription(character,parts)}
-        ${bodyDescription(character,parts,injuries)}
+        ${bodyDescription(character,parts)}
       </div>`;
 
     if (character.genderCode == 'female') { description += `
       <div class='sex-description'>
-        ${TitsDescriber.syncFullDescription(character,parts,injuries)}
-        ${PussyDescriber.syncFullDescription(character,parts,injuries)}
-        ${AnusDescriber.syncFullDescription(character,parts,injuries)}
+        ${parts.tits.description}
+        ${parts.pussy.description}
+        ${parts.anus.description}
       </div>
     `; }
 
     if (character.genderCode == 'futa') { description += `
       <div class='sex-description'>
-        ${TitsDescriber.syncFullDescription(character,parts,injuries)}
-        ${CockDescriber.syncFullDescription(character,parts,injuries)}
-        ${PussyDescriber.syncFullDescription(character,parts,injuries)}
-        ${AnusDescriber.syncFullDescription(character,parts,injuries)}
+        ${parts.tits.description}
+        ${parts.cock.description}
+        ${parts.pussy.description}
+        ${parts.anus.description}
       </div>
     `; }
 
     if (character.genderCode == 'male') { description += `
       <div class='sex-description'>
-        ${TitsDescriber.syncFullDescription(character,parts,injuries)}
-        ${CockDescriber.syncFullDescription(character,parts,injuries)}
-        ${AnusDescriber.syncFullDescription(character,parts,injuries)}
+        ${parts.cock.description}
+        ${parts.anus.description}
       </div>
     `; }
 
@@ -48,11 +46,9 @@ global.CharacterDescriber = (function() {
     return desc;
   }
 
-  function bodyDescription(character,parts,injuries) {
+  function bodyDescription(character,parts) {
     return `${heightAndWeight()}, ${comparativeHeight(character,parts)}.
-            ${objectiveBeauty(character)} ${comparativeBeauty(character)}
-            ${headDescription(character)} ${injuryDescriptions(injuries,'head')}
-            ${skinDescription(character)} ${injuryDescriptions(injuries,'body')}`
+            ${objectiveBeauty(character)} ${comparativeBeauty(character)}`
   }
 
   function heightAndWeight() {
@@ -181,13 +177,14 @@ global.CharacterDescriber = (function() {
     return Weaver.error(`TODO: skinDescription() needs to describe skin.`);
   }
 
-  function injuryDescriptions(injuries,location) {
-    return injuries.filter(injury => {
-      return injury.location == location
-    }).map(injury => {
-      return ` ${injury.description}`;
-    });
-  }
+  // Nope
+  // function injuryDescriptions(injuries,location) {
+  //   return injuries.filter(injury => {
+  //     return injury.location == location
+  //   }).map(injury => {
+  //     return ` ${injury.description}`;
+  //   });
+  // }
 
   return { fullDescription };
 

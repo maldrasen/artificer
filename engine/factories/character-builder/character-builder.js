@@ -49,6 +49,28 @@ global.CharacterBuilder = (function() {
 
     await CharacterAdjuster.apply(character, options, results[6])
 
+    const anusDescriber =  new AnusDescriber({
+      character: character,
+      anus: results[0] });
+
+    const cockDescriber =  new CockDescriber({
+      character: character,
+      cock: results[1] });
+
+    const pussyDescriber = new PussyDescriber({
+      character: character,
+      pussy: results[3] });
+
+    const titsDescriber =  new TitsDescriber({
+      character: character,
+      nipples: results[4],
+      tits: results[5] });
+
+    await anusDescriber.updateDescription();
+    await cockDescriber.updateDescription();
+    await pussyDescriber.updateDescription();
+    await titsDescriber.updateDescription();
+
     return character
   }
 

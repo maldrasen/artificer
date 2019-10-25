@@ -9,6 +9,7 @@ global.Anus = Database.instance().define('anus', {
   sizeScale:       { type:Sequelize.DOUBLE, validate:{ min:0, max:100 }},
   sizeFactor:      { type:Sequelize.DOUBLE  },
   prolapseLength:  { type:Sequelize.INTEGER },
+  description:     { type:Sequelize.STRING },
 },{
   timestamps: false,
   getterMethods: {

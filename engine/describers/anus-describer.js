@@ -1,15 +1,17 @@
-global.AnusDescriber = (function() {
+global.AnusDescriber = class AnusDescriber {
 
-  async function fullDescription(character) {
-    const parts = await character.getCompleteBody();
-    const injuries = await character.getAllInjuries();
-    return syncFullDescription(character, parts, injuries);
+  constructor(options) {
+    if (options.character == null) { throw `The Character must at least be set.` }
+    this._character = options.character;
+    this._anus = options.anus;
   }
 
-  function syncFullDescription(character, parts, injuries) {
-    return "ANUS!"
+  get character() { return this._character; }
+  get anus() { return this._anus; }
+
+  async updateDescription() {
+    if (this.anus == null) { this._anus = await this.character.getAnus(); }
+    return "[TODO: Anus description]"
   }
 
-  return { fullDescription, syncFullDescription }
-
-})();
+}
