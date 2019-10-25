@@ -18,14 +18,15 @@ global.Description = class Description extends Form {
     return Description.where(description => {
       if (description.type != 'tits') { return false; };
 
-      for (let i=0; i<description.requirements.length; i++) {
-        if (Description.matchRequirement(description.requirements[i], {character, tits}) == false) { return false; }
-      }
+      let reqs = description.requirements
 
       // Some conditions require a flag to be present, rather than rejecting
       // flags that are not valid.
-      if (tits.currentSizeClass == 'zero') {
-        if (description.requirements.indexOf('tits-size-zero') < 0) { return false; }
+      if (tits.currentSizeClass == 'zero' && reqs.indexOf('tits-size-zero') < 0) { return false; }
+      if (character.speciesCode == 'rat'  && reqs.indexOf('species-rat') < 0)    { return false; }
+
+      for (let i=0; i<reqs.length; i++) {
+        if (Description.matchRequirement(reqs[i], {character, tits}) == false) { return false; }
       }
 
       return true;

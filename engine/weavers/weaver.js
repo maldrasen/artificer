@@ -58,8 +58,8 @@ global.Weaver = (function() {
   }
 
   function simpleValue(token) {
-    if (token == 'tit')  { return Random.fromFrequencyMap({ breast:3, tit:4, boob:1 }); }
-    if (token == 'tits') { return Random.fromFrequencyMap({ breasts:10, tits:10, boobs:1, knockers:1 }); }
+    if (token == 'tit')  { return Random.from(['breast','tit']); }
+    if (token == 'tits') { return Random.from(['breasts','tits']); }
     return error(`BadToken(${token})`);
   }
 
