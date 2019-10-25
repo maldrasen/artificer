@@ -69,8 +69,8 @@ Weaver.TitsLoom = (function() {
 
   function tinyComp(plural) {
     return plural ?
-      aPairOf() + Random.from(['lemons','limes','plums','avacados']) :
-      Random.from(['a lemon','a lime','a plum','an avacado','half an apple','half an orange'])
+      aPairOf() + Random.from(['lemons','limes','plums','avacados','tomato']) :
+      Random.from(['a lemon','a lime','a plum','an avacado','half an apple','half an orange','a tomato'])
   }
 
   function smallComp(plural) {

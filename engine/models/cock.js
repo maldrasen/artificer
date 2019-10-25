@@ -4,8 +4,8 @@ global.Cock = Database.instance().define('cock', {
   character_id:      { type:Sequelize.INTEGER },
   placement:         { type:Sequelize.STRING, validate:{ isIn:[['normal','nipple','tongue']] }},
   count:             { type:Sequelize.INTEGER },
-  shape:             { type:Sequelize.STRING  },
-  sheath:            { type:Sequelize.STRING  },
+  shape:             { type:Sequelize.STRING, validate:{ isIn:[['normal','horse','dog','snake','dragon']] }},
+  sheath:            { type:Sequelize.STRING, validate:{ isIn:[['skin','scales','fur']] }},
   sizeClass:         { type:Sequelize.STRING, validate:{ isIn:[COCK_SIZES] }},
   sizeScale:         { type:Sequelize.DOUBLE, validate:{ min:0, max:100 }},
   sizeFactor:        { type:Sequelize.DOUBLE  },
@@ -23,7 +23,19 @@ global.Cock = Database.instance().define('cock', {
 
     length() {
       let range = Cock.SizeRanges[this.sizeClass]
+      // TODO: Adjust for blight.
       return Math.round(this.sizeFactor * ((this.sizeScale/100)*(range.max-range.min) + range.min))
+    },
+
+    // The size class influences how a cock grow in size, the current length
+    // though is used to determine what their current class is now.
+    currentSizeClass() {
+      let length = this.length;
+      if (length < 178) { return 'small'; }
+      if (length < 229) { return 'average'; }
+      if (length < 305) { return 'big'; }
+      if (length < 406) { return 'huge'; }
+      return 'monster'
     },
 
     // Get each cock's diameter in mm.

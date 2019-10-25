@@ -123,9 +123,9 @@ global.EnglishUtility = {
     if (width < 0.2) { return Random.from(['pea', 'peanut', 'pearl', 'bean']); }
     if (width < 0.5) { return Random.from(['olive', 'acorn', 'cherry', 'grape', 'marble', 'cranberry', 'hazelnut']); }
     if (width < 1)   { return Random.from(['walnut', 'cherry tomato', 'brazil nut']); }
-    if (width < 1.5) { return Random.from(['strawberry', 'marshmallow']); }
-    if (width < 2)   { return Random.from(['golf ball', 'lime', 'tomato', 'chicken egg']); }
-    if (width < 2.5) { return Random.from(['tennis ball', 'pool ball', 'plum', 'tomato']); }
+    if (width < 1.5) { return Random.from(['strawberry', 'chicken egg']); }
+    if (width < 2)   { return Random.from(['avacado','lemon', 'lime', 'tomato']); }
+    if (width < 2.5) { return Random.from(['plum','tomato','peach']); }
     if (width < 3)   { return Random.from(['baseball', 'fist', 'tomato']); }
     if (width < 3.5) { return Random.from(['peach', 'lemon', 'fist', 'doorknob']); }
     if (width < 4)   { return Random.from(['softball','apple','fist', 'potato']); }
@@ -150,9 +150,9 @@ global.EnglishUtility = {
     if (width < 0.2) { return Random.from(['peas', 'peanuts', 'pearls', 'beans']); }
     if (width < 0.5) { return Random.from(['olives', 'acorns', 'cherries', 'grapes', 'marbles', 'cranberries', 'hazelnuts']); }
     if (width < 1)   { return Random.from(['walnuts', 'cherry tomatoes', 'brazil nuts']); }
-    if (width < 1.5) { return Random.from(['strawberries', 'marshmallows']); }
-    if (width < 2)   { return Random.from(['golf balls', 'limes', 'tomatoes', 'chicken eggs']); }
-    if (width < 2.5) { return Random.from(['tennis balls', 'pool balls', 'plums', 'tomatoes']); }
+    if (width < 1.5) { return Random.from(['strawberries', 'chicken eggs']); }
+    if (width < 2)   { return Random.from(['avacados', 'lemons', 'limes', 'tomatoes']); }
+    if (width < 2.5) { return Random.from(['plums', 'tomatoes','peaches']); }
     if (width < 3)   { return Random.from(['baseballs', 'fists', 'tomatos']); }
     if (width < 3.5) { return Random.from(['peaches', 'lemons', 'fists', 'doorknobs']); }
     if (width < 4)   { return Random.from(['softballs','apples','fists', 'potatos']); }

@@ -105,6 +105,7 @@ require(`${ROOT}/engine/utilities/text-utility.js`);
 require(`${ROOT}/engine/weavers/weaver`);
 require(`${ROOT}/engine/weavers/weaver-context`);
 require(`${ROOT}/engine/weavers/character-loom`);
+require(`${ROOT}/engine/weavers/cock-loom`);
 require(`${ROOT}/engine/weavers/body-loom`);
 require(`${ROOT}/engine/weavers/flag-loom`);
 require(`${ROOT}/engine/weavers/gender-loom`);

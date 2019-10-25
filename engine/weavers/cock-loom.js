@@ -1,288 +1,91 @@
-// # class Loom::CockWeaver
-// #   include Language
-// #
-// #   def initialize actor
-// #     @body = actor.body
-// #     @shape = @body.cocks[:shape]
-// #     @count = @body.cocks[:count]
-// #     @size = @body.cocks[:size]
-// #
-// #     raise "No Cocks!" unless (@count && @size)
-// #   end
-// #
-// #   def find_value token
-// #
-// #     # Each random adjective method has to have three different versions
-// #     # because of English's complex a / an rules.
-// #     ["tiny","small","average","large","huge","massive","monstrous","gigantic","titanic"].each do |adjective|
-// #       if token == "[C|#{adjective}]"
-// #         return send("#{adjective}_adjective".to_sym)
-// #       end
-// #       if token == "[C|a #{adjective}]" || token == "[C|an #{adjective}]"
-// #         return a_an(send("#{adjective}_adjective".to_sym))
-// #       end
-// #       if token == "[C|A #{adjective}]" || token == "[C|An #{adjective}]"
-// #         return cap_a_an(send("#{adjective}_adjective".to_sym))
-// #       end
-// #     end
-// #
-// #     case token
-// #       when "[C|cock]" then cock_word
-// #       when "[C|cocks]" then cocks_word
-// #       when "[C|count]" then number_to_english(@count)
-// #       when "[C|Count]" then number_to_english(@count).titlecase
-// #       when "[C|all/both]" then all_both(@count)
-// #       when "[C|All/Both]" then all_both(@count).titlecase
-// #
-// #       # Cock Length && Width
-// #       when "[C|six inch]" then six_inch
-// #       when "[C|six inches]" then six_inches
-// #       when "[C|six inch long and one inch wide]" then six_inch_long_and_one_inch_wide
-// #       when "[C|six inches long and one inch wide]" then six_inches_long_and_one_inch_wide
-// #       when "[C|two inch(cock)]" then two_inch(@body.cock_width)
-// #       when "[C|two inches(cock)]" then two_inches(@body.cock_width)
-// #
-// #       # Ridges
-// #       when "[C|ridge comparator]" then ridge_comparator
-// #       when "[C|a ridge comparator]" then a_an(ridge_comparator)
-// #
-// #       # Spines
-// #       when "[C|two inch(spines)]" then two_inch(@body.spine_height)
-// #       when "[C|two inches(spines)]" then two_inches(@body.spine_height)
-// #
-// #       # Knots
-// #       when "[C|two inch(knot)]" then two_inch(@body.knot_width)
-// #       when "[C|two inches(knot)]" then two_inches(@body.knot_width)
-// #       when "[C|knot adjective]" then knot_adjective
-// #       when "[C|a knot adjective]" then a_an(knot_adjective)
-// #       when "[C|a knot comparator]" then a_an(knot_comparator)
-// #       when "[C|a knot comparators]" then a_an(knot_comparators)
-// #
-// #       # Knobs
-// #       when "[C|two inch(knobs)]" then two_inch(@body.knob_height)
-// #       when "[C|two inches(knobs)]" then two_inches(@body.knob_height)
-// #       when "[C|knob comparator]" then knob_comparator
-// #       when "[C|knob comparators]" then knob_comparators
-// #       when "[C|a knob comparator]" then a_an(knob_comparator)
-// #       when "[C|a knob comparators]" then a_an(knob_comparators)
-// #
-// #       # Throbs
-// #       when "[C|throbbing]" then throbbing
-// #       when "[C|throb]" then throb
-// #     end
-// #   end
-// #
-// # private
-// #
-// #   def throbbing
-// #     Roll.random_from ["throbbing","pulsing"]
-// #   end
-// #
-// #   def throb
-// #     Roll.random_from ["throb","pulse"]
-// #   end
-// #
-// #   # === Words for cocks dependent on shape =====================================
-// #
-// #   def cock_word
-// #     Roll.random_from case @shape
-// #       when "Normal"
-// #         ["cock","cock","cock","cock","dick"]
-// #       when "Horse"
-// #         ["horsecock","horsecock","horsecock","horse shaped cock",
-// #          "equine cock","flared cock"]
-// #       when "Dog"
-// #         ["dogcock","dogcock","dogcock","canine cock","canine shaped cock",
-// #          "knotted cock"]
-// #       when "Snake"
-// #         ["snakecock","snakecock","snakecock","nagacock","nagacock",
-// #          "reptilian cock","snake shaped cock","tapered cock"]
-// #       when "Dragon"
-// #         ["dragoncock","dragoncock","dragoncock","draconic cock",
-// #          "dragon shaped cock","ridged cock"]
-// #       when "Demon"
-// #         ["demoncock","demoncock","demoncock","demoncock","demonic cock",
-// #          "blasphemous cock","infernal cock","satanic cock","corrupt cock",
-// #          "corrupted cock","cursed cock"]
-// #       else raise "Not sure what to call this cock : #{@shape}"
-// #     end
-// #   end
-// #
-// #   def cocks_word
-// #     "#{cock_word}s"
-// #   end
-// #
-// #
-// #
-// #   # === Adjectives used to describe cock size ==================================
-// #
-// #   # Adjectives for various sizes. The adjectives in these lists really are very
-// #   # cock specific, so they shouldn't be used elsewhere. Because they can
-// #   # describe knots and sheaths, words specific to length should be kept out.
-// #   # Thickness should be fine although tentacle descriptions can't use these then.
-// #
-// #   def tiny_adjective
-// #     Roll.random_from ["tiny","miniature","tiny little","cute little","pitiful","pitifully small"]
-// #   end
-// #
-// #   def small_adjective
-// #     Roll.random_from ["small","small","modest","unimpressive","unpretentious"]
-// #   end
-// #
-// #   def average_adjective
-// #     Roll.random_from ["average","rather average","fairly average","nice sized",
-// #       "well proportioned"]
-// #   end
-// #
-// #   def large_adjective
-// #     Roll.random_from ["large","fat","thick","big","larger than average",
-// #       "nice big","big beautiful"]
-// #   end
-// #
-// #   def huge_adjective
-// #     Roll.random_from ["huge","very large","very thick","very big","huge fat"]
-// #   end
-// #
-// #   def massive_adjective
-// #     Roll.random_from ["massive","massively huge","massively thick",
-// #       "inhumanly massive","unbelievably thick"]
-// #   end
-// #
-// #   def monstrous_adjective
-// #     Roll.random_from ["monstrous","monstrously huge","monstrously thick",
-// #       "fucking huge","incredibly thick","tremendously massive"]
-// #   end
-// #
-// #   def gigantic_adjective
-// #     Roll.random_from ["gigantic","giant","immense","fucking gigantic",
-// #       "incredibly huge","massively huge"]
-// #   end
-// #
-// #   def titanic_adjective
-// #     Roll.random_from ["titanic","fucking colossal","gargantuan",
-// #       "fucking titanic","massively titanic","unbelievably fucking titanic"]
-// #   end
-// #
-// #
-// #
-// #   # === Length and Width Phrases ===============================================
-// #
-// #   # six inches long and 1 inch(es) wide
-// #   def six_inches_long_and_one_inch_wide
-// #     long_and_wide_phrase true
-// #   end
-// #
-// #   # six inch long and 1 inch wide
-// #   def six_inch_long_and_one_inch_wide
-// #     long_and_wide_phrase false
-// #   end
-// #
-// #   def six_inches
-// #     length_in_inches true
-// #   end
-// #
-// #   def six_inch
-// #     length_in_inches false
-// #   end
-// #
-// #   def two_inches width
-// #     width_in_inches width, true
-// #   end
-// #
-// #   def two_inch width
-// #     width_in_inches width, false
-// #   end
-// #
-// #
-// #
-// #   # === Sub-phrases Generators =================================================
-// #
-// #   # Phrase describing cock length and width.
-// #   #   "Eight inches long and one inch wide"
-// #   def long_and_wide_phrase plural
-// #     length = length_in_inches plural
-// #     width = width_in_inches @body.cock_width, plural
-// #     wide = Roll.random_from ["wide","thick"]
-// #
-// #     "#{length} long and #{width} #{wide}"
-// #   end
-// #
-// #   # Convert cock size into English.
-// #   #   "Eight inches"
-// #   def length_in_inches plural
-// #     number = (@size / 10.0).to_i
-// #     part = @size - (number*10)
-// #     rational_number_to_standard_units number, part, plural
-// #   end
-// #
-// #   # Convert width value into English.
-// #   #   "one inch"
-// #   def width_in_inches width, plural
-// #     number = width.to_i
-// #     part = ((width-number)*10).to_i
-// #     rational_number_to_standard_units number, part, plural
-// #   end
-// #
-// #
-// #
-// #   # === Dog Cock Specific Descriptions =========================================
-// #
-// #   def knot_comparator
-// #     width_comparator @body.knot_width
-// #   end
-// #
-// #   def knot_comparators
-// #     width_comparator_plural @body.knot_width
-// #   end
-// #
-// #   def knot_adjective
-// #     width = @body.knot_width
-// #     if width < 2
-// #       return Roll.random_from ["sizable","fat","thick","plump","bulbous"]
-// #     end
-// #     if width >= 2 && width < 2.5
-// #       return Roll.random_from ["huge","very large","very thick","bulbous"]
-// #     end
-// #     if width >= 2.5 && width < 3.5
-// #       return Roll.random_from ["massive","massively huge","massively thick","incredibly thick"]
-// #     end
-// #     if width >= 3.5 && width < 5
-// #       return Roll.random_from ["monstrous","monstrously huge","monstrously thick","fucking huge","unbelievably thick"]
-// #     end
-// #     if width >= 5 && width < 6.5
-// #       return Roll.random_from ["gigantic","giant","immense","fucking gigantic"]
-// #     end
-// #     if width >= 6.5
-// #       return Roll.random_from ["titanic","fucking colossal","gargantuan","tremendously thick",
-// #         "fucking titanic","massively titanic","unbelievably fucking titanic"]
-// #     end
-// #   end
-// #
-// #   # === Dragon Cock Specific Descriptions ======================================
-// #
-// #   def ridge_comparator
-// #     case @size
-// #       when 0..120 then "pencil"
-// #       when 120..160 then "finger"
-// #       when 160..240 then "inch"
-// #       when 240..300 then "inch and a half"
-// #       when 300..400 then "two inch"
-// #       when 400..500 then "three inch"
-// #       when 500..600 then "four inch"
-// #       else raise "This dragon's cock is way too big."
-// #     end
-// #   end
-// #
-// #   # === Demon Cock Specific Descriptions =======================================
-// #
-// #   def knob_comparator
-// #     width_comparator @body.knob_height
-// #   end
-// #
-// #   def knob_comparators
-// #     width_comparator_plural @body.knob_height
-// #   end
-// #
-// # end
-// # Roll.random_from ["unholy","demonic","infernal","satanic","corrupt",
-// #   "blasphemous","cursed","accursed"]
+Weaver.CockLoom = (function() {
+
+  // Replaces token placeholders in the form of:
+  //   {{actor::cock.big}}
+  //
+  function findValue(subject, token, context) {
+    if (context.get(subject) == null) { return Weaver.error(`Subject(${subject}) not in context`); }
+
+    let body = context.get(subject).body;
+    let cock = context.get(subject).cock;
+
+    if (token == "cock.big") { return size(cock); }
+    if (token == "cock.aBig") { return EnglishUtility.a_an(size(cock)); }
+    if (token == "cock.count") { return EnglishUtility.numberInEnglish(cock.count); }
+    if (token == "cock.cock") { return cockWord(cock,false); }
+    if (token == "cock.cocks") { return cockWord(cock,true); }
+    if (token == "cock.sixInch") { return lengthInches(cock,false); }
+    if (token == "cock.sixInches") { return lengthInches(cock,true); }
+    if (token == "cock.twoInch") { return widthInches(cock,false); }
+    if (token == "cock.twoInches") { return widthInches(cock,true); }
+    if (token == "cock.inchLongAndWide") { return bothInches(cock,false); }
+    if (token == "cock.inchesLongAndWide") { return bothInches(cock,true); }
+    if (token == "cock.twoInch(knot)") { return knotWidthInches(cock,false); }
+    if (token == "cock.twoInches(knot)") { return knotWidthInches(cock,true); }
+    if (token == "cock.huge(knot)") { return hugeKnot(cock); }
+    if (token == "cock.aHuge(knot)") { return EnglishUtility.a_an(hugeKnot(cock)); }
+    if (token == "cock.apple(knot)") { return appleKnot(cock); }
+    if (token == "cock.anApple(knot)") { return EnglishUtility.a_an(appleKnot(cock)); }
+    if (token == "cock.furrySheath") { return furrySheath(cock); }
+
+    return Weaver.error(`Bad tits token(${token})`);
+  }
+
+  function lengthInches(cock, plural) { return EnglishUtility.inchesInEnglish(cock.convertedLength, plural); }
+  function widthInches(cock, plural) { return EnglishUtility.inchesInEnglish(cock.convertedWidth, plural); }
+  function knotWidthInches(cock, plural) { return EnglishUtility.inchesInEnglish(cock.convertedKnotWidth, plural); }
+  function appleKnot(cock) { return EnglishUtility.roundWidthComparator(cock.convertedKnotWidth); }
+
+  // Generates a phrase like:
+  //    twelve inches long and 2 inches wide
+  //    twelve inch long and 2 inch thick
+  function bothInches(cock, plural) {
+    let length = lengthInches(cock,plural);
+    let width = widthInches(cock,plural);
+    return `${length} long and ${width} {{wide}}`;
+  }
+
+  function size(cock) {
+    return Random.from({
+      small:   ['small','small','small','little','cute little'],
+      average: ['average sized','rather average','nice sized','well proportioned'],
+      big:     ['large','fat','thick','big','larger than average','nice big','big beautiful'],
+      huge:    ['huge','very large','very thick','very big','huge fat'],
+      monster: ['massive','massively huge','monstrous','monstrously huge','huge fucking'],
+    }[cock.currentSizeClass]);
+  }
+
+  function cockWord(cock,plural) {
+    let map;
+    if (cock.shape == 'normal') { map = { cock:4, dick:1 }; }
+    if (cock.shape == 'horse')  { map = { cock:6, dick:2, horsecock:3, horse_dick:1, horse_shaped_cock:1, equine_cock:1, flared_cock:1, flared_dick:1 }; }
+    if (cock.shape == 'dog')    { map = { cock:6, dick:2, dogcock:3, canine_shaped_cock:1, canine_cock:1, knotted_cock:1, knotted_dick:1 }; }
+    if (cock.shape == 'snake')  { map = { cock:6, dick:2, snakecock:3, nagacock:2, reptilian_cock:1, tapered_cock:1, tapered_dick:1 }; }
+    if (cock.shape == 'dragon') { map = { cock:6, dick:2, dragoncock:3, dragon_dick:1, draconic_cock:2, ridged_cock:1, ridged_dick:1 }; }
+
+    let word = Random.fromFrequencyMap(map).replace(/_/,' ');
+
+    return plural ? `${word}s` : word;
+  }
+
+  function hugeKnot(cock) {
+    let width = cock.convertedKnotWidth;
+    if (width < 2)   { return Random.from(['sizable','fat','thick','plump','bulbous']); }
+    if (width < 2.5) { return Random.from(['huge','very large','very thick','bulbous']); }
+    if (width < 3.5) { return Random.from(['massive','massively huge','massively thick','incredibly thick']); }
+    if (width < 5)   { return Random.from(['monstrous','monstrously huge','monstrously thick','fucking huge','unbelievably thick']); }
+    if (width < 6.5) { return Random.from(['gigantic','giant','immense','fucking gigantic','pussy destroying','cunt ripping']); }
+    return Random.from(['titanic','colossal','gargantuan','tremendously thick','pelvis splitting','pelvis shattering','massively titanic']);
+  }
+
+  function furrySheath(cock) {
+    let furry;
+    if (cock.sheath == 'skin') {   furry = Random.from(['leathery','leathery','leathery','hot leathery']); }
+    if (cock.sheath == 'scales') { furry = Random.from(['scaly','scaled']); }
+    if (cock.sheath == 'fur') {    furry = Random.from(['furry','furry','fuzzy','soft furry']); }
+    return `${furry} {{sheath}}`;
+  }
+
+  return { findValue };
+
+})();

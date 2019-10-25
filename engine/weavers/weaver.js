@@ -44,6 +44,7 @@ global.Weaver = (function() {
   function actorValue(subject, token, context) {
     if (token.startsWith('body')) { return Weaver.BodyLoom.findValue(subject, token, context); }
     if (token.startsWith('character')) { return Weaver.CharacterLoom.findValue(subject, token, context); }
+    if (token.startsWith('cock')) { return Weaver.CockLoom.findValue(subject, token, context); }
     if (token.startsWith('gender')) { return Weaver.GenderLoom.findValue(subject, token, context); }
     if (token.startsWith('nipples')) { return Weaver.NipplesLoom.findValue(subject, token, context); }
     if (token.startsWith('tits')) { return Weaver.TitsLoom.findValue(subject, token, context); }
@@ -58,8 +59,13 @@ global.Weaver = (function() {
   }
 
   function simpleValue(token) {
+    if (token == 'sheath') { return Random.from(['sheath','sheath','cocksheath']); }
     if (token == 'tit')  { return Random.from(['breast','tit']); }
     if (token == 'tits') { return Random.from(['breasts','tits']); }
+    if (token == 'throb') { return Random.from(['throb','pulse']); }
+    if (token == 'throbbing') { return Random.from(['throbbing','pulsing']); }
+    if (token == 'wide') { return Random.from(['wide','thick']); }
+
     return error(`BadToken(${token})`);
   }
 
