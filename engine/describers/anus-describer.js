@@ -11,7 +11,11 @@ global.AnusDescriber = class AnusDescriber {
 
   async updateDescription() {
     if (this.anus == null) { this._anus = await this.character.getAnus(); }
-    return "[TODO: Anus description]"
+
+    this.anus.description = "[TODO: Anus description]"
+
+    await this.anus.save();
+    return this.anus;
   }
 
 }

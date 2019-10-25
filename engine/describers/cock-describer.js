@@ -13,7 +13,10 @@ global.CockDescriber = class CockDescriber {
     if (this.cock == null) { this._cock = await this.character.getCock(); }
     if (this.cock == null) { return ""; }
 
-    return "[TODO: Cock description]"
+    this.cock.description = "[TODO: Cock description]"
+
+    await this.cock.save();
+    return this.cock;
   }
 
 }

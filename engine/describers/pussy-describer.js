@@ -13,7 +13,10 @@ global.PussyDescriber = class PussyDescriber {
     if (this.pussy == null) { this._pussy = await this.character.getPussy(); }
     if (this.pussy == null) { return ""; }
 
-    return "[TODO: Pussy description]"
+    this.pussy.description = "[TODO: Pussy description]"
+
+    await this.pussy.save();
+    return this.pussy;
   }
 
 }
