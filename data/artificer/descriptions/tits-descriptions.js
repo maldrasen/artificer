@@ -95,6 +95,11 @@ Description.buildTits({ requirements: ['species-rat','tits-size-tiny'],
       much other than press {{C::gender.his}} many {{C::nipples.thickNipples}} out just a bit further.`,
 });
 
+Description.buildTits({ requirements: ['species-rat','tits-size-tiny','nipples-size-huge'],
+  d: `{{C::character.firstName}} has six rows of {{C::tits.sizeShape}} {{tits}}. Each of {{C::gender.his}} {{tits}} is
+      capped with a {{C::nipples.thickNipple}} almost as large as the {{tit}} itself.`,
+});
+
 // --- Shape Specific ---
 
 Description.buildTits({ requirements: ['species-rat','tits-shape-perky'],
@@ -122,11 +127,4 @@ Description.buildTits({ requirements: ['species-rat','tits-shape-conical'],
 Description.buildTits({ requirements: ['species-rat','tits-shape-conical'],
   d: `{{C::character.firstName}} has twelve {{C::tits.sizeShape}} {{tits}}. Each of {{C::gender.his}} {{C::tits.size}}
       {{tits}} are wide at the base and come to a narrow tip, then capped with a {{C::nipples.thickNipple}}.`,
-});
-
-// --- Other? ---
-
-Description.buildTits({ requirements: ['species-rat','nipples-as-large-as-tits'],
-  d: `{{C::character.firstName}} has six rows of {{C::tits.sizeShape}} {{tits}}. Each of {{C::gender.his}} {{tits}} is
-      capped with a {{C::nipples.thickNipple}} almost as large as the {{tit}} itself.`,
 });

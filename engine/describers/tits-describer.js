@@ -34,7 +34,21 @@ global.TitsDescriber = class TitsDescriber {
   // === Descriptions ===
 
   describeTits() {
-    return Random.from(Description.validForTits(this.character, this.tits)).d;
+    return Random.from(Description.validForTits({
+      character: this.character,
+      tits: this.tits,
+      nipples: this.nipples
+    })).d;
+  }
+
+  describeNipples() {
+    if (this.previousInjury != null) { return ''; }
+
+    return Random.from(Description.validForNipples({
+      character: this.character,
+      tits: this.tits,
+      nipples: this.nipples
+    })).d;
   }
 
   describeInjuries() {
@@ -43,11 +57,6 @@ global.TitsDescriber = class TitsDescriber {
       ${this.d_burn()}
       ${this.d_smash()}
     `;
-  }
-
-  describeNipples() {
-    if (this.previousInjury != null) { return ''; }
-    return `[TODO: Nipples!]`
   }
 
   d_blight() {
@@ -126,29 +135,6 @@ global.TitsDescriber = class TitsDescriber {
   }
 
 }
-
-
-
-
-
-//
-//
-//     if (nipples.shape == 'puffy') {
-//       ArrayUtility.addAll(pile,[
-//         `{{C::gender.He}} has {{C::nipples.large}} {{C::nipples.color}} puffy nipples that are nearly as long as they are wide.`,
-//         `{{C::gender.He}} has {{C::nipples.large}} puffy nipples the size of {{C::nipples.grapes}}.`,
-//         `{{C::gender.His}} {{C::nipples.large}} {{C::nipples.color}} puffy nipples prodrude far from the surface of {{C::gender.his}} {{tits}}.`,
-//         `{{C::gender.His}} puffy {{C::nipples.color}} nipples are about {{C::nipples.width}} wide, and nearly as long.`,
-//         `{{C::gender.His}} puffy {{C::nipples.color}} nipples are about {{C::nipples.length}} long and are as thick as {{C::nipples.grapes}}.`,
-//       ]);
-//
-//       if (character.species.isFurry) { ArrayUtility.addAll(pile,[
-//         `{{C::gender.His}} {{C::nipples.large}} {{C::nipples.color}} nipples protrude noticibly from {{C::gender.his}} fur covered chest.`,
-//         `{{C::gender.He}} has {{C::nipples.large}} {{C::nipples.grape}} sized nipples that extend well past {{C::gender.his}} chest fur.`,
-//       ]); }
-//     }
-//
-
 
 
 //   def describe_multiple_breasts
