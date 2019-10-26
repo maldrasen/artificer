@@ -1,3 +1,33 @@
+
+Description.buildCock({ requirements: [],
+  d: `{{C::gender.His}} {{C::cock.cock}} is {{C::cock.big}}, {{C::cock.inchesLongAndWide}}.`,
+});
+
+Description.buildCock({ requirements: [],
+  d: `{{C::gender.He}} has {{C::cock.aBig}} {{C::cock.twoInch}} {{wide}} {{C::cock.cock}}, that grows to {{C::cock.sixInches}} long when hard.`,
+});
+
+Description.buildCock({ requirements: [],
+  d: `{{C::gender.He}} has {{C::cock.aBig}} {{C::cock.cock}}, {{C::cock.inchesLongAndWide}}.`
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // This is how the super old version handled this. Not sure if I want to make
 // the descriptions into forms though. For bodies they shouldn't be. But cocks
 // tits and everything else? Maybe. Cock descriptions were the only descriptions
@@ -66,6 +96,9 @@
 //     seed_demon_cock_spines
 //   end
 //
+
+
+
 //   # When a description can be used across all sizes, this method can be used to
 //   # create descriptions in large batches that include the correct adjective
 //   # tokens for the given sizes.
@@ -167,20 +200,12 @@
 //       CockDescription.manufacture text, SIZE_PARAMETERS[:titanic][:params]
 //     end
 //
-//     batch_create_descriptions({}) do |tokens|
-//       "[Actor's] [C|cock] is #{tokens[:large]}, [C|six inches long and one inch wide]."
-//     end
-//
-//     batch_create_descriptions({}) do |tokens|
-//       "[Actor] has #{tokens[:a_large]}, [C|two inch(cock)] wide [C|cock], that grows to [C|six inches] long when hard."
-//     end
-//
-//     batch_create_descriptions({}) do |tokens|
-//       "[Actor] has #{tokens[:a_large]} [C|cock], [C|six inches long and one inch wide]."
-//     end
 //   end
 //
 //
+
+
+
 //
 //   # === Multiple Cocks =================================================================================================
 //   # Used to describe a minimum of two cocks of any size and shape.

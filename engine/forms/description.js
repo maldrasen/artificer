@@ -18,6 +18,33 @@ global.Description = class Description extends Form {
     throw `Unknown Description Requirement - ${req}`
   }
 
+  static validForCock(context) {
+    return Description.where(description => {
+      if (description.type != 'cock') { return false; };
+
+      let reqs = description.requirements
+      for (let i=0; i<reqs.length; i++) {
+        if (Description.matchRequirement(reqs[i], context) == false) { return false; }
+      }
+
+      return true;
+    });
+  }
+
+
+  static validForNipples(context) {
+    return Description.where(description => {
+      if (description.type != 'nipples') { return false; };
+
+      let reqs = description.requirements
+      for (let i=0; i<reqs.length; i++) {
+        if (Description.matchRequirement(reqs[i], context) == false) { return false; }
+      }
+
+      return true;
+    });
+  }
+
   static validForTits(context) {
     return Description.where(description => {
       if (description.type != 'tits') { return false; };
@@ -28,19 +55,6 @@ global.Description = class Description extends Form {
       if (context.tits.currentSizeClass == 'zero' && reqs.indexOf('tits-size-zero') < 0) { return false; }
       if (context.character.speciesCode == 'rat'  && reqs.indexOf('species-rat') < 0)    { return false; }
 
-      for (let i=0; i<reqs.length; i++) {
-        if (Description.matchRequirement(reqs[i], context) == false) { return false; }
-      }
-
-      return true;
-    });
-  }
-
-  static validForNipples(context) {
-    return Description.where(description => {
-      if (description.type != 'nipples') { return false; };
-
-      let reqs = description.requirements
       for (let i=0; i<reqs.length; i++) {
         if (Description.matchRequirement(reqs[i], context) == false) { return false; }
       }

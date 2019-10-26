@@ -14,6 +14,7 @@ global.CockDescriber = class CockDescriber {
     if (this.cock == null) { return ""; }
 
     let description = `
+      ${this.cockDescription()}
       ${this.sheathDescription()}
       ${this.knotDescription()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
@@ -24,6 +25,18 @@ global.CockDescriber = class CockDescriber {
     return this.cock;
   }
 
+  cockDescription() {
+    let description = Random.from(Description.validForCock({
+      character: this.character,
+      cock: this.cock,
+    }));
+
+    if (description == null) {
+      return Weaver.error(`Unable to find a cock description`);
+    }
+
+    return description.d;
+  }
 
   knotDescription() {
     if (this.cock.knotWidthRatio == null) { return '' }
