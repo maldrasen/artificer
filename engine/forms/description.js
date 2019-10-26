@@ -1,7 +1,8 @@
 global.Description = class Description extends Form {
 
-  static buildTits(data) { return super.build(null,extend(data,{ type:'tits' })); }
+  static buildCock(data)    { return super.build(null,extend(data,{ type:'cock' })); }
   static buildNipples(data) { return super.build(null,extend(data,{ type:'nipples' })); }
+  static buildTits(data)    { return super.build(null,extend(data,{ type:'tits' })); }
 
   static matchRequirement(req, context) {
     if (req == 'species-rat')              { return context.character.speciesCode == 'rat'  }
