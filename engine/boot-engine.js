@@ -104,11 +104,12 @@ require(`${ROOT}/engine/utilities/text-utility.js`);
 // === Weavers ===
 require(`${ROOT}/engine/weavers/weaver`);
 require(`${ROOT}/engine/weavers/weaver-context`);
+require(`${ROOT}/engine/weavers/body-loom`);
 require(`${ROOT}/engine/weavers/character-loom`);
 require(`${ROOT}/engine/weavers/cock-loom`);
-require(`${ROOT}/engine/weavers/body-loom`);
 require(`${ROOT}/engine/weavers/flag-loom`);
 require(`${ROOT}/engine/weavers/gender-loom`);
 require(`${ROOT}/engine/weavers/nipples-loom`);
-require(`${ROOT}/engine/weavers/tits-loom`);
 require(`${ROOT}/engine/weavers/random-loom`);
+require(`${ROOT}/engine/weavers/species-loom`);
+require(`${ROOT}/engine/weavers/tits-loom`);

@@ -76,8 +76,8 @@ Description.buildCock({ requirements: ['cock-size-average'],
 // === Big Cock ===
 
 Description.buildCock({ requirements: ['cock-size-big'],
-  d: `{{C::gender.His}} {{C::cock.big}} {{C::cock.cock}} is longer most other {{C::species.class}} {{C::gender.his}}
-      size, at {{C::cock.inchesLongAndWide}}.`
+  d: `{{C::gender.His}} {{C::cock.big}} {{C::cock.cock}} is longer than most other {{C::species.elves}}
+      {{C::gender.his}} size, at {{C::cock.inchesLongAndWide}}.`
 });
 
 // === Huge Cock ===
@@ -89,11 +89,11 @@ Description.buildCock({ requirements: ['cock-size-huge'],
 
 Description.buildCock({ requirements: ['cock-size-huge'],
   d: `At {{C::cock.inchesLongAndWide}} {{C::gender.his}} {{C::cock.big}} {{C::cock.cock}} is far longer and thicker
-      than most {{C::species.class}} {{C::gender.his}} size.`
+      than most other {{C::species.elves}} {{C::gender.his}} size.`
 });
 
 Description.buildCock({ requirements: ['cock-size-huge'],
-  d: `{{C::gender.His}} {{C::cock.big}} {{C::cock.cock}} is far larger than almost any other {{C::species.class}}
+  d: `{{C::gender.His}} {{C::cock.big}} {{C::cock.cock}} is far larger than almost any other {{C::species.elf}}
       {{C::gender.his}} size, at {{C::cock.inchesLongAndWide}}.`
 });
 

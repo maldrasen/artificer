@@ -16,6 +16,25 @@ global.Species = class Species extends Form {
     return `${this.name}s`
   }
 
+  // Used in the describers to describe a character's species in general. A
+  // nymph and a sylph can be reffered to as a fae or a woodelf might just be
+  // called an elf. Otherwise the character's species name is the same as the
+  // class.
+  get classname() {
+    if (this.isFae) return 'fae';
+    if (this.isElf) return 'elf';
+    if (this.isDemon) return 'demon';
+    return species.name.toLowerCase();
+  }
+
+  get pluralClassname() {
+    if (this.isFae) return 'fae';
+    if (this.isElf) return 'elves';
+    if (this.isDemon) return 'demons';
+    return this.pluralName.toLowerCase();
+  }
+
+
   // I sometimes need to know if a character of this species would have a
   // decent bite attack, like a lupin or a rat. I don't think it's worth having
   // a sepatate species attribute for just that though.
@@ -103,4 +122,5 @@ global.Species = class Species extends Form {
     if (this.code == 'dryad')   { return gender == 'male' ? 'deer' : 'elf' }
     return this.bodyOptions.faceShape || 'elf';
   }
+
 }

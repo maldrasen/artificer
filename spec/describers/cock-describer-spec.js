@@ -1,4 +1,4 @@
-describe('Describer: Cock', function() {
+describe.only('Describer: Cock', function() {
 
   function printCock(type, cock) {
     console.log(`   ${type}(${cock.convertedLength}) > ${cock.description}`)
