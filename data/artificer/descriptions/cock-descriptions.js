@@ -1,227 +1,136 @@
 
 Description.buildCock({ requirements: [],
-  d: `{{C::gender.His}} {{C::cock.cock}} is {{C::cock.big}}, {{C::cock.inchesLongAndWide}}.`,
+  d: `{{C::gender.His}} {{C::cock.cock}} is {{C::cock.big}}, {{C::cock.inchesLongAndWide}}.`
 });
 
 Description.buildCock({ requirements: [],
-  d: `{{C::gender.He}} has {{C::cock.aBig}} {{C::cock.twoInch}} {{wide}} {{C::cock.cock}}, that grows to {{C::cock.sixInches}} long when hard.`,
+  d: `{{C::gender.He}} has {{C::cock.aBig}}, {{C::cock.twoInch}} {{wide}} {{C::cock.cock}}, that grows to
+      {{C::cock.sixInches}} long when hard.`
 });
 
 Description.buildCock({ requirements: [],
   d: `{{C::gender.He}} has {{C::cock.aBig}} {{C::cock.cock}}, {{C::cock.inchesLongAndWide}}.`
 });
 
+Description.buildCock({ requirements: [],
+  d: `{{C::gender.He}} has {{C::cock.aBig}}, {{C::cock.inchLongAndWide}} {{C::cock.cock}}.`
+});
+
+Description.buildCock({ requirements: [],
+  d: `{{C::gender.His}} {{C::cock.cock}} is {{C::cock.big}} for {{C::gender.his}} size, at
+      {{C::cock.inchesLongAndWide}}.`
+});
+
+// === Small Cock ===
+
+Description.buildCock({ requirements: ['cock-size-small'],
+  d: `{{C::gender.His}} {{C::cock.cock}} is {{C::cock.big}}, only {{C::cock.inchesLongAndWide}}.`
+});
+
+Description.buildCock({ requirements: ['cock-size-small'],
+  d: `{{C::gender.His}} {{C::cock.cock}} is a little small, only {{C::cock.inchesLongAndWide}}.`
+});
+
+Description.buildCock({ requirements: ['cock-size-small'],
+  d: `{{C::gender.His}} {{C::cock.cock}} is on the small side, {{C::cock.inchesLongAndWide}}.`
+});
+
+Description.buildCock({ requirements: ['cock-size-small'],
+  d: `{{C::gender.He}} has a smaller than average {{C::cock.cock}}, {{C::cock.inchesLongAndWide}}.`
+});
+
+Description.buildCock({ requirements: ['cock-size-small'],
+  d: `{{C::gender.He}} has {{C::cock.aBig}} {{C::cock.cock}} measuring at most {{C::cock.sixInches}} in length.`
+});
+
+Description.buildCock({ requirements: ['cock-size-small'],
+  d: `{{C::gender.He}} has {{C::cock.aBig}} {{C::cock.cock}}, measuring {{C::cock.sixInches}} in length when hard.`
+});
+
+Description.buildCock({ requirements: ['cock-size-small'],
+  d: `{{C::gender.He}} has {{C::cock.aBig}} {{C::cock.cock}}. Even when hard it's only {{C::cock.sixInches}} long.`
+});
+
+Description.buildCock({ requirements: ['cock-size-small'],
+  d: `{{C::gender.He}} has a small, {{C::cock.sixInch}} long, little {{C::cock.cock}}.`
+});
+
+// === Average Cock ===
+
+Description.buildCock({ requirements: ['cock-size-average'],
+  d: `{{C::gender.His}} {{C::cock.cock}} a nice weighty handful, {{C::cock.inchesLongAndWide}}.`
+});
+
+Description.buildCock({ requirements: ['cock-size-average'],
+  d: `{{C::gender.His}} {{C::cock.cock}} is about average at {{C::cock.inchesLongAndWide}}.`
+});
+
+Description.buildCock({ requirements: ['cock-size-average'],
+  d: `{{C::gender.He}} has {{C::cock.aBig}}, {{C::cock.inchLongAndWide}} {{C::cock.cock}}.`
+});
+
+Description.buildCock({ requirements: ['cock-size-average'],
+  d: `{{C::gender.He}} has {{C::cock.aBig}} {{C::cock.sixInch}} long {{C::cock.cock}}.`
+});
+
+// === Big Cock ===
+
+Description.buildCock({ requirements: ['cock-size-big'],
+  d: `{{C::gender.His}} {{C::cock.big}} {{C::cock.cock}} is longer most other {{C::species.class}} {{C::gender.his}}
+      size, at {{C::cock.inchesLongAndWide}}.`
+});
+
+// === Huge Cock ===
+
+Description.buildCock({ requirements: ['cock-size-huge'],
+  d: `{{C::gender.His}} {{C::cock.big}} {{C::cock.cock}} takes at least two hands to hold, at
+      {{C::cock.inchesLongAndWide}}.`
+});
+
+Description.buildCock({ requirements: ['cock-size-huge'],
+  d: `At {{C::cock.inchesLongAndWide}} {{C::gender.his}} {{C::cock.big}} {{C::cock.cock}} is far longer and thicker
+      than most {{C::species.class}} {{C::gender.his}} size.`
+});
+
+Description.buildCock({ requirements: ['cock-size-huge'],
+  d: `{{C::gender.His}} {{C::cock.big}} {{C::cock.cock}} is far larger than almost any other {{C::species.class}}
+      {{C::gender.his}} size, at {{C::cock.inchesLongAndWide}}.`
+});
+
+// === Monster Cock ===
+
+Description.buildCock({ requirements: ['cock-size-monster'],
+  d: `At {{C::cock.inchesLongAndWide}}, {{C::gender.his}} {{C::cock.big}} {{C::cock.cock}} hangs down nearly to
+      {{C::gender.his}} knees.`
+});
+
+Description.buildCock({ requirements: ['cock-size-monster'],
+  d: `{{C::gender.His}} {{C::cock.big}} {{C::cock.cock}} would look large on a horse, at {{C::cock.inchesLongAndWide}}.`
+});
+
+Description.buildCock({ requirements: ['cock-size-monster'],
+  d: `At {{C::cock.inchesLongAndWide}}, {{C::gender.his}} {{C::cock.big}} {{C::cock.cock}} would look large on a
+      creature twice {{C::gender.his}} size.`
+});
 
 // === With Knot ===
 
 Description.buildCock({ requirements: [], includes:['knot'],
-  d:`{{C::gender.He}} has a dog shaped cock, hidden in a {{C::cock.aBig}} furry cocksheath when soft. When hard though, {{C::gender.his}}
-    {{C::cock.big}} cock grows to {{C::cock.inchesLongAndWide}} with {{C::cock.aHuge(knot)}} {{C::cock.twoInch(knot)}} {{wide}}
-    knot at its base.`
+  d: `{{C::gender.He}} has a dog shaped cock, hidden in a {{C::cock.aBig}} furry cocksheath when soft. When hard
+      though, {{C::gender.his}} {{C::cock.big}} cock grows to {{C::cock.inchesLongAndWide}} with
+      {{C::cock.aHuge(knot)}} {{C::cock.twoInch(knot)}} {{wide}} knot at its base.`
 });
 
 Description.buildCock({ requirements: [], includes:['knot'],
-  d:`{{C::gender.He}} has {{C::cock.aBig}} furry sheath nestled between {{C::gender.his}} legs, holding {{C::gender.his}} {{C::cock.big}},
-     {{C::cock.twoInch}} {{wide}} {{C::cock.cock}}. {{C::gender.His}} {{C::cock.cock}} is {{C::cock.sixInches}} long when hard and has
-     {{C::cock.aHuge(knot)}} knot at its base that can swell up to {{C::cock.twoInches(knot)}} wide.`
+  d: `{{C::gender.He}} has {{C::cock.aBig}} furry sheath nestled between {{C::gender.his}} legs, holding
+      {{C::gender.his}} {{C::cock.big}}, {{C::cock.twoInch}} {{wide}} {{C::cock.cock}}. {{C::gender.His}}
+      {{C::cock.cock}} is {{C::cock.sixInches}} long when hard and has {{C::cock.aHuge(knot)}} knot at its base that
+      can swell up to {{C::cock.twoInches(knot)}} wide.`
 });
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// This is how the super old version handled this. Not sure if I want to make
-// the descriptions into forms though. For bodies they shouldn't be. But cocks
-// tits and everything else? Maybe. Cock descriptions were the only descriptions
-// that were finished though.
-
-// class CockDescriptionSeeds
-//
-//   # Parameters used for batch descriptions
-//   # 1.0 - 3.9 inches - Tiny
-//   # 4.0 - 5.4 inches - Small
-//   # 5.5 - 6.9 inches - Average
-//   # 7.0 - 8.9 inches - Large
-//   # 9.0 - 11.9 inches - Huge
-//   # 12.0 - 14.9 inches - Massive
-//   # 15.0 - 23.9 inches - Monstrous
-//   # 24.0 - 29.9 inches - Gigantic
-//   # > 30 inches - Titanic
-//   SIZE_PARAMETERS = {
-//     tiny: {
-//       tokens: { large: "[C|tiny]", a_large:"[C|a tiny]" },
-//       params: { min_size: 10, max_size: 39 }},
-//     small: {
-//       tokens: { large: "[C|small]", a_large:"[C|a small]" },
-//       params:{ min_size: 40, max_size: 54 }},
-//     average: {
-//       tokens: { large: "[C|average]", a_large:"[C|an average]" },
-//       params:{ min_size: 55, max_size: 69 }},
-//     large: {
-//       tokens: { large: "[C|large]", a_large:"[C|a large]" },
-//       params:{ min_size: 70, max_size: 89 }},
-//     huge: {
-//       tokens: { large: "[C|huge]", a_large:"[C|a huge]" },
-//       params:{ min_size: 90, max_size: 119 }},
-//     massive: {
-//       tokens: { large: "[C|massive]", a_large:"[C|a massive]" },
-//       params:{ min_size: 120, max_size: 149 }},
-//     monstrous: {
-//       tokens: { large: "[C|monstrous]", a_large:"[C|a monstrous]" },
-//       params:{ min_size: 150, max_size: 239 }},
-//     gigantic: {
-//       tokens: { large: "[C|gigantic]", a_large:"[C|a gigantic]" },
-//       params:{ min_size: 240, max_size: 299 }},
-//     titanic: {
-//       tokens: { large: "[C|titanic]", a_large:"[C|a titanic]" },
-//       params:{ min_size: 300, max_size: nil }},
-//   }
-//
-//
-//   def self.seed
-//     puts "Seeding Cock Descriptions"
-//
-//     seed_single_cocks
-//     seed_multiple_cocks
-//     seed_single_dog_cocks
-//     seed_multiple_dog_cocks
-//     seed_single_horse_cocks
-//     seed_multiple_horse_cocks
-//     seed_snake_cocks
-//     seed_single_dragon_cocks
-//     seed_multiple_dragon_cocks
-//     seed_dragon_cock_ridges
-//     seed_single_demon_cocks
-//     seed_multiple_demon_cocks
-//     seed_demon_cock_knots
-//     seed_demon_cock_knobs
-//     seed_demon_cock_spines
-//   end
-//
-
-
-
-//   # When a description can be used across all sizes, this method can be used to
-//   # create descriptions in large batches that include the correct adjective
-//   # tokens for the given sizes.
-//   def self.batch_create_descriptions params, &block
-//     SIZE_PARAMETERS.each do |size_key, size_parameters|
-//       params[:min_size] = size_parameters[:params][:min_size]
-//       params[:max_size] = size_parameters[:params][:max_size]
-//       text = yield size_parameters[:tokens]
-//       CockDescription.manufacture text, params
-//     end
-//   end
-//
-//
-//
-//   # Seed cock descriptions for single cocks. These descriptions are pretty
-//   # universal and should be able to apply to a wide variety of cock shapes.
-//   def self.seed_single_cocks
-//
-//     # 0 - 3.9 inches
-//     params = SIZE_PARAMETERS[:tiny][:params]
-//
-//     tiny = []
-//     tiny << "[Actor's] [C|cock] is [C|tiny], only [C|six inches long and one inch wide]"
-//     tiny << "[Actor] has [C|a tiny] [C|cock] measuring at most [C|six inches] in length."
-//     tiny << "[Actor] has [C|a tiny] [C|cock]. Even when hard it only grows to [C|six inches] long."
-//     tiny << "[Actor] has [C|a tiny], [C|six inch] long, little [C|cock]."
-//     tiny.each do |text|
-//       CockDescription.manufacture text, params
-//     end
-//
-//     # 4.0 - 5.4 inches
-//     small = []
-//     small << "[Actor's] [C|cock] is on the small side, [C|six inches long and one inch wide]."
-//     small << "[Actor's] [C|cock] is a little small, only [C|six inches long and one inch wide]."
-//     small << "[Actor] has a smaller than average [C|cock], [C|six inches long and one inch wide]."
-//     small << "[Actor] has, by Rysh standards, a small [C|cock], measuring [C|six inches] in length when hard."
-//     small << "[Actor] has [C|a small] [C|cock] measuring at most [C|six inches] in length."
-//     small.each do |text|
-//       CockDescription.manufacture text, SIZE_PARAMETERS[:small][:params]
-//     end
-//
-//     # 5.5 - 6.9 inches
-//     average = []
-//     average << "[Actor's] [C|cock] a nice weighty handful, [C|six inches long and one inch wide]."
-//     average << "[Actor's] [C|cock] is about average at [C|six inches long and one inch wide]."
-//     average << "[Actor] has [C|an average] [C|six inch long and one inch wide] [C|cock]."
-//     average << "[Actor] has [C|an average] [C|six inch] long [C|cock]."
-//     average.each do |text|
-//       CockDescription.manufacture text, SIZE_PARAMETERS[:average][:params]
-//     end
-//
-//     # 7.0 - 8.9 inches
-//     large = []
-//     large << "[Actor] has [C|a large] [C|six inch long and one inch wide] [C|cock]."
-//     large << "[Actor's] [C|cock] is [C|large] for [his] size, at [C|six inches long and one inch wide]."
-//     large.each do |text|
-//       CockDescription.manufacture text, SIZE_PARAMETERS[:large][:params]
-//     end
-//
-//     # 9.0 - 11.9 inches
-//     huge = []
-//     huge << "[Actor] has [C|a huge] [C|six inch long and one inch wide] [C|cock]."
-//     huge << "[Actor's] [C|huge] [C|cock] is longer most other fae [his] size, at [C|six inches long and one inch wide]."
-//     huge.each do |text|
-//       CockDescription.manufacture text, SIZE_PARAMETERS[:huge][:params]
-//     end
-//
-//     # 12.0 - 14.9 inches
-//     massive = []
-//     massive << "[Actor's] [C|massive] [C|cock] takes at least two hands to hold, at [C|six inches long and one inch wide]."
-//     massive << "At [C|six inches long and one inch wide], [Actor's] [C|massive] [C|cock] is far longer and thicker than most fae [his] size."
-//     massive.each do |text|
-//       CockDescription.manufacture text, SIZE_PARAMETERS[:massive][:params]
-//     end
-//
-//     # 15.0 - 23.9 inches
-//     monstrous = []
-//     monstrous << "[Actor's] [C|monstrous] [C|cock] is far larger than almost any other fae [his] size, at [C|six inches long and one inch wide]."
-//     monstrous << "[Actor] has [C|a monstrous], [C|two inch(cock)] wide [C|cock], that grows to [C|six inches] long when hard."
-//     monstrous << "At [C|six inches long and one inch wide], [Actor's] [C|monstrous] [C|cock] hangs nearly down to [his] knees."
-//     monstrous.each do |text|
-//       CockDescription.manufacture text, SIZE_PARAMETERS[:monstrous][:params]
-//     end
-//
-//     # 24.0 - 29.9 inches
-//     gigantic = []
-//     gigantic << "[Actor's] [C|gigantic] [C|cock] would look large on a horse, at [C|six inches long and one inch wide]."
-//     gigantic << "At [C|six inches long and one inch wide], [Actor's] [C|gigantic] [C|cock] would look huge on a creature twice [his] size."
-//     gigantic.each do |text|
-//       CockDescription.manufacture text, SIZE_PARAMETERS[:gigantic][:params]
-//     end
-//
-//     # > 30 inches
-//     titanic = []
-//     titanic << "[Actor's] [C|cock] is [C|titanic], at [C|six inches] long, it hangs down nearly to the goddamn ground."
-//     titanic << "[Actor's] [C|cock] is [C|titanic], at [C|six inches] it's nearly long enough to drag on the ground when soft."
-//     titanic << "At [C|six inches long and one inch wide], [Actor's] [C|titanic] [C|cock] would look huge on a creature three times [his] size."
-//     titanic.each do |text|
-//       CockDescription.manufacture text, SIZE_PARAMETERS[:titanic][:params]
-//     end
-//
-//   end
-//
-//
-
-
-
-//
 //   # === Multiple Cocks =================================================================================================
 //   # Used to describe a minimum of two cocks of any size and shape.
 //

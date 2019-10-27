@@ -4,10 +4,14 @@ global.CockDescriber = class CockDescriber {
     if (options.character == null) { throw `The Character must at least be set.` }
     this._character = options.character;
     this._cock = options.cock;
+    this._included = [];
   }
 
   get character() { return this._character; }
   get cock() { return this._cock; }
+
+  addIncluded(key) { this._included.push(key); }
+  isIncluded(key) { return this._included.indexOf(key) >= 0; }
 
   async updateDescription() {
     if (this.cock == null) { this._cock = await this.character.getCock(); }
@@ -35,11 +39,18 @@ global.CockDescriber = class CockDescriber {
       return Weaver.error(`Unable to find a cock description`);
     }
 
+    if (description.includes) {
+      each(description.includes, inclusion => {
+        this.addIncluded(inclusion);
+      });
+    }
+
     return description.d;
   }
 
   knotDescription() {
-    if (this.cock.knotWidthRatio == null) { return '' }
+    if (! this.cock.hasKnot) { return ''; }
+    if (this.isIncluded('knot')) { return ''; }
 
     if (this.cock.count > 1) {
       return Random.from([
