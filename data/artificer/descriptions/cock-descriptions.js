@@ -12,6 +12,21 @@ Description.buildCock({ requirements: [],
 });
 
 
+// === With Knot ===
+
+Description.buildCock({ requirements: [], includes:['knot'],
+  d:`{{C::gender.He}} has a dog shaped cock, hidden in a {{C::cock.aBig}} furry cocksheath when soft. When hard though, {{C::gender.his}}
+    {{C::cock.big}} cock grows to {{C::cock.inchesLongAndWide}} with {{C::cock.aHuge(knot)}} {{C::cock.twoInch(knot)}} {{wide}}
+    knot at its base.`
+});
+
+Description.buildCock({ requirements: [], includes:['knot'],
+  d:`{{C::gender.He}} has {{C::cock.aBig}} furry sheath nestled between {{C::gender.his}} legs, holding {{C::gender.his}} {{C::cock.big}},
+     {{C::cock.twoInch}} {{wide}} {{C::cock.cock}}. {{C::gender.His}} {{C::cock.cock}} is {{C::cock.sixInches}} long when hard and has
+     {{C::cock.aHuge(knot)}} knot at its base that can swell up to {{C::cock.twoInches(knot)}} wide.`
+});
+
+
 
 
 
@@ -249,19 +264,6 @@ Description.buildCock({ requirements: [],
 //
 //   # === Dog Cocks ======================================================================================================
 //
-//   def self.seed_single_dog_cocks
-//     params = { shape:"Dog" }
-//     batch_create_descriptions params do |tokens|
-//       "[Actor] has a dog shaped cock, hidden in a #{tokens[:large]} furry cocksheath when soft. When hard though, [his] "+
-//       "#{tokens[:large]} cock grows to [C|six inches long and one inch wide] with [C|a knot adjective] [C|two inch(knot)] "+
-//       "knot at its base."
-//     end
-//     batch_create_descriptions params do |tokens|
-//       "[Actor] has #{tokens[:a_large]} furry sheath nestled between [his] legs, holding [his] #{tokens[:large]}, "+
-//       "[C|two inch(cock)] wide [C|cock]. [His] cock is [C|six inches] long when hard and has [C|a knot adjective] knot at its "+
-//       "base that can swell up to [C|two inch(knot)] wide."
-//     end
-//   end
 //
 //   def self.seed_multiple_dog_cocks
 //     params = { shape:"Dog", min_count: 2, max_count:2 }
