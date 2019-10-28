@@ -16,6 +16,16 @@ global.PussyBuilder = (function() {
       clitLength:       Random.geometric(15),
       clitWidth:        Random.upTo(10)+5,
       prolapseLength:   0,
+      blightLevel:      0,
+      blightCount:      0,
+      blightHealing:    0,
+      burnLevel:        0,
+      burnCount:        0,
+      burnHealing:      0,
+      smashLevel:       0,
+      smashCount:       0,
+      smashHealing:     0,
+      smashShape:       null,
       description:      null,
     });
 

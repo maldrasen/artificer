@@ -15,6 +15,16 @@ global.Pussy = Database.instance().define('pussy', {
   innerLabiaLength:  { type:Sequelize.INTEGER },
   outerLabiaSize:    { type:Sequelize.INTEGER },
   prolapseLength:    { type:Sequelize.INTEGER },
+  blightLevel:       { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
+  blightCount:       { type:Sequelize.INTEGER },
+  blightHealing:     { type:Sequelize.INTEGER },
+  burnLevel:         { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
+  burnCount:         { type:Sequelize.INTEGER },
+  burnHealing:       { type:Sequelize.INTEGER },
+  smashLevel:        { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
+  smashCount:        { type:Sequelize.INTEGER },
+  smashHealing:      { type:Sequelize.INTEGER },
+  smashShape:        { type:Sequelize.STRING },
   description:       { type:Sequelize.STRING },
 },{
   timestamps: false,
@@ -22,7 +32,19 @@ global.Pussy = Database.instance().define('pussy', {
 
     width() {
       let range = Pussy.SizeRanges[this.sizeClass]
+      // Adjust for condition and stretch damage and such.
       return Math.round(this.sizeFactor * ((this.sizeScale/100)*(range.max-range.min) + range.min))
+    },
+
+    // The size class influences how a pussy grows in size, the current size
+    // though is used to determine what their current class is now.
+    currentSizeClass() {
+      let width = this.width;
+      if (width <= 28) { return 'small';   }
+      if (width <= 35) { return 'average'; }
+      if (width <= 47) { return 'big';     }
+      if (width <= 63) { return 'huge';    }
+      return 'monster'
     },
 
     convertedWidth()            { return ConversionUtility.milliToInches(this.width); },

@@ -7,6 +7,7 @@ global.TitsDescriber = class TitsDescriber {
     this._tits = options.tits;
     this._nipples = options.nipples;
     this._previousInjury = null;
+    this._included = [];
   }
 
   get character() { return this._character; }
@@ -14,6 +15,9 @@ global.TitsDescriber = class TitsDescriber {
   get tits() { return this._tits; }
   get previousInjury() { return this._previousInjury; }
   set previousInjury(i) { this._previousInjury = i; }
+
+  addIncluded(key) { this._included.push(key); }
+  isIncluded(key) { return this._included.indexOf(key) >= 0; }
 
   async updateDescription() {
     if (this.tits == null) { this._tits = await this.character.getTits(); }
@@ -38,7 +42,7 @@ global.TitsDescriber = class TitsDescriber {
   // === Descriptions ===
 
   describeTits() {
-    let description = Random.from(Description.validForTits({
+    let description = Random.from(Description.validFor('tits',{
       character: this.character,
       tits: this.tits,
       nipples: this.nipples
@@ -52,9 +56,9 @@ global.TitsDescriber = class TitsDescriber {
   }
 
   describeNipples() {
-    if (this.previousInjury != null) { return ''; }
+    if (this.isIncluded('nipples')) { return ''; }
 
-    let description = Random.from(Description.validForNipples({
+    let description = Random.from(Description.validFor('nipples',{
       character: this.character,
       tits: this.tits,
       nipples: this.nipples
@@ -69,15 +73,15 @@ global.TitsDescriber = class TitsDescriber {
 
   describeInjuries() {
     return `
-      ${this.d_blight()}
-      ${this.d_burn()}
-      ${this.d_smash()}
+      ${this.describeBlight()}
+      ${this.describeBurn()}
+      ${this.describeSmash()}
     `;
   }
 
-  d_blight() {
+  describeBlight() {
     if (this.tits.blightLevel == 0) { return ''; }
-    let herTitsHaveBeen = this.s_injuryStart(this.tits.smashPlace);
+    let herTitsHaveBeen = this.injuryStart(this.tits.smashPlace);
 
     this.previousInjury = {
       type: 'blight',
@@ -87,9 +91,9 @@ global.TitsDescriber = class TitsDescriber {
     return `TODO: ${herTitsHaveBeen} blighted.`
   }
 
-  d_burn() {
+  describeBurn() {
     if (this.tits.burnLevel == 0) { return ''; }
-    let herTitsHaveBeen = this.s_injuryStart(this.tits.smashPlace);
+    let herTitsHaveBeen = this.injuryStart(this.tits.smashPlace);
 
     this.previousInjury = {
       type: 'burn',
@@ -99,9 +103,9 @@ global.TitsDescriber = class TitsDescriber {
     return `TODO: ${herTitsHaveBeen} burnt.`
   }
 
-  d_smash() {
+  describeSmash() {
     if (this.tits.smashLevel == 0) { return ''; }
-    let herTitsHaveBeen = this.s_injuryStart(this.tits.smashPlace);
+    let herTitsHaveBeen = this.injuryStart(this.tits.smashPlace);
 
     this.previousInjury = {
       type: 'smash',
@@ -115,7 +119,7 @@ global.TitsDescriber = class TitsDescriber {
 
   // The injury start segment considers the previous injury described, and
   // notes if this injury was on the same breast as the last.
-  s_injuryStart(place) {
+  injuryStart(place) {
     if (this.previousInjury == null) {
       if (place == 'all') { return Random.from([
         '{{C::gender.His}} {{tits}} have been',

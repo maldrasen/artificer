@@ -2,6 +2,11 @@ global.Hazard = class Hazard extends Form {
 
   static buildHazard(code,data) {
     data.severity = (['body','head'].indexOf(data.location) < 0) ? 'painful' : 'critical';
+
+    if (data.details == null) {
+      data.details = {};
+    }
+
     return super.build(code,data);
   }
 
@@ -11,8 +16,6 @@ global.Hazard = class Hazard extends Form {
     if (this.level == null)    { throw "An injury level is required" }
     if (this.story == null)    { throw "An injury story is required" }
 
-    // if (Injury.LOCATIONS.indexOf(this.location) < 0) { throw `Bad location for injury: ${data.location}`; }
-    // if (Injury.DAMAGE_TYPES.indexOf(this.type) < 0) { throw `Bad location for injury: ${data.location}`; }
     if (this.level < 1 || this.level > 5) { throw `level should be between 1 and 5.`; }
   }
 

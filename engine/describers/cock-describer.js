@@ -33,7 +33,7 @@ global.CockDescriber = class CockDescriber {
   }
 
   cockDescription() {
-    let description = Random.from(Description.validForCock({
+    let description = Random.from(Description.validFor('cock',{
       character: this.character,
       cock: this.cock,
     }));

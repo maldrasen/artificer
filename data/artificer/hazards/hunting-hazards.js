@@ -123,6 +123,12 @@ Hazard.buildHazard('hunt-tit-smash-002', { activity:'hunting-hinterlands', locat
           {{H::gender.his}} tits with its tusks.`
 });
 
+Hazard.buildHazard('hunt-tit-smash-003', { activity:'hunting-hinterlands', location:'tits', type:'smash', level:1,
+  requires: ['success'],
+  story: `{{H::gender.He}} was on the way home from a successful hunt when {{H::gender.he}} tripped and fell chest
+          first onto a large flat rock, bruising {{H::gender.his}} {{tit}}.`
+});
+
 // // === Critical Injuries ===
 //
 // Hazard.buildHazard({ activity:'hunting-hinterlands', location:'body', type:'smash', level:1,
