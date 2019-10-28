@@ -695,55 +695,7 @@ Description.buildCock({ requirements: ['species-demon','cock-size-titanic'],
 //     CockDescription.manufacture text, params
 //   end
 //
-//   # Note: The size values for the knobs and spines are integers in 1/100 of an inch. They can only increase in quarter
-//   # inch steps (25), so 100, in and inch and 350 is three and a half inches.
-//
-//   def self.seed_demon_cock_knobs
-//
-//     # Tiny knobs on a single cock
-//     knobs = []
-//     knobs << "The entire length of {{C::gender.his}} cock is textured with gnarled little [C|knob comparator] sized bumps."
-//     knobs << "{{C::gender.His}} {{C::cock.cock}} is studded, seemingly at random, with hard little nubs the size of [C|knob comparators]."
-//     knobs << "Small, [C|knob comparator] sized bulges, adorn every inch of {{C::gender.His}} shaft, the {{unholy}} protrusions "+
-//       "pulse and throb with {{C::gender.his}} cock."
-//     knobs.each do |text|
-//       CockDescription.manufacture text, shape:"Demon", kind:"knob", min_size:0, max_size:0
-//     end
-//
-//     # Tiny knobs on multiple cocks
-//     knobs = []
-//     knobs << "The {{C::cock.count}} {{C::cock.cocks}} are {{C::cock.both}} textured with gnarled little [C|knob comparator] sized bumps."
-//     knobs << "{{C::gender.His}} {{C::cock.cocks}} are studded, seemingly at random, with hard little nubs the size of [C|knob comparators]."
-//     knobs << "Small, [C|knob comparator] sized bulges, adorn every inch of {{C::gender.His}} shafts, the {{unholy}} protrusions "+
-//       "pulse and throb with {{C::gender.his}} cock."
-//     knobs.each do |text|
-//       CockDescription.manufacture text, shape:"Demon", kind:"knob", min_size:0, max_size:0, min_count:2, max_count:nil
-//     end
-//
-//     # Knobs on a single cock
-//     knobs = []
-//     knobs << "The entire length of {{C::gender.his}} cock is textured with gnarled [C|two inch(knobs)] bumps, each the size of "+
-//       "[C|a knob comparator]."
-//     knobs << "{{C::gender.His}} {{C::cock.cock}} is studded, seemingly at random, with hard [C|two inch(knobs)] wide knobs, each the "+
-//       "size of [C|a knob comparator]."
-//     knobs << "Thick, [C|knob comparator] sized bulges, adorn every inch of {{C::gender.His}} shaft, the {{unholy}} protrusions "+
-//       "pulse and throb with {{C::gender.his}} cock."
-//     knobs.each do |text|
-//       CockDescription.manufacture text, shape:"Demon", kind:"knob", min_size:25
-//     end
-//
-//     # Knobs on multiple cocks
-//     knobs = []
-//     knobs << "The {{C::cock.count}} {{C::cock.cocks}} are {{C::cock.both}} textured with gnarled [C|two inch(knobs)] bumps, each the size "+
-//       "of [C|a knob comparator]."
-//     knobs << "{{C::gender.His}} {{C::cock.cocks}} are studded, seemingly at random, with hard [C|two inch(knobs)] wide knobs, each the "+
-//       "size of [C|a knob comparator]."
-//     knobs << "Thick, [C|knob comparator] sized bulges, adorn every inch of {{C::gender.His}} shafts, the {{unholy}} protrusions "+
-//       "pulse and throb with {{C::gender.his}} cock."
-//     knobs.each do |text|
-//       CockDescription.manufacture text, shape:"Demon", kind:"knob", min_size:25, min_count:2, max_count:nil
-//     end
-//   end
+
 //
 //
 // end

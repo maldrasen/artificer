@@ -22,6 +22,7 @@ global.CockDescriber = class CockDescriber {
       ${this.sheathDescription()}
       ${this.knotDescription()}
       ${this.ridgesDescription()}
+      ${this.knobsDescription()}
       ${this.spinesDescription()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
@@ -109,15 +110,50 @@ global.CockDescriber = class CockDescriber {
     ]);
   }
 
+  knobsDescription() {
+    if (! this.cock.hasKnobs) { return ''; }
+    if (this.isIncluded('knobs')) { return ''; }
+
+    let knobHeight = this.cock.knobHeight;
+    let choices = [];
+
+    if (this.cock.count == 1) {
+      ArrayUtility.addAll(choices,[
+        `The entire length of {{C::gender.his}} cock is textured with gnarled {{C::cock.acorn(knob)}} sized bumps.`,
+        `{{C::gender.His}} {{C::cock.cock}} is studded, seemingly at random, with hard nubs the size of {{C::cock.acorns(knob)}}.`,
+        `Gnarled, {{C::cock.acorn(knob)}} sized bulges adorn every inch of {{C::gender.his}} shaft.`
+      ]);
+
+      if (knobHeight > 12) { ArrayUtility.addAll(choices,[
+        `The entire length of {{C::gender.his}} cock is textured with gnarled {{C::cock.twoInches(knob)}} high bumps, each the size of {{C::cock.anAcorn(knob)}}`,
+        `{{C::gender.His}} {{C::cock.cock}} is studded, seemingly at random, with hard {{C::cock.twoInches(knob)}} wide knobs, each the size of {{C::cock.anAcorn(knob)}}.`,
+      ]); }
+
+      return Random.from(choices);
+    }
+
+    ArrayUtility.addAll(choices,[
+      `{{C::gender.His}} {{C::cock.count}} {{C::cock.cocks}} are {{C::cock.both}} textured with gnarled {{C::cock.acorn(knob)}} sized bumps.`,
+      `{{C::gender.His}} {{C::cock.cocks}} are studded, seemingly at random, with hard nubs the size of {{C::cock.acorns(knob)}}.`,
+      `Gnarled, {{C::cock.acorn(knob)}} sized bulges, adorn every inch of {{C::gender.his}} shafts.`,
+    ]);
+
+    if (knobHeight > 12) { ArrayUtility.addAll(choices,[
+      `The {{C::cock.count}} {{C::cock.cocks}} are {{C::cock.both}} textured with gnarled {{C::cock.twoInches(knob)}} bumps, each the size of {{C::cock.anAcorn(knob)}}.`,
+      `{{C::gender.His}} {{C::cock.cocks}} are studded, seemingly at random, with hard {{C::cock.twoInches(knob)}} wide knobs, each the size of {{C::cock.anAcorn(knob)}}.`,
+      `Thick, {{C::cock.acorn(knob)}} sized bulges, adorn every inch of {{C::gender.his}} shafts.`,
+    ]); }
+
+    return Random.from(choices);
+  }
+
   spinesDescription() {
     if (! this.cock.hasSpines) { return ''; }
     if (this.isIncluded('spines')) { return ''; }
 
     let spineHeight = this.cock.spineHeight;
 
-
     if (this.cock.count == 1) {
-
       if (spineHeight < 6) { return Random.from([
         `The entire length of {{C::gender.his}} cock is covered in sharp little, backward facing spines.`,
         `Like a cat, {{C::gender.his}} cock is covered in sharp little, backward facing spines.`,

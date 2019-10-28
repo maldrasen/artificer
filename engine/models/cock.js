@@ -12,7 +12,7 @@ global.Cock = Database.instance().define('cock', {
   widthRatio:        { type:Sequelize.DOUBLE  },
   minimumWidth:      { type:Sequelize.INTEGER },
   knotWidthRatio:    { type:Sequelize.DOUBLE, validate:{ min:1 }},
-  knobHeightRatio:   { type:Sequelize.DOUBLE, validate:{ min:1 }},
+  knobHeight:        { type:Sequelize.INTEGER },
   spineHeight:       { type:Sequelize.INTEGER },
   ballsSizeFactor:   { type:Sequelize.DOUBLE  },
   internalBalls:     { type:Sequelize.BOOLEAN },
@@ -66,11 +66,10 @@ global.Cock = Database.instance().define('cock', {
     area() { return MathUtility.widthToArea(this.width); },
 
     hasSheath()            { return this.sheath != null; },
-    hasKnobs()             { return this.knobHeightRatio != null; },
-    hasKnot()              { return this.knotWidthRatio != null; },
+    hasKnobs()             { return this.knobHeight > 0; },
     hasSpines()            { return this.spineHeight > 0; },
 
-    knobHeight()           { return this.hasKnobs ? Math.round(this.width * this.knobHeightRatio) : 0; },
+    hasKnot()              { return this.knotWidthRatio != null; },
     knotWidth()            { return this.hasKnot ? Math.round(this.width * this.knotWidthRatio) : 0; },
 
     convertedLength()      { return ConversionUtility.milliToInches(this.length); },

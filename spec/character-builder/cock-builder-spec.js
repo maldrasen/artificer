@@ -18,7 +18,7 @@ describe('CockBuilder', function() {
       sizeScale: 99.5,
       widthRatio: 1.5,
       knotWidthRatio: 1.2,
-      knobHeightRatio: 1.4,
+      knobHeight: 20,
       spineHeight: 30,
       ballsSizeFactor: 2,
     }};
@@ -32,7 +32,7 @@ describe('CockBuilder', function() {
         expect(cock.sizeScale).to.equal(99.5);
         expect(cock.widthRatio).to.equal(1.5);
         expect(cock.knotWidthRatio).to.equal(1.2);
-        expect(cock.knobHeightRatio).to.equal(1.4);
+        expect(cock.knobHeight).to.equal(20);
         expect(cock.spineHeight).to.equal(30);
         expect(cock.length).to.equal(801);
         expect(cock.width).to.equal(186);
@@ -83,7 +83,7 @@ describe('CockBuilder', function() {
         expect(cock.convertedWidth).to.be.within(1,3.5);
         expect(cock.convertedScrotumWidth).to.be.within(3.25,10.5)
         expect(cock.convertedKnotWidth).to.be.within(1.5,7);
-        expect(cock.knotWidthRatio).to.be.within(1.3,2.0);
+        expect(cock.knotWidthRatio).to.be.within(1.2,2.0);
         done();
       });
     });

@@ -15,7 +15,7 @@ global.CockBuilder = (function() {
       sizeFactor:       character.species.sizeFactor(),
       widthRatio:       null,
       knotWidthRatio:   null,
-      knobHeightRatio:  null,
+      knobHeight:       0,
       spineHeight:      0,
       minimumWidth:     20,
       ballsSizeFactor:  1,
