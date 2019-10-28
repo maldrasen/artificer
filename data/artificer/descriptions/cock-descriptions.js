@@ -115,13 +115,13 @@ Description.buildCock({ requirements:['cock-size-monster'],
 
 // === Dog Cocks, With Knot ===
 
-Description.buildCock({ includes:['knot'],
-  d: `{{C::gender.He}} has a dog shaped cock, hidden in a {{C::cock.aBig}} furry cocksheath when soft. When hard
-      though, {{C::gender.his}} {{C::cock.big}} cock grows to {{C::cock.inchesLongAndWide}} with
-      {{C::cock.aHuge(knot)}} {{C::cock.twoInch(knot)}} {{wide}} knot at its base.`
+Description.buildCock({ includes:['knot','sheath'],
+  d: `{{C::gender.He}} has a dog shaped cock, hidden in {{C::cock.aBig}} furry cocksheath when soft. When hard though,
+      {{C::gender.his}} {{C::cock.big}} cock grows to {{C::cock.inchesLongAndWide}} with {{C::cock.aHuge(knot)}}
+      {{C::cock.twoInch(knot)}} {{wide}} knot at its base.`
 });
 
-Description.buildCock({ includes:['knot'],
+Description.buildCock({ includes:['knot','sheath'],
   d: `{{C::gender.He}} has {{C::cock.aBig}} furry sheath nestled between {{C::gender.his}} legs, holding
       {{C::gender.his}} {{C::cock.big}}, {{C::cock.twoInch}} {{wide}} {{C::cock.cock}}. {{C::gender.His}}
       {{C::cock.cock}} is {{C::cock.sixInches}} long when hard and has {{C::cock.aHuge(knot)}} knot at its base that

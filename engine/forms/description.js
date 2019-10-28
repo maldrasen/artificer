@@ -109,12 +109,13 @@ global.Description = class Description extends Form {
   // unnecessarily.
 
   cockInclusionsValid(context) {
-    for (let i=0; i<(this.inclusions||[]).length; i++) {
-      if (this.inclusions[i] == 'knobs'  && matchRequirement('cock-knobbed',  context) == false) { return false; }
-      if (this.inclusions[i] == 'knot'   && matchRequirement('cock-knotted',  context) == false) { return false; }
-      if (this.inclusions[i] == 'spines' && matchRequirement('cock-spined',   context) == false) { return false; }
-      if (this.inclusions[i] == 'sheath' && matchRequirement('cock-sheathed', context) == false) { return false; }
+    for (let i=0; i<(this.includes||[]).length; i++) {
+      if (this.includes[i] == 'knobs'  && matchRequirement('cock-knobbed',  context) == false) { return false; }
+      if (this.includes[i] == 'knot'   && matchRequirement('cock-knotted',  context) == false) { return false; }
+      if (this.includes[i] == 'spines' && matchRequirement('cock-spined',   context) == false) { return false; }
+      if (this.includes[i] == 'sheath' && matchRequirement('cock-sheathed', context) == false) { return false; }
     }
+
     return true;
   }
 

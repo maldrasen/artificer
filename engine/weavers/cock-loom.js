@@ -62,8 +62,8 @@ Weaver.CockLoom = (function() {
 
   function size(cock) {
     return Random.from({
-      small:   ['small','small','small','little','cute little'],
-      average: ['average sized','rather average','nice sized','well proportioned'],
+      small:   ['small','small','small','short','stubby'],
+      average: ['long','lengthy','nice sized','well proportioned'],
       big:     ['large','fat','thick','big','larger than average','nice big','big beautiful'],
       huge:    ['huge','very large','very thick','very big','huge fat'],
       monster: ['massive','massively huge','monstrous','monstrously huge','huge fucking'],

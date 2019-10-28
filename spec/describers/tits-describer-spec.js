@@ -7,7 +7,7 @@ describe('Describer: Tits', function() {
   it('describes rat tits', function(done) {
     SpecHelper.tenTimes(done, resolve => {
       SpecHelper.buildJada({ species:'rat' }).then(jada => {
-        new TitsDescriber({ character:jada }).updateDescription().then(tits => {
+        jada.getTits().then(tits => {
           printTits('rat',tits)
           resolve();
         });
