@@ -12,9 +12,13 @@ global.Description = class Description extends Form {
     if (req == 'cock-size-big')            { return context.cock.currentSizeClass == 'big'     }
     if (req == 'cock-size-huge')           { return context.cock.currentSizeClass == 'huge'    }
     if (req == 'cock-size-monster')        { return context.cock.currentSizeClass == 'monster' }
+    if (req == 'cock-size-gigantic')       { return context.cock.isGigantic                    }
+    if (req == 'cock-size-titanic')        { return context.cock.isTitanic                     }
+    if (req == 'cock-shape-horse')         { return context.cock.shape == 'horse'              }
     if (req == 'cock-knobbed')             { return context.cock.knobHeightRatio != null       }
     if (req == 'cock-knotted')             { return context.cock.knotWidthRatio != null        }
     if (req == 'cock-spined')              { return context.cock.spineHeightRatio != null      }
+    if (req == 'cock-sheathed')            { return context.cock.sheath != null                }
     if (req == 'nipples-size-big')         { return context.nipples.length >= 20               }
     if (req == 'nipples-size-huge')        { return context.nipples.length >= 30               }
     if (req == 'nipples-shape-puffy')      { return context.nipples.shape == 'puffy'           }
@@ -37,9 +41,10 @@ global.Description = class Description extends Form {
 
       let inclusions = description.includes || [];
       for (let i=0; i<inclusions.length; i++) {
-        if (inclusions[i] == 'knobs'  && Description.matchRequirement('cock-knobbed', context) == false) { return false; }
-        if (inclusions[i] == 'knot'   && Description.matchRequirement('cock-knotted', context) == false) { return false; }
-        if (inclusions[i] == 'spines' && Description.matchRequirement('cock-spined',  context) == false) { return false; }
+        if (inclusions[i] == 'knobs'  && Description.matchRequirement('cock-knobbed',  context) == false) { return false; }
+        if (inclusions[i] == 'knot'   && Description.matchRequirement('cock-knotted',  context) == false) { return false; }
+        if (inclusions[i] == 'spines' && Description.matchRequirement('cock-spined',   context) == false) { return false; }
+        if (inclusions[i] == 'sheath' && Description.matchRequirement('cock-sheathed', context) == false) { return false; }
       }
 
       return true;

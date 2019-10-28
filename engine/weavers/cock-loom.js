@@ -70,11 +70,11 @@ Weaver.CockLoom = (function() {
 
   function hugeKnot(cock) {
     let width = cock.convertedKnotWidth;
-    if (width < 2)   { return Random.from(['sizable','fat','thick','plump','bulbous']); }
-    if (width < 2.5) { return Random.from(['huge','very large','very thick','bulbous']); }
-    if (width < 3.5) { return Random.from(['massive','massively huge','massively thick','incredibly thick']); }
-    if (width < 5)   { return Random.from(['monstrous','monstrously huge','monstrously thick','fucking huge','unbelievably thick']); }
-    if (width < 6.5) { return Random.from(['gigantic','giant','immense','fucking gigantic','pussy destroying','cunt ripping']); }
+    if (width < 2) { return Random.from(['sizable','fat','thick','plump','bulbous']); }
+    if (width < 3) { return Random.from(['huge','very large','very thick','bulbous']); }
+    if (width < 4) { return Random.from(['massive','massively huge','massively thick','incredibly thick']); }
+    if (width < 5) { return Random.from(['monstrous','monstrously huge','monstrously thick','fucking huge','unbelievably thick']); }
+    if (width < 6) { return Random.from(['gigantic','giant','immense','fucking gigantic','pussy destroying','cunt ripping']); }
     return Random.from(['titanic','colossal','gargantuan','tremendously thick','pelvis splitting','pelvis shattering','massively titanic']);
   }
 

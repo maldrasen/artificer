@@ -113,7 +113,7 @@ Description.buildCock({ requirements: ['cock-size-monster'],
       creature twice {{C::gender.his}} size.`
 });
 
-// === With Knot ===
+// === Dog Cocks, With Knot ===
 
 Description.buildCock({ requirements: [], includes:['knot'],
   d: `{{C::gender.He}} has a dog shaped cock, hidden in a {{C::cock.aBig}} furry cocksheath when soft. When hard
@@ -129,9 +129,79 @@ Description.buildCock({ requirements: [], includes:['knot'],
 });
 
 
+// === Horse Cocks ===
+
+Description.buildCock({ requirements: ['cock-shape-horse'],
+  d: `{{C::gender.His}} {{C::cock.big}} {{C::cock.twoInch}} {{wide}} {{C::cock.cock}} is tipped with a wide flat
+      cockhead which is just as thick as the rest of {{C::gender.his}} {{C::cock.big}} shaft.`
+});
+
+Description.buildCock({ requirements: ['cock-shape-horse'],
+  d: `A {{wide}} flat cockhead caps the length of {{C::gender.his}} {{C::cock.big}} {{C::cock.inchLongAndWide}}
+      horsecock.`
+});
+
+Description.buildCock({ requirements: ['cock-shape-horse'], includes:['sheath'],
+  d: `Sliding free from {{C::gender.his}} leathery wrinkled cocksheath, {{C::gender.his}} {{C::cock.big}}
+      {{C::cock.cock}} extends {{C::cock.sixInches}} proudly in front of {{C::gender.him}}.`
+});
+
+Description.buildCock({ requirements: ['cock-shape-horse'], includes:['sheath'],
+  d: `Extending from {{C::gender.his}} leathery cocksheath is {{C::cock.aBig}} {{C::cock.inchLongAndWide}} shaft of
+      flared horse meat.`
+});
+
+Description.buildCock({ requirements: ['cock-shape-horse'], includes:['sheath'],
+  d: `{{C::gender.His}} {{C::cock.big}} {{C::cock.sixInch}} long shaft of horse flesh extends from {{C::gender.his}}
+      wrinkled cocksheath. The {{C::cock.big}} shaft is tipped with a {{C::cock.twoInch}} wide flare at its end.`
+});
+
+Description.buildCock({ requirements: ['cock-shape-horse','cock-size-monster'], includes:['sheath'],
+  d: `{{C::gender.His}} {{C::cock.big}} {{C::cock.sixInch}} long {{C::cock.cock}} hangs low out of {{C::gender.his}}
+      sheath. The thick shaft of horse flesh is capped with {{C::cock.aBig}} {{C::cock.twoInch}} {{wide}} flared head.`
+});
+
+Description.buildCock({ requirements: ['cock-shape-horse','cock-size-gigantic'], includes:['sheath'],
+  d: `{{C::gender.He}} has an appropriately horse sized {{C::cock.inchLongAndWide}} {{C::cock.cock}} extending from
+      {{C::gender.his}} {{C::cock.big}} wrinkled cocksheath.`
+});
+
+Description.buildCock({ requirements: ['cock-shape-horse','cock-size-gigantic'], includes:['sheath'],
+  d: `{{C::gender.His}} {{C::cock.big}} flared horsecock is even bigger than most horses at
+      {{C::cock.inchesLongAndWide}}`
+});
+
+Description.buildCock({ requirements: ['cock-shape-horse','cock-size-gigantic'], includes:['sheath'],
+  d: `{{C::gender.His}} {{C::cock.big}} {{C::cock.sixInch}} long {{C::cock.cock}} hangs low out of {{C::gender.his}}
+      sheath, dangling near {{C::gender.his}} knees. The incredibly massive shaft of horse flesh is capped with
+      {{C::cock.aBig}} {{C::cock.twoInch}} {{wide}} flared head.`
+});
+
+Description.buildCock({ requirements: ['cock-shape-horse','cock-size-titanic'], includes:['sheath'],
+  d: `Extending from {{C::gender.his}} {{C::cock.big}} leathery cocksheath is a flared {{C::cock.cock}} even larger
+      than a horse's should be. The towering mass of horse flesh is {{C::cock.sixInches}} long with a
+      {{C::cock.twoInch}} {{wide}} flared head.`
+});
+
+Description.buildCock({ requirements: ['cock-shape-horse','cock-size-titanic'], includes:['sheath'],
+  d: `Between {{C::gender.his}} legs is an absurdly large cocksheath. Even when fully hard {{C::gender.his}}
+      {{C::cock.big}} {{C::cock.sixInch}} long {{C::cock.cock}} is so heavy that it drags on the ground. The incredibly
+      thick shaft is tipped with {{C::cock.aBig}} {{C::cock.twoInch}} {{wide}} flared head.`
+});
 
 
-//   # === Multiple Cocks =================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+//   # === Multiple Cocks ===
 //   # Used to describe a minimum of two cocks of any size and shape.
 //
 //   def self.seed_multiple_cocks
@@ -169,10 +239,7 @@ Description.buildCock({ requirements: [], includes:['knot'],
 //     end
 //   end
 //
-//
-//
-//   # === Dog Cocks ======================================================================================================
-//
+//   # === Multiple Dog Cocks ===
 //
 //   def self.seed_multiple_dog_cocks
 //     params = { shape:"Dog", min_count: 2, max_count:2 }
@@ -197,70 +264,7 @@ Description.buildCock({ requirements: [], includes:['knot'],
 //     end
 //   end
 //
-//
-//
-//   # === Horse Cocks ====================================================================================================
-//
-//   def self.seed_single_horse_cocks
-//
-//     # Monstrous: 15.0 - 23.9 inches
-//     params = SIZE_PARAMETERS[:monstrous][:params].merge(shape:"Horse")
-//
-//     horse = []
-//     horse << "[Actor] has an appropriately horse sized [C|six inch long and one inch wide] [C|cock] extending from [his] [C|huge] "+
-//       "wrinkled cocksheath."
-//     horse << "[Actor's] [C|huge] [C|six inch] long [C|cock] hangs low out of [his] sheath. The thick shaft of horse flesh is "+
-//       "capped with a [C|monstrous] [C|two inch(cock)] wide flared head."
-//     horse.each do |text|
-//       CockDescription.manufacture text, params
-//     end
-//
-//     # Gigantic: 24.0 - 29.9 inches
-//     params = SIZE_PARAMETERS[:gigantic][:params].merge(shape:"Horse")
-//
-//     horse = []
-//     horse << "[Actor's] [C|gigantic] flared horsecock is even bigger than most horses at [C|six inches long and one inch wide]."
-//     horse << "[Actor's] [C|gigantic] [C|six inch] long [C|cock] hangs low out of [his] sheath, easily past [his] knees. The "+
-//       "incredibly massive shaft of horse flesh is capped with a [C|gigantic] [C|two inch(cock)] wide flared head."
-//     horse.each do |text|
-//       CockDescription.manufacture text, params
-//     end
-//
-//     # Titanic: > 30 inches
-//     params = SIZE_PARAMETERS[:titanic][:params].merge(shape:"Horse")
-//
-//     horse = []
-//     horse << "Extending from [Actor's] [C|titanic] leathery cocksheath is a flared cock even larger than a horse's "+
-//       "should be. The towering mass of horse flesh is [C|six inches] long with a [C|two inch(cock)] wide flared head."
-//     horse << "Between [Actor's] legs is an absurdly large cocksheath. Even when fully hard [his] [C|titanic] [C|six inch] "+
-//       "long [C|cock] is so heavy that it drags on the ground. The incredibly thick shaft is tipped with a [C|titanic] "+
-//       "[C|two inch(cock)] wide flared head."
-//     horse.each do |text|
-//       CockDescription.manufacture text, params
-//     end
-//
-//     # All Sizes
-//
-//     batch_create_descriptions params do |tokens|
-//       "Sliding free from [his] leathery wrinkled cocksheath, [Actor's] #{tokens[:large]} [C|cock] extends [C|six inches] "+
-//       "proudly in front of [him]. [his] #{tokens[:large]} [C|two inches(cock)] wide horsecock is tipped with a wide "+
-//       "flat cockhead which is just as thick as the rest of [his] #{tokens[:large]} shaft."
-//     end
-//
-//     batch_create_descriptions params do |tokens|
-//       "A wide flat cockhead caps the length of [Actor's] #{tokens[:large]} [C|six inch long and one inch wide] horsecock."
-//     end
-//
-//     batch_create_descriptions params do |tokens|
-//       "Extending from [Actor's] leathery cocksheath is #{tokens[:a_large]} [C|six inch long and one inch wide] shaft of "+
-//       "flared horse meat."
-//     end
-//
-//     batch_create_descriptions params do |tokens|
-//       "[Actor's] #{tokens[:large]} [C|six inch] long shaft of horse flesh extends from [his] wrinkled cocksheath. The "+
-//       "#{tokens[:large]} shaft is tipped with a [C|two inch(cock)] wide flare at its end."
-//     end
-//   end
+//   # === Multiple Horse Cocks ===
 //
 //   def self.seed_multiple_horse_cocks
 //

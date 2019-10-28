@@ -70,6 +70,7 @@ global.CockDescriber = class CockDescriber {
 
   sheathDescription() {
     if (this.cock.sheath == null) { return '' }
+    if (this.isIncluded('sheath')) { return ''; }
 
     if (this.cock.count == 2) {
       return Random.from([

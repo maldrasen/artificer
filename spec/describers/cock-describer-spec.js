@@ -26,4 +26,16 @@ describe.only('Describer: Cock', function() {
     });
   });
 
+  it('describes horse cocks', function(done) {
+    SpecHelper.tenTimes(done, resolve => {
+      SpecHelper.buildJada({ species:'centaur' }).then(jada => {
+        new CockDescriber({ character:jada }).updateDescription().then(cock => {
+          printCock('normal',cock)
+          resolve();
+        });
+      });
+    });
+  });
+
+
 });

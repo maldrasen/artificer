@@ -24,7 +24,7 @@ global.Species = class Species extends Form {
     if (this.isFae) return 'fae';
     if (this.isElf) return 'elf';
     if (this.isDemon) return 'demon';
-    return species.name.toLowerCase();
+    return this.name.toLowerCase();
   }
 
   get pluralClassname() {

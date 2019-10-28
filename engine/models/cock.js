@@ -31,12 +31,20 @@ global.Cock = Database.instance().define('cock', {
     // though is used to determine what their current class is now.
     currentSizeClass() {
       let length = this.length;
-      if (length < 178) { return 'small'; }
-      if (length < 229) { return 'average'; }
-      if (length < 305) { return 'big'; }
-      if (length < 406) { return 'huge'; }
-      return 'monster'
+      if (length < 178) { return 'small'; }    // <7in
+      if (length < 229) { return 'average'; }  // 7in - 9in
+      if (length < 305) { return 'big'; }      // 9in - 12in
+      if (length < 406) { return 'huge'; }     // 12in - 16in
+      return 'monster'                         // >16in
     },
+
+    // Gigantic and Titanic cocks don't really factor into the growth formulas,
+    // so they're not really separate size classes, but they're sometimes used
+    // in the describers for really huge cocks.
+    //  Gigantic: 20in - 30in
+    //  Titanic:  >30in
+    isGigantic() { return this.length >= 508 && this.length < 762 },
+    isTitanic()  { return this.length >= 762 },
 
     // Get each cock's diameter in mm.
     //
