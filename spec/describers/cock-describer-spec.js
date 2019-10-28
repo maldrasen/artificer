@@ -48,7 +48,7 @@ describe('Describer: Cock', function() {
     });
   });
 
-  it.only('describes kobold cocks', function(done) {
+  it('describes kobold cocks', function(done) {
     SpecHelper.tenTimes(done, resolve => {
       SpecHelper.buildJada({ species:'kobold' }).then(jada => {
         new CockDescriber({ character:jada }).updateDescription().then(cock => {
@@ -59,9 +59,20 @@ describe('Describer: Cock', function() {
     });
   });
 
-  it.only('describes dragon cocks', function(done) {
+  it('describes dragon cocks', function(done) {
     SpecHelper.tenTimes(done, resolve => {
       SpecHelper.buildJada({ species:'dragon' }).then(jada => {
+        new CockDescriber({ character:jada }).updateDescription().then(cock => {
+          printCock('normal',cock)
+          resolve();
+        });
+      });
+    });
+  });
+
+  it.only('describes demon cocks', function(done) {
+    SpecHelper.tenTimes(done, resolve => {
+      SpecHelper.buildJada({ species:'succubus' }).then(jada => {
         new CockDescriber({ character:jada }).updateDescription().then(cock => {
           printCock('normal',cock)
           resolve();

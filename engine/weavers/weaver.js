@@ -65,6 +65,9 @@ global.Weaver = (function() {
     if (token == 'throb')     { return Random.from(['throb','pulse']); }
     if (token == 'throbbing') { return Random.from(['throbbing','pulsing']); }
     if (token == 'wide')      { return Random.from(['wide','thick']); }
+    if (token == 'unholy')    { return Random.from(['unholy','demonic','infernal','satanic','corrupt','blasphemous','cursed','accursed']); }
+    if (token == 'maleDemon') { return Random.from(['Abaddon','Baal','Baphomet','Behemoth','Lucifer','Maldrasen','Mephistopheles','Satan','Slaanesh']); }
+
     return error(`BadToken(${token})`);
   }
 

@@ -6,7 +6,8 @@ global.Description = class Description extends Form {
 
   static matchRequirement(req, context) {
     if (req == 'species-rat')              { return context.character.speciesCode == 'rat'     }
-    if (req == 'species-furry')            { return context.character.species.furry            }
+    if (req == 'species-furry')            { return context.character.species.isFurry          }
+    if (req == 'species-demon')            { return context.character.species.isDemon          }
     if (req == 'cock-count-2')             { return context.cock.count == 2                    }
     if (req == 'cock-count-3')             { return context.cock.count == 3                    }
     if (req == 'cock-size-small')          { return context.cock.currentSizeClass == 'small'   }

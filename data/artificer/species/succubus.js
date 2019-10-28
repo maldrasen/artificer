@@ -44,6 +44,7 @@ Species.build('succubus', {
     cock:{ size:{
       big:  90,
       huge: 10,
+      monster: 1,
     }}
   },
 
