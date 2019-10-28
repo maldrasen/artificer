@@ -69,18 +69,17 @@ global.EnglishUtility = {
   inchesInEnglish(value, plural) {
     let number = Math.floor(value);
     let part = Math.floor((value-number)*10)
-
+    let a = plural ? '' : 'a ';
     let inch = (plural && number != 1) ? 'inches' : 'inch'
     let foot = (plural && number != 12) ? 'feet' : 'foot'
 
-    // Oh shit, why is this here?
     if(part > 6 && inch == 'inch' && plural) { inch = 'inches'; }
 
     if (number == 0) {
       if (part > 6) { return 'three quarters of an inch'; }
-      if (part > 4) { return 'a half an inch'; }
-      if (part > 1) { return 'a quarter of an inch'; }
-      return "a fraction of an inch";
+      if (part > 4) { return `${a}half an inch`; }
+      if (part > 1) { return `${a}quarter of an inch`; }
+      return `${a}fraction of an inch`;
     }
     if (number < 6) {
       if (part > 6) { return `${EnglishUtility.numberInEnglish(number)} and three quarter ${inch}`; }

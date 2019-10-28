@@ -12,6 +12,7 @@ Weaver.CockLoom = (function() {
     if (token == "cock.big") { return size(cock); }
     if (token == "cock.aBig") { return EnglishUtility.a_an(size(cock)); }
     if (token == "cock.count") { return EnglishUtility.numberInEnglish(cock.count); }
+    if (token == "cock.both") { return (cock.count == 2) ? 'both' : 'all'; }
     if (token == "cock.cock") { return cockWord(cock,false); }
     if (token == "cock.cocks") { return cockWord(cock,true); }
     if (token == "cock.sixInch") { return lengthInches(cock,false); }
@@ -24,6 +25,8 @@ Weaver.CockLoom = (function() {
     if (token == "cock.twoInches(knot)") { return knotWidthInches(cock,true); }
     if (token == "cock.twoInch(ridge)") { return ridgeHeightInches(cock,false); }
     if (token == "cock.twoInches(ridge)") { return ridgeHeightInches(cock,true); }
+    if (token == "cock.twoInch(spine)") { return spineHeightInches(cock,false); }
+    if (token == "cock.twoInches(spine)") { return spineHeightInches(cock,true); }
     if (token == "cock.huge(knot)") { return hugeKnot(cock); }
     if (token == "cock.aHuge(knot)") { return EnglishUtility.a_an(hugeKnot(cock)); }
     if (token == "cock.apple(knot)") { return appleKnot(cock); }
@@ -37,6 +40,7 @@ Weaver.CockLoom = (function() {
   function widthInches(cock, plural) { return EnglishUtility.inchesInEnglish(cock.convertedWidth, plural); }
   function knotWidthInches(cock, plural) { return EnglishUtility.inchesInEnglish(cock.convertedKnotWidth, plural); }
   function ridgeHeightInches(cock, plural) { return EnglishUtility.inchesInEnglish(cock.convertedRidgeHeight, plural); }
+  function spineHeightInches(cock, plural) { return EnglishUtility.inchesInEnglish(cock.convertedSpineHeight, plural); }
   function appleKnot(cock) { return EnglishUtility.roundWidthComparator(cock.convertedKnotWidth); }
 
   // Generates a phrase like:

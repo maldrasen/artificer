@@ -20,10 +20,10 @@ global.Description = class Description extends Form {
     if (req == 'cock-shape-dragon')        { return context.cock.shape == 'dragon'             }
     if (req == 'cock-shape-horse')         { return context.cock.shape == 'horse'              }
     if (req == 'cock-shape-snake')         { return context.cock.shape == 'snake'              }
-    if (req == 'cock-knobbed')             { return context.cock.knobHeightRatio != null       }
-    if (req == 'cock-knotted')             { return context.cock.knotWidthRatio != null        }
-    if (req == 'cock-spined')              { return context.cock.spineHeightRatio != null      }
-    if (req == 'cock-sheathed')            { return context.cock.sheath != null                }
+    if (req == 'cock-knobbed')             { return context.cock.hasKnobs                      }
+    if (req == 'cock-knotted')             { return context.cock.hasKnot                       }
+    if (req == 'cock-spined')              { return context.cock.hasSpines                     }
+    if (req == 'cock-sheathed')            { return context.cock.hasSheath                     }
     if (req == 'nipples-size-big')         { return context.nipples.length >= 20               }
     if (req == 'nipples-size-huge')        { return context.nipples.length >= 30               }
     if (req == 'nipples-shape-puffy')      { return context.nipples.shape == 'puffy'           }

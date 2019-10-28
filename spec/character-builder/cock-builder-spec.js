@@ -19,7 +19,7 @@ describe('CockBuilder', function() {
       widthRatio: 1.5,
       knotWidthRatio: 1.2,
       knobHeightRatio: 1.4,
-      spineHeightRatio: 1.1,
+      spineHeight: 30,
       ballsSizeFactor: 2,
     }};
 
@@ -33,7 +33,7 @@ describe('CockBuilder', function() {
         expect(cock.widthRatio).to.equal(1.5);
         expect(cock.knotWidthRatio).to.equal(1.2);
         expect(cock.knobHeightRatio).to.equal(1.4);
-        expect(cock.spineHeightRatio).to.equal(1.1);
+        expect(cock.spineHeight).to.equal(30);
         expect(cock.length).to.equal(801);
         expect(cock.width).to.equal(186);
         expect(cock.scrotumWidth).to.equal(1116);

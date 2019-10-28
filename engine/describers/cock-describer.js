@@ -22,6 +22,7 @@ global.CockDescriber = class CockDescriber {
       ${this.sheathDescription()}
       ${this.knotDescription()}
       ${this.ridgesDescription()}
+      ${this.spinesDescription()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
     this.cock.description = await Weaver.weaveWithCharacter(description,'C',this.character);
@@ -105,6 +106,76 @@ global.CockDescriber = class CockDescriber {
       `{{C::gender.His}} {{C::cock.cock}} has a series of thick bony ridges that extend {{C::cock.twoInches(ridge)}} from {{C::gender.his}} cock's scaley skin.`,
       `Thick bony ridges protrude {{C::cock.twoInches(ridge)}} from the surface of {{C::gender.his}} shaft.`,
       `The entire shaft of dragon meat is ringed with thick bony ridges.`,
+    ]);
+  }
+
+  spinesDescription() {
+    if (! this.cock.hasSpines) { return ''; }
+    if (this.isIncluded('spines')) { return ''; }
+
+    let spineHeight = this.cock.spineHeight;
+
+
+    if (this.cock.count == 1) {
+
+      if (spineHeight < 6) { return Random.from([
+        `The entire length of {{C::gender.his}} cock is covered in sharp little, backward facing spines.`,
+        `Like a cat, {{C::gender.his}} cock is covered in sharp little, backward facing spines.`,
+        `Small sharp spikes adorn the length of {{C::gender.his}} cock, giving it a rough feline texture.`,
+      ]); }
+
+      if (spineHeight < 25) { return Random.from([
+        `The entire length of {{C::gender.his}} cock is covered in hard, backward facing spines. The spines are
+         {{C::cock.twoInch(spine)}} long around the crown of {{C::gender.his}} cockhead, but grow shorter near the
+         base.`,
+
+        `Firm {{C::cock.twoInches(spine)}} long spines adorn the length of {{C::gender.his}} cock, facing backwards so
+         that they rub painfully at whatever {{C::gender.his}} cock is thrust into.`,
+
+        `Wicked {{C::cock.twoInches(spine)}} long, backward facing spines completely cover {{C::gender.his}}
+         {{C::cock.cock}}. The wide, dull spikes are thickest around the crown of {{C::gender.his}} cockhead and
+         flatten out near the base.`,
+      ]); }
+
+      return Random.from([
+        `Thick {{C::cock.twoInch(spine)}} long spines cover the length of {{C::gender.his}} cock. The bony spurs are
+         thick and dull, but stiff like short fingers protruding backwards from the surface of {{C::gender.his}} cock.`,
+
+        `{{C::gender.His}} {{C::cock.cock}} is a true cunt destroyer; it's entire surface is covered in thick
+         {{C::cock.twoInch(spine)}} long spikes. The spines are firm and dull, like thick fingers made to rake
+         painfully against whatever they're thrust into. The spines are thickest around {{C::gender.his}} cockhead,
+         but grow shorter near the base.`
+      ]);
+    }
+
+    if (spineHeight < 6) { return Random.from([
+      `{{C::gender.His}} cocks are {{C::cock.both}} covered in sharp little, backward facing spines like a cat's.`,
+      `Like a cat, {{C::gender.his}} {{C::cock.cocks}} are covered in sharp little, backward facing spines.`,
+      `Small sharp spikes adorn {{C::cock.both}} of {{C::gender.his}} cocks, giving them a rough feline texture.`,
+    ]); }
+
+    if (spineHeight < 25) { return Random.from([
+      `{{C::gender.his}} {{C::cock.count}} {{C::cock.cocks}} are covered in hard, backward facing spines. The spines
+       are {{C::cock.twoInches(spine)}} long around the heads of {{C::gender.his}} {{C::cock.cocks}}, but grow shorter
+       near their bases.`,
+
+      `Firm {{C::cock.twoInch(spine)}} long spines adorn the length of {{C::gender.his}} {{C::cock.cocks}}, facing
+       backwards so that they rub painfully at whatever they're thrust into.`,
+
+      `Wicked {{C::cock.twoInch(spine)}} long, backward facing spines completely cover {{C::cock.both}} of
+       {{C::gender.his}} {{C::cock.cocks}}. The thick, dull spikes are thickest around the crowns of {{C::gender.his}}
+       cockheads and thin out near their base where they lie flat.`
+    ]); }
+
+    return Random.from([
+      `Thick {{C::cock.twoInch(spine)}} long spines cover the length {{C::gender.his}} {{C::cock.cocks}}. The bony
+       spurs are thick and dull, but stiff like short fingers protruding backwards from the surface of
+       {{C::gender.his}} {{C::cock.cocks}}.`,
+
+      `{{C::gender.His}} {{C::cock.count}} {{C::cock.cocks}} are true cunt destroyers, their surfaces are covered in
+       thick {{C::cock.twoInch(spine)}} long spurs. They're firm and dull, like thick fingers made to rake painfully
+       against whatever they're thrust into. The spines are thickest around {{C::gender.his}} cockheads, but grow
+       shorter near their base.`
     ]);
   }
 

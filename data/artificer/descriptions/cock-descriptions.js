@@ -473,7 +473,7 @@ Description.buildCock({ requirements: ['species-demon','cock-size-titanic'],
 //
 //     cocks = []
 //     cocks << "{{C::gender.His}} {{C::cock.count}} {{C::cock.big}} {{C::cock.sixInch}} long {{C::cock.cocks}} hang low out of {{C::gender.his}} {{C::cock.big}} scaled sheath. "+
-//       "The thick shafts of dragon meat are [C|all/both] ringed with inch thick bony ridges."
+//       "The thick shafts of dragon meat are {{C::cock.both}} ringed with inch thick bony ridges."
 //     cocks.each do |text|
 //       CockDescription.manufacture text, params
 //     end
@@ -483,7 +483,7 @@ Description.buildCock({ requirements: ['species-demon','cock-size-titanic'],
 //
 //     cocks = []
 //     cocks << "{{C::gender.His}} {{C::cock.count}} {{C::cock.big}} {{C::cock.sixInch}} long {{C::cock.cocks}} hang down low out of {{C::gender.his}} {{C::cock.big}} scaled "+
-//       "cocksheath, easily past {{C::gender.his}} knees. The entire length of {{C::gender.his}} {{C::cock.twoInch}} thick shafts are [C|all/both] "+
+//       "cocksheath, easily past {{C::gender.his}} knees. The entire length of {{C::gender.his}} {{C::cock.twoInch}} thick shafts are {{C::cock.both}} "+
 //       "ringed with huge protruding inch and a half tall ridges."
 //     cocks.each do |text|
 //       CockDescription.manufacture text, params
@@ -494,7 +494,7 @@ Description.buildCock({ requirements: ['species-demon','cock-size-titanic'],
 //
 //     cocks = []
 //     cocks << "{{C::gender.He}} has {{C::cock.count}} dragon sized {{C::cock.inchLongAndWide}} cocks extending from {{C::gender.his}} tightly "+
-//       "stretched {{C::cock.big}} scaled cocksheath. The entire length of [C|all/both] of {{C::gender.his}} {{C::cock.twoInch}} thick shafts "+
+//       "stretched {{C::cock.big}} scaled cocksheath. The entire length of {{C::cock.both}} of {{C::gender.his}} {{C::cock.twoInch}} thick shafts "+
 //       "are ringed with {{C::cock.big}} protruding ridges."
 //     cocks << "Between {{C::gender.His}} legs is an absurdly large, cocksheath. Even when fully hard {{C::gender.his}} {{C::cock.count}} {{C::cock.big}} "+
 //       "{{C::cock.sixInch}} long {{C::cock.cocks}} are so heavy that they drag on the ground. A series of thick bony ridges, each the "+
@@ -508,7 +508,7 @@ Description.buildCock({ requirements: ['species-demon','cock-size-titanic'],
 //
 //     batch_create_descriptions params do |tokens|
 //       "Sliding free from {{C::gender.his}} scaled cocksheath, {{C::gender.His}} {{C::cock.count}} {{C::cock.big}} {{C::cock.cocks}} each jut {{C::cock.sixInches}} "+
-//       "proudly in front of {{C::gender.him}}. {{C::gender.his}} {{C::cock.big}} {{C::cock.twoInches}}wide dragon cocks [C|all/both] have a "+
+//       "proudly in front of {{C::gender.him}}. {{C::gender.his}} {{C::cock.big}} {{C::cock.twoInches}}wide dragon cocks {{C::cock.both}} have a "+
 //       "series of thick ridges that extend from their thick heads all the way down to {{C::gender.his}} sheath."
 //     end
 //
@@ -549,18 +549,18 @@ Description.buildCock({ requirements: ['species-demon','cock-size-titanic'],
 //
 //     # Ridges on multiple cocks
 //     ridges = []
-//     ridges << "A series of thick bony ridges the size of [C|a ridge comparator] adorn [C|all/both] of {{C::gender.His}} dragoncocks."
+//     ridges << "A series of thick bony ridges the size of [C|a ridge comparator] adorn {{C::cock.both}} of {{C::gender.His}} dragoncocks."
 //     ridges << "A series of bony ridges as thick as [C|a ridge comparator] run from {{C::gender.his}} dragoncocks' bulbous heads down to the base of their scaled sheath."
-//     ridges << "{{C::gender.His}} {{C::cock.count}} dragoncocks are [C|all/both] covered in thick bony ridges, each as wide as [C|a ridge comparator]."
+//     ridges << "{{C::gender.His}} {{C::cock.count}} dragoncocks are {{C::cock.both}} covered in thick bony ridges, each as wide as [C|a ridge comparator]."
 //     ridges.each do |text|
 //       CockDescription.manufacture text, shape:"Dragon", kind:"ridge", max_size:119, min_count:2, max_count:nil
 //     end
 //
 //     # Ridges on huge multiple cocks
 //     ridges = []
-//     ridges << "A series of [C|ridge comparator] thick ridges adorn [C|all/both] of {{C::gender.His}} dragoncocks."
+//     ridges << "A series of [C|ridge comparator] thick ridges adorn {{C::cock.both}} of {{C::gender.His}} dragoncocks."
 //     ridges << "A series of [C|ridge comparator] thick ridges run from {{C::gender.his}} dragoncocks' bulbous heads down to the base of their scaled sheath."
-//     ridges << "{{C::gender.His}} dragoncocks are [C|all/both] covered in [C|ridge comparator] thick bony ridges."
+//     ridges << "{{C::gender.His}} dragoncocks are {{C::cock.both}} covered in [C|ridge comparator] thick bony ridges."
 //     ridges.each do |text|
 //       CockDescription.manufacture text, shape:"Dragon", kind:"ridge", min_size:120, min_count:2, max_count:nil
 //     end
@@ -673,7 +673,7 @@ Description.buildCock({ requirements: ['species-demon','cock-size-titanic'],
 //
 //     batch_create_descriptions params do |tokens|
 //       "The base of {{C::gender.his}} shafts emerge from a widely stretched {{C::cock.big}} leathery cocksheath, and like "+
-//       "dog cocks, they [C|all/both] swell into [C|a knot adjective] [C|two inch(knot)] wide knots."
+//       "dog cocks, they {{C::cock.both}} swell into [C|a knot adjective] [C|two inch(knot)] wide knots."
 //     end
 //
 //     batch_create_descriptions params do |tokens|
@@ -712,7 +712,7 @@ Description.buildCock({ requirements: ['species-demon','cock-size-titanic'],
 //
 //     # Tiny knobs on multiple cocks
 //     knobs = []
-//     knobs << "The {{C::cock.count}} {{C::cock.cocks}} are [C|all/both] textured with gnarled little [C|knob comparator] sized bumps."
+//     knobs << "The {{C::cock.count}} {{C::cock.cocks}} are {{C::cock.both}} textured with gnarled little [C|knob comparator] sized bumps."
 //     knobs << "{{C::gender.His}} {{C::cock.cocks}} are studded, seemingly at random, with hard little nubs the size of [C|knob comparators]."
 //     knobs << "Small, [C|knob comparator] sized bulges, adorn every inch of {{C::gender.His}} shafts, the {{unholy}} protrusions "+
 //       "pulse and throb with {{C::gender.his}} cock."
@@ -734,7 +734,7 @@ Description.buildCock({ requirements: ['species-demon','cock-size-titanic'],
 //
 //     # Knobs on multiple cocks
 //     knobs = []
-//     knobs << "The {{C::cock.count}} {{C::cock.cocks}} are [C|all/both] textured with gnarled [C|two inch(knobs)] bumps, each the size "+
+//     knobs << "The {{C::cock.count}} {{C::cock.cocks}} are {{C::cock.both}} textured with gnarled [C|two inch(knobs)] bumps, each the size "+
 //       "of [C|a knob comparator]."
 //     knobs << "{{C::gender.His}} {{C::cock.cocks}} are studded, seemingly at random, with hard [C|two inch(knobs)] wide knobs, each the "+
 //       "size of [C|a knob comparator]."
@@ -745,76 +745,5 @@ Description.buildCock({ requirements: ['species-demon','cock-size-titanic'],
 //     end
 //   end
 //
-//   def self.seed_demon_cock_spines
-//
-//     # Tiny spines on a single cock
-//     spines = []
-//     spines << "The entire length of {{C::gender.his}} cock is covered in sharp little, backward facing spines."
-//     spines << "Like a cat, {{C::gender.His}} cock is covered in sharp little, backward facing spines"
-//     spines << "Small sharp spikes adorn the length of {{C::gender.his}} cock, giving it a rough feline texture."
-//     spines.each do |text|
-//       CockDescription.manufacture text, shape:"Demon", kind:"spine", min_size:0, max_size:0
-//     end
-//
-//     # Tiny spines on multiple cocks
-//     spines = []
-//     spines << "The entire length of {{C::gender.his}} cocks are [C|all/both] covered in sharp little, backward facing spines."
-//     spines << "Like a cat, {{C::gender.His}} cocks are covered in sharp little, backward facing spines"
-//     spines << "Small sharp spikes adorn [C|all/both] of {{C::gender.his}} cocks, giving them a rough feline texture."
-//     spines.each do |text|
-//       CockDescription.manufacture text, shape:"Demon", kind:"spine", min_size:0, max_size:0, min_count:2, max_count:nil
-//     end
-//
-//     # Spines on a single cocks
-//     spines = []
-//     spines << "The entire length of {{C::gender.his}} {{unholy}} cock is covered in hard, backward facing spines. The spines are "+
-//       "[C|two inches(spines)] long around the crown of {{C::gender.his}} cockhead, but grow shorter near the base."
-//     spines << "Firm [C|two inch(spines)] long spines adorn the length of {{C::gender.his}} cock, facing backwards so that they "+
-//       "rub painfully at whatever {{C::gender.his}} cock is thrust into."
-//     spines << "Wicked [C|two inch(spines)] long, backward facing spines completely cover {{C::gender.His}} {{unholy}} cock. "+
-//       "The wide, dull spikes are thickest around the crown of {{C::gender.his}} cockhead and flatten out near the base."
-//     spines.each do |text|
-//       CockDescription.manufacture text, shape:"Demon", kind:"spine", min_size:25, max_size:200
-//     end
-//
-//     # Spines on multiple cocks
-//     spines = []
-//     spines << "[C|All/Both] of {{C::gender.his}} {{unholy}} cocks are covered in hard, backward facing spines. The spines are "+
-//       "[C|two inches(spines)] long around the crowns of {{C::gender.his}} cocks, but grow shorter near their base."
-//     spines << "Firm [C|two inch(spines)] long spines adorn the length of {{C::gender.his}} cocks, facing backwards so that they "+
-//       "rub painfully at whatever they're thrust into."
-//     spines << "Wicked [C|two inch(spines)] long, backward facing spines completely cover [C|all/both] of {{C::gender.His}} "+
-//       "{{unholy}} cocks. The thick, dull spikes are thickest around the crowns of {{C::gender.his}} cockheads and thin out near "+
-//       "their base where they lie flat."
-//     spines.each do |text|
-//       CockDescription.manufacture text, shape:"Demon", kind:"spine", min_size:25, max_size:200, min_count:2, max_count:nil
-//     end
-//
-//     # Huge spines on a single cock
-//     spines = []
-//     spines << "Given the sadistic [C|two inch(spines)] long spines that cover {{C::gender.His}} cock, the {{unholy}} shaft's only "+
-//       "conceivable use is as a weapon of war, or maybe as a status symbol recognized only in the deepest bowels of "+
-//       "the Abyss. The bony spines are thick and dull, but stiff like short fingers protruding backwards from the "+
-//       "surface of {{C::gender.his}} cock."
-//     spines << "{{C::gender.His}} {{C::cock.cock}} is a true cunt destroyer, it's entire surface covered in thick [C|two inch(spines)] "+
-//       "long spikes. The spines are firm and dull, like thick fingers made to rake painfully against whatever they're "+
-//       "thrust into. The spines are thickest around {{C::gender.his}} cockhead, but grow shorter near the base."
-//     spines.each do |text|
-//       CockDescription.manufacture text, shape:"Demon", kind:"spine", min_size:225, max_size:400
-//     end
-//
-//     # Huge spines on multiple cocks
-//     spines = []
-//     spines << "Given the sadistic [C|two inch(spines)] long spines that cover {{C::gender.His}} cocks, their only "+
-//       "conceivable use is as weapons of war, or perhaps as status symbols, recognized only in the deepest bowels of "+
-//       "the Abyss. The bony spines are thick and dull, but stiff like short fingers protruding backwards from the "+
-//       "surface of {{C::gender.his}} cocks."
-//     spines << "{{C::gender.His}} {{C::cock.cocks}} are true cunt destroyers, their entire surface covered in thick [C|two inch(spines)] "+
-//       "long spikes. The spines are firm and dull, like thick fingers made to rake painfully against whatever they're "+
-//       "thrust into. The spines are thickest around {{C::gender.his}} cockheads, but grow shorter near their base."
-//     spines.each do |text|
-//       CockDescription.manufacture text, shape:"Demon", kind:"spine", min_size:225, max_size:400, min_count:2, max_count:nil
-//     end
-//   end
 //
 // end

@@ -13,7 +13,7 @@ global.Cock = Database.instance().define('cock', {
   minimumWidth:      { type:Sequelize.INTEGER },
   knotWidthRatio:    { type:Sequelize.DOUBLE, validate:{ min:1 }},
   knobHeightRatio:   { type:Sequelize.DOUBLE, validate:{ min:1 }},
-  spineHeightRatio:  { type:Sequelize.DOUBLE, validate:{ min:1 }},
+  spineHeight:       { type:Sequelize.INTEGER },
   ballsSizeFactor:   { type:Sequelize.DOUBLE  },
   internalBalls:     { type:Sequelize.BOOLEAN },
   description:       { type:Sequelize.STRING  },
@@ -63,22 +63,22 @@ global.Cock = Database.instance().define('cock', {
 
     // This was used to check to see if a cock fit into an orifice, though the
     // scrutinizers that did that are not back in this version yet.
-    area() { return MathUtility.widthToArea(this.width + this.spineHeight + this.knobHeight); },
+    area() { return MathUtility.widthToArea(this.width); },
 
+    hasSheath()            { return this.sheath != null; },
     hasKnobs()             { return this.knobHeightRatio != null; },
     hasKnot()              { return this.knotWidthRatio != null; },
-    hasSpines()            { return this.spineHeightRatio != null; },
+    hasSpines()            { return this.spineHeight > 0; },
 
     knobHeight()           { return this.hasKnobs ? Math.round(this.width * this.knobHeightRatio) : 0; },
     knotWidth()            { return this.hasKnot ? Math.round(this.width * this.knotWidthRatio) : 0; },
-    spineHeight()          { return this.hasSpines ? Math.round(this.width * this.spineHeightRatio) : 0; },
 
     convertedLength()      { return ConversionUtility.milliToInches(this.length); },
     convertedWidth()       { return ConversionUtility.milliToInches(this.width); },
     convertedKnobHeight()  { return ConversionUtility.milliToInches(this.knobHeight); },
     convertedKnotWidth()   { return ConversionUtility.milliToInches(this.knotWidth); },
     convertedSpineHeight() { return ConversionUtility.milliToInches(this.spineHeight); },
-    convertedRidgeHeight() { return ConversionUtility.milliToInches(this.width/3); }, 
+    convertedRidgeHeight() { return ConversionUtility.milliToInches(this.width/3); },
 
     testicleWidth()          { return this.width * this.ballsSizeFactor; },
     scrotumWidth()           { return this.testicleWidth*3; },

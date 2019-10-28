@@ -16,7 +16,7 @@ global.CockBuilder = (function() {
       widthRatio:       null,
       knotWidthRatio:   null,
       knobHeightRatio:  null,
-      spineHeightRatio: null,
+      spineHeight:      0,
       minimumWidth:     20,
       ballsSizeFactor:  1,
       internalBalls:    false,

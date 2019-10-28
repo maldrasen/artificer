@@ -4,7 +4,7 @@ describe('Describer: Cock', function() {
     console.log(`   ${type}(${cock.convertedLength}) > ${cock.description}`)
   }
 
-  it('describes basic cocks', function(done) {
+  it('describes normal cocks', function(done) {
     SpecHelper.tenTimes(done, resolve => {
       SpecHelper.buildJada({ }).then(jada => {
         new CockDescriber({ character:jada }).updateDescription().then(cock => {
@@ -15,11 +15,11 @@ describe('Describer: Cock', function() {
     });
   });
 
-  it('describes knotted cocks', function(done) {
+  it('describes dog cocks', function(done) {
     SpecHelper.tenTimes(done, resolve => {
       SpecHelper.buildJada({ species:'vulpine' }).then(jada => {
         new CockDescriber({ character:jada }).updateDescription().then(cock => {
-          printCock('normal',cock)
+          printCock('dog',cock)
           resolve();
         });
       });
@@ -30,7 +30,7 @@ describe('Describer: Cock', function() {
     SpecHelper.tenTimes(done, resolve => {
       SpecHelper.buildJada({ species:'centaur' }).then(jada => {
         new CockDescriber({ character:jada }).updateDescription().then(cock => {
-          printCock('normal',cock)
+          printCock('horse',cock)
           resolve();
         });
       });
@@ -41,7 +41,7 @@ describe('Describer: Cock', function() {
     SpecHelper.tenTimes(done, resolve => {
       SpecHelper.buildJada({ species:'naga' }).then(jada => {
         new CockDescriber({ character:jada }).updateDescription().then(cock => {
-          printCock('normal',cock)
+          printCock('snake',cock)
           resolve();
         });
       });
@@ -52,7 +52,7 @@ describe('Describer: Cock', function() {
     SpecHelper.tenTimes(done, resolve => {
       SpecHelper.buildJada({ species:'kobold' }).then(jada => {
         new CockDescriber({ character:jada }).updateDescription().then(cock => {
-          printCock('normal',cock)
+          printCock('kobold',cock)
           resolve();
         });
       });
@@ -63,18 +63,40 @@ describe('Describer: Cock', function() {
     SpecHelper.tenTimes(done, resolve => {
       SpecHelper.buildJada({ species:'dragon' }).then(jada => {
         new CockDescriber({ character:jada }).updateDescription().then(cock => {
-          printCock('normal',cock)
+          printCock('dragon',cock)
           resolve();
         });
       });
     });
   });
 
-  it.only('describes demon cocks', function(done) {
+  it('describes demon cocks', function(done) {
     SpecHelper.tenTimes(done, resolve => {
       SpecHelper.buildJada({ species:'succubus' }).then(jada => {
         new CockDescriber({ character:jada }).updateDescription().then(cock => {
-          printCock('normal',cock)
+          printCock('demon',cock)
+          resolve();
+        });
+      });
+    });
+  });
+
+  it.only('describes spined cocks', function(done) {
+    SpecHelper.tenTimes(done, resolve => {
+      SpecHelper.buildJada({ species:'elf', cock:{ spineHeight:Random.upTo(37)+1 }}).then(jada => {
+        new CockDescriber({ character:jada }).updateDescription().then(cock => {
+          printCock('spined elf',cock);
+          resolve();
+        });
+      });
+    });
+  });
+
+  it.only('describes multiple spined cocks', function(done) {
+    SpecHelper.tenTimes(done, resolve => {
+      SpecHelper.buildJada({ species:'naga', cock:{ spineHeight:Random.upTo(37)+1 }}).then(jada => {
+        new CockDescriber({ character:jada }).updateDescription().then(cock => {
+          printCock('spined naga',cock);
           resolve();
         });
       });
