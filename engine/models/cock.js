@@ -78,6 +78,7 @@ global.Cock = Database.instance().define('cock', {
     convertedKnobHeight()  { return ConversionUtility.milliToInches(this.knobHeight); },
     convertedKnotWidth()   { return ConversionUtility.milliToInches(this.knotWidth); },
     convertedSpineHeight() { return ConversionUtility.milliToInches(this.spineHeight); },
+    convertedRidgeHeight() { return ConversionUtility.milliToInches(this.width/3); }, 
 
     testicleWidth()          { return this.width * this.ballsSizeFactor; },
     scrotumWidth()           { return this.testicleWidth*3; },

@@ -21,6 +21,7 @@ global.CockDescriber = class CockDescriber {
       ${this.cockDescription()}
       ${this.sheathDescription()}
       ${this.knotDescription()}
+      ${this.ridgesDescription()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
     this.cock.description = await Weaver.weaveWithCharacter(description,'C',this.character);
@@ -92,6 +93,18 @@ global.CockDescriber = class CockDescriber {
       "{{C::gender.His}} {{C::cock.cock}} emerges from {{C::cock.aBig}} {{C::cock.furrySheath}} between {{C::gender.his}} legs.",
       "{{C::gender.His}} {{C::cock.cock}} lies tucked within {{C::cock.aBig}} {{C::cock.furrySheath}}.",
       "The {{C::cock.big}} shaft emerges from a {{C::cock.furrySheath}} tucked between {{C::gender.his}} legs.",
+    ]);
+  }
+
+  ridgesDescription() {
+    if (this.cock.shape != 'dragon') { return ''; }
+    if (this.isIncluded('ridges')) { return ''; }
+
+    return Random.from([
+      `A series of thick bony ridges run down the entire length of {{C::gender.his}} {{C::cock.cock}}.`,
+      `{{C::gender.His}} {{C::cock.cock}} has a series of thick bony ridges that extend {{C::cock.twoInches(ridge)}} from {{C::gender.his}} cock's scaley skin.`,
+      `Thick bony ridges protrude {{C::cock.twoInches(ridge)}} from the surface of {{C::gender.his}} shaft.`,
+      `The entire shaft of dragon meat is ringed with thick bony ridges.`,
     ]);
   }
 

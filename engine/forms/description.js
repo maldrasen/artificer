@@ -16,6 +16,7 @@ global.Description = class Description extends Form {
     if (req == 'cock-size-monster')        { return context.cock.currentSizeClass == 'monster' }
     if (req == 'cock-size-gigantic')       { return context.cock.isGigantic                    }
     if (req == 'cock-size-titanic')        { return context.cock.isTitanic                     }
+    if (req == 'cock-shape-dragon')        { return context.cock.shape == 'dragon'             }
     if (req == 'cock-shape-horse')         { return context.cock.shape == 'horse'              }
     if (req == 'cock-shape-snake')         { return context.cock.shape == 'snake'              }
     if (req == 'cock-knobbed')             { return context.cock.knobHeightRatio != null       }

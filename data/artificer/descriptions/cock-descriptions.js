@@ -211,6 +211,69 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
       near the tip of their {{C::cock.sixInch}} length.`
 });
 
+// === Dragon Cocks ===
+
+Description.buildCock({ requirements: ['cock-shape-dragon'], includes:['ridges'],
+  d: `A series of {{C::cock.twoInch(ridge)}} thick bony ridges run down the entire length of {{C::gender.his}}
+      {{C::cock.big}} {{C::cock.inchLongAndWide}} {{C::cock.cock}}.`
+});
+
+Description.buildCock({ requirements: ['cock-shape-dragon'], includes:['sheath'],
+  d: `Sliding free from {{C::gender.his}} scaled cocksheath, {{C::gender.his}} {{C::cock.big}} {{C::cock.cock}} extends
+      {{C::cock.sixInches}} proudly in front of {{C::gender.him}}.`
+});
+
+Description.buildCock({ requirements: ['cock-shape-dragon'], includes:['sheath','ridges'],
+  d: `{{C::gender.his}} {{C::cock.big}} {{C::cock.twoInch}} wide dragon cock has a series of thick ridges that extend
+      from its thick head all the way down to {{C::gender.his}} scaled sheath.`
+});
+
+Description.buildCock({ requirements: ['cock-shape-dragon'], includes:['sheath'],
+  d: `Extending from {{C::gender.his}} scaled cocksheath is {{C::cock.aBig}} {{C::cock.inchLongAndWide}} shaft of
+      dragon meat.`
+});
+
+Description.buildCock({ requirements: ['cock-shape-dragon'], includes:['sheath','ridges'],
+  d: `{{C::gender.His}} {{C::cock.big}} {{C::cock.sixInch}} long shaft of dragon flesh extends from {{C::gender.his}}
+      scaled cocksheath. The entire length of the {{C::cock.big}} shaft is covered with {{C::cock.twoInch(ridge)}}
+      thick bony ridges.`
+});
+
+Description.buildCock({ requirements: ['cock-shape-dragon','cock-size-monster'], includes:['sheath','ridges'],
+  d: `{{C::gender.His}} {{C::cock.big}} {{C::cock.sixInch}} long {{C::cock.cock}} hangs low out of {{C::gender.his}}
+      scaled sheath. The entire thick shaft of dragon meat is ringed with {{C::cock.twoInch(ridge)}} thick bony ridges.`
+});
+
+Description.buildCock({ requirements: ['cock-shape-dragon','cock-size-gigantic'], includes:['sheath','ridges'],
+  d: `{{C::gender.His}} {{C::cock.big}} {{C::cock.sixInch}} long {{C::cock.cock}} hangs down low out of
+      {{C::gender.his}} scaled cocksheath, hanging easily down to {{C::gender.his}} knees. The entire length of
+      {{C::gender.his}} {{C::cock.twoInch}} {{wide}} shaft is ringed with huge protruding {{C::cock.twoInch(ridge)}}
+      tall ridges.`
+});
+
+Description.buildCock({ requirements: ['cock-shape-dragon','cock-size-titanic'], includes:['sheath','ridges'],
+  d: `{{C::gender.He}} has an appropriately dragon sized {{C::cock.inchLongAndWide}} cock extending from
+      {{C::gender.his}} {{C::cock.big}} scaled cocksheath. The entire length of {{C::gender.his}} {{C::cock.twoInch}}
+      thick shaft is ringed with {{C::cock.big}} protruding {{C::cock.twoInch(ridge)}} ridges.`
+});
+
+Description.buildCock({ requirements: ['cock-shape-dragon','cock-size-titanic'], includes:['sheath'],
+  d: `Jutting out from between {{C::gender.his}} legs is an absurdly large cocksheath. Even when fully hard
+      {{C::gender.his}} {{C::cock.big}} {{C::cock.sixInch}} long {{C::cock.cock}} is so heavy that it drags on the
+      ground. A series of cunt destroying, {{C::cock.twoInch(ridge)}} thick, bony ridges run down the entire
+      astounding length of {{C::gender.his}} {{C::cock.big}} dragoncock.`
+});
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -236,7 +299,7 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //       "{{C::gender.He}} has a pair of {{C::cock.big}} {{C::cock.cocks}}. Both of {{C::gender.his}} {{C::cock.cocks}} are {{C::cock.inchesLongAndWide}}."
 //     end
 //     batch_create_descriptions params do |tokens|
-//       "{{C::gender.He}} has a pair of #{tokens[:a_large]}, [C|two inch(cock)] wide {{C::cock.cocks}}. Both grow to [C|six inches] long when hard."
+//       "{{C::gender.He}} has a pair of {{C::cock.aBig}}, {{C::cock.twoInch}} wide {{C::cock.cocks}}. Both grow to {{C::cock.sixInches}} long when hard."
 //     end
 //
 //     params = { min_count: 2, max_count:nil }
@@ -244,11 +307,11 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //       "{{C::gender.His}} {{C::cock.count}} {{C::cock.cocks}} are {{C::cock.big}}, each growing to {{C::cock.inchesLongAndWide}} when hard."
 //     end
 //     batch_create_descriptions params do |tokens|
-//       "{{C::gender.He}} has {{C::cock.count}} {{C::cock.big}} {{C::cock.cocks}}, each [C|cock] measures {{C::cock.inchesLongAndWide}}."
+//       "{{C::gender.He}} has {{C::cock.count}} {{C::cock.big}} {{C::cock.cocks}}, each {{C::cock.cock}} measures {{C::cock.inchesLongAndWide}}."
 //     end
 //     batch_create_descriptions params do |tokens|
-//       "{{C::gender.He}} has {{C::cock.count}} {{C::cock.big}}, [C|two inch(cock)] wide {{C::cock.cocks}}. Each of {{C::gender.his}} {{C::cock.big}} "+
-//       "{{C::cock.cocks}} grow to [C|six inches] long."
+//       "{{C::gender.He}} has {{C::cock.count}} {{C::cock.big}}, {{C::cock.twoInch}} wide {{C::cock.cocks}}. Each of {{C::gender.his}} {{C::cock.big}} "+
+//       "{{C::cock.cocks}} grow to {{C::cock.sixInches}} long."
 //     end
 //
 //     params = { min_count: 3, max_count:nil }
@@ -269,20 +332,20 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //
 //     batch_create_descriptions params do |tokens|
 //       "Between {{C::gender.His}} legs is an extra wide furry sheath holding both of {{C::gender.his}} {{C::cock.big}} {{C::cock.sixInch}} long "+
-//       "{{C::cock.cocks}}. {{C::gender.his}} {{C::cock.big}} [C|two inch(cock)] wide {{C::cock.cocks}} both swell into [C|a knot adjective] "+
+//       "{{C::cock.cocks}}. {{C::gender.his}} {{C::cock.big}} {{C::cock.twoInch}} wide {{C::cock.cocks}} both swell into [C|a knot adjective] "+
 //       "[C|two inch(knot)] wide knot near the base."
 //     end
 //
 //     params = { shape:"Dog", min_count: 2, max_count:nil }
 //     batch_create_descriptions params do |tokens|
 //       "{{C::cock.count}} {{C::cock.big}} {{C::cock.sixInch}} long {{C::cock.cocks}} jut proudly forward from {{C::gender.His}} stretched furry sheath. At "+
-//       "the base of each [C|cock] is a [C|two inch(knot)] wide knot the size of [C|a knot comparator] which tapers down to {{C::gender.his}} "+
-//       "[C|two inch(cock)] wide cock."
+//       "the base of each {{C::cock.cock}} is a [C|two inch(knot)] wide knot the size of [C|a knot comparator] which tapers down to {{C::gender.his}} "+
+//       "{{C::cock.twoInch}} wide cock."
 //     end
 //
 //     batch_create_descriptions params do |tokens|
-//       "{{C::cock.count}} {{C::cock.big}} [C|two inch(cock)] thick {{C::cock.cocks}} squeeze out of {{C::gender.His}} tightly stretched furry "+
-//       "sheath. Each of {{C::gender.his}} {{C::cock.big}} {{C::cock.cocks}} are [C|six inches] long and end in a [C|two inch(knot)] wide knot "+
+//       "{{C::cock.count}} {{C::cock.big}} {{C::cock.twoInch}} thick {{C::cock.cocks}} squeeze out of {{C::gender.His}} tightly stretched furry "+
+//       "sheath. Each of {{C::gender.his}} {{C::cock.big}} {{C::cock.cocks}} are {{C::cock.sixInches}} long and end in a [C|two inch(knot)] wide knot "+
 //       "the size of [C|a knot comparator]."
 //     end
 //   end
@@ -295,10 +358,10 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //     params = SIZE_PARAMETERS[:monstrous][:params].merge(shape:"Horse", min_count:2, max_count:nil)
 //
 //     horse = []
-//     horse << "{{C::gender.He}} has {{C::cock.count}} horse sized [C|six inch long and one inch wide] {{C::cock.cocks}} extending from {{C::gender.his}} [C|huge] "+
+//     horse << "{{C::gender.He}} has {{C::cock.count}} horse sized {{C::cock.inchLongAndWide}} {{C::cock.cocks}} extending from {{C::gender.his}} [C|huge] "+
 //       "leathery cocksheath."
 //     horse << "{{C::gender.His}} {{C::cock.count}} [C|huge] {{C::cock.sixInch}} long {{C::cock.cocks}} hang low out of {{C::gender.his}} sheath. The thick shafts of horse "+
-//       "flesh are each capped with a [C|monstrous] [C|two inch(cock)] wide flared head."
+//       "flesh are each capped with a {{C::cock.big}} {{C::cock.twoInch}} wide flared head."
 //     horse.each do |text|
 //       CockDescription.manufacture text, params
 //     end
@@ -307,10 +370,10 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //     params = SIZE_PARAMETERS[:gigantic][:params].merge(shape:"Horse", min_count:2, max_count:nil)
 //
 //     horse = []
-//     horse << "{{C::gender.His}} {{C::cock.count}} [C|gigantic] flared horsecocks are each individually bigger than most horses at "+
+//     horse << "{{C::gender.His}} {{C::cock.count}} {{C::cock.big}} flared horsecocks are each individually bigger than most horses at "+
 //       "{{C::cock.inchesLongAndWide}} with a broad flat heads."
-//     horse << "{{C::gender.His}} {{C::cock.count}} [C|gigantic] {{C::cock.sixInch}} long {{C::cock.cocks}} hang low out of {{C::gender.his}} widely stretched sheath. The "+
-//       "incredibly massive shafts of horse flesh are capped with a [C|gigantic] [C|two inch(cock)] wide flared heads that "+
+//     horse << "{{C::gender.His}} {{C::cock.count}} {{C::cock.big}} {{C::cock.sixInch}} long {{C::cock.cocks}} hang low out of {{C::gender.his}} widely stretched sheath. The "+
+//       "incredibly massive shafts of horse flesh are capped with a {{C::cock.big}} {{C::cock.twoInch}} wide flared heads that "+
 //       "hang down past {{C::gender.his}} knees."
 //     horse.each do |text|
 //       CockDescription.manufacture text, params
@@ -320,11 +383,11 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //     params = SIZE_PARAMETERS[:titanic][:params].merge(shape:"Horse", min_count:2, max_count:nil)
 //
 //     horse = []
-//     horse << "Extending from {{C::gender.His}} impossibly stretched leathery cocksheath are {{C::cock.count}} [C|titanic] flared horsecocks. "+
-//       "Each towering mass of horse flesh is [C|six inches] long with a [C|two inch(cock)] wide flared head."
-//     horse << "Between {{C::gender.His}} legs is an absurdly large cocksheath with {{C::cock.count}} [C|titanic] {{C::cock.sixInch}} long {{C::cock.cocks}} "+
+//     horse << "Extending from {{C::gender.His}} impossibly stretched leathery cocksheath are {{C::cock.count}} {{C::cock.big}} flared horsecocks. "+
+//       "Each towering mass of horse flesh is {{C::cock.sixInches}} long with a {{C::cock.twoInch}} wide flared head."
+//     horse << "Between {{C::gender.His}} legs is an absurdly large cocksheath with {{C::cock.count}} {{C::cock.big}} {{C::cock.sixInch}} long {{C::cock.cocks}} "+
 //       "hanging out of it. Even when fully hard {{C::gender.his}} {{C::cock.cocks}} are so heavy that they drag on the ground. The incredibly "+
-//       "thick shafts are tipped with [C|titanic] [C|two inch(cock)] wide flared heads."
+//       "thick shafts are tipped with {{C::cock.big}} {{C::cock.twoInch}} wide flared heads."
 //     horse.each do |text|
 //       CockDescription.manufacture text, params
 //     end
@@ -334,83 +397,22 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //     params = { shape:"Horse", min_count: 2, max_count:2 }
 //     batch_create_descriptions params do |tokens|
 //       "Between {{C::gender.His}} legs is an extra wide leathery sheath holding both of {{C::gender.his}} {{C::cock.big}} {{C::cock.sixInch}} long "+
-//       "{{C::cock.cocks}}. {{C::gender.his}} twin {{C::cock.cocks}} are both capped with {{C::cock.big}} [C|two inch(cock)] wide flares at their tips."
+//       "{{C::cock.cocks}}. {{C::gender.his}} twin {{C::cock.cocks}} are both capped with {{C::cock.big}} {{C::cock.twoInch}} wide flares at their tips."
 //     end
 //
 //     params = { shape:"Horse", min_count: 2, max_count:nil }
 //     batch_create_descriptions params do |tokens|
 //       "{{C::cock.count}} {{C::cock.big}} {{C::cock.sixInch}} long {{C::cock.cocks}} extend from {{C::gender.His}} widely stretched leathery sheath. Each "+
-//       "of {{C::gender.his}} {{C::cock.big}} shafts are tipped with {{C::cock.big}} [C|two inch(cock)] wide flares."
+//       "of {{C::gender.his}} {{C::cock.big}} shafts are tipped with {{C::cock.big}} {{C::cock.twoInch}} wide flares."
 //     end
 //
 //     batch_create_descriptions params do |tokens|
-//       "{{C::cock.count}} {{C::cock.big}} [C|two inch(cock)] thick {{C::cock.cocks}} squeeze out of {{C::gender.His}} tightly stretched sheath. "+
-//       "Each of {{C::gender.his}} {{C::cock.big}} {{C::cock.cocks}} are [C|six inches] long and end in a [C|two inch(cock)] wide flared head."
+//       "{{C::cock.count}} {{C::cock.big}} {{C::cock.twoInch}} thick {{C::cock.cocks}} squeeze out of {{C::gender.His}} tightly stretched sheath. "+
+//       "Each of {{C::gender.his}} {{C::cock.big}} {{C::cock.cocks}} are {{C::cock.sixInches}} long and end in a {{C::cock.twoInch}} wide flared head."
 //     end
 //   end
 //
-//   # === Dragon Cocks ===================================================================================================
-//
-//   def self.seed_single_dragon_cocks
-//
-//     # Monstrous: 15.0 - 23.9 inches
-//     params = SIZE_PARAMETERS[:monstrous][:params].merge(shape:"Dragon")
-//
-//     cocks = []
-//     cocks << "{{C::gender.His}} [C|monstrous] {{C::cock.sixInch}} long [C|cock] hangs low out of {{C::gender.his}} scaled sheath. The entire thick shaft "+
-//       "of dragon meat is ringed with inch thick bony ridges."
-//     cocks.each do |text|
-//       CockDescription.manufacture text, params
-//     end
-//
-//     # Gigantic: 24.0 - 29.9 inches
-//     params = SIZE_PARAMETERS[:gigantic][:params].merge(shape:"Dragon")
-//
-//     cocks = []
-//     cocks << "{{C::gender.His}} [C|gigantic] {{C::cock.sixInch}} long [C|cock] hangs down low out of {{C::gender.his}} scaled cocksheath, hanging down "+
-//       "easily past {{C::gender.his}} knees. The entire length of {{C::gender.his}} [C|two inch(cock)] thick shaft is ringed with huge "+
-//       "protruding inch and a half tall ridges."
-//     cocks.each do |text|
-//       CockDescription.manufacture text, params
-//     end
-//
-//     # Titanic: > 30 inches
-//     params = SIZE_PARAMETERS[:titanic][:params].merge(shape:"Dragon")
-//
-//     cocks = []
-//     cocks << "{{C::gender.He}} has an appropriately dragon sized [C|six inch long and one inch wide] cock extending from {{C::gender.his}} "+
-//       "[C|titanic] scaled cocksheath. The entire length of {{C::gender.his}} [C|two inch(cock)] thick shaft is ringed with "+
-//       "[C|monstrous] protruding ridges."
-//     cocks << "Between {{C::gender.His}} legs is an absurdly large cocksheath. Even when fully hard {{C::gender.his}} [C|titanic] {{C::cock.sixInch}} "+
-//       "long [C|cock] is so heavy that it drags on the ground. A series of thick bony ridges, each the width of a average "+
-//       "sized cock, run down the entire [C|gigantic] length of {{C::gender.His}} dragoncock."
-//
-//     cocks.each do |text|
-//       CockDescription.manufacture text, params
-//     end
-//
-//     # All Sizes
-//     params = { shape:"Dragon" }
-//
-//     batch_create_descriptions params do |tokens|
-//       "Sliding free from {{C::gender.his}} scaled cocksheath, {{C::gender.His}} {{C::cock.big}} [C|cock] extends [C|six inches] proudly in "+
-//       "front of [him]. {{C::gender.his}} {{C::cock.big}} {{C::cock.twoInches}}wide dragon cock has a series of thick ridges that "+
-//       "extend from its thick head all the way down to {{C::gender.his}} sheath."
-//     end
-//
-//     batch_create_descriptions params do |tokens|
-//       "A series of thick bony ridges run down the entire length of {{C::gender.His}} {{C::cock.big}} [C|six inch long and one inch wide] [C|cock]."
-//     end
-//
-//     batch_create_descriptions params do |tokens|
-//       "Extending from {{C::gender.His}} scaled cocksheath is #{tokens[:a_large]} [C|six inch long and one inch wide] shaft of ridged dragon meat."
-//     end
-//
-//     batch_create_descriptions params do |tokens|
-//       "{{C::gender.His}} {{C::cock.big}} {{C::cock.sixInch}} long shaft of dragon flesh extends from {{C::gender.his}} scaled cocksheath. The entire "+
-//       "length of the {{C::cock.big}} shaft is covered with thick bony ridges."
-//     end
-//   end
+//   # === Multiple Dragon Cocks ===
 //
 //   def self.seed_multiple_dragon_cocks
 //
@@ -418,7 +420,7 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //     params = SIZE_PARAMETERS[:monstrous][:params].merge(shape:"Dragon", min_count: 2, max_count:nil)
 //
 //     cocks = []
-//     cocks << "{{C::gender.His}} {{C::cock.count}} [C|monstrous] {{C::cock.sixInch}} long {{C::cock.cocks}} hang low out of {{C::gender.his}} [C|gigantic] scaled sheath. "+
+//     cocks << "{{C::gender.His}} {{C::cock.count}} {{C::cock.big}} {{C::cock.sixInch}} long {{C::cock.cocks}} hang low out of {{C::gender.his}} {{C::cock.big}} scaled sheath. "+
 //       "The thick shafts of dragon meat are [C|all/both] ringed with inch thick bony ridges."
 //     cocks.each do |text|
 //       CockDescription.manufacture text, params
@@ -428,8 +430,8 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //     params = SIZE_PARAMETERS[:gigantic][:params].merge(shape:"Dragon", min_count: 2, max_count:nil)
 //
 //     cocks = []
-//     cocks << "{{C::gender.His}} {{C::cock.count}} [C|gigantic] {{C::cock.sixInch}} long {{C::cock.cocks}} hang down low out of {{C::gender.his}} [C|titanic] scaled "+
-//       "cocksheath, easily past {{C::gender.his}} knees. The entire length of {{C::gender.his}} [C|two inch(cock)] thick shafts are [C|all/both] "+
+//     cocks << "{{C::gender.His}} {{C::cock.count}} {{C::cock.big}} {{C::cock.sixInch}} long {{C::cock.cocks}} hang down low out of {{C::gender.his}} {{C::cock.big}} scaled "+
+//       "cocksheath, easily past {{C::gender.his}} knees. The entire length of {{C::gender.his}} {{C::cock.twoInch}} thick shafts are [C|all/both] "+
 //       "ringed with huge protruding inch and a half tall ridges."
 //     cocks.each do |text|
 //       CockDescription.manufacture text, params
@@ -439,12 +441,12 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //     params = SIZE_PARAMETERS[:titanic][:params].merge(shape:"Dragon", min_count: 2, max_count:nil)
 //
 //     cocks = []
-//     cocks << "{{C::gender.He}} has {{C::cock.count}} dragon sized [C|six inch long and one inch wide] cocks extending from {{C::gender.his}} tightly "+
-//       "stretched [C|titanic] scaled cocksheath. The entire length of [C|all/both] of {{C::gender.his}} [C|two inch(cock)] thick shafts "+
-//       "are ringed with [C|monstrous] protruding ridges."
-//     cocks << "Between {{C::gender.His}} legs is an absurdly large, cocksheath. Even when fully hard {{C::gender.his}} {{C::cock.count}} [C|titanic] "+
+//     cocks << "{{C::gender.He}} has {{C::cock.count}} dragon sized {{C::cock.inchLongAndWide}} cocks extending from {{C::gender.his}} tightly "+
+//       "stretched {{C::cock.big}} scaled cocksheath. The entire length of [C|all/both] of {{C::gender.his}} {{C::cock.twoInch}} thick shafts "+
+//       "are ringed with {{C::cock.big}} protruding ridges."
+//     cocks << "Between {{C::gender.His}} legs is an absurdly large, cocksheath. Even when fully hard {{C::gender.his}} {{C::cock.count}} {{C::cock.big}} "+
 //       "{{C::cock.sixInch}} long {{C::cock.cocks}} are so heavy that they drag on the ground. A series of thick bony ridges, each the "+
-//       "width of a average sized cock, run down the entire [C|gigantic] length of {{C::gender.His}} [C|two inch(cock)] wide dragoncock."
+//       "width of a average sized cock, run down the entire {{C::cock.big}} length of {{C::gender.His}} {{C::cock.twoInch}} wide dragoncock."
 //     cocks.each do |text|
 //       CockDescription.manufacture text, params
 //     end
@@ -453,18 +455,18 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //     params = { shape:"Dragon", min_count: 2, max_count:nil }
 //
 //     batch_create_descriptions params do |tokens|
-//       "Sliding free from {{C::gender.his}} scaled cocksheath, {{C::gender.His}} {{C::cock.count}} {{C::cock.big}} {{C::cock.cocks}} each jut [C|six inches] "+
-//       "proudly in front of [him]. {{C::gender.his}} {{C::cock.big}} {{C::cock.twoInches}}wide dragon cocks [C|all/both] have a "+
+//       "Sliding free from {{C::gender.his}} scaled cocksheath, {{C::gender.His}} {{C::cock.count}} {{C::cock.big}} {{C::cock.cocks}} each jut {{C::cock.sixInches}} "+
+//       "proudly in front of {{C::gender.him}}. {{C::gender.his}} {{C::cock.big}} {{C::cock.twoInches}}wide dragon cocks [C|all/both] have a "+
 //       "series of thick ridges that extend from their thick heads all the way down to {{C::gender.his}} sheath."
 //     end
 //
 //     batch_create_descriptions params do |tokens|
 //       "A series of thick bony ridges run down the entire length of each of {{C::gender.His}} {{C::cock.count}} {{C::cock.big}} "+
-//       "[C|six inch long and one inch wide] {{C::cock.cocks}}."
+//       "{{C::cock.inchLongAndWide}} {{C::cock.cocks}}."
 //     end
 //
 //     batch_create_descriptions params do |tokens|
-//       "Extending from {{C::gender.His}} extra wide cocksheath are {{C::cock.count}} #{tokens[:a_large]} [C|six inch long and one inch wide] "+
+//       "Extending from {{C::gender.His}} extra wide cocksheath are {{C::cock.count}} {{C::cock.aBig}} {{C::cock.inchLongAndWide}} "+
 //       "shafts of hard ridged dragon meat."
 //     end
 //
@@ -523,10 +525,10 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //     params = SIZE_PARAMETERS[:monstrous][:params].merge(shape:"Demon")
 //
 //     cocks = []
-//     cocks << "{{C::gender.His}} [C|monstrous] [C|cock] is even larger than most any other demon's, measuring "+
+//     cocks << "{{C::gender.His}} {{C::cock.big}} {{C::cock.cock}} is even larger than most any other demon's, measuring "+
 //       "{{C::cock.inchesLongAndWide}}, and almost always hard and [C|throbbing]."
-//     cocks << "{{C::gender.His}} [C|monstrous] {{C::cock.sixInch}} long [C|cock] looks far too large for a creature of {{C::gender.his}} size. The "+
-//       "[C|two inch(cock)] thick shaft is perpetually hard, [C|throbbing], dripping [unholy] seed, and yarns for release."
+//     cocks << "{{C::gender.His}} {{C::cock.big}} {{C::cock.sixInch}} long {{C::cock.cock}} looks far too large for a creature of {{C::gender.his}} size. The "+
+//       "{{C::cock.twoInch}} thick shaft is perpetually hard, [C|throbbing], dripping [unholy] seed, and yarns for release."
 //     cocks.each do |text|
 //       CockDescription.manufacture text, params
 //     end
@@ -535,11 +537,11 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //     params = SIZE_PARAMETERS[:gigantic][:params].merge(shape:"Demon")
 //
 //     cocks = []
-//     cocks << "{{C::gender.His}} [C|gigantic] [C|cock] would easily hang down between {{C::gender.his}} knees if it ever got soft enough. "+
+//     cocks << "{{C::gender.His}} {{C::cock.big}} {{C::cock.cock}} would easily hang down between {{C::gender.his}} knees if it ever got soft enough. "+
 //       "As it is the perpetually hard, {{C::cock.sixInch}} long shaft of [unholy] fuckmeat leaves a constant smear of precum "+
 //       "on {{C::gender.his}} chest."
-//     cocks << "{{C::gender.His}} [C|cock] is [C|gigantic], measuring a staggering {{C::cock.inchesLongAndWide}}, making "+
-//       "{{C::gender.his}} [C|gigantic] [unholy] shaft one of the largest to be found in all the Abyss."
+//     cocks << "{{C::gender.His}} {{C::cock.cock}} is {{C::cock.big}}, measuring a staggering {{C::cock.inchesLongAndWide}}, making "+
+//       "{{C::gender.his}} {{C::cock.big}} [unholy] shaft one of the largest to be found in all the Abyss."
 //     cocks.each do |text|
 //       CockDescription.manufacture text, params
 //     end
@@ -548,13 +550,13 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //     params = SIZE_PARAMETERS[:titanic][:params].merge(shape:"Demon")
 //
 //     cocks = []
-//     cocks << "Even when fully hard {{C::gender.His}} [C|titanic] {{C::cock.sixInch}} long [C|cock] is so heavy that it drags on the "+
+//     cocks << "Even when fully hard {{C::gender.His}} {{C::cock.big}} {{C::cock.sixInch}} long {{C::cock.cock}} is so heavy that it drags on the "+
 //       "ground. Measuring a staggering {{C::cock.twoInches}}wide, {{C::gender.his}} cock would look [C|massive] on even the largest "+
 //       "of pit fiends."
-//     cocks << "{{C::gender.His}} [C|titanic] [C|six inch long and one inch wide] [C|cock] resembles a third leg the way its "+
-//       "[C|titanic] cockhead nearly drags along the ground."
-//     cocks << "[Male Demon] himself would be proud to wield the [C|titanic] {{C::cock.sixInch}} long, [C|two inch(cock)] wide "+
-//       "[C|cock] that hangs down between {{C::gender.His}} legs."
+//     cocks << "{{C::gender.His}} {{C::cock.big}} {{C::cock.inchLongAndWide}} {{C::cock.cock}} resembles a third leg the way its "+
+//       "{{C::cock.big}} cockhead nearly drags along the ground."
+//     cocks << "[Male Demon] himself would be proud to wield the {{C::cock.big}} {{C::cock.sixInch}} long, {{C::cock.twoInch}} wide "+
+//       "{{C::cock.cock}} that hangs down between {{C::gender.His}} legs."
 //     cocks.each do |text|
 //       CockDescription.manufacture text, params
 //     end
@@ -564,16 +566,16 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //
 //     batch_create_descriptions params do |tokens|
 //       "A small puddle of cum can almost always be found on the ground between {{C::gender.His}} feet. {{C::gender.his}} {{C::cock.sixInch}} long "+
-//       "[C|cock] dripping [unholy] seed ceaselessly from its knobby [C|two inch(cock)] wide tip."
+//       "{{C::cock.cock}} dripping [unholy] seed ceaselessly from its knobby {{C::cock.twoInch}} wide tip."
 //     end
 //
 //     batch_create_descriptions params do |tokens|
-//       "{{C::gender.His}} {{C::cock.big}} [C|cock] is almost always fully hard, [C|throbbing] with [unholy] intent. The "+
+//       "{{C::gender.His}} {{C::cock.big}} {{C::cock.cock}} is almost always fully hard, [C|throbbing] with [unholy] intent. The "+
 //       "{{C::cock.big}} [unholy] shaft of fuckmeat is {{C::cock.inchesLongAndWide}}."
 //     end
 //
 //     batch_create_descriptions params do |tokens|
-//       "{{C::gender.He}} has #{tokens[:a_large]}, perpetually hard, [C|six inch long and one inch wide] [C|cock]. {{C::gender.his}} "+
+//       "{{C::gender.He}} has {{C::cock.aBig}}, perpetually hard, {{C::cock.inchLongAndWide}} {{C::cock.cock}}. {{C::gender.his}} "+
 //       "{{C::cock.big}} [unholy] shaft continuously drips precum from its tip and looks ready to burst at any moment."
 //     end
 //   end
@@ -583,10 +585,10 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //     params = SIZE_PARAMETERS[:monstrous][:params].merge(shape:"Demon", min_count: 2, max_count:2)
 //
 //     cocks = []
-//     cocks << "{{C::gender.His}} two [C|monstrous] {{C::cock.cocks}} are even larger than most any other demon's, measuring "+
+//     cocks << "{{C::gender.His}} two {{C::cock.big}} {{C::cock.cocks}} are even larger than most any other demon's, measuring "+
 //       "{{C::cock.inchesLongAndWide}}, and are almost always hard and [C|throbbing]."
-//     cocks << "{{C::gender.His}} pair of [C|monstrous] {{C::cock.sixInch}} long {{C::cock.cocks}} look far too large for a creature of {{C::gender.his}} "+
-//       "size. The twin [C|two inch(cock)] thick shafts are perpetually hard, [C|throbbing], dripping [unholy] seed, "+
+//     cocks << "{{C::gender.His}} pair of {{C::cock.big}} {{C::cock.sixInch}} long {{C::cock.cocks}} look far too large for a creature of {{C::gender.his}} "+
+//       "size. The twin {{C::cock.twoInch}} thick shafts are perpetually hard, [C|throbbing], dripping [unholy] seed, "+
 //       "and yarn for release."
 //     cocks.each do |text|
 //       CockDescription.manufacture text, params
@@ -596,11 +598,11 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //     params = SIZE_PARAMETERS[:gigantic][:params].merge(shape:"Demon", min_count: 2, max_count:2)
 //
 //     cocks = []
-//     cocks << "{{C::gender.His}} [C|gigantic] {{C::cock.cocks}} would both easily hang down between {{C::gender.his}} knees if they ever got soft "+
+//     cocks << "{{C::gender.His}} {{C::cock.big}} {{C::cock.cocks}} would both easily hang down between {{C::gender.his}} knees if they ever got soft "+
 //       "enough. As it is the two perpetually hard, {{C::cock.sixInch}} long shafts of [unholy] fuckmeat leave a constant smear "+
 //       "of precum on {{C::gender.his}} chest."
-//     cocks << "{{C::gender.His}} twin {{C::cock.cocks}} are [C|gigantic], measuring a staggering {{C::cock.inchesLongAndWide}}, "+
-//       "making {{C::gender.his}} two [C|gigantic] [unholy] shafts some of the largest to be found in all the Abyss."
+//     cocks << "{{C::gender.His}} twin {{C::cock.cocks}} are {{C::cock.big}}, measuring a staggering {{C::cock.inchesLongAndWide}}, "+
+//       "making {{C::gender.his}} two {{C::cock.big}} [unholy] shafts some of the largest to be found in all the Abyss."
 //     cocks.each do |text|
 //       CockDescription.manufacture text, params
 //     end
@@ -609,11 +611,11 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //     params = SIZE_PARAMETERS[:titanic][:params].merge(shape:"Demon", min_count: 2, max_count:2)
 //
 //     cocks = []
-//     cocks << "Even when fully hard {{C::gender.His}} pair of [C|titanic] {{C::cock.sixInch}} long {{C::cock.cocks}} are so heavy that they "+
+//     cocks << "Even when fully hard {{C::gender.His}} pair of {{C::cock.big}} {{C::cock.sixInch}} long {{C::cock.cocks}} are so heavy that they "+
 //       "drag on the ground. Measuring a staggering {{C::cock.twoInches}}wide, {{C::gender.his}} cocks would look [C|massive] on "+
 //       "even the largest of pit fiends."
-//     cocks << "[Male Demon] himself would be proud to wield the pair of [C|titanic] {{C::cock.sixInch}} long, "+
-//       "[C|two inch(cock)] wide {{C::cock.cocks}} that hang down between {{C::gender.His}} legs."
+//     cocks << "[Male Demon] himself would be proud to wield the pair of {{C::cock.big}} {{C::cock.sixInch}} long, "+
+//       "{{C::cock.twoInch}} wide {{C::cock.cocks}} that hang down between {{C::gender.His}} legs."
 //     cocks.each do |text|
 //       CockDescription.manufacture text, params
 //     end
@@ -623,7 +625,7 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //
 //     batch_create_descriptions params do |tokens|
 //       "A small puddle of cum can almost always be found on the ground between {{C::gender.His}} feet. {{C::gender.his}} pair of "+
-//       "{{C::cock.sixInch}} long {{C::cock.cocks}} drip [unholy] seed ceaselessly from their knobby [C|two inch(cock)] wide cockheads."
+//       "{{C::cock.sixInch}} long {{C::cock.cocks}} drip [unholy] seed ceaselessly from their knobby {{C::cock.twoInch}} wide cockheads."
 //     end
 //
 //     batch_create_descriptions params do |tokens|
@@ -632,7 +634,7 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //     end
 //
 //     batch_create_descriptions params do |tokens|
-//       "{{C::gender.He}} has a pair of #{tokens[:a_large]}, perpetually hard, [C|six inch long and one inch wide] {{C::cock.cocks}}. "+
+//       "{{C::gender.He}} has a pair of {{C::cock.aBig}}, perpetually hard, {{C::cock.inchLongAndWide}} {{C::cock.cocks}}. "+
 //       "{{C::gender.his}} {{C::cock.big}} [unholy] shafts continuously drip precum from their tips and both look ready to burst "+
 //       "at any moment."
 //     end
@@ -640,7 +642,7 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //     params = { shape:"Demon", min_count: 3, max_count:nil }
 //
 //     batch_create_descriptions params do |tokens|
-//       "{{C::gender.His}} has been blessed with a cluster of {{C::cock.count}} #{tokens[:a_large]} {{C::cock.cocks}}. Each of {{C::gender.his}} [unholy] "+
+//       "{{C::gender.His}} has been blessed with a cluster of {{C::cock.count}} {{C::cock.aBig}} {{C::cock.cocks}}. Each of {{C::gender.his}} [unholy] "+
 //       "shafts are {{C::cock.inchesLongAndWide}}. {{C::gender.his}} cocks though have been cursed to always remain hard, "+
 //       "in a constant state of cum dripping arousal, and can never be completely satisfied."
 //     end
@@ -651,8 +653,8 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //     end
 //
 //     batch_create_descriptions params do |tokens|
-//       "{{C::gender.He}} has {{C::cock.count}} #{tokens[:a_large]}, perpetually hard cocks, crowded between {{C::gender.his}} legs. Each of {{C::gender.his}} "+
-//       "[C|six inch long and one inch wide] {{C::cock.cocks}} continuously drip precum from their tips and look ready to burst "+
+//       "{{C::gender.He}} has {{C::cock.count}} {{C::cock.aBig}}, perpetually hard cocks, crowded between {{C::gender.his}} legs. Each of {{C::gender.his}} "+
+//       "{{C::cock.inchLongAndWide}} {{C::cock.cocks}} continuously drip precum from their tips and look ready to burst "+
 //       "at any moment."
 //     end
 //
@@ -664,17 +666,17 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //     params = { shape:"Demon", kind:"knot" }
 //
 //     batch_create_descriptions params do |tokens|
-//       "Like a dog, {{C::gender.his}} [unholy] [C|cock] emerges from #{tokens[:a_large]} leathery sheath with a [C|two inch(knot)] "+
+//       "Like a dog, {{C::gender.his}} [unholy] {{C::cock.cock}} emerges from {{C::cock.aBig}} leathery sheath with a [C|two inch(knot)] "+
 //       "knot the size of [C|a knot comparator] at its base."
 //     end
 //
 //     batch_create_descriptions params do |tokens|
-//      "The base of {{C::gender.his}} shaft emerges from #{tokens[:a_large]} leathery cocksheath, and like a dog's cock, swells into "+
+//      "The base of {{C::gender.his}} shaft emerges from {{C::cock.aBig}} leathery cocksheath, and like a dog's cock, swells into "+
 //      "[C|a knot adjective] [C|two inch(knot)] wide knot."
 //     end
 //
 //     batch_create_descriptions params do |tokens|
-//       "Unlike most demon's, {{C::gender.his}} cock emerges from #{tokens[:a_large]} leathery cocksheath, and swells into "+
+//       "Unlike most demon's, {{C::gender.his}} cock emerges from {{C::cock.aBig}} leathery cocksheath, and swells into "+
 //       "[C|a knot adjective] [C|two inch(knot)] wide knot."
 //     end
 //
@@ -692,14 +694,14 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //     end
 //
 //     batch_create_descriptions params do |tokens|
-//       "Unlike most demon's, {{C::gender.his}} cocks emerge from #{tokens[:a_large]} leathery cocksheath, and swell into "+
+//       "Unlike most demon's, {{C::gender.his}} cocks emerge from {{C::cock.aBig}} leathery cocksheath, and swell into "+
 //       "[C|knot adjective] [C|two inches(knot)] wide knots."
 //     end
 //
 //     # The cock od Cerebus
 //     params = { shape:"Demon", kind:"knot", min_count:3, max_count:3, min_size:200, max_size:nil }
 //     text = "Like the cocks of Cerebus himself, {{C::gender.his}} three [unholy] {{C::cock.cocks}} emerge from a tightly stretched "+
-//         "[C|titanic] cocksheath. At the base of each cock is a [C|a knot adjective] knot the size of "+
+//         "{{C::cock.big}} cocksheath. At the base of each cock is a [C|a knot adjective] knot the size of "+
 //         "[C|a knot comparator], at [C|two inches(knot)] wide."
 //
 //     CockDescription.manufacture text, params
@@ -713,7 +715,7 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //     # Tiny knobs on a single cock
 //     knobs = []
 //     knobs << "The entire length of {{C::gender.his}} cock is textured with gnarled little [C|knob comparator] sized bumps."
-//     knobs << "{{C::gender.His}} [C|cock] is studded, seemingly at random, with hard little nubs the size of [C|knob comparators]."
+//     knobs << "{{C::gender.His}} {{C::cock.cock}} is studded, seemingly at random, with hard little nubs the size of [C|knob comparators]."
 //     knobs << "Small, [C|knob comparator] sized bulges, adorn every inch of {{C::gender.His}} shaft, the [unholy] protrusions "+
 //       "pulse and throb with {{C::gender.his}} cock."
 //     knobs.each do |text|
@@ -734,7 +736,7 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //     knobs = []
 //     knobs << "The entire length of {{C::gender.his}} cock is textured with gnarled [C|two inch(knobs)] bumps, each the size of "+
 //       "[C|a knob comparator]."
-//     knobs << "{{C::gender.His}} [C|cock] is studded, seemingly at random, with hard [C|two inch(knobs)] wide knobs, each the "+
+//     knobs << "{{C::gender.His}} {{C::cock.cock}} is studded, seemingly at random, with hard [C|two inch(knobs)] wide knobs, each the "+
 //       "size of [C|a knob comparator]."
 //     knobs << "Thick, [C|knob comparator] sized bulges, adorn every inch of {{C::gender.His}} shaft, the [unholy] protrusions "+
 //       "pulse and throb with {{C::gender.his}} cock."
@@ -806,7 +808,7 @@ Description.buildCock({ requirements: ['cock-shape-snake','cock-count-2'],
 //       "conceivable use is as a weapon of war, or maybe as a status symbol recognized only in the deepest bowels of "+
 //       "the Abyss. The bony spines are thick and dull, but stiff like short fingers protruding backwards from the "+
 //       "surface of {{C::gender.his}} cock."
-//     spines << "{{C::gender.His}} [C|cock] is a true cunt destroyer, it's entire surface covered in thick [C|two inch(spines)] "+
+//     spines << "{{C::gender.His}} {{C::cock.cock}} is a true cunt destroyer, it's entire surface covered in thick [C|two inch(spines)] "+
 //       "long spikes. The spines are firm and dull, like thick fingers made to rake painfully against whatever they're "+
 //       "thrust into. The spines are thickest around {{C::gender.his}} cockhead, but grow shorter near the base."
 //     spines.each do |text|

@@ -22,6 +22,8 @@ Weaver.CockLoom = (function() {
     if (token == "cock.inchesLongAndWide") { return bothInches(cock,true); }
     if (token == "cock.twoInch(knot)") { return knotWidthInches(cock,false); }
     if (token == "cock.twoInches(knot)") { return knotWidthInches(cock,true); }
+    if (token == "cock.twoInch(ridge)") { return ridgeHeightInches(cock,false); }
+    if (token == "cock.twoInches(ridge)") { return ridgeHeightInches(cock,true); }
     if (token == "cock.huge(knot)") { return hugeKnot(cock); }
     if (token == "cock.aHuge(knot)") { return EnglishUtility.a_an(hugeKnot(cock)); }
     if (token == "cock.apple(knot)") { return appleKnot(cock); }
@@ -34,6 +36,7 @@ Weaver.CockLoom = (function() {
   function lengthInches(cock, plural) { return EnglishUtility.inchesInEnglish(cock.convertedLength, plural); }
   function widthInches(cock, plural) { return EnglishUtility.inchesInEnglish(cock.convertedWidth, plural); }
   function knotWidthInches(cock, plural) { return EnglishUtility.inchesInEnglish(cock.convertedKnotWidth, plural); }
+  function ridgeHeightInches(cock, plural) { return EnglishUtility.inchesInEnglish(cock.convertedRidgeHeight, plural); }
   function appleKnot(cock) { return EnglishUtility.roundWidthComparator(cock.convertedKnotWidth); }
 
   // Generates a phrase like:
