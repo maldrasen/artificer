@@ -7,6 +7,8 @@ global.Description = class Description extends Form {
   static matchRequirement(req, context) {
     if (req == 'species-rat')              { return context.character.speciesCode == 'rat'     }
     if (req == 'species-furry')            { return context.character.species.furry            }
+    if (req == 'cock-count-2')             { return context.cock.count == 2                    }
+    if (req == 'cock-count-3')             { return context.cock.count == 3                    }
     if (req == 'cock-size-small')          { return context.cock.currentSizeClass == 'small'   }
     if (req == 'cock-size-average')        { return context.cock.currentSizeClass == 'average' }
     if (req == 'cock-size-big')            { return context.cock.currentSizeClass == 'big'     }
@@ -15,6 +17,7 @@ global.Description = class Description extends Form {
     if (req == 'cock-size-gigantic')       { return context.cock.isGigantic                    }
     if (req == 'cock-size-titanic')        { return context.cock.isTitanic                     }
     if (req == 'cock-shape-horse')         { return context.cock.shape == 'horse'              }
+    if (req == 'cock-shape-snake')         { return context.cock.shape == 'snake'              }
     if (req == 'cock-knobbed')             { return context.cock.knobHeightRatio != null       }
     if (req == 'cock-knotted')             { return context.cock.knotWidthRatio != null        }
     if (req == 'cock-spined')              { return context.cock.spineHeightRatio != null      }
@@ -35,11 +38,15 @@ global.Description = class Description extends Form {
       if (description.type != 'cock') { return false; };
 
       let requirements = description.requirements || [];
+      let inclusions = description.includes || [];
+
+      if (context.cock.count == 2 && requirements.indexOf('cock-count-2') < 0) { return false; }
+      if (context.cock.count == 3 && requirements.indexOf('cock-count-3') < 0) { return false; }
+
       for (let i=0; i<requirements.length; i++) {
         if (Description.matchRequirement(requirements[i], context) == false) { return false; }
       }
 
-      let inclusions = description.includes || [];
       for (let i=0; i<inclusions.length; i++) {
         if (inclusions[i] == 'knobs'  && Description.matchRequirement('cock-knobbed',  context) == false) { return false; }
         if (inclusions[i] == 'knot'   && Description.matchRequirement('cock-knotted',  context) == false) { return false; }

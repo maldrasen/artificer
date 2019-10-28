@@ -1,4 +1,4 @@
-describe.only('Describer: Cock', function() {
+describe('Describer: Cock', function() {
 
   function printCock(type, cock) {
     console.log(`   ${type}(${cock.convertedLength}) > ${cock.description}`)
@@ -37,5 +37,15 @@ describe.only('Describer: Cock', function() {
     });
   });
 
+  it.only('describes snake cocks', function(done) {
+    SpecHelper.tenTimes(done, resolve => {
+      SpecHelper.buildJada({ species:'naga' }).then(jada => {
+        new CockDescriber({ character:jada }).updateDescription().then(cock => {
+          printCock('normal',cock)
+          resolve();
+        });
+      });
+    });
+  });
 
 });
