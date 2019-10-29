@@ -15,7 +15,7 @@ describe('Describer: Tits', function() {
     });
   });
 
-  it('describes smashed tits', function(done) {
+  it.only('describes smashed tits', function(done) {
     SpecHelper.tenTimes(done, resolve => {
       SpecHelper.buildJada().then(jada => {
         jada.addInjury(Hazard.lookup('hunt-tit-smash-003')).then(tits => {

@@ -24,62 +24,93 @@ global.Description = class Description extends Form {
         if (description.titsConditionsMet(context) == false) { return false; }
       }
 
-      if (description.requirementsMet(context) == false) { return false; }
-
-      return true;
+      return description.requirementsMet(context);
     });
   }
 
-  static validForInjury(location, damageType, context) {
+  static validForInjury(part, damageType, context) {
     return Description.where(description => {
       if (damageType != description.damageType) { return false; }
 
-      if (location == 'anus') {
-        if (description.type != 'anus-injury') { return false; }
-        // Also needs to look at damage types once they're added to the model.
-      }
+      if (part == 'anus'  && !description.validForAnusInjury(damageType,  context)) { return false; }
+      if (part == 'body'  && !description.validForBodyInjury(damageType,  context)) { return false; }
+      if (part == 'cock'  && !description.validForCockInjury(damageType,  context)) { return false; }
+      if (part == 'head'  && !description.validForHeadInjury(damageType,  context)) { return false; }
+      if (part == 'pussy' && !description.validForPussyInjury(damageType, context)) { return false; }
+      if (part == 'tits'  && !description.validForTitsInjury(damageType,  context)) { return false; }
 
-      if (location == 'body') {
-        if (description.type != 'body-injury') { return false; }
-        // Also needs to look at damage types once they're added to the model.
-      }
-
-      if (location == 'cock') {
-        if (description.type != 'cock-injury') { return false; }
-        // Also needs to look at damage types once they're added to the model.
-      }
-
-      if (location == 'head') {
-        if (description.type != 'head-injury') { return false; }
-        // Also needs to look at damage types once they're added to the model.
-      }
-
-      if (location == 'pussy') {
-        if (description.type != 'pussy-injury') { return false; }
-        if (damageType == 'blight' && context.pussy.blightLevel != description.level) { return false; }
-        if (damageType == 'burn'   && context.pussy.burnLevel   != description.level) { return false; }
-        if (damageType == 'smash'  && context.pussy.smashLevel  != description.level) { return false; }
-      }
-
-      if (location == 'tits') {
-        if (description.type != 'tit-injury') { return false; }
-        if (damageType == 'blight' && context.tits.blightLevel != description.level) { return false; }
-        if (damageType == 'burn'   && context.tits.burnLevel   != description.level) { return false; }
-        if (damageType == 'smash'  && context.tits.smashLevel  != description.level) { return false; }
-      }
-
-      let requirements = description.requirements || [];
-
-      // Some conditions require a flag to be present, rather than rejecting flags that are not valid.
-      if (context.tits.currentSizeClass == 'zero' && requirements.indexOf('tits-size-zero') < 0) { return false; }
-      if (context.character.speciesCode == 'rat'  && requirements.indexOf('species-rat') < 0)    { return false; }
-
-      for (let i=0; i<requirements.length; i++) {
-        if (Description.matchRequirement(requirements[i], context) == false) { return false; }
-      }
-
-      return true;
+      return Description.validFor(part, context);
     });
+  }
+
+  validForBodyInjury(damageType, context) {
+    if (this.type != 'body-injury') { return false; }
+    return true;
+  }
+
+  validForHeadInjury(damageType, context) {
+    if (this.type != 'head-injury') { return false; }
+    return true;
+  }
+
+  validForAnusInjury(damageType, context) {
+    if (this.type != 'anus-injury') { return false; }
+    return true;
+  }
+
+  validForCockInjury(damageType, context) {
+    if (this.type != 'cock-injury') { return false; }
+    return true;
+  }
+
+  // Pussy injuries need to check both damage type and damage level
+  validForPussyInjury(damageType, context) {
+    if (this.type != 'pussy-injury') { return false; }
+
+    if (damageType == 'blight') {
+      if (this.damageType != 'blight') { return false; }
+      if (this.level != context.pussy.blightLevel) { return false; }
+    }
+    if (damageType == 'burn') {
+      if (this.damageType != 'burn') { return false; }
+      if (this.level != context.pussy.burnLevel) { return false; }
+    }
+    if (damageType == 'smash') {
+      if (this.damageType != 'smash') { return false; }
+      if (this.level != context.pussy.smashLevel) { return false; }
+    }
+
+    return true;
+  }
+
+  // Tit injuries need to check damage type, damage level, and damage place.
+  validForTitsInjury(damageType, context) {
+    if (this.type != 'tit-injury') { return false; }
+
+    if (damageType == 'blight') {
+      if (this.damageType != 'blight') { return false; }
+      if (this.level != context.tits.blightLevel) { return false; }
+      if (!this.placeMatches(context.tits.blightPlace)) { return false; }
+    }
+    if (damageType == 'burn') {
+      if (this.damageType != 'burn') { return false; }
+      if (this.level != context.tits.burnLevel) { return false; }
+      if (!this.placeMatches(context.tits.burnPlace)) { return false; }
+    }
+    if (damageType == 'smash') {
+      if (this.damageType != 'smash') { return false; }
+      if (this.level != context.tits.smashLevel) { return false; }
+      if (!this.placeMatches(context.tits.smashPlace)) { return false; }
+    }
+
+    return true;
+  }
+
+  // The injury place will usually be left, right, or all. Descriptions for
+  // left work for right as well, so really we only care if a description is
+  // for 'all' the described injury also needs to be 'all'.
+  placeMatches(currentPlace) {
+    return (currentPlace == 'all') ? (this.place == 'all') : (this.place != 'all')
   }
 
   // Condition checking is slightly different from requirement checking. If a
@@ -115,7 +146,6 @@ global.Description = class Description extends Form {
       if (this.includes[i] == 'spines' && matchRequirement('cock-spined',   context) == false) { return false; }
       if (this.includes[i] == 'sheath' && matchRequirement('cock-sheathed', context) == false) { return false; }
     }
-
     return true;
   }
 

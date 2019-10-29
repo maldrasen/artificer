@@ -97,7 +97,9 @@
 
     "descriptions/cock-descriptions",
     "descriptions/nipple-descriptions",
-    "descriptions/tit-injury-descriptions",
+    "descriptions/tit-blight-injury-descriptions",
+    "descriptions/tit-burn-injury-descriptions",
+    "descriptions/tit-smash-injury-descriptions",
     "descriptions/tits-descriptions",
 
     "events/global/game-start",
