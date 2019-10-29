@@ -88,7 +88,17 @@ global.TitsDescriber = class TitsDescriber {
       place: this.tits.blightPlace,
     }
 
-    return `TODO: ${herTitsHaveBeen} blighted.`
+    let description = Random.from(Description.validForInjury('tits','blight',{
+      character: this.character,
+      tits: this.tits,
+      nipples: this.nipples
+    }));
+
+    if (description == null) {
+      return Weaver.error(`Unable to find a blighted tit description`)
+    }
+
+    return `${herTitsHaveBeen} ${description.d}`
   }
 
   describeBurn() {
@@ -100,11 +110,22 @@ global.TitsDescriber = class TitsDescriber {
       place: this.tits.burnPlace,
     }
 
-    return `TODO: ${herTitsHaveBeen} burnt.`
+    let description = Random.from(Description.validForInjury('tits','burn',{
+      character: this.character,
+      tits: this.tits,
+      nipples: this.nipples
+    }));
+
+    if (description == null) {
+      return Weaver.error(`Unable to find a burnt tit description`)
+    }
+
+    return `${herTitsHaveBeen} ${description.d}`
   }
 
   describeSmash() {
     if (this.tits.smashLevel == 0) { return ''; }
+
     let herTitsHaveBeen = this.injuryStart(this.tits.smashPlace);
 
     this.previousInjury = {
@@ -112,7 +133,17 @@ global.TitsDescriber = class TitsDescriber {
       place: this.tits.smashPlace,
     }
 
-    return `TODO: ${herTitsHaveBeen} smashed.`
+    let description = Random.from(Description.validForInjury('tits','smash',{
+      character: this.character,
+      tits: this.tits,
+      nipples: this.nipples
+    }));
+
+    if (description == null) {
+      return Weaver.error(`Unable to find a smashed tit description`)
+    }
+
+    return `${herTitsHaveBeen} ${description.d}`
   }
 
   // === Segments ===

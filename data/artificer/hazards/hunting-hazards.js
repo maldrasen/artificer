@@ -105,7 +105,20 @@
 //
 // // --- Tits : Smash ---
 
-Hazard.buildHazard('hunt-tit-smash-001', { activity:'hunting-hinterlands', location:'tits', type:'smash', level:3,
+Hazard.buildHazard('hunt-tit-smash-001', { activity:'hunting-hinterlands', location:'tits', type:'smash', level:1,
+  requires: ['success'],
+  story: `{{H::gender.He}} was on the way home from a successful hunt when {{H::gender.he}} tripped and fell chest
+          first onto a large flat rock, bruising {{H::gender.his}} {{tit}}.`
+});
+
+Hazard.buildHazard('hunt-tit-smash-002', { activity:'hunting-hinterlands', location:'tits', type:'smash', level:2,
+  details: { place:'all' },
+  story: `{{H::gender.He}} had a wild boar cornered and was going in for the kill when it suddenly charged.
+          {{H::gender.He}} tride to dodge to the side, but the boar crashed into {{H::gender.his}} chest, crushing
+          {{H::gender.his}} tits with its tusks.`
+});
+
+Hazard.buildHazard('hunt-tit-smash-003', { activity:'hunting-hinterlands', location:'tits', type:'smash', level:3,
   requires: ['tier-0','species-biter','failure'],
   details: { shape:'hoof' },
   story: `{{H::gender.He}} had carefully stalked a deer into a secluded glade. Even though {{H::gender.he}} didn't have
@@ -116,18 +129,6 @@ Hazard.buildHazard('hunt-tit-smash-001', { activity:'hunting-hinterlands', locat
           away.`
 });
 
-Hazard.buildHazard('hunt-tit-smash-002', { activity:'hunting-hinterlands', location:'tits', type:'smash', level:2,
-  details: { place:'all' },
-  story: `{{H::gender.He}} had a wild boar cornered and was going in for the kill when it suddenly charged.
-          {{H::gender.He}} tride to dodge to the side, but the boar crashed into {{H::gender.his}} chest, crushing
-          {{H::gender.his}} tits with its tusks.`
-});
-
-Hazard.buildHazard('hunt-tit-smash-003', { activity:'hunting-hinterlands', location:'tits', type:'smash', level:1,
-  requires: ['success'],
-  story: `{{H::gender.He}} was on the way home from a successful hunt when {{H::gender.he}} tripped and fell chest
-          first onto a large flat rock, bruising {{H::gender.his}} {{tit}}.`
-});
 
 // // === Critical Injuries ===
 //

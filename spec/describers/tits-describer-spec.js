@@ -4,6 +4,30 @@ describe('Describer: Tits', function() {
     console.log(`   ${type}(${tits.size}/${tits.shape}) > ${tits.description}`)
   }
 
+  async function applySmash(tits) {
+    tits.smashLevel = Random.upTo(5) + 1;
+    tits.smashCount = Random.upTo(3) + 1;
+    tits.smashPlace = Random.from(['left','right','all']);
+    tits.smashShape = Random.from([null,'hoof'])
+
+    await tits.save();
+    return tits;
+  }
+
+  async function describeInjury(type, jada, tits, nipples) {
+    let describer = new TitsDescriber({ character:jada, tits:tits, nipples:nipples });
+
+    let description = describer[{
+      blight: 'describeBlight',
+      burn: 'describeBurn',
+      smash: 'describeSmash',
+    }[type]]();
+
+    let output = await Weaver.weaveWithCharacter(description,'C',jada);
+
+    console.log(`    ${type}(${tits.smashLevel}) > ${output}`);
+  }
+
   it('describes rat tits', function(done) {
     SpecHelper.tenTimes(done, resolve => {
       SpecHelper.buildJada({ species:'rat' }).then(jada => {
@@ -18,12 +42,34 @@ describe('Describer: Tits', function() {
   it.only('describes smashed tits', function(done) {
     SpecHelper.tenTimes(done, resolve => {
       SpecHelper.buildJada().then(jada => {
-        jada.addInjury(Hazard.lookup('hunt-tit-smash-003')).then(tits => {
-          printTits('smashed',tits)
-          resolve();
+        jada.getNipples().then(nipples => {
+          jada.getTits().then(tits => {
+            applySmash(tits).then(() => {
+              describeInjury('smash', jada, tits, nipples).then(() => {
+                resolve();
+              });
+            });
+          });
         });
       });
     });
   });
+
+  it.only('describes smashed rat tits', function(done) {
+    SpecHelper.tenTimes(done, resolve => {
+      SpecHelper.buildJada({ species:'rat' }).then(jada => {
+        jada.getNipples().then(nipples => {
+          jada.getTits().then(tits => {
+            applySmash(tits).then(() => {
+              describeInjury('smash', jada, tits, nipples).then(() => {
+                resolve();
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+
 
 });
