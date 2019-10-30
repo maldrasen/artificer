@@ -55,7 +55,7 @@ describe('Describer: Tits', function() {
     });
   });
 
-  it.only('describes smashed rat tits', function(done) {
+  it('describes smashed rat tits', function(done) {
     SpecHelper.tenTimes(done, resolve => {
       SpecHelper.buildJada({ species:'rat' }).then(jada => {
         jada.getNipples().then(nipples => {

@@ -19,7 +19,7 @@ global.Tits = Database.instance().define('tits', {
   smashCount:    { type:Sequelize.INTEGER },
   smashPlace:    { type:Sequelize.STRING, validate:{ isIn:[['left','right','all']] }},
   smashHealing:  { type:Sequelize.INTEGER },
-  smashShape:    { type:Sequelize.STRING },
+  smashShape:    { type:Sequelize.STRING, validate:{ isIn:[['hoof','hand']] }},
   description:   { type:Sequelize.STRING },
 },{
   timestamps: false,

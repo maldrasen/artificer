@@ -15,6 +15,8 @@ Weaver.TitsLoom = (function() {
     if (token == "tits.shape")        { return shape(tits); }
     if (token == "tits.sizeComp")     { return sizeComp(tits,false); }
     if (token == "tits.sizeComps")    { return sizeComp(tits,true); }
+    if (token == "tits.smashShape")    { return tits.smashShape; }
+    if (token == "tits.smashPlace")    { return tits.smashPlace; }
 
     return Weaver.error(`Bad tits token(${token})`);
   }

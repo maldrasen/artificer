@@ -39,7 +39,15 @@ global.Description = class Description extends Form {
       if (part == 'pussy' && !description.validForPussyInjury(damageType, context)) { return false; }
       if (part == 'tits'  && !description.validForTitsInjury(damageType,  context)) { return false; }
 
-      return Description.validFor(part, context);
+      if (part == 'cock') {
+        if (description.cockInclusionsValid(context) == false) { return false; }
+        if (description.cockConditionsMet(context) == false) { return false; }
+      }
+      if (part == 'tits') {
+        if (description.titsConditionsMet(context) == false) { return false; }
+      }
+
+      return description.requirementsMet(context);
     });
   }
 
@@ -119,18 +127,24 @@ global.Description = class Description extends Form {
   // tits-size-zero than matching descriptions *must* have that condition set.
   // Normal requirement checking only requires that the check not fail, but
   // doesn't require the check to be done.
-
-  hasCondition(condition) { return (this.conditions||[]).indexOf(condition) >= 0 }
+  //
+  // For the condition to be met, if the condition exists we ensure that the
+  // expression is true, if the condition does not exist ensure that the
+  // operation is false. We want to know if the check fails though, so negate
+  // that result. This is essentially an XOR.
+  conditionFailed(code,expression) {
+    return (this.conditions||[]).indexOf(code) >= 0 ? !expression : expression
+  }
 
   cockConditionsMet(context) {
-    if (context.cock.count == 2 && !this.hasCondition('cock-count-2')) { return false; }
-    if (context.cock.count == 3 && !this.hasCondition('cock-count-3')) { return false; }
+    if (this.conditionFailed('cock-count-2', context.cock.count == 2)) { return false; }
+    if (this.conditionFailed('cock-count-3', context.cock.count == 3)) { return false; }
     return true;
   }
 
   titsConditionsMet(context) {
-    if (context.character.speciesCode == 'rat'  && !this.hasCondition('species-rat'))    { return false; }
-    if (context.tits.currentSizeClass == 'zero' && !this.hasCondition('tits-size-zero')) { return false; }
+    if (this.conditionFailed('species-rat',    context.character.speciesCode == 'rat'))  { return false; }
+    if (this.conditionFailed('tits-size-zero', context.tits.currentSizeClass == 'zero')) { return false; }
     return true;
   }
 
@@ -155,11 +169,31 @@ global.Description = class Description extends Form {
     }
     return true;
   }
+
+  // In an attempt to avoid a whole other layer of permutations I'm adding this
+  // furryExtra() function to the descriptions. If a furry character is being
+  // described it can be noted that the description is visible even through the
+  // character's fur.
+  furryExtra(part) {
+    if (this.furryAddendum == null) { return ''; }
+
+    let first = {
+      'red-color':     `The bright red color is`,
+      'bruise':        `The purple bruise is`,
+      'bruises':       `The bruises are`,
+      'deep-bruising': `The deep bruising is`,
+    }[this.furryAddendum];
+
+    return {
+      tits: `${first} visible even under {{C::character.his}} thin {{C::body.furColor}} chest fur.`
+    }[part];
+  }
 }
 
 function matchRequirement(req, context) {
   if (req == 'species-rat')              { return context.character.speciesCode == 'rat'     }
   if (req == 'species-furry')            { return context.character.species.isFurry          }
+  if (req == 'species-not-furry')        { return context.character.species.isFurry == false }
   if (req == 'species-demon')            { return context.character.species.isDemon          }
   if (req == 'cock-count-2')             { return context.cock.count == 2                    }
   if (req == 'cock-count-3')             { return context.cock.count == 3                    }
@@ -185,5 +219,10 @@ function matchRequirement(req, context) {
   if (req == 'tits-size-below-average')  { return context.tits.size < 300                    }
   if (req == 'tits-shape-conical')       { return context.tits.shape == 'conical'            }
   if (req == 'tits-shape-perky')         { return context.tits.shape == 'perky'              }
+  if (req == 'tits-smash-count-1')       { return context.tits.smashCount == 1               }
+  if (req == 'tits-smash-count-2')       { return context.tits.smashCount == 2               }
+  if (req == 'tits-smash-count-over-2')  { return context.tits.smashCount > 2                }
+  if (req == 'tits-smash-shape')         { return context.tits.smashShape != null            }
+
   throw `Unknown Description Requirement - ${req}`
 }

@@ -122,11 +122,23 @@ Hazard.buildHazard('hunt-tit-smash-003', { activity:'hunting-hinterlands', locat
   requires: ['tier-0','species-biter','failure'],
   details: { shape:'hoof' },
   story: `{{H::gender.He}} had carefully stalked a deer into a secluded glade. Even though {{H::gender.he}} didn't have
-          any weapons on {{H::gender.he}}, {{H::gender.he}} thought that perhaps {{H::gender.he}} could jump onto the
+          any weapons on {{H::gender.him}}, {{H::gender.he}} thought that perhaps {{H::gender.he}} could jump onto the
           deer's back and bite its throat. The deer noticed {{H::gender.him}} though before {{H::gender.he}} could
           attack and kicked {{H::gender.him}} hard, right in one of {{H::gender.his}} {{H::tits.adjective}} {{tits}},
           leaving {{H::gender.him}} clutching {{H::gender.his}} crushed {{tit}} and gasping for air as the deer lept
           away.`
+});
+
+Hazard.buildHazard('hunt-tit-smash-005', { activity:'hunting-hinterlands', location:'tits', type:'smash', level:5,
+  requires: ['tier-0','species-biter','failure'],
+  details: { shape:'hoof', place:'all' },
+  story: `{{H::gender.He}} had carefully stalked a buck into a secluded glade. Even though {{H::gender.he}} didn't have
+          any weapons on {{H::gender.him}}, {{H::gender.he}} thought that perhaps {{H::gender.he}} could jump onto the
+          deer's back and bite its throat. The buck noticed {{H::gender.him}} though before {{H::gender.he}} could
+          attack and charged {{H::gender.him}}, throwing {{H::gender.him}} to the ground with a sweep of his antlers.
+          The buck then jumped on top of {{H::character.firstName}} and started trampling {{H::gender.him}}, stomping
+          his hooves down onto {{H::gender.his}} {{H::tits.adjective}} {{tits}}, crushing them completely before
+          bounding off into the wood again.`
 });
 
 

@@ -140,10 +140,13 @@ global.TitsDescriber = class TitsDescriber {
     }));
 
     if (description == null) {
+      console.log("=== Cannot Find Smashed Tit Description ===")
+      console.log(this.tits.toJSON())
+
       return Weaver.error(`Unable to find a smashed tit description`)
     }
 
-    return `${herTitsHaveBeen} ${description.d}`
+    return `${herTitsHaveBeen} ${description.d} ${this.character.isFurry ? description.furryExtra('tits') : ''}`
   }
 
   // === Segments ===
