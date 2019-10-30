@@ -14,32 +14,32 @@ Description.buildTitInjury({ damageType:'smash', level:2, place:'lr', furryAdden
 });
 
 Description.buildTitInjury({ damageType:'smash', level:2, place:'lr', furryAddendum:'bruise',
-  requires:['tits-smash-count-1'],
+  requirements:['tits-smash-count-1'],
   d: `recently bruised. A single yellow bruise mars the surface of {{C::gender.his}} {{C::tits.size}} {{tit}}.`,
 });
 
 Description.buildTitInjury({ damageType:'smash', level:2, place:'lr', furryAddendum:'bruises',
-  requires:['tits-smash-count-2'],
+  requirements:['tits-smash-count-2'],
   d: `recently bruised. A couple of yellow bruises mar the surface of {{C::gender.his}} {{C::tits.size}} {{tit}}.`,
 });
 
 Description.buildTitInjury({ damageType:'smash', level:3, place:'lr', furryAddendum:'bruise',
-  requires:['tits-smash-count-1'],
+  requirements:['tits-smash-count-1'],
   d: `badly bruised. A single deep purple bruise covers {{C::gender.his}} {{C::tits.smashPlace}} {{tit}}.`,
 });
 
 Description.buildTitInjury({ damageType:'smash', level:3, place:'lr', furryAddendum:'bruise',
-  requires:['tits-smash-shape','tits-smash-count-1'],
+  requirements:['tits-smash-shape','tits-smash-count-1'],
   d: `badly bruised. A single {{C::tits.smashShape}} shaped bruise mars {{C::gender.his}} {{C::tits.smashPlace}} {{tit}}.`,
 });
 
 Description.buildTitInjury({ damageType:'smash', level:3, place:'lr', furryAddendum:'bruises',
-  requires:['tits-smash-count-2'],
+  requirements:['tits-smash-count-2'],
   d: `badly beaten; a pair of deep brown and purple bruises visible on the surface of {{C::gender.his}} swollen {{tit}}.`,
 });
 
 Description.buildTitInjury({ damageType:'smash', level:3, place:'lr', furryAddendum:'bruises',
-  requires:['tits-smash-count-over-2'],
+  requirements:['tits-smash-count-over-2'],
   d: `badly beaten and covered with small, but deep and painful looking bruises.`,
 });
 
@@ -70,12 +70,12 @@ Description.buildTitInjury({ damageType:'smash', level:2, place:'all', furryAdde
 });
 
 Description.buildTitInjury({ damageType:'smash', level:3, place:'all', furryAddendum:'bruises',
-  requires:['tits-smash-count-2'],
+  requirements:['tits-smash-count-2'],
   d: `badly beaten; with each of {{C::gender.his}} swollen {{tits}} baring a deep brown and purple bruise.`,
 });
 
 Description.buildTitInjury({ damageType:'smash', level:3, place:'all', furryAddendum:'bruises',
-  requires:['tits-smash-count-over-2'],
+  requirements:['tits-smash-count-over-2'],
   d: `badly beaten and covered with small, but deep and painful looking bruises.`,
 });
 
@@ -93,57 +93,40 @@ Description.buildTitInjury({ damageType:'smash', level:5, place:'all', furryAdde
 
 // === Flat Chested ===
 
-Description.buildTitInjury({ damageType:'smash', level:1, place:'lr', conditions:['tits-size-zero'],
+Description.buildTitInjury({ damageType:'smash', level:1, furryAddendum:'red-color',
+  conditions:['tits-size-zero'],
   d: `slapped a bit. {{C::gender.His}} flat chest is bright red from the slapping.`,
 });
 
-Description.buildTitInjury({ damageType:'smash', level:2, place:'lr', conditions:['tits-size-zero'],
+Description.buildTitInjury({ damageType:'smash', level:2, furryAddendum:'bruises',
+  conditions:['tits-size-zero'],
   d: `banged up and bruised a bit.`,
 });
 
-Description.buildTitInjury({ damageType:'smash', level:3, place:'lr', conditions:['tits-size-zero'],
-  requires:['tits-smash-count-1'],
+Description.buildTitInjury({ damageType:'smash', level:3, furryAddendum:'bruise',
+  conditions:['tits-size-zero'], requirements:['tits-smash-count-1'],
   d: `badly beaten. A wide bruise spreads across {{C::gender.his}} completely flat chest.`,
 });
 
-Description.buildTitInjury({ damageType:'smash', level:3, place:'lr', conditions:['tits-size-zero'],
-  requires:['tits-smash-count-2'],
+Description.buildTitInjury({ damageType:'smash', level:3, furryAddendum:'bruises',
+  conditions:['tits-size-zero'], requirements:['tits-smash-count-2'],
   d: `badly beaten. {{C::gender.His}} flat chest is marred by a pair of deep bruises.`,
 });
 
-Description.buildTitInjury({ damageType:'smash', level:3, place:'lr', conditions:['tits-size-zero'],
-  requires:['tits-smash-count-over-2'],
+Description.buildTitInjury({ damageType:'smash', level:3, furryAddendum:'bruises',
+  conditions:['tits-size-zero'], requirements:['tits-smash-count-over-2'],
   d: `badly beaten. {{C::gender.His}} flat chest is adorned with several wide bruises.`,
 });
 
-Description.buildTitInjury({ damageType:'smash', level:4, place:'lr', conditions:['tits-size-zero'],
+Description.buildTitInjury({ damageType:'smash', level:4, furryAddendum:'bruises',
+  conditions:['tits-size-zero'],
   d: `well smashed.`,
 });
 
-Description.buildTitInjury({ damageType:'smash', level:5, place:'lr', conditions:['tits-size-zero'],
+Description.buildTitInjury({ damageType:'smash', level:5, furryAddendum:'deep-bruising',
+  conditions:['tits-size-zero'],
   d: `completely smashed.`,
 });
-
-Description.buildTitInjury({ damageType:'smash', level:1, place:'all', conditions:['tits-size-zero'],
-  d: `slightly smashed.`,
-});
-
-Description.buildTitInjury({ damageType:'smash', level:2, place:'all', conditions:['tits-size-zero'],
-  d: `lightly smashed.`,
-});
-
-Description.buildTitInjury({ damageType:'smash', level:3, place:'all', conditions:['tits-size-zero'],
-  d: `smashed.`,
-});
-
-Description.buildTitInjury({ damageType:'smash', level:4, place:'all', conditions:['tits-size-zero'],
-  d: `well smashed.`,
-});
-
-Description.buildTitInjury({ damageType:'smash', level:5, place:'all', conditions:['tits-size-zero'],
-  d: `completely smashed.`,
-});
-
 
 
 
@@ -216,52 +199,27 @@ Description.buildTitInjury({ damageType:'smash', level:5, place:'all',
 
 // === Flat Chested Rats ===
 
-Description.buildTitInjury({ damageType:'smash', level:1, place:'lr',
+Description.buildTitInjury({ damageType:'smash', level:1,
   conditions:['species-rat','tits-size-zero'],
   d: `slightly smashed.`,
 });
 
-Description.buildTitInjury({ damageType:'smash', level:2, place:'lr',
+Description.buildTitInjury({ damageType:'smash', level:2,
   conditions:['species-rat','tits-size-zero'],
   d: `lightly smashed.`,
 });
 
-Description.buildTitInjury({ damageType:'smash', level:3, place:'lr',
+Description.buildTitInjury({ damageType:'smash', level:3,
   conditions:['species-rat','tits-size-zero'],
   d: `smashed.`,
 });
 
-Description.buildTitInjury({ damageType:'smash', level:4, place:'lr',
+Description.buildTitInjury({ damageType:'smash', level:4,
   conditions:['species-rat','tits-size-zero'],
   d: `well smashed.`,
 });
 
-Description.buildTitInjury({ damageType:'smash', level:5, place:'lr',
-  conditions:['species-rat','tits-size-zero'],
-  d: `completely smashed.`,
-});
-
-Description.buildTitInjury({ damageType:'smash', level:1, place:'all',
-  conditions:['species-rat','tits-size-zero'],
-  d: `slightly smashed.`,
-});
-
-Description.buildTitInjury({ damageType:'smash', level:2, place:'all',
-  conditions:['species-rat','tits-size-zero'],
-  d: `lightly smashed.`,
-});
-
-Description.buildTitInjury({ damageType:'smash', level:3, place:'all',
-  conditions:['species-rat','tits-size-zero'],
-  d: `smashed.`,
-});
-
-Description.buildTitInjury({ damageType:'smash', level:4, place:'all',
-  conditions:['species-rat','tits-size-zero'],
-  d: `well smashed.`,
-});
-
-Description.buildTitInjury({ damageType:'smash', level:5, place:'all',
+Description.buildTitInjury({ damageType:'smash', level:5,
   conditions:['species-rat','tits-size-zero'],
   d: `completely smashed.`,
 });

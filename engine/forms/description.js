@@ -116,8 +116,10 @@ global.Description = class Description extends Form {
 
   // The injury place will usually be left, right, or all. Descriptions for
   // left work for right as well, so really we only care if a description is
-  // for 'all' the described injury also needs to be 'all'.
+  // for 'all' the described injury also needs to be 'all'. If the place isn't
+  // set that means it will work equally well for left, right, or all injuries.
   placeMatches(currentPlace) {
+    if (this.place == null) { return true; }
     return (currentPlace == 'all') ? (this.place == 'all') : (this.place != 'all')
   }
 
