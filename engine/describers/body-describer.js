@@ -10,17 +10,23 @@ global.BodyDescriber = class BodyDescriber {
   get body() { return this._body; }
 
   async updateDescription() {
-    if (this.body == null) { this._body = await this.character.getBody(); }
-
-    this.body.description = "[TODO: Body description]"
-
-    await this.body.save();
-    return this.body;
+    let desc = await this.getDescription();
+    if (desc) {
+      this.body.description = desc;
+      await this.body.save();
+      return this.body;
+    }
   }
 
-  bodyDescription() {
-    return `${heightAndWeight()}, ${comparativeHeight(character,parts)}.
-            ${objectiveBeauty(character)} ${comparativeBeauty(character)}`
+  async getDescription() {
+    if (this.body == null) { this._body = await this.character.getBody(); }
+
+    let description = `
+      ${this.heightAndWeight()}, ${this.comparativeHeight()}.
+      ${this.objectiveBeauty()} ${this.comparativeBeauty()}
+    `.replace(/\n/g,'').replace(/\s+/g,' ');
+
+    return await Weaver.weaveWithCharacter(description,'C',this.character);
   }
 
   heightAndWeight() {
@@ -28,99 +34,121 @@ global.BodyDescriber = class BodyDescriber {
   }
 
   comparativeHeight() {
-    let average = character.species.averageHeight();
-    let height = parts.body.height;
+    let species = this.character.species;
+    let height = this.body.height;
+    let average = species.averageHeight();
 
-    if (height < average * 0.8) { return `which is short for a ${character.species.name}`; }
-    if (height < average * 0.9) { return `which is a little short for a ${character.species.name}`; }
-    if (height > average * 1.1) { return `which makes {{C::gender.him}} a bit large for a ${character.species.name}`; }
-    if (height > average * 1.2) { return `which makes {{C::gender.him}} larger then most ${character.species.pluralName}`; }
-    return` which is about average for a ${character.species.name}`;
+    if (height < average * 0.8) { return `which is short for {{C::species.aRat}}`; }
+    if (height < average * 0.9) { return `which is a little short for {{C::species.aRat}}`; }
+    if (height > average * 1.1) { return `which makes {{C::gender.him}} a bit large for {{C::species.aRat}}`; }
+    if (height > average * 1.2) { return `which makes {{C::gender.him}} larger then most {{C::species.rats}}`; }
+    return` which is about average for {{C::species.aRat}}`;
   }
 
   objectiveBeauty() {
-    let species = character.species.name.toLowerCase();
     let sentences = [];
+    let personal = this.character.personal;
 
-    if (character.personal == 0) { ArrayUtility.addAll(sentences,[
+    if (personal == 0) { ArrayUtility.addAll(sentences,[
       `{{C::character.firstName}} is flat out ugly. Just disgusting to look at, like dog shit given a face if you could call it that. Seriously. Uglier than a bag of smashed horse assholes, with all the pretty ones taken out.`,
     ]); }
 
-    if (character.personal > 0 && character.personal < 10) { ArrayUtility.addAll(sentences,[
+    if (personal > 0 && personal < 10) { ArrayUtility.addAll(sentences,[
       `{{C::character.firstName}} is not at all attractive with weirdly asymmetrical facial features.`,
       `{{C::character.firstName}} is hopelessly unattractive with a face that looks like it was put together in the dark.`,
       `{{C::character.firstName}} has a face that was made for a gimp mask, or for doggy style, or really any activity that has {{C::gender.him}} facing away from me.`,
     ]); }
 
-    if (character.personal >= 10 && character.personal < 20) { ArrayUtility.addAll(sentences,[
+    if (personal >= 10 && personal < 20) { ArrayUtility.addAll(sentences,[
       `{{C::character.firstName}} is rather plain looking, nondescript an inoffensive.`,
       `{{C::character.firstName}} is rather average looking. {{C::gender.He}}'s not the sort of person who would stand out in a crowd.`,
       `{{C::character.firstName}} could be called homely, not unattractive per se, but certainly not beautiful.`,
     ]); }
 
-    if (character.personal >= 20 && character.personal < 30) { ArrayUtility.addAll(sentences,[
-      `{{C::character.firstName}} is a good looking ${species} with a symmetrical, traditionally attractive sort of face.`,
+    if (personal >= 20 && personal < 30) { ArrayUtility.addAll(sentences,[
+      `{{C::character.firstName}} is a good looking {{C::species.rat}} with a symmetrical, traditionally attractive sort of face.`,
     ]); }
 
-    if (character.genderCode == 'male') {
-      if (character.personal > 0 && character.personal < 10) { ArrayUtility.addAll(sentences,[
+    if (this.character.genderCode == 'male') {
+      if (personal > 0 && personal < 10) { ArrayUtility.addAll(sentences,[
         `{{C::character.firstName}} has a face that looks like it's been through a few fights, moreover that {{C::gender.he}}'s lost every single one of them.`,
         `{{C::character.firstName}} has a very punchable looking face. I'm not sure what it is. Every time I see {{C::gender.him}} I feel like knocking a few of {{C::gender.his}} teeth out.`,
       ]); }
 
-      if (character.personal >= 10 && character.personal < 20) { ArrayUtility.addAll(sentences,[
+      if (personal >= 10 && personal < 20) { ArrayUtility.addAll(sentences,[
         `{{C::character.firstName}} has a face that looks as though it was ravaged by disease at some point. It's pockmarked and misshapen.`,
       ]); }
 
-      if (character.personal >= 20 && character.personal < 30) { ArrayUtility.addAll(sentences,[
+      if (personal >= 20 && personal < 30) { ArrayUtility.addAll(sentences,[
         `I would call {{C::character.firstName}} handsome. {{C::gender.His}} face has a certain charming quality to it.`,
-        `{{C::character.firstName}} is a handsome ${species}. While not overly attractive, {{C::gender.he}}'s pleasant to look upon at least.`,
+        `{{C::character.firstName}} is a handsome {{C::species.rat}}. While not overly attractive, {{C::gender.he}}'s pleasant to look upon at least.`,
       ]); }
     }
 
-    if (character.genderCode != 'male') {
-      if (character.personal > 0 && character.personal < 10) { ArrayUtility.addAll(sentences,[
-        `{{C::character.firstName}} is not an attractive ${species}. {{C::gender.He}} has the sort of face that could only be improved by repeatedly slapping it.`,
+    if (this.character.genderCode != 'male') {
+      if (personal > 0 && personal < 10) { ArrayUtility.addAll(sentences,[
+        `{{C::character.firstName}} is not an attractive {{C::species.rat}}. {{C::gender.He}} has the sort of face that could only be improved by repeatedly slapping it.`,
       ]); }
 
-      if (character.personal >= 10 && character.personal < 20) { ArrayUtility.addAll(sentences,[
+      if (personal >= 10 && personal < 20) { ArrayUtility.addAll(sentences,[
         `{{C::character.firstName}} is not unattractive, but not what anyone would consider beautiful either.`,
       ]); }
 
-      if (character.personal >= 20 && character.personal < 30) { ArrayUtility.addAll(sentences,[
+      if (personal >= 20 && personal < 30) { ArrayUtility.addAll(sentences,[
         `I would call {{C::character.firstName}} pretty. {{C::gender.His}} face has a certain charming quality to it.`,
-        `{{C::character.firstName}} is a pretty ${species}. While not beautiful, {{C::gender.he}}'s pleasant to look upon at least.`,
+        `{{C::character.firstName}} is a pretty {{C::species.rat}}. While not beautiful, {{C::gender.he}}'s pleasant to look upon at least.`,
       ]); }
+    }
+
+    if (sentences.length == 0) {
+      return Weaver.error('Body Describer objectiveBeauty() seeds descriptions above 30 personal.');
     }
 
     return Random.from(sentences);
   }
 
+  // TODO: Could use a lot more variety and we might want to consider splitting
+  //       the male descriptions from the females and futas. Might consider
+  //       making this it's own class even.
   comparativeBeauty() {
-    if (character.speciesCode == 'rat') {
-      if (character.personal < 3)  { return Random.from([
-        `Even for a Rhysh Rat {{C::gender.he}}'s ugly; just chewed up looking to be honest.`,
-        `{{C::gender.He}}'s even uglier than most Rhysh Rats, which really is saying a lot.`,
+    let averagePersonal = Math.floor(this.character.species.personal * 1.333);
+    let lowPersonal =     Math.ceil(this.character.species.personal  * 0.666);
+
+    if (this.character.speciesCode == 'rat') {
+      if (this.character.personal <= lowPersonal)  { return Random.from([
+        `Even for a rat {{C::gender.he}}'s ugly; just chewed up looking to be honest.`,
+        `{{C::gender.He}}'s even uglier than most rats, which really is saying a lot.`,
       ]); }
 
-      if (character.personal < 10) { return Random.from([
-        `Which can of course be expected of a Rhysh Rat; they're not the most attractive creatures after all.`,
-        `Which is expected of course, given that {{C::gender.he}}'s a Rhysh Rat.`,
-        `For a Rhysh Rat though, {{C::gender.he}}'s about average looking.`,
+      if (this.character.personal <= averagePersonal) { return Random.from([
+        `Which can of course be expected of a rat; they're not the most attractive creatures after all.`,
+        `Which is expected of course, given that {{C::gender.he}}'s a rat.`,
+        `For a rat though, {{C::gender.he}}'s about average looking.`,
       ]); }
 
       return Random.from([
-        `{{C::gender.he}}'s unusually attractive for a Rhysh Rat, who tend to be rather rough looking.`,
-        `For a Rhysh Rat though, {{C::gender.he}}'s far better looking than most of {{C::gender.his}} species.`,
+        `{{C::gender.He}}'s unusually attractive though for a rat, who tend to be rather rough looking.`,
+        `For a rat though, {{C::gender.he}}'s far better looking than most of {{C::gender.his}} species.`,
       ]);
     }
 
-    return Weaver.error(`TODO: comparativeBeauty() doesn't have the species ${character.speciesCode}`);
+    if (this.character.personal <= lowPersonal)  { return Random.from([
+      `I've seen far better looking {{C::species.rats}} in my time though.`,
+      `{{C::gender.He}} certinally wouldn't be considered attractive among other {{C::species.elves}}.`
+    ]); }
+
+    if (this.character.personal <= averagePersonal)  { return Random.from([
+      `{{C::gender.His}} looks are about average for {{C::species.aRat}}.`
+    ]); }
+
+    return Random.from([
+      `{{C::gender.He}} is quite good looking for {{C::species.aRat}}.`
+    ]);
   }
 
-  // TODO: Also should include hornShape
+  // TODO: Also should include hornShape (and injuries?)
   headDescription() {
-    if (character.speciesCode == 'rat') {
+    if (this.character.speciesCode == 'rat') {
       return `{{C::gender.His}} face is unsurprisingly rat-like with {{C::body.eyeColor}} eyes, a short muzzle, long whiskers and a twitchy pink nose.`
     }
 
@@ -135,13 +163,13 @@ global.BodyDescriber = class BodyDescriber {
     // TODO: caprien, dryad, and nekos to name a few will need custom fur descriptions
 
     // Other Furries
-    if (character.species.isFurry) { return Random.from([
+    if (this.character.species.isFurry) { return Random.from([
       `{{C::gender.His}} body is covered in {{C::body.furColor}} fur.`,
       `{{C::gender.He}} has {{C::body.furColor}} fur covering {{C::gender.his}} entire body.`,
     ]); }
 
     // Scalies
-    if (character.species.isScalie) {
+    if (this.character.species.isScalie) {
       return Weaver.error(`TODO: skinDescription() needs to describe scales.`);
     }
 

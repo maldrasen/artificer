@@ -13,6 +13,11 @@ global.BodyBuilder = (function() {
       tailShape:  bodyOptions.tailShape  || character.species.bodyOptions.tailShape || null,
       hornShape:  bodyOptions.hornShape  || character.species.random('horn'),
       faceShape:  character.species.getFaceShape(character.genderCode),
+      smashLevel: 0,
+      smashCount: 0,
+      smashHealing: 0,
+      smashTeethMissing: 0,
+      description: null,
     }
 
     let skinColor = bodyOptions.skinColor || character.species.random('skin',character.genderCode);

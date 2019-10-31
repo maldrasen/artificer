@@ -10,8 +10,9 @@ Weaver.SpeciesLoom = (function() {
     if (context.get(subject) == null) { return Weaver.error(`Subject(${subject}) not in context`); }
 
     let species = context.get(subject).character.species;
-    if (token == "species.Elf")   { return species.name; }
-    if (token == "species.Elves") { return species.pluralName; }
+    if (token == "species.rat")   { return species.name.toLowerCase(); }
+    if (token == "species.aRat")  { return EnglishUtility.a_an(species.name.toLowerCase()); }
+    if (token == "species.rats")  { return species.pluralName.toLowerCase(); }
     if (token == "species.elf")   { return species.classname; }
     if (token == "species.elves") { return species.pluralClassname; }
 

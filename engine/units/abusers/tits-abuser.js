@@ -37,7 +37,6 @@ Abuser.TitsAbuser = (function() {
     tits.smashHealing = 0;
     tits.smashPlace = leftRightOrAll(tits.smashPlace, place)
 
-    if (tits.smashLevel > 5) { tits.smashLevel = 5;}
     if (shape) { tits.smashShape = shape; }
   }
 

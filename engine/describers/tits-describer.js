@@ -20,11 +20,20 @@ global.TitsDescriber = class TitsDescriber {
   isIncluded(key) { return this._included.indexOf(key) >= 0; }
 
   async updateDescription() {
+    let desc = await this.getDescription()
+    if (desc) {
+      this.tits.description = desc;
+      await this.tits.save();
+      return this.tits;
+    }
+  }
+
+  async getDescription() {
     if (this.tits == null) { this._tits = await this.character.getTits(); }
     if (this.nipples == null) { this._nipples = await this.character.getNipples(); }
 
     if (this.tits == null) {
-      return "[TODO: Male chest description]"
+      return null;
     }
 
     let description = `
@@ -33,10 +42,7 @@ global.TitsDescriber = class TitsDescriber {
       ${this.describeNipples()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
-    this.tits.description = await Weaver.weaveWithCharacter(description,'C',this.character);
-
-    await this.tits.save();
-    return this.tits;
+    return await Weaver.weaveWithCharacter(description,'C',this.character);
   }
 
   // === Descriptions ===
