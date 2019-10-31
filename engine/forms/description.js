@@ -171,25 +171,6 @@ global.Description = class Description extends Form {
     }
     return true;
   }
-
-  // In an attempt to avoid a whole other layer of permutations I'm adding this
-  // furryExtra() function to the descriptions. If a furry character is being
-  // described it can be noted that the description is visible even through the
-  // character's fur.
-  furryExtra(part) {
-    if (this.furryAddendum == null) { return ''; }
-
-    let first = {
-      'red-color':     `The bright red color is`,
-      'bruise':        `The purple bruise is`,
-      'bruises':       `The bruises are`,
-      'deep-bruising': `The deep bruising is`,
-    }[this.furryAddendum];
-
-    return {
-      tits: `${first} visible even under {{C::character.his}} thin {{C::body.furColor}} chest fur.`
-    }[part];
-  }
 }
 
 function matchRequirement(req, context) {

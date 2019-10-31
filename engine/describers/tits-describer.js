@@ -123,6 +123,12 @@ global.TitsDescriber = class TitsDescriber {
     return `${herTitsHaveBeen} ${description.d}`
   }
 
+  // In an attempt to avoid a whole other layer of permutations The smashed
+  // tits descriptions also include a furryAddendum property in order to
+  // explain why you can see bruises on a furry character. (It's Because chest
+  // fur is generally thinner) I think this is really only used for bruises
+  // on chests. Everything else should be pretty obvious, although body smash
+  // descriptions may need something similar.
   describeSmash() {
     if (this.tits.smashLevel == 0) { return ''; }
 
@@ -140,13 +146,22 @@ global.TitsDescriber = class TitsDescriber {
     }));
 
     if (description == null) {
-      console.log("=== Cannot Find Smashed Tit Description ===")
-      console.log(this.tits.toJSON())
-
       return Weaver.error(`Unable to find a smashed tit description`)
     }
 
-    return `${herTitsHaveBeen} ${description.d} ${this.character.isFurry ? description.furryExtra('tits') : ''}`
+    if (this.character.species.isFurry && description.furryAddendum) {
+      let bruisesAre = {
+        'red-color':     `The bright red color is`,
+        'bruise':        `The purple bruise is`,
+        'bruises':       `The bruises are`,
+        'deep-bruising': `The deep bruising is`,
+      }[description.furryAddendum];
+
+      return `${herTitsHaveBeen} ${description.d} ${bruisesAre} visible even
+              under {{C::gender.his}} thin {{C::body.furColor}} chest fur.`;
+    }
+
+    return `${herTitsHaveBeen} ${description.d}`;
   }
 
   // === Segments ===

@@ -2,7 +2,7 @@ describe('HasInjury', function() {
 
   it('can add an injury to a character', function(done) {
     SpecHelper.buildJada().then(jada => {
-      jada.addInjury(Hazard.lookup('hunt-tit-smash-001')).then(tits => {
+      jada.addInjury(Hazard.lookup('hunt-tit-smash-003')).then(tits => {
         expect(tits.smashLevel).to.equal(3);
         expect(tits.smashCount).to.equal(1);
         expect(tits.smashHealing).to.equal(0);

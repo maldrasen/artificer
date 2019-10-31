@@ -23,9 +23,10 @@ describe('Describer: Tits', function() {
       smash: 'describeSmash',
     }[type]]();
 
-    let output = await Weaver.weaveWithCharacter(description,'C',jada);
+    let output = await Weaver.weaveWithCharacter(description,'C',jada)
+    let stripped = output.replace(/\n/g,'').replace(/\s+/g,' ');
 
-    console.log(`    ${type}(${tits.smashLevel}) > ${output}`);
+    console.log(`    ${type}(${tits.smashLevel}) > ${stripped}`);
   }
 
   it('describes rat tits', function(done) {
@@ -39,9 +40,9 @@ describe('Describer: Tits', function() {
     });
   });
 
-  it.only('describes smashed tits', function(done) {
+  it('describes smashed tits', function(done) {
     SpecHelper.tenTimes(done, resolve => {
-      SpecHelper.buildJada().then(jada => {
+      SpecHelper.buildJada({ tits:{ sizeClass:'zero' } }).then(jada => {
         jada.getNipples().then(nipples => {
           jada.getTits().then(tits => {
             applySmash(tits).then(() => {
