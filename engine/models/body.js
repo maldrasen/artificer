@@ -11,17 +11,18 @@ const SKIN_COLORS = ['human','red','black','green','pale-green','gray','blue','p
 const TAIL_SHAPES = ['rat','dog','fox','horse','seal','cow','snake','dragon','cat','demon','goat'];
 
 global.Body = Database.instance().define('body', {
-  height:     { type:Sequelize.INTEGER },
-  eyeColor:   { type:Sequelize.STRING, validate:{ isIn:[EYE_COLORS] }},
-  scaleColor: { type:Sequelize.STRING, validate:{ isIn:[SCALE_COLORS] }},
-  hairColor:  { type:Sequelize.STRING, validate:{ isIn:[HAIR_COLORS] }},
-  furColor:   { type:Sequelize.STRING, validate:{ isIn:[HAIR_COLORS] }},
-  furShade:   { type:Sequelize.INTEGER, validate:{ min:1, max:5 }},
-  skinColor:  { type:Sequelize.STRING, validate:{ isIn:[SKIN_COLORS] }},
-  skinShade:  { type:Sequelize.INTEGER, validate:{ min:1, max:5 }},
-  tailShape:  { type:Sequelize.STRING, validate:{ isIn:[TAIL_SHAPES] }},
-  hornShape:  { type:Sequelize.STRING, validate:{ isIn:[HORN_SHAPES] }},
-  faceShape:  { type:Sequelize.STRING, validate:{ isIn:[FACE_SHAPES] }},
+  height:      { type:Sequelize.INTEGER },
+  eyeColor:    { type:Sequelize.STRING, validate:{ isIn:[EYE_COLORS] }},
+  scaleColor:  { type:Sequelize.STRING, validate:{ isIn:[SCALE_COLORS] }},
+  hairColor:   { type:Sequelize.STRING, validate:{ isIn:[HAIR_COLORS] }},
+  furColor:    { type:Sequelize.STRING, validate:{ isIn:[HAIR_COLORS] }},
+  furShade:    { type:Sequelize.INTEGER, validate:{ min:1, max:5 }},
+  skinColor:   { type:Sequelize.STRING, validate:{ isIn:[SKIN_COLORS] }},
+  skinShade:   { type:Sequelize.INTEGER, validate:{ min:1, max:5 }},
+  tailShape:   { type:Sequelize.STRING, validate:{ isIn:[TAIL_SHAPES] }},
+  hornShape:   { type:Sequelize.STRING, validate:{ isIn:[HORN_SHAPES] }},
+  faceShape:   { type:Sequelize.STRING, validate:{ isIn:[FACE_SHAPES] }},
+  description: { type:Sequelize.STRING },
 },{
   timestamps: false,
   getterMethods: {

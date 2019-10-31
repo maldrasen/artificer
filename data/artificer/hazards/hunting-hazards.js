@@ -102,8 +102,8 @@
 //           {{H::gender.him}} go only if {{H::gender.he}} would fuck them all. Their large knotted cocks left
 //           {{H::gender.his}} pussy ripped asunder.`
 // });
-//
-// // --- Tits : Smash ---
+
+// --- Tits : Smash ---
 
 Hazard.buildHazard('hunt-tit-smash-001', { activity:'hunting-hinterlands', location:'tits', type:'smash', level:1,
   requires: ['success'],
@@ -124,9 +124,20 @@ Hazard.buildHazard('hunt-tit-smash-003', { activity:'hunting-hinterlands', locat
   story: `{{H::gender.He}} had carefully stalked a deer into a secluded glade. Even though {{H::gender.he}} didn't have
           any weapons on {{H::gender.him}}, {{H::gender.he}} thought that perhaps {{H::gender.he}} could jump onto the
           deer's back and bite its throat. The deer noticed {{H::gender.him}} though before {{H::gender.he}} could
-          attack and kicked {{H::gender.him}} hard, right in one of {{H::gender.his}} {{H::tits.adjective}} {{tits}},
+          attack and kicked {{H::gender.him}} hard, right in one of {{H::gender.his}} {{H::tits.size}} {{tits}},
           leaving {{H::gender.him}} clutching {{H::gender.his}} crushed {{tit}} and gasping for air as the deer lept
           away.`
+});
+
+Hazard.buildHazard('hunt-tit-smash-004', { activity:'hunting-hinterlands', location:'tits', type:'smash', level:3,
+  requires: ['success'],
+  details: { place:'all' },
+  story: `One of your other hunters saw {{H::character.firstName}} returning home from the hunt as was jelous of
+          {{H::gender.his}} success. He managed to get the jump on {{H::gender.him}}, knocked {{H::gender.him}} out,
+          stripped {{H::gender.him}} naked, and tied {{H::gender.him}} to a tree. When {{H::gender.he}} woke up this
+          other hunter was savagly beating {{H::gender.his}} {{H::tits.sizeShape}} {{tits}} with a fallen tree branch.
+          {{H::gender.He}} was able to free {{H::gender.him}}self before {{H::gender.his}} {{H::tits.size}} {{tits}}
+          were completely maimed, but was in no contition to chase this other hunter down after he ran off.`
 });
 
 Hazard.buildHazard('hunt-tit-smash-005', { activity:'hunting-hinterlands', location:'tits', type:'smash', level:5,
@@ -137,8 +148,8 @@ Hazard.buildHazard('hunt-tit-smash-005', { activity:'hunting-hinterlands', locat
           deer's back and bite its throat. The buck noticed {{H::gender.him}} though before {{H::gender.he}} could
           attack and charged {{H::gender.him}}, throwing {{H::gender.him}} to the ground with a sweep of his antlers.
           The buck then jumped on top of {{H::character.firstName}} and started trampling {{H::gender.him}}, stomping
-          his hooves down onto {{H::gender.his}} {{H::tits.adjective}} {{tits}}, crushing them completely before
-          bounding off into the wood again.`
+          his hooves down onto {{H::gender.his}} {{H::tits.size}} {{tits}}, crushing them completely before bounding
+          off into the wood again.`
 });
 
 
@@ -156,7 +167,10 @@ Hazard.buildHazard('hunt-tit-smash-005', { activity:'hunting-hinterlands', locat
 //           shitting all the way home.`
 // });
 //
-// Hazard.buildHazard({ activity:'hunting-hinterlands', location:'head', type:'smash', level:1,
-//   story: `{{H::gender.He}} was stalking {{H::gender.his}} prey through a deep ravine, when a loose rock fell
-//           from the cliffs above, striking {{H::gender.him}} in the head.`
-// });
+
+// --- Head : Smash ---
+
+Hazard.buildHazard('hunt-head-smash-001', { activity:'hunting-hinterlands', location:'head', type:'smash', level:1,
+  story: `{{H::gender.He}} was stalking {{H::gender.his}} prey through a deep ravine, when a loose rock fell
+          from the cliffs above, striking {{H::gender.him}} in the head.`
+});

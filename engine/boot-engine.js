@@ -13,6 +13,7 @@ require(`${ROOT}/engine/concerns/has-injuries`);
 
 // === Describers ===
 require(`${ROOT}/engine/describers/anus-describer`);
+require(`${ROOT}/engine/describers/body-describer`);
 require(`${ROOT}/engine/describers/character-describer`);
 require(`${ROOT}/engine/describers/cock-describer`);
 require(`${ROOT}/engine/describers/pussy-describer`);
