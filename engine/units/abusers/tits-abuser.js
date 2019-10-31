@@ -32,7 +32,7 @@ Abuser.TitsAbuser = (function() {
     const place = ObjectUtility.fetch(hazard,'details','place') || Random.from(['left','right']);
     const shape = ObjectUtility.fetch(hazard,'details','shape');
 
-    tits.smashLevel += hazard.level;
+    tits.smashLevel = Abuser.raiseLevel(tits.smashLevel, hazard.level, 5);
     tits.smashCount += 1;
     tits.smashHealing = 0;
     tits.smashPlace = leftRightOrAll(tits.smashPlace, place)
@@ -49,11 +49,6 @@ Abuser.TitsAbuser = (function() {
     if (place == 'left')  { return (current == 'right') ? 'all' : 'left' }
     if (place == 'right') { return (current == 'left') ? 'all' : 'right' }
   }
-
-
-
-
-
 
   // Apply a blight injury to a breast or nipple. The details can have the
   // following options:
