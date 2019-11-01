@@ -31,7 +31,7 @@ Species.build('neko', {
     }},
   },
 
-  flags: ['elf'],
+  flags: ['elf']
 });
 
 //   personalities: {

@@ -51,9 +51,9 @@ Species.build('vulpine', {
     pussy: { shape:'dog' }
   },
 
-  flags: ['furry'],
-
   headDescription: `{{C::gender.He}} has the face of a fox with {{C::body.furColor}} fur and {{C::body.eyeColor}} eyes.`,
+
+  flags: ['furry']
 });
 
 //   personalities: {

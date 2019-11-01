@@ -58,11 +58,11 @@ Species.build('rat', {
   },
 
   nameGenerator: RatNameGenerator,
-  flags: ['furry'],
 
   headDescription: `{{C::gender.His}} face is unsurprisingly rat-like with {{C::body.eyeColor}} eyes, a short muzzle,
-                    long whiskers and a twitchy pink nose.`
+                    long whiskers and a twitchy pink nose.`,
 
+  flags: ['furry']
 });
 
 //   personalities: {

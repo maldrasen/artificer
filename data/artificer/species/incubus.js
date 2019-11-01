@@ -43,7 +43,7 @@ Species.build('incubus', {
   },
 
   nameGenerator: DemonNameGenerator,
-  flags: ['demon'],
+  flags: ['demon']
 });
 
 //   personalities: {

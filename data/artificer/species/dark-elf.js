@@ -34,7 +34,7 @@ Species.build('dark-elf', {
     }}
   },
 
-  flags: ['elf'],
+  flags: ['elf']
 });
 
 //   personalities: {

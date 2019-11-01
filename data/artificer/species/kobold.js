@@ -45,9 +45,10 @@ Species.build('kobold', {
   },
 
   nameGenerator: KoboldNameGenerator,
-  flags: ['furry','scalie'],
 
   headDescription: `{{C::gender.He}} has a face like a dragon, though smaller and meaner looking, with
                     {{C::body.scaleColor}} scales, {{C::body.eyeColor}} eyes, and a short pair of ridged
                     back facing horns.`,
+
+  flags: ['furry','scalie']
 });

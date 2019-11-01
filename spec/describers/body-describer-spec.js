@@ -6,7 +6,7 @@ describe('Describer: Body', function() {
 
   it.only('describes a body', function(done) {
     SpecHelper.tenTimes(done, resolve => {
-      SpecHelper.buildJada({ species:'vulpine', gender:'female' }).then(jada => {
+      SpecHelper.buildJada({ species:'caprien', gender:'female' }).then(jada => {
         jada.getBody().then(body => {
           printBody('normal',body)
           resolve();

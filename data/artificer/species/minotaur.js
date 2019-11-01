@@ -69,8 +69,6 @@ Species.build('minotaur', {
     anus:{  shape:'horse' }
   },
 
-  flags: ['furry'],
-
   // Head description is complex for a caprien because males have anthro goat
   // heads and females do not.
   headDescription: (character,body) => {
@@ -87,6 +85,8 @@ Species.build('minotaur', {
     return `{{C::gender.He}} has a big cows's head covered in {{C::body.furColor}} fur, {{C::body.eyeColor}} eyes,
             and ${horns}.`;
   },
+
+  flags: ['furry']
 });
 
 //   personalities: {

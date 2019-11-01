@@ -24,7 +24,8 @@ global.BodyDescriber = class BodyDescriber {
     let description = `
       ${this.heightAndWeight()}, ${this.comparativeHeight()}.
       ${this.objectiveBeauty()} ${this.comparativeBeauty()}
-      ${this.headDescription()}
+      ${this.headDescription()} ${this.headInjuries()}
+      ${this.skinDescription()} ${this.bodyInjuries()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
     return await Weaver.weaveWithCharacter(description,'C',this.character);
@@ -158,24 +159,29 @@ global.BodyDescriber = class BodyDescriber {
     ]);
   }
 
-  // The skin description also includes a general body description so it also
-  // includes body injury descriptions. Should also include tailShape?
   skinDescription() {
-    // TODO: caprien, dryad, and nekos to name a few will need custom fur descriptions
-
-    // Other Furries
+    if (typeof this.character.species.skinDescription == 'function') {
+      return this.character.species.skinDescription(this.character, this.body);
+    }
+    if (typeof this.character.species.skinDescription == 'string') {
+      return this.character.species.skinDescription;
+    }
     if (this.character.species.isFurry) { return Random.from([
       `{{C::gender.His}} body is covered in {{C::body.furColor}} fur.`,
       `{{C::gender.He}} has {{C::body.furColor}} fur covering {{C::gender.his}} entire body.`,
     ]); }
-
-    // Scalies
     if (this.character.species.isScalie) {
       return Weaver.error(`TODO: skinDescription() needs to describe scales.`);
     }
-
-    // Everyone else.
     return Weaver.error(`TODO: skinDescription() needs to describe skin.`);
+  }
+
+  headInjuries() {
+    return ''
+  }
+
+  bodyInjuries() {
+    return ''
   }
 
 }

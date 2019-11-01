@@ -56,9 +56,9 @@ Species.build('lupin', {
     pussy: { shape:'dog' }
   },
 
-  flags: ['furry'],
-
   headDescription: `{{C::gender.He}} has the face of a wolf with {{C::body.furColor}} fur and {{C::body.eyeColor}} eyes.`,
+
+  flags: ['furry']
 });
 
 //   personalities: {
