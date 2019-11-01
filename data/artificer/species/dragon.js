@@ -55,8 +55,8 @@ Species.build('dragon', {
 
   flags: ['furry','scalie'],
 
-  headDescription: `{{C::gender.He}} has the face of a dragon, with {{C::body.eyeColor}} eyes and a pair of ridged
-                    swept back horns.`,
+  headDescription: `{{C::gender.He}} has the face of a dragon, with {{C::body.scaleColor}} scales, {{C::body.eyeColor}}
+                    eyes, and a pair of ridged swept back horns.`,
 });
 
 //   personalities: {

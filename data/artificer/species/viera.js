@@ -27,5 +27,8 @@ Species.build('viera', {
     }}
   },
 
-  flags: ['elf']
+  flags: ['elf'],
+
+  headDescription: `{{C::gender.He}} has {{C::body.eyeColor}} eyes and a face like an elf except that two long rabbit
+                    ears press upward from {{C::gender.his}} {{C::body.hairColor}} hair.`
 });

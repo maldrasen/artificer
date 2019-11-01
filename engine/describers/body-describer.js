@@ -139,7 +139,7 @@ global.BodyDescriber = class BodyDescriber {
     ]); }
 
     if (this.character.personal > averagePersonal)  { return Random.from([
-      `{{C::gender.He}} is quite good looking for {{C::species.aRat}}.`
+      `{{C::gender.He}} is quite good looking though for {{C::species.aRat}}.`
     ]); }
 
     // No need to comment further on average looking characters.

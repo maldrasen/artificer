@@ -49,8 +49,8 @@ Species.build('caprien', {
     }[body.hornShape];
 
     if (character.genderCode == 'male') {
-      return `{{C::gender.He}} has a animalistic, goat-like face with with {{C::body.eyeColor}} eyes, ${horns}, and
-              covered in {{C::body.furColor}} fur.`;
+      return `{{C::gender.He}} has the head of a goat with {{C::body.eyeColor}} eyes, ${horns}, and covered in
+              {{C::body.furColor}} fur.`;
     }
 
     return `{{C::gender.He}} has {{C::body.eyeColor}} eyes and a face like an elf except that {{C::gender.his}} head is

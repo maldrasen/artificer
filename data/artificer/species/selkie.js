@@ -43,7 +43,9 @@ Species.build('selkie', {
     }
   },
 
-  flags: ['furry']
+  flags: ['furry'],
+
+  headDescription: `{{C::gender.He}} has a face like a seal with {{C::body.furColor}} fur and {{C::body.eyeColor}} eyes.`,
 });
 
 //   personalities: {
