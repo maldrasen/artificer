@@ -53,7 +53,10 @@ Species.build('dragon', {
     pussy:{ shape:'dragon' }
   },
 
-  flags: ['furry','scalie']
+  flags: ['furry','scalie'],
+
+  headDescription: `{{C::gender.He}} has the face of a dragon, with {{C::body.eyeColor}} eyes and a pair of ridged
+                    swept back horns.`,
 });
 
 //   personalities: {

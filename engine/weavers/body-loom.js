@@ -158,7 +158,7 @@ Weaver.BodyLoom = (function() {
   // Some hair colors like dark-blond are hyphenated, so replace dashes with
   // spaces.
   function hairColorWord(body) {
-    return (body.hairColor != "") ? body.hairColor.replace(/-/,' ') : Weaver.error(`Body.hairColor is blank.`);
+    return (body.hairColor && body.hairColor != "") ? body.hairColor.replace(/-/,' ') : Weaver.error(`Body.hairColor is blank.`);
   }
 
   return { findValue };

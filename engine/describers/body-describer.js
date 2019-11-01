@@ -24,6 +24,7 @@ global.BodyDescriber = class BodyDescriber {
     let description = `
       ${this.heightAndWeight()}, ${this.comparativeHeight()}.
       ${this.objectiveBeauty()} ${this.comparativeBeauty()}
+      ${this.headDescription()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
     return await Weaver.weaveWithCharacter(description,'C',this.character);
@@ -137,21 +138,21 @@ global.BodyDescriber = class BodyDescriber {
       `{{C::gender.He}} certinally wouldn't be considered attractive among other {{C::species.elves}}.`
     ]); }
 
-    if (this.character.personal <= averagePersonal)  { return Random.from([
-      `{{C::gender.His}} looks are about average for {{C::species.aRat}}.`
+    if (this.character.personal > averagePersonal)  { return Random.from([
+      `{{C::gender.He}} is quite good looking for {{C::species.aRat}}.`
     ]); }
 
-    return Random.from([
-      `{{C::gender.He}} is quite good looking for {{C::species.aRat}}.`
-    ]);
+    // No need to comment further on average looking characters.
+    return ''
   }
 
-  // TODO: Also should include hornShape (and injuries?)
   headDescription() {
-    if (this.character.speciesCode == 'rat') {
-      return `{{C::gender.His}} face is unsurprisingly rat-like with {{C::body.eyeColor}} eyes, a short muzzle, long whiskers and a twitchy pink nose.`
+    if (typeof this.character.species.headDescription == 'function') {
+      return this.character.species.headDescription(this.character, this.body);
     }
-
+    if (typeof this.character.species.headDescription == 'string') {
+      return this.character.species.headDescription;
+    }
     return Random.from([
       `{{C::gender.He}} has an elven face with {{C::body.eyeColor}} eyes and {{C::body.hairColor}} hair.`,
     ]);

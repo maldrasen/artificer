@@ -10,6 +10,10 @@ Species.build('caprien', {
   violenceRange: 25,
 
   bodyOptions: {
+    skinColors: 'human',
+    hairColors: 'human',
+    eyeColors: 'human',
+
     tailShape: 'goat',
     hornShapes: {
       'curved-ram':  50,
@@ -34,5 +38,22 @@ Species.build('caprien', {
     }},
   },
 
-  flags: ['furry']
+  flags: ['furry'],
+
+  // Head description is complex for a caprien because males have anthro goat
+  // heads and females do not.
+  headDescription: (character,body) => {
+    let horns = {
+      'curved-ram': 'curved ram horns',
+      'curved-back': 'long swept back horns',
+    }[body.hornShape];
+
+    if (character.genderCode == 'male') {
+      return `{{C::gender.He}} has a animalistic, goat-like face with with {{C::body.eyeColor}} eyes, ${horns}, and
+              covered in {{C::body.furColor}} fur.`;
+    }
+
+    return `{{C::gender.He}} has {{C::body.eyeColor}} eyes and a face like an elf except that {{C::gender.his}} head is
+            crowned with ${horns} parting {{C::gender.his}} {{C::body.hairColor}} hair.`;
+  },
 });

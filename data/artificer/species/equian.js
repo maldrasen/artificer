@@ -66,7 +66,9 @@ Species.build('equian', {
     anus:{  shape:'horse' }
   },
 
-  flags: ['furry']
+  flags: ['furry'],
+
+  headDescription: `{{C::gender.He}} has a big horse shaped head with {{C::body.eyeColor}} eyes.`,
 });
 
 //   flags: ['furry'],

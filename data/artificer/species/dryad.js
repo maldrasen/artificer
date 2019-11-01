@@ -49,7 +49,10 @@ Species.build('dryad', {
     }
   },
 
-  flags: ['fae','furry']
+  flags: ['fae','furry'],
+
+  headDescription: `{{C::gender.He}} has {{C::body.eyeColor}} eyes and a face like an elf except that {{C::gender.his}}
+                    head is crowned with a rack of deer antlers parting {{C::gender.his}} {{C::body.hairColor}} hair.`,
 });
 
 //   personalities: {
