@@ -1,10 +1,10 @@
 describe('Describer: Body', function() {
 
   function printBody(type, body) {
-    console.log(`   ${type} > ${body.description}`)
+    SpecHelper.print(`${type} > ${body.description}`);
   }
 
-  it.only('describes a body', function(done) {
+  it('describes a body', function(done) {
     SpecHelper.tenTimes(done, resolve => {
       SpecHelper.buildJada({ species:'caprien', gender:'female' }).then(jada => {
         jada.getBody().then(body => {

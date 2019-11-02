@@ -1,7 +1,7 @@
 describe('NameBuilder', function() {
 
   let namePrinter = function(options, done) {
-    console.log(`\n    [${options.species} names]`)
+    SpecHelper.print(`[${options.species} names]`);
 
     let tests = []
     for (let i=0; i<10; i++) {
@@ -9,7 +9,7 @@ describe('NameBuilder', function() {
         CharacterBuilder.build(options).then(character => {
           character.getCharacterAspects().then(aspects => {
             let aspectList = aspects.map((aspect) => { return `${aspect.code}.${aspect.level}` }).join(', ')
-            console.log(`      (${character.gender.male}) > ${character.name} > (${aspectList})`)
+            SpecHelper.print(`  (${character.gender.male}) > ${character.name} > (${aspectList})`);
             resolve();
           });
         });

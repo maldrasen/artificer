@@ -1,7 +1,7 @@
 describe('Describer: Tits', function() {
 
   function printTits(type, tits) {
-    console.log(`   ${type}(${tits.size}/${tits.shape}) > ${tits.description}`)
+    SpecHelper.print(`${type}(${tits.size}/${tits.shape}) > ${tits.description}`);
   }
 
   async function applySmash(tits) {
@@ -26,7 +26,7 @@ describe('Describer: Tits', function() {
     let output = await Weaver.weaveWithCharacter(description,'C',jada)
     let stripped = output.replace(/\n/g,'').replace(/\s+/g,' ');
 
-    console.log(`    ${type}(${tits.smashLevel}) > ${stripped}`);
+    SpecHelper.print(`${type}(${tits.smashLevel}) > ${stripped}`);
   }
 
   it('describes rat tits', function(done) {

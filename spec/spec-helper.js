@@ -1,5 +1,9 @@
 global.SpecHelper = (function() {
 
+  function print(message) {
+    if (VERBOSE) { console.log(`      ${message}`); }
+  }
+
   function buildJada(options) {
     return new Promise(resolve => {
       CharacterBuilder.build(
@@ -19,6 +23,6 @@ global.SpecHelper = (function() {
     Promise.all(tests).then(()=>{ done(); });
   }
 
-  return { buildJada, tenTimes };
+  return { print, buildJada, tenTimes };
 
 })();

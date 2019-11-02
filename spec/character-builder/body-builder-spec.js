@@ -75,7 +75,6 @@ describe('BodyBuilder', function() {
       character.getBody().then(body => {
         expect(body.furColor).to.be.oneOf(['black','brown','gray','white']);
         expect(body.furShade).to.be.within(1,5);
-        expect(body.hairColor).to.equal(null);
         expect(body.faceShape).to.equal('goat');
         done();
       });

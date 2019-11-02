@@ -11,6 +11,8 @@ global.TitsBuilder = (function() {
       sizeClass: null,
       sizeScale: null,
       shape: null,
+      lactationLevel: 0,
+      lactationFactor: 1,
       blightLevel: 0,
       blightPlace: null,
       blightCount: 0,

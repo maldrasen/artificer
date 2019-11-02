@@ -2,36 +2,38 @@ const TITS_SHAPES = ['flat','bell','conical','dangling','perky','round'];
 const TITS_SIZES = ['zero','tiny','small','average','big','huge','monster'];
 
 global.Tits = Database.instance().define('tits', {
-  character_id:  { type:Sequelize.INTEGER },
-  sizeClass:     { type:Sequelize.STRING, validate:{ isIn:[TITS_SIZES] }},
-  sizeScale:     { type:Sequelize.DOUBLE, validate:{ min:0, max:100 }},
-  shape:         { type:Sequelize.STRING, validate:{ isIn:[TITS_SHAPES] }},
-  count:         { type:Sequelize.INTEGER },
-  blightLevel:   { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
-  blightPlace:   { type:Sequelize.STRING, validate:{ isIn:[['left','right','all']] }},
-  blightCount:   { type:Sequelize.INTEGER },
-  blightHealing: { type:Sequelize.INTEGER },
-  burnLevel:     { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
-  burnPlace:     { type:Sequelize.STRING, validate:{ isIn:[['left','right','all']] }},
-  burnCount:     { type:Sequelize.INTEGER },
-  burnHealing:   { type:Sequelize.INTEGER },
-  smashLevel:    { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
-  smashCount:    { type:Sequelize.INTEGER },
-  smashPlace:    { type:Sequelize.STRING, validate:{ isIn:[['left','right','all']] }},
-  smashHealing:  { type:Sequelize.INTEGER },
-  smashShape:    { type:Sequelize.STRING, validate:{ isIn:[['hoof','hand']] }},
-  description:   { type:Sequelize.STRING },
+  character_id:    { type:Sequelize.INTEGER },
+  sizeClass:       { type:Sequelize.STRING, validate:{ isIn:[TITS_SIZES] }},
+  sizeScale:       { type:Sequelize.DOUBLE, validate:{ min:0, max:100 }},
+  shape:           { type:Sequelize.STRING, validate:{ isIn:[TITS_SHAPES] }},
+  count:           { type:Sequelize.INTEGER },
+  lactationLevel:  { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
+  lactationFactor: { type:Sequelize.DOUBLE },
+  blightLevel:     { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
+  blightPlace:     { type:Sequelize.STRING, validate:{ isIn:[['left','right','all']] }},
+  blightCount:     { type:Sequelize.INTEGER },
+  blightHealing:   { type:Sequelize.INTEGER },
+  burnLevel:       { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
+  burnPlace:       { type:Sequelize.STRING, validate:{ isIn:[['left','right','all']] }},
+  burnCount:       { type:Sequelize.INTEGER },
+  burnHealing:     { type:Sequelize.INTEGER },
+  smashLevel:      { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
+  smashCount:      { type:Sequelize.INTEGER },
+  smashPlace:      { type:Sequelize.STRING, validate:{ isIn:[['left','right','all']] }},
+  smashHealing:    { type:Sequelize.INTEGER },
+  smashShape:      { type:Sequelize.STRING, validate:{ isIn:[['hoof','hand']] }},
+  description:     { type:Sequelize.STRING },
 },{
   timestamps: false,
   getterMethods: {
     size() {
       let range = Tits.SizeRanges[this.sizeClass]
-      // TODO: Adjust for blight and pregnancy.
-      //       Pregnancy progress will need to update tits and pussy models
-      //       because we want this to stay sync.
-      //       Also add lactation factor again.
+      let smash = (this.smashLevel * 0.02)+1;
+      let blight = (this.blightLevel * 0.1)+1;
+      let lactation = (this.lactationLevel * 0.1)+1;
+
       let size = (this.sizeScale/100)*(range.max-range.min) + range.min
-      return Math.round(size);
+      return Math.round(size * smash * blight * lactation);
     },
 
     // The size class influences how tits grow in size, the current size though

@@ -1,7 +1,7 @@
 describe('Describer: Cock', function() {
 
   function printCock(type, cock) {
-    console.log(`   ${type}(${cock.convertedLength}) > ${cock.description}`)
+    SpecHelper.print(`${type}(${cock.convertedLength}) > ${cock.description}`);
   }
 
   it('describes normal cocks', function(done) {
