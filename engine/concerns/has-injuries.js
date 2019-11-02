@@ -65,11 +65,9 @@ global.HasInjuries = { isAppliedTo: function(model) {
 
   // TODO: Add in the other damage types as I add them to the body model.
   async function totalCriticalLevels(character) {
-    let total = 0;
+    const body = await character.getBody();
 
-    const body = character.getBody();
-
-    return total;
+    return body.smashLevel;
   }
 
   // TODO: Add in the other damage types as I add them to the other models.

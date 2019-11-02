@@ -12,7 +12,9 @@ Resolver.Minions = (function() {
   }
 
   async function applyHealing(minions) {
-    // TODO: Heal minoins.
+    await Promise.all(minions.map(async minion => {
+      await Resolver.Healing.applyHealing(minion);
+    }));
   }
 
   // Currently, completing the minion in the report just sets the character's

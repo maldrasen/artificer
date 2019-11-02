@@ -21,17 +21,14 @@ Components.ReportView = (function() {
 
     if (minion.work.flavors) { lowerRow.append(buildSpoilsRow(minion.work.flavors)); }
     if (minion.work.notifications) { lowerRow.append(buildNotificationsFrame(minion.work.notifications)); }
-
-    if (minion.work.injury) {
-      storyRow.append($('<span>',{ class:'injury-story' }).append(` ${minion.work.injury}`));
-    }
+    if (minion.work.injury) { storyRow.append($('<span>',{ class:'injury-story' }).append(` ${minion.work.injury}`)); }
+    if (minion.healed) { storyRow.append($('<span>',{ class:'healed-story' }).append(` ${minion.healed}`)); }
 
     let minionFrame = $('<li>',{class: 'report-minion-frame' }).
       append(portrait).
       append(topRow).
       append(storyRow).
       append(lowerRow);
-
 
     $('#reportView').find('.minion-list').append(minionFrame);
   }

@@ -24,6 +24,7 @@ require(`${ROOT}/engine/devices/composer`);
 require(`${ROOT}/engine/devices/resolver`);
 require(`${ROOT}/engine/devices/resolver-events`);
 require(`${ROOT}/engine/devices/resolver-game`);
+require(`${ROOT}/engine/devices/resolver-healing`);
 require(`${ROOT}/engine/devices/resolver-items`);
 require(`${ROOT}/engine/devices/resolver-minions`);
 require(`${ROOT}/engine/devices/resolver-missions`);
@@ -56,11 +57,11 @@ require(`${ROOT}/engine/helpers/random.js`);
 
 // === Units ===
 require(`${ROOT}/engine/units/abuser`);
-// require(`${ROOT}/engine/units/abusers/anus-abuser`);
-// require(`${ROOT}/engine/units/abusers/body-abuser`);
-// require(`${ROOT}/engine/units/abusers/cock-abuser`);
-// require(`${ROOT}/engine/units/abusers/head-abuser`);
-// require(`${ROOT}/engine/units/abusers/pussy-abuser`);
+require(`${ROOT}/engine/units/abusers/anus-abuser`);
+require(`${ROOT}/engine/units/abusers/body-abuser`);
+require(`${ROOT}/engine/units/abusers/cock-abuser`);
+require(`${ROOT}/engine/units/abusers/head-abuser`);
+require(`${ROOT}/engine/units/abusers/pussy-abuser`);
 require(`${ROOT}/engine/units/abusers/tits-abuser`);
 
 require(`${ROOT}/engine/units/role`);
