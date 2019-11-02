@@ -6,20 +6,20 @@ terrible measure of progress and doneness normally, but this project involves a
 ton of writing, so knowing how many lines this has is actually useful. I'm
 thinking once we approach 500,000 lines we'll be close to done.
 
-Pungenday, the 69th day of Bureaucracy in the YOLD 3185 / 15 Oct 2019
+Sweetmorn, the 14th day of The Aftermath in the YOLD 3185 / 2 Nov 2019
 
 ---------- Result ------------
 
-            Physical :  15713
-              Source :  13015
-             Comment :  1023
- Single-line comment :  1018
+            Physical :  20509
+              Source :  16505
+             Comment :  1548
+ Single-line comment :  1543
        Block comment :  5
-               Mixed :  23
+               Mixed :  33
  Empty block comment :  0
-               Empty :  1698
-               To Do :  67
+               Empty :  2489
+               To Do :  41
 
-Number of files read :  328
+Number of files read :  369
 
 ----------------------------
