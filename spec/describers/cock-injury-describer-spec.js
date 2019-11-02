@@ -35,7 +35,7 @@ describe.only('Describer: Cock (injuries)', function() {
 
   it('describes blighted cock', function(done) {
     SpecHelper.tenTimes(done, resolve => {
-      SpecHelper.buildJada({  }).then(jada => {
+      SpecHelper.buildJada({ species:'centaur' }).then(jada => {
         jada.getCock().then(cock => {
           applyBlight(cock).then(() => {
             describeInjury('blight', jada, cock).then(() => {
