@@ -24,7 +24,7 @@ Abuser.CockAbuser = (function() {
     cock.blightLevel = Abuser.raiseLevel(cock.blightLevel, hazard.level, 5);
     cock.blightCount += 1;
     cock.blightHealing = 0;
-    cock.blightPlace = leftRightOrAll(cock.blightPlace, place)
+    cock.blightPlace = cockBallsOrAll(cock.blightPlace, place)
   }
 
   function addBurnInjury(character, cock, hazard) {}
