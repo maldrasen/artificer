@@ -68,6 +68,24 @@ global.Description = class Description extends Form {
 
   validForCockInjury(damageType, context) {
     if (this.type != 'cock-injury') { return false; }
+
+    if (damageType == 'blight') {
+      if (this.damageType != 'blight') { return false; }
+      if (this.level != context.cock.blightLevel) { return false; }
+      if (this.place == 'balls' && context.cock.blightPlace != 'balls') { return false; }
+      if (this.place != 'balls' && context.cock.blightPlace == 'balls') { return false; }
+    }
+    if (damageType == 'burn') {
+      if (this.damageType != 'burn') { return false; }
+      if (this.level != context.cock.burnLevel) { return false; }
+      if (this.place == 'balls' && context.cock.blightPlace != 'balls') { return false; }
+      if (this.place != 'balls' && context.cock.blightPlace == 'balls') { return false; }
+    }
+    if (damageType == 'smash') {
+      if (this.damageType != 'smash') { return false; }
+      if (this.level != context.cock.smashLevel) { return false; }
+    }
+
     return true;
   }
 

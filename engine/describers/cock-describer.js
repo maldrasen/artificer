@@ -275,7 +275,7 @@ global.CockDescriber = class CockDescriber {
 
   describeBlight() {
     if (this.cock.blightLevel == 0) { return ''; }
-    let hisCockHasBeen = this.injuryStart(this.cock.smashPlace);
+    let hisCockHasBeen = this.injuryStart(this.cock.blightPlace);
 
     this.previousInjury = {
       type: 'blight',
@@ -296,7 +296,7 @@ global.CockDescriber = class CockDescriber {
 
   describeBurn() {
     if (this.cock.burnLevel == 0) { return ''; }
-    let hisCockHasBeen = this.injuryStart(this.cock.smashPlace);
+    let hisCockHasBeen = this.injuryStart(this.cock.burnPlace);
 
     this.previousInjury = {
       type: 'burn',

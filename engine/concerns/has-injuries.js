@@ -84,6 +84,11 @@ global.HasInjuries = { isAppliedTo: function(model) {
       total += cock.burnLevel;
       total += cock.smashLevel;
     }
+    if (pussy) {
+      total += pussy.blightLevel;
+      total += pussy.burnLevel;
+      total += pussy.smashLevel;
+    }
     if (tits) {
       total += tits.blightLevel;
       total += tits.burnLevel;

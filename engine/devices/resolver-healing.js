@@ -6,6 +6,11 @@ Resolver.Healing = (function() {
 
     await healPart(minion, parts.body, 'smash', healed);
 
+    if (parts.cock) {
+      await healPart(minion, parts.cock, 'blight', healed);
+      await healPart(minion, parts.cock, 'burn', healed);
+      await healPart(minion, parts.cock, 'smash', healed);
+    }
     if (parts.tits) {
       await healPart(minion, parts.tits, 'blight', healed);
       await healPart(minion, parts.tits, 'burn', healed);

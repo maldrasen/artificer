@@ -87,7 +87,7 @@ global.TitsDescriber = class TitsDescriber {
 
   describeBlight() {
     if (this.tits.blightLevel == 0) { return ''; }
-    let herTitsHaveBeen = this.injuryStart(this.tits.smashPlace);
+    let herTitsHaveBeen = this.injuryStart(this.tits.blightPlace);
 
     this.previousInjury = {
       type: 'blight',
@@ -109,7 +109,7 @@ global.TitsDescriber = class TitsDescriber {
 
   describeBurn() {
     if (this.tits.burnLevel == 0) { return ''; }
-    let herTitsHaveBeen = this.injuryStart(this.tits.smashPlace);
+    let herTitsHaveBeen = this.injuryStart(this.tits.burnPlace);
 
     this.previousInjury = {
       type: 'burn',
