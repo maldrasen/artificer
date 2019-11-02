@@ -30,7 +30,6 @@ global.CockBuilder = (function() {
       burnHealing:      0,
       smashLevel:       0,
       smashCount:       0,
-      smashPlace:       null,
       smashHealing:     0,
       smashShape:       null,
       description:      null,

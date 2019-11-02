@@ -26,7 +26,6 @@ global.Cock = Database.instance().define('cock', {
   burnHealing:       { type:Sequelize.INTEGER },
   smashLevel:        { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
   smashCount:        { type:Sequelize.INTEGER },
-  smashPlace:        { type:Sequelize.STRING, validate:{ isIn:[['cock','balls','all']] }},
   smashHealing:      { type:Sequelize.INTEGER },
   smashShape:        { type:Sequelize.STRING, validate:{ isIn:[['hoof','hand']] }},
   description:       { type:Sequelize.STRING  },

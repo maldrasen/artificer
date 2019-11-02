@@ -4,11 +4,14 @@ global.CockDescriber = class CockDescriber {
     if (options.character == null) { throw `The Character must at least be set.` }
     this._character = options.character;
     this._cock = options.cock;
+    this._previousInjury = null;
     this._included = [];
   }
 
   get character() { return this._character; }
   get cock() { return this._cock; }
+  get previousInjury() { return this._previousInjury; }
+  set previousInjury(i) { this._previousInjury = i; }
 
   addIncluded(key) { this._included.push(key); }
   isIncluded(key) { return this._included.indexOf(key) >= 0; }
@@ -25,6 +28,7 @@ global.CockDescriber = class CockDescriber {
       ${this.knobsDescription()}
       ${this.spinesDescription()}
       ${this.ballsDescription()}
+      ${this.injuryDescriptions()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
     this.cock.description = await Weaver.weaveWithCharacter(description,'C',this.character);
@@ -58,17 +62,24 @@ global.CockDescriber = class CockDescriber {
 
     if (this.cock.count > 1) {
       return Random.from([
-        `{{C::gender.His}} {{C::cock.cocks}} all swell to {{C::cock.huge(knot)}} {{C::cock.twoInch(knot)}} {{wide}} knots at their bases.`,
-        `Each of {{C::gender.his}} {{C::cock.count}} {{C::cock.cocks}} swell to {{C::cock.aHuge(knot)}} {{C::cock.twoInch(knot)}} {{wide}} knot near the base.`,
-        `At the base of each of {{C::gender.his}} {{C::cock.cocks}} is a {{C::cock.twoInch(knot)}} {{wide}} knot the size of {{C::cock.anApple(knot)}}.`,
+        `{{C::gender.His}} {{C::cock.cocks}} all swell to {{C::cock.huge(knot)}} {{C::cock.twoInch(knot)}} {{wide}}
+         knots at their bases.`,
+        `Each of {{C::gender.his}} {{C::cock.count}} {{C::cock.cocks}} swell to {{C::cock.aHuge(knot)}}
+         {{C::cock.twoInch(knot)}} {{wide}} knot near the base.`,
+        `At the base of each of {{C::gender.his}} {{C::cock.cocks}} is a {{C::cock.twoInch(knot)}} {{wide}} knot the
+         size of {{C::cock.anApple(knot)}}.`,
       ]);
     }
 
     return Random.from([
-      `{{C::gender.His}} {{C::cock.cock}} swells to {{C::cock.aHuge(knot)}} {{C::cock.twoInch(knot)}} {{wide}} knot near its base.`,
-      `The base of {{C::gender.his}} {{C::cock.cock}} swells to {{C::cock.aHuge(knot)}} {{C::cock.twoInch(knot)}} {{wide}} knot.`,
-      `At the base of {{C::gender.his}} {{C::cock.cock}} is a {{C::cock.aHuge(knot)}} knot the size of {{C::cock.anApple(knot)}}.`,
-      `The knot at the base of {{C::gender.his}} {{C::cock.cock}} is the size of {{C::cock.anApple(knot)}} at around {{C::cock.twoInches(knot)}} {{wide}}.`,
+      `{{C::gender.His}} {{C::cock.cock}} swells to {{C::cock.aHuge(knot)}} {{C::cock.twoInch(knot)}} {{wide}} knot
+       near its base.`,
+      `The base of {{C::gender.his}} {{C::cock.cock}} swells to {{C::cock.aHuge(knot)}} {{C::cock.twoInch(knot)}}
+       {{wide}} knot.`,
+      `At the base of {{C::gender.his}} {{C::cock.cock}} is a {{C::cock.aHuge(knot)}} knot the size of
+       {{C::cock.anApple(knot)}}.`,
+      `The knot at the base of {{C::gender.his}} {{C::cock.cock}} is the size of {{C::cock.anApple(knot)}} at around
+       {{C::cock.twoInches(knot)}} {{wide}}.`,
     ]);
   }
 
@@ -78,24 +89,29 @@ global.CockDescriber = class CockDescriber {
 
     if (this.cock.count == 2) {
       return Random.from([
-        "Both of {{C::gender.his}} {{C::cock.cocks}} emerge from a tightly stretched {{C::cock.furrySheath}} between {{C::gender.his}} legs.",
-        "{{C::gender.His}} twin {{C::cock.cocks}} extend out from an oversized {{C::cock.furrySheath}} .",
-        "The two {{C::cock.big}} shafts emerge from a {{wide}} {{C::cock.furrySheath}}, situated between {{C::gender.his}} legs.",
+        `Both of {{C::gender.his}} {{C::cock.cocks}} emerge from a tightly stretched {{C::cock.furrySheath}} between
+         {{C::gender.his}} legs.`,
+        `{{C::gender.His}} twin {{C::cock.cocks}} extend out from an oversized {{C::cock.furrySheath}}.`,
+        `The two {{C::cock.big}} shafts emerge from a {{wide}} {{C::cock.furrySheath}}, situated between
+         {{C::gender.his}} legs.`,
       ]);
     }
 
     if (this.cock.count > 2) {
       return Random.from([
-        "{{C::gender.His}} {{C::cock.count}} {{C::cock.cocks}} emerge from a hugely stretched {{C::cock.furrySheath}} between {{C::gender.his}} legs.",
-        "{{C::gender.His}} {{C::cock.count}} {{C::cock.cocks}} extend out from a hugely oversized {{C::cock.furrySheath}}.",
-        "The {{C::cock.count}} {{C::cock.big}} shafts emerge from an increadibly wide {{C::cock.furrySheath}} tucked between {{C::gender.his}} legs.",
+        `{{C::gender.His}} {{C::cock.count}} {{C::cock.cocks}} emerge from a hugely stretched {{C::cock.furrySheath}}
+         between {{C::gender.his}} legs.`,
+        `{{C::gender.His}} {{C::cock.count}} {{C::cock.cocks}} extend out from a hugely oversized
+         {{C::cock.furrySheath}}.`,
+        `The {{C::cock.count}} {{C::cock.big}} shafts emerge from an increadibly wide {{C::cock.furrySheath}} tucked
+         between {{C::gender.his}} legs.`,
       ]);
     }
 
     return Random.from([
-      "{{C::gender.His}} {{C::cock.cock}} emerges from {{C::cock.aBig}} {{C::cock.furrySheath}} between {{C::gender.his}} legs.",
-      "{{C::gender.His}} {{C::cock.cock}} lies tucked within {{C::cock.aBig}} {{C::cock.furrySheath}}.",
-      "The {{C::cock.big}} shaft emerges from a {{C::cock.furrySheath}} tucked between {{C::gender.his}} legs.",
+      `{{C::gender.His}} {{C::cock.cock}} emerges from {{C::cock.aBig}} {{C::cock.furrySheath}} between {{C::gender.his}} legs.`,
+      `{{C::gender.His}} {{C::cock.cock}} lies tucked within {{C::cock.aBig}} {{C::cock.furrySheath}}.`,
+      `The {{C::cock.big}} shaft emerges from a {{C::cock.furrySheath}} tucked between {{C::gender.his}} legs.`,
     ]);
   }
 
@@ -105,7 +121,8 @@ global.CockDescriber = class CockDescriber {
 
     return Random.from([
       `A series of thick bony ridges run down the entire length of {{C::gender.his}} {{C::cock.cock}}.`,
-      `{{C::gender.His}} {{C::cock.cock}} has a series of thick bony ridges that extend {{C::cock.twoInches(ridge)}} from {{C::gender.his}} cock's scaley skin.`,
+      `{{C::gender.His}} {{C::cock.cock}} has a series of thick bony ridges that extend {{C::cock.twoInches(ridge)}}
+       from {{C::gender.his}} cock's scaley skin.`,
       `Thick bony ridges protrude {{C::cock.twoInches(ridge)}} from the surface of {{C::gender.his}} shaft.`,
       `The entire shaft of dragon meat is ringed with thick bony ridges.`,
     ]);
@@ -121,27 +138,34 @@ global.CockDescriber = class CockDescriber {
     if (this.cock.count == 1) {
       ArrayUtility.addAll(choices,[
         `The entire length of {{C::gender.his}} cock is textured with gnarled {{C::cock.acorn(knob)}} sized bumps.`,
-        `{{C::gender.His}} {{C::cock.cock}} is studded, seemingly at random, with hard nubs the size of {{C::cock.acorns(knob)}}.`,
+        `{{C::gender.His}} {{C::cock.cock}} is studded, seemingly at random, with hard nubs the size of
+         {{C::cock.acorns(knob)}}.`,
         `Gnarled, {{C::cock.acorn(knob)}} sized bulges adorn every inch of {{C::gender.his}} shaft.`
       ]);
 
       if (knobHeight > 12) { ArrayUtility.addAll(choices,[
-        `The entire length of {{C::gender.his}} cock is textured with gnarled {{C::cock.twoInches(knob)}} high bumps, each the size of {{C::cock.anAcorn(knob)}}`,
-        `{{C::gender.His}} {{C::cock.cock}} is studded, seemingly at random, with hard {{C::cock.twoInches(knob)}} wide knobs, each the size of {{C::cock.anAcorn(knob)}}.`,
+        `The entire length of {{C::gender.his}} cock is textured with gnarled {{C::cock.twoInches(knob)}} high bumps,
+         each the size of {{C::cock.anAcorn(knob)}}`,
+        `{{C::gender.His}} {{C::cock.cock}} is studded, seemingly at random, with hard {{C::cock.twoInches(knob)}} wide
+         knobs, each the size of {{C::cock.anAcorn(knob)}}.`,
       ]); }
 
       return Random.from(choices);
     }
 
     ArrayUtility.addAll(choices,[
-      `{{C::gender.His}} {{C::cock.count}} {{C::cock.cocks}} are {{C::cock.both}} textured with gnarled {{C::cock.acorn(knob)}} sized bumps.`,
-      `{{C::gender.His}} {{C::cock.cocks}} are studded, seemingly at random, with hard nubs the size of {{C::cock.acorns(knob)}}.`,
+      `{{C::gender.His}} {{C::cock.count}} {{C::cock.cocks}} are {{C::cock.both}} textured with gnarled
+       {{C::cock.acorn(knob)}} sized bumps.`,
+      `{{C::gender.His}} {{C::cock.cocks}} are studded, seemingly at random, with hard nubs the size of
+       {{C::cock.acorns(knob)}}.`,
       `Gnarled, {{C::cock.acorn(knob)}} sized bulges, adorn every inch of {{C::gender.his}} shafts.`,
     ]);
 
     if (knobHeight > 12) { ArrayUtility.addAll(choices,[
-      `The {{C::cock.count}} {{C::cock.cocks}} are {{C::cock.both}} textured with gnarled {{C::cock.twoInches(knob)}} bumps, each the size of {{C::cock.anAcorn(knob)}}.`,
-      `{{C::gender.His}} {{C::cock.cocks}} are studded, seemingly at random, with hard {{C::cock.twoInches(knob)}} wide knobs, each the size of {{C::cock.anAcorn(knob)}}.`,
+      `The {{C::cock.count}} {{C::cock.cocks}} are {{C::cock.both}} textured with gnarled {{C::cock.twoInches(knob)}}
+       bumps, each the size of {{C::cock.anAcorn(knob)}}.`,
+      `{{C::gender.His}} {{C::cock.cocks}} are studded, seemingly at random, with hard {{C::cock.twoInches(knob)}} wide
+       knobs, each the size of {{C::cock.anAcorn(knob)}}.`,
       `Thick, {{C::cock.acorn(knob)}} sized bulges, adorn every inch of {{C::gender.his}} shafts.`,
     ]); }
 
@@ -239,5 +263,118 @@ global.CockDescriber = class CockDescriber {
     ]);
   }
 
+  // === Injuries ===
+
+  injuryDescriptions() {
+    return `
+      ${this.describeBlight()}
+      ${this.describeBurn()}
+      ${this.describeSmash()}
+    `;
+  }
+
+  describeBlight() {
+    if (this.cock.blightLevel == 0) { return ''; }
+    let hisCockHasBeen = this.injuryStart(this.cock.smashPlace);
+
+    this.previousInjury = {
+      type: 'blight',
+      place: this.cock.blightPlace,
+    }
+
+    let description = Random.from(Description.validForInjury('cock','blight',{
+      character: this.character,
+      cock: this.cock,
+    }));
+
+    if (description == null) {
+      return Weaver.error(`Unable to find a blighted cock description`)
+    }
+
+    return `${hisCockHasBeen} ${description.d}`
+  }
+
+  describeBurn() {
+    if (this.cock.burnLevel == 0) { return ''; }
+    let hisCockHasBeen = this.injuryStart(this.cock.smashPlace);
+
+    this.previousInjury = {
+      type: 'burn',
+      place: this.cock.burnPlace,
+    }
+
+    let description = Random.from(Description.validForInjury('cock','burn',{
+      character: this.character,
+      cock: this.cock,
+    }));
+
+    if (description == null) {
+      return Weaver.error(`Unable to find a burnt cock description`)
+    }
+
+    return `${hisCockHasBeen} ${description.d}`
+  }
+
+  describeSmash() {
+    if (this.cock.smashLevel == 0) { return ''; }
+
+    let hisCockHasBeen = this.injuryStart('balls');
+
+    this.previousInjury = {
+      type: 'smash',
+      place: 'balls',
+    }
+
+    let description = Random.from(Description.validForInjury('cock','smash',{
+      character: this.character,
+      cock: this.cock,
+    }));
+
+    if (description == null) {
+      return Weaver.error(`Unable to find a smashed cock description`)
+    }
+
+    return `${hisCockHasBeen} ${description.d}`;
+  }
+
+  // === Segments ===
+
+  // The injury start segment considers the previous injury described, really
+  // we just need to distinguish between cock and balls.
+  injuryStart(place) {
+    if (this.previousInjury == null) {
+      if (place == 'balls') { return Random.from([
+        '{{C::gender.His}} {{ballsack}} has been',
+        '{{C::gender.His}} {{testicles}} have been',
+        'It looks like {{C::gender.his}} {{ballsack}} has been',
+        'It looks like {{C::gender.his}} {{testicles}} have been',
+      ]); }
+
+      return Random.from([
+        `{{C::gender.His}} {{C::cock.cock}} has been`,
+        'It looks like {{C::gender.his}} {{C::cock.cock}} has been',
+      ]);
+    }
+
+    if (place == 'balls' && this.previousInjury.place == 'balls') { return Random.from([
+      `They've also been`,
+      `Then, {{C::gender.his}} {{ballsack}} has also been`,
+      `Then, {{C::gender.his}} {{testicles}} have also been`,
+    ]); }
+
+    if (place == 'balls' && this.previousInjury.place != 'balls') { return Random.from([
+      `Then, {{C::gender.his}} {{ballsack}} has been`,
+      `Then, {{C::gender.his}} {{testicles}} have been`,
+    ]); }
+
+    if (place != 'balls' && this.previousInjury.place == 'balls') {
+      return `Then, {{C::gender.his}} {{C::cock.cock}} has been`;
+    }
+
+    return Random.from([
+      `Then {{C::gender.his}} {{C::cock.cock}} was`,
+      `Then it was`,
+    ]);
+  }
 
 }
