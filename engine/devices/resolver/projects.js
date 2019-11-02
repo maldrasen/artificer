@@ -29,6 +29,10 @@ Resolver.Projects = (function() {
     game.currentProjectProgress = 0;
     await game.save();
 
+    if (project.materials) {
+      await Resource.consume(project.materials);
+    }
+
     // All the minions who were assigned to this project should have their
     // current task set to project. This will prevent them from getting
     // assigned to other tasks while the project is being worked on. It's also

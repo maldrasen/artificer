@@ -10,7 +10,7 @@ Resolver.Report = (function() {
   }
 
   function setProjectCompletedText(project) {
-    Resolver.currentReport().project = { text:`I've completed work on ${project.workingName}.` };
+    Resolver.currentReport().project = { text:`I've finished ${project.workingName}.` };
   }
 
   function setProjectIdleText() {

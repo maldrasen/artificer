@@ -122,6 +122,10 @@ Components.PlanView = (function() {
       <div class='help'>${assistance}</div>
     `)
 
+    if (project.readyState.ready == false) {
+      selected.find('.description').append(` <span class='excuse'>I won't be able to work on this just yet. ${project.readyState.excuse}</span>`);
+    }
+
     if (project.readyState.ready && availableHoursFor(project)) {
       selected.append($('<a>',{ href:'#', class:'select-available-project button-primary' }).append('Select'));
     }

@@ -33,9 +33,9 @@
     border: $border-normal;
     background-color: rgba(0,0,0,0.5);
   }
-  .selected-project {
-    margin: 10px;
-  }
+
+  .selected-project { margin: 10px; }
+  .excuse { color: $fg-warning; }
 
   .plan-footer {
     position: fixed;
