@@ -66,20 +66,29 @@
 //           nipple had swollen up to twice its normal size.`
 // });
 //
-// // --- Cock : Blight ---
-//
-// // TODO: Use actual cock description here.
-// Hazard.buildHazard({ activity:'hunting-hinterlands', location:'cock', type:'blight', level:5,
-//   requires: ['failure','tier-0','species-rat'],
-//   story: `{{H::gender.He}} was chasing a fox through the nearby woods when {{H::gender.he}} ran face first
-//           into a massive spiderweb, becoming immediately entangled. One of the local dryads, tired of your rats
-//           hunting her animal friends, set the trap in order to spend the afternoon teaching {{H::gender.him}} a lesson
-//           by tormenting {{H::gender.his}} cock. {{H::gender.He}} was finally able to limp home that evening, but only
-//           after having spent the last several hours getting {{H::gender.his}} small dick stung and chewed on by
-//           centipedes, spiders, and wasps.`
-// });
-//
-// // --- Pussy : Pierce ---
+// --- Cock : Blight ---
+
+Hazard.buildHazard('hunt-cock-blight-001', { activity:'hunting-hinterlands', location:'cock', type:'blight', level:1,
+  requires: ['tier-0'],
+  details: { focus:'balls' },
+  story: `{{H::gender.He}} was hiding in a bush, sqatting down in a position that allowed {{H::gender.his}}
+          {{H::balls.size}} {{H::balls.ballsack}} to hang below {{H::gender.him}}. {{H::balls.He}} failed to notice a
+          scorpian crawling towards {{H::gender.him}} until it stabbed {{H::gender.him}} right in his dangling
+          {{H::balls.ballsack}}.`
+});
+
+Hazard.buildHazard('hunt-cock-blight-004', { activity:'hunting-hinterlands', location:'cock', type:'blight', level:4,
+  requires: ['failure','tier-0','species-rat'],
+  details: { focus:'cock' },
+  story: `{{H::gender.He}} was chasing a fox through the nearby woods when {{H::gender.he}} ran face first
+          into a massive spiderweb, becoming immediately entangled. One of the local dryads, tired of your rats
+          hunting her animal friends, set the trap in order to spend the afternoon teaching {{H::gender.him}} a lesson
+          by tormenting {{H::gender.his}} {{H::cock.cock}}. {{H::gender.He}} was finally able to limp home that
+          evening, but only after having spent the last several hours getting {{H::gender.his}} {{H::cock.big}}
+          {{H::cock.cock}} stung and chewed on by centipedes, spiders, and wasps.`
+});
+
+// --- Pussy : Pierce ---
 //
 // Hazard.buildHazard({ activity:'hunting-hinterlands', location:'pussy', type:'pierce', level:3,
 //   requires: ['tier-0'],

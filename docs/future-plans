@@ -19,6 +19,11 @@ attribute as well.
 
 I'd like to include support for tattoos and piercings at some point.
 
+=== Anal Tongues ===
+
+As a possible mutation, a character can grow a tongue rooted somewhere in their anus. Tongue should have a length
+attribute.
+
 === Backlog? ===
 
 In case you click past some important text we should keep a running text backlog on the client side. In order to do
