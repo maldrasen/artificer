@@ -36,7 +36,7 @@ describe('CockBuilder', function() {
         expect(cock.spineHeight).to.equal(30);
         expect(cock.length).to.equal(801);
         expect(cock.width).to.equal(186);
-        expect(cock.scrotumWidth).to.equal(1116);
+        expect(cock.scrotumWidth).to.equal(930);
         done();
       });
     });

@@ -29,16 +29,15 @@ Weaver.BallsLoom = (function() {
   function scrotumWidthInches(cock, plural) { return EnglishUtility.inchesInEnglish(cock.convertedScrotumWidth, plural); }
   function testicleWidthInches(cock, plural) { return EnglishUtility.inchesInEnglish(cock.convertedTesticleWidth, plural); }
 
-
+  // Slightly different from the cock size adjectives.
   function size(cock) {
-    return 'big'
-    // return Random.from({
-    //   small:   ['small','small','small','short','stubby'],
-    //   average: ['long','lengthy','nice sized','well proportioned'],
-    //   big:     ['large','fat','thick','big','larger than average','nice big','big beautiful'],
-    //   huge:    ['huge','very large','very thick','very big','huge fat'],
-    //   monster: ['massive','massively huge','monstrous','monstrously huge','huge fucking'],
-    // }[cock.currentBallsSizeClass]);
+    return Random.from({
+      small:   ['small','small','small','shrunken','little','shriveled','lean','scrawny'],
+      average: ['thick','swollen','nice sized','well proportioned','dense'],
+      big:     ['large','fat','thick','big','larger than average','nice big','big beautiful','heavy'],
+      huge:    ['huge','very large','very thick','very big','huge fat','enormous','mammoth','formidable','immense','ponderous'],
+      monster: ['massive','massively huge','monstrous','monstrously huge','huge fucking','titanic','gigantic','enormous','excessively huge'],
+    }[cock.currentBallsSizeClass]);
   }
 
   function furryBallsack(cock) {

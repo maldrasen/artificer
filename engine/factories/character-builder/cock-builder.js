@@ -60,10 +60,6 @@ global.CockBuilder = (function() {
     return Math.round(0.1548712 * cockParams.length * cockParams.widthRatio);
   }
 
-  function getProductionMultiplier(species) {
-    return 1 + (Random.upTo(100)/100) + (ObjectUtility.fetch(species, 'bodyOptions', 'balls', 'extraProduction') || 0);
-  }
-
   return { build:build }
 
 })();

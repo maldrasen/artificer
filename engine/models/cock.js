@@ -55,6 +55,18 @@ global.Cock = Database.instance().define('cock', {
       return 'monster'                        // >16in
     },
 
+    // I calculate the balls size class separatly from the cock size class
+    // becase the balls have a width multiplier and extra injury swelling that
+    // might but the balls into a different class from the cock.
+    currentBallsSizeClass() {
+      let width = Math.round(this.testicleWidth);
+      if (width < 25) { return 'small';   } // <1in
+      if (width < 38) { return 'average'; } // 1in - 1.5in
+      if (width < 51) { return 'big';     } // 1.5in - 2in
+      if (width < 76) { return 'huge';    } // 2in - 3in
+      return 'monster'                      // >3in
+    },
+
     // Gigantic and Titanic cocks don't really factor into the growth formulas,
     // so they're not really separate size classes, but they're sometimes used
     // in the describers for really huge cocks.
