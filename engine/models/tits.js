@@ -37,14 +37,15 @@ global.Tits = Database.instance().define('tits', {
     },
 
     // The size class influences how tits grow in size, the current size though
-    // is used to determine what their current class is now.
+    // is used to determine what their current class is now. A flat chest
+    // swells to tiny if the character's tits are blighted.
     currentSizeClass() {
       let size = this.size;
-      if (size == 0) { return 'zero'; }
-      if (size < 30) { return 'tiny'; }
-      if (size < 100) { return 'small'; }
-      if (size < 300) { return 'average'; }
-      if (size < 600) { return 'big'; }
+      if (size == 0)   { return (blightLevel == 0) ? 'zero' : 'tiny' }
+      if (size < 30)   { return 'tiny'; }
+      if (size < 100)  { return 'small'; }
+      if (size < 300)  { return 'average'; }
+      if (size < 600)  { return 'big'; }
       if (size < 1000) { return 'huge'; }
       return 'monster'
     }
