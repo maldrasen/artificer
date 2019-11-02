@@ -38,7 +38,7 @@ Weaver.CockLoom = (function() {
     if (token == "cock.anAcorn(knob)") { return EnglishUtility.a_an(acornKnob(cock)); }
     if (token == "cock.furrySheath") { return furrySheath(cock); }
 
-    return Weaver.error(`Bad tits token(${token})`);
+    return Weaver.error(`Bad cock token(${token})`);
   }
 
   function lengthInches(cock, plural) { return EnglishUtility.inchesInEnglish(cock.convertedLength, plural); }
@@ -95,7 +95,7 @@ Weaver.CockLoom = (function() {
 
   function furrySheath(cock) {
     let furry;
-    if (cock.sheath == 'skin') {   furry = Random.from(['leathery','leathery','leathery','hot leathery']); }
+    if (cock.sheath == 'skin') {   furry = Random.from(['leathery','leathery','leathery','thick','rough']); }
     if (cock.sheath == 'scales') { furry = Random.from(['scaly','scaled']); }
     if (cock.sheath == 'fur') {    furry = Random.from(['furry','furry','fuzzy','soft furry']); }
     return `${furry} {{sheath}}`;

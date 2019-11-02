@@ -42,6 +42,7 @@ global.Weaver = (function() {
   }
 
   function actorValue(subject, token, context) {
+    if (token.startsWith('balls'))     { return Weaver.BallsLoom.findValue(subject, token, context); }
     if (token.startsWith('body'))      { return Weaver.BodyLoom.findValue(subject, token, context); }
     if (token.startsWith('character')) { return Weaver.CharacterLoom.findValue(subject, token, context); }
     if (token.startsWith('cock'))      { return Weaver.CockLoom.findValue(subject, token, context); }
@@ -59,14 +60,16 @@ global.Weaver = (function() {
   }
 
   function simpleValue(token) {
-    if (token == 'sheath')    { return Random.from(['sheath','sheath','cocksheath']); }
+    if (token == 'ballsack')  { return Random.from(['ballsack','ballsack','scrotum']); }
+    if (token == 'maleDemon') { return Random.from(['Abaddon','Baal','Baphomet','Behemoth','Lucifer','Maldrasen','Mephistopheles','Satan','Slaanesh']); }
+    if (token == 'sheath')    { return Random.from(['sheath','cocksheath']); }
+    if (token == 'testicles') { return Random.from(['testicles','balls']); }
     if (token == 'tit')       { return Random.from(['breast','tit']); }
     if (token == 'tits')      { return Random.from(['breasts','tits']); }
     if (token == 'throb')     { return Random.from(['throb','pulse']); }
     if (token == 'throbbing') { return Random.from(['throbbing','pulsing']); }
     if (token == 'wide')      { return Random.from(['wide','thick']); }
     if (token == 'unholy')    { return Random.from(['unholy','demonic','infernal','satanic','corrupt','blasphemous','cursed','accursed']); }
-    if (token == 'maleDemon') { return Random.from(['Abaddon','Baal','Baphomet','Behemoth','Lucifer','Maldrasen','Mephistopheles','Satan','Slaanesh']); }
 
     return error(`BadToken(${token})`);
   }

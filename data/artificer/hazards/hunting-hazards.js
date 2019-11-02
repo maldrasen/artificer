@@ -69,7 +69,7 @@
 // --- Cock : Blight ---
 
 Hazard.buildHazard('hunt-cock-blight-001', { activity:'hunting-hinterlands', location:'cock', type:'blight', level:1,
-  requires: ['tier-0'],
+  requires: ['tier-0','cock-external-balls'],
   details: { place:'balls' },
   story: `{{H::gender.He}} was hiding in a bush, sqatting down in a position that allowed {{H::gender.his}}
           {{H::balls.size}} {{H::balls.ballsack}} to hang below {{H::gender.him}}. {{H::balls.He}} failed to notice a

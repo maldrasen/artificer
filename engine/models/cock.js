@@ -36,8 +36,12 @@ global.Cock = Database.instance().define('cock', {
 
     length() {
       let range = Cock.SizeRanges[this.sizeClass]
-      // TODO: Adjust for blight.
-      return Math.round(this.sizeFactor * ((this.sizeScale/100)*(range.max-range.min) + range.min))
+
+      let smash = (this.smashLevel * 0.01)+1;
+      let blight = (this.blightLevel * 0.05)+1;
+      let size = this.sizeFactor * ((this.sizeScale/100)*(range.max-range.min) + range.min)
+
+      return Math.round(size * smash * blight)
     },
 
     // The size class influences how a cock grow in size, the current length
@@ -92,8 +96,17 @@ global.Cock = Database.instance().define('cock', {
     convertedSpineHeight() { return ConversionUtility.milliToInches(this.spineHeight); },
     convertedRidgeHeight() { return ConversionUtility.milliToInches(this.width/3); },
 
-    testicleWidth()          { return this.width * this.ballsSizeFactor; },
-    scrotumWidth()           { return this.testicleWidth*3; },
+    // The cock lengh already takes smash and blight into consideration when
+    // calculating the cock width (which the testicleWidth is based on) however
+    // we want the balls to swell more than cocks, so the same factors are
+    // applied again, essentially doubling the swelling effects on the balls.
+    testicleWidth()          {
+      let smash = (this.smashLevel * 0.01)+1;
+      let blight = (this.blightLevel * 0.05)+1;
+      return this.width * this.ballsSizeFactor * smash * blight;
+    },
+
+    scrotumWidth()           { return this.testicleWidth*2.5; },
     convertedTesticleWidth() { return ConversionUtility.milliToInches(this.testicleWidth); },
     convertedScrotumWidth()  { return ConversionUtility.milliToInches(this.scrotumWidth); },
 

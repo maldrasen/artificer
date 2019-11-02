@@ -24,6 +24,7 @@ global.CockDescriber = class CockDescriber {
       ${this.ridgesDescription()}
       ${this.knobsDescription()}
       ${this.spinesDescription()}
+      ${this.ballsDescription()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
     this.cock.description = await Weaver.weaveWithCharacter(description,'C',this.character);
@@ -214,5 +215,29 @@ global.CockDescriber = class CockDescriber {
        shorter near their base.`
     ]);
   }
+
+  ballsDescription() {
+    if (this.cock.internalBalls) { return ''; }
+
+    if (this.cock.sheath) { return Random.from([
+      `{{C::gender.His}} {{C::balls.big}} {{C::balls.furryBallsack}} is the size of {{C::balls.anApple}}.`,
+      `{{C::gender.His}} {{C::balls.big}} {{C::balls.furryBallsack}} hangs tightly up against {{C::gender.his}}
+       cocksheath and measures {{C::balls.fourInches}} across.`,
+      `{{C::gender.He}} has {{C::balls.aBig}} {{C::balls.apple}} sized {{ballsack}} hanging under {{C::gender.his}}
+       {{C::cock.furrySheath}}.`,
+      `{{C::gender.His}} {{C::balls.big}} {{testicles}} each measure {{C::balls.twoInches}} across, tucked in a tight
+       {{C::balls.apple}} sized {{ballsack}} hanging under {{C::gender.his}} {{C::cock.furrySheath}}.`
+    ]); }
+
+    return Random.from([
+      `{{C::gender.He}} has {{C::balls.aBig}} {{C::balls.apple}} sized {{ballsack}}.`,
+      `{{C::gender.His}} {{C::balls.big}} {{ballsack}} is the size of {{C::balls.anApple}}.`,
+      `{{C::gender.He}} has {{C::balls.big}} {{C::balls.egg}} sized {{testicles}} tucked in a tight wrinkled
+       {{ballsack}} measuring {{C::balls.fourInches}} across.`,
+      `{{C::gender.His}} {{C::balls.big}} {{testicles}} each measure {{C::balls.twoInches}} across, tucked in a tight
+       crinkled {{C::balls.apple}} sized {{ballsack}}.`
+    ]);
+  }
+
 
 }

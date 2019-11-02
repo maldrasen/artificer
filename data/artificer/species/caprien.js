@@ -31,11 +31,14 @@ Species.build('caprien', {
       average: 30,
       big:     50,
     }},
-    cock:{ size:{
-      small:   10,
-      average: 60,
-      big:     20,
-    }},
+    cock:{
+      sheath: 'fur',
+      size:{
+        small:   10,
+        average: 60,
+        big:     20,
+      }
+    },
   },
 
   // Head description is complex for a caprien because males have anthro goat

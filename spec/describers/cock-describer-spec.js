@@ -15,6 +15,28 @@ describe('Describer: Cock', function() {
     });
   });
 
+  it.only('describes rat cocks', function(done) {
+    SpecHelper.tenTimes(done, resolve => {
+      SpecHelper.buildJada({ species:'rat' }).then(jada => {
+        jada.getCock().then(cock => {
+          printCock('normal',cock)
+          resolve();
+        });
+      });
+    });
+  });
+
+  it('describes goat cocks', function(done) {
+    SpecHelper.tenTimes(done, resolve => {
+      SpecHelper.buildJada({ species:'caprien' }).then(jada => {
+        jada.getCock().then(cock => {
+          printCock('goat',cock)
+          resolve();
+        })
+      });
+    });
+  });
+
   it('describes dog cocks', function(done) {
     SpecHelper.tenTimes(done, resolve => {
       SpecHelper.buildJada({ species:'vulpine' }).then(jada => {

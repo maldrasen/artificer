@@ -180,6 +180,7 @@ function matchRequirement(req, context) {
   if (req == 'species-demon')            { return context.character.species.isDemon          }
   if (req == 'cock-count-2')             { return context.cock.count == 2                    }
   if (req == 'cock-count-3')             { return context.cock.count == 3                    }
+  if (req == 'cock-external-balls')      { return context.cock.internalBalls == false        }
   if (req == 'cock-size-small')          { return context.cock.currentSizeClass == 'small'   }
   if (req == 'cock-size-average')        { return context.cock.currentSizeClass == 'average' }
   if (req == 'cock-size-big')            { return context.cock.currentSizeClass == 'big'     }
