@@ -50,13 +50,7 @@ global.Tits = Database.instance().define('tits', {
       return 'monster'
     }
   },
-  setterMethods: {
-  }
 });
-
-// blightEffects() { return JSON.parse(this.blightEffects_json||'[]') }
-// blightEffects(effects) { this.setDataValue('blightEffects_json',JSON.stringify(effects)) }
-
 
 // The breast sizes are abstract values. Because the species in the Rhysh have
 // such dramatically different sizes, from pixies to ogres, we measure breast
