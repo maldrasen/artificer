@@ -29,7 +29,12 @@ Resource.allForClient = async function() {
 Resource.consume = async function(materials) {
   await Promise.all(Object.keys(materials).map(async code => {
     const resource = await Resource.findOne({ where:{ code:code }});
-    resource.count = resource.count - materials[code].count;
-    resource.count > 1 ? await resource.save() : await Resource.destroy({ where:{ code:code }});
+          resource.count = resource.count - materials[code];
+
+    if (resource.count > 1) {
+      return await resource.save();
+    }
+
+    await Resource.destroy({ where:{ code:code }});
   }));
 }
