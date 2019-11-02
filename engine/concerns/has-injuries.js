@@ -79,6 +79,11 @@ global.HasInjuries = { isAppliedTo: function(model) {
     const pussy = await character.getPussy();
     const tits = await character.getTits();
 
+    if (cock) {
+      total += cock.blightLevel;
+      total += cock.burnLevel;
+      total += cock.smashLevel;
+    }
     if (tits) {
       total += tits.blightLevel;
       total += tits.burnLevel;
