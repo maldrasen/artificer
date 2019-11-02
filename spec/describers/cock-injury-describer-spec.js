@@ -1,4 +1,4 @@
-describe.only('Describer: Cock (injuries)', function() {
+describe('Describer: Cock (injuries)', function() {
 
   async function applyBlight(cock) {
     cock.blightLevel = Random.upTo(5) + 1;

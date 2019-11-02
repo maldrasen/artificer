@@ -41,7 +41,7 @@ global.Tits = Database.instance().define('tits', {
     // swells to tiny if the character's tits are blighted.
     currentSizeClass() {
       let size = this.size;
-      if (size == 0)   { return (blightLevel == 0) ? 'zero' : 'tiny' }
+      if (size == 0)   { return (this.blightLevel == 0) ? 'zero' : 'tiny' }
       if (size < 30)   { return 'tiny'; }
       if (size < 100)  { return 'small'; }
       if (size < 300)  { return 'average'; }

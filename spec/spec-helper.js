@@ -13,8 +13,10 @@ global.SpecHelper = (function() {
   }
 
   function tenTimes(done, testFunction) {
+    let times = VERBOSE ? 10 : 1
     let tests = [];
-    for (let i=0; i<10; i++) {
+
+    for (let i=0; i<times; i++) {
       tests.push(new Promise(resolve => {
         testFunction(resolve);
       }));
