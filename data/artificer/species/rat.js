@@ -8,6 +8,7 @@ Species.build('rat', {
 
   violenceAverage: 10,
   violenceRange: 20,
+  foodPerDay: 1,
 
   bodyOptions: {
     baseHeight: 760,

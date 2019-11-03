@@ -9,6 +9,7 @@ Species.build('pixie', {
 
   violenceAverage: -30,
   violenceRange: 10,
+  foodPerDay: 0,
 
   bodyOptions: {
     baseHeight: 300,

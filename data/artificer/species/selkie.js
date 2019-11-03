@@ -8,6 +8,7 @@ Species.build('selkie', {
 
   violenceAverage: -20,
   violenceRange: 10,
+  foodPerDay: 1,
 
   bodyOptions: {
     baseHeight: 900,

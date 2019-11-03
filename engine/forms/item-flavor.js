@@ -6,13 +6,28 @@ global.ItemFlavor = class ItemFlavor extends Form {
   //
   //    { 'other-meat': 1, 'squirrel-meat': 1, 'rat-meat': 2 }
   //
+  // TODO: We may want to make becomes an array for when multiple items can be
+  //       harvested from a single item. A deer carcass may be turned into both
+  //       hide and bone.
   static itemize(flavors) {
     let items = {};
 
     each(flavors, (count, code) => {
       let flavor = ItemFlavor.lookup(code);
-      if (items[flavor.becomes] == null) { items[flavor.becomes] = 0; }
-      items[flavor.becomes] += (count * flavor.becomesCount);
+
+      // Some item flavors have food values. A fox hide instance both becomes
+      // a hide, but it also becomes food.
+      if (flavor.foodValue) {
+        if (items.food == null) { items.food = 0; }
+        items.food += count * flavor.foodValue;
+      }
+
+      // Some item flavors become other items when put into the inventory. For
+      // instance, a fox hide becomes just a hide.
+      if (flavor.becomes) {
+        if (items[flavor.becomes] == null) { items[flavor.becomes] = 0; }
+        items[flavor.becomes] += (count * flavor.becomesCount);
+      }
     });
 
     return items;

@@ -9,6 +9,7 @@ Species.build('gnome', {
 
   violenceAverage: -10,
   violenceRange: 10,
+  foodPerDay: 1,
 
   bodyOptions: {
     baseHeight: 1200,

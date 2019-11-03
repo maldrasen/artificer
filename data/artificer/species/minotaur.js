@@ -8,6 +8,7 @@ Species.build('minotaur', {
 
   violenceAverage: 30,
   violenceRange: 20,
+  foodPerDay: 4,
 
   bodyOptions: {
     baseHeight: 1850,

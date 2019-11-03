@@ -8,6 +8,7 @@ Species.build('ogre', {
 
   violenceAverage: 50,
   violenceRange: 20,
+  foodPerDay: 4,
 
   bodyOptions: {
     baseHeight: 2000,

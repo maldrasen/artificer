@@ -8,6 +8,7 @@ Species.build('centaur', {
 
   violenceAverage: -10,
   violenceRange: 20,
+  foodPerDay: 4,
 
   bodyOptions: {
     shape: 'quadruped',

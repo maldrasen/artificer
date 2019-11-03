@@ -9,6 +9,7 @@ Species.build('succubus', {
 
   violenceAverage: -30,
   violenceRange: 60,
+  foodPerDay: 0,
 
   bodyOptions: {
     tailShape: 'demon',

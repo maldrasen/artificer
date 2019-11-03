@@ -8,6 +8,7 @@ Species.build('kobold', {
 
   violenceAverage: 30,
   violenceRange: 20,
+  foodPerDay: 1,
 
   bodyOptions: {
     baseHeight: 850,

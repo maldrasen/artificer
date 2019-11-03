@@ -130,10 +130,10 @@ Role.Hunter = (function() {
   function huntingResults(tier, skill) {
     return {
       tier_0:{
-        skill_0:[{ type:'small-game', min:1, max:3  },{ type:'small-game-pelt', min:0, max:2 }],
-        skill_1:[{ type:'small-game', min:2, max:6  },{ type:'small-game-pelt', min:0, max:3 }],
-        skill_2:[{ type:'small-game', min:3, max:8  },{ type:'small-game-pelt', min:1, max:4 }],
-        skill_3:[{ type:'small-game', min:5, max:10 },{ type:'small-game-pelt', min:3, max:5 }],
+        skill_0:[{ type:'small-game', min:3, max:6  },{ type:'small-game-pelt', min:0, max:2 }],
+        skill_1:[{ type:'small-game', min:4, max:8  },{ type:'small-game-pelt', min:0, max:3 }],
+        skill_2:[{ type:'small-game', min:5, max:10 },{ type:'small-game-pelt', min:1, max:4 }],
+        skill_3:[{ type:'small-game', min:6, max:12 },{ type:'small-game-pelt', min:3, max:5 }],
     }}[`tier_${tier}`][`skill_${skill}`];
   }
 

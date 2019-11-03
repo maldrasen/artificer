@@ -9,6 +9,7 @@ Species.build('incubus', {
 
   violenceAverage: 25,
   violenceRange: 25,
+  foodPerDay: 0,
 
   bodyOptions: {
     tailShape: 'demon',

@@ -8,6 +8,7 @@ Species.build('naga', {
 
   violenceAverage: 40,
   violenceRange: 20,
+  foodPerDay: 3,
 
   bodyOptions: {
     baseHeight: 1600,

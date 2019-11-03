@@ -9,6 +9,7 @@ Species.build('dryad', {
 
   violenceAverage: -30,
   violenceRange: 20,
+  foodPerDay: 3,
 
   bodyOptions: {
     shape: 'quadruped',
