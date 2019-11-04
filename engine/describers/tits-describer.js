@@ -1,25 +1,27 @@
 global.TitsDescriber = class TitsDescriber {
 
   constructor(options) {
-    if (options.character == null) { throw `The Character must at least be set.` }
-
     this._character = options.character;
     this._tits = options.tits;
     this._nipples = options.nipples;
-    this._previousInjury = null;
     this._included = [];
   }
 
   get character() { return this._character; }
   get nipples() { return this._nipples; }
   get tits() { return this._tits; }
-  get previousInjury() { return this._previousInjury; }
-  set previousInjury(i) { this._previousInjury = i; }
 
   addIncluded(key) { this._included.push(key); }
   isIncluded(key) { return this._included.indexOf(key) >= 0; }
 
+  // TODO: When tits are null we will want to include a male chest description
+  //       that includes the nipples, especially if he has interesting
+  //       piercings and such. When piercings get implemented that is.
   async updateDescription() {
+    if (this.tits == null) { this._tits = await this.character.getTits(); }
+    if (this.nipples == null) { this._nipples = await this.character.getNipples(); }
+    if (this.tits == null) { return ""; }
+
     let desc = await this.getDescription()
     if (desc) {
       this.tits.description = desc;
@@ -29,16 +31,11 @@ global.TitsDescriber = class TitsDescriber {
   }
 
   async getDescription() {
-    if (this.tits == null) { this._tits = await this.character.getTits(); }
-    if (this.nipples == null) { this._nipples = await this.character.getNipples(); }
-
-    if (this.tits == null) {
-      return null;
-    }
+    let injuries = new TitsInjuryDescriber(this.character, this.tits, this.nipples).describeInjuries();
 
     let description = `
       ${this.describeTits()}
-      ${this.describeInjuries()}
+      ${injuries}
       ${this.describeNipples()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
@@ -77,137 +74,6 @@ global.TitsDescriber = class TitsDescriber {
     return description.d
   }
 
-  describeInjuries() {
-    return `
-      ${this.describeBlight()}
-      ${this.describeBurn()}
-      ${this.describeSmash()}
-    `;
-  }
-
-  describeBlight() {
-    if (this.tits.blightLevel == 0) { return ''; }
-    let herTitsHaveBeen = this.injuryStart(this.tits.blightPlace);
-
-    this.previousInjury = {
-      type: 'blight',
-      place: this.tits.blightPlace,
-    }
-
-    let description = Random.from(Description.validForInjury('tits','blight',{
-      character: this.character,
-      tits: this.tits,
-      nipples: this.nipples
-    }));
-
-    if (description == null) {
-      return Weaver.error(`Unable to find a blighted tit description`)
-    }
-
-    return `${herTitsHaveBeen} ${description.d}`
-  }
-
-  describeBurn() {
-    if (this.tits.burnLevel == 0) { return ''; }
-    let herTitsHaveBeen = this.injuryStart(this.tits.burnPlace);
-
-    this.previousInjury = {
-      type: 'burn',
-      place: this.tits.burnPlace,
-    }
-
-    let description = Random.from(Description.validForInjury('tits','burn',{
-      character: this.character,
-      tits: this.tits,
-      nipples: this.nipples
-    }));
-
-    if (description == null) {
-      return Weaver.error(`Unable to find a burnt tit description`)
-    }
-
-    return `${herTitsHaveBeen} ${description.d}`
-  }
-
-  // In an attempt to avoid a whole other layer of permutations The smashed
-  // tits descriptions also include a furryAddendum property in order to
-  // explain why you can see bruises on a furry character. (It's Because chest
-  // fur is generally thinner) I think this is really only used for bruises
-  // on chests. Everything else should be pretty obvious, although body smash
-  // descriptions may need something similar.
-  describeSmash() {
-    if (this.tits.smashLevel == 0) { return ''; }
-
-    let herTitsHaveBeen = this.injuryStart(this.tits.smashPlace);
-
-    this.previousInjury = {
-      type: 'smash',
-      place: this.tits.smashPlace,
-    }
-
-    let description = Random.from(Description.validForInjury('tits','smash',{
-      character: this.character,
-      tits: this.tits,
-      nipples: this.nipples
-    }));
-
-    if (description == null) {
-      return Weaver.error(`Unable to find a smashed tit description`)
-    }
-
-    if (this.character.species.isFurry && description.furryAddendum) {
-      let bruisesAre = {
-        'red-color':     `The bright red color is`,
-        'bruise':        `The purple bruise is`,
-        'bruises':       `The bruises are`,
-        'deep-bruising': `The deep bruising is`,
-      }[description.furryAddendum];
-
-      return `${herTitsHaveBeen} ${description.d} ${bruisesAre} visible even
-              under {{C::gender.his}} thin {{C::body.furColor}} chest fur.`;
-    }
-
-    return `${herTitsHaveBeen} ${description.d}`;
-  }
-
-  // === Segments ===
-
-  // The injury start segment considers the previous injury described, and
-  // notes if this injury was on the same breast as the last.
-  injuryStart(place) {
-    if (this.previousInjury == null) {
-      if (place == 'all') { return Random.from([
-        '{{C::gender.His}} {{tits}} have been',
-        'It looks like {{C::gender.his}} {{tits}} have been',
-      ]); }
-
-      return Random.from([
-        `{{C::gender.His}} ${place} {{tit}} has been`,
-        `One of {{C::gender.his}} {{tits}} has been`,
-        `It looks like one of {{C::gender.his}} {{tits}} has been`,
-      ]);
-    }
-
-    if (place == 'all' && this.previousInjury.place == 'all') { return Random.from([
-      `They've also been`,
-      `Then, {{C::gender.his}} {{tits}} have also been`
-    ]); }
-
-    if (place != 'all' && this.previousInjury.place == 'all') { return Random.from([
-      `Then, {{C::gender.his}} ${place} {{tit}} has also been`,
-      `One of {{C::gender.his}} {{tits}} has also been`,
-    ]); }
-
-    if (place == this.previousInjury.place) { return Random.from([
-      `Then, the same {{tit}} has also been`,
-      `The same {{tit}} has also been`,
-    ]); }
-
-    if (place != this.previousInjury.place) { return Random.from([
-      `Then, {{C::gender.his}} other {{tit}} has also been`,
-      `{{C::gender.His}} other {{tit}} has also been`,
-    ]); }
-  }
 
 }
 

@@ -7,7 +7,7 @@ describe('Item Flavor', function() {
       'rat-meat':    2
     });
 
-    expect(items.food).to.equal(4);
+    expect(items.food).to.equal(6);
     expect(items.hide).to.equal(1);
   });
 

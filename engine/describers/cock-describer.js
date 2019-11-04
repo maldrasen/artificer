@@ -1,17 +1,13 @@
 global.CockDescriber = class CockDescriber {
 
   constructor(options) {
-    if (options.character == null) { throw `The Character must at least be set.` }
     this._character = options.character;
     this._cock = options.cock;
-    this._previousInjury = null;
     this._included = [];
   }
 
   get character() { return this._character; }
   get cock() { return this._cock; }
-  get previousInjury() { return this._previousInjury; }
-  set previousInjury(i) { this._previousInjury = i; }
 
   addIncluded(key) { this._included.push(key); }
   isIncluded(key) { return this._included.indexOf(key) >= 0; }
@@ -19,6 +15,17 @@ global.CockDescriber = class CockDescriber {
   async updateDescription() {
     if (this.cock == null) { this._cock = await this.character.getCock(); }
     if (this.cock == null) { return ""; }
+
+    let desc = await this.getDescription();
+    if (desc) {
+      this.cock.description = desc;
+      await this.cock.save();
+      return this.cock;
+    }
+  }
+
+  async getDescription() {
+    let injuries = new CockInjuryDescriber(this.character, this.cock).describeInjuries();
 
     let description = `
       ${this.cockDescription()}
@@ -28,13 +35,10 @@ global.CockDescriber = class CockDescriber {
       ${this.knobsDescription()}
       ${this.spinesDescription()}
       ${this.ballsDescription()}
-      ${this.injuryDescriptions()}
+      ${injuries}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
-    this.cock.description = await Weaver.weaveWithCharacter(description,'C',this.character);
-
-    await this.cock.save();
-    return this.cock;
+    return await Weaver.weaveWithCharacter(description,'C',this.character);
   }
 
   cockDescription() {
@@ -260,120 +264,6 @@ global.CockDescriber = class CockDescriber {
        {{ballsack}} measuring {{C::balls.fourInches}} across.`,
       `{{C::gender.His}} {{C::balls.big}} {{testicles}} each measure {{C::balls.twoInches}} across, tucked in a tight
        crinkled {{C::balls.apple}} sized {{ballsack}}.`
-    ]);
-  }
-
-  // === Injuries ===
-
-  injuryDescriptions() {
-    return `
-      ${this.describeBlight()}
-      ${this.describeBurn()}
-      ${this.describeSmash()}
-    `;
-  }
-
-  describeBlight() {
-    if (this.cock.blightLevel == 0) { return ''; }
-    let hisCockHasBeen = this.injuryStart(this.cock.blightPlace);
-
-    this.previousInjury = {
-      type: 'blight',
-      place: this.cock.blightPlace,
-    }
-
-    let description = Random.from(Description.validForInjury('cock','blight',{
-      character: this.character,
-      cock: this.cock,
-    }));
-
-    if (description == null) {
-      return Weaver.error(`Unable to find a blighted cock description`)
-    }
-
-    return `${hisCockHasBeen} ${description.d}`
-  }
-
-  describeBurn() {
-    if (this.cock.burnLevel == 0) { return ''; }
-    let hisCockHasBeen = this.injuryStart(this.cock.burnPlace);
-
-    this.previousInjury = {
-      type: 'burn',
-      place: this.cock.burnPlace,
-    }
-
-    let description = Random.from(Description.validForInjury('cock','burn',{
-      character: this.character,
-      cock: this.cock,
-    }));
-
-    if (description == null) {
-      return Weaver.error(`Unable to find a burnt cock description`)
-    }
-
-    return `${hisCockHasBeen} ${description.d}`
-  }
-
-  describeSmash() {
-    if (this.cock.smashLevel == 0) { return ''; }
-
-    let hisCockHasBeen = this.injuryStart('balls');
-
-    this.previousInjury = {
-      type: 'smash',
-      place: 'balls',
-    }
-
-    let description = Random.from(Description.validForInjury('cock','smash',{
-      character: this.character,
-      cock: this.cock,
-    }));
-
-    if (description == null) {
-      return Weaver.error(`Unable to find a smashed cock description`)
-    }
-
-    return `${hisCockHasBeen} ${description.d}`;
-  }
-
-  // === Segments ===
-
-  // The injury start segment considers the previous injury described, really
-  // we just need to distinguish between cock and balls.
-  injuryStart(place) {
-    if (this.previousInjury == null) {
-      if (place == 'balls') { return Random.from([
-        '{{C::gender.His}} {{ballsack}} has been',
-        '{{C::gender.His}} {{testicles}} have been',
-        'It looks like {{C::gender.his}} {{ballsack}} has been',
-        'It looks like {{C::gender.his}} {{testicles}} have been',
-      ]); }
-
-      return Random.from([
-        `{{C::gender.His}} {{C::cock.cock}} has been`,
-        'It looks like {{C::gender.his}} {{C::cock.cock}} has been',
-      ]);
-    }
-
-    if (place == 'balls' && this.previousInjury.place == 'balls') { return Random.from([
-      `They've also been`,
-      `Then, {{C::gender.his}} {{ballsack}} has also been`,
-      `Then, {{C::gender.his}} {{testicles}} have also been`,
-    ]); }
-
-    if (place == 'balls' && this.previousInjury.place != 'balls') { return Random.from([
-      `Then, {{C::gender.his}} {{ballsack}} has been`,
-      `Then, {{C::gender.his}} {{testicles}} have been`,
-    ]); }
-
-    if (place != 'balls' && this.previousInjury.place == 'balls') {
-      return `Then, {{C::gender.his}} {{C::cock.cock}} has been`;
-    }
-
-    return Random.from([
-      `Then {{C::gender.his}} {{C::cock.cock}} was`,
-      `Then it was`,
     ]);
   }
 

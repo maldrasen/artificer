@@ -21,7 +21,7 @@ describe('Role: Hunter', function() {
   describe('huntingResults()', function() {
     it("Gets the table for the tier and skill level", function() {
       expect(Role.Hunter.huntingResults(0,0)[1]).to.eql({ min:0, max:2, type:'small-game-pelt' });
-      expect(Role.Hunter.huntingResults(0,2)[0]).to.eql({ min:3, max:8, type:'small-game' });
+      expect(Role.Hunter.huntingResults(0,2)[0]).to.eql({ min:5, max:10, type:'small-game' });
     });
   });
 

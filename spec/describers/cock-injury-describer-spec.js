@@ -19,7 +19,7 @@ describe('Describer: Cock (injuries)', function() {
   }
 
   async function describeInjury(type, jada, cock) {
-    let describer = new CockDescriber({ character:jada, cock:cock });
+    let describer = new CockInjuryDescriber(jada, cock);
 
     let description = describer[{
       blight: 'describeBlight',

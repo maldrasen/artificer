@@ -1,7 +1,6 @@
 global.BodyDescriber = class BodyDescriber {
 
   constructor(options) {
-    if (options.character == null) { throw `The Character must at least be set.` }
     this._character = options.character;
     this._body = options.body;
   }
@@ -10,6 +9,8 @@ global.BodyDescriber = class BodyDescriber {
   get body() { return this._body; }
 
   async updateDescription() {
+    if (this.body == null) { this._body = await this.character.getBody(); }
+
     let desc = await this.getDescription();
     if (desc) {
       this.body.description = desc;
@@ -19,13 +20,13 @@ global.BodyDescriber = class BodyDescriber {
   }
 
   async getDescription() {
-    if (this.body == null) { this._body = await this.character.getBody(); }
+    let injuries = new BodyInjuryDescriber(this.character, this.body);
 
     let description = `
       ${this.heightAndWeight()}, ${this.comparativeHeight()}.
       ${this.objectiveBeauty()} ${this.comparativeBeauty()}
-      ${this.headDescription()} ${this.headInjuries()}
-      ${this.skinDescription()} ${this.bodyInjuries()}
+      ${this.headDescription()} ${injuries.headInjuries()}
+      ${this.skinDescription()} ${injuries.bodyInjuries()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
     return await Weaver.weaveWithCharacter(description,'C',this.character);
@@ -176,12 +177,5 @@ global.BodyDescriber = class BodyDescriber {
     return Weaver.error(`TODO: skinDescription() needs to describe skin.`);
   }
 
-  headInjuries() {
-    return ''
-  }
-
-  bodyInjuries() {
-    return ''
-  }
 
 }
