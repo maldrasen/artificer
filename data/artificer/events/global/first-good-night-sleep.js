@@ -5,5 +5,12 @@ Event.build('first-good-night-sleep', {
     pages:[
       { text:`TODO: First good night's sleep.` },
     ]
-  }]
+  }],
+
+  onFinish: async () => {
+    await AvailableProject.addAll([
+      { code:'clear-upper-keep' },
+    ]);
+  },
+
 });

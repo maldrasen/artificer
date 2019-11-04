@@ -13,7 +13,6 @@ player.fucksFutas             | clear-great-hall-start      | (always,maybe,neve
 player.fucksWomen             | clear-great-hall-start      | (always,maybe,never)
 history.courtyard-rat-orgy    | clear-great-hall-sleep-sex  | (yes) if it happened. Unset if not.
 
-
 === Automatic ===
 enqueued.{code}    | {count} The number of times this event has been enqueued | Every event that has been enqueued by the
                      game will get this flag set. It's primarily used to prevent non-repeatable events, but can also be
