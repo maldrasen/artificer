@@ -9,7 +9,10 @@ Project.build('clear-upper-keep', {
     const game = await Game.instance();
     await AvailableEvent.addAll([
       { code:'clear-upper-keep-find-journal' },
-      { code:'minion-spider-bite', requires:`game.dayNumber=${game.dayNumber+1}` },
+      { code:'minion-spider-bite', requires:[
+          `game.dayNumber=${game.dayNumber+1}`,
+          `flag.enqueued.great-hall-talk-to-rat-chief`
+      ]},
     ]);
   },
 

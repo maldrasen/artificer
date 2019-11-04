@@ -25,9 +25,7 @@ global.Event = class Event extends Form {
   static async transformEvent(event, context) {
     event.stages = await Promise.all(event.stages.map(async stage => {
       const valid = await CentralScrutinizer.meetsRequirements(stage.requires, context);
-      if (valid) {
-        return await Event.transformStage(stage, context);
-      }
+      if (valid) { return await Event.transformStage(stage, context); }
     }));
 
     event.stages = event.stages.filter(stage => {
@@ -39,16 +37,8 @@ global.Event = class Event extends Form {
     if (stage.pages) {
       stage.pages = await Promise.all(stage.pages.map(async page => {
         const valid = await CentralScrutinizer.meetsRequirements(page.requires, context);
-
-        if (page.requires) {
-          console.log("Seriously? ",page.requires, valid)
-        }
-
-        if (valid) {
-          return Event.transformPage(page, context)
-        }
+        if (valid) { return Event.transformPage(page, context) }
       }));
-
 
       stage.pages = stage.pages.filter(page => {
         return page != null;
