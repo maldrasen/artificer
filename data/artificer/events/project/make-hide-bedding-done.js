@@ -13,7 +13,6 @@ Event.build('make-hide-bedding-done', {
     ]
   }],
 
-
   onFinish: async () => {
     await Flag.set('player.bedsIn','hide');
 

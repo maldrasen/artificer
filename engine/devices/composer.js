@@ -24,14 +24,13 @@ global.Composer = (function(){
     }
   }
 
-  function _render(game) {
+  async function _render(game) {
     // First render a view from the game's event queue if one exists. Location
     // events should only be run when triggered from a link at the location.
     // Other events however will need to be triggered like this too.
-    if (game.nextGameEvent != null) {
-      return game.unqueueGameEvent().then(event => {
-        renderEvent(event);
-      });
+    const event = await EventQueue.unqueueEvent();
+    if (event) {
+      return renderEvent(event);
     }
 
     // If there are no events happening, but a report is ready, show the report.
@@ -43,7 +42,7 @@ global.Composer = (function(){
 
   async function renderLocationEvent() {
     const game = await Game.instance();
-    const event = await game.unqueueLocationEvent();
+    const event = await EventQueue.unqueueLocationEvent(game.location);
     renderEvent(event);
   }
 
@@ -51,10 +50,8 @@ global.Composer = (function(){
   // event is then sent to the weaver for template replacement. Once that's
   // done the brower is sent the completed event object.
   function renderEvent(event) {
-    (event.init ? event.init() : Promise.resolve(0)).then(() => {
-      Event.prepare(event).then(prepared => {
-        Browser.send('render.event',prepared);
-      });
+    Event.prepare(event).then(prepared => {
+      Browser.send('render.event',prepared);
     });
   }
 
@@ -90,9 +87,9 @@ global.Composer = (function(){
   }
 
   return {
-    render: render,
-    renderLocationEvent: renderLocationEvent,
-    renderPlanView: renderPlanView,
+    render,
+    renderLocationEvent,
+    renderPlanView,
   };
 
 })();

@@ -14,18 +14,8 @@ Resolver.Events = (function() {
 
     if (valid == false || (event.time && event.time != game.time)) { return false; }
 
-    // The event is valid so enqueue it as either a location or a normal event.
-    if (availableEvent.eventType == 'location') {
-      await EventQueue.enqueueLocationEvent(event.code, availableEvent.state);
-    } else {
-      await EventQueue.enqueueEvent(event.code, availableEvent.state);
-    }
-
-    // Because this event was queued it should no longer be available, unless
-    // it's a repeatable event.
-    if (availableEvent.repeat == false) {
-      await AvailableEvent.destroy({ where:{ code:event.code }})
-    }
+    await EventQueue.enqueueEvent(event.code, availableEvent.state);
+    await availableEvent.destroy();
   }
 
   return {

@@ -47,17 +47,21 @@ global.EventQueue = (function() {
   }
 
   async function unqueueEvent() {
-    const event = await nextEvent()
-    const raw = { code:event.code, state:event.state };
-    await event.destroy();
-    return raw;
+    const event = await nextEvent();
+    if (event) {
+      const raw = { code:event.code, state:event.state };
+      await event.destroy();
+      return raw;
+    }
   }
 
   async function unqueueLocationEvent(location) {
     const event = await nextLocationEvent(location);
-    const raw = { code:event.code, location:event.location, state:event.state };
-    await event.destroy();
-    return raw;
+    if (event) {
+      const raw = { code:event.code, location:event.location, state:event.state };
+      await event.destroy();
+      return raw;
+    }
   }
 
   // When an event is queued we set a flag letting us know that the event has

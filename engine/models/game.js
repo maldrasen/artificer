@@ -30,8 +30,6 @@ Game.start = async function() {
     anger: 0,
     frustration: 0,
     food: 30,
-    gameEventQueue_json: "[]",
-    locationEventQueue_json: "{}",
   });
 
   await buildStartingMinions(game);
