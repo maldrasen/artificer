@@ -14,6 +14,7 @@ global.WeaverContext = class WeaverContext {
   async setEvent(event) {
     this._event = event;
 
+    await this.addGame();
     await this.addPlayer();
     await this.addMinionData();
     await this.addFlags();
@@ -21,6 +22,11 @@ global.WeaverContext = class WeaverContext {
     await Promise.all(Object.keys(event.actors||[]).map(async key => {
       await this.addActor(key, event.actors[key]);
     }));
+  }
+
+  async addGame() {
+    const game = await Game.instance();
+    this.set('game', game);
   }
 
   async addCharacter(key, character) {

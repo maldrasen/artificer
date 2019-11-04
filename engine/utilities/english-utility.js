@@ -47,7 +47,9 @@ global.EnglishUtility = {
     if (number == 19) { return "nineteen" }
     if (number == 20) { return "twenty" }
     if (number == 21) { return "twenty one" }
-    return Weaver.error(`English.numberInEnglish(${number}) needs more numbers!`)
+
+    // Just return the digits after 21.
+    return `${number}`
   },
 
   // Same as numberInEnglish(), but upper case.

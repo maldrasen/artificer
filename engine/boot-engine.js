@@ -116,6 +116,7 @@ require(`${ROOT}/engine/weavers/body-loom`);
 require(`${ROOT}/engine/weavers/character-loom`);
 require(`${ROOT}/engine/weavers/cock-loom`);
 require(`${ROOT}/engine/weavers/flag-loom`);
+require(`${ROOT}/engine/weavers/game-loom`);
 require(`${ROOT}/engine/weavers/gender-loom`);
 require(`${ROOT}/engine/weavers/nipples-loom`);
 require(`${ROOT}/engine/weavers/random-loom`);
