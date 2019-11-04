@@ -64,8 +64,7 @@ Event.build('courtyard-walk-on-walls', {
   ],
 
   onFinish: async choices => {
-    let game = await Game.instance();
-    await game.setFlags({
+    await Flag.setAll({
       'location.currentStudy':'courtyard',
       'minion.rename':'unlocked',
     });

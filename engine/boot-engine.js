@@ -7,7 +7,6 @@ global.hash = require('object-hash');
 
 // === Concerns ===
 require(`${ROOT}/engine/concerns/has-aspects`);
-require(`${ROOT}/engine/concerns/has-event-queues`);
 require(`${ROOT}/engine/concerns/has-body`);
 require(`${ROOT}/engine/concerns/has-injuries`);
 
@@ -26,6 +25,7 @@ require(`${ROOT}/engine/describers/tits-injury-describer`);
 
 // === Devices ===
 require(`${ROOT}/engine/devices/composer`);
+require(`${ROOT}/engine/devices/event-queue`);
 require(`${ROOT}/engine/devices/resolver`);
 require(`${ROOT}/engine/devices/resolver/events`);
 require(`${ROOT}/engine/devices/resolver/game`);

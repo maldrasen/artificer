@@ -96,10 +96,7 @@ Event.build('clear-great-hall-sleep-sex-pussy', {
   ],
 
   onFinish: async choices => {
-    const game = await Game.instance();
-    game.setFlags({
-      'history.courtyard-rat-orgy':'yes'
-    });
+    await Flag.set('history.courtyard-rat-orgy','yes');
   }
 
 });

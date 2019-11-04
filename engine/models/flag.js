@@ -9,6 +9,16 @@ Flag.lookup = async function(code) {
   return await Flag.findOne({ where:{ code:code } });
 }
 
+Flag.setAll = async function(flags) {
+  return await Promise.all(Object.keys(flags).map(async code => {
+    return await Flag.set(code, flags[code]);
+  }));
+}
+
+Flag.set = async function(code, value) {
+  return await Flag.create({ code:code, value:value });
+}
+
 Flag.getAll = async function() {
   let flags = await Flag.findAll({ where:{}, order: [['code', 'ASC']] });
 

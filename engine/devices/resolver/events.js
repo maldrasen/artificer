@@ -14,11 +14,11 @@ Resolver.Events = (function() {
 
     if (valid == false || (event.time && event.time != game.time)) { return false; }
 
-    // The event is valid so enqueue it as either a location or a game event.
+    // The event is valid so enqueue it as either a location or a normal event.
     if (availableEvent.eventType == 'location') {
-      await game.enqueueLocationEvent(event.code, availableEvent.state);
+      await EventQueue.enqueueLocationEvent(event.code, availableEvent.state);
     } else {
-      await game.enqueueGameEvent(event.code, availableEvent.state);
+      await EventQueue.enqueueEvent(event.code, availableEvent.state);
     }
 
     // Because this event was queued it should no longer be available, unless

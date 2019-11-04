@@ -7,8 +7,7 @@ Project.build('make-hide-clothing', {
   materials: { hide:5 },
 
   onFinish: async () => {
-    const game = await Game.instance();
-    await game.enqueueGameEvent('make-hide-clothing-done');
+    await EventQueue.enqueueEvent('make-hide-clothing-done');
   },
 
 });

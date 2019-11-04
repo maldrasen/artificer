@@ -14,8 +14,7 @@ Project.build('clear-upper-keep', {
   },
 
   onFinish: async () => {
-    const game = await Game.instance();
-    await game.enqueueGameEvent('clear-upper-keep-done');
+    await EventQueue.enqueueEvent('clear-upper-keep-done');
   },
 
 });

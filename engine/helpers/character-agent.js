@@ -24,8 +24,7 @@ global.CharacterAgent = (function() {
     }
 
     const newChief = await findStrongest('rat');
-    const game = Game.instance();
-    await game.setFlags({ 'character.rat-chief':newChief.id });
+    await Flag.set('character.rat-chief',newChief.id)
     return newChief;
   }
 

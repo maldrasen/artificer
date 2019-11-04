@@ -2,9 +2,9 @@ global.Configuration = {
   metric: false,
   gameStartLocation: 'courtyard',
   gameStartEvents: [
-    { type:'gameEvent', code:'game-start' },
-    { type:'gameEvent', code:'game-start-chase' },
-    { type:'locationEvent', code:'courtyard-get-minions' },
+    { code:'game-start' },
+    { code:'game-start-chase' },
+    { code:'courtyard-get-minions' },
   ],
   gameStartFlags: {
     'location.hinterlandsName': 'The Hinterlands',
