@@ -14,8 +14,7 @@ Project.build('clear-great-hall', {
   },
 
   onFinish: async () => {
-    const game = await Game.instance();
-    await game.enqueueGameEvent('clear-great-hall-done');
+    await EventQueue.enqueueEvent('clear-great-hall-done');
 
     await AvailableProject.addAll([
       { code:'make-hide-clothing' },

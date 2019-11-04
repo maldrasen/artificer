@@ -62,7 +62,7 @@ describe('PussyBuilder', function() {
     });
 
     it('sets the width according to species (equian)', function(done) {
-      testPussyWidth('equian',33,74,done);
+      testPussyWidth('equian',32,74,done);
     });
 
     it('sets the width according to species (dragon)', function(done) {

@@ -14,12 +14,11 @@ Event.build('make-hide-clothing-done', {
   }],
 
   onFinish: async () => {
-    const game = await Game.instance();
-    await game.setFlags({ 'player.dressedIn':'hide' });
+    await Flag.set('player.dressedIn','hide');
 
     const flag = await Flag.lookup('player.bedsIn');
     if (flag) {
-      await game.enqueueGameEvent('clothed-and-bedded');
+      await EventQueue.enqueueEvent('clothed-and-bedded');
     }
   },
 

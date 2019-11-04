@@ -7,8 +7,7 @@ Project.build('make-hide-bedding', {
   materials: { hide:7 },
 
   onFinish: async () => {
-    const game = await Game.instance();
-    await game.enqueueGameEvent('make-hide-bedding-done');
+    await EventQueue.enqueueEvent('make-hide-bedding-done');
   },
-  
+
 });

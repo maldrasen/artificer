@@ -18,8 +18,7 @@ Event.build('clothed-and-bedded', {
   }],
 
   onFinish: async () => {
-    const game = await Game.instance();
-    await game.setFlags({ 'minion.missions':'unlocked' });
+    await Flag.set('minion.missions','unlocked');
     await AvailableProject.addAll([{ code:'clear-upper-keep' }]);
   },
 

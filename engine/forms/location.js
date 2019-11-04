@@ -37,12 +37,14 @@ global.Location = class Location extends Form {
 
 
   async buildFlags(game, flags) {
+    let eventActive = await EventQueue.nextLocationEvent(game.location) != null;
+
     return {
       all: flags,
       showPlanAction: (flags['location.currentStudy'] == game.location),
       showMapMenu: (flags['locationMenu.map'] != 'locked'),
       showMinionMenu: (flags['locationMenu.minions'] != 'locked'),
-      eventActive: game.nextLocationEvent != null
+      eventActive: eventActive
     };
   }
 

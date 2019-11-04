@@ -5,26 +5,13 @@ global.Game = Database.instance().define('game', {
   anger:                    { type:Sequelize.INTEGER },
   frustration:              { type:Sequelize.INTEGER },
   food:                     { type:Sequelize.INTEGER },
-  gameEventQueue_json:      { type:Sequelize.STRING  },
-  locationEventQueue_json:  { type:Sequelize.STRING  },
   currentProject:           { type:Sequelize.STRING  },
   currentProjectProgress:   { type:Sequelize.INTEGER },
-
 },{
   timestamps: false,
-  getterMethods: {
-    gameEventQueue()     { return JSON.parse(this.gameEventQueue_json||'[]') },
-    locationEventQueue() { return JSON.parse(this.locationEventQueue_json||'[]') },
-    nextGameEvent()      { return this.gameEventQueue[0]; },
-    nextLocationEvent()  { return (this.locationEventQueue[this.location]||[])[0]; },
-  },
-  setterMethods: {
-    gameEventQueue(queue) { this.setDataValue('gameEventQueue_json',JSON.stringify(queue)) },
-    locationEventQueue(queue) { this.setDataValue('locationEventQueue_json',JSON.stringify(queue)) },
-  }
+  getterMethods: {},
+  setterMethods: {},
 });
-
-HasEventQueues.addToGame();
 
 Game.logger = new Logger('Game', 'rgb(105, 100, 163)');
 
@@ -43,13 +30,11 @@ Game.start = async function() {
     anger: 0,
     frustration: 0,
     food: 30,
-    gameEventQueue_json: "[]",
-    locationEventQueue_json: "{}",
   });
 
   await buildStartingMinions(game);
-  await game.enqueueEvents(Configuration.gameStartEvents);
-  await game.setFlags(Configuration.gameStartFlags);
+  await EventQueue.enqueueEvents(Configuration.gameStartEvents);
+  await Flag.setAll(Configuration.gameStartFlags);
 
   Composer.render(game);
 
@@ -72,19 +57,6 @@ Game.updateLocation = async function(code) {
   const game = await Game.instance();
         game.location = Location.lookup(code).code;
   await game.save();
-}
-
-// === Game Flags ===
-
-Game.prototype.setFlags = async function(flags) {
-  Game.logger.info(`Set Flags`,flags);
-
-  let operations = []
-  each(flags, (value,code) => {
-    return Flag.create({ code:code, value:value })
-  });
-
-  return await Promise.all(operations);
 }
 
 // === Private Functions ===

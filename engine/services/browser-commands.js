@@ -134,8 +134,7 @@ global.BrowserCommands = (function() {
     });
 
     ipcMain.on('debug.game.printEventQueue', async () => {
-      const game = await Game.instance();
-      game.printEventQueue();
+      EventQueue.printEventQueue();
     });
   }
 

@@ -36,10 +36,8 @@ Event.build('courtyard-get-minions', {
   ],
 
   onFinish: async choices => {
-    const game = await Game.instance();
-    await game.setFlags({ 'locationMenu.minions':'unlocked' });
-    await game.enqueueLocationEvent('courtyard-walk-on-walls');
-
+    await Flag.set('locationMenu.minions','unlocked');
+    await EventQueue.enqueueEvent('courtyard-walk-on-walls');
     await AvailableMission.addAll([
       { code:'mission.explore-hinterlands' },
       { code:'mission.gather-stone' },

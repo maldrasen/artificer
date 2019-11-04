@@ -80,28 +80,24 @@ Event.build('clear-great-hall-start', {
   ],
 
   onFinish: async choices => {
-    let game = await Game.instance();
-    let cock = await Player.hasCock();
-
-    if (choices.ratPile == 'no') {
-      await game.enqueueGameEvent('clear-great-hall-sleep-no');
-    }
-    if (choices.ratPile == 'yes') {
-      await game.enqueueGameEvent('clear-great-hall-sleep-yes');
-    }
-    if (choices.ratPile == 'sexy') {
-      let code = cock ? 'clear-great-hall-sleep-sex-cock':
-                        'clear-great-hall-sleep-sex-pussy';
-
-      await game.enqueueGameEvent(code);
-    }
-
-    await game.setFlags({
+    await Flag.setAll({
       'locationMenu.map':'unlocked',
       'player.fucksMen': choices.men,
       'player.fucksFutas': choices.futas,
       'player.fucksWomen': choices.women,
     });
+
+    if (choices.ratPile == 'no') {
+      await EventQueue.enqueueEvent('clear-great-hall-sleep-no');
+    }
+    if (choices.ratPile == 'yes') {
+      await EventQueue.enqueueEvent('clear-great-hall-sleep-yes');
+    }
+    if (choices.ratPile == 'sexy') {
+      const cock = await Player.hasCock();
+      const code = cock ? 'clear-great-hall-sleep-sex-cock': 'clear-great-hall-sleep-sex-pussy';
+      await EventQueue.enqueueEvent(code);
+    }
   }
 
 });

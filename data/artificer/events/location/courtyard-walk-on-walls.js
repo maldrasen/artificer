@@ -53,7 +53,7 @@ Event.build('courtyard-walk-on-walls', {
         { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"Skinless always wanted her."</span>` },
         { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"One day... Snap!"</span>` },
         { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"Ate her up."</span>` },
-        { text:`He starts laughing as though finding the story more humorous than frightening or tragic.` },
+        { text:`{{R::gender.He}} starts laughing as though finding the story more humorous than frightening or tragic.` },
         { text:`Now that it's of no obvious threat to you the 'Skinless' creature fascinates you more than anything.` },
         { text:`It looks like nothing more than a loosely assembled pile of body parts, and should be incapable of survival by mere biological means.` },
         { text:`That it must sustain itself on magical energy is really the only way to explain it.` },
@@ -64,8 +64,7 @@ Event.build('courtyard-walk-on-walls', {
   ],
 
   onFinish: async choices => {
-    let game = await Game.instance();
-    await game.setFlags({
+    await Flag.setAll({
       'location.currentStudy':'courtyard',
       'minion.rename':'unlocked',
     });
