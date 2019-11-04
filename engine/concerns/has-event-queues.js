@@ -1,5 +1,11 @@
 global.HasEventQueues = { addToGame: function() {
 
+  Game.prototype.printEventQueue = async function() {
+    console.log("\n=== Printing Event Queue ===");
+    console.log("Game:",this.gameEventQueue);
+    console.log("Location:",this.locationEventQueue);
+  }
+
   Game.prototype.enqueueEvents = async function(events) {
     await Promise.all(events.map(async event => {
       if (event.type == 'gameEvent')     { return await this.enqueueGameEvent(event.code); }

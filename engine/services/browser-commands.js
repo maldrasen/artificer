@@ -128,6 +128,15 @@ global.BrowserCommands = (function() {
     ipcMain.on('debug.game.printFlags', () => {
       Flag.printFlags();
     });
+
+    ipcMain.on('debug.game.printAvailableEvents', () => {
+      AvailableEvent.printAll();
+    });
+
+    ipcMain.on('debug.game.printEventQueue', async () => {
+      const game = await Game.instance();
+      game.printEventQueue();
+    });
   }
 
   return { init:init }

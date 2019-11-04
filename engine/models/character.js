@@ -28,6 +28,10 @@ global.Character = Database.instance().define('character', {
       return this.forcedName || `${this.preName||''} ${this.firstName} ${this.lastName||''}`.trim();
     },
 
+    alive() {
+      return ['missing','dead'].indexOf(this.currentTask) < 0
+    },
+
   },
   setterMethods: {
     roleOptions(json) { this.setDataValue('roleOptions_json',JSON.stringify(json)) },

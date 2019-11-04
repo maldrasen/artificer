@@ -3,8 +3,30 @@ global.CharacterAgent = (function() {
   async function findActor(descriptive) {
     if (descriptive == 'the-smartest-rat') { return await findSmartest('rat');  }
     if (descriptive == 'a-sexy-rat')       { return await findSexable('rat'); }
-    if (descriptive == 'rat-chief')        { return await findStrongest('rat'); }
+    if (descriptive == 'rat-chief')        { return await ratChief(); }
     throw `Cannot find a character that matches ${descriptive}`;
+  }
+
+  // This function get's the chief of the rats. If the rat chief flag has been
+  // set and that character is still alive this will return that character.
+  // Otherwise the strongest rat will be made chief.
+  //
+  // TODO: When we get new rats we may need to delete this flag to ensure that
+  //       the chief is always the strongest rat. A change in leadership like
+  //       that might warrent another event.
+  async function ratChief() {
+    const flag = await Flag.lookup('character.rat-chief');
+    if (flag) {
+      const chief = await Character.findByPk(flag.value);
+      if (chief && chief.alive) {
+        return chief;
+      }
+    }
+
+    const newChief = await findStrongest('rat');
+    const game = Game.instance();
+    await game.setFlags({ 'character.rat-chief':newChief.id });
+    return newChief;
   }
 
   function findSmartest(species) {

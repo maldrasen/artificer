@@ -3,7 +3,7 @@ Event.build('make-hide-clothing-done', {
 
   stages:[{
     pages:[
-      { text:`There.` },
+      { text:`I pull my hide leggings on, satisfied with their fit.` },
       { text:`Finally after {{game|dayNumber}} days wandering around completely nude I finally have something that could reasonably be called "clothing"` },
       { text:`Not that I'm opposed to nudity.` },
       { text:`My minions certainly aren't.` },

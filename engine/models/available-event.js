@@ -42,3 +42,13 @@ AvailableEvent.add = async function(data) {
     repeat:        data.repeat === true,
   });
 }
+
+AvailableEvent.printAll = async function() {
+  const events = await AvailableEvent.findAll({ order:[['code', 'ASC']] });
+
+  console.log("\n=== Printing Available Events ===");
+  each(events, async event => {
+    let valid = await CentralScrutinizer.meetsRequirements(event.requires)
+    console.log(`    ${event.code}  -  Requires:${event.requires} Valid:${valid}`);
+  });
+}
