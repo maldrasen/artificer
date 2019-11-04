@@ -104,18 +104,30 @@
     "descriptions/tit-smash-injury-descriptions",
     "descriptions/tits-descriptions",
 
+
+
+    "events/global/first-good-night-sleep",
     "events/global/game-start",
     "events/global/game-start-chase",
     "events/global/got-fleas",
+    "events/global/minion-spider-bite",
+
     "events/location/courtyard-get-minions",
     "events/location/courtyard-walk-on-walls",
     "events/location/great-hall-talk-to-rat-chief",
+
     "events/project/clear-great-hall-done",
     "events/project/clear-great-hall-start",
     "events/project/clear-great-hall-sleep-no",
     "events/project/clear-great-hall-sleep-sex-cock",
     "events/project/clear-great-hall-sleep-sex-pussy",
     "events/project/clear-great-hall-sleep-yes",
+    "events/project/clear-upper-keep-done",
+    "events/project/clear-upper-keep-find-journal",
+    "events/project/make-hide-bedding-done",
+    "events/project/make-hide-clothing-done",
+
+
 
     "hazards/hunting-hazards",
 
@@ -144,6 +156,7 @@
     "names/rat-names",
 
     "projects/clear-great-hall",
+    "projects/clear-upper-keep",
     "projects/make-hide-bedding",
     "projects/make-hide-clothing",
 

@@ -5,4 +5,10 @@ Project.build('make-hide-bedding', {
   effort: 10,
   help: { max:0, min:0 },
   materials: { hide:7 },
+
+  onFinish: async () => {
+    const game = await Game.instance();
+    await game.enqueueGameEvent('make-hide-bedding-done');
+  },
+  
 });
