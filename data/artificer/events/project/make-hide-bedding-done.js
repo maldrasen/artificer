@@ -4,5 +4,11 @@ Event.build('make-hide-bedding-done', {
     pages:[
       { text:`TODO: Make hide bedding done.` },
     ]
-  }]
+  }],
+
+  onFinish: async () => {
+    let game = await Game.instance();
+    await game.setFlags({ 'player.bedsIn':'hide' });
+  },
+
 });

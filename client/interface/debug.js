@@ -1,7 +1,7 @@
 global.Debug = {
 
-  Injuries:{
-    redescribe: () => { ipcRenderer.send('debug.injuries.redescribe'); },
-  }
+  Game:{
+    printFlags: () => { ipcRenderer.send('debug.game.printFlags'); }
+  },
 
 }

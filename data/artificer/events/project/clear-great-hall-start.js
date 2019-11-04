@@ -96,6 +96,10 @@ Event.build('clear-great-hall-start', {
       await game.enqueueGameEvent(code);
     }
 
+    AvailableEvent.addAll([
+      { code:'first-good-night-sleep', requires:['flag.player.bedsIn=hide','flag.player.dressedIn=hide']},
+    ]);
+
     await game.setFlags({
       'locationMenu.map':'unlocked',
       'player.fucksMen': choices.men,

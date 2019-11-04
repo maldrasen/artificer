@@ -10,7 +10,7 @@ Flag.lookup = async function(code) {
 }
 
 Flag.getAll = async function() {
-  let flags = await Flag.findAll({ where:{} })
+  let flags = await Flag.findAll({ where:{}, order: [['code', 'ASC']] });
 
   let compact = {};
   each(flags, flag => {
@@ -18,6 +18,12 @@ Flag.getAll = async function() {
   });
 
   return compact;
+}
+
+Flag.printFlags = async function() {
+  const flags = await Flag.getAll();
+  console.log("\n=== Printing Flags ===");
+  each(flags, (value,code) => { console.log(`    ${code}  -  ${value}`); });
 }
 
 Flag.alwaysFuckGenderList = async function() {

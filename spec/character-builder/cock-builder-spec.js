@@ -59,7 +59,7 @@ describe('CockBuilder', function() {
       character.getCock().then(cock => {
         expect(cock.convertedLength).to.be.within(10,32);
         expect(cock.convertedWidth).to.be.within(1.5,4.5);
-        expect(cock.convertedScrotumWidth).to.be.within(4.25,13.25)
+        expect(cock.convertedScrotumWidth).to.be.within(3.75,12.5)
         done();
       });
     });
@@ -70,7 +70,7 @@ describe('CockBuilder', function() {
       character.getCock().then(cock => {
         expect(cock.convertedLength).to.be.within(2,7);
         expect(cock.convertedWidth).to.be.within(0.5,1);
-        expect(cock.convertedScrotumWidth).to.be.within(1.5,2.75)
+        expect(cock.convertedScrotumWidth).to.be.within(1.2,2.5)
         done();
       });
     });

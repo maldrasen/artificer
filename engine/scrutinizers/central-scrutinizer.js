@@ -16,6 +16,9 @@ global.CentralScrutinizer = (function() {
 
   async function meetsRequirement(requirement) {
     if (requirement.match(/^game.dayNumber=/)) { return await checkDayNumber(requirement); }
+    if (requirement.match(/^flag\..+=.+/)) { return await checkExactFlagValue(requirement); }
+    if (requirement.match(/^flag/)) { return await checkFlagExists(requirement); }
+
     throw `Unknown Requirement - ${requirement}`;
   }
 
@@ -25,6 +28,20 @@ global.CentralScrutinizer = (function() {
   async function checkDayNumber(requirement) {
     const game = await Game.instance();
     return game.dayNumber >= requirement.split('=')[1];
+  }
+
+  // Requirements Like: flag.player.bedsIn=hide
+  async function checkExactFlagValue(requirement) {
+    let match = requirement.match(/^flag\.(.+)=(.+)/);
+    let flag = await Flag.lookup(match[1]);
+    return (flag == null) ? false : (match[2] == flag.value);
+  }
+
+  // Requirements Like: flag.player.bedsIn
+  async function checkFlagExists(requirement) {
+    let code = requirement.match(/^flag\.(.+)/)[1];
+    let flag = await Flag.lookup(code);
+    return flag != null;
   }
 
   return { meetsRequirements:meetsRequirements };

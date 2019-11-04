@@ -125,10 +125,8 @@ global.BrowserCommands = (function() {
   }
 
   function initDebugMessages() {
-    ipcMain.on('debug.injuries.redescribe', () => {
-      Injury.redescribeAll().then(()=>{
-        Browser.send('alert',{ messsage:'Injuries have been redescribed.' });
-      });
+    ipcMain.on('debug.game.printFlags', () => {
+      Flag.printFlags();
     });
   }
 
