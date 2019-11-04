@@ -15,44 +15,57 @@ global.Event = class Event extends Form {
     const context = new WeaverContext();
     await context.setEvent(event);
 
-    Event._transformEvent(event, context);
+    await Event.transformEvent(event, context);
 
     return event;
   }
 
   // === Event Transformation  ===
 
-  static _transformEvent(event, context) {
-    let transformedStages = [];
-
-    each(event.stages, stage => {
-      if (SynchronizedScrutinizer.meetsRequirements(stage.requires, context.properties)) {
-        Event._transformStage(stage, context)
-        transformedStages.push(stage);
+  static async transformEvent(event, context) {
+    event.stages = await Promise.all(event.stages.map(async stage => {
+      const valid = await CentralScrutinizer.meetsRequirements(stage.requires, context);
+      if (valid) {
+        return await Event.transformStage(stage, context);
       }
-    });
+    }));
 
-    event.stages = transformedStages;
+    event.stages = event.stages.filter(stage => {
+      return stage != null;
+    });
   }
 
-  static _transformStage(stage, context) {
+  static async transformStage(stage, context) {
     if (stage.pages) {
-      let transformedPages = [];
+      stage.pages = await Promise.all(stage.pages.map(async page => {
+        const valid = await CentralScrutinizer.meetsRequirements(page.requires, context);
 
-      each(stage.pages, page => {
-        if (page.text && SynchronizedScrutinizer.meetsRequirements(page.requires, context.properties)) {
-          page.text = Weaver.weave(page.text, context);
-
-          // Set the caption on the page frame for the player or a minion if either is speaking.
-          if (page.playerSpeaker) { page.playerSpeaker = context.get('P').character.firstName; }
-          if (page.minionSpeaker) { page.minionSpeaker = Weaver.weave(page.minionSpeaker, context); }
-
-          transformedPages.push(page);
+        if (page.requires) {
+          console.log("Seriously? ",page.requires, valid)
         }
-      });
 
-      stage.pages = transformedPages;
+        if (valid) {
+          return Event.transformPage(page, context)
+        }
+      }));
+
+
+      stage.pages = stage.pages.filter(page => {
+        return page != null;
+      });
     }
+
+    return stage;
+  }
+
+  static transformPage(page, context) {
+    page.text = Weaver.weave(page.text, context);
+
+    // Set the caption on the page frame for the player or a minion if either is speaking.
+    if (page.playerSpeaker) { page.playerSpeaker = context.get('P').character.firstName; }
+    if (page.minionSpeaker) { page.minionSpeaker = Weaver.weave(page.minionSpeaker, context); }
+
+    return page;
   }
 
 }

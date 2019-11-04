@@ -1,5 +1,6 @@
 Event.build('clear-great-hall-sleep-yes', {
   background: '../../resources/backgrounds/bg-courtyard-ruined-night.png',
+
   stages:[
     { pages: [
       { text:`Well, I don't see any reason why they shouldn't be allowed to join me.` },

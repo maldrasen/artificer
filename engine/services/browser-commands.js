@@ -47,12 +47,6 @@ global.BrowserCommands = (function() {
       });
     });
 
-    ipcMain.on('game.quick-load', (event) => {
-      Records.quickLoad().then(() => {
-        Composer.render();
-      })
-    });
-
     ipcMain.on('game.list-save-files',() => {
       Records.listSaveFiles().then(fileList => {
         Browser.send('game.file-list', fileList);

@@ -1,23 +1,28 @@
 global.CentralScrutinizer = (function() {
 
-  // The CentralScrutinizer is used by a variety of other models to check if
-  // all of its requirements are met. The requires argument can be either a
-  // string or an array of strings.
-  async function meetsRequirements(requires) {
+  // The CentralScrutinizer is used by a variety of other models including the
+  // Weaver to check if all requirements are met. The requires argument can be
+  // either a string or an array of strings. Context should be a weaver context,
+  // if the context is null a new weaver context will be built over time.
+  async function meetsRequirements(requires, context) {
     if (requires == null) { return true; }
+    if (context == null) { context = new WeaverContext(); }
 
     let requirements = (typeof requires == "string") ? [requires] : requires;
     let checks = await Promise.all(requirements.map(async requirement => {
-      return await meetsRequirement(requirement);
+      return await meetsRequirement(requirement, context);
     }));
 
     return checks.indexOf(false) < 0;
   }
 
-  async function meetsRequirement(requirement) {
+  async function meetsRequirement(requirement, context) {
     if (requirement.match(/^game.dayNumber=/)) { return await checkDayNumber(requirement); }
-    if (requirement.match(/^flag\..+=.+/)) { return await checkExactFlagValue(requirement); }
-    if (requirement.match(/^flag/)) { return await checkFlagExists(requirement); }
+    if (requirement.match(/^flag\..+=.+/))     { return await checkExactFlagValue(requirement); }
+    if (requirement.match(/^flag/))            { return await checkFlagExists(requirement); }
+    if (requirement.match(/^no-flag/))         { return await checkFlagNotExists(requirement); }
+    if (requirement.match(/^player/))          { return await PlayerScrutinizer.check(requirement, context); }
+    if (requirement.match(/^minion/))          { return await MinionScrutinizer.check(requirement, context); }
 
     throw `Unknown Requirement - ${requirement}`;
   }
@@ -44,6 +49,13 @@ global.CentralScrutinizer = (function() {
     return flag != null;
   }
 
-  return { meetsRequirements:meetsRequirements };
+  // Can't just negate, because of the regex.
+  async function checkFlagNotExists(requirement) {
+    let code = requirement.match(/^no-flag\.(.+)/)[1];
+    let flag = await Flag.lookup(code);
+    return flag == null;
+  }
+
+  return { meetsRequirements };
 
 })();

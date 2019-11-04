@@ -9,13 +9,12 @@ Project.build('clear-great-hall', {
     const game = await Game.instance();
     await AvailableEvent.addAll([
       { code:'clear-great-hall-start' },
-      { code:'great-hall-talk-to-rat-chief', requires:`game.dayNumber=${game.dayNumber+1}` },
+      { code:'great-hall-talk-to-rat-chief', requires:`game.dayNumber=${game.dayNumber+3}` },
     ]);
   },
 
   onFinish: async () => {
     await EventQueue.enqueueEvent('clear-great-hall-done');
-
     await AvailableProject.addAll([
       { code:'make-hide-clothing' },
       { code:'make-hide-bedding' },

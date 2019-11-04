@@ -14,11 +14,13 @@ Event.build('clear-great-hall-done', {
   ],
 
   onFinish: async () => {
+    const orgy = await Flag.lookup('history.courtyard-rat-orgy');
+    const game = await Game.instance();
+
     await Flag.set('location.currentStudy','great-hall');
 
-    const orgy = await Flag.lookup('history.courtyard-rat-orgy');
     if (orgy) { await AvailableEvent.addAll([
-      { code:'got-fleas', requires:`game.dayNumber=${game.dayNumber+1}` },
+      { code:'got-fleas', requires:`game.dayNumber=${game.dayNumber+2}` },
     ]); }
   },
 
