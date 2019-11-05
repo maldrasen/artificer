@@ -115,13 +115,14 @@
     "events/global/magic-practice-1-3",
     "events/global/magic-practice-1-4",
     "events/global/magic-practice-2-1",
-    "events/global/minion-spider-bite",
-    "events/global/minion-spider-bite-normal",
-    "events/global/minion-spider-bite-torment",
 
     "events/location/courtyard-get-minions",
     "events/location/courtyard-walk-on-walls",
     "events/location/great-hall-talk-to-rat-chief",
+    "events/location/minion-spider-bite",
+    "events/location/minion-spider-bite-normal",
+    "events/location/minion-spider-bite-torment-balls",
+    "events/location/minion-spider-bite-torment-pussy",
 
     "events/project/clear-great-hall-done",
     "events/project/clear-great-hall-start",

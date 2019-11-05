@@ -95,7 +95,8 @@ global.CharacterAgent = (function() {
   }
 
   return {
-    findActor: findActor,
-  }
+    findActor,
+    ratChief
+  };
 
 })();

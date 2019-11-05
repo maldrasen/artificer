@@ -41,7 +41,7 @@ describe('Resolver', function() {
                 expect(game.time).to.equal('afternoon');
                 expect(minions[0].currentTask).to.equal('project');
                 expect(minions[1].currentTask).to.equal('project');
-                expect(event.requires).to.equal('game.dayNumber=2')
+                expect(event.requires).to.equal('game.dayNumber=4')
                 done();
               });
             });

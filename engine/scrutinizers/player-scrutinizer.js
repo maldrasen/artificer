@@ -3,20 +3,6 @@ global.PlayerScrutinizer = (function() {
   async function check(requirement, context) {
     const player = await lookupPlayer(context);
 
-    if (requirement == 'player.furry')                           { return player.character.species.isFurry; }
-    if (requirement == 'player.not-furry')                       { return !player.character.species.isFurry; }
-    if (requirement == 'player.cock-sheath')                     { return player.character.species.hasCockSheath; }
-    if (requirement == 'player.no-cock-sheath')                  { return !player.character.species.hasCockSheath; }
-    if (requirement == 'player.has-cock')                        { return player.cock != null; }
-    if (requirement == 'player.no-cock')                         { return player.cock == null; }
-    if (requirement == 'player.has-pussy')                       { return player.pussy != null; }
-    if (requirement == 'player.no-pussy')                        { return player.pussy == null; }
-    if (requirement == 'player.has-tits')                        { return player.tits != null; }
-    if (requirement == 'player.no-tits')                         { return player.tits == null; }
-    if (requirement == 'player.has-average-tits')                { return player.tits && player.tits.currentSizeClass == 'average'}
-    if (requirement == 'player.has-smaller-than-average-tits')   { return player.tits && ['zero','tiny','small'].indexOf(player.tits.currentSizeClass) >= 0 }
-    if (requirement == 'player.has-bigger-than-average-tits')    { return player.tits && ['big','huge','monster'].indexOf(player.tits.currentSizeClass) >= 0 }
-
     if (requirement == 'player.accepts-men')                     { return await genderPreferenceScores().male > 0 }
     if (requirement == 'player.accepts-no-men')                  { return await genderPreferenceScores().male == 0 }
     if (requirement == 'player.prefers-men')                     { return await playerPrefersMen(); }
@@ -25,7 +11,7 @@ global.PlayerScrutinizer = (function() {
     if (requirement == 'player.prefers-women-over-men')          { return await playerPrefersWomenOverMen(); }
     if (requirement == 'player.prefers-neither-men-nor-women')   { return await playerPrefersNeitherMenNorWomen(); }
 
-    throw `Unknown Player Requirement - ${requirement}`;
+    return CharacterScrutinizer.check(requirement.match(/player\.(.+)/)[1], player);
   }
 
   async function lookupPlayer(context) {

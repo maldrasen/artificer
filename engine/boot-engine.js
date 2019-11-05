@@ -77,6 +77,7 @@ require(`${ROOT}/engine/units/roles/rest`);
 
 // === Scrutinizers ===
 require(`${ROOT}/engine/scrutinizers/central-scrutinizer`);
+require(`${ROOT}/engine/scrutinizers/character-scrutinizer`);
 require(`${ROOT}/engine/scrutinizers/minion-scrutinizer`);
 require(`${ROOT}/engine/scrutinizers/player-scrutinizer`);
 
