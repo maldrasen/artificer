@@ -11,4 +11,4 @@ Event.build('minion-spider-bite-torment-pussy', {
 });
 
 // { playerSpeaker:true, text:`<span class='player-quote'>""</span>` },
-// { minionSpeaker:'{{R::character.firstName}}', text:`<span class='player-quote'>""</span>` },
+// { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>""</span>` },

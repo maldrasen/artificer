@@ -25,11 +25,11 @@ Event.build('minion-spider-bite', {
     ]
   },{
     pages:[
-      { text:`{{R::character.firstName}} notices my gaze and tries to leave the hall, but I motion {{R::gender.his}} over before he's able to go.` },
+      { text:`{{R::character.firstName}} notices my gaze and tries to leave the hall, but I motion {{R::gender.his}} over before {{R::gender.he}}'s able to go.` },
       { text:`{{R::gender.He}} sheepishly approaches and I push {{R::gender.his}} hands away so I can get a better look.` },
       { playerSpeaker:true, text:`<span class='player-quote'>"What the hell happened to you?"</span>` },
-      { minionSpeaker:'{{R::character.firstName}}', text:`<span class='player-quote'>"The spiderblight {{P::character.title}}.</span>` },
-      { minionSpeaker:'{{R::character.firstName}}', text:`<span class='player-quote'>"They sneak and sting us. You see, they like the soft parts best {{P::character.title}}."</span>` },
+      { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"The spiderblight {{P::character.title}}."</span>` },
+      { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"They sneak and sting us. You see, they like the soft parts best {{P::character.title}}."</span>` },
       { text:`I nod, still slightly transfixed by the changes that have come over {{R::gender.his}} body.` },
     ]
   },{
@@ -60,12 +60,14 @@ Event.build('minion-spider-bite', {
       cock.blightCount = 1;
       cock.blightHealing = 0;
       cock.blightPlace = 'balls';
-      await cock.save();
+      const describer = new CockDescriber({ character:chief, cock:cock });
+      await describer.updateDescription();
     } else {
       pussy.blightLevel = 3;
       pussy.blightCount = 1;
       pussy.blightHealing = 0;
-      await pussy.save();
+      const describer = new PussyDescriber({ character:chief, pussy:pussy });
+      await describer.updateDescription();
     }
   },
 

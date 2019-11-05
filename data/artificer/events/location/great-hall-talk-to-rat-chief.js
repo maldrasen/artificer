@@ -24,7 +24,7 @@ Event.build('great-hall-talk-to-rat-chief', {
         { playerSpeaker:true, text:`<span class='player-quote'>"When I want to kill a rat?"</span>` },
         { playerSpeaker:true, text:`<span class='player-quote'>"That's something you think I'd like to do?"</span>` },
         { playerSpeaker:true, text:`<span class='player-quote'>"Why would you have me kill your tribesmen?"</span>` },
-        { minionSpeaker:'{{R::character.firstName}}', text:`He nods excitedly, <span class='player-quote'>"Yes yes. {{P::character.title}} kills rats and gets strong."</span>` },
+        { minionSpeaker:'{{R::character.firstName}}', text:`He nods excitedly, <span class='minion-quote'>"Yes yes. {{P::character.title}} kills rats and gets strong."</span>` },
         { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"Strong {{P::character.title}} makes tribe strong."</span>` },
         { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"Tribe all that matters."</span>` },
         { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"Kill weak rats to make tribe strong."</span>` },
