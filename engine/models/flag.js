@@ -9,6 +9,11 @@ Flag.lookup = async function(code) {
   return await Flag.findOne({ where:{ code:code } });
 }
 
+Flag.equals = async function(code,value) {
+  const flag = await Flag.lookup(code);
+  return flag.value == value;
+}
+
 Flag.setAll = async function(flags) {
   return await Promise.all(Object.keys(flags).map(async code => {
     return await Flag.set(code, flags[code]);

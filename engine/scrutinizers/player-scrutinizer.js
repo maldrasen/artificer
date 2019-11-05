@@ -3,13 +3,22 @@ global.PlayerScrutinizer = (function() {
   async function check(requirement, context) {
     const player = await lookupPlayer(context);
 
-    if (requirement == 'player.accepts-men')                     { return await genderPreferenceScores().male > 0 }
-    if (requirement == 'player.accepts-no-men')                  { return await genderPreferenceScores().male == 0 }
-    if (requirement == 'player.prefers-men')                     { return await playerPrefersMen(); }
-    if (requirement == 'player.prefers-women')                   { return await playerPrefersWomen(); }
-    if (requirement == 'player.prefers-men-over-women')          { return await playerPrefersMenOverWomen(); }
-    if (requirement == 'player.prefers-women-over-men')          { return await playerPrefersWomenOverMen(); }
-    if (requirement == 'player.prefers-neither-men-nor-women')   { return await playerPrefersNeitherMenNorWomen(); }
+    if (requirement == 'player.always-fucks-men')              { return await Flag.equals('player.fucksMen','always'); }
+    if (requirement == 'player.sometimes-fucks-men')           { return await Flag.equals('player.fucksMen','maybe'); }
+    if (requirement == 'player.never-fucks-men')               { return await Flag.equals('player.fucksMen','never'); }
+    if (requirement == 'player.always-fucks-women')            { return await Flag.equals('player.fucksWomen','always'); }
+    if (requirement == 'player.sometimes-fucks-women')         { return await Flag.equals('player.fucksWomen','maybe'); }
+    if (requirement == 'player.never-fucks-women')             { return await Flag.equals('player.fucksWomen','never'); }
+    if (requirement == 'player.always-fucks-futas')            { return await Flag.equals('player.fucksFutas','always'); }
+    if (requirement == 'player.sometimes-fucks-futas')         { return await Flag.equals('player.fucksFutas','maybe'); }
+    if (requirement == 'player.never-fucks-futas')             { return await Flag.equals('player.fucksFutas','never'); }
+    if (requirement == 'player.accepts-men')                   { return await genderPreferenceScores().male > 0 }
+    if (requirement == 'player.accepts-no-men')                { return await genderPreferenceScores().male == 0 }
+    if (requirement == 'player.prefers-men')                   { return await playerPrefersMen(); }
+    if (requirement == 'player.prefers-women')                 { return await playerPrefersWomen(); }
+    if (requirement == 'player.prefers-men-over-women')        { return await playerPrefersMenOverWomen(); }
+    if (requirement == 'player.prefers-women-over-men')        { return await playerPrefersWomenOverMen(); }
+    if (requirement == 'player.prefers-neither-men-nor-women') { return await playerPrefersNeitherMenNorWomen(); }
 
     return CharacterScrutinizer.check(requirement.match(/player\.(.+)/)[1], player);
   }
