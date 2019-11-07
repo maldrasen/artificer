@@ -83,7 +83,7 @@ Weaver.TitsLoom = (function() {
 
   function averageComp(plural) {
     return plural ?
-      aPairOf() + Random.from(['grapefruits','large oranges','large applies','handfulls']) :
+      aPairOf() + Random.from(['grapefruits','large oranges','large apples']) :
       Random.from(['a grapefruit','a large orange','a large apple','a handfull'])
   }
 
