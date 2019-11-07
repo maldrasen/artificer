@@ -14,7 +14,7 @@ Event.build('clear-great-hall-done', {
   ],
 
   onFinish: async () => {
-    const orgy = await Flag.lookup('history.courtyard-rat-orgy');
+    const orgy = await Flag.lookup('history.courtyardRatOrgy');
     const game = await Game.instance();
 
     await Flag.set('location.currentStudy','great-hall');

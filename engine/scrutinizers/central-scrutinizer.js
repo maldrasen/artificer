@@ -17,6 +17,8 @@ global.CentralScrutinizer = (function() {
   }
 
   async function meetsRequirement(requirement, context) {
+    if (requirement == 'game.metric')          { return Configuration.metric }
+    if (requirement == 'game.not-metric')      { return ! Configuration.metric }
     if (requirement.match(/^game.dayNumber=/)) { return await checkDayNumber(requirement); }
     if (requirement.match(/^flag\..+=.+/))     { return await checkExactFlagValue(requirement); }
     if (requirement.match(/^flag/))            { return await checkFlagExists(requirement); }

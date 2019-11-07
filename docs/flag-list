@@ -1,18 +1,20 @@
 
-location.currentStudy         | courtyard-walk-on-walls     | (code) Set to the code of the location where the study actions can be performed.
-location.hinterlandsName      |                             | (name) Set by the player to name the surrounding countryside. Set to The Hinterlands by default.
-location.keepName             |                             | (name) Set by the player to name their keep. Set to Faingorn Keep by default.
-locationMenu.map              | clear-great-hall-start      | (unlocked) Turns on the map menu
-locationMenu.minions          | courtyard-get-minions       | (unlocked) Turns on the minion menu
-minion.missions               | clothed-and-bedded          | (unlocked) Turns on the ability to send minions on missions.
-minion.rename                 | courtyard-walk-on-walls     | (unlocked) Turns on the ability to rename minions in the minion menu.
-character.rat-chief           | courtyard-get-minions       | (id) ID of the strongest alive rat serving as chief. This flag should be checked every day to see if the chief changes.
-player.bedsIn                 | make-hide-bedding-done      | (hide) Some events may need to know where the player sleeps.
-player.dressedIn              | make-hide-clothing-done     | (hide) Some events may need to generally know what the player wears.
-player.fucksMen               | clear-great-hall-start      | (always,maybe,never) The player's gender preferences.
-player.fucksFutas             | clear-great-hall-start      | (always,maybe,never)
-player.fucksWomen             | clear-great-hall-start      | (always,maybe,never)
-history.courtyard-rat-orgy    | clear-great-hall-sleep-sex  | (yes) if it happened. Unset if not.
+character.ratChief            | courtyard-get-minions           | (id) ID of the strongest alive rat serving as chief.
+history.courtyardRatOrgy      | clear-great-hall-sleep-sex      | (yes) if it happened. Unset if not.
+location.currentStudy         | courtyard-walk-on-walls         | (code) Set to the code of the location where the study actions can be performed.
+location.hinterlandsName      |                                 | (name) Set by the player to name the surrounding countryside. Set to The Hinterlands by default.
+location.keepName             |                                 | (name) Set by the player to name their keep. Set to Faingorn Keep by default.
+locationMenu.map              | clear-great-hall-start          | (unlocked) Turns on the map menu
+locationMenu.minions          | courtyard-get-minions           | (unlocked) Turns on the minion menu
+locationMenu.showDate         | clear-upper-keep-find-journal   | (unlocked) Shows the Rhysh date with the day number.
+minion.missions               | clothed-and-bedded              | (unlocked) Turns on the ability to send minions on missions.
+minion.rename                 | courtyard-walk-on-walls         | (unlocked) Turns on the ability to rename minions in the minion menu.
+mission.sisalDiscoverable     | journal-4                       | (yes) The sisal field can be discovered.
+player.bedsIn                 | make-hide-bedding-done          | (hide) Some events may need to know where the player sleeps.
+player.dressedIn              | make-hide-clothing-done         | (hide) Some events may need to generally know what the player wears.
+player.fucksMen               | clear-great-hall-start          | (always,maybe,never) The player's gender preferences.
+player.fucksFutas             | clear-great-hall-start          | (always,maybe,never)
+player.fucksWomen             | clear-great-hall-start          | (always,maybe,never)
 
 === Automatic ===
 enqueued.{code}    | {count} The number of times this event has been enqueued | Every event that has been enqueued by the

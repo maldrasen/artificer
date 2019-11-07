@@ -6,7 +6,8 @@ Weaver.GameLoom = (function() {
   function findValue(token, context) {
     let game = context.get('game');
 
-    if (token == "dayNumber") { return `${EnglishUtility.numberInEnglish(game.dayNumber)}`; }
+    if (token == "dayNumber") { return EnglishUtility.numberInEnglish(game.dayNumber); }
+    if (token == "fullDate")  { return Calendar.fullDate(game.dayNumber); }
 
     return Weaver.error(`Bad game token(${token})`);
   }

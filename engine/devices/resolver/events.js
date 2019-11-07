@@ -37,12 +37,21 @@ Resolver.Events = (function() {
   // I can't add an event and immeadietly check to see if it's there or not.
   function filterEvents(events) {
     let morningEventQueued = false;
+    let afternoonEventQueued = false;
 
     return events.filter(availableEvent => {
       if (availableEvent) {
-        if (Event.lookup(availableEvent.code).time != 'morning') { return true; }
-        if (morningEventQueued == false) {
+        let time = Event.lookup(availableEvent.code).time;
+
+        if (time == null) {
+          return true;
+        }
+        if (time == 'morning' && morningEventQueued == false) {
           morningEventQueued = true;
+          return true;
+        }
+        if (time == 'afternoon' && afternoonEventQueued == false) {
+          afternoonEventQueued = true;
           return true;
         }
       }

@@ -15,7 +15,7 @@ global.CharacterAgent = (function() {
   //       the chief is always the strongest rat. A change in leadership like
   //       that might warrent another event.
   async function ratChief() {
-    const flag = await Flag.lookup('character.rat-chief');
+    const flag = await Flag.lookup('character.ratChief');
     if (flag) {
       const chief = await Character.findByPk(flag.value);
       if (chief && chief.alive) {
@@ -24,7 +24,7 @@ global.CharacterAgent = (function() {
     }
 
     const newChief = await findStrongest('rat');
-    await Flag.set('character.rat-chief',newChief.id)
+    await Flag.set('character.ratChief',newChief.id)
     return newChief;
   }
 
