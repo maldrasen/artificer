@@ -4,6 +4,7 @@ Components.PlanView.Minions = (function() {
     $(document).on('click', '#planView .helper-minion', Elements.buttonAction(toggleHelperMinion));
     $(document).on('click', '#planView .minion-select-cancel', Elements.buttonAction(cancelMinionSelect));
     $(document).on('click', '#planView .minion-select-confirm', Elements.buttonAction(confirmSelectProject));
+    $(document).on('click', '#planView .role-link', Elements.buttonAction(selectRole));
   }
 
   function build(planData) {
@@ -19,6 +20,24 @@ Components.PlanView.Minions = (function() {
     });
     element.append(addendum);
   }
+
+  function selectRole() {
+    let link = $(this);
+    let role = link.data('role');
+    let select = link.closest('.role-select');
+
+    select.find('.selected').removeClass('selected');
+    link.addClass('selected');
+  }
+
+
+
+
+
+
+
+
+  // Move to minion select...
 
   function toggleHelperMinion() {
     let project = Components.PlanView.getSelectedProject();
