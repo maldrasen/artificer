@@ -18,6 +18,9 @@ require(`${ROOT}/client/components/location-view`);
 require(`${ROOT}/client/components/minion-detail-view`);
 require(`${ROOT}/client/components/minion-list-view`);
 require(`${ROOT}/client/components/plan-view`);
+require(`${ROOT}/client/components/plan-view/minions`);
+require(`${ROOT}/client/components/plan-view/missions`);
+require(`${ROOT}/client/components/plan-view/projects`);
 require(`${ROOT}/client/components/report-view`);
 require(`${ROOT}/client/components/saved-games`);
 

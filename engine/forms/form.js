@@ -25,6 +25,10 @@ global.Form = class Form {
     return instance;
   }
 
+  static all() {
+    return this.where(i => { return true; });
+  }
+
   static lookup(code) {
     let form = this.instances[code];
     if (form == null) {
