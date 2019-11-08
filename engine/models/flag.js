@@ -11,7 +11,7 @@ Flag.lookup = async function(code) {
 
 Flag.equals = async function(code,value) {
   const flag = await Flag.lookup(code);
-  return flag.value == value;
+  return flag && (flag.value == value);
 }
 
 Flag.setAll = async function(flags) {

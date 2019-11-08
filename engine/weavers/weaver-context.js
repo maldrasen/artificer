@@ -66,13 +66,15 @@ global.WeaverContext = class WeaverContext {
       freeCount: 0,
       missionCount: 0,
       workingCount: 0,
+      taskCount: 0,
     }
 
     each(minions, minion => {
       data.totalCount++;
-      if (minion.currentTask == 'free') { data.freeCount++ }
-      if (minion.currentTask == 'mission') { data.missionCount++ }
-      if (minion.currentTask == 'project') { data.workingCount++ }
+      if (minion.currentDuty == 'role') { data.freeCount++ }
+      if (minion.currentDuty == 'mission') { data.missionCount++ }
+      if (minion.currentDuty == 'project') { data.workingCount++ }
+      if (minion.currentDuty == 'task') { data.taskCount++ }
     });
 
     this.set('minionData', data);

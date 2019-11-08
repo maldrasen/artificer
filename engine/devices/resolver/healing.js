@@ -17,7 +17,7 @@ Resolver.Healing = (function() {
       await healPart(minion, parts.tits, 'smash', healed);
     }
 
-    let condition = (minion.roleCode == 'rest') ? 'rest' : 'nothing';
+    let condition = (minion.dutyCode == 'rest') ? 'rest' : 'nothing';
     let message = healingMessage(healed, condition);
 
     if (message) {
@@ -33,7 +33,7 @@ Resolver.Healing = (function() {
     let healing = part[`${type}Healing`];
 
     if (level > 0) {
-      healing += (minion.roleCode == 'rest') ? 2 : 1;
+      healing += (minion.dutyCode == 'rest') ? 2 : 1;
 
       if (healing >= requiredHealing(level)) {
         await completeHealing(minion, part, type, healed);

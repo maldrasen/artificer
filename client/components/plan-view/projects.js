@@ -90,7 +90,7 @@ Components.PlanView.Projects = (function() {
     let list = $('#planView .minion-select-frame .minions').empty();
 
     each(minions, minion => {
-      if (minion.currentTask == 'free') {
+      if (minion.currentDuty == 'role') {
         list.append($('<li>',{ class:'helper-minion' }).append(minion.name).data('id',minion.id));
       }
     });

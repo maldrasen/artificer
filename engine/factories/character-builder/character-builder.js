@@ -18,13 +18,14 @@ global.CharacterBuilder = (function() {
       firstName:   options.firstName,
       lastName:    options.lastName,
       type:        options.type      || 'minion',
-      roleCode:    options.roleCode  || 'rest',
+      dutyCode:    options.dutyCode  || 'rest',
       physical:    options.physical  || species.randomizedAttribute('physical'),
       personal:    options.personal  || species.randomizedAttribute('personal'),
       mental:      options.mental    || species.randomizedAttribute('mental'),
       magical:     options.magical   || species.randomizedAttribute('magical'),
       health:      100,
-      currentTask: 'free',
+      status:      'normal',
+      currentDuty: 'role',
     };
 
     let character = await Character.create(params)

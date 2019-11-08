@@ -1,8 +1,9 @@
 global.Character = Database.instance().define('character', {
-  type:             { type:Sequelize.STRING, validate:{ isIn:[['minion','hero','useless','enforcer','slave']] }},
-  currentTask:      { type:Sequelize.STRING, validate:{ isIn:[['free','project','mission','missing','dead']] }},
-  roleCode:         { type:Sequelize.STRING },
-  roleOptions_json: { type:Sequelize.STRING },
+  type:             { type:Sequelize.STRING, validate:{ isIn:[['minion']] }},
+  status:           { type:Sequelize.STRING, validate:{ isIn:[['normal','missing','dead']] }},
+  currentDuty:      { type:Sequelize.STRING, validate:{ isIn:[['role','project','mission','task']] }},
+  dutyCode:         { type:Sequelize.STRING },
+  dutyOptions_json: { type:Sequelize.STRING },
   genderCode:       { type:Sequelize.STRING },
   speciesCode:      { type:Sequelize.STRING },
   preName:          { type:Sequelize.STRING },
@@ -19,22 +20,18 @@ global.Character = Database.instance().define('character', {
   getterMethods: {
     gender()      { return Gender[this.genderCode]; },
     species()     { return Species.lookup(this.speciesCode); },
-    role()        { return Role.lookup(this.roleCode); },
-    roleOptions() { return JSON.parse(this.roleOptions_json||'{}') },
+    dutyOptions() { return JSON.parse(this.dutyOptions_json||'{}') },
+    role()        { return this.currentDuty == 'role' ? Role.lookup(this.dutyCode) : null; },
     isMale()      { return this.genderCode == 'male'; },
     isFemale()    { return this.genderCode == 'female'; },
+    alive()       { return this.status == 'normal' },
 
     name() {
       return this.forcedName || `${this.preName||''} ${this.firstName} ${this.lastName||''}`.trim();
     },
-
-    alive() {
-      return ['missing','dead'].indexOf(this.currentTask) < 0
-    },
-
   },
   setterMethods: {
-    roleOptions(json) { this.setDataValue('roleOptions_json',JSON.stringify(json)) },
+    dutyOptions(json) { this.setDataValue('dutyOptions_json',JSON.stringify(json)) },
   }
 });
 
@@ -74,8 +71,8 @@ Character.prototype.properties = async function() {
     mental: this.mental,
     personal: this.personal,
     magical: this.magical,
-    currentTask: this.currentTask,
-    role: this.roleCode,
+    currentDuty: this.currentDuty,
+    duty: this.dutyCode,
     availableRoles: [
       { code:'rest',   name:'Rest'   },
       { code:'hunter', name:'Hunter' },

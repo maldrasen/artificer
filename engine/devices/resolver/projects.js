@@ -38,7 +38,7 @@ Resolver.Projects = (function() {
     // assigned to other tasks while the project is being worked on. It's also
     // used when calculating project progress.
     await Promise.all(minions.map(async minion => {
-      minion.currentTask = 'project';
+      minion.currentDuty = 'project';
       await minion.save();
     }));
 
@@ -56,7 +56,7 @@ Resolver.Projects = (function() {
   // This function will do work on the project. If a project has been set on the
   // game then it's a long running project and is either updated, or completed.
   async function workLongProject(game) {
-    const minions = await Character.findAll({ where:{ currentTask:'project' }});
+    const minions = await Character.findAll({ where:{ currentDuty:'project' }});
     const project = Project.lookup(game.currentProject);
 
     // Do Work. 10 hours for player + 5 each assigned minion.
@@ -81,7 +81,7 @@ Resolver.Projects = (function() {
       // here. I don't think we need to read this value again until sometime
       // after the report is done.
       each(minions, minion => {
-        minion.currentTask = 'free'
+        minion.currentDuty = 'role'
         minion.save();
       });
 

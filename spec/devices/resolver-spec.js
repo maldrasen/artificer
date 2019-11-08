@@ -14,7 +14,8 @@ describe('Resolver', function() {
         Resolver.startWork(planData).then(() => {
           Character.findAll({ where:{ id:[id_1,id_2] }}).then(minions => {
             expect(minions[0].role.code).to.equal('hunter');
-            expect(minions[1].roleOptions.nude).to.equal('of-course');
+            expect(minions[1].dutyCode).to.equal('rest');
+            expect(minions[1].dutyOptions.nude).to.equal('of-course');
             done();
           });
         });
@@ -39,8 +40,8 @@ describe('Resolver', function() {
                 expect(game.currentProject).to.equal('clear-great-hall');
                 expect(game.currentProjectProgress).to.equal(20);
                 expect(game.time).to.equal('afternoon');
-                expect(minions[0].currentTask).to.equal('project');
-                expect(minions[1].currentTask).to.equal('project');
+                expect(minions[0].currentDuty).to.equal('project');
+                expect(minions[1].currentDuty).to.equal('project');
                 expect(event.requires).to.equal('game.dayNumber=4')
                 done();
               });

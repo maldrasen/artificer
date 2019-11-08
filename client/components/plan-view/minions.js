@@ -22,7 +22,7 @@ Components.PlanView.Minions = (function() {
       roleSelect.append(option.append(role.name))
     });
 
-    let element = $(`<div class='minion ${minion.currentTask} minion-${minion.id}' data-id='${minion.id}'>
+    let element = $(`<div class='minion ${minion.currentDuty} minion-${minion.id}' data-id='${minion.id}'>
       <div class='top-row'>
         <div class='name-row'>
           <span class='name'>${minion.name}</span>
