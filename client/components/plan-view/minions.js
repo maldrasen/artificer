@@ -7,9 +7,7 @@ Components.PlanView.Minions = (function() {
   }
 
   function build(planData) {
-    each(planData.minions, minion => {
-      $('#planView .plan-minion-list').append(buildMinion(minion));
-    });
+    Components.MinionListView.buildForPlan($('#planView .plan-minion-list'), planData.minions);
   }
 
   function buildMinion(minion) {

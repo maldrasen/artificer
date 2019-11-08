@@ -1,4 +1,5 @@
-#minionListView {
+
+#minionListView.full {
   position: absolute;
   top: 31px;
   bottom: 0;
@@ -8,6 +9,24 @@
   background-image: url('../../resources/backgrounds/bg-minion-list.png');
   background-position: center;
   background-size: cover;
+
+  .minion-frame {
+    cursor: pointer;
+    transition-duration: 250ms;
+    transition-timing-function: ease-out;
+    &:hover { transform: scale(1.1); }
+  }
+}
+
+#minionListView.for-plan {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 660px;
+}
+
+#minionListView {
 
   .minion-list {
     margin-top: 30px;
@@ -45,10 +64,7 @@
   background-color: $bg-body-even-darker;
   padding: 10px;
   padding-right: 100px;
-  cursor: pointer;
   box-sizing: border-box;
-  transition-duration: 250ms;
-  transition-timing-function: ease-out;
 
   .portrait-frame {
     position: absolute;
@@ -82,7 +98,4 @@
   }
 
   .lower-row { text-align: left; }
-
-
-  &:hover { transform: scale(1.1); }
 }

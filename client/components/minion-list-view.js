@@ -3,7 +3,7 @@ Components.MinionListView = (function() {
   function init() {
     $(document).on('click','#minionListView .back-button', Elements.buttonAction(Renderer.sendCancel));
 
-    $(document).on('click','#minionListView .minion-frame', function() {
+    $(document).on('click','#minionListView.full .minion-frame', function() {
       Renderer.lock();
       Renderer.sendCommand('location.showMinion',$(this).data('id'))
     });
@@ -14,9 +14,21 @@ Components.MinionListView = (function() {
   }
 
   function build(event, minions) {
-    $('#mainContent').empty().append($('<div>',{ id:"minionListView" }).append($('#minionListTemplate').html()));
+    $('#mainContent').empty().append($('<div>',{ id:"minionListView", class:'full' }).append($('#minionListTemplate').html()));
+    $('#minionListView .back-bar').removeClass('hide');
+
     each(minions, minion => {
       $('#minionListView .minion-list').append(buildMinionFrame(minion));
+    });
+
+    Elements.ScrollingPanel.build($('#minionListView .scrolling-panel'));
+  }
+
+  function buildForPlan(element, minions) {
+    element.empty().append($('<div>',{ id:"minionListView", class:'for-plan' }).append($('#minionListTemplate').html()));
+
+    each(minions, minion => {
+      element.find('.minion-list').append(buildMinionFrame(minion));
     });
 
     Elements.ScrollingPanel.build($('#minionListView .scrolling-panel'));
@@ -40,6 +52,11 @@ Components.MinionListView = (function() {
     return frame;
   }
 
-  return { init, build, buildMinionFrame };
+  return {
+    init,
+    build,
+    buildForPlan,
+    buildMinionFrame
+  };
 
 })();
