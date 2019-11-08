@@ -21,6 +21,7 @@ $(document).ready(function() {
   Components.LocationView.init();
   Components.MinionListView.init();
   Components.MinionDetailView.init();
+  Components.MinionSelectDialog.init();
   Components.PlanView.init();
   Components.ReportView.init();
   Components.SavedGames.init();
