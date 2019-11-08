@@ -3,9 +3,11 @@ global.Mission = class Mission extends Form {
   static async available() {
     if (false == (await Flag.equals('minion.missions','unlocked'))) { return []; }
 
-    return Mission.where(mission => {
-      return CentralScrutinizer.meetsRequirements(mission.requires)
-    });
+    return ArrayUtility.compact(
+      (await Promise.all(Mission.all().map(async mission => {
+        if ((await CentralScrutinizer.meetsRequirements(mission.requires))) { return mission; }
+      })))
+    );
   }
 
   static async availableForClient() {

@@ -201,6 +201,10 @@
     "species/sylph",
     "species/viera",
     "species/vulpine",
-    "species/wood-elf"
+    "species/wood-elf",
+
+    "tasks/encourage",
+    "tasks/terrorize",
+    "tasks/train"
   ]
 }

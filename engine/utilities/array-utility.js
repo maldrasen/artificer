@@ -11,6 +11,10 @@ global.ArrayUtility = {
 
   unique(array) {
     return [...new Set(array)];
+  },
+
+  compact(array) {
+    return array.filter(i => { return i != null });
   }
 
 };

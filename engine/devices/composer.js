@@ -74,6 +74,7 @@ global.Composer = (function(){
       projects: (await AvailableProject.all()),
       missions: (await Mission.availableForClient()),
       minions: (await Character.allForClient()),
+      tasks: (await Task.availableForClient()),
     }
 
     if (game.currentProject) {
