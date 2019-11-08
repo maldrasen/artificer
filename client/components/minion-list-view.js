@@ -24,11 +24,13 @@ Components.MinionListView = (function() {
     Elements.ScrollingPanel.build($('#minionListView .scrolling-panel'));
   }
 
-  function buildForPlan(element, minions) {
+  function buildForPlan(element, minions, callback) {
     element.empty().append($('<div>',{ id:"minionListView", class:'for-plan' }).append($('#minionListTemplate').html()));
 
     each(minions, minion => {
-      element.find('.minion-list').append(buildMinionFrame(minion));
+      let frame = buildMinionFrame(minion);
+      element.find('.minion-list').append(frame);
+      callback(minion, frame);
     });
 
     Elements.ScrollingPanel.build($('#minionListView .scrolling-panel'));

@@ -97,5 +97,18 @@
     .health-value { font-family: roboto-bold; }
   }
 
+  .addendum {
+    position: absolute;
+    left: 10px;
+    bottom: -22px;
+    height: 26px;
+    padding: 0 20px;
+    line-height: 26px;
+    background-color: rgba(0,0,0,0.8);
+    border: $border-very-light;
+    box-sizing: content-box;
+    box-shadow: $shadow-frame;
+  }
+
   .lower-row { text-align: left; }
 }

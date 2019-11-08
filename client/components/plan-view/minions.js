@@ -7,48 +7,17 @@ Components.PlanView.Minions = (function() {
   }
 
   function build(planData) {
-    Components.MinionListView.buildForPlan($('#planView .plan-minion-list'), planData.minions);
+    Components.MinionListView.buildForPlan($('#planView .plan-minion-list'), planData.minions, addRoleSelect);
   }
 
-  function buildMinion(minion) {
-    let healthClass = minion.healthWord.toLowerCase().replace(/\s/g,'-');
-
-    let roleSelect = $('<select>',{ class:'role-select' });
+  function addRoleSelect(minion, element) {
+    let addendum = $('<div>',{ class:'addendum role-select' });
     each(minion.availableRoles, role => {
-      let option = $('<option>',{ value:role.code });
-      if (role.code == minion.role) {
-        option.prop('selected', true)
-      }
-      roleSelect.append(option.append(role.name))
+      let link = $('<a>',{ href:'#', class:'role-link' }).data('role',role.code).append(role.name);
+      if (role.code == minion.duty) { link.addClass('selected'); }
+      addendum.append(link);
     });
-
-    let element = $(`<div class='minion ${minion.currentDuty} minion-${minion.id}' data-id='${minion.id}'>
-      <div class='top-row'>
-        <div class='name-row'>
-          <span class='name'>${minion.name}</span>
-          <span class='gender'>${minion.gender}</span>
-          <span class='species'>${minion.species}</span>
-        </div>
-        <div class='role-select-area'></div>
-        <div class='mission-status'>On a mission.</div>
-        <div class='project-status'>Working on a project.</div>
-      </div>
-      <div class='attributes'>
-        <span class='health ${healthClass}'>
-          <span class='label'>Health</span>
-          <span class='health-word'>${minion.healthWord}</span>
-          <span class='health-value'>(${minion.health})</span>
-        </span>
-        <span class='physical'><span class='label'>Physical</span><span class='value'>${minion.physical}</span></span>
-        <span class='personal'><span class='label'>Personal</span><span class='value'>${minion.personal}</span></span>
-        <span class='mental'><span class='label'>Mental</span><span class='value'>${minion.mental}</span></span>
-        <span class='magical'><span class='label'>Magical</span><span class='value'>${minion.magical}</span></span>
-      </div>
-    </div>`);
-
-    element.find('.role-select-area').append(roleSelect);
-
-    return element;
+    element.append(addendum);
   }
 
   function toggleHelperMinion() {

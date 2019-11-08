@@ -42,6 +42,18 @@ $z-plan-left-foot: 201;
     z-index: $z-plan-left-foot;
   }
 
+  .minion-frame .role-select {
+    .role-link {
+      color: $fg-weak;
+      margin-right: 5px;
+    }
+    .role-link:focus { border:none; color:$fg-weak; }
+    .role-link:hover { border:none; color:$fg-body; }
+    .role-link:active { border:none; color:$fg-strong; }
+    .role-link.selected { color:$fg-strong; }
+    .role-link:last-child { margin-right: 0; }
+  }
+
   // .projects {
   //   margin: 20px 10px;
   //   padding: 10px;
