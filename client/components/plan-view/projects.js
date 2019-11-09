@@ -36,9 +36,7 @@ Components.PlanView.Projects = (function() {
 
   function startProject() {
     let project = $(this).data('project');
-    let minions = Components.PlanView.getPlanData().minions.filter(minion => {
-      return minion.currentDuty == 'role'
-    });
+    let minions = Components.PlanView.Minions.getFree();
 
     if (project.help.max == 0) {
       return confirmSelectProject(project, []);
@@ -56,12 +54,10 @@ Components.PlanView.Projects = (function() {
   }
 
   function confirmSelectProject(project, minions) {
-    Components.PlanView.Current.addCommitted(4);
     Components.PlanView.showAvailable([]);
-
-    each(minions, id => {
-      $(`.plan-minion-list .minion-${id}`).removeClass('free').addClass('taken');
-    });
+    Components.PlanView.Current.addCommitted(4);
+    Components.PlanView.Current.addProject(project);
+    Components.PlanView.Minions.claim(minions, 'project');
   }
 
   function setHelpStatus(project, minions) {

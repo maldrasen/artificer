@@ -13,6 +13,10 @@ Components.PlanView.Current = (function() {
     // }
   }
 
+  function addProject(project) {
+    console.log("Add Project",project);
+  }
+
   function addCommitted(count) {
     if (count + getCommitted() > 4) { throw "Ain't nobody got time for that!"; }
     for (let i=0; i<count; i++) {
@@ -48,6 +52,7 @@ Components.PlanView.Current = (function() {
   return {
     init,
     build,
+    addProject,
     addCommitted,
     getCommitted,
   };
