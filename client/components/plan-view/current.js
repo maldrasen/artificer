@@ -5,23 +5,22 @@ Components.PlanView.Current = (function() {
   }
 
   function build(planData) {
-    // if (planData.currentProject) {
-    //   let progressPercent = Math.floor(planData.currentProjectProgress / planData.currentProjectEffort * 100)
-    //   current.append(`${planData.currentProjectName} (${progressPercent}% complete)`)
-    //   current.data('committed',4);
-    //   $('#planView .projects .lower-frame').addClass('hide');
-    // }
+    if (planData.currentProject) {
+      addCommitted(4);
+      addProject({
+        type: 'project',
+        project: planData.currentProject,
+        name: planData.currentProjectName,
+        progress: Math.floor(planData.currentProjectProgress / planData.currentProjectEffort * 100)
+      });
+    }
     addNothing();
   }
 
-  function addProject(project) {
+  function addProject(options) {
+    options.type = 'project';
     $('#planView .in-progress .nothing').remove();
-    $('#planView .in-progress').append(inProgressElement({
-      type: 'project',
-      project: project,
-      name: project.name,
-      progress: 0,
-    }));
+    $('#planView .in-progress').append(inProgressElement(options));
   }
 
   function getProjectWork() {

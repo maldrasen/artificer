@@ -55,9 +55,13 @@ Components.PlanView.Projects = (function() {
 
   function confirmSelectProject(project, minions) {
     Components.PlanView.showAvailable([]);
-    Components.PlanView.Current.addCommitted(4);
-    Components.PlanView.Current.addProject(project);
     Components.PlanView.Minions.claim(minions, 'project');
+    Components.PlanView.Current.addCommitted(4);
+    Components.PlanView.Current.addProject({
+      project: project,
+      name: project.name,
+      progress: 0,
+    });
   }
 
   function setHelpStatus(project, minions) {

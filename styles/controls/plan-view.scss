@@ -89,6 +89,7 @@
         color: $fg-very-weak;
       }
       .item {
+        position: relative;
         height: 30px;
         line-height: 30px;
         margin-right: 40px;
@@ -99,6 +100,11 @@
         border: $border-light;
         border-radius: 5px;
         box-shadow: $shadow-frame;
+        z-index: 10;
+      }
+      .name {
+        position: absolute;
+        z-index: 12;
       }
       .cancel-button {
         float: right;
@@ -107,6 +113,17 @@
       }
       .cancel-button:hover, .cancel-button:focus {
         color: $fg-warning;
+      }
+      .progress {
+        position: absolute;
+        left: 0;
+        height: 30px;
+        border-radius: 3px;
+        z-index: 11;
+        box-shadow: $shadow-progress-bar;
+      }
+      .project .progress {
+        background-color: $bg-progress-bar;
       }
     }
   }

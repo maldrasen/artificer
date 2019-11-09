@@ -167,7 +167,11 @@ $bg-chooser-title: rgb(0,0,0);
 $bg-chooser-active-choice: rgba(80, 60, 100, 0.25);
 $bg-chooser-detail-body: rgba(0,0,0,0.66);
 
-// === Other ===
+// === Plan ===
 
 $bg-timeline-chunk: rgb(74, 69, 105);
 $shadow-timeline-chunk: 1px 1px 1px rgb(177, 169, 224) inset;
+
+$bg-progress-bar: rgb(31, 30, 40);
+$shadow-progress-bar: 2px 2px 3px rgb(74, 69, 105) inset,
+                      -2px -2px 3px rgb(0,0,0) inset;
