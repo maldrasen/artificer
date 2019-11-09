@@ -10,9 +10,12 @@ Components.PlanView.Projects = (function() {
   function getAvailableProjects() {
     return Components.PlanView.getPlanData().projects.map(project => {
       let link = $('<a>',{ class:'start-project-button button button-small' });
-          link.addClass(project.readyState.ready ? 'ready' : 'not-ready');
-          link.append($('<div>',{ class:'name' }).append(project.name));
+          link.append(project.name);
           link.data('project',project);
+
+      if (!project.readyState.ready) {
+        link.addClass('disabled-button');
+      }
 
       return $('<tr>').
         append($('<td>').append(link)).
