@@ -2,6 +2,11 @@
 $z-plan-left: 200;
 $z-plan-left-foot: 201;
 
+$fg-old-tan: rgb(110, 102, 95);
+$bg-timeline-chunk: rgb(74, 69, 105);
+$shadow-timeline-chunk: 1px 1px 1px rgb(177, 169, 224) inset;
+
+
 #planView {
   position: fixed;
   top: 0;
@@ -27,23 +32,6 @@ $z-plan-left-foot: 201;
     border: $border-light;
     overflow: hidden;
     z-index: $z-plan-left;
-
-    .available-action-categories {
-      display: flex;
-      padding: 10px;
-      background-color: $bg-body-even-darker;
-      border: $border-very-light;
-      box-shadow: $shadow-frame;
-      a { margin-right: 10px; }
-    }
-
-    .available-actions { margin: 20px 10px; }
-
-    .description {
-      padding: 0 0 10px 20px;
-      font-size: $fs-small;
-      color: $fg-weak;
-    }
   }
 
   .plan-footer {
@@ -58,6 +46,73 @@ $z-plan-left-foot: 201;
     border: $border-light;
     box-shadow: $shadow-frame;
     z-index: $z-plan-left-foot;
+  }
+
+  .current-frame {
+    .timeline-label {
+      position: relative;
+      top: 20px;
+      left: 20px;
+      font-size: $fs-small;
+      color: $fg-old-tan;
+      font-family: roboto-bold;
+    }
+    .timeline {
+      display: flex;
+      height: 20px;
+      margin: 20px;
+      border: $border-light;
+      border-radius: 5px;
+      box-shadow: $shadow-frame;
+    }
+    .chunk {
+      width: 25%;
+      border-right: $border-light;
+    }
+    .chunk.c1 {
+      border-radius: 5px 0 0 5px;
+    }
+    .chunk.c4 {
+      border-radius: 0 5px 5px 0;
+      border-right: none;
+    }
+    .chunk.on {
+      border: none;
+      background-color: $bg-timeline-chunk;
+      box-shadow: $shadow-timeline-chunk;
+    }
+
+    .in-progress-label {
+      margin-left: 20px;
+      font-size: $fs-small;
+      color: $fg-old-tan;
+      font-family: roboto-bold;
+    }
+    .in-progress {
+      margin-left: 40px;
+      margin-bottom: 20px;
+    }
+    .in-progress .nothing {
+      font-size: $fs-tiny;
+      color: $fg-very-weak;
+    }
+  }
+
+  .available-action-categories {
+    display: flex;
+    padding: 10px;
+    background-color: $bg-body-even-darker;
+    border: $border-very-light;
+    box-shadow: $shadow-frame;
+    a { margin-right: 10px; }
+  }
+  .available-actions {
+    margin: 20px 10px;
+  }
+  .available-actions .description {
+    padding: 0 0 10px 20px;
+    font-size: $fs-small;
+    color: $fg-weak;
   }
 
   .minion-frame .role-select {

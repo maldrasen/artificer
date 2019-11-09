@@ -1,28 +1,20 @@
 Components.PlanView.Projects = (function() {
 
   function init() {
-    $(document).on('click','.show-available-tasks-button',    Elements.buttonAction(e => { showAvailable(getAvailableTasks());    }));
-    $(document).on('click','.show-available-projects-button', Elements.buttonAction(e => { showAvailable(getAvailableProjects()); }));
-    $(document).on('click','.show-available-missions-button', Elements.buttonAction(e => { showAvailable(getAvailableMissions()); }));
-
-    // $(document).on('click', '#planView .available-project', selectAvailableProject);
+    $(document).on('click', '#planView .show-available-tasks-button',    Elements.buttonAction(e => { showAvailable(getAvailableTasks());    }));
+    $(document).on('click', '#planView .show-available-projects-button', Elements.buttonAction(e => { showAvailable(getAvailableProjects()); }));
+    $(document).on('click', '#planView .show-available-missions-button', Elements.buttonAction(e => { showAvailable(getAvailableMissions()); }));
+    $(document).on('click', '#planView .start-project-button',           Elements.buttonAction(selectAvailableProject));
     // $(document).on('click', '#planView .select-available-project', workSelectedProject);
   }
 
   function build(planData) {
-  //   let current = $('#planView .current-project');
-  //   let progress = $('#planView .current-progress');
-  //
-  //   if (planData.currentProject == null) {
-  //     $('#planView').data('workingProjects',[]);
-  //     current.append("Nothing (0/4)");
-  //     current.data('committed',0);
-  //   } else {
-  //     let progressPercent = Math.floor(planData.currentProjectProgress / planData.currentProjectEffort * 100)
-  //     current.append(`${planData.currentProjectName} (${progressPercent}% complete)`)
-  //     current.data('committed',4);
-  //     $('#planView .projects .lower-frame').addClass('hide');
-  //   }
+    // if (planData.currentProject) {
+    //   let progressPercent = Math.floor(planData.currentProjectProgress / planData.currentProjectEffort * 100)
+    //   current.append(`${planData.currentProjectName} (${progressPercent}% complete)`)
+    //   current.data('committed',4);
+    //   $('#planView .projects .lower-frame').addClass('hide');
+    // }
   }
 
   function showAvailable(items) {
@@ -50,11 +42,9 @@ Components.PlanView.Projects = (function() {
           link.append($('<div>',{ class:'name' }).append(project.name));
           link.data('project',project);
 
-      let row = $('<tr>');
-          row.append($('<td>').append(link));
-          row.append($('<td>').append( $('<div>',{ class:'description' }).append(project.description) ));
-
-      return row;
+      return $('<tr>').
+        append($('<td>').append(link)).
+        append($('<td>').append(projectDescription(project)));
     });
   }
 
@@ -72,35 +62,25 @@ Components.PlanView.Projects = (function() {
     });
   }
 
-  // function selectAvailableProject(e) {
-  //   if ($(this).hasClass('selected')) { return false; }
-  //
-  //   $('.available-project.selected').removeClass('selected');
-  //   $(this).addClass('selected');
-  //
-  //   displaySelectedProject($(this).data('project'));
-  // }
-  //
-  // function displaySelectedProject(project) {
-  //   let assistance = (project.help.max == 0) ?
-  //     `Assistance: I'll have to do this myself.`:
-  //     `Assistance: ${project.help.min} - ${project.help.max} minions.`
-  //
-  //   let selected = $('#planView .selected-project').empty().append(`
-  //     <div class='description'>${project.description}</div>
-  //     <div class='effort'>${project.effort} man hours</div>
-  //     <div class='help'>${assistance}</div>
-  //   `)
-  //
-  //   if (project.readyState.ready == false) {
-  //     selected.find('.description').append(` <span class='excuse'>I won't be able to work on this just yet. ${project.readyState.excuse}</span>`);
-  //   }
-  //
-  //   if (project.readyState.ready && availableHoursFor(project)) {
-  //     selected.append($('<a>',{ href:'#', class:'select-available-project button-primary' }).append('Select'));
-  //   }
-  // }
-  //
+  function projectDescription(project) {
+    let assistance = (project.help.max == 0) ?
+      `but I'll have to do this myself. `:
+      `and I can have ${project.help.min} to ${project.help.max} minions help me with this. `;
+
+    let description = `${project.description} This should take about ${project.effort} hours to complete ${assistance}`
+
+    if (project.readyState.ready == false) {
+      description += `<span class='excuse'>However, I won't be able to work on this just yet. ${project.readyState.excuse}</span>`;
+    }
+
+    return $('<div>',{ class:'description' }).append(description);
+  }
+
+  function selectAvailableProject() {
+    console.log("Select Project",this)
+  }
+
+
   // // Most projects will have an effort level of 10 or more required hours.
   // //   Half day projects take 4 effort.
   // //   Quarter day projects take 2 effort.

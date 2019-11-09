@@ -1,4 +1,4 @@
 Task.build('terrorize', {
   name: 'Terrorize',
-  description: 'Choose a minion to spend your day tormenting. That minion will become more fearful of you.',
+  description: 'I can choose a minion to spend my day tormenting. That minion will become more fearful of me.',
 });

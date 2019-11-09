@@ -1,4 +1,4 @@
 Mission.build('explore-hinterlands', {
   name: 'Explore Hinterlands',
-  description: 'I should send my minions out to explore the sorrounding area.'
+  description: 'My minions will go out and explore the sorrounding area.'
 });
