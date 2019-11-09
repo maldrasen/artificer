@@ -38,12 +38,9 @@ Components.MinionSelectDialog = (function() {
 
   function buildMinions(minions) {
     return minions.map(minion => {
-      console.log(minion)
-
       let portrait = $('<img>',{ src:minion.portrait });
       let name = $('<span>',{ class:'name' }).append(minion.name);
       let attributes = $('<span>',{ class:'attributes' }).append(`${minion.gender} ${minion.species}`)
-
       return $('<li>',{ class:'minion' }).data('id',minion.id).append(portrait).append(name).append(attributes);
     });
   }

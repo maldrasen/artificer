@@ -5,7 +5,6 @@ Components.PlanView.Projects = (function() {
     $(document).on('click', '#planView .show-available-projects-button', Elements.buttonAction(e => { showAvailable(getAvailableProjects()); }));
     $(document).on('click', '#planView .show-available-missions-button', Elements.buttonAction(e => { showAvailable(getAvailableMissions()); }));
     $(document).on('click', '#planView .start-project-button',           Elements.buttonAction(startProject));
-    // $(document).on('click', '#planView .select-available-project', workSelectedProject);
   }
 
   function build(planData) {
@@ -97,9 +96,9 @@ Components.PlanView.Projects = (function() {
   }
 
   function confirmSelectProject(project, minions) {
-    console.log("Confirm Project Start")
-    console.log("Project:",project)
-    console.log("Minions:",minions)
+    console.log("Confirm Project Start");
+    console.log("Project:",project);
+    console.log("Minions:",minions);
 
     // let working = $('#planView').data('workingProjects');
     // let current = $('#planView .current-project').empty();
@@ -136,40 +135,37 @@ Components.PlanView.Projects = (function() {
   }
 
   function setHelpStatus(project, minions) {
-    console.log("Selected")
-    console.log("Project:",project)
-    console.log("Minions:",minions)
-  //   let selectedHelp = Components.PlanView.getSelectedHelperMinions();
-  //   let status = `This project will take approximately ${project.effort} man hours of work to complete. `;
-  //
-  //   if (project.help.min == 0 && project.help.max == 0) { status += 'No one can help me on this project. '; }
-  //   if (project.help.min == 0 && project.help.max == 1) { status += 'A single one of my minions can help you. ' }
-  //   if (project.help.min == 0 && project.help.max > 1)  { status += `Up to ${project.help.max} of my minions can help me work to complete it. ` }
-  //   if (project.help.min == 1 && project.help.max == 1) { status += `I'll need the help of one of my minions to complete it. ` }
-  //   if (project.help.min >= 1 && project.help.max > 1)  { status += `I'll need the help of ${project.help.min} to ${project.help.max} of my minions to complete it. ` }
-  //
-  //   if (selectedHelp.length == 0) {
-  //     let days = Math.ceil(project.effort/10);
-  //     status += (days > 1) ?
-  //       `Working by myself, this project will take <span class='fg-strong'>${days} days</span> to complete.`:
-  //       `Working by myself, this project will take <span class='fg-strong'>a day</span> to complete.`;
-  //   } else {
-  //     let work = (selectedHelp.length * 5) + 10;
-  //     let days = Math.ceil(project.effort/work);
-  //
-  //     if (days == 1) {
-  //       status += (selectedHelp.length == 1) ?
-  //         `With the help of a minion, this project will take <span class='fg-strong'>a day</span> to complete.`:
-  //         `With the help of ${selectedHelp.length} minions, this project will take <span class='fg-strong'>a day</span> to complete.`;
-  //     } else {
-  //       status += (selectedHelp.length == 1) ?
-  //         `With the help of a minion, this project will take <span class='fg-strong'>${days} days</span> to complete.`:
-  //         `With the help of ${selectedHelp.length} minions, this project will take <span class='fg-strong'>${days} days</span> to complete.`;
-  //     }
-  //   }
-  //
-  //   $('#planView .minion-select-frame .status').empty().append(status);
+    let status = `This project will take approximately ${project.effort} man hours of work to complete. `;
+
+    if (project.help.min == 0 && project.help.max == 0) { status += 'No one can help me on this project. '; }
+    if (project.help.min == 0 && project.help.max == 1) { status += 'A single one of my minions can help me. ' }
+    if (project.help.min == 0 && project.help.max > 1)  { status += `Up to ${project.help.max} of my minions can help me work to complete it. ` }
+    if (project.help.min == 1 && project.help.max == 1) { status += `I'll need the help of one of my minions to complete it. ` }
+    if (project.help.min >= 1 && project.help.max > 1)  { status += `I'll need the help of ${project.help.min} to ${project.help.max} of my minions to complete it. ` }
+
+    if (minions.length == 0) {
+      let days = Math.ceil(project.effort/10);
+      status += (days > 1) ?
+        `Working by myself, this project will take <span class='fg-strong'>${days} days</span> to complete.`:
+        `Working by myself, this project will take <span class='fg-strong'>a day</span> to complete.`;
+    } else {
+      let work = (minions.length * 5) + 10;
+      let days = Math.ceil(project.effort/work);
+
+      if (days == 1) {
+        status += (minions.length == 1) ?
+          `With the help of a minion, this project will take <span class='fg-strong'>a day</span> to complete.`:
+          `With the help of ${minions.length} minions, this project will take <span class='fg-strong'>a day</span> to complete.`;
+      } else {
+        status += (minions.length == 1) ?
+          `With the help of a minion, this project will take <span class='fg-strong'>${days} days</span> to complete.`:
+          `With the help of ${minions.length} minions, this project will take <span class='fg-strong'>${days} days</span> to complete.`;
+      }
+    }
+
+    Components.MinionSelectDialog.setStatus(status);
   }
+
 
   // Most projects will have an effort level of 10 or more required hours.
   //   Half day projects take 4 effort.
