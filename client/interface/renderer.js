@@ -35,7 +35,8 @@ global.Renderer = (function() {
 
   function handleKeypress(e) {
     if (e.key == 'Escape') {
-      if ($('#overlayFrame').hasClass('hide') == false) { removeOverlay(); }
+      Components.MinionSelectDialog.close();
+      removeOverlay();
     }
   }
 

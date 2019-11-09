@@ -12,19 +12,26 @@ Components.MinionSelectDialog = (function() {
   //     title:     The dialog title.
   //     minions:   The array of minions.
   //     limit:     Cap on the number of minions that can be selected.
+  //     minimum:   The minimum number of minions that should be selected.
   //     onSelect:  Callback function called with a minion is selected.
   //     onConfirm: Callback function called when the dialog is closed positivly.
   //
   function open(options) {
     $('#minionSelectCover').removeClass('hide');
 
+    let empty = () => {};
     let dialog = $('#minionSelectDialog').removeClass('hide');
     dialog.data('limit',options.limit);
-    dialog.data('onSelect',options.onSelect);
-    dialog.data('onConfirm',options.onConfirm);
+    dialog.data('minimum',options.minimum);
+    dialog.data('onSelect',options.onSelect || empty);
+    dialog.data('onConfirm',options.onConfirm || empty);
     dialog.find('H2.title').empty().append(options.title || '');
     dialog.find('.status').empty().addClass('hide');
     dialog.find('.minions').empty().append(buildMinions(options.minions));
+
+    if (options.minimum > 0) {
+      dialog.find('.confirm').addClass('disabled-button');
+    }
   }
 
   function close() {
@@ -47,29 +54,38 @@ Components.MinionSelectDialog = (function() {
 
   function toggleMinion() {
     let limit = $('#minionSelectDialog').data('limit');
+    let minimum = $('#minionSelectDialog').data('minimum');
     let selected = getSelectedMinions();
     let minion = $(this);
 
-    if (minion.hasClass('selected')) {
-      minion.removeClass('selected');
-    } else {
-      if (selected.length < limit) {
-        minion.addClass('selected');
+    if (limit > 1) {
+      if (minion.hasClass('selected')) {
+        minion.removeClass('selected');
+      } else {
+        if (selected.length < limit) {
+          minion.addClass('selected');
+        }
       }
     }
 
-    let onSelect = $('#minionSelectDialog').data('onSelect');
-    if (typeof onSelect == 'function') {
-      onSelect(getSelectedMinions());
+    if (limit == 1) {
+      $('#minionSelectDialog .selected').removeClass('selected');
+      minion.addClass('selected');
     }
+
+    selected = getSelectedMinions();
+
+    if (minimum > 0) {
+      (minimum <= selected.length) ?
+        $('#minionSelectDialog .confirm').removeClass('disabled-button'):
+        $('#minionSelectDialog .confirm').addClass('disabled-button');
+    }
+
+    $('#minionSelectDialog').data('onSelect')(selected);
   }
 
   function confirm() {
-    let onConfirm = $('#minionSelectDialog').data('onConfirm');
-    if (typeof onConfirm == 'function') {
-      onConfirm(getSelectedMinions());
-    }
-
+    $('#minionSelectDialog').data('onConfirm')(getSelectedMinions());
     close();
   }
 
