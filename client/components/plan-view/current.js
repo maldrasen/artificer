@@ -22,6 +22,18 @@ Components.PlanView.Current = (function() {
     $('#planView .in-progress').append(inProgressElement(options));
   }
 
+  function addTask(options) {
+    options.type = 'task';
+    $('#planView .in-progress .nothing').remove();
+    $('#planView .in-progress').append(inProgressElement(options));
+  }
+
+  function addMission(options) {
+    options.type = 'mission';
+    $('#planView .in-progress .nothing').remove();
+    $('#planView .in-progress').append(inProgressElement(options));
+  }
+
   function getProjectWork() {
     let project = $('#planView .in-progress .project').data('project');
     if (project == null) {
@@ -88,15 +100,16 @@ Components.PlanView.Current = (function() {
 
   function inProgressElement(options) {
     let item = $('<li>',{ class:`item ${options.type}` });
+    let progressNote = options.progress ? `(${options.progress}% complete)` : '';
 
-    if (options.progress == 0) {
+    if (options.progress == 0 || options.progress == null) {
       item.append($('<a>',{ href:'#', class:'cancel-button no-underline' }).append('X'));
     }
     if (options.progress > 0) {
       item.append($('<div>',{ class:'progress' }).css({ width:`${options.progress}%` }));
     }
 
-    item.append($('<div>',{ class:'name' }).append(`${options.name} (${options.progress}% complete)`));
+    item.append($('<div>',{ class:'name' }).append(`${options.name} ${progressNote}`));
 
     if (options.project) { item.data('project', options.project); }
     if (options.mission) { item.data('mission', options.mission); }
@@ -134,6 +147,8 @@ Components.PlanView.Current = (function() {
     init,
     build,
     addProject,
+    addTask,
+    addMission,
     getProjectWork,
     addCommitted,
     getCommitted,

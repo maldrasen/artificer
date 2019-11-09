@@ -1,6 +1,7 @@
 Components.PlanView.Tasks = (function() {
 
   function init() {
+    $(document).on('click', '#planView .add-task-button', Elements.buttonAction(addTask));
     $(document).on('click', '#planView .show-available-tasks-button', Elements.buttonAction(e => {
       Components.PlanView.showAvailable(getAvailableTasks());
     }));
@@ -20,37 +21,34 @@ Components.PlanView.Tasks = (function() {
     });
   }
 
-  // All this only really applies to tasks, or maybe current.
-  // Most projects will have an effort level of 10 or more required hours.
-  //   Half day projects take 4 effort.
-  //   Quarter day projects take 2 effort.
-  // The committed value represents quarter chunks of the day.
-  // function availableHoursFor(project) {
-  //   let committed = $('#planView .current-project').data('committed');
-  //   if (project.effort > 4) { return committed == 0; }
-  //   if (project.effort == 4) { return comitted <= 2; }
-  //   if (project.effort == 2) { return comitted <= 3; }
-  //   throw `Bad number of hours in project ${project.code} effort - ${project.effort}`
-  // }
-  // let working = $('#planView').data('workingProjects');
-  // let current = $('#planView .current-project').empty();
-  // let committed = current.data('committed');
-  //
-  // if (project.effort > 4)  { committed += 4; }
-  // if (project.effort == 4) { committed += 2; }
-  // if (project.effort == 2) { committed += 1; }
-  // current.data('committed',committed);
-  //
-  // working.push({
-  //   code: project.code,
-  //   minions: minions
-  // });
-  //
-  // (working.length == 1) ?
-  //   current.append(`${project.name} (${committed}/4)`):
-  //   current.append(`Multiple Projects (${committed}/4)`);
-  //
-  // $('#planView').data('workingProjects',working);
+  function addTask() {
+    let task = $(this).data('task');
+    let minions = Components.PlanView.Minions.getFree();
+
+    if (task.minionsUsed == null) {
+      confirmAddTask(task);
+    }
+
+    let title = (task.minionsUsed == 1) ?
+      `Choose one minion` :
+      `Choose ${task.minionsUsed} minions.`;
+
+    Components.MinionSelectDialog.open({
+      title: title,
+      minions: minions,
+      limit: task.minionsUsed,
+      minimum: task.minionsUsed,
+      onConfirm: minions => { confirmAddTask(task, minions); }
+    });
+  }
+
+  function confirmAddTask(task, minions) {
+    console.log("Add Task:",task,minions);
+    Components.PlanView.Current.addTask({
+      task: task,
+      name: task.name,
+    });
+  }
 
   return { init };
 

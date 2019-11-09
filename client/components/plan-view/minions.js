@@ -16,6 +16,12 @@ Components.PlanView.Minions = (function() {
     });
   }
 
+  function findMinion(id) {
+    return Components.PlanView.getPlanData().minions.filter(minion => {
+      return minion.id == id
+    })[0];
+  }
+
   // The release() function only marks the minion as free in the UI. We don't
   // also adjust the minion data because if we're canceling a task, we might
   // not know which minion is associated with each task? We should though, but
@@ -61,6 +67,7 @@ Components.PlanView.Minions = (function() {
   return {
     init,
     build,
+    findMinion,
     getFree,
     release,
     claim,

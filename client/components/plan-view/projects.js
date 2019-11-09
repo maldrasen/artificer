@@ -45,11 +45,11 @@ Components.PlanView.Projects = (function() {
       title: 'Available Minions',
       minions: minions,
       limit: project.help.max,
-      onSelect: minions => { setHelpStatus(project, minions); },
+      onSelect: minions => { setStatus(project, minions); },
       onConfirm: minions => { confirmSelectProject(project, minions); }
     });
 
-    setHelpStatus(project,[]);
+    setStatus(project,[]);
   }
 
   function confirmSelectProject(project, minions) {
@@ -63,7 +63,7 @@ Components.PlanView.Projects = (function() {
     });
   }
 
-  function setHelpStatus(project, minions) {
+  function setStatus(project, minions) {
     let status = `This project will take approximately ${project.effort} man hours of work to complete. `;
 
     if (project.help.min == 0 && project.help.max == 0) { status += 'No one can help me on this project. '; }
