@@ -13,8 +13,6 @@ global.Game = Database.instance().define('game', {
   setterMethods: {},
 });
 
-Game.logger = new Logger('Game', 'rgb(105, 100, 163)');
-
 Game.instance = function() {
   return Game.findByPk(1);
 }

@@ -14,7 +14,6 @@ global.Browser = (function() {
     if (DEBUG) {
       mainWindow.webContents.openDevTools();
       mainWindow.webContents.executeJavaScript('window.DEBUG = true;');
-      LoggerService.openLog(mainWindow);
     }
 
     mainWindow.on('closed', () => {

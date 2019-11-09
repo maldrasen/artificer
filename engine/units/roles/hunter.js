@@ -3,15 +3,6 @@ Role.Hunter = (function() {
   const name = 'Hunter';
   const description = 'A hunter will hunt animals for meat and hides. They can also capture animals.';
 
-  let _logger;
-
-  function logger() {
-    if (_logger == null) {
-      _logger = new Logger('Role.Hunter', 'rgb(172, 120, 120)');
-    }
-    return _logger;
-  }
-
   // TODO: Tier is set to 0 now, but this will be based entirely on the
   //       character's equipment. Tier 0 is the baseline though, and indicates
   //       that the character has no equipment at all.
@@ -164,7 +155,6 @@ Role.Hunter = (function() {
     work,
 
     // === Hunter specific or for specs ===
-    logger,
     successChance,
     huntingResults,
     resolveResults,

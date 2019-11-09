@@ -1,5 +1,4 @@
 global.Renderer = (function() {
-  const logger = new Logger('Renderer', 'rgb(150,200,200)');
 
   const VIEWS = {
     mainMenu:   { template:'#mainMenuTemplate' },
@@ -142,8 +141,6 @@ global.Renderer = (function() {
   }
 
   function loadFile(viewPath, callback) {
-    logger.info(`Load ${viewPath}`);
-
     fs.readFile(viewPath, 'utf8', function(err, data) {
       if (err) {
         throw err;

@@ -82,9 +82,6 @@ require(`${ROOT}/engine/scrutinizers/character-scrutinizer`);
 require(`${ROOT}/engine/scrutinizers/minion-scrutinizer`);
 require(`${ROOT}/engine/scrutinizers/player-scrutinizer`);
 
-// === Services ===
-require(`${ROOT}/engine/services/logger`);
-
 // === Factories ===
 require(`${ROOT}/engine/factories/character-builder/character-builder`);
 require(`${ROOT}/engine/factories/character-builder/character-adjuster`);

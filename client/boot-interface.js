@@ -7,9 +7,6 @@ global.extend = require('extend');
 global.fs = require('fs');
 global.ipcRenderer = electron.ipcRenderer;
 
-// === Logger Comes First ===
-require(`${ROOT}/client/interface/logger`);
-
 // === Components ===
 require(`${ROOT}/client/components/components`);
 require(`${ROOT}/client/components/event-view`);

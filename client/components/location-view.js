@@ -1,6 +1,4 @@
 Components.LocationView = (function() {
-  const logger = new Logger('LocationView', 'rgb(230, 170, 140)');
-
   function init() {
     $(document).on('click','.menu-show-load',      Elements.buttonAction(Renderer.showLoadGame));
     $(document).on('click','.menu-show-save',      Elements.buttonAction(Renderer.showSaveGame));
@@ -10,8 +8,6 @@ Components.LocationView = (function() {
   }
 
   function build(transport, view) {
-    logger.info("Build Location",view.name);
-
     let location = $('<div>',{ id:"locationView" }).append($('#locationTemplate').html());
         location.find('.location-name').append(view.name);
         location.find('.location-description').append(view.description);

@@ -29,9 +29,10 @@ describe('Resolver', function() {
         let id_1 = allMinions[1].id;
         let id_2 = allMinions[3].id;
 
-        let planData = { assignedRoles:[], projectWork:[
-          { code:'clear-great-hall', minions:[id_1,id_2]}
-        ]};
+        let planData = {
+          assignedRoles:[],
+          projectWork:{ code:'clear-great-hall', minions:[id_1,id_2] }
+        };
 
         Resolver.startWork(planData).then(() => {
           Game.instance().then(game => {

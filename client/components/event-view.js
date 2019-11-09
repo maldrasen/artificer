@@ -1,6 +1,4 @@
 Components.EventView = (function() {
-  const logger = new Logger('EventView', 'rgb(190,150,200)');
-
   let skipActive = false;
   let skipRate = 50;
 
@@ -21,8 +19,6 @@ Components.EventView = (function() {
   }
 
   function build(transport, event) {
-    logger.info("Build Event", event.code);
-
     Components.EventView.Page = {};
 
     skipActive = false;
