@@ -15,6 +15,10 @@ player.dressedIn              | make-hide-clothing-done         | (hide) Some ev
 player.fucksMen               | clear-great-hall-start          | (always,maybe,never) The player's gender preferences.
 player.fucksFutas             | clear-great-hall-start          | (always,maybe,never)
 player.fucksWomen             | clear-great-hall-start          | (always,maybe,never)
+tasks.brainwash               |                                 | (unlocked) Unlocks brainwashing.
+tasks.craft                   |                                 | (unlocked) Unlocks any crafting.
+tasks.experiment              |                                 | (unlocked) Unlocks experimentation.
+tasks.meditate                |                                 | (unlocked) Unlocks meditation.
 tasks.train.golden            |                                 | (unlocked) Unlocks piss training.
 
 === Automatic ===

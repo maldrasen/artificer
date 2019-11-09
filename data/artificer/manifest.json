@@ -203,7 +203,11 @@
     "species/vulpine",
     "species/wood-elf",
 
+    "tasks/brainwash",
+    "tasks/craft",
     "tasks/encourage",
+    "tasks/experiment",
+    "tasks/meditate",
     "tasks/terrorize",
     "tasks/train-golden"
   ]
