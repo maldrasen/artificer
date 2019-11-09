@@ -25,7 +25,25 @@ $z-plan-left-foot: 201;
     background-color: $bg-body-darker;
     box-shadow: $shadow-frame;
     border: $border-light;
+    overflow: hidden;
     z-index: $z-plan-left;
+
+    .available-action-categories {
+      display: flex;
+      padding: 10px;
+      background-color: $bg-body-even-darker;
+      border: $border-very-light;
+      box-shadow: $shadow-frame;
+      a { margin-right: 10px; }
+    }
+
+    .available-actions { margin: 20px 10px; }
+
+    .description {
+      padding: 0 0 10px 20px;
+      font-size: $fs-small;
+      color: $fg-weak;
+    }
   }
 
   .plan-footer {

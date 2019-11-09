@@ -13,9 +13,8 @@ Components.PlanView = (function() {
     $('#mainContent').empty().append($('<div>',{ id:"planView" }).append($('#planTemplate').html()));
     $('#planView').data('planData', planData);
 
-    // Components.PlanView.Projects.buildCurrent(planData);
-    // Components.PlanView.Projects.buildAvailable(planData);
-    // Components.PlanView.Missions.build(planData);
+    Components.PlanView.Projects.build(planData);
+    Components.PlanView.Missions.build(planData);
     Components.PlanView.Minions.build(planData);
   }
 

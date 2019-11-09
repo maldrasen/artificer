@@ -22,6 +22,7 @@ global.Renderer = (function() {
     'minion-detail',
     'minion-frame',
     'minion-list',
+    'minion-select-dialog',
     'plan',
     'report',
     'save-game',

@@ -4,6 +4,7 @@
   font-family: roboto-medium;
   padding: 0 10px;
   line-height: 30px;
+  white-space: nowrap;
   cursor: pointer;
 
   color: transparentize($color, 0.25) !important;
