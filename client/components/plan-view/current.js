@@ -9,7 +9,6 @@ Components.PlanView.Current = (function() {
       addCommitted(4);
       addProject({
         type: 'project',
-        project: planData.currentProject,
         name: planData.currentProjectName,
         progress: Math.floor(planData.currentProjectProgress / planData.currentProjectEffort * 100)
       });
@@ -91,7 +90,7 @@ Components.PlanView.Current = (function() {
     let item = $('<li>',{ class:`item ${options.type}` });
 
     if (options.progress == 0) {
-      item.addClass('new').append($('<a>',{ href:'#', class:'cancel-button no-underline' }).append('X'));
+      item.append($('<a>',{ href:'#', class:'cancel-button no-underline' }).append('X'));
     }
     if (options.progress > 0) {
       item.append($('<div>',{ class:'progress' }).css({ width:`${options.progress}%` }));
@@ -99,9 +98,9 @@ Components.PlanView.Current = (function() {
 
     item.append($('<div>',{ class:'name' }).append(`${options.name} (${options.progress}% complete)`));
 
-    if (options.type == 'project') { item.data('project', options.project); }
-    if (options.type == 'mission') { item.data('mission', options.mission); }
-    if (options.type == 'task')    { item.data('task', options.task); }
+    if (options.project) { item.data('project', options.project); }
+    if (options.mission) { item.data('mission', options.mission); }
+    if (options.task)    { item.data('task', options.task); }
 
     return item;
   }

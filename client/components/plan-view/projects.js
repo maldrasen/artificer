@@ -1,11 +1,10 @@
 Components.PlanView.Projects = (function() {
 
   function init() {
+    $(document).on('click', '#planView .start-project-button', Elements.buttonAction(startProject));
     $(document).on('click', '#planView .show-available-projects-button', Elements.buttonAction(e => {
       Components.PlanView.showAvailable(getAvailableProjects());
     }));
-
-    $(document).on('click', '#planView .start-project-button',           Elements.buttonAction(startProject));
   }
 
   function getAvailableProjects() {
