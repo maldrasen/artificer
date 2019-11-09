@@ -9,8 +9,8 @@ Components.PlanView.Tasks = (function() {
 
   function getAvailableTasks() {
     return Components.PlanView.getPlanData().tasks.map(task => {
-      let link = $('<a>',{ class:'add-task-button button button-small ready' });
-          link.append($('<div>',{ class:'name' }).append(task.name));
+      let link = $('<a>',{ class:'add-task-button button button-small' });
+          link.append(task.name);
           link.data('task',task);
 
       let row = $('<tr>');
