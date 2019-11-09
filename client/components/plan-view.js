@@ -18,8 +18,6 @@ Components.PlanView = (function() {
     Components.PlanView.Minions.build(planData);
   }
 
-  // === Plan Actions ===
-
   function cancelPlan() {
     Renderer.sendCommand('game.cancel');
   }
@@ -52,26 +50,8 @@ Components.PlanView = (function() {
     })
   }
 
-  // === Helpers ===
-
-  // Wow, an actual use for the spread operator! But only because jQuery is
-  // being stupid here, thinking I want to map jQuery elements to other wrapped
-  // elements I think.
-  function getSelectedHelperMinions() {
-    return [...$('#planView .helper-minion.selected').map((i,element) => {
-      return $(element).data('id');
-    })];
-  }
-
   function getPlanData() { return $('#planView').data('planData'); }
-  function getSelectedProject() { return $('.available-project.selected').data('project'); }
 
-  return {
-    init,
-    build,
-    getPlanData,
-    getSelectedProject,
-    getSelectedHelperMinions,
-  };
+  return { init, build, getPlanData };
 
 })();

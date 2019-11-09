@@ -96,10 +96,43 @@ Components.PlanView.Projects = (function() {
     setHelpStatus(project,[]);
   }
 
-  function confirmStartProject(project, minions) {
+  function confirmSelectProject(project, minions) {
     console.log("Confirm Project Start")
     console.log("Project:",project)
     console.log("Minions:",minions)
+
+    // let working = $('#planView').data('workingProjects');
+    // let current = $('#planView .current-project').empty();
+    // let committed = current.data('committed');
+    //
+    // let project = Components.PlanView.getSelectedProject()
+    // let minions = Components.PlanView.getSelectedHelperMinions();
+    //
+    // if (project.effort > 4)  { committed += 4; }
+    // if (project.effort == 4) { committed += 2; }
+    // if (project.effort == 2) { committed += 1; }
+    // current.data('committed',committed);
+    //
+    // working.push({
+    //   code: project.code,
+    //   minions: minions
+    // });
+    //
+    // (working.length == 1) ?
+    //   current.append(`${project.name} (${committed}/4)`):
+    //   current.append(`Multiple Projects (${committed}/4)`);
+    //
+    // $('#planView').data('workingProjects',working);
+    //
+    // if (committed == 4) {
+    //   $('#planView .projects .lower-frame').addClass('hide');
+    // }
+    //
+    // each(minions, id => {
+    //   $(`.plan-minion-list .minion-${id}`).removeClass('free').addClass('project');
+    // })
+    //
+
   }
 
   function setHelpStatus(project, minions) {
@@ -150,6 +183,6 @@ Components.PlanView.Projects = (function() {
   //   throw `Bad number of hours in project ${project.code} effort - ${project.effort}`
   // }
 
-  return { init, build, setHelpStatus };
+  return { init, build };
 
 })();
