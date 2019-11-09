@@ -60,6 +60,7 @@ Components.PlanView.Projects = (function() {
       project: project,
       name: project.name,
       progress: 0,
+      minions: minions,
     });
   }
 

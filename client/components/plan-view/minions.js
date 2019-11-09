@@ -22,23 +22,24 @@ Components.PlanView.Minions = (function() {
     })[0];
   }
 
-  // The release() function only marks the minion as free in the UI. We don't
-  // also adjust the minion data because if we're canceling a task, we might
-  // not know which minion is associated with each task? We should though, but
-  // I'll figure that out later.
-  function release(minionIDs) {
-    each(minionIDs, id => {
-      $(`.plan-minion-list .minion-${id}`).removeClass('taken').addClass('free');
-    });
-  }
-
-  // The claim() functions sets the currentDuty for each of the minions in the
+  // The claim() function sets the currentDuty for each of the minions in the
   // minion ID list and also marks the minion as taken in the UI.
   function claim(minionIDs, duty) {
     each(Components.PlanView.getPlanData().minions, minion => {
       if (minionIDs.indexOf(minion.id) >= 0) {
         minion.currentDuty = duty;
         $(`.plan-minion-list .minion-${minion.id}`).removeClass('free').addClass('taken');
+      }
+    });
+  }
+
+  // The release() function returns the currentDuty to role for each of the
+  // minions in the minionIDs list, then marks the minion as available in the UI.
+  function release(minionIDs) {
+    each(Components.PlanView.getPlanData().minions, minion => {
+      if (minionIDs.indexOf(minion.id) >= 0) {
+        minion.currentDuty = 'role';
+        $(`.plan-minion-list .minion-${minion.id}`).removeClass('taken').addClass('free');
       }
     });
   }

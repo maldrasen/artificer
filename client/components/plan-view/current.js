@@ -51,9 +51,9 @@ Components.PlanView.Current = (function() {
 
   function cancelInProgress() {
     let item = $(this).closest('li.item');
-    if (item.hasClass('project')) { cancelProject(item.data('project')); }
-    if (item.hasClass('mission')) { cancelMission(item.data('mission')); }
-    if (item.hasClass('task'))    { cancelTask(item.data('task')); }
+    if (item.hasClass('project')) { cancelProject(item.data('project'), item.data('minions')); }
+    if (item.hasClass('mission')) { cancelMission(item.data('mission'), item.data('minions')); }
+    if (item.hasClass('task'))    { cancelTask(   item.data('task'),    item.data('minions')); }
     item.remove();
     addNothing();
   }
@@ -102,6 +102,9 @@ Components.PlanView.Current = (function() {
     let item = $('<li>',{ class:`item ${options.type}` });
     let progressNote = options.progress ? `(${options.progress}% complete)` : '';
 
+    if (options.minions) {
+      item.data('minions',options.minions);
+    }
     if (options.progress == 0 || options.progress == null) {
       item.append($('<a>',{ href:'#', class:'cancel-button no-underline' }).append('X'));
     }
@@ -118,24 +121,19 @@ Components.PlanView.Current = (function() {
     return item;
   }
 
-  function cancelProject(project) {
-    let minionIDs = []
-
-    // TODO: Figure out a way to do this in minions once I know how tasks are implemented.
-    each(Components.PlanView.getPlanData().minions, minion => {
-      if (minion.currentDuty == 'project') {
-        minion.currentDuty = 'role';
-        minionIDs.push(minion.id);
-      }
-    });
-
-    Components.PlanView.Minions.release(minionIDs);
+  function cancelProject(project, minions) {
+    Components.PlanView.Minions.release(minions);
     removeCommitted(4);
   }
 
-  function cancelMission(mission) {}
+  function cancelMission(mission, minions) {
 
-  function cancelTask(task) {}
+  }
+
+  function cancelTask(task, minions) {
+    Components.PlanView.Minions.release(minions);
+    removeCommitted(task.time);
+  }
 
   function addNothing() {
     if ($('#planView .in-progress li').length == 0) {

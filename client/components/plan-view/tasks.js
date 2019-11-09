@@ -43,11 +43,17 @@ Components.PlanView.Tasks = (function() {
   }
 
   function confirmAddTask(task, minions) {
-    console.log("Add Task:",task,minions);
+    Components.PlanView.Minions.claim(minions, 'task');
+    Components.PlanView.Current.addCommitted(task.time);
     Components.PlanView.Current.addTask({
       task: task,
       name: task.name,
+      minions: minions,
     });
+
+    if (Components.PlanView.Current.getCommitted() == 4) {
+      Components.PlanView.showAvailable([]);
+    }
   }
 
   return { init };
