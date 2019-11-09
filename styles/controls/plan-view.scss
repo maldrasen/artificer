@@ -83,10 +83,31 @@
     .in-progress {
       margin-left: 40px;
       margin-bottom: 20px;
-    }
-    .in-progress .nothing {
-      font-size: $fs-tiny;
-      color: $fg-very-weak;
+
+      .nothing {
+        font-size: $fs-tiny;
+        color: $fg-very-weak;
+      }
+      .item {
+        height: 30px;
+        line-height: 30px;
+        margin-right: 40px;
+        margin-top: 5px;
+        padding: 0 15px;
+        box-sizing: content-box;
+        background-color: rgba(0,0,0,0.5);
+        border: $border-light;
+        border-radius: 5px;
+        box-shadow: $shadow-frame;
+      }
+      .cancel-button {
+        float: right;
+        color: $fg-very-weak;
+        font-family: roboto-bold;
+      }
+      .cancel-button:hover, .cancel-button:focus {
+        color: $fg-warning;
+      }
     }
   }
 
