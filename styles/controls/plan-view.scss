@@ -120,21 +120,10 @@
     .role-link.selected { color:$fg-strong; }
     .role-link:last-child { margin-right: 0; }
   }
+
+  .minion-frame.taken {
+    opacity: 0.5;
+    .role-select { display: none; }
+  }
+
 }
-
-  // === Minion Frame ===
-
-    // .minion.free {
-    //   .mission-status { display: none; }
-    //   .project-status { display: none; }
-    // }
-    // .minion.project {
-    //   opacity: 0.33;
-    //   .role-select-area { display: none; }
-    //   .mission-status { display: none; }
-    // }
-    // .minion.mission {
-    //   opacity: 0.33;
-    //   .role-select-area { display: none; }
-    //   .project-status { display: none; }
-    // }

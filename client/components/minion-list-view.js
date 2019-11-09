@@ -38,6 +38,7 @@ Components.MinionListView = (function() {
 
   function buildMinionFrame(minion) {
     let frame = $($('#minionFrameTemplate').html());
+    frame.addClass(`minion-${minion.id}`);
     frame.data('id',minion.id);
     frame.find('.portrait-frame').append($('<img>',{ src:minion.portrait }));
     frame.find('.top-row .name').append(minion.name);
