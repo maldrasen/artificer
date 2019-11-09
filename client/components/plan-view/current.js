@@ -24,6 +24,21 @@ Components.PlanView.Current = (function() {
     }));
   }
 
+  function getProjectWork() {
+    let project = $('#planView .in-progress .project').data('project');
+    if (project == null) {
+      return null;
+    }
+
+    let minions = Components.PlanView.getPlanData().minions.filter(minion => {
+      return minion.currentDuty == 'project'
+    }).map(minion => {
+      return minion.id;
+    })
+
+    return { code:project.code, minions:minions };
+  }
+
   function cancelInProgress() {
     let item = $(this).closest('li.item');
     if (item.hasClass('project')) { cancelProject(item.data('project')); }
@@ -121,6 +136,7 @@ Components.PlanView.Current = (function() {
     init,
     build,
     addProject,
+    getProjectWork,
     addCommitted,
     getCommitted,
   };

@@ -4,7 +4,7 @@ global.Resolver = (function() {
   //
   //     assignedRoles: [
   //       { id:1, role:'hunter', { capture:true }}
-  //     projectWork: [
+  //     projectWork:
   //       { code:'blood-enema', minions:[2,3]}
   //
   async function startWork(plan) {
@@ -15,7 +15,7 @@ global.Resolver = (function() {
     await Resolver.Game.becomeAfternoon();
     await Resolver.Minions.dailyUpdate();
     await Resolver.Roles.assignRoles(plan.assignedRoles);
-    await Resolver.Projects.startProjects(plan.projectWork);
+    await Resolver.Projects.startProject(plan.projectWork);
     await Resolver.Missions.startMissions(plan.missionOrders);
     await Resolver.Events.enqueueAvailable();
     await Resolver.Roles.workRoles();

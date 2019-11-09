@@ -24,22 +24,16 @@ Components.PlanView = (function() {
   }
 
   function confirmPlan() {
-    let committed = $('#planView .current-project').data('committed');
-
-    let message = (committed < 4) ?
+    let message = (Components.PlanView.Current.getCommitted() < 4) ?
       `You're going to have plenty of idle time today. Are you sure you don't want to plan to work on something else too?`:
       `Are you sure this is what you want to work on today?`;
 
-    let roles = [];
-    $.each($('.plan-minion-list .minion.free'), (i, element) => {
-      roles.push({
-        id:   $(element).data('id'),
-        role: $(element).find('.role-select').val()
-      });
+    let roles = Components.PlanView.Minions.getFree().map(minion => {
+      return { id:minion.id, role:$(`.plan-minion-list .minion-${minion.id}`).data('selected-role') }
     });
 
     let plan = {
-      projectWork: $('#planView').data('workingProjects'),
+      projectWork: Components.PlanView.Current.getProjectWork(),
       assignedRoles: roles,
     }
 

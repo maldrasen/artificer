@@ -43,6 +43,7 @@ Components.PlanView.Minions = (function() {
       if (role.code == minion.duty) { link.addClass('selected'); }
       addendum.append(link);
     });
+    element.data('selected-role', minion.duty);
     element.append(addendum);
   }
 
@@ -52,6 +53,7 @@ Components.PlanView.Minions = (function() {
     let select = link.closest('.role-select');
 
     select.find('.selected').removeClass('selected');
+    link.closest('.minion-frame').data('selected-role',role);
     link.addClass('selected');
   }
 

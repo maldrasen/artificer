@@ -1,14 +1,10 @@
 Resolver.Projects = (function() {
 
-  // Starting a single project is actually pretty different from doing multiple
-  // projects in a day. A single project may need to be tracked over many days;
-  // whereas when if multiple projects are selected they will all be done in
-  // the same day. If everything is finished in a day we don't need to set
-  // anything in the game or update the minions.
-  async function startProjects(projects) {
-    if (projects && projects.length == 1) {
-      let project = Project.lookup(projects[0].code);
-      let minions = await Character.findAll({ where:{ id:projects[0].minions }});
+
+  async function startProject(projectWork) {
+    if (projectWork) {
+      let project = Project.lookup(projectWork.code);
+      let minions = await Character.findAll({ where:{ id:projectWork.minions }});
       await startLongProject(project, minions);
     }
   }
@@ -97,7 +93,7 @@ Resolver.Projects = (function() {
   }
 
   return {
-    startProjects: startProjects,
+    startProject: startProject,
     workProjects: workProjects,
   }
 
