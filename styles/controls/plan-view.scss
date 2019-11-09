@@ -1,12 +1,4 @@
 
-$z-plan-left: 200;
-$z-plan-left-foot: 201;
-
-$fg-old-tan: rgb(110, 102, 95);
-$bg-timeline-chunk: rgb(74, 69, 105);
-$shadow-timeline-chunk: 1px 1px 1px rgb(177, 169, 224) inset;
-
-
 #planView {
   position: fixed;
   top: 0;
@@ -45,7 +37,7 @@ $shadow-timeline-chunk: 1px 1px 1px rgb(177, 169, 224) inset;
     background-color: $bg-body-even-darker;
     border: $border-light;
     box-shadow: $shadow-frame;
-    z-index: $z-plan-left-foot;
+    z-index: calc(#{$z-plan-left} + 1);
   }
 
   .current-frame {
@@ -115,6 +107,8 @@ $shadow-timeline-chunk: 1px 1px 1px rgb(177, 169, 224) inset;
     color: $fg-weak;
   }
 
+  .excuse { color: $fg-warning; }
+
   .minion-frame .role-select {
     .role-link {
       color: $fg-weak;
@@ -126,111 +120,10 @@ $shadow-timeline-chunk: 1px 1px 1px rgb(177, 169, 224) inset;
     .role-link.selected { color:$fg-strong; }
     .role-link:last-child { margin-right: 0; }
   }
-
-  // .projects {
-  //   margin: 20px 10px;
-  //   padding: 10px;
-  //   border: $border-light;
-  // }
-  // .current-frame {
-  //   margin: 5px;
-  //   padding: 5px;
-  //   border: $border-light;
-  // }
-  // .lower-frame {
-  //   display: flex;
-  //   margin: 5px;
-  //   padding: 5px;
-  //   border: $border-light;
-  // }
-  // .available-projects {
-  //   border-right: $border-light;
-  //   padding-right: 5px;
-  // }
-  // .available-project {
-  //   border: $border-transparent;
-  //   padding: 2px 10px;
-  //   height: 30px;
-  //   line-height: 26px;
-  //   box-sizing: border-box;
-  //   cursor: pointer;
-  // }
-  // .available-project.selected {
-  //   border: $border-normal;
-  //   background-color: rgba(0,0,0,0.5);
-  // }
-  //
-  // .selected-project { margin: 10px; }
-  // .excuse { color: $fg-warning; }
-
-  // === Minion Select ===
-  // $minion-panel-width: 480px;
-  //
-  // .minion-select-frame {
-  //   position: absolute;
-  //   top: 10vh;
-  //   width: 100%;
-  //   z-index: calc(#{$z-overlay} + 1);
-  // }
-  // .minion-select-panel {
-  //   margin: auto;
-  //   width: $minion-panel-width;
-  //   // height: 80vh; // When we have enough minions we should figure out the
-  //                    // scrolling for this element. Should lock it to 80%
-  //                    // height and include a scrolling panel, probably.
-  //   background-color: $bg-overlay-content;
-  //   border: $border-light;
-  //   box-shadow: $shadow-overlay;
-  //   overflow: hidden;
-  // }
-  // .minion-select-area {
-  //   margin: 0 10px 50px;
-  // }
-  // .minion-select-footer {
-  //   position: absolute;
-  //   bottom: 0;
-  //   width: $minion-panel-width;
-  //   background-color: rgba(0,0,0,0.33);
-  //
-  //   .actions {
-  //     padding: 5px;
-  //     text-align: right;
-  //   }
-  // }
-  // .modal-cover {
-  //   position: absolute;
-  //   top: 0;
-  //   bottom: 0;
-  //   left: 0;
-  //   right: 0;
-  //   background-color: $bg-overlay-frame;
-  //   z-index: $z-overlay;
-  // }
-  // .helper-minion {
-  //   border: $border-transparent;
-  //   margin-bottom: 5px;
-  //   padding: 2px 10px;
-  //   height: 30px;
-  //   line-height: 26px;
-  //   box-sizing: border-box;
-  //   cursor: pointer;
-  // }
-  // .helper-minion:last-child {
-  //   margin-bottom: 0;
-  // }
-  // .helper-minion.selected {
-  //   border: $border-normal;
-  //   background-color: rgba(0,0,0,0.5);
-  // }
+}
 
   // === Minion Frame ===
-  // .plan-minion-list {
-    // .minion {
-    //   margin: 5px;
-    //   padding: 5px;
-    //   border: $border-light;
-    // }
-    //
+
     // .minion.free {
     //   .mission-status { display: none; }
     //   .project-status { display: none; }
@@ -245,14 +138,3 @@ $shadow-timeline-chunk: 1px 1px 1px rgb(177, 169, 224) inset;
     //   .role-select-area { display: none; }
     //   .project-status { display: none; }
     // }
-    //
-    // .top-row { display: flex; }
-    // .name-row { flex-grow: 1; }
-    // .name { font-size: $fs-big; color: $fg-strong; }
-    // .gender { font-size: $fs-small; margin-left:10px; }
-    // .species { font-size: $fs-small; }
-    // .label { margin-left: 10px; }
-    // .value { margin-left: 5px; }
-  // }
-
-}

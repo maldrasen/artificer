@@ -2,6 +2,7 @@
 // Z Indices
 
 $z-event-frame: 100;
+$z-plan-left: 200;
 $z-overlay: 1000;
 $z-confirm: 9000;
 $z-lock: 10000;
@@ -36,6 +37,7 @@ $fg-button-warning: rgb(153,112,77);
 $fg-button-success: rgb(127,201,127);
 
 $fg-warning: rgb(193, 176, 148);
+$fg-old-tan: rgb(110, 102, 95);
 
 $fg-minion-quote: rgb(170, 162, 105);
 $fg-player-quote: rgb(187, 137, 205);
@@ -164,3 +166,8 @@ $bg-chooser: rgba(0,0,0,0.5);
 $bg-chooser-title: rgb(0,0,0);
 $bg-chooser-active-choice: rgba(80, 60, 100, 0.25);
 $bg-chooser-detail-body: rgba(0,0,0,0.66);
+
+// === Other ===
+
+$bg-timeline-chunk: rgb(74, 69, 105);
+$shadow-timeline-chunk: 1px 1px 1px rgb(177, 169, 224) inset;

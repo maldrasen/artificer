@@ -4,7 +4,7 @@ Components.PlanView.Projects = (function() {
     $(document).on('click', '#planView .show-available-tasks-button',    Elements.buttonAction(e => { showAvailable(getAvailableTasks());    }));
     $(document).on('click', '#planView .show-available-projects-button', Elements.buttonAction(e => { showAvailable(getAvailableProjects()); }));
     $(document).on('click', '#planView .show-available-missions-button', Elements.buttonAction(e => { showAvailable(getAvailableMissions()); }));
-    $(document).on('click', '#planView .start-project-button',           Elements.buttonAction(selectAvailableProject));
+    $(document).on('click', '#planView .start-project-button',           Elements.buttonAction(startProject));
     // $(document).on('click', '#planView .select-available-project', workSelectedProject);
   }
 
@@ -68,7 +68,6 @@ Components.PlanView.Projects = (function() {
       `and I can have ${project.help.min} to ${project.help.max} minions help me with this. `;
 
     let description = `${project.description} This should take about ${project.effort} hours to complete ${assistance}`
-
     if (project.readyState.ready == false) {
       description += `<span class='excuse'>However, I won't be able to work on this just yet. ${project.readyState.excuse}</span>`;
     }
@@ -76,45 +75,37 @@ Components.PlanView.Projects = (function() {
     return $('<div>',{ class:'description' }).append(description);
   }
 
-  function selectAvailableProject() {
-    console.log("Select Project",this)
+  function startProject() {
+    let project = $(this).data('project');
+    let minions = Components.PlanView.getPlanData().minions.filter(minion => {
+      return minion.currentDuty == 'role'
+    });
+
+    if (project.help.max == 0) {
+      return confirmSelectProject(project, []);
+    }
+
+    Components.MinionSelectDialog.open({
+      title: 'Available Minions',
+      minions: minions,
+      limit: project.help.max,
+      onSelect: minions => { setHelpStatus(project, minions); },
+      onConfirm: minions => { confirmSelectProject(project, minions); }
+    });
+
+    setHelpStatus(project,[]);
   }
 
+  function confirmStartProject(project, minions) {
+    console.log("Confirm Project Start")
+    console.log("Project:",project)
+    console.log("Minions:",minions)
+  }
 
-  // // Most projects will have an effort level of 10 or more required hours.
-  // //   Half day projects take 4 effort.
-  // //   Quarter day projects take 2 effort.
-  // // The committed value represents quarter chunks of the day.
-  // function availableHoursFor(project) {
-  //   let committed = $('#planView .current-project').data('committed');
-  //   if (project.effort > 4) { return committed == 0; }
-  //   if (project.effort == 4) { return comitted <= 2; }
-  //   if (project.effort == 2) { return comitted <= 3; }
-  //   throw `Bad number of hours in project ${project.code} effort - ${project.effort}`
-  // }
-  //
-  // function workSelectedProject() {
-  //   let project = Components.PlanView.getSelectedProject();
-  //   let minions = Components.PlanView.getPlanData().minions;
-  //
-  //   // If this project doesn't allow helpers just add the project, no need to select minions
-  //   if (project.help.max == 0) { return confirmSelectProject(); }
-  //
-  //   $('#planView .minion-select-frame').removeClass('hide');
-  //   $('#planView .modal-cover').removeClass('hide');
-  //
-  //   let list = $('#planView .minion-select-frame .minions').empty();
-  //
-  //   each(minions, minion => {
-  //     if (minion.currentDuty == 'role') {
-  //       list.append($('<li>',{ class:'helper-minion' }).append(minion.name).data('id',minion.id));
-  //     }
-  //   });
-  //
-  //   setHelpStatus(project);
-  // }
-  //
-  function setHelpStatus(project) {
+  function setHelpStatus(project, minions) {
+    console.log("Selected")
+    console.log("Project:",project)
+    console.log("Minions:",minions)
   //   let selectedHelp = Components.PlanView.getSelectedHelperMinions();
   //   let status = `This project will take approximately ${project.effort} man hours of work to complete. `;
   //
@@ -146,6 +137,18 @@ Components.PlanView.Projects = (function() {
   //
   //   $('#planView .minion-select-frame .status').empty().append(status);
   }
+
+  // Most projects will have an effort level of 10 or more required hours.
+  //   Half day projects take 4 effort.
+  //   Quarter day projects take 2 effort.
+  // The committed value represents quarter chunks of the day.
+  // function availableHoursFor(project) {
+  //   let committed = $('#planView .current-project').data('committed');
+  //   if (project.effort > 4) { return committed == 0; }
+  //   if (project.effort == 4) { return comitted <= 2; }
+  //   if (project.effort == 2) { return comitted <= 3; }
+  //   throw `Bad number of hours in project ${project.code} effort - ${project.effort}`
+  // }
 
   return { init, build, setHelpStatus };
 
