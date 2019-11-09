@@ -4,7 +4,10 @@ Components.ReportView = (function() {
 
   function build(event, report) {
     $('#mainContent').empty().append($('<div>',{ id:"reportView" }).append($('#reportTemplate').html()));
-    $('#reportView').find('.projects .text').append(report.project.text);
+
+    if (report.project) {
+      $('#reportView').find('.projects .text').append(report.project.text);
+    }
 
     each(report.minions, (minion, id) => {
       addMinionFrame(minion);

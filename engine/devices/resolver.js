@@ -2,10 +2,13 @@ global.Resolver = (function() {
 
   // The plan data will arrive in this format:
   //
+  //     projectWork: { code:'blood-enema', minions:[2,3]}
+  //     taskWork: [
+  //       { code:'punch-fisting', minions:[1] }
+  //     ],
   //     assignedRoles: [
   //       { id:1, role:'hunter', { capture:true }}
-  //     projectWork:
-  //       { code:'blood-enema', minions:[2,3]}
+  //     ],
   //
   async function startWork(plan) {
     Resolver._currentReport = { minions:{} };
@@ -16,10 +19,11 @@ global.Resolver = (function() {
     await Resolver.Minions.dailyUpdate();
     await Resolver.Roles.assignRoles(plan.assignedRoles);
     await Resolver.Projects.startProject(plan.projectWork);
+    await Resolver.Tasks.workTasks(plan.taskWork);
     await Resolver.Missions.startMissions(plan.missionOrders);
     await Resolver.Events.enqueueAvailable();
     await Resolver.Roles.workRoles();
-    await Resolver.Projects.workProjects();
+    await Resolver.Projects.workProject();
     await Resolver.Missions.workMissions();
     await Resolver.Items.commit();
     await Resolver.Minions.complete();

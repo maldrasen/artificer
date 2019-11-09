@@ -1,25 +1,13 @@
 Resolver.Projects = (function() {
 
-
   async function startProject(projectWork) {
-    if (projectWork) {
-      let project = Project.lookup(projectWork.code);
-      let minions = await Character.findAll({ where:{ id:projectWork.minions }});
-      await startLongProject(project, minions);
-    }
-  }
+    if (projectWork == null) { return false; }
 
-  function workProjects() {
-    return new Promise(resolve => {
-      Game.instance().then(game => {
-        game.currentProject ?
-          workLongProject(game).then(resolve):
-          workShortProjects(game).then(resolve);
-      });
-    });
-  }
+console.log("Got here?",projectWork)
 
-  async function startLongProject(project, minions) {
+    let project = Project.lookup(projectWork.code);
+    let minions = await Character.findAll({ where:{ id:projectWork.minions }});
+
     const game = await Game.instance();
     game.currentProject = project.code;
     game.currentProjectProgress = 0;
@@ -49,9 +37,9 @@ Resolver.Projects = (function() {
     AvailableProject.destroy({ where:{ code:project.code }});
   }
 
-  // This function will do work on the project. If a project has been set on the
-  // game then it's a long running project and is either updated, or completed.
-  async function workLongProject(game) {
+  async function workProject() {
+    const game = await Game.instance();
+    if (game.currentProject == null) { return false; }
     const minions = await Character.findAll({ where:{ currentDuty:'project' }});
     const project = Project.lookup(game.currentProject);
 
@@ -59,42 +47,38 @@ Resolver.Projects = (function() {
     game.currentProjectProgress += (minions.length * 5) + 10;
     await game.save();
 
+    // Set progress if incomplete.
     if (game.currentProjectProgress < project.effort) {
-      Resolver.Report.setProjectProgressText(project, minions);
+      return Resolver.Report.setProjectProgressText(project, minions);
     }
-    else {
 
-      // === The Project Has Been Completed ===
-      if (typeof project.onFinish == 'function') {
-        Resolver.addFinisher(project.onFinish);
-      }
-
-      game.currentProject = null;
-      game.currentProjectProgress = 0;
-      await game.save();
-
-      // It 'should' be safe to update the minion's current tasks without waiting
-      // here. I don't think we need to read this value again until sometime
-      // after the report is done.
-      each(minions, minion => {
-        minion.currentDuty = 'role'
-        minion.save();
-      });
-
-      Resolver.Report.setProjectCompletedText(project)
-    }
+    // The project has been completed.
+    await completeProject(game, project, minions);
   }
 
-  // This function checks to see if there are any half or quarter day projects
-  // in the plan. If so they're completed immeadietly. It's also possible that
-  // there are not projects planned at all.
-  async function workShortProjects(game) {
-    Resolver.Report.setProjectIdleText();
+  async function completeProject(game, project, minions) {
+    if (typeof project.onFinish == 'function') {
+      Resolver.addFinisher(project.onFinish);
+    }
+
+    game.currentProject = null;
+    game.currentProjectProgress = 0;
+    await game.save();
+
+    // It 'should' be safe to update the minion's current tasks without waiting
+    // here. I don't think we need to read this value again until sometime
+    // after the report is done.
+    each(minions, minion => {
+      minion.currentDuty = 'role'
+      minion.save();
+    });
+
+    Resolver.Report.setProjectCompletedText(project)
   }
 
   return {
     startProject: startProject,
-    workProjects: workProjects,
+    workProject: workProject,
   }
 
 })();

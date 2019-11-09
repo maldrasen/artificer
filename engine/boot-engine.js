@@ -36,6 +36,7 @@ require(`${ROOT}/engine/devices/resolver/missions`);
 require(`${ROOT}/engine/devices/resolver/projects`);
 require(`${ROOT}/engine/devices/resolver/report`);
 require(`${ROOT}/engine/devices/resolver/roles`);
+require(`${ROOT}/engine/devices/resolver/tasks`);
 
 // === Forms ===
 require(`${ROOT}/engine/forms/form`);

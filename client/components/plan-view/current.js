@@ -35,18 +35,17 @@ Components.PlanView.Current = (function() {
   }
 
   function getProjectWork() {
-    let project = $('#planView .in-progress .project').data('project');
-    if (project == null) {
-      return null;
-    }
+    let element = $('#planView .in-progress .project');
+    let project = element.data('project');
+    return project ? { code:project.code, minions:element.data('minions') } : null;
+  }
 
-    let minions = Components.PlanView.getPlanData().minions.filter(minion => {
-      return minion.currentDuty == 'project'
-    }).map(minion => {
-      return minion.id;
-    })
-
-    return { code:project.code, minions:minions };
+  function getTaskWork() {
+    return $('#planView .in-progress .task').map((i, taskElement) => {
+      let task = $(taskElement).data('task');
+      let minions = $(taskElement).data('minions');
+      return { code:task.code, minions:minions }
+    });
   }
 
   function cancelInProgress() {
@@ -148,6 +147,7 @@ Components.PlanView.Current = (function() {
     addTask,
     addMission,
     getProjectWork,
+    getTaskWork,
     addCommitted,
     getCommitted,
   };
