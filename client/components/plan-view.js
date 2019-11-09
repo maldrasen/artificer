@@ -1,9 +1,11 @@
 Components.PlanView = (function() {
 
   function init() {
+    Components.PlanView.Current.init();
     Components.PlanView.Projects.init();
     Components.PlanView.Missions.init();
     Components.PlanView.Minions.init();
+    Components.PlanView.Tasks.init();
 
     $(document).on('click', '#planView .plan-cancel', Elements.buttonAction(cancelPlan));
     $(document).on('click', '#planView .plan-confirm', Elements.buttonAction(confirmPlan));
@@ -13,8 +15,7 @@ Components.PlanView = (function() {
     $('#mainContent').empty().append($('<div>',{ id:"planView" }).append($('#planTemplate').html()));
     $('#planView').data('planData', planData);
 
-    Components.PlanView.Projects.build(planData);
-    Components.PlanView.Missions.build(planData);
+    Components.PlanView.Current.build(planData);
     Components.PlanView.Minions.build(planData);
   }
 
@@ -51,7 +52,8 @@ Components.PlanView = (function() {
   }
 
   function getPlanData() { return $('#planView').data('planData'); }
+  function showAvailable(items) { $('#planView .available-actions').empty().append(items); }
 
-  return { init, build, getPlanData };
+  return { init, build, getPlanData, showAvailable };
 
 })();

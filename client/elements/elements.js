@@ -10,9 +10,8 @@ global.Elements = (function() {
       e.stopPropagation();
       e.preventDefault();
 
-      if ($(this).hasClass('disabled')) {
-        return false;
-      }
+      if ($(this).hasClass('disabled')) { return false; }
+      if ($(this).hasClass('disabled-button')) { return false; }
 
       callback.apply(this);
     }

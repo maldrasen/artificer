@@ -1,37 +1,11 @@
 Components.PlanView.Projects = (function() {
 
   function init() {
-    $(document).on('click', '#planView .show-available-tasks-button',    Elements.buttonAction(e => { showAvailable(getAvailableTasks());    }));
-    $(document).on('click', '#planView .show-available-projects-button', Elements.buttonAction(e => { showAvailable(getAvailableProjects()); }));
-    $(document).on('click', '#planView .show-available-missions-button', Elements.buttonAction(e => { showAvailable(getAvailableMissions()); }));
+    $(document).on('click', '#planView .show-available-projects-button', Elements.buttonAction(e => {
+      Components.PlanView.showAvailable(getAvailableProjects());
+    }));
+
     $(document).on('click', '#planView .start-project-button',           Elements.buttonAction(startProject));
-  }
-
-  function build(planData) {
-    // if (planData.currentProject) {
-    //   let progressPercent = Math.floor(planData.currentProjectProgress / planData.currentProjectEffort * 100)
-    //   current.append(`${planData.currentProjectName} (${progressPercent}% complete)`)
-    //   current.data('committed',4);
-    //   $('#planView .projects .lower-frame').addClass('hide');
-    // }
-  }
-
-  function showAvailable(items) {
-    $('#planView .available-actions').empty().append(items);
-  }
-
-  function getAvailableTasks() {
-    return Components.PlanView.getPlanData().tasks.map(task => {
-      let link = $('<a>',{ class:'add-task-button button button-small ready' });
-          link.append($('<div>',{ class:'name' }).append(task.name));
-          link.data('task',task);
-
-      let row = $('<tr>');
-          row.append($('<td>').append(link));
-          row.append($('<td>').append( $('<div>',{ class:'description' }).append(task.description) ));
-
-      return row;
-    });
   }
 
   function getAvailableProjects() {
@@ -44,20 +18,6 @@ Components.PlanView.Projects = (function() {
       return $('<tr>').
         append($('<td>').append(link)).
         append($('<td>').append(projectDescription(project)));
-    });
-  }
-
-  function getAvailableMissions() {
-    return Components.PlanView.getPlanData().missions.map(mission => {
-      let link = $('<a>',{ class:'start-mission-button button button-small ready' });
-          link.append($('<div>',{ class:'name' }).append(mission.name));
-          link.data('mission',mission);
-
-      let row = $('<tr>');
-          row.append($('<td>').append(link));
-          row.append($('<td>').append( $('<div>',{ class:'description' }).append(mission.description) ));
-
-      return row;
     });
   }
 
@@ -96,9 +56,8 @@ Components.PlanView.Projects = (function() {
   }
 
   function confirmSelectProject(project, minions) {
-    console.log("Confirm Project Start");
-    console.log("Project:", project);
-    console.log("Minions:", minions);
+    Components.PlanView.Current.addCommitted(4);
+    Components.PlanView.showAvailable([]);
 
     each(minions, id => {
       $(`.plan-minion-list .minion-${id}`).removeClass('free').addClass('taken');
@@ -137,40 +96,6 @@ Components.PlanView.Projects = (function() {
     Components.MinionSelectDialog.setStatus(status);
   }
 
-  // === Tasks ===
-
-  // All this only really applies to tasks.
-  // Most projects will have an effort level of 10 or more required hours.
-  //   Half day projects take 4 effort.
-  //   Quarter day projects take 2 effort.
-  // The committed value represents quarter chunks of the day.
-  // function availableHoursFor(project) {
-  //   let committed = $('#planView .current-project').data('committed');
-  //   if (project.effort > 4) { return committed == 0; }
-  //   if (project.effort == 4) { return comitted <= 2; }
-  //   if (project.effort == 2) { return comitted <= 3; }
-  //   throw `Bad number of hours in project ${project.code} effort - ${project.effort}`
-  // }
-  // let working = $('#planView').data('workingProjects');
-  // let current = $('#planView .current-project').empty();
-  // let committed = current.data('committed');
-  //
-  // if (project.effort > 4)  { committed += 4; }
-  // if (project.effort == 4) { committed += 2; }
-  // if (project.effort == 2) { committed += 1; }
-  // current.data('committed',committed);
-  //
-  // working.push({
-  //   code: project.code,
-  //   minions: minions
-  // });
-  //
-  // (working.length == 1) ?
-  //   current.append(`${project.name} (${committed}/4)`):
-  //   current.append(`Multiple Projects (${committed}/4)`);
-  //
-  // $('#planView').data('workingProjects',working);
-
-  return { init, build };
+  return { init };
 
 })();
