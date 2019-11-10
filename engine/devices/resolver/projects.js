@@ -3,8 +3,6 @@ Resolver.Projects = (function() {
   async function startProject(projectWork) {
     if (projectWork == null) { return false; }
 
-console.log("Got here?",projectWork)
-
     let project = Project.lookup(projectWork.code);
     let minions = await Character.findAll({ where:{ id:projectWork.minions }});
 

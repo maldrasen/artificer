@@ -6,6 +6,7 @@ Components.ReportView = (function() {
     $('#mainContent').empty().append($('<div>',{ id:"reportView" }).append($('#reportTemplate').html()));
 
     if (report.project) {
+      $('#reportView').find('.projects').removeClass('hide');
       $('#reportView').find('.projects .text').append(report.project.text);
     }
 

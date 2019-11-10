@@ -1,4 +1,15 @@
 #reportView {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-width: 1000px;
+
+  background-image: url('../../assets/images/backgrounds/bg-report.png');
+  background-position: center;
+  background-size: cover;
+
   h2 { font-size: $fs-bigger; }
 
   .report-frame {
