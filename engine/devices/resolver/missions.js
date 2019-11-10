@@ -1,7 +1,10 @@
 Resolver.Missions = (function() {
 
-  async function startMissions(missions) {
-    // TODO: Start Missions
+  async function startMissions(missionWork) {
+    if (missionWork && missionWork.length > 0) {
+      console.log("=== Work Missions ===");
+      console.log(missionWork);
+    }
   }
 
   async function workMissions() {

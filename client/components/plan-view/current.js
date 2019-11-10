@@ -48,6 +48,14 @@ Components.PlanView.Current = (function() {
     });
   }
 
+  function getMissionWork() {
+    return $('#planView .in-progress .mission').map((i, missionElement) => {
+      let mission = $(missionElement).data('mission');
+      let minions = $(missionElement).data('minions');
+      return { code:mission.code, minions:minions }
+    });
+  }
+
   function cancelInProgress() {
     let item = $(this).closest('li.item');
     let task = item.data('task');
@@ -140,6 +148,7 @@ Components.PlanView.Current = (function() {
     addMission,
     getProjectWork,
     getTaskWork,
+    getMissionWork,
     addCommitted,
     getCommitted,
   };

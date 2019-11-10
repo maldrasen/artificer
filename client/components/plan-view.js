@@ -36,6 +36,7 @@ Components.PlanView = (function() {
     let plan = {
       projectWork: Components.PlanView.Current.getProjectWork(),
       taskWork: Components.PlanView.Current.getTaskWork(),
+      missionWork: Components.PlanView.Current.getMissionWork(),
       assignedRoles: roles,
     }
 

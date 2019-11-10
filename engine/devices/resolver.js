@@ -6,6 +6,9 @@ global.Resolver = (function() {
   //     taskWork: [
   //       { code:'punch-fisting', minions:[1] }
   //     ],
+  //     missionWork: [
+  //       { code:'horse-blowjobs', minions:[4,5] }
+  //     ],
   //     assignedRoles: [
   //       { id:1, role:'hunter', { capture:true }}
   //     ],
@@ -20,7 +23,7 @@ global.Resolver = (function() {
     await Resolver.Roles.assignRoles(plan.assignedRoles);
     await Resolver.Projects.startProject(plan.projectWork);
     await Resolver.Tasks.workTasks(plan.taskWork);
-    await Resolver.Missions.startMissions(plan.missionOrders);
+    await Resolver.Missions.startMissions(plan.missionWork);
     await Resolver.Events.enqueueAvailable();
     await Resolver.Roles.workRoles();
     await Resolver.Projects.workProject();
