@@ -27,7 +27,7 @@ global.Project = class Project extends Form {
 
 function inventoryContains(count,code,inventory) {
   let resource = inventory.filter(item => { return item.code == code })[0];
-  return resource && resource.count >= count;
+  return (resource == null) ? false : resource.count >= count;
 }
 
 function makeExcuse(insufficient) {
