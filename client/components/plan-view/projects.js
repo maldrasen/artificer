@@ -49,21 +49,21 @@ Components.PlanView.Projects = (function() {
       minions: minions,
       limit: project.help.max,
       onSelect: minions => { setStatus(project, minions); },
-      onConfirm: minions => { confirmSelectProject(project, minions); }
+      onConfirm: ids => { confirmSelectProject(project, ids); }
     });
 
     setStatus(project,[]);
   }
 
-  function confirmSelectProject(project, minions) {
+  function confirmSelectProject(project, ids) {
     Components.PlanView.showAvailable([]);
-    Components.PlanView.Minions.claim(minions, 'project');
+    Components.PlanView.Minions.claim(ids, 'project');
     Components.PlanView.Current.addCommitted(4);
     Components.PlanView.Current.addProject({
       project: project,
       name: project.name,
       progress: 0,
-      minions: minions,
+      minions: ids,
     });
   }
 

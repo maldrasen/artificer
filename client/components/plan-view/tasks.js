@@ -38,17 +38,17 @@ Components.PlanView.Tasks = (function() {
       minions: minions,
       limit: task.minionsUsed,
       minimum: task.minionsUsed,
-      onConfirm: minions => { confirmAddTask(task, minions); }
+      onConfirm: ids => { confirmAddTask(task, ids); }
     });
   }
 
-  function confirmAddTask(task, minions) {
-    Components.PlanView.Minions.claim(minions, 'task');
+  function confirmAddTask(task, ids) {
+    Components.PlanView.Minions.claim(ids, 'task');
     Components.PlanView.Current.addCommitted(task.time);
     Components.PlanView.Current.addTask({
       task: task,
       name: task.name,
-      minions: minions,
+      minions: ids,
     });
 
     if (Components.PlanView.Current.getCommitted() == 4) {

@@ -50,9 +50,15 @@ Components.PlanView.Current = (function() {
 
   function cancelInProgress() {
     let item = $(this).closest('li.item');
-    if (item.hasClass('project')) { cancelProject(item.data('project'), item.data('minions')); }
-    if (item.hasClass('mission')) { cancelMission(item.data('mission'), item.data('minions')); }
-    if (item.hasClass('task'))    { cancelTask(   item.data('task'),    item.data('minions')); }
+    let task = item.data('task');
+    let mission = item.data('mission');
+
+    if (item.hasClass('project')) { removeCommitted(4); }
+    if (item.hasClass('task')) { removeCommitted(task.time); }
+    if (item.hasClass('mission')) { $(`#planView tr.mission-${mission.code}`).removeClass('hide') }
+
+    Components.PlanView.Minions.release(item.data('minions'));
+
     item.remove();
     addNothing();
   }
@@ -114,24 +120,10 @@ Components.PlanView.Current = (function() {
     item.append($('<div>',{ class:'name' }).append(`${options.name} ${progressNote}`));
 
     if (options.project) { item.data('project', options.project); }
-    if (options.mission) { item.data('mission', options.mission); }
+    if (options.mission) { item.data('mission', options.mission).addClass(`mission-${options.mission.code}`); }
     if (options.task)    { item.data('task', options.task); }
 
     return item;
-  }
-
-  function cancelProject(project, minions) {
-    Components.PlanView.Minions.release(minions);
-    removeCommitted(4);
-  }
-
-  function cancelMission(mission, minions) {
-
-  }
-
-  function cancelTask(task, minions) {
-    Components.PlanView.Minions.release(minions);
-    removeCommitted(task.time);
   }
 
   function addNothing() {
