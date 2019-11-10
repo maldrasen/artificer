@@ -6,6 +6,12 @@ Components.PlanView.Missions = (function() {
     }));
   }
 
+  function build(planData) {
+    if (planData.missions.length > 0) {
+      $('#planView .show-available-missions-button').removeClass('hide');
+    }
+  }
+
   function getAvailableMissions() {
     return Components.PlanView.getPlanData().missions.map(mission => {
       let link = $('<a>',{ class:'start-mission-button button button-small ready' });
@@ -20,6 +26,6 @@ Components.PlanView.Missions = (function() {
     });
   }
 
-  return { init };
+  return { init, build };
 
 })();
