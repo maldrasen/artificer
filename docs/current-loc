@@ -6,20 +6,20 @@ terrible measure of progress and doneness normally, but this project involves a
 ton of writing, so knowing how many lines this has is actually useful. I'm
 thinking once we approach 500,000 lines we'll be close to done.
 
-Sweetmorn, the 14th day of The Aftermath in the YOLD 3185 / 2 Nov 2019
+Setting Orange, the 23rd day of The Aftermath in the YOLD 3185 / 11 Nov 2019
 
 ---------- Result ------------
 
-            Physical :  20509
-              Source :  16505
-             Comment :  1548
- Single-line comment :  1543
+            Physical :  22296
+              Source :  18030
+             Comment :  1614
+ Single-line comment :  1609
        Block comment :  5
-               Mixed :  33
+               Mixed :  32
  Empty block comment :  0
-               Empty :  2489
-               To Do :  41
+               Empty :  2684
+               To Do :  51
 
-Number of files read :  369
+Number of files read :  415
 
 ----------------------------
