@@ -18,9 +18,11 @@ Components.ReportView = (function() {
   }
 
   function addMinionFrame(minion) {
+    console.log("Add minion frame:",minion)
+
     let portrait = $(`<div class='portrait-frame'><img src='${minion.portrait}'/></div>`)
     let topRow = $(`<div class='top-row'><div class='minion-name'>${minion.name}</div></div>`);
-    let storyRow = $(`<div class='story-row'><span class='story'>${minion.work.story}</span></div>`);
+    let storyRow = $(`<div class='story-row'><span class='story'>${minion.awayText || minion.work.story}</span></div>`);
     let lowerRow = $(`<div class='lower-row flex'></div>`);
 
     if (minion.work.flavors) { lowerRow.append(buildSpoilsRow(minion.work.flavors)); }

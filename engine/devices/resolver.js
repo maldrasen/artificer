@@ -14,10 +14,11 @@ global.Resolver = (function() {
   //     ],
   //
   async function startWork(plan) {
-    Resolver._currentReport = { minions:{} };
+    Resolver._currentReport = {};
     Resolver._finishers = [];
     Resolver._itemsToAdd = {};
 
+    await Resolver.Report.start();
     await Resolver.Game.becomeAfternoon();
     await Resolver.Minions.dailyUpdate();
     await Resolver.Roles.assignRoles(plan.assignedRoles);

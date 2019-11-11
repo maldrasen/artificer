@@ -1,5 +1,16 @@
 Resolver.Report = (function() {
 
+  async function start() {
+    const report = Resolver.currentReport();
+    const minions = await Character.findAll({where:{ type:'minion', status:'normal' }});
+
+    report.minions = {};
+
+    each(minions, minion => {
+      report.minions[minion.id] = { name:minion.name };
+    });
+  }
+
   function setProjectProgressText(project, minions) {
     let text = `I'm working on ${project.workingName}. `
     if (minions.length == 0) { text += `I've made some progress, but there's still work to do.` }
@@ -17,15 +28,12 @@ Resolver.Report = (function() {
     Resolver.currentReport().project = { text:`I decided to take a day off, and was idle for most of the day.` };
   }
 
-  function setMinionData(character, key, data) {
-    let report = Resolver.currentReport();
-    if (report.minions[character.id] == null) {
-      report.minions[character.id] = {};
-    }
-    report.minions[character.id][key] = data;
+  function setMinionData(minion, key, value) {
+    Resolver.currentReport().minions[minion.id][key] = value;
   }
 
   return {
+    start,
     setProjectProgressText,
     setProjectCompletedText,
     setProjectIdleText,

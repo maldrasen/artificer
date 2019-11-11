@@ -16,7 +16,6 @@ Resolver.Roles = (function() {
     await Promise.all(characters.map(async character => {
       let result = await Role.lookup(character.dutyCode).work(character);
       Resolver.Items.add(result.items);
-      Resolver.Report.setMinionData(character,'name',character.name);
       Resolver.Report.setMinionData(character,'work',result);
     }));
   }
