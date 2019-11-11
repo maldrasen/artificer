@@ -40,12 +40,13 @@ Components.PlanView.Current = (function() {
     return project ? { code:project.code, minions:element.data('minions') } : null;
   }
 
+  // Have to call get() after map() because sometimes jQuery is stupid as hell.
   function getTaskWork() {
     return $('#planView .in-progress .task').map((i, taskElement) => {
       let task = $(taskElement).data('task');
       let minions = $(taskElement).data('minions');
       return { code:task.code, minions:minions }
-    });
+    }).get();
   }
 
   function getMissionWork() {
@@ -53,7 +54,7 @@ Components.PlanView.Current = (function() {
       let mission = $(missionElement).data('mission');
       let minions = $(missionElement).data('minions');
       return { code:mission.code, minions:minions }
-    });
+    }).get();
   }
 
   function cancelInProgress() {

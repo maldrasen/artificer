@@ -27,6 +27,7 @@ global.Database = (function() {
     require(`${ROOT}/engine/models/nipples`);
     require(`${ROOT}/engine/models/player`);
     require(`${ROOT}/engine/models/game`);
+    require(`${ROOT}/engine/models/mission-progress`);
     require(`${ROOT}/engine/models/mouth`);
     require(`${ROOT}/engine/models/pussy`);
     require(`${ROOT}/engine/models/queued-event`);
@@ -43,6 +44,8 @@ global.Database = (function() {
       AvailableEvent,
       AvailableMission,
       AvailableProject,
+      MissionProgress,
+      QueuedEvent,
       Player,
       Character,
       CharacterAspect,
@@ -52,7 +55,6 @@ global.Database = (function() {
       Mouth,
       Nipples,
       Pussy,
-      QueuedEvent,
       Tits,
       Resource];
 
