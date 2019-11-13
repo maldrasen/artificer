@@ -11,7 +11,8 @@ describe.only('Missions: Gather', function() {
   it('gathers materials', function(done) {
     setupTest().then(data => {
       Mission.resolve(data).then(result => {
-        console.log("Result:",result)
+        expect(result.flavors[0].code).to.equal('stones');
+        expect(result.items.stone).to.be.within(4,6);
         done();
       });
     });
