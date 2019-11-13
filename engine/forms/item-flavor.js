@@ -33,4 +33,18 @@ global.ItemFlavor = class ItemFlavor extends Form {
     return items;
   }
 
+  // Take a map of item flavors like { 'rabbit-pelt':2 }, and turns it into
+  // a map that the client can know how to render.
+  static forReport(raw) {
+    return Object.keys(raw).map(code => {
+      let flavor = ItemFlavor.lookup(code);
+      return {
+        code: code,
+        count: raw[code],
+        name: flavor.name,
+        icon: flavor.icon
+      };
+    });
+  }
+
 }

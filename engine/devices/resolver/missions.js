@@ -71,7 +71,9 @@ Resolver.Missions = (function() {
 
   async function resolve(mission, state, minions) {
     await Promise.all(minions.map(async minion => {
-      Resolver.Report.setMinionData(minion, 'work', (await Mission.resolve({ mission, state, minions })));
+      let result = await Mission.resolve({ mission, state, minion });
+      Resolver.Items.add(result.items);
+      Resolver.Report.setMinionData(minion, 'work', result);
     }));
   }
 

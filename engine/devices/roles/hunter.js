@@ -82,17 +82,7 @@ Role.Hunter = (function() {
     if (raw.items)         { result.items = raw.items; }
     if (raw.notifications) { result.notifications = raw.notifications; }
     if (raw.injury)        { result.injury = raw.injury.story }
-
-    if (raw.flavors) {
-      result.flavors = Object.keys(raw.flavors).map(code => {
-        let flavor = ItemFlavor.lookup(code);
-        return {
-          code: code,
-          count: raw.flavors[code],
-          name: flavor.name,
-          icon: flavor.icon };
-      });
-    }
+    if (raw.flavors)       { result.flavors = ItemFlavor.forReport(raw.flavors); }
 
     return result;
   }
