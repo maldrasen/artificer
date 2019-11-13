@@ -2,5 +2,5 @@
 Item.build('hide', {
   type: 'resource',
   name: 'Hide',
-  icon: '../../resources/icons/hide.png',
+  icon: '../../data/image-resources/icons/hide.png',
 });
