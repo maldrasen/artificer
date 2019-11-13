@@ -4,12 +4,14 @@ global.SpecHelper = (function() {
     if (VERBOSE) { console.log(`      ${message}`); }
   }
 
-  function buildJada(options) {
-    return new Promise(resolve => {
-      CharacterBuilder.build(
-        extend({ firstName:'Jada', lastName:'Fire', species:'elf', gender:'futa' },options)
-      ).then(resolve);
-    });
+  async function buildJada(options) {
+    return await CharacterBuilder.build(
+      extend({ firstName:'Jada', lastName:'Fire', species:'elf', gender:'futa' },options)
+    )
+  }
+
+  async function buildRando() {
+    return await CharacterBuilder.build({ species:Random.from(Species.all()).code });
   }
 
   function tenTimes(done, testFunction) {
@@ -25,6 +27,6 @@ global.SpecHelper = (function() {
     Promise.all(tests).then(()=>{ done(); });
   }
 
-  return { print, buildJada, tenTimes };
+  return { print, buildJada, buildRando, tenTimes };
 
 })();

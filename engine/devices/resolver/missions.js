@@ -71,12 +71,7 @@ Resolver.Missions = (function() {
 
   async function resolve(mission, state, minions) {
     await Promise.all(minions.map(async minion => {
-      Resolver.Report.setMinionData(minion, 'work', {
-        story: "[TODO: Finished mission story]",
-        // flavors
-        // notifications
-        // injury
-      });
+      Resolver.Report.setMinionData(minion, 'work', (await Mission.resolve({ mission, state, minions })));
     }));
   }
 

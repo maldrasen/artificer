@@ -14,4 +14,10 @@ global.Mission = class Mission extends Form {
     return (await Mission.available()).map(mission => { return mission.properties });
   }
 
+  static async resolve(data) {
+    if (data.mission.type == 'explore') { return await Mission.Explore.resolve(data); }
+    if (data.mission.type == 'gather')  { return await Mission.Gather.resolve(data);  }
+    throw `Unknown Mission Type ${data.mission.type}`;
+  }
+
 }
