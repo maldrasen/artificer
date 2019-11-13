@@ -10,34 +10,6 @@ require(`${ROOT}/engine/concerns/has-aspects`);
 require(`${ROOT}/engine/concerns/has-body`);
 require(`${ROOT}/engine/concerns/has-injuries`);
 
-// === Describers ===
-require(`${ROOT}/engine/describers/character-describer`);
-require(`${ROOT}/engine/describers/body-describer`);
-require(`${ROOT}/engine/describers/anus-describer`);
-require(`${ROOT}/engine/describers/cock-describer`);
-require(`${ROOT}/engine/describers/pussy-describer`);
-require(`${ROOT}/engine/describers/tits-describer`);
-require(`${ROOT}/engine/describers/body-injury-describer`);
-require(`${ROOT}/engine/describers/anus-injury-describer`);
-require(`${ROOT}/engine/describers/cock-injury-describer`);
-require(`${ROOT}/engine/describers/pussy-injury-describer`);
-require(`${ROOT}/engine/describers/tits-injury-describer`);
-
-// === Devices ===
-require(`${ROOT}/engine/devices/composer`);
-require(`${ROOT}/engine/devices/event-queue`);
-require(`${ROOT}/engine/devices/resolver`);
-require(`${ROOT}/engine/devices/resolver/events`);
-require(`${ROOT}/engine/devices/resolver/game`);
-require(`${ROOT}/engine/devices/resolver/healing`);
-require(`${ROOT}/engine/devices/resolver/items`);
-require(`${ROOT}/engine/devices/resolver/minions`);
-require(`${ROOT}/engine/devices/resolver/missions`);
-require(`${ROOT}/engine/devices/resolver/projects`);
-require(`${ROOT}/engine/devices/resolver/report`);
-require(`${ROOT}/engine/devices/resolver/roles`);
-require(`${ROOT}/engine/devices/resolver/tasks`);
-
 // === Forms ===
 require(`${ROOT}/engine/forms/form`);
 require(`${ROOT}/engine/forms/adjustment`);
@@ -55,27 +27,58 @@ require(`${ROOT}/engine/forms/project`);
 require(`${ROOT}/engine/forms/species`);
 require(`${ROOT}/engine/forms/task`);
 
+// === Describers ===
+require(`${ROOT}/engine/describers/character-describer`);
+require(`${ROOT}/engine/describers/body-describer`);
+require(`${ROOT}/engine/describers/anus-describer`);
+require(`${ROOT}/engine/describers/cock-describer`);
+require(`${ROOT}/engine/describers/pussy-describer`);
+require(`${ROOT}/engine/describers/tits-describer`);
+require(`${ROOT}/engine/describers/body-injury-describer`);
+require(`${ROOT}/engine/describers/anus-injury-describer`);
+require(`${ROOT}/engine/describers/cock-injury-describer`);
+require(`${ROOT}/engine/describers/pussy-injury-describer`);
+require(`${ROOT}/engine/describers/tits-injury-describer`);
+
+// === Devices ===
+require(`${ROOT}/engine/devices/composer`);
+require(`${ROOT}/engine/devices/event-queue`);
+
+require(`${ROOT}/engine/devices/abuser`);
+require(`${ROOT}/engine/devices/abusers/anus-abuser`);
+require(`${ROOT}/engine/devices/abusers/body-abuser`);
+require(`${ROOT}/engine/devices/abusers/cock-abuser`);
+require(`${ROOT}/engine/devices/abusers/head-abuser`);
+require(`${ROOT}/engine/devices/abusers/pussy-abuser`);
+require(`${ROOT}/engine/devices/abusers/tits-abuser`);
+
+require(`${ROOT}/engine/devices/missions/explore`);
+require(`${ROOT}/engine/devices/missions/gather`);
+
+require(`${ROOT}/engine/devices/resolver`);
+require(`${ROOT}/engine/devices/resolver/events`);
+require(`${ROOT}/engine/devices/resolver/game`);
+require(`${ROOT}/engine/devices/resolver/healing`);
+require(`${ROOT}/engine/devices/resolver/items`);
+require(`${ROOT}/engine/devices/resolver/minions`);
+require(`${ROOT}/engine/devices/resolver/missions`);
+require(`${ROOT}/engine/devices/resolver/projects`);
+require(`${ROOT}/engine/devices/resolver/report`);
+require(`${ROOT}/engine/devices/resolver/roles`);
+require(`${ROOT}/engine/devices/resolver/tasks`);
+
+require(`${ROOT}/engine/devices/role`);
+require(`${ROOT}/engine/devices/roles/hunter`);
+require(`${ROOT}/engine/devices/roles/hunter-injuries`);
+require(`${ROOT}/engine/devices/roles/hunter-stories`);
+require(`${ROOT}/engine/devices/roles/rest`);
+
 // === Helpers ===
 require(`${ROOT}/engine/helpers/calendar.js`);
 require(`${ROOT}/engine/helpers/character-agent`);
 require(`${ROOT}/engine/helpers/character-portraits`);
 require(`${ROOT}/engine/helpers/listify.js`);
 require(`${ROOT}/engine/helpers/random.js`);
-
-// === Units ===
-require(`${ROOT}/engine/units/abuser`);
-require(`${ROOT}/engine/units/abusers/anus-abuser`);
-require(`${ROOT}/engine/units/abusers/body-abuser`);
-require(`${ROOT}/engine/units/abusers/cock-abuser`);
-require(`${ROOT}/engine/units/abusers/head-abuser`);
-require(`${ROOT}/engine/units/abusers/pussy-abuser`);
-require(`${ROOT}/engine/units/abusers/tits-abuser`);
-
-require(`${ROOT}/engine/units/role`);
-require(`${ROOT}/engine/units/roles/hunter`);
-require(`${ROOT}/engine/units/roles/hunter-injuries`);
-require(`${ROOT}/engine/units/roles/hunter-stories`);
-require(`${ROOT}/engine/units/roles/rest`);
 
 // === Scrutinizers ===
 require(`${ROOT}/engine/scrutinizers/central-scrutinizer`);
