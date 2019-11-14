@@ -1,4 +1,4 @@
-Event.build('ocean-scouted', {
+Event.build('discover-ocean', {
 
   stages:[{
     pages:[

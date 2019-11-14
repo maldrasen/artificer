@@ -5,7 +5,7 @@ global.Mission = class Mission extends Form {
 
     return ArrayUtility.compact(
       (await Promise.all(Mission.all().map(async mission => {
-        if ((await CentralScrutinizer.meetsRequirements(mission.requires))) { return mission; }
+        if (await CentralScrutinizer.meetsRequirements(mission.requires)) { return mission; }
       })))
     );
   }

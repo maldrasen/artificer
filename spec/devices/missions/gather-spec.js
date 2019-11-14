@@ -1,4 +1,4 @@
-describe.only('Missions: Gather', function() {
+describe('Missions: Gather', function() {
 
   async function setupTest() {
     return {

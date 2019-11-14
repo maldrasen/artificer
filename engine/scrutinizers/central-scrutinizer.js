@@ -9,7 +9,7 @@ global.CentralScrutinizer = (function() {
     if (context == null) { context = new WeaverContext(); }
 
     let requirements = (typeof requires == "string") ? [requires] : requires;
-    let checks = await Promise.all(requirements.map(async requirement => {
+    let checks = await Promise.all((requirements).map(async requirement => {
       return await meetsRequirement(requirement, context);
     }));
 
