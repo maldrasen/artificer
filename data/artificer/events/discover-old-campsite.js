@@ -1,4 +1,4 @@
-Event.build('find-old-campsite', {
+Event.build('discover-old-campsite', {
 
   stages:[{
     pages:[

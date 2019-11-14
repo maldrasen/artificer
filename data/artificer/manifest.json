@@ -118,9 +118,12 @@
     "events/courtyard-walk-on-walls",
     "events/discover-centaur-farm",
     "events/discover-coal",
+    "events/discover-ocean",
     "events/discover-old-battleground",
+    "events/discover-old-campsite",
     "events/discover-sheep",
-    "events/find-old-campsite",
+    "events/explore-ran-into-goblins",
+    "events/explore-ran-into-kobolds",
     "events/game-start-chase",
     "events/game-start",
     "events/got-fleas",
@@ -142,7 +145,6 @@
     "events/minion-spider-bite-torment-balls",
     "events/minion-spider-bite-torment-pussy",
     "events/minion-spider-bite",
-    "events/ocean-scouted",
 
     "hazards/hunting-hazards",
 
