@@ -5,4 +5,13 @@ Mission.build('explore-hinterlands', {
   awayText: 'is off exploring the hinterlands.',
   minions: { min:2, max:4 },
   time: 2,
+
+
+  discoveries:[
+
+  ],
+  events:[
+
+  ],
+
 });
