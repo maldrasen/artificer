@@ -16,8 +16,8 @@ Mission.Explore = (function() {
     each(data.minions, minion => {
       Resolver.Report.setMinionData(minion, 'work', {
         story: (discovery == null) ?
-          `${minion.firstName} failed to find anything new while out exploring.`:
-          `${minion.firstName} ${discovery.brief}`
+          `${minion.singleName} failed to find anything new while out exploring.`:
+          `${minion.singleName} ${discovery.brief}`
       });
     });
   }

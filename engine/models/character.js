@@ -25,6 +25,7 @@ global.Character = Database.instance().define('character', {
     isMale()      { return this.genderCode == 'male'; },
     isFemale()    { return this.genderCode == 'female'; },
     alive()       { return this.status == 'normal' },
+    singleName()  { return this.forcedName || this.firstName },
 
     name() {
       return this.forcedName || `${this.preName||''} ${this.firstName} ${this.lastName||''}`.trim();
