@@ -23,6 +23,8 @@ global.CharacterBuilder = (function() {
       personal:    options.personal  || species.randomizedAttribute('personal'),
       mental:      options.mental    || species.randomizedAttribute('mental'),
       magical:     options.magical   || species.randomizedAttribute('magical'),
+      loyalty:     options.loyalty   || 0,
+      fear:        options.fear      || 0,
       health:      100,
       status:      'normal',
       currentDuty: 'role',

@@ -33,7 +33,7 @@ const genderChoices = [
 ];
 
 Event.build('game-start', {
-  pageScript: '../../data/artificer/events/global/game-start-page.js',
+  pageScript: '../../data/artificer/events/game-start-page.js',
   background: '../../assets/images/backgrounds/bg-void.png',
   darkenBackground: 100,
 

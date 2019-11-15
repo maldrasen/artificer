@@ -14,6 +14,8 @@ global.Character = Database.instance().define('character', {
   mental:           { type:Sequelize.INTEGER, validate:{ min:0 }},
   personal:         { type:Sequelize.INTEGER, validate:{ min:0 }},
   magical:          { type:Sequelize.INTEGER, validate:{ min:0 }},
+  loyalty:          { type:Sequelize.INTEGER, validate:{ min:0 }},
+  fear:             { type:Sequelize.INTEGER, validate:{ min:0 }},
   body_id:          { type:Sequelize.INTEGER },
 },{
   timestamps: false,
