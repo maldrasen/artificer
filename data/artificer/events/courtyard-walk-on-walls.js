@@ -12,8 +12,7 @@ Event.build('courtyard-walk-on-walls', {
       { text:`One of my rat minions has decided to join me up here, quickly scaling the wall to come and stand at my side.` },
       { text:`{{R::gender.He}} squeaks out what might be {{R::gender.his}} name to me.` },
       { text:`{{R::character.firstName}}, or something equally unpronounceable.`},
-      { text:`I may have to start naming them myself as their own names are difficult and nearly indistinguishable.`,
-        notification:"<span class='boom'>Unlocked:</span> Rename Minion"},
+      { text:`I may have to start naming them myself as their own names are difficult and nearly indistinguishable.`, alert:{ unlock:'Rename Minion' }},
       { text:`This little rat though I think is one of the more cleaver of the bunch.` },
       { text:`{{R::gender.He}} may be able to tell me more about these lands.` },
       { text:`I look out over the landscape.` },
@@ -57,7 +56,7 @@ Event.build('courtyard-walk-on-walls', {
       { text:`It looks like nothing more than a loosely assembled pile of body parts, and should be incapable of survival by mere biological means.` },
       { text:`That it must sustain itself on magical energy is really the only way to explain it.` },
       { text:`With a nod to {{R::character.firstName}} you jump back down to the courtyard below to start the day's work.` },
-      { text:`(I can now plan the day's work. I should begin by cleaning out the Keep's Great Hall.)`, notification:"<span class='boom'>Unlocked:</span> Working on Projects" }
+      { text:`(I can now plan the day's work. I should begin by cleaning out the Keep's Great Hall.)`, alert:{ unlock:"Working on Projects" }},
     ]}
   ],
 

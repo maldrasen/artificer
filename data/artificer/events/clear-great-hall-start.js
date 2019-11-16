@@ -33,7 +33,7 @@ Event.build('clear-great-hall-start', {
         { text:`Naked, and without any equipment, normally such a task would be impossible.`},
         { text:`With a bit of magic though I'll be able to clear and sweep; all without having to actually touch anything.`},
         { text:`Add a bit of flame to sanitize what remains and I should have a livable space soon.`},
-        { text:`( I can now use the map to walk around the keep. )`, notification:"<span class='boom'>Unlocked:</span> The Map" },
+        { text:`( I can now use the map to walk around the keep. )`, alert:{ unlock:"The Map" }},
         { text:`Well. I'd best get to work then.`},
         { text:`...`, darkenBackground:30 },
         { text:`..`,  darkenBackground:60 },

@@ -1,7 +1,7 @@
 global.RendererCommands = (function() {
 
   function init() {
-    ipcRenderer.on('alert', Alerts.showAlert);
+    ipcRenderer.on('alert', Alerts.showEngineAlert);
 
     ipcRenderer.on('engine.ready', Renderer.ready);
     ipcRenderer.on('game.file-list', Components.SavedGames.showSaves);

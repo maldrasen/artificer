@@ -1,11 +1,16 @@
 global.Alerts = (function() {
 
-  function showAlert(transport, alert) {
-    console.log("Alert: ",alert)
+  function showAlert(alert) {
+    console.log("Show Alert: ",alert)
+  }
+
+  function showEngineAlert(transport, alert) {
+    showAlert({ engine:alert });
   }
 
   return {
-    showAlert: showAlert,
+    showAlert,
+    showEngineAlert,
   }
 
 })();

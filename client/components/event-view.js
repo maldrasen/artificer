@@ -178,13 +178,13 @@ Components.EventView = (function() {
 
   function buildPage() {
     let page = currentPage();
+    if (page.alert) { Alerts.showAlert(page.alert); }
     if (page.background != null) { setBackground(page.background); }
     if (page.darkenBackground != null) { darkenBackground(page.darkenBackground); }
     if (page.showCenterImage) { showCenterImage(page.showCenterImage); }
     if (page.hideCenterImage) { hideCenterImage(); }
 
     showSpeaker(page.minionSpeaker, page.playerSpeaker)
-    showNotification(page.notification);
 
     $('#currentEvent .event-text-frame').empty().append(page.text)
   }
@@ -314,15 +314,6 @@ Components.EventView = (function() {
 
   function hideCenterImage() {
     $('#currentEvent .center-image-frame').addClass('hide');
-  }
-
-  function showNotification(notification) {
-    if (notification) {
-      $('#currentEvent .notification-frame').removeClass('hide');
-      $('#currentEvent .notification').empty().append(notification);
-    } else {
-      $('#currentEvent .notification-frame').addClass('hide');
-    }
   }
 
   function setBackground(url) {

@@ -12,7 +12,7 @@ Event.build('clothed-and-bedded', {
       { text:`I can work with that.` },
       { text:`I think making this place as livable as possible should be my next priority.` },
       { text:`I'll start with clearing the keep's upper floors and I'll work my way downward.` },
-      { text:`I should start sending my rats out to gather the materials I know I'll need too.`, notification:`<span class='boom'>Unlocked:</span> Missions` },
+      { text:`I should start sending my rats out to gather the materials I know I'll need too.`, alert:{ unlock:'Missions' }},
       { text:`Food will still a necessity of course, but in time I'll need wood, stone, and metal to turn this ruin into an actual dwelling.` },
     ]
   }],
