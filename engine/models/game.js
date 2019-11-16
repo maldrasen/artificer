@@ -61,12 +61,12 @@ Game.updateLocation = async function(code) {
 
 async function buildStartingMinions(game) {
   let startingCharacters = [
-    { type:'minion', species:'rat', gender:'male'   },
-    { type:'minion', species:'rat', gender:'male'   },
-    { type:'minion', species:'rat', gender:'male'   },
-    { type:'minion', species:'rat', gender:'female' },
-    { type:'minion', species:'rat', gender:'female' },
-    { type:'minion', species:'rat', gender:'female' },
+    { type:'minion', species:'rat', gender:'male',   fear:Random.between(40,60), loyalty:Random.between(10,20) },
+    { type:'minion', species:'rat', gender:'male',   fear:Random.between(40,60), loyalty:Random.between(10,20) },
+    { type:'minion', species:'rat', gender:'male',   fear:Random.between(40,60), loyalty:Random.between(10,20) },
+    { type:'minion', species:'rat', gender:'female', fear:Random.between(40,60), loyalty:Random.between(10,20) },
+    { type:'minion', species:'rat', gender:'female', fear:Random.between(40,60), loyalty:Random.between(10,20) },
+    { type:'minion', species:'rat', gender:'female', fear:Random.between(40,60), loyalty:Random.between(10,20) },
   ];
 
   return await Promise.all(startingCharacters.map((options) => {

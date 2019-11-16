@@ -122,6 +122,7 @@
     "events/discover-old-battleground",
     "events/discover-old-campsite",
     "events/discover-sheep",
+    "events/explore-failed",
     "events/explore-ran-into-goblins",
     "events/explore-ran-into-kobolds",
     "events/game-start-chase",

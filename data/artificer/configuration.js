@@ -12,4 +12,5 @@ global.Configuration = {
     'locationMenu.map': 'locked',
     'locationMenu.minions': 'locked',
   },
+  exploreFailureEvent: 'explore-failed',
 };

@@ -122,11 +122,18 @@
 .attributes {
   .physical { color:$fg-physical; }
   .personal { color:$fg-personal; }
-  .mental { color:$fg-mental; }
-  .magical { color:$fg-magical; }
+  .mental   { color:$fg-mental;   }
+  .magical  { color:$fg-magical;  }
+  .loyalty  { color:$fg-loyalty;  }
+  .fear     { color:$fg-fear;     }
 
   dt { opacity: 0.75; }
-  dd { font-family: roboto-bold; }
+  dd .word { opacity: 0.75; }
+  dd .value {
+    display: inline-block;
+    width: 1.7em;
+    font-family: roboto-bold;
+  }
 }
 
 .attributes.attributes-inline {

@@ -14,6 +14,8 @@ global.Character = Database.instance().define('character', {
   mental:           { type:Sequelize.INTEGER, validate:{ min:0 }},
   personal:         { type:Sequelize.INTEGER, validate:{ min:0 }},
   magical:          { type:Sequelize.INTEGER, validate:{ min:0 }},
+  loyalty:          { type:Sequelize.INTEGER, validate:{ min:0 }},
+  fear:             { type:Sequelize.INTEGER, validate:{ min:0 }},
   body_id:          { type:Sequelize.INTEGER },
 },{
   timestamps: false,
@@ -25,6 +27,7 @@ global.Character = Database.instance().define('character', {
     isMale()      { return this.genderCode == 'male'; },
     isFemale()    { return this.genderCode == 'female'; },
     alive()       { return this.status == 'normal' },
+    singleName()  { return this.forcedName || this.firstName },
 
     name() {
       return this.forcedName || `${this.preName||''} ${this.firstName} ${this.lastName||''}`.trim();
@@ -68,9 +71,17 @@ Character.prototype.properties = async function() {
     healthClass: healthClass,
     healthWord: healthWord,
     physical: this.physical,
+    physicalWord: this.getPhysicalWord(),
     mental: this.mental,
+    mentalWord: this.getMentalWord(),
     personal: this.personal,
+    personalWord: this.getPersonalWord(),
     magical: this.magical,
+    magicalWord: this.getMagicalWord(),
+    loyalty: this.loyalty,
+    loyaltyWord: this.getLoyaltyWord(),
+    fear: this.fear,
+    fearWord: this.getFearWord(),
     currentDuty: this.currentDuty,
     duty: this.dutyCode,
     availableRoles: [
@@ -106,5 +117,6 @@ Character.prototype.detailForClient = async function() {
 }
 
 HasAspects.isAppliedTo(Character);
+HasAttributes.isAppliedTo(Character);
 HasBody.isAppliedTo(Character);
 HasInjuries.isAppliedTo(Character);

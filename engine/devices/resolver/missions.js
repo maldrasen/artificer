@@ -25,7 +25,7 @@ Resolver.Missions = (function() {
 
     // Missions that only take a day are immeadietly resolved.
     if (mission.time == 1) {
-      await resolve(mission, { minions:orders.minions }, minions);
+      await Mission.resolve({ mission:mission, minions:minions, state:{ minions:orders.minions }});
       await resetDuty(minions);
       return;
     }
@@ -64,17 +64,9 @@ Resolver.Missions = (function() {
   }
 
   async function completeMission(mission, progress, minions) {
-    await resolve(mission, progress.state, minions);
+    await Mission.resolve({ mission:mission, minions:minions, state:progress.state });
     await progress.destroy();
     await resetDuty(minions);
-  }
-
-  async function resolve(mission, state, minions) {
-    await Promise.all(minions.map(async minion => {
-      let result = await Mission.resolve({ mission, state, minion });
-      Resolver.Items.add(result.items);
-      Resolver.Report.setMinionData(minion, 'work', result);
-    }));
   }
 
   // We have to wait until all the other resolver tasks are finished before

@@ -1,31 +1,26 @@
 Mission.Explore = (function() {
 
-  // input:  { mission
-  //           state
-  //           minions }
+  // Interestingly, this is the first use of the event status. We need to know
+  // the IDs of the minions that were on the explore mission when we render the
+  // explore event. I knew I added that for a reason.
   //
-  // output: { story
-  //           flavors
-  //           items
-  //           notifications
-  //           injury }
+  // input:  { mission, state, minions }
   //
   async function resolve(data) {
     const discovery = await attemptDiscovery(data.mission);
-    if (discovery == null) {
-      return { story:`{{C::character.first-name}} failed to find anything new while out exploring.` };
-    }
 
-    // Interestingly, this is the first use of the event status. We need to
-    // know the IDs of the minions that were on the explore mission when we
-    // render the explore event. I knew I added that for a reason.
-    EventQueue.enqueueEvent(discovery.code, {
+    EventQueue.enqueueEvent((discovery == null ? Configuration.exploreFailureEvent : discovery.code), {
       ids: data.minions.map(minion => { return minion.id })
     });
 
-    return { story: `{{C::character.first-name}} ${discovery.brief}` };
+    each(data.minions, minion => {
+      Resolver.Report.setMinionData(minion, 'work', {
+        story: (discovery == null) ?
+          `${minion.singleName} failed to find anything new while out exploring.`:
+          `${minion.singleName} ${discovery.brief}`
+      });
+    });
   }
-
 
   // For a discovery to be valid, all the requirements for the associated
   // discovery event must be met. The discovery cannot have happened before,

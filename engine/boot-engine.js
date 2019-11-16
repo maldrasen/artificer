@@ -7,6 +7,7 @@ global.hash = require('object-hash');
 
 // === Concerns ===
 require(`${ROOT}/engine/concerns/has-aspects`);
+require(`${ROOT}/engine/concerns/has-attributes`);
 require(`${ROOT}/engine/concerns/has-body`);
 require(`${ROOT}/engine/concerns/has-injuries`);
 
