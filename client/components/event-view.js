@@ -18,6 +18,29 @@ Components.EventView = (function() {
     $(document).on('click', '#warningFrame .close',Elements.buttonAction(Components.EventView.Warning.accept));
   }
 
+  // Build an event given all of the event options. Options:
+  //
+  //   actors             Map of actors used in the event. The object keys are the subjects for the Weaver. The object
+  //                      values are used by the CharacterAgent to lookup the specified character.
+  //
+  //   background         (Obsolete, to be replace with something for the image resource loader. Also darkenBackground,
+  //                      should only be done on a stage or page.)
+  //
+  //   location           Used to indicate that this is a location event. Location events are only started when the
+  //                      player go to that location and starts the event manually.
+  //
+  //   onStart            Function run when the event starts.
+  //
+  //   onFinish           Function run when the event is finished. Called with the choices object.
+  //
+  //   requires           A requirement or list of requirement that must be met before the event can be enqueued.
+  //                      Requirements are strings interpreted by the CentralScrutinizer.
+  //
+  //   stages             Stage Data. It's complicated, so documented below.
+  //
+  //   time               Specify the time that this events happen. Can be set to morning or afternoon. Only one
+  //                      morning or afternoon event can be run each day.
+  //
   function build(transport, event) {
     Components.EventView.Page = {};
 
@@ -31,7 +54,6 @@ Components.EventView = (function() {
 
     if (event.background != null) { setBackground(event.background); }
     if (event.darkenBackground != null) { darkenBackground(event.darkenBackground); }
-    if (event.pageScript != null) { require(event.pageScript); }
 
     buildStage();
   }
@@ -56,10 +78,15 @@ Components.EventView = (function() {
   }
 
   function endEvent() {
-    skipActive = false;
-    Renderer.sendCommand((eventData.onCompleteSend == null ? 'game.end-event' : eventData.onCompleteSend),choices);
+    Renderer.sendCommand('game.end-event',choices);
   }
 
+  // Build the next stage from a stage object. Global stage options include:
+  //
+  //    background (obsolete)
+  //
+  // Otherwise there are a whole fuck ton of other page types, each of which
+  // have their own options and have to be documented separately.
   function buildStage() {
     let stage = currentStage();
 
@@ -179,8 +206,20 @@ Components.EventView = (function() {
   //       - locked:   Show the option, but make it non-selectable.
   //     text:         Text to display in the footer.
   //     name:         Name under which to save the chosen value.
-  //     onAccept:     Calls a function in Components.EventView.Page with the
-  //                   chosen value when the choice is accepted.
+  //
+  //     onAccept:     A named function called with the chosen value when the choice is accepted. We can't just stick a
+  //                   actual accept function onto the page because the page data is coming from the engine and run in
+  //                   the client, and functions can't be safely serialized and deserialized (at least I don't think
+  //                   they can.)
+  //
+  //                   Events that are called onAccet are therefor stored on the chooser component and called by name.
+  //                   Mods that add onAccept functions will just need to add the functions onto the
+  //                   Elements.Chooser.OnAcceptFunctions object when their mod is loaded in the client. When adding an
+  //                   onAccept function the function name should be prefixed with the event code.
+  //
+  //                   An onAccept function needs to select the next stage. The entire reason for including it is so
+  //                   choices made in the chooser can show a different stage depending on the choice made.
+  //
   function buildChooserPage() {
     let stage = currentStage();
     let content = $('#currentEvent .chooser-content').empty().removeClass('hide').append($($("#chooserPageTemplate").html()));
@@ -258,10 +297,8 @@ Components.EventView = (function() {
   function acceptChoice() {
     let stage = currentStage();
     let value = stage.chooser.selectedValue;
-
-    if (stage.name) { choices[stage.name] = value }
-    if (stage.onAccept) { Components.EventView.Page[stage.onAccept](value); }
-    if (stage.onAccept == null) { nextStage(); }
+    if (stage.name) { choices[stage.name] = value; }
+    stage.onAccept == null ? nextStage() : Elements.Chooser.OnAcceptFunctions[stage.onAccept](value);
   }
 
   function updateChoices(map) { choices = extend(choices,map); }

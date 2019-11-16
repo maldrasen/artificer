@@ -1,5 +1,7 @@
 {
-  "clientFiles":[],
+  "clientFiles":[
+    "client/chooser-functions"
+  ],
 
   "sharedFiles":[
     "configuration"

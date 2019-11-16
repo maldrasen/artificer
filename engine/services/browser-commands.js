@@ -21,12 +21,6 @@ global.BrowserCommands = (function() {
       });
     })
 
-    ipcMain.on('game.create-player', (event, options) => {
-      Game.instance().then(game => {
-        game.createPlayer(options);
-      });
-    });
-
     // === Save & Load ===
 
     ipcMain.on('game.save', (event, gameName) => {

@@ -87,3 +87,5 @@ Elements.Chooser = class Chooser {
     Elements.ScrollingPanel.resize(this.element.find('.scrolling-panel'));
   }
 }
+
+Elements.Chooser.OnAcceptFunctions = {};

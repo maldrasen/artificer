@@ -33,11 +33,8 @@ const genderChoices = [
 ];
 
 Event.build('game-start', {
-  pageScript: '../../data/artificer/events/game-start-page.js',
   background: '../../assets/images/backgrounds/bg-void.png',
   darkenBackground: 100,
-
-  onCompleteSend: 'game.create-player',
 
   stages:[
     {
@@ -73,7 +70,7 @@ Event.build('game-start', {
       choices: genderChoices,
       name: 'gender',
       text: "And how would I describe my gender?",
-      onAccept: 'onGenderChoice',
+      onAccept: 'game-start.gender-choice',
     },{
       id:'custom-gender-page',
       genderFormPage: true
@@ -87,5 +84,10 @@ Event.build('game-start', {
         { text:"Before I can really determine the nature of this place, this void between life and death, I am awoken by the feeling of grass under my back." },
       ]
     }
-  ]
+  ],
+
+  onFinish: async choices => {
+    await (await Game.instance()).createPlayer(choices);
+  },
+
 });

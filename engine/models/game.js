@@ -45,10 +45,8 @@ Game.clear = async function() {
   }));
 }
 
-Game.prototype.createPlayer = function(options) {
-  Player.forge(options).then(player => {
-    Composer.render();
-  });
+Game.prototype.createPlayer = async function(options) {
+  await Player.forge(options);
 }
 
 Game.updateLocation = async function(code) {
