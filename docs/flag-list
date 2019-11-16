@@ -4,8 +4,9 @@ history.courtyardRatOrgy      | clear-great-hall-sleep-sex      | (yes) if it ha
 location.currentStudy         | courtyard-walk-on-walls         | (code) Set to the code of the location where the study actions can be performed.
 location.hinterlandsName      | journal-1                       | (name) Set by the player to name the surrounding countryside. Set to The Hinterlands by default.
 location.keepName             | journal-1                       | (name) Set by the player to name their keep. Set to Faingorn Keep by default.
-locationMenu.map              | clear-great-hall-start          | (unlocked) Turns on the map menu
-locationMenu.minions          | courtyard-get-minions           | (unlocked) Turns on the minion menu
+locationMenu.inventory        | ?                               | (unlocked) Turns on the inventory menu.
+locationMenu.map              | clear-great-hall-start          | (unlocked) Turns on the map menu.
+locationMenu.minions          | courtyard-get-minions           | (unlocked) Turns on the minion menu.
 locationMenu.showDate         | clear-upper-keep-find-journal   | (unlocked) Shows the Rhysh date with the day number.
 minion.missions               | clothed-and-bedded              | (unlocked) Turns on the ability to send minions on missions.
 minion.rename                 | courtyard-walk-on-walls         | (unlocked) Turns on the ability to rename minions in the minion menu.

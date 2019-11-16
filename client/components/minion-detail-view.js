@@ -1,10 +1,13 @@
 Components.MinionDetailView = (function() {
   let minion;
+  let flags;
 
   function init() {}
 
   function open(event, data) {
-    minion = data;
+    minion = data.minion;
+    flags = data.flags;
+
     Renderer.showMinion();
     Renderer.unlock();
   }
@@ -40,6 +43,10 @@ Components.MinionDetailView = (function() {
     addAspects(minion.sexualAspects,      view.find('.sexual-aspects'));
 
     Elements.ScrollingPanel.build($('#overlayContent .scrolling-panel'));
+
+    if (flags['minion.rename'] == 'unlocked') {
+      view.find('.button.rename-minion').removeClass('hide');
+    }
   }
 
   function addAspects(aspects, element) {

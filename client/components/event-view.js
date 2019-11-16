@@ -78,6 +78,7 @@ Components.EventView = (function() {
   }
 
   function endEvent() {
+    skipActive = false;
     Renderer.sendCommand('game.end-event',choices);
   }
 

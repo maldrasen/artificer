@@ -9,8 +9,6 @@ global.Configuration = {
   gameStartFlags: {
     'location.hinterlandsName': 'The Hinterlands',
     'location.keepName': 'Faingorn Keep',
-    'locationMenu.map': 'locked',
-    'locationMenu.minions': 'locked',
   },
   exploreFailureEvent: 'explore-failed',
 };
