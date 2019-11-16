@@ -32,6 +32,13 @@ global.Character = Database.instance().define('character', {
     name() {
       return this.forcedName || `${this.preName||''} ${this.firstName} ${this.lastName||''}`.trim();
     },
+
+    physicalWord() { return CharacterAttributes.physicalWord(this.physical) },
+    mentalWord()   { return CharacterAttributes.mentalWord(this.mental) },
+    personalWord() { return CharacterAttributes.personalWord(this.personal) },
+    magicalWord()  { return CharacterAttributes.magicalWord(this.magical) },
+    loyaltyWord()  { return CharacterAttributes.loyaltyWord(this.loyalty) },
+    fearWord()     { return CharacterAttributes.fearWord(this.fear) },
   },
   setterMethods: {
     dutyOptions(json) { this.setDataValue('dutyOptions_json',JSON.stringify(json)) },
@@ -71,9 +78,17 @@ Character.prototype.properties = async function() {
     healthClass: healthClass,
     healthWord: healthWord,
     physical: this.physical,
+    physicalWord: this.physicalWord,
     mental: this.mental,
+    mentalWord: this.mentalWord,
     personal: this.personal,
+    personalWord: this.personalWord,
     magical: this.magical,
+    magicalWord: this.magicalWord,
+    loyalty: this.loyalty,
+    loyaltyWord: this.loyaltyWord,
+    fear: this.fear,
+    fearWord: this.fearWord,
     currentDuty: this.currentDuty,
     duty: this.dutyCode,
     availableRoles: [

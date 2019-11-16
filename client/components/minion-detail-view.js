@@ -19,10 +19,20 @@ Components.MinionDetailView = (function() {
     view.find('.top-row .health-value').append(minion.health);
     view.find('.top-row .health-word').append(minion.healthWord);
     view.find('.top-row .health-section').addClass(`fg-health-${minion.healthClass}`);
-    view.find('.attributes dd.physical').append(minion.physical);
-    view.find('.attributes dd.personal').append(minion.personal);
-    view.find('.attributes dd.mental').append(minion.mental);
-    view.find('.attributes dd.magical').append(minion.magical);
+
+    view.find('.attributes dd.physical .value').append(minion.physical);
+    view.find('.attributes dd.physical .word').append(minion.physicalWord);
+    view.find('.attributes dd.personal .value').append(minion.personal);
+    view.find('.attributes dd.personal .word').append(minion.personalWord);
+    view.find('.attributes dd.mental .value').append(minion.mental);
+    view.find('.attributes dd.mental .word').append(minion.mentalWord);
+    view.find('.attributes dd.magical .value').append(minion.magical);
+    view.find('.attributes dd.magical .word').append(minion.magicalWord);
+    view.find('.attributes dd.fear .value').append(minion.fear);
+    view.find('.attributes dd.fear .word').append(minion.fearWord);
+    view.find('.attributes dd.loyalty .value').append(minion.loyalty);
+    view.find('.attributes dd.loyalty .word').append(minion.loyaltyWord);
+
     view.find('.description-row').append(minion.description);
 
     addAspects(minion.skillAspects,       view.find('.skill-aspects'));

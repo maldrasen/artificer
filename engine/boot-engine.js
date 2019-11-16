@@ -76,6 +76,7 @@ require(`${ROOT}/engine/devices/roles/rest`);
 // === Helpers ===
 require(`${ROOT}/engine/helpers/calendar.js`);
 require(`${ROOT}/engine/helpers/character-agent`);
+require(`${ROOT}/engine/helpers/character-attributes`);
 require(`${ROOT}/engine/helpers/character-portraits`);
 require(`${ROOT}/engine/helpers/listify.js`);
 require(`${ROOT}/engine/helpers/random.js`);
