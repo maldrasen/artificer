@@ -26,10 +26,8 @@ Event.build('courtyard-get-minions', {
       { text:`...at least until I get a better grasp on this land.` },
       { text:`I'll establish a foothold first then decide what to do from there.` },
       { text:`I nod to the rats gathered around me.` },
-      { playerSpeaker:true, text:`<span class='player-quote'>"Very well."</span>` },
-      { playerSpeaker:true, text:`<span class='player-quote'>"I will make you my minions."</span>` },
-      { playerSpeaker:true, text:`<span class='player-quote'>"You may call me {{P::character.title}}, and I will rule both over you and this keep."</span>` },
-      { text:`And with that declaration I am now lord of this place.` },
+      { playerSpeaker:true, text:`<span class='player-quote'>"Very well, if that's what you want..."</span>` },
+      { text:`And, just like that, I find myself with both minions and place to live.` },
     ]}
   ],
 
