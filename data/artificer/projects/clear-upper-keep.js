@@ -1,6 +1,6 @@
 Project.build('clear-upper-keep', {
   name: `Clear the Keep's Upper Floors`,
-  workingName: `clearing the keep's upper floors.`,
+  workingName: `clearing the keep's upper floors`,
   description: "I need to clear the keep's upper floors of debris.",
   effort: 120,
   help: { max:2, min:0 },

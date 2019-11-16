@@ -71,7 +71,7 @@ Resolver.Projects = (function() {
       minion.save();
     });
 
-    Resolver.Report.setProjectCompletedText(project)
+    Resolver.Report.setProjectCompletedText(project, minions)
   }
 
   return {

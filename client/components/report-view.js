@@ -18,6 +18,10 @@ Components.ReportView = (function() {
   }
 
   function addMinionFrame(minion) {
+    if (minion.work == null) { minion.work = {
+      story:`TODO: Whatever this task was needs a work object and a story in the report.`
+    }}
+
     let portrait = $(`<div class='portrait-frame'><img src='${minion.portrait}'/></div>`)
     let topRow = $(`<div class='top-row'><div class='minion-name'>${minion.name}</div></div>`);
     let storyRow = $(`<div class='story-row'><span class='story'>${minion.awayText || minion.work.story}</span></div>`);

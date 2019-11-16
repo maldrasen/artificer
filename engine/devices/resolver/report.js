@@ -18,10 +18,18 @@ Resolver.Report = (function() {
     if (minions.length > 1)  { text += `${EnglishUtility.NumberInEnglish(minions.length)} of my minions and I have made some progress, but there's still work to do.` }
 
     Resolver.currentReport().project = { text:text };
+
+    each(minions, minion => {
+      setMinionData(minion,'work',{ story:`${minion.singleName} spent the day ${project.workingName} with me.` });
+    });
   }
 
-  function setProjectCompletedText(project) {
+  function setProjectCompletedText(project, minions) {
     Resolver.currentReport().project = { text:`I've finished ${project.workingName}.` };
+
+    each(minions, minion => {
+      setMinionData(minion,'work',{ story:`${minion.singleName} finished ${project.workingName} with me.` });
+    });
   }
 
   function setProjectIdleText() {

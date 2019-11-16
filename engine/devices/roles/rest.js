@@ -4,7 +4,7 @@ Role.Rest = (function() {
   const description = 'This minion will rest and relax. Resing minions heal faster and will entertain themselves.';
 
   async function work(character) {
-    return {};
+    return { story:`${character.singleName} spent the day resting.` };
   }
 
   return {
