@@ -60,4 +60,75 @@ global.HasAttributes = { isAppliedTo: function(model) {
     return 'aghast';
   }
 
+  model.prototype.adjustLoyaly = function(amount) {
+    this.loyalty = scaleLoyaltyOrFearAmount(this.loyalty,amount);
+  }
+
+  model.prototype.adjustFear = function(amount) {
+    this.fear = scaleLoyaltyOrFearAmount(this.fear,amount);
+  }
+
+  // A value between -3 and 3 is specified when loyalty or fear is added to a
+  // character. The actual amount gained or lost though depends on their
+  // current attribute value, with lower values being easier to increase and
+  // higher values being easier to decrease. As a table this works something
+  // like this:
+  //              ---  --   -    +    ++   +++
+  //  0 - 19      -3   -2   -1   +3   +6   +9
+  // 20 - 80      -5   -3   -1   +1   +3   +5
+  // 81 - 100     -9   -6   -3   +1   +2   +3
+  //
+  // I want to avoid weird situations like 19(+++) = 28 and 20(+++) = 25 so
+  // I have to adjust a few numbers by hand.
+  function scaleLoyaltyOrFearAmount(value, amount) {
+    if (amount == -3) {
+      if (value <= 3) { return 0; }
+      if (value <= 19) { return value-3; }
+      if (value == 20) { return 16; }
+      if (value == 21) { return 17; }
+      if (value <= 79) { return value-5; }
+      if (value <= 81) { return 75; }
+      if (value <= 84) { return 76; }
+      return value-9;
+    }
+    if (amount == 3) {
+      if (value >= 97) { return 100; }
+      if (value >= 81) { return value+3; }
+      if (value == 80) { return 84; }
+      if (value == 79) { return 83; }
+      if (value >= 21) { return value+5; }
+      if (value >= 19) { return 25; }
+      if (valye >= 16) { return 24; }
+      return value+9;
+    }
+    if (amount == -2) {
+      if (value <= 2) { return 0; }
+      if (value <= 19) { return value-2; }
+      if (value <= 79) { return value-3; }
+      if (value == 80) { return 76; }
+      if (value <= 82) { return 77; }
+      return value-6;
+    }
+    if (amount == 2) {
+      if (value >= 98) { return 100; }
+      if (value >= 81) { return value+2; }
+      if (value >= 21) { return value+3; }
+      if (value == 20) { return 24; }
+      if (value >= 18) { return 23; }
+      return value+6;
+    }
+    if (amount == -1) {
+      if (value == 0)  { return 0; }
+      if (value <= 81) { return value-1 }
+      if (value == 82) { return 80; }
+      return value-3;
+    }
+    if (amount == 1) {
+      if (value == 100) { return 100; }
+      if (value >= 19) { return value+1; }
+      if (value == 18) { return 20; }
+      return value+3;
+    }
+  }
+
 }};
