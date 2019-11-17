@@ -31,6 +31,7 @@ require(`${ROOT}/client/components/event-views/warning`);
 
 // === Elements ===
 require(`${ROOT}/client/elements/elements`);
+require(`${ROOT}/client/elements/alert`);
 require(`${ROOT}/client/elements/chooser`);
 require(`${ROOT}/client/elements/confirm`);
 require(`${ROOT}/client/elements/paged-content`);

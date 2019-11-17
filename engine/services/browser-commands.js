@@ -25,13 +25,13 @@ global.BrowserCommands = (function() {
 
     ipcMain.on('game.save', (event, gameName) => {
       Records.saveToFile(gameName).then(()=>{
-        Browser.send('alert',{ messsage:'Save Successful.' });
+        Browser.send('alert',{ message:'Save Successful.' });
       });
     });
 
     ipcMain.on('game.quick-save', () => {
       Records.saveToFile("Quick Save").then(()=>{
-        Browser.send('alert',{ messsage:'Quick Save Successful.' });
+        Browser.send('alert',{ message:'Quick Save Successful.' });
       });
     });
 
