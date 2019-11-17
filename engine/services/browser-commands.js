@@ -1,15 +1,6 @@
 global.BrowserCommands = (function() {
 
   function init() {
-    initGameMessages();
-    initResolverMessages();
-    initLocationMessages();
-    initDebugMessages();
-  }
-
-  // The game messages are primarily concerned with starting, stopping,
-  // saving, and loading.
-  function initGameMessages() {
 
     ipcMain.on('game.start', () => {
       Game.start();
@@ -51,7 +42,7 @@ global.BrowserCommands = (function() {
       Records.deleteSaveFile(filename);
     });
 
-    // === Events ===
+    // === Game Events ===
 
     ipcMain.on('game.end-event', (event, choices) => {
       Event.onFinish(choices).then(() => {
@@ -63,8 +54,6 @@ global.BrowserCommands = (function() {
       Composer.renderLocationEvent();
     });
 
-    // === Other Views ===
-
     ipcMain.on('game.open-plan-view', () => {
       Composer.renderPlanView();
     });
@@ -72,10 +61,9 @@ global.BrowserCommands = (function() {
     ipcMain.on('game.cancel', () => {
       Composer.render();
     });
-  }
 
-  // Commands for the resolver commands
-  function initResolverMessages() {
+    // === Resolver ===
+
     ipcMain.on('resolver.start-work', (event, plan) => {
       Resolver.startWork(plan);
     });
@@ -83,10 +71,9 @@ global.BrowserCommands = (function() {
     ipcMain.on('resolver.start-day', () => {
       Resolver.startDay();
     });
-  }
 
-  // Commands for things that can be done from locations
-  function initLocationMessages() {
+    // === Location ===
+
     ipcMain.on('location.change', (event, data) => {
       Game.updateLocation(data.code).then(()=>{
         Composer.render();
@@ -94,8 +81,7 @@ global.BrowserCommands = (function() {
     });
 
     ipcMain.on('location.showMinions', async () => {
-      const minions = await Character.allForClient();
-      Browser.send('render.minions', minions);
+      Browser.send('render.minions', (await Character.allForClient()));
     });
 
     ipcMain.on('location.showMinion', async (event, id) => {
@@ -115,9 +101,15 @@ global.BrowserCommands = (function() {
       const possessions = [];
       Browser.send('render.inventory',{ resources, possessions, food:game.food });
     });
-  }
 
-  function initDebugMessages() {
+    // === Character ===
+
+    ipcMain.on('character.make-aspect-adjustment', async (event, data) => {
+      console.log("Make adjustment: ",data)
+    });
+
+    // === Debug ===
+
     ipcMain.on('debug.game.printFlags', () => {
       Flag.printFlags();
     });

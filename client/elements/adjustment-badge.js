@@ -25,10 +25,9 @@ Elements.AdjustmentBadge = class AdjustmentBadge {
 
   constructor(strang, actors) {
     let parts = strang.split(' ');
-    this.subject = parts[0];
+    this.subject = this.lookupSubject(parts[0], actors);
     this.aspect = parts[1];
     this.level = parts[2];
-    this.actors = actors;
   }
 
   get aspectLabel() {
@@ -46,6 +45,15 @@ Elements.AdjustmentBadge = class AdjustmentBadge {
     return '';
   }
 
+  lookupSubject(subject, actors) {
+    if (actors) {
+      console.log(`TODO: lookup ${subject} in`,actors);
+      console.log("      Then return it if found.")
+    }
+
+    return subject;
+  }
+
   build() {
     return $(`
       <span class='adjustment-badge badge'>
@@ -56,7 +64,11 @@ Elements.AdjustmentBadge = class AdjustmentBadge {
 
   execute() {
     Alerts.showAlert({ adjustment:`${this.aspectLabel} ${this.symbols}`, classname:this.aspect });
-    // TODO: Send message to make adjustment.
+    Renderer.sendCommand('character.make-aspect-adjustment',{
+      subject: this.subject,
+      aspect: this.aspect,
+      level: this.level
+    });
   }
 
 }
