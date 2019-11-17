@@ -5,13 +5,17 @@ Elements.Alert = class Alert {
     this.title = options.title;
     this.message = options.message;
     this.position = options.position;
+    this.classname = options.classname;
 
-    this.parent = (options.position == 'center') ? $('#centerAlerts') : $('#sideAlerts');
+    if (options.position == 'center') { this.parent = $('#centerAlerts'); }
+    if (options.position == 'event') { this.parent = $('#eventAlerts'); }
+    if (options.position == 'side') { this.parent = $('#sideAlerts'); }
+
     this.buildElement();
   }
 
   buildElement() {
-    this.element = $('<li>',{ class:`alert ${this.position}` });
+    this.element = $('<li>',{ class:`alert ${this.position} ${this.classname}` });
 
     if (this.title) {
       this.element.append($('<div>',{ class:'title' }).append(this.title));

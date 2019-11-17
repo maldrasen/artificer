@@ -37,16 +37,16 @@ Event.build('minion-spider-bite', {
     selectionPage: true,
     selectionKey: 'torment-balls',
     selections:[
-      { text:'I kind of want to hurt those big blighted balls.', value:'yes', effects:{ fear:'++' }},
-      { text:'No, I had better not.', value:'no', effects:{ loyal:'+' }},
+      { text:'I kind of want to hurt those big blighted balls.', value:'yes', effects:['R fear 2','player sadist 1']},
+      { text:'No, I had better not.', value:'no', effects:['R loyal 1']},
     ]
   },{
     requires:[`minion(R).no-cock`,`player.sometimes-fucks-women`],
     selectionPage: true,
     selectionKey: 'torment-pussy',
     selections:[
-      { text:'I kind of want to hurt that big blighted cunt.', value:'yes', effects:{ fear:'++' }},
-      { text:'No, I had better not.', value:'no', effects:{ loyal:'+' }},
+      { text:'I kind of want to hurt that big blighted cunt.', value:'yes', effects:['R fear 2','player sadist 1']},
+      { text:'No, I had better not.', value:'no', effects:['R loyal 1']},
     ]
   }],
 

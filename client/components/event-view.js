@@ -249,8 +249,8 @@ Components.EventView = (function() {
   //   selectionPage: true,
   //   selectionKey: 'question',
   //   selections:[
-  //     { text:'Yes.', value:'no',   effects:{ 'fear':'+' }},
-  //     { text:'No.',  value:'yes',  effects:{ 'loyal':'++' }},
+  //     { text:'Yes.', value:'yes', effects:['player fucks-horses 2']},
+  //     { text:'No.',  value:'no',  effects:['player fucks-horses -1']},
 
   function buildSelectionPage() {
     $('#currentEvent .selection-content').removeClass('hide');
@@ -265,15 +265,21 @@ Components.EventView = (function() {
       $('<span>',{ class:'text' }).append(selection.text)
     ).data('value',selection.value).append(badges);
 
-    each(selection.effects, (value, key) => {
-      badges.append($('<span>',{ class:'badge' }).append(key).append(value))
+
+    each(selection.effects, strang => {
+      badges.append(new Elements.AdjustmentBadge(strang, eventData.actors).build());
     });
 
     return $('<li>',{ class:'selection'}).append(button);
   }
 
   function acceptSelection() {
-    choices[currentStage().selectionKey] = $(this).data('value')
+    choices[currentStage().selectionKey] = $(this).data('value');
+
+    $.each($(this).find('.adjustment-badge'), (i, badge) => {
+      $(badge).data('badge').execute();
+    });
+
     $('#currentEvent .selection-content').addClass('hide');
     $('#currentEvent .selection-list').empty();
     nextStage();

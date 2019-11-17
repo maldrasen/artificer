@@ -15,6 +15,15 @@
   z-index: $z-alerts;
 }
 
+#eventAlerts {
+  display: flex;
+  position: fixed;
+  bottom: 177px;
+  width: 100%;
+  justify-content: center;
+  z-index: $z-alerts;
+}
+
 @mixin alert-frame {
   font-size: $fs-big;
   text-align: center;
@@ -37,6 +46,20 @@
   }
 }
 
+.alert.center {
+  @include alert-frame;
+  margin-right: 10px;
+  padding: 10px 20px;
+}
+
+.alert.event {
+  @include alert-frame;
+  margin-right: 5px;
+  padding: 5px 10px;
+
+  &.fade { margin-bottom: 45px; }
+}
+
 .alert.side {
   @include alert-frame;
   margin-bottom: 5px;
@@ -45,8 +68,13 @@
   &.fade { margin-bottom: 45px; }
 }
 
-.alert.center {
-  @include alert-frame;
-  margin-right: 10px;
-  padding: 10px 20px;
-}
+// Alert - Attribute Adjusted
+.alert.loyal { color: $fg-loyalty; }
+.alert.fear { color: $fg-fear; }
+
+// Alert - Sexual Preference Adjusted
+.alert.rat-fucker { color: $fg-sex-dark; }
+
+// Alert - Sexual Fetish Adjusted
+.alert.orgy { color: $fg-sex-light; }
+.alert.sadist { color: $fg-sex-light; }
