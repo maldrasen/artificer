@@ -12,9 +12,7 @@ global.AspectAdjuster = (function() {
 
   async function adjustCharacter(subject, aspect, level) {
 
-
     // === Adjust Attributes ===
-
     if (aspect == 'fear') {
       subject.adjustFear(level);
       return await subject.save();
