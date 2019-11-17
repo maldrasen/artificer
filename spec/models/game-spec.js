@@ -13,7 +13,7 @@ describe('Game', function() {
     it("adds flags at game start", function(done) {
       Game.start().then(game => {
         Flag.getAll().then(flags => {
-          expect(flags['locationMenu.map']).to.equal('locked');
+          expect(flags['location.keepName']).to.equal('Faingorn Keep');
           done();
         });
       });

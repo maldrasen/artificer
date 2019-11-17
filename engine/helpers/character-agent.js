@@ -1,6 +1,17 @@
 global.CharacterAgent = (function() {
 
+  // Sometimes we want to find one or more actors given a descriptive. The
+  // findActors() function first tries to get a group of actors based on the
+  // descriptive. Then if it can't it returns whatever findActor() returns in
+  // an array.
+  async function findActors(descriptive) {
+    if (descriptive == 'all-rats') { return await allOfSpecies('rat'); }
+
+    return [(await findActor(descriptive))];
+  }
+
   async function findActor(descriptive) {
+    if (descriptive == 'player')           { return await Player.instance(); }
     if (descriptive == 'the-smartest-rat') { return await findSmartest('rat');  }
     if (descriptive == 'a-sexy-rat')       { return await findSexable('rat'); }
     if (descriptive == 'rat-chief')        { return await ratChief(); }
@@ -94,7 +105,16 @@ global.CharacterAgent = (function() {
     });
   }
 
+  // The allOfSpecies() function gets all the minions of a given species. I
+  // think this function should only ever return living minions, not those who
+  // are dead or missing, and shouldn't return the player, if if the player is
+  // of the specified species.
+  function allOfSpecies(species) {
+    return Character.findAll({ where:{ speciesCode:'rat', status:'normal', type:'minion' }});
+  }
+
   return {
+    findActors,
     findActor,
     ratChief
   };

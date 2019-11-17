@@ -105,7 +105,7 @@ global.BrowserCommands = (function() {
     // === Character ===
 
     ipcMain.on('character.make-aspect-adjustment', async (event, data) => {
-      console.log("Make adjustment: ",data)
+      AspectAdjuster.adjust(data);
     });
 
     // === Debug ===

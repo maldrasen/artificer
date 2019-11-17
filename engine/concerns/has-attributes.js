@@ -98,7 +98,7 @@ global.HasAttributes = { isAppliedTo: function(model) {
       if (value == 79) { return 83; }
       if (value >= 21) { return value+5; }
       if (value >= 19) { return 25; }
-      if (valye >= 16) { return 24; }
+      if (value >= 16) { return 24; }
       return value+9;
     }
     if (amount == -2) {

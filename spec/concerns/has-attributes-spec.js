@@ -1,4 +1,4 @@
-describe.only('HasAttributes', function() {
+describe('HasAttributes', function() {
 
   it('adjusts fear', function(done) {
     SpecHelper.buildJada().then(jada => {
