@@ -70,7 +70,7 @@ Species.build('incubus', {
 //     'multiorgasmic': 20,
 //     'oral-lover':    100,
 //     'oral-slut':     100,
-//     'orgy-director': 50,
+//     'orgy-lover':    50,
 //     'pussy-lover':   100,
 //     'pussy-slut':    100,
 //     'revolting':     20,

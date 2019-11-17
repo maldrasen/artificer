@@ -7,6 +7,7 @@ global.CharacterAgent = (function() {
   async function findActors(descriptive) {
     if (descriptive == 'all-rats') { return await allOfSpecies('rat'); }
 
+
     return [(await findActor(descriptive))];
   }
 

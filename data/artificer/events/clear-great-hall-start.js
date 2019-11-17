@@ -74,7 +74,7 @@ Event.build('clear-great-hall-start', {
       selections:[
         { text:'Shoo them away.',                value:'no',   effects:['all-rats fear 1','player rat-fucker -1']},
         { text:'Allow it, but I need my sleep.', value:'yes',  effects:['all-rats loyal 1','player rat-fucker 1']},
-        { text:'Allow it, and make it sexy.',    value:'sexy', effects:['all-rats loyal 2','player rat-fucker 2','player orgy 2']},
+        { text:'Allow it, and make it sexy.',    value:'sexy', effects:['all-rats loyal 2','player rat-fucker 2','player orgy-lover 2']},
       ]
     }
   ],

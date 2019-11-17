@@ -84,4 +84,5 @@ function loadCustomGender() {
 
 }
 
+HasAspects.isAppliedTo(Player);
 HasBody.isAppliedTo(Player);

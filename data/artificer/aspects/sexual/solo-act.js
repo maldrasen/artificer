@@ -3,6 +3,6 @@ Aspect.build('solo-act', {
   type: 'sexual',
   description: 'prefers sex to be a one on one activity and gets uncomfortable with more people.',
   refutes: [
-    { aspect:'orgy-director' },
+    { aspect:'orgy-lover' },
   ]
 });

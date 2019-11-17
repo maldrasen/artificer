@@ -1,7 +1,9 @@
-describe.only('AspectAdjuster', function() {
+describe('AspectAdjuster', function() {
 
-  it("Games start with events queued", function(done) {
-    Game.start().then(game => {
+
+
+  it("Adjusts multiple character's attributes", function(done) {
+    GameHelper.setupTestGame().then(game => {
       CharacterAgent.findActor('rat-chief').then(chief => {
         let oldValue = chief.loyalty;
         let id = chief.id;
@@ -21,4 +23,29 @@ describe.only('AspectAdjuster', function() {
     });
   });
 
+  it("Adjusts character aspects", function(done) {
+    GameHelper.setupTestGame().then(game => {
+      AspectAdjuster.adjust({ subject:'player', aspect:'sadist', level:3 }).then(() => {
+        setTimeout(() => {
+          Player.instance().then(player => {
+            player.getCharacterAspect('sadist').then(aspect => {
+              expect(aspect.strength).to.be.within(100,300);
+              done();
+            });
+          });
+        },10);
+      });
+    });
+  });
+
+  describe('aspectAdjustmentStrength()', function() {
+    it('gets an adjustment strength given the level', function() {
+      expect(AspectAdjuster.aspectAdjustmentStrength(1)).to.be.within(10,30);
+      expect(AspectAdjuster.aspectAdjustmentStrength(3)).to.be.within(100,300);
+    });
+
+    it('inverts the strength for negative levels', function() {
+      expect(AspectAdjuster.aspectAdjustmentStrength(-2)).to.be.within(-90,-30);
+    });
+  });
 });

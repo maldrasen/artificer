@@ -72,6 +72,6 @@ Species.build('rat', {
 //   aspects: {
 //     'beast-lover':   100,
 //     'lascivious':    40,
-//     'orgy-director': 40,
+//     'orgy-lover': 40,
 //     'shameless':     40,
 //   },

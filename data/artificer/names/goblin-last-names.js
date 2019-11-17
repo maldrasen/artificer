@@ -79,7 +79,7 @@ let names = [
   { name:"Fuckitall" },
   { name:"Fuckkiller", aspects:['violent']},
   { name:"Fustylugs", triggers:['ugly']},
-  { name:"Gangbanger", aspects:['orgy-director.2'] },
+  { name:"Gangbanger", aspects:['orgy-lover.2'] },
   { name:"Gloryhole", aspects:['androphilic','cum-lover.3']},
   { name:"Gubblesmucks", triggers:['ugly']},
   { name:"Hatecopter", aspects:['violent']},
