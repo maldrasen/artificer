@@ -12,8 +12,10 @@ global.PlayerScrutinizer = (function() {
     if (requirement == 'player.always-fucks-futas')            { return await Flag.equals('player.fucksFutas','always'); }
     if (requirement == 'player.sometimes-fucks-futas')         { return await Flag.equals('player.fucksFutas','maybe'); }
     if (requirement == 'player.never-fucks-futas')             { return await Flag.equals('player.fucksFutas','never'); }
-    if (requirement == 'player.accepts-men')                   { return await genderPreferenceScores().male > 0 }
-    if (requirement == 'player.accepts-no-men')                { return await genderPreferenceScores().male == 0 }
+    if (requirement == 'player.accepts-men')                   { return (await genderPreferenceScores()).male > 0 }
+    if (requirement == 'player.accepts-no-men')                { return (await genderPreferenceScores()).male == 0 }
+    if (requirement == 'player.accepts-women')                 { return (await genderPreferenceScores()).female > 0 }
+    if (requirement == 'player.accepts-no-women')              { return (await genderPreferenceScores()).female == 0 }
     if (requirement == 'player.prefers-men')                   { return await playerPrefersMen(); }
     if (requirement == 'player.prefers-women')                 { return await playerPrefersWomen(); }
     if (requirement == 'player.prefers-men-over-women')        { return await playerPrefersMenOverWomen(); }

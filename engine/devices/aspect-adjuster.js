@@ -5,6 +5,7 @@ global.AspectAdjuster = (function() {
   //   aspect     An aspect, attribute, or code of something that can be adjusted.
   //   level      The amount to adjust, -3 to 3.
   async function adjust(options) {
+    console.log(`[AspectAdjuster] adjust(${JSON.stringify(options)})`)
     return await Promise.all((await lookupSubjects(options.subject)).map(async subject => {
       return await adjustCharacter(subject, options.aspect, options.level);
     }));

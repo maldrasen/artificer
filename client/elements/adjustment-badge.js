@@ -45,13 +45,12 @@ Elements.AdjustmentBadge = class AdjustmentBadge {
     return '';
   }
 
+  // TODO: The event's actors map should have something that's recognizable by
+  //       the character agent. This works for actors like the rat chief at
+  //       least, but won't work with randomish actors. Need to find a place to
+  //       store minion IDs in the event data for shit like this.
   lookupSubject(subject, actors) {
-    if (actors) {
-      console.log(`TODO: lookup ${subject} in`,actors);
-      console.log("      Then return it if found.")
-    }
-
-    return subject;
+    return (actors && actors[subject]) ? actors[subject] : subject;
   }
 
   build() {

@@ -33,7 +33,7 @@ Event.build('minion-spider-bite', {
       { text:`I nod, still slightly transfixed by the changes that have come over {{R::gender.his}} body.` },
     ]
   },{
-    requires:[`minion(R).has-cock`,`player.sometimes-fucks-men`],
+    requires:[`minion(R).has-cock`,`player.accepts-men`],
     selectionPage: true,
     selectionKey: 'torment-balls',
     selections:[
@@ -41,7 +41,7 @@ Event.build('minion-spider-bite', {
       { text:'No, I had better not.', value:'no', effects:['R loyal 1']},
     ]
   },{
-    requires:[`minion(R).no-cock`,`player.sometimes-fucks-women`],
+    requires:[`minion(R).no-cock`,`player.accepts-women`],
     selectionPage: true,
     selectionKey: 'torment-pussy',
     selections:[
@@ -77,16 +77,14 @@ Event.build('minion-spider-bite', {
     const pussy = await chief.getPussy();
 
     if (cock) {
-      const always = await Flag.equals('player.fucksMen','always');
       const never = await Flag.equals('player.fucksMen','never');
-      if (always || choices['torment-balls'] == 'yes') { await EventQueue.enqueueEvent('minion-spider-bite-torment-balls'); }
-      if (never  || choices['torment-balls'] == 'no')  { await EventQueue.enqueueEvent('minion-spider-bite-normal'); }
+      if (choices['torment-balls'] == 'yes') { await EventQueue.enqueueEvent('minion-spider-bite-torment-balls'); }
+      if (choices['torment-balls'] == 'no' || never) { await EventQueue.enqueueEvent('minion-spider-bite-normal'); }
     }
     if (pussy) {
-      const always = await Flag.equals('player.fucksWomen','always');
       const never = await Flag.equals('player.fucksWomen','never');
-      if (always || choices['torment-pussy'] == 'yes') { await EventQueue.enqueueEvent('minion-spider-bite-torment-pussy'); }
-      if (never  || choices['torment-pussy'] == 'no')  { await EventQueue.enqueueEvent('minion-spider-bite-normal'); }
+      if (choices['torment-pussy'] == 'yes') { await EventQueue.enqueueEvent('minion-spider-bite-torment-pussy'); }
+      if (choices['torment-pussy'] == 'no' || never) { await EventQueue.enqueueEvent('minion-spider-bite-normal'); }
     }
   },
 
