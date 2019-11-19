@@ -20,8 +20,7 @@ Resolver.Projects = (function() {
     // assigned to other tasks while the project is being worked on. It's also
     // used when calculating project progress.
     await Promise.all(minions.map(async minion => {
-      minion.currentDuty = 'project';
-      await minion.save();
+      return minion.update({ currentDuty:'project' });
     }));
 
     // Execute the project's onStart() function now if it has one.
