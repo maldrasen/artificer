@@ -15,6 +15,11 @@ Resolver.Tasks = (function() {
     await Promise.all(minions.map(async minion => {
       return minion.update({ currentDuty:'task' });
     }));
+
+    // The actual results of the task should be left up to the Task form's
+    // execute() function. This should do whatever the task does and return the
+    // resulting story title and text.
+    Resolver.Report.addTask((await task.execute(minions)));
   }
 
   return { workTasks }

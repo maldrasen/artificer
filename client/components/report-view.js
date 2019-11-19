@@ -10,11 +10,25 @@ Components.ReportView = (function() {
       $('#reportView').find('.projects .text').append(report.project.text);
     }
 
-    each(report.minions, (minion, id) => {
+    if (report.tasks.length > 0) {
+      $('#reportView').find('.tasks').removeClass('hide');
+      each(report.tasks, task => {
+        $('#reportView').find('.tasks .task-stories').append(buildTaskItem(task));
+      });
+    }
+
+    each(report.minions, minion => {
       addMinionFrame(minion);
     });
 
     Elements.ScrollingPanel.build($('#reportView .scrolling-panel'));
+  }
+
+  function buildTaskItem(task) {
+    return $(`<li>
+      <div class='title'>${task.title}</div>
+      <div class='text'>${task.text}</div>
+    </li>`);
   }
 
   function addMinionFrame(minion) {

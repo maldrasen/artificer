@@ -5,6 +5,7 @@ Resolver.Report = (function() {
     const minions = await Character.findAll({where:{ type:'minion', status:'normal' }});
 
     report.minions = {};
+    report.tasks = [];
 
     each(minions, minion => {
       report.minions[minion.id] = { name:minion.name };
@@ -36,6 +37,13 @@ Resolver.Report = (function() {
     Resolver.currentReport().project = { text:`I decided to take a day off, and was idle for most of the day.` };
   }
 
+  // The story object comes directly from the task form's execute() function.
+  // Task stories may include images or other data at some point, but for now
+  // we know they have titles and text.
+  function addTask(story) {
+    Resolver.currentReport().tasks.push(story);
+  }
+
   function setMinionData(minion, key, value) {
     Resolver.currentReport().minions[minion.id][key] = value;
   }
@@ -45,6 +53,7 @@ Resolver.Report = (function() {
     setProjectProgressText,
     setProjectCompletedText,
     setProjectIdleText,
+    addTask,
     setMinionData,
   }
 
