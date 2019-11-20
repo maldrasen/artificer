@@ -9,10 +9,10 @@ Task.build('terrorize', {
           minion.adjustFear(3);
     await minion.save();
 
+    const story = await TaskStory.select('terrorize', minions);
+    const text = await story.execute();
 
-    console.log("=== Execute Terrorize Task ===")
-    console.log(minions);
-    return { title:`Terrorize ${minions[0].singleName}`, text:`I terrorized ${minions[0].singleName}` }
+    return { title:`Terrorizing ${minions[0].singleName}`, text:text };
   }
 
 });

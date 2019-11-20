@@ -27,6 +27,7 @@ require(`${ROOT}/engine/forms/mission`);
 require(`${ROOT}/engine/forms/project`);
 require(`${ROOT}/engine/forms/species`);
 require(`${ROOT}/engine/forms/task`);
+require(`${ROOT}/engine/forms/task-story`);
 
 // === Describers ===
 require(`${ROOT}/engine/describers/character-describer`);
