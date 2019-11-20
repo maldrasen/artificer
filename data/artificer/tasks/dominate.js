@@ -9,8 +9,7 @@ Task.build('dominate', {
           minion.adjustLoyaly(3);
     await minion.save();
 
-    const story = await TaskStory.select('dominate', minions);
-    const text = await story.execute();
+    const text = await TaskStory.select('dominate', minions);
 
     return { title:`Dominating ${minions[0].singleName}`, text:text }
   }
