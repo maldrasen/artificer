@@ -20,6 +20,7 @@ require(`${ROOT}/engine/forms/description`);
 require(`${ROOT}/engine/forms/event`);
 require(`${ROOT}/engine/forms/gender`);
 require(`${ROOT}/engine/forms/hazard`);
+require(`${ROOT}/engine/forms/image-resource`);
 require(`${ROOT}/engine/forms/item`);
 require(`${ROOT}/engine/forms/item-flavor`);
 require(`${ROOT}/engine/forms/location`);
@@ -46,7 +47,6 @@ require(`${ROOT}/engine/describers/tits-injury-describer`);
 require(`${ROOT}/engine/devices/aspect-adjuster`);
 require(`${ROOT}/engine/devices/composer`);
 require(`${ROOT}/engine/devices/event-queue`);
-require(`${ROOT}/engine/devices/image-resource-loader`);
 
 require(`${ROOT}/engine/devices/abuser`);
 require(`${ROOT}/engine/devices/abusers/anus-abuser`);
