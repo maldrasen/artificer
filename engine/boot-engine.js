@@ -46,6 +46,7 @@ require(`${ROOT}/engine/describers/tits-injury-describer`);
 require(`${ROOT}/engine/devices/aspect-adjuster`);
 require(`${ROOT}/engine/devices/composer`);
 require(`${ROOT}/engine/devices/event-queue`);
+require(`${ROOT}/engine/devices/image-resource-loader`);
 
 require(`${ROOT}/engine/devices/abuser`);
 require(`${ROOT}/engine/devices/abusers/anus-abuser`);
@@ -79,7 +80,6 @@ require(`${ROOT}/engine/devices/roles/rest`);
 // === Helpers ===
 require(`${ROOT}/engine/helpers/calendar.js`);
 require(`${ROOT}/engine/helpers/character-agent`);
-require(`${ROOT}/engine/helpers/character-portraits`);
 require(`${ROOT}/engine/helpers/listify.js`);
 require(`${ROOT}/engine/helpers/random.js`);
 
