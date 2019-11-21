@@ -11,7 +11,7 @@ Background Images
   Locations:
 
     - courtyard
-        times: [night, day]
+        times: [morning, day, night]
 
     - great-hall
         states: [ruined, clean]

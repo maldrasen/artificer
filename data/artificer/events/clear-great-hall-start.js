@@ -40,7 +40,7 @@ Event.build('clear-great-hall-start', {
         { text:`.`,   darkenBackground:90 },
       ]
     },{
-      background: '../../resources/backgrounds/bg-courtyard-ruined-night.png',
+      background: { location:'courtyard', time:'night' },
       pages:[
         { text:`It's dark by the time I decide to quit for the day.` },
         { text:`It looks like I'll be sleeping at least one more night outside.` },
