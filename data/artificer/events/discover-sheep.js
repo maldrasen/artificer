@@ -1,4 +1,5 @@
 Event.build('discover-sheep', {
+  background: { location:'location-of-report' },
 
   stages:[{
     pages:[

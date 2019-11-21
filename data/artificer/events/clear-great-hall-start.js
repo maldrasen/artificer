@@ -1,5 +1,5 @@
 Event.build('clear-great-hall-start', {
-  background: '../../resources/backgrounds/bg-great-hall-ruined.png',
+  background: { location:'great-hall', locationState:'ruined' },
 
   stages:[
     {

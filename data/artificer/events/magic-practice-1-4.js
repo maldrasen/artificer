@@ -1,5 +1,5 @@
 Event.build('magic-practice-1-4', {
-  background: '../../resources/backgrounds/bg-great-hall-simple.png',
+  background: { location:'great-hall', time:'morning' },
   time:'morning',
 
   stages:[{
@@ -12,7 +12,7 @@ Event.build('magic-practice-1-4', {
       { text:`I'm not sure if it's something I've just made up, some way to visualize what I do, or if really exists in some way.` },
       { text:`The Maelstrom might just be in my head, but that doesn't mean it's not real.` },
       { text:`It seems familiar though, in the same way that electricity was familiar to me once I remembered that it existed.` },
-      { text:`Feeling a bit more energetic than usual I walk outside to the courtyard.`, background:'../../resources/backgrounds/bg-courtyard-ruined.png' },
+      { text:`Feeling a bit more energetic than usual I walk outside to the courtyard.`, background:{ location:'courtyard', time:'morning' }},
       { text:`The early morning air is cool and crisp.` },
       { text:`I raise my arms and form a whirlwind around me.` },
       { text:`Moving the air is just another application of force after all.` },

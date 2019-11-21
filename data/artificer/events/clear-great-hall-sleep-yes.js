@@ -1,5 +1,5 @@
 Event.build('clear-great-hall-sleep-yes', {
-  background: '../../resources/backgrounds/bg-courtyard-ruined-night.png',
+  background: { location:'courtyard', time:'night' },
 
   stages:[
     { pages: [

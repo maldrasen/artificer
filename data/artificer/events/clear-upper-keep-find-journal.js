@@ -1,5 +1,5 @@
 Event.build('clear-upper-keep-find-journal', {
-  background: '../../resources/backgrounds/bg-great-hall-simple.png',
+  background: { location:'study', locationState:'ruined' },
 
   stages:[{
     pages:[

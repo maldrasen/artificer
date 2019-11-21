@@ -1,5 +1,6 @@
 Event.build('clear-great-hall-done', {
-  background: '../../resources/backgrounds/bg-great-hall-simple.png',
+  background: { location:'great-hall', locationState:'clean' },
+
   stages:[
     { pages: [
       { text:`Now that the great hall has been emptied, cleaned, and sanitized I'll start sleeping inside of it.` },

@@ -1,5 +1,5 @@
 Event.build('got-fleas', {
-  background: '../../resources/backgrounds/bg-great-hall-simple.png',
+  background: { location:'great-hall', time:'morning' },
   time:'morning',
 
   stages:[{

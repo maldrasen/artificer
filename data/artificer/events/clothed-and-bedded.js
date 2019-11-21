@@ -1,5 +1,5 @@
 Event.build('clothed-and-bedded', {
-  background: '../../resources/backgrounds/bg-great-hall-simple.png',
+  background: { location:'great-hall' },
 
   stages:[{
     pages:[

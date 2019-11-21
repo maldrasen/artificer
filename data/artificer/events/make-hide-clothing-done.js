@@ -1,5 +1,5 @@
 Event.build('make-hide-clothing-done', {
-  background: '../../resources/backgrounds/bg-great-hall-simple.png',
+  background: { location:'great-hall' },
 
   stages:[{
     pages:[

@@ -1,4 +1,5 @@
 Event.build('discover-centaur-farm', {
+  background: { location:'location-of-report' },
 
   stages:[{
     pages:[

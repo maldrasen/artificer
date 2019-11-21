@@ -1,5 +1,5 @@
 Event.build('clear-lower-keep-start', {
-  background: '../../resources/backgrounds/bg-great-hall-ruined.png',
+  background: { location:'lower-keep-hall', state:'ruined' },
 
   stages:[{
     pages:[

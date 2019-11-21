@@ -1,8 +1,9 @@
 Event.build('great-hall-talk-to-rat-chief', {
   location: 'great-hall',
-  background: '../../resources/backgrounds/bg-great-hall-simple.png',
 
-  actors: { 'R':'rat-chief' },
+  background: { location:'great-hall' },
+
+  actors: { R:'rat-chief' },
 
   stages:[{
     pages: [
