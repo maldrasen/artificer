@@ -23,6 +23,7 @@ Background Images
     - keep-in-distance           events: game-start-chase
     - splash-screen              events: game-start-chase
     - view-from-walls            events: courtyard-walk-on-walls
+    - void                       events: game-start
 
   Locations:
 

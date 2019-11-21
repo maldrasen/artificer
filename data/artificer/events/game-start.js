@@ -33,7 +33,7 @@ const genderChoices = [
 ];
 
 Event.build('game-start', {
-  background: '../../assets/images/backgrounds/bg-void.png',
+  background: { code:'void' },
   darkenBackground: 100,
 
   stages:[
