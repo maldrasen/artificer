@@ -20,6 +20,7 @@ require(`${ROOT}/engine/forms/description`);
 require(`${ROOT}/engine/forms/event`);
 require(`${ROOT}/engine/forms/gender`);
 require(`${ROOT}/engine/forms/hazard`);
+require(`${ROOT}/engine/forms/image-resource`);
 require(`${ROOT}/engine/forms/item`);
 require(`${ROOT}/engine/forms/item-flavor`);
 require(`${ROOT}/engine/forms/location`);
@@ -79,7 +80,6 @@ require(`${ROOT}/engine/devices/roles/rest`);
 // === Helpers ===
 require(`${ROOT}/engine/helpers/calendar.js`);
 require(`${ROOT}/engine/helpers/character-agent`);
-require(`${ROOT}/engine/helpers/character-portraits`);
 require(`${ROOT}/engine/helpers/listify.js`);
 require(`${ROOT}/engine/helpers/random.js`);
 

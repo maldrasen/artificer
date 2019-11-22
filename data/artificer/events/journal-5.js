@@ -1,5 +1,5 @@
 Event.build('journal-5', {
-  background: '../../resources/backgrounds/bg-great-hall-simple.png',
+  background: { code:'journal' },
   time:'afternoon',
 
   stages:[{

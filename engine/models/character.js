@@ -6,6 +6,7 @@ global.Character = Database.instance().define('character', {
   dutyOptions_json: { type:Sequelize.STRING },
   genderCode:       { type:Sequelize.STRING },
   speciesCode:      { type:Sequelize.STRING },
+  portraitCode:     { type:Sequelize.STRING },
   preName:          { type:Sequelize.STRING },
   firstName:        { type:Sequelize.STRING },
   lastName:         { type:Sequelize.STRING },
@@ -22,6 +23,7 @@ global.Character = Database.instance().define('character', {
   getterMethods: {
     gender()      { return Gender[this.genderCode]; },
     species()     { return Species.lookup(this.speciesCode); },
+    portrait()    { return ImageResource.lookup(this.portraitCode); },
     dutyOptions() { return JSON.parse(this.dutyOptions_json||'{}') },
     role()        { return this.currentDuty == 'role' ? Role.lookup(this.dutyCode) : null; },
     isMale()      { return this.genderCode == 'male'; },
@@ -57,16 +59,12 @@ Character.prototype.properties = async function() {
   const healthClass = await this.getHealthClass();
   const healthWord = await this.getHealthWord();
 
-  // TODO: This is just here temporarily, until the portrait is actually
-  //       saved on the minion itself.
-  const portrait = await CharacterPortraits.lookup(this);
-
   return {
     id: this.id,
     name: this.name,
     gender: this.gender.Male,
     species: this.species.name,
-    portrait: portrait,
+    portrait: this.portrait.url,
     health: health,
     healthClass: healthClass,
     healthWord: healthWord,

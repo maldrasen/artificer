@@ -1,6 +1,7 @@
 Event.build('courtyard-get-minions', {
   location: 'courtyard',
-  background: '../../resources/backgrounds/bg-courtyard-ruined-night.png',
+
+  background: { location:'courtyard', time:'night' },
   darkenBackground: 80,
 
   stages:[{

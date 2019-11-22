@@ -1,5 +1,5 @@
 Event.build('game-start-chase', {
-  background:"../../resources/backgrounds/bg-field-1.png",
+  background: { code:'field-1' },
 
   stages:[{
     pages: [
@@ -69,7 +69,7 @@ Event.build('game-start-chase', {
   },{
     pages: [
       { text:"I need to find shelter soon though, unless I want this lovely new body of mine to freeze to death." },
-      { text:"I turn around slowly, taking in the entire landscape around me.", background:'../../resources/backgrounds/bg-keep-distant.png' },
+      { text:"I turn around slowly, taking in the entire landscape around me.", background:{ code:'keep-in-distance' }},
       { text:"In the close distance, maybe a mile or so away, a forlorn looking keep sits atop a rocky looking hill." },
       { text:"I see movement too." },
       { text:"Figures off in the distance..." },
@@ -131,7 +131,7 @@ Event.build('game-start-chase', {
   },{
     customPage: true,
     clickAdvance: true,
-    background: '../../resources/game-start/bg-splash.jpg',
+    background: { code:'splash-screen' },
     html:`<div id='gameTitleFrame'><div id='gameTitle'>Artificer</div></div>`
   }]
 });

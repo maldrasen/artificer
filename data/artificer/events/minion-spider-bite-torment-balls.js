@@ -1,7 +1,7 @@
 Event.build('minion-spider-bite-torment-balls', {
-  background: '../../resources/backgrounds/bg-great-hall-simple.png',
+  background: { location:'great-hall' },
 
-  actors: { 'R':'rat-chief' },
+  actors: { R:'rat-chief' },
 
   stages:[{
     pages:[

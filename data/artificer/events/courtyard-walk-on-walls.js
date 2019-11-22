@@ -1,14 +1,15 @@
 Event.build('courtyard-walk-on-walls', {
   location: 'courtyard',
-  background: '../../resources/backgrounds/bg-courtyard-ruined.png',
 
-  actors: { 'R':'the-smartest-rat' },
+  background: { location:'courtyard', time:'morning' },
+
+  actors: { R:'the-smartest-rat' },
 
   stages:[{
     pages: [
       { text:`Now that I'm awake, I should get a better idea of where I am.` },
       { text:`With a magically aided leap I jump up onto one of the high walls sorrounding the courtyard.` },
-      { text:`...`, background:'../../resources/backgrounds/bg-lake-1.png' },
+      { text:`...`, background:{ code:'view-from-walls' }},
       { text:`One of my rat minions has decided to join me up here, quickly scaling the wall to come and stand at my side.` },
       { text:`{{R::gender.He}} squeaks out what might be {{R::gender.his}} name to me.` },
       { text:`{{R::character.firstName}}, or something equally unpronounceable.`},

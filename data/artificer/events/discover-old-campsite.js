@@ -1,4 +1,5 @@
 Event.build('discover-old-campsite', {
+  background: { location:'location-of-report' },
 
   stages:[{
     pages:[

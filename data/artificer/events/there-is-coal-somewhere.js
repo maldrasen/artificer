@@ -1,4 +1,5 @@
 Event.build('there-is-coal-somewhere', {
+  background: { location:'workshop' },
 
   stages:[{
     pages:[

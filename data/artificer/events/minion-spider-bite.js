@@ -1,8 +1,9 @@
 Event.build('minion-spider-bite', {
-  background: '../../resources/backgrounds/bg-great-hall-simple.png',
   location: 'great-hall',
 
-  actors: { 'R':'rat-chief' },
+  background: { location:'great-hall' },
+
+  actors: { R:'rat-chief' },
 
   stages:[{
     pages:[

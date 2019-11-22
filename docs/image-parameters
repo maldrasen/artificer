@@ -1,0 +1,45 @@
+
+Chooser Images
+  - species.elf
+  - species.dark-elf
+  - species.wood-elf
+  - species.neko
+  - species.viera
+  - species.caprien
+  - species.equian
+  - species.lupin
+  - species.minotaur
+  - species.vulpine
+  - gender.male
+  - gender.female
+  - gender.futa
+  - gender.custom
+
+Background Images
+
+  Coded:
+    - field-1                    events: game-start-chase
+    - journal                    events: journal-1 - journal-6
+    - keep-in-distance           events: game-start-chase
+    - splash-screen              events: game-start-chase
+    - view-from-walls            events: courtyard-walk-on-walls
+    - void                       events: game-start
+
+  Locations:
+
+    - courtyard
+        times: [morning, day, night]
+
+    - great-hall
+        states: [ruined, clean]
+        times: [morning, day, night]
+
+    - location-of-report
+
+    - lower-keep-hall
+        states: [ruined, clean]
+
+    - study
+        states: [ruined, clean]
+
+    - workshop

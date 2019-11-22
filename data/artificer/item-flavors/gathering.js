@@ -7,7 +7,6 @@ ItemFlavor.build('sticks', {
   storyWord: 'stick',
   storyWords: 'sticks and deadwood',
   xp: 1,
-  icon: '../../data/image-resources/icons/wood.png',
 });
 
 ItemFlavor.build('stones', {
@@ -18,5 +17,4 @@ ItemFlavor.build('stones', {
   storyWord: 'rock',
   storyWords: 'loose stones and rocks',
   xp: 1,
-  icon: '../../data/image-resources/icons/stone.png',
 });
