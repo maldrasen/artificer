@@ -13,6 +13,7 @@ minion.rename                 | courtyard-walk-on-walls         | (unlocked) Tur
 mission.sisalDiscoverable     | journal-4                       | (yes) The sisal field can be discovered.
 player.bedsIn                 | make-hide-bedding-done          | (hide) Some events may need to know where the player sleeps.
 player.dressedIn              | make-hide-clothing-done         | (hide) Some events may need to generally know what the player wears.
+player.firstName              | Player.forge()                  | The player's name, used to show the player's name on the location menu.
 player.fucksMen               | clear-great-hall-start          | (always,maybe,never) The player's gender preferences.
 player.fucksFutas             | clear-great-hall-start          | (always,maybe,never)
 player.fucksWomen             | clear-great-hall-start          | (always,maybe,never)

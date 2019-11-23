@@ -3,8 +3,9 @@ Components.LocationView = (function() {
     $(document).on('click','.menu-show-load',      Elements.buttonAction(Renderer.showLoadGame));
     $(document).on('click','.menu-show-save',      Elements.buttonAction(Renderer.showSaveGame));
     $(document).on('click','.menu-show-map',       Elements.buttonAction(Renderer.showMap));
-    $(document).on('click','.menu-show-minions',   Elements.buttonAction(() => { Renderer.sendCommand('location.showMinions'); }));
+    $(document).on('click','.menu-show-minions',   Elements.buttonAction(() => { Renderer.sendCommand('location.showMinions');   }));
     $(document).on('click','.menu-show-inventory', Elements.buttonAction(() => { Renderer.sendCommand('location.showInventory'); }));
+    $(document).on('click','.menu-show-player',    Elements.buttonAction(() => { Renderer.sendCommand('location.showPlayer');    }));
   }
 
   function build(transport, view) {
@@ -12,6 +13,7 @@ Components.LocationView = (function() {
         location.find('.location-name').append(view.name);
         location.find('.location-description').append(view.description);
         location.find('.date').append(`Day ${view.dates.day}`);
+        location.find('.menu-show-player').append(view.flags.playerMenuName);
         location.data('mapData',view.mapData);
 
     if (view.flags.showMapMenu) { location.find('.menu-show-map').removeClass('hide') }
@@ -21,9 +23,6 @@ Components.LocationView = (function() {
     if (view.flags.showPlanAction) { location.find('.create-plan-action').removeClass('hide'); }
 
     $('#mainContent').empty().append(location);
-
-    // Only needed when I'm trying to figure something out.
-    // appendDebug(view);
   }
 
   function buildMap() {
@@ -40,16 +39,6 @@ Components.LocationView = (function() {
       Renderer.removeOverlay();
       Renderer.sendCommand('location.change', { code:location.code }) ;
     })));
-  }
-
-  function appendDebug(view) {
-    if (DEBUG) {
-      let flagList = $('#locationView #debugFlags');
-      each(view.flags.all, (value,key)=>{
-        flagList.append($('<dt>').append(key));
-        flagList.append($('<dd>').append(value));
-      });
-    }
   }
 
   return {

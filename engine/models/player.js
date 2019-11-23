@@ -37,7 +37,9 @@ Player.forge = function(options) {
         genderCode: options.gender,
         speciesCode: options.species,
       }).then(player => {
-        CharacterBuilder.addBody(player, {}).then(resolve);
+        CharacterBuilder.addBody(player, {}).then(() => {
+          Flag.set('player.firstName',player.firstName).then(resolve);
+        });
       });
     });
   });
