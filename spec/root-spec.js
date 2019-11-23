@@ -2,7 +2,7 @@
 global.VERSION = 0;
 global.DEBUG = false;
 global.VERBOSE = process.argv.indexOf('-v') > 0;
-global.ROOT = require('path').normalize(`${__dirname}/..`);
+global.ROOT = require('path').normalize(`${__dirname}/..`).replace(/\\/g,"/");
 global.expect = require('chai').expect;
 
 require(`${ROOT}/engine/boot-engine.js`);

@@ -1,4 +1,3 @@
-const fs = require('fs');
 const sql = require('sqlite3').verbose();
 
 global.Database = (function() {

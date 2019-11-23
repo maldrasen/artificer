@@ -2,6 +2,7 @@
 console.log('> Booting Engine')
 
 global.extend = require('extend');
+global.fs = require('fs');
 global.each = require('iterate-object');
 global.hash = require('object-hash');
 

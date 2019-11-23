@@ -1,5 +1,3 @@
-const fs = require('fs');
-
 global.Records = (function() {
 
   function saveToFile(gamename) {

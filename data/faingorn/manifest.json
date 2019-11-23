@@ -13,6 +13,6 @@
     "locations/*",
     "missions/*",
     "projects/*",
-    "task-stories/*",
+    "task-stories/*"
   ]
 }

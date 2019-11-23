@@ -30,7 +30,7 @@ Game.start = async function() {
     food: 30,
   });
 
-  await buildStartingMinions(game);
+  // await buildStartingMinions(game);
   await EventQueue.enqueueEvents(Configuration.gameStartEvents);
   await Flag.setAll(Configuration.gameStartFlags);
 
