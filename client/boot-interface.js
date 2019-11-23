@@ -24,7 +24,6 @@ require(`${ROOT}/client/components/plan-view/tasks`);
 require(`${ROOT}/client/components/report-view`);
 require(`${ROOT}/client/components/saved-games`);
 
-require(`${ROOT}/client/components/event-views/gender-form`);
 require(`${ROOT}/client/components/event-views/name-form`);
 require(`${ROOT}/client/components/event-views/sexuality-form`);
 require(`${ROOT}/client/components/event-views/warning`);

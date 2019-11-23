@@ -3,8 +3,8 @@ global.Browser = (function() {
 
   function open() {
     mainWindow = new electron.BrowserWindow({
-      width: (DEBUG ? 1600 : 800),
-      height: (DEBUG ? 800 : 600),
+      width: (DEBUG ? 1800 : 1200),
+      height: (DEBUG ? 1000 : 800),
       webPreferences: { nodeIntegration:true },
     });
 

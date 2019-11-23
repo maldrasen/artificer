@@ -12,7 +12,6 @@ Components.EventView = (function() {
     $(document).on('click', '#currentEvent .activate-skip', Elements.buttonAction(activateSkip));
     $(document).on('click', '#currentEvent .chooser-accept', Elements.buttonAction(acceptChoice));
     $(document).on('click', '#currentEvent .selection-button', Elements.buttonAction(acceptSelection));
-    $(document).on('click', '#genderFormPage .accept', Elements.buttonAction(Components.EventView.GenderForm.accept));
     $(document).on('click', '#nameFormPage .accept', Elements.buttonAction(Components.EventView.NameForm.accept));
     $(document).on('click', '#sexualityFormPage .accept', Elements.buttonAction(Components.EventView.SexualityForm.accept));
     $(document).on('click', '#warningFrame .close',Elements.buttonAction(Components.EventView.Warning.accept));
@@ -102,7 +101,6 @@ Components.EventView = (function() {
     if (stage.chooserPage)       { return buildChooserPage();   }
     if (stage.selectionPage)     { return buildSelectionPage(); }
     if (stage.customPage)        { return buildCustomPage();    }
-    if (stage.genderFormPage)    { return Components.EventView.GenderForm.build();    }
     if (stage.nameFormPage)      { return Components.EventView.NameForm.build();      }
     if (stage.warningPage)       { return Components.EventView.Warning.build();       }
     if (stage.sexualityFormPage) { return Components.EventView.SexualityForm.build(); }

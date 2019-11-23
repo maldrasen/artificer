@@ -36,12 +36,7 @@ Event.build('game-start', {
       choices: Gender.chooserOptions,
       name: 'gender',
       text: "And how would I describe my gender?",
-      onAccept: 'game-start.gender-choice',
     },{
-      id:'custom-gender-page',
-      genderFormPage: true
-    },{
-      id:'after-gender-page',
       pages: [
         { text:"With that form in mind I will myself to again be made flesh." },
         { text:"It's impossible to say how long it takes." },
