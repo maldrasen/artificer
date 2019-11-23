@@ -1,6 +1,7 @@
 
 global.VERSION = 0;
 global.DEBUG = false;
+global.METRIC = false;
 global.VERBOSE = process.argv.indexOf('-v') > 0;
 global.ROOT = require('path').normalize(`${__dirname}/..`).replace(/\\/g,"/");
 global.expect = require('chai').expect;
@@ -24,6 +25,6 @@ before(function() {
 // An after each is needed to clean up any models added to the database, and
 // set the mode back to non-metric.
 afterEach(function() {
-  Configuration.metric = false;
+  METRIC = false;
   Game.clear();
 })

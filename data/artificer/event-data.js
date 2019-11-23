@@ -29,6 +29,4 @@ Gender.chooserOptions = [
     body:"Standard female. You use female pronouns, have tits and a pussy." },
   { value:'futa', label:'Futa', imageResource:{ code:'gender.futa' },
     body:"Both male and female. You're pronouns are shi and hir. You have everything; tits, dick, and pussy." },
-  { value:'custom', label:"It's Complicated...", imageResource:{ code:'gender.custom' },
-    body:"You're some combination of the above or none of the above. Select this to choose all of your pronouns." },
 ];

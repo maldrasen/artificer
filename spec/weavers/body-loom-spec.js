@@ -35,7 +35,7 @@ describe('Body Loom', function() {
     });
 
     it('average metric', function(done) {
-      Configuration.metric = true;
+      METRIC = true;
       buildContext({ height:1800 }).then(context => {
         expect(Weaver.weave('{{C::body.fiftyPounds}}',context)).to.equal('71 kilograms');
         done();
@@ -66,7 +66,7 @@ describe('Body Loom', function() {
     });
 
     it(`metric measurement`, function(done) {
-      Configuration.metric = true;
+      METRIC = true;
       buildContext({ height:1600 }).then(context => {
         expect(Weaver.weave('{{C::body.fiveFeetTenInches}}',context)).to.equal('160 centimeters');
         done();
@@ -81,7 +81,7 @@ describe('Body Loom', function() {
     });
 
     it(`metric numeric measurement`, function(done) {
-      Configuration.metric = true;
+      METRIC = true;
       buildContext({ height:1230 }).then(context => {
         expect(Weaver.weave(`{{C::body.5'10}}`,context)).to.equal(`123 cm`);
         done();

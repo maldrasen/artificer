@@ -22,12 +22,12 @@ Weaver.NipplesLoom = (function() {
   }
 
   function lengthMeasure(nipples) {
-    if (Configuration.metric) { return `${nipples.length} millimeters` }
+    if (METRIC) { return `${nipples.length} millimeters` }
     return EnglishUtility.inchesInEnglish(ConversionUtility.milliToInches(nipples.length),{or:'an'});
   }
 
   function widthMeasure(nipples) {
-    if (Configuration.metric) { return `${nipples.width} millimeters` }
+    if (METRIC) { return `${nipples.width} millimeters` }
     return EnglishUtility.inchesInEnglish(ConversionUtility.milliToInches(nipples.width),{or:'an'});
   }
 

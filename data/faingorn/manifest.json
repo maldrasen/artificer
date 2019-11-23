@@ -1,7 +1,5 @@
 {
-  "clientFiles":[
-    "client/*"
-  ],
+  "clientFiles":[],
 
   "sharedFiles":[
     "configuration"
