@@ -88,6 +88,19 @@ Event.build('game-start', {
 
   onFinish: async choices => {
     await (await Game.instance()).createPlayer(choices);
+
+    let startingCharacters = [
+      { type:'minion', species:'rat', gender:'male',   fear:Random.between(40,60), loyalty:Random.between(10,20) },
+      { type:'minion', species:'rat', gender:'male',   fear:Random.between(40,60), loyalty:Random.between(10,20) },
+      { type:'minion', species:'rat', gender:'male',   fear:Random.between(40,60), loyalty:Random.between(10,20) },
+      { type:'minion', species:'rat', gender:'female', fear:Random.between(40,60), loyalty:Random.between(10,20) },
+      { type:'minion', species:'rat', gender:'female', fear:Random.between(40,60), loyalty:Random.between(10,20) },
+      { type:'minion', species:'rat', gender:'female', fear:Random.between(40,60), loyalty:Random.between(10,20) },
+    ];
+
+    await Promise.all(startingCharacters.map((options) => {
+      return CharacterBuilder.build(options);
+    }));
   },
 
 });
