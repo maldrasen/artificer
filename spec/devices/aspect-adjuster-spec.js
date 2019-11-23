@@ -1,7 +1,5 @@
 describe('AspectAdjuster', function() {
 
-
-
   it("Adjusts multiple character's attributes", function(done) {
     GameHelper.setupTestGame().then(game => {
       CharacterAgent.findActor('rat-chief').then(chief => {

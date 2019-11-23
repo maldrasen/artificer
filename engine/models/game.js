@@ -30,11 +30,9 @@ Game.start = async function() {
     food: 30,
   });
 
-  // await buildStartingMinions(game);
-  await EventQueue.enqueueEvents(Configuration.gameStartEvents);
-  await Flag.setAll(Configuration.gameStartFlags);
-
-  Composer.render(game);
+  Configuration.onStart(game).then(() => {
+    Composer.render(game);
+  });
 
   return game;
 }
@@ -53,21 +51,4 @@ Game.updateLocation = async function(code) {
   const game = await Game.instance();
         game.location = Location.lookup(code).code;
   await game.save();
-}
-
-// === Private Functions ===
-
-async function buildStartingMinions(game) {
-  let startingCharacters = [
-    { type:'minion', species:'rat', gender:'male',   fear:Random.between(40,60), loyalty:Random.between(10,20) },
-    { type:'minion', species:'rat', gender:'male',   fear:Random.between(40,60), loyalty:Random.between(10,20) },
-    { type:'minion', species:'rat', gender:'male',   fear:Random.between(40,60), loyalty:Random.between(10,20) },
-    { type:'minion', species:'rat', gender:'female', fear:Random.between(40,60), loyalty:Random.between(10,20) },
-    { type:'minion', species:'rat', gender:'female', fear:Random.between(40,60), loyalty:Random.between(10,20) },
-    { type:'minion', species:'rat', gender:'female', fear:Random.between(40,60), loyalty:Random.between(10,20) },
-  ];
-
-  return await Promise.all(startingCharacters.map((options) => {
-    return CharacterBuilder.build(options);
-  }));
 }
