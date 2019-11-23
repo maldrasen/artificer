@@ -3,13 +3,14 @@
   "sharedFiles":[],
 
   "engineFiles":[
-    "adjusters/*",
+    "event-data",
 
+    "adjusters/*",
     "aspects/personality/*",
     "aspects/sexual/*",
     "aspects/skills/*",
-    
     "descriptions/*",
+    "events/*",
     "item-flavors/*",
     "items/*",
     "names/*",

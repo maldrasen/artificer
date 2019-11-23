@@ -4,8 +4,8 @@
   "description": "Shitting Dicknipples",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
-    "console": "electron --interactive .",
+    "start": "electron . --debug",
+    "away": "electron .",
     "spec": "mocha spec/**/*-spec.js -c --recursive --timeout 2000",
     "specv": "mocha spec/**/*-spec.js -c -v --recursive --timeout 2000",
     "spec-cov": "nyc --reporter=html mocha spec/**/*-spec.js -c --recursive --timeout 2000"

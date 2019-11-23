@@ -22,7 +22,6 @@ Game.start = async function() {
 
   const game = await Game.create({
     id: 1,
-    location: Configuration.gameStartLocation,
     dayNumber: 1,
     time: 'morning',
     anger: 0,
