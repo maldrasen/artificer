@@ -1,0 +1,18 @@
+{
+  "clientFiles":[
+    "client/*"
+  ],
+
+  "sharedFiles":[
+    "configuration"
+  ],
+
+  "engineFiles":[
+    "events/*",
+    "hazards/*",
+    "locations/*",
+    "missions/*",
+    "projects/*",
+    "task-stories/*",
+  ]
+}
