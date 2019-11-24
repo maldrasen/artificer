@@ -9,11 +9,9 @@ saves/
 
 assets/compiled/
 coverage/
-graphics/orig/
 node_modules/
 
-resources/
-data/image-resources/**/*.png
-data/image-resources/**/*.jpg
+data/image-resources/**/_*.png
+data/image-resources/**/_*.jpg
 
 npm-debug.log
