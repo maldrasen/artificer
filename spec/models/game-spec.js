@@ -4,7 +4,6 @@ describe('Game', function() {
     Game.start().then(game => {
       expect(game.id).to.equal(1);
       expect(game.dayNumber).to.equal(1);
-      expect(game.location).to.equal('courtyard');
       done();
     });
   });
