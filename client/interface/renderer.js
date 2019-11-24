@@ -6,6 +6,7 @@ global.Renderer = (function() {
     inventory:  { template:'#inventoryTemplate',    title:"Inventory",     build:Components.InventoryView.build    },
     map:        { template:'#mapTemplate',          title:"Keep Map",      build:Components.LocationView.buildMap  },
     minion:     { template:'#minionDetailTemplate', title:"Minion Detail", build:Components.MinionDetailView.build },
+    player:     { template:'#playerTemplate',       title:"",              build:Components.PlayerView.build       },
     loadGame:   { template:'#loadGameTemplate',     title:'Load Game',     build:Components.SavedGames.buildLoad   },
     saveGame:   { template:'#saveGameTemplate',     title:'Save Game',     build:Components.SavedGames.buildSave   },
   };
@@ -23,6 +24,7 @@ global.Renderer = (function() {
     'minion-list',
     'minion-select-dialog',
     'plan',
+    'player',
     'report',
     'save-game',
   ];
@@ -66,6 +68,7 @@ global.Renderer = (function() {
   function showCreatePlan() { showOverlay(VIEWS.createPlan); }
   function showInventory()  { showOverlay(VIEWS.inventory);  }
   function showMinion()     { showOverlay(VIEWS.minion);     }
+  function showPlayer()     { showOverlay(VIEWS.player);     }
   function showLoadGame()   { showOverlay(VIEWS.loadGame);   }
   function showSaveGame()   { showOverlay(VIEWS.saveGame);   }
   function showMap()        { showOverlay(VIEWS.map);        }
@@ -163,6 +166,7 @@ global.Renderer = (function() {
     showInventory,
     showMainMenu,
     showMinion,
+    showPlayer,
     showLoadGame,
     showSaveGame,
     showMap,
