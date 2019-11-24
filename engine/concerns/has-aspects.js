@@ -202,6 +202,30 @@ global.HasAspects = (function() {
     return CharacterAspect.destroy({ where:{ character_id:this.id }});
   }
 
+  async function getCharacterAspectsForClient() {
+    let aspects = await this.getCharacterAspects();
+
+    let properties = {
+      skillAspects: [],
+      personalityAspects: [],
+      sexualAspects: []};
+
+    each(aspects, characterAspect => {
+      let aspect = Aspect.lookup(characterAspect.code);
+      let package = {
+        name: aspect.name || TextUtility.titlecase(aspect.code),
+        level: characterAspect.level,
+        strength: characterAspect.strength,
+      }
+
+      if (aspect.type == 'skill')       { properties.skillAspects.push(package); }
+      if (aspect.type == 'personality') { properties.personalityAspects.push(package); }
+      if (aspect.type == 'sexual')      { properties.sexualAspects.push(package); }
+    });
+
+    return properties;
+  }
+
   return { isAppliedTo:function(model) {
     model.prototype.addAspect = addAspect;
     model.prototype.adjustAspect = adjustAspect;
@@ -209,6 +233,7 @@ global.HasAspects = (function() {
     model.prototype.destroyAllCharacterAspects = destroyAllCharacterAspects;
     model.prototype.getCharacterAspect = getCharacterAspect;
     model.prototype.getCharacterAspects = getCharacterAspects;
+    model.prototype.getCharacterAspectsForClient = getCharacterAspectsForClient;
     model.prototype.getMirroredAspects = getMirroredAspects;
     model.prototype.hasAspect = hasAspect;
     model.prototype.hasMirroredAspect = hasMirroredAspect;

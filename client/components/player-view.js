@@ -2,7 +2,12 @@ Components.PlayerView = (function() {
 
   function init() {}
 
-  function build(event, data) {
+  function open(event, data) {
+    console.log("Open Player View")
+    console.log(data)
+  }
+
+  function build() {
 
     // view.find('.portrait-frame').append($('<img>',{ src:minion.portrait }));
     // view.find('.name-section .name').append(minion.name);
@@ -45,6 +50,6 @@ Components.PlayerView = (function() {
   //   });
   // }
 
-  return { init, build };
+  return { init, open, build };
 
 })();

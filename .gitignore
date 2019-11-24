@@ -13,6 +13,7 @@ graphics/orig/
 node_modules/
 
 resources/
-data/image-resources/
+data/image-resources/**/*.png
+data/image-resources/**/*.jpg
 
 npm-debug.log

@@ -90,28 +90,10 @@ Character.prototype.properties = async function() {
 }
 
 Character.prototype.detailForClient = async function() {
-  let properties = await this.properties();
-  let aspects = await this.getCharacterAspects();
-
-  properties.skillAspects = [];
-  properties.personalityAspects = [];
-  properties.sexualAspects = [];
-  properties.description = await CharacterDescriber.fullDescription(this);
-
-  each(aspects, characterAspect => {
-    let aspect = Aspect.lookup(characterAspect.code);
-    let package = {
-      name: aspect.name || TextUtility.titlecase(aspect.code),
-      level: characterAspect.level,
-      strength: characterAspect.strength,
-    }
-
-    if (aspect.type == 'skill')       { properties.skillAspects.push(package); }
-    if (aspect.type == 'personality') { properties.personalityAspects.push(package); }
-    if (aspect.type == 'sexual')      { properties.sexualAspects.push(package); }
-  });
-
-  return properties;
+  const description = await CharacterDescriber.fullDescription(this);
+  const properties =  await this.properties();
+  const aspects =     await this.getCharacterAspectsForClient();
+  return { description, ...properties, ...aspects };
 }
 
 HasAspects.isAppliedTo(Character);

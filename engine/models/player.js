@@ -5,6 +5,7 @@ global.Player = Database.instance().define('player', {
   lastName:      { type:Sequelize.STRING  },
   genderCode:    { type:Sequelize.STRING  },
   speciesCode:   { type:Sequelize.STRING  },
+  portraitCode:  { type:Sequelize.STRING  },
   body_id:       { type:Sequelize.INTEGER },
 },{
   timestamps: false,
@@ -13,6 +14,7 @@ global.Player = Database.instance().define('player', {
     singleName() { return this.firstName },
     species()    { return Species.lookup(this.speciesCode); },
     gender()     { return Gender[this.genderCode]; },
+    portrait()    { return ImageResource.lookup(this.portraitCode); },
   }
 });
 
@@ -24,25 +26,39 @@ Player.instance = function() {
   return Player.findByPk(1000000000);
 }
 
-Player.forge = function(options) {
-  return new Promise((resolve, reject) => {
-    Player.instance().then(player => {
-      if (player != null) { return reject("Cannot create player. The Player already exists."); }
+Player.forge = async function(options) {
+  let player = await Player.instance();
+  if (player != null) {
+    throw 'Cannot create player. The Player already exists.'
+  }
 
-      Player.create({
-        id: 1000000000,
-        title: options.title || 'Master',
-        firstName: options.firstName,
-        lastName: options.lastName,
-        genderCode: options.gender,
-        speciesCode: options.species,
-      }).then(player => {
-        CharacterBuilder.addBody(player, {}).then(() => {
-          Flag.set('player.firstName',player.firstName).then(resolve);
-        });
-      });
-    });
+  player = await Player.create({
+    id: 1000000000,
+    title: options.title || 'Master',
+    firstName: options.firstName,
+    lastName: options.lastName,
+    genderCode: options.gender,
+    speciesCode: options.species,
   });
+
+  await CharacterBuilder.addBody(player, {});
+  await Flag.set('player.firstName',player.firstName);
+  await player.update({ portraitCode:(await ImageResource.portraitFor(player)).code });
+}
+
+Player.forClient = async function() {
+  const player = await Player.instance();
+  const aspects = await player.getCharacterAspectsForClient();
+  const description = await CharacterDescriber.fullDescription(player);
+
+  return {
+    name: player.name,
+    gender: player.gender.Male,
+    species: player.species.name,
+    portrait: player.portrait.url,
+    description,
+    ...aspects,
+  };
 }
 
 Player.hasCock =  async function() { return await Cock.findOne({  where:{ character_id:1000000000 }}) != null; }
