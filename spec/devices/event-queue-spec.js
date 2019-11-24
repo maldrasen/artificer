@@ -1,14 +1,5 @@
 describe('EventQueue', function() {
 
-  it("Games start with events queued", function(done) {
-    Game.start().then(game => {
-      EventQueue.getQueuedEvents().then(queue => {
-        expect(queue[0].code).to.equal('game-start');
-        done();
-      });
-    });
-  });
-
   it("Can add events with state", function(done) {
     EventQueue.enqueueEvent('got-fleas',{ horse:'cock' }).then(() => {
       EventQueue.nextEvent().then(event => {
@@ -31,19 +22,26 @@ describe('EventQueue', function() {
   });
 
   it("Acts as a queue, removing events from the front", function(done) {
-    Game.start().then(game => {
+    let eventList = [
+      { code:'journal-1' },
+      { code:'journal-2' },
+      { code:'journal-3' }]
+
+    EventQueue.enqueueEvents(eventList).then(() => {
       EventQueue.unqueueEvent().then(event => {
-        expect(event.code).to.equal('game-start');
+        expect(event.code).to.equal('journal-1');
         done();
       });
     });
   });
 
   it("unqueues location events", function(done) {
-    Game.start().then(game => {
-      EventQueue.unqueueLocationEvent('courtyard').then(event => {
-        expect(event.code).to.equal('courtyard-get-minions');
-        done();
+    EventQueue.enqueueEvent('courtyard-walk-on-walls').then(() => {
+      Game.start().then(game => {
+        EventQueue.unqueueLocationEvent('courtyard').then(event => {
+          expect(event.code).to.equal('courtyard-walk-on-walls');
+          done();
+        });
       });
     });
   });
