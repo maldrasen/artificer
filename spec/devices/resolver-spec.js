@@ -3,8 +3,8 @@ describe('Resolver', function() {
   it("assigns roles to characters", function(done) {
     GameHelper.setupTestGame().then(() => {
       Character.findAll({ where:{ type:'minion' }}).then(allMinions => {
-        let id_1 = allMinions[1].id;
-        let id_2 = allMinions[3].id;
+        let id_1 = allMinions[0].id;
+        let id_2 = allMinions[1].id;
 
         let planData = { assignedRoles:[
           { id:id_1, role:'hunter' },
@@ -26,8 +26,8 @@ describe('Resolver', function() {
   it('sets the current project', function(done) {
     GameHelper.setupTestGame().then(() => {
       Character.findAll({ where:{ type:'minion' }}).then(allMinions => {
-        let id_1 = allMinions[1].id;
-        let id_2 = allMinions[3].id;
+        let id_1 = allMinions[0].id;
+        let id_2 = allMinions[1].id;
 
         let planData = {
           assignedRoles:[],
