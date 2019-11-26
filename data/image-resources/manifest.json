@@ -4,7 +4,9 @@
   "engineFiles":[
     "configuration",
     "backgrounds",
+    "choosers",
+    "events",
     "icons",
-    "portraits"
+    "portraits-rats"
   ]
 }

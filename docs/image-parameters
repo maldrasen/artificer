@@ -13,7 +13,6 @@ Chooser Images
   - gender.male
   - gender.female
   - gender.futa
-  - gender.custom
 
 Background Images
 
@@ -31,7 +30,7 @@ Background Images
         times: [morning, day, night]
 
     - great-hall
-        states: [ruined, clean]
+        states: [ruined, clean, decorated]
         times: [morning, day, night]
 
     - location-of-report
