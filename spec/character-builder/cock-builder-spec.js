@@ -1,7 +1,7 @@
 describe('CockBuilder', function() {
 
   it("does nothing to character's without cocks", function(done) {
-    CharacterBuilder.build({ species:'vulpine', gender:'female' }).then(character => {
+    CharacterBuilder.build({ species:'lupin', gender:'female' }).then(character => {
       character.getCock().then(cock => {
         expect(cock).to.not.exist;
         done();

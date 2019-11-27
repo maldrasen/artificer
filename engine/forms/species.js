@@ -34,12 +34,11 @@ global.Species = class Species extends Form {
     return this.pluralName.toLowerCase();
   }
 
-
   // I sometimes need to know if a character of this species would have a
   // decent bite attack, like a lupin or a rat. I don't think it's worth having
   // a sepatate species attribute for just that though.
   get biter() {
-    return (['dragon','kobold','lupin','naga','rat','vulpine']).indexOf(this.code) >= 0
+    return (['dragon','kobold','lupin','naga','rat']).indexOf(this.code) >= 0
   }
 
   hasFlag(flag)  { return (this.flags||[]).indexOf(flag) >= 0; }

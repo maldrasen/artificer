@@ -39,7 +39,7 @@ describe('Describer: Cock', function() {
 
   it('describes dog cocks', function(done) {
     SpecHelper.tenTimes(done, resolve => {
-      SpecHelper.buildJada({ species:'vulpine' }).then(jada => {
+      SpecHelper.buildJada({ species:'lupin' }).then(jada => {
         jada.getCock().then(cock => {
           printCock('dog',cock)
           resolve();

@@ -1,15 +1,15 @@
 
 Chooser Images
-  - species.elf
-  - species.dark-elf
-  - species.wood-elf
-  - species.neko
-  - species.viera
-  - species.caprien
-  - species.equian
-  - species.lupin
-  - species.minotaur
-  - species.vulpine
+  - species.elf       (m,f)
+  - species.dark-elf  (m,f)
+  - species.wood-elf  (m,f)
+  - species.neko      (f)
+  - species.nymph     (f)
+  - species.viera     (f)
+  - species.caprien   (m,f)
+  - species.equian    (m)
+  - species.lupin     (m)
+  - species.minotaur  (m)
   - gender.male
   - gender.female
   - gender.futa
