@@ -325,8 +325,8 @@ Components.EventView = (function() {
     $('#currentEvent .center-image-frame').addClass('hide');
   }
 
-  function setBackground(url) {
-    $('#currentEvent .full-screen-background').css({ "background-image":`url(${url})`, filter:'' });
+  function setBackground(argument) {
+    Elements.ImageResource.loadBackground('#currentEvent .full-screen-background',argument);
   }
 
   function darkenBackground(value) {

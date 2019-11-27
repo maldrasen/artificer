@@ -2,11 +2,11 @@
 Elements.Chooser.OptionsFunctions['gender-options'] = state => {
   return [
     { value:'male', label:'Male', imageResource:{ code:'gender.male' },
-      body:"Standard male. You use male pronouns and have a dick." },
+      body:"Standard male. I use male pronouns and have a dick." },
     { value:'female', label:'Female', imageResource:{ code:'gender.female' },
-      body:"Standard female. You use female pronouns, have tits and a pussy." },
+      body:"Standard female. I use female pronouns. I have a pussy and a pair of tits." },
     { value:'futa', label:'Futa', imageResource:{ code:'gender.futa' },
-      body:"Both male and female. You're pronouns are shi and hir. You have everything; tits, dick, and pussy." },
+      body:"Both male and female. My pronouns are shi and hir. I have everything; a dick, a pussy, and a pair of tits" },
   ];
 }
 

@@ -87,7 +87,7 @@ Elements.Chooser = class Chooser {
     }
 
     Elements.ScrollingPanel.resize(this.element.find('.scrolling-panel'));
-    Elements.ImageResource.loadBackground(detail_id,options.imageResource);
+    Elements.ImageResource.loadBackground(`#${detail_id}`,options.imageResource);
   }
 }
 
