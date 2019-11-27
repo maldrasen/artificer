@@ -196,13 +196,17 @@ Components.EventView = (function() {
   // === Chooser Pages ===
 
   // A chooser page has the following arguments on the stage:
-  //     chooserTitle: (*) Title
-  //     choices:      (*) List of choices with the following attributes:
-  //       - value:    (*) value to set.
-  //       - label:    (*) label name,
-  //       - body:     (*) choice description,
-  //       - image:    (*) image path,
-  //       - locked:   Show the option, but make it non-selectable.
+  //     chooserTitle:       (*) Title
+  //     options:            (*) List of choice options with the following attributes:
+  //       - value:          (*) value to set.
+  //       - label:          (*) label name,
+  //       - body:           (*) choice description,
+  //       - imageResource:  (*) image resource loader arguments,
+  //       - locked:         Show the option, but make it non-selectable.
+  //
+  //       (choices can also be a string like "gender-choices" or "species-choices", in which case a function will be
+  //        called to fetch the list from some canned function defined by a mod.)
+  //
   //     text:         Text to display in the footer.
   //     name:         Name under which to save the chosen value.
   //
@@ -222,6 +226,7 @@ Components.EventView = (function() {
   function buildChooserPage() {
     let stage = currentStage();
     let content = $('#currentEvent .chooser-content').empty().removeClass('hide').append($($("#chooserPageTemplate").html()));
+    let options = (typeof stage.options === 'string') ? Elements.Chooser.OptionsFunctions[stage.options](choices) : stage.options;
 
     stage.chooser = new Elements.Chooser({
       title: stage.chooserTitle,
@@ -231,8 +236,8 @@ Components.EventView = (function() {
       imageWidth: (stage.imageWidth || 500),
     });
 
-    each(stage.choices, choice => {
-      stage.chooser.addChoice(choice);
+    each(options, option => {
+      stage.chooser.addChoice(option);
     });
 
     content.find('.chooser-frame').css({ width:(stage.chooserWidth || 800) });

@@ -1,10 +1,7 @@
 {
-  "clientFiles":[],
+  "clientFiles":["client/*"],
   "sharedFiles":[],
-
   "engineFiles":[
-    "event-data",
-
     "adjusters/*",
     "aspects/personality/*",
     "aspects/sexual/*",

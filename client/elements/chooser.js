@@ -88,4 +88,5 @@ Elements.Chooser = class Chooser {
   }
 }
 
+Elements.Chooser.OptionsFunctions = {};
 Elements.Chooser.OnAcceptFunctions = {};

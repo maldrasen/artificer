@@ -1,5 +1,5 @@
 
-Gender.chooserOptions = state => {
+Elements.Chooser.OptionsFunctions['gender-options'] = state => {
   return [
     { value:'male', label:'Male', imageResource:{ code:'gender.male' },
       body:"Standard male. You use male pronouns and have a dick." },
@@ -10,7 +10,7 @@ Gender.chooserOptions = state => {
   ];
 }
 
-Species.chooserOptions = state => {
+Elements.Chooser.OptionsFunctions['species-options'] = state => {
   let gender = (state.gender == 'male') ? 'm' : 'f';
   let choices = []
 

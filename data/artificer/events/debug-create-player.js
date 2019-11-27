@@ -3,12 +3,12 @@ Event.build('debug-create-player', {
 
   stages:[
     { chooserPage: true,
-      choices: state => { return Gender.chooserOptions(state); },
+      options: 'gender-options',
       name: 'gender',
       text: "Choose the Player's gender.",
     },{
       chooserPage: true,
-      choices: state => { return Species.chooserOptions(state); },
+      options: 'species-options',
       name: 'species',
       text: "Choose the Player's species.",
     }
