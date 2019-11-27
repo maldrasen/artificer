@@ -55,19 +55,21 @@ Elements.Chooser = class Chooser {
   }
 
   // Options:
-  //   - value    (required) The value of the selected choice.
-  //   - label    (required) The label to display on the choice.
-  //   - body     (required) Body element to display in the choice detail.
-  //   - image    (required) Every choice should have some image.
-  //   - locked   Locked elements are displayed but cannot be selected.
+  //   - value         (required) The value of the selected choice.
+  //   - label         (required) The label to display on the choice.
+  //   - body          (required) Body element to display in the choice detail.
+  //   - imageResource (required) Argument sent to the image resource loader to get an image URL.
+  //   - locked        Locked elements are displayed but cannot be selected.
   addChoice(options) {
-    let detail = $('<div>',{ class:'choice-detail' });
+    let detail_id = `choiceDetail-${options.value}`;
+    let detail = $('<div>',{ id:detail_id, class:'choice-detail' });
+
     detail.append($('<div>',{ class:'choice-detail-body' }).append(options.body));
     detail.css({
       height: (this._height),
-      'background-image': `url(${options.image})`,
       'background-size': `${this._imageWidth}px ${this._height}px`
     });
+
     this.element.find('.chooser-right-panel').append(detail);
 
     let choice = $('<li>',{ class:'choice' }).append(options.label);
@@ -85,6 +87,7 @@ Elements.Chooser = class Chooser {
     }
 
     Elements.ScrollingPanel.resize(this.element.find('.scrolling-panel'));
+    Elements.ImageResource.loadBackground(detail_id,options.imageResource);
   }
 }
 

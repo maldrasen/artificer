@@ -35,6 +35,7 @@ require(`${ROOT}/client/elements/adjustment-badge`);
 require(`${ROOT}/client/elements/alert`);
 require(`${ROOT}/client/elements/chooser`);
 require(`${ROOT}/client/elements/confirm`);
+require(`${ROOT}/client/elements/image-resource`);
 require(`${ROOT}/client/elements/paged-content`);
 require(`${ROOT}/client/elements/radio-buttons`);
 require(`${ROOT}/client/elements/scrolling-panel`);

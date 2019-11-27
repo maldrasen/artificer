@@ -112,6 +112,14 @@ global.BrowserCommands = (function() {
       AspectAdjuster.adjust(data);
     });
 
+    // === Image Resources ===
+
+    ipcMain.on('image.lookup', async (event, data) => {
+      ImageResource.where(data).then(resource => {
+        if (resource) { Browser.send('image.found',{ id:data.id, on:data.on, url:resource.url }); }
+      });
+    });
+
     // === Debug ===
 
     ipcMain.on('debug.game.printFlags', () => {

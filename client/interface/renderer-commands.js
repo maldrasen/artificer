@@ -16,6 +16,8 @@ global.RendererCommands = (function() {
     ipcRenderer.on('render.inventory', Components.InventoryView.open);
     ipcRenderer.on('render.plan', Components.PlanView.build);
     ipcRenderer.on('render.report', Components.ReportView.build);
+
+    ipcRenderer.on('image.found', Elements.ImageResource.set);
   }
 
   return { init };
