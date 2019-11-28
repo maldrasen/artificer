@@ -50,6 +50,10 @@ global.BrowserCommands = (function() {
       });
     });
 
+    ipcMain.on('game.start-action-event', (event, data) => {
+      console.log("Start Action Event:",data)
+    });
+
     ipcMain.on('game.start-location-event', () => {
       Composer.renderLocationEvent();
     });
@@ -121,6 +125,10 @@ global.BrowserCommands = (function() {
     });
 
     // === Debug ===
+
+    ipcMain.on('debug.set-flag-list', (event, data) => {
+      console.log("Set Flag List:",data)
+    });
 
     ipcMain.on('debug.game.printFlags', () => {
       Flag.printFlags();

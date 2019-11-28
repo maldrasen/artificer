@@ -1,16 +1,6 @@
 #locationView {
   margin-top: 50px;
 
-  .header {
-    border-bottom: $border-normal;
-    .location-name {
-      font-size: $fs-bigger;
-      font-family: roboto-bold;
-      color: $fg-strong;
-      margin-right: 10px;
-    }
-  }
-
   .location-menu {
     position: absolute;
     top: 0;
@@ -27,8 +17,17 @@
     a { margin: 0 5px; }
   }
 
+  .location-info {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    width: calc(100% - 505px);
+  }
+
   .location-actions {
-    margin-top: 100px;
-    text-align: center;
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    width: 400px;
   }
 }

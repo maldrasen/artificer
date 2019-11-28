@@ -23,6 +23,18 @@ Components.LocationView = (function() {
     if (view.flags.showPlanAction) { location.find('.create-plan-action').removeClass('hide'); }
 
     $('#mainContent').empty().append(location);
+
+    each(view.actions||[], action => {
+      addAction(action);
+    });
+  }
+
+  function addAction(action) {
+    let link = $('<li>',{ class:'action' }).append(
+      $('<a>',{ href:'#' }).append(action.name)
+    );
+
+    $('#locationView ul.actions').append(link);
   }
 
   function buildMap() {

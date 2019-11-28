@@ -18,7 +18,19 @@
   box-shadow: $shadow-frame;
   background: $bg-panel;
   font-size: $fs-body;
+
+  .panel-header {
+    border-bottom: $border-normal;
+
+    .enbiggen {
+      font-size: $fs-bigger;
+      font-family: roboto-bold;
+      color: $fg-strong;
+      margin-right: 10px;
+    }
+  }
 }
+
 .chooser-panel-footer {
   position: relative;
   padding: 10px 0 0;

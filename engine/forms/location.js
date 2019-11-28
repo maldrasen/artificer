@@ -18,6 +18,7 @@ global.Location = class Location extends Form {
       flags: results[2],
       attributes: results[3],
       flavor: results[4],
+      actions: this.actions,
       mapData: this.buildMapData(flags),
       dates: { day:game.dayNumber }
     };
