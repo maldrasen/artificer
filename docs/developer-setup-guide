@@ -14,7 +14,7 @@ Development Setup - For Windows
 
 3. Install Sqlite3 using this script.
 
-  $ bin/install-sqlite.sh
+  $ bin/install.sh
 
 4. Compile Assets
 

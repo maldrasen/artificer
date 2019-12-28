@@ -7,10 +7,12 @@
 # root directory. We then run the Electron specific Sqlite3 install, then copy the Node bindings back in. This seems to
 # work fine, for now. No idea how this will effect the packaged versions of the application.
 
+# When moving to a new version of Electron or Node the paths below will need to be updated.
+
 rm -rf ./node_modules
 
 npm install
-mv node_modules/sqlite3/lib/binding/node-v64-win32-x64 .sqlite3-binding-temp
+mv node_modules/sqlite3/lib/binding/node-v72-win32-x64 .sqlite3-binding-temp
 
-npm install --build-from-source --runtime=electron --target=6.0.9 --dist-url=https://atom.io/download/electron sqlite3
-mv .sqlite3-binding-temp node_modules/sqlite3/lib/binding/node-v64-win32-x64
+npm install --build-from-source --runtime=electron --target=7.1.7 --dist-url=https://atom.io/download/electron sqlite3
+mv .sqlite3-binding-temp node_modules/sqlite3/lib/binding/node-v72-win32-x64
