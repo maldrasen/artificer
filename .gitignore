@@ -2,6 +2,7 @@
 .nyc_output
 .npm
 
+dist/
 log/
 saves/
 !log/.keep
