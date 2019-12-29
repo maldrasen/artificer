@@ -28,9 +28,9 @@
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
     "start": "electron . --debug",
-    "spec": "mocha spec/**/*-spec.js -c --recursive --timeout 2000",
-    "specv": "mocha spec/**/*-spec.js -c -v --recursive --timeout 2000",
-    "spec-cov": "nyc --reporter=html mocha spec/**/*-spec.js -c --recursive --timeout 2000"
+    "spec": "mocha spec/**/*-spec.js",
+    "specv": "mocha spec/**/*-spec.js -v",
+    "spec-cov": "nyc --reporter=html mocha spec/**/*-spec.js "
   },
   "repository": "git@github.com:maldrasen/artificer.git",
   "keywords": [

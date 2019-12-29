@@ -27,4 +27,4 @@ before(function() {
 afterEach(function() {
   METRIC = false;
   Game.clear();
-})
+});
