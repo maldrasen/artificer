@@ -10,12 +10,13 @@
       "client/**/*",
       "data/**/*",
       "engine/**/*",
-      "log/**/*",
       "node_modules/**/*",
-      "saves/**/*",
+      "log/.keep",
+      "saves/.keep",
       "main.js",
       "package.json"
     ],
+    "asar": false,
     "win": {
       "target": [{
         "target": "portable",
@@ -25,9 +26,8 @@
   },
   "scripts": {
     "postinstall": "install-app-deps",
-    "pack": "electron-builder --dir",
     "dist": "electron-builder",
-    "start": "electron . --debug",
+    "start": "electron .",
     "spec": "mocha spec/**/*-spec.js",
     "specv": "mocha spec/**/*-spec.js -v",
     "spec-cov": "nyc --reporter=html mocha spec/**/*-spec.js "
