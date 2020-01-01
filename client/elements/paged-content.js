@@ -59,7 +59,8 @@ Elements.PagedContent = (function() {
     let key = element.data('show-if') || element.data('show-if-not')
     let shouldDisplay;
 
-    if (key == 'config.metric') { shouldDisplay = METRIC }
+    // TODO: Oh, that won't work, because the client doesn't have the preferences yet. 
+    // if (key == 'config.metric') { shouldDisplay = Environment.Metric }
 
     if (key == null) { throw `A select needs a condition key.` }
     if (shouldDisplay == null) { throw `Unknown select condition key [${key}]` }

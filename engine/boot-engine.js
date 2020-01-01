@@ -5,7 +5,7 @@ global.extend = require('extend');
 global.fs = require('fs');
 global.each = require('iterate-object');
 global.hash = require('object-hash');
-global.log = (message) => { if (DEBUG) { console.log(message); } }
+global.log = (message) => { if (Environment.Debug) { console.log(message); } }
 
 // === Concerns ===
 require(`${ROOT}/engine/concerns/has-aspects`);

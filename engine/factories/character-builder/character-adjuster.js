@@ -7,10 +7,10 @@ global.CharacterAdjuster = (function() {
     // If an adjustment fails because it's invalid for some reason, there's
     // probably something wrong with how the name is set up. That can be
     // nearly impossible to track down though.
-    if (DEBUG && (triggers.length > 0 || aspects.length > 0)) {
-      console.log(`\n=== Adjusting ${character.name} (${character.gender.code}) ===`)
-      console.log(triggers);
-      console.log(aspects);
+    if (triggers.length > 0 || aspects.length > 0) {
+      log(`\n=== Adjusting ${character.name} (${character.gender.code}) ===`)
+      log(triggers);
+      log(aspects);
     }
 
     await applyAspects(character, aspects);

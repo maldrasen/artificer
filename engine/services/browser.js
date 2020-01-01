@@ -3,15 +3,15 @@ global.Browser = (function() {
 
   function open() {
     mainWindow = new electron.BrowserWindow({
-      width: (DEBUG ? 1800 : 1200),
-      height: (DEBUG ? 1000 : 800),
+      width: (Environment.Debug ? 1800 : 1200),
+      height: (Environment.Debug ? 1000 : 800),
       webPreferences: { nodeIntegration:true },
     });
 
     mainWindow.loadURL(`file://${ROOT}/client/views/index.html`);
     mainWindow.setMenu(null);
 
-    if (DEBUG) {
+    if (Environment.Debug) {
       mainWindow.webContents.openDevTools();
       mainWindow.webContents.executeJavaScript('window.DEBUG = true;');
     }

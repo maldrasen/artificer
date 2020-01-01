@@ -44,7 +44,7 @@ Event.build('courtyard-get-minions', {
 });
 
 function describeRats() {
-  return `${METRIC ? "They're a little over a meter tall or so," :
-                     "They range from about three to four feet tall,"}
+  return `${Environment.Metric ? "They're a little over a meter tall or so," :
+                                 "They range from about three to four feet tall,"}
   and their bodies are covered in thick brown or black fur and wear clothing made from various animal hides.`
 }

@@ -9,7 +9,7 @@ global.Configuration = {
       'location.keepName': 'Faingorn Keep',
     });
 
-    if (DEBUG) {
+    if (Environment.Debug) {
       await game.update({ location:'heart-of-sin' });
       return await EventQueue.enqueueEvents([
         { code:'debug-create-player' },

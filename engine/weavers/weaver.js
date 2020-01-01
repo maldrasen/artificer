@@ -63,7 +63,7 @@ global.Weaver = (function() {
   function simpleValue(token) {
     if (token == 'ballsack')  { return Random.from(['ballsack','ballsack','scrotum']); }
     if (token == 'maleDemon') { return Random.from(['Abaddon','Baal','Baphomet','Behemoth','Lucifer','Maldrasen','Mephistopheles','Satan','Slaanesh']); }
-    if (token == 'meters')    { return METRIC ? 'meters' : 'yards'; }
+    if (token == 'meters')    { return Environment.Metric ? 'meters' : 'yards'; }
     if (token == 'sheath')    { return Random.from(['sheath','cocksheath']); }
     if (token == 'testicles') { return Random.from(['testicles','balls']); }
     if (token == 'tit')       { return Random.from(['breast','tit']); }

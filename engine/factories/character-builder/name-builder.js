@@ -36,12 +36,10 @@ global.NameBuilder = (function() {
     });
   }
 
-  // Print a warning to the log if we're in DEBUG mode.
+  // Print a warning to the log if we're in debug mode.
   function warningMessage(names, invalid) {
     let p = (name) => { return (name == null) ? '' : name.name; }
-    if (DEBUG) {
-      console.log(`(Warning) Rejected Name ${p(names.pre)} ${p(names.first)} ${p(names.last)} > ${invalid}`)
-    }
+    log(`(Warning) Rejected Name ${p(names.pre)} ${p(names.first)} ${p(names.last)} > ${invalid}`)
   }
 
   // Check to see if a name is valid for this character. This promise should
