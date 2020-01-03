@@ -51,7 +51,9 @@ global.BrowserCommands = (function() {
     });
 
     ipcMain.on('game.start-action-event', (event, data) => {
-      console.log("Start Action Event:",data)
+      EventQueue.enqueueEvent(data.code, data.state).then(() => {
+        Composer.render();
+      });
     });
 
     ipcMain.on('game.start-location-event', () => {

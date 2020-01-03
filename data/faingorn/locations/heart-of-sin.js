@@ -10,14 +10,13 @@ Location.build('heart-of-sin', {
   },
 
   actions:[
-
     { name: 'Unlock Early Game Flags',
       command: 'debug.set-flag-list',
       data: { flags:'early-game' }},
 
     { name: 'Create Minion',
       command: 'game.start-action-event',
-      data: { code:'debug.create-minion.choices' }}
+      data: { code:'debug.create-minion' }}
   ],
 
 });

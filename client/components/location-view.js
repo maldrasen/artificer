@@ -30,11 +30,13 @@ Components.LocationView = (function() {
   }
 
   function addAction(action) {
-    let link = $('<li>',{ class:'action' }).append(
-      $('<a>',{ href:'#' }).append(action.name)
-    );
+    let link = $('<a>',{ href:'#' }).append(action.name).on('click', Elements.buttonAction(() => {
+      Renderer.sendCommand(action.command, action.data);
+    }));
 
-    $('#locationView ul.actions').append(link);
+    let item = $('<li>',{ class:'action' }).append(link);
+
+    $('#locationView ul.actions').append(item);
   }
 
   function buildMap() {

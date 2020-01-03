@@ -12,7 +12,7 @@ global.Configuration = {
     if (Environment.Debug) {
       await game.update({ location:'heart-of-sin' });
       return await EventQueue.enqueueEvents([
-        { code:'debug-create-player' },
+        { code:'debug.create-player' },
       ]);
     }
 
