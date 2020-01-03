@@ -145,79 +145,82 @@ Description.buildTitInjury({ damageType:'smash', level:5, furryAddendum:'deep-br
       {{C::tits.smashShape}} prints.`,
 });
 
-// === Rats ===
-// These descriptions are stupid similar to the ones above, but usually the rat
-// tit descriptions need to be distinct on account of them having 12 tits. I
-// could work on that logic a bit more so that that rule doesn't apply to
-// injuries to a single tit, or I can just copy them from above and adjust as
+// === Scavens ===
+// These descriptions are stupid similar to the ones above, but usually the
+// scaven tit descriptions need to be distinct on account of them having 12
+// tits. I could work on that logic a bit more so that that rule doesn't apply
+// to injuries to a single tit, or I can just copy them from above and adjust as
 // nessesary.
+//
+// It might be possible to use the same descriptions for the lupins as well,
+// or turn these into general multi-tit character descriptions.
 
 Description.buildTitInjury({ damageType:'smash', level:1, place:'lr', furryAddendum:'red-color',
-  conditions:['species-rat'],
+  conditions:['species-scaven'],
   d: `slapped around a bit; it's looking red and sore.`,
 });
 
 Description.buildTitInjury({ damageType:'smash', level:2, place:'lr', furryAddendum:'bruises',
-  conditions:['species-rat'],
+  conditions:['species-scaven'],
   d: `banged up and bruised a bit. A wide brown and yellow bruise is spreading across {{C::gender.his}}
       {{C::tits.size}} {{tit}}.`,
 });
 
 Description.buildTitInjury({ damageType:'smash', level:2, place:'lr', furryAddendum:'bruise',
-  conditions:['species-rat'], requirements:['tits-smash-count-1'],
+  conditions:['species-scaven'], requirements:['tits-smash-count-1'],
   d: `recently bruised. A single yellow bruise mars the surface of {{C::gender.his}} {{C::tits.size}} {{tit}}.`,
 });
 
 Description.buildTitInjury({ damageType:'smash', level:2, place:'lr', furryAddendum:'bruises',
-  conditions:['species-rat'], requirements:['tits-smash-count-2'],
+  conditions:['species-scaven'], requirements:['tits-smash-count-2'],
   d: `recently bruised. A couple of yellow bruises mar the surface of {{C::gender.his}} {{C::tits.size}} {{tit}}.`,
 });
 
 Description.buildTitInjury({ damageType:'smash', level:3, place:'lr', furryAddendum:'bruises',
-  conditions:['species-rat'],
+  conditions:['species-scaven'],
   d: `badly beaten. It's visibly bruised and swollen.`,
 });
 
 Description.buildTitInjury({ damageType:'smash', level:4, place:'lr', furryAddendum:'bruises',
-  conditions:['species-rat'],
+  conditions:['species-scaven'],
   d: `smashed or crushed somehow. It's visibly swollen and purple with bruising.`,
 });
 
 Description.buildTitInjury({ damageType:'smash', level:5, place:'lr', furryAddendum:'deep-bruising',
-  conditions:['species-rat'],
+  conditions:['species-scaven'],
   d: `completely smashed. It's turned black and purple with deep bruising and looks flattened and misshapen.`,
 });
 
 Description.buildTitInjury({ damageType:'smash', level:1, place:'all', furryAddendum:'red-color',
-  conditions:['species-rat'],
+  conditions:['species-scaven'],
   d: `slapped around for a bit. Most of {{C::gender.his}} {{tits}} are bright red from the rough treatment.`,
 });
 
 Description.buildTitInjury({ damageType:'smash', level:2, place:'all', furryAddendum:'bruises',
-  conditions:['species-rat'],
+  conditions:['species-scaven'],
   d: `banged up and bruised a bit. A few of {{C::gender.his}} {{tits}} have brown and yellow bruises spreading over
       them.`,
 });
 
 Description.buildTitInjury({ damageType:'smash', level:3, place:'all', furryAddendum:'bruises',
-  conditions:['species-rat'],
+  conditions:['species-scaven'],
   d: `badly beaten. Most of {{C::gender.his}} {{C::tits.size}} {{tits}} look visibly bruised and swollen.`,
 });
 
 Description.buildTitInjury({ damageType:'smash', level:4, place:'all', furryAddendum:'bruises',
-  conditions:['species-rat'],
+  conditions:['species-scaven'],
   d: `punched and beaten until almost all of {{C::gender.his}} {{C::tits.size}} {{tits}} have turned deep pruple and
       black with bruises.`,
 });
 
 Description.buildTitInjury({ damageType:'smash', level:5, place:'all', furryAddendum:'deep-bruising',
-  conditions:['species-rat'],
+  conditions:['species-scaven'],
   d: `savagely beaten. Every single one of {{C::gender.his}} {{C::tits.size}} {{tits}} are completely black and purple
       with painful looking bruises.`,
 });
 
 Description.buildTitInjury({ damageType:'smash', level:5, place:'all', furryAddendum:'deep-bruising',
-  conditions:['species-rat'], requirements:['tits-smash-shape'],
+  conditions:['species-scaven'], requirements:['tits-smash-shape'],
   d: `savagely beaten. Every single one of {{C::gender.his}} {{C::tits.size}} {{tits}} are completely black and purple
       with painful looking bruises in the shape of {{C::tits.smashShape}} prints.`,
 });
@@ -225,32 +228,32 @@ Description.buildTitInjury({ damageType:'smash', level:5, place:'all', furryAdde
 // === Flat Chested Rats ===
 
 Description.buildTitInjury({ damageType:'smash', level:1, furryAddendum:'red-color',
-  conditions:['species-rat','tits-size-zero'],
+  conditions:['species-scaven','tits-size-zero'],
   d: `slapped a bit. {{C::gender.His}} flat chest is bright red from the slapping.`,
 });
 
 Description.buildTitInjury({ damageType:'smash', level:2, furryAddendum:'bruises',
-  conditions:['species-rat','tits-size-zero'],
+  conditions:['species-scaven','tits-size-zero'],
   d: `banged up and bruised a bit. A few brown and yellow bruises are spreading over {{C::gender.his}} flat chest.`,
 });
 
 Description.buildTitInjury({ damageType:'smash', level:3, furryAddendum:'bruises',
-  conditions:['species-rat','tits-size-zero'],
+  conditions:['species-scaven','tits-size-zero'],
   d: `badly beaten. {{C::gender.His}} flat chest is adorned with several wide bruises.`,
 });
 
 Description.buildTitInjury({ damageType:'smash', level:4, furryAddendum:'bruises',
-  conditions:['species-rat','tits-size-zero'],
+  conditions:['species-scaven','tits-size-zero'],
   d: `punched and beaten until most of {{C::gender.his}} flat chest has been covered in deep black and purple bruises.`,
 });
 
 Description.buildTitInjury({ damageType:'smash', level:5, furryAddendum:'deep-bruising',
-  conditions:['species-rat','tits-size-zero'],
+  conditions:['species-scaven','tits-size-zero'],
   d: `savagely beaten. {{C::gender.His}} flat chest is completely black and purple with painful looking bruises.`,
 });
 
 Description.buildTitInjury({ damageType:'smash', level:5, furryAddendum:'deep-bruising',
-  conditions:['species-rat','tits-size-zero'], requirements:['tits-smash-shape'],
+  conditions:['species-scaven','tits-size-zero'], requirements:['tits-smash-shape'],
   d: `savagely beaten. {{C::gender.His}} flat chest is completely black and purple with painful looking bruises and
       {{C::tits.smashShape}} prints.`,
 });

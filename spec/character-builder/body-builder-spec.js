@@ -1,7 +1,7 @@
 describe('BodyBuilder', function() {
 
   it('uses the height options if present', function(done) {
-    CharacterBuilder.build({ firstName:'X', species:'rat', body:{ height:1500 }}).then(character => {
+    CharacterBuilder.build({ firstName:'X', species:'scaven', body:{ height:1500 }}).then(character => {
       character.getBody().then(body => {
         expect(body.convertedHeight).to.equal(59);
         done();
@@ -61,7 +61,7 @@ describe('BodyBuilder', function() {
   });
 
   it('fetches values from species otherwise', function(done) {
-    CharacterBuilder.build({ firstName:'X', species:'rat' }).then(character => {
+    CharacterBuilder.build({ firstName:'X', species:'scaven' }).then(character => {
       character.getBody().then(body => {
         expect(body.furColor).to.be.oneOf(['black','white','brown','gray']);
         expect(body.furShade).to.be.within(1,5);
@@ -159,7 +159,7 @@ describe('BodyBuilder', function() {
     });
   });
 
-  it ('sets the tail shape', function(done) {
+  it('sets the tail shape', function(done) {
     CharacterBuilder.build({ firstName:'X', species:'elf', body:{ tailShape:'rat' }}).then(character => {
       character.getBody().then(body => {
         expect(body.tailShape).to.equal('rat');

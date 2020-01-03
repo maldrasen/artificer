@@ -15,9 +15,9 @@ describe('Describer: Cock', function() {
     });
   });
 
-  it('describes rat cocks', function(done) {
+  it('describes scaven cocks', function(done) {
     SpecHelper.tenTimes(done, resolve => {
-      SpecHelper.buildJada({ species:'rat' }).then(jada => {
+      SpecHelper.buildJada({ species:'scaven' }).then(jada => {
         jada.getCock().then(cock => {
           printCock('normal',cock)
           resolve();

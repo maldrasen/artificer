@@ -4,8 +4,8 @@ global.GameHelper = (function() {
     let game = await Game.start();
 
     let testCharacters = [
-      { type:'minion', species:'rat', gender:'male',   fear:Random.between(40,60), loyalty:Random.between(10,20) },
-      { type:'minion', species:'rat', gender:'female', fear:Random.between(40,60), loyalty:Random.between(10,20) },
+      { type:'minion', species:'scaven', gender:'male',   fear:Random.between(40,60), loyalty:Random.between(10,20) },
+      { type:'minion', species:'scaven', gender:'female', fear:Random.between(40,60), loyalty:Random.between(10,20) },
     ];
 
     await Promise.all(testCharacters.map((options) => {

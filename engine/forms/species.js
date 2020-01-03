@@ -11,6 +11,7 @@ global.Species = class Species extends Form {
     if (this.code == 'dark-elf') { return 'Dark Elves'; }
     if (this.code == 'elf')      { return 'Elves'; }
     if (this.code == 'incubus')  { return 'Incubi'; }
+    if (this.code == 'scaven')   { return 'Scaven'; }
     if (this.code == 'succubus') { return 'Succubi'; }
     if (this.code == 'wood-elf') { return 'Wood Elves'; }
     return `${this.name}s`
@@ -35,10 +36,10 @@ global.Species = class Species extends Form {
   }
 
   // I sometimes need to know if a character of this species would have a
-  // decent bite attack, like a lupin or a rat. I don't think it's worth having
-  // a sepatate species attribute for just that though.
+  // decent bite attack, like a lupin or a scaven. I don't think it's worth
+  // having a sepatate species attribute for just that though.
   get biter() {
-    return (['dragon','kobold','lupin','naga','rat']).indexOf(this.code) >= 0
+    return (['dragon','kobold','lupin','naga','scaven']).indexOf(this.code) >= 0
   }
 
   hasFlag(flag)  { return (this.flags||[]).indexOf(flag) >= 0; }

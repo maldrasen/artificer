@@ -41,11 +41,11 @@ global.BodyDescriber = class BodyDescriber {
     let height = this.body.height;
     let average = species.averageHeight();
 
-    if (height < average * 0.8) { return `which is short for {{C::species.aRat}}`; }
-    if (height < average * 0.9) { return `which is a little short for {{C::species.aRat}}`; }
-    if (height > average * 1.1) { return `which makes {{C::gender.him}} a bit large for {{C::species.aRat}}`; }
-    if (height > average * 1.2) { return `which makes {{C::gender.him}} larger then most {{C::species.rats}}`; }
-    return` which is about average for {{C::species.aRat}}`;
+    if (height < average * 0.8) { return `which is short for {{C::species.aGnome}}`; }
+    if (height < average * 0.9) { return `which is a little short for {{C::species.aGnome}}`; }
+    if (height > average * 1.1) { return `which makes {{C::gender.him}} a bit large for {{C::species.aGnome}}`; }
+    if (height > average * 1.2) { return `which makes {{C::gender.him}} larger then most {{C::species.gnomes}}`; }
+    return` which is about average for {{C::species.aGnome}}`;
   }
 
   objectiveBeauty() {
@@ -69,7 +69,7 @@ global.BodyDescriber = class BodyDescriber {
     ]); }
 
     if (personal >= 20 && personal < 30) { ArrayUtility.addAll(sentences,[
-      `{{C::character.firstName}} is a good looking {{C::species.rat}} with a symmetrical, traditionally attractive sort of face.`,
+      `{{C::character.firstName}} is a good looking {{C::species.gnome}} with a symmetrical, traditionally attractive sort of face.`,
     ]); }
 
     if (this.character.genderCode == 'male') {
@@ -84,13 +84,13 @@ global.BodyDescriber = class BodyDescriber {
 
       if (personal >= 20 && personal < 30) { ArrayUtility.addAll(sentences,[
         `I would call {{C::character.firstName}} handsome. {{C::gender.His}} face has a certain charming quality to it.`,
-        `{{C::character.firstName}} is a handsome {{C::species.rat}}. While not overly attractive, {{C::gender.he}}'s pleasant to look upon at least.`,
+        `{{C::character.firstName}} is a handsome {{C::species.gnome}}. While not overly attractive, {{C::gender.he}}'s pleasant to look upon at least.`,
       ]); }
     }
 
     if (this.character.genderCode != 'male') {
       if (personal > 0 && personal < 10) { ArrayUtility.addAll(sentences,[
-        `{{C::character.firstName}} is not an attractive {{C::species.rat}}. {{C::gender.He}} has the sort of face that could only be improved by repeatedly slapping it.`,
+        `{{C::character.firstName}} is not an attractive {{C::species.gnome}}. {{C::gender.He}} has the sort of face that could only be improved by repeatedly slapping it.`,
       ]); }
 
       if (personal >= 10 && personal < 20) { ArrayUtility.addAll(sentences,[
@@ -99,7 +99,7 @@ global.BodyDescriber = class BodyDescriber {
 
       if (personal >= 20 && personal < 30) { ArrayUtility.addAll(sentences,[
         `I would call {{C::character.firstName}} pretty. {{C::gender.His}} face has a certain charming quality to it.`,
-        `{{C::character.firstName}} is a pretty {{C::species.rat}}. While not beautiful, {{C::gender.he}}'s pleasant to look upon at least.`,
+        `{{C::character.firstName}} is a pretty {{C::species.gnome}}. While not beautiful, {{C::gender.he}}'s pleasant to look upon at least.`,
       ]); }
     }
 
@@ -117,31 +117,31 @@ global.BodyDescriber = class BodyDescriber {
     let averagePersonal = Math.floor(this.character.species.personal * 1.333);
     let lowPersonal =     Math.ceil(this.character.species.personal  * 0.666);
 
-    if (this.character.speciesCode == 'rat') {
+    if (this.character.speciesCode == 'scaven') {
       if (this.character.personal <= lowPersonal)  { return Random.from([
-        `Even for a rat {{C::gender.he}}'s ugly; just chewed up looking to be honest.`,
-        `{{C::gender.He}}'s even uglier than most rats, which really is saying a lot.`,
+        `Even for a scaven {{C::gender.he}}'s ugly; just chewed up looking to be honest.`,
+        `{{C::gender.He}}'s even uglier than most scaven, which really is saying a lot.`,
       ]); }
 
       if (this.character.personal <= averagePersonal) { return Random.from([
-        `Which can of course be expected of a rat; they're not the most attractive creatures after all.`,
-        `Which is expected of course, given that {{C::gender.he}}'s a rat.`,
-        `For a rat though, {{C::gender.he}}'s about average looking.`,
+        `Which can of course be expected of a scaven; they're not the most attractive creatures after all.`,
+        `Which is expected of course, given that {{C::gender.he}}'s a scaven.`,
+        `For a scaven though, {{C::gender.he}}'s about average looking.`,
       ]); }
 
       return Random.from([
-        `{{C::gender.He}}'s unusually attractive though for a rat, who tend to be rather rough looking.`,
-        `For a rat though, {{C::gender.he}}'s far better looking than most of {{C::gender.his}} species.`,
+        `{{C::gender.He}}'s unusually attractive though for a scaven, who tend to be rather rough looking.`,
+        `For a scaven though, {{C::gender.he}}'s far better looking than most of {{C::gender.his}} species.`,
       ]);
     }
 
     if (this.character.personal <= lowPersonal)  { return Random.from([
-      `I've seen far better looking {{C::species.rats}} in my time though.`,
+      `I've seen far better looking {{C::species.gnomes}} in my time though.`,
       `{{C::gender.He}} certinally wouldn't be considered attractive among other {{C::species.elves}}.`
     ]); }
 
     if (this.character.personal > averagePersonal)  { return Random.from([
-      `{{C::gender.He}} is quite good looking though for {{C::species.aRat}}.`
+      `{{C::gender.He}} is quite good looking though for {{C::species.aGnome}}.`
     ]); }
 
     // No need to comment further on average looking characters.

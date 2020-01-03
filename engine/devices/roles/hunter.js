@@ -60,8 +60,8 @@ Role.Hunter = (function() {
 
     aspect.adjustStrength(experience);
 
-    // Rats and kobolds are capped at level 1 skill. Goblins and ogres are capped at level 2.
-    if (character.speciesCode == 'rat'    && aspect.strength > 200) { aspect.strength = 200; }
+    // Scaven and kobolds are capped at level 1 skill. Goblins and ogres are capped at level 2.
+    if (character.speciesCode == 'scaven' && aspect.strength > 200) { aspect.strength = 200; }
     if (character.speciesCode == 'kobold' && aspect.strength > 200) { aspect.strength = 200; }
     if (character.speciesCode == 'goblin' && aspect.strength > 600) { aspect.strength = 600; }
     if (character.speciesCode == 'ogre'   && aspect.strength > 600) { aspect.strength = 600; }

@@ -4,11 +4,11 @@ describe('Describer: Tits', function() {
     SpecHelper.print(`${type}(${tits.size}/${tits.shape}) > ${tits.description}`);
   }
 
-  it('describes rat tits', function(done) {
+  it('describes scaven tits', function(done) {
     SpecHelper.tenTimes(done, resolve => {
-      SpecHelper.buildJada({ species:'rat' }).then(jada => {
+      SpecHelper.buildJada({ species:'scaven' }).then(jada => {
         jada.getTits().then(tits => {
-          printTits('rat',tits)
+          printTits('scaven',tits)
           resolve();
         });
       });

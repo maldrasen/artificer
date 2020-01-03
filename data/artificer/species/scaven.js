@@ -1,5 +1,5 @@
-Species.build('rat', {
-  name: 'Rat',
+Species.build('scaven', {
+  name: 'Scaven',
 
   physical: 10,
   personal: 5,
@@ -58,10 +58,10 @@ Species.build('rat', {
     }
   },
 
-  nameGenerator: RatNameGenerator,
+  nameGenerator: ScavenNameGenerator,
 
-  headDescription: `{{C::gender.His}} face is unsurprisingly rat-like with {{C::body.eyeColor}} eyes, a short muzzle,
-                    long whiskers and a twitchy pink nose.`,
+  headDescription: `The scaven's face is unsurprisingly rat-like with {{C::body.eyeColor}} eyes, a short muzzle, long
+                    whiskers and a twitchy pink nose.`,
 
   flags: ['furry']
 });

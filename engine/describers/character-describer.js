@@ -39,11 +39,7 @@ global.CharacterDescriber = (function() {
   // TODO: The general description should also include things like the
   //       character's loyality and general attitude towards the player.
   function generalDescription(character,parts) {
-    let desc;
-
-    if (character.speciesCode == 'rat') { desc = `${character.name} is a Rhysh Rat.` }
-
-    return desc;
+    return "TODO: General Description";
   }
 
   return { fullDescription };

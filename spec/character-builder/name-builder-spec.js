@@ -19,7 +19,7 @@ describe('NameBuilder', function() {
     Promise.all(tests).then(()=>{ done(); });
   }
 
-  it('names rats',     function(done) { namePrinter({ species:'rat'      }, done); });
+  it('names scaven',  function(done)  { namePrinter({ species:'scaven'   }, done); });
   it('names kobolds',  function(done) { namePrinter({ species:'kobold'   }, done); });
   it('names goblins',  function(done) { namePrinter({ species:'goblin'   }, done); });
   it('names incubus',  function(done) { namePrinter({ species:'incubus'  }, done); });

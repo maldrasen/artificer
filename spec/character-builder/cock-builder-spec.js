@@ -65,8 +65,8 @@ describe('CockBuilder', function() {
     });
   });
 
-  it("builds a cock of average length for that character's species (rat)", function(done) {
-    CharacterBuilder.build({ firstName:'X', gender:'male', species:'rat' }).then(character => {
+  it("builds a cock of average length for that character's species (scaven)", function(done) {
+    CharacterBuilder.build({ firstName:'X', gender:'male', species:'scaven' }).then(character => {
       character.getCock().then(cock => {
         expect(cock.convertedLength).to.be.within(2,7);
         expect(cock.convertedWidth).to.be.within(0.5,1);

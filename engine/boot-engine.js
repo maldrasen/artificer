@@ -107,7 +107,7 @@ require(`${ROOT}/engine/factories/name-generators/demon-name-generator`);
 require(`${ROOT}/engine/factories/name-generators/elf-name-generator`);
 require(`${ROOT}/engine/factories/name-generators/goblin-name-generator`);
 require(`${ROOT}/engine/factories/name-generators/kobold-name-generator`);
-require(`${ROOT}/engine/factories/name-generators/rat-name-generator`);
+require(`${ROOT}/engine/factories/name-generators/scaven-name-generator`);
 
 // === Utilities ===
 require(`${ROOT}/engine/utilities/array-utility.js`);

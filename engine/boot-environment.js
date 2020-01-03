@@ -14,7 +14,7 @@ const fs = require('fs');
     envFile = 'env-test.json';
   }
 
-  console.log(`Load Environment (${env})`);
+  console.log(`> Load Environment (${env})`);
 
   let data = JSON.parse(fs.readFileSync(`${ROOT}/${envFile}`));
 

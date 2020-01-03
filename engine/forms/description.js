@@ -163,7 +163,7 @@ global.Description = class Description extends Form {
   }
 
   titsConditionsMet(context) {
-    if (this.conditionFailed('species-rat',    context.character.speciesCode == 'rat'))  { return false; }
+    if (this.conditionFailed('species-scaven', context.character.speciesCode == 'scaven'))  { return false; }
     if (this.conditionFailed('tits-size-zero', context.tits.currentSizeClass == 'zero')) { return false; }
     return true;
   }
@@ -192,7 +192,7 @@ global.Description = class Description extends Form {
 }
 
 function matchRequirement(req, context) {
-  if (req == 'species-rat')              { return context.character.speciesCode == 'rat'     }
+  if (req == 'species-scaven')           { return context.character.speciesCode == 'scaven'  }
   if (req == 'species-furry')            { return context.character.species.isFurry          }
   if (req == 'species-not-furry')        { return context.character.species.isFurry == false }
   if (req == 'species-demon')            { return context.character.species.isDemon          }

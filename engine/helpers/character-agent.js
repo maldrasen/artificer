@@ -5,29 +5,29 @@ global.CharacterAgent = (function() {
   // descriptive. Then if it can't it returns whatever findActor() returns in
   // an array.
   async function findActors(descriptive) {
-    if (descriptive == 'all-rats') { return await allOfSpecies('rat'); }
+    if (descriptive == 'all-scaven') { return await allOfSpecies('scaven'); }
 
 
     return [(await findActor(descriptive))];
   }
 
   async function findActor(descriptive) {
-    if (descriptive == 'player')           { return await Player.instance(); }
-    if (descriptive == 'the-smartest-rat') { return await findSmartest('rat');  }
-    if (descriptive == 'a-sexy-rat')       { return await findSexable('rat'); }
-    if (descriptive == 'rat-chief')        { return await ratChief(); }
+    if (descriptive == 'player')              { return await Player.instance();      }
+    if (descriptive == 'the-smartest-scaven') { return await findSmartest('scaven'); }
+    if (descriptive == 'a-sexy-scaven')       { return await findSexable('scaven');  }
+    if (descriptive == 'scaven-chief')        { return await scavenChief();          }
     throw `Cannot find a character that matches ${descriptive}`;
   }
 
-  // This function get's the chief of the rats. If the rat chief flag has been
-  // set and that character is still alive this will return that character.
-  // Otherwise the strongest rat will be made chief.
+  // This function get's the chief of the scaven. If the scaven chief flag has
+  // been set and that character is still alive this will return that character.
+  // Otherwise the strongest scaven will be made chief.
   //
-  // TODO: When we get new rats we may need to delete this flag to ensure that
-  //       the chief is always the strongest rat. A change in leadership like
-  //       that might warrent another event.
-  async function ratChief() {
-    const flag = await Flag.lookup('character.ratChief');
+  // TODO: When we get new scaven we may need to delete this flag to ensure
+  //       that the chief is always the strongest scaven. A change in
+  //       leadership like that might warrent another event.
+  async function scavenChief() {
+    const flag = await Flag.lookup('character.scavenChief');
     if (flag) {
       const chief = await Character.findByPk(flag.value);
       if (chief && chief.alive) {
@@ -35,8 +35,8 @@ global.CharacterAgent = (function() {
       }
     }
 
-    const newChief = await findStrongest('rat');
-    await Flag.set('character.ratChief',newChief.id)
+    const newChief = await findStrongest('scaven');
+    await Flag.set('character.scavenChief',newChief.id)
     return newChief;
   }
 
@@ -110,14 +110,14 @@ global.CharacterAgent = (function() {
   // think this function should only ever return living minions, not those who
   // are dead or missing, and shouldn't return the player, if if the player is
   // of the specified species.
-  function allOfSpecies(species) {
-    return Character.findAll({ where:{ speciesCode:'rat', status:'normal', type:'minion' }});
+  function allOfSpecies(code) {
+    return Character.findAll({ where:{ speciesCode:code, status:'normal', type:'minion' }});
   }
 
   return {
     findActors,
     findActor,
-    ratChief
+    scavenChief
   };
 
 })();

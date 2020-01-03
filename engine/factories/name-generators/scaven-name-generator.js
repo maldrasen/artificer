@@ -1,4 +1,4 @@
-global.RatNameGenerator = (function() {
+global.ScavenNameGenerator = (function() {
 
   // Rat names are stupid simple. The first and last names are pulled from the
   // same list. There are no restrictions or adjustments.
@@ -6,7 +6,7 @@ global.RatNameGenerator = (function() {
   function getNames() {
     return new Promise((resolve, reject) => {
       Name.findAll({
-        where: { species:'rat' },
+        where: { species:'scaven' },
         order: Sequelize.literal('random()'),
         limit: 2,
       }).then(names => {

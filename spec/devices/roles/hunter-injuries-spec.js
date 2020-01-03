@@ -49,9 +49,9 @@ describe('Role: Hunter.Injuries', function() {
       expect(Role.Hunter.Injuries.meetsRequirement({ requires:['tier-0'] },{ tier:1 })).to.equal(false);
       expect(Role.Hunter.Injuries.meetsRequirement({ requires:['tier-0'] },{ tier:0 })).to.equal(true);
     });
-    it('checks for rat', function() {
-      expect(Role.Hunter.Injuries.meetsRequirement({ requires:['species-rat'] },{ character:{ speciesCode:'not-rat' } })).to.equal(false);
-      expect(Role.Hunter.Injuries.meetsRequirement({ requires:['species-rat'] },{ character:{ speciesCode:'rat' } })).to.equal(true);
+    it('checks for scaven', function() {
+      expect(Role.Hunter.Injuries.meetsRequirement({ requires:['species-scaven'] },{ character:{ speciesCode:'not-scaven' } })).to.equal(false);
+      expect(Role.Hunter.Injuries.meetsRequirement({ requires:['species-scaven'] },{ character:{ speciesCode:'scaven' } })).to.equal(true);
     });
     it('checks for biter', function() {
       expect(Role.Hunter.Injuries.meetsRequirement({ requires:['species-biter'] },{ character:{ biter:false } })).to.equal(false);

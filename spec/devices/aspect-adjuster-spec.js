@@ -2,11 +2,11 @@ describe('AspectAdjuster', function() {
 
   it("Adjusts multiple character's attributes", function(done) {
     GameHelper.setupTestGame().then(game => {
-      CharacterAgent.findActor('rat-chief').then(chief => {
+      CharacterAgent.findActor('scaven-chief').then(chief => {
         let oldValue = chief.loyalty;
         let id = chief.id;
 
-        AspectAdjuster.adjust({ subject:'all-rats', aspect:'loyal', level:3 }).then(() => {
+        AspectAdjuster.adjust({ subject:'all-scaven', aspect:'loyal', level:3 }).then(() => {
 
           // Timeout needed because we're saving and loading too quickly in the spec.
           setTimeout(() => {

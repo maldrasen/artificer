@@ -58,11 +58,11 @@ Role.Hunter.Injuries = (function() {
   // else.
   //
   // Recognized Requirements:
-  //    success         The hunt was successful
-  //    failure         The hunt was a failure
-  //    tier-0          The hunter has exactly tier 0 equipment (no equipment)
-  //    species-rat     A rat is hunting
-  //    species-biter   The hunter has a bite attack
+  //    success           The hunt was successful
+  //    failure           The hunt was a failure
+  //    tier-0            The hunter has exactly tier 0 equipment (no equipment)
+  //    species-scaven    A scaven is hunting
+  //    species-biter     The hunter has a bite attack
   function meetsRequirement(hazard, options) {
     let valid = true;
 
@@ -71,11 +71,11 @@ Role.Hunter.Injuries = (function() {
     if (hazard.location == 'tits'  && options.tits == null)  { valid = false; }
 
     each((hazard.requires||[]), requirement => {
-      if (requirement == 'failure'       && options.success) { valid = false; }
-      if (requirement == 'success'       && !options.success) { valid = false; }
-      if (requirement == 'tier-0'        && options.tier != 0) { valid = false; }
-      if (requirement == 'species-rat'   && options.character.speciesCode != 'rat') { valid = false; }
-      if (requirement == 'species-biter' && options.character.biter == false) { valid = false; }
+      if (requirement == 'failure'        && options.success) { valid = false; }
+      if (requirement == 'success'        && !options.success) { valid = false; }
+      if (requirement == 'tier-0'         && options.tier != 0) { valid = false; }
+      if (requirement == 'species-scaven' && options.character.speciesCode != 'scaven') { valid = false; }
+      if (requirement == 'species-biter'  && options.character.biter == false) { valid = false; }
     });
 
     return valid;

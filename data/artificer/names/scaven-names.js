@@ -102,5 +102,5 @@ let names = [
 ];
 
 each(names, (name)=>{
-  Name.add(name, { species:'rat' });
+  Name.add(name, { species:'scaven' });
 });

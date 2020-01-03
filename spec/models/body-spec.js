@@ -45,8 +45,8 @@ describe("Body", function() {
       });
     });
 
-    it("calculates the weight of the smallest rat", function(done) {
-      CharacterBuilder.build({ firstName:'X', gender:'female', species:'rat', body:{ height:760 }}).then(character => {
+    it("calculates the weight of the smallest scaven", function(done) {
+      CharacterBuilder.build({ firstName:'X', gender:'female', species:'scaven', body:{ height:760 }}).then(character => {
         character.getBody().then(body => {
           body.getWeight().then(weight => {
             expect(ConversionUtility.gramToPound(weight)).to.equal(50);
@@ -56,8 +56,8 @@ describe("Body", function() {
       });
     });
 
-    it("calculates the weight of the biggest rat", function(done) {
-      CharacterBuilder.build({ firstName:'X', gender:'male', species:'rat', body:{ height:1060 }}).then(character => {
+    it("calculates the weight of the biggest scaven", function(done) {
+      CharacterBuilder.build({ firstName:'X', gender:'male', species:'scaven', body:{ height:1060 }}).then(character => {
         character.getBody().then(body => {
           body.getWeight().then(weight => {
             expect(ConversionUtility.gramToPound(weight)).to.equal(74);

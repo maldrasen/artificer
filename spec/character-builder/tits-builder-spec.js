@@ -1,7 +1,7 @@
 describe('TitsBuilder', function() {
 
   it('builds tits using all options', function(done) {
-    let options = { firstName:'X', species:'rat', gender:'futa', tits:{
+    let options = { firstName:'X', species:'scaven', gender:'futa', tits:{
       count: 3,
       sizeClass: 'monster',
       sizeScale: 100.0,

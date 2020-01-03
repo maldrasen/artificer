@@ -32,7 +32,7 @@
 // // --- Anus : Rip ---
 //
 // Hazard.buildHazard({ activity:'hunting-hinterlands', location:'anus', type:'rip', level:2,
-//   requires: ['failure','species-rat'],
+//   requires: ['failure','species-scaven'],
 //   story: `{{H::gender.He}} was found and captured by a group of Kobolds who were also out hunting. They tied
 //           {{H::gender.him}} to a tree and made a game out of guessing how many pine cones they could fit into
 //           {{H::gender.his}} ass at once. (The answer was {{randomEng|3-6}}.) The ordeal though left {{H::gender.him}}
@@ -78,7 +78,7 @@ Hazard.buildHazard('hunt-cock-blight-001', { activity:'hunting-hinterlands', loc
 });
 
 Hazard.buildHazard('hunt-cock-blight-004', { activity:'hunting-hinterlands', location:'cock', type:'blight', level:4,
-  requires: ['failure','tier-0','species-rat'],
+  requires: ['failure','tier-0','species-scaven'],
   details: { place:'cock' },
   story: `{{H::gender.He}} was chasing a fox through the nearby woods when {{H::gender.he}} ran face first
           into a massive spiderweb, becoming immediately entangled. One of the local dryads, tired of your rats
@@ -99,7 +99,7 @@ Hazard.buildHazard('hunt-cock-blight-004', { activity:'hunting-hinterlands', loc
 // // --- Pussy : Rip ---
 //
 // Hazard.buildHazard({ activity:'hunting-hinterlands', location:'pussy', type:'rip', level:2,
-//   requires: ['failure','species-rat'],
+//   requires: ['failure','species-scaven'],
 //   story: `{{H::gender.He}} was found and captured by a group of Kobolds who were also out hunting. They tied
 //           {{H::gender.him}} to a tree and made a game out of guessing how many river stones they could fit into
 //           {{H::gender.his}} pussy at once. (The answer was {{randomEng|8-16}}.) The ordeal though left {{H::gender.him}}
