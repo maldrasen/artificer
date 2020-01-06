@@ -27,15 +27,22 @@ Components.EventView.FormPage = (function() {
   }
 
   // If an anchor on the form page has the class form-page-submit, this
-  // function will be called. The default behavior of the submit() function
-  // first calls the page's onSubmit callback. The page is then removed and
-  // the event stage is advanced.
+  // function will be called. The only purpose of this function is to trigger
+  // the form page's onSubmit callback (assuming there is one, if there isn't
+  // then some other event listener will need to be added to complete the page)
+  //
+  // There is a break between this function and the complete function in order
+  // to allow the onSubmit callback to validate the form before it calls
+  // complete.
   function submit(page, element) {
     if (page.onSubmit) { page.onSubmit(element); }
+  }
+
+  function complete() {
     $('#formPage').remove();
     Components.EventView.nextStage();
   }
 
-  return { register, load };
+  return { register, load, complete };
 
 })();

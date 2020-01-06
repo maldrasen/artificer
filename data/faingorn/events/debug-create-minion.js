@@ -1,8 +1,8 @@
-Event.build('debug.create-minion', {
+Event.build('debug-create-minion', {
   background: { code:'void' },
 
   stages:[
-    { formPage:'debug-create-minion' }
+    { formPage:'debug-create-minion' },
   ],
 
   onFinish: async choices => {

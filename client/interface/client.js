@@ -4,8 +4,9 @@ global.Client = (function() {
     ipcRenderer.on('engine.mod-loaded', (transport, mod) => {
       console.log(`> Loading Mod [${mod.name}]`);
       each(mod.clientFiles, (file) => {
-        console.log(`   - ${file}`);
-        require(`${ROOT}/data/${mod.name}/${file}`);
+        if (! file.match(/\.html$/)) {
+          require(`${ROOT}/data/${mod.name}/${file}`);
+        }
       });
     });
 

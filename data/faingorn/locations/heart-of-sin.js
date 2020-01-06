@@ -16,7 +16,7 @@ Location.build('heart-of-sin', {
 
     { name: 'Create Minion',
       command: 'game.start-action-event',
-      data: { code:'debug.create-minion' }}
+      data: { code:'debug-create-minion' }}
   ],
 
 });

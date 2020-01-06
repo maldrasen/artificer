@@ -25,11 +25,8 @@ require(`${ROOT}/client/components/player-view`);
 require(`${ROOT}/client/components/report-view`);
 require(`${ROOT}/client/components/saved-games`);
 
+// === Event View Page Types ===
 require(`${ROOT}/client/components/event-view/form-page`);
-
-require(`${ROOT}/client/components/event-views/name-form`);
-require(`${ROOT}/client/components/event-views/sexuality-form`);
-require(`${ROOT}/client/components/event-views/warning`);
 
 // === Elements ===
 require(`${ROOT}/client/elements/elements`);
