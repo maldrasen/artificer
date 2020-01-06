@@ -40,10 +40,6 @@ Elements.RadioButtons = (function() {
     return group.data('value');
   }
 
-  return {
-    init: init,
-    wire: wire,
-    setValue: setValue
-  }
+  return { init, wire, setValue, getValue };
 
 })();
