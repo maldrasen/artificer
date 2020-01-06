@@ -5,7 +5,6 @@ global.RendererCommands = (function() {
 
     ipcRenderer.on('engine.ready', Renderer.ready);
     ipcRenderer.on('game.file-list', Components.SavedGames.showSaves);
-    ipcRenderer.on('render.file', Renderer.renderFile);
     ipcRenderer.on('render.main-menu', Renderer.showMainMenu);
 
     ipcRenderer.on('render.event', Components.EventView.build);

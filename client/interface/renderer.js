@@ -116,20 +116,6 @@ global.Renderer = (function() {
 
   // === Rendering ===
 
-  // Render file simply loads the content of an HTML file into the #mainContent
-  // element, replacing the view entirely. I think I should get rid of this
-  // soon as directly rendering a file is a bit too low level, but useful to
-  // have when building all this.
-  //
-  // Arguments:
-  //    path (required) - Path to the HTML file.
-  function renderFile(transport, options) {
-    loadFile(`${ROOT}/${options.path}`, (data) => {
-      $('#mainContent').empty().append(data);
-      constructView();
-    });
-  }
-
   function constructView() {
     if ($('.partial').length > 0) { return renderPartial(); }
     finishedLoading();
@@ -171,7 +157,7 @@ global.Renderer = (function() {
     showSaveGame,
     showMap,
 
-    renderFile,
+    loadFile,
 
     lock,
     unlock,

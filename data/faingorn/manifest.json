@@ -1,5 +1,7 @@
 {
-  "clientFiles":[],
+  "clientFiles":[
+    "views/*"
+  ],
 
   "sharedFiles":[
     "configuration"

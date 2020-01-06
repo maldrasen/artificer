@@ -12,6 +12,8 @@ Components.EventView = (function() {
     $(document).on('click', '#currentEvent .activate-skip', Elements.buttonAction(activateSkip));
     $(document).on('click', '#currentEvent .chooser-accept', Elements.buttonAction(acceptChoice));
     $(document).on('click', '#currentEvent .selection-button', Elements.buttonAction(acceptSelection));
+
+    // TODO: Replacing these...
     $(document).on('click', '#nameFormPage .accept', Elements.buttonAction(Components.EventView.NameForm.accept));
     $(document).on('click', '#sexualityFormPage .accept', Elements.buttonAction(Components.EventView.SexualityForm.accept));
     $(document).on('click', '#warningFrame .close',Elements.buttonAction(Components.EventView.Warning.accept));
@@ -81,12 +83,9 @@ Components.EventView = (function() {
     Renderer.sendCommand('game.end-event',choices);
   }
 
-  // Build the next stage from a stage object. Global stage options include:
-  //
-  //    background (obsolete)
-  //
-  // Otherwise there are a whole fuck ton of other page types, each of which
-  // have their own options and have to be documented separately.
+  // Build the next stage from a stage object. There are a whole fuck ton of
+  // page types, each of which have their own options and have to be documented
+  // separately.
   function buildStage() {
     let stage = currentStage();
 
@@ -98,12 +97,19 @@ Components.EventView = (function() {
 
     // These views cannot be skipped through.
     skipActive = false;
-    if (stage.chooserPage)       { return buildChooserPage();   }
-    if (stage.selectionPage)     { return buildSelectionPage(); }
-    if (stage.customPage)        { return buildCustomPage();    }
-    if (stage.nameFormPage)      { return Components.EventView.NameForm.build();      }
-    if (stage.warningPage)       { return Components.EventView.Warning.build();       }
-    if (stage.sexualityFormPage) { return Components.EventView.SexualityForm.build(); }
+    if (stage.chooserPage)   { return buildChooserPage(); }
+    if (stage.selectionPage) { return buildSelectionPage(); }
+
+    // So far, all of the custom views fall under form pages.
+    if (stage.formPage) { return Components.EventView.FormPage.load(stage.formPage); }
+
+    // All this can be replaced I think.
+    // if (stage.customPage)            { return buildCustomPage(); }
+    // if (stage.nameFormPage)          { return Components.EventView.NameForm.build(); }
+    // if (stage.warningPage)           { return Components.EventView.Warning.build(); }
+    // if (stage.sexualityFormPage)     { return Components.EventView.SexualityForm.build(); }
+    // if (stage.debugCreateMinionPage) { return Components.EventView.DebugCreateMinion.build(); }
+
     throw "Unrecognized Stage Type"
   }
 
