@@ -1,4 +1,4 @@
-Event.build('debug.create-player', {
+Event.build('debug-create-player', {
   background: { code:'void' },
 
   stages:[

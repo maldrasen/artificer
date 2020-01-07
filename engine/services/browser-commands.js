@@ -128,10 +128,6 @@ global.BrowserCommands = (function() {
 
     // === Debug ===
 
-    ipcMain.on('debug.set-flag-list', (event, data) => {
-      console.log("Set Flag List:",data)
-    });
-
     ipcMain.on('debug.game.printFlags', () => {
       Flag.printFlags();
     });
