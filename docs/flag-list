@@ -1,27 +1,5 @@
 
-character.scavenChief         |                                 | (id) ID of the strongest alive rat serving as chief.
-location.currentStudy         |                                 | (code) Set to the code of the location where the study actions can be performed.
-location.keepName             | journal-1                       | (name) Set by the player to name their keep. Set to Faingorn Keep by default.
-locationMenu.inventory        |                                 | (unlocked) Turns on the inventory menu.
-locationMenu.map              |                                 | (unlocked) Turns on the map menu.
-locationMenu.minions          |                                 | (unlocked) Turns on the minion menu.
-locationMenu.showDate         |                                 | (unlocked) Shows the Rhysh date with the day number.
-minion.missions               |                                 | (unlocked) Turns on the ability to send minions on missions.
-player.firstName              | Player.forge()                  | (name) The player's name, used to show the player's name on the location menu.
-player.fucksMen               |                                 | (always,maybe,never) The player's gender preferences.
-player.fucksFutas             |                                 | (always,maybe,never)
-player.fucksWomen             |                                 | (always,maybe,never)
-tasks.brainwash               |                                 | (unlocked) Unlocks brainwashing.
-tasks.craft                   |                                 | (unlocked) Unlocks any crafting.
-tasks.experiment              |                                 | (unlocked) Unlocks experimentation.
-tasks.meditate                |                                 | (unlocked) Unlocks meditation.
-tasks.train.golden            |                                 | (unlocked) Unlocks piss training.
-
-=== Event Specific ===
-
-mission.sisalDiscoverable     | journal-4                       | (yes) The sisal field can be discovered.
-player.bedsIn                 |                                 | (hide) Some events may need to know where the player sleeps.
-player.dressedIn              |                                 | (hide) Some events may need to generally know what the player wears.
+(Moved flags into their respective FlagInfo file)
 
 === Automatic ===
 enqueued.{code}    | {count} The number of times this event has been enqueued | Every event that has been enqueued by the
