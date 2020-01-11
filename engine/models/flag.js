@@ -6,7 +6,14 @@ global.Flag = Database.instance().define('flag', {
 });
 
 Flag.lookup = async function(code) {
-  return await Flag.findOne({ where:{ code:code } });
+  let flag = await Flag.findOne({ where:{ code:code } });
+
+  if (flag == null) {
+    let info = FlagInfo.instances[code];
+    return (info && info.default) ? { code:code, value:info.default } : null;
+  }
+
+  return { code:flag.code, value:flag.value };
 }
 
 Flag.equals = async function(code,value) {
@@ -21,6 +28,11 @@ Flag.setAll = async function(flags) {
 }
 
 Flag.set = async function(code, value) {
+  let info = FlagInfo.instances[code];
+  if (info) {
+    if (info.validateIn != null && info.validateIn.indexOf(value) < 0) { throw `Cannot set flag ${code} to ${value}. Validation failed.` }
+    if (info.validateInteger && Number.isInteger(value) == false)      { throw `Cannot set flag ${code} to ${value}. Validation failed.` }
+  }
   return await Flag.create({ code:code, value:value });
 }
 
