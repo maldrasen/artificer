@@ -81,8 +81,7 @@ global.EventQueue = (function() {
 
     let event = Event.lookup(code);
     if (event.repeatable) {
-      flag.value += 1;
-      await flag.save();
+      await Flag.set(flag.code, 1 + parseInt(flag.value));
       return true;
     }
 

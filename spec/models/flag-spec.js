@@ -52,22 +52,30 @@ describe('Flag', function() {
     });
   });
 
+  // There's a timing issue here. Setting the same flag too rapidly sometimes
+  // causes the flag to be set then deleted. Getting all the flags first seems
+  // to clear up this issue though.
+
   it('gets the "maybe fuck" gender list', function(done) {
-    Flag.setAll(scores).then(() => {
-      Flag.maybeFuckGenderList().then(list => {
-        expect(list).to.eql(['futa'])
-        done();
+    Flag.getAll().then(all => {
+      Flag.setAll(scores).then(() => {
+        Flag.maybeFuckGenderList().then(list => {
+          expect(list).to.eql(['futa'])
+          done();
+        });
       });
     });
   });
 
   it('gets the gender preference scores', function(done) {
-    Flag.setAll(scores).then(() => {
-      Flag.genderPreferenceScores().then(s => {
-        expect(s.male).to.equal(0);
-        expect(s.futa).to.equal(1);
-        expect(s.female).to.equal(2);
-        done();
+    Flag.getAll().then(all => {
+      Flag.setAll(scores).then(() => {
+        Flag.genderPreferenceScores().then(s => {
+          expect(s.male).to.equal(0);
+          expect(s.futa).to.equal(1);
+          expect(s.female).to.equal(2);
+          done();
+        });
       });
     });
   });

@@ -33,6 +33,13 @@ Flag.set = async function(code, value) {
     if (info.validateIn != null && info.validateIn.indexOf(value) < 0) { throw `Cannot set flag ${code} to ${value}. Validation failed.` }
     if (info.validateInteger && Number.isInteger(value) == false)      { throw `Cannot set flag ${code} to ${value}. Validation failed.` }
   }
+
+  let flag = await Flag.findOne({ where:{ code:code }});
+  if (flag) {
+    flag.value = value;
+    return await flag.save();
+  }
+
   return await Flag.create({ code:code, value:value });
 }
 
