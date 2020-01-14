@@ -20,6 +20,7 @@ Components.EventView.FormPage.register('name-form', {
     // Prevent names that are too long.
     if (choices.firstName.length > 20 || choices.lastName.length > 20 || choices.title.length > 20) { return false; }
 
+    // TODO: Perhaps the engine could randomly select a title from an array of possible titles if they leave it blank?
     if (choices.title.length == 0) {
       choices.title = {
         male:   'Master',
