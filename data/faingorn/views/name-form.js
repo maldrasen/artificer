@@ -3,15 +3,11 @@ Components.EventView.FormPage.register('name-form', {
   view: 'data/faingorn/views/name-form.html',
 
   onLoad: page => {
-    // We should file in the comment element with a comment about the species
-    // choice. This code lives in the view now though, so I've got to relocate
-    // the comments, probably to just this function here. Not able to test this
-    // at the moment though because I'm working on the debug events, so the
-    // choice isn't even filled in just now.
-
-    // let species = Components.EventView.getChoices().species || 'lupin';
-    // let comment = Species.chooserOptions[species].comment;
-    // page.find('.comment').append(comment);
+     $('input#title').val({
+      male:   'Master',
+      female: 'Mistress',
+      futa:   'Mystress'
+    }[Components.EventView.getChoices().gender]);
   },
 
   onSubmit: () => {
@@ -21,8 +17,16 @@ Components.EventView.FormPage.register('name-form', {
       lastName:  $('#lastName').val().trim(),
     };
 
-    if (choices.firstName.length == 0 || choices.lastName.length == 0 || choices.title.length == 0) { return false; }
+    // Prevent names that are too long.
     if (choices.firstName.length > 20 || choices.lastName.length > 20 || choices.title.length > 20) { return false; }
+
+    if (choices.title.length == 0) {
+      choices.title = {
+        male:   'Master',
+        female: 'Mistress',
+        futa:   'Mystress'
+      }[choices.gender];
+    }
 
     Components.EventView.updateChoices(choices)
     Components.EventView.FormPage.complete();

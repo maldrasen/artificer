@@ -1,14 +1,23 @@
 
 <div id='nameFormPage' class='chooser-centered-panel'>
+
+  <div class='big-margin align-center' style='margin-top:100px;'>
+    A being needs a name as well. What should I call myself?
+    <div class='fg-weak fs-small'>
+      (Or I could leave this form blank to let cruel fates decide my name for me.)
+    </div>
+  </div>
+
   <div class='small-centered-area panel', style='margin-top:100px; margin-bottom:244px;'>
     <ul class='form-list label-size-6 input-size-12 margin-auto big-padding' style='width:252px;'>
-      <li><label>Title</label><input type='text' id='title' value='Master'/></li>
-      <li><label>First Name</label><input type='text' id='firstName' value='Horsecock'/></li>
-      <li><label>Last Name</label><input type='text' id='lastName' value='Murderface'/></li>
+      <li><label>Title</label><input type='text' id='title'/></li>
+      <li><label>First Name</label><input type='text' id='firstName'/></li>
+      <li><label>Last Name</label><input type='text' id='lastName'/></li>
     </ul>
   </div>
-  <div class='chooser-centered-footer'>
-    A being needs a name as well. What should I call myself?
-    <div class='action'><a href='#' class="button-primary form-page-submit">Accept</a></div>
+
+  <!-- This margin bullshit is to make this accept button align with the accept button on the chooser pages. -->
+  <div class='align-right' style='margin-top:-104px; margin-right:10px'>
+    <a href='#' class="button-primary form-page-submit">Accept</a>
   </div>
 </div>
