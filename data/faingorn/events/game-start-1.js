@@ -38,6 +38,7 @@ Event.build('game-start-1', {
       text: "What manner of creature was I? Or more importantly what do I wish to become?",
     },{
       pages: [
+        { text:"(Species Comment)", onShow:'species-comment' },
         { text:"With that form in mind I will myself to again be made flesh." },
         { text:"It's impossible to say how long it takes." },
         { text:"It could be minutes or years." },

@@ -179,6 +179,12 @@ Components.EventView = (function() {
     showSpeaker(page.minionSpeaker, page.playerSpeaker)
 
     $('#currentEvent .event-text-frame').empty().append(page.text)
+
+    // After the page has been displayed it's possible for the event to make some adjustments to the text, usually in
+    // response to some choice made within this same event, but not consequential to make it an entire branch. These
+    // functions have to be referenced by code and kept in the Components.EventView.PageFunctions object because the
+    // events are defined in the engine, but these functions are called by the client.
+    if (page.onShow) { Components.EventView.PageFunctions[page.onShow](choices); }
   }
 
   function showSpeaker(minionName, playerName) {
@@ -340,3 +346,5 @@ Components.EventView = (function() {
   };
 
 })();
+
+Components.EventView.PageFunctions = {};
