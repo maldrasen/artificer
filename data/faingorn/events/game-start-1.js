@@ -1,10 +1,10 @@
-Event.build('game-start', {
+Event.build('game-start-1', {
   background: { code:'void' },
   darkenBackground: 100,
 
   stages:[
     {
-      warningPage: true
+      formPage: 'warning-form'
     },{
       pages: [
         { text:"I'm dead." },
@@ -26,16 +26,16 @@ Event.build('game-start', {
       ]
     },{
       chooserPage: true,
-      choices: Species.chooserOptions,
-      name: 'species',
-      text: "What manner of creature was I? Or more importantly what do I wish to become?",
+      options: 'gender-options',
+      name: 'gender',
+      text: "First how would I describe my gender?",
     },{
-      nameFormPage: true
+      formPage: 'name-form'
     },{
       chooserPage: true,
-      choices: Gender.chooserOptions,
-      name: 'gender',
-      text: "And how would I describe my gender?",
+      options: 'species-options',
+      name: 'species',
+      text: "What manner of creature was I? Or more importantly what do I wish to become?",
     },{
       pages: [
         { text:"With that form in mind I will myself to again be made flesh." },
@@ -49,19 +49,6 @@ Event.build('game-start', {
 
   onFinish: async choices => {
     await (await Game.instance()).createPlayer(choices);
-
-    let startingCharacters = [
-      { type:'minion', species:'rat', gender:'male',   fear:Random.between(40,60), loyalty:Random.between(10,20) },
-      { type:'minion', species:'rat', gender:'male',   fear:Random.between(40,60), loyalty:Random.between(10,20) },
-      { type:'minion', species:'rat', gender:'male',   fear:Random.between(40,60), loyalty:Random.between(10,20) },
-      { type:'minion', species:'rat', gender:'female', fear:Random.between(40,60), loyalty:Random.between(10,20) },
-      { type:'minion', species:'rat', gender:'female', fear:Random.between(40,60), loyalty:Random.between(10,20) },
-      { type:'minion', species:'rat', gender:'female', fear:Random.between(40,60), loyalty:Random.between(10,20) },
-    ];
-
-    await Promise.all(startingCharacters.map((options) => {
-      return CharacterBuilder.build(options);
-    }));
   },
 
 });

@@ -14,6 +14,7 @@
     "locations/*",
     "missions/*",
     "projects/*",
+    "stages/*",
     "task-stories/*"
   ]
 }

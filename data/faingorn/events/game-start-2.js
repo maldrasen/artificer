@@ -1,4 +1,4 @@
-Event.build('game-start-chase', {
+Event.build('game-start-2', {
   background: { code:'field-1' },
 
   stages:[{

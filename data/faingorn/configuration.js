@@ -9,18 +9,16 @@ global.Configuration = {
       'location.keepName': 'Faingorn Keep',
     });
 
-    if (Environment.Debug) {
-      await game.update({ location:'heart-of-sin' });
-      return await EventQueue.enqueueEvents([
-        { code:'debug-create-player' },
-      ]);
-    }
+    // if (Environment.Debug) {
+    //   return await EventQueue.enqueueEvents([
+    //     { code:'debug-create-player' },
+    //   ]);
+    // }
 
     await game.update({ location:'courtyard' });
     await EventQueue.enqueueEvents([
-      { code:'game-start' },
-      { code:'game-start-chase' },
-      { code:'courtyard-get-minions' },
+      { code:'game-start-1' },
+      { code:'game-start-2' },
     ]);
   }
 

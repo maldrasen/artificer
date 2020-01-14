@@ -21,6 +21,7 @@ require(`${ROOT}/engine/forms/area`);
 require(`${ROOT}/engine/forms/description`);
 require(`${ROOT}/engine/forms/event`);
 require(`${ROOT}/engine/forms/flag-info`);
+require(`${ROOT}/engine/forms/game-stage`);
 require(`${ROOT}/engine/forms/gender`);
 require(`${ROOT}/engine/forms/hazard`);
 require(`${ROOT}/engine/forms/image-resource`);
