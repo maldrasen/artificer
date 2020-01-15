@@ -19,6 +19,7 @@ global.Configuration = {
     await EventQueue.enqueueEvents([
       { code:'game-start-1' },
       { code:'game-start-2' },
+      { code:'morning-1' },
     ]);
   }
 

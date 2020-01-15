@@ -19,7 +19,7 @@ global.Location = class Location extends Form {
       attributes: results[3],
       flavor: results[4],
       actions: this.actions,
-      mapData: this.buildMapData(flags),
+      mapData: (await Location.buildMapData(flags)),
       dates: { day:game.dayNumber }
     };
 
@@ -55,20 +55,24 @@ global.Location = class Location extends Form {
   // now we only need a name and a code, but eventually I think the map will
   // need to be more graphical, so this will need to carry a lot more map state
   // data and image positioning and stuff.
-  buildMapData(flags) {
-    let locations = [];
+  static async buildMapData(flags) {
+    let current = (await Game.instance()).location;
 
-    each(Location.instances, (location, code) => {
-      if (location.unlockFlag == null || flags[location.unlockFlag]) {
-        locations.push({
+    let locations = await Promise.all(Location.all().map(async location => {
+      if (flags[`map.${location.code}`] == null) { return null; } else {
+        let events = await EventQueue.getQueuedLocationEvents(location.code);
+        let name = await location.buildName();
+
+        return {
           code: location.code,
-          name: location.name,
-          current: location.code == this.code,
-        });
+          current: location.code == current,
+          name: name,
+          eventFlag: (events.length > 0)
+        };
       }
-    })
+    }));
 
-    return { locations:locations };
+    return { locations:ArrayUtility.compact(locations) };
   }
 
 }

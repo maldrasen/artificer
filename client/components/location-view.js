@@ -44,7 +44,9 @@ Components.LocationView = (function() {
     let list = $('#overlayFrame #mapView .locations').empty();
 
     each(mapData.locations, location => {
-      list.append((location.current == false) ? buildMapLink(location) : $('<li>').append(location.name));
+      let element = (location.current == false) ? buildMapLink(location) : $('<li>').append(location.name);
+      if (location.eventFlag) { element.append($('<span>',{ class:'event-flag' }).append('(!) Event')); }
+      list.append(element);
     });
   }
 

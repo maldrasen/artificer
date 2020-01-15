@@ -31,3 +31,21 @@
     width: 400px;
   }
 }
+
+// This will all have to change, but I can't stand looking at it unstyled.
+#mapView {
+  .locations > li {
+    font-size: $fs-big;
+    line-height: 30px;
+  }
+  .event-flag {
+    margin-left: 40px;
+    height: 30px;
+    font-size: 12px;
+    padding: 2px 6px;
+    color: $fg-button-primary;
+    border-radius: 4px;
+    border: 1px solid;
+    box-shadow: $shadow-shallow;
+  }
+}
