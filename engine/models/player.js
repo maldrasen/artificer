@@ -28,13 +28,20 @@ Player.instance = function() {
 
 Player.forge = async function(options) {
   let player = await Player.instance();
-  if (player != null) {
-    throw 'Cannot create player. The Player already exists.'
+
+  if (player != null) { throw 'Cannot create player. The Player already exists.'; }
+  if (options.gender == null) { throw 'Player gender is required'; }
+  if (options.species == null) { throw 'Player species is required'; }
+
+  if (options.title == null || options.title.length == 0) {
+    if (options.gender == 'male')   { options.title = 'Master'; }
+    if (options.gender == 'female') { options.title = 'Mistress'; }
+    if (options.gender == 'futa')   { options.title = 'Mystress'; }
   }
 
   player = await Player.create({
     id: 1000000000,
-    title: options.title || 'Master',
+    title: options.title,
     firstName: options.firstName,
     lastName: options.lastName,
     genderCode: options.gender,
@@ -42,7 +49,10 @@ Player.forge = async function(options) {
   });
 
   await CharacterBuilder.addBody(player, {});
-  await Flag.set('player.firstName',player.firstName);
+  await Flag.setAll({
+    'player.firstName': player.firstName,
+    'player.lastName': player.lastName,
+    'player.title': player.title });
   await player.update({ portraitCode:(await ImageResource.portraitFor(player)).code });
 }
 
