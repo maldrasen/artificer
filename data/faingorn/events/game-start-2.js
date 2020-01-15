@@ -129,9 +129,6 @@ Event.build('game-start-2', {
       { text:" ", darkenBackground:100 },
     ]
   },{
-    customPage: true,
-    clickAdvance: true,
-    background: { code:'splash-screen' },
-    html:`<div id='gameTitleFrame'><div id='gameTitle'>Artificer</div></div>`
+    formPage: 'splash-screen'
   }]
 });
