@@ -16,7 +16,10 @@ Event.build('morning-2', {
   }],
 
   onFinish: async () => {
-    await EventQueue.enqueueEvent('ambush-rat-setup');
+    await EventQueue.enqueueEvents([
+      { code:'ambush-rat-setup' },
+      { code:'looking-outside-1' },
+    ]);
   },
 
 });
