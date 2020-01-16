@@ -18,6 +18,7 @@ Components.PlanView = (function() {
     Components.PlanView.Current.build(planData);
     Components.PlanView.Minions.build(planData);
     Components.PlanView.Missions.build(planData);
+    Components.PlanView.Tasks.build(planData);
   }
 
   function cancelPlan() {

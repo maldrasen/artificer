@@ -7,6 +7,12 @@ Components.PlanView.Tasks = (function() {
     }));
   }
 
+  function build(planData) {
+    if (planData.tasks.length > 0) {
+      $('#planView .show-available-tasks-button').removeClass('hide');
+    }
+  }
+
   function getAvailableTasks() {
     return Components.PlanView.getPlanData().tasks.map(task => {
       let link = $('<a>',{ class:'add-task-button button button-small' });
@@ -56,6 +62,6 @@ Components.PlanView.Tasks = (function() {
     }
   }
 
-  return { init };
+  return { init, build };
 
 })();

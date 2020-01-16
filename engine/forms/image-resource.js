@@ -6,6 +6,10 @@ global.ImageResource = class ImageResource extends Form {
       return ImageResource.lookup(options.code);
     }
 
+    if (options.on == 'background') {
+      return await ImageResource.backgroundWhere(options)
+    }
+
     console.log("Error: What do I do with this?",options);
   }
 
@@ -15,6 +19,9 @@ global.ImageResource = class ImageResource extends Form {
   //     time
   //
   static async backgroundWhere(desires) {
+    if (desires.location) {
+      // TODO: This will lookup a background based on the location, time, and state of the location.
+    }
     return ImageResource.lookup('unknown-background');
   }
 
