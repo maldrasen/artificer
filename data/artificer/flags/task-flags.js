@@ -9,6 +9,11 @@ FlagInfo.build('tasks.craft', {
   validateIn: ['unlocked'],
 });
 
+// Unlocks any dominate when set.
+FlagInfo.build('tasks.dominate', {
+  validateIn: ['unlocked'],
+});
+
 // Unlocks experimentation when set.
 FlagInfo.build('tasks.experiment', {
   validateIn: ['unlocked'],
@@ -16,6 +21,11 @@ FlagInfo.build('tasks.experiment', {
 
 // Unlocks meditation when set.
 FlagInfo.build('tasks.meditate', {
+  validateIn: ['unlocked'],
+});
+
+// Unlocks any terrorize when set.
+FlagInfo.build('tasks.terrorize', {
   validateIn: ['unlocked'],
 });
 

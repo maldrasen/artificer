@@ -1,6 +1,4 @@
 Event.build('morning-2', {
-  location: 'great-hall',
-  
   background: { location:'great-hall', time:'morning' },
 
   stages:[{
@@ -11,9 +9,6 @@ Event.build('morning-2', {
 
   onFinish: async () => {
     console.log('Done.')
-
-
-
   },
 
 });

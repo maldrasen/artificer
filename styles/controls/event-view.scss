@@ -52,6 +52,7 @@
   }
   .event-text-speaker.player { color:$fg-player-quote }
   .event-text-speaker.minion { color:$fg-minion-quote }
+  .event-text-speaker.narrator { color:$fg-narrator-quote }
 
   .event-text-actions {
     position: absolute;
@@ -150,3 +151,4 @@
 
 .minion-quote { color:$fg-minion-quote; }
 .player-quote { color:$fg-player-quote; }
+.narrator-quote { color:$fg-narrator-quote; }
