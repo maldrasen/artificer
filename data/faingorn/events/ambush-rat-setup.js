@@ -10,8 +10,8 @@ Event.build('ambush-rat-setup', {
       { text:`The great hall is a large two-story room with a gallery on one side, which conveniently, would allow me to observe the room from the floor above.` },
       { text:`I should have no problem watching the table from there while also remaining well hidden.` },
       { text:`All that's left then is to find a place to perch, and wait.` },
-      { text:`Later &hellip;`,  background:{ code:'black' }},
-      { text:`The day passed by slowly with no apparent activity below.`,  background:{ location:'great-hall' }},
+      { text:`Later&hellip;`, background:{ code:'black' }},
+      { text:`The day passed by slowly with no apparent activity below.`, background:{ location:'great-hall' }},
       { text:`I was beginning to think that I was either being overly paranoid or that my quarry was too clever to take such obvious bait.` },
       { text:`However, now that the shadows have begun to grow long on the wall, it would seem that my suspicions were correct after all.` },
       { text:`A pair of small rat-like creatures quietly slink into the room.` },
@@ -43,7 +43,7 @@ Event.build('ambush-rat-setup', {
   // important happens in it though.
   onFinish: async choices => {
     await CharacterBuilder.build({ species:'scaven', gender:choices.gender });
-    await EventQueue.enqueueEvent('ambush-rat-captured');
+    await EventQueue.enqueueEvent('ambush-rat-capture');
     await EventQueue.enqueueEvent('looking-outside-2');
     await EventQueue.removeEvent('looking-outside-1');
   },

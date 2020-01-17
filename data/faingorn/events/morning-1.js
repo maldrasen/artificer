@@ -27,7 +27,7 @@ Event.build('morning-1', {
       { text:`I can hear the wind howling, but the high walls that surround the courtyard are shielding me from it.` },
       { text:`Still, I'm completely naked and it feels like it might be early winter.` },
       { text:`I think the best course of action would be to get inside at least, maybe scavenge for some supplies and explore this place a bit.` },
-      { text:`Later &hellip;`,  background:{ code:'black' }},
+      { text:`Later&hellip;`,  background:{ code:'black' }},
       { text:`I spend most of the day exploring the keep.`, background:{ code:'great-hall' }},
       { text:`It looks like it's been abandoned for decades.` },
       { text:`The roof of the keep's single tower has collapsed, letting in all manner of animals and rainwater.` },

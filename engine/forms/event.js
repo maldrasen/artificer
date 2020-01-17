@@ -38,16 +38,19 @@ global.Event = class Event extends Form {
   }
 
   static async transformStage(stage, context) {
-    if (stage.pages) {
-      stage.pages = await Promise.all(stage.pages.map(async page => {
-        const valid = await CentralScrutinizer.meetsRequirements(page.requires, context);
-        if (valid) { return Event.transformPage(page, context) }
-      }));
+    if (stage.pages) { return await Event.transformPages(stage, context); }
+    if (stage.selectionPage) { return Event.transformSelectionPage(stage, context); }
+  }
 
-      stage.pages = stage.pages.filter(page => {
-        return page != null;
-      });
-    }
+  static async transformPages(stage, context) {
+    stage.pages = await Promise.all(stage.pages.map(async page => {
+      const valid = await CentralScrutinizer.meetsRequirements(page.requires, context);
+      if (valid) { return Event.transformPage(page, context) }
+    }));
+
+    stage.pages = stage.pages.filter(page => {
+      return page != null;
+    });
 
     return stage;
   }
@@ -60,6 +63,13 @@ global.Event = class Event extends Form {
     if (page.minionSpeaker) { page.minionSpeaker = Weaver.weave(page.minionSpeaker, context); }
 
     return page;
+  }
+
+  static transformSelectionPage(stage, context) {
+    for (let i=0; i<stage.selections.length; i++) {
+      stage.selections[i].text = Weaver.weave(stage.selections[i].text, context);
+    }
+    return stage;
   }
 
 }
