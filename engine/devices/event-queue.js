@@ -14,6 +14,13 @@ global.EventQueue = (function() {
     }));
   }
 
+  async function removeEvent(code) {
+    const event = await QueuedEvent.findOne({ where:{ code }});
+    if (event != null) {
+      await event.destroy();
+    }
+  }
+
   // Enqueue an event in the form { code:'make-god-cry', state:{ hail:'Satan' }}
   //   code: (required) The event code.
   //   state: (optional) The event state object.
@@ -91,6 +98,7 @@ global.EventQueue = (function() {
   return {
     enqueueEvents,
     enqueueEvent,
+    removeEvent,
     getQueuedEvents,
     getQueuedLocationEvents,
     nextEvent,

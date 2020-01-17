@@ -7,15 +7,18 @@ global.CharacterAgent = (function() {
   async function findActors(descriptive) {
     if (descriptive == 'all-scaven') { return await allOfSpecies('scaven'); }
 
-
     return [(await findActor(descriptive))];
   }
 
   async function findActor(descriptive) {
     if (descriptive == 'player')              { return await Player.instance();      }
-    if (descriptive == 'the-smartest-scaven') { return await findSmartest('scaven'); }
+
+    // Scaven
+    if (descriptive == 'any-scaven')          { return await findAny('scaven');      }
     if (descriptive == 'a-sexy-scaven')       { return await findSexable('scaven');  }
+    if (descriptive == 'the-smartest-scaven') { return await findSmartest('scaven'); }
     if (descriptive == 'scaven-chief')        { return await scavenChief();          }
+
     throw `Cannot find a character that matches ${descriptive}`;
   }
 
@@ -38,6 +41,10 @@ global.CharacterAgent = (function() {
     const newChief = await findStrongest('scaven');
     await Flag.set('character.scavenChief',newChief.id)
     return newChief;
+  }
+
+  function findAny(species) {
+    return Character.findOne({ where:{ speciesCode:species }});
   }
 
   function findSmartest(species) {
