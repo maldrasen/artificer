@@ -39,7 +39,7 @@ Event.build('ambush-rat-capture', {
   }],
 
   onFinish: async choices => {
-    console.log("Choose:",choices.approach)
+    await EventQueue.enqueueEvent(choices.approach == 'befriend' ? 'ambush-rat-befriend' : 'ambush-rat-interrogate');
   },
 
 });
