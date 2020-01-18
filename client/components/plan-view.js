@@ -19,6 +19,9 @@ Components.PlanView = (function() {
     Components.PlanView.Minions.build(planData);
     Components.PlanView.Missions.build(planData);
     Components.PlanView.Tasks.build(planData);
+
+    console.log("Event",event);
+    console.log("Data",planData);
   }
 
   function cancelPlan() {
