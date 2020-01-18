@@ -40,6 +40,9 @@ global.Event = class Event extends Form {
   static async transformStage(stage, context) {
     if (stage.pages) { return await Event.transformPages(stage, context); }
     if (stage.selectionPage) { return Event.transformSelectionPage(stage, context); }
+
+    // No transformation needed.
+    return stage;
   }
 
   static async transformPages(stage, context) {

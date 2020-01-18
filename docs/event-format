@@ -1,0 +1,4 @@
+
+Page Templates:
+  Player Quote:      { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>""</span>` },
+  Minion Quote:      { playerSpeaker:true, text:`<span class='player-quote'>""</span>` },

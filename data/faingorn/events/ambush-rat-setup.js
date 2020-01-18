@@ -44,7 +44,6 @@ Event.build('ambush-rat-setup', {
   onFinish: async choices => {
     await CharacterBuilder.build({ species:'scaven', gender:choices.gender });
     await EventQueue.enqueueEvent('ambush-rat-capture');
-    await EventQueue.enqueueEvent('looking-outside-2');
     await EventQueue.removeEvent('looking-outside-1');
   },
 

@@ -54,9 +54,7 @@ Event.build('morning-1', {
   }],
 
   onFinish: async () => {
-    let game = await Game.instance();
-        game.location = 'great-hall';
-        game.save();
+    await Game.updateLocation('great-hall');
 
     await Flag.setAll({
       'location.currentStudy': 'great-hall',
