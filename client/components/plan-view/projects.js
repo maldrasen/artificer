@@ -7,6 +7,13 @@ Components.PlanView.Projects = (function() {
     }));
   }
 
+  function build(planData) {
+    if (planData.projects.length > 0) {
+      $('#planView .show-available-projects-button').removeClass('hide');
+      $('#planView #idleMessage').addClass('hide');
+    }
+  }
+
   function getAvailableProjects() {
     return Components.PlanView.getPlanData().projects.map(project => {
       let link = $('<a>',{ class:'start-project-button button button-small' });
@@ -99,6 +106,6 @@ Components.PlanView.Projects = (function() {
     Components.MinionSelectDialog.setStatus(status);
   }
 
-  return { init };
+  return { init, build };
 
 })();

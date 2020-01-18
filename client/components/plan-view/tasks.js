@@ -10,6 +10,7 @@ Components.PlanView.Tasks = (function() {
   function build(planData) {
     if (planData.tasks.length > 0) {
       $('#planView .show-available-tasks-button').removeClass('hide');
+      $('#planView #idleMessage').addClass('hide');
     }
   }
 

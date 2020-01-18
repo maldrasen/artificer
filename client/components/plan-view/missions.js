@@ -10,6 +10,7 @@ Components.PlanView.Missions = (function() {
   function build(planData) {
     if (planData.missions.length > 0) {
       $('#planView .show-available-missions-button').removeClass('hide');
+      $('#planView #idleMessage').addClass('hide');
     }
   }
 

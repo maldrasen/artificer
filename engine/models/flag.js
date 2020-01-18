@@ -16,6 +16,11 @@ Flag.lookup = async function(code) {
   return { code:flag.code, value:flag.value };
 }
 
+Flag.lookupValue = async function(code) {
+  let flag = await Flag.lookup(code);
+  return (flag == null) ? null : flag.value;
+}
+
 Flag.equals = async function(code,value) {
   const flag = await Flag.lookup(code);
   return flag != null && flag.value == value;

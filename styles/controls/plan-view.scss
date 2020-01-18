@@ -163,4 +163,11 @@
     opacity: 0.5;
     .role-select { display: none; }
   }
+
+  #idleMessage {
+    width: 100%;
+    margin: 10px;
+    text-align: center;
+    color: $fg-very-weak;
+  }
 }

@@ -93,6 +93,8 @@ Components.PlanView.Current = (function() {
   }
 
   function adjustCategoryButtons() {
+    Components.PlanView.enableConfirm();
+
     let count = getCommitted();
 
     if (count == 4) {
@@ -104,6 +106,11 @@ Components.PlanView.Current = (function() {
     if (count == 0) {
       $('#planView .show-available-tasks-button').removeClass('disabled-button');
       $('#planView .show-available-projects-button').removeClass('disabled-button');
+
+      if (Components.PlanView.allowIdle() == false) {
+        Components.PlanView.disableConfirm();
+      }
+
       return;
     }
 

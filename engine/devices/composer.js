@@ -67,6 +67,9 @@ global.Composer = (function(){
 
   async function renderPlanView() {
     const game = await Game.instance();
+    const flags = {};
+
+    flags['plan-view.allow-idle'] = await Flag.lookupValue('plan-view.allow-idle');
 
     let planData = {
       currentProject: game.currentProject,
@@ -75,6 +78,7 @@ global.Composer = (function(){
       missions: (await Mission.availableForClient()),
       minions: (await Character.allForClient()),
       tasks: (await Task.availableForClient()),
+      flags: flags,
     }
 
     if (game.currentProject) {

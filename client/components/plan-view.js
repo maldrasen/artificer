@@ -16,12 +16,12 @@ Components.PlanView = (function() {
     $('#planView').data('planData', planData);
 
     Components.PlanView.Current.build(planData);
+    Components.PlanView.Projects.build(planData);
     Components.PlanView.Minions.build(planData);
     Components.PlanView.Missions.build(planData);
     Components.PlanView.Tasks.build(planData);
 
-    console.log("Event",event);
-    console.log("Data",planData);
+    if (allowIdle()) { enableConfirm(); }
   }
 
   function cancelPlan() {
@@ -52,9 +52,12 @@ Components.PlanView = (function() {
     })
   }
 
+  function allowIdle() { return getPlanData().flags['plan-view.allow-idle'] == 'unlocked'; }
+  function enableConfirm() { $('#planView .plan-confirm').removeClass('disabled-button'); }
+  function disableConfirm() { $('#planView .plan-confirm').addClass('disabled-button'); }
   function getPlanData() { return $('#planView').data('planData'); }
   function showAvailable(items) { $('#planView .available-actions').empty().append(items); }
 
-  return { init, build, getPlanData, showAvailable };
+  return { init, build, allowIdle, enableConfirm, disableConfirm, getPlanData, showAvailable };
 
 })();
