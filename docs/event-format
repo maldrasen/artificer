@@ -2,3 +2,33 @@
 Page Templates:
   Player Quote:      { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>""</span>` },
   Minion Quote:      { playerSpeaker:true, text:`<span class='player-quote'>""</span>` },
+
+
+=== Selection Pages ===
+Selection Pages are for normal multiple choice options in an event. The selectionKey will be set on the event options
+object to value of the selected choice.
+  - The text in each selection is interpolated by the weaver in the engine when the event is prepared.
+  - The selections can have adjustment badges which can be displayed on the selection.
+
+  - example:
+      {
+        selectionPage: true,
+        selectionKey: 'approach',
+        selections:[
+          { text:'Suck {{R::gender.his}} cock.', value:'befriend', effects:['player oral 1']},
+          { text:'Fist {{R::gender.his}} ass.', value:'torment',   effects:['player fisting 2']},
+        ]
+      }
+
+The adjustment badges are built from a space seperated string. The adjustment strang is made up of three elements; the
+subject, the aspect, and the level.
+
+  Subject: This is the actor, or group of actors getting adjusted. Normally a character being adjusted will be in the
+           weaver context so we look there first. If the subject isn't in the actors list, we send it as is, and the
+           CharacterAgent figures out who we're talking about.
+
+  Aspect:  The Aspect being adjusted. This should either map to an attribute like fear or loyalty, to an aspect like
+           golden, or to something player specific, like rat-fucker. Whatever string is used it will need to be
+           understood by the AspectAdjuster.
+
+  Level:   The level of the adjustment, -3 to 3, but not 0.

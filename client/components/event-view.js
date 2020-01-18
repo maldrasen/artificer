@@ -268,7 +268,6 @@ Components.EventView = (function() {
       $('<span>',{ class:'text' }).append(selection.text)
     ).data('value',selection.value).append(badges);
 
-
     each(selection.effects, strang => {
       badges.append(new Elements.AdjustmentBadge(strang, eventData.actors).build());
     });

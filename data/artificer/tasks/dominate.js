@@ -1,7 +1,7 @@
 Task.build('dominate', {
   name: 'Dominate',
   description: 'I can choose a minion to spend the day with, training them to become more obediant and loyal to me.',
-  requires: ['flag.tasks.dominate'],
+  requires: ['flag.plan-view.tasks.dominate'],
   time: 4,
   minionsUsed: 1,
 

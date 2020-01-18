@@ -34,7 +34,7 @@ Event.build('ambush-rat-capture', {
     selectionKey: 'approach',
     selections:[
       { text:'Befriend the rat to earn {{R::gender.his}} loyalty.', value:'befriend' },
-      { text:'Torment the rat to make {{R::gender.him}} fear me.', value:'torment' },
+      { text:'Torment the rat to make {{R::gender.him}} fear me.',  value:'torment',  effects:['player sadist 1']},
     ]
   }],
 

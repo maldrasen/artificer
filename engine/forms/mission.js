@@ -1,7 +1,7 @@
 global.Mission = class Mission extends Form {
 
   static async available() {
-    if (false == (await Flag.equals('minion.missions','unlocked'))) { return []; }
+    if (false == (await Flag.equals('plan-view.missions','unlocked'))) { return []; }
 
     return ArrayUtility.compact(
       (await Promise.all(Mission.all().map(async mission => {
