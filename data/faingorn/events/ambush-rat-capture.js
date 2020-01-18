@@ -34,12 +34,12 @@ Event.build('ambush-rat-capture', {
     selectionKey: 'approach',
     selections:[
       { text:'Befriend the rat to earn {{R::gender.his}} loyalty.', value:'befriend' },
-      { text:'Interrogate the rat to make {{R::gender.him}} fear me.', value:'interrogate' },
+      { text:'Torment the rat to make {{R::gender.him}} fear me.', value:'torment' },
     ]
   }],
 
   onFinish: async choices => {
-    await EventQueue.enqueueEvent(choices.approach == 'befriend' ? 'ambush-rat-befriend' : 'ambush-rat-interrogate');
+    await EventQueue.enqueueEvent(choices.approach == 'befriend' ? 'ambush-rat-befriend' : 'ambush-rat-torment');
   },
 
 });
