@@ -1,5 +1,5 @@
 global.Character = Database.instance().define('character', {
-  type:             { type:Sequelize.STRING, validate:{ isIn:[['minion']] }},
+  type:             { type:Sequelize.STRING, validate:{ isIn:[['pending','minion']] }},
   status:           { type:Sequelize.STRING, validate:{ isIn:[['normal','missing','dead']] }},
   currentDuty:      { type:Sequelize.STRING, validate:{ isIn:[['role','project','mission','task']] }},
   dutyCode:         { type:Sequelize.STRING },
@@ -23,7 +23,7 @@ global.Character = Database.instance().define('character', {
   getterMethods: {
     gender()      { return Gender[this.genderCode]; },
     species()     { return Species.lookup(this.speciesCode); },
-    portrait()    { return ImageResource.lookup(this.portraitCode); },
+    portrait()    { return ImageResource.lookup(this.portraitCode ? this.portraitCode : 'unknown-portrait'); },
     dutyOptions() { return JSON.parse(this.dutyOptions_json||'{}') },
     role()        { return this.currentDuty == 'role' ? Role.lookup(this.dutyCode) : null; },
     isMale()      { return this.genderCode == 'male'; },
