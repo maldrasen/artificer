@@ -83,6 +83,7 @@ Event.build('ambush-rat-torment', {
 
   onFinish: async () => {
     await Game.updateLocation('great-hall');
+    await EventQueue.enqueueEvent('ambush-rat-end');
   },
 
 });

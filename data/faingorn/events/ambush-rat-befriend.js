@@ -50,6 +50,7 @@ Event.build('ambush-rat-befriend', {
 
   onFinish: async () => {
     await Game.updateLocation('great-hall');
+    await EventQueue.enqueueEvent('ambush-rat-end');
   },
 
 });
