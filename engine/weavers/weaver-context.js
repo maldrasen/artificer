@@ -24,6 +24,14 @@ global.WeaverContext = class WeaverContext {
     }));
   }
 
+  // Characters can also be added through the event state, for when a
+  // character with a known ID is added to the context.
+  async setEventState(state) {
+    await Promise.all(Object.keys(state.actors||[]).map(async key => {
+      await this.addCharacter(key,(await Character.findByPk(state.actors[key])));
+    }));
+  }
+
   async addGame() {
     const game = await Game.instance();
     this.set('game', game);

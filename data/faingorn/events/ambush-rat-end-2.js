@@ -1,8 +1,5 @@
 Event.build('ambush-rat-end-2', {
-  location: 'great-hall',
-
   background:{ location:'great-hall' },
-  actors:{ R:'any-scaven' },
 
   stages:[{
     requires:['player.never-fucks-men'],
@@ -13,6 +10,10 @@ Event.build('ambush-rat-end-2', {
   },{
     requires:['player.accepts-men','player.accepts-women'],
     pages: [{ text:`Eventually I drift off to sleep, thoughts of cocks and cunts drifting through my head.` }]
+  },{
+    pages: [
+      { text:`{{R::gender.His}} name is {{R::character.name}}` }
+    ]
   }],
 
   onFinish: async () => {

@@ -19,8 +19,13 @@ Components.EventView = (function() {
   //   actors             Map of actors used in the event. The object keys are the subjects for the Weaver. The object
   //                      values are used by the CharacterAgent to lookup the specified character.
   //
-  //   background         (Obsolete, to be replace with something for the image resource loader. Also darkenBackground,
-  //                      should only be done on a stage or page.)
+  //   actorIDs           The map of actor IDs is set when the event is transformed in the engine. If a random
+  //                      character was found by the CharacterAgent, but needs to be used in a follow on event,
+  //                      getting their ID from this object is really the only way to do that. In order for these IDs
+  //                      to pass all the way back to the engine in an onFinish event it's added to the choices object,
+  //                      so that they can then be added to the state of a follow on event.
+  //
+  //   background         Background argument object for the ImageResourceLoader.
   //
   //   location           Used to indicate that this is a location event. Location events are only started when the
   //                      player go to that location and starts the event manually.
@@ -41,10 +46,14 @@ Components.EventView = (function() {
     Components.EventView.Page = {};
 
     skipActive = false;
-    choices = { event:event.code };
     eventData = event;
     stageIndex = 0;
     pageIndex = 0;
+
+    choices = { event:{
+      code: event.code,
+      actorIDs: event.actorIDs
+    }};
 
     $('#mainContent').empty().append($('<div>',{ id:'currentEvent' }).append($($('#eventTemplate').html())));
 

@@ -1,7 +1,7 @@
 global.Event = class Event extends Form {
 
   static async onFinish(choices) {
-    let finishFunction = Event.lookup(choices.event).onFinish;
+    let finishFunction = Event.lookup(choices.event.code).onFinish;
     if (finishFunction) {
       await finishFunction(choices);
     }
@@ -17,6 +17,7 @@ global.Event = class Event extends Form {
     }
 
     const context = new WeaverContext();
+    await context.setEventState(queuedEvent.state);
     await context.setEvent(event);
 
     await Event.transformEvent(event, context);
@@ -34,6 +35,11 @@ global.Event = class Event extends Form {
 
     event.stages = event.stages.filter(stage => {
       return stage != null;
+    });
+
+    event.actorIDs = {};
+    each(event.actors, (value, key) => {
+      event.actorIDs[key] = context.get(key).character.id;
     });
   }
 
