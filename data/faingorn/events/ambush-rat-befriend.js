@@ -17,7 +17,7 @@ Event.build('ambush-rat-befriend', {
       { text:`I'd rather not reveal more about myself or my situation than I have to.` },
       { playerSpeaker:true, text:`<span class='player-quote'>"Let's start simple, what's your name?"</span>` },
       { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"This one is {{R::character.firstName}} {{R::character.lastName}} of the Deep Hole Scaven."</span>` },
-      { text:`{{R::gender.His}} name is a barely pronounceable squeak.` },
+      { text:`{{R::gender.His}} name is a barely pronounceable sequence of squeaks.` },
       { text:`Scaven though, that sounds familiar somehow.` },
       { playerSpeaker:true, text:`<span class='player-quote'>"Why are you here? This place is abandoned, or do you and your Deep Holes live here?"</span>` },
       { minionSpeaker:'{{R::character.firstName}}', text:`{{R::gender.He}} nods slowly. <span class='minion-quote'>"Abandoned yes, but we live here still, down in the deep dark."</span>` },
