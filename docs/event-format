@@ -2,7 +2,17 @@
 Page Templates:
   Player Quote:      { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>""</span>` },
   Minion Quote:      { playerSpeaker:true, text:`<span class='player-quote'>""</span>` },
+  Narrator Quote:    { text:`<span class='narrator-quote'></span>` },
 
+=== Alerts ===
+Alerts can be generated on event pages. It shows a message above the text panel that lingers for a few seconds so that
+it's visible even in fast forward mode. Alerts are added to the page object like so:
+
+  { text:'stuff', alert:{ message:'Message Text' }}
+
+We have the following alert types available in events:
+
+  { alert:{ unlock:'Something was unlocked' }}
 
 === Selection Pages ===
 Selection Pages are for normal multiple choice options in an event. The selectionKey will be set on the event options

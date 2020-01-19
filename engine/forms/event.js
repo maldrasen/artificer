@@ -20,14 +20,14 @@ global.Event = class Event extends Form {
     await context.setEventState(queuedEvent.state);
     await context.setEvent(event);
 
-    await Event.transformEvent(event, context);
+    await Event.transformEvent(event, context, queuedEvent);
 
     return event;
   }
 
   // === Event Transformation  ===
 
-  static async transformEvent(event, context) {
+  static async transformEvent(event, context, queuedEvent) {
     event.stages = await Promise.all(event.stages.map(async stage => {
       const valid = await CentralScrutinizer.meetsRequirements(stage.requires, context);
       if (valid) { return await Event.transformStage(stage, context); }
@@ -39,6 +39,9 @@ global.Event = class Event extends Form {
 
     event.actorIDs = {};
     each(event.actors, (value, key) => {
+      event.actorIDs[key] = context.get(key).character.id;
+    });
+    each(queuedEvent.state.actors||{}, (id, key) => {
       event.actorIDs[key] = context.get(key).character.id;
     });
   }
