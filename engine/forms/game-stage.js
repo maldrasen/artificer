@@ -10,7 +10,7 @@ global.GameStage = class GameStage extends Form {
     if (stage.flags)             { await Flag.setAll(stage.flags);                         }
 
     // Creating minions in the game stage may require more than just the builder options, but for now they do not.
-    await Promise.all((stage.minions||[]).map(await minionData => {
+    await Promise.all((stage.minions||[]).map(async minionData => {
       await CharacterBuilder.build(minionData.builder);
     }));
   }

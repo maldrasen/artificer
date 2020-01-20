@@ -1,6 +1,6 @@
 
 ImageResource.build('unknown-portrait', {
-  url: `${IMAGE_ROOT}/portraits/unknown.png`
+  url: `${IMAGE_ROOT}/portraits/_unknown.png`
 });
 
 // _rat-f-01.png  _rat-f-05.png  _rat-f-09.png  _rat-f-13.png  _rat-f-17.png  _rat-f-21.png  _rat-f-25.png  _rat-m-02.png  _rat-m-06.png  _rat-m-10.png
