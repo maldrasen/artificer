@@ -76,6 +76,7 @@ require(`${ROOT}/engine/devices/resolver/roles`);
 require(`${ROOT}/engine/devices/resolver/tasks`);
 
 require(`${ROOT}/engine/devices/role`);
+require(`${ROOT}/engine/devices/roles/forager`);
 require(`${ROOT}/engine/devices/roles/hunter`);
 require(`${ROOT}/engine/devices/roles/hunter-injuries`);
 require(`${ROOT}/engine/devices/roles/hunter-stories`);

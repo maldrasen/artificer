@@ -42,10 +42,6 @@ global.Character = Database.instance().define('character', {
 
 // This function will need to select all the minions and format them as POJOs
 // for any client view that shows all the minions.
-//
-// TODO: Plan View Specific. We'll eventually need to do something to calculate
-//       the availableRoles. Not every minion will be able to work every role,
-//       but that's not the case right now.
 Character.allForClient = async function() {
   const minions = await Character.findAll({ where:{ type:'minion' } });
 
@@ -58,6 +54,7 @@ Character.prototype.properties = async function() {
   const health = await this.getHealth();
   const healthClass = await this.getHealthClass();
   const healthWord = await this.getHealthWord();
+  const availableRoles = await Role.getAvailableRoles(this);
 
   return {
     id: this.id,
@@ -82,10 +79,7 @@ Character.prototype.properties = async function() {
     fearWord: this.getFearWord(),
     currentDuty: this.currentDuty,
     duty: this.dutyCode,
-    availableRoles: [
-      { code:'rest',   name:'Rest'   },
-      { code:'hunter', name:'Hunter' },
-    ]
+    availableRoles: availableRoles,
   };
 }
 

@@ -9,6 +9,16 @@ FlagInfo.build('plan-view.missions', {
   validateIn: ['unlocked'],
 });
 
+// Unlocks foraging when set.
+FlagInfo.build('plan-view.roles.forager', {
+  validateIn: ['unlocked'],
+});
+
+// Unlocks hunting when set.
+FlagInfo.build('plan-view.roles.hunter', {
+  validateIn: ['unlocked'],
+});
+
 // Unlocks brainwashing when set.
 FlagInfo.build('plan-view.tasks.brainwash', {
   validateIn: ['unlocked'],
