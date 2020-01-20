@@ -53,23 +53,22 @@ Components.MinionSelectDialog = (function() {
   }
 
   function toggleMinion() {
+    Elements.clearSelection();
+
     let limit = $('#minionSelectDialog').data('limit');
     let minimum = $('#minionSelectDialog').data('minimum');
     let selected = getSelectedMinions();
     let minion = $(this);
 
-    if (limit > 1) {
-      if (minion.hasClass('selected')) {
-        minion.removeClass('selected');
-      } else {
-        if (selected.length < limit) {
-          minion.addClass('selected');
-        }
-      }
-    }
-
-    if (limit == 1) {
+    if (minion.hasClass('selected')) {
+      // Always toggle off when clicking on the selected minion.
+      minion.removeClass('selected');
+    } else if (limit == 1) {
+      // Select minion if the job allows only 1 minion.
       $('#minionSelectDialog .selected').removeClass('selected');
+      minion.addClass('selected');
+    } else if (limit > 1 && selected.length < limit) {
+      // Toggle the minion on if the job allows for more.
       minion.addClass('selected');
     }
 
@@ -98,6 +97,9 @@ Components.MinionSelectDialog = (function() {
     })];
   }
 
-  return { init, open, close, setStatus };
+  function enable() { $('#minionSelectDialog .confirm').removeClass('disabled-button'); }
+  function disable() { $('#minionSelectDialog .confirm').addClass('disabled-button'); }
+
+  return { init, open, close, setStatus, enable, disable };
 
 })();

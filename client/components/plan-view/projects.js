@@ -75,6 +75,8 @@ Components.PlanView.Projects = (function() {
   }
 
   function setStatus(project, minions) {
+    Components.MinionSelectDialog.disable();
+
     let status = `This project will take approximately ${project.effort} man hours of work to complete. `;
 
     if (project.help.min == 0 && project.help.max == 0) { status += 'No one can help me on this project. '; }
@@ -83,24 +85,32 @@ Components.PlanView.Projects = (function() {
     if (project.help.min == 1 && project.help.max == 1) { status += `I'll need the help of one of my minions to complete it. ` }
     if (project.help.min >= 1 && project.help.max > 1)  { status += `I'll need the help of ${project.help.min} to ${project.help.max} of my minions to complete it. ` }
 
-    if (minions.length == 0) {
+    if (minions.length == 0 && project.help.min == 0) {
       let days = Math.ceil(project.effort/10);
       status += (days > 1) ?
         `Working by myself, this project will take <span class='fg-strong'>${days} days</span> to complete.`:
         `Working by myself, this project will take <span class='fg-strong'>a day</span> to complete.`;
-    } else {
+    }
+    else if (minions.length == 0 && project.help.min > 0) {
+      // Then add nothing else.
+    }
+    else {
       let work = (minions.length * 5) + 10;
       let days = Math.ceil(project.effort/work);
 
       if (days == 1) {
         status += (minions.length == 1) ?
-          `With the help of a minion, this project will take <span class='fg-strong'>a day</span> to complete.`:
-          `With the help of ${minions.length} minions, this project will take <span class='fg-strong'>a day</span> to complete.`;
+        `With the help of a minion, this project will take <span class='fg-strong'>a day</span> to complete.`:
+        `With the help of ${minions.length} minions, this project will take <span class='fg-strong'>a day</span> to complete.`;
       } else {
         status += (minions.length == 1) ?
-          `With the help of a minion, this project will take <span class='fg-strong'>${days} days</span> to complete.`:
-          `With the help of ${minions.length} minions, this project will take <span class='fg-strong'>${days} days</span> to complete.`;
+        `With the help of a minion, this project will take <span class='fg-strong'>${days} days</span> to complete.`:
+        `With the help of ${minions.length} minions, this project will take <span class='fg-strong'>${days} days</span> to complete.`;
       }
+    }
+
+    if (minions.length >= project.help.min && minions.length <= project.help.max) {
+      Components.MinionSelectDialog.enable();
     }
 
     Components.MinionSelectDialog.setStatus(status);
