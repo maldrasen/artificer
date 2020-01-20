@@ -31,9 +31,13 @@ Components.PlanView.Projects = (function() {
   }
 
   function projectDescription(project) {
-    let assistance = (project.help.max == 0) ?
-      `but I'll have to do this myself. `:
-      `and I can have ${project.help.min} to ${project.help.max} minions help me with this. `;
+    let assistance = `and I can have ${project.help.min} to ${project.help.max} minions help me with this. `
+    if (project.help.max == project.help.min) {
+      if (project.help.max == 1) { assistance = `but I will need the aid of one of my minions. `; }
+      if (project.help.max == 2) { assistance = `but I will need the aid of two of my minions. `; }
+      if (project.help.max == 3) { assistance = `but I will need the aid of three of my minions. `; }
+    }
+    if (project.help.max == 0) { assistance = `but I'll have to do this myself. `; }
 
     let description = `${project.description} This should take about ${project.effort} hours to complete ${assistance}`
     if (project.readyState.ready == false) {
