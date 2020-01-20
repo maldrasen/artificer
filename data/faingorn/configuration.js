@@ -9,11 +9,11 @@ global.Configuration = {
       'location.keepName': 'Faingorn Keep',
     });
 
-    // if (Environment.Debug) {
-    //   return await EventQueue.enqueueEvents([
-    //     { code:'debug-create-player' },
-    //   ]);
-    // }
+    if (Environment.Debug) {
+      return await EventQueue.enqueueEvents([
+        { code:'debug-create-player' },
+      ]);
+    }
 
     await game.update({ location:'courtyard' });
     await EventQueue.enqueueEvents([
