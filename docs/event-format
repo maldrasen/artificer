@@ -26,7 +26,7 @@ object to value of the selected choice.
         selectionKey: 'approach',
         selections:[
           { text:'Suck {{R::gender.his}} cock.', value:'befriend', effects:['player oral 1']},
-          { text:'Fist {{R::gender.his}} ass.', value:'torment',   effects:['player fisting 2']},
+          { text:'Fist {{R::gender.his}} ass.', value:'torment',   effects:['actor(M) fisting 2']},
         ]
       }
 

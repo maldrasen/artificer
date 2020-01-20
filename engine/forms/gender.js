@@ -8,6 +8,7 @@ global.Gender = class Gender {
     this.code = options.code;
     this.man = options.man;
     this.men = options.men;
+    this.boy = options.boy;
     this.boys = options.boys;
     this.male = options.male;
     this.cock = options.cock;
@@ -21,6 +22,7 @@ global.Gender = class Gender {
 
   get Man() { return TextUtility.titlecase(this.man); }
   get Men() { return TextUtility.titlecase(this.men); }
+  get Boy() { return TextUtility.titlecase(this.boy); }
   get Boys() { return TextUtility.titlecase(this.boys); }
   get Male() { return TextUtility.titlecase(this.male); }
   get He() { return TextUtility.titlecase(this.he); }
@@ -33,6 +35,7 @@ Gender.male = new Gender({
   code: 'male',
   man: 'man',
   men: 'men',
+  boy: 'boy',
   boys: 'boys',
   male: 'male',
   cock: true,
@@ -48,6 +51,7 @@ Gender.female = new Gender({
   code: 'female',
   man: 'woman',
   men: 'women',
+  boy: 'girl',
   boys: 'girls',
   male: 'female',
   cock: false,
@@ -63,6 +67,7 @@ Gender.futa = new Gender({
   code: 'futa',
   man: 'futa',
   men: 'futas',
+  boy: 'gurl',
   boys: 'gurls',
   male: 'futa',
   cock: true,
