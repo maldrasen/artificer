@@ -2,8 +2,12 @@
 (Moved flags into their respective FlagInfo file)
 
 === Automatic ===
-enqueued.{code}    | {count} The number of times this event has been enqueued | Every event that has been enqueued by the
-                     game will get this flag set. It's primarily used to prevent non-repeatable events, but can also be
-                     used to see if an event has been executed and how many times.
+enqueued.{code}    {count} The number of times this event has been enqueued | Every event that has been enqueued by the
+                   game will get this flag set. It's primarily used to prevent non-repeatable events, but can also be
+                   used to see if an event has been executed and how many times.
 
-map.{code}         | {unlocked} For a location to appear on the map, the map.{code} flag needs to be set to 'unlocked'
+completed.{code}   {count} The number of times this event has been completed. Because sometimes you need to know if an
+                   event has been completed, not that it's been enqueued. Primarily for location events that can be
+                   enqueued without being done yet.
+
+map.{code}         {unlocked} For a location to appear on the map, the map.{code} flag needs to be set to 'unlocked'

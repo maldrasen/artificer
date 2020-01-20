@@ -90,7 +90,6 @@ Event.build('ambush-rat-end-2', {
     });
 
     await EventQueue.enqueueEvent('looking-outside-2',{ actors:{ R:rat.id }});
-    await AvailableProject.add({ code:'clear-great-hall' });
   },
 
 });

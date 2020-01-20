@@ -1,7 +1,7 @@
 
 Page Templates:
-  Player Quote:      { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>""</span>` },
-  Minion Quote:      { playerSpeaker:true, text:`<span class='player-quote'>""</span>` },
+  Player Quote:      { playerSpeaker:true, text:`<span class='player-quote'>""</span>` },
+  Minion Quote:      { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>""</span>` },
   Narrator Quote:    { text:`<span class='narrator-quote'></span>` },
 
 === Alerts ===

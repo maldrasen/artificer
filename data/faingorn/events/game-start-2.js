@@ -125,8 +125,9 @@ Event.build('game-start-2', {
       { text:"I can feel the thread of consciousness slipping away though." },
       { text:"I can see the keep's courtyard below." },
       { text:"Well, at least I won't be awake when I land." },
-      { text:" ", darkenBackground:75 },
-      { text:" ", darkenBackground:100 },
+      { text:"...", darkenBackground:50 },
+      { text:"..", darkenBackground:75 },
+      { text:".", darkenBackground:100 },
     ]
   },{
     formPage: 'splash-screen'

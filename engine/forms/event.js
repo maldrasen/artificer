@@ -1,11 +1,19 @@
 global.Event = class Event extends Form {
 
   static async onFinish(choices) {
-    let finishFunction = Event.lookup(choices.event.code).onFinish;
+    const code = choices.event.code;
+    const flag = await Flag.lookup(`completed.${code}`);
+
+    (flag == null) ?
+      (await Flag.create({ code:`completed.${code}`, value:1 })):
+      (await Flag.set(flag.code, 1 + parseInt(flag.value)));
+
+    let finishFunction = Event.lookup(code).onFinish;
     if (finishFunction) {
       await finishFunction(choices);
     }
   }
+
 
   // Before an event can be rendered in the browser it needs to be prepared.
   // This function will to all of the token and path replacement in the event
