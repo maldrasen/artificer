@@ -5,12 +5,15 @@ Project.build('train-new-scaven', {
   effort: 8,
   help: { max:1, min:1 },
 
-  onStart: async () => {
-    await EventQueue.enqueueEvent('train-new-scaven-start');
+  onStart: async context => {
+    await EventQueue.enqueueEvent('train-new-scaven-start',{ actors:{ S:context.minions[0].id }});
   },
 
-  onFinish: async () => {
-    await EventQueue.enqueueEvent('train-new-scaven-end');
+  onFinish: async context => {
+
+console.log("Finisher ran?")
+
+    await EventQueue.enqueueEvent('train-new-scaven-end',{ actors:{ S:context.minions[0].id }});
   },
 
 });

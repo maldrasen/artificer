@@ -25,7 +25,7 @@ Resolver.Projects = (function() {
 
     // Execute the project's onStart() function now if it has one.
     if (typeof project.onStart == 'function') {
-      await project.onStart();
+      await project.onStart({ minions });
     }
 
     // Finally (unless this project is repeatable, which none of them are yet)
@@ -55,7 +55,7 @@ Resolver.Projects = (function() {
 
   async function completeProject(game, project, minions) {
     if (typeof project.onFinish == 'function') {
-      Resolver.addFinisher(project.onFinish);
+      Resolver.addFinisher(async () => { await project.onFinish({ minions }); });
     }
 
     game.currentProject = null;

@@ -2,7 +2,7 @@ Event.build('train-new-scaven-end', {
 
   stages:[{
     pages:[
-      { text:`Training End` },
+      { text:`{{S::character.firstName's}} Training End` },
     ]
   }],
 
