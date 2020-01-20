@@ -1,5 +1,6 @@
-GameStage.build('stage-0',{
+GameStage.build('stage-1-0',{
   location: 'great-hall',
+  gameDay: 3,
 
   availableProjects: [
     { code:'train-new-scaven' }

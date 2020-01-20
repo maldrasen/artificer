@@ -6,21 +6,11 @@ Project.build('train-new-scaven', {
   help: { max:1, min:1 },
 
   onStart: async () => {
-    console.log("TODO: Redo clear-great-hall onStart")
-    // const game = await Game.instance();
-    // await AvailableEvent.addAll([
-    //   { code:'clear-great-hall-start' },
-    //   { code:'great-hall-talk-to-rat-chief', requires:`game.dayNumber=${game.dayNumber+3}` },
-    // ]);
+    await EventQueue.enqueueEvent('train-new-scaven-start');
   },
 
   onFinish: async () => {
-    console.log("TODO: Redo clear-great-hall onFinish")
-    // await EventQueue.enqueueEvent('clear-great-hall-done');
-    // await AvailableProject.addAll([
-    //   { code:'make-hide-clothing' },
-    //   { code:'make-hide-bedding' },
-    // ]);
+    await EventQueue.enqueueEvent('train-new-scaven-end');
   },
 
 });
