@@ -34,14 +34,14 @@ Player.forge = async function(options) {
   if (options.species == null) { throw 'Player species is required'; }
 
   if (options.title == null || options.title.length == 0) {
-    if (options.gender == 'male')   { options.title = 'Master'; }
-    if (options.gender == 'female') { options.title = 'Mistress'; }
-    if (options.gender == 'futa')   { options.title = 'Mystress'; }
+    if (options.gender == 'male')   { options.title = 'master'; }
+    if (options.gender == 'female') { options.title = 'mistress'; }
+    if (options.gender == 'futa')   { options.title = 'mystress'; }
   }
 
   player = await Player.create({
     id: 1000000000,
-    title: options.title,
+    title: options.title.toLowerCase(),
     firstName: options.firstName,
     lastName: options.lastName,
     genderCode: options.gender,
