@@ -3,7 +3,6 @@ GameStage.build('stage-1-0',{
   gameDay: 3,
 
   flags: {
-    'completed.ambush-rat-torment': 1,
     'location.currentStudy':        'great-hall',
     'location.keepName':            'Faingorn Keep',
     'locationMenu.map':             'unlocked',
@@ -16,7 +15,7 @@ GameStage.build('stage-1-0',{
     'plan-view.allow-idle':         'unlocked',
     'plan-view.roles.forager':      'unlocked',
     'player.fucksFutas':            'always',
-    'player.fucksMen':              'always',
+    'player.fucksMen':              'maybe',
     'player.fucksWomen':            'always',
   },
 

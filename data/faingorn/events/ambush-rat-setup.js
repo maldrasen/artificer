@@ -15,7 +15,7 @@ Event.build('ambush-rat-setup', {
       { text:`I was beginning to think that I was either being overly paranoid or that my quarry was too clever to take such obvious bait.` },
       { text:`However, now that the shadows have begun to grow long on the wall, it would seem that my suspicions were correct after all.` },
       { text:`A pair of small rat-like creatures quietly slink into the room.` },
-      { text:`Well, they're small to me, though quite large for rats, standing perhaps a meter tall or so.` },
+      { text:`Well, they're small to me, though quite large for rats, standing perhaps {{aMeter}} tall or so.` },
       { text:`And they do stand, walking silently between shadows on two paws.` },
       { text:`I wasn't expecting there to be two of them, though really I had no idea what to expect, and if I'm being entirely honest, I didn't have much of a plan for what to do when something did come to take the bait.` },
       { text:`Instinct alone tells me I‌ should try to capture one of them.` },

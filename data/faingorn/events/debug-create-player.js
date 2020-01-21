@@ -15,7 +15,6 @@ Event.build('debug-create-player', {
       selectionPage: true,
       selectionKey: 'stage',
       selections:[
-        { text:'Stage 0 - Normal Start',         value:'stage-0' },
         { text:'Stage 1 - The Real Game Begins', value:'stage-1-0' },
       ]
     },

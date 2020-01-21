@@ -13,7 +13,7 @@ Event.build('ambush-rat-torment', {
       { playerSpeaker:true, text:`<span class='player-quote'>"Can you speak?"</span> I‌ ask.` },
       { minionSpeaker:'Rat', text:`<span class='minion-quote'>"Yes!"</span> {{R::gender.he}} squeeks back, <span class='minion-quote'>"No hurt! No kill!"</span>` },
       { playerSpeaker:true, text:`I nod, <span class='player-quote'>"We'll see. I have some questions for you. How you answer them will determine if you live or die."</span>` },
-      { minionSpeaker:'{{R::character.firstName}}', text:`{{R::gender.He}} nods as well as {{R::gender.he}} can with my hand to {{R::gender.his}} throat, <span class='minion-quote'>"What do you want?"</span>` },
+      { minionSpeaker:'Rat', text:`{{R::gender.He}} nods as well as {{R::gender.he}} can with my hand to {{R::gender.his}} throat, <span class='minion-quote'>"What do you want?"</span>` },
       { text:`I briefly consider asking {{R::gender.him}} all the very basics; Where are we? What are you?` },
       { text:`But then, perhaps it wouldn't be wise to reveal that I‌ have absolutely no memory or know anything at all about where we are.` },
       { text:`I‌ need to remain cautious.` },
