@@ -10,9 +10,6 @@ Project.build('train-new-scaven', {
   },
 
   onFinish: async context => {
-
-console.log("Finisher ran?")
-
     await EventQueue.enqueueEvent('train-new-scaven-end',{ actors:{ S:context.minions[0].id }});
   },
 

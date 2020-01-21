@@ -278,6 +278,7 @@ Components.EventView = (function() {
     ).data('value',selection.value).append(badges);
 
     each(selection.effects, strang => {
+      button.addClass('with-badges');
       badges.append(new Elements.AdjustmentBadge(strang, eventData.actors).build());
     });
 

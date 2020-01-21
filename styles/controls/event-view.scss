@@ -119,16 +119,18 @@
       }
     }
 
+    .selection a.with-badges { line-height: 40px; }
+
     .badges {
       position: absolute;
-      bottom: -14px;
+      bottom: -10px;
       right: 5px;
       font-size: $fs-small;
       opacity: 0.5;
     }
-    .badge {
-      margin-left: 5px;
-    }
+    .badge { margin-left: 5px; }
+    .badge.badge-player { color: $fg-player-quote; }
+    .badge.badge-minion { color: $fg-minion-quote; }
   }
 
   .center-image-frame {

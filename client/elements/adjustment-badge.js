@@ -54,8 +54,10 @@ Elements.AdjustmentBadge = class AdjustmentBadge {
   }
 
   build() {
+    let who = (this.subject == 'player') ? 'player' : 'minion'
+
     return $(`
-      <span class='adjustment-badge badge'>
+      <span class='adjustment-badge badge badge-${who}'>
         <span class='badge-label'>${this.aspectLabel}</span><span class='badge-symbol'>${this.symbols}</span>
       </span>`
     ).data('badge',this);
