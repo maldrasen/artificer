@@ -78,7 +78,7 @@ Weaver.CockLoom = (function() {
     if (cock.shape == 'snake')  { map = { cock:6, dick:2, snakecock:3, nagacock:2, reptilian_cock:1, tapered_cock:1, tapered_dick:1 }; }
     if (cock.shape == 'dragon') { map = { cock:6, dick:2, dragoncock:3, dragon_dick:1, draconic_cock:2, ridged_cock:1, ridged_dick:1 }; }
 
-    let word = Random.fromFrequencyMap(map).replace(/_/,' ');
+    let word = Random.fromFrequencyMap(map).replace(/_/g,' ');
 
     return plural ? `${word}s` : word;
   }

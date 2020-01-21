@@ -1,6 +1,6 @@
 Event.build('ambush-rat-setup', {
   location: 'upper-keep',
-  background:{ location:'upper-keep' },
+  background:{ location:'great-hall-gallery', time:'morning' },
 
   stages:[{
     pages:[
@@ -11,7 +11,7 @@ Event.build('ambush-rat-setup', {
       { text:`I should have no problem watching the table from there while also remaining well hidden.` },
       { text:`All that's left then is to find a place to perch, and wait.` },
       { text:`Later&hellip;`, background:{ code:'black' }},
-      { text:`The day passed by slowly with no apparent activity below.`, background:{ location:'great-hall' }},
+      { text:`The day passed by slowly with no apparent activity below.`, background:{ location:'great-hall', time:'evening' }},
       { text:`I was beginning to think that I was either being overly paranoid or that my quarry was too clever to take such obvious bait.` },
       { text:`However, now that the shadows have begun to grow long on the wall, it would seem that my suspicions were correct after all.` },
       { text:`A pair of small rat-like creatures quietly slink into the room.` },

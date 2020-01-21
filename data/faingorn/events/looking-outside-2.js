@@ -1,5 +1,6 @@
 Event.build('looking-outside-2', {
   location: 'courtyard',
+  background:{ location:'courtyard-walls', time:'morning' },
 
   actors:{ R:'any-scaven' },
 

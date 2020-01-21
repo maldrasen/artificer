@@ -16,6 +16,7 @@ global.GameStage = class GameStage extends Form {
       await CharacterBuilder.build(minionData.builder);
     }));
 
+    if (stage.setup) { await stage.setup(game); }
     await game.save();
   }
 

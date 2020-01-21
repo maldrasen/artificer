@@ -1,5 +1,6 @@
 Event.build('looking-outside-1', {
   location: 'courtyard',
+  background:{ location:'courtyard-walls', time:'morning' },
 
   stages:[{
     pages:[

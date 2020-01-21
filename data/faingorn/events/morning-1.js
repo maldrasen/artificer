@@ -1,7 +1,6 @@
 Event.build('morning-1', {
   location: 'courtyard',
-
-  background: { code:'courtyard', time:'morning' },
+  background:{ location:'courtyard', time:'morning' },
 
   stages:[{
     pages:[
@@ -28,7 +27,7 @@ Event.build('morning-1', {
       { text:`Still, I'm completely naked and it feels like it might be early winter.` },
       { text:`I think the best course of action would be to get inside at least, maybe scavenge for some supplies and explore this place a bit.` },
       { text:`Later&hellip;`,  background:{ code:'black' }},
-      { text:`I spend most of the day exploring the keep.`, background:{ code:'great-hall' }},
+      { text:`I spend most of the day exploring the keep.`, background:{ location:'great-hall', time:'evening' }},
       { text:`It looks like it's been abandoned for decades.` },
       { text:`The roof of the keep's single tower has collapsed, letting in all manner of animals and rainwater.` },
       { text:`Because of the water intrusion the keep's upper floors are almost completely destroyed.` },

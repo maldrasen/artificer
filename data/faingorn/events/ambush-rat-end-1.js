@@ -1,7 +1,7 @@
 Event.build('ambush-rat-end-1', {
   location: 'great-hall',
+  background:{ location:'great-hall', time:'evening' },
 
-  background:{ location:'great-hall' },
   actors:{ R:'any-scaven' },
 
   stages:[{

@@ -1,7 +1,7 @@
 global.Renderer = (function() {
 
   const VIEWS = {
-    mainMenu:   { template:'#mainMenuTemplate' },
+    mainMenu:   { template:'#mainMenuTemplate',     build:buildMainMenu },
     createPlan: { template:'#planTemplate',         title:"Create Today's Plan" },
     inventory:  { template:'#inventoryTemplate',    title:"Inventory",     build:Components.InventoryView.build    },
     map:        { template:'#mapTemplate',          title:"Keep Map",      build:Components.LocationView.buildMap  },
@@ -63,6 +63,10 @@ global.Renderer = (function() {
   }
 
   // === Views ===
+
+  function buildMainMenu() {
+    if (DEBUG) { $('#mainMenu .debug-game-start').removeClass('hide'); }
+  }
 
   function showMainMenu()   { showView(VIEWS.mainMenu);      }
   function showCreatePlan() { showOverlay(VIEWS.createPlan); }

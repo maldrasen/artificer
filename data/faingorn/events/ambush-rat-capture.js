@@ -1,5 +1,6 @@
 Event.build('ambush-rat-capture', {
-  background:{ location:'great-hall' },
+  background:{ location:'great-hall', time:'evening' },
+
   actors:{ R:'any-scaven' },
 
   stages:[{

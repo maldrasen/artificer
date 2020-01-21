@@ -1,5 +1,5 @@
 Event.build('game-start-2', {
-  background: { code:'field-1' },
+  background:{ code:'field' },
 
   stages:[{
     pages: [

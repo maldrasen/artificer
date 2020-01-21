@@ -3,7 +3,11 @@ global.BrowserCommands = (function() {
   function init() {
 
     ipcMain.on('game.start', () => {
-      Game.start();
+      Game.start(false);
+    });
+
+    ipcMain.on('game.debug-start', () => {
+      Game.start(true);
     });
 
     ipcMain.on('game.quit', () => {

@@ -17,7 +17,7 @@ Game.instance = function() {
   return Game.findByPk(1);
 }
 
-Game.start = async function() {
+Game.start = async function(debugStart) {
   if (await Game.instance() != null) { throw "Cannot start a new Game. A Game currently exists." }
 
   const game = await Game.create({
@@ -29,7 +29,7 @@ Game.start = async function() {
     food: 30,
   });
 
-  Configuration.onStart(game).then(() => {
+  (debugStart ? Configuration.onDebugStart : Configuration.onStart)(game).then(() => {
     Composer.render(game);
   });
 

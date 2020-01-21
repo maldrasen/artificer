@@ -1,5 +1,5 @@
 Event.build('ambush-rat-end-2', {
-  background:{ location:'great-hall' },
+  background:{ location:'great-hall', time:'evening' },
 
   stages:[{
     requires:['player.never-fucks-men'],
@@ -85,6 +85,7 @@ Event.build('ambush-rat-end-2', {
     await rat.save();
 
     await Flag.set('locationMenu.minions','unlocked');
+    await Flag.set('character.firstScaven',rat.id);
     await EventQueue.enqueueEvent('looking-outside-2');
   },
 
