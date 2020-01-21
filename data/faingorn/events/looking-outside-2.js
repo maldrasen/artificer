@@ -1,6 +1,8 @@
 Event.build('looking-outside-2', {
   location: 'courtyard',
 
+  actors:{ R:'any-scaven' },
+
   stages:[{
     requires:['no-flag.completed.looking-outside-1'],
     pages:[
@@ -49,13 +51,19 @@ Event.build('looking-outside-2', {
       { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"But scaven are sneaky quiet."</span>` },
       { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"They don't find us."</span>` },
       { text:`I nod to {{R::character.firstName}} and watch the creature for a while longer.`},
-      { text:`Now that it's of no obvious threat to me the 'Skinless' creature fascinates me more than anything.` },
+      { text:`Now that it's of no obvious threat to me the <i>Skinless</i> creature fascinates me more than anything.` },
       { text:`It looks like nothing more than a loosely assembled pile of body parts, and should be incapable of survival by mere biological means.` },
       { text:`That it must sustain itself on magical energy is really the only way to explain it.` },
       { text:`I can't imagine how such a thing could come into being.` },
       { text:`Some dark and forbidden unholy ritual?` },
       { text:`Perhaps one of these days I'll have a chance to find out; if they don't get inside and murder me at least.` },
-      { playerSpeaker:true, text:`I nod to {{R::character.firstName}}, motioning for {{R::gender.him}} to follow, <span class='player-quote'>"Come, we have work to do."</span>` },
+      { playerSpeaker:true, text:`I nod to {{R::character.firstName}}, motioning for {{R::gender.him}} to follow, <span class='player-quote'>"Come with me to the great hall."</span>` },
+      { playerSpeaker:true, text:`<span class='player-quote'>"We have much to discuss."</span>` },
     ]
-  }]
+  }],
+
+  onFinish: async choices => {
+    await EventQueue.enqueueEvent('morning-3',{ actors:{ R:choices.event.actorIDs.R }});
+  },
+
 });

@@ -85,8 +85,7 @@ Event.build('ambush-rat-end-2', {
     await rat.save();
 
     await Flag.set('locationMenu.minions','unlocked');
-    await EventQueue.enqueueEvent('looking-outside-2',{ actors:{ R:rat.id }});
-    await AvailableProject.add({ code:'train-new-scaven' });
+    await EventQueue.enqueueEvent('looking-outside-2');
   },
 
 });

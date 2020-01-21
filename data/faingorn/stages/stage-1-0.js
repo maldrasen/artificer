@@ -2,8 +2,8 @@ GameStage.build('stage-1-0',{
   location: 'great-hall',
   gameDay: 3,
 
-  availableProjects: [
-    { code:'train-new-scaven' }
+  eventQueue: [
+    { code:'looking-outside-2' }
   ],
 
   minions: [
