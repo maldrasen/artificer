@@ -5,7 +5,7 @@ global.TextUtility = {
   },
 
   titlecaseAll(phrase) {
-    return phrase.split(/\s/).map(word => { return titlecase(word) }).join(' ');
+    return phrase.split(/\s/).map(word => { return TextUtility.titlecase(word) }).join(' ');
   },
 
   startsWith(string, part) {
