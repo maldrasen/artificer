@@ -62,6 +62,11 @@ Species.build('ogre', {
     }}
   },
 
+  skillCaps: {
+    foraging: 1,
+    hunting: 2,
+  },
+
   nameGenerator: GoblinNameGenerator,
   flags: ['goblin']
 });

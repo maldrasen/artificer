@@ -38,18 +38,11 @@ Role.Skills = (function() {
     let currentLevel = aspect.level;
     let currentStrength = aspect.strength;
 
-    aspect.adjustStrength(experience);
+    await aspect.adjustStrength(experience);
 
-    // Scaven and kobolds are capped at level 1 skill. Goblins and ogres are capped at level 2.
-    if (character.speciesCode == 'scaven' && aspect.strength > 200) { aspect.strength = 200; }
-    if (character.speciesCode == 'kobold' && aspect.strength > 200) { aspect.strength = 200; }
-    if (character.speciesCode == 'goblin' && aspect.strength > 600) { aspect.strength = 600; }
-    if (character.speciesCode == 'ogre'   && aspect.strength > 600) { aspect.strength = 600; }
-
-    // If the character's skill aspect didn't change there's no need to say they've earned any experience.
+    // If the character's skill is capped they will not earn experience.
     if (currentStrength == aspect.strength) { return null; }
 
-    aspect.save();
     return (currentLevel == aspect.level) ?
       { skill:'Hunting', experience:experience }:
       { skill:'Hunting', experience:experience, gainedLevel:aspect.level };

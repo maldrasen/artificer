@@ -1,4 +1,4 @@
-describe.only('Role.Skills', function() {
+describe('Role.Skills', function() {
 
   describe('skillLevel()', function() {
     it("is 0 when the character doesn't have the aspect", function(done) {
@@ -31,6 +31,37 @@ describe.only('Role.Skills', function() {
             expect(notification.skill).to.equal('Foraging');
             expect(notification.experience).to.equal(5);
             done();
+          });
+        });
+      });
+    });
+
+    it("adds experience", function(done) {
+      SpecHelper.buildJada().then(jada => {
+        jada.addAspect('hunting', { strength:100 }).then(() => {
+          Role.Skills.addExperience({ character:jada, skill:'hunting' }).then(notification => {
+            jada.getCharacterAspect('hunting').then(aspect => {
+              expect(aspect.strength).to.equal(105);
+              expect(notification.skill).to.equal('Hunting');
+              expect(notification.experience).to.equal(5);
+              done();
+            });
+          });
+        });
+      });
+    });
+
+    it("shows the gained level up when a level is earned", function(done) {
+      SpecHelper.buildJada({species:'scaven'}).then(jada => {
+        jada.addAspect('hunting', { strength:199 }).then(() => {
+          Role.Skills.addExperience({ character:jada, skill:'hunting' }).then(notification => {
+            jada.getCharacterAspect('hunting').then(aspect => {
+              expect(aspect.strength).to.equal(200);
+              expect(notification.skill).to.equal('Hunting');
+              expect(notification.experience).to.equal(5);
+              expect(notification.gainedLevel).to.equal(1);
+              done();
+            });
           });
         });
       });

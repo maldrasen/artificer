@@ -1,24 +1,48 @@
 describe('CharacterAspect', function() {
 
   describe('adjustStrength', function() {
-    let aspect;
-
-    it('adjusts the aspect strength', function() {
-      aspect = new CharacterAspect({ code:'breeder', strength:1000 });
-      aspect.adjustStrength(250);
-      expect(aspect.strength).to.equal(1250);
+    it('adjusts the aspect strength', function(done) {
+      SpecHelper.buildJada().then(jada => {
+        jada.addAspect('breeder', { strength:1000 }).then(aspect => {
+          aspect.adjustStrength(250).then(() => {
+            expect(aspect.strength).to.equal(1250);
+            done();
+          });
+        });
+      });
     });
 
-    it('prevents negitive strength', function() {
-      aspect = new CharacterAspect({ code:'breeder', strength:200 });
-      aspect.adjustStrength(-250);
-      expect(aspect.strength).to.equal(0);
+    it('prevents negitive strength', function(done) {
+      SpecHelper.buildJada().then(jada => {
+        jada.addAspect('breeder', { strength:200 }).then(aspect => {
+          aspect.adjustStrength(-250).then(() => {
+            expect(aspect.strength).to.equal(0);
+            done();
+          });
+        });
+      });
     });
 
-    it('has a strength max', function() {
-      aspect = new CharacterAspect({ code:'breeder', strength:2500 });
-      aspect.adjustStrength(750);
-      expect(aspect.strength).to.equal(3000);
+    it('has a strength max', function(done) {
+      SpecHelper.buildJada().then(jada => {
+        jada.addAspect('breeder', { strength:2500 }).then(aspect => {
+          aspect.adjustStrength(750).then(() => {
+            expect(aspect.strength).to.equal(3000);
+            done();
+          });
+        });
+      });
+    });
+
+    it('caps strength for some skills and species', function(done) {
+      SpecHelper.buildJada({ species:'scaven' }).then(jada => {
+        jada.addAspect('hunting', { strength:100 }).then(aspect => {
+          aspect.adjustStrength(300).then(() => {
+            expect(aspect.strength).to.equal(200);
+            done();
+          });
+        });
+      });
     });
   });
 
