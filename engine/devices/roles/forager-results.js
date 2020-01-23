@@ -35,7 +35,23 @@ Role.Forager.Results = (function() {
     const possible = await getPossibleItems();
     const capacity = getCapacity(character, health);
 
+    let items = {};
     let total = (capacity+skill) * trips;
+
+    if (scheduled) {
+      total--;
+      if (scheduled.unlock) {
+        await Flag.set(`item.${scheduled.unlock}`,'unlocked');
+        items[scheduled.unlock] = 1;
+      }
+      if (scheduled.event) {
+        await EventQueue.enqueueEvent(scheduled.event,{ actors:{ C:character.id }});
+      }
+    }
+
+    console.log(items)
+
+    return items;
   }
 
   async function getPossibleItems() {
@@ -117,6 +133,6 @@ Role.Forager.Results = (function() {
     return injured ? FailureSchedule[`F.${counts.failure}`]: SuccessSchedule[`S.${counts.success}`];
   }
 
-  return { getResults, getCapacity, getPossibleItems, updateFlag, getScheduled };
+  return { getResults, getItems, getCapacity, getPossibleItems, updateFlag, getScheduled };
 
 })();

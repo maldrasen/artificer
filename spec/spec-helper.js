@@ -27,6 +27,10 @@ global.SpecHelper = (function() {
     Promise.all(tests).then(()=>{ done(); });
   }
 
-  return { print, buildJada, buildRando, tenTimes };
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  return { print, buildJada, buildRando, tenTimes, sleep };
 
 })();

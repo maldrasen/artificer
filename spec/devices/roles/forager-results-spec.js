@@ -8,6 +8,23 @@ describe.only('Role: Forager.Results', function() {
     });
   });
 
+  describe.only("getItems()", function() {
+    it('unlocks items', function(done) {
+      SpecHelper.buildJada().then(jada => {
+        Role.Forager.Results.getItems(jada, 'healthy', 4, { unlock:'blood-berries', event:'found-blood-berries' }).then(items => {
+          Flag.lookupValue('item.blood-berries').then(flag => {
+            EventQueue.nextEvent().then(event => {
+              expect(items['blood-berries']).to.be.at.least(1);
+              expect(flag).to.equal('unlocked');
+              expect(event.code).to.equal('found-blood-berries');
+              done();
+            });
+          });
+        });
+      });
+    });
+  })
+
   describe("getCapacity()", function() {
     it('with no equipment, but uninjured', function(done) {
       SpecHelper.buildJada().then(jada => {
