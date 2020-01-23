@@ -13,21 +13,11 @@ Role.Forager.Results = (function() {
     const injured = Random.upTo(100) > 95;
     const forageCounts = await updateFlag(injured);
     const scheduled = getScheduled(injured,forageCounts);
-
     const trips = getTrips(health, injured);
     const items = await getItems(character, health, trips, scheduled);
+    const story = startStory(health, injured, trips);
 
-    const context = new WeaverContext();
-    await context.addFlags();
-    await context.addCharacter('F',character)
-
-    let story = startStory(health, injured, trips);
-
-    console.log("=== Calculate Resulta ===")
-    console.log("Health",health)
-    console.log("Story",Weaver.weave(story, context))
-
-    return [];
+    return { injured, items, story };
   }
 
   async function getItems(character, health, trips, scheduled) {
@@ -64,10 +54,24 @@ Role.Forager.Results = (function() {
     return items;
   }
 
+  // TODO: Eventually this list will need to depend on the location that the
+  //       character goes foraging in. There should be different foragable
+  //       items down in the depths or in the Mephidross then what can be found
+  //       in the hinterlands.
+  //
+  // TODO: Also, this list is completely random now. It would probably work
+  //       better as a frequency map, but I'd like to wait until I have more
+  //       items to work with before I go figuring out the frequency. Plus,
+  //       I think the frequencies will be adjustable by giving minions orders
+  //       somehow. You should be able to tell your minions to focus on
+  //       gathering food, or insects and give them equipment that give
+  //       gathering bonuses to different item types. Order and equipment need
+  //       to be implemented first though.
+  //
   async function getPossibleItems() {
     const flags = await Flag.getAll();
     return ItemFlavor.where(flavor => {
-      if (['foraged-food','foraged-herb','foraged-insect'].indexOf(flavor.type) >= 0) {
+      if (['foraged-item','foraged-food','foraged-herb','foraged-insect'].indexOf(flavor.type) >= 0) {
         if (flavor.mustBeUnlocked == null) { return flavor; }
         if (flags[`item.${flavor.code}`] == 'unlocked') { return flavor; }
       }
@@ -102,8 +106,8 @@ Role.Forager.Results = (function() {
     let first = Random.from([
       `{{F::character.firstName}} spent the day foraging.`,
       `{{F::character.firstName}} went out foraging.`,
-      `{{F::character.firstName}} spent the day foraging out in {{flag|location.hinterlandsName}}.`,
-      `{{F::character.firstName}} went foraging out in {{flag|location.hinterlandsName}}.`,
+      `{{F::character.firstName}} spent the day foraging out in the Hinterlands.`,
+      `{{F::character.firstName}} went foraging out in the Hinterlands.`,
     ]);
 
     let second = `{{F::gender.He}} was in good health and spirits and was able to make four trips into the wilds.`;

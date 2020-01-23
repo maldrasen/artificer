@@ -9,8 +9,8 @@ Role.Hunter.Stories = (function() {
     let phrase = Random.from([
       `{{H::character.firstName}} spent the day hunting`,
       `{{H::character.firstName}} went out hunting`,
-      `{{H::character.firstName}} spent the day hunting out in {{flag|location.hinterlandsName}}`,
-      `{{H::character.firstName}} went hunting out in {{flag|location.hinterlandsName}}`,
+      `{{H::character.firstName}} spent the day hunting out in the Hinterlands`,
+      `{{H::character.firstName}} went hunting out in the Hinterlands`,
     ]);
 
     // === Success ===
