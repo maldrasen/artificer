@@ -5,12 +5,13 @@ Role.Forager.Results = (function() {
   };
 
   const SuccessSchedule = {
-    'S.2':  { unlock:'blood-berries', event:'found-blood-berries' },
+    'S.1': { special:firstResult },
+    'S.2': { unlock:'blood-berries', event:'found-blood-berries' },
   };
 
   async function getResults(character) {
     const health = await character.getHealthClass();
-    const injured = Random.upTo(100) > 95;
+    const injured = await wasCharacterInjured()
     const forageCounts = await updateFlag(injured);
     const scheduled = getScheduled(injured,forageCounts);
     const trips = getTrips(health, injured);
@@ -20,34 +21,29 @@ Role.Forager.Results = (function() {
     return { injured, flavors, story };
   }
 
+  // Normally there's a 5% chance of getting injured when out foraging. If this
+  // is the character's first time foraging then it should always be a success.
+  async function wasCharacterInjured() {
+    return ((await Flag.lookupValue('role.forage.successCount')) == 0) ? false : Random.upTo(100) > 95;
+  }
+
+  // This function returns a map of item flavors, either randomly selected from
+  // the list of possible items, or a map that's been tweeked a bit by one of
+  // the foraging schedules.
   async function getItems(character, health, trips, scheduled) {
     const skill = await Role.Skills.skillLevel(character,'foraging');
     const possible = await getPossibleItems();
     const capacity = getCapacity(character, health);
 
+    let total = Math.ceil((capacity+skill) * trips * (Random.upTo(50)+75)/100);
     let items = {};
-    let total = (capacity+skill) * trips;
-
-    // Adjust total a bit (+/- 25%) so that it's not the same number of items every damn time.
-    total = Math.ceil(total * (Random.upTo(50)+75)/100)
 
     if (scheduled) {
-      // Unlock a new foragable item.
-      if (scheduled.unlock) {
-        await Flag.set(`item.${scheduled.unlock}`,'unlocked');
-      }
-      // Return with the newly discovered item.
-      if (scheduled.unlock && scheduled.bringBack != false) {
-        total--;
-        items[scheduled.unlock] = 1;
-      }
-      // Add a follow on event.
-      if (scheduled.event) {
-        await EventQueue.enqueueEvent(scheduled.event,{ actors:{ C:character.id }});
-      }
+      let product = executeScheduled(character, scheduled, total, items);
+      total = product.total;
+      items = product.items;
     }
 
-    // Randomly add remaining items from the list of possible items.
     for (let i=0; i<total; i++) {
       let code = Random.from(possible).code;
       if (items[code] == null) { items[code] = 0; }
@@ -55,6 +51,62 @@ Role.Forager.Results = (function() {
     }
 
     return items;
+  }
+
+  // If something was found in the foraging schedule for this job, then this
+  // function manipulates the total number of items that should be randomized
+  // and the starting item list. The function also sets item unlock flags and
+  // adds events.
+  async function executeScheduled(character, scheduled, total, items) {
+
+    // Unlock a new foragable item.
+    if (scheduled.unlock) {
+      await Flag.set(`item.${scheduled.unlock}`,'unlocked');
+    }
+
+    // Return with the newly discovered item.
+    if (scheduled.unlock && scheduled.bringBack != false) {
+      total--;
+      items[scheduled.unlock] = 1;
+    }
+
+    // Add a follow on event.
+    if (scheduled.event) {
+      await EventQueue.enqueueEvent(scheduled.event,{ actors:{ C:character.id }});
+    }
+
+    // This is a total hack, but the first time that a character goes
+    // foraging needs to be completely different from all other times. It's
+    // possible that some other days might need to do weird shit too though,
+    // so we pass a function through that returns the total number of items
+    // and the set items for this day.
+    if (scheduled.special) {
+      let product = await scheduled.special(character);
+      total = product.total;
+      items = product.items;
+    }
+
+    return { total, items };
+  }
+
+  // The first time a character goes foraging they need to bring back at least
+  // one of each available item, because they'll be mentioned in the event.
+  async function firstResult(character) {
+    await EventQueue.enqueueEvent('found-fruits-and-nuts',{ actors:{ C:character.id }});
+
+    await Flag.setAll({
+      'item.bitter-fruits':'unlocked',
+      'item.goat-nuts':'unlocked',
+      'item.juice-berries':'unlocked',
+      'item.sweet-fruits':'unlocked',
+    });
+
+    return { total:0, items:{
+      'bitter-fruits': 2,
+      'goat-nuts': 3,
+      'juice-berries': 2,
+      'sweet-fruits': 1,
+    }};
   }
 
   // TODO: Eventually this list will need to depend on the location that the
@@ -71,11 +123,12 @@ Role.Forager.Results = (function() {
   //       gathering bonuses to different item types. Order and equipment need
   //       to be implemented first though.
   //
+  // Every foraged item flavor must be unlocked befor it can be found. The
+  // first scheduled event unlocks the first four items.
   async function getPossibleItems() {
     const flags = await Flag.getAll();
     return ItemFlavor.where(flavor => {
       if (['foraged-item','foraged-food','foraged-herb','foraged-insect'].indexOf(flavor.type) >= 0) {
-        if (flavor.mustBeUnlocked == null) { return flavor; }
         if (flags[`item.${flavor.code}`] == 'unlocked') { return flavor; }
       }
     });

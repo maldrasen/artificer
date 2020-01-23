@@ -1,4 +1,13 @@
 
+ItemFlavor.build('willow-branch', {
+  name: 'Willow Branches',
+  type: 'foraged-item',
+  story:{ called:'willow branches', countable:true },
+  becomes: 'willow-branch',
+  becomesCount: 4,
+  xp: 1,
+});
+
 // === Food ===
 
 ItemFlavor.build('bitter-fruits', {
@@ -41,7 +50,6 @@ ItemFlavor.build('blood-berries', {
   becomes: 'blood-berries',
   becomesCount: 10,
   story:{ called:'blood berries', countable:true },
-  mustBeUnlocked: true,
   xp: 1,
 });
 
@@ -51,7 +59,6 @@ ItemFlavor.build('creeping-moss', {
   becomes: 'creeping-moss',
   becomesCount: 4,
   story:{ called:'creeping moss', countable:false },
-  mustBeUnlocked: true,
   xp: 2,
 });
 
@@ -61,7 +68,6 @@ ItemFlavor.build('firewasp', {
   becomes: 'firewasp',
   becomesCount: 6,
   story:{ called:'firewasp peppers', countable:true },
-  mustBeUnlocked: true,
   xp: 6,
 });
 
@@ -71,7 +77,6 @@ ItemFlavor.build('itchweed', {
   becomes: 'itchweed',
   becomesCount: 4,
   story:{ called:'itchweed', countable:false },
-  mustBeUnlocked: true,
   xp: 4,
 });
 
@@ -81,7 +86,6 @@ ItemFlavor.build('milkweed', {
   becomes: 'milkweed',
   becomesCount: 4,
   story:{ called:'milkweed', countable:false },
-  mustBeUnlocked: true,
   xp: 4,
 });
 
@@ -91,7 +95,6 @@ ItemFlavor.build('purple-mushroom', {
   becomes: 'purple-mushroom',
   becomesCount: 1,
   story:{ called:'purple headed donkey', countable:true, singular:true },
-  mustBeUnlocked: true,
   xp: 4,
 });
 
@@ -103,6 +106,5 @@ ItemFlavor.build('blight-spider', {
   becomes: 'blight-spider',
   becomesCount: 1,
   story:{ called:'harry bag spider', countable:true, singular:true },
-  mustBeUnlocked: true,
   xp: 10,
 });
