@@ -8,7 +8,7 @@ describe.only('Role: Forager.Results', function() {
     });
   });
 
-  describe.only("getItems()", function() {
+  describe("getItems()", function() {
     it('unlocks items', function(done) {
       SpecHelper.buildJada().then(jada => {
         Role.Forager.Results.getItems(jada, 'healthy', 4, { unlock:'blood-berries', event:'found-blood-berries' }).then(items => {

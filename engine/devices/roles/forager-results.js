@@ -1,7 +1,7 @@
 Role.Forager.Results = (function() {
 
   const FailureSchedule = {
-    'F.1': { unlock:'blight-spider', event:'found-blight-spider' },
+    'F.1': { unlock:'blight-spider', event:'found-blight-spider', bringBack:false },
   };
 
   const SuccessSchedule = {
@@ -39,17 +39,27 @@ Role.Forager.Results = (function() {
     let total = (capacity+skill) * trips;
 
     if (scheduled) {
-      total--;
+      // Unlock a new foragable item.
       if (scheduled.unlock) {
         await Flag.set(`item.${scheduled.unlock}`,'unlocked');
+      }
+      // Return with the newly discovered item.
+      if (scheduled.unlock && scheduled.bringBack != false) {
+        total--;
         items[scheduled.unlock] = 1;
       }
+      // Add a follow on event.
       if (scheduled.event) {
         await EventQueue.enqueueEvent(scheduled.event,{ actors:{ C:character.id }});
       }
     }
 
-    console.log(items)
+    // Randomly add remaining items from the list of possible items.
+    for (let i=0; i<total; i++) {
+      let code = Random.from(possible).code;
+      if (items[code] == null) { items[code] = 0; }
+      items[code]++;
+    }
 
     return items;
   }
