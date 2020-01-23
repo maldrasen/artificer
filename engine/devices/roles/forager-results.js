@@ -28,6 +28,9 @@ Role.Forager.Results = (function() {
     let items = {};
     let total = (capacity+skill) * trips;
 
+    // Adjust total a bit (+/- 25%) so that it's not the same number of items every damn time.
+    total = Math.ceil(total * (Random.upTo(50)+75)/100)
+
     if (scheduled) {
       // Unlock a new foragable item.
       if (scheduled.unlock) {
