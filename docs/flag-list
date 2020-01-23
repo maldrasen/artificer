@@ -11,3 +11,5 @@ completed.{code}   {count} The number of times this event has been completed. Be
                    enqueued without being done yet.
 
 map.{code}         {unlocked} For a location to appear on the map, the map.{code} flag needs to be set to 'unlocked'
+
+item.{code}        {unlocked} For some items to appear while foraging they must be discovered and unlocked first.

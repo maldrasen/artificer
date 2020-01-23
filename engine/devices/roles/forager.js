@@ -8,7 +8,7 @@ Role.Forager = (function() {
   }
 
   async function work(character) {
-    let skill = await Role.Skills.skillLevel(character,'foraging');
+    let results = await Role.Forager.Results.getResults(character);
     let notifications =  [await Role.Skills.addExperience({ character:character, skill:'foraging' })];
 
     return await buildReport({

@@ -5,7 +5,6 @@ global.Configuration = {
   // Function called when a new game is created. This could be overwritten by
   // another mod to set up a completely different scenario.
   onStart: async game => {
-    await Flag.set('location.keepName','Faingorn Keep');
     await game.update({ location:'courtyard' });
     await EventQueue.enqueueEvents([
       { code:'game-start-1' },
@@ -15,7 +14,6 @@ global.Configuration = {
   },
 
   onDebugStart: async game => {
-    await Flag.set('location.keepName','Faingorn Keep');
     await EventQueue.enqueueEvent('debug-create-player');
   },
 

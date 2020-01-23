@@ -31,7 +31,7 @@
     "start": "electron . --dev",
     "spec": "mocha spec/**/*-spec.js --test",
     "specv": "mocha spec/**/*-spec.js --test -v",
-    "spec-cov": "nyc --reporter=html mocha spec/**/*-spec.js "
+    "spec-cov": "nyc --reporter=html mocha spec/**/*-spec.js --test -v"
   },
   "repository": "git@github.com:maldrasen/artificer.git",
   "keywords": [

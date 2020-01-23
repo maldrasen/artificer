@@ -83,11 +83,6 @@ Role.Hunter = (function() {
     }}[`tier_${tier}`][`skill_${skill}`];
   }
 
-  async function skillLevel(character) {
-    let aspect = await character.getCharacterAspect('hunting');
-    return (aspect == null) ? 0 : aspect.level;
-  }
-
   // Success chance is based on physical attribute and skill level alone.
   function successChance(physical, skillLevel) {
     let bonus = 0;
