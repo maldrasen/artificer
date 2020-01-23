@@ -14,10 +14,10 @@ Role.Forager.Results = (function() {
     const forageCounts = await updateFlag(injured);
     const scheduled = getScheduled(injured,forageCounts);
     const trips = getTrips(health, injured);
-    const items = await getItems(character, health, trips, scheduled);
+    const flavors = await getItems(character, health, trips, scheduled);
     const story = startStory(health, injured, trips);
 
-    return { injured, items, story };
+    return { injured, flavors, story };
   }
 
   async function getItems(character, health, trips, scheduled) {

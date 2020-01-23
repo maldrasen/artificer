@@ -8,29 +8,18 @@ Role.Forager = (function() {
   }
 
   async function work(character) {
-    let results = await Role.Forager.Results.getResults(character);
+    const results = await Role.Forager.Results.getResults(character);
+    const notifications = [await Role.Skills.addExperience({ character:character, skill:'foraging', flavors:results.flavors })];
 
+    let story = completeStory(character, results.story);
 
+    return await buildReport({ story, notifications, flavors:results.flavors });
+  }
 
-    // const context = new WeaverContext();
-    // await context.addFlags();
-    // await context.addCharacter('F',character)
-    //
-    //
-    // console.log("=== Calculate Resulta ===")
-    // console.log("Health",health)
-    // console.log("Story",Weaver.weave(story, context))
-    //
-    // return [];
-
-
-
-    let notifications = [await Role.Skills.addExperience({ character:character, skill:'foraging' })];
-
-    return await buildReport({
-      story: `${character.name} goes a foraging. Has ${skill} skill.`,
-      notifications: notifications,
-    });
+  async function completeStory(character, story) {
+    const context = new WeaverContext();
+    await context.addCharacter('F',character)
+    return Weaver.weave(results.story, context)
   }
 
   async function buildReport(raw) {

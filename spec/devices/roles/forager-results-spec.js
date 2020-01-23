@@ -1,6 +1,6 @@
-describe.only('Role: Forager.Results', function() {
+describe('Role: Forager.Results', function() {
 
-  it("does something", function(done) {
+  it("doesn't blow up.", function(done) {
     SpecHelper.buildJada().then(jada => {
       Role.Forager.Results.getResults(jada).then(results => {
         done();
