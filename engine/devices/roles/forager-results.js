@@ -10,15 +10,21 @@ Role.Forager.Results = (function() {
   };
 
   async function getResults(character) {
+    const context = new WeaverContext();
+    await context.addCharacter('C',character);
+
     const health = await character.getHealthClass();
     const injured = await wasCharacterInjured()
     const forageCounts = await updateFlag(injured);
     const scheduled = getScheduled(injured,forageCounts);
     const trips = getTrips(health, injured);
     const flavors = await getItems(character, health, trips, scheduled);
-    const story = startStory(health, injured, trips);
+    const story = Weaver.weave(startStory(health, injured, trips),context);
 
-    return { injured, flavors, story };
+    let injury = injured ? (await Role.Injuries.getInjury(context)) : null;
+    let injuryStory = injured ? Weaver.weave(injury.story, context) : null;
+
+    return { flavors, story, injuryStory };
   }
 
   // Normally there's a 5% chance of getting injured when out foraging. If this
