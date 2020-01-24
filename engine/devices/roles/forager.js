@@ -8,30 +8,25 @@ Role.Forager = (function() {
   }
 
   async function work(character) {
+    const context = new WeaverContext();
+    await context.addCharacter('C',character);
+
     const results = await Role.Forager.Results.getResults(character);
     const notifications = [await Role.Skills.addExperience({ character:character, skill:'foraging', flavors:results.flavors })];
-    const injury = results.injured ? (await Role.Forager.Injuries.getInjuryFor(character)) : null;
+    const injury = results.injured ? (await Role.Injuries.getInjury(context)) : null;
 
-    let story = await completeStory(character, results.story);
+    let report = {
+      story: Weaver.weave(results.story, context),
+      notifications: notifications,
+      flavors: ItemFlavor.forReport(results.flavors),
+    };
 
-    return await buildReport({ story, notifications, injury, flavors:results.flavors });
-  }
+    if (injury) {
+      await character.addInjury(injury);
+      report.injury = Weaver.weave(injury.story, context);
+    }
 
-  async function completeStory(character, story) {
-    const context = new WeaverContext();
-    await context.addCharacter('F',character)
-    return Weaver.weave(story, context);
-  }
-
-  async function buildReport(raw) {
-    let result = { story:raw.story }
-
-    if (raw.items)         { result.items = raw.items; } // Is this really the resolved items? Why?
-    if (raw.notifications) { result.notifications = raw.notifications; }
-    if (raw.injury)        { result.injury = raw.injury.story }
-    if (raw.flavors)       { result.flavors = ItemFlavor.forReport(raw.flavors); }
-
-    return result;
+    return report;
   }
 
   return {

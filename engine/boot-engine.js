@@ -77,12 +77,12 @@ require(`${ROOT}/engine/devices/resolver/tasks`);
 
 require(`${ROOT}/engine/devices/role`);
 require(`${ROOT}/engine/devices/roles/forager`);
-require(`${ROOT}/engine/devices/roles/forager-injuries`);
 require(`${ROOT}/engine/devices/roles/forager-results`);
 require(`${ROOT}/engine/devices/roles/forager-stories`);
 require(`${ROOT}/engine/devices/roles/hunter`);
-require(`${ROOT}/engine/devices/roles/hunter-injuries`);
 require(`${ROOT}/engine/devices/roles/hunter-stories`);
+require(`${ROOT}/engine/devices/roles/hunter-injuries`);
+require(`${ROOT}/engine/devices/roles/injuries`);
 require(`${ROOT}/engine/devices/roles/rest`);
 require(`${ROOT}/engine/devices/roles/skills`);
 
