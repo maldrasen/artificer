@@ -24,23 +24,11 @@ Role.Forager = (function() {
     const total = await Role.Forager.Results.getTotalItems(character,trips);
     const flavors = await Role.Forager.Results.getItems(character, total);
     const story = Role.Forager.Stories.tell(health, injured, trips);
-
-    if (injured) {
-      // Get injury
-      // add injury to character
-      // get injury story.. should all be done by injury.
-      // let injury = injured ? (await Role.Injuries.getInjury(context)) : null;
-      // let injuryStory = injured ? Weaver.weave(injury.story, context) : null;
-    }
-
-    console.log("=== Normal Foraging Happened ===");
-    console.log("Injured:",injured);
-    console.log("Story:",story)
-    console.log("Flavors",flavors)
+    const injuryStory = injured ? await Role.Injuries.applyInjury(character, context, Hazard.hinterlandsForaging) : null;
 
     return {
       story: Weaver.weave(story,context),
-      // injury: injuryStory,
+      injury: injuryStory,
       notifications: await getNotifications(character, flavors),
       flavors: ItemFlavor.forReport(flavors),
     };
@@ -49,7 +37,8 @@ Role.Forager = (function() {
   // Normally there's a 5% chance of getting injured when out foraging. If this
   // is the character's first time foraging then it should always be a success.
   async function wasCharacterInjured() {
-    return ((await Flag.lookupValue('role.forage.successCount')) == 0) ? false : Random.upTo(100) > 95;
+    return true
+    // return ((await Flag.lookupValue('role.forage.successCount')) == 0) ? false : Random.upTo(100) > 95;
   }
 
   // TODO: The number of trips that a character can make is based entirely on

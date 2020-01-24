@@ -44,6 +44,9 @@ Role.Forager.Schedule = (function() {
 
   // Acutally get all the items and build the report for the scheduled foraging.
   async function buildScheduledReport(character, scheduled) {
+    const context = new WeaverContext();
+    await context.addCharacter('C',character);
+
     let trips = await Role.Forager.getTrips(character, scheduled.injured);
     let total = await Role.Forager.Results.getTotalItems(character,trips);
     let bringBack = scheduled.unlock && scheduled.bringBack != false;
@@ -52,19 +55,15 @@ Role.Forager.Schedule = (function() {
     let flavors = await Role.Forager.Results.getItems(character, total);
     if (bringBack) { flavors[scheduled.unlock] = 1 }
 
-    let health = await character.getHealthClass();
-    let story = Role.Forager.Stories.tell(health,scheduled.injured,trips);
+    const health = await character.getHealthClass();
+    const story = Role.Forager.Stories.tell(health,scheduled.injured,trips);
 
-    if (scheduled.injured) {
-      // Get injury
-      // add injury to character
-      // get injury story.. should all be done by injury.
-    }
-
-    console.log("Scheduled Flavors:",flavors)
+    // Injury story may also need to be specified by the schedule. Only do this if it is not.
+    const injuryStory = scheduled.injured ? await Role.Injuries.applyInjury(character, context, Hazard.hinterlandsForaging) : null;
 
     return {
-      story: await Weaver.weaveWithCharacter(story, 'C', character),
+      story: Weaver.weave(story,context),
+      injury: injuryStory,
       notifications: await Role.Forager.getNotifications(character, flavors),
       flavors: ItemFlavor.forReport(flavors),
     };
