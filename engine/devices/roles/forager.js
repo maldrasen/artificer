@@ -3,20 +3,66 @@ Role.Forager = (function() {
   const name = 'Forager';
   const description = 'A forager will go out into the wilds and forrage for food and crafting materials.';
 
+
   async function canWork(character) {
     return (await Flag.lookupValue('plan-view.roles.forager')) == 'unlocked'
   }
 
   async function work(character) {
-    const results = await Role.Forager.Results.getResults(character);
-    const notifications = [await Role.Skills.addExperience({ character:character, skill:'foraging', flavors:results.flavors })];
+    const context = new WeaverContext();
+    await context.addCharacter('C',character);
+
+    const health = await character.getHealthClass();
+    const injured = await wasCharacterInjured()
+    const scheduled = await Role.Forager.Schedule.getScheduled(injured);
+
+    if (scheduled) {
+      return await Role.Forager.Schedule.executeScheduled(character, scheduled);
+    }
+
+    const trips = await getTrips(character, injured);
+    const total = await Role.Forager.Results.getTotalItems(character,trips);
+    const flavors = await Role.Forager.Results.getItems(character, total);
+    const story = Role.Forager.Stories.tell(health, injured, trips);
+
+    if (injured) {
+      // Get injury
+      // add injury to character
+      // get injury story.. should all be done by injury.
+      // let injury = injured ? (await Role.Injuries.getInjury(context)) : null;
+      // let injuryStory = injured ? Weaver.weave(injury.story, context) : null;
+    }
+
+    console.log("=== Normal Foraging Happened ===");
+    console.log("Injured:",injured);
+    console.log("Story:",story)
+    console.log("Flavors",flavors)
 
     return {
-      story: results.story,
-      injury: results.injuryStory,
-      notifications: notifications,
-      flavors: ItemFlavor.forReport(results.flavors),
+      story: Weaver.weave(story,context),
+      // injury: injuryStory,
+      notifications: await getNotifications(character, flavors),
+      flavors: ItemFlavor.forReport(flavors),
     };
+  }
+
+  // Normally there's a 5% chance of getting injured when out foraging. If this
+  // is the character's first time foraging then it should always be a success.
+  async function wasCharacterInjured() {
+    return ((await Flag.lookupValue('role.forage.successCount')) == 0) ? false : Random.upTo(100) > 95;
+  }
+
+  // TODO: The number of trips that a character can make is based entirely on
+  //       their health right now, though in the future some equipment items
+  //       should make trips faster. Like shoes or cocaine or something.
+  async function getTrips(character, injured) {
+    let health = await character.getHealthClass();
+    let maxTrips = { critical:1, horrible:2, bad:3 }[health] || 4;
+    return injured ? Random.upTo(maxTrips-1) : maxTrips;
+  }
+
+  async function getNotifications(character, flavors) {
+    return [await Role.Skills.addExperience({ character:character, skill:'foraging', flavors:flavors })];
   }
 
   return {
@@ -25,6 +71,9 @@ Role.Forager = (function() {
     description,
     canWork,
     work,
+
+    getTrips,
+    getNotifications,
   };
 
 })();
