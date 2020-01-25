@@ -12,7 +12,7 @@ global.ItemFlavor = class ItemFlavor extends Form {
   static itemize(flavors) {
     let items = {};
 
-    each(flavors, (count, code) => {
+    each((flavors||{}), (count, code) => {
       let flavor = ItemFlavor.lookup(code);
 
       // Some item flavors have food values. A fox hide instance both becomes
@@ -43,7 +43,7 @@ global.ItemFlavor = class ItemFlavor extends Form {
   // Take a map of item flavors like { 'rabbit-pelt':2 }, and turns it into
   // a map that the client can know how to render.
   static forReport(raw) {
-    return Object.keys(raw).map(code => {
+    return Object.keys(raw||{}).map(code => {
       let flavor = ItemFlavor.lookup(code);
       return {
         code: code,
