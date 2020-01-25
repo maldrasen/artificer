@@ -15,6 +15,11 @@ Resolver.Roles = (function() {
 
     await Promise.all(characters.map(async character => {
       let result = await Role.lookup(character.dutyCode).work(character);
+      let flavors = result.flavors;
+
+      result.flavors = ItemFlavor.forReport(flavors);
+      result.items = ItemFlavor.itemize(flavors);
+
       Resolver.Items.add(result.items);
       Resolver.Report.setMinionData(character,'work',result);
     }));

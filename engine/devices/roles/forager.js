@@ -30,7 +30,7 @@ Role.Forager = (function() {
       story: Weaver.weave(story,context),
       injury: injuryStory,
       notifications: await getNotifications(character, flavors),
-      flavors: ItemFlavor.forReport(flavors),
+      flavors: flavors,
     };
   }
 

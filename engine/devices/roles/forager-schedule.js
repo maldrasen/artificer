@@ -65,7 +65,7 @@ Role.Forager.Schedule = (function() {
       story: Weaver.weave(story,context),
       injury: injuryStory,
       notifications: await Role.Forager.getNotifications(character, flavors),
-      flavors: ItemFlavor.forReport(flavors),
+      flavors: flavors,
     };
   }
 
@@ -91,7 +91,7 @@ Role.Forager.Schedule = (function() {
     return {
       story: await Weaver.weaveWithCharacter(Role.Forager.Stories.tell('healthy',false,4), 'C', character),
       notifications: await Role.Forager.getNotifications(character, flavors),
-      flavors: ItemFlavor.forReport(flavors),
+      flavors: flavors,
     };
   }
 
