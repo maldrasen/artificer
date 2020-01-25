@@ -1,7 +1,8 @@
 
 Item.build('blood-berries', {
   type: 'resource',
-  name: 'Purple Headed Donkey',
+  name: 'Blood Berry',
+  pluralName: 'Blood Berries',
 });
 
 Item.build('blight-spider', {

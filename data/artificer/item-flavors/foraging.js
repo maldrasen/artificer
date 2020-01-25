@@ -4,7 +4,8 @@ ItemFlavor.build('willow-branch', {
   type: 'foraged-item',
   story:{ called:'willow branches', countable:true },
   becomes: 'willow-branch',
-  becomesCount: 4,
+  becomesMin: 4,
+  becomesMax: 6,
   xp: 1,
 });
 
@@ -48,7 +49,8 @@ ItemFlavor.build('blood-berries', {
   name: 'Blood Berries',
   type: 'foraged-herb',
   becomes: 'blood-berries',
-  becomesCount: 10,
+  becomesMin: 6,
+  becomesMax: 10,
   story:{ called:'blood berries', countable:true },
   xp: 1,
 });
@@ -57,7 +59,8 @@ ItemFlavor.build('creeping-moss', {
   name: 'Creeping Moss',
   type: 'foraged-herb',
   becomes: 'creeping-moss',
-  becomesCount: 4,
+  becomesMin: 3,
+  becomesMax: 4,
   story:{ called:'creeping moss', countable:false },
   xp: 2,
 });
@@ -66,7 +69,8 @@ ItemFlavor.build('firewasp', {
   name: 'Firewasp Pepper',
   type: 'foraged-herb',
   becomes: 'firewasp',
-  becomesCount: 6,
+  becomesMin: 3,
+  becomesMax: 6,
   story:{ called:'firewasp peppers', countable:true },
   xp: 6,
 });
@@ -75,7 +79,8 @@ ItemFlavor.build('itchweed', {
   name: 'Itchweed',
   type: 'foraged-herb',
   becomes: 'itchweed',
-  becomesCount: 4,
+  becomesMin: 3,
+  becomesMax: 4,
   story:{ called:'itchweed', countable:false },
   xp: 4,
 });
@@ -84,7 +89,8 @@ ItemFlavor.build('milkweed', {
   name: 'Milkweed',
   type: 'foraged-herb',
   becomes: 'milkweed',
-  becomesCount: 4,
+  becomesMin: 3,
+  becomesMax: 4,
   story:{ called:'milkweed', countable:false },
   xp: 4,
 });
