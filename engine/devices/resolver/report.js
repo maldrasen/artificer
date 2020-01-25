@@ -8,7 +8,10 @@ Resolver.Report = (function() {
     report.tasks = [];
 
     each(minions, minion => {
-      report.minions[minion.id] = { name:minion.name };
+      report.minions[minion.id] = {
+        name: minion.name,
+        portrait: minion.portrait.url,
+      };
     });
   }
 

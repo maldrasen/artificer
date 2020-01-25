@@ -47,4 +47,8 @@ global.ItemFlavor = class ItemFlavor extends Form {
     });
   }
 
+  get icon() {
+    return ImageResource.lookup(this.iconCode || 'unknown-icon').url;
+  }
+
 }

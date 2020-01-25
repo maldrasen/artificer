@@ -30,6 +30,7 @@ global.Character = Database.instance().define('character', {
     isFemale()    { return this.genderCode == 'female'; },
     alive()       { return this.status == 'normal' },
     singleName()  { return this.forcedName || this.firstName },
+    portrait()    { return ImageResource.lookup(this.portraitCode || 'unknown-portrait'); },
 
     name() {
       return this.forcedName || `${this.preName||''} ${this.firstName} ${this.lastName||''}`.trim();
