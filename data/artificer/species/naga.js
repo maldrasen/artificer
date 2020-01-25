@@ -54,7 +54,7 @@ Species.build('naga', {
 
   headDescription: `{{C::gender.He}} has a snake's face, with {{C::body.scaleColor}} scales and {{C::body.eyeColor}} eyes.`,
 
-  flags: ['furry','scalie']
+  flags: ['scalie']
 });
 
 //   personalities: {

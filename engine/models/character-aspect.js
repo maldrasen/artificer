@@ -19,11 +19,20 @@ global.CharacterAspect = Database.instance().define('character_aspect', {
   }]
 });
 
-CharacterAspect.prototype.adjustStrength = function(amount) {
+CharacterAspect.prototype.adjustStrength = async function(amount) {
+  let character = await Character.findByPk(this.character_id);
   let value = this.strength + amount;
   if (value < 0)    { value = 0; }
   if (value > 3000) { value = 3000; }
+
+  if (character.species.skillCaps && character.species.skillCaps[this.code]) {
+    let cap = character.species.skillCaps[this.code];
+    if (cap == 1 && value > 200) { value = 200; }
+    if (cap == 2 && value > 600) { value = 600; }
+  }
+
   this.strength = value;
+  await this.save();
 }
 
 CharacterAspect.prototype.setLevel = function(level) {

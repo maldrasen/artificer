@@ -1,11 +1,17 @@
 global.Hazard = class Hazard extends Form {
 
+  // Because the requirements for the injust locations are added automatically
+  // all hazard stories must use {{C::}} to denote the minion. All injuries are
+  // also assumed to be painful injuries, unless they're head injuries which
+  // are criticl by default.
   static buildHazard(code,data) {
-    data.severity = (['body','head'].indexOf(data.location) < 0) ? 'painful' : 'critical';
+    if (data.severity == null) { data.severity = (data.location == 'head') ? 'critical' : 'painful'; }
+    if (data.details == null)  { data.details = {}; }
+    if (data.requires == null) { data.requires = []; }
 
-    if (data.details == null) {
-      data.details = {};
-    }
+    if (data.location == 'cock')  { data.requires.push('minion(C).has-cock') }
+    if (data.location == 'pussy') { data.requires.push('minion(C).has-pussy') }
+    if (data.location == 'tits')  { data.requires.push('minion(C).has-tits') }
 
     return super.build(code,data);
   }
@@ -27,6 +33,10 @@ global.Hazard = class Hazard extends Form {
 
   static criticalHinterlandsHunting() {
     return Hazard.where(hazard => { return hazard.severity == 'critical' && hazard.activity == 'hunting-hinterlands'; });
+  }
+
+  static hinterlandsForaging() {
+    return Hazard.where(hazard => { return hazard.activity == 'foraging-hinterlands'; });
   }
 
 }

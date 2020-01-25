@@ -58,11 +58,15 @@ Species.build('scaven', {
     }
   },
 
-  nameGenerator: ScavenNameGenerator,
+  skillCaps: {
+    foraging: 2,
+    hunting: 1,
+  },
 
   headDescription: `The scaven's face is unsurprisingly rat-like with {{C::body.eyeColor}} eyes, a short muzzle, long
                     whiskers and a twitchy pink nose.`,
 
+  nameGenerator: ScavenNameGenerator,
   flags: ['furry']
 });
 

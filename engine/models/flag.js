@@ -10,7 +10,7 @@ Flag.lookup = async function(code) {
 
   if (flag == null) {
     let info = FlagInfo.instances[code];
-    return (info && info.default) ? { code:code, value:info.default } : null;
+    return (info && info.default != null) ? { code:code, value:info.default } : null;
   }
 
   return { code:flag.code, value:flag.value };

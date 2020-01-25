@@ -23,10 +23,17 @@ global.ItemFlavor = class ItemFlavor extends Form {
       }
 
       // Some item flavors become other items when put into the inventory. For
-      // instance, a fox hide becomes just a hide.
+      // instance, a fox hide becomes just a hide. When itemized a flavor can
+      // become a set number of items or a slightly random number of items.
       if (flavor.becomes) {
         if (items[flavor.becomes] == null) { items[flavor.becomes] = 0; }
-        items[flavor.becomes] += (count * flavor.becomesCount);
+
+        if (flavor.becomesCount) {
+          items[flavor.becomes] += (count * flavor.becomesCount);
+        }
+        if (flavor.becomesMin && flavor.becomesMax) {
+          items[flavor.becomes] += (count * Random.between(flavor.becomesMin,flavor.becomesMax));
+        }
       }
     });
 
@@ -45,6 +52,10 @@ global.ItemFlavor = class ItemFlavor extends Form {
         icon: flavor.icon
       };
     });
+  }
+
+  get icon() {
+    return ImageResource.lookup(this.iconCode || 'unknown-icon').url;
   }
 
 }

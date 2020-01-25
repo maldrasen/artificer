@@ -116,11 +116,9 @@ global.HasAspects = (function() {
 
   // === Private Functions =============================================================================================
 
-  function applyAspectAdjustment(characterAspect, points) {
-    return new Promise(resolve => {
-      characterAspect.adjustStrength(points);
-      characterAspect.save().then(completeAspectAdjustment(characterAspect)).then(resolve)
-    });
+  async function applyAspectAdjustment(characterAspect, points) {
+    await characterAspect.adjustStrength(points);
+    await completeAspectAdjustment(characterAspect);
   }
 
   function applyAspectAdjustmentAddition(code, points, character) {
