@@ -3,7 +3,7 @@ Role.Forager.Results = (function() {
   // This function returns a map of item flavors, either randomly selected from
   // the list of possible items, or a map that's been tweeked a bit by one of
   // the foraging schedules.
-  async function getItems(character, total) {
+  async function getItems(total) {
     const possible = await getPossibleItems();
 
     let items = {};
@@ -67,6 +67,6 @@ Role.Forager.Results = (function() {
     return capacity;
   }
 
-  return { getItems, getTotalItems };
+  return { getItems, getTotalItems, getPossibleItems, getCapacity };
 
 })();

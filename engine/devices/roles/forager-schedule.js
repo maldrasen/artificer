@@ -52,7 +52,7 @@ Role.Forager.Schedule = (function() {
     let bringBack = scheduled.unlock && scheduled.bringBack != false;
 
     if (bringBack) { total--; }
-    let flavors = await Role.Forager.Results.getItems(character, total);
+    let flavors = await Role.Forager.Results.getItems(total);
     if (bringBack) { flavors[scheduled.unlock] = 1 }
 
     const health = await character.getHealthClass();

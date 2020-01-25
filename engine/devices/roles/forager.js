@@ -22,7 +22,7 @@ Role.Forager = (function() {
 
     const trips = await getTrips(character, injured);
     const total = await Role.Forager.Results.getTotalItems(character,trips);
-    const flavors = await Role.Forager.Results.getItems(character, total);
+    const flavors = await Role.Forager.Results.getItems(total);
     const story = Role.Forager.Stories.tell(health, injured, trips);
     const injuryStory = injured ? await Role.Injuries.applyInjury(character, context, Hazard.hinterlandsForaging) : null;
 
