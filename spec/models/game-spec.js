@@ -1,4 +1,4 @@
-describe.only('Game', function() {
+describe('Game', function() {
 
   it('can start a new game', function(done) {
     Game.start().then(game => {
