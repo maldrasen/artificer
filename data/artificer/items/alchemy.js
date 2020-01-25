@@ -1,12 +1,12 @@
 
-Item.build('milkweed', {
+Item.build('blood-berries', {
   type: 'resource',
-  name: 'Milkweed',
+  name: 'Purple Headed Donkey',
 });
 
-Item.build('itchweed', {
+Item.build('blight-spider', {
   type: 'resource',
-  name: 'Itchweed',
+  name: 'Harry Bag Spider',
 });
 
 Item.build('firewasp', {
@@ -14,9 +14,14 @@ Item.build('firewasp', {
   name: 'Firewasp Pepper',
 });
 
-Item.build('blight-spider', {
+Item.build('itchweed', {
   type: 'resource',
-  name: 'Harry Bag Spider',
+  name: 'Itchweed',
+});
+
+Item.build('milkweed', {
+  type: 'resource',
+  name: 'Milkweed',
 });
 
 Item.build('purple-mushroom', {
