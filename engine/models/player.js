@@ -48,7 +48,18 @@ Player.forge = async function(options) {
     speciesCode: options.species,
   });
 
-  await CharacterBuilder.addBody(player, {});
+  let defaultBody = { anus:{ conditon:'virgin' }};
+
+  if (options.gender != 'female') {
+    defaultBody.cock = { sizeClass:'average' }
+  };
+
+  if (options.gender != 'male') {
+    defaultBody.tits = { sizeClass:'average' };
+    defaultBody.pussy = { sizeClass:'average', conditon:'virgin' }
+  };
+
+  await CharacterBuilder.addBody(player, defaultBody);
   await Flag.setAll({
     'player.firstName': player.firstName,
     'player.lastName': player.lastName,
