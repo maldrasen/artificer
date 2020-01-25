@@ -4,6 +4,7 @@ Event.build('found-willow-branches', {
   stages:[{
     pages:[
       { text:'TODO: Found Willow Branches.' }
+      // Should also be an opertunity to whip her a bit if the player feels like it.
     ]
   }],
 
