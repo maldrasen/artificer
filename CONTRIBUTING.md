@@ -10,9 +10,7 @@ really don't see any advantage in using modules when everything in the applicati
 application. Breaking things out into modules doesn't really buy you anything in an app like this.
 
 My coding style is arbitrary and capricious, and can't really be codified into anything like a code formatter. I format
-my code in whatever way appeals to me, and that includes doing annoying things like lining things up in columns. And
-yes, I know that's bad because it breaks diffs. I don't care, it's easier for me to read. I'll break ternaries across
-three lines and I might not add line breaks where people might expect me to. Examples of bad code formatting that I
+my code in whatever way appeals to me, and that includes doing annoying shit like lining things up in columns. And yes, I know that's bad because it breaks diffs. I don't care, it's easier for me to read. I'll break ternaries across three lines and I might not add line breaks where people might expect me to. Examples of bad code formatting that I
 will be doing:
 
 ```
