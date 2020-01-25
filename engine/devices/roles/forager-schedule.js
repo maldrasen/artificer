@@ -1,14 +1,5 @@
 Role.Forager.Schedule = (function() {
 
-  const FailureSchedule = {
-    'F.1': { unlock:'blight-spider', event:'found-blight-spider', bringBack:false },
-  };
-
-  const SuccessSchedule = {
-    'S.1': { special:firstResult },
-    'S.2': { unlock:'blood-berries', event:'found-blood-berries' },
-  };
-
   // When checking to see if there's something that should happen then next
   // time a character forages, either the success or failure flag is
   // incremented. If something happens it's returned as the scheduled.
@@ -24,7 +15,7 @@ Role.Forager.Schedule = (function() {
       await Flag.set('role.forage.successCount',success);
     }
 
-    let scheduled = injured ? FailureSchedule[`F.${failure}`]: SuccessSchedule[`S.${success}`];
+    let scheduled = injured ? Role.Forager.FailureSchedule[`F.${failure}`]: Role.Forager.SuccessSchedule[`S.${success}`];
     if (scheduled) {
       scheduled.injured = injured;
     }
@@ -64,32 +55,6 @@ Role.Forager.Schedule = (function() {
     return {
       story: Weaver.weave(story,context),
       injury: injuryStory,
-      notifications: await Role.Forager.getNotifications(character, flavors),
-      flavors: flavors,
-    };
-  }
-
-  // The first time a character goes foraging they need to bring back at least
-  // one of each available item, because they'll be mentioned in the event.
-  async function firstResult(character) {
-    await EventQueue.enqueueEvent('found-fruits-and-nuts',{ actors:{ C:character.id }});
-
-    await Flag.setAll({
-      'item.bitter-fruits':'unlocked',
-      'item.goat-nuts':'unlocked',
-      'item.juice-berries':'unlocked',
-      'item.sweet-fruits':'unlocked',
-    });
-
-    const flavors = {
-      'bitter-fruits': 2,
-      'goat-nuts': 3,
-      'juice-berries': 2,
-      'sweet-fruits': 1,
-    };
-
-    return {
-      story: await Weaver.weaveWithCharacter(Role.Forager.Stories.tell('healthy',false,4), 'C', character),
       notifications: await Role.Forager.getNotifications(character, flavors),
       flavors: flavors,
     };

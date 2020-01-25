@@ -14,7 +14,7 @@ Role.Forager.Stories = (function() {
     let second = `{{C::gender.He}} was in good health and spirits and was able to make four trips into the wilds.`;
 
     if (injured) {
-      if (trips == 0) { second = `{{C::gender.He}} was injured almost as soon as {{C::gender.he}} left though, and wans't able to bring back anything.`; }
+      if (trips == 0) { second = `{{C::gender.He}} was injured almost as soon as {{C::gender.he}} left though, and wasn't able to bring back anything.`; }
       if (trips == 1) { second = `{{C::gender.He}} got hurt on {{C::gender.his}} second trip into the wilds, so {{C::gender.he}} was only able to bring back one load of foraged goods.`; }
       if (trips == 2) { second = `{{C::gender.He}} got hurt while on {{C::gender.his}} third trip into the wilds, but still managed to at least make two successful trips.`; }
       if (trips == 3) { second = `{{C::gender.He}} was injured at some point on {{C::gender.his}} last trip into the wilds, but was at least able to make three successful runs.`; }

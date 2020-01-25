@@ -1,5 +1,5 @@
 
-ItemFlavor.build('willow-branch', {
+ItemFlavor.build('willow-branches', {
   name: 'Willow Branches',
   type: 'foraged-item',
   story:{ called:'willow branches', countable:true },
