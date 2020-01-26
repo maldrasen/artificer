@@ -14,37 +14,8 @@ Components.EventView = (function() {
     $(document).on('click', '#currentEvent .selection-button', Elements.buttonAction(acceptSelection));
   }
 
-  // Build an event given all of the event options. Options:
-  //
-  //   actors             Map of actors used in the event. The object keys are the subjects for the Weaver. The object
-  //                      values are used by the CharacterAgent to lookup the specified character.
-  //
-  //   actorIDs           The map of actor IDs is set when the event is transformed in the engine. If a random
-  //                      character was found by the CharacterAgent, but needs to be used in a follow on event,
-  //                      getting their ID from this object is really the only way to do that. In order for these IDs
-  //                      to pass all the way back to the engine in an onFinish event it's added to the choices object,
-  //                      so that they can then be added to the state of a follow on event.
-  //
-  //   background         Background argument object for the ImageResourceLoader.
-  //
-  //   location           Used to indicate that this is a location event. Location events are only started when the
-  //                      player go to that location and starts the event manually.
-  //
-  //   onStart            Function run when the event starts.
-  //
-  //   onFinish           Function run when the event is finished. Called with the choices object.
-  //
-  //   requires           A requirement or list of requirement that must be met before the event can be enqueued.
-  //                      Requirements are strings interpreted by the CentralScrutinizer.
-  //
-  //   choice             Works like a requirement, but has to happen client side because it's based on a choice that
-  //                      the player makes within the event. Should be in the format { choice-key:choice-value }
-  //
-  //   stages             Stage Data. It's complicated, so documented below.
-  //
-  //   time               Specify the time that this events happen. Can be set to morning or afternoon. Only one
-  //                      morning or afternoon event can be run each day.
-  //
+  // Build an event given all of the event options. All of the event options
+  // are described in detail on the Wiki now.
   function build(transport, event) {
     Components.EventView.Page = {};
 
