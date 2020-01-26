@@ -172,6 +172,7 @@ Components.EventView = (function() {
     if (page.darkenBackground != null) { darkenBackground(page.darkenBackground); }
     if (page.showCenterImage) { showCenterImage(page.showCenterImage); }
     if (page.hideCenterImage) { hideCenterImage(); }
+    if (page.effects) { applyPageEffects(page.effects); }
 
     showSpeaker(page.minionSpeaker, page.playerSpeaker)
 
@@ -188,6 +189,12 @@ Components.EventView = (function() {
     let speaker = $('#currentEvent .event-text-speaker').empty().addClass('hide').removeClass('minion').removeClass('player');
     if (minionName) { speaker.removeClass('hide').addClass('minion').append(minionName); }
     if (playerName) { speaker.removeClass('hide').addClass('player').append(playerName); }
+  }
+
+  function applyPageEffects(effects) {
+    each(effects, strang => {
+      new Elements.AdjustmentBadge(strang, eventData.actorIDs).execute();
+    });
   }
 
   // === Chooser Pages ===

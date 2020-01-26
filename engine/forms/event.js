@@ -75,38 +75,39 @@ global.Event = class Event extends Form {
     return stage;
   }
 
+  // When a page is transformed we set the caption on the page frame for the player or a minion if either is speaking.
+  // We also transform the effects array if it's present.
+  //
+  // TODO: Eventually I'd like to show the character portraits as well as their names. Need to get the portraits in a
+  //       working state first though.
   static transformPage(page, context) {
     page.text = Weaver.weave(page.text, context);
 
-    // Set the caption on the page frame for the player or a minion if either is speaking.
     if (page.playerSpeaker) { page.playerSpeaker = context.get('P').character.firstName; }
     if (page.minionSpeaker) { page.minionSpeaker = Weaver.weave(page.minionSpeaker, context); }
+    if (page.effects)       { page.effects = Event.transformEffects(page.effects, context); }
 
     return page;
   }
 
-  // The selection page undergoes two significant transformations. First the selection text has to go through the
-  // weaver for the standard text interpolation. Second the selection effect strangs need to have the actor indicators
-  // replaced with their character ID, such that this:
-  //    { text:`Kick {{S::gender.him}} in the balls.`, value:'kick', effects:['actor(M) masochist 1']},
-  //
-  // Becomes:
-  //    { text:`Kick him in the balls.`, value:'kick', effects:['6 masochist 1']},
-  //
-  // Sorry, this is all just nasty.
   static transformSelectionPage(stage, context) {
     for (let i=0; i<stage.selections.length; i++) {
       stage.selections[i].text = Weaver.weave(stage.selections[i].text, context);
-      for (let j=0; j<(stage.selections[i].effects||[]).length; j++) {
-        let strang = stage.selections[i].effects[j];
-        let match = strang.match(/actor\((.+)\)/);
-        if (match) {
-          stage.selections[i].effects[j] = strang.replace(/actor\(.+\)/,context.get(match[1]).character.id);
-        }
-      }
+      stage.selections[i].effects = Event.transformEffects(stage.selections[i].effects, context);
     }
-
     return stage;
+  }
+
+  // When a page or a selection has an array of effects they need to be transformed so that the actors that are defined
+  // in the event can be found by the engine when the effects are applied. An effect written in the effect strang
+  // format as ['actor(M) masochist 1'] needs to become ['6 masochist 1'], replacing the context style M in this case,
+  // with the actual character ID. A strang like ['player sadist 1'] though can stay the same because the
+  // CharacterAgent knows how to find the player.
+  static transformEffects(effects, context) {
+    return effects.map(strang => {
+      let match = strang.match(/actor\((.+)\)/);
+      return match ? strang.replace(/actor\(.+\)/,context.get(match[1]).character.id) : strang;
+    });
   }
 
 }

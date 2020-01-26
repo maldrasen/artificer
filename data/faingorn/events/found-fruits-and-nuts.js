@@ -3,7 +3,7 @@ Event.build('found-fruits-and-nuts', {
 
   stages:[{
     pages:[
-      { text:`{{C::character.firstName}}‌ returns slightly after sunset, arms laden with fruits and nuts.` },
+      { text:`{{C::character.firstName}}‌ returns slightly after sunset, arms laden with fruits and nuts.`},
       { text:`I'm sitting by the fireplace, waiting for {{C::gender.him}} to arrive.` },
       { text:`This is the last trip {{C::gender.he}}'ll be able to make tonight so I invite {{C::gender.him}}‌ to join me for a while.` },
       { playerSpeaker:true, text:`<span class='player-quote'>"You did well today," I‌ tell {{C::gender.him}}.</span>` },
@@ -68,10 +68,15 @@ Event.build('found-fruits-and-nuts', {
 
   onFinish: async choices => {
     Flag.set('locationMenu.inventory','unlocked');
+
     // TODO: Also unlock tasks and crafting task for basket.
 
     if (['normal','filthy'].indexOf(choices.sex) >= 0) {
-      await EventQueue.enqueueEvent('found-fruits-and-nuts-sex',{ style:choices.sex, actors:{ C:choices.event.actorIDs.C }});
+      const player = await Player.instance();
+      const minion = await Character.findByPk(choices.event.actorIDs.C);
+      const p = player.isFemale ? 'F':'M';
+      const m = minion.isFemale ? 'f':'m';
+      await EventQueue.enqueueEvent(`found-fruits-and-nuts-sex-${p}${m}`,{ style:choices.sex, actors:{ C:minion.id }});
     }
   },
 

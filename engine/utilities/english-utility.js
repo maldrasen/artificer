@@ -93,9 +93,6 @@ global.EnglishUtility = {
       if (part > 4) { return `${EnglishUtility.numberInEnglish(number)} and a half ${inch}`; }
       return `${EnglishUtility.numberInEnglish(number)} ${inch}`;
     }
-    if (number == 12 && Random.upTo(2)==0) {
-      return "one foot";
-    }
     if (number < 18) {
       if (part > 4) { return `${EnglishUtility.numberInEnglish(number)} and a half ${inch}`; }
       return `${EnglishUtility.numberInEnglish(number)} ${inch}`;
