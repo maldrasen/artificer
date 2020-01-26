@@ -37,7 +37,7 @@ global.Event = class Event extends Form {
 
   static async transformEvent(event, context, queuedEvent) {
     event.stages = await Promise.all(event.stages.map(async stage => {
-      const valid = await CentralScrutinizer.meetsRequirements(stage.requires, context);
+      const valid = await CentralScrutinizer.meetsRequirements(stage.requires, context, { state:queuedEvent.state });
       if (valid) { return await Event.transformStage(stage, context); }
     }));
 

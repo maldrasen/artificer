@@ -37,6 +37,9 @@ Components.EventView = (function() {
   //   requires           A requirement or list of requirement that must be met before the event can be enqueued.
   //                      Requirements are strings interpreted by the CentralScrutinizer.
   //
+  //   choice             Works like a requirement, but has to happen client side because it's based on a choice that
+  //                      the player makes within the event. Should be in the format { choice-key:choice-value }
+  //
   //   stages             Stage Data. It's complicated, so documented below.
   //
   //   time               Specify the time that this events happen. Can be set to morning or afternoon. Only one
@@ -112,12 +115,26 @@ Components.EventView = (function() {
 
   function nextStage() {
     if (stageIndex < eventData.stages.length-1) {
-      stageIndex += 1;
       closeStage();
-      buildStage();
+      stageIndex += 1;
+      validateStage() ? buildStage() : nextStage()
     } else {
       endEvent();
     }
+  }
+
+  // Check to see if the current stage is valid. A stage can have a choice
+  // object that specifies that this stage should only be shown when a specific
+  // choice has been made.
+  function validateStage() {
+    let stage = currentStage();
+    let valid = true;
+
+    each(Object.keys(stage.choice||{}), key => {
+      if (stage.choice[key] != choices[key]) { valid = false; }
+    });
+
+    return valid;
   }
 
   function setStage(id) {

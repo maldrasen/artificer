@@ -52,19 +52,27 @@ Event.build('found-fruits-and-nuts', {
     selectionPage: true,
     selectionKey: 'sex',
     selections:[
-      { text:'No, I had better not.',                                   value:'no',     effects:['player rat-fucker -2']},
-      { text:`Yes, {{C::gender.he}}'s here to serve me after all.`,     value:'yes',    effects:['player dominant 1']},
-      { text:`Yes, {{C::gender.he}}'s here to serve. (filthy version)`, value:'filthy', effects:['player perverted 1']},
+      { text:'No, I would rather not.',                                 value:'no',     effects:['player rat-fucker -2']},
+      { text:`Yes, {{C::gender.he}}'s here to serve me after all.`,     value:'normal', effects:['player dominant 1']},
+      { text:`Yes, {{C::gender.he}}'s here to serve. (filthy version)`, value:'filthy', effects:['player dominant 1','player perverted 1']},
+    ]
+  },{
+    choice:{ sex:'no' },
+    pages:[
+      { text:`I shake my head at the thought.` },
+      { text:`What am I thinking?` },
+      { text:`{{C::gender.He}}'s a filthy, nasty little creature that probably hasn't had a bath for {{C::gender.his}} entire life.` },
+      { text:`I'm not so horny that I'll just fuck any animal.` },
     ]
   }],
 
   onFinish: async choices => {
     Flag.set('locationMenu.inventory','unlocked');
-
     // TODO: Also unlock tasks and crafting task for basket.
 
-    if (choices.sex == 'yes') { await EventQueue.enqueueEvent('found-fruits-and-nuts-normal-sex',{ actors:{ C:choices.event.actorIDs.C }}); }
-    if (choices.sex == 'filthy') { await EventQueue.enqueueEvent('found-fruits-and-nuts-filthy-sex',{ actors:{ C:choices.event.actorIDs.C }}); }
+    if (['normal','filthy'].indexOf(choices.sex) >= 0) {
+      await EventQueue.enqueueEvent('found-fruits-and-nuts-sex',{ style:choices.sex, actors:{ C:choices.event.actorIDs.C }});
+    }
   },
 
 });

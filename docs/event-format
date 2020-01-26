@@ -17,14 +17,12 @@ We have the following alert types available in events:
 
 === Selection Pages ===
 
-Selection Pages are for normal multiple choice options in an event. The selectionKey will be set on the event options
+Selection Pages are for normal multiple choice options in an event. The selectionKey will be set on the event choices
 object to value of the selected choice.
   - The text in each selection is interpolated by the weaver in the engine when the event is prepared.
   - The selections can have adjustment badges which can be displayed on the selection.
 
-  - example:
-      {
-        selectionPage: true,
+      { selectionPage: true,
         selectionKey: 'approach',
         selections:[
           { text:'Suck {{R::gender.his}} cock.', value:'befriend', effects:['player oral 1']},
@@ -44,6 +42,13 @@ subject, the aspect, and the level.
            understood by the AspectAdjuster.
 
   Level:   The level of the adjustment, -3 to 3, but not 0.
+
+The result of the selection page is stored in the choices object in the event view. The choices are either used in an
+onFinish() function, or the can be used to filter stages by specifying a choice attribute on the stage.
+
+      { choice:{ approach:'torment' },
+        pages:[{ text:`OK, you fist {{R::gender.his}} ass then.` }]
+      }
 
 === On Finish ===
 
