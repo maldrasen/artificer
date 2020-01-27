@@ -20,6 +20,7 @@ Species.build('wood-elf', {
     eyeColors: 'human',
     furColors: 'matchHair',
 
+    mouth: { maxMouthWidth:44 },
     tits:{ size:{
       zero: 5,
       tiny: 10,

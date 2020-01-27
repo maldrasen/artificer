@@ -40,6 +40,7 @@ Species.build('pixie', {
 
     mouth: {
       averageTongueLength: 10,
+      maxMouthWidth: 10,
     },
     tits:{ size:{
       zero: 30,

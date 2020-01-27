@@ -20,6 +20,7 @@ Species.build('gnome', {
     hairColors: 'human',
     eyeColors: 'human',
 
+    mouth:{ maxMouthWidth:38 },
     tits:{ size:{
       average: 30,
       big:     50,

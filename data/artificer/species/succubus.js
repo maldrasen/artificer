@@ -35,6 +35,8 @@ Species.build('succubus', {
     mouth: {
       tongueShape: 'forked',
       averageTongueLength: 80,
+      maxMouthWidth: 100,
+      maxThroatWidth: 80,
     },
     tits:{ size:{
       zero: 30,

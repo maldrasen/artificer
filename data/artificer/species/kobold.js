@@ -32,6 +32,8 @@ Species.build('kobold', {
     mouth: {
       tongueShape: 'forked',
       averageTongueLength: 100,
+      maxMouthWidth: 200,
+      maxThroatWidth: 40,
     },
     cock: {
       shape: 'dragon',

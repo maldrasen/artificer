@@ -35,6 +35,8 @@ Species.build('incubus', {
     mouth: {
       tongueShape: 'forked',
       averageTongueLength: 80,
+      maxMouthWidth: 100,
+      maxThroatWidth: 80,
     },
     cock:{ size:{
       average: 10,

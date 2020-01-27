@@ -34,6 +34,7 @@ Species.build('ogre', {
 
     mouth: {
       averageTongueLength: 80,
+      maxMouthWidth: 100,
     },
     tits:{ size:{
       big: 60,

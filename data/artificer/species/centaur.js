@@ -22,6 +22,7 @@ Species.build('centaur', {
     eyeColors: 'human',
     furColors: { brown:30, gray:10, black:20 },
 
+    mouth:{ maxMouthWidth:54 },
     tits:{ size:{
       average: 20,
       big:     60,

@@ -43,6 +43,7 @@ Species.build('equian', {
 
     mouth: {
       averageTongueLength: 90,
+      maxMouthWidth: 80,
     },
     tits:{ size:{
       average: 20,

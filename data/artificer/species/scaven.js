@@ -31,7 +31,8 @@ Species.build('scaven', {
     },
 
     mouth: {
-      averageTongueLength: 50,
+      averageTongueLength: 30,
+      maxMouthWidth: 50,
     },
     tits: {
       count: 12,

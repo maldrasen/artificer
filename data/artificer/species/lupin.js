@@ -34,6 +34,7 @@ Species.build('lupin', {
 
     mouth: {
       averageTongueLength: 120,
+      maxMouthWidth: 240,
     },
     tits: {
       count: 6,

@@ -32,6 +32,8 @@ Species.build('dragon', {
     mouth: {
       tongueShape: 'forked',
       averageTongueLength: 250,
+      maxMouthWidth: 500,
+      maxThroatWidth: 80,
     },
     tits:{ size:{
       zero:    30,

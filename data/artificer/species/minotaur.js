@@ -46,6 +46,7 @@ Species.build('minotaur', {
 
     mouth: {
       averageTongueLength: 120,
+      maxMouthWidth: 80,
     },
     tits:{ size:{
       big: 50,

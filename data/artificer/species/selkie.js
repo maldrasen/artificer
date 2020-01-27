@@ -29,6 +29,7 @@ Species.build('selkie', {
 
     mouth: {
       averageTongueLength: 80,
+      maxMouthWidth: 58,
     },
     tits:{ size:{
       zero: 40,

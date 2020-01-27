@@ -31,6 +31,8 @@ Species.build('naga', {
     mouth: {
       tongueShape: 'forked',
       averageTongueLength: 300,
+      maxMouthWidth: 500,
+      maxThroatWidth: 150,
     },
     tits:{ size:{
       tiny: 30,

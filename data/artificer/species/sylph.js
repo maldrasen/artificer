@@ -29,6 +29,7 @@ Species.build('sylph', {
       purple: 20,
     },
 
+    mouth:{ maxMouthWidth:44 },
     tits:{ size:{
       zero: 30,
       tiny: 20,
