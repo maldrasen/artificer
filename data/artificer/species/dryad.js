@@ -35,6 +35,7 @@ Species.build('dryad', {
       hazel: 20,
     },
 
+    mouth: { maxThroatWidth:30 },
     tits:{ size:{
       tiny:    20,
       small:   40,

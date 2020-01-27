@@ -38,6 +38,10 @@ Event.build('found-fruits-and-nuts-sex-Mf', {
     ]
   }],
 
+  // Actually scaven mouths are slightly larger than humans...
+  // If cock can comfortably fit - then deep blowjob
+  // If cock can painfully fit - then forced shallow blowjob
+
   // requires:['state.style=normal'],
   // requires:['state.style=filthy'],
 
