@@ -36,6 +36,21 @@ Event.build('found-fruits-and-nuts-sex-Mf', {
       { text:`It's obvious she's done this before.` },
       { text:`I wonder if most scaven women are like her, or if she's uniquely qualified for this.` },
     ]
+  },{
+    requires:['canSuckCock(C,P).mouthFit=impossible'],
+    pages:[{
+      text:'cannot fit my cock.'
+    }]
+  },{
+    requires:['canSuckCock(C,P).mouthFit=painful'],
+    pages:[{
+      text:'painfully fit my cock.'
+    }]
+  },{
+    requires:['canSuckCock(C,P).mouthFit=comfortable'],
+    pages:[{
+      text:'comfortably fit my cock.'
+    }]
   }],
 
   // Actually scaven mouths are slightly larger than humans...

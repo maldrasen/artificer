@@ -1,23 +1,8 @@
-describe.only('HasSexSkills', function() {
-
-  // You can't actually specify an exact cock size in the normal CockBuilder,
-  // so including this one for this spec.
-  async function buildCock(jada, options) {
-    let cock = await jada.getCock();
-
-    if (options.sizeClass) { cock.sizeClass = options.sizeClass; }
-    if (options.sizeScale) { cock.sizeScale = options.sizeScale; }
-    if (options.knotWidthRatio) { cock.knotWidthRatio = options.knotWidthRatio; }
-
-    await cock.save();
-    await SpecHelper.sleep(10);
-
-    return cock;
-  }
+describe('HasSexSkills', function() {
 
   it('can completely not fit', function(done) {
     SpecHelper.buildJada({ mouth:{ width:20, throatWidth:20 }}).then(jada => {
-      buildCock(jada,{ sizeClass:'average', sizeScale:50 }).then(cock => {
+      SpecHelper.adjustCock(jada,{ sizeClass:'average', sizeScale:50 }).then(cock => {
         jada.canSuckCock(cock).then(skills => {
           expect(skills.mouthFit).to.equal('impossible');
           expect(skills.throatFit).to.equal('impossible');
@@ -30,7 +15,7 @@ describe.only('HasSexSkills', function() {
 
   it('can fit the mouth only', function(done) {
     SpecHelper.buildJada({ mouth:{ width:35, throatWidth:20 }}).then(jada => {
-      buildCock(jada,{ sizeClass:'average', sizeScale:50 }).then(cock => {
+      SpecHelper.adjustCock(jada,{ sizeClass:'average', sizeScale:50 }).then(cock => {
         jada.canSuckCock(cock).then(skills => {
           expect(skills.mouthFit).to.equal('painful');
           expect(skills.throatFit).to.equal('impossible');
@@ -44,7 +29,7 @@ describe.only('HasSexSkills', function() {
   it('can go further with some oral skill', function(done) {
     SpecHelper.buildJada({ mouth:{ width:35, throatWidth:30 }}).then(jada => {
       jada.addAspect('oral',{ level:2 }).then(()=>{
-        buildCock(jada,{ sizeClass:'average', sizeScale:50 }).then(cock => {
+        SpecHelper.adjustCock(jada,{ sizeClass:'average', sizeScale:50 }).then(cock => {
           jada.canSuckCock(cock).then(skills => {
             expect(skills.mouthFit).to.equal('painful');
             expect(skills.throatFit).to.equal('impossible');
@@ -58,7 +43,7 @@ describe.only('HasSexSkills', function() {
 
   it('can deepthroat', function(done) {
     SpecHelper.buildJada({ mouth:{ width:40, throatWidth:40 }}).then(jada => {
-      buildCock(jada,{ sizeClass:'average', sizeScale:50 }).then(cock => {
+      SpecHelper.adjustCock(jada,{ sizeClass:'average', sizeScale:50 }).then(cock => {
         jada.canSuckCock(cock).then(skills => {
           expect(skills.mouthFit).to.equal('comfortable');
           expect(skills.throatFit).to.equal('comfortable');
@@ -71,7 +56,7 @@ describe.only('HasSexSkills', function() {
 
   it('may not fit either ball', function(done) {
     SpecHelper.buildJada({ mouth:{ width:30, throatWidth:25 }}).then(jada => {
-      buildCock(jada,{ sizeClass:'average', sizeScale:50 }).then(cock => {
+      SpecHelper.adjustCock(jada,{ sizeClass:'average', sizeScale:50 }).then(cock => {
         jada.canSuckCock(cock).then(skills => {
           expect(skills.balls).to.equal('none');
           done();
@@ -82,7 +67,7 @@ describe.only('HasSexSkills', function() {
 
   it('could fit one ball', function(done) {
     SpecHelper.buildJada({ mouth:{ width:35, throatWidth:25 }}).then(jada => {
-      buildCock(jada,{ sizeClass:'average', sizeScale:50 }).then(cock => {
+      SpecHelper.adjustCock(jada,{ sizeClass:'average', sizeScale:50 }).then(cock => {
         jada.canSuckCock(cock).then(skills => {
           expect(skills.balls).to.equal('one');
           done();
@@ -93,7 +78,7 @@ describe.only('HasSexSkills', function() {
 
   it('could fit entire sack', function(done) {
     SpecHelper.buildJada({ species:'equian', mouth:{ width:85, throatWidth:25 }}).then(jada => {
-      buildCock(jada,{ sizeClass:'average', sizeScale:50 }).then(cock => {
+      SpecHelper.adjustCock(jada,{ sizeClass:'average', sizeScale:50 }).then(cock => {
         jada.canSuckCock(cock).then(skills => {
           expect(skills.balls).to.equal('entire');
           done();
@@ -104,7 +89,7 @@ describe.only('HasSexSkills', function() {
 
   it('may not fit the knot', function(done) {
     SpecHelper.buildJada({ species:'lupin', mouth:{ width:40, throatWidth:25 }}).then(jada => {
-      buildCock(jada,{ sizeClass:'average', sizeScale:50, knotWidthRatio:1.4 }).then(cock => {
+      SpecHelper.adjustCock(jada,{ sizeClass:'average', sizeScale:50, knotWidthRatio:1.4 }).then(cock => {
         jada.canSuckCock(cock).then(skills => {
           expect(skills.knot).to.equal('impossible');
           done();
@@ -115,7 +100,7 @@ describe.only('HasSexSkills', function() {
 
   it('may fit the knot', function(done) {
     SpecHelper.buildJada({ species:'lupin', mouth:{ width:80, throatWidth:25 }}).then(jada => {
-      buildCock(jada,{ sizeClass:'average', sizeScale:50, knotWidthRatio:1.4 }).then(cock => {
+      SpecHelper.adjustCock(jada,{ sizeClass:'average', sizeScale:50, knotWidthRatio:1.4 }).then(cock => {
         jada.canSuckCock(cock).then(skills => {
           expect(skills.knot).to.equal('mouth');
           done();

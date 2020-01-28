@@ -99,6 +99,7 @@ require(`${ROOT}/engine/scrutinizers/central-scrutinizer`);
 require(`${ROOT}/engine/scrutinizers/character-scrutinizer`);
 require(`${ROOT}/engine/scrutinizers/minion-scrutinizer`);
 require(`${ROOT}/engine/scrutinizers/player-scrutinizer`);
+require(`${ROOT}/engine/scrutinizers/sexual-scrutinizer`);
 
 // === Factories ===
 require(`${ROOT}/engine/factories/character-builder/character-builder`);

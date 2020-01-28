@@ -31,6 +31,22 @@ global.SpecHelper = (function() {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  return { print, buildJada, buildRando, tenTimes, sleep };
+  // You can't actually specify an exact cock size in the normal CockBuilder,
+  // so including this in order to build cocks to exacting specifications.
+  async function adjustCock(character, options) {
+    let cock = await character.getCock();
+
+    if (options.sizeClass) { cock.sizeClass = options.sizeClass; }
+    if (options.sizeScale) { cock.sizeScale = options.sizeScale; }
+    if (options.knotWidthRatio) { cock.knotWidthRatio = options.knotWidthRatio; }
+
+    await cock.save();
+    await SpecHelper.sleep(10);
+
+    return cock;
+  }
+
+
+  return { print, buildJada, buildRando, tenTimes, sleep, adjustCock };
 
 })();
