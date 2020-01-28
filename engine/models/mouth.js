@@ -8,5 +8,7 @@ global.Mouth = Database.instance().define('mouth', {
   timestamps: false,
   getterMethods: {
     convertedTongueLength() { return ConversionUtility.milliToInches(this.tongueLength); },
+    comfortableThroatWidth() { return Math.ceil(this.throatWidth * 0.8); },
+    comfortableWidth() { return Math.ceil(this.width * 0.8); },
   }
 });

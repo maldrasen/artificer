@@ -95,3 +95,4 @@ HasAspects.isAppliedTo(Character);
 HasAttributes.isAppliedTo(Character);
 HasBody.isAppliedTo(Character);
 HasInjuries.isAppliedTo(Character);
+HasSexSkills.isAppliedTo(Character);

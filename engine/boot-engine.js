@@ -12,6 +12,7 @@ require(`${ROOT}/engine/concerns/has-aspects`);
 require(`${ROOT}/engine/concerns/has-attributes`);
 require(`${ROOT}/engine/concerns/has-body`);
 require(`${ROOT}/engine/concerns/has-injuries`);
+require(`${ROOT}/engine/concerns/has-sex-skills`);
 
 // === Forms ===
 require(`${ROOT}/engine/forms/form`);
