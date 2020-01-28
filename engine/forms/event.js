@@ -104,7 +104,7 @@ global.Event = class Event extends Form {
   // with the actual character ID. A strang like ['player sadist 1'] though can stay the same because the
   // CharacterAgent knows how to find the player.
   static transformEffects(effects, context) {
-    return effects.map(strang => {
+    return (effects||[]).map(strang => {
       let match = strang.match(/actor\((.+)\)/);
       return match ? strang.replace(/actor\(.+\)/,context.get(match[1]).character.id) : strang;
     });

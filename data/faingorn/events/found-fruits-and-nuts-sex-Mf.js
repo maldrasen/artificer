@@ -39,7 +39,7 @@ Event.build('found-fruits-and-nuts-sex-Mf', {
   },{
     requires:['canSuckCock(C,P).mouthFit=impossible'],
     pages:[{
-      text:'cannot fit my cock.'
+      text:'cannot fit my {{P::cock.twoInch}} wide cock head into her mouth.'
     }]
   },{
     requires:['canSuckCock(C,P).mouthFit=painful'],
