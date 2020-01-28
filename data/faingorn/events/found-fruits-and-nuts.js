@@ -69,8 +69,6 @@ Event.build('found-fruits-and-nuts', {
   onFinish: async choices => {
     Flag.set('locationMenu.inventory','unlocked');
 
-    // TODO: Also unlock tasks and crafting task for basket.
-
     if (['normal','filthy'].indexOf(choices.sex) >= 0) {
       const player = await Player.instance();
       const minion = await Character.findByPk(choices.event.actorIDs.C);

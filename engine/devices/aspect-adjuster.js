@@ -24,6 +24,10 @@ global.AspectAdjuster = (function() {
       return await subject.save();
     }
 
+    // An adjustment for health is really just a flag to let the player know
+    // that this choice will add an injury, it can be ignored here though.
+    if (aspect == 'health') { return; }
+
     // === Adjust Sexual Preferences ===
     // TODO: Not sure yet how these sexual preferences will be implemented. For
     //       now i'll just ignore the attempts to set them, and we'll come back
