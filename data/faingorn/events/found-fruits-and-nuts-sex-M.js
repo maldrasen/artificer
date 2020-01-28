@@ -53,7 +53,7 @@ Event.build('found-fruits-and-nuts-sex-Mf', {
       { text:`Her tiny hands stroke up and down the length of my {{P::cock.sixInch}} long shaft, holding it against her furry chest as she rubs it.` }
     ]
   },{
-    requires:['canSuckCock(C,P).mouthFit=comfortable','canSuckCock(C,P).throatFit=impossible'],
+    requires:['canSuckCock(C,P).mouthFit=comfortable'],
     pages:[
       { text:`She opens wide and lowers her lips around my {{P::cock.twoInch}} wide cock head.` },
       { text:`I feel my cock jam against the entrance of her throat, but she handles it well.` },
@@ -61,21 +61,38 @@ Event.build('found-fruits-and-nuts-sex-Mf', {
       { text:`Her tiny hands stroke up and down the length of my {{P::cock.sixInch}} long shaft, holding it against her furry chest as she rubs it.` }
     ]
   },{
-    requires:['canSuckCock(C,P).mouthFit=comfortable','canSuckCock(C,P).throatFit!=impossible'],
+    requires:['state.style=normal','canSuckCock(C,P).mouthFit=impossible'],
     pages:[
-      { text:`She opens wide and lowers her lips around my {{P::cock.twoInch}} wide cock head.` },
-      { text:`I feel my cock jam against the entrance of her throat, but she handles it well.` },
-      { text:`There's no way I can press more than my cock head into her mouth though, so she falls into a quick rhythm, keeping her lips pressed together tightly as she pops the head in and out of her mouth.` },
-      { text:`Her tiny hands stroke up and down the length of my {{P::cock.sixInch}} long shaft, holding it against her furry chest as she rubs it.` }
+      { text:`I soon feel myself getting closer.` },
+      { text:`I take {{C::character.firstName's}} head in my hands and start to guide her more forcefully, pressing my cock against her lips so that her mouth opens as wide as she's able around my cock head.` },
+      { text:`From her expression, it's obvious that the stretching of her lips is painful, but her hands yank faster along my shaft to encourage me further.` },
+      { text:`With a low groan I start to cum, holding her head in place with my cock jammed against her mouth so that she has no choice but to swallow mouthfuls of my cum.`, effects:['actor(C) cum-lover 1']},
+    ]
+  },{
+    requires:['state.style=normal','canSuckCock(C,P).mouthFit!=impossible'],
+    pages:[
+      { text:`I soon feel myself getting closer.` },
+      { text:`I take {{C::character.firstName's}} head in my hands and start to guide her more forcefully, pulling her head down faster and further down onto my cock.` },
+      { text:`She starts to make a choked, gagging sound with every thrust, but her hands yank faster along my shaft to encourage me further.` },
+      { text:`With a low groan I start to cum, holding her head in place with my cock jammed against her throat so that she has no choice but to swallow mouthfuls of my cum.`, effects:['actor(C) cum-lover 1']},
+    ]
+  },{
+    requires:['state.style=normal'],
+    pages:[
+      { text:`I finally release her and she falls back onto the pile of furs, cum covering her panting mouth.` },
+      { text:`She smiles at me though, perhaps for the first time.` },
+      { text:`She leans her head back and scoops the ropes dangling cum up into her wide open mouth.` },
+      { text:`I smile back, nodding to let her know she did a good job.` },
+      { text:`She seems more comfortable in this role than as a simple servant.` },
+      { text:`I'll have to start using her like this more often.` },
+      { text:`And perhaps push her limits a bit further as well.` },
+    ]
+  },{
+    requires:['state.style=filthy'],
+    pages:[
+      { text:'continue with ass licking', effects:['actor(C) perverted 1']}
     ]
   }],
-
-  // Actually scaven mouths are slightly larger than humans...
-  // If cock can comfortably fit - then deep blowjob
-  // If cock can painfully fit - then forced shallow blowjob
-
-  // requires:['state.style=normal'],
-  // requires:['state.style=filthy'],
 
   onFinish: async () => {
   },

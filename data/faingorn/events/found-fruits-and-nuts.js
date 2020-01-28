@@ -74,9 +74,7 @@ Event.build('found-fruits-and-nuts', {
     if (['normal','filthy'].indexOf(choices.sex) >= 0) {
       const player = await Player.instance();
       const minion = await Character.findByPk(choices.event.actorIDs.C);
-      const p = player.isFemale ? 'F':'M';
-      const m = minion.isFemale ? 'f':'m';
-      await EventQueue.enqueueEvent(`found-fruits-and-nuts-sex-${p}${m}`,{ style:choices.sex, actors:{ C:minion.id }});
+      await EventQueue.enqueueEvent(`found-fruits-and-nuts-sex-${player.isFemale ? 'F':'M'}`,{ style:choices.sex, actors:{ C:minion.id }});
     }
   },
 
