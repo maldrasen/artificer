@@ -31,7 +31,7 @@ Event.build('found-fruits-and-nuts-sex-M', {
       { text:`I reach out and take {{C::gender.him}} by the back of the head, pulling {{C::gender.him}} closer while guiding {{C::gender.his}} face towards my cock.` },
       { text:`Understanding where I'm going with this, {{C::gender.he}} assumes a kneeling position between my legs and dutifully begins to lick the top and sides of my growing member.` },
       { text:`Using {{C::gender.his}} tongue and small hands {{C::gender.he}} quickly brings my shaft to its full height.` },
-      { text:`{{C::gender.he}}'s skilled.` },
+      { text:`{{C::gender.He}}'s skilled.` },
       { text:`And now that my cock is in {{C::gender.his}} mouth {{C::gender.he}}'s a bit more enthusiastic, licking and kissing all around the head.`, effects:['actor(C) oral-slut 1']},
       { text:`It's obvious {{C::gender.he}}'s done this before.` },
       { text:`I wonder if most scaven {{C::gender.men}} are like {{C::gender.him}}, or if {{C::gender.he}}'s uniquely qualified for this.` },
@@ -61,7 +61,57 @@ Event.build('found-fruits-and-nuts-sex-M', {
       { text:`{{C::gender.His}} tiny hands stroke up and down the length of my {{P::cock.sixInch}} long shaft, holding it against {{C::gender.his}} furry chest as {{C::gender.he}} rubs it.` },
     ]
   },{
-    requires:['state.style=normal','canSuckCock(C,P).mouthFit=impossible'],
+    requires:['state.style=filthy'],
+    pages:[
+      { text:`I feel myself getting closer, but I feel like I want to prolong this.` },
+      { text:`I'm curious too to see how far I can push this rat to serve me.` },
+      { text:`As {{C::gender.he}} licks and sucks all around my cock head I'm reminded that I haven't bathed in &hellip; well for my entire life technically.` },
+      { text:`My cock must be rank, not to mention what's going on down below.` },
+      { text:`I haven't had a chance to properly clean my ass in days either.` },
+      { text:`That does give me an idea though.` },
+      { text:`Taking {{C::gender.his}} head in my hand I pull {{C::gender.him}} off of my cockhead and guide {{C::gender.him}} down lower.` },
+      { text:`{{C::gender.He}} dutifully starts licking and gently sucking on my ballsack.` },
+      { text:`I keep guiding {{C::gender.him}}, spreading my legs and pressing {{C::gender.his}} face into the crease between my leg and balls, right where the sweat of the day tends to accumulate.` },
+      { text:`{{C::gender.He}} seems to understand that {{C::gender.he}}'s simply cleaning me at this point, {{C::gender.his}} tongue takes long forceful strokes wherever I guide {{C::gender.his}} mouth.` },
+    ]
+  },{
+    requires:['state.style=filthy','player.has-pussy'],
+    pages:[
+      { text:`Reaching down I lift my ballsack up and press {{C::gender.his}} face directly against my pussy.` },
+      { text:`{{C::gender.His}} tongue starts to lick against my folds.` },
+      { text:`{{C::gender.He}} parts my lips gently and starts to lick and suck on my clit.` },
+      { text:`The sensation makes me shudder and I enjoy it for a while, but that's not exactly my intent here.` },
+    ]
+  },{
+    requires:['state.style=filthy'],
+    pages:[
+      { text:`Again I spread my legs just a bit wider and push {{C::gender.his}} head down even lower until I feel {{C::gender.his}} twitchy little rat nose fully sink between my ass cheeks.` },
+      { text:`Now the true test begins.` },
+      { text:`{{C::gender.He}}'s hesitant at first, but soon I feel {{C::gender.his}} soft tongue begin to lick around my asshole, slowly at first, but then with increasing boldness.` },
+      { text:`{{C::gender.He}} seems to really be getting into it, boldly licking what must be days worth of shit out of my ass crack.`, effects:['actor(C) perverted 1']},
+      { text:`Soon {{C::gender.he}} has my ass entirely licked clean.` },
+      { text:`{{C::gender.He}} even pushes {{C::gender.his}} tongue into my asshole as if looking for more.` },
+      { text:`The feeling of {{C::gender.his}} tongue against my ass is relaxing, and I feel my asshole relax, allowing {{C::gender.his}} tongue to explore me deeper.` },
+      { text:`Holding {{C::gender.his}} head in my hands I grind firmly against {{C::gender.his}} face, forcing {{C::gender.his}} muzzle partway into my asshole.` },
+      { text:`I fuck my ass with {{C::gender.his}} face until I feel {{C::gender.his}} hands start clenching and slapping against my thighs.` },
+      { text:`{{C::gender.He}} can't breathe, but I still count to five before I let {{C::gender.him}} pull {{C::gender.his}} face out.` },
+      { text:`{{C::gender.He}} pulls back, gasping for air.` },
+    ]
+  },{
+    requires:['state.style=filthy','canSuckCock(C,P).mouthFit=impossible'],
+    pages:[
+      { text:`I let {{C::gender.him}} have three deep breaths, then grab {{C::gender.him}} again and slam my overlarge cock into {{C::gender.his}} face.` },
+      { text:`{{C::gender.His}} hands quickly wrap around my cock and start quickly stroking, perhaps in the hope that I'll stop punching {{C::gender.him}} in the face with my fat cockhead.` },
+    ]
+  },{
+    requires:['state.style=filthy','canSuckCock(C,P).mouthFit!=impossible'],
+    pages:[
+      { text:`I let {{C::gender.him}} have three deep breaths, then grab {{C::gender.him}} again and slam my cock back into {{C::gender.his}} mouth.` },
+      { text:`Groaning deeply, I fuck {{C::gender.his}} mouth hard.` },
+      { text:`{{C::gender.His}} hands once again wrap around my dick and {{C::gender.he}} begins to firmly stroke my cock while sucking hard on the head.` },
+    ]
+  },{
+    requires:['canSuckCock(C,P).mouthFit=impossible'],
     pages:[
       { text:`I soon feel myself getting closer.` },
       { text:`I take {{C::character.firstName's}} head in my hands and start to guide {{C::gender.him}} more forcefully, pressing my cock hard against {{C::gender.his}} lips so that {{C::gender.his}} mouth opens as wide as {{C::gender.he}}'s able around my cock head.` },
@@ -69,7 +119,7 @@ Event.build('found-fruits-and-nuts-sex-M', {
       { text:`With a low groan I start to cum, holding {{C::gender.his}} head in place with my cock jammed against {{C::gender.his}} mouth so that {{C::gender.he}} has no choice but to swallow mouthfuls of my cum.`, effects:['actor(C) cum-lover 1']},
     ]
   },{
-    requires:['state.style=normal','canSuckCock(C,P).mouthFit!=impossible'],
+    requires:['canSuckCock(C,P).mouthFit!=impossible'],
     pages:[
       { text:`I soon feel myself getting closer.` },
       { text:`I take {{C::character.firstName's}} head in my hands and start to guide {{C::gender.him}} more forcefully, pulling {{C::gender.his}} head down faster and further down onto my cock.` },
@@ -77,7 +127,6 @@ Event.build('found-fruits-and-nuts-sex-M', {
       { text:`With a low groan I start to cum, holding {{C::gender.his}} head in place with my cock jammed against {{C::gender.his}} throat so that {{C::gender.he}} has no choice but to swallow mouthfuls of my cum.`, effects:['actor(C) cum-lover 1']},
     ]
   },{
-    requires:['state.style=normal'],
     pages:[
       { text:`I finally release {{C::gender.him}} and {{C::gender.he}} falls back onto the pile of furs, cum covering {{C::gender.his}} panting mouth.` },
       { text:`{{C::gender.He}} smiles at me though, perhaps for the first time.` },
@@ -87,14 +136,6 @@ Event.build('found-fruits-and-nuts-sex-M', {
       { text:`I'll have to start using {{C::gender.him}} like this more often.` },
       { text:`&hellip;and perhaps push {{C::gender.his}} limits a bit further as well.` },
     ]
-  },{
-    requires:['state.style=filthy'],
-    pages:[
-      { text:'continue with ass licking', effects:['actor(C) perverted 1']}
-    ]
-  }],
-
-  onFinish: async () => {
-  },
+  }]
 
 });
