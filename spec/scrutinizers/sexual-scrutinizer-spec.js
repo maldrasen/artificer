@@ -1,4 +1,4 @@
-describe.only('SexualScrutinizer', function() {
+describe('SexualScrutinizer', function() {
 
   async function buildContext(jada) {
     const context = new WeaverContext();
@@ -22,6 +22,15 @@ describe.only('SexualScrutinizer', function() {
     setupForOral({ sizeClass:'huge', sizeScale:90 },{ width:35, throatWidth:20 }).then(setup => {
       CentralScrutinizer.meetsRequirements('canSuckCock(C,P).mouthFit=impossible', setup.context).then(passed => {
         expect(passed).to.be.true
+        done();
+      });
+    });
+  });
+
+  it('Checks anti mouth fit', function(done) {
+    setupForOral({ sizeClass:'huge', sizeScale:90 },{ width:35, throatWidth:20 }).then(setup => {
+      CentralScrutinizer.meetsRequirements('canSuckCock(C,P).mouthFit!=impossible', setup.context).then(passed => {
+        expect(passed).to.be.false
         done();
       });
     });
