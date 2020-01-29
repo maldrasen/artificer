@@ -23,7 +23,7 @@ Event.build('found-willow-branches', {
     selectionKey: 'whip',
     selections:[
       { text:`No, I need to keep {{C::gender.him}} healthy for now.`,           value:'no',  effects:['player sadist -1']},
-      { text:`Yes, perhaps it will motivate {{C::gender.him}} to work harder.`, value:'yes', effects:['player sadist 1','actor(C) health -1','actor(C) fear +1']},
+      { text:`Yes, perhaps it will motivate {{C::gender.him}} to work harder.`, value:'yes', effects:['player sadist 1']},
     ]
   },{
     choice:{ whip:'no' },
@@ -42,7 +42,7 @@ Event.build('found-willow-branches', {
   onFinish: async choices => {
     await Flag.setAll({
       'plan-view.tasks.craft': 'unlocked',
-      // Unlock basket recipe too
+      // TODO: Unlock basket recipe too
     });
 
     if (choices.whip == 'yes') {
