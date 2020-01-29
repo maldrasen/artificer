@@ -28,7 +28,7 @@ global.WeaverContext = class WeaverContext {
   // character with a known ID is added to the context.
   async setEventState(state) {
     await Promise.all(Object.keys(state.actors||[]).map(async key => {
-      await this.addCharacter(key,(await Character.findByPk(state.actors[key])));
+      await this.addCharacter(key,(await Character.lookup(state.actors[key])));
     }));
   }
 

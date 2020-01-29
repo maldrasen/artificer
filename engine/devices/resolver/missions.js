@@ -11,7 +11,7 @@ Resolver.Missions = (function() {
   async function startMission(orders) {
     const mission = Mission.lookup(orders.code);
     const minions = await Promise.all(orders.minions.map(async id => {
-      return await Character.findByPk(id);
+      return await Character.lookup(id);
     }));
 
     // Minions still need to have their roles set even if the mission is
@@ -45,7 +45,7 @@ Resolver.Missions = (function() {
     await Promise.all((await MissionProgress.findAll()).map(async progress => {
       const mission = Mission.lookup(progress.code);
       const minions = await Promise.all(progress.state.minions.map(async id => {
-        return await Character.findByPk(id);
+        return await Character.lookup(id);
       }));
 
       return (progress.day < mission.time) ?

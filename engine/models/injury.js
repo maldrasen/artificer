@@ -44,7 +44,7 @@ Injury.redescribeAll = async function() {
 
   console.log("=== Updating Injury Descriptions ===")
   await Promise.all(injuries.map(async injury => {
-    const character = await Character.findByPk(injury.character_id);
+    const character = await Character.lookup(injury.character_id);
     const abuser = Abuser.lookup(injury.location);
     const raw = abuser.buildDescription(injury, injury.details);
 

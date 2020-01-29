@@ -10,7 +10,7 @@ describe('AspectAdjuster', function() {
 
           // Timeout needed because we're saving and loading too quickly in the spec.
           setTimeout(() => {
-            Character.findByPk(id).then(chiefNow => {
+            Character.lookup(id).then(chiefNow => {
               expect(oldValue).to.be.below(chiefNow.loyalty)
               done();
             });

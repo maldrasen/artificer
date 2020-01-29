@@ -73,7 +73,7 @@ Event.build('ambush-rat-end-2', {
     // Adjust your first minion to turn them into an actual minion, and make
     // them better than your average scaven.
 
-    const rat = await Character.findByPk(choices.event.actorIDs.R)
+    const rat = await Character.lookup(choices.event.actorIDs.R)
           rat.type = 'minion';
 
     if (rat.mental < 6) { rat.mental = 6 + Random.upTo(6) }

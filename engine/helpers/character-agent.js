@@ -32,7 +32,7 @@ global.CharacterAgent = (function() {
   async function scavenChief() {
     const flag = await Flag.lookup('character.scavenChief');
     if (flag) {
-      const chief = await Character.findByPk(flag.value);
+      const chief = await Character.lookup(flag.value);
       if (chief && chief.alive) {
         return chief;
       }

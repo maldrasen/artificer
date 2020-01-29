@@ -20,7 +20,8 @@ global.CharacterAspect = Database.instance().define('character_aspect', {
 });
 
 CharacterAspect.prototype.adjustStrength = async function(amount) {
-  let character = await Character.findByPk(this.character_id);
+  let character = await Character.lookup(this.character_id);
+
   let value = this.strength + amount;
   if (value < 0)    { value = 0; }
   if (value > 3000) { value = 3000; }

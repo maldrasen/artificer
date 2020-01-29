@@ -22,9 +22,8 @@ Event.build('found-willow-branches', {
     selectionPage: true,
     selectionKey: 'whip',
     selections:[
-      { text:`No, I need to keep {{C::gender.him}} healthy for now.`,  value:'no',   effects:['player sadist -1']},
-      { text:`Yes, on her ass.`,                                       value:'ass',  effects:['player sadist 1','actor(C) health -1']},
-      { text:`Yes, on her tits.`,                                      value:'tits', effects:['player sadist 2','actor(C) health -2']},
+      { text:`No, I need to keep {{C::gender.him}} healthy for now.`,           value:'no',  effects:['player sadist -1']},
+      { text:`Yes, perhaps it will motivate {{C::gender.him}} to work harder.`, value:'yes', effects:['player sadist 1','actor(C) health -1','actor(C) fear +1']},
     ]
   },{
     choice:{ whip:'no' },
@@ -34,11 +33,20 @@ Event.build('found-willow-branches', {
       { text:`One day for sure, just not today.` },
       { text:`As I put the stick back on the pile I thank {{C::character.firstName}} for {{C::gender.his}} hard work today.` },
       { text:`{{C::gender.He}} nods and bows and slinks out of the room looking relieved.` },
+      { text:`<span class='narrator-quote'>Crafting has been unlocked.</span>`, alert:{ unlock:'Crafting Tasks' }},
+      { text:`<span class='narrator-quote'>When planning your day's activity you can now add tasks to your plan.</span>`, alert:{ unlock:'Craft: Basket' } },
     ]
   }],
 
   onFinish: async choices => {
-    // Add a task to create a basket.
+    await Flag.setAll({
+      'plan-view.tasks.craft': 'unlocked',
+      // Unlock basket recipe too
+    });
+
+    if (choices.whip == 'yes') {
+      await EventQueue.enqueueEvent(`found-willow-branches-whip`, { actors:{ C:choices.event.actorIDs.C }});
+    }
   },
 
 });

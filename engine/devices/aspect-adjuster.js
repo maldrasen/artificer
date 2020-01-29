@@ -42,7 +42,7 @@ global.AspectAdjuster = (function() {
 
   async function lookupSubjects(subjectName) {
     return subjectName.match(/^\d+$/) ?
-       [(await Character.findByPk(subjectName))] :
+       [(await Character.lookup(subjectName))] :
        (await CharacterAgent.findActors(subjectName));
   }
 

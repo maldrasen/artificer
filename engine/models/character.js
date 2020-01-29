@@ -41,6 +41,12 @@ global.Character = Database.instance().define('character', {
   }
 });
 
+// Lookup the character by their ID, unless you meant the player, in which case
+// actually get the player instance.
+Character.lookup = async function(id) {
+  return (id == 1000000000) ? (await Player.instance()) : (await Character.findByPk(id));
+}
+
 // This function will need to select all the minions and format them as POJOs
 // for any client view that shows all the minions.
 Character.allForClient = async function() {

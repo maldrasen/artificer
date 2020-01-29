@@ -99,7 +99,7 @@ global.BrowserCommands = (function() {
     });
 
     ipcMain.on('location.showMinion', async (event, id) => {
-      const minion = await Character.findByPk(id);
+      const minion = await Character.lookup(id);
       const details = await minion.detailForClient();
       const flags = await Flag.getAll();
 

@@ -82,7 +82,7 @@ Abuser.TitsAbuser = (function() {
   // }
   //
   // async function describeBlight(injury, details) {
-  //   const character = await Character.findByPk(injury.character_id);
+  //   const character = await Character.lookup(injury.character_id);
   //
   //   if (character.speciesCode == 'rat') {
   //     return await describeBlightedRatTits(character, injury, details);
