@@ -14,7 +14,7 @@ Event.build('found-willow-branches', {
       { text:`It doesn't matter.` },
       { text:`If I'm to get anywhere in this life I need to work with what I have, and currently that's a rat and a pile of sticks.` },
       { text:`I pick one up and give it a couple of swishes in the air.` },
-      { text:`<i>"Good and slashy,"</i> indeed&hellip;` },
+      { text:`<i>Good and slashy,</i> indeed&hellip;` },
       { text:`I look over at my minion who's glancing nervously over at me.` },
       { text:`Shall I see how well they work?` },
     ]
@@ -34,7 +34,8 @@ Event.build('found-willow-branches', {
       { text:`As I put the stick back on the pile I thank {{C::character.firstName}} for {{C::gender.his}} hard work today.` },
       { text:`{{C::gender.He}} nods and bows and slinks out of the room looking relieved.` },
       { text:`<span class='narrator-quote'>Crafting has been unlocked.</span>`, alert:{ unlock:'Crafting Tasks' }},
-      { text:`<span class='narrator-quote'>When planning your day's activity you can now add tasks to your plan.</span>`, alert:{ unlock:'Craft: Basket' } },
+      { text:`<span class='narrator-quote'>When planning your day's activity you can now add tasks to your plan.</span>` },
+      { text:`<span class='narrator-quote'>You can start by crafting a basket to help your minion carry more when out foraging.</span>`, alert:{ unlock:'Craft: Basket' }},
     ]
   }],
 
