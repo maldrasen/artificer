@@ -20,7 +20,7 @@ global.Recipe = class Recipe extends Form {
       return display;
     }))
 
-    return { recipes };
+    return recipes;
   }
 
   async canBeBuilt(reserved) {

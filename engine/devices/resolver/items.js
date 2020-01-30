@@ -35,20 +35,10 @@ Resolver.Items = (function() {
   async function commitItem(code, count) {
     const item = Item.lookup(code);
     if (item.type == 'resource') {
-      commitResource(code, count);
+      await Resource.add(code,count)
     }
     if (item.type == 'possession') {
       throw `TODO: Cannot add possessions yet.`
-    }
-  }
-
-  async function commitResource(code, count) {
-    const resource = await Resource.findOne({ where:{ code:code } });
-    if (resource == null) {
-      Resource.create({ code:code, count:count });
-    } else {
-      resource.count += count;
-      resource.save();
     }
   }
 

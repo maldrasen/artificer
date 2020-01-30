@@ -23,6 +23,22 @@ Resource.allForClient = async function() {
   });
 }
 
+Resource.lookup = async function(code) {
+  return await Resource.findOne({ where:{ code:code } });
+}
+
+// Add a single resource. If the resource hasn't been created this function
+// creates it, otherwise it increases the resource quentity.
+Resource.add = async function(code, count) {
+  const resource = await Resource.lookup(code);
+  if (resource == null) {
+    Resource.create({ code:code, count:count });
+  } else {
+    resource.count += count;
+    await resource.save();
+  }
+}
+
 // Consumes materials. Materials should have the following form: { hide:2 }
 // Before calling this function you should make sure that the consumed
 // materials are actually in the inventory because I don't check that here.
