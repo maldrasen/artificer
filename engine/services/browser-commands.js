@@ -133,7 +133,8 @@ global.BrowserCommands = (function() {
     // === Plan View ===
 
     ipcMain.on('plan.crafting.getRecipeList', async (event, data) => {
-      console.log("Get Recipe List",data)
+      const list = await Recipe.getRecipeListForPlan(data);
+      Browser.send('plan.crafting.showRecipeList',list);
     })
 
     // === Debug ===

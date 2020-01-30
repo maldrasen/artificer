@@ -17,6 +17,8 @@ global.RendererCommands = (function() {
     ipcRenderer.on('render.report', Components.ReportView.build);
 
     ipcRenderer.on('image.found', Elements.ImageResource.set);
+
+    ipcRenderer.on('plan.crafting.showRecipeList', Components.PlanView.Crafting.showRecipeList);
   }
 
   return { init };

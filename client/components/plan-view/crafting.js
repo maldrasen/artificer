@@ -6,15 +6,17 @@ Components.PlanView.Crafting = (function() {
 
   function open() {
     dialogOpen = true;
-
     $('#mainContent').append($('<div>',{ id:"craftingDialog" }).append($('#craftingDialogTemplate').html()));
-
     requestRecipeList();
   }
 
   function close() {
     dialogOpen = false;
     $('#craftingDialog').remove();
+  }
+
+  function isDialogOpen() {
+    return dialogOpen;
   }
 
   // Need to get a map of all the materials reserved by other crafting tasks.
@@ -26,14 +28,11 @@ Components.PlanView.Crafting = (function() {
     Renderer.sendCommand('plan.crafting.getRecipeList', { reserved:getReservedMaterials() })
   }
 
-  function responseRecipeList() {
-
+  function showRecipeList(event, list) {
+    console.log("Show List",list)
   }
 
-  function isDialogOpen() {
-    return dialogOpen;
-  }
 
-  return { init, open, close, isDialogOpen };
+  return { init, open, close, isDialogOpen, showRecipeList };
 
 })();
