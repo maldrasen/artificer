@@ -7,10 +7,12 @@
     "aspects/sexual/*",
     "aspects/skills/*",
     "descriptions/*",
+    "equipment/*",
     "flags/*",
     "item-flavors/*",
     "items/*",
     "names/*",
+    "recipes/*",
     "species/*",
     "tasks/*"
   ]

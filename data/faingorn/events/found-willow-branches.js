@@ -42,7 +42,7 @@ Event.build('found-willow-branches', {
   onFinish: async choices => {
     await Flag.setAll({
       'plan-view.tasks.craft': 'unlocked',
-      // TODO: Unlock basket recipe too
+      'recipe.basket': 'unlocked',
     });
 
     if (choices.whip == 'yes') {
