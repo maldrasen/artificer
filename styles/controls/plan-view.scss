@@ -171,3 +171,25 @@
     color: $fg-very-weak;
   }
 }
+
+#craftingDialog {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.5);
+
+  .crafting-dialog {
+    position: fixed;
+    top: 60px;
+    bottom: 60px;
+    left: 60px;
+    right: 60px;
+    padding: 10px;
+    background-color: transparentize($bg-body,0.1);
+    border: $border-light;
+    box-shadow: $shadow-frame;
+  }
+
+}

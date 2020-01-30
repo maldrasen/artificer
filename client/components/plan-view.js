@@ -1,13 +1,14 @@
 Components.PlanView = (function() {
 
   function init() {
+    Components.PlanView.Crafting.init();
     Components.PlanView.Current.init();
     Components.PlanView.Projects.init();
     Components.PlanView.Missions.init();
     Components.PlanView.Minions.init();
     Components.PlanView.Tasks.init();
 
-    $(document).on('click', '#planView .plan-cancel', Elements.buttonAction(cancelPlan));
+    $(document).on('click', '#planView .plan-cancel', Elements.buttonAction(Renderer.sendCancel));
     $(document).on('click', '#planView .plan-confirm', Elements.buttonAction(confirmPlan));
   }
 
@@ -22,10 +23,6 @@ Components.PlanView = (function() {
     Components.PlanView.Tasks.build(planData);
 
     if (allowIdle()) { enableConfirm(); }
-  }
-
-  function cancelPlan() {
-    Renderer.sendCommand('game.cancel');
   }
 
   function confirmPlan() {

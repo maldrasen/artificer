@@ -7,10 +7,6 @@ Components.MinionListView = (function() {
       Renderer.lock();
       Renderer.sendCommand('location.showMinion',$(this).data('id'))
     });
-
-    $(document).on('keydown', (e)=> {
-      if (e.code == "Escape" && $('#minionListView').length > 0 && $('#overlayContent .minion-detail-view').length == 0) { Renderer.sendCancel(); }
-    });
   }
 
   function build(event, minions) {

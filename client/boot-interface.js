@@ -16,6 +16,7 @@ require(`${ROOT}/client/components/minion-detail-view`);
 require(`${ROOT}/client/components/minion-list-view`);
 require(`${ROOT}/client/components/minion-select-dialog`);
 require(`${ROOT}/client/components/plan-view`);
+require(`${ROOT}/client/components/plan-view/crafting`);
 require(`${ROOT}/client/components/plan-view/current`);
 require(`${ROOT}/client/components/plan-view/minions`);
 require(`${ROOT}/client/components/plan-view/missions`);

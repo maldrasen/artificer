@@ -13,6 +13,7 @@ global.Renderer = (function() {
 
   const TEMPLATES = [
     'chooser',
+    'crafting-dialog',
     'event',
     'inventory',
     'load-game',
@@ -35,10 +36,31 @@ global.Renderer = (function() {
     $(document).on('keydown', handleKeypress);
   }
 
+  // Universal escape handler.
   function handleKeypress(e) {
     if (e.key == 'Escape') {
-      Components.MinionSelectDialog.close();
+
+      // If a dialog nested inside of an overlay is open, it should be closed
+      // without closing the parent overlay.
+      if (Components.PlanView.Crafting.isDialogOpen()) {
+        return Components.PlanView.Crafting.close();
+      }
+
+      // TODO: Minion select dialog was being stupid, but I can't fix it right
+      //       now, because there's nothing that actually opens it.
+
+      // $(document).on('keydown', (e)=> {
+      //   if (e.code == "Escape" && $('#minionListView').length > 0 && $('#overlayContent .minion-detail-view').length == 0) { Renderer.sendCancel(); }
+      // });
+      // Components.MinionSelectDialog.close();
+
+      // TODO: Remove overlay should return here if an overlay was open and
+      //       actually closed.
       removeOverlay();
+
+      // TODO: Ignore the escape if we're already on the location view and
+      //       nothing is open.
+      sendCancel();
     }
   }
 

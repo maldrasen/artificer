@@ -130,6 +130,12 @@ global.BrowserCommands = (function() {
       });
     });
 
+    // === Plan View ===
+
+    ipcMain.on('plan.crafting.getRecipeList', async (event, data) => {
+      console.log("Get Recipe List",data)
+    })
+
     // === Debug ===
 
     ipcMain.on('debug.game.printFlags', () => {

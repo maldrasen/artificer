@@ -32,9 +32,8 @@ Components.PlanView.Tasks = (function() {
     let task = $(this).data('task');
     let minions = Components.PlanView.Minions.getFree();
 
-    if (task.minionsUsed == null) {
-      confirmAddTask(task);
-    }
+    if (task.control == 'craft-dialog') { return Components.PlanView.Crafting.open(); }
+    if (task.minionsUsed == null) { return confirmAddTask(task,[]); }
 
     let title = (task.minionsUsed == 1) ?
       `Choose one minion` :
