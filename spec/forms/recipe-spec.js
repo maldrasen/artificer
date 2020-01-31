@@ -1,4 +1,4 @@
-describe.only('Location', function() {
+describe('Location', function() {
 
   it("gets a list of unlocked craftable items", function(done) {
     Resource.add('willow-branch',10).then(() => {
@@ -34,6 +34,21 @@ describe.only('Location', function() {
       expect(possible).to.be.false;
       done();
     });
+  });
+
+  it("gets a sentence describing what resources are missing", function() {
+    expect(Recipe.resourceSentence({},{ 'willow-branch':5 })).to.equal(
+      "I need five willow branches to make this.");
+  });
+
+  it("gets a sentence describing what resources are missing when some are available", function() {
+    expect(Recipe.resourceSentence({ 'willow-branch':4 },{ 'willow-branch':5 })).to.equal(
+      "I need a single willow branch to make this.");
+  });
+
+  it("gets a sentence describing what resources are missing when there are multiple different resources", function() {
+    expect(Recipe.resourceSentence({ stone:10, wood:2, 'willow-branch':4 },{ stone:5, wood:5, 'willow-branch':5 })).to.equal(
+      "I need three wood and a single willow branch to make this.");
   });
 
 });

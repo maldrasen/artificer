@@ -29,9 +29,29 @@ Components.PlanView.Crafting = (function() {
   }
 
   function showRecipeList(event, list) {
-    console.log("Show List",list)
+    $('#craftingDialog .recipe-list').empty();
+    $.each(list, (i, data) => {
+      $('#craftingDialog .recipe-list').append(buildRecipeButton(data));
+    });
   }
 
+  function buildRecipeButton(data) {
+    let button = $('<a>',{ href:'#', class:'button button-small' }).append(data.name);
+    let item = $('<li>').append(button);
+
+    button.on('click', Elements.buttonAction(() => {
+      console.log("Commit Recipe");
+    }));
+
+    if (data.enoughResources == false) {
+      button.addClass('disabled-button');
+      item.append($('<span>',{ class:'note' }).append(data.resourceSentence))
+    }
+
+    console.log("Build Recipe Button",data)
+
+    return item;
+  }
 
   return { init, open, close, isDialogOpen, showRecipeList };
 

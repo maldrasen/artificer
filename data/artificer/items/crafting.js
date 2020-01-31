@@ -7,6 +7,7 @@ Item.build('hide', {
 Item.build('wood', {
   type: 'resource',
   name: 'Wood',
+  pluralName: 'Wood',
 });
 
 Item.build('stone', {
@@ -17,4 +18,5 @@ Item.build('stone', {
 Item.build('willow-branch', {
   type: 'resource',
   name: 'Willow Branch',
+  pluralName: 'Willow Branches',
 });

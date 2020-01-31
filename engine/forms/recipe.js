@@ -9,16 +9,7 @@ global.Recipe = class Recipe extends Form {
     });
 
     let recipes = await Promise.all(unlocked.map(async recipe => {
-      let display = {
-        enoughResources: (await recipe.enoughResources(available)),
-        ingredients: recipe.ingredients,
-      };
-
-      if (recipe.buildsType == 'equipment') {
-        display.name = Equipment.lookup(recipe.builds).name;
-      }
-
-      return display;
+      return recipe.forPlan(available);
     }))
 
     return recipes;
@@ -33,6 +24,43 @@ global.Recipe = class Recipe extends Form {
     });
 
     return available;
+  }
+
+  // Use the Listifier to get a list of missing resources.
+  static resourceSentence(available, ingredients) {
+    let list = [];
+
+    each(ingredients, (count, code) => {
+      let item = Item.lookup(code);
+      let lacking = count - (available[code]||0);
+
+      if (lacking > 0) {
+        list.push({
+          word: item.name.toLowerCase(),
+          words: item.plural.toLowerCase(),
+          count: lacking,
+        });
+      }
+    });
+
+    return `I need ${listify(list)} to make this.`;
+  }
+
+  async forPlan(available) {
+    let display = {
+      enoughResources: (await this.enoughResources(available)),
+      ingredients: this.ingredients,
+    };
+
+    if (display.enoughResources == false) {
+      display.resourceSentence = Recipe.resourceSentence(available, this.ingredients);
+    }
+
+    if (this.buildsType == 'equipment') {
+      display.name = Equipment.lookup(this.builds).name;
+    }
+
+    return display;
   }
 
   async enoughResources(reserved) {

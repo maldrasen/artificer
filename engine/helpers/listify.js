@@ -12,7 +12,7 @@ global.listify = (function() {
 
     if (count == 1) { return `a single ${word}`; }
     if (count == 2) { return Random.from([`a pair of ${words}`,`a couple of ${words}`]); }
-    if (count >= 3) { return Random.from([`a few ${words}`, `${number} ${words}`]); }
+    if (count >= 3) { return `${number} ${words}`; }
   }
 
   function twoWords(list) {
