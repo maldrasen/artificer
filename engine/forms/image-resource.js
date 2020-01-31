@@ -1,4 +1,15 @@
 global.ImageResource = class ImageResource extends Form {
+  static buildBackground(code,options) { ImageResource.build(code,extend(options,{ type:'background' })); }
+  static buildPortrait(code,options)   { ImageResource.build(code,extend(options,{ type:'portrait' }));   }
+  static buildIcon(code,options)       { ImageResource.build(code,extend(options,{ type:'icon' }));       }
+
+  static iconsForClient() {
+    let icons = {};
+    each(ImageResource.instances, (image, code) => {
+      if (image.type == 'icon') { icons[code] = image.url; }
+    });
+    return icons;
+  }
 
   // I'm getting something, but I have no idea what...
   static async where(options) {

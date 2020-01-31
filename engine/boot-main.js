@@ -1,5 +1,4 @@
-
-console.log('=== Booting Main Process ===');
+console.log('\n=== Booting Main Process ===\n');
 
 require(`${ROOT}/engine/boot-environment.js`);
 require(`${ROOT}/engine/boot-system.js`);
@@ -12,6 +11,7 @@ ipcMain.on('client.ready', () => {
       console.log("\n=== Ready ===\n")
       BrowserCommands.init();
       Browser.send('engine.ready');
+      Browser.sendDataToClient();
     });
   });
 });

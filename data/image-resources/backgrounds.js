@@ -3,14 +3,14 @@
 //     Coded
 // =============
 
-ImageResource.build('black',              { url:`${IMAGE_ROOT}/backgrounds/black.png` });
-ImageResource.build('void',               { url:`${IMAGE_ROOT}/backgrounds/void.png` });
+ImageResource.buildBackground('black',              { url:`${IMAGE_ROOT}/backgrounds/black.png` });
+ImageResource.buildBackground('void',               { url:`${IMAGE_ROOT}/backgrounds/void.png` });
 
-ImageResource.build('unknown-background', { url:`${IMAGE_ROOT}/backgrounds/todo.png` });
-ImageResource.build('journal',            { url:`${IMAGE_ROOT}/backgrounds/todo.png` });
-ImageResource.build('splash-screen',      { url:`${IMAGE_ROOT}/backgrounds/todo.png` });
-ImageResource.build('field',              { url:`${IMAGE_ROOT}/backgrounds/todo.png` });
-ImageResource.build('keep-in-distance',   { url:`${IMAGE_ROOT}/backgrounds/todo.png` });
+ImageResource.buildBackground('unknown-background', { url:`${IMAGE_ROOT}/backgrounds/todo.png` });
+ImageResource.buildBackground('journal',            { url:`${IMAGE_ROOT}/backgrounds/todo.png` });
+ImageResource.buildBackground('splash-screen',      { url:`${IMAGE_ROOT}/backgrounds/todo.png` });
+ImageResource.buildBackground('field',              { url:`${IMAGE_ROOT}/backgrounds/todo.png` });
+ImageResource.buildBackground('keep-in-distance',   { url:`${IMAGE_ROOT}/backgrounds/todo.png` });
 
 // =================
 //     Locations
@@ -18,18 +18,18 @@ ImageResource.build('keep-in-distance',   { url:`${IMAGE_ROOT}/backgrounds/todo.
 
 // === Courtyard ===
 
-ImageResource.build('courtyard', {
+ImageResource.buildBackground('courtyard', {
   url: `${IMAGE_ROOT}/backgrounds/todo.png`,
   location: 'courtyard',
 });
 
-ImageResource.build('courtyard-m', {
+ImageResource.buildBackground('courtyard-m', {
   url: `${IMAGE_ROOT}/backgrounds/todo.png`,
   location: 'courtyard',
   time: 'morning'
 });
 
-ImageResource.build('courtyard-n', {
+ImageResource.buildBackground('courtyard-n', {
   url: `${IMAGE_ROOT}/backgrounds/todo.png`,
   location: 'courtyard',
   time: 'night'
@@ -37,24 +37,24 @@ ImageResource.build('courtyard-n', {
 
 // === Great Hall ===
 
-ImageResource.build('great-hall', {
+ImageResource.buildBackground('great-hall', {
   url: `${IMAGE_ROOT}/backgrounds/todo.png`,
   location: 'great-hall',
 });
 
-ImageResource.build('great-hall-m', {
+ImageResource.buildBackground('great-hall-m', {
   url: `${IMAGE_ROOT}/backgrounds/todo.png`,
   location: 'great-hall',
   time: 'morning'
 });
 
-ImageResource.build('great-hall-c', {
+ImageResource.buildBackground('great-hall-c', {
   url: `${IMAGE_ROOT}/backgrounds/todo.png`,
   location: 'great-hall',
   state: 'clean',
 });
 
-ImageResource.build('great-hall-d', {
+ImageResource.buildBackground('great-hall-d', {
   url: `${IMAGE_ROOT}/backgrounds/todo.png`,
   location: 'great-hall',
   state: 'decorated',
@@ -62,12 +62,12 @@ ImageResource.build('great-hall-d', {
 
 // === Lower Keep Hall ===
 
-ImageResource.build('lower-keep-hall', {
+ImageResource.buildBackground('lower-keep-hall', {
   url: `${IMAGE_ROOT}/backgrounds/todo.png`,
   location: 'lower-keep-hall',
 });
 
-ImageResource.build('lower-keep-hall-c', {
+ImageResource.buildBackground('lower-keep-hall-c', {
   url: `${IMAGE_ROOT}/backgrounds/todo.png`,
   location: 'lower-keep-hall',
   state: 'clean',
@@ -75,12 +75,12 @@ ImageResource.build('lower-keep-hall-c', {
 
 // === Study ===
 
-ImageResource.build('study', {
+ImageResource.buildBackground('study', {
   url: `${IMAGE_ROOT}/backgrounds/todo.png`,
   location: 'study',
 });
 
-ImageResource.build('study-c', {
+ImageResource.buildBackground('study-c', {
   url: `${IMAGE_ROOT}/backgrounds/todo.png`,
   location: 'study',
   state: 'clean',
@@ -88,7 +88,7 @@ ImageResource.build('study-c', {
 
 // === Workshop ===
 
-ImageResource.build('workshop', {
+ImageResource.buildBackground('workshop', {
   url: `${IMAGE_ROOT}/backgrounds/todo.png`,
   location: 'workshop',
 });

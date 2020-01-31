@@ -45,6 +45,15 @@ global.ObjectUtility = {
     return filtered;
   },
 
+  // This also seems like it should really be built into javascript...
+  select(object, selector) {
+    let filtered = {};
+    each(object, (value, key) => {
+      if (selector(key,value)) { filtered[key] = value; }
+    });
+    return filtered;
+  },
+
   // Check to see if an object has no properties.
   isEmpty(object) {
     for (let key in object) {

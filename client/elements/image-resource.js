@@ -1,5 +1,10 @@
 Elements.ImageResource = (function() {
 
+  function initIconLibrary(event, data) {
+    console.log("--- Init Icons ---")
+    console.log(data)
+  }
+
   function loadBackground(selector, argument) {
     Renderer.sendCommand('image.lookup',{ selector, on:'background', ...argument });
   }
@@ -12,6 +17,6 @@ Elements.ImageResource = (function() {
     throw "Data on not set to background, it prolly wants to set an image src, but that isn't implemented yet."
   }
 
-  return { loadBackground, set };
+  return { initIconLibrary, loadBackground, set };
 
 })();
