@@ -50,7 +50,11 @@ global.Browser = (function() {
       console.log("> Sending Reference Data to Client");
       console.log(`    - ${Object.keys(ImageResource.instances).length} Images\n`)
 
-      send('image.init-icon-library', ImageResource.iconsForClient());
+      send('image.init-icon-library',{
+        item: Item.forClient(),
+        flavor: ItemFlavor.forClient(),
+        equipment: Equipment.forClient(),
+      });
     },10);
   }
 

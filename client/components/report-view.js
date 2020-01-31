@@ -60,13 +60,7 @@ Components.ReportView = (function() {
     let row = $('<div>',{ class:'spoils-row' }).append(frame);
 
     each(flavors, flavor => {
-      frame.append($(`
-        <div class='item-icon large-icon'>
-          <span class='count'>${flavor.count}</span>
-          <span class='name'>${flavor.name}</span>
-          <img src='${flavor.icon}' height=40 width=40/>
-        </div>
-      `));
+      frame.append(Elements.ImageResource.iconElement('flavor', flavor.code, flavor.count));
     });
 
     return row;

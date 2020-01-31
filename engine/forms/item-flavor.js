@@ -1,5 +1,15 @@
 global.ItemFlavor = class ItemFlavor extends Form {
 
+  static forClient() {
+    let data = {};
+    each(ItemFlavor.instances, (flavor, code) => {
+      data[code] = {
+        name: flavor.name,
+        url: ImageResource.getIcon('flavor',this.code).url }
+    });
+    return data;
+  }
+
   // Given an object of item flavors we want to create an object of items that
   // can be added to the inventory or to the game state. Some item flavors turn
   // into a larger quantity of an item than others.
@@ -42,20 +52,15 @@ global.ItemFlavor = class ItemFlavor extends Form {
 
   // Take a map of item flavors like { 'rabbit-pelt':2 }, and turns it into
   // a map that the client can know how to render.
+
   static forReport(raw) {
     return Object.keys(raw||{}).map(code => {
       let flavor = ItemFlavor.lookup(code);
       return {
         code: code,
         count: raw[code],
-        name: flavor.name,
-        icon: flavor.icon
       };
     });
-  }
-
-  get icon() {
-    return ImageResource.lookup(this.iconCode || 'unknown-icon').url;
   }
 
 }

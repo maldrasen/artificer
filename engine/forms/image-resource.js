@@ -3,12 +3,10 @@ global.ImageResource = class ImageResource extends Form {
   static buildPortrait(code,options)   { ImageResource.build(code,extend(options,{ type:'portrait' }));   }
   static buildIcon(code,options)       { ImageResource.build(code,extend(options,{ type:'icon' }));       }
 
-  static iconsForClient() {
-    let icons = {};
-    each(ImageResource.instances, (image, code) => {
-      if (image.type == 'icon') { icons[code] = image.url; }
-    });
-    return icons;
+  // Get's a item, flavor, or equipment icon. Unlike mose forms it's fine if the icon isn't found, we just return the
+  // unknown icon placeholder, at least while the app is being built, which means probably forever.
+  static getIcon(type,code) {
+    return ImageResource.instances[`icon-${type}-${code}`] || ImageResource.instances['icon-unknown'];
   }
 
   // I'm getting something, but I have no idea what...
