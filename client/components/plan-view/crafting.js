@@ -31,26 +31,36 @@ Components.PlanView.Crafting = (function() {
   function showRecipeList(event, list) {
     $('#craftingDialog .recipe-list').empty();
     $.each(list, (i, data) => {
-      $('#craftingDialog .recipe-list').append(buildRecipeButton(data));
+      $('#craftingDialog .recipe-list').append(buildRecipeItem(data));
     });
   }
 
-  function buildRecipeButton(data) {
-    let button = $('<a>',{ href:'#', class:'button button-small' }).append(data.name);
-    let item = $('<li>').append(button);
+  function buildRecipeItem(data) {
+    let button = Elements.Buttons.iconButtonWithLabel({
+      label: data.name,
+      code:  data.builds,
+      type:  data.buildsType,
+      count: data.buildsCount,
+      action: button => {
+        console.log("Commit: ",button)
+      }
+    });
 
-    button.on('click', Elements.buttonAction(() => {
-      console.log("Commit Recipe");
-    }));
+    let ingredientsIcons = $('<div>',{ class:'ingredients-icons' });
+    let ingredientsNote = $('<div>',{ class:'ingredients-note' });
+    let ingredientsPanel = $('<div>',{ class:'ingredients-panel' }).append(ingredientsIcons).append(ingredientsNote);
+    let buttonPanel = $('<div>',{ class:'button-panel' }).append(button);
+
+    $.each(data.ingredients, (code, count) => {
+      ingredientsIcons.append(Elements.ImageResource.iconElement('item',code,count));
+    });
 
     if (data.enoughResources == false) {
       button.addClass('disabled-button');
-      item.append($('<span>',{ class:'note' }).append(data.resourceSentence))
+      ingredientsNote.append($('<span>',{ class:'cannot-build' }).append(data.resourceSentence))
     }
 
-    console.log("Build Recipe Button",data)
-
-    return item;
+    return $('<li>',{ class:'recipe' }).append(buttonPanel).append(ingredientsPanel);;
   }
 
   return { init, open, close, isDialogOpen, showRecipeList };

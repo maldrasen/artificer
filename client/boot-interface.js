@@ -33,6 +33,7 @@ require(`${ROOT}/client/components/event-view/form-page`);
 require(`${ROOT}/client/elements/elements`);
 require(`${ROOT}/client/elements/adjustment-badge`);
 require(`${ROOT}/client/elements/alert`);
+require(`${ROOT}/client/elements/buttons`);
 require(`${ROOT}/client/elements/chooser`);
 require(`${ROOT}/client/elements/confirm`);
 require(`${ROOT}/client/elements/image-resource`);
