@@ -38,17 +38,17 @@ describe('Location', function() {
 
   it("gets a sentence describing what resources are missing", function() {
     expect(Recipe.resourceSentence({},{ 'willow-branch':5 })).to.equal(
-      "I need five willow branches to make this.");
+      "I need five willow branches before I can make this.");
   });
 
   it("gets a sentence describing what resources are missing when some are available", function() {
     expect(Recipe.resourceSentence({ 'willow-branch':4 },{ 'willow-branch':5 })).to.equal(
-      "I need a single willow branch to make this.");
+      "I need a single willow branch before I can make this.");
   });
 
   it("gets a sentence describing what resources are missing when there are multiple different resources", function() {
     expect(Recipe.resourceSentence({ stone:10, wood:2, 'willow-branch':4 },{ stone:5, wood:5, 'willow-branch':5 })).to.equal(
-      "I need three wood and a single willow branch to make this.");
+      "I need three wood and a single willow branch before I can make this.");
   });
 
 });
