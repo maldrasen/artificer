@@ -5,9 +5,10 @@ Location.build('courtyard', {
   },
 
   buildDescription: async () => {
-    return `The courtyard is large but strewn with rubble and choaked with tall weeds. This was no doubt an impressive
-      keep at one point, but time and neglect have both taken their toll. For the moment I've set up a small camp. It's
-      little more than a fire pit ringed with small stones, but at least it's sheltered from the wind.`;
+    return `Though open to the sky, the keep's central courtyard is almost always in shadow, being surrounded by walls
+      almost as high as the courtyard is wide. The courtyard grounds were manicured at one point, but time and neglect
+      have taken their toll. What might have been a garden at one time is now completely covered with thick vines and
+      brambles, and a big pile of rotting timber was probably the stables before it collapsed in on itself.`;
   },
 
 });
