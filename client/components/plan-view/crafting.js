@@ -19,10 +19,18 @@ Components.PlanView.Crafting = (function() {
     return dialogOpen;
   }
 
+  // === Material Management ===
+
   // Need to get a map of all the materials reserved by other crafting tasks.
   function getReservedMaterials() {
     return {};
   }
+
+  function commitRecipe(recipe) {
+    console.log("Commit to crafting : ",recipe)
+  }
+
+  // === Recipe List Construction ===
 
   function requestRecipeList() {
     Renderer.sendCommand('plan.crafting.getRecipeList', { reserved:getReservedMaterials() })
@@ -41,9 +49,7 @@ Components.PlanView.Crafting = (function() {
       code:  data.builds,
       type:  data.buildsType,
       count: data.buildsCount,
-      action: button => {
-        console.log("Commit: ",button)
-      }
+      action: button => { commitRecipe(data) }
     });
 
     let ingredientsIcons = $('<div>',{ class:'ingredients-icons' });
