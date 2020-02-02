@@ -192,4 +192,24 @@
     box-shadow: $shadow-frame;
   }
 
+  li.recipe {
+    display: flex;
+    margin-top: 10px;
+
+    .ingredients-panel {
+      height: 80px;
+      padding-top: 6px;
+      margin-left: 20px;
+      font-size: $fs-small;
+    }
+    .ingredients-note {
+      position: relative;
+      left: 6px;
+      top: 3px;
+    }
+    .cannot-build {
+      color: transparentize($fg-warning,0.33);
+    }
+  }
+
 }

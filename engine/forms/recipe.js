@@ -43,7 +43,7 @@ global.Recipe = class Recipe extends Form {
       }
     });
 
-    return `I need ${listify(list)} to make this.`;
+    return `I need ${listify(list)} before I can make this.`;
   }
 
   async forPlan(available) {
