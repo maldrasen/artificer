@@ -45,7 +45,12 @@ Components.PlanView.Current = (function() {
     return $('#planView .in-progress .task').map((i, taskElement) => {
       let task = $(taskElement).data('task');
       let minions = $(taskElement).data('minions');
-      return { code:task.code, minions:minions }
+      let work = { code:task.code }
+
+      if (minions)     { work.minions = minions;    }
+      if (task.recipe) { work.recipe = task.recipe; }
+
+      return work;
     }).get();
   }
 

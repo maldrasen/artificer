@@ -5,14 +5,14 @@ Task.build('dominate', {
   time: 4,
   minionsUsed: 1,
 
-  execute: async minions => {
-    const minion = minions[0];
+  execute: async work => {
+    const minion = work.minions[0];
           minion.adjustLoyaly(3);
     await minion.save();
 
-    const text = await TaskStory.select('dominate', minions);
+    const text = await TaskStory.select('dominate', work);
 
-    return { title:`Dominating ${minions[0].singleName}`, text:text }
+    return { title:`Dominating ${work.minions[0].singleName}`, text:text }
   }
 
 });

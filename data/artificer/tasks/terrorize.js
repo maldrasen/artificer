@@ -5,14 +5,14 @@ Task.build('terrorize', {
   time: 4,
   minionsUsed: 1,
 
-  execute: async minions => {
-    const minion = minions[0];
+  execute: async work => {
+    const minion = work.minions[0];
           minion.adjustFear(3);
     await minion.save();
 
-    const text = await TaskStory.select('terrorize', minions);
+    const text = await TaskStory.select('terrorize', work);
 
-    return { title:`Terrorizing ${minions[0].singleName}`, text:text };
+    return { title:`Terrorizing ${work.minions[0].singleName}`, text:text };
   }
 
 });

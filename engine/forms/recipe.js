@@ -1,5 +1,7 @@
 global.Recipe = class Recipe extends Form {
 
+  // === Static functions for the Plan View ===
+
   static async getRecipeListForPlan(state) {
     let flags = await Flag.getAll();
     let available = await Recipe.getAvailableResources(state.reserved);
@@ -52,6 +54,25 @@ global.Recipe = class Recipe extends Form {
     if (time == 2) { return "Building this will take half a day"; }
     return "Building this will take a couple of hours";
   }
+
+  // === General Information ===
+
+  buildsItem() {
+    if (this.buildsType == 'equipment') { return Equipment.lookup(this.builds); }
+    throw `I don't know what I build.`
+  }
+
+  buildsName() {
+    return this.buildsItem().name;
+  }
+
+  // === Crafting this item ===
+
+  async craft() {
+    console.log("Build this shit.")
+  }
+
+  // === For the Plan View ===
 
   async forPlan(available) {
     let display = {
