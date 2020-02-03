@@ -13,7 +13,7 @@ global.Renderer = (function() {
 
   const TEMPLATES = [
     'chooser',
-    'crafting-dialog',
+    'dialog',
     'event',
     'inventory',
     'load-game',
@@ -26,6 +26,7 @@ global.Renderer = (function() {
     'minion-select-dialog',
     'plan',
     'player',
+    'recipes',
     'report',
     'save-game',
   ];
@@ -42,17 +43,11 @@ global.Renderer = (function() {
 
       // If a dialog nested inside of an overlay is open, it should be closed
       // without closing the parent overlay.
-      if (Components.PlanView.Crafting.isDialogOpen()) {
-        return Components.PlanView.Crafting.close();
-      }
+      if (Elements.Dialog.isOpen()) { return Elements.Dialog.close(); }
 
       // TODO: Minion select dialog was being stupid, but I can't fix it right
-      //       now, because there's nothing that actually opens it.
-
-      // $(document).on('keydown', (e)=> {
-      //   if (e.code == "Escape" && $('#minionListView').length > 0 && $('#overlayContent .minion-detail-view').length == 0) { Renderer.sendCancel(); }
-      // });
-      // Components.MinionSelectDialog.close();
+      //       now, because there's nothing that actually opens it. Should just
+      //       convert the minion dialog into a regular dialog, but smaller.
 
       // TODO: Remove overlay should return here if an overlay was open and
       //       actually closed.

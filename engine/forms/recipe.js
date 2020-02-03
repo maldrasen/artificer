@@ -46,18 +46,26 @@ global.Recipe = class Recipe extends Form {
     return `I need ${listify(list)} before I can make this.`;
   }
 
+  static timeSentence(time) {
+    if (time == 4) { return "Building this will take the entire day"; }
+    if (time == 3) { return "Building this will take at least six hours"; }
+    if (time == 2) { return "Building this will take half a day"; }
+    return "Building this will take a couple of hours";
+  }
+
   async forPlan(available) {
     let display = {
       builds: this.builds,
       buildsType: this.buildsType,
       buildsCount: this.buildsCount || 1,
       ingredients: this.ingredients,
-      enoughResources: (await this.enoughResources(available))
+      time: this.time,
+      enoughResources: (await this.enoughResources(available)),
     };
 
-    if (display.enoughResources == false) {
-      display.resourceSentence = Recipe.resourceSentence(available, this.ingredients);
-    }
+    display.note = display.enoughResources ?
+      Recipe.timeSentence(this.time):
+      Recipe.resourceSentence(available, this.ingredients);
 
     if (this.buildsType == 'equipment') {
       display.name = Equipment.lookup(this.builds).name;

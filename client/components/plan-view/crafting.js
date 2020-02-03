@@ -1,22 +1,17 @@
 Components.PlanView.Crafting = (function() {
-  let dialogOpen = false;
 
   function init() {
   }
 
   function open() {
-    dialogOpen = true;
-    $('#mainContent').append($('<div>',{ id:"craftingDialog" }).append($('#craftingDialogTemplate').html()));
+    Elements.Dialog.open({
+      id: 'recipes',
+      template: '#recipesTemplate',
+      title: 'Recipes' ,
+      dialog: 'simple',
+    });
+
     requestRecipeList();
-  }
-
-  function close() {
-    dialogOpen = false;
-    $('#craftingDialog').remove();
-  }
-
-  function isDialogOpen() {
-    return dialogOpen;
   }
 
   // === Material Management ===
@@ -37,10 +32,12 @@ Components.PlanView.Crafting = (function() {
   }
 
   function showRecipeList(event, list) {
-    $('#craftingDialog .recipe-list').empty();
+    $('#recipes .recipe-list').empty();
     $.each(list, (i, data) => {
-      $('#craftingDialog .recipe-list').append(buildRecipeItem(data));
+      $('#recipes .recipe-list').append(buildRecipeItem(data));
     });
+
+    Elements.ScrollingPanel.resizeAll();
   }
 
   function buildRecipeItem(data) {
@@ -53,7 +50,7 @@ Components.PlanView.Crafting = (function() {
     });
 
     let ingredientsIcons = $('<div>',{ class:'ingredients-icons' });
-    let ingredientsNote = $('<div>',{ class:'ingredients-note' });
+    let ingredientsNote = $('<div>',{ class:'ingredients-note' }).append(data.note);
     let ingredientsPanel = $('<div>',{ class:'ingredients-panel' }).append(ingredientsIcons).append(ingredientsNote);
     let buttonPanel = $('<div>',{ class:'button-panel' }).append(button);
 
@@ -63,12 +60,12 @@ Components.PlanView.Crafting = (function() {
 
     if (data.enoughResources == false) {
       button.addClass('disabled-button');
-      ingredientsNote.append($('<span>',{ class:'cannot-build' }).append(data.resourceSentence))
+      ingredientsNote.addClass('cannot-build');
     }
 
     return $('<li>',{ class:'recipe' }).append(buttonPanel).append(ingredientsPanel);;
   }
 
-  return { init, open, close, isDialogOpen, showRecipeList };
+  return { init, open, showRecipeList };
 
 })();

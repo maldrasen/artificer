@@ -1,0 +1,47 @@
+.dialog-cover {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.5);
+
+  .dialog-frame {
+    position: fixed;
+    top: 90px;
+    bottom: 60px;
+    left: 60px;
+    right: 60px;
+    background-color: transparentize($bg-body,0.1);
+    border: $border-light;
+    border-top: none;
+    box-shadow: $shadow-frame;
+  }
+  .dialog-header {
+    position: fixed;
+    top: 60px;
+    right: 60px;
+    left: 60px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 6px;
+    font-size: $fs-bigger;
+    background-color: rgba(0,0,0,0.9);
+    border: $border-normal;
+    border-bottom: none;
+    box-shadow: $shadow-overlay;
+  }
+  .dialog-content {
+    margin: 10px;
+  }
+  .close-dialog {
+    float: right;
+    font-size: 20px;
+    font-family: roboto-black;
+    color: rgb(200,200,200);
+  }
+  .close-dialog:hover {
+    border: none;
+    color: rgb(250,250,250);
+  }
+}
