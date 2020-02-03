@@ -6,20 +6,20 @@ terrible measure of progress and doneness normally, but this project involves a
 ton of writing, so knowing how many lines this has is actually useful. I'm
 thinking once we approach 500,000 lines we'll be close to done.
 
-Sweetmorn, the 21st day of Chaos in the YOLD 3186 / 21 Jan 2020
+Prickle-Prickle, the 34th day of Chaos in the YOLD 3186 / 3 Feb 2020
 
 ---------- Result ------------
 
-            Physical :  25096
-              Source :  20162
-             Comment :  1827
- Single-line comment :  1821
+            Physical :  27122
+              Source :  21580
+             Comment :  2197
+ Single-line comment :  2191
        Block comment :  6
                Mixed :  32
  Empty block comment :  0
-               Empty :  3139
-               To Do :  133
+               Empty :  3377
+               To Do :  142
 
-Number of files read :  498
+Number of files read :  531
 
 ----------------------------
