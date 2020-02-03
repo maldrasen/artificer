@@ -66,7 +66,8 @@ Components.PlanView.Current = (function() {
     if (item.hasClass('task')) { removeCommitted(task.time); }
     if (item.hasClass('mission')) { $(`#planView tr.mission-${mission.code}`).removeClass('hide') }
 
-    Components.PlanView.Minions.release(item.data('minions'));
+    Components.PlanView.Minions.release(item.data('minions') || []);
+    Components.PlanView.Crafting.releaseMaterials((task && task.ingredients) || {});
 
     item.remove();
     addNothing();
@@ -75,7 +76,7 @@ Components.PlanView.Current = (function() {
   function addCommitted(count) {
     if (count + getCommitted() > 4) { throw "Ain't nobody got time for that!"; }
     for (let i=0; i<count; i++) {
-      $('#planView .timeline .chunk.off').removeClass('off').addClass('on');
+      $($('#planView .timeline .chunk.off')[0]).removeClass('off').addClass('on');
     }
     adjustCategoryButtons();
   }
@@ -119,6 +120,14 @@ Components.PlanView.Current = (function() {
     $('#planView .show-available-projects-button').addClass('disabled-button');
   }
 
+  // Add an in progress element to the current day's plan. Options:
+  //   name      * Name of this task
+  //   type      * [project,task,mission] Should be set by the calling function
+  //   progress    (number) Percent complete.
+  //   minions     (array of IDs) Array of minion IDs working this.
+  //   project     Project code (One of these should be set)
+  //   mission     Mission code
+  //   task        Task code
   function inProgressElement(options) {
     let item = $('<li>',{ class:`item ${options.type}` });
     let progressNote = options.progress ? `(${options.progress}% complete)` : '';

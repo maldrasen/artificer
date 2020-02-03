@@ -1,7 +1,10 @@
 Components.PlanView.Crafting = (function() {
+  let reservedMaterials = {};
 
-  function init() {
-  }
+  // TODO: Eventually this init will need implemented because the list of
+  //       recipes should be categorized somehow, either in tabs or expanding
+  //       panels or something.
+  function init() { }
 
   function open() {
     Elements.Dialog.open({
@@ -14,15 +17,44 @@ Components.PlanView.Crafting = (function() {
     requestRecipeList();
   }
 
-  // === Material Management ===
+  // When a recipe is selected we add a task tot he current plan. The engine
+  // needs the task code and the recipe code. The current control needs the
+  // time and the ingredients list for if when the task is canceled those
+  // resources need to be released.
+  function commitRecipe(recipe) {
+    reserveMaterials(recipe.ingredients);
 
-  // Need to get a map of all the materials reserved by other crafting tasks.
-  function getReservedMaterials() {
-    return {};
+    Elements.Dialog.close();
+    Components.PlanView.Current.addCommitted(recipe.time);
+    Components.PlanView.Current.addTask({
+      name: `Craft: ${recipe.name}`,
+      task: {
+        code: 'craft',
+        recipe: recipe.code,
+        ingredients: recipe.ingredients,
+        time: recipe.time,
+      },
+    });
   }
 
-  function commitRecipe(recipe) {
-    console.log("Commit to crafting : ",recipe)
+  // === Material Management ===
+
+  function getReservedMaterials() {
+    return reservedMaterials;
+  }
+
+  function reserveMaterials(ingredients) {
+    $.each(ingredients, (code,count) => {
+      if (reservedMaterials[code] == null) { reservedMaterials[code] = 0; }
+      reservedMaterials[code] += count;
+    });
+  }
+
+  function releaseMaterials(ingredients) {
+    $.each(ingredients, (code,count) => {
+      reservedMaterials[code] -= count;
+      if (reservedMaterials[code] == 0) { delete reservedMaterials[code]; }
+    });
   }
 
   // === Recipe List Construction ===
@@ -66,6 +98,6 @@ Components.PlanView.Crafting = (function() {
     return $('<li>',{ class:'recipe' }).append(buttonPanel).append(ingredientsPanel);;
   }
 
-  return { init, open, showRecipeList };
+  return { init, open, showRecipeList, releaseMaterials };
 
 })();

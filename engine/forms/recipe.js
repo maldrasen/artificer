@@ -55,11 +55,12 @@ global.Recipe = class Recipe extends Form {
 
   async forPlan(available) {
     let display = {
+      code: this.code,
       builds: this.builds,
       buildsType: this.buildsType,
-      buildsCount: this.buildsCount || 1,
+      buildsCount: (this.buildsCount || 1),
       ingredients: this.ingredients,
-      time: this.time,
+      time: (this.time || 1),
       enoughResources: (await this.enoughResources(available)),
     };
 
