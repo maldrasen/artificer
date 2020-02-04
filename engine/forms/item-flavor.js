@@ -5,7 +5,7 @@ global.ItemFlavor = class ItemFlavor extends Form {
     each(ItemFlavor.instances, (flavor, code) => {
       data[code] = {
         name: flavor.name,
-        url: ImageResource.getIcon('flavor',this.code).url }
+        url: ImageResource.getIcon('flavor',code).url }
     });
     return data;
   }

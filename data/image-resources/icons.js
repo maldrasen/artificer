@@ -1,7 +1,9 @@
 
-ImageResource.buildIcon('icon-unknown', {
-  url: `${IMAGE_ROOT}/icons/_unknown.png`
-});
+ImageResource.buildIcon('icon-unknown',  { url:`${IMAGE_ROOT}/icons/_unknown.png` });
+
+ImageResource.buildIcon('icon-item-willow-branch',   { url:`${IMAGE_ROOT}/icons/willow-branch.png` });
+
+ImageResource.buildIcon('icon-flavor-willow-branches', { url:`${IMAGE_ROOT}/icons/willow-branch.png` });
 
 // Items are automatically found by form class and code.
 //   icon-item-{code}

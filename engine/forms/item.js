@@ -7,7 +7,7 @@ global.Item = class Item extends Form {
     each(Item.instances, (item, code) => {
       data[code] = {
         name: item.name,
-        url: ImageResource.getIcon('item',this.code).url }
+        url: ImageResource.getIcon('item',code).url }
     });
     return data;
   }
