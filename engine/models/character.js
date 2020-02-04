@@ -100,5 +100,6 @@ Character.prototype.detailForClient = async function() {
 HasAspects.isAppliedTo(Character);
 HasAttributes.isAppliedTo(Character);
 HasBody.isAppliedTo(Character);
+HasEquipment.isAppliedTo(Character);
 HasInjuries.isAppliedTo(Character);
 HasSexSkills.isAppliedTo(Character);

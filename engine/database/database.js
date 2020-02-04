@@ -20,6 +20,7 @@ global.Database = (function() {
     require(`${ROOT}/engine/models/body`);
     require(`${ROOT}/engine/models/character`);
     require(`${ROOT}/engine/models/character-aspect`);
+    require(`${ROOT}/engine/models/character-equipment`);
     require(`${ROOT}/engine/models/cock`);
     require(`${ROOT}/engine/models/flag`);
     require(`${ROOT}/engine/models/name`);
@@ -48,6 +49,7 @@ global.Database = (function() {
       Player,
       Character,
       CharacterAspect,
+      CharacterEquipment,
       Body,
       Anus,
       Cock,

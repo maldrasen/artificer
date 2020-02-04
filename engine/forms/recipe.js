@@ -69,7 +69,10 @@ global.Recipe = class Recipe extends Form {
   // === Crafting this item ===
 
   async craft() {
-    console.log("Build this shit.")
+    await CharacterEquipment.create({
+      code: this.code,
+      condition: 100,
+    });
   }
 
   // === For the Plan View ===
