@@ -14,19 +14,14 @@ Components.InventoryView = (function() {
     $('#inventory .top-row .food.value').empty().append(inventory.food);
 
     each(inventory.resources, resource => {
-      $('#inventory .resource-list').append(buildInventoryItem(resource));
+      $('#inventory .resource-list').append(buildInventoryItem(resource,'item'));
     });
   }
 
-  function buildInventoryItem(data) {
-    return $(`
-      <li class='item'>
-        <div class='item-icon large-icon'>
-          <img src='${data.icon}' height=40 width=40/>
-        </div>
-        <span class='item-name'>${data.count} ${data.name}</span>
-      </li>
-    `);
+  function buildInventoryItem(data,type) {
+    let icon = Elements.ImageResource.iconElement(type,data.code,1);
+    let label = $('<span>',{ class:'item-name' }).append(`${data.count} ${data.name}`);
+    return $('<li>',{ class:'item' }).append(icon).append(label);
   }
 
   return { init, open, build };

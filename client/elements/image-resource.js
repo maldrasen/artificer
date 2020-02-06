@@ -3,10 +3,15 @@ Elements.ImageResource = (function() {
 
   function initIconLibrary(event, data) { iconData = data; }
 
+  // Build an item icon from the type (equipment, item, or flavor), the item
+  // code, and the count. If the count is set to 1 the count span will be
+  // hidden.
   function iconElement(type, code, count) {
+    let countSpan = (count > 1) ? `<span class='count'>${count}</span>` : '';
+
     return $(`
       <div class='item-icon large-icon'>
-        <span class='count'>${count}</span>
+        ${countSpan}
         <span class='name'>${iconData[type][code].name}</span>
         <img src='${iconData[type][code].url}' height=40 width=40/>
       </div>`);
