@@ -12,3 +12,17 @@ Most of the work so far has been in getting the engine working, with all of the 
 ## Helping Out
 
 Artificer is an open source game, updatable and modifiable by anyone who would like to add their own content with their own fork, or by contributing to the main branch. If anyone at all is interested in helping out with the project I mostly artists and writers at this point, though mostly artists. This game is text based but there are still a lot of background images and character portraits and such that need drawn. I will need writers too though to create event scripts, as well as about a hundred different descriptions for assholes in various conditions.
+
+## Links
+
+I'm a bit scattered about at the moment. Sending me an email is probably the best way to contact me. I'm also maintaining a deveopment blog, have a few different accounts for sharing art and game assets (and what I share where depends on their theme and how pornographic they are). There's a Reddit for some reason and a couple tip jars as well. As far as tips are concerned, I don't really need any funding to continue development on this game. I'm retired, so it's my full-time hobby at this point. However if I do get tips I plan on using that money to purchase art assets, textures and such, and to commission artwork for the game.
+
+* [ZenHub](https://app.zenhub.com/workspaces/artificer-5d82b5a013bd0b0001b31475/board?repos=209416924) I'm using ZenHub for the project's kanban board.
+* [Twitter](https://twitter.com/maldrasen) Twitter for some reason.
+* [FurAffinity](https://www.furaffinity.net/user/maldrasen/) For furry art.
+* [DeviantArt](https://www.deviantart.com/maldrasen) For stuff that's not quite porn.
+* [Hentai Foundry](http://www.hentai-foundry.com/user/maldrasen/profile) All the lewds.
+* [Kofi](https://ko-fi.com/maldrasen) Tip Jar
+* [Buy me a Coffee](buymeacoff.ee/izKO5Q1) Another Tip Jar
+* [Artificer Reddit](https://reddit.com/r/ArtificerGame/) Eh, might use this at some point.
+* [Slack](https://horsecock.slack.com/) For project corrdination among developers (invite only)
