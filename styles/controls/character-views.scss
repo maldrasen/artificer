@@ -10,7 +10,7 @@
     box-shadow: $shadow-portrait;
     img { height:300px; width:300px; }
   }
-  .actions-frame {
+  .equipment-frame {
     position: absolute;
     right: 20px;
     top: 340px;
@@ -25,9 +25,22 @@
   .info-frame {
     position: absolute;
     top: 20px;
-    bottom: 20px;
+    bottom: 60px;
     right: 340px;
     left: 20px;
+    box-sizing: border-box;
+    box-shadow: $shadow-frame;
+    border: $border-normal;
+    background-color: rgba(0,0,0,0.5);
+  }
+  .actions-frame {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 340px;
+    height: 35px;
+    padding: 5px 8px;
+    text-align: right;
     box-sizing: border-box;
     box-shadow: $shadow-frame;
     border: $border-normal;

@@ -9,6 +9,7 @@ global.ipcRenderer = electron.ipcRenderer;
 
 // === Components ===
 require(`${ROOT}/client/components/components`);
+require(`${ROOT}/client/components/equipment-frame`);
 require(`${ROOT}/client/components/event-view`);
 require(`${ROOT}/client/components/inventory-view`);
 require(`${ROOT}/client/components/location-view`);

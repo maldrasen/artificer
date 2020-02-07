@@ -1,6 +1,8 @@
 
 ImageResource.buildIcon('icon-unknown',  { url:`${IMAGE_ROOT}/icons/_unknown.png` });
 
+ImageResource.buildIcon('icon-equipment-empty', { url:`${IMAGE_ROOT}/icons/empty.png` });
+
 ImageResource.buildIcon('icon-item-willow-branch',   { url:`${IMAGE_ROOT}/icons/willow-branch.png` });
 
 ImageResource.buildIcon('icon-flavor-goat-nuts', { url:`${IMAGE_ROOT}/icons/goat-nuts.png` });

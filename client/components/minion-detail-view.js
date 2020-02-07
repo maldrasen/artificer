@@ -43,10 +43,7 @@ Components.MinionDetailView = (function() {
     addAspects(minion.sexualAspects,      view.find('.sexual-aspects'));
 
     Elements.ScrollingPanel.build($('#overlayContent .scrolling-panel'));
-
-    if (flags['minion.rename'] == 'unlocked') {
-      view.find('.button.rename-minion').removeClass('hide');
-    }
+    Components.EquipmentFrame.build(minion);
   }
 
   function addAspects(aspects, element) {

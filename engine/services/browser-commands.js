@@ -118,6 +118,15 @@ global.BrowserCommands = (function() {
 
     // === Character ===
 
+    ipcMain.on('character.get-equipment', async (event, data) => {
+      console.log("Get Equipment for",data.id);
+
+      let equipment = {};
+      // head: { details:'A ball gag.', code:'ball-gag' }
+
+      Browser.send('character.show-equipment',equipment);
+    });
+
     ipcMain.on('character.make-aspect-adjustment', async (event, data) => {
       AspectAdjuster.adjust(data);
     });

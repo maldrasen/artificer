@@ -8,12 +8,17 @@ Elements.ImageResource = (function() {
   // hidden.
   function iconElement(type, code, count) {
     let countSpan = (count > 1) ? `<span class='count'>${count}</span>` : '';
+    let data = iconData[type][code];
+
+    if (data == null) {
+      throw `No icon for (${type},${code}) found in icon data`;
+    }
 
     return $(`
       <div class='item-icon large-icon'>
         ${countSpan}
-        <span class='name'>${iconData[type][code].name}</span>
-        <img src='${iconData[type][code].url}' height=40 width=40/>
+        <span class='name'>${data.name}</span>
+        <img src='${data.url}' height=40 width=40/>
       </div>`);
   }
 

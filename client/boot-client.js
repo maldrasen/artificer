@@ -17,6 +17,7 @@ $(document).ready(function() {
   Elements.ScrollingPanel.init();
 
   // === Init Components ===
+  Components.EquipmentFrame.init();
   Components.EventView.init();
   Components.InventoryView.init();
   Components.LocationView.init();
