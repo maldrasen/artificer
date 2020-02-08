@@ -1,4 +1,5 @@
 Components.EquipmentFrame = (function() {
+  let currentCharacter = null;
 
   const EquipmentSlots = [
     { code:'weapon', label: 'Weapon', },
@@ -17,14 +18,13 @@ Components.EquipmentFrame = (function() {
   }
 
   function openEquipDialog() {
-    let button = $(this);
-    console.log("Clicked:",this);
+    let slot = $(this).closest('.slot');
   }
 
   // === Construction ===
 
   function build(character) {
-    console.log("Build Frame - ",character);
+    currentCharacter = character;
     Renderer.sendCommand('character.get-equipment', { id:character.id });
   }
 
@@ -32,7 +32,7 @@ Components.EquipmentFrame = (function() {
     let slotList = $('<ul>',{ class:'slot-list' });
     let scrollingPanel = Elements.ScrollingPanel.wrapFixed(slotList);
 
-    each(EquipmentSlots, slot => {
+    each(slotsForGender(), slot => {
       let item = $(`
         <li class='slot ${slot.code}-slot' data-slot='${slot.code}'>
           <div class='button-area'>
@@ -53,6 +53,14 @@ Components.EquipmentFrame = (function() {
     $('#overlayContent .equipment-frame').empty().append(scrollingPanel);
 
     Elements.ScrollingPanel.build(scrollingPanel);
+  }
+
+  function slotsForGender() {
+    return EquipmentSlots.filter(slot => {
+      if (slot.gender == 'not-male') { return currentCharacter.gender != 'Male' }
+      if (slot.gender == 'not-female') { return currentCharacter.gender != 'Female' }
+      return true;
+    })
   }
 
   function getIcon(item) {
