@@ -2,6 +2,7 @@
 ImageResource.buildIcon('icon-unknown',  { url:`${IMAGE_ROOT}/icons/_unknown.png` });
 
 ImageResource.buildIcon('icon-equipment-empty', { url:`${IMAGE_ROOT}/icons/empty.png` });
+ImageResource.buildIcon('icon-equipment-basket', { url:`${IMAGE_ROOT}/icons/basket.png` });
 
 ImageResource.buildIcon('icon-item-willow-branch',   { url:`${IMAGE_ROOT}/icons/willow-branch.png` });
 
