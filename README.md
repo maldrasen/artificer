@@ -17,7 +17,7 @@ Artificer is an open source game, updatable and modifiable by anyone who would l
 
 I'm a bit scattered about at the moment. Sending me an email is probably the best way to contact me. I'm also maintaining a deveopment blog, have a few different accounts for sharing art and game assets (and what I share where depends on their theme and how pornographic they are). There's a Reddit for some reason and a couple tip jars as well. As far as tips are concerned, I don't really need any funding to continue development on this game. I'm retired, so it's my full-time hobby at this point. However if I do get tips I plan on using that money to purchase art assets, textures and such, and to commission artwork for the game.
 
-* [Development Blog](https://maldrasen.blogspot.com/)
+* [Development Blog](https://maldrasen.blogspot.com/) A Google Blog where I ramble about stuff.
 * [ZenHub](https://app.zenhub.com/workspaces/artificer-5d82b5a013bd0b0001b31475/board?repos=209416924) I'm using ZenHub for the project's kanban board.
 * [Twitter](https://twitter.com/maldrasen) Twitter for some reason.
 * [FurAffinity](https://www.furaffinity.net/user/maldrasen/) For furry art.
