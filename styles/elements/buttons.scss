@@ -66,6 +66,25 @@
   }
 }
 
+.button-icon {
+  @include button($fg-button-default);
+
+  padding: 0;
+  height: 44px;
+  width: 44px;
+  border-radius: 8px;
+
+  .item-icon.large-icon {
+    margin: 0;
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+  }
+
+  &:active { border-color:$fg-button-default; }
+}
+
+// Large button icon, used in crafting dialog.
 .button-icon-with-label {
   @include button($fg-button-default);
 

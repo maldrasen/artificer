@@ -13,7 +13,12 @@ Components.EquipmentFrame = (function() {
   ];
 
   function init() {
+    $(document).on('click','.equipment-frame .equip-icon-button', Elements.buttonAction(openEquipDialog));
+  }
 
+  function openEquipDialog() {
+    let button = $(this);
+    console.log("Clicked:",this);
   }
 
   // === Construction ===
@@ -31,7 +36,7 @@ Components.EquipmentFrame = (function() {
       let item = $(`
         <li class='slot ${slot.code}-slot' data-slot='${slot.code}'>
           <div class='button-area'>
-            <a href='#' class='equip-icon-button'></a>
+            <a href='#' class='button-icon equip-icon-button'></a>
           </div>
           <div class='info-area'>
             <div class='label'>${slot.label}</div>
@@ -40,7 +45,7 @@ Components.EquipmentFrame = (function() {
         </li>
       `);
 
-      item.find('a').append(getIcon(equipment[slot.code]).html());
+      item.find('a').append(getIcon(equipment[slot.code]));
       item.addClass(equipment[slot.code] == null ? 'empty' : 'equipped')
       slotList.append(item);
     });
