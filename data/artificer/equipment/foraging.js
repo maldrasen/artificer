@@ -1,4 +1,9 @@
 Equipment.build('basket', {
-  name: 'Basket',
-  type: 'carry-one-hand',
+  name: 'Wicker Basket',
+  slot: 'tool',
+});
+
+Equipment.build('bug-net', {
+  name: 'Bug Net',
+  slot: 'tool',
 });

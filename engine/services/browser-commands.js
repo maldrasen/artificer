@@ -119,11 +119,8 @@ global.BrowserCommands = (function() {
     // === Character ===
 
     ipcMain.on('character.get-equipment', async (event, data) => {
-      console.log("Get Equipment for",data.id);
-
-      let equipment = {};
-      // head: { details:'A ball gag.', code:'ball-gag' }
-
+      const character = await Character.lookup(data.id);
+      const equipment = await character.getAllEquipment();
       Browser.send('character.show-equipment',equipment);
     });
 
