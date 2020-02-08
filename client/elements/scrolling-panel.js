@@ -51,6 +51,13 @@ Elements.ScrollingPanel = (function() {
     });
   }
 
+  // Take an element and place it into a scrolling panel, then return the
+  // scrolling panel. This function doesn't call build() yet because the
+  // wrapped element may not be within it's own parent yet.
+  function wrapFixed(element) {
+    return $(`<div class='scrolling-panel track-parent'>`).append($(`<div class='scrolling-panel-content'>`).append(element));
+  }
+
   function build(scrollingPanel) {
     var contentPanel = scrollingPanel.find('.scrolling-panel-content');
     if (contentPanel.length == 0) {
@@ -256,6 +263,7 @@ Elements.ScrollingPanel = (function() {
     resizeAll: resizeAll,
     observe: observe,
     scrollToTop: scrollToTop,
+    wrapFixed: wrapFixed,
   };
 
 })();

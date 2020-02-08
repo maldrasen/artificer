@@ -1,0 +1,24 @@
+
+.equipment-frame {
+
+  li.slot {
+    display: flex;
+    padding: 5px;
+    margin: 5px;
+    border: $border-very-light;
+    box-shadow: $shadow-shallow;
+
+    &.empty .info-area { color:$fg-weak; }
+
+    .button-area {
+      flex-grow: 0;
+      height: 40px;
+    }
+    .info-area {
+      flex-grow: 1;
+      height: 40px;
+      margin-left: 5px;
+    }
+  }
+
+}

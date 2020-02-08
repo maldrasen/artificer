@@ -16,22 +16,22 @@ Components.EquipmentFrame = (function() {
 
   }
 
+  // === Construction ===
+
   function build(character) {
     console.log("Build Frame - ",character);
     Renderer.sendCommand('character.get-equipment', { id:character.id });
   }
 
   function showEquipment(event, equipment) {
-    console.log("Show:",equipment);
-
     let slotList = $('<ul>',{ class:'slot-list' });
+    let scrollingPanel = Elements.ScrollingPanel.wrapFixed(slotList);
 
     each(EquipmentSlots, slot => {
-      console.log("Slot:",slot)
       let item = $(`
         <li class='slot ${slot.code}-slot' data-slot='${slot.code}'>
           <div class='button-area'>
-            ${getIcon(equipment[slot.code]).html()}
+            <a href='#' class='equip-icon-button'></a>
           </div>
           <div class='info-area'>
             <div class='label'>${slot.label}</div>
@@ -40,10 +40,14 @@ Components.EquipmentFrame = (function() {
         </li>
       `);
 
+      item.find('a').append(getIcon(equipment[slot.code]).html());
+      item.addClass(equipment[slot.code] == null ? 'empty' : 'equipped')
       slotList.append(item);
     });
 
-    $('#overlayContent .equipment-frame').empty().append(slotList);
+    $('#overlayContent .equipment-frame').empty().append(scrollingPanel);
+
+    Elements.ScrollingPanel.build(scrollingPanel);
   }
 
   function getIcon(item) {
@@ -55,25 +59,6 @@ Components.EquipmentFrame = (function() {
   function getDetails(item) {
     return item ? item.details : ''
   }
-
-  // <h3>Equipment</h3>
-  // <ul>
-  //   <li class='slot tool-2-slot' data-slot='tool-2'>
-  //     <div class='button-area'>
-  //     </div>
-  //     <div class='info-area'>
-  //     <label>Tool</label>
-  //   </li>
-  //   <li class='slot outfit-slot' data-slot='outfit'>
-  //     <div class='button-area'>
-  //     </div>
-  //     <div class='info-area'>
-  //       <label>Outfit</label>
-  //       <div>Description</div>
-  //     </div>
-  //   </li>
-  // </ul>
-
 
   return { init, build, showEquipment };
 

@@ -59,27 +59,10 @@ $fg-magical: rgb(193, 148, 189);
 $fg-loyalty: rgb(231, 230, 142);
 $fg-fear: rgb(147, 103, 175);
 
-// $fg-ecstasy:     rgb(200,200,200);
-// $fg-agony:       rgb(189,69,69);
-// $fg-corruption:  rgb(69,69,69);
-// $fg-domination:  rgb(45,99,155);
-// $fg-victory:     rgb(101,49,172);
-// $fg-energy:      rgb(226,110,64);
-
 $fg-sex-light: rgb(207,173,203);
 $fg-sex-dark:  rgb(174,106,133);
 $fg-sex-yuck:  rgb(124,152,57);
 
-// $fg-success: rgb(90,150,60);
-// $fg-failure: rgb(200,20,0);
-//
-// $fg-very-bad: rgb(250,50,50);
-// $fg-tooltip: rgb(223,201,172);
-// $fg-quote: rgb(150,150,250);
-//
-// $fg-bright-yellow: rgb(250,225,200);
-// $fg-negative: rgb(220,100,100);
-//
 $bg-body: rgb(33,30,32);
 $bg-body-darker:rgb(22,20,21);
 $bg-body-even-darker: rgb(11,10,11);
@@ -94,16 +77,6 @@ $bg-confirm-footer: rgba(0,0,0,0.33);
 $bg-hunting: rgb(24, 36, 26);
 $bg-foraging: rgb(66, 83, 60);
 
-// $bg-title-bar: rgba(0,0,0,0.5);
-// $bg-subtitle-bar: rgba(0,0,0,0.3);
-// $bg-subpanel: rgba(0,0,0,0.2);
-// $bg-tooltip: rgba(0,0,0,0.8);
-// $bg-blocker: rgba(0,0,0,0.666);
-//
-// $bg-danger: rgba(250,0,0,0.1);
-// $bg-danger-title: rgba(250,0,0,0.2);
-//
-// $shadow-dark: 0 10px 10px rgb(0,0,0);
 $shadow-frame: 0 5px 10px rgba(0,0,0,0.5);
 $shadow-inset: 0 3px 6px rgba(0,0,0,0.4) inset;
 $shadow-inset-button: 0 3px 5px rgba(0,0,0,0.8) inset;
@@ -130,20 +103,6 @@ $fg-radio-button-on: rgb(250,250,250);
 $bg-radio-button-on: rgba(100,50,0,0.05);
 $glow-radio-button-on:  0 0 3px rgb(200,100,50);
 
-// === Dialog ===
-// $fg-dialog-title: rgb(150,150,150);
-//
-// $bg-dialog-shadow: rgba(0,0,0,0.33);
-// $bg-dialog: rgb(20,20,20);
-// $bg-dialog-title: rgb(30,30,30);
-// $bg-dialog-footer: rgb(30,30,30);
-//
-// $shadow-dialog: 0 10px 20px rgba(0,0,0,0.8);
-//
-// $bg-modal: rgb(35,30,25);
-// $bg-modal-header: rgba(0,0,0,0.333);
-// $bg-modal-footer: rgba(0,0,0,0.333);
-
 // === Scrolling Panel ===
 
 $bg-scrolling-panel-track: rgba(0,0,0,0.2);
@@ -156,15 +115,6 @@ $border-scrolling-panel-thumb-bottom: 1px solid rgba(0,0,0,0.5);
 $shadow-scrolling-panel-track: 2px 2px 4px rgb(0,0,0) inset;
 $shadow-scrolling-panel-thumb: -2px -2px 5px rgba(0,0,0,0.4) inset,
                                2px 2px 5px rgba(250,250,250,0.2) inset;
-
-// === Tabs ===
-//
-// $fg-tab: rgba(250,250,250,0.75);
-// $fg-tab-active: rgb(250,250,250);
-// $bg-tab-active: rgba(0,0,0,0.4);
-// $shadow-tab-active: 0px 3px 2px rgba(0,0,0,0.3) inset;
-// $shadow-tab-content: 0 5px 10px rgba(0,0,0,0.4) inset;
-// $bg-tab-content: rgba(0,0,0,0.1);
 
 // === Chooser ===
 
