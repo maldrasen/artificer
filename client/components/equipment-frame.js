@@ -25,6 +25,26 @@ Components.EquipmentFrame = (function() {
 
   function showAvailableEquipment(event, equipment) {
     console.log("Show Available",equipment)
+
+    let list = $('<ul>','available-equipment-list');
+    let panel = Elements.ScrollingPanel.wrapFixed(list);
+
+    each(equipment, item => {
+      let listItem = $('<li>',{ class:'available-equipment-item' });
+      listItem.data('id',item.id);
+      listItem.append(getIcon(equipment[item.code]));
+      listItem.append(item.name);
+
+      console.log('-',item,'>',listItem);
+
+      list.append(listItem)
+    });
+
+    Elements.FloatingFrame.open({
+      content: panel
+    });
+
+    Elements.ScrollingPanel.build(panel);
   }
 
   // === Construction ===

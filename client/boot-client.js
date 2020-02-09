@@ -12,6 +12,7 @@ $(document).ready(function() {
   Elements.Chooser.init();
   Elements.Confirm.init();
   Elements.Dialog.init();
+  Elements.FloatingFrame.init();
   Elements.PagedContent.init();
   Elements.RadioButtons.init();
   Elements.ScrollingPanel.init();
