@@ -90,15 +90,15 @@ global.BrowserCommands = (function() {
       });
     });
 
-    ipcMain.on('location.showMinions', async () => {
+    ipcMain.on('location.show-minions', async () => {
       Browser.send('render.minions', (await Character.allForClient()));
     });
 
-    ipcMain.on('location.showPlayer', async () => {
+    ipcMain.on('location.show-player', async () => {
       Browser.send('render.player', (await Player.forClient()));
     });
 
-    ipcMain.on('location.showMinion', async (event, id) => {
+    ipcMain.on('location.show-minion', async (event, id) => {
       const minion = await Character.lookup(id);
       const details = await minion.detailForClient();
       const flags = await Flag.getAll();
@@ -109,7 +109,7 @@ global.BrowserCommands = (function() {
       });
     });
 
-    ipcMain.on('location.showInventory', async () => {
+    ipcMain.on('location.show-inventory', async () => {
       const game = await Game.instance();
       const resources = await Resource.allForClient();
       const possessions = [];
@@ -126,6 +126,12 @@ global.BrowserCommands = (function() {
 
     ipcMain.on('character.make-aspect-adjustment', async (event, data) => {
       AspectAdjuster.adjust(data);
+    });
+
+    // === Equipment ===
+
+    ipcMain.on('equipment.get-available', async (event, data) => {
+      Browser.send('equipment.show-available',(await CharacterEquipment.getAvailable(data.slot)));
     });
 
     // === Image Resources ===

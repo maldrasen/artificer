@@ -1,5 +1,6 @@
 global.ItemFlavor = class ItemFlavor extends Form {
 
+  // forClient() is used when building the icon cache for item flavors.
   static forClient() {
     let data = {};
     each(ItemFlavor.instances, (flavor, code) => {

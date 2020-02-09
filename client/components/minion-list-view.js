@@ -5,7 +5,7 @@ Components.MinionListView = (function() {
 
     $(document).on('click','#minionListView.full .minion-frame', function() {
       Renderer.lock();
-      Renderer.sendCommand('location.showMinion',$(this).data('id'))
+      Renderer.sendCommand('location.show-minion',$(this).data('id'))
     });
   }
 

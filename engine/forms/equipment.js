@@ -1,5 +1,6 @@
 global.Equipment = class Equipment extends Form {
 
+  // forClient() is used when building the icon cache for equipment.
   static forClient() {
     let data = {
       empty: { name:'', url:ImageResource.getIcon('equipment','empty').url }

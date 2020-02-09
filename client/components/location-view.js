@@ -3,9 +3,9 @@ Components.LocationView = (function() {
     $(document).on('click','.menu-show-load',      Elements.buttonAction(Renderer.showLoadGame));
     $(document).on('click','.menu-show-save',      Elements.buttonAction(Renderer.showSaveGame));
     $(document).on('click','.menu-show-map',       Elements.buttonAction(Renderer.showMap));
-    $(document).on('click','.menu-show-minions',   Elements.buttonAction(() => { Renderer.sendCommand('location.showMinions');   }));
-    $(document).on('click','.menu-show-inventory', Elements.buttonAction(() => { Renderer.sendCommand('location.showInventory'); }));
-    $(document).on('click','.menu-show-player',    Elements.buttonAction(() => { Renderer.sendCommand('location.showPlayer');    }));
+    $(document).on('click','.menu-show-minions',   Elements.buttonAction(() => { Renderer.sendCommand('location.show-minions');   }));
+    $(document).on('click','.menu-show-inventory', Elements.buttonAction(() => { Renderer.sendCommand('location.show-inventory'); }));
+    $(document).on('click','.menu-show-player',    Elements.buttonAction(() => { Renderer.sendCommand('location.show-player');    }));
   }
 
   function build(transport, view) {

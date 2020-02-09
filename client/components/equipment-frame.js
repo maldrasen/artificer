@@ -14,11 +14,17 @@ Components.EquipmentFrame = (function() {
   ];
 
   function init() {
-    $(document).on('click','.equipment-frame .equip-icon-button', Elements.buttonAction(openEquipDialog));
+    $(document).on('click','.equipment-frame .equip-icon-button', Elements.buttonAction(getAvailableEquipment));
   }
 
-  function openEquipDialog() {
-    let slot = $(this).closest('.slot');
+  function getAvailableEquipment() {
+    Renderer.sendCommand('equipment.get-available', {
+      slot: $(this).closest('.slot').data('slot')
+    });
+  }
+
+  function showAvailableEquipment(event, equipment) {
+    console.log("Show Available",equipment)
   }
 
   // === Construction ===
@@ -73,6 +79,11 @@ Components.EquipmentFrame = (function() {
     return item ? item.details : ''
   }
 
-  return { init, build, showEquipment };
+  return {
+    init,
+    build,
+    showEquipment,
+    showAvailableEquipment
+  };
 
 })();
