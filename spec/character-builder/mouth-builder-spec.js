@@ -31,7 +31,7 @@ describe('MouthBuilder', function() {
   it('sets the widths and tongue length according to species (elf)', function(done) {
     CharacterBuilder.build({ gender:'female', species:'elf' }).then(character => {
       character.getMouth().then(mouth => {
-        expect(mouth.throatWidth).to.be.within(33,36);
+        expect(mouth.throatWidth).to.be.within(33,37);
         expect(mouth.tongueLength).to.be.within(50,70);
         expect(mouth.width).to.be.within(43,53);
         done();
@@ -53,7 +53,7 @@ describe('MouthBuilder', function() {
   it('sets a larger width for men', function(done) {
     CharacterBuilder.build({ gender:'male', species:'elf' }).then(character => {
       character.getMouth().then(mouth => {
-        expect(mouth.throatWidth).to.be.within(33,36);
+        expect(mouth.throatWidth).to.be.within(33,37);
         expect(mouth.tongueLength).to.be.within(50,70);
         expect(mouth.width).to.be.within(48,58);
         done();
