@@ -32,3 +32,7 @@ CharacterEquipment.prototype.buildDetails = async function() {
   let equipment = Equipment.lookup(this.code);
   return "TODO: Equipment Details."
 }
+
+CharacterEquipment.lookup = async function(id) {
+  return await CharacterEquipment.findByPk(id);
+}

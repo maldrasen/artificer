@@ -6,7 +6,7 @@ Elements.FloatingFrame = (function() {
 
   function open(options) {
     $('#floatingFrameCover').removeClass('hide');
-    $('#floatingFrame').empty().append(options.content);
+    $('#floatingFrame').append(options.content);
     setPosition(options.position)
   }
 
@@ -25,7 +25,7 @@ Elements.FloatingFrame = (function() {
 
   function close() {
     $('#floatingFrameCover').addClass('hide');
-    $('#floatingFrame').attr('style','');
+    $('#floatingFrame').empty().attr('style','');
     $('#floatingFrameBoundry').attr('style','');
   }
 

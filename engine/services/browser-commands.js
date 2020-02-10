@@ -120,8 +120,18 @@ global.BrowserCommands = (function() {
 
     ipcMain.on('character.get-equipment', async (event, data) => {
       const character = await Character.lookup(data.id);
-      const equipment = await character.getAllEquipment();
+      const equipment = await character.getAllEquipmentForView();
       Browser.send('character.show-equipment',equipment);
+    });
+
+    ipcMain.on('character.equip', async (event, data) => {
+      const character = await Character.lookup(data.character_id);
+      const equipment = await CharacterEquipment.lookup(data.equipment_id);
+      await character.equip(equipment, data.slot);
+
+      setTimeout(async () => {
+        Browser.send('character.show-equipment',(await character.getAllEquipmentForView()));
+      },10);
     });
 
     ipcMain.on('character.make-aspect-adjustment', async (event, data) => {

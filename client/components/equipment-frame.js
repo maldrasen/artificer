@@ -16,37 +16,7 @@ Components.EquipmentFrame = (function() {
 
   function init() {
     $(document).on('click','.equipment-frame .equip-icon-button', Elements.buttonAction(getAvailableEquipment));
-  }
-
-  function getAvailableEquipment() {
-    currentSlot = $(this).closest('.slot');
-    Renderer.sendCommand('equipment.get-available', { slot:currentSlot.data('slot') });
-  }
-
-  function showAvailableEquipment(event, equipment) {
-    let list = $('<ul>','available-equipment-list');
-    let panel = Elements.ScrollingPanel.wrapFixed(list);
-
-    each(equipment, item => {
-      console.log("Item:",item)
-      let listItem = $('<li>',{ class:'available-equipment-item' });
-          listItem.data('id',item.id);
-          listItem.append(Elements.ImageResource.iconElement('equipment', item.code, 1));
-          listItem.append(item.name);
-      list.append(listItem)
-    });
-
-    Elements.FloatingFrame.open({
-      content: panel,
-      position: {
-        bottom: 100,
-        right: 200,
-        height: 500,
-        width: 300,
-      }
-    });
-
-    Elements.ScrollingPanel.build(panel);
+    $(document).on('click','.available-equipment-item', Elements.buttonAction(equipItem));
   }
 
   // === Construction ===
@@ -99,6 +69,66 @@ Components.EquipmentFrame = (function() {
 
   function getDetails(item) {
     return item ? item.details : ''
+  }
+
+  // === Available Items Floating Frame ===
+
+  function getAvailableEquipment() {
+    currentSlot = $(this).closest('.slot');
+    Renderer.sendCommand('equipment.get-available', { slot:currentSlot.data('slot') });
+  }
+
+  function showAvailableEquipment(event, equipment) {
+    let list = $('<ul>',{ class:'available-equipment-list' });
+    let panel = Elements.ScrollingPanel.wrapFixed(list);
+
+    each(equipment, item => {
+      let nameArea = $('<div>',{ class:'name-area' }).
+        append($('<div>').append(item.name)).
+        append(conditionElement(item.condition));
+
+      let listItem = $('<li>',{ class:'available-equipment-item' });
+          listItem.data('id',item.id);
+          listItem.append(Elements.ImageResource.iconElement('equipment', item.code, 1));
+          listItem.append(nameArea);
+      list.append(listItem)
+    });
+
+    Elements.FloatingFrame.open({
+      content: panel,
+      position: {
+        bottom: 100,
+        right: 200,
+        height: 500,
+        width: 300,
+      }
+    });
+
+    if (equipment.length == 0) {
+      list.append($('<li>',{ class:'padding fg-weak fs-small' }).append('Nothing currently in the inventory can be equipped here.'));
+    }
+
+    Elements.ScrollingPanel.build(panel);
+  }
+
+  function conditionElement(condition) {
+    let span = $('<div>',{ class:'condition' });
+
+    if (condition == 100) { return span.addClass('condition-excellent').append('Excellent Condition'); }
+
+    return span.addClass('condition-broken').append('Broken');
+  }
+
+  // === Equipping Items ===
+
+  function equipItem() {
+    Renderer.sendCommand('character.equip', {
+      character_id: currentCharacter.id,
+      equipment_id: $(this).data('id'),
+      slot: currentSlot.data('slot'),
+    });
+
+    Elements.FloatingFrame.close();
   }
 
   return {
