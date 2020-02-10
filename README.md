@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/maldrasen/artificer.svg?branch=master)](https://travis-ci.org/maldrasen/artificer)
 
 # Artificer 0.1.0
 
