@@ -4,12 +4,11 @@
 
 In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making
 participation in our project and our community a harassment-free experience for everyone, regardless of age, body size,
-disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race,
-religion, or sexual identity and orientation.
+disability, ethnicity, species, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation.
 
 That said, this is an erotic, text based sex game with some freaky ass shit. No one under 18 will be allowed to
 participate. Also, as the game will be written with a decidedly blasphemous outlook people with religious sensibilities
-should probably look elsewhere. Also fuck Trump supporters.
+should probably look elsewhere.
 
 ## Our Standards
 
@@ -46,13 +45,8 @@ event. Representation of a project may be further defined and clarified by proje
 
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team at
-maldrasen@gmail.com. The project team will review and investigate all complaints, and will respond in a way that it
-deems appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the
-reporter of an incident. Further details of specific enforcement policies may be posted separately.
-
-Project maintainers who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent
-repercussions as determined by other members of the project's leadership.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project lead at
+maldrasen@gmail.com. He's a grouchy demonic dragon and will review and investigate all complaints, and will respond in a way that he deems appropriate to the circumstances. He is bound by ancient rites to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
 
 ## Attribution
 
