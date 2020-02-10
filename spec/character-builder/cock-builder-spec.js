@@ -81,7 +81,7 @@ describe('CockBuilder', function() {
       character.getCock().then(cock => {
         expect(cock.convertedLength).to.be.within(5,16);
         expect(cock.convertedWidth).to.be.within(1,3.5);
-        expect(cock.convertedScrotumWidth).to.be.within(2.75,10.5)
+        expect(cock.convertedScrotumWidth).to.be.within(2.5,10.5)
         expect(cock.convertedKnotWidth).to.be.within(1.5,7);
         expect(cock.knotWidthRatio).to.be.within(1.2,2.0);
         done();
