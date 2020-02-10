@@ -112,8 +112,8 @@ global.BrowserCommands = (function() {
     ipcMain.on('location.show-inventory', async () => {
       const game = await Game.instance();
       const resources = await Resource.allForClient();
-      const possessions = [];
-      Browser.send('render.inventory',{ resources, possessions, food:game.food });
+      const equipment = await CharacterEquipment.forInventory();
+      Browser.send('render.inventory',{ resources, equipment, food:game.food });
     });
 
     // === Character ===

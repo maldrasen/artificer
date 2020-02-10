@@ -13,15 +13,17 @@ Components.InventoryView = (function() {
     $('#inventory .possession-list').empty();
     $('#inventory .top-row .food.value').empty().append(inventory.food);
 
-    each(inventory.resources, resource => {
-      $('#inventory .resource-list').append(buildInventoryItem(resource,'item'));
+    each(inventory.resources, item => {
+      $('#inventory .resource-list').append(Elements.ImageResource.iconElement('item', item.code, item.count));
+    });
+
+    each(inventory.equipment, item => {
+      $('#inventory .equipment-list').append(Elements.ImageResource.iconElement('equipment', item.code, item.count));
     });
   }
 
   function buildInventoryItem(data,type) {
-    let icon = Elements.ImageResource.iconElement(type,data.code,1);
-    let label = $('<span>',{ class:'item-name' }).append(`${data.count} ${data.name}`);
-    return $('<li>',{ class:'item' }).append(icon).append(label);
+    return $('<li>',{ class:'item' }).append();
   }
 
   return { init, open, build };

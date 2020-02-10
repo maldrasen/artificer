@@ -21,18 +21,18 @@
     }
   }
 
-  .item { margin: 10px; }
-  .item-name {
-    position: relative;
-    top: -5px;
+  .item-list {
+    display: flex;
+    margin: 5px;
   }
 
   .resource-frame {
     flex-grow: 0.5;
     margin-right: 10px;
+    h2 { margin-bottom:0; }
   }
 
-  .possession-frame {
+  .equipment-frame {
     flex-grow: 1;
   }
 }
