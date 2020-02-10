@@ -42,7 +42,7 @@ describe('MouthBuilder', function() {
   it('sets a slightly larger width for futa', function(done) {
     CharacterBuilder.build({ gender:'futa', species:'elf' }).then(character => {
       character.getMouth().then(mouth => {
-        expect(mouth.throatWidth).to.be.within(33,36);
+        expect(mouth.throatWidth).to.be.within(33,37);
         expect(mouth.tongueLength).to.be.within(50,70);
         expect(mouth.width).to.be.within(45,55);
         done();
