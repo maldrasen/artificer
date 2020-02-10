@@ -1,0 +1,22 @@
+
+#floatingFrameCover {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-floating-frame;
+  background-color: $bg-floating-frame;
+}
+
+#floatingFrameBoundry {
+  position: absolute;
+  margin: -20px;
+  padding: 20px;
+}
+
+#floatingFrame {
+  background-color: $bg-body;
+  border: $border-normal;
+  box-shadow: $shadow-overlay;
+}

@@ -41,9 +41,10 @@ global.Renderer = (function() {
   function handleKeypress(e) {
     if (e.key == 'Escape') {
 
-      // If a dialog nested inside of an overlay is open, it should be closed
-      // without closing the parent overlay.
+      // If a dialog or floating frame nested inside of an overlay is open, it
+      // should be closed without closing the parent overlay.
       if (Elements.Dialog.isOpen()) { return Elements.Dialog.close(); }
+      if (Elements.FloatingFrame.isOpen()) { return Elements.FloatingFrame.close(); }
 
       // TODO: Minion select dialog was being stupid, but I can't fix it right
       //       now, because there's nothing that actually opens it. Should just

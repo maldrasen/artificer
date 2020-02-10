@@ -5,7 +5,8 @@ $z-event-frame: 100;
 $z-plan-left: 200;
 $z-overlay: 1000;
 $z-confirm: 9000;
-$z-alerts: 9900;
+$z-alerts: 9800;
+$z-floating-frame: 9900;
 $z-lock: 10000;
 
 // Fonts
@@ -67,6 +68,7 @@ $bg-body: rgb(33,30,32);
 $bg-body-darker:rgb(22,20,21);
 $bg-body-even-darker: rgb(11,10,11);
 
+$bg-floating-frame: rgba(0,0,0,0.25);
 $bg-overlay-frame: rgba(0,0,0,0.5);
 $bg-overlay-content: rgba(33,30,32,0.90);
 $bg-panel: rgba(22,20,21,0.75);

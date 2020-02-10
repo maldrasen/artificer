@@ -1,5 +1,6 @@
 Components.EquipmentFrame = (function() {
   let currentCharacter = null;
+  let currentSlot = null;
 
   const EquipmentSlots = [
     { code:'weapon', label: 'Weapon', },
@@ -18,30 +19,31 @@ Components.EquipmentFrame = (function() {
   }
 
   function getAvailableEquipment() {
-    Renderer.sendCommand('equipment.get-available', {
-      slot: $(this).closest('.slot').data('slot')
-    });
+    currentSlot = $(this).closest('.slot');
+    Renderer.sendCommand('equipment.get-available', { slot:currentSlot.data('slot') });
   }
 
   function showAvailableEquipment(event, equipment) {
-    console.log("Show Available",equipment)
-
     let list = $('<ul>','available-equipment-list');
     let panel = Elements.ScrollingPanel.wrapFixed(list);
 
     each(equipment, item => {
+      console.log("Item:",item)
       let listItem = $('<li>',{ class:'available-equipment-item' });
-      listItem.data('id',item.id);
-      listItem.append(getIcon(equipment[item.code]));
-      listItem.append(item.name);
-
-      console.log('-',item,'>',listItem);
-
+          listItem.data('id',item.id);
+          listItem.append(Elements.ImageResource.iconElement('equipment', item.code, 1));
+          listItem.append(item.name);
       list.append(listItem)
     });
 
     Elements.FloatingFrame.open({
-      content: panel
+      content: panel,
+      position: {
+        bottom: 100,
+        right: 200,
+        height: 500,
+        width: 300,
+      }
     });
 
     Elements.ScrollingPanel.build(panel);
