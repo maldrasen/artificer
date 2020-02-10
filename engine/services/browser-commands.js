@@ -127,7 +127,10 @@ global.BrowserCommands = (function() {
     ipcMain.on('character.equip', async (event, data) => {
       const character = await Character.lookup(data.character_id);
       const equipment = await CharacterEquipment.lookup(data.equipment_id);
-      await character.equip(equipment, data.slot);
+
+      equipment == null ?
+        (await character.unequipSlot(data.slot)):
+        (await character.equip(equipment, data.slot));
 
       setTimeout(async () => {
         Browser.send('character.show-equipment',(await character.getAllEquipmentForView()));

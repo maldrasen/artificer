@@ -5,11 +5,16 @@ global.HasEquipment = (function() {
   // slot at a time so if a piece of equipment is already in that slot it needs
   // to be unequipped.
   async function equip(equipment, slot) {
+    await this.unequipSlot(slot);
+    await equipment.update({ character_id:this.id, slot:slot });
+  }
+
+  // Remove the piece of equipment in the given slot of there is one.
+  async function unequipSlot(slot) {
     const current = await CharacterEquipment.findOne({ where:{ character_id:this.id, slot:slot }});
     if (current) {
       await this.unequip(current);
     }
-    await equipment.update({ character_id:this.id, slot:slot });
   }
 
   // Unequipping just sets the character and slot back to null.
@@ -44,6 +49,7 @@ global.HasEquipment = (function() {
 
   return { isAppliedTo:function(model) {
     model.prototype.equip = equip;
+    model.prototype.unequipSlot = unequipSlot;
     model.prototype.unequip = unequip;
     model.prototype.getAllEquipment = getAllEquipment;
     model.prototype.getAllEquipmentForView = getAllEquipmentForView;

@@ -82,16 +82,13 @@ Components.EquipmentFrame = (function() {
     let list = $('<ul>',{ class:'available-equipment-list' });
     let panel = Elements.ScrollingPanel.wrapFixed(list);
 
-    each(equipment, item => {
-      let nameArea = $('<div>',{ class:'name-area' }).
-        append($('<div>').append(item.name)).
-        append(conditionElement(item.condition));
+    list.append(buildAvailableListItem({
+      name: 'Nothing',
+      code: 'empty'
+    }));
 
-      let listItem = $('<li>',{ class:'available-equipment-item' });
-          listItem.data('id',item.id);
-          listItem.append(Elements.ImageResource.iconElement('equipment', item.code, 1));
-          listItem.append(nameArea);
-      list.append(listItem)
+    each(equipment, item => {
+      list.append(buildAvailableListItem(item));
     });
 
     Elements.FloatingFrame.open({
@@ -104,11 +101,22 @@ Components.EquipmentFrame = (function() {
       }
     });
 
-    if (equipment.length == 0) {
-      list.append($('<li>',{ class:'padding fg-weak fs-small' }).append('Nothing currently in the inventory can be equipped here.'));
+    Elements.ScrollingPanel.build(panel);
+  }
+
+  function buildAvailableListItem(item) {
+    let nameArea = $('<div>',{ class:'name-area' }).append($('<div>').append(item.name));
+
+    if (item.condition) {
+      nameArea.append(conditionElement(item.condition));
     }
 
-    Elements.ScrollingPanel.build(panel);
+    let listItem = $('<li>',{ class:'available-equipment-item' });
+        listItem.data('id',item.id);
+        listItem.append(Elements.ImageResource.iconElement('equipment', item.code, 1));
+        listItem.append(nameArea);
+
+    return listItem;
   }
 
   function conditionElement(condition) {
