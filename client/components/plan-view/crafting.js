@@ -64,15 +64,17 @@ Components.PlanView.Crafting = (function() {
   }
 
   function showRecipeList(event, list) {
+    const committed = Components.PlanView.Current.getCommitted();
+
     $('#recipes .recipe-list').empty();
-    $.each(list, (i, data) => {
-      $('#recipes .recipe-list').append(buildRecipeItem(data));
+    each(list, data => {
+      $('#recipes .recipe-list').append(buildRecipeItem(data,committed));
     });
 
     Elements.ScrollingPanel.resizeAll();
   }
 
-  function buildRecipeItem(data) {
+  function buildRecipeItem(data, committed) {
     let button = Elements.Buttons.iconButtonWithLabel({
       label: data.name,
       code:  data.builds,
@@ -93,6 +95,11 @@ Components.PlanView.Crafting = (function() {
     if (data.enoughResources == false) {
       button.addClass('disabled-button');
       ingredientsNote.addClass('cannot-build');
+    }
+    else if (data.time + committed > 4) {
+      button.addClass('disabled-button');
+      ingredientsNote.addClass('cannot-build');
+      ingredientsNote.append(` There's not enough time left in the day for me to make this.`);
     }
 
     return $('<li>',{ class:'recipe' }).append(buttonPanel).append(ingredientsPanel);;

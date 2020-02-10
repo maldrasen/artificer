@@ -49,10 +49,10 @@ global.Recipe = class Recipe extends Form {
   }
 
   static timeSentence(time) {
-    if (time == 4) { return "Building this will take the entire day"; }
-    if (time == 3) { return "Building this will take at least six hours"; }
-    if (time == 2) { return "Building this will take half a day"; }
-    return "Building this will take a couple of hours";
+    if (time == 4) { return "Building this will take the entire day."; }
+    if (time == 3) { return "Building this will take at least six hours."; }
+    if (time == 2) { return "Building this will take half a day."; }
+    return "Building this will take a couple of hours.";
   }
 
   // === General Information ===
