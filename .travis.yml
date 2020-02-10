@@ -12,3 +12,5 @@ script:
   - yarn run spec
 cache:
   yarn: true
+notifications:
+  slack: horsecock:thCELj0MfIeBU2hwae8uxUiK
