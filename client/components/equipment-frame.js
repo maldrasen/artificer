@@ -31,21 +31,28 @@ Components.EquipmentFrame = (function() {
     let scrollingPanel = Elements.ScrollingPanel.wrapFixed(slotList);
 
     each(slotsForGender(), slot => {
-      let item = $(`
+      let item = equipment[slot.code];
+      let name = (item == null) ? slot.label : item.name;
+
+      let listItem = $(`
         <li class='slot ${slot.code}-slot' data-slot='${slot.code}'>
           <div class='button-area'>
             <a href='#' class='button-icon equip-icon-button'></a>
           </div>
           <div class='info-area'>
-            <div class='label'>${slot.label}</div>
-            <div class='details'>${getDetails(equipment[slot.code])}</div>
+            <div class='label'>${name}</div>
+            <div class='details'></div>
           </div>
         </li>
       `);
 
-      item.find('a').append(getIcon(equipment[slot.code]));
-      item.addClass(equipment[slot.code] == null ? 'empty' : 'equipped')
-      slotList.append(item);
+      if (item && item.condition != null) {
+        listItem.find('.details').append(conditionElement(item.condition));
+      }
+
+      listItem.find('a').append(getIcon(item));
+      listItem.addClass(item == null ? 'empty' : 'equipped')
+      slotList.append(listItem);
     });
 
     $('#overlayContent .equipment-frame').empty().append(scrollingPanel);
@@ -65,10 +72,6 @@ Components.EquipmentFrame = (function() {
     return (item == null) ?
       Elements.ImageResource.iconElement('equipment', 'empty', 1):
       Elements.ImageResource.iconElement('equipment', item.code, 1);
-  }
-
-  function getDetails(item) {
-    return item ? item.details : ''
   }
 
   // === Available Items Floating Frame ===
@@ -120,9 +123,12 @@ Components.EquipmentFrame = (function() {
   }
 
   function conditionElement(condition) {
-    let span = $('<div>',{ class:'condition' });
+    let span = $('<span>',{ class:'condition' });
 
-    if (condition == 100) { return span.addClass('condition-excellent').append('Excellent Condition'); }
+    if (condition > 90) { return span.addClass('condition-excellent').append(`Excellent Condition (100%)`); }
+    if (condition > 60) { return span.addClass('condition-good').append(`Good Condition (${condition}%)`); }
+    if (condition > 30) { return span.addClass('condition-fair').append(`Fair Condition (${condition}%)`); }
+    if (condition > 0) { return span.addClass('condition-bad').append(`Poor Condition (${condition}%)`); }
 
     return span.addClass('condition-broken').append('Broken');
   }

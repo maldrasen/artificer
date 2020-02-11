@@ -44,7 +44,9 @@ CharacterEquipment.notEquipped = async function() {
 // another option. There might be another to leave the broken equipment for
 // manual recycling or repair as a task for more complex equipment.
 CharacterEquipment.prototype.break = async function() {
-  if (this.form.whenBroken == 'destroy') {
+  let form = this.form;
+
+  if (form.whenBroken == 'destroy') {
     await this.destroy();
     return form.whenBrokenStory;
   }
@@ -60,12 +62,4 @@ CharacterEquipment.prototype.formattedForView = function() {
     name: this.name,
     condition: this.condition,
   };
-}
-
-// Equipment details should describe the condition of an item, or in the case
-// of something like a butt plug should go into some detail about how it's
-// fitting, i.e. painfully or comfortably.
-CharacterEquipment.prototype.buildDetails = async function() {
-  let equipment = Equipment.lookup(this.code);
-  return "TODO: Equipment Details."
 }

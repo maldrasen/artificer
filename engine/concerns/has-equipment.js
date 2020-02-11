@@ -34,8 +34,8 @@ global.HasEquipment = (function() {
       return {
         code: item.code,
         slot: item.slot,
+        condition: item.condition,
         name: Equipment.lookup(item.code).name,
-        details: (await item.buildDetails()),
       }
     }));
 

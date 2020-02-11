@@ -13,6 +13,6 @@ Equipment.build('bug-net', {
   name: 'Bug Net',
   slot: 'tool',
   degrade: () => {
-    return Random.upTo(6);
+    return Random.upTo(15);
   },
 });

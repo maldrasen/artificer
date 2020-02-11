@@ -8,7 +8,7 @@
     border: $border-very-light;
     box-shadow: $shadow-shallow;
 
-    &.empty .info-area { color:$fg-weak; }
+    &.empty .info-area { color:$fg-very-weak; }
 
     .button-area {
       flex-grow: 0;
@@ -41,8 +41,11 @@
 }
 
 .condition { font-size:$fs-tiny; }
-.condition.condition-excellent { color:$fg-health-healthy; }
-.condition.condition-broken { color:$fg-health-critical; }
+.condition.condition-excellent { color:$fg-health-healthy;  }
+.condition.condition-good      { color:$fg-health-injured;  }
+.condition.condition-fair      { color:$fg-health-bad;      }
+.condition.condition-bad       { color:$fg-health-horrible; }
+.condition.condition-broken    { color:$fg-health-critical; }
 
 // TODO: use the same values as the health here
 // $fg-health-horrible: rgb(129, 64, 38);
