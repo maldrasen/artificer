@@ -12,7 +12,7 @@ global.CharacterScrutinizer = (function() {
     if (operation == 'no-pussy')                      { return data.pussy == null; }
     if (operation == 'has-tits')                      { return data.tits != null; }
     if (operation == 'no-tits')                       { return data.tits == null; }
-    if (operation == 'has-zero-tits')                 { return data.tits && data.tits.currentSizeClass == 'average'; }
+    if (operation == 'has-zero-tits')                 { return data.tits && data.tits.currentSizeClass == 'zero'; }
     if (operation == 'has-average-tits')              { return data.tits && data.tits.currentSizeClass == 'average'; }
     if (operation == 'has-bigger-than-zero-tits')     { return data.tits && data.tits.currentSizeClass != 'zero'; }
     if (operation == 'has-bigger-than-average-tits')  { return data.tits && ['big','huge','monster'].indexOf(data.tits.currentSizeClass) >= 0; }
