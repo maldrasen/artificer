@@ -12,14 +12,12 @@ Components.InventoryView = (function() {
     $('#inventory .resource-list').empty();
     $('#inventory .possession-list').empty();
     $('#inventory .top-row .food.value').empty().append(inventory.food);
+    each(inventory.resources, item => { $('#inventory .resource-list').append(itemElement(item,'item')); });
+    each(inventory.equipment, item => { $('#inventory .equipment-list').append(itemElement(item,'equipment')); });
+  }
 
-    each(inventory.resources, item => {
-      $('#inventory .resource-list').append(Elements.ImageResource.iconElement('item', item.code, item.count));
-    });
-
-    each(inventory.equipment, item => {
-      $('#inventory .equipment-list').append(Elements.ImageResource.iconElement('equipment', item.code, item.count));
-    });
+  function itemElement(item,type) {
+    return Elements.ImageResource.iconElement(type, item.code, item.count)
   }
 
   function buildInventoryItem(data,type) {
