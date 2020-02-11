@@ -51,4 +51,17 @@ describe('Recipe', function() {
       "I need three wood and a single willow branch before I can make this.");
   });
 
+  it.only("crafts the item", function(done) {
+    Resource.add('willow-branch',12).then(() => {
+      Recipe.lookup('basket').craft().then(basket => {
+        Resource.lookup('willow-branch').then(branchs => {
+          expect(basket.name).to.equal('Wicker Basket');
+          expect(basket.condition).to.equal(100);
+          expect(branchs.count).to.equal(2);
+          done();
+        });
+      });
+    });
+  });
+
 });
