@@ -64,7 +64,7 @@ describe('MouthBuilder', function() {
   it('sets the width and tongue length according to species (lupin)', function(done) {
     CharacterBuilder.build({ gender:'female', species:'lupin' }).then(character => {
       character.getMouth().then(mouth => {
-        expect(mouth.throatWidth).to.be.within(33,36);
+        expect(mouth.throatWidth).to.be.within(33,37);
         expect(mouth.tongueLength).to.be.within(100,140);
         expect(mouth.width).to.be.within(215,265);
         done();
