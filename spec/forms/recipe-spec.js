@@ -51,7 +51,7 @@ describe('Recipe', function() {
       "I need three wood and a single willow branch before I can make this.");
   });
 
-  it.only("crafts the item", function(done) {
+  it("crafts the item", function(done) {
     Resource.add('willow-branch',12).then(() => {
       Recipe.lookup('basket').craft().then(basket => {
         Resource.lookup('willow-branch').then(branchs => {
