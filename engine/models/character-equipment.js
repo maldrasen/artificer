@@ -6,8 +6,9 @@ global.CharacterEquipment = Database.instance().define('character_equipment', {
 },{
   timestamps: false,
   getterMethods: {
-    name() { return Equipment.lookup(this.code).name },
-    degrades() { return typeof Equipment.lookup(this.code).degrade == 'function' },
+    form() { return Equipment.lookup(this.code); },
+    name() { return this.form.name },
+    degrades() { return typeof this.form.degrade == 'function' },
   },
 });
 
@@ -43,14 +44,12 @@ CharacterEquipment.notEquipped = async function() {
 // another option. There might be another to leave the broken equipment for
 // manual recycling or repair as a task for more complex equipment.
 CharacterEquipment.prototype.break = async function() {
-  let form = Equipment.lookup(this.code);
-
-  if (form.whenBroken == 'destroy') {
+  if (this.form.whenBroken == 'destroy') {
     await this.destroy();
     return form.whenBrokenStory;
   }
 
-  throw `Equipment ${form.code} was broken, but has no whenBroken option.`
+  throw `Equipment ${this.code} was broken, but has no whenBroken option.`
 }
 
 // Both the inventory panels and the equipment panels use this format.

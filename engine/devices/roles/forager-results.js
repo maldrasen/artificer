@@ -50,15 +50,18 @@ Role.Forager.Results = (function() {
     });
   }
 
-  // TODO: A character's equipment will be used to increase their capacity.
-  //       Bringing baskets and sacks and things helps them to carry more. We
-  //       need to be able to build and equip items before this can be done
-  //       though.
-  //
-  // The character's health level also effects their capacity.
+  // Determine how much this character can carry each trip. Some equipment like
+  // baskets can be used to increase the character's carry capacity. For a
+  // piece of equipment to provide a capacity bonus it's associated Equipment
+  // form needs to have a capacityBonus attribute set. The character's health
+  // level also effects their capacity. Eventually species may as well.
   async function getCapacity(character) {
-    const health = await character.getHealthClass();
-    const capacity = 2;
+    let health = await character.getHealthClass();
+    let capacity = 2;
+
+    each((await character.getAllEquipment()), item => {
+      capacity += item.form.capacityBonus || 0;
+    });
 
     if (health == 'bad')      { return Math.ceil(capacity * 0.80); }
     if (health == 'horrible') { return Math.ceil(capacity * 0.5); }

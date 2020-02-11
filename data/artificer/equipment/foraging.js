@@ -6,6 +6,7 @@ Equipment.build('basket', {
   },
   whenBroken: 'destroy',
   whenBrokenStory: `{{C::character.firstName's}} basket broke and can no longer be used. It will be used as kindling.`,
+  capacityBonus: 1,
 });
 
 Equipment.build('bug-net', {
