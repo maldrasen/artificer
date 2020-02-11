@@ -1,4 +1,4 @@
 
 ImageResource.buildPortrait('unknown-portrait', {
-  url: `${IMAGE_ROOT}/portraits/_unknown.png`
+  url: `${IMAGE_ROOT}/portraits/unknown.png`
 });
