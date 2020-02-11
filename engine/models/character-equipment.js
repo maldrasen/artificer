@@ -5,7 +5,10 @@ global.CharacterEquipment = Database.instance().define('character_equipment', {
   condition:    { type:Sequelize.INTEGER },
 },{
   timestamps: false,
-  getterMethods: {},
+  getterMethods: {
+    name() { return Equipment.lookup(this.code).name },
+    degrades() { return typeof Equipment.lookup(this.code).degrade == 'function' },
+  },
 });
 
 CharacterEquipment.lookup = async function(id) {
@@ -30,12 +33,32 @@ CharacterEquipment.notEquipped = async function() {
   return await CharacterEquipment.findAll({ where:{ character_id:null }});
 }
 
+// TODO: Some equipment when it breaks should break back down into some useful
+//       materials. This function should get the list of materials from the
+//       form, add them to the inventory, and return a sentence explaining what
+//       was added.
+//
+// The whenBroken attribute on the form determines what happens to the item
+// when broken. Right now just destroy is implemented. Recycle should be
+// another option. There might be another to leave the broken equipment for
+// manual recycling or repair as a task for more complex equipment.
+CharacterEquipment.prototype.break = async function() {
+  let form = Equipment.lookup(this.code);
+
+  if (form.whenBroken == 'destroy') {
+    await this.destroy();
+    return form.whenBrokenStory;
+  }
+
+  throw `Equipment ${form.code} was broken, but has no whenBroken option.`
+}
+
 // Both the inventory panels and the equipment panels use this format.
 CharacterEquipment.prototype.formattedForView = function() {
   return {
     id: this.id,
     code: this.code,
-    name: Equipment.lookup(this.code).name,
+    name: this.name,
     condition: this.condition,
   };
 }
