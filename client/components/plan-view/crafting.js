@@ -1,5 +1,5 @@
 Components.PlanView.Crafting = (function() {
-  let reservedMaterials = {};
+  let reservedMaterials;
 
   // TODO: Eventually this init will need implemented because the list of
   //       recipes should be categorized somehow, either in tabs or expanding
@@ -35,6 +35,12 @@ Components.PlanView.Crafting = (function() {
         time: recipe.time,
       },
     });
+  }
+
+  // Reset needs to be called when the plan view is opened, because the
+  // reserved materials only apply to that instance of the plan.
+  function reset() {
+    reservedMaterials = {};
   }
 
   // === Material Management ===
@@ -105,6 +111,6 @@ Components.PlanView.Crafting = (function() {
     return $('<li>',{ class:'recipe' }).append(buttonPanel).append(ingredientsPanel);;
   }
 
-  return { init, open, showRecipeList, releaseMaterials };
+  return { init, open, reset, showRecipeList, releaseMaterials };
 
 })();
