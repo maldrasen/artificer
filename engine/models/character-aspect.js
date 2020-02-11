@@ -5,6 +5,9 @@ global.CharacterAspect = Database.instance().define('character_aspect', {
 },{
   timestamps: false,
   getterMethods: {
+
+    name() { return Aspect.lookup(this.code).getName() },
+
     level() {
       if (this.strength < 200) { return 0; }
       if (this.strength < 600) { return 1; }

@@ -25,11 +25,12 @@ Role.Forager = (function() {
     const story = Role.Forager.Stories.tell(health, injured, trips);
     const injuryStory = injured ? await Role.Injuries.applyInjury(character, context, Hazard.hinterlandsForaging) : null;
     const equipmentStory = await updateEquipment(character,trips);
+    const notifications = await getNotifications(character, flavors);
 
     return {
       story: Weaver.weave(`${story} ${equipmentStory}`,context),
       injury: injuryStory,
-      notifications: await getNotifications(character, flavors),
+      notifications: notifications,
       flavors: flavors,
     };
   }
