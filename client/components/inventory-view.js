@@ -10,7 +10,7 @@ Components.InventoryView = (function() {
 
   function build() {
     $('#inventory .resource-list').empty();
-    $('#inventory .possession-list').empty();
+    $('#inventory .equipment-list').empty();
     $('#inventory .top-row .food.value').empty().append(inventory.food);
     each(inventory.resources, item => { $('#inventory .resource-list').append(itemElement(item,'item')); });
     each(inventory.equipment, item => { $('#inventory .equipment-list').append(itemElement(item,'equipment')); });

@@ -44,8 +44,8 @@ Role.Skills = (function() {
     if (currentStrength == aspect.strength) { return null; }
 
     return (currentLevel == aspect.level) ?
-      { skill:'Hunting', experience:experience }:
-      { skill:'Hunting', experience:experience, gainedLevel:aspect.level };
+      { skill:aspect.name, experience:experience }:
+      { skill:aspect.name, experience:experience, gainedLevel:aspect.level };
   }
 
   return { skillLevel, addExperience }

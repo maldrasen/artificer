@@ -21,6 +21,7 @@ Components.PlanView = (function() {
     Components.PlanView.Minions.build(planData);
     Components.PlanView.Missions.build(planData);
     Components.PlanView.Tasks.build(planData);
+    Components.PlanView.Crafting.reset();
 
     if (allowIdle()) { enableConfirm(); }
   }

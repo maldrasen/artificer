@@ -69,9 +69,14 @@ global.Recipe = class Recipe extends Form {
   // === Crafting this item ===
 
   async craft() {
-    await CharacterEquipment.create({
+    let form = Equipment.lookup(this.code);
+    let condition = (typeof form.degrade == 'function') ? 100 : null;
+
+    await Resource.consume(this.ingredients);
+
+    return await CharacterEquipment.create({
       code: this.code,
-      condition: 100,
+      condition: condition,
     });
   }
 

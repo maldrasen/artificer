@@ -130,7 +130,7 @@ Event.build('found-fruits-and-nuts-sex-M', {
     pages:[
       { text:`I finally release {{C::gender.him}} and {{C::gender.he}} falls back onto the pile of furs, cum covering {{C::gender.his}} panting mouth.` },
       { text:`{{C::gender.He}} smiles at me though, perhaps for the first time.` },
-      { text:`{{C::gender.He}} leans {{C::gender.his}} head back and scoops the ropes dangling cum up into {{C::gender.his}} wide open mouth.` },
+      { text:`{{C::gender.He}} leans {{C::gender.his}} head back and scoops the ropes of dangling cum up into {{C::gender.his}} wide open mouth.` },
       { text:`I smile back, nodding to let {{C::gender.him}} know {{C::gender.he}} did a good job.` },
       { text:`{{C::gender.He}} seems more comfortable in this role than as a simple servant.` },
       { text:`I'll have to start using {{C::gender.him}} like this more often.` },

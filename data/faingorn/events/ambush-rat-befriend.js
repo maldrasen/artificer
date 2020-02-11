@@ -28,7 +28,7 @@ Event.build('ambush-rat-befriend', {
       { text:`I'm going to have to play this by ear and hope for the best.` },
       { text:`Given the nature and state of {{R::gender.his}} dress I can only guess that the scaven have some sort of tribal structure, and that overall they're not doing that well.` },
       { text:`I can use this to my advantage.` },
-      { playerSpeaker:true, text:`<span class='player-quote'>"Well, it would seem you are in luck then," ‌I say.</span>` },
+      { playerSpeaker:true, text:`<span class='player-quote'>"Well, it would seem you are in luck then,"</span> ‌I say.` },
       { playerSpeaker:true, text:`<span class='player-quote'>"I have come here to claim this keep as my own."</span>` },
       { playerSpeaker:true, text:`<span class='player-quote'>"Everything within this place now belongs to me."</span>` },
       { playerSpeaker:true, text:`<span class='player-quote'>"I have need of servents though."</span>` },
