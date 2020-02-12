@@ -88,7 +88,7 @@ Components.PlanView.Current = (function() {
 
   function removeCommitted(count) {
     let on = $('#planView .timeline .chunk.on');
-    for (let i=on.length-1; i>=0; i--) {
+    for (let i=on.length-1; i>=on.length-count; i--) {
       $(on[i]).removeClass('on').addClass('off');
     }
     adjustCategoryButtons();
