@@ -1,6 +1,5 @@
 Event.build('magic-practice-1-4', {
   background: { location:'great-hall', time:'morning' },
-  time:'morning',
 
   stages:[{
     pages:[
@@ -27,13 +26,5 @@ Event.build('magic-practice-1-4', {
       { text:`(( I have fully unlocked The Maelstrom. My magical attribute has been increased by 5. ))` },
     ]
   }],
-
-  onFinish: async () => {
-    const game = await Game.instance();
-    AvailableEvent.add({
-      code:'magic-practice-2-1',
-      requires:`game.dayNumber=${game.dayNumber+4}`
-    });
-  },
 
 });

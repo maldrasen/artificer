@@ -72,6 +72,11 @@ Event.build('morning-3', {
       'plan-view.allow-idle':    'unlocked',
       'plan-view.roles.forager': 'unlocked',
     });
+
+    AvailableEvent.add({
+      code: 'morning-4',
+      requires: `game.dayNumber=4`
+    });
   },
 
 });

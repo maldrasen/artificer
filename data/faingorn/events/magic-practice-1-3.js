@@ -1,6 +1,5 @@
 Event.build('magic-practice-1-3', {
   background: { location:'great-hall', time:'morning' },
-  time:'morning',
 
   stages:[{
     pages:[
@@ -36,13 +35,5 @@ Event.build('magic-practice-1-3', {
       { text:`Shaking my head, I stand up and get ready for today's work.` },
     ]
   }],
-
-  onFinish: async () => {
-    const game = await Game.instance();
-    AvailableEvent.add({
-      code:'magic-practice-1-4',
-      requires:`game.dayNumber=${game.dayNumber+2}`
-    });
-  },
 
 });

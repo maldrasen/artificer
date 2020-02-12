@@ -1,6 +1,5 @@
 Event.build('magic-practice-2-1', {
   background: { location:'great-hall', time:'morning' },
-  time:'morning',
 
   stages:[{
     pages:[
@@ -25,10 +24,5 @@ Event.build('magic-practice-2-1', {
       { text:`One that might take some time to work out.` },
     ]
   }],
-
-  onFinish: async () => {
-    // TODO: Once this has been written.
-    // AvailableEvent.addAll([{ code:'magic-practice-2-2' }]);
-  },
 
 });
