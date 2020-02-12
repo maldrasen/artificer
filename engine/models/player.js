@@ -83,14 +83,18 @@ Player.forClient = async function() {
   const description = await CharacterDescriber.fullDescription(player);
 
   return {
-    name:     player.name,
-    gender:   player.gender.Male,
-    species:  player.species.name,
-    physical: player.physical,
-    personal: player.personal,
-    mental:   player.mental,
-    magical:  player.magical,
-    portrait: player.portrait.url,
+    name:         player.name,
+    gender:       player.gender.Male,
+    species:      player.species.name,
+    physical:     player.physical,
+    personal:     player.personal,
+    mental:       player.mental,
+    magical:      player.magical,
+    physicalWord: player.getPhysicalWord(),
+    personalWord: player.getPersonalWord(),
+    mentalWord:   player.getMentalWord(),
+    magicalWord:  player.getMagicalWord(),
+    portrait:     player.portrait.url,
     description,
     ...aspects,
   };
@@ -100,5 +104,6 @@ Player.hasCock =  async function() { return await Cock.findOne({  where:{ charac
 Player.hasPussy = async function() { return await Pussy.findOne({ where:{ character_id:1000000000 }}) != null; }
 Player.hasTits =  async function() { return await Tits.findOne({  where:{ character_id:1000000000 }}) != null; }
 
+HasAttributes.isAppliedTo(Player);
 HasAspects.isAppliedTo(Player);
 HasBody.isAppliedTo(Player);
