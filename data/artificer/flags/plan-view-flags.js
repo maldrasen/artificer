@@ -19,6 +19,11 @@ FlagInfo.build('plan-view.roles.hunter', {
   validateIn: ['unlocked'],
 });
 
+// Unlocks resting when set.
+FlagInfo.build('plan-view.roles.rest', {
+  validateIn: ['unlocked'],
+});
+
 // Unlocks brainwashing when set.
 FlagInfo.build('plan-view.tasks.brainwash', {
   validateIn: ['unlocked'],

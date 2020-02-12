@@ -73,7 +73,7 @@ Event.build('morning-3', {
       'plan-view.roles.forager': 'unlocked',
     });
 
-    AvailableEvent.add({
+    await AvailableEvent.add({
       code: 'morning-4',
       requires: `game.dayNumber=4`
     });

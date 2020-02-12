@@ -46,11 +46,13 @@ Components.PlanView.Minions = (function() {
 
   function addRoleSelect(minion, element) {
     let addendum = $('<div>',{ class:'addendum role-select' });
+
     each(minion.availableRoles, role => {
       let link = $('<a>',{ href:'#', class:'role-link' }).data('role',role.code).append(role.name);
       if (role.code == minion.duty) { link.addClass('selected'); }
       addendum.append(link);
     });
+
     element.data('selected-role', minion.duty);
     element.append(addendum);
   }

@@ -5,7 +5,6 @@ global.CharacterBuilder = (function() {
   // firstName:          { type:Sequelize.STRING },
   // lastName:           { type:Sequelize.STRING },
   // A complete character function needs to set the current health to the character's max health
-
   async function build(options) {
     if (options.species == null) { throw 'Species is required'; }
 
@@ -18,7 +17,7 @@ global.CharacterBuilder = (function() {
       firstName:   options.firstName,
       lastName:    options.lastName,
       type:        options.type      || 'minion',
-      dutyCode:    options.dutyCode  || 'rest',
+      dutyCode:    options.dutyCode  || (await defaultRole()),
       physical:    options.physical  || species.randomizedAttribute('physical'),
       personal:    options.personal  || species.randomizedAttribute('personal'),
       mental:      options.mental    || species.randomizedAttribute('mental'),
@@ -98,6 +97,12 @@ global.CharacterBuilder = (function() {
     });
 
     return params;
+  }
+
+  // New minions are created with the forager role, until resting is unlocked,
+  // then they are created with the rest role.
+  async function defaultRole() {
+    return (await Flag.lookup('plan-view.roles.rest')) == 'unlocked' ? 'rest' : 'forager'
   }
 
   return {

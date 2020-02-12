@@ -2,6 +2,10 @@ GameStage.build('stage-1-0',{
   location: 'great-hall',
   gameDay: 3,
 
+  availableEvents: [
+    { code:'morning-4', requires:`game.dayNumber=4` }
+  ],
+
   flags: {
     'location.currentStudy':        'great-hall',
     'location.keepName':            'Faingorn Keep',
@@ -21,7 +25,7 @@ GameStage.build('stage-1-0',{
 
   setup: async game => {
     let rat = await CharacterBuilder.build({ species:'scaven', gender:'female', physical:12, personal:10, mental:8, magical:0 });
-    await Flag.set('character.firstScaven',rat.id)
+    await Flag.set('character.firstScaven',rat.id);
   },
 
 });

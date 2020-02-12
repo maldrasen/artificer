@@ -7,6 +7,7 @@ global.GameStage = class GameStage extends Form {
 
     if (stage.location)          { await Game.updateLocation(stage.location);              }
     if (stage.eventQueue)        { await EventQueue.enqueueEvents(stage.eventQueue);       }
+    if (stage.availableEvents)   { await AvailableEvent.addAll(stage.availableEvents);     }
     if (stage.availableProjects) { await AvailableProject.addAll(stage.availableProjects); }
     if (stage.flags)             { await Flag.setAll(stage.flags);                         }
     if (stage.gameDay)           { game.dayNumber = stage.gameDay;                         }

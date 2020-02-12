@@ -33,7 +33,7 @@ Event.build('ambush-rat-end-2', {
     ]
   },{
     pages: [
-      { text:`I nod at {{R::gender.him}}, beconning {{R::gender.him}} to come closer.` },
+      { text:`I nod at {{R::gender.him}}, beckoning {{R::gender.him}} to come closer.` },
       { playerSpeaker:true, text:`<span class='player-quote'>"I must admit, I didn't expect to see you again {{R::character.firstName}}."</span>` },
       { playerSpeaker:true, text:`<span class='player-quote'>"Do you bring word from your chief?"</span>` },
       { text:`{{R::gender.He}} nods quickly, still clearly terrified of me, as though {{R::gender.he}} expects me to reach out and turn {{R::gender.him}} inside out at the slightest provocation.` },
