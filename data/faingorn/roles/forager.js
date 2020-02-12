@@ -13,6 +13,31 @@
     'S.7': { unlock:'blood-berries', event:'found-blood-berries' },
   };
 
+  Role.Forager.FrequencyMaps = {
+    Hinterlands:{
+
+      // Resources
+      'willow-branches': 5,
+
+      // Food
+      'bitter-fruits':   20,
+      'goat-nuts':       55,
+      'juice-berries':   40,
+      'sweet-fruits':    15,
+
+      // Herbs
+      'blood-berries':   25,
+      'creeping-moss':   13,
+      'firewasp':        7,
+      'itchweed':        20,
+      'milkweed':        8,
+      'purple-mushroom': 2,
+
+      // Insects
+      'blight-spider':   4,
+    }
+  }
+
   // The first time a character goes foraging they need to bring back at least
   // one of each available item, because they'll be mentioned in the event.
   async function firstResult(character) {
