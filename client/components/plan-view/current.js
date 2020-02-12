@@ -76,6 +76,16 @@ Components.PlanView.Current = (function() {
 
     item.remove();
     addNothing();
+
+    // TODO: When a task is cancelled the available tasks list needs to be
+    //       rebuilt because some tasks may hive been hidden do to their limit
+    //       being reached. This really needs to be rebuild whatever the
+    //       currently selected list is though, because the tasks may not be
+    //       selected when an item is cancelled. However I only have tasks
+    //       available right now, so I can't test this with multiple lists at
+    //       the moment, so this will show up as a bug in the future. We'll
+    //       need to have the plan view keep track of which tab should be open.
+    if (task != null) { Components.PlanView.Tasks.showAvailableTasks(); }
   }
 
   function addCommitted(count) {
