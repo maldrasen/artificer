@@ -8,6 +8,7 @@ Species.build('elf', {
 
   violenceAverage: 0,
   violenceRange: 30,
+  foodPerDay: 5,
 
   bodyOptions: {
     skinColors: 'human',

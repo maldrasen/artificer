@@ -8,7 +8,7 @@ Species.build('goblin', {
 
   violenceAverage: 25,
   violenceRange: 50,
-  foodPerDay: 1,
+  foodPerDay: 3,
 
   bodyOptions: {
     baseHeight: 1000,

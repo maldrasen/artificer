@@ -9,6 +9,7 @@ Species.build('viera', {
 
   violenceAverage: 0,
   violenceRange: 10,
+  foodPerDay: 5,
 
   bodyOptions: {
     skinColors: 'human',

@@ -8,7 +8,7 @@ Species.build('dragon', {
 
   violenceAverage: 25,
   violenceRange: 25,
-  foodPerDay: 4,
+  foodPerDay: 9,
 
   bodyOptions: {
     baseHeight: 2000,

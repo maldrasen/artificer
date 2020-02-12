@@ -9,6 +9,7 @@ Species.build('sylph', {
 
   violenceAverage: -30,
   violenceRange: 20,
+  foodPerDay: 3,
 
   bodyOptions: {
     baseHeight: 1350,

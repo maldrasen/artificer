@@ -9,6 +9,7 @@ Species.build('nymph', {
 
   violenceAverage: -50,
   violenceRange: 25,
+  foodPerDay: 4,
 
   bodyOptions: {
     baseHeight: 1400,

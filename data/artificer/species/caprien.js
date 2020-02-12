@@ -8,6 +8,7 @@ Species.build('caprien', {
 
   violenceAverage: 0,
   violenceRange: 25,
+  foodPerDay: 5,
 
   bodyOptions: {
     skinColors: 'human',

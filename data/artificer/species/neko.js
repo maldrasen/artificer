@@ -8,6 +8,7 @@ Species.build('neko', {
 
   violenceAverage: -10,
   violenceRange: 20,
+  foodPerDay: 4,
 
   bodyOptions: {
     tailShape: 'cat',

@@ -8,6 +8,7 @@ Species.build('elf-lord', {
 
   violenceAverage: -20,
   violenceRange: 10,
+  foodPerDay: 4,
 
   bodyOptions: {
     baseHeight: 1700,

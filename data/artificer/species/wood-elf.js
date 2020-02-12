@@ -8,6 +8,7 @@ Species.build('wood-elf', {
 
   violenceAverage: 10,
   violenceRange: 20,
+  foodPerDay: 4,
 
   bodyOptions: {
     baseHeight: 1350,

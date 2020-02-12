@@ -9,7 +9,7 @@ Species.build('equian', {
 
   violenceAverage: 10,
   violenceRange: 20,
-  foodPerDay: 3,
+  foodPerDay: 7,
 
   bodyOptions: {
     baseHeight: 1750,

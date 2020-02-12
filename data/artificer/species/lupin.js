@@ -8,6 +8,7 @@ Species.build('lupin', {
 
   violenceAverage: 20,
   violenceRange: 10,
+  foodPerDay: 6,
 
   bodyOptions: {
     faceShape: 'dog',

@@ -8,6 +8,7 @@ Species.build('dark-elf', {
 
   violenceAverage: 50,
   violenceRange: 30,
+  foodPerDay: 5,
 
   bodyOptions: {
     skinColors: 'black',
