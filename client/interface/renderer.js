@@ -45,18 +45,19 @@ global.Renderer = (function() {
       // should be closed without closing the parent overlay.
       if (Elements.Dialog.isOpen()) { return Elements.Dialog.close(); }
       if (Elements.FloatingFrame.isOpen()) { return Elements.FloatingFrame.close(); }
+      if (Elements.Confirm.isOpen()) { return Elements.Confirm.hideConfirm(); }
+      if ($('#overlayContent').children().length > 0) { return removeOverlay(); }
 
       // TODO: Minion select dialog was being stupid, but I can't fix it right
       //       now, because there's nothing that actually opens it. Should just
       //       convert the minion dialog into a regular dialog, but smaller.
 
-      // TODO: Remove overlay should return here if an overlay was open and
-      //       actually closed.
-      removeOverlay();
-
-      // TODO: Ignore the escape if we're already on the location view and
-      //       nothing is open.
-      sendCancel();
+      // A view can only be canceled when the first child of #mainContent has
+      // the can-cancel class. This applies to the PlanView and the
+      // MinionListView, and probably to others in the future.
+      if ($($('#mainContent').children()[0]).hasClass('can-cancel')) {
+        return sendCancel();
+      }
     }
   }
 

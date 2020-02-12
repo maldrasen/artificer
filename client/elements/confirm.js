@@ -9,6 +9,10 @@ Elements.Confirm = (function() {
     }));
   }
 
+  function isOpen() {
+    return $('#confirmFrame').hasClass('hide') == false;
+  }
+
   function showConfirm(options) {
     $('#confirmCover').removeClass('hide');
     $('#confirmFrame').removeClass('hide').find('.message').append(options.message);
@@ -22,7 +26,9 @@ Elements.Confirm = (function() {
 
   return {
     init: init,
+    isOpen: isOpen,
     showConfirm: showConfirm,
+    hideConfirm: hideConfirm,
   }
 
 })();

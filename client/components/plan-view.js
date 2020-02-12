@@ -14,7 +14,7 @@ Components.PlanView = (function() {
 
   function build(event, planData) {
     $('#mainContent').empty().append($('<div>',{ id:"planView" }).append($('#planTemplate').html()));
-    $('#planView').data('planData', planData);
+    $('#planView').data('planData', planData).addClass('can-cancel');
 
     Components.PlanView.Current.build(planData);
     Components.PlanView.Projects.build(planData);
@@ -28,8 +28,8 @@ Components.PlanView = (function() {
 
   function confirmPlan() {
     let message = (Components.PlanView.Current.getCommitted() < 4) ?
-      `You're going to have plenty of idle time today. Are you sure you don't want to plan to work on something else too?`:
-      `Are you sure this is what you want to work on today?`;
+      `It looks like I don't really have much to do today. Is this my plan for the day?`:
+      `Is this what I want to work on today?`;
 
     let roles = Components.PlanView.Minions.getFree().map(minion => {
       return { id:minion.id, role:$(`.plan-minion-list .minion-${minion.id}`).data('selected-role') }

@@ -10,7 +10,7 @@ Components.MinionListView = (function() {
   }
 
   function build(event, minions) {
-    $('#mainContent').empty().append($('<div>',{ id:"minionListView", class:'full' }).append($('#minionListTemplate').html()));
+    $('#mainContent').empty().append($('<div>',{ id:"minionListView", class:'full can-cancel' }).append($('#minionListTemplate').html()));
     $('#minionListView .back-bar').removeClass('hide');
 
     each(minions, minion => {
