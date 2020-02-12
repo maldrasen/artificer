@@ -40,6 +40,13 @@
     margin-bottom: 50px;
   }
 
+  .food {
+    border: $border-light;
+    box-shadow: $shadow-frame;
+    margin: 20px;
+    padding: 10px;
+  }
+
   .report-minion-frame {
     position: relative;
     border: $border-light;

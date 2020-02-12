@@ -4,6 +4,7 @@ Resolver.Report = (function() {
     const report = Resolver.currentReport();
     const minions = await Character.findAll({where:{ type:'minion', status:'normal' }});
 
+    report.food = {};
     report.minions = {};
     report.tasks = [];
 
@@ -51,6 +52,14 @@ Resolver.Report = (function() {
     Resolver.currentReport().minions[minion.id][key] = value;
   }
 
+  function setNewFood(value) {
+    Resolver.currentReport().food.new = value;
+  }
+
+  function completeFood(foodEaten, foodLeft) {
+    Resolver.currentReport().food.story = `Today my minions and I produced <b>${Resolver.currentReport().food.new}</b> food. We ate <b>${foodEaten}</b>, leaving us with <b>${foodLeft}</b>.`;
+  }
+
   return {
     start,
     setProjectProgressText,
@@ -58,6 +67,8 @@ Resolver.Report = (function() {
     setProjectIdleText,
     addTask,
     setMinionData,
+    setNewFood,
+    completeFood,
   }
 
 })();

@@ -20,7 +20,6 @@ global.Resolver = (function() {
 
     await Resolver.Report.start();
     await Resolver.Game.becomeAfternoon();
-    await Resolver.Minions.dailyUpdate();
     await Resolver.Roles.assignRoles(plan.assignedRoles);
     await Resolver.Projects.startProject(plan.projectWork);
     await Resolver.Tasks.workTasks(plan.taskWork);
@@ -30,6 +29,7 @@ global.Resolver = (function() {
     await Resolver.Projects.workProject();
     await Resolver.Missions.workMissions();
     await Resolver.Items.commit();
+    await Resolver.Minions.dailyUpdate();
     await Composer.render();
   }
 

@@ -23,6 +23,8 @@ Resolver.Minions = (function() {
       //       enough food to feed all the minions and the player.
     }
 
+    Resolver.Report.completeFood(foodEaten,game.food);
+
     await game.save();
   }
 

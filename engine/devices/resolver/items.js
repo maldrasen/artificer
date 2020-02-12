@@ -21,25 +21,27 @@ Resolver.Items = (function() {
   async function commit() {
     const queue = Resolver.itemsToAdd();
     const game = await Game.instance();
+    let newFood = 0;
 
     each(queue, (count, code) => {
       if (code == 'food') {
+        newFood += count;
         game.food += count;
         game.save();
       } else {
         commitItem(code, count);
       }
     });
+
+    Resolver.Report.setNewFood(newFood);
   }
 
   async function commitItem(code, count) {
     const item = Item.lookup(code);
     if (item.type == 'resource') {
-      await Resource.add(code,count)
+      return await Resource.add(code,count)
     }
-    if (item.type == 'possession') {
-      throw `TODO: Cannot add possessions yet.`
-    }
+    throw `How do I commit ${code}?`
   }
 
   return { add, commit }

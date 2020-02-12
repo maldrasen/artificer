@@ -21,6 +21,8 @@ Components.ReportView = (function() {
       addMinionFrame(minion);
     });
 
+    $('#reportView').find('.food').append(report.food.story);
+
     Elements.ScrollingPanel.build($('#reportView .scrolling-panel'));
   }
 
