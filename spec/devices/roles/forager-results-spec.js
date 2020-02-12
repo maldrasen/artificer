@@ -22,10 +22,10 @@ describe('Role: Forager.Results', function() {
     });
   });
 
-  describe("getPossibleItems()", function() {
+  describe("getUnlockedItems()", function() {
     it("gets items that have been unlocked", function(done) {
       Flag.set('item.blood-berries','unlocked').then(() => {
-        Role.Forager.Results.getPossibleItems().then(items => {
+        Role.Forager.Results.getUnlockedItems().then(items => {
           expect(items.map(fla => { return fla.code })).to.eql(['blood-berries']);
           done();
         });

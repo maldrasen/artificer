@@ -31,10 +31,14 @@ Resource.lookup = async function(code) {
 // creates it, otherwise it increases the resource quentity.
 Resource.add = async function(code, count) {
   const resource = await Resource.lookup(code);
+  const item = Item.lookup(code);
+
   if (resource == null) {
+    if (item.maxStock != null && count > item.maxStock) { count = maxStock; }
     Resource.create({ code:code, count:count });
   } else {
     resource.count += count;
+    if (item.maxStock != null && resource.count > item.maxStock) { resource.count = item.maxStock; }
     await resource.save();
   }
 }

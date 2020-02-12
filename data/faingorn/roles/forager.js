@@ -17,7 +17,7 @@
     Hinterlands:{
 
       // Resources
-      'willow-branches': 5,
+      'willow-branches': 30,
 
       // Food
       'bitter-fruits':   20,

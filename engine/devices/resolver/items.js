@@ -39,7 +39,7 @@ Resolver.Items = (function() {
   async function commitItem(code, count) {
     const item = Item.lookup(code);
     if (item.type == 'resource') {
-      return await Resource.add(code,count)
+      return await Resource.add(code,count);
     }
     throw `How do I commit ${code}?`
   }
