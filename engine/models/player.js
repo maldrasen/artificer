@@ -1,4 +1,3 @@
-
 global.Player = Database.instance().define('player', {
   title:         { type:Sequelize.STRING  },
   firstName:     { type:Sequelize.STRING  },
@@ -7,6 +6,11 @@ global.Player = Database.instance().define('player', {
   speciesCode:   { type:Sequelize.STRING  },
   portraitCode:  { type:Sequelize.STRING  },
   body_id:       { type:Sequelize.INTEGER },
+  physical:      { type:Sequelize.INTEGER, validate:{ min:0 }},
+  mental:        { type:Sequelize.INTEGER, validate:{ min:0 }},
+  personal:      { type:Sequelize.INTEGER, validate:{ min:0 }},
+  magical:       { type:Sequelize.INTEGER, validate:{ min:0 }},
+
 },{
   timestamps: false,
   getterMethods: {
@@ -39,13 +43,19 @@ Player.forge = async function(options) {
     if (options.gender == 'futa')   { options.title = 'mystress'; }
   }
 
+  let species = Species.lookup(options.species);
+
   player = await Player.create({
-    id: 1000000000,
-    title: options.title.toLowerCase(),
-    firstName: options.firstName,
-    lastName: options.lastName,
-    genderCode: options.gender,
+    id:          1000000000,
+    title:       options.title.toLowerCase(),
+    firstName:   options.firstName,
+    lastName:    options.lastName,
+    genderCode:  options.gender,
     speciesCode: options.species,
+    physical:    Math.max(10,species.randomizedAttribute('physical')),
+    personal:    Math.max(10,species.randomizedAttribute('personal')),
+    mental:      Math.max(10,species.randomizedAttribute('mental')),
+    magical:     Math.max(10,species.randomizedAttribute('magical')),
   });
 
   let defaultBody = { anus:{ conditon:'virgin' }};
@@ -73,9 +83,13 @@ Player.forClient = async function() {
   const description = await CharacterDescriber.fullDescription(player);
 
   return {
-    name: player.name,
-    gender: player.gender.Male,
-    species: player.species.name,
+    name:     player.name,
+    gender:   player.gender.Male,
+    species:  player.species.name,
+    physical: player.physical,
+    personal: player.personal,
+    mental:   player.mental,
+    magical:  player.magical,
     portrait: player.portrait.url,
     description,
     ...aspects,
