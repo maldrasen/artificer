@@ -23,6 +23,10 @@ global.Location = class Location extends Form {
       dates: { day:game.dayNumber }
     };
 
+    if (flags['locationMenu.showDate']) {
+      view.dates.date = Calendar.fullDate(game.dayNumber);
+    }
+
     return view;
   }
 
