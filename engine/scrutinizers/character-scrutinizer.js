@@ -18,7 +18,27 @@ global.CharacterScrutinizer = (function() {
     if (operation == 'has-bigger-than-average-tits')  { return data.tits && ['big','huge','monster'].indexOf(data.tits.currentSizeClass) >= 0; }
     if (operation == 'has-smaller-than-average-tits') { return data.tits && ['zero','tiny','small'].indexOf(data.tits.currentSizeClass) >= 0; }
 
+    if (operation.match(/^physical/)) { return checkAttribute(operation, data.character) }
+    if (operation.match(/^mental/))   { return checkAttribute(operation, data.character) }
+    if (operation.match(/^personal/)) { return checkAttribute(operation, data.character) }
+    if (operation.match(/^magical/))  { return checkAttribute(operation, data.character) }
+
     throw `Unknown Character Operation - ${operation}`
+  }
+
+  function checkAttribute(operation, character) {
+    let match = operation.match(/([^<>=]+)(<|<=|=|>=|>)([^<>=]+)/);
+    if (match == null) {
+      throw `Character attribute requirement was not in the expected format.`
+    }
+
+    let attribute;
+    if (match[1] == 'physical') { attribute = character.physical; }
+    if (match[1] == 'mental')   { attribute = character.mental;   }
+    if (match[1] == 'personal') { attribute = character.personal; }
+    if (match[1] == 'magical')  { attribute = character.magical;  }
+
+    return CentralScrutinizer.checkComparisonOperation(attribute,match[2],match[3]);
   }
 
   return { check };

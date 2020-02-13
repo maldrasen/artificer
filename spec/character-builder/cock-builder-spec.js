@@ -48,7 +48,7 @@ describe('CockBuilder', function() {
         expect(cock.internalBalls).to.equal(false);
         expect(cock.convertedLength).to.be.within(5,12);
         expect(cock.convertedWidth).to.be.within(0.75,1.75);
-        expect(cock.convertedScrotumWidth).to.be.within(2.25,5.5)
+        expect(cock.convertedScrotumWidth).to.be.within(2,5.5)
         done();
       });
     });
