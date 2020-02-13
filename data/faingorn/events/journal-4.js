@@ -7,12 +7,12 @@ Event.build('journal-4', {
       { text:`Again, I prepare for bed by reading a bit of Malcolm's journal.` },
       { text:`Though he spends several days at it, there isn't much more he can learn from the enigmatic hole.` },
       { text:`In the end, the longest he's able to track something falling into The Well is twenty seconds.` },
-      { requires:'game.metric',     text:`Which means that it must be at least a mile deep.` },
-      { requires:'game.not-metric', text:`Which means that it must be at least a few kilometers deep.` },
+      { requires:'game.metric',     text:`Which means that it must be at least a few kilometers deep.` },
+      { requires:'game.not-metric', text:`Which means that it must be at least a mile deep.` },
       { text:`That's an insurmountable depth, even for a mage.` },
-      { text:`I can manage a rudimentary flight spell, enough to propel me a few hundred {{meters}} at least.` },
-      { requires:'game.metric',     text:`Flying though feels like sprinting, so while a few hundred meters is manageable, flying several kilometers?` },
-      { requires:'game.not-metric', text:`Flying though feels like sprinting, so while a few hundred yards is manageable, flying a mile?` },
+      { text:`I can manage a rudimentary flight spell, enough to propel me a hundred {{meters}} or so.` },
+      { requires:'game.metric',     text:`Flying though feels like sprinting, so while a hundred meters is manageable, flying several kilometers?` },
+      { requires:'game.not-metric', text:`Flying though feels like sprinting, so while a hundred yards is manageable, flying a mile?` },
       { text:`Vertically?` },
       { text:`Well, it's nothing I could do.` },
       { text:`Not without the risk that I would simply pass out from the effort it would take to fly back up.` },
@@ -35,17 +35,16 @@ Event.build('journal-4', {
       { text:`Game is plentiful here, even in the winter, so Wren would spend one or two days a week hunting to supplement their food supply.` },
       { text:`One day while out hunting she came across a field of sisal.` },
       { text:`Malcolm made note of this in his journal, taking note of the field's location should they ever need to harvest some.` },
-      { text:`Sisal is a hearty plant, and a course and durable fiber can be harvested from it's leaves.` },
+      { text:`Sisal is a hearty plant, and a course and durable fiber can be harvested from its leaves.` },
       { text:`It's used to make rope primarily, but you can also use it to make rugs and burlap cloth.` },
       { text:`In fact, having some sisal would be of great benefit to me in my current situation.` },
-      { text:`Perhaps I'll have my minions hunt this field down for me, if it still exists.` },
       { text:`But that's enough of their tale for one night at least.` },
     ]
   }],
 
   onFinish: async () => {
-    AvailableEvent.addAll([{ code:'journal-5' }]);
-    Flag.set('mission.sisalDiscoverable','yes');
+    AvailableEvent.add({ code:'journal-5' });
+    Flag.set('mission.sisalDiscoverable','unlocked');
   },
 
 });

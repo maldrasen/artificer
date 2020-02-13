@@ -2,6 +2,8 @@ Event.build('journal-3', {
   background: { code:'journal' },
   time:'afternoon',
 
+  actors: { R:'any-scaven' },
+
   stages:[{
     pages:[
       { text:`Again I decide to spend the rest of the evening reading Malcolm's journal.` },
@@ -14,7 +16,7 @@ Event.build('journal-3', {
       { text:`It isn't until the dead of winter that something truly interesting happens.` },
       { text:`While clearing some deteriorated crates from a basement storeroom Wren uncovered an entrance to an entirely new section beneath the keep.` },
       { text:`They had long suspected there was more to the keep's cellars that they hadn't yet found.` },
-      { text:`After all, their Rat problem was still not completely taken care of, meaning they were still breeding someplace close by.` },
+      { text:`After all, their scaven problem was still not completely taken care of, meaning they were still breeding someplace close by.` },
       { text:`The stonework in this new section was old; unimaginably old, older than the keep itself, which is by all reckonings already ancient.` },
       { text:`Malcolm goes into great detail here about the stonework, which as an antiquarian, he seems to know a great deal about.` },
       { text:`His normally perfect and elegantly formed writing seems almost rushed and careless as he starts to describe "The Well."` },
@@ -30,30 +32,17 @@ Event.build('journal-3', {
       { text:`In fact no sound at all, not even wind, comes from the seemingly bottomless pit.` },
       { text:`It's a shocking discovery, and clearly has something to do with the purpose of this place.` },
       { text:`Though its presence raises far more questions than answers.` },
-      { text:`Interesting...` },
-    ]
-  },{
-    requires:`flag.enqueued.clear-lower-keep-start`,
-    pages:[
-      { text:`The entrance to the cellars should be somewhere within the lower keep.` },
-      { text:`Given the progress my rats and I are making in clearing the debris there, it should be accessible soon.` },
-    ]
-  },{
-    requires:`no-flag.enqueued.clear-lower-keep-start`,
-    pages:[
-      { text:`There's still much work to be done in the lower keep though before I can even think about finding this Well.` },
-      { text:`I should start by removing the rubble there.` },
-    ]
-  },{
-    pages: [
+      { text:`I should talk to {{R::character.firstName}} about this, see what {{R::gender.he}} knows about this <i>Well</i>.` },
+      { text:`I don't think the fact that they call themselves the Deep Hole Clan is a coincidence either.` },
       { text:`I must remain cautious though.` },
-      { text:`There's no telling what I may uncover after all.` },
+      { text:`There's no telling what I may uncover here.` },
       { text:`With that in mind, I decide to turn in for the night.` },
     ]
   }],
 
   onFinish: async () => {
-    AvailableEvent.addAll([{ code:'journal-4' }]);
+    // TODO: Location event. Talk to minion about the well.
+    AvailableEvent.add({ code:'journal-4' });
   },
 
 });

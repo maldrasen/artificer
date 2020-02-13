@@ -16,15 +16,14 @@ Event.build('journal-5', {
       { text:`He lays out his analysis convincingly, though if he's correct it's a staggeringly complex language with thousands of different letter forms.` },
       { text:`The shape of the letters are transformed by both the proceeding and the succeeding characters.` },
       { text:`This is done to such a degree that a character that appears two or three places ahead or behind the current character can completely alter its shape.` },
-      { text:`These ligature operations as he calls them have to be applied both retroactively and recursively so that
-              the addition of a single letter could conceivably alter the entire structure.` },
+      { text:`These ligature operations as he calls them have to be applied both retroactively and recursively so that the addition of a single letter could conceivably alter the entire structure.` },
       { text:`It's almost as though someone designed a language that was impossible to write.` },
       { text:`Having determined that this was a type of script brought him no closer to deciphering it though.` },
       { text:`For that he would need resources he didn't have access to.` },
       { text:`He did however think he knew where they could be found.` },
       { text:`To that end he decided that Wren must return to Dennevar.` },
       { text:`There she could enlist the help of another of his colleagues, either a linguist or another person familiar with ancient scripts.` },
-      { text:`Barring that she might be able find samples of similar writing, found in places where its meaning was more or less understood.` },
+      { text:`Barring that, she might be able find samples of similar writing, found in places where its meaning was more or less understood.` },
       { text:`It would be a risk of course, sending her back through the wilderness alone.` },
       { text:`Having come this far though, Malcolm himself couldn't bear to leave the keep unoccupied.` },
       { text:`...` },
@@ -40,7 +39,7 @@ Event.build('journal-5', {
   }],
 
   onFinish: async () => {
-    AvailableEvent.addAll([{ code:'journal-6' }]);
+    AvailableEvent.add({ code:'journal-6' });
   },
 
 });
