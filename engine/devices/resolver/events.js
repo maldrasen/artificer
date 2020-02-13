@@ -2,7 +2,7 @@ Resolver.Events = (function() {
 
   async function enqueueAvailable() {
     const game = await Game.instance();
-    const available = await AvailableEvent.findAll({ where:{} });
+    const available = await AvailableEvent.findAll();
 
     const valid = await Promise.all(available.map(async availableEvent => {
       return await checkRequirements(game, availableEvent);
