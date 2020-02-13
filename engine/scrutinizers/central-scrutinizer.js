@@ -20,11 +20,10 @@ global.CentralScrutinizer = (function() {
   async function meetsRequirement(requirement, context, extra) {
     if (requirement == 'game.metric')          { return Environment.Metric; }
     if (requirement == 'game.not-metric')      { return ! Environment.Metric; }
-    if (requirement.match(/^game.dayNumber=/)) { return await checkDayNumber(requirement); }
-    if (requirement.match(/^flag\..+=.+/))     { return await checkExactFlagValue(requirement); }
-    if (requirement.match(/^flag/))            { return await checkFlagExists(requirement); }
+    if (requirement.match(/^game.dayNumber/))  { return await checkDayNumber(requirement); }
+    if (requirement.match(/^flag/))            { return await checkFlag(requirement); }
     if (requirement.match(/^no-flag/))         { return await checkFlagNotExists(requirement); }
-    if (requirement.match(/^state\..+=.+/))    { return checkStateValue(requirement,extra.state); }
+    if (requirement.match(/^state/))           { return checkState(requirement,extra.state); }
     if (requirement.match(/^player/))          { return await PlayerScrutinizer.check(requirement, context); }
     if (requirement.match(/^minion/))          { return await MinionScrutinizer.check(requirement, context); }
     if (requirement.match(/^canSuckCock/))     { return await SexualScrutinizer.check(requirement, context); }
@@ -32,41 +31,48 @@ global.CentralScrutinizer = (function() {
     throw `Unknown Requirement - ${requirement}`;
   }
 
-  // Day number requirement (game.dayNumber=3) checks to make sure that the
-  // day number is at least the specified date. I mean it says '=' but it's
-  // really a '>='
+  // This function is used by any requirement check that needs to compare two
+  // values. A RegEx like ([^<>=]+)(<|<=|=|>=|>)([^<>=]+) can be used to get
+  // two values on either side of a comparison operation.
+  function checkComparisonOperation(leftValue,operation,rightValue) {
+    if (operation == '<=') { return parseInt(leftValue) <= parseInt(rightValue); }
+    if (operation == '>=') { return parseInt(leftValue) >= parseInt(rightValue); }
+    if (operation == '<')  { return parseInt(leftValue) < parseInt(rightValue); }
+    if (operation == '>')  { return parseInt(leftValue) > parseInt(rightValue); }
+    return leftValue == rightValue;
+  }
+
+  // Day number requirement (game.dayNumber=3) (game.dayNumber>20)
   async function checkDayNumber(requirement) {
-    const game = await Game.instance();
-    return game.dayNumber >= requirement.split('=')[1];
+    let match = requirement.match(/dayNumber(<|<=|=|>=|>)([^<>=]+)/);
+    return checkComparisonOperation((await Game.instance()).dayNumber,match[1],match[2]);
   }
 
-  // Requirements Like: flag.player.bedsIn=hide
-  async function checkExactFlagValue(requirement) {
-    let match = requirement.match(/^flag\.(.+)=(.+)/);
+  // Requirements Like: flag.cock=horse, or flag.dicksSucked>=37
+  async function checkFlag(requirement) {
+    let match = requirement.match(/^flag\.([^<>=]+)(<|<=|=|>=|>)([^<>=]+)/);
+    if (match == null) {
+      return await checkFlagExists(requirement);
+    }
+
     let flag = await Flag.lookup(match[1]);
-    return (flag == null) ? false : (match[2] == flag.value);
+    return (flag == null) ? false : checkComparisonOperation(flag.value, match[2], match[3]);
   }
 
-  // Requirements Like: flag.player.bedsIn
   async function checkFlagExists(requirement) {
-    let code = requirement.match(/^flag\.(.+)/)[1];
-    let flag = await Flag.lookup(code);
-    return flag != null;
+    return (await Flag.lookup(requirement.match(/^flag\.(.+)/)[1])) != null;
   }
 
-  // Can't just negate, because of the regex.
   async function checkFlagNotExists(requirement) {
-    let code = requirement.match(/^no-flag\.(.+)/)[1];
-    let flag = await Flag.lookup(code);
-    return flag == null;
+    return (await Flag.lookup(requirement.match(/^no-flag\.(.+)/)[1])) == null;
   }
 
-  // Requirements Like: state.sex=filthy
-  function checkStateValue(requirement,state) {
-    let match = requirement.match(/^state\.(.+)=(.+)/);
-    return state[match[1]] == match[2];
+  // Requirements Like: state.sex=filthy, or state.litersOfCum>=37
+  function checkState(requirement,state) {
+    let match = requirement.match(/^state\.([^<>=]+)(<|<=|=|>=|>)([^<>=]+)/);
+    return checkComparisonOperation(state[match[1]], match[2], match[3]);
   }
 
-  return { meetsRequirements };
+  return { meetsRequirements, checkComparisonOperation };
 
 })();
