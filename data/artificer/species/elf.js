@@ -4,7 +4,7 @@ Species.build('elf', {
   physical: 20,
   personal: 20,
   mental:   20,
-  magical:  20,
+  magical:  10,
 
   violenceAverage: 0,
   violenceRange: 30,

@@ -4,7 +4,7 @@ Species.build('kobold', {
   physical: 15,
   personal: 10,
   mental:   10,
-  magical:  10,
+  magical:  0,
 
   violenceAverage: 30,
   violenceRange: 20,

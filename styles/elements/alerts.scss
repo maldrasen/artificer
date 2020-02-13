@@ -69,8 +69,12 @@
 }
 
 // Alert - Attribute Adjusted
-.alert.loyal { color: $fg-loyalty; }
-.alert.fear { color: $fg-fear; }
+.alert.loyal    { color: $fg-loyalty;  }
+.alert.fear     { color: $fg-fear;     }
+.alert.physical { color: $fg-physical; }
+.alert.personal { color: $fg-personal; }
+.alert.mental   { color: $fg-mental;   }
+.alert.magical  { color: $fg-magical;  }
 
 // Alert - Sexual Preference Adjusted
 .alert.rat-fucker { color: $fg-sex-dark; }

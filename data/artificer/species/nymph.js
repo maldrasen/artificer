@@ -4,7 +4,7 @@ Species.build('nymph', {
   physical: 10,
   personal: 40,
   mental:   10,
-  magical:  20,
+  magical:  10,
   genderRatio: { female:60, futa:40, male:0 },
 
   violenceAverage: -50,

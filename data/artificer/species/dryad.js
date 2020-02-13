@@ -4,7 +4,7 @@ Species.build('dryad', {
   physical: 10,
   personal: 20,
   mental:   20,
-  magical:  30,
+  magical:  20,
   genderRatio: { female:75, futa:20, male:5 },
 
   violenceAverage: -30,

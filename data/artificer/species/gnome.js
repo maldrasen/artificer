@@ -4,7 +4,7 @@ Species.build('gnome', {
   physical: 15,
   personal: 15,
   mental:   30,
-  magical:  30,
+  magical:  10,
   genderRatio: { female:35, futa:5, male:60 },
 
   violenceAverage: -10,

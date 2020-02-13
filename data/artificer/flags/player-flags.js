@@ -20,3 +20,9 @@ FlagInfo.build('player.fucksFutas', {
 FlagInfo.build('player.fucksWomen', {
   validateIn: ['always','maybe','never']
 });
+
+// The number of times the player has meditated.
+FlagInfo.build('player.meditate-count', {
+  validateInteger: true,
+  default: 0,
+});

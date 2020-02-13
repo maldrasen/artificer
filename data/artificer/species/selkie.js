@@ -4,7 +4,7 @@ Species.build('selkie', {
   physical: 10,
   personal: 30,
   mental:   20,
-  magical:  20,
+  magical:  10,
 
   violenceAverage: -20,
   violenceRange: 10,

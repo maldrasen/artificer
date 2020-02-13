@@ -4,7 +4,7 @@ Species.build('caprien', {
   physical: 20,
   personal: 20,
   mental:   20,
-  magical:  30,
+  magical:  15,
 
   violenceAverage: 0,
   violenceRange: 25,

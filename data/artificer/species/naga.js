@@ -4,7 +4,7 @@ Species.build('naga', {
   physical: 20,
   personal: 10,
   mental:   30,
-  magical:  30,
+  magical:  20,
 
   violenceAverage: 40,
   violenceRange: 20,

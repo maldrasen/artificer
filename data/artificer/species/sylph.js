@@ -4,7 +4,7 @@ Species.build('sylph', {
   physical: 10,
   personal: 20,
   mental:   30,
-  magical:  20,
+  magical:  15,
   genderRatio: { female:75, futa:20, male:5 },
 
   violenceAverage: -30,

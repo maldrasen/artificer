@@ -50,6 +50,7 @@ global.Species = class Species extends Form {
   }
 
   randomizedAttribute(attribute) {
+    if (this[attribute] == 0) { return 0; }
     let value = this[attribute] + Random.upTo(18) - 9;
     if (value<0) { value=0; }
     return value;

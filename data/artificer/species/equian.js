@@ -4,7 +4,7 @@ Species.build('equian', {
   physical: 30,
   personal: 20,
   mental:   20,
-  magical:  10,
+  magical:  5,
   genderRatio: { female:30, futa:20, male:50 },
 
   violenceAverage: 10,

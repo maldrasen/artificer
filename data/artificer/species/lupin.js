@@ -4,7 +4,7 @@ Species.build('lupin', {
   physical: 30,
   personal: 20,
   mental:   20,
-  magical:  10,
+  magical:  5,
 
   violenceAverage: 20,
   violenceRange: 10,

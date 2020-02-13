@@ -4,7 +4,7 @@ Species.build('pixie', {
   physical: 0,
   personal: 30,
   mental:   30,
-  magical:  30,
+  magical:  20,
   genderRatio: { female:100, futa:0, male:0 },
 
   violenceAverage: -30,

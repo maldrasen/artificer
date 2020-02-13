@@ -4,7 +4,7 @@ Species.build('minotaur', {
   physical: 50,
   personal: 10,
   mental:   10,
-  magical:  10,
+  magical:  5,
 
   violenceAverage: 30,
   violenceRange: 20,

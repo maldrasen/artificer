@@ -4,7 +4,7 @@ Species.build('centaur', {
   physical: 40,
   personal: 20,
   mental:   20,
-  magical:  20,
+  magical:  5,
 
   violenceAverage: -10,
   violenceRange: 20,

@@ -4,7 +4,7 @@ Species.build('dark-elf', {
   physical: 30,
   personal: 20,
   mental:   30,
-  magical:  40,
+  magical:  15,
 
   violenceAverage: 50,
   violenceRange: 30,
