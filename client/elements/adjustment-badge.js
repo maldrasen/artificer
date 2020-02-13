@@ -36,12 +36,12 @@ Elements.AdjustmentBadge = class AdjustmentBadge {
 
   // I'm sure there's a better way to do this, but whatever.
   get symbols() {
-    if (this.level == 1) { return '+' }
-    if (this.level == 2) { return '++' }
-    if (this.level == 3) { return '+++' }
-    if (this.level == -1) { return '-' }
-    if (this.level == -2) { return '--' }
-    if (this.level == -3) { return '---' }
+    if (this.level == 1) { return '⇧' }
+    if (this.level == 2) { return '⇧⇧' }
+    if (this.level == 3) { return '⇧⇧⇧' }
+    if (this.level == -1) { return '↓' }
+    if (this.level == -2) { return '↓↓' }
+    if (this.level == -3) { return '↓↓↓' }
     return '';
   }
 

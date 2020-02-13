@@ -9,8 +9,15 @@ Task.build('meditate', {
     Flag.set('player.meditate-count', parseInt((await Flag.lookup('player.meditate-count')).value)+1);
 
     const player = await Player.instance();
+    const maelstrom = await Flag.lookup('player.maelstrom');
+    const adamant =   await Flag.lookup('player.adamant');
+    const gaea =      await Flag.lookup('player.gaea');
+    const morpheus =  await Flag.lookup('player.morpheus');
+    const abyss =     await Flag.lookup('player.abyss');
 
     // Meditation only increases your magical attribute up to 50 points.
+    // TODO: The player should still meditate while Abyss remains unlocked.
+    //       I'll need to update this message accordingly.
     if (player.magical > 50) {
       return {
         title:`Meditation`,
@@ -35,12 +42,16 @@ Task.build('meditate', {
       { bonus:  20, story:`I feel my connection to the source of all magic has strengthened.` },
     ]);
 
-    let chance = 0;
-    if (player.magical < 30) { chance = 5;  }
-    if (player.magical < 20) { chance = 20; }
-    if (player.magical < 10) { chance = 50; }
+    let chance = occurance.bonus;
+    if (player.magical < 30) { chance += 5;  }
+    if (player.magical < 20) { chance += 20; }
+    if (player.magical < 10) { chance += 50; }
 
-    if (Random.upTo(100) < (chance + occurance.bonus)) {
+    if (maelstrom == null && player.magical >= 20) { chance = 1; }
+    if (adamant == null   && player.magical >= 30) { chance = 1; }
+    if (gaea == null      && player.magical >= 40) { chance = 1; }
+
+    if (Random.upTo(100) < chance) {
       await player.update({ magical: player.magical + 1 });
     }
 

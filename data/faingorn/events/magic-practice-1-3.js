@@ -3,7 +3,7 @@ Event.build('magic-practice-1-3', {
 
   stages:[{
     pages:[
-      { text:`I've spent the last few mornings practicing moving rocks about.` },
+      { text:`I've spent the last several days practicing moving rocks about.` },
       { text:`I feel like force is the simplest of magics, but as such it's something I want to be completely comfortable with.` },
       { text:`Picking up a rock with my mind should feel like second nature, something I ought to be able to do without even thinking about it.` },
       { text:`It's tiring, but I feel like my stamina is improving as well.` },
@@ -24,15 +24,13 @@ Event.build('magic-practice-1-3', {
       { text:`Finally, I let the fire die, stopping to catch my breath and to think.` },
       { playerSpeaker:true, text:`<span class='player-quote'>"It's all energy, though isn't it?"</span>` },
       { playerSpeaker:true, text:`<span class='player-quote'>"In one form or another."</span>` },
-      { playerSpeaker:true, text:`<span class='player-quote'>"Kinetic, thermal, radiant, perhaps even..."</span>` },
-      { text:`I hold my hand out and watch as white blue sparks arc between my fingertips.` },
-      { playerSpeaker:true, text:`<span class='player-quote'>"... yes. Electric."</span>` },
+      { playerSpeaker:true, text:`<span class='player-quote'>"Kinetic, thermal, radiant, electric&hellip;"</span>` },
       { text:`It's a strange sensation, I feel like I've learned something, but that's not true.` },
       { text:`I've remembered something.` },
-      { text:`I know electricity.` },
-      { text:`I understand its principles.` },
-      { text:`There isn't anything in this old keep that runs on electricity though, so why am I familiar with it?` },
-      { text:`Shaking my head, I stand up and get ready for today's work.` },
+      { text:`I know these forces.` },
+      { text:`I understand their principles.` },
+      { text:`&hellip;and through understanding comes mastery.` },
+      { text:`I feel like I'm close to a breakthrough of some sort, I just need to keep at it.` },
     ]
   }],
 

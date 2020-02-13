@@ -26,3 +26,10 @@ FlagInfo.build('player.meditate-count', {
   validateInteger: true,
   default: 0,
 });
+
+// The spheres of magic that have been unlocked.
+FlagInfo.build('player.maelstrom', { validateIn: ['unlocked'] });
+FlagInfo.build('player.adamant',   { validateIn: ['unlocked'] });
+FlagInfo.build('player.gaea',      { validateIn: ['unlocked'] });
+FlagInfo.build('player.morpheus',  { validateIn: ['unlocked'] });
+FlagInfo.build('player.abyss',     { validateIn: ['unlocked'] });

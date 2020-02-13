@@ -10,7 +10,7 @@ Event.build('magic-practice-1-4', {
       { text:`I call it The Maelstrom.` },
       { text:`I'm not sure if it's something I've just made up, some way to visualize what I do, or if really exists in some way.` },
       { text:`The Maelstrom might just be in my head, but that doesn't mean it's not real.` },
-      { text:`It seems familiar though, in the same way that electricity was familiar to me once I remembered that it existed.` },
+      { text:`It seems familiar though, in the same way that all the forces were familiar to me once I remembered how to control them.` },
       { text:`Feeling a bit more energetic than usual I walk outside to the courtyard.`, background:{ location:'courtyard', time:'morning' }},
       { text:`The early morning air is cool and crisp.` },
       { text:`I raise my arms and form a whirlwind around me.` },
@@ -23,8 +23,20 @@ Event.build('magic-practice-1-4', {
       { text:`I'm spent.` },
       { text:`Still, it's a noticeable improvement.` },
       { text:`I'm far stronger than I was when I first arrived here.` },
-      { text:`(( I have fully unlocked The Maelstrom. My magical attribute has been increased by 5. ))` },
+      { text:`<span class='narrator-quote'>You have fully unlocked the Maelstrom sphere.</span>`, alert:{ unlock:'Sphere: Maelstrom' }},
+      { text:`<span class='narrator-quote'>Each sphere of magic represents a domain of control over a certain substance.</span>` },
+      { text:`<span class='narrator-quote'>As you unlock more spheres the variety of things you can do magically will increase.</span>` },
     ]
   }],
+
+  onFinish: async choices => {
+    const count = parseInt((await Flag.lookupValue('player.meditate-count')));
+
+    await AvailableEvent.addAll([
+      { code:'magic-practice-2-1', requires:[`flag.player.meditate-count=${count+3}`,`player.magical>=20`]},
+    ]);
+
+    await Flag.set('player.maelstrom','unlocked');
+  },
 
 });

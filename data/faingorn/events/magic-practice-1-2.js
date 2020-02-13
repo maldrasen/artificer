@@ -5,7 +5,7 @@ Event.build('magic-practice-1-2', {
     pages:[
       { text:`I decide to do something a little more practical for today's practice.` },
       { text:`I found a stone out in the courtyard, brought it into the Great Hall, and set it before me.` },
-      { text:`It's a fairly large stone, about the size of a grapefruit, and is unusually round and smooth.` },
+      { text:`It's a fairly large stone, about the size of a grapefruit and unusually round and smooth.` },
       { text:`Sitting on the floor, I again close my eyes and 'reach out' to the stone, examining it with nothing but my magical senses.` },
       { text:`Cool. Heavy. Solid.` },
       { text:`Although I carried it in here and know full well what it weighs, I feel like I can sense its weight as well.` },

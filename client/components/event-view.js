@@ -69,6 +69,7 @@ Components.EventView = (function() {
 
     // Stage Building
     if (stage.background != null) { setBackground(stage.background); }
+    if (stage.setChoice) { updateChoices(stage.setChoice); }
 
     // These views can be skipped through.
     if (stage.pages) { return buildPagedView(); }

@@ -34,6 +34,7 @@ Event.build('found-fruits-and-nuts', {
     ]
   },{
     requires:['player.accepts-women','minion(C).has-pussy'],
+    setChoice:{ sex:'possible' },
     pages:[
       { text:`We eat in silence for a while.` },
       { text:`Something about having {{C::gender.him}} sit this close to me though makes me long for physical contact.` },
@@ -42,6 +43,7 @@ Event.build('found-fruits-and-nuts', {
     ]
   },{
     requires:['player.accepts-men','minion(C).has-cock'],
+    setChoice:{ sex:'possible' },
     pages:[
       { text:`We eat in silence for a while.` },
       { text:`Something about having {{C::gender.him}} sit this close to me though makes me long for physical contact.` },
@@ -49,6 +51,7 @@ Event.build('found-fruits-and-nuts', {
       { text:`Well should I?` },
     ]
   },{
+    choice:{ sex:'possible' },
     selectionPage: true,
     selectionKey: 'sex',
     selections:[

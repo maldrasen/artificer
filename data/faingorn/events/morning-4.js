@@ -28,7 +28,12 @@ Event.build('morning-4', {
 
   onFinish: async choices => {
     await Flag.set('plan-view.tasks.meditate','unlocked');
-    await AvailableEvent.add({ code:'magic-practice-1-1', requires:['flag.player.meditate-count=1']});
+    await AvailableEvent.addAll([
+      { code:'magic-practice-1-1', requires:['flag.player.meditate-count=1']},
+      { code:'magic-practice-1-2', requires:['flag.player.meditate-count=2','player.magical>=12']},
+      { code:'magic-practice-1-3', requires:['flag.player.meditate-count=5','player.magical>=14']},
+      { code:'magic-practice-1-4', requires:['flag.player.meditate-count=8','player.magical>=15']},
+    ]);
   },
 
 });

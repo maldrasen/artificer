@@ -4,7 +4,7 @@ Event.build('found-willow-branches', {
   stages:[{
     pages:[
       { text:`As instructed, {{C::character.firstName}} returns from today's foraging with several armfuls of willow branches.` },
-      { text:`You take the time to look over what {{C::gender.he}} brought.` },
+      { text:`I take the time to look over what {{C::gender.he}} brought.` },
       { text:`It's good wood.` },
       { text:`Green still, but that's perfect for making a basket.` },
       { text:`Something in the back of my mind is telling me that it's ridiculous for me to have to do this.` },
