@@ -1,5 +1,6 @@
 Event.build('morning-4', {
   background:{ location:'great-hall', time:'morning' },
+  time: 'morning',
 
   stages:[{
     pages:[
@@ -27,6 +28,7 @@ Event.build('morning-4', {
 
   onFinish: async choices => {
     await Flag.set('plan-view.tasks.meditate','unlocked');
+    await AvailableEvent.add({ code:'magic-practice-1-1', requires:['flag.player.meditate-count=1']});
   },
 
 });

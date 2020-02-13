@@ -7,7 +7,7 @@ Event.build('magic-practice-1-1', {
       { text:`I close my eyes, emptying my mind of all thought and just sit and listen for a while.` },
       { text:`I'm not trying to do anything at the moment, just listening. Just breathing.` },
       { text:`In time I begin to feel centered; calm, and in control of my sensations.` },
-      { text:`It's not that I don't hear the howling of the wind outside, but it's isolated now, the sensation of hearing put away for the moment.` },
+      { text:`It's not that I don't hear the howling of the wind outside, but it's isolated now, the sensation of hearing is put away for the moment.` },
       { text:`I reach out with my other senses, tapping into what I feel when I attempt something magical.` },
       { text:`I'm still not trying to do anything really.` },
       { text:`Just reaching out.` },
