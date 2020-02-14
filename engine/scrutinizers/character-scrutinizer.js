@@ -2,6 +2,8 @@ global.CharacterScrutinizer = (function() {
 
   // These operations are shared between the Player and Minion scrutinizers.
   function check(operation, data) {
+    if (operation == 'wolf-blooded')                  { return ['lupin','wood-elf'].indexOf(data.character.speciesCode) >= 0; }
+    if (operation == 'not-wolf-blooded')              { return ['lupin','wood-elf'].indexOf(data.character.speciesCode) < 0; }
     if (operation == 'furry')                         { return data.character.species.isFurry; }
     if (operation == 'not-furry')                     { return !data.character.species.isFurry; }
     if (operation == 'cock-sheath')                   { return data.character.species.hasCockSheath; }
