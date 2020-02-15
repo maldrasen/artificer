@@ -65,3 +65,11 @@ global.Browser = (function() {
 app.on('ready', Browser.open);
 app.on('window-all-closed', Browser.quit);
 app.on('activate', Browser.activate);
+
+// Open new windows in the user's default browser.
+app.on('web-contents-created', (e, contents) => {
+  contents.on('new-window', (e, url) => {
+    e.preventDefault();
+    electron.shell.openExternal(url);
+  });
+})

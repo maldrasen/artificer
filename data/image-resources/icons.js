@@ -8,6 +8,7 @@ ImageResource.buildIcon('icon-item-willow-branch',   { url:`${IMAGE_ROOT}/icons/
 
 ImageResource.buildIcon('icon-flavor-goat-nuts', { url:`${IMAGE_ROOT}/icons/goat-nuts.png` });
 ImageResource.buildIcon('icon-flavor-willow-branches', { url:`${IMAGE_ROOT}/icons/willow-branch.png` });
+ImageResource.buildIcon('icon-flavor-bitter-fruits', { url:`${IMAGE_ROOT}/icons/bitter-fruits.png` });
 
 // Items are automatically found by form class and code.
 //   icon-item-{code}
