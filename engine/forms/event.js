@@ -76,7 +76,8 @@ global.Event = class Event extends Form {
   }
 
   // When a page is transformed we set the caption on the page frame for the player or a minion if either is speaking.
-  // We also transform the effects array if it's present.
+  // We do any automatic page styling such as applying styles around quotes, and we also transform the effects array if
+  // it's present.
   //
   // TODO: Eventually I'd like to show the character portraits as well as their names. Need to get the portraits in a
   //       working state first though.
@@ -84,10 +85,34 @@ global.Event = class Event extends Form {
     page.text = Weaver.weave(page.text, context);
 
     if (page.playerSpeaker) { page.playerSpeaker = context.get('P').character.firstName; }
-    if (page.minionSpeaker) { page.minionSpeaker = Weaver.weave(page.minionSpeaker, context); }
+    if (page.actorSpeaker)  { page.otherSpeaker  = context.get(page.actorSpeaker).character.firstName; }
     if (page.effects)       { page.effects = Event.transformEffects(page.effects, context); }
 
+    let transformingQuotes = true;
+    while (transformingQuotes) {
+      let match = page.text.match(/^(.*)"([^"]+)"(.*)$/);
+      if (match == null) { transformingQuotes = false } else {
+        page.text = Event.transformPageQuote(page, context, match);
+      }
+    }
+
+    if (page.narratorSpeaker) {
+      page.text = `<span class='narrator-quote'>${page.text}</span>`;
+    }
+
     return page;
+  }
+
+  // Transform all the quotes on a page but sorrounding them in a quote span and replacing the dumb quotation marks
+  // with smart ones. Only pages that have specified a speaker will have its quotes replaced.
+  static transformPageQuote(page, context, match) {
+    let otherSpeaker = page.otherSpeaker != null
+    let playerSpeaker = page.playerSpeaker != null
+    let classname = playerSpeaker ? 'player-quote' : 'other-quote';
+
+    return (otherSpeaker == null && playerSpeaker == null) ?
+      `${match[1]}“${match[2]}”${match[3]}`:
+      `${match[1]}<span class='${classname}'>“${match[2]}”</span>${match[3]}`;
   }
 
   static transformSelectionPage(stage, context) {

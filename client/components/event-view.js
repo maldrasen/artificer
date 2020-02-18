@@ -175,7 +175,7 @@ Components.EventView = (function() {
     if (page.hideCenterImage) { hideCenterImage(); }
     if (page.effects) { applyPageEffects(page.effects); }
 
-    showSpeaker(page.minionSpeaker, page.playerSpeaker)
+    showSpeaker(page.otherSpeaker, page.playerSpeaker)
 
     $('#currentEvent .event-text-frame').empty().append(page.text)
 
@@ -186,9 +186,9 @@ Components.EventView = (function() {
     if (page.onShow) { Components.EventView.PageFunctions[page.onShow](choices); }
   }
 
-  function showSpeaker(minionName, playerName) {
-    let speaker = $('#currentEvent .event-text-speaker').empty().addClass('hide').removeClass('minion').removeClass('player');
-    if (minionName) { speaker.removeClass('hide').addClass('minion').append(minionName); }
+  function showSpeaker(otherName, playerName) {
+    let speaker = $('#currentEvent .event-text-speaker').empty().addClass('hide').removeClass('other').removeClass('player');
+    if (otherName) { speaker.removeClass('hide').addClass('other').append(otherName); }
     if (playerName) { speaker.removeClass('hide').addClass('player').append(playerName); }
   }
 
