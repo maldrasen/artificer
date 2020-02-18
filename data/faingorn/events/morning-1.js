@@ -47,8 +47,8 @@ Event.build('morning-1', {
       { text:`Perhaps I could make strips of leather out of the bag and use them to strap the furs together somehow?` },
       { text:`It's something I'll have to figure out this evening.` },
       { text:`But for now at least I have food, clothing, and shelter.` },
-      { text:`<span class='narrator-quote'>During the day you will be able to plan that day's activities.</span>`, alert:{ unlock:"Projects" }},
-      { text:`<span class='narrator-quote'>For today, add a project to create some crude fur clothing.</span>` },
+      { narratorSpeaker:true, text:`During the day you will be able to plan that day's activities.`, alert:{ unlock:"Projects" }},
+      { narratorSpeaker:true, text:`For today, add a project to create some crude fur clothing.` },
     ]
   }],
 

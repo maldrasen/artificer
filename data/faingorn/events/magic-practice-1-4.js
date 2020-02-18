@@ -23,9 +23,9 @@ Event.build('magic-practice-1-4', {
       { text:`I'm spent.` },
       { text:`Still, it's a noticeable improvement.` },
       { text:`I'm far stronger than I was when I first arrived here.` },
-      { text:`<span class='narrator-quote'>You have fully unlocked the Maelstrom sphere.</span>`, alert:{ unlock:'Sphere: Maelstrom' }},
-      { text:`<span class='narrator-quote'>Each sphere of magic represents a domain of control over a certain substance.</span>` },
-      { text:`<span class='narrator-quote'>As you unlock more spheres the variety of things you can do magically will increase.</span>` },
+      { narratorSpeaker:true, text:`You have fully unlocked the Maelstrom sphere.`, alert:{ unlock:'Sphere: Maelstrom' }},
+      { narratorSpeaker:true, text:`Each sphere of magic represents a domain of control over a certain substance.` },
+      { narratorSpeaker:true, text:`As you unlock more spheres the variety of things you can do magically will increase.` },
     ]
   }],
 

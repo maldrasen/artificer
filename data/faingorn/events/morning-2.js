@@ -11,7 +11,7 @@ Event.build('morning-2', {
       { text:`At least nothing that I can see or hear.` },
       { text:`I'm certain that I'm not alone here though.` },
       { text:`I need to find out what else is living here with me.` },
-      { text:`<span class='narrator-quote'>Some events will occur in other rooms, use the map to travel throughout the keep.</span>` },
+      { narratorSpeaker:true, text:`Some events will occur in other rooms, use the map to travel throughout the keep.` },
     ]
   }],
 

@@ -76,9 +76,9 @@ Event.build('found-willow-branches', {
     pages:[
       { text:`I put the stick back on the pile and thank {{C::character.firstName}} for {{C::gender.his}} hard work today.` },
       { text:`{{C::gender.He}} nods and bows and slinks out of the room looking relieved.` },
-      { text:`<span class='narrator-quote'>Crafting has been unlocked.</span>`, alert:{ unlock:'Crafting Tasks' }},
-      { text:`<span class='narrator-quote'>When planning your day's activity you can now add tasks to your plan.</span>` },
-      { text:`<span class='narrator-quote'>You can start by crafting a basket to help your minion carry more when out foraging.</span>`, alert:{ unlock:'Craft: Basket' }},
+      { narratorSpeaker:true, text:`Crafting has been unlocked.`, alert:{ unlock:'Crafting Tasks' }},
+      { narratorSpeaker:true, text:`When planning your day's activity you can now add tasks to your plan.` },
+      { narratorSpeaker:true, text:`You can start by crafting a basket to help your minion carry more when out foraging.`, alert:{ unlock:'Craft: Basket' }},
     ]
   }],
 

@@ -3,11 +3,11 @@ Event.build('found-fruits-and-nuts-sex-M', {
 
   stages:[{
     pages:[
-      { playerSpeaker:true, text:`<span class='player-quote'>"Now then, let me show you how else I expect you to serve me&hellip;"</span>` },
+      { playerSpeaker:true, text:`"Now then, let me show you how else I expect you to serve me&hellip;"` },
       { text:`Reaching down I tug my loincloth to the side, fully exposing my still soft cock to {{C::gender.him}}.` },
       { text:`{{C::gender.He}} looks down at my dick, eyes widening.` },
       { text:`Though I'm really only of an average size, I'm still much bigger than the average scaven and must look absolutely humongous to {{C::gender.him}}.` },
-      { minionSpeaker:'{{C::character.firstName}}', text:`{{C::gender.He}} nods slowly, <span class='minion-quote'>"I understand {{P::character.title}},"</span> and begins to remove what little clothing {{C::gender.he}} has.` },
+      { actorSpeaker:'C', text:`{{C::gender.He}} nods slowly, "I understand {{P::character.title}}," and begins to remove what little clothing {{C::gender.he}} has.` },
       { text:`Soon, {{C::gender.he}} stands nude in front of me, looking away.` },
       { text:`Again I'm impressed with {{C::gender.his}} lythe, muscular body.` },
     ]
