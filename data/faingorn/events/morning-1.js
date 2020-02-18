@@ -9,7 +9,7 @@ Event.build('morning-1', {
       { text:`That's good news in a way.` },
       { text:`It means I'm alive at least.` },
       { text:`I sit up slowly and take a look around.` },
-      { text:`I'm sitting in the courtyard of the fortress ‌I saw earlier.` },
+      { text:`I'm sitting in the courtyard of the fortress I saw earlier.` },
       { text:`Or perhaps yesterday.` },
       { text:`It's early morning.` },
       { text:`I think it was early afternoon when those, <i>things</i>, whatever they were, chased me here.` },

@@ -3,10 +3,10 @@ Event.build('found-fruits-and-nuts', {
 
   stages:[{
     pages:[
-      { text:`{{C::character.firstName}}‌ returns slightly after sunset, arms laden with fruits and nuts.`},
+      { text:`{{C::character.firstName}} returns slightly after sunset, arms laden with fruits and nuts.`},
       { text:`I'm sitting by the fireplace, waiting for {{C::gender.him}} to arrive.` },
-      { text:`This is the last trip {{C::gender.he}}'ll be able to make tonight so I invite {{C::gender.him}}‌ to join me for a while.` },
-      { playerSpeaker:true, text:`<span class='player-quote'>"You did well today," I‌ tell {{C::gender.him}}.</span>` },
+      { text:`This is the last trip {{C::gender.he}}'ll be able to make tonight so I invite {{C::gender.him}} to join me for a while.` },
+      { playerSpeaker:true, text:`<span class='player-quote'>"You did well today," I tell {{C::gender.him}}.</span>` },
       { minionSpeaker:'{{C::character.firstName}}', text:`<span class='minion-quote'>"Thank you {{P::character.title}}."</span>` },
       { text:`I give {{C::gender.him}} a good looking over as {{C::gender.he}} grows near.` },
       { text:`If possible {{C::gender.he}}'s even more filthy, covered in dirt with berry juice staining {{C::gender.his}} arms.` },

@@ -20,14 +20,14 @@ Event.build('ambush-rat-end-2', {
   },{
     requires:['flag.enqueued.ambush-rat-befriend'],
     pages: [
-      { text:`{{R::gender.He}}‌ looks like the same scaven I spoke with yesterday, {{R::character.firstName}} I think.` },
+      { text:`{{R::gender.He}} looks like the same scaven I spoke with yesterday, {{R::character.firstName}} I think.` },
       { text:`Truth be told, I'm suprised {{R::gender.he}} didn't try to kill me in my sleep.` },
       { text:`Perhaps {{R::gender.he}} has some small amount of respect for my power after all.` },
     ]
   },{
     requires:['flag.enqueued.ambush-rat-torment'],
     pages: [
-      { text:`{{R::gender.He}}‌ looks like the same rat I held against the wall and abused yesterday, {{R::character.firstName}} I think.` },
+      { text:`{{R::gender.He}} looks like the same rat I held against the wall and abused yesterday, {{R::character.firstName}} I think.` },
       { text:`Truth be told, I'm suprised {{R::gender.he}} didn't try to kill me in my sleep.` },
       { text:`Perhaps {{R::gender.he}}'s too scared of me to try anything.` },
     ]
@@ -38,7 +38,7 @@ Event.build('ambush-rat-end-2', {
       { playerSpeaker:true, text:`<span class='player-quote'>"Do you bring word from your chief?"</span>` },
       { text:`{{R::gender.He}} nods quickly, still clearly terrified of me, as though {{R::gender.he}} expects me to reach out and turn {{R::gender.him}} inside out at the slightest provocation.` },
       { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"The Bone Woman spoke with the Rat King."</span>` },
-      { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"The Rat King says you will make Deep Hole‌ strong again."</span>` },
+      { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"The Rat King says you will make Deep Hole strong again."</span>` },
       { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"The Bone Woman told {{R::character.firstName}} that {{R::gender.he}} must serve you."</span>` },
       { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"Only the tribe matters."</span>` },
       { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"If you help the Deep Hole Scaven, then you can have {{R::character.firstName}}."</span>` },
@@ -50,7 +50,7 @@ Event.build('ambush-rat-end-2', {
       { text:`Does that make {{R::gender.him}} my slave essentially?` },
       { text:`I realize now that it was always my intent to raise an army.` },
       { text:`A thirst for conquest must be in my blood.` },
-      { text:`How will I‌ decide to treat my minions though?` },
+      { text:`How will I decide to treat my minions though?` },
       { text:`As slaves?` },
       { text:`As companions?` },
       { text:`For now I'll just have to play this by ear.` },

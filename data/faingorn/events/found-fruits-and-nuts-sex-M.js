@@ -26,7 +26,7 @@ Event.build('found-fruits-and-nuts-sex-M', {
     ]
   },{
     pages:[
-      { text:`{{C::gender.He}} seems nervous, perhaps worried that I'm about to force {{P::cock.sixInches}}‌ worth of cock into {{C::gender.him}}.` },
+      { text:`{{C::gender.He}} seems nervous, perhaps worried that I'm about to force {{P::cock.sixInches}} worth of cock into {{C::gender.him}}.` },
       { text:`I should take this slowly though, I wouldn't want to kill {{C::gender.him}} the first time we have sex after all.` },
       { text:`I reach out and take {{C::gender.him}} by the back of the head, pulling {{C::gender.him}} closer while guiding {{C::gender.his}} face towards my cock.` },
       { text:`Understanding where I'm going with this, {{C::gender.he}} assumes a kneeling position between my legs and dutifully begins to lick the top and sides of my growing member.` },

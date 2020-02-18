@@ -22,7 +22,7 @@ Event.build('found-willow-branches-whip', {
     pages:[
       { minionSpeaker:'{{C::character.firstName}}', text:`{{C::gender.He}} inhales sharply as I toy with {{C::gender.him}}, <span class='minion-quote'>"Yes, {{P::character.title}}."</span>` },
       { playerSpeaker:true, text:`I grin, <span class='player-quote'>"Well I'm glad we understand each other then."</span>` },
-      { playerSpeaker:true, text:`<span class='player-quote'>"Tell me rat, where am I‌ going to whip you?"</span>` },
+      { playerSpeaker:true, text:`<span class='player-quote'>"Tell me rat, where am I going to whip you?"</span>` },
       { text:`It's not a question {{C::gender.he}} was expecting.` },
       { text:`I can almost see all the thoughts racing in {{C::gender.his}} head as {{C::gender.he}} tries to think of an answer that would be the least punishing.` },
       { minionSpeaker:'{{C::character.firstName}}', text:`Finally {{C::gender.he}} stammers out, <span class='minion-quote'>"M, My ass {{P::character.title}}?"</span>` },

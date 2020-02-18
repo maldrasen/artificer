@@ -36,7 +36,7 @@ Event.build('day-8-explore', {
       { text:`I think these rooms made up the master's chambers once.` },
       { text:`At one time they were finely decorated, but all that's left now are heaps of rot and scat.` },
       { text:`Nothing at all that looks remotely useful.` },
-      { text:`It's not until I'm searching what was once a study when I‌ finally find something interesting.` },
+      { text:`It's not until I'm searching what was once a study when I finally find something interesting.` },
       { text:`A large oak desk lies in the center of the room, crushed under a large wooden beam.` },
       { text:`The inside of the desk though, a couple of drawers at least, they've been fairly well sealed away.` },
       { text:`There's no way I'm opening the drawers normally, so I simply rip the side of the desk off with a telekinetic yank.` },

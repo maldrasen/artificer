@@ -6,7 +6,7 @@ Event.build('morning-3', {
     pages:[
       { text:`I stoke the fire in the great hall.` },
       { text:`I want to ensure that the room is a comfortable temperature for the next few hours at least.` },
-      { text:`I beckon {{R::character.firstName}}‌ to come sit next to me in front of the fire so that we can chat for a bit.` },
+      { text:`I beckon {{R::character.firstName}} to come sit next to me in front of the fire so that we can chat for a bit.` },
       { text:`{{R::gender.He}}'s still nervous and obviously uncomfortable being around me.` },
       { playerSpeaker:true, text:`<span class='player-quote'>"Tell me more about your people {{R::character.firstName}}."</span>` },
       { playerSpeaker:true, text:`<span class='player-quote'>"Do some of your tribesmen have scaven who serve them as you serve me?"</span>` },
@@ -52,7 +52,7 @@ Event.build('morning-3', {
       { playerSpeaker:true, text:`<span class='player-quote'>"That means I need you to go out there and find food for the both of us."</span>` },
       { playerSpeaker:true, text:`<span class='player-quote'>"Food and anything useful that can be found in these lands."</span>` },
       { playerSpeaker:true, text:`<span class='player-quote'>"Can you do that?"</span>` },
-      { text:`{{R::gender.He}} nods, more confidently now that {{R::gender.he}}'s pretty sure I'm not going to kill {{R::gender.him}}‌ right away.` },
+      { text:`{{R::gender.He}} nods, more confidently now that {{R::gender.he}}'s pretty sure I'm not going to kill {{R::gender.him}} right away.` },
       { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"Yes {{P::character.title}}."</span>` },
       { minionSpeaker:'{{R::character.firstName}}', text:`<span class='minion-quote'>"Deep Holes are the best at sneaking finding."</span>` },
       { playerSpeaker:true, text:`<span class='player-quote'>"Good."</span>` },

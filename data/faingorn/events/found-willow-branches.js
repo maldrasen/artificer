@@ -8,7 +8,7 @@ Event.build('found-willow-branches', {
       { text:`It's good wood.` },
       { text:`Green still, but that's perfect for making a basket.` },
       { text:`Something in the back of my mind is telling me that it's ridiculous for me to have to do this.` },
-      { text:`I‌ feel reduced somehow that I'm planning on dedicating so much time to something as menial as basket weaving.` },
+      { text:`I feel reduced somehow that I'm planning on dedicating so much time to something as menial as basket weaving.` },
       { text:`I still don't quite understand.` },
       { text:`It's something from a previous life blending into this one.` },
       { text:`It doesn't matter.` },

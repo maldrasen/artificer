@@ -6,7 +6,7 @@ Event.build('ambush-rat-setup', {
     pages:[
       { text:`I strongly suspect that whoever I'm sharing this keep with is the same person who hid those supplies I found.` },
       { text:`It would stand to reason that the remaining furs would then make excellent bait.` },
-      { text:`I‌ gather up all the furs and lay them neatly on one of the hall's large wooden tables.` },
+      { text:`I gather up all the furs and lay them neatly on one of the hall's large wooden tables.` },
       { text:`The great hall is a large two-story room with a gallery on one side, which conveniently, would allow me to observe the room from the floor above.` },
       { text:`I should have no problem watching the table from there while also remaining well hidden.` },
       { text:`All that's left then is to find a place to perch, and wait.` },
@@ -18,7 +18,7 @@ Event.build('ambush-rat-setup', {
       { text:`Well, they're small to me, though quite large for rats, standing perhaps {{aMeter}} tall or so.` },
       { text:`And they do stand, walking silently between shadows on two paws.` },
       { text:`I wasn't expecting there to be two of them, though really I had no idea what to expect, and if I'm being entirely honest, I didn't have much of a plan for what to do when something did come to take the bait.` },
-      { text:`Instinct alone tells me I‌ should try to capture one of them.` },
+      { text:`Instinct alone tells me I should try to capture one of them.` },
       { text:`At the very least I might be able to get some information and perhaps I could make one of them serve me.` },
       { text:`Which, upon reflection, is an odd thought.` },
       { text:`I don't understand why but from the moment I awoke in this strange land my first thoughts were of conquest.` },
