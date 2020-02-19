@@ -6,20 +6,20 @@ terrible measure of progress and doneness normally, but this project involves a
 ton of writing, so knowing how many lines this has is actually useful. I'm
 thinking once we approach 500,000 lines we'll be close to done.
 
-Prickle-Prickle, the 34th day of Chaos in the YOLD 3186 / 3 Feb 2020
+Setting Orange, the 50th day of Chaos in the YOLD 3186 / Chaoflux / 19 Feb 2020
 
 ---------- Result ------------
 
-            Physical :  27122
-              Source :  21580
-             Comment :  2197
- Single-line comment :  2191
+            Physical :  28420
+              Source :  22607
+             Comment :  2258
+ Single-line comment :  2252
        Block comment :  6
                Mixed :  32
  Empty block comment :  0
-               Empty :  3377
-               To Do :  142
+               Empty :  3587
+               To Do :  140
 
-Number of files read :  531
+Number of files read :  541
 
 ----------------------------
