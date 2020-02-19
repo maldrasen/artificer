@@ -49,11 +49,33 @@ Event.build('morning-1', {
       { text:`But for now at least I have food, clothing, and shelter.` },
       { narratorSpeaker:true, text:`During the day you will be able to plan that day's activities.`, alert:{ unlock:"Projects" }},
       { narratorSpeaker:true, text:`For today, add a project to create some crude fur clothing.` },
+      { text:`This place though, it's strange.` },
+      { text:`The architecture here, from the way it was constructed to how it was decorated, it's unsettling.` },
+      { text:`I wouldn't say that I was disturbed by it; it takes a lot to disturb me.` },
+    ]
+  },{
+    selectionPage: true,
+    selectionKey: 'reflect',
+    selections:[
+      { text:`I should reflect for a while on what I saw today.`, value:'yes' },
+      { text:`No, I should get to work immediately.`, value:'no' },
+    ]
+  },{
+    choice:{ reflect:'no' },
+    pages:[
+      { text:`It doesn't matter.` },
+      { text:`Whatever this place was and whoever built it doesn't concern me now.` },
+      { text:`It's shelter from the cold; just a place to regroup and plan a way forward.` },
+      { text:`That's all it needs to be for the moment.` },
     ]
   }],
 
-  onFinish: async () => {
+  onFinish: async choices => {
     await Game.updateLocation('great-hall');
+
+    if (choices.reflect == 'yes') {
+      await EventQueue.enqueueEvent('morning-1-reflections');
+    }
 
     await Flag.setAll({
       'location.currentStudy': 'great-hall',
