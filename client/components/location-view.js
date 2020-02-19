@@ -25,6 +25,10 @@ Components.LocationView = (function() {
 
     $('#mainContent').empty().append(location);
 
+    if (locationEventActive(view)) {
+      showMapFlag();
+    }
+
     each(view.actions||[], action => {
       addAction(action);
     });
@@ -38,6 +42,18 @@ Components.LocationView = (function() {
     let item = $('<li>',{ class:'action' }).append(link);
 
     $('#locationView ul.actions').append(item);
+  }
+
+  function locationEventActive(view) {
+    return view.mapData.locations.filter(datum => {
+      return datum.eventFlag && !datum.current;
+    }).length > 0;
+  }
+
+  function showMapFlag() {
+    let position = $('#mainContent .menu-show-map').offset();
+    let flag = $('<div>',{ class:'map-flag' }).css({ left:position.left-8 });
+    $('#mainContent .location-menu').append(flag);
   }
 
   function buildMap() {

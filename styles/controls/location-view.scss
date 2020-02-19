@@ -13,8 +13,26 @@
     border-bottom: $border-light;
     box-sizing: border-box;
     box-shadow: $shadow-frame;
+    z-index: $z-location-menu;
 
-    a { margin: 0 5px; }
+    a {
+      position: relative;
+      margin: 0 5px;
+      z-index: calc(#{$z-location-menu} + 20);
+    }
+  }
+
+  .map-flag {
+    position: absolute;
+    top: 0;
+    height: 35px;
+    width: 42px;
+    background-color: rgb(32, 32, 59);
+    border: $border-very-light;
+    border-radius: 0 0 6px 6px;
+    border-top: none;
+    box-shadow: $shadow-shallow;
+    z-index: calc(#{$z-location-menu} + 10);
   }
 
   .location-info {
