@@ -16,6 +16,7 @@
     "projects/*",
     "roles/*",
     "stages/*",
-    "task-stories/*"
+    "task-stories/*",
+    "event-collections"
   ]
 }

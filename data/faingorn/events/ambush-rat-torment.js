@@ -1,7 +1,7 @@
 Event.build('ambush-rat-torment', {
-  actors:{ R:'any-scaven' },
-
   background:{ location:'great-hall', time:'evening' },
+
+  actors:{ R:'any-scaven' },
 
   stages:[{
     pages:[
