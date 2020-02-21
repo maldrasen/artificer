@@ -16,6 +16,7 @@ describe("Body", function() {
       CharacterBuilder.build({ firstName:'X', gender:'female', species:'elf', body:{ height:1800 }}).then(character => {
         character.getBody().then(body => {
           body.getWeight().then(weight => {
+            expect(body.heightIsAverage).to.be.true;
             expect(ConversionUtility.gramToPound(weight)).to.equal(156);
             done();
           });
@@ -38,6 +39,7 @@ describe("Body", function() {
       CharacterBuilder.build({ firstName:'X', gender:'female', species:'elf', body:{ height:1400 }}).then(character => {
         character.getBody().then(body => {
           body.getWeight().then(weight => {
+            expect(body.heightIsShort).to.be.true;
             expect(ConversionUtility.gramToPound(weight)).to.equal(92);
             done();
           });
@@ -71,6 +73,7 @@ describe("Body", function() {
       CharacterBuilder.build({ firstName:'X', gender:'male', species:'dragon', body:{ height:3000 }}).then(character => {
         character.getBody().then(body => {
           body.getWeight().then(weight => {
+            expect(body.heightIsTall).to.be.true;
             expect(ConversionUtility.gramToPound(weight)).to.equal(465);
             done();
           });

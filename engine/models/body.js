@@ -37,6 +37,17 @@ global.Body = Database.instance().define('body', {
     fingerWidth() { return Math.round(this.height*(18/1750)); },
     fistArea()    { return MathUtility.widthToArea(this.fistWidth); },
     fingerArea()  { return MathUtility.widthToArea(this.fingerWidth); },
+
+    // These hight functions are rather arbritrary, but might be used in some
+    // events where we need to split paths based on a character's height. I'm
+    // not sure that it's reasonable for a four foot tall elf to lift a scaven
+    // up off of the ground for instance. Other events may play out differently
+    // if a character is over six and a half feet tall too. This is not short
+    // or tall for their species, just in general when compared to an average
+    // sized elf.
+    heightIsShort()    { return this.convertedHeight < 60 }, // Under 5 feet
+    heightIsTall()     { return this.convertedHeight > 78 }, // Over 6.5 feet.
+    heightIsAverage()  { return ! (this.heightIsShort || this.heightIsTall); },
   }
 });
 

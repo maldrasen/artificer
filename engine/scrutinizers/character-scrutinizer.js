@@ -2,6 +2,8 @@ global.CharacterScrutinizer = (function() {
 
   // These operations are shared between the Player and Minion scrutinizers.
   function check(operation, data) {
+
+    // Species Properties
     if (operation == 'demon')                         { return data.character.species.isDemon; }
     if (operation == 'not-demon')                     { return !data.character.species.isDemon; }
     if (operation == 'elf')                           { return data.character.species.isElf; }
@@ -14,6 +16,13 @@ global.CharacterScrutinizer = (function() {
     if (operation == 'not-scalie')                    { return !data.character.species.isScalie; }
     if (operation == 'wolf-blooded')                  { return ['lupin','wood-elf'].indexOf(data.character.speciesCode) >= 0; }
     if (operation == 'not-wolf-blooded')              { return ['lupin','wood-elf'].indexOf(data.character.speciesCode) < 0; }
+
+    // Body Properties
+    if (operation == 'height-short')                  { return data.body.heightIsShort; }
+    if (operation == 'height-average')                { return data.body.heightIsAverage; }
+    if (operation == 'height-tall')                   { return data.body.heightIsTall; }
+
+    // Body Part Properties
     if (operation == 'cock-sheath')                   { return data.character.species.hasCockSheath; }
     if (operation == 'no-cock-sheath')                { return !data.character.species.hasCockSheath; }
     if (operation == 'has-cock')                      { return data.cock != null; }
@@ -28,6 +37,7 @@ global.CharacterScrutinizer = (function() {
     if (operation == 'has-bigger-than-average-tits')  { return data.tits && ['big','huge','monster'].indexOf(data.tits.currentSizeClass) >= 0; }
     if (operation == 'has-smaller-than-average-tits') { return data.tits && ['zero','tiny','small'].indexOf(data.tits.currentSizeClass) >= 0; }
 
+    // Attributes
     if (operation.match(/^physical/)) { return checkAttribute(operation, data.character) }
     if (operation.match(/^mental/))   { return checkAttribute(operation, data.character) }
     if (operation.match(/^personal/)) { return checkAttribute(operation, data.character) }
