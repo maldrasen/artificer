@@ -5,10 +5,10 @@ Event.build('ambush-rat-torment', {
 
   stages:[{
     pages:[
-      { text:`I roughly slam the rat up against the wall.` },
+      { text:`I roughly slam the rat up against the curved stone wall.` },
       { text:`{{R::gender.He}}'s small enough that I can easily hold {{R::gender.him}} up against the wall with one arm while still leaving my other hand free.` },
       { text:`{{R::gender.His}} eyes bulge out of {{R::gender.his}} head as {{R::gender.he}} struggles for breath, so I ease up on the pressure a little, letting {{R::gender.him}} breathe again.` },
-      { text:`{{R::gender.His}} struggling intensifies for half a minute more; {{R::gender.his}} hands pulling at mine, {{R::gender.his}} dangling legs kicking out at nothing.` },
+      { text:`{{R::gender.His}} struggling intensifies for half a minute more; {{R::gender.his}} hands pulling at mine.` },
       { text:`Finally {{R::gender.he}} accepts that there isn't anything {{R::gender.he}} can do to break free and hangs limply against the wall in defeat.` },
       { playerSpeaker:true, text:`"Can you speak?" I ask.` },
       { minionSpeaker:'Rat', text:`"Yes!" {{R::gender.he}} squeeks back, "No hurt! No kill!"` },
@@ -70,7 +70,7 @@ Event.build('ambush-rat-torment', {
       { playerSpeaker:true, text:`"If they do not, I will kill every single one of you, slowly and painfully."` },
       { playerSpeaker:true, text:`"Do you understand?"` },
       { actorSpeaker:'R', text:`The scaven slowly nods and with a quivering voice says, "Yes, yes {{P::character.title}}, I will go tell the chief this."` },
-      { playerSpeaker:true, text:`"Good," I say, finally releasing {{R::gender.him}} and letting {{R::gender.him}} drop to the floor, "You may go."` },
+      { playerSpeaker:true, text:`"Good," I say, finally releasing {{R::gender.him}}, "You may go."` },
       { text:`The scaven sprints from the room, running on all fours.` },
       { text:`As soon as {{R::gender.he}} leaves though I collapse into a nearby chair.` },
       { text:`I'm panting, sweating.` },

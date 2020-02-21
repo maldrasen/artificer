@@ -21,6 +21,8 @@ global.CharacterScrutinizer = (function() {
     if (operation == 'height-short')                  { return data.body.heightIsShort; }
     if (operation == 'height-average')                { return data.body.heightIsAverage; }
     if (operation == 'height-tall')                   { return data.body.heightIsTall; }
+    if (operation == 'height-not-short')              { return ! data.body.heightIsShort; }
+    if (operation == 'height-not-tall')               { return ! data.body.heightIsTall; }
 
     // Body Part Properties
     if (operation == 'cock-sheath')                   { return data.character.species.hasCockSheath; }

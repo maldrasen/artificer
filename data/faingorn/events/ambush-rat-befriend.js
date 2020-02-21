@@ -5,13 +5,13 @@ Event.build('ambush-rat-befriend', {
 
   stages:[{
     pages:[
-      { text:`I release the rat's throat and push {{R::gender.him}} out at arm's length while still holding {{R::gender.his}} arms behind {{R::gender.him}}, in a position that it's unlikely that {{R::gender.he}}'ll be able to bite me from.` },
+      { text:`I relax my arm around the rat's throat just enough to allow {{R::gender.him}} to breathe and speak while still applying enough pressure to let {{R::gender.him}} know that they're still privileges that I could revoke at any moment.` },
       { playerSpeaker:true, text:`"Can you speak?" I ask.` },
       { otherSpeaker:'Rat', text:`"Yes!" {{R::gender.he}} squeeks back, "No hurt! No kill!"` },
       { playerSpeaker:true, text:`"I don't want to hurt you, but I do need you to answer some questions for me."` },
       { playerSpeaker:true, text:`"Can you do that for me?"` },
-      { text:`I carefully release {{R::gender.him}} but back {{R::gender.him}} up against the wall, making it difficult for {{R::gender.him}} to slip past me if {{R::gender.he}} decides to bolt.` },
-      { otherSpeaker:'Rat', text:`{{R::gender.He}} looks up at me fearfully as I tower over {{R::gender.him}}, "What do you want?"` },
+      { text:`I carefully release {{R::gender.him}} and push {{R::gender.his}} back up against the wall, making it difficult for {{R::gender.him}} to slip past me if {{R::gender.he}} decides to bolt.` },
+      { otherSpeaker:'Rat', text:`{{R::gender.He}} looks up at me fearfully, "What do you want?"` },
       { text:`I briefly consider asking {{R::gender.him}} all the very basics; Where are we? What are you?` },
       { text:`But then, perhaps it wouldn't be wise to reveal that I have absolutely no memory or know anything at all about where we are.` },
       { text:`I need to remain cautious.` },
@@ -36,7 +36,7 @@ Event.build('ambush-rat-befriend', {
       { playerSpeaker:true, text:`"If the Deep Hole Scaven serve me, they will become powerful, and feared again."` },
       { playerSpeaker:true, text:`"Understand?"` },
       { text:`{{R::gender.He}} looks me up and down somewhat doubtfully, no doubt noticing that I'm dressed in nothing but some stolen furs.` },
-      { text:`To make my point, I reach out feeling for the dry wood in the fireplace and with a dramatic hand motion cause it to burst into flame.` },
+      { text:`To make my point, I reach out towards the dry wood in the fireplace and with a dramatic hand motion cause it to burst into flame.` },
       { text:`The rat cowers away from the sudden cascade of sparks and smoke erupting from the fireplace.` },
       { actorSpeaker:'R', text:`"Eek! Yes, yes {{P::character.title}}, I will go tell the chief this."` },
       { playerSpeaker:true, text:`"Good. You may go."` },
