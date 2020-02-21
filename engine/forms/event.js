@@ -21,7 +21,7 @@ global.Event = class Event extends Form {
   static async prepare(queuedEvent) {
     const event = Event.lookup(queuedEvent.code).properties;
     if (event.onStart) {
-      await event.onStart();
+      await event.onStart(queuedEvent.state);
     }
 
     const context = new WeaverContext();
