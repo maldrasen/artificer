@@ -26,7 +26,7 @@ Event.build('found-blight-spider-torment-balls', {
       { playerSpeaker:true, text:`"{{C::character.firstName}}, if you find any more of these spiders while out foraging, I'd like for you to bring them back with you."` },
       { playerSpeaker:true, text:`"I have the feeling that they might be useful."` },
       { text:`{{C::gender.His}} eyes widen and {{C::gender.he}} looks like {{C::gender.he}} might throw up at the thought of purposefully trying to capture one.` },
-      { text:`I give {{C::gender::his}} balls another firm squeeze and {{C::gender::he}} gasps, "Ugh! Yes {{P::character.title}}. I&hellip; I will do this."`, effects:['actor(C) loyal -2', 'actor(C) fear 2']},
+      { text:`I give {{C::gender.his}} balls another firm squeeze and {{C::gender.he}} gasps, "Ugh! Yes {{P::character.title}}. I&hellip; I will do this."`, effects:['actor(C) loyal -2', 'actor(C) fear 2']},
       { text:`I finally let {{C::gender.him}} go and {{C::gender.he}} collapses on the ground in front of me.` },
       { text:`I nod to the rat, indicating that {{C::gender.he}}'s dismissed, and {{C::gender.he}} crawls out of the room as fast as {{C::gender.he}} can manage in {{C::gender.his}} current state.` },
     ]
