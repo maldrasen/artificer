@@ -67,6 +67,8 @@ global.WeaverContext = class WeaverContext {
   // occationally need various data points, how many minions are doing what,
   // that sort of thing.
   async addMinionData() {
+    if (this.get('minionData') != null) { return; }
+
     const minions = await Character.findAll();
 
     let data = {

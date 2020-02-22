@@ -5,6 +5,7 @@ Resolver.Minions = (function() {
 
     await eatFood(minions);
     await applyHealing(minions);
+    await checkLoyalty(minions);
   }
 
   async function eatFood(minions) {
@@ -34,6 +35,34 @@ Resolver.Minions = (function() {
     }));
   }
 
-  return { dailyUpdate };
+  // The checkLoyalty() function is called at the end of each day to determine if any of your minions decide to betray
+  // you, or if the majority of your minions decide to rice up in mutiny against you. Though the player can check each
+  // minion to determine how loyal they are, this check should mostly be kept secret until it triggers something.
+  async function checkLoyalty(minions) {
+    let loyal = [];
+    let afraid = [];
+    let rebellious = [];
+    let traitorous = [];
+
+    each(minions, minion => {
+      if (minion.isTraitorous)      { Random.roll(4) == 0 ? traitorous.push(minion.id) : rebellious.push(minion.id); }
+      else if (minion.isRebellious) { rebellious.push(minion.id); }
+      else if (minion.isAfraid)     { afraid.push(minion.id); }
+      else if (minion.isLoyal)      { loyal.push(minion.id); }
+    });
+
+    await Flag.setAll({
+      'minions.loyal-count':      loyal.length,
+      'minions.afraid-count':     afraid.length,
+      'minions.rebellious-count': rebellious.length,
+      'minions.traitorous-count': traitorous.length,
+      'minions.loyal-ids':        loyal.join(','),
+      'minions.afraid-ids':       afraid.join(','),
+      'minions.rebellious-ids':   rebellious.join(','),
+      'minions.traitorous-ids':   traitorous.join(','),
+    });
+  }
+
+  return { dailyUpdate, checkLoyalty };
 
 })();

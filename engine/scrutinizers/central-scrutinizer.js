@@ -21,6 +21,7 @@ global.CentralScrutinizer = (function() {
     if (requirement == 'game.metric')          { return Environment.Metric; }
     if (requirement == 'game.not-metric')      { return ! Environment.Metric; }
     if (requirement.match(/^game.dayNumber/))  { return await checkDayNumber(requirement); }
+    if (requirement.match(/^game.food/))       { return await checkFood(requirement); }
     if (requirement.match(/^flag/))            { return await checkFlag(requirement); }
     if (requirement.match(/^no-flag/))         { return await checkFlagNotExists(requirement); }
     if (requirement.match(/^state/))           { return checkState(requirement,extra.state); }
@@ -46,6 +47,12 @@ global.CentralScrutinizer = (function() {
   async function checkDayNumber(requirement) {
     let match = requirement.match(/dayNumber(<|<=|=|>=|>)([^<>=]+)/);
     return checkComparisonOperation((await Game.instance()).dayNumber,match[1],match[2]);
+  }
+
+  // Food number requirement (game.food=0) (game.food>100)
+  async function checkFood(requirement) {
+    let match = requirement.match(/food(<|<=|=|>=|>)([^<>=]+)/);
+    return checkComparisonOperation((await Game.instance()).food,match[1],match[2]);
   }
 
   // Requirements Like: flag.cock=horse, or flag.dicksSucked>=37

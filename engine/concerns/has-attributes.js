@@ -42,22 +42,22 @@ global.HasAttributes = { isAppliedTo: function(model) {
 
   model.prototype.getLoyaltyWord = function() {
     if (this.loyalty < 7)  { return 'traitorous'; }
-    if (this.loyalty < 15) { return 'fickle'; }
-    if (this.loyalty < 25) { return 'faithful'; }
+    if (this.loyalty < 15) { return 'untrustworthy'; }
+    if (this.loyalty < 25) { return 'wavering'; }
     if (this.loyalty < 50) { return 'loyal'; }
-    if (this.loyalty < 75) { return 'reliable'; }
-    if (this.loyalty < 100) { return 'unwavering'; }
+    if (this.loyalty < 75) { return 'faithful'; }
+    if (this.loyalty < 100) { return 'dedicated'; }
     return 'absolute';
   }
 
   model.prototype.getFearWord = function() {
     if (this.fear < 7)  { return 'fearless'; }
     if (this.fear < 15) { return 'cautious'; }
-    if (this.fear < 25) { return 'wary'; }
+    if (this.fear < 25) { return 'watchful'; }
     if (this.fear < 50) { return 'fearful'; }
     if (this.fear < 75) { return 'afraid'; }
     if (this.fear < 100) { return 'terrified'; }
-    return 'aghast';
+    return 'panicked';
   }
 
   model.prototype.adjustLoyaly = function(amount) {

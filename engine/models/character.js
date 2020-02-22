@@ -32,6 +32,23 @@ global.Character = Database.instance().define('character', {
     singleName()  { return this.forcedName || this.firstName },
     portrait()    { return ImageResource.lookup(this.portraitCode || 'unknown-portrait'); },
 
+    isLoyal()      { return this.loyalty >= 25 },
+    isAfraid()     { return this.fear >= 25 },
+
+    // For a minion to be rebellus they either need to have low fear or low
+    // loyalty. The more they don't like you, the less fear of you they need
+    // to betray you.
+    isRebellious() {
+      if (this.fear < 7) { return this.loyalty < 25; }
+      if (this.fear < 15) { return this.loyalty < 15; }
+      if (this.fear < 25) { return this.loyalty < 7; }
+      return false;
+    },
+
+    // Essentially the same as the rebellious but wile the rebellious cutoff is
+    // about fear + loyalty being less than 32, the cutoff for traitorous is 16
+    isTraitorous() { return (this.fear + this.loyalty) < 16 },
+
     name() {
       return this.forcedName || `${this.preName||''} ${this.firstName} ${this.lastName||''}`.trim();
     },
