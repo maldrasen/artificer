@@ -53,6 +53,7 @@ Event.build('found-blight-spider', {
   // TODO: This can't be the real way that we add injuries. The abusers need
   //       to be able to add injuries that aren't coming from hazards.
   onFinish: async choices => {
+    const state = { actors:{ C:choices.event.actorIDs.C }};
     const character = await Character.lookup(choices.event.actorIDs.C);
     const cock = await character.getCock();
     const pussy = await character.getPussy();
@@ -67,8 +68,8 @@ Event.build('found-blight-spider', {
       await (new CockDescriber({ character:character, cock:cock })).updateDescription();
 
       choices['torment-balls'] == 'yes' ?
-        (await EventQueue.enqueueEvent('found-blight-spider-torment-balls')):
-        (await EventQueue.enqueueEvent('found-blight-spider-normal'));
+        (await EventQueue.enqueueEvent('found-blight-spider-torment-balls',state)):
+        (await EventQueue.enqueueEvent('found-blight-spider-normal',state));
     }
     else {
       pussy.blightLevel = 3;
@@ -79,8 +80,8 @@ Event.build('found-blight-spider', {
       await (new PussyDescriber({ character:character, pussy:pussy })).updateDescription();
 
       choices['torment-pussy'] == 'yes' ?
-        (await EventQueue.enqueueEvent('found-blight-spider-torment-pussy')):
-        (await EventQueue.enqueueEvent('found-blight-spider-normal'));
+        (await EventQueue.enqueueEvent('found-blight-spider-torment-pussy',state)):
+        (await EventQueue.enqueueEvent('found-blight-spider-normal',state));
     }
   },
 
