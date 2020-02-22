@@ -40,7 +40,15 @@ Event.build('ambush-rat-capture', {
   }],
 
   onFinish: async choices => {
-    await EventQueue.enqueueEvent(choices.approach == 'befriend' ? 'ambush-rat-befriend' : 'ambush-rat-torment');
+    const rat = await Character.lookup(choices.event.actorIDs.R);
+
+    if (choices.approach == 'befriend') {
+      await rat.update({ loyalty:40, fear:20 });
+      await EventQueue.enqueueEvent('ambush-rat-befriend');
+    } else {
+      await rat.update({ loyalty:20, fear:40 });
+      await EventQueue.enqueueEvent('ambush-rat-torment');
+    }
   },
 
 });

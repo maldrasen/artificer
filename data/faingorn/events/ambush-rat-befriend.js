@@ -33,7 +33,7 @@ Event.build('ambush-rat-befriend', {
       { playerSpeaker:true, text:`"Everything within this place now belongs to me."` },
       { playerSpeaker:true, text:`"I have need of servents though."` },
       { playerSpeaker:true, text:`"I would like for you to return to your chief and let him know that a powerful wizard is now the {{P::character.title}} of this keep."` },
-      { playerSpeaker:true, text:`"If the Deep Hole Scaven serve me, they will become powerful, and feared again."` },
+      { playerSpeaker:true, text:`"If the Deep Hole Scaven serve me, they will become powerful, and feared again."`, effects:['actor(R) loyal 1']},
       { playerSpeaker:true, text:`"Understand?"` },
       { text:`{{R::gender.He}} looks me up and down somewhat doubtfully, no doubt noticing that I'm dressed in nothing but some stolen furs.` },
       { text:`To make my point, I reach out towards the dry wood in the fireplace and with a dramatic hand motion cause it to burst into flame.` },
