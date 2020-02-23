@@ -45,10 +45,13 @@ Resolver.Minions = (function() {
     let traitorous = [];
 
     each(minions, minion => {
-      if (minion.isTraitorous)      { Random.roll(4) == 0 ? traitorous.push(minion.id) : rebellious.push(minion.id); }
-      else if (minion.isRebellious) { rebellious.push(minion.id); }
-      else if (minion.isAfraid)     { afraid.push(minion.id); }
-      else if (minion.isLoyal)      { loyal.push(minion.id); }
+      if (minion.isTraitorous) { traitorous.push(minion.id); }
+
+      // The rebellious, loyal, and afraid lists are mutually exclusive. A traitorous minion is also a rebellious one,
+      // which is why they can be added to both lists, while these others cannor.
+      if (minion.isRebellious)  { rebellious.push(minion.id); }
+      else if (minion.isLoyal)  { loyal.push(minion.id); }
+      else if (minion.isAfraid) { afraid.push(minion.id); }
     });
 
     await Flag.setAll({

@@ -2,10 +2,10 @@ global.MinionScrutinizer = (function() {
 
   async function check(requirement, context) {
     if (requirement.match(/^minions.working-project/)) { return await checkWorkingMinionCount(requirement, context); }
-    if (requirement == 'minions.will-betray')          { return checkBetray(context); }
-    if (requirement == 'minions.will-not-betray')      { return ! checkBetray(context); }
-    if (requirement == 'minions.will-mutiny')          { return checkMutiny(context); }
-    if (requirement == 'minions.will-not-mutiny')      { return ! checkMutiny(context); }
+    if (requirement == 'minions.will-betray')          { return await checkBetray(context); }
+    if (requirement == 'minions.will-not-betray')      { return await checkBetray(context) == false; }
+    if (requirement == 'minions.will-mutiny')          { return await checkMutiny(context); }
+    if (requirement == 'minions.will-not-mutiny')      { return await checkMutiny(context) == false; }
 
     if (requirement.match(/^minion\(.+\)\./)) { return checkMinion(requirement, context); }
 
@@ -33,12 +33,18 @@ global.MinionScrutinizer = (function() {
     return CentralScrutinizer.checkComparisonOperation(count,match[1],match[2]);
   }
 
-  function checkBetray(context) {
-    return false;
+  async function checkBetray(context) {
+    await context.addFlags();
+    return parseInt(context.get('flags')['minions.traitorous-count'] || 0) > 0
   }
 
-  function checkMutiny(context) {
-    return false;
+  // You minions will mutiny if you have more rebellious minions than loyal minions. The minimum number of minions that
+  // can mutiny is 4, with 3 rebellious and 1 loyal.
+  async function checkMutiny(context) {
+    await context.addFlags();
+    let loyal =      parseInt(context.get('flags')['minions.loyal-count'] || 0);
+    let rebellious = parseInt(context.get('flags')['minions.rebellious-count'] || 0);
+    return (loyal + rebellious > 3) && (rebellious > loyal);
   }
 
   return { check };

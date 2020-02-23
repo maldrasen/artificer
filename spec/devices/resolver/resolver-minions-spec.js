@@ -1,4 +1,4 @@
-describe.only('Resolver: Minions', function() {
+describe('Resolver: Minions', function() {
 
   describe('checkLoyalty()', function() {
     async function buildMinions() {
@@ -15,11 +15,8 @@ describe.only('Resolver: Minions', function() {
           Flag.getAll().then(flags => {
             expect(flags['minions.loyal-count']).to.equal('1');
             expect(flags['minions.afraid-count']).to.equal('1');
-            expect(flags['minions.rebellious-count']).to.be.oneOf(['1','2']);
-
-            if (flags['minions.rebellious-count'] == '1') { expect(flags['minions.traitorous-count']).to.equal('1') }
-            if (flags['minions.rebellious-count'] == '2') { expect(flags['minions.traitorous-count']).to.equal('0') }
-
+            expect(flags['minions.rebellious-count']).to.equal('2');
+            expect(flags['minions.traitorous-count']).to.equal('1');
             done();
           });
         });

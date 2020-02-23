@@ -59,8 +59,9 @@ global.WeaverContext = class WeaverContext {
   }
 
   async addFlags() {
-    const flags = await Flag.getAll();
-    this.set('flags', flags);
+    if (this.get('flags') == null) {
+      this.set('flags', (await Flag.getAll()));
+    }
   }
 
   // I don't want to include all the minions in the context, but I still
