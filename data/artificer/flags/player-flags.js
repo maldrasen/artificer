@@ -2,8 +2,8 @@
 // The player's names and title, used to show the player's name on the location
 // menu, and perhaps other places as well. These should be set as soon as the
 // player model is built by Player.forge()
-FlagInfo.build('player.firstName', {});
-FlagInfo.build('player.lastName', {});
+FlagInfo.build('player.first-name', {});
+FlagInfo.build('player.last-name', {});
 FlagInfo.build('player.title', {});
 
 // The player's gender preference for men.

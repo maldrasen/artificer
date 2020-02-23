@@ -44,7 +44,7 @@ Event.build('journal-4', {
 
   onFinish: async () => {
     AvailableEvent.add({ code:'journal-5' });
-    Flag.set('mission.sisalDiscoverable','unlocked');
+    Flag.set('mission.sisal-discoverable','unlocked');
   },
 
 });

@@ -38,7 +38,7 @@ Role.Forager = (function() {
   // Normally there's a 5% chance of getting injured when out foraging. If this
   // is the character's first time foraging then it should always be a success.
   async function wasCharacterInjured() {
-    return ((await Flag.lookupValue('role.forage.successCount')) == 0) ? false : Random.upTo(100) > 95;
+    return ((await Flag.lookupValue('role.forage.success-count')) == 0) ? false : Random.upTo(100) > 95;
   }
 
   // TODO: The number of trips that a character can make is based entirely on

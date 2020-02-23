@@ -70,7 +70,7 @@ Event.build('found-fruits-and-nuts', {
   }],
 
   onFinish: async choices => {
-    Flag.set('locationMenu.inventory','unlocked');
+    Flag.set('location-menu.inventory','unlocked');
 
     if (['normal','filthy'].indexOf(choices.sex) >= 0) {
       const player = await Player.instance();

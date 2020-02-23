@@ -38,8 +38,8 @@ describe('Role: Forager', function() {
   it('goes foraging for a second time.', function(done) {
 
     let flags = {
-      'role.forage.successCount': 1,
-      'role.forage.failureCount': 0,
+      'role.forage.success-count': 1,
+      'role.forage.failure-count': 0,
       'item.goat-nuts': 'unlocked'
     };
 
@@ -69,8 +69,8 @@ describe('Role: Forager', function() {
   it('goes foraging a third time', function(done) {
 
     let flags = {
-      'role.forage.successCount': 2,
-      'role.forage.failureCount': 0,
+      'role.forage.success-count': 2,
+      'role.forage.failure-count': 0,
       'item.goat-nuts': 'unlocked'
     };
 

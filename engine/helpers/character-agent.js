@@ -30,7 +30,7 @@ global.CharacterAgent = (function() {
   //       that the chief is always the strongest scaven. A change in
   //       leadership like that might warrent another event.
   async function scavenChief() {
-    const flag = await Flag.lookup('character.scavenChief');
+    const flag = await Flag.lookup('character.scaven-chief');
     if (flag) {
       const chief = await Character.lookup(flag.value);
       if (chief && chief.alive) {
@@ -39,7 +39,7 @@ global.CharacterAgent = (function() {
     }
 
     const newChief = await findStrongest('scaven');
-    await Flag.set('character.scavenChief',newChief.id)
+    await Flag.set('character.scaven-chief',newChief.id)
     return newChief;
   }
 

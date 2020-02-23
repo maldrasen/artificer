@@ -16,8 +16,8 @@ describe('Flag', function() {
   });
 
   it('sets a flag with info', function(done) {
-    Flag.set('locationMenu.inventory','unlocked').then(() => {
-      Flag.equals('locationMenu.inventory','unlocked').then(result => {
+    Flag.set('location-menu.inventory','unlocked').then(() => {
+      Flag.equals('location-menu.inventory','unlocked').then(result => {
         expect(result).to.be.true;
         done();
       });
@@ -25,8 +25,8 @@ describe('Flag', function() {
   });
 
   it('sets a flag with an integer value', function(done) {
-    Flag.set('character.scavenChief',20).then(() => {
-      Flag.lookup('character.scavenChief').then(flag => {
+    Flag.set('character.scaven-chief',20).then(() => {
+      Flag.lookup('character.scaven-chief').then(flag => {
         expect(flag.value).to.equal('20');
         done();
       });
@@ -81,7 +81,7 @@ describe('Flag', function() {
   });
 
   it('can have a default value set', function(done) {
-    Flag.lookup('location.keepName').then(flag => {
+    Flag.lookup('location.keep-name').then(flag => {
       expect(flag.value).to.equal('Faingorn Keep');
       done();
     });
