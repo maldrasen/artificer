@@ -1,9 +1,9 @@
 describe('Flag', function() {
 
   const scores = {
-    'player.fucksMen':'never',
-    'player.fucksFutas':'maybe',
-    'player.fucksWomen':'always',
+    'player.fucks-men':'never',
+    'player.fucks-futas':'maybe',
+    'player.fucks-women':'always',
   };
 
   it('sets a raw flag', function(done) {

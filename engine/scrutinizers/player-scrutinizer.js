@@ -3,15 +3,15 @@ global.PlayerScrutinizer = (function() {
   async function check(requirement, context) {
     const player = await lookupPlayer(context);
 
-    if (requirement == 'player.always-fucks-men')              { return await Flag.equals('player.fucksMen','always'); }
-    if (requirement == 'player.sometimes-fucks-men')           { return await Flag.equals('player.fucksMen','maybe'); }
-    if (requirement == 'player.never-fucks-men')               { return await Flag.equals('player.fucksMen','never'); }
-    if (requirement == 'player.always-fucks-women')            { return await Flag.equals('player.fucksWomen','always'); }
-    if (requirement == 'player.sometimes-fucks-women')         { return await Flag.equals('player.fucksWomen','maybe'); }
-    if (requirement == 'player.never-fucks-women')             { return await Flag.equals('player.fucksWomen','never'); }
-    if (requirement == 'player.always-fucks-futas')            { return await Flag.equals('player.fucksFutas','always'); }
-    if (requirement == 'player.sometimes-fucks-futas')         { return await Flag.equals('player.fucksFutas','maybe'); }
-    if (requirement == 'player.never-fucks-futas')             { return await Flag.equals('player.fucksFutas','never'); }
+    if (requirement == 'player.always-fucks-men')              { return await Flag.equals('player.fucks-men','always'); }
+    if (requirement == 'player.sometimes-fucks-men')           { return await Flag.equals('player.fucks-men','maybe'); }
+    if (requirement == 'player.never-fucks-men')               { return await Flag.equals('player.fucks-men','never'); }
+    if (requirement == 'player.always-fucks-women')            { return await Flag.equals('player.fucks-women','always'); }
+    if (requirement == 'player.sometimes-fucks-women')         { return await Flag.equals('player.fucks-women','maybe'); }
+    if (requirement == 'player.never-fucks-women')             { return await Flag.equals('player.fucks-women','never'); }
+    if (requirement == 'player.always-fucks-futas')            { return await Flag.equals('player.fucks-futas','always'); }
+    if (requirement == 'player.sometimes-fucks-futas')         { return await Flag.equals('player.fucks-futas','maybe'); }
+    if (requirement == 'player.never-fucks-futas')             { return await Flag.equals('player.fucks-futas','never'); }
     if (requirement == 'player.accepts-men')                   { return (await genderPreferenceScores()).male > 0 }
     if (requirement == 'player.accepts-no-men')                { return (await genderPreferenceScores()).male == 0 }
     if (requirement == 'player.accepts-women')                 { return (await genderPreferenceScores()).female > 0 }
@@ -66,9 +66,9 @@ global.PlayerScrutinizer = (function() {
   // works of the context so that it's synchronous.
   async function genderPreferenceScores() {
     const scores = { male:0, female:0, futa:0 };
-    const fucksMen = await Flag.lookup('player.fucksMen');
-    const fucksWomen = await Flag.lookup('player.fucksWomen');
-    const fucksFutas = await Flag.lookup('player.fucksFutas');
+    const fucksMen = await Flag.lookup('player.fucks-men');
+    const fucksWomen = await Flag.lookup('player.fucks-women');
+    const fucksFutas = await Flag.lookup('player.fucks-futas');
 
     if (fucksMen.value == 'always')   { scores.male += 2; }
     if (fucksMen.value == 'maybe')    { scores.male += 1; }

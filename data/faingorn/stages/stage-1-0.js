@@ -14,9 +14,9 @@ GameStage.build('stage-1-0',{
     'map.upper-keep':               'unlocked',
     'plan-view.allow-idle':         'unlocked',
     'plan-view.roles.forager':      'unlocked',
-    'player.fucksFutas':            'always',
-    'player.fucksMen':              'maybe',
-    'player.fucksWomen':            'always',
+    'player.fucks-futas':           'always',
+    'player.fucks-men':             'maybe',
+    'player.fucks-women':           'always',
   },
 
   setup: async game => {

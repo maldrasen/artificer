@@ -69,9 +69,9 @@ Flag.alwaysFuckGenderList = async function() {
   let flags = await Flag.getAll();
   let always = []
 
-  if (flags['player.fucksMen'] == 'always') { always.push('male'); }
-  if (flags['player.fucksFutas'] == 'always') { always.push('futa'); }
-  if (flags['player.fucksWomen'] == 'always') { always.push('female'); }
+  if (flags['player.fucks-men'] == 'always')   { always.push('male');   }
+  if (flags['player.fucks-futas'] == 'always') { always.push('futa');   }
+  if (flags['player.fucks-women'] == 'always') { always.push('female'); }
 
   return always;
 }
@@ -80,9 +80,9 @@ Flag.maybeFuckGenderList = async function() {
   let flags = await Flag.getAll();
   let maybe = []
 
-  if (flags['player.fucksMen'] == 'maybe') { maybe.push('male'); }
-  if (flags['player.fucksFutas'] == 'maybe') { maybe.push('futa'); }
-  if (flags['player.fucksWomen'] == 'maybe') { maybe.push('female'); }
+  if (flags['player.fucks-men'] == 'maybe')   { maybe.push('male');   }
+  if (flags['player.fucks-futas'] == 'maybe') { maybe.push('futa');   }
+  if (flags['player.fucks-women'] == 'maybe') { maybe.push('female'); }
 
   return maybe;
 }
@@ -91,12 +91,12 @@ Flag.genderPreferenceScores = async function() {
   let flags = await Flag.getAll();
   let scores = { male:0, female:0, futa:0 };
 
-  if (flags['player.fucksMen'] == 'always')   { scores.male = 2; }
-  if (flags['player.fucksMen'] == 'maybe')    { scores.male = 1; }
-  if (flags['player.fucksWomen'] == 'always') { scores.female = 2; }
-  if (flags['player.fucksWomen'] == 'maybe')  { scores.female = 1; }
-  if (flags['player.fucksFutas'] == 'always') { scores.futa = 2; }
-  if (flags['player.fucksFutas'] == 'maybe')  { scores.futa = 1; }
+  if (flags['player.fucks-men'] == 'always')   { scores.male = 2;   }
+  if (flags['player.fucks-men'] == 'maybe')    { scores.male = 1;   }
+  if (flags['player.fucks-women'] == 'always') { scores.female = 2; }
+  if (flags['player.fucks-women'] == 'maybe')  { scores.female = 1; }
+  if (flags['player.fucks-futas'] == 'always') { scores.futa = 2;   }
+  if (flags['player.fucks-futas'] == 'maybe')  { scores.futa = 1;   }
 
   return scores;
 }

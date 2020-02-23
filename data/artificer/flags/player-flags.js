@@ -7,17 +7,17 @@ FlagInfo.build('player.lastName', {});
 FlagInfo.build('player.title', {});
 
 // The player's gender preference for men.
-FlagInfo.build('player.fucksMen', {
+FlagInfo.build('player.fucks-men', {
   validateIn: ['always','maybe','never']
 });
 
 // The player's gender preference for futas.
-FlagInfo.build('player.fucksFutas', {
+FlagInfo.build('player.fucks-futas', {
   validateIn: ['always','maybe','never']
 });
 
 // The player's gender preference for women.
-FlagInfo.build('player.fucksWomen', {
+FlagInfo.build('player.fucks-women', {
   validateIn: ['always','maybe','never']
 });
 
