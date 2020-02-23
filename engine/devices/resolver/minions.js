@@ -55,6 +55,7 @@ Resolver.Minions = (function() {
     });
 
     await Flag.setAll({
+      'minions.count':            minions.length,
       'minions.loyal-count':      loyal.length,
       'minions.afraid-count':     afraid.length,
       'minions.rebellious-count': rebellious.length,
