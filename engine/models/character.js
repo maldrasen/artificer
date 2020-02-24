@@ -39,9 +39,10 @@ global.Character = Database.instance().define('character', {
     // loyalty. The more they don't like you, the less fear of you they need
     // to betray you.
     isRebellious() {
-      if (this.fear < 7) { return this.loyalty < 25; }
+      if (this.fear < 7)  { return this.loyalty < 25; }
       if (this.fear < 15) { return this.loyalty < 15; }
       if (this.fear < 25) { return this.loyalty < 7; }
+      if (this.fear < 50) { return this.loyalty < 1; }
       return false;
     },
 
@@ -76,12 +77,19 @@ Character.allForClient = async function() {
 
 // Reduce the loyality of all the player's minions. This happens in the
 // starvation event, but may also happen at other disastrous moments as well.
+// If the minion's loyalty is already at 0 their fear will begin to drop slowly
+// as well.
 Character.reduceAllLoyalty = async function() {
   const minions = await Character.findAll({ where:{ type:'minion' }});
 
   await Promise.all(minions.map(async minion => {
     minion.loyalty = minion.loyalty - Random.upTo(6);
     minion.loyalty = minion.loyalty < 0 ? 0 : minion.loyalty;
+
+    if (minion.loyalty == 0) {
+      minion.fear = minion.fear == 0 ? 0 : minion.fear - 1;
+    }
+
     await minion.save();
   }));
 

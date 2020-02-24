@@ -4,7 +4,6 @@ global.AvailableEvent = Database.instance().define('available_event', {
   state_json:    { type:Sequelize.STRING },
   requires_json: { type:Sequelize.STRING },
   chance:        { type:Sequelize.INTEGER },
-  repeat:        { type:Sequelize.BOOLEAN },
 },{
   timestamps: false,
   getterMethods: {
@@ -28,7 +27,6 @@ AvailableEvent.addAll = async function(events) {
 //   state:        {}
 //   requires:     []
 //   chance:       1-100 percent chance of happening
-//   repeat:       This event can repeat
 AvailableEvent.add = async function(data) {
   let event = Event.lookup(data.code);
   let eventType = (event.location != null) ? 'location' : event.eventType;
@@ -39,7 +37,6 @@ AvailableEvent.add = async function(data) {
     state_json:    JSON.stringify(data.state||{}),
     requires_json: JSON.stringify(data.requires||[]),
     chance:        data.chance || 100,
-    repeat:        data.repeat === true,
   });
 }
 
