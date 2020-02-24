@@ -3,7 +3,7 @@ Event.build('starving', {
   repeatable: true,
 
   stages:[{
-    requires: 'minions.count=1',
+    requires: 'flag.minions.count=1',
     pages:[{ text:`My minion and I have run out of food.` }],
   }],
 
@@ -16,7 +16,7 @@ Event.build('starving', {
     const game = await Game.instance();
     const flags = await Flag.getAll();
 
-    await Character.reduceAllLoyalty();
+    await Character.reduceAllLoyalty(6);
     await AvailableEvent.add({ code:'starving', requires:[`game.dayNumber>${game.dayNumber}`]});
 
     if (flags['minions.count'] == 1) { return await EventQueue.enqueueEvent('starving-single', { priority:'next' }); }

@@ -77,17 +77,18 @@ Character.allForClient = async function() {
 
 // Reduce the loyality of all the player's minions. This happens in the
 // starvation event, but may also happen at other disastrous moments as well.
-// If the minion's loyalty is already at 0 their fear will begin to drop slowly
-// as well.
-Character.reduceAllLoyalty = async function() {
+// If the minion's loyalty is already at 0 their fear will begin to drop
+// instead.
+Character.reduceAllLoyalty = async function(severity) {
   const minions = await Character.findAll({ where:{ type:'minion' }});
 
   await Promise.all(minions.map(async minion => {
-    minion.loyalty = minion.loyalty - Random.upTo(6);
+    minion.loyalty = minion.loyalty - Random.upTo(severity);
     minion.loyalty = minion.loyalty < 0 ? 0 : minion.loyalty;
 
     if (minion.loyalty == 0) {
-      minion.fear = minion.fear == 0 ? 0 : minion.fear - 1;
+      minion.fear = minion.fear - Random.upTo(Math.ceil(severity/2));
+      minion.fear = minion.fear < 0 ? 0 : minion.fear;
     }
 
     await minion.save();

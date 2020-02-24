@@ -1,7 +1,6 @@
 global.MinionScrutinizer = (function() {
 
   async function check(requirement, context) {
-    if (requirement.match(/^minions.count/))           { return await checkMinionCount(requirement, context); }
     if (requirement.match(/^minions.working-project/)) { return await checkWorkingMinionCount(requirement, context); }
     if (requirement == 'minions.will-betray')          { return await checkBetray(context); }
     if (requirement == 'minions.will-not-betray')      { return await checkBetray(context) == false; }
@@ -24,13 +23,6 @@ global.MinionScrutinizer = (function() {
     }
 
     return CharacterScrutinizer.check(match[2], minion)
-  }
-
-  async function checkMinionCount(requirement, context) {
-    await context.addFlags();
-    let count = parseInt(context.get('flags')['minions.count'] || 0);
-    let match = requirement.match(/count(<|<=|=|>=|>)([^<>=]+)/);
-    return CentralScrutinizer.checkComparisonOperation(count,match[1],match[2]);
   }
 
   // To check how many menions are working on a project. This requirement has the format: "minions.working-project>1"
