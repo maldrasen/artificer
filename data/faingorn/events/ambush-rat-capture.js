@@ -1,8 +1,6 @@
 Event.build('ambush-rat-capture', {
   background:{ location:'great-hall', time:'evening' },
 
-  actors:{ R:'any-scaven' },
-
   stages:[{
     pages:[
       { text:`It's a good thing that I've had an entire day to rest because I'm going to need to fly again if I'm going to capture one of these rats.` },
@@ -44,10 +42,10 @@ Event.build('ambush-rat-capture', {
 
     if (choices.approach == 'befriend') {
       await rat.update({ loyalty:40, fear:20 });
-      await EventQueue.enqueueEvent('ambush-rat-befriend');
+      await EventQueue.enqueueEvent('ambush-rat-befriend',{ actors:{ R:rat.id }});
     } else {
       await rat.update({ loyalty:20, fear:40 });
-      await EventQueue.enqueueEvent('ambush-rat-torment');
+      await EventQueue.enqueueEvent('ambush-rat-torment',{ actors:{ R:rat.id }});
     }
   },
 

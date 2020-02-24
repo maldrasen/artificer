@@ -1,8 +1,6 @@
 Event.build('ambush-rat-befriend', {
   background:{ location:'great-hall', time:'evening' },
 
-  actors:{ R:'any-scaven' },
-
   stages:[{
     pages:[
       { text:`I relax my arm around the rat's throat just enough to allow {{R::gender.him}} to breathe and speak while still applying enough pressure to let {{R::gender.him}} know that they're still privileges that I could revoke at any moment.` },
@@ -49,9 +47,9 @@ Event.build('ambush-rat-befriend', {
     ]
   }],
 
-  onFinish: async () => {
+  onFinish: async choices => {
     await Game.updateLocation('great-hall');
-    await EventQueue.enqueueEvent('ambush-rat-end-1');
+    await EventQueue.enqueueEvent('ambush-rat-end-1',{ actors:{ R:choices.event.actorIDs.R }});
   },
 
 });

@@ -12,6 +12,7 @@ global.CharacterAgent = (function() {
 
   async function findActor(descriptive) {
     if (descriptive == 'player')              { return await Player.instance();      }
+    if (descriptive == 'any-minion')          { return await findAny();              }
 
     // Scaven
     if (descriptive == 'any-scaven')          { return await findAny('scaven');      }
@@ -44,7 +45,9 @@ global.CharacterAgent = (function() {
   }
 
   function findAny(species) {
-    return Character.findOne({ where:{ speciesCode:species }});
+    return (species == null) ?
+      Character.findOne({ where:{ type:'minion', status:'normal' }}):
+      Character.findOne({ where:{ type:'minion', status:'normal', speciesCode:species }});
   }
 
   function findSmartest(species) {

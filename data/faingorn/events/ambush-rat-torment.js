@@ -1,8 +1,6 @@
 Event.build('ambush-rat-torment', {
   background:{ location:'great-hall', time:'evening' },
 
-  actors:{ R:'any-scaven' },
-
   stages:[{
     pages:[
       { text:`I roughly slam the rat up against the curved stone wall.` },
@@ -82,9 +80,9 @@ Event.build('ambush-rat-torment', {
     ]
   }],
 
-  onFinish: async () => {
+  onFinish: async choices => {
     await Game.updateLocation('great-hall');
-    await EventQueue.enqueueEvent('ambush-rat-end-1');
+    await EventQueue.enqueueEvent('ambush-rat-end-1',{ actors:{ R:choices.event.actorIDs.R }});
   },
 
 });

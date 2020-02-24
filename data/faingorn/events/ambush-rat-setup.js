@@ -42,8 +42,8 @@ Event.build('ambush-rat-setup', {
   // the player is alone) it's removed from the event queue. Nothing really
   // important happens in it though.
   onFinish: async choices => {
-    await CharacterBuilder.build({ type:'pending', species:'scaven', gender:choices.gender });
-    await EventQueue.enqueueEvent('ambush-rat-capture');
+    const rat = await CharacterBuilder.build({ type:'pending', species:'scaven', gender:choices.gender });
+    await EventQueue.enqueueEvent('ambush-rat-capture',{ actors:{ R:rat.id }});
     await EventQueue.removeEvent('looking-outside-1');
   },
 
