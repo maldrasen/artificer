@@ -89,7 +89,7 @@ Event.build('found-willow-branches', {
     });
 
     if (choices.whip == 'yes') {
-      await EventQueue.enqueueEvent(`found-willow-branches-whip`, { actors:{ C:choices.event.actorIDs.C }});
+      await EventQueue.enqueueEvent(`found-willow-branches-whip`, { priority:'next', actors:{ C:choices.event.actorIDs.C }});
     }
   },
 

@@ -42,10 +42,10 @@ Event.build('ambush-rat-capture', {
 
     if (choices.approach == 'befriend') {
       await rat.update({ loyalty:40, fear:20 });
-      await EventQueue.enqueueEvent('ambush-rat-befriend',{ actors:{ R:rat.id }});
+      await EventQueue.enqueueEvent('ambush-rat-befriend',{ priority:'next', actors:{ R:rat.id }});
     } else {
       await rat.update({ loyalty:20, fear:40 });
-      await EventQueue.enqueueEvent('ambush-rat-torment',{ actors:{ R:rat.id }});
+      await EventQueue.enqueueEvent('ambush-rat-torment',{ priority:'next', actors:{ R:rat.id }});
     }
   },
 

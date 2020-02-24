@@ -19,7 +19,7 @@ Event.build('starving', {
     await Character.reduceAllLoyalty();
     await AvailableEvent.add({ code:'starving', requires:[`game.dayNumber>${game.dayNumber}`]});
 
-    if (flags['minions.count'] == 1) { return await EventQueue.enqueueEvent('starving-single'); }
+    if (flags['minions.count'] == 1) { return await EventQueue.enqueueEvent('starving-single', { priority:'next' }); }
 
     throw `TODO: Need a starvation event that matches the game's current state.`
   },

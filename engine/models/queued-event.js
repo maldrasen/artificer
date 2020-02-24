@@ -1,7 +1,8 @@
 global.QueuedEvent = Database.instance().define('queued-event', {
-  code:       { type:Sequelize.STRING  },
-  location:   { type:Sequelize.STRING  },
-  state_json: { type:Sequelize.STRING  },
+  code:       { type:Sequelize.STRING },
+  priority:   { type:Sequelize.STRING },
+  location:   { type:Sequelize.STRING },
+  state_json: { type:Sequelize.STRING },
 },{
   timestamps: false,
   getterMethods: {

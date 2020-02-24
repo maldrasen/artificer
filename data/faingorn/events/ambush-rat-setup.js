@@ -43,7 +43,7 @@ Event.build('ambush-rat-setup', {
   // important happens in it though.
   onFinish: async choices => {
     const rat = await CharacterBuilder.build({ type:'pending', species:'scaven', gender:choices.gender });
-    await EventQueue.enqueueEvent('ambush-rat-capture',{ actors:{ R:rat.id }});
+    await EventQueue.enqueueEvent('ambush-rat-capture',{ priority:'next', actors:{ R:rat.id }});
     await EventQueue.removeEvent('looking-outside-1');
   },
 

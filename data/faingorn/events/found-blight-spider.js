@@ -53,7 +53,7 @@ Event.build('found-blight-spider', {
   // TODO: This can't be the real way that we add injuries. The abusers need
   //       to be able to add injuries that aren't coming from hazards.
   onFinish: async choices => {
-    const state = { actors:{ C:choices.event.actorIDs.C }};
+    const state = { priority:'next', actors:{ C:choices.event.actorIDs.C }};
     const character = await Character.lookup(choices.event.actorIDs.C);
     const cock = await character.getCock();
     const pussy = await character.getPussy();

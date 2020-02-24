@@ -74,7 +74,11 @@ Event.build('found-fruits-and-nuts', {
 
     if (['normal','filthy'].indexOf(choices.sex) >= 0) {
       const player = await Player.instance();
-      await EventQueue.enqueueEvent(`found-fruits-and-nuts-sex-${player.genderCode == 'female' ? 'F':'M'}`,{ style:choices.sex, actors:{ C:choices.event.actorIDs.C }});
+      await EventQueue.enqueueEvent(`found-fruits-and-nuts-sex-${player.genderCode == 'female' ? 'F':'M'}`,{
+        priority: 'next',
+        style: choices.sex,
+        actors:{ C:choices.event.actorIDs.C }
+      });
     }
   },
 

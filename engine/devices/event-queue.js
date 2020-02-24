@@ -24,11 +24,17 @@ global.EventQueue = (function() {
   // Enqueue an event in the form { code:'make-god-cry', state:{ hail:'Satan' }}
   //   code: (required) The event code.
   //   state: (optional) The event state object.
+  //
+  // An event can have a priority value set in the state. If priority is 'next' that event should always come before
+  // any event without a priority set. If the priority is 'last' all events without last being set will come first.
   async function enqueueEvent(code, state) {
+    if (state == null) { state = {}; }
+
     let canEnqueue = await markEventAsEnqueued(code);
     if (canEnqueue) {
       return await QueuedEvent.create({
         code: code,
+        priority: state.priority || 'normal',
         location: Event.lookup(code).location || 'none',
         state_json: JSON.stringify(state||{})
       });
@@ -45,7 +51,22 @@ global.EventQueue = (function() {
 
   async function nextEvent() {
     const events = await getQueuedEvents();
-    return events[0]
+
+    let firstNext;
+    let firstNormal;
+    let firstLast;
+
+    for (let i=0; i<events.length; i++) {
+      if (firstNext == null &&   events[i].priority == 'next')   { firstNext = events[i];   }
+      if (firstNormal == null && events[i].priority == 'normal') { firstNormal = events[i]; }
+      if (firstLast == null &&   events[i].priority == 'last')   { firstLast = events[i];   }
+    }
+
+    if (firstNext) { return firstNext; }
+    if (firstNormal) { return firstNormal; }
+    if (firstLast) { return firstLast; }
+
+    return null;
   }
 
   async function nextLocationEvent(location) {

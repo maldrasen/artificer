@@ -2,14 +2,16 @@ Event.build('mutiny', {
 
   stages:[{
     pages:[
-      { text:`My minions have mutinied.` },
+      { text:`TODO: My minions have mutinied, but I don't have any events written for that yet.` },
     ]
+  },{
+    formPage: 'game-over'
   }],
 
-  onFinish: async () => {
-    // This event is always a game over. Will probably need to have different
-    // versions of this depending on what minions you have of course. I think
-    // you need to have a minimum of 4 minions to trigger this though.
-  },
+  // TODO: This event will always be a game over event. Like the starvation events, this event can branch in a few ways
+  //       depending on the number of minions who are rebelling. How many are still loyal and are being fought off?
+  //       How many are afraid and just watching? No matter what the situation is though the player still loses. You do
+  //       need to have a minimum of 4 minions to trigger this though, so will be a little while before we write this.
+  onFinish: async choices => {},
 
 });
