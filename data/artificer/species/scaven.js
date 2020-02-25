@@ -8,7 +8,7 @@ Species.build('scaven', {
 
   violenceAverage: 10,
   violenceRange: 20,
-  foodPerDay: 20,
+  foodPerDay: 2,
 
   bodyOptions: {
     baseHeight: 760,
