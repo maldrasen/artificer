@@ -38,7 +38,12 @@ global.ImageResource = class ImageResource extends Form {
   //    species
   //    gender
   //
+  // TODO: Still just a temp version of this, probably for a long time yet.
+  //
   static async portraitFor(character) {
+    if (character.title) { return ImageResource.lookup('temp-player'); }
+    if (character.speciesCode == 'scaven') { return ImageResource.lookup('temp-scaven'); }
+
     return ImageResource.lookup('unknown-portrait');
   }
 
