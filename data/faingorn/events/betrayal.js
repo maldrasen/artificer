@@ -1,8 +1,9 @@
 Event.build('betrayal', {
+  background:{ location:'great-hall', time:'evening' },
 
   stages:[{
     pages:[
-      { text:`A minion betrays me.` },
+      { text:`I startle awake sometime in the middle of the night.` },
     ]
   }],
 
@@ -11,11 +12,14 @@ Event.build('betrayal', {
   //       If you fail an attribute check you die. If you pass you can decide what to do with the minion that betrays
   //       you. No matter what you choose though they can no longer be a minion, though you could turn them into
   //       furnature or something perhaps. If this is your only or last minion who betrays you, that will always lead
-  //       to a game over.
+  //       to a game over. Background will also need to be set to the player's sleeping location.
   onFinish: async () => {
     const flags = await Flag.getAll();
+    const traitors = flags['minions.traitorous-ids'].split(',');
 
-    if (flags['minions.traitorous-count'] == 1) { return await EventQueue.enqueueEvent('betrayal-single', { priority:'next' }); }
+    if (flags['minions.traitorous-count'] == 1) {
+      return await EventQueue.enqueueEvent('betrayal-single', { priority:'next', actors:{ C:traitors[0] }});
+    }
 
     throw `TODO: Need a betrayal event that matches the game's current state.`
   },
