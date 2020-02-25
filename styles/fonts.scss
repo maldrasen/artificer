@@ -1,65 +1,80 @@
 
 @font-face {
+  font-family: cardo-bold;
+  src: url("../fonts/Cardo/Cardo-Bold.ttf");
+}
+
+@font-face {
+  font-family: cardo-italic;
+  src: url("../fonts/Cardo/Cardo-Italic.ttf");
+}
+
+@font-face {
+  font-family: cardo-regular;
+  src: url("../fonts/Cardo/Cardo-Regular.ttf");
+}
+
+@font-face {
   font-family: roboto-black;
-  src: url("../fonts/Roboto-Black.ttf");
+  src: url("../fonts/Roboto/Roboto-Black.ttf");
 }
 
 @font-face {
   font-family: roboto-bold;
-  src: url("../fonts/Roboto-Bold.ttf");
+  src: url("../fonts/Roboto/Roboto-Bold.ttf");
 }
 
 @font-face {
   font-family: roboto-medium;
-  src: url("../fonts/Roboto-Medium.ttf");
+  src: url("../fonts/Roboto/Roboto-Medium.ttf");
 }
 
 @font-face {
   font-family: roboto-medium-italic;
-  src: url("../fonts/Roboto-MediumItalic.ttf");
+  src: url("../fonts/Roboto/Roboto-MediumItalic.ttf");
 }
 
 @font-face {
   font-family: roboto-regular-italic;
-  src: url("../fonts/Roboto-RegularItalic.ttf");
+  src: url("../fonts/Roboto/Roboto-RegularItalic.ttf");
 }
 
 @font-face {
   font-family: roboto;
-  src: url("../fonts/Roboto-Regular.ttf");
+  src: url("../fonts/Roboto/Roboto-Regular.ttf");
 }
 
 @font-face {
   font-family: roboto-light;
-  src: url("../fonts/Roboto-Light.ttf");
+  src: url("../fonts/Roboto/Roboto-Light.ttf");
 }
 
 @font-face {
   font-family: roboto-thin;
-  src: url("../fonts/Roboto-Thin.ttf");
+  src: url("../fonts/Roboto/Roboto-Thin.ttf");
 }
 
 @font-face {
   font-family: roboto-mono-bold;
-  src: url("../fonts/RobotoMono-Bold.ttf");
+  src: url("../fonts/Roboto/RobotoMono-Bold.ttf");
 }
 
 @font-face {
   font-family: roboto-mono-medium;
-  src: url("../fonts/RobotoMono-Medium.ttf");
+  src: url("../fonts/Roboto/RobotoMono-Medium.ttf");
 }
 
 @font-face {
   font-family: roboto-mono;
-  src: url("../fonts/RobotoMono-Regular.ttf");
+  src: url("../fonts/Roboto/RobotoMono-Regular.ttf");
 }
 
 @font-face {
   font-family: roboto-mono-light;
-  src: url("../fonts/RobotoMono-Light.ttf");
+  src: url("../fonts/Roboto/RobotoMono-Light.ttf");
 }
 
 @font-face {
   font-family: roboto-mono-thin;
-  src: url("../fonts/RobotoMono-Thin.ttf");
+  src: url("../fonts/Roboto/RobotoMono-Thin.ttf");
 }
