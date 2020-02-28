@@ -11,7 +11,9 @@
   h3 { font-family: roboto-light; }
 
   .version {
-    text-align: right;
+    position: relative;
+    top: -22px;
+    left: 72px;
     font-size: $fs-tiny;
     font-family: roboto-light;
     opacity: .5;
@@ -21,9 +23,13 @@
     color: $fg-button-warning;
   }
 
+  .button-list { margin: 40px 0; }
+  .button-list li { text-align: center; }
+
   .button-list a {
     margin-bottom: 5px;
-    width: 280px;
+    width: 200px;
+    text-align: left;
     background-color: rgba(0,0,0,0.2);
   }
 
@@ -52,7 +58,7 @@
   .commands {
     margin: 20px;
     padding: 20px;
-    width: 300px;
+    width: 400px;
     background-color: transparentize($bg-body, 0.2);
     border: $border-very-light;
     box-shadow: $shadow-overlay;
@@ -61,7 +67,7 @@
   .notes {
     margin: 20px;
     padding: 20px;
-    width: 300px;
+    width: 400px;
     background-color: transparentize($bg-body, 0.2);
     border: $border-very-light;
     box-shadow: $shadow-overlay;
