@@ -1,7 +1,5 @@
 ![artificer logo](https://maldrasen.github.io/artificer/images/logo-black.png)
 
-# Artificer 0.2.0
-
 Artificer is an incredibly perverse text-based game built using Electron. It combines elements of visual novel games, management sims, adventure games, and my own filthy imagination. Games like Corruption of Champions and Free Cities were my primary inspirations for the project. The game is a bit of a hybrid of the two with my own style mixed in.
 
 Oh, and there are also furries, lots of furries.
