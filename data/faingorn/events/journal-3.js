@@ -41,8 +41,10 @@ Event.build('journal-3', {
   }],
 
   onFinish: async () => {
-    // TODO: Location event. Talk to minion about the well.
-    AvailableEvent.add({ code:'journal-4' });
+    AvailableEvent.addAll([
+      { code:'journal-4' },
+      { code:'journal-4-well-talk' },
+    ]);
   },
 
 });
