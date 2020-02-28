@@ -1,7 +1,7 @@
 {
   "name": "artificer",
-  "version": "0.1.0",
-  "description": "Shitting Dicknipples",
+  "version": "0.2.0",
+  "description": "Artificer",
   "main": "main.js",
   "build": {
     "appId": "com.maldrasen.artificer",
