@@ -1,26 +1,24 @@
 Components.Backlog = (function() {
-  let messages;
 
+  // There's no way to detect mouse wheel direction if nothing scrolls
   function init() {
-    console.log("Init");
+    $(document).on('wheel', e => { if (!isOpen()) { open(); }});
+    $(document).on('click','.close-backlog-button', Elements.buttonAction(close));
   }
 
   function prepare() {
-    messages = [];
+    $('#backlog .message-list').empty();
   }
 
   function append(message) {
-
+    let item = $('<li>',{ class:'message' }).append(message);
+    $('#backlog .message-list').append(item);
   }
 
-  function isOpen() {
+  function isOpen() { return ! $('#backlog').hasClass('hide'); }
+  function open() { $('#backlog').removeClass('hide'); }
+  function close() { $('#backlog').addClass('hide'); }
 
-  }
-
-  function close() {
-
-  }
-
-  return { init, prepare, append, isOpen, close };
+  return { init, prepare, append, isOpen, open, close };
 
 })();

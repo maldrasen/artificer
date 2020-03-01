@@ -1,0 +1,27 @@
+#backlog {
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px;
+  padding-right: 100px;
+
+  background-color: rgba(0,0,0,0.666);
+  box-shadow: 0 0 300px rgb(0,0,0) inset;
+
+  z-index: $z-backlog;
+
+  .message {
+    margin-bottom: 5px;
+  }
+
+  .close-backlog-button {
+    position: absolute;
+    top: 32px;
+    right: 40px;
+    font-size: 16pt;
+  }
+  .close-backlog-button:hover { border: none; }
+}
