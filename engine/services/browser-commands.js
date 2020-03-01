@@ -3,10 +3,12 @@ global.BrowserCommands = (function() {
   function init() {
 
     ipcMain.on('game.start', () => {
+      Browser.send('game.prepare');
       Game.start(false);
     });
 
     ipcMain.on('game.debug-start', () => {
+      Browser.send('game.prepare');
       Game.start(true);
     });
 
@@ -31,6 +33,7 @@ global.BrowserCommands = (function() {
     });
 
     ipcMain.on('game.load', (event, filename) => {
+      Browser.send('game.prepare');
       Records.loadFromFile(filename).then(()=>{
         Composer.render();
       });

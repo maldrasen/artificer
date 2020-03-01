@@ -4,6 +4,7 @@ global.RendererCommands = (function() {
     ipcRenderer.on('alert', Alerts.showEngineAlert);
 
     ipcRenderer.on('engine.ready', Renderer.ready);
+    ipcRenderer.on('game.prepare', Renderer.prepare);
     ipcRenderer.on('game.file-list', Components.SavedGames.showSaves);
     ipcRenderer.on('render.main-menu', Renderer.showMainMenu);
 

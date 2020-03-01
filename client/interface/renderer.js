@@ -46,6 +46,7 @@ global.Renderer = (function() {
       if (Elements.Dialog.isOpen()) { return Elements.Dialog.close(); }
       if (Elements.FloatingFrame.isOpen()) { return Elements.FloatingFrame.close(); }
       if (Elements.Confirm.isOpen()) { return Elements.Confirm.hideConfirm(); }
+      if (Components.Backlog.isOpen()) { return Components.Backlog.close(); }
       if ($('#overlayContent').children().length > 0) { return removeOverlay(); }
 
       // TODO: Minion select dialog was being stupid, but I can't fix it right
@@ -74,6 +75,13 @@ global.Renderer = (function() {
     });
 
     constructView();
+  }
+
+  // The prepare() function is called when a new game is started. This can be
+  // used to clean up any state that would persist between games if a new game
+  // is loaded.
+  function prepare() {
+    Components.Backlog.prepare();
   }
 
   function finishedLoading() {
@@ -170,6 +178,7 @@ global.Renderer = (function() {
     sendCommand,
     sendCancel,
     ready,
+    prepare,
 
     showCreatePlan,
     showInventory,
