@@ -16,12 +16,14 @@ Elements.Dialog = (function() {
   //   dialog           Type of dialog to build. [standard,simple]
   //     - standard     Almost full screen, includes scrolling panel.
   //     - simple       Almost full screen, no scrolling panel.
+  //     - small        Small centered dialog, no scrolling panel.
   //
   function open(options) {
     if (!isOpen()) {
       let dialogTemplate = {
         simple:   '#simpleDialogTemplate',
         standard: '#standardDialogTemplate',
+        small:    '#smallDialogTemplate',
       }[options.dialog||'standard'];
 
       currentDialog = $($(dialogTemplate).html());

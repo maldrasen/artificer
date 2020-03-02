@@ -2,7 +2,14 @@ Components.MinionDetailView = (function() {
   let minion;
   let flags;
 
-  function init() {}
+  function init() {
+    $(document).on('click','.rename-minion.button',Elements.buttonAction(openRenameDialog));
+    $(document).on('click','.accept-name-button',Elements.buttonAction(executeRename));
+
+    $(document).on('keydown', '#renameMinionDialog .name-field', e => {
+      if (e.keyCode == 13) { executeRename(); }
+    });
+  }
 
   function open(event, data) {
     minion = data.minion;
@@ -51,6 +58,28 @@ Components.MinionDetailView = (function() {
       append($('<dt>').append(aspect.name)).
       append($('<dd>').append(`<span class='level'>Level ${aspect.level}</span><span class='strength'>${aspect.strength} xp</span>`));
     });
+  }
+
+  // === Rename Minion ===
+
+  function openRenameDialog() {
+    Elements.Dialog.open({
+      title: 'Rename Minion',
+      id: 'renameMinion',
+      template: '#renameMinionDialogTemplate',
+      dialog: 'small',
+    });
+
+    $('#mainContent #renameMinionDialog .orig-name').append(minion.name);
+  }
+
+  function executeRename() {
+    let name = $('#renameMinionDialog .name-field').val().trim();
+    if (name.length > 0) {
+      Elements.Dialog.close();
+      Renderer.removeOverlay();
+      Renderer.sendCommand('character.rename',{ id:minion.id, name:name });
+    }
   }
 
   return { init, open, build };

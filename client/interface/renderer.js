@@ -27,6 +27,7 @@ global.Renderer = (function() {
     'plan',
     'player',
     'recipes',
+    'rename-minion-dialog',
     'report',
     'save-game',
   ];

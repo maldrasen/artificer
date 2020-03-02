@@ -5,13 +5,10 @@
   left: 0;
   right: 0;
   background-color: rgba(0,0,0,0.5);
+  z-index: $z-dialog;
 
   .dialog-frame {
     position: fixed;
-    top: 90px;
-    bottom: 60px;
-    left: 60px;
-    right: 60px;
     background-color: transparentize($bg-body,0.1);
     border: $border-light;
     border-top: none;
@@ -19,9 +16,6 @@
   }
   .dialog-header {
     position: fixed;
-    top: 60px;
-    right: 60px;
-    left: 60px;
     height: 30px;
     line-height: 30px;
     padding: 0 6px;
@@ -31,6 +25,33 @@
     border-bottom: none;
     box-shadow: $shadow-overlay;
   }
+
+  &.big-dialog .dialog-frame {
+    top: 90px;
+    bottom: 60px;
+    left: 60px;
+    right: 60px;
+  }
+  &.big-dialog .dialog-header {
+    top: 60px;
+    right: 60px;
+    left: 60px;
+  }
+
+  &.small-dialog .dialog-frame {
+    position: relative;
+    margin: auto;
+    top: 100px;
+    width: 412px;
+    padding-top: 0.1px; // You wouldn't think this matters, but it does.
+  }
+  &.small-dialog .dialog-header {
+    position: relative;
+    margin: auto;
+    top: 100px;
+    width: 400px;
+  }
+
   .dialog-content {
     margin: 10px;
   }

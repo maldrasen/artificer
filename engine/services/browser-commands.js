@@ -140,6 +140,10 @@ global.BrowserCommands = (function() {
       },10);
     });
 
+    ipcMain.on('character.rename', async (event, data) => {
+      console.log("Rename:",data);
+    });
+
     ipcMain.on('character.make-aspect-adjustment', async (event, data) => {
       AspectAdjuster.adjust(data);
     });
