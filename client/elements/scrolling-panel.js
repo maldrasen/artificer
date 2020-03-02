@@ -64,6 +64,9 @@ Elements.ScrollingPanel = (function() {
       throw "Scrolling panel must contain a .scrolling-panel-content";
     }
 
+    // If this scrolling panel has already been built, ignore this.
+    if (scrollingPanel.find('.scrolling-panel-track').length > 0) { return; }
+
     // If this panel should track its parent for its height, and there is no ancestor with the
     // scrolling-panel-parent class, then assume the immediate parent is the height source.
     if (scrollingPanel.hasClass('track-parent')) {
@@ -257,13 +260,14 @@ Elements.ScrollingPanel = (function() {
   }
 
   return {
-    init: init,
-    build: build,
-    resize: resize,
-    resizeAll: resizeAll,
-    observe: observe,
-    scrollToTop: scrollToTop,
-    wrapFixed: wrapFixed,
+    init,
+    build,
+    resize,
+    resizeAll,
+    observe,
+    scrollToTop,
+    scrollToBottom,
+    wrapFixed,
   };
 
 })();

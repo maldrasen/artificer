@@ -74,10 +74,15 @@ Components.LocationView = (function() {
     })));
   }
 
+  function isOpen() {
+    return $('#locationView').length > 0;
+  }
+
   return {
     init: init,
     build: build,
     buildMap: buildMap,
+    isOpen: isOpen,
   };
 
 })();

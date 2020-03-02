@@ -47,6 +47,10 @@ Components.EventView = (function() {
     doSkip();
   }
 
+  function stopSkip() {
+    skipActive = false;
+  }
+
   function doSkip() {
     setTimeout(()=>{
       if (skipActive) {
@@ -176,6 +180,7 @@ Components.EventView = (function() {
     if (page.effects) { applyPageEffects(page.effects); }
 
     showSpeaker(page.otherSpeaker, page.playerSpeaker)
+    appendToBacklog(page);
 
     $('#currentEvent .event-text-frame').empty().append(page.text)
 
@@ -184,6 +189,15 @@ Components.EventView = (function() {
     // functions have to be referenced by code and kept in the Components.EventView.PageFunctions object because the
     // events are defined in the engine, but these functions are called by the client.
     if (page.onShow) { Components.EventView.PageFunctions[page.onShow](choices); }
+  }
+
+  function appendToBacklog(page) {
+    if (page.text && page.text.length > 0) {
+      let options = {}
+      if (page.playerSpeaker) { options.player = page.playerSpeaker; }
+      if (page.otherSpeaker)  { options.actor = page.otherSpeaker;   }
+      Components.Backlog.append(page.text, options);
+    }
   }
 
   function showSpeaker(otherName, playerName) {
@@ -338,9 +352,14 @@ Components.EventView = (function() {
     $('#currentEvent .full-screen-background').css({filter:`brightness(${100-value}%)`});
   }
 
+  function isOpen() {
+    return $('#currentEvent').length > 0;
+  }
+
   return {
     init,
     build,
+    stopSkip,
     nextStage,
     setStage,
     getPageText,
@@ -348,6 +367,7 @@ Components.EventView = (function() {
     updateChoices,
     getChoices,
     setBackground,
+    isOpen,
   };
 
 })();

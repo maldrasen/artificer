@@ -1,20 +1,30 @@
 #backlog {
-
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 40px;
-  padding-right: 100px;
-
   background-color: rgba(0,0,0,0.666);
   box-shadow: 0 0 300px rgb(0,0,0) inset;
-
   z-index: $z-backlog;
 
+  .message-item {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 160px;
+    margin-left: 40px;
+  }
+
+  .speaker {
+    flex-grow: 0;
+    width: 160px;
+    min-width: 160px;
+    max-width: 160px;
+    font-family: roboto-bold;
+  }
   .message {
-    margin-bottom: 5px;
+    flex-grow: 1;
   }
 
   .close-backlog-button {
@@ -22,6 +32,7 @@
     top: 32px;
     right: 40px;
     font-size: 16pt;
+    z-index: calc(#{$z-backlog} + 10);
   }
   .close-backlog-button:hover { border: none; }
 }
