@@ -3,6 +3,7 @@ Components.Backlog = (function() {
   // Open the backlog on mouse wheel.
   function init() {
     $(document).on('wheel', open);
+    $(document).on('click','.open-backlog-button', Elements.buttonAction(open));
     $(document).on('click','.close-backlog-button', Elements.buttonAction(close));
   }
 
@@ -42,7 +43,8 @@ Components.Backlog = (function() {
   function canOpen() {
     if (isOpen()) { return false; }
     if (Components.LocationView.isOpen()) { return true; }
-    if (Components.EventView.isOpen()) { return true; }
+    if (Components.EventView.isOpen())    { return true; }
+    if (Components.ReportView.isOpen())   { return true; }
     return false;
   }
 

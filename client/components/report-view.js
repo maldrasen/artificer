@@ -100,6 +100,10 @@ Components.ReportView = (function() {
     `);
   }
 
-  return { init, build };
+  function isOpen() {
+    return $('#reportView').length > 0;
+  }
+
+  return { init, build, isOpen };
 
 })();
