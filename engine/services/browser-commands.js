@@ -142,7 +142,9 @@ global.BrowserCommands = (function() {
 
     ipcMain.on('character.rename', async (event, data) => {
       const character = await Character.lookup(data.id);
-            character.rename(data.name);
+      await character.rename(data.name);
+
+      Browser.send('render.minions', (await Character.allForClient()));
     });
 
     ipcMain.on('character.make-aspect-adjustment', async (event, data) => {
