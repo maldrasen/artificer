@@ -58,8 +58,8 @@ global.CharacterBuilder = (function() {
       anus: results[0],
       cock: results[1],
       pussy: results[3],
-      nipples: results[5],
-      tits: results[6],
+      nipples: results[4],
+      tits: results[5],
     });
 
     return character
