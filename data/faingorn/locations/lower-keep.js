@@ -1,4 +1,5 @@
 Location.build('lower-keep', {
+  summonEvent: async () => { return null; },
 
   buildName: async () => {
     return `Lower Keep`;

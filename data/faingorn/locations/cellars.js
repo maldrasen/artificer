@@ -1,4 +1,7 @@
 Location.build('cellars', {
+  summonEvent: async () => {
+    return 'summon-cellars-default-start';
+  },
 
   buildName: async () => {
     return `Cellars`;

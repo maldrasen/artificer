@@ -6,6 +6,11 @@ Components.MinionDetailView = (function() {
     $(document).on('click','.rename-minion.button',Elements.buttonAction(openRenameDialog));
     $(document).on('click','.accept-name-button',Elements.buttonAction(executeRename));
 
+    $(document).on('click','.summon-minion.button',Elements.buttonAction(e => {
+      Renderer.sendCommand('character.summon',{ id:minion.id });
+      Renderer.removeOverlay();
+    }));
+
     $(document).on('keydown', '#renameMinionDialog .name-field', e => {
       if (e.keyCode == 13) { executeRename(); }
     });

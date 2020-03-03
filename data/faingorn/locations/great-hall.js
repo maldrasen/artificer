@@ -1,4 +1,7 @@
 Location.build('great-hall', {
+  summonEvent: async () => {
+    return 'summon-great-hall-default-start';
+  },
 
   buildName: async () => {
     return `Great Hall`;

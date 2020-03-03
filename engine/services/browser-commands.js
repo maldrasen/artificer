@@ -147,6 +147,17 @@ global.BrowserCommands = (function() {
       Browser.send('render.minions', (await Character.allForClient()));
     });
 
+    ipcMain.on('character.summon', async (event, data) => {
+      const game = await Game.instance();
+      const character = await Character.lookup(data.id);
+      const eventCode = await Location.lookup(game.location).summonEvent();
+
+      if (eventCode) {
+        await EventQueue.enqueueEvent(eventCode, { actors:{ C:character.id }});
+        Composer.render();
+      }
+    });
+
     ipcMain.on('character.make-aspect-adjustment', async (event, data) => {
       AspectAdjuster.adjust(data);
     });

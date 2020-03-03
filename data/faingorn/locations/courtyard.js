@@ -1,4 +1,7 @@
 Location.build('courtyard', {
+  summonEvent: async () => {
+    return 'summon-courtyard-default-start';
+  },
 
   buildName: async () => {
     return `Ruined Courtyard`;
