@@ -137,6 +137,13 @@ Character.prototype.detailForClient = async function() {
   return { description, ...properties, ...aspects };
 }
 
+Character.prototype.rename = async function(name) {
+  console.log("Renaming(",this.id,")",name)
+
+  await this.update({ forcedName:name });
+  await CharacterDescriber.updateAll(this);
+}
+
 HasAspects.isAppliedTo(Character);
 HasAttributes.isAppliedTo(Character);
 HasBody.isAppliedTo(Character);

@@ -71,6 +71,7 @@ Components.MinionDetailView = (function() {
     });
 
     $('#mainContent #renameMinionDialog .orig-name').append(minion.name);
+    $('#mainContent #renameMinionDialog .name-field').focus();
   }
 
   function executeRename() {

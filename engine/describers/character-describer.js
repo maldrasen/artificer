@@ -1,5 +1,42 @@
 global.CharacterDescriber = (function() {
 
+  // Update the entire character description. This is needed when a character's
+  // name has changed or something else happens that might effect every part
+  // description. It's fine if the parts object is empty or incomplete here.
+  // Anything missing will be pulled in by the describer.
+  async function updateAll(character, parts) {
+    if (parts == null) { parts = {}; }
+
+    const bodyDescriber =  new BodyDescriber({
+      character: character,
+      body: parts.body });
+
+    const anusDescriber =  new AnusDescriber({
+      character: character,
+      anus: parts.anus });
+
+    const cockDescriber =  new CockDescriber({
+      character: character,
+      cock: parts.cock });
+
+    const pussyDescriber = new PussyDescriber({
+      character: character,
+      pussy: parts.pussy });
+
+    const titsDescriber =  new TitsDescriber({
+      character: character,
+      nipples: parts.nipples,
+      tits: parts.tits });
+
+    await bodyDescriber.updateDescription();
+    await anusDescriber.updateDescription();
+    await cockDescriber.updateDescription();
+    await pussyDescriber.updateDescription();
+    await titsDescriber.updateDescription();
+  }
+
+  // Put together the full description from all of the various part
+  // descriptions and return them as an HTML string.
   async function fullDescription(character) {
     const parts = await character.getCompleteBody();
 
@@ -42,6 +79,6 @@ global.CharacterDescriber = (function() {
     return "TODO: General Description";
   }
 
-  return { fullDescription };
+  return { fullDescription, updateAll };
 
 })();

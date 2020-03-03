@@ -141,7 +141,8 @@ global.BrowserCommands = (function() {
     });
 
     ipcMain.on('character.rename', async (event, data) => {
-      console.log("Rename:",data);
+      const character = await Character.lookup(data.id);
+            character.rename(data.name);
     });
 
     ipcMain.on('character.make-aspect-adjustment', async (event, data) => {
