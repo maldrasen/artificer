@@ -94,7 +94,11 @@ global.BrowserCommands = (function() {
     });
 
     ipcMain.on('location.show-minions', async () => {
-      Browser.send('render.minions', (await Character.allForClient()));
+      const game = await Game.instance();
+      const minions = await Character.allForClient();
+      const eventCode = await Location.lookup(game.location).summonEvent();
+
+      Browser.send('render.minions', { minions, summonAvailable:(eventCode != null) });
     });
 
     ipcMain.on('location.show-player', async () => {

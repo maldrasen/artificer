@@ -54,6 +54,10 @@ Components.MinionDetailView = (function() {
     addAspects(minion.personalityAspects, view.find('.personality-aspects'));
     addAspects(minion.sexualAspects,      view.find('.sexual-aspects'));
 
+    if (Components.MinionListView.isSummonAvailable()) {
+      view.find('.summon-minion.button').removeClass('hide');
+    }
+
     Elements.ScrollingPanel.build($('#overlayContent .scrolling-panel'));
     Components.EquipmentFrame.build(minion);
   }
