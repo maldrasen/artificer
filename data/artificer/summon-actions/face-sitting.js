@@ -1,7 +1,7 @@
 SummonAction.build('face-sitting', {
   category: 'Oral',
   name: 'Face Sitting',
-  description: `I'd like to sit on {{C::firstName's}} face for a while.`,
+  description: `I'd like to sit on {{C::character.firstName's}} face for a while.`,
 
   requirements:[],
 

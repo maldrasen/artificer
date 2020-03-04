@@ -1,7 +1,7 @@
 SummonAction.build('give-blowjob', {
   category: 'Oral',
   name: 'Give Blowjob',
-  description: `I'd like to suck on {{C::firstName's}} cock.`,
+  description: `I'd like to suck on {{C::character.firstName's}} cock.`,
 
   requirements:[
     'minion(C).has-cock',

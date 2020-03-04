@@ -152,16 +152,14 @@ global.BrowserCommands = (function() {
     });
 
     ipcMain.on('character.get-summon-actions', async (event, data) => {
-      console.log("Get Summon Actions")
-      //
-      // const game = await Game.instance();
-      // const character = await Character.lookup(data.id);
-      // const eventCode = await Location.lookup(game.location).summonEvent();
-      //
-      // if (eventCode) {
-      //   await EventQueue.enqueueEvent(eventCode, { actors:{ C:character.id }});
-      //   Composer.render();
-      // }
+      const character = await Character.lookup(data.id);
+      const actions = await SummonAction.categorizedForCharacter(character);
+
+      Browser.send('character.show-summon-actions',{ actions, id:data.id });
+    });
+
+    ipcMain.on('character.start-summon-action', async (event, data) => {
+      console.log("Start Summon Event:",data.code,data.id);
     });
 
     ipcMain.on('character.make-aspect-adjustment', async (event, data) => {

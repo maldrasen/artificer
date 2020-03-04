@@ -1,7 +1,7 @@
 SummonAction.build('face-fuck', {
   category: 'Oral',
   name: 'Face Fuck',
-  description: `I'd like to violently fuck {{C::firstName's}} face.`,
+  description: `I'm in the mood to violently fuck {{C::character.firstName's}} face.`,
   tags: ['player sadist 1'],
 
   requirements: [

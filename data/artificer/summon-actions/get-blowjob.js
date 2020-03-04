@@ -1,7 +1,7 @@
 SummonAction.build('get-blowjob', {
   category: 'Oral',
   name: 'Get Blowjob',
-  description: `I'll have {{C::firstName}} suck my cock.`,
+  description: `I'll have {{C::character.firstName}} suck my cock.`,
 
   requirements:[
     'player.has-cock',

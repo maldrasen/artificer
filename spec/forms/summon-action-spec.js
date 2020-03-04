@@ -13,7 +13,7 @@ describe('SummonAction', function() {
     });
   });
 
-  it.only('gets a categorized list of available actions', function(done) {
+  it('gets a categorized list of available actions', function(done) {
     GameHelper.setupTestGame().then(game => {
       SpecHelper.buildJada({ gender:'female' }).then(jada => {
         SummonAction.categorizedForCharacter(jada).then(actions => {

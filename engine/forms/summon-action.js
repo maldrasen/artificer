@@ -14,14 +14,16 @@ global.SummonAction = class SummonAction extends Form {
     ];
   }
 
-  static async forCharacter(character) {
+  static async forCharacter(character, context) {
     const game = await Game.instance();
     const location = Location.lookup(game.location);
     const actions = await location.summonActions();
 
-    const context = new WeaverContext();
-    await context.addCharacter('C',character);
-    await context.addPlayer();
+    if (context == null) {
+      context = new WeaverContext();
+      await context.addCharacter('C',character);
+      await context.addPlayer();
+    }
 
     const available = await Promise.all(actions.map(async code => {
       let action = SummonAction.lookup(code);
@@ -33,12 +35,21 @@ global.SummonAction = class SummonAction extends Form {
   }
 
   static async categorizedForCharacter(character) {
-    const available = await SummonAction.forCharacter(character);
+    const context = new WeaverContext();
+    await context.addCharacter('C',character);
+    await context.addPlayer();
+
+    const available = await SummonAction.forCharacter(character, context);
     const categorized = {};
 
     each(available, action => {
       if (categorized[action.category] == null) { categorized[action.category] = []; }
-      categorized[action.category].push(action);
+      categorized[action.category].push({
+        code: action.code,
+        name: action.name,
+        description: Weaver.weave(action.description, context),
+        tags: action.tags,
+      });
     });
 
     each(Object.keys(categorized), category => {

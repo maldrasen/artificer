@@ -1,7 +1,7 @@
 SummonAction.build('eat-pussy', {
   category: 'Oral',
   name: 'Eat Pussy',
-  description: `I'd like to eat {{C::firstName's}} pussy.`,
+  description: `I'd like to eat {{C::character.firstName's}} pussy.`,
 
   requirements: ['minion(C).has-pussy'],
 

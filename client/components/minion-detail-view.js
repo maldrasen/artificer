@@ -5,6 +5,7 @@ Components.MinionDetailView = (function() {
   function init() {
     $(document).on('click','.rename-minion.button',Elements.buttonAction(openRenameDialog));
     $(document).on('click','.summon-minion.button',Elements.buttonAction(getSummonActions));
+    $(document).on('click','.summon-action-button',Elements.buttonAction(executeSummon));
     $(document).on('click','.accept-name-button',Elements.buttonAction(executeRename));
 
     $(document).on('keydown', '#renameMinionDialog .name-field', e => {
@@ -94,15 +95,48 @@ Components.MinionDetailView = (function() {
     Renderer.sendCommand('character.get-summon-actions', { id:minion.id });
   }
 
-  function openSummonDialog() {
+  function openSummonDialog(e, data) {
     Elements.Dialog.open({
       title: 'Summon Minion',
       id: 'summonMinion',
       template: '#summonMinionDialogTemplate',
       dialog: 'medium',
     });
+
+    each(Object.keys(data.actions).sort(), category => {
+      addSummonActionCategory(category, data.actions[category], data.id);
+    });
   }
 
-  return { init, open, build };
+  function addSummonActionCategory(category, actions, id) {
+    let actionList = $('<ul>',{ class:'action-list' });
+
+    each(actions, action => {
+      let actionLink = $('<a>',{ href:'#', class:'button button-primary button-small summon-action-button' }).
+        append(action.name).
+        data('code',action.code).
+        data('id',id);
+
+      let actionItem = $('<li>',{ class:'action-item' }).
+        append(actionLink).
+        append($('<span>',{ class:'description' }).append(action.description));
+
+      actionList.append(actionItem);
+    });
+
+    let categoryElement = $('<div>',{ class:'action-category' });
+        categoryElement.append($('<h2>').append(category));
+        categoryElement.append(actionList);
+
+    $('#mainContent #summonMinionDialog').append(categoryElement);
+  }
+
+  function executeSummon() {
+    Renderer.sendCommand('character.start-summon-action', { code:$(this).data('code'), id:$(this).data('id') });
+    Renderer.removeOverlay();
+    Elements.Dialog.close();
+  }
+
+  return { init, open, build, openSummonDialog };
 
 })();

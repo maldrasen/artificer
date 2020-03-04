@@ -21,6 +21,7 @@ global.RendererCommands = (function() {
     ipcRenderer.on('image.found', Elements.ImageResource.set);
 
     ipcRenderer.on('character.show-equipment', Components.EquipmentFrame.showEquipment);
+    ipcRenderer.on('character.show-summon-actions', Components.MinionDetailView.openSummonDialog);
     ipcRenderer.on('equipment.show-available', Components.EquipmentFrame.showAvailableEquipment);
 
     ipcRenderer.on('plan.crafting.showRecipeList', Components.PlanView.Crafting.showRecipeList);

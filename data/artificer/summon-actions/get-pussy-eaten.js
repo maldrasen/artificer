@@ -1,7 +1,7 @@
 SummonAction.build('get-pussy-eaten', {
   category: 'Oral',
   name: 'Get Pussy Eaten',
-  description: `I'm going to have {{C::firstName}} eat my pussy.`,
+  description: `I'm going to have {{C::character.firstName}} eat my pussy.`,
 
   requirements: ['player.has-pussy'],
 
