@@ -12,7 +12,7 @@ Location.build('courtyard', {
   },
 
   summonActions: async () => {
-    return [];
+    return SummonAction.allStandardActions();
   },
 
 });

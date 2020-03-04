@@ -12,7 +12,7 @@ Location.build('great-hall', {
   },
 
   summonActions: async () => {
-    return [];
+    return SummonAction.allStandardActions();
   },
 
 });

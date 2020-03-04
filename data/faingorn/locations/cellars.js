@@ -13,7 +13,7 @@ Location.build('cellars', {
   },
 
   summonActions: async () => {
-    return [];
+    return SummonAction.allStandardActions();
   },
 
 });

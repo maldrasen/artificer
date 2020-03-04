@@ -107,3 +107,4 @@ Player.hasTits =  async function() { return await Tits.findOne({  where:{ charac
 HasAttributes.isAppliedTo(Player);
 HasAspects.isAppliedTo(Player);
 HasBody.isAppliedTo(Player);
+HasSexSkills.isAppliedTo(Player);

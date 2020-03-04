@@ -14,6 +14,8 @@ global.HasSexSkills = { isAppliedTo: function(model) {
   //
   // TODO: Need to figure out how cock knobs and spines fit into this as well.
   model.prototype.canSuckCock = async function(cock) {
+    if (cock == null) { throw "canSuckCock() should not be called without a cock." }
+
     const mouth = await this.getMouth();
     const oral = await this.getCharacterAspect('oral');
 

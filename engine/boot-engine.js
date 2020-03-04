@@ -35,6 +35,7 @@ require(`${ROOT}/engine/forms/mission`);
 require(`${ROOT}/engine/forms/project`);
 require(`${ROOT}/engine/forms/recipe`);
 require(`${ROOT}/engine/forms/species`);
+require(`${ROOT}/engine/forms/summon-action`);
 require(`${ROOT}/engine/forms/task`);
 require(`${ROOT}/engine/forms/task-story`);
 

@@ -29,6 +29,7 @@ global.CharacterScrutinizer = (function() {
     if (operation == 'no-cock-sheath')                { return !data.character.species.hasCockSheath; }
     if (operation == 'has-cock')                      { return data.cock != null; }
     if (operation == 'no-cock')                       { return data.cock == null; }
+    if (operation == 'has-bigger-than-big-cock')      { return data.cock && ['huge','monster'].indexOf(data.cock.currentSizeClass) >= 0; }
     if (operation == 'has-pussy')                     { return data.pussy != null; }
     if (operation == 'no-pussy')                      { return data.pussy == null; }
     if (operation == 'has-tits')                      { return data.tits != null; }

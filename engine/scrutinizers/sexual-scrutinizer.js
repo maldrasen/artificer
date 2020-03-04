@@ -21,6 +21,11 @@ global.SexualScrutinizer = (function() {
     let matchData = requirement.match(/^canSuckCock\((.+),(.+)\)\.([^!]+)!?=(.+)/)
     let sucker = context.get(matchData[1]);
     let sucked = context.get(matchData[2]);
+
+    if (sucked.cock == null) {
+      return false;
+    }
+
     let key = matchData[3];
     let value = matchData[4];
     let data = await sucker.character.canSuckCock(sucked.cock);
