@@ -4,12 +4,8 @@ Components.MinionDetailView = (function() {
 
   function init() {
     $(document).on('click','.rename-minion.button',Elements.buttonAction(openRenameDialog));
+    $(document).on('click','.summon-minion.button',Elements.buttonAction(getSummonActions));
     $(document).on('click','.accept-name-button',Elements.buttonAction(executeRename));
-
-    $(document).on('click','.summon-minion.button',Elements.buttonAction(e => {
-      Renderer.sendCommand('character.summon',{ id:minion.id });
-      Renderer.removeOverlay();
-    }));
 
     $(document).on('keydown', '#renameMinionDialog .name-field', e => {
       if (e.keyCode == 13) { executeRename(); }
@@ -90,6 +86,21 @@ Components.MinionDetailView = (function() {
       Renderer.removeOverlay();
       Renderer.sendCommand('character.rename',{ id:minion.id, name:name });
     }
+  }
+
+  // === Summon Minion ===
+
+  function getSummonActions() {
+    Renderer.sendCommand('character.get-summon-actions', { id:minion.id });
+  }
+
+  function openSummonDialog() {
+    Elements.Dialog.open({
+      title: 'Summon Minion',
+      id: 'summonMinion',
+      template: '#summonMinionDialogTemplate',
+      dialog: 'medium',
+    });
   }
 
   return { init, open, build };

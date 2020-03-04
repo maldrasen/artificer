@@ -16,6 +16,7 @@ Elements.Dialog = (function() {
   //   dialog           Type of dialog to build. [standard,simple]
   //     - standard     Almost full screen, includes scrolling panel.
   //     - simple       Almost full screen, no scrolling panel.
+  //     - medium       60% of screen width with scrolling panel.
   //     - small        Small centered dialog, no scrolling panel.
   //
   function open(options) {
@@ -23,6 +24,7 @@ Elements.Dialog = (function() {
       let dialogTemplate = {
         simple:   '#simpleDialogTemplate',
         standard: '#standardDialogTemplate',
+        medium:   '#mediumDialogTemplate',
         small:    '#smallDialogTemplate',
       }[options.dialog||'standard'];
 

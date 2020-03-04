@@ -1,5 +1,4 @@
 Location.build('upper-keep', {
-  summonEvent: async () => { return null; },
 
   buildName: async () => {
     return `Upper Keep`;

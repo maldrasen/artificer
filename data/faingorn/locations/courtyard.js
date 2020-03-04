@@ -1,7 +1,4 @@
 Location.build('courtyard', {
-  summonEvent: async () => {
-    return 'summon-courtyard-default-start';
-  },
 
   buildName: async () => {
     return `Ruined Courtyard`;
@@ -12,6 +9,10 @@ Location.build('courtyard', {
       almost as high as the courtyard is wide. The courtyard grounds were manicured at one point, but time and neglect
       have taken their toll. What might have been a garden at one time is now completely covered with thick vines and
       brambles, and a big pile of rotting timber was probably the stables before it collapsed in on itself.`;
+  },
+
+  summonActions: async () => {
+    return [];
   },
 
 });

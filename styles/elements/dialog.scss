@@ -18,12 +18,14 @@
     position: fixed;
     height: 30px;
     line-height: 30px;
-    padding: 0 6px;
     font-size: $fs-bigger;
     background-color: rgba(0,0,0,0.9);
     border: $border-normal;
     border-bottom: none;
     box-shadow: $shadow-overlay;
+
+    .title { margin-left: 8px; }
+    a { margin-right: 8px; }
   }
 
   &.big-dialog .dialog-frame {
@@ -36,6 +38,20 @@
     top: 60px;
     right: 60px;
     left: 60px;
+  }
+
+  &.medium-dialog .dialog-frame {
+    top: 120px;
+    bottom: 90px;
+    left: 20%;
+    right: 20%;
+    min-width: 600px;
+  }
+  &.medium-dialog .dialog-header {
+    top: 90px;
+    right: 20%;
+    left: 20%;
+    min-width: 600px;
   }
 
   &.small-dialog .dialog-frame {

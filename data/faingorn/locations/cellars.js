@@ -1,7 +1,4 @@
 Location.build('cellars', {
-  summonEvent: async () => {
-    return 'summon-cellars-default-start';
-  },
 
   buildName: async () => {
     return `Cellars`;
@@ -13,6 +10,10 @@ Location.build('cellars', {
       even further down, into the warrens where the Deep Hole tribe dwells. I haven't investigated these cellars overly
       much yet, just enough to confirm that any supplies down here have either already been scavenged or have rotted
       away.`;
+  },
+
+  summonActions: async () => {
+    return [];
   },
 
 });

@@ -30,6 +30,7 @@ global.Renderer = (function() {
     'rename-minion-dialog',
     'report',
     'save-game',
+    'summon-minion-dialog',
   ];
 
   function init() {

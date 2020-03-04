@@ -96,9 +96,9 @@ global.BrowserCommands = (function() {
     ipcMain.on('location.show-minions', async () => {
       const game = await Game.instance();
       const minions = await Character.allForClient();
-      const eventCode = await Location.lookup(game.location).summonEvent();
+      const summonAvailable = typeof Location.lookup(game.location).summonActions == 'function';
 
-      Browser.send('render.minions', { minions, summonAvailable:(eventCode != null) });
+      Browser.send('render.minions', { minions, summonAvailable });
     });
 
     ipcMain.on('location.show-player', async () => {
@@ -151,15 +151,17 @@ global.BrowserCommands = (function() {
       Browser.send('render.minions', (await Character.allForClient()));
     });
 
-    ipcMain.on('character.summon', async (event, data) => {
-      const game = await Game.instance();
-      const character = await Character.lookup(data.id);
-      const eventCode = await Location.lookup(game.location).summonEvent();
-
-      if (eventCode) {
-        await EventQueue.enqueueEvent(eventCode, { actors:{ C:character.id }});
-        Composer.render();
-      }
+    ipcMain.on('character.get-summon-actions', async (event, data) => {
+      console.log("Get Summon Actions")
+      //
+      // const game = await Game.instance();
+      // const character = await Character.lookup(data.id);
+      // const eventCode = await Location.lookup(game.location).summonEvent();
+      //
+      // if (eventCode) {
+      //   await EventQueue.enqueueEvent(eventCode, { actors:{ C:character.id }});
+      //   Composer.render();
+      // }
     });
 
     ipcMain.on('character.make-aspect-adjustment', async (event, data) => {

@@ -1,7 +1,4 @@
 Location.build('great-hall', {
-  summonEvent: async () => {
-    return 'summon-great-hall-default-start';
-  },
 
   buildName: async () => {
     return `Great Hall`;
@@ -12,6 +9,10 @@ Location.build('great-hall', {
       gathering area, feast hall, and the court of whoever it was that ruled here. The hall has somehow survived the
       worst of the ravages of time and much of the hall's furniture, a few large tables and a dozen or so chairs, are
       still usable.`;
+  },
+
+  summonActions: async () => {
+    return [];
   },
 
 });
