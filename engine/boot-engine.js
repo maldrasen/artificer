@@ -73,6 +73,7 @@ require(`${ROOT}/engine/devices/resolver/events`);
 require(`${ROOT}/engine/devices/resolver/game`);
 require(`${ROOT}/engine/devices/resolver/healing`);
 require(`${ROOT}/engine/devices/resolver/items`);
+require(`${ROOT}/engine/devices/resolver/lust`);
 require(`${ROOT}/engine/devices/resolver/minions`);
 require(`${ROOT}/engine/devices/resolver/missions`);
 require(`${ROOT}/engine/devices/resolver/projects`);

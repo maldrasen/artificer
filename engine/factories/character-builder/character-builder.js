@@ -25,7 +25,7 @@ global.CharacterBuilder = (function() {
       energy:      options.energy    || 2,
       loyalty:     options.loyalty   || 10 + Random.upTo(10),
       fear:        options.fear      || 10 + Random.upTo(10),
-      lust:        options.lust      || 20 + Random.upTo(40),
+      lust:        options.lust != null ? options.lust : 20 + Random.upTo(40),
       status:      'normal',
       currentDuty: 'role',
     };

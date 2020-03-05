@@ -5,6 +5,7 @@ Resolver.Minions = (function() {
 
     await eatFood(minions);
     await applyHealing(minions);
+    await applyLust(minions);
     await checkLoyalty(minions);
   }
 
@@ -33,6 +34,12 @@ Resolver.Minions = (function() {
     await Promise.all(minions.map(async minion => {
       await Resolver.Healing.applyHealing(minion);
     }));
+  }
+
+  async function applyLust(minions) {
+    await Promise.all(minions.map(async minion => {
+      await Resolver.Lust.applyLust(minion);
+    }))
   }
 
   // The checkLoyalty() function is called at the end of each day to determine if any of your minions decide to betray
