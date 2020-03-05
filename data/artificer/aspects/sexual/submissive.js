@@ -3,6 +3,6 @@ Aspect.build('submissive', {
   type: 'sexual',
   description: 'enjoys serving in a sexual capacity.',
   refutes: [
-    { aspect:'prideful' },
+    { aspect:'dominant' },
   ]
 });
