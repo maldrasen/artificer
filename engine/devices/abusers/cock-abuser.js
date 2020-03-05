@@ -3,6 +3,10 @@ Abuser.CockAbuser = (function() {
   async function addInjury(character, hazard) {
     const cock = await character.getCock();
 
+    if (cock == null) {
+      throw `Only call the cock abuser when the character has a cock.`
+    }
+
     if (hazard.type == 'blight') { addBlightInjury(character, cock, hazard); }
     if (hazard.type == 'burn')   { addBurnInjury(character, cock, hazard);   }
     if (hazard.type == 'smash')  { addSmashInjury(character, cock, hazard);  }
@@ -22,7 +26,7 @@ Abuser.CockAbuser = (function() {
     const place = ObjectUtility.fetch(hazard,'details','place') || Random.from(['cock','balls']);
 
     cock.blightLevel = Abuser.raiseLevel(cock.blightLevel, hazard.level, 5);
-    cock.blightCount += 1;
+    cock.blightCount += hazard.count || 1;
     cock.blightHealing = 0;
     cock.blightPlace = cockBallsOrAll(cock.blightPlace, place)
   }

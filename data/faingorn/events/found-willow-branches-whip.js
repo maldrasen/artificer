@@ -126,8 +126,11 @@ Event.build('found-willow-branches-whip', {
   }],
 
   onFinish: async choices => {
-    let rat = Character.lookup(choices.event.actorIDs.C);
-    // TODO: Add an injury
+    let character = await Character.lookup(choices.event.actorIDs.C);
+
+    Abuser.AnusAbuser.addInjury(character, { type:'smash', level:1, count:5, details:{ shape:'whip' }});
+
+    // TODO: Add an orgasm.
   }
 
 });
