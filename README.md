@@ -27,6 +27,6 @@ I'm a bit scattered about at the moment. Sending me an email is probably the bes
 * [DeviantArt](https://www.deviantart.com/maldrasen) For stuff that's not quite porn.
 * [Hentai Foundry](http://www.hentai-foundry.com/user/maldrasen/profile) All the lewds.
 * [Kofi](https://ko-fi.com/maldrasen) Tip Jar
-* [Buy me a Coffee](buymeacoff.ee/izKO5Q1) Another Tip Jar
+* [Buy me a Coffee](https://buymeacoff.ee/izKO5Q1) Another Tip Jar
 * [Artificer Reddit](https://reddit.com/r/ArtificerGame/) Eh, might use this at some point.
 * [Slack](https://horsecock.slack.com/) For project corrdination among developers (invite only)
