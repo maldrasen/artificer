@@ -3,6 +3,6 @@ Aspect.build('tit-lover', {
   type: 'sexual',
   description: 'is very sexually aroused by breasts.',
   refutes: [
-    { aspect:'tit-skeptic' }
+    { aspect:'gynephobic' }
   ]
 });

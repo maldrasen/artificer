@@ -3,6 +3,6 @@ Aspect.build('pussy-lover', {
   type: 'sexual',
   description: 'is very sexually aroused by pussies.',
   refutes: [
-    { aspect:'pussy-skeptic' }
+    { aspect:'gynephobic' }
   ]
 });
