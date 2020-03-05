@@ -138,7 +138,7 @@ let names = [
   { name:'Stonetree' },
   { name:'Stormrage', triggers:['magical']},
   { name:'Swiftriver' },
-  { name:'Tailchaser', aspects:['lascivious.2']},
+  { name:'Tailchaser', aspects:['slut.2']},
   { name:'Thistlewood' },
   { name:'Trevarten' },
   { name:'Valleyman', restriction:'male'},
