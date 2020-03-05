@@ -31,7 +31,8 @@ Components.MinionDetailView = (function() {
     view.find('.top-row .health-value').append(minion.health);
     view.find('.top-row .health-word').append(minion.healthWord);
     view.find('.top-row .health-section').addClass(`fg-health-${minion.healthClass}`);
-
+    view.find('.top-row .energy-word').append(minion.energyWord);
+    view.find('.top-row .energy-word').addClass(`fg-energy-${minion.energy}`);
     view.find('.attributes dd.physical .value').append(minion.physical);
     view.find('.attributes dd.physical .word').append(minion.physicalWord);
     view.find('.attributes dd.personal .value').append(minion.personal);
@@ -44,6 +45,8 @@ Components.MinionDetailView = (function() {
     view.find('.attributes dd.fear .word').append(minion.fearWord);
     view.find('.attributes dd.loyalty .value').append(minion.loyalty);
     view.find('.attributes dd.loyalty .word').append(minion.loyaltyWord);
+    view.find('.attributes dd.lust .value').append(minion.lust);
+    view.find('.attributes dd.lust .word').append(minion.lustWord);
 
     view.find('.description-row').append(minion.description);
 

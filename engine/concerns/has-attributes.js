@@ -40,32 +40,60 @@ global.HasAttributes = { isAppliedTo: function(model) {
     return 'omnipotent';
   }
 
+  // This module is applied to the Player model as well as the Character. The
+  // following attributes only apply to the Characters though and will return
+  // null when called on the Player.
+
+  model.prototype.getEnergyWord = function () {
+    if (this.energy == null) { return null;        }
+    if (this.energy == 2)    { return 'energetic'; }
+    if (this.energy == 1)    { return 'tired';     }
+    return 'exhausted';
+  }
+
   model.prototype.getLoyaltyWord = function() {
-    if (this.loyalty < 7)  { return 'traitorous'; }
-    if (this.loyalty < 15) { return 'untrustworthy'; }
-    if (this.loyalty < 25) { return 'wavering'; }
-    if (this.loyalty < 50) { return 'loyal'; }
-    if (this.loyalty < 75) { return 'faithful'; }
-    if (this.loyalty < 100) { return 'dedicated'; }
+    if (this.loyalty == null) { return null;            }
+    if (this.loyalty < 7)     { return 'traitorous';    }
+    if (this.loyalty < 15)    { return 'untrustworthy'; }
+    if (this.loyalty < 25)    { return 'wavering';      }
+    if (this.loyalty < 50)    { return 'loyal';         }
+    if (this.loyalty < 75)    { return 'faithful';      }
+    if (this.loyalty < 100)   { return 'dedicated';     }
     return 'absolute';
   }
 
   model.prototype.getFearWord = function() {
-    if (this.fear < 7)  { return 'fearless'; }
-    if (this.fear < 15) { return 'cautious'; }
-    if (this.fear < 25) { return 'watchful'; }
-    if (this.fear < 50) { return 'fearful'; }
-    if (this.fear < 75) { return 'afraid'; }
-    if (this.fear < 100) { return 'terrified'; }
+    if (this.loyalty == null) { return null;        }
+    if (this.fear < 7)        { return 'fearless';  }
+    if (this.fear < 15)       { return 'cautious';  }
+    if (this.fear < 25)       { return 'watchful';  }
+    if (this.fear < 50)       { return 'fearful';   }
+    if (this.fear < 75)       { return 'afraid';    }
+    if (this.fear < 100)      { return 'terrified'; }
     return 'panicked';
   }
 
+  model.prototype.getLustWord = function() {
+    if (this.lust == null) { return null;           }
+    if (this.lust < 20)    { return 'uninterested'; }
+    if (this.lust < 40)    { return 'satisfied';    }
+    if (this.lust < 60)    { return 'affectionate'; }
+    if (this.lust < 80)    { return 'lusty';        }
+    if (this.lust < 90)    { return 'horny';        }
+    if (this.lust < 100)   { return 'lewd';         }
+    return 'uncontrollable';
+  }
+
   model.prototype.adjustLoyaly = function(amount) {
-    this.loyalty = scaleLoyaltyOrFearAmount(this.loyalty,amount);
+    if (this.loyalty >= 0) {
+      this.loyalty = scaleLoyaltyOrFearAmount(this.loyalty,amount);
+    }
   }
 
   model.prototype.adjustFear = function(amount) {
-    this.fear = scaleLoyaltyOrFearAmount(this.fear,amount);
+    if (this.loyalty >= 0) {
+      this.fear = scaleLoyaltyOrFearAmount(this.fear,amount);
+    }
   }
 
   // A value between -3 and 3 is specified when loyalty or fear is added to a

@@ -55,8 +55,11 @@
   }
 
   .top-row {
+    display: flex;
+
     border-bottom: $border-normal;
     min-width: 500px;
+
     .attr {
       font-size: $fs-small;
       margin-right: 5px;
@@ -68,10 +71,19 @@
     }
   }
 
+  .name-section {
+    flex-grow: 1;
+  }
+
+  // I don't think these colors are used anywhere else.
+  .energy-section {
+    margin-right: 15px;
+    .fg-energy-0 { color: rgb(33,39,42) !important; }
+    .fg-energy-1 { color: rgb(78, 106, 120) !important; }
+    .fg-energy-2 { color: rgb(95, 152, 181) !important; }
+  }
+
   .health-section {
-    float: right;
-    position: relative;
-    top: 10px;
     .attr { color: inherit; }
     .health-word { opacity: 0.75; }
     .health-value {

@@ -4,7 +4,7 @@ global.CharacterBuilder = (function() {
   // preName:            { type:Sequelize.STRING },
   // firstName:          { type:Sequelize.STRING },
   // lastName:           { type:Sequelize.STRING },
-  // A complete character function needs to set the current health to the character's max health
+  //
   async function build(options) {
     if (options.species == null) { throw 'Species is required'; }
 
@@ -22,9 +22,10 @@ global.CharacterBuilder = (function() {
       personal:    options.personal  || species.randomizedAttribute('personal'),
       mental:      options.mental    || species.randomizedAttribute('mental'),
       magical:     options.magical   || species.randomizedAttribute('magical'),
+      energy:      options.energy    || 2,
       loyalty:     options.loyalty   || 10 + Random.upTo(10),
       fear:        options.fear      || 10 + Random.upTo(10),
-      health:      100,
+      lust:        options.lust      || 20 + Random.upTo(40),
       status:      'normal',
       currentDuty: 'role',
     };
