@@ -150,6 +150,29 @@ Character.prototype.rename = async function(name) {
   await CharacterDescriber.updateAll(this);
 }
 
+// TODO: This function will eventually be used to add a record of the
+//       character's orgasm to their history, just so we can see some
+//       interesting stats and such on by who and how much they're being fucked.
+//
+// This function also resets the character's lust. Their baseline lust level is
+// normally 0, but the slut aspect can raise it to a higher minimum.
+//
+// options:
+//   from     Who or what made them orgasm: (player, self, minion id, other?)
+//   with     What was used to make them orgasm: (hand, cock, toy, other?)
+//   in       Where did the orgasm originate: (cock, pussy, tits, nipple-cunts?)
+Character.prototype.orgasmed = async function(options) {
+  let lust = 0;
+  let slut = await this.getCharacterAspect('slut');
+  let level = slut != null ? slut.level : 0;
+
+  if (level == 1) { lust = 3 + Random.upTo(4); }
+  if (level == 2) { lust = 7 + Random.upTo(6); }
+  if (level == 3) { lust = 13 + Random.upTo(8); }
+
+  await this.update({ lust });
+}
+
 HasAspects.isAppliedTo(Character);
 HasAttributes.isAppliedTo(Character);
 HasBody.isAppliedTo(Character);
