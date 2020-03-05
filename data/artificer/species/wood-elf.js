@@ -39,14 +39,3 @@ Species.build('wood-elf', {
 
   flags: ['elf']
 });
-
-//   personalities: {
-//     average: 100,
-//     fun: 20,
-//     motherly: 20,
-//     slut: 20,
-//   },
-//   aspects: {
-//     'carnivore': 20,
-//     'beast-lover': 75,
-//   },

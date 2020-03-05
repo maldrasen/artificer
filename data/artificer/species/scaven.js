@@ -70,13 +70,3 @@ Species.build('scaven', {
   nameGenerator: ScavenNameGenerator,
   flags: ['furry']
 });
-
-//   personalities: {
-//     skivering: 100,
-//   },
-//   aspects: {
-//     'beast-lover':   100,
-//     'lascivious':    40,
-//     'orgy-lover': 40,
-//     'shameless':     40,
-//   },

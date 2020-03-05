@@ -59,14 +59,3 @@ Species.build('pixie', {
 
   flags: ['fae']
 });
-
-//   personalities: {
-//     average: 25,
-//     fun: 25,
-//     slut: 25,
-//   },
-//   aspects: {
-//     'vegetarian': 30,
-//     'emotional': 50,
-//     'shameless': 100,
-//   },

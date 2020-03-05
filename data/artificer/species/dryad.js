@@ -56,12 +56,3 @@ Species.build('dryad', {
 
   flags: ['fae','furry']
 });
-
-//   personalities: {
-//     average: 50,
-//     aloof: 25,
-//     motherly: 25,
-//   },
-//   aspects: {
-//     'vegetarian': 100,
-//   },

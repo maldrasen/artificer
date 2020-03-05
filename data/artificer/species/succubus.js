@@ -54,38 +54,3 @@ Species.build('succubus', {
   nameGenerator: DemonNameGenerator,
   flags: ['demon']
 });
-
-//   personalities: {
-//     demonic: 100,
-//   },
-//   aspects: {
-//     'anal-lover':    100,
-//     'anal-slut':     100,
-//     'androphilic':   100,
-//     'beast-lover':   100,
-//     'binder':        80,
-//     'bound':         90,
-//     'breeder':       80,
-//     'cock-lover':    100,
-//     'cock-slut':     100,
-//     'cum-lover':     100,
-//     'dominant':      80,
-//     'golden':        40,
-//     'gynephilic':    100,
-//     'masochist':     90,
-//     'masterbator':   100,
-//     'milky':         80,
-//     'multiorgasmic': 75,
-//     'oral-lover':    100,
-//     'oral-slut':     100,
-//     'orgy-lover':    50,
-//     'pussy-lover':   100,
-//     'pussy-slut':    100,
-//     'revolting':     20,
-//     'sadist':        80,
-//     'size-queen':    80,
-//     'stretcher':     30,
-//     'submissive':    90,
-//     'tit-lover':     100,
-//     'tit-slut':      100
-//   },

@@ -37,14 +37,3 @@ Species.build('dark-elf', {
 
   flags: ['elf']
 });
-
-//   personalities: {
-//     average: 100,
-//     slut: 10,
-//     vicious: 20,
-//   },
-//   aspects: {
-//     'dominant':  80,
-//     'perverted': 40,
-//     'sadist':    60
-//   },

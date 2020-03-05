@@ -46,17 +46,3 @@ Species.build('nymph', {
 
   flags: ['fae']
 });
-
-//   aspects: ['emotional','lascivious','submissive'],
-//   personalities: {
-//     average: 50,
-//     fun: 60,
-//     motherly: 40,
-//     slut: 20,
-//   },
-//   aspects: {
-//     'vegetarian': 50,
-//     'emotional':  50,
-//     'lascivious': 40,
-//     'submissive': 30,
-//   },

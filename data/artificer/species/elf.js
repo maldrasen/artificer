@@ -44,12 +44,3 @@ Species.build('elf', {
 
   flags: ['elf']
 });
-
-//   flags: ['elf'],
-//   personalities: {
-//     average: 100,
-//     fun: 10,
-//     motherly: 10,
-//     slut: 10,
-//   },
-//   aspects: {},

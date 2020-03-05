@@ -61,14 +61,3 @@ Species.build('dragon', {
 
   flags: ['scalie']
 });
-
-//   personalities: {
-//     average: 100,
-//     vicious: 30,
-//     slut: 10,
-//   },
-//   aspects: {
-//     'carnivore': 100,
-//     'dominant': 60,
-//     'solo-act': 40,
-//   },

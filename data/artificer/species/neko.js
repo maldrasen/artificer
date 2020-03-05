@@ -34,13 +34,3 @@ Species.build('neko', {
 
   flags: ['elf']
 });
-
-//   personalities: {
-//     average: 100,
-//     fun: 100,
-//     slut: 20,
-//   },
-//   aspects: {
-//     'carnivore': 30,
-//     'emotional': 50,
-//   },

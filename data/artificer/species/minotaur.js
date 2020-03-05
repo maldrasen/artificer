@@ -90,13 +90,3 @@ Species.build('minotaur', {
 
   flags: ['furry']
 });
-
-//   personalities: {
-//     average: 100,
-//     motherly: 10,
-//     brutish: 10,
-//   },
-//   aspects: {
-//     'beast-lover': 100,
-//     'vegetarian': 100,
-//   },

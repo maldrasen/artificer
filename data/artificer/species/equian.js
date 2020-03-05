@@ -72,14 +72,3 @@ Species.build('equian', {
 
   flags: ['furry']
 });
-
-//   flags: ['furry'],
-//   personalities: {
-//     average: 100,
-//     fun: 10,
-//     motherly: 10,
-//   },
-//   aspects: {
-//     'beast-lover': 100,
-//     'vegetarian': 100,
-//   },

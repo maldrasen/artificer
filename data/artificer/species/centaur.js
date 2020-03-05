@@ -48,13 +48,3 @@ Species.build('centaur', {
 
   flags: ['furry']
 });
-
-//   personalities: {
-//     average: 100,
-//     motherly: 10,
-//     aloof: 10,
-//   },
-//   aspects: {
-//     'beast-lover': 100,
-//     'solo-act': 75
-//   },

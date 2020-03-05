@@ -33,13 +33,3 @@ Species.build('elf-lord', {
 
   flags: ['elf']
 });
-
-//   personalities: {
-//     aloof: 75,
-//     average: 25,
-//   },
-//   aspects: {
-//     'vegetarian': 60,
-//     'dominant': 80,
-//     'solo-act': 60,
-//   },

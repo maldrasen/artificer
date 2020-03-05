@@ -71,14 +71,3 @@ Species.build('ogre', {
   nameGenerator: GoblinNameGenerator,
   flags: ['goblin']
 });
-
-//   personalities: {
-//     brutish: 100,
-//     average: 10,
-//     vicious: 30,
-//   },
-//   aspects: {
-//     'emotional': 50,
-//     'perverted': 40,
-//     'sadist':    60
-//   },

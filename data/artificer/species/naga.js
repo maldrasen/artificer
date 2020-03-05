@@ -58,12 +58,3 @@ Species.build('naga', {
 
   flags: ['scalie']
 });
-
-//   personalities: {
-//     average: 30,
-//     vicious: 70,
-//   },
-//   aspects: {
-//     'sadist': 60,
-//     'dominant': 80
-//   },

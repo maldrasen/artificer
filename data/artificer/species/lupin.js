@@ -62,14 +62,3 @@ Species.build('lupin', {
 
   flags: ['furry']
 });
-
-//   personalities: {
-//     average: 100,
-//     fun: 30,
-//     motherly: 20,
-//     slut: 10,
-//   },
-//   aspects: {
-//     'beast-lover': 100,
-//     'carnivore': 100,
-//   },

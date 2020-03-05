@@ -49,16 +49,3 @@ Species.build('selkie', {
 
   flags: ['furry']
 });
-
-//   personalities: {
-//     average: 100,
-//     fun: 30,
-//     motherly: 20,
-//     slut: 15,
-//   },
-//   aspects: {
-//     'beast-lover': 100,
-//     'carnivore': 100,
-//     'lascivious':  20,
-//     'size-queen': 75,
-//   },

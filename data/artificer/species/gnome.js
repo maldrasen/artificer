@@ -35,10 +35,3 @@ Species.build('gnome', {
 
   flags: ['fae']
 });
-
-//   personalities: {
-//     average: 50,
-//     fun: 25,
-//     motherly: 25,
-//   },
-//   aspects: {},

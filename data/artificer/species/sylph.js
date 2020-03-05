@@ -44,13 +44,3 @@ Species.build('sylph', {
 
   flags: ['fae']
 });
-
-//   personalities: {
-//     average: 50,
-//     fun: 25,
-//     slut: 25,
-//   },
-//   aspects: {
-//     'vegetarian': 100,
-//     'emotional': 50,
-//   },

@@ -67,12 +67,3 @@ Species.build('goblin', {
   nameGenerator: GoblinNameGenerator,
   flags: ['goblin']
 });
-
-//   personalities: {
-//     insane: 100,
-//     vicious: 20,
-//   },
-//   aspects: {
-//     'lascivious': 40,
-//     'perverted':  30,
-//   },
