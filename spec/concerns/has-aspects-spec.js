@@ -207,9 +207,9 @@ describe('HasAspects', function() {
 
     it("adjusts the opposing aspect instead if the character has it.", function(done) {
       SpecHelper.buildJada().then(jada => {
-        jada.adjustAspect('prudent', 700).then(() => {
-          jada.adjustAspect('deviant', 34).then(() => {
-            jada.getCharacterAspect('prudent').then(aspect => {
+        jada.adjustAspect('androphobic', 700).then(() => {
+          jada.adjustAspect('androphilic', 34).then(() => {
+            jada.getCharacterAspect('androphobic').then(aspect => {
               expect(aspect.strength).to.equal(666);
               done();
             });
