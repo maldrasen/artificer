@@ -69,15 +69,6 @@ describe('HasAspects', function() {
       });
     });
 
-    it('is false if refuted by a furry character', function(done) {
-      CharacterBuilder.build({ firstName:'Test', species:'lupin' }).then(character => {
-        character.canAddAspect('beast-repulsed').then(possible => {
-          expect(possible).to.equal(false);
-          done();
-        });
-      });
-    });
-
     it('is false if an existing aspect refutes it', function(done) {
       SpecHelper.buildJada().then(jada => {
         CharacterAspect.create({ character_id:jada.id, code:'androphilic', strength:500 }).then(() => {
