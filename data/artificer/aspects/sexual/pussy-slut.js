@@ -5,7 +5,4 @@ Aspect.build('pussy-slut', {
   requires: [
     { body:'pussy' }
   ],
-  refutes: [
-    { aspect:'pussy-shy' }
-  ]
 });
