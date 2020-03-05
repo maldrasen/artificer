@@ -66,6 +66,13 @@ global.CharacterBuilder = (function() {
     return character
   }
 
+  // This is usually the second step when creating any character for the game.
+  // This isn't normally called in the spec though because it's not really
+  // nessessary and all the randomness can have unexpected results.
+  async function addRandomAspects(character, options) {
+    console.log("===",character.name," gets random aspects ===");
+  }
+
   // This method is used to baseline options from the options passed to the
   // factory, in order to ensure that all expected options have at least a
   // default value. The function will first use the specified values in the
@@ -91,9 +98,10 @@ global.CharacterBuilder = (function() {
   }
 
   return {
-    build: build,
-    addBody: addBody,
-    baseline: baseline,
-  }
+    build,
+    addBody,
+    addRandomAspects,
+    baseline,
+  };
 
 })();
