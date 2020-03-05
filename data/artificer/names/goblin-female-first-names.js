@@ -44,7 +44,7 @@ let names = [
   { name:"Fingers" },
   { name:"Flatty", aspects:['tit-slut'], triggers:['small-tits']},
   { name:"Flit" },
-  { name:"Flogging", aspects:['violent','binder','dominant']},
+  { name:"Flogging", aspects:['violent','dominant']},
   { name:"Funky", triggers:['ugly']},
   { name:"Furious", aspects:['violent']},
   { name:"Furpie" },

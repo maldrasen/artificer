@@ -278,7 +278,7 @@ let names = [
  { name:"Through-The-Fire-And-The-Flames", aspects:['violent'], triggers:['magical']},
  { name:"Throws-A-Rock", aspects:['violent']},
  { name:"Thrusts-A-Spear", aspects:['violent']},
- { name:"Ties-A-Knot", aspects:['binder.3']},
+ { name:"Ties-A-Knot", aspects:['dominant.3']},
  { name:"Tight-Like-Tiger", aspects:['anal-slut'], triggers:['strong'], restriction:'male' },
  { name:"Too-Small", triggers:['short','weak'], restriction:'female' },
  { name:"Tricks-A-Man" },
