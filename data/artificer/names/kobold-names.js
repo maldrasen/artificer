@@ -69,7 +69,7 @@ let names = [
  { name:"Drops-Of-Blood", aspects:['violent']},
  { name:"Eats-A-Bug" },
  { name:"Eats-A-Face", aspects:['violent.3']},
- { name:"Eats-An-Ass", aspects:['anal-lover.3']},
+ { name:"Eats-An-Ass", aspects:['ass-obsessed.3']},
  { name:"Eats-Loves-Kills", aspects:['violent.2','lascivious.2']},
  { name:"Eats-Many-Hearts", aspects:['violent.3']},
  { name:"Eats-Too-Much", restriction:'male' },

@@ -3,6 +3,6 @@ Aspect.build('anal-slut', {
   type: 'sexual',
   description: 'is very sexually aroused through their asshole and loves receiving anal sex.',
   refutes: [
-    { aspect:'anal-shy' }
+    { aspect:'anal-averse' }
   ]
 });

@@ -127,7 +127,7 @@ let names = [
   { name:"Trippy", triggers:['magical','stupid']},
   { name:"Trips", triggers:['magical','stupid']},
   { name:"Trist" },
-  { name:"Tuckus", aspects:['anal-slut','anal-lover']},
+  { name:"Tuckus", aspects:['anal-slut']},
   { name:"Twat", aspects:['pussy-slut.2'], triggers:['big-labia','big-clit']},
   { name:"Twatpolish" },
   { name:"Twatwaffle", triggers:['big-labia']},

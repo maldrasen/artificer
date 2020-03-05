@@ -145,7 +145,7 @@ describe('HasAspects', function() {
 
     it('will not add a mirrored aspect', function(done) {
       SpecHelper.buildJada().then(jada => {
-        jada.addAspect('anal-shy', { level:1 }).then(() => {
+        jada.addAspect('anal-averse', { level:1 }).then(() => {
           jada.addAspect('anal-slut', { level:1 }).then().catch(() => {
             jada.getCharacterAspects().then(aspects => {
               expect(aspects.length).to.equal(1);

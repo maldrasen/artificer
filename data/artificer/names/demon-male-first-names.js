@@ -121,7 +121,7 @@ let names = [
   { name:"Shax" },
   { name:"Sigtrygg" },
   { name:"Sodom" },
-  { name:"Sodomy", aspects:['anal-slut.3','anal-lover.3']},
+  { name:"Sodomy", aspects:['anal-slut.3','ass-obsessed.3']},
   { name:"Sturmgeist" },
   { name:"Tormentor" },
   { name:"Tourniquet" },
