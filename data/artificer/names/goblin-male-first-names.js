@@ -64,7 +64,7 @@ let names = [
   { name:"Furious", aspects:['violent']},
   { name:"Furry", aspects:['beast-lover']},
   { name:"Fury", aspects:['violent']},
-  { name:"Gangbang", aspects:['cock-slut.2']},
+  { name:"Gangbang", aspects:['orgy-lover']},
   { name:"Gnash" },
   { name:"Gnol" },
   { name:"Gob" },

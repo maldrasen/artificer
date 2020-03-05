@@ -5,7 +5,7 @@ let names = [
  { name:"Always-Screaming", aspects:['violent','masochist.3']},
  { name:"Amber-Eyes", triggers:['amber-eyes','beautiful']},
  { name:"Angry-At-Everything", restriction:'male', aspects:['violent.2']},
- { name:"Any-Hole-Will-Do", aspects:['cock-slut.3','slut.3'], restriction:'has-cock'},
+ { name:"Any-Hole-Will-Do", aspects:['ass-obsessed.2','pussy-lover.2','oral-lover.2','slut.3'], restriction:'has-cock'},
  { name:"Appears-Out-Of-Nowhere" },
  { name:"Argues-With-Frogs", triggers:['stupid']},
  { name:"Arrives-Too-Late", triggers:['stupid']},

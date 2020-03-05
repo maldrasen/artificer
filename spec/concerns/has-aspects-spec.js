@@ -71,8 +71,8 @@ describe('HasAspects', function() {
 
     it('is false if an existing aspect refutes it', function(done) {
       SpecHelper.buildJada().then(jada => {
-        CharacterAspect.create({ character_id:jada.id, code:'androphilic', strength:500 }).then(() => {
-          jada.canAddAspect('cock-skeptic').then(possible => {
+        CharacterAspect.create({ character_id:jada.id, code:'androphobic', strength:500 }).then(() => {
+          jada.canAddAspect('cock-lover').then(possible => {
             expect(possible).to.equal(false);
             done();
           });
@@ -83,15 +83,6 @@ describe('HasAspects', function() {
     it('can require a pussy', function(done) {
       SpecHelper.buildJada({ gender:'male' }).then(character => {
         character.canAddAspect('pussy-slut').then(possible => {
-          expect(possible).to.equal(false);
-          done();
-        });
-      });
-    });
-
-    it('can require a cock', function(done) {
-      SpecHelper.buildJada({ gender:'female' }).then(character => {
-        character.canAddAspect('cock-slut').then(possible => {
           expect(possible).to.equal(false);
           done();
         });
@@ -149,8 +140,8 @@ describe('HasAspects', function() {
 
     it('will not add a refuted aspect', function(done) {
       SpecHelper.buildJada().then(jada => {
-        jada.addAspect('androphilic', { level:1 }).then(() => {
-          jada.addAspect('cock-skeptic', { level:1 }).then().catch(() => {
+        jada.addAspect('androphobic', { level:1 }).then(() => {
+          jada.addAspect('cock-lover', { level:1 }).then().catch(() => {
             jada.getCharacterAspects().then(aspects => {
               expect(aspects.length).to.equal(1);
               done();

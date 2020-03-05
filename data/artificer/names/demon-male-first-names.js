@@ -50,7 +50,7 @@ let names = [
   { name:"Doom" },
   { name:"Duromast" },
   { name:"Engorgio" },
-  { name:"Fellatio", aspects:['cock-lover.3','cock-slut.3','oral-lover.3','oral-slut.3','cum-lover.3']},
+  { name:"Fellatio", aspects:['cock-lover.3','oral-lover.3','oral-slut.3','cum-lover.3']},
   { name:"Focalor" },
   { name:"Foras" },
   { name:"Gorgoroth" },

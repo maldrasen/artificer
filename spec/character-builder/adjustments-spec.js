@@ -39,12 +39,12 @@ describe("Adjustments", function() {
   });
 
   it('checks aspect requirements', function(done) {
-    buildJada({ gender:'female', aspects:['pussy-slut','cock-slut']}).then(character => {
+    buildJada({ gender:'male', aspects:['anal-slut','pussy-slut']}).then(character => {
       character.getCharacterAspects().then(aspects => {
-        expect(flattenAspects(aspects)).to.eql(['pussy-slut(1)'])
+        expect(flattenAspects(aspects)).to.eql(['anal-slut(1)'])
         done();
       });
     });
-  })
+  });
 
 });
