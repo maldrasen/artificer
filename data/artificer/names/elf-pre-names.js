@@ -4,7 +4,7 @@
 let names = [
   { name:'Blighter' },
   { name:"Clever", triggers:['smart']},
-  { name:"Crazy", aspects:['emotional.3'], triggers:['stupid']},
+  { name:"Crazy", triggers:['stupid']},
   { name:'Grovetender' },
   { name:'Reveler' },
   { name:'Sleepwatcher' },
@@ -25,7 +25,7 @@ names = [
   { name:"Little", triggers:['short','thin','small-tits']},
   { name:"Lovely", triggers:['beautiful']},
   { name:"Milky", aspects:['milky'], triggers:['big-tits']},
-  { name:"Ridiculous", aspects:['emotional.3'], triggers:['stupid']},
+  { name:"Ridiculous", triggers:['stupid']},
   { name:"Splendid", triggers:['beautiful']},
   { name:"Tiny", triggers:['short','thin','small-tits']},
 ];

@@ -641,7 +641,7 @@ let names = [
   { name:"Yngwie" },
   { name:"Zalgo" },
   { name:"Zarek" },
-  { name:"Zen", aspects:['stoic.3']},
+  { name:"Zen", aspects:['passive.3']},
   { name:"Zephyr" },
   { name:"Zerig" },
 ];
