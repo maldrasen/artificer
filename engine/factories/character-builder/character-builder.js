@@ -1,5 +1,35 @@
 global.CharacterBuilder = (function() {
 
+  const defaultAspectFrequencies = {
+    'anal-averse':  5,
+    'anal-slut':    9,
+    'ass-obsessed': 10,
+    'beast-lover':  3,
+    'bound':        5,
+    'breeder':      4,
+    'cock-lover':   8,
+    'cum-lover':    6,
+    'deviant':      3,
+    'dominant':     5,
+    'golden':       2,
+    'masochist':    5,
+    'masterbator':  10,
+    'milky':        5,
+    'oral-lover':   10,
+    'oral-slut':    8,
+    'orgy-lover':   6,
+    'perverted':    4,
+    'pussy-lover':  10,
+    'pussy-slut':   9,
+    'revolting':    1,
+    'sadist':       7,
+    'size-queen':   8,
+    'stretcher':    6,
+    'submissive':   5,
+    'tit-lover':    8,
+    'tit-slut':     7,
+  };
+
   // So the process for the full build is build the body, pick a name, make adjectments to body based on name.
   // preName:            { type:Sequelize.STRING },
   // firstName:          { type:Sequelize.STRING },
@@ -71,6 +101,16 @@ global.CharacterBuilder = (function() {
   // nessessary and all the randomness can have unexpected results.
   async function addRandomAspects(character, options) {
     console.log("===",character.name," gets random aspects ===");
+
+    const speciesFrequencies = character.species.aspectFrequencies;
+    const combinedFrequencies = {};
+
+    each(defaultAspectFrequencies, (value, code) => {
+      combinedFrequencies[code] = (speciesFrequencies[code] != null) ?
+        speciesFrequencies[code]:
+        defaultAspectFrequencies[code];
+    });
+
   }
 
   // This method is used to baseline options from the options passed to the
