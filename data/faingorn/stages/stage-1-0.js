@@ -20,10 +20,8 @@ GameStage.build('stage-1-0',{
   },
 
   setup: async game => {
+    await EventFunctions.createFirstMinion('female');
     await EventCollections.addAct_1_1();
-
-    let rat = await CharacterBuilder.build({ species:'scaven', gender:'female', physical:12, personal:10, mental:8, magical:0 });
-    await Flag.set('character.first-scaven',rat.id);
   },
 
 });

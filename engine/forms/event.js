@@ -14,7 +14,6 @@ global.Event = class Event extends Form {
     }
   }
 
-
   // Before an event can be rendered in the browser it needs to be prepared.
   // This function will to all of the token and path replacement in the event
   // stages. It will also call the event's onStart() function if it exists.

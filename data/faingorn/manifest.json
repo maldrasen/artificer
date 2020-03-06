@@ -17,6 +17,7 @@
     "roles/*",
     "stages/*",
     "task-stories/*",
-    "event-collections"
+    "event-collections",
+    "event-functions"
   ]
 }

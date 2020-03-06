@@ -42,12 +42,7 @@ Event.build('ambush-rat-setup', {
   // the player is alone) it's removed from the event queue. Nothing really
   // important happens in it though.
   onFinish: async choices => {
-    const player = await Player.instance();
-    const rat = await CharacterBuilder.build({ type:'pending', species:'scaven', gender:choices.gender });
-    await rat.addAspect('passive',{ level:1 });
-    await rat.addAspect('androphilic',{ level:1 });
-    await rat.addAspect('gynephilic',{ level:1 });
-    await CharacterBuilder.addRandomAspects(rat,{ count:3 });
+    await EventFunctions.createFirstMinion(choices.gender);
     await EventQueue.enqueueEvent('ambush-rat-capture',{ priority:'next', actors:{ R:rat.id }});
     await EventQueue.removeEvent('looking-outside-1');
   },
