@@ -9,9 +9,18 @@ global.ConsentCalculator = class ConsentCalculator {
   get player() { return this._player; }
   get baselineConsent() { return this._baselineConsent; }
 
+  // Get all of the models that will be needed to determine consent in this
+  // function, that way everything else can be synchronous. This could be
+  // modified to use another character instead of the player if we at some
+  // point need to calculate consent between two minions, but I don't think that
+  // will really ever be needed.
   async init() {
-    this._aspects = await this.character.getCharacterAspects();
     this._player = await Player.instance();
+    this._aspects = {}
+
+    each((await this.character.getCharacterAspects()), aspect => {
+      this._aspects[aspect.code] = aspect.level;
+    });
   }
 
   // To get the consent level for an action we need to calculate a factor
@@ -31,7 +40,38 @@ global.ConsentCalculator = class ConsentCalculator {
   getConsentLevel(action) {
     let factor = [0.5, 0.75, 0.9, 1, 1.1, 1.5, 2][action.difficulty]||1;
     console.log("Starting Difficulty:",factor);
+
+    factor = factor * this.calculateGenderFactor();
+    console.log("With Gender Factor",factor);
+
     return this.calculateConsent(factor);
+  }
+
+  // Using the character's four possible gender aspects determines how
+  // attracted the character is to the player. If the player is a futa the
+  // preferences are applied twice. This might be good or bad for the futa
+  // depending on the situation. Negative aspects effect consent more strongly,
+  // so if the character has either androphobic or gynephobic the overall
+  // consent level will drop for everything. The flipside of this is that
+  // strongly bisexual characters get their aspects applied twice which means
+  // they're more likely to consent to everything.
+  calculateGenderFactor() {
+    let factor = 1;
+    if (['male','futa'].indexOf(this.player.genderCode) >= 0) {
+      if (this.aspects['androphilic'] == 2) { factor *= 1.2; }
+      if (this.aspects['androphilic'] == 3) { factor *= 1.5; }
+      if (this.aspects['androphobic'] == 1) { factor *= 0.5; }
+      if (this.aspects['androphobic'] == 2) { factor *= 0.25; }
+      if (this.aspects['androphobic'] == 3) { factor *= 0.1; }
+    }
+    if (['female','futa'].indexOf(this.player.genderCode) >= 0) {
+      if (this.aspects['gynephilic'] == 2) { factor *= 1.2; }
+      if (this.aspects['gynephilic'] == 3) { factor *= 1.5; }
+      if (this.aspects['gynephobic'] == 1) { factor *= 0.5; }
+      if (this.aspects['gynephobic'] == 2) { factor *= 0.25; }
+      if (this.aspects['gynephobic'] == 3) { factor *= 0.1; }
+    }
+    return factor;
   }
 
   // Consent is based on the consent graph I put together. It's basically a
