@@ -5,6 +5,10 @@ SummonAction.build('get-pussy-eaten', {
 
   requirements: ['player.has-pussy'],
 
+  difficulty: 2,
+  complementing:[],
+  conflicting:[],
+
   event: 'get-pussy-eaten',
   variants:[
     { event:'get-pussy-eaten-face-sit' },

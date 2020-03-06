@@ -6,6 +6,10 @@ SummonAction.build('face-slapping', {
 
   requirements: [],
 
+  difficulty: 4,
+  complementing:[],
+  conflicting:[],
+
   event: 'face-slapping',
 
 });

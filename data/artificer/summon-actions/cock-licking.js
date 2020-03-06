@@ -7,6 +7,10 @@ SummonAction.build('cock-licking', {
     'player.has-cock',
     'canSuckCock(C,P).mouthFit=impossible'],
 
+  difficulty: 1,
+  complementing:[],
+  conflicting:[],
+
   event: 'cock-licking',
 
 });

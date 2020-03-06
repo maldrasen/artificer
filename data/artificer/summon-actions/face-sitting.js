@@ -5,6 +5,10 @@ SummonAction.build('face-sitting', {
 
   requirements:[],
 
+  difficulty: 3,
+  complementing:[],
+  conflicting:[],
+
   event: 'face-sitting',
   variants:[
     { when:['location.has-chair'], event:'face-sitting-chair' },

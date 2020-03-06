@@ -5,6 +5,10 @@ SummonAction.build('eat-pussy', {
 
   requirements: ['minion(C).has-pussy'],
 
+  difficulty: 1,
+  complementing:[],
+  conflicting:[],
+
   event: 'eat-pussy',
   variants:[
     { when:[], event:'eat-pussy-face-sit' },

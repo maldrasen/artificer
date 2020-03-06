@@ -8,6 +8,10 @@ SummonAction.build('face-fuck', {
     'player.has-cock',
     'canSuckCock(C,P).mouthFit!=impossible'],
 
+  difficulty: 4,
+  complementing:[],
+  conflicting:[],
+
   event: 'face-fuck',
   variants:[
     { when:['location.has-table'], event:'face-fuck-table' },

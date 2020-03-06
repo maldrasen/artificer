@@ -7,6 +7,10 @@ SummonAction.build('get-blowjob', {
     'player.has-cock',
     'canSuckCock(C,P).mouthFit!=impossible'],
 
+  difficulty: 2,
+  complementing:[],
+  conflicting:[],
+
   event: 'get-blowjob-standing',
   variants:[
     { event:'get-blowjob-on-back' },

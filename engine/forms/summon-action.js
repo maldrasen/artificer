@@ -35,6 +35,9 @@ global.SummonAction = class SummonAction extends Form {
   }
 
   static async categorizedForCharacter(character) {
+    const calculator = new ConsentCalculator(character);
+    await calculator.init();
+
     const context = new WeaverContext();
     await context.addCharacter('C',character);
     await context.addPlayer();
@@ -49,6 +52,7 @@ global.SummonAction = class SummonAction extends Form {
         name: action.name,
         description: Weaver.weave(action.description, context),
         tags: action.tags,
+        consent: calculator.getConsentLevel(action),
       });
     });
 
