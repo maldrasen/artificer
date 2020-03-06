@@ -52,7 +52,7 @@ global.SummonAction = class SummonAction extends Form {
         name: action.name,
         description: Weaver.weave(action.description, context),
         tags: action.tags,
-        consent: calculator.getConsentLevel(action),
+        consent: calculator.getConsentDetails(action),
       });
     });
 

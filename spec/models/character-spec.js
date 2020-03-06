@@ -1,10 +1,11 @@
 describe('Character', function() {
 
   describe('reduceAllLoyalty()', function() {
-    it('reduces loyalty on all minions', function() {
+    it('reduces loyalty on all minions', function(done) {
       SpecHelper.buildJada({ loyalty:50 }).then(() => {
-        Character.reduceAllLoyalty().then(minions => {
-          expect(minions[0].loyalty).to.be.within(45,50)
+        Character.reduceAllLoyalty(5).then(minions => {
+          expect(minions[0].loyalty).to.be.within(45,50);
+          done();
         });
       });
     });

@@ -72,14 +72,16 @@ global.HasInjuries = { isAppliedTo: function(model) {
     return total;
   }
 
+  // The body (and the anus for that matter) should never be null in practice,
+  // but can happen in a spec where a character is created without a body.
   model.prototype.totalCriticalLevels = async function() {
     const body = await this.getBody();
-    return body.smashLevel;
+    return (body == null) ? 0 : body.smashLevel;
   }
 
   model.prototype.getAnusPainLevel = async function() {
     const anus = await this.getAnus();
-    return anus.smashLevel;
+    return (anus == null) ? 0 : anus.smashLevel;
   }
 
   model.prototype.getCockPainLevel = async function() {
