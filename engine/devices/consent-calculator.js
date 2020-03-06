@@ -37,17 +37,20 @@ global.ConsentCalculator = class ConsentCalculator {
   //        4 (1.1)  difficult       - anal sex, face slapping
   //        5 (1.5)  very difficult  - fisting, tit punching
   //        6 (2)    impossible      - wound fucking, shit eating
-  async getConsentLevel(action) {
-    let factor = [0.5, 0.75, 0.9, 1, 1.1, 1.5, 2][action.difficulty]||1;
-    console.log("Starting Difficulty:",factor);
+  async getConsentDetails(action) {
+    let difficultyFactor = [0.5, 0.75, 0.9, 1, 1.1, 1.5, 2][action.difficulty]||1;
+    let genderFactor = this.calculateGenderFactor();
+    let injuryFactor = await this.calculateInjuryFactor(action);
+    let aspectFactor = this.calculateAspectFactor(action);
+    let overallFactor = difficultyFactor * genderFactor * injuryFactor * aspectFactor;
 
-    factor *= this.calculateGenderFactor();
-    console.log("With Gender Factor",factor);
-
-    factor *= await this.calculateInjuryFactor(action);
-    console.log("With Injury Factor",factor);
-
-    return this.calculateConsent(factor);
+    return {
+      genderFactor,
+      injuryFactor,
+      aspectFactor,
+      overallFactor,
+      level: this.calculateConsent(overallFactor),
+    };
   }
 
   // Using the character's four possible gender aspects determines how
@@ -113,6 +116,27 @@ global.ConsentCalculator = class ConsentCalculator {
     if (levels >= 4) { return 0.1; }
   }
 
+  // Having aspects that complement the action raises the consent level whereas
+  // aspects that conflict with the action lowers it. Conflicting aspects have
+  // a greater influence than complementing aspects.
+  calculateAspectFactor(action) {
+    let factor = 1;
+
+    each(action.complementing, code => {
+      if (this.aspects[code] == 1) { factor *= 1.1; }
+      if (this.aspects[code] == 2) { factor *= 1.2; }
+      if (this.aspects[code] == 3) { factor *= 1.3; }
+    });
+
+    each(action.conflicting, code => {
+      if (this.aspects[code] == 1) { factor *= 0.9; }
+      if (this.aspects[code] == 2) { factor *= 0.7; }
+      if (this.aspects[code] == 3) { factor *= 0.5; }
+    });
+
+    return factor;
+  }
+
   // Consent is based on the consent graph I put together. It's basically a
   // chart with four regions for the four baseline consent states, rape,
   // reluctant, consent, and enthusiastic. These three regions are defined by
@@ -131,9 +155,6 @@ global.ConsentCalculator = class ConsentCalculator {
   calculateConsent(factor) {
     let x = this.character.fear;
     let y = factor * (this.character.loyalty + this.character.lust) / 2;
-
-    console.log(`Consent(${x},${y})`);
-
     if (y > ( 3 / 20 * x) + 80) { return 'enthusiastic'; }
     if (y > ( 2 / 5  * x) + 50) { return 'consent'; }
     if (y > (-3 / 10 * x) + 40) { return 'reluctant'; }

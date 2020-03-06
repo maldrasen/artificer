@@ -6,10 +6,9 @@ SummonAction.build('get-pussy-eaten', {
   requirements: ['player.has-pussy'],
 
   difficulty:    2,
-  role:          'sub',
   effects:       'head',
-  complementing: ['pussy-lover','oral-slut'],
-  conflicting:   [],
+  complementing: ['pussy-lover','oral-slut','submissive'],
+  conflicting:   ['dominant'],
 
   event: 'get-pussy-eaten',
   variants:[

@@ -16,6 +16,7 @@ describe.only('ConsentCalculator', function() {
       return jada.addAspect(code, { level:otherOptions.aspects[code] });
     }));
 
+    if (otherOptions.injure == 'head.2')  { await Abuser.HeadAbuser.addInjury(jada, { type:'smash', level:2 }); }
     if (otherOptions.injure == 'pussy.1') { await Abuser.PussyAbuser.addInjury(jada, { type:'burn', level:1 }); }
     if (otherOptions.injure == 'pussy.3') { await Abuser.PussyAbuser.addInjury(jada, { type:'burn', level:3 }); }
 
@@ -26,10 +27,23 @@ describe.only('ConsentCalculator', function() {
 
   it('calculates the baseline consent for an average action', function(done) {
     buildCalculatorWith({ fear:10, loyalty:30, lust:50 },{}).then(calc => {
-      calc.getConsentLevel(SummonAction.lookup('face-sitting')).then(level => {
-        expect(level).to.equal('reluctant')
+      calc.getConsentDetails(SummonAction.lookup('face-sitting')).then(detail => {
+        expect(detail.level).to.equal('reluctant');
         done();
-      })
+      });
+    });
+  });
+
+  it('combines everything into one consent detail object', function(done) {
+    buildCalculatorWith({ fear:10, loyalty:40, lust:50 },{ injure:'head.2', aspects:{ androphilic:2, masochist:3, submissive:2 }}).then(calc => {
+      calc.getConsentDetails(SummonAction.lookup('dick-slapping')).then(detail => {
+        expect(detail.genderFactor).to.equal(1.2);
+        expect(detail.injuryFactor).to.equal(1.1);
+        expect(detail.aspectFactor).to.equal(1.56);
+        expect(detail.overallFactor).to.be.within(1.85, 1.86);
+        expect(detail.level).to.equal('enthusiastic');
+        done();
+      });
     });
   });
 
@@ -88,6 +102,29 @@ describe.only('ConsentCalculator', function() {
           expect(factor).to.equal(1.2);
           done();
         });
+      });
+    });
+  });
+
+  describe('calculateAspectFactor()', function(done) {
+    it('increases consent with complementing aspects', function(done) {
+      buildCalculatorWith({},{ aspects:{ 'pussy-slut':2 }}).then(calc => {
+        expect(calc.calculateAspectFactor(SummonAction.lookup('eat-pussy'))).to.equal(1.2);
+        done();
+      });
+    });
+
+    it('greatly increases consent with multiple complementing aspects', function(done) {
+      buildCalculatorWith({},{ aspects:{ 'oral-lover':1, 'pussy-slut':2 }}).then(calc => {
+        expect(calc.calculateAspectFactor(SummonAction.lookup('eat-pussy'))).to.equal(1.32);
+        done();
+      });
+    });
+
+    it('reduces consent with conflicting aspects', function(done) {
+      buildCalculatorWith({},{ aspects:{ 'dominant':1 }}).then(calc => {
+        expect(calc.calculateAspectFactor(SummonAction.lookup('face-slapping'))).to.equal(0.9);
+        done();
       });
     });
   });

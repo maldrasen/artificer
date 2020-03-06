@@ -8,9 +8,8 @@ SummonAction.build('give-blowjob', {
     'canSuckCock(P,C).mouthFit!=impossible'],
 
   difficulty:    0,
-  role:          'dom',
   effects:       'head',
-  complementing: ['oral-lover'],
+  complementing: ['oral-lover','dominant'],
   conflicting:   [],
 
   event: 'give-blowjob',

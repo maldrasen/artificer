@@ -9,10 +9,9 @@ SummonAction.build('dick-slapping', {
     'player.has-bigger-than-big-cock'],
 
   difficulty:    2,
-  role:          'sub',
   effects:       'head',
-  complementing: ['cock-lover','masochist'],
-  conflicting:   [],
+  complementing: ['cock-lover','masochist','submissive'],
+  conflicting:   ['dominant'],
 
   event: 'dick-slapping',
 

@@ -8,10 +8,9 @@ SummonAction.build('get-blowjob', {
     'canSuckCock(C,P).mouthFit!=impossible'],
 
   difficulty:    2,
-  role:          'sub',
   effects:       'head',
-  complementing: ['cock-lover','cum-lover','oral-slut'],
-  conflicting:   [],
+  complementing: ['cock-lover','cum-lover','oral-slut','submissive'],
+  conflicting:   ['dominant'],
 
   event: 'get-blowjob-standing',
   variants:[

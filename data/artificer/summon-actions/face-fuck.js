@@ -9,10 +9,9 @@ SummonAction.build('face-fuck', {
     'canSuckCock(C,P).mouthFit!=impossible'],
 
   difficulty:    4,
-  role:          'sub',
   effects:       'head',
-  complementing: ['cock-lover','cum-lover','oral-slut','masochist'],
-  conflicting:   [],
+  complementing: ['cock-lover','cum-lover','oral-slut','masochist','submissive'],
+  conflicting:   ['dominant'],
 
   event: 'face-fuck',
   variants:[
