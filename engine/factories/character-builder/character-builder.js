@@ -134,7 +134,9 @@ global.CharacterBuilder = (function() {
 
     // Randomly determine what genders the character is attracted to. Every
     // character should be attracted to men or women, some characters (futas
-    // especially) are attracted to both.
+    // especially) are attracted to both. If a character is not bisexual there's
+    // a 25% chance they'll be repulsed by the gender opposite to the one
+    // they're attracted to.
     //
     // TODO: Some races will have different attraction maps. The viera have no
     //       men, so are almost all lesbians. May also consider adding a
@@ -148,6 +150,9 @@ global.CharacterBuilder = (function() {
 
       if (genderAspects.indexOf('m') >= 0) { await character.addAspect('androphilic', { strength: 200+Random.upTo(400) }); }
       if (genderAspects.indexOf('f') >= 0) { await character.addAspect('gynephilic',  { strength: 200+Random.upTo(400) });  }
+
+      if (genderAspects == 'm' && Random.upTo(4) == 0) { await character.addAspect('gynephobic',  { strength: 200+Random.upTo(400) }); }
+      if (genderAspects == 'f' && Random.upTo(4) == 0) { await character.addAspect('androphobic', { strength: 200+Random.upTo(400) }); }
     }
   }
 
