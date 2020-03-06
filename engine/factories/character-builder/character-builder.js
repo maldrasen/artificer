@@ -98,18 +98,48 @@ global.CharacterBuilder = (function() {
 
   // This is usually the second step when creating any character for the game.
   // This isn't normally called in the spec though because it's not really
-  // nessessary and all the randomness can have unexpected results.
+  // nessessary and all the randomness can have unexpected results. Androphilic
+  // or gynephilic will probably also be added if they aren't already.
+  //
+  // Options:
+  //     count   number of aspects to add or random between 1 and 4
+  //
   async function addRandomAspects(character, options) {
-    console.log("===",character.name," gets random aspects ===");
-
     const speciesFrequencies = character.species.aspectFrequencies;
     const combinedFrequencies = {};
+
+    const currentAspects = (await character.getCharacterAspects()).map(aspect => {
+      return aspect.code
+    });
+
+    if (options == null) {
+      options = {};
+    }
 
     each(defaultAspectFrequencies, (value, code) => {
       combinedFrequencies[code] = (speciesFrequencies[code] != null) ?
         speciesFrequencies[code]:
         defaultAspectFrequencies[code];
     });
+
+    console.log("=== Add Random ===");
+    console.log("Combined Freq:",combinedFrequencies);
+    console.log("Current Aspects",currentAspects);
+
+    let count = options.count || Random.between(1,4);
+    for (let i=0; i<count; i++) {
+      let code = Random.fromFrequencyMap(combinedFrequencies);
+      delete combinedFrequencies[code];
+      await character.addAspect(code, { level:1 });
+      console.log("Added: ",code)
+    }
+
+    if (currentAspects.indexOf('androphilic') < 0 && currentAspects.indexOf('gynephilic') < 0) {
+      let sexuality = Random.fromFrequencyMap({ g:20, s:50, b:30 });
+      if (sexuality == 'g')
+
+
+    }
 
   }
 
