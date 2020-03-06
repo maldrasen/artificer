@@ -10,6 +10,7 @@ SummonAction.build('dick-slapping', {
 
   difficulty:    2,
   role:          'sub',
+  effects:       'head',
   complementing: ['cock-lover','masochist'],
   conflicting:   [],
 

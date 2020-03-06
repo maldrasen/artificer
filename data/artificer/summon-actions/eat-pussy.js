@@ -6,6 +6,7 @@ SummonAction.build('eat-pussy', {
   requirements: ['minion(C).has-pussy'],
 
   difficulty:    0,
+  effects:       'pussy',
   complementing: ['oral-lover','pussy-slut'],
   conflicting:   [],
 

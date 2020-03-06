@@ -24,7 +24,6 @@ global.Pussy = Database.instance().define('pussy', {
   smashLevel:        { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
   smashCount:        { type:Sequelize.INTEGER },
   smashHealing:      { type:Sequelize.INTEGER },
-  smashShape:        { type:Sequelize.STRING },
   description:       { type:Sequelize.STRING },
 },{
   timestamps: false,

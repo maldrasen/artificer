@@ -25,8 +25,17 @@ Abuser.PussyAbuser = (function() {
     pussy.blightHealing = 0;
   }
 
-  function addBurnInjury(character, pussy, hazard) {}
-  function addSmashInjury(character, pussy, hazard) {}
+  function addBurnInjury(character, pussy, hazard) {
+    pussy.burnLevel = Abuser.raiseLevel(pussy.burnLevel, hazard.level, 5);
+    pussy.burnCount += hazard.count || 1;
+    pussy.burnHealing = 0;
+  }
+
+  function addSmashInjury(character, pussy, hazard) {
+    pussy.smashLevel = Abuser.raiseLevel(pussy.smashLevel, hazard.level, 5);
+    pussy.smashCount += hazard.count || 1;
+    pussy.smashHealing = 0;
+  }
 
   return { addInjury };
 

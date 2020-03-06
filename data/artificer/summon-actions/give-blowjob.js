@@ -9,6 +9,7 @@ SummonAction.build('give-blowjob', {
 
   difficulty:    0,
   role:          'dom',
+  effects:       'head',
   complementing: ['oral-lover'],
   conflicting:   [],
 

@@ -10,6 +10,7 @@ SummonAction.build('face-fuck', {
 
   difficulty:    4,
   role:          'sub',
+  effects:       'head',
   complementing: ['cock-lover','cum-lover','oral-slut','masochist'],
   conflicting:   [],
 

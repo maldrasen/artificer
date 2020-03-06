@@ -37,12 +37,15 @@ global.ConsentCalculator = class ConsentCalculator {
   //        4 (1.1)  difficult       - anal sex, face slapping
   //        5 (1.5)  very difficult  - fisting, tit punching
   //        6 (2)    impossible      - wound fucking, shit eating
-  getConsentLevel(action) {
+  async getConsentLevel(action) {
     let factor = [0.5, 0.75, 0.9, 1, 1.1, 1.5, 2][action.difficulty]||1;
     console.log("Starting Difficulty:",factor);
 
-    factor = factor * this.calculateGenderFactor();
+    factor *= this.calculateGenderFactor();
     console.log("With Gender Factor",factor);
+
+    factor *= await this.calculateInjuryFactor(action);
+    console.log("With Injury Factor",factor);
 
     return this.calculateConsent(factor);
   }
@@ -58,20 +61,56 @@ global.ConsentCalculator = class ConsentCalculator {
   calculateGenderFactor() {
     let factor = 1;
     if (['male','futa'].indexOf(this.player.genderCode) >= 0) {
-      if (this.aspects['androphilic'] == 2) { factor *= 1.2; }
-      if (this.aspects['androphilic'] == 3) { factor *= 1.5; }
-      if (this.aspects['androphobic'] == 1) { factor *= 0.5; }
+      if (this.aspects['androphilic'] == 2) { factor *= 1.2;  }
+      if (this.aspects['androphilic'] == 3) { factor *= 1.5;  }
+      if (this.aspects['androphobic'] == 1) { factor *= 0.5;  }
       if (this.aspects['androphobic'] == 2) { factor *= 0.25; }
-      if (this.aspects['androphobic'] == 3) { factor *= 0.1; }
+      if (this.aspects['androphobic'] == 3) { factor *= 0.1;  }
     }
     if (['female','futa'].indexOf(this.player.genderCode) >= 0) {
-      if (this.aspects['gynephilic'] == 2) { factor *= 1.2; }
-      if (this.aspects['gynephilic'] == 3) { factor *= 1.5; }
-      if (this.aspects['gynephobic'] == 1) { factor *= 0.5; }
+      if (this.aspects['gynephilic'] == 2) { factor *= 1.2;  }
+      if (this.aspects['gynephilic'] == 3) { factor *= 1.5;  }
+      if (this.aspects['gynephobic'] == 1) { factor *= 0.5;  }
       if (this.aspects['gynephobic'] == 2) { factor *= 0.25; }
-      if (this.aspects['gynephobic'] == 3) { factor *= 0.1; }
+      if (this.aspects['gynephobic'] == 3) { factor *= 0.1;  }
     }
     return factor;
+  }
+
+  // If a character is weakly masochististic (level 1) they only get an
+  // overall boost to their consent to painful actions. A masochististic
+  // character (level 2) will ignore the pain from their wounds. A strongly
+  // masochististic (level 3) welcomes the extra pain their wounds bring.
+  //
+  // Head actions use the head injuries which are tracked as critical
+  // injuries, but when used for determining consent they're the same as
+  // the other painful injury types. Body is the same as head, but it's
+  // included as a catch-all for any action that's not using a normal part.
+  async calculateInjuryFactor(action) {
+    let masochism = this.aspects['masochist'];
+    if (masochism == 2) { return 1; }
+
+    let levels = 0;
+    if (action.effects == 'body')  { levels = await this.character.totalCriticalLevels(); }
+    if (action.effects == 'head')  { levels = await this.character.totalCriticalLevels(); }
+    if (action.effects == 'anus')  { levels = await this.character.getAnusPainLevel();    }
+    if (action.effects == 'cock')  { levels = await this.character.getCockPainLevel();    }
+    if (action.effects == 'pussy') { levels = await this.character.getPussyPainLevel();   }
+    if (action.effects == 'tits')  { levels = await this.character.getTitsPainLevel();    }
+
+    if (masochism == 3) {
+      if (levels == 0) { return 0.9; }
+      if (levels == 1) { return 1;   }
+      if (levels == 2) { return 1.1; }
+      if (levels == 3) { return 1.2; }
+      if (levels >= 4) { return 1.5; }
+    }
+
+    if (levels == 0) { return 1;   }
+    if (levels == 1) { return 0.9; }
+    if (levels == 2) { return 0.7; }
+    if (levels == 3) { return 0.4; }
+    if (levels >= 4) { return 0.1; }
   }
 
   // Consent is based on the consent graph I put together. It's basically a

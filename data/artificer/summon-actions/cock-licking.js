@@ -9,6 +9,7 @@ SummonAction.build('cock-licking', {
 
   difficulty:    1,
   role:          'sub',
+  effects:       'head',
   complementing: ['cock-lover','cum-lover','oral-slut'],
   conflicting:   [],
 

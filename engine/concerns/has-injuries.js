@@ -55,49 +55,46 @@ global.HasInjuries = { isAppliedTo: function(model) {
     }[classname];
   }
 
+  // === Health Levels ===
+
   model.prototype.getHealthLevels = async function() {
-    const painful = await totalPainfulLevels(this);
-    const critical = await totalCriticalLevels(this);
+    const painful = await this.totalPainLevels(this);
+    const critical = await this.totalCriticalLevels(this);
     return { painful, critical };
   }
 
-  // === Private Functions ===
+  model.prototype.totalPainLevels = async function() {
+    let total = 0;
+    total += await this.getAnusPainLevel();
+    total += await this.getCockPainLevel();
+    total += await this.getPussyPainLevel();
+    total += await this.getTitsPainLevel();
+    return total;
+  }
 
-  // TODO: Add in the other damage types as I add them to the body model.
-  async function totalCriticalLevels(character) {
-    const body = await character.getBody();
-
+  model.prototype.totalCriticalLevels = async function() {
+    const body = await this.getBody();
     return body.smashLevel;
   }
 
-  // TODO: Add in the other damage types as I add them to the other models.
-  async function totalPainfulLevels(character) {
-    let total = 0;
+  model.prototype.getAnusPainLevel = async function() {
+    const anus = await this.getAnus();
+    return anus.smashLevel;
+  }
 
-    const anus = await character.getAnus();
-    const cock = await character.getCock();
-    const pussy = await character.getPussy();
-    const tits = await character.getTits();
+  model.prototype.getCockPainLevel = async function() {
+    const cock = await this.getCock();
+    return (cock == null) ? 0 : cock.blightLevel + cock.burnLevel + cock.smashLevel;
+  }
 
-    total += anus.smashLevel;
+  model.prototype.getPussyPainLevel = async function() {
+    const pussy = await this.getPussy();
+    return (pussy == null) ? 0 : pussy.blightLevel + pussy.burnLevel + pussy.smashLevel;
+  }
 
-    if (cock) {
-      total += cock.blightLevel;
-      total += cock.burnLevel;
-      total += cock.smashLevel;
-    }
-    if (pussy) {
-      total += pussy.blightLevel;
-      total += pussy.burnLevel;
-      total += pussy.smashLevel;
-    }
-    if (tits) {
-      total += tits.blightLevel;
-      total += tits.burnLevel;
-      total += tits.smashLevel;
-    }
-
-    return total;
+  model.prototype.getTitsPainLevel = async function() {
+    const tits = await this.getTits();
+    return (tits == null) ? 0 : tits.blightLevel + tits.burnLevel + tits.smashLevel;
   }
 
 }};
