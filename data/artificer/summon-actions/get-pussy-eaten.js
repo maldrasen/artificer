@@ -5,9 +5,10 @@ SummonAction.build('get-pussy-eaten', {
 
   requirements: ['player.has-pussy'],
 
-  difficulty: 2,
-  complementing:[],
-  conflicting:[],
+  difficulty:    2,
+  role:          'sub',
+  complementing: ['pussy-lover','oral-slut'],
+  conflicting:   [],
 
   event: 'get-pussy-eaten',
   variants:[

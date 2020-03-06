@@ -7,9 +7,10 @@ SummonAction.build('give-blowjob', {
     'minion(C).has-cock',
     'canSuckCock(P,C).mouthFit!=impossible'],
 
-  difficulty: 0,
-  complementing:[],
-  conflicting:[],
+  difficulty:    0,
+  role:          'dom',
+  complementing: ['oral-lover'],
+  conflicting:   [],
 
   event: 'give-blowjob',
   variants:[

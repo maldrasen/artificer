@@ -6,9 +6,10 @@ SummonAction.build('face-slapping', {
 
   requirements: [],
 
-  difficulty: 4,
-  complementing:[],
-  conflicting:[],
+  difficulty:    4,
+  role:          'sub',
+  complementing: ['masochist'],
+  conflicting:   [],
 
   event: 'face-slapping',
 

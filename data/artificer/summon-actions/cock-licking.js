@@ -7,9 +7,10 @@ SummonAction.build('cock-licking', {
     'player.has-cock',
     'canSuckCock(C,P).mouthFit=impossible'],
 
-  difficulty: 1,
-  complementing:[],
-  conflicting:[],
+  difficulty:    1,
+  role:          'sub',
+  complementing: ['cock-lover','cum-lover','oral-slut'],
+  conflicting:   [],
 
   event: 'cock-licking',
 

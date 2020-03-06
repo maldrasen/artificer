@@ -5,9 +5,10 @@ SummonAction.build('face-sitting', {
 
   requirements:[],
 
-  difficulty: 3,
-  complementing:[],
-  conflicting:[],
+  difficulty:    3,
+  role:          'sub',
+  complementing: ['ass-obsessed','oral-slut','perverted'],
+  conflicting:   [],
 
   event: 'face-sitting',
   variants:[

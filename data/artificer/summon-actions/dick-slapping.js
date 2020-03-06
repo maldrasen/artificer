@@ -8,9 +8,10 @@ SummonAction.build('dick-slapping', {
     'player.has-cock',
     'player.has-bigger-than-big-cock'],
 
-  difficulty: 2,
-  complementing:[],
-  conflicting:[],
+  difficulty:    2,
+  role:          'sub',
+  complementing: ['cock-lover','masochist'],
+  conflicting:   [],
 
   event: 'dick-slapping',
 
