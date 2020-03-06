@@ -105,6 +105,7 @@ global.CharacterBuilder = (function() {
   //     count   number of aspects to add or random between 1 and 4
   //
   async function addRandomAspects(character, options) {
+    const count = (options||{}).count || Random.between(1,4);
     const speciesFrequencies = character.species.aspectFrequencies;
     const combinedFrequencies = {};
 
@@ -112,36 +113,39 @@ global.CharacterBuilder = (function() {
       return aspect.code
     });
 
-    if (options == null) {
-      options = {};
-    }
-
     each(defaultAspectFrequencies, (value, code) => {
       combinedFrequencies[code] = (speciesFrequencies[code] != null) ?
         speciesFrequencies[code]:
         defaultAspectFrequencies[code];
     });
 
-    console.log("=== Add Random ===");
-    console.log("Combined Freq:",combinedFrequencies);
-    console.log("Current Aspects",currentAspects);
-
-    let count = options.count || Random.between(1,4);
+    // Randomly add count number of aspects. Aspects are removed from the
+    // frequency map after they're added so that they're not added twice.
     for (let i=0; i<count; i++) {
       let code = Random.fromFrequencyMap(combinedFrequencies);
       delete combinedFrequencies[code];
       await character.addAspect(code, { level:1 });
-      console.log("Added: ",code)
     }
 
+    // Randomly determine what genders the character is attracted to. Every
+    // character should be attracted to men or women, some characters (futas
+    // especially) are attracted to both.
+    //
+    // TODO: Some races will have different attraction maps. The viera have no
+    //       men, so are almost all lesbians. May also consider adding a
+    //       futaphilic, but right now they simply count as both genders.
     if (currentAspects.indexOf('androphilic') < 0 && currentAspects.indexOf('gynephilic') < 0) {
-      let sexuality = Random.fromFrequencyMap({ g:20, s:50, b:30 });
-      if (sexuality == 'g')
+      let genderAspects;
 
+      if (character.genderCode == 'male')   { genderAspects = Random.fromFrequencyMap({ 'm':20, 'f':50, 'mf':30 }); }
+      if (character.genderCode == 'female') { genderAspects = Random.fromFrequencyMap({ 'm':45, 'f':15, 'mf':40 }); }
+      if (character.genderCode == 'futa')   { genderAspects = Random.fromFrequencyMap({ 'm':10, 'f':10, 'mf':80 }); }
 
+      if (genderAspects.indexOf('m') >= 0) { await character.addAspect('androphilic', { level:1 }); }
+      if (genderAspects.indexOf('f') >= 0) { await character.addAspect('gynephilic', { level:1 });  }
     }
-
   }
+
 
   // This method is used to baseline options from the options passed to the
   // factory, in order to ensure that all expected options have at least a
