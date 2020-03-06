@@ -105,7 +105,6 @@ global.CharacterBuilder = (function() {
   //     count   number of aspects to add or random between 1 and 4
   //
   async function addRandomAspects(character, options) {
-    const count = (options||{}).count || Random.between(1,4);
     const speciesFrequencies = character.species.aspectFrequencies;
     const combinedFrequencies = {};
 
@@ -121,10 +120,16 @@ global.CharacterBuilder = (function() {
 
     // Randomly add count number of aspects. Aspects are removed from the
     // frequency map after they're added so that they're not added twice.
-    for (let i=0; i<count; i++) {
+    let count = (options||{}).count || Random.between(1,4);
+
+    while (count > 0) {
       let code = Random.fromFrequencyMap(combinedFrequencies);
-      delete combinedFrequencies[code];
-      await character.addAspect(code, { level:1 });
+      let possible = await character.canAddAspect(code);
+      if (possible) {
+        count--;
+        delete combinedFrequencies[code];
+        await character.addAspect(code, { strength: 200+Random.upTo(400) });
+      }
     }
 
     // Randomly determine what genders the character is attracted to. Every
@@ -141,8 +146,8 @@ global.CharacterBuilder = (function() {
       if (character.genderCode == 'female') { genderAspects = Random.fromFrequencyMap({ 'm':45, 'f':15, 'mf':40 }); }
       if (character.genderCode == 'futa')   { genderAspects = Random.fromFrequencyMap({ 'm':10, 'f':10, 'mf':80 }); }
 
-      if (genderAspects.indexOf('m') >= 0) { await character.addAspect('androphilic', { level:1 }); }
-      if (genderAspects.indexOf('f') >= 0) { await character.addAspect('gynephilic', { level:1 });  }
+      if (genderAspects.indexOf('m') >= 0) { await character.addAspect('androphilic', { strength: 200+Random.upTo(400) }); }
+      if (genderAspects.indexOf('f') >= 0) { await character.addAspect('gynephilic',  { strength: 200+Random.upTo(400) });  }
     }
   }
 

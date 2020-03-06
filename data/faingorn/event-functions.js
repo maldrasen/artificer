@@ -6,10 +6,11 @@ global.EventFunctions = {
 
   createFirstMinion: async function(gender) {
     const rat = await CharacterBuilder.build({ type:'pending', species:'scaven', gender:gender });
-    await rat.addAspect('passive',{ level:1 });
-    await rat.addAspect('androphilic',{ level:1 });
-    await rat.addAspect('gynephilic',{ level:1 });
+    await rat.addAspect('passive',    { strength:200+Random.upTo(400) });
+    await rat.addAspect('androphilic',{ strength:200+Random.upTo(400) });
+    await rat.addAspect('gynephilic', { strength:200+Random.upTo(400) });
     await CharacterBuilder.addRandomAspects(rat,{ count:3 });
+    return rat;
   },
 
 }

@@ -20,8 +20,10 @@ GameStage.build('stage-1-0',{
   },
 
   setup: async game => {
-    await EventFunctions.createFirstMinion('female');
     await EventCollections.addAct_1_1();
+
+    const rat = await EventFunctions.createFirstMinion(Random.from(['male','female','female']));
+    await rat.update({ type:'minion' });
   },
 
 });
