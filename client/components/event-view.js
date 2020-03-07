@@ -282,7 +282,7 @@ Components.EventView = (function() {
   }
 
   function buildSelection(selection) {
-    let badges = $('<span>', { class:'badges' })
+    let badges = $('<span>', { class:'badge-area' })
     let button = $('<a>',{ href:'#', class:'button selection-button' }).append(
       $('<span>',{ class:'text' }).append(selection.text)
     ).data('value',selection.value).append(badges);

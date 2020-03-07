@@ -45,16 +45,17 @@ global.SummonAction = class SummonAction extends Form {
     const available = await SummonAction.forCharacter(character, context);
     const categorized = {};
 
-    each(available, action => {
+    await Promise.all(available.map(async action => {
       if (categorized[action.category] == null) { categorized[action.category] = []; }
+
       categorized[action.category].push({
         code: action.code,
         name: action.name,
         description: Weaver.weave(action.description, context),
         tags: action.tags,
-        consent: calculator.getConsentDetails(action),
+        consent: (await calculator.getConsentDetails(action)),
       });
-    });
+    }));
 
     each(Object.keys(categorized), category => {
       categorized[category] = categorized[category].sort((a1,a2) => {

@@ -30,25 +30,28 @@ global.ConsentCalculator = class ConsentCalculator {
   // effected area that also reduces the consent factor.
   //
   // Difficulty Chart:
-  //        0 (0.5)  very easy       - cuddling, backrubs, headpats
-  //        1 (0.75) easy            - cock licking, handjob, fingering
-  //        2 (0.9)  pretty easy     - blowjob
+  //        0 (2)    very easy       - cuddling, backrubs, headpats
+  //        1 (1.5)  easy            - cock licking, handjob, fingering
+  //        2 (1.1)  pretty easy     - blowjob
   //        3 (1)    average         - sex
-  //        4 (1.1)  difficult       - anal sex, face slapping
-  //        5 (1.5)  very difficult  - fisting, tit punching
-  //        6 (2)    impossible      - wound fucking, shit eating
+  //        4 (0.9)  difficult       - anal sex, face slapping
+  //        5 (0.75) very difficult  - fisting, tit punching
+  //        6 (0.5)  impossible      - wound fucking, shit eating
   async getConsentDetails(action) {
-    let difficultyFactor = [0.5, 0.75, 0.9, 1, 1.1, 1.5, 2][action.difficulty]||1;
+    let difficultyFactor = [2, 1.5, 1.1, 1, 0.9, 0.75, 0.5][action.difficulty]||1;
     let genderFactor = this.calculateGenderFactor();
     let injuryFactor = await this.calculateInjuryFactor(action);
     let aspectFactor = this.calculateAspectFactor(action);
     let overallFactor = difficultyFactor * genderFactor * injuryFactor * aspectFactor;
 
     return {
-      genderFactor,
-      injuryFactor,
-      aspectFactor,
-      overallFactor,
+      difficultyFactor: TextUtility.formatNumber(difficultyFactor),
+      genderFactor: TextUtility.formatNumber(genderFactor),
+      injuryFactor: TextUtility.formatNumber(injuryFactor),
+      aspectFactor: TextUtility.formatNumber(aspectFactor),
+      overallFactor: TextUtility.formatNumber(overallFactor),
+      fear: this.character.fear,
+      desire: Math.round((this.character.loyalty + this.character.lust) / 2),
       level: this.calculateConsent(overallFactor),
     };
   }

@@ -35,12 +35,12 @@ describe('ConsentCalculator', function() {
   });
 
   it('combines everything into one consent detail object', function(done) {
-    buildCalculatorWith({ fear:10, loyalty:40, lust:50 },{ injure:'head.2', aspects:{ androphilic:2, masochist:3, submissive:2 }}).then(calc => {
+    buildCalculatorWith({ fear:10, loyalty:40, lust:40 },{ injure:'head.2', aspects:{ androphilic:2, masochist:3, submissive:2 }}).then(calc => {
       calc.getConsentDetails(SummonAction.lookup('dick-slapping')).then(detail => {
         expect(detail.genderFactor).to.equal(1.2);
         expect(detail.injuryFactor).to.equal(1.1);
         expect(detail.aspectFactor).to.equal(1.56);
-        expect(detail.overallFactor).to.be.within(1.85, 1.86);
+        expect(detail.overallFactor).to.equal(2.27);
         expect(detail.level).to.equal('enthusiastic');
         done();
       });

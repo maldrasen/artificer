@@ -27,6 +27,7 @@ require(`${ROOT}/client/components/plan-view/tasks`);
 require(`${ROOT}/client/components/player-view`);
 require(`${ROOT}/client/components/report-view`);
 require(`${ROOT}/client/components/saved-games`);
+require(`${ROOT}/client/components/summon-minion-dialog`);
 
 // === Event View Page Types ===
 require(`${ROOT}/client/components/event-view/form-page`);
@@ -44,6 +45,7 @@ require(`${ROOT}/client/elements/image-resource`);
 require(`${ROOT}/client/elements/paged-content`);
 require(`${ROOT}/client/elements/radio-buttons`);
 require(`${ROOT}/client/elements/scrolling-panel`);
+require(`${ROOT}/client/elements/tooltip`);
 
 // === Interface ===
 require(`${ROOT}/client/interface/alerts`);

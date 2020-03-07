@@ -34,15 +34,10 @@ Elements.AdjustmentBadge = class AdjustmentBadge {
     return this.aspect.replace(/-/,' ');
   }
 
-  // I'm sure there's a better way to do this, but whatever.
-  get symbols() {
-    if (this.level == 1) { return '⇧' }
-    if (this.level == 2) { return '⇧⇧' }
-    if (this.level == 3) { return '⇧⇧⇧' }
-    if (this.level == -1) { return '↓' }
-    if (this.level == -2) { return '↓↓' }
-    if (this.level == -3) { return '↓↓↓' }
-    return '';
+  get arrow() {
+    return $('<span>',{ class:'arrow' }).append({
+      '1':'↑', '2':'⇑', '3':'⤊', '-1':'↓', '-2':'⇓', '-3':'⤋',
+    }[`${this.level}`]).prop('outerHTML');
   }
 
   // TODO: The event's actors map should have something that's recognizable by
@@ -54,17 +49,17 @@ Elements.AdjustmentBadge = class AdjustmentBadge {
   }
 
   build() {
-    let who = (this.subject == 'player') ? 'player' : 'minion'
+    let strength = this.level > 0 ? `up-${this.level}` : `down${this.level}`;
 
     return $(`
-      <span class='adjustment-badge badge badge-${who}'>
-        <span class='badge-label'>${this.aspectLabel}</span><span class='badge-symbol'>${this.symbols}</span>
+      <span class='badge adjustment-badge ${strength}'>
+        <span class='badge-label'>${this.aspectLabel}</span> ${this.arrow}
       </span>`
     ).data('badge',this);
   }
 
   execute() {
-    Alerts.showAlert({ adjustment:`${this.aspectLabel} ${this.symbols}`, classname:this.aspect });
+    Alerts.showAlert({ adjustment:`${this.aspectLabel} ${this.arrow}`, classname:this.aspect });
     Renderer.sendCommand('character.make-aspect-adjustment',{
       subject: this.subject,
       aspect: this.aspect,

@@ -1,101 +1,116 @@
 
 // Z Indices
 
-$z-event-frame: 100;
-$z-plan-left: 200;
-$z-location-menu: 200;
-$z-overlay: 1000;
-$z-dialog: 8000;
-$z-confirm: 9000;
-$z-alerts: 9700;
-$z-floating-frame: 9800;
-$z-backlog: 9900;
-$z-lock: 10000;
+$z-event-frame:      100;
+$z-plan-left:        200;
+$z-location-menu:    200;
+$z-overlay:          1000;
+$z-dialog:           8000;
+$z-confirm:          9000;
+$z-alerts:           9600;
+$z-floating-frame:   9700;
+$z-tooltip:          9800;
+$z-backlog:          9900;
+$z-lock:             10000;
 
 // Fonts
 
-$fs-huge: 18pt;
+$fs-huge:   18pt;
 $fs-bigger: 14pt;
-$fs-big: 12pt;
-$fs-body: 10pt;
-$fs-small: 9pt;
-$fs-tiny: 8pt;
+$fs-big:    12pt;
+$fs-body:   10pt;
+$fs-small:  9pt;
+$fs-tiny:   8pt;
 
 $fs-h2: 12pt;
 $fs-h3: 12pt;
 $fs-h4: 10pt;
 $fs-h5: 10pt;
 
-$fg-body: rgb(206,208,187);
-$fg-strong: rgb(250,250,250);
-$fg-weak: rgb(150,150,150);
-$fg-very-weak: rgba(150,150,150,0.5);
-$fg-link: rgb(200,200,250);
-$fg-link-hover: rgb(225,225,250);
-$fg-link-active: rgb(250,250,250);
+$fg-body:         rgb(206, 208, 187);
+$fg-strong:       rgb(250, 250, 250);
+$fg-weak:         rgb(150, 150, 150);
+$fg-very-weak:    rgba(150, 150, 150, 0.5);
+$fg-link:         rgb(200, 200, 250);
+$fg-link-hover:   rgb(225, 225, 250);
+$fg-link-active:  rgb(250, 250, 250);
 
-$fg-button-default: rgb(200,200,200);
-$fg-button-primary: rgb(150,150,250);
+$fg-button-default:   rgb(200, 200, 200);
+$fg-button-primary:   rgb(150, 150, 250);
 $fg-button-secondary: rgb(128, 175, 213);
-$fg-button-danger: rgb(250,100,100);
-$fg-button-warning: rgb(153,112,77);
-$fg-button-success: rgb(127,201,127);
+$fg-button-danger:    rgb(250, 100, 100);
+$fg-button-warning:   rgb(153, 112, 77);
+$fg-button-success:   rgb(127, 201, 127);
 
 $fg-warning: rgb(193, 176, 148);
 $fg-old-tan: rgb(110, 102, 95);
 
-$fg-other-quote: rgb(209, 202, 150);
-$fg-player-quote: rgb(179, 178, 212);
-$fg-player-note: rgb(133, 132, 175);
+$fg-other-quote:    rgb(209, 202, 150);
+$fg-player-quote:   rgb(179, 178, 212);
+$fg-player-note:    rgb(133, 132, 175);
 $fg-narrator-quote: rgb(217, 170, 115);
 
-$fg-health-dead: rgb(65, 12, 12);
+$fg-health-dead:     rgb(65, 12, 12);
 $fg-health-critical: rgb(106, 31, 31);
 $fg-health-horrible: rgb(129, 64, 38);
-$fg-health-bad: rgb(164, 116, 60);
-$fg-health-injured: rgb(177, 176, 104);
-$fg-health-healthy: rgb(129, 184, 133);
+$fg-health-bad:      rgb(164, 116, 60);
+$fg-health-injured:  rgb(177, 176, 104);
+$fg-health-healthy:  rgb(129, 184, 133);
 
 $fg-physical: rgb(189, 165, 140);
 $fg-personal: rgb(145, 191, 144);
-$fg-mental: rgb(149, 168, 193);
-$fg-magical: rgb(193, 148, 189);
+$fg-mental:   rgb(149, 168, 193);
+$fg-magical:  rgb(193, 148, 189);
 
 $fg-loyalty: rgb(231, 230, 142);
-$fg-fear: rgb(147, 103, 175);
-$fg-lust: rgb(205, 157, 209);
+$fg-fear:    rgb(147, 103, 175);
+$fg-lust:    rgb(205, 157, 209);
 
-$fg-sex-light: rgb(207,173,203);
-$fg-sex-dark:  rgb(174,106,133);
-$fg-sex-yuck:  rgb(124,152,57);
+$fg-adjust-up-1:   rgb(99, 101, 131);
+$fg-adjust-up-2:   rgb(116, 121, 185);
+$fg-adjust-up-3:   rgb(129, 136, 237);
+$fg-adjust-down-1: rgb(233, 188, 145);
+$fg-adjust-down-2: rgb(190, 158, 127);
+$fg-adjust-down-3: rgb(131, 113, 96);
 
-$bg-body: rgb(33,30,32);
-$bg-body-darker:rgb(22,20,21);
-$bg-body-even-darker: rgb(11,10,11);
+$fg-consent-rape:         rgb(143, 89, 89);
+$fg-consent-reluctant:    rgb(185, 165, 115);
+$fg-consent-consent:      rgb(142, 208, 95);
+$fg-consent-enthusiastic: rgb(135, 250, 160);
 
-$bg-floating-frame: rgba(0,0,0,0.25);
-$bg-overlay-frame: rgba(0,0,0,0.5);
-$bg-overlay-content: rgba(33,30,32,0.90);
-$bg-panel: rgba(22,20,21,0.75);
-$bg-overpanel: rgba(11,10,11,0.5);
-$bg-confirm-cover: rgba(0,0,0,0.33);
-$bg-confirm-footer: rgba(0,0,0,0.33);
+$fg-sex-light: rgb(207, 173, 203);
+$fg-sex-dark:  rgb(174, 106, 133);
+$fg-sex-yuck:  rgb(124, 152, 57);
 
-$bg-hunting: rgb(24, 36, 26);
+$bg-body:             rgb(33, 30, 32);
+$bg-body-darker:      rgb(22, 20, 21);
+$bg-body-even-darker: rgb(11, 10, 11);
+
+$bg-floating-frame:  rgba(0,  0,  0,  0.25);
+$bg-overlay-frame:   rgba(0,  0,  0,  0.5);
+$bg-overlay-content: rgba(33, 30, 32, 0.90);
+$bg-panel:           rgba(22, 20, 21, 0.75);
+$bg-overpanel:       rgba(11, 10, 11, 0.5);
+$bg-confirm-cover:   rgba(0,  0,  0,  0.33);
+$bg-confirm-footer:  rgba(0,  0,  0,  0.33);
+$bg-selection:       rgba(20, 19, 20, 0.8);
+$bg-tooltip:         rgba(20, 19, 20, 0.9);
+
+$bg-hunting:  rgb(24, 36, 26);
 $bg-foraging: rgb(66, 83, 60);
 
-$shadow-frame: 0 5px 10px rgba(0,0,0,0.5);
-$shadow-inset: 0 3px 6px rgba(0,0,0,0.4) inset;
-$shadow-inset-button: 0 3px 5px rgba(0,0,0,0.8) inset;
-$shadow-shallow: 0 2px 3px rgba(0,0,0,0.9);
-$shadow-portrait: 0 4px 5px rgba(0,0,0,0.8);
-$shadow-overlay: 0 10px 20px rgba(0,0,0,0.8);
+$shadow-frame:         0 5px 10px rgba(0,0,0,0.5);
+$shadow-inset:         0 3px 6px rgba(0,0,0,0.4) inset;
+$shadow-inset-button:  0 3px 5px rgba(0,0,0,0.8) inset;
+$shadow-shallow:       0 2px 3px rgba(0,0,0,0.9);
+$shadow-portrait:      0 4px 5px rgba(0,0,0,0.8);
+$shadow-overlay:       0 10px 20px rgba(0,0,0,0.8);
 
 $border-transparent: 1px solid transparent;
-$border-very-light: 1px solid rgba(250,250,250,0.05);
-$border-light: 1px solid rgba(250,250,250,0.1);
-$border-normal: 1px solid rgba(250,250,250,0.2);
-$border-heavy: 2px solid rgba(250,250,250,0.3);
+$border-very-light:  1px solid rgba(250,250,250,0.05);
+$border-light:       1px solid rgba(250,250,250,0.1);
+$border-normal:      1px solid rgba(250,250,250,0.2);
+$border-heavy:       2px solid rgba(250,250,250,0.3);
 
 // === Forms ===
 
