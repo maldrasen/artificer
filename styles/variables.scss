@@ -7,8 +7,9 @@ $z-location-menu: 200;
 $z-overlay: 1000;
 $z-dialog: 8000;
 $z-confirm: 9000;
-$z-alerts: 9700;
-$z-floating-frame: 9800;
+$z-alerts: 9600;
+$z-floating-frame: 9700;
+$z-tooltip: 9800;
 $z-backlog: 9900;
 $z-lock: 10000;
 
@@ -85,6 +86,7 @@ $bg-panel: rgba(22,20,21,0.75);
 $bg-overpanel: rgba(11,10,11,0.5);
 $bg-confirm-cover: rgba(0,0,0,0.33);
 $bg-confirm-footer: rgba(0,0,0,0.33);
+$bg-tooltip: rgba(20,19,20,0.9);
 
 $bg-hunting: rgb(24, 36, 26);
 $bg-foraging: rgb(66, 83, 60);

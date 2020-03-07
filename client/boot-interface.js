@@ -45,6 +45,7 @@ require(`${ROOT}/client/elements/image-resource`);
 require(`${ROOT}/client/elements/paged-content`);
 require(`${ROOT}/client/elements/radio-buttons`);
 require(`${ROOT}/client/elements/scrolling-panel`);
+require(`${ROOT}/client/elements/tooltip`);
 
 // === Interface ===
 require(`${ROOT}/client/interface/alerts`);
