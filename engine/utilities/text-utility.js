@@ -12,4 +12,8 @@ global.TextUtility = {
     return (string == null) ? false : string.slice(0, part.length) == part;
   },
 
+  formatNumber(number) {
+    return Math.round(number*100) / 100;
+  },
+
 }

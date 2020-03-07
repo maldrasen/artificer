@@ -17,22 +17,25 @@
   cursor: pointer;
 }
 
-.consent-badge.consent-level-rape {
+.consent-level-rape {
   color: $fg-consent-rape;
   border-color: transparentize($fg-consent-rape, 0.75);
  }
 
-.consent-badge.consent-level-reluctant {
+.consent-level-reluctant {
   color: $fg-consent-reluctant;
   border-color: transparentize($fg-consent-reluctant, 0.75);
  }
 
-.consent-badge.consent-level-consent {
+.consent-level-consent {
   color: $fg-consent-consent;
   border-color: transparentize($fg-consent-consent, 0.75);
  }
 
-.consent-badge.consent-level-enthusiastic {
+.consent-level-enthusiastic {
   color: $fg-consent-enthusiastic;
   border-color: transparentize($fg-consent-enthusiastic, 0.75);
  }
+
+.consent-details { width: 170px; }
+.consent-details dt { width: 110px; }

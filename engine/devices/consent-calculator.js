@@ -45,11 +45,13 @@ global.ConsentCalculator = class ConsentCalculator {
     let overallFactor = difficultyFactor * genderFactor * injuryFactor * aspectFactor;
 
     return {
-      difficultyFactor,
-      genderFactor,
-      injuryFactor,
-      aspectFactor,
-      overallFactor,
+      difficultyFactor: TextUtility.formatNumber(difficultyFactor),
+      genderFactor: TextUtility.formatNumber(genderFactor),
+      injuryFactor: TextUtility.formatNumber(injuryFactor),
+      aspectFactor: TextUtility.formatNumber(aspectFactor),
+      overallFactor: TextUtility.formatNumber(overallFactor),
+      fear: this.character.fear,
+      desire: Math.round((this.character.loyalty + this.character.lust) / 2),
       level: this.calculateConsent(overallFactor),
     };
   }

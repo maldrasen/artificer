@@ -42,12 +42,14 @@ Elements.Tooltip = (function() {
     }
 
     let frame = $('#tooltipFrame').
+      empty().
+      attr('style','').
       append(content).
       removeClass('hide');
 
     if (position == 'bottom') {
       frame.css({
-        top: offset.top + frame.height() + 5,
+        top: offset.top + parent.height() + 5,
         left: offset.left
       });
     }

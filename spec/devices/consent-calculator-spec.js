@@ -40,7 +40,7 @@ describe('ConsentCalculator', function() {
         expect(detail.genderFactor).to.equal(1.2);
         expect(detail.injuryFactor).to.equal(1.1);
         expect(detail.aspectFactor).to.equal(1.56);
-        expect(detail.overallFactor).to.be.within(2.26, 2.27);
+        expect(detail.overallFactor).to.equal(2.27);
         expect(detail.level).to.equal('enthusiastic');
         done();
       });
