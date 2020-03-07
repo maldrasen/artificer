@@ -17,38 +17,47 @@ Components.SummonMinionDialog = (function() {
       dialog: 'medium',
     });
 
+    buildActionTable(data);
+  }
+
+  function buildActionTable(data) {
+    let table = $('<table>',{ class:'action-table' });
+
     each(Object.keys(data.actions).sort(), category => {
-      $('#mainContent #summonMinionDialog').append(buildSummonActionCategory(category, data.actions[category], data.id));
-    });
-  }
-
-  function buildSummonActionCategory(category, actions, id) {
-    let actionList = $('<ul>',{ class:'action-list' });
-
-    each(actions, action => {
-      actionList.append(buildSummonActionItem(action, id));
+      table.append(buildCategoryRow(category));
+      each(data.actions[category], action => {
+        table.append(buildActionRow(action,data.id));
+      });
     });
 
-    let categoryElement = $('<div>',{ class:'action-category' });
-        categoryElement.append($('<h2>').append(category));
-        categoryElement.append(actionList);
-
-    return categoryElement;
+    $('#mainContent #summonMinionDialog').append(table);
   }
 
-  function buildSummonActionItem(action, id) {
+  // This is stupid, but colspan changes the border color for some eldritch and
+  // unknowable reason.
+  function buildCategoryRow(category) {
+    let categoryCell = $('<td>').append($('<h2>').append(category));
+    return $('<tr>',{ class:'category' }).append(categoryCell).append($('<td>')).append($('<td>'));
+  }
+
+  function buildActionRow(action,id) {
     console.log("Build Item:",action)
 
-    let actionLink = $('<a>',{ href:'#', class:'button button-primary button-small summon-action-button' }).
+    let actionLink = $('<a>',{ href:'#', class:'button button-small summon-action-button' }).
       append(action.name).
       data('code',action.code).
       data('id',id);
 
-    let actionItem = $('<li>',{ class:'action-item' }).
-      append(actionLink).
-      append($('<span>',{ class:'description' }).append(action.description));
+    let consentBadge = $('<div>',{ class:'consent-badge badge' }).
+      addClass(`consent-level-${action.consent.level}`).
+      append(action.consent.level);
 
-    return actionItem;
+    let actionRow = $('<tr>',{ class:'action' }).
+      append($('<td>').append(actionLink)).
+      append($('<td>').append(consentBadge)).
+      append($('<td>',{ class:'description' }).append(action.description));
+
+    return actionRow;
   }
 
   function executeSummon() {

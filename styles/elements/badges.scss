@@ -1,3 +1,17 @@
+
+.badge {
+  display: inline-block;
+  padding: 0 10px;
+  margin-right: 10px;
+  height: 20px;
+  line-height: 20px;
+  font-size: $fs-small;
+  background-color: rgb(20,20,20);
+  border: $border-normal;
+  border-radius: 4px;
+  box-shadow: $shadow-shallow;
+}
+
 .split-badge {
   display: inline-block;
   height: 20px;
