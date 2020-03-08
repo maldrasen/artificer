@@ -3,24 +3,17 @@ global.Location = class Location extends Form {
   async buildView() {
     const game = await Game.instance();
     const flags = await Flag.getAll();
+    const summonAvailable = flags['minions.can-summon'] && (typeof this.summonActions == 'function');
 
-    let results = await Promise.all([
-      this.buildName(),
-      this.buildDescription(),
-      this.buildFlags(game, flags),
-      this.buildAttributes(),
-      this.buildFlavor(),
-    ]);
-
-    let view = {
-      name: results[0],
-      description: results[1],
-      flags: results[2],
-      attributes: results[3],
-      flavor: results[4],
-      actions: this.actions,
+    const view = {
+      name: (await this.buildName()),
+      description: (await this.buildDescription()),
+      flags: (await this.buildFlags(game,flags)),
+      attributes: (await this.buildAttributes()),
+      flavor: (await this.buildFlavor()),
       mapData: (await Location.buildMapData(flags)),
-      dates: { day:game.dayNumber }
+      dates: { day:game.dayNumber },
+      summonAvailable
     };
 
     if (flags['locationMenu.showDate']) {
