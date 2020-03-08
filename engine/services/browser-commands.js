@@ -94,10 +94,8 @@ global.BrowserCommands = (function() {
     });
 
     ipcMain.on('location.show-minions', async () => {
-      const game = await Game.instance();
       const minions = await Character.allForClient();
-      const summonAvailable = typeof Location.lookup(game.location).summonActions == 'function';
-
+      const summonAvailable = await Location.summonAvailable();
       Browser.send('render.minions', { minions, summonAvailable });
     });
 

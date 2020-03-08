@@ -41,7 +41,6 @@ Components.SummonMinionDialog = (function() {
   }
 
   function buildActionRow(action,id) {
-    console.log("Build Item:",action)
 
     let actionLink = $('<a>',{ href:'#', class:'button button-small summon-action-button' }).
       append(action.name).

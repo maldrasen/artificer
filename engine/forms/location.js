@@ -55,6 +55,11 @@ global.Location = class Location extends Form {
     };
   }
 
+  static async summonAvailable() {
+    return (await Flag.lookupValue('minions.can-summon')) &&
+          (typeof Location.lookup((await Game.instance()).location).summonActions == 'function');
+  }
+
   // We build the locations for the map when building the location view. Right
   // now we only need a name and a code, but eventually I think the map will
   // need to be more graphical, so this will need to carry a lot more map state
