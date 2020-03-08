@@ -38,13 +38,14 @@ global.ConsentCalculator = class ConsentCalculator {
   //        5 (0.75) very difficult  - fisting, tit punching
   //        6 (0.5)  impossible      - wound fucking, shit eating
   async getConsentDetails(action) {
-    let difficultyFactor = [2, 1.5, 1.1, 1, 0.9, 0.75, 0.5][action.difficulty]||1;
-    let genderFactor = this.calculateGenderFactor();
-    let injuryFactor = await this.calculateInjuryFactor(action);
-    let aspectFactor = this.calculateAspectFactor(action);
-    let overallFactor = difficultyFactor * genderFactor * injuryFactor * aspectFactor;
+    const difficultyFactor = [2, 1.5, 1.1, 1, 0.9, 0.75, 0.5][action.difficulty]||1;
+    const genderFactor = this.calculateGenderFactor();
+    const injuryFactor = await this.calculateInjuryFactor(action);
+    const aspectFactor = this.calculateAspectFactor(action);
+    const overallFactor = difficultyFactor * genderFactor * injuryFactor * aspectFactor;
+    const level = this.calculateConsent(overallFactor);
 
-    return {
+    let details = {
       difficultyFactor: TextUtility.formatNumber(difficultyFactor),
       genderFactor: TextUtility.formatNumber(genderFactor),
       injuryFactor: TextUtility.formatNumber(injuryFactor),
@@ -52,8 +53,16 @@ global.ConsentCalculator = class ConsentCalculator {
       overallFactor: TextUtility.formatNumber(overallFactor),
       fear: this.character.fear,
       desire: Math.round((this.character.loyalty + this.character.lust) / 2),
-      level: this.calculateConsent(overallFactor),
+      level: level,
     };
+
+    const context = new WeaverContext()
+    await context.addCharacter('C',this.character);
+    await context.addPlayer();
+
+    details.explanation = Weaver.weave(this.explainLevel(details, action), context);
+
+    return details;
   }
 
   // Using the character's four possible gender aspects determines how
@@ -162,6 +171,58 @@ global.ConsentCalculator = class ConsentCalculator {
     if (y > ( 2 / 5  * x) + 50) { return 'consent'; }
     if (y > (-3 / 10 * x) + 40) { return 'reluctant'; }
     return 'rape'
+  }
+
+  // === Consent Explanation ===
+
+  explainLevel(details, action) {
+    if (details.level == 'enthusiastic') { return this.explainEnthusiastic(details, action); }
+    if (details.level == 'consent')      { return this.explainConsent(details, action);      }
+    if (details.level == 'reluctant')    { return this.explainReluctant(details, action);    }
+    if (details.level == 'rape')         { return this.explainRape(details, action);         }
+  }
+
+  explainEnthusiastic(details, action) {
+    return `{{C::character.firstName}} would really enjoy doing this.`;
+  }
+
+  explainConsent(details, action) {
+    return `{{C::character.firstName}} would like to do this.`;
+  }
+
+  explainReluctant(details, action) {
+    return `{{C::character.firstName}} is agreeing to do this, but only reluctantly. {{C::gender.He}} won't enjoy it
+            very much and will not receive any experience from it. ${this.explainFeelings(details,action)}`;
+  }
+
+  explainRape(details, action) {
+    return `While {{C::gender.he}}'ll technically let me do this, {{C::gender.he}} really doesn't want to.
+            {{C::character.firstName}} will resent and fear me for forcing {{C::gender.him}}.
+            ${this.explainFeelings(details,action)}`
+  }
+
+  explainFeelings(details, action) {
+    if (details.injuryFactor < 1) {
+      let part = {
+        body: 'face is',
+        head: 'face is',
+        anus: 'ass is',
+        cock: 'cock is',
+        pussy: 'pussy is',
+        tits: 'tits are',
+      }[action.effects]
+
+      return `It might have something to do with the fact that {{C::gender.his}} ${part} injured.`
+    }
+
+    if (details.genderFactor < 1)       { return `I don't think {{C::gender.he}} likes {{P::gender.men}} very much.`; }
+    if (details.aspectFactor < 1)       { return `{{C::gender.He}} might just not enjoy doing that.`; }
+    if (this.character.loyalty < 50)    { return `It could just be that {{C::gender.he}} doesn't like me very much.`; }
+    if (this.character.lust < 50)       { return `It seems like {{C::gender.he}}'s just not in the mood for sex right now.`; }
+    if (details.difficultyFactor < 0.8) { return `To be fair, it would be hard to find anyone who's into that.`; }
+
+    // Sort of a catch all situation as adding more fear and loyalty makes anything possible.
+    return `I don't think {{C::gender.he}} respects me enough.`
   }
 
 }

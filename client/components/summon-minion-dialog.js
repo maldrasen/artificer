@@ -67,6 +67,7 @@ Components.SummonMinionDialog = (function() {
     let total = Math.round(details.desire * details.overallFactor * 100) / 100;
 
     return $(`<div class='consent-details padding'>
+      <div class='margin-bottom'>${details.explanation}</div>
       <dl class='fs-small small-padding-bottom small-margin-bottom border-light-bottom attributes'>
         <dt class='lust'>Desire</dt>
         <dd class='lust'>${details.desire}</dd>
