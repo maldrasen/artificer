@@ -67,13 +67,30 @@ Character.lookup = async function(id) {
   return (id == 1000000000) ? (await Player.instance()) : (await Character.findByPk(id));
 }
 
+// A character scope that gets all the minions that can currently be summoned
+// for sex actions and such. Characters in the mission are not in the keep
+// right not, so they can't be summoned. Can't figure out the sequalize method
+// for not queries so I'm just doing this the "I'm stupid" way.
+Character.getSummonable = async function() {
+  const characters = await Character.findAll({ where:{
+    type: 'minion',
+    status: 'normal',
+  }});
+
+  return await Character.formatAllForClient(characters.filter(character => {
+    return character.currentDuty != 'mission'
+  }));
+}
+
 // This function will need to select all the minions and format them as POJOs
 // for any client view that shows all the minions.
 Character.allForClient = async function() {
-  const minions = await Character.findAll({ where:{ type:'minion' } });
+  return await Character.formatAllForClient((await Character.findAll({ where:{ type:'minion' } })));
+}
 
-  return await Promise.all(minions.map(async minion => {
-    return await minion.properties();
+Character.formatAllForClient = async function(characters) {
+  return await Promise.all(characters.map(async character => {
+    return await character.properties();
   }));
 }
 

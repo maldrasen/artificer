@@ -20,7 +20,8 @@ global.RendererCommands = (function() {
     ipcRenderer.on('image.init-icon-library', Elements.ImageResource.initIconLibrary);
     ipcRenderer.on('image.found', Elements.ImageResource.set);
 
-    ipcRenderer.on('character.show-summon-actions', Components.SummonMinionDialog.open);
+    ipcRenderer.on('character.show-summonable', Components.SummonMinionDialog.openMinionSelect);
+    ipcRenderer.on('character.show-summon-actions', Components.SummonMinionDialog.openActions);
     ipcRenderer.on('character.show-equipment', Components.EquipmentFrame.showEquipment);
     ipcRenderer.on('equipment.show-available', Components.EquipmentFrame.showAvailableEquipment);
 

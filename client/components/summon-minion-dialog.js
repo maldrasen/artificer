@@ -1,15 +1,43 @@
 Components.SummonMinionDialog = (function() {
 
   function init() {
+    $(document).on('click','.summon-minions-button',Elements.buttonAction(fetchSummonable));
     $(document).on('click','.summon-minion-button',Elements.buttonAction(fetchActions));
     $(document).on('click','.summon-action-button',Elements.buttonAction(executeSummon));
   }
+
+  // === Summon Minion Select ===
+
+  function fetchSummonable() {
+    Renderer.sendCommand('character.get-summonable');
+  }
+
+  // TODO: Eventually we'll have sex actions that can involve multiple minions
+  //       at once. When that happens we'll need to adjust get-summon-actions
+  //       to handle an array of minion ids. For each action we'll need to show
+  //       consent data for each minion involved in that action as well. It's a
+  //       good thing we're showing the actions as a table, because each minion
+  //       will need their own column in that. Actions will probably be limited
+  //       to three others at most though.
+  function openMinionSelect(e, data) {
+    Components.MinionSelectDialog.open({
+      title: 'Who should I summon to me?',
+      minions: data.characters,
+      limit: 1,
+      minimum: 1,
+      onConfirm: confirmed => {
+        Renderer.sendCommand('character.get-summon-actions', { id:confirmed[0] });
+      }
+    });
+  }
+
+  // === Summon Actions ===
 
   function fetchActions() {
     Renderer.sendCommand('character.get-summon-actions', { id:$(this).data('id') });
   }
 
-  function open(e, data) {
+  function openActions(e, data) {
     Elements.Dialog.open({
       title: 'Summon Minion',
       id: 'summonMinion',
@@ -99,6 +127,6 @@ Components.SummonMinionDialog = (function() {
     Elements.Dialog.close();
   }
 
-  return { init, open };
+  return { init, openMinionSelect, openActions };
 
 })();
