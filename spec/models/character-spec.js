@@ -1,5 +1,29 @@
 describe('Character', function() {
 
+  describe.only('getSummonable()', function() {
+    async function setup() {
+      await SpecHelper.buildJada({ firstName:'Nope', type:'pending' });
+      await SpecHelper.buildJada({ firstName:'Nope', status:'missing' });
+      await SpecHelper.buildJada({ firstName:'Nope', status:'dead' });
+      await SpecHelper.buildJada({ firstName:'Nope', status:'dead' });
+      await SpecHelper.buildJada({ firstName:'Nope', currentDuty:'mission' });
+      await SpecHelper.buildJada({ firstName:'Yarp', currentDuty:'role' });
+      await SpecHelper.buildJada({ firstName:'Yarp', currentDuty:'project' });
+      await SpecHelper.buildJada({ firstName:'Yarp', currentDuty:'task' });
+    }
+
+    it('gets summonable minions for the client', function(done) {
+      setup().then(()=> {
+        Character.getSummonable().then(characters => {
+          expect(characters.length).to.equal(3);
+          expect(ArrayUtility.unique(characters.map(c => c.name))).to.eql(['Yarp Fire'])
+          done();
+        });
+      })
+    });
+  });
+
+
   describe('reduceAllLoyalty()', function() {
     it('reduces loyalty on all minions', function(done) {
       SpecHelper.buildJada({ loyalty:50 }).then(() => {

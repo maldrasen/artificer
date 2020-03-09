@@ -94,10 +94,8 @@ global.BrowserCommands = (function() {
     });
 
     ipcMain.on('location.show-minions', async () => {
-      const game = await Game.instance();
       const minions = await Character.allForClient();
-      const summonAvailable = typeof Location.lookup(game.location).summonActions == 'function';
-
+      const summonAvailable = await Location.summonAvailable();
       Browser.send('render.minions', { minions, summonAvailable });
     });
 
@@ -149,6 +147,10 @@ global.BrowserCommands = (function() {
       await character.rename(data.name);
 
       Browser.send('render.minions', (await Character.allForClient()));
+    });
+
+    ipcMain.on('character.get-summonable', async (event, data) => {
+      Browser.send('character.show-summonable',{ characters:(await Character.getSummonable()) });
     });
 
     ipcMain.on('character.get-summon-actions', async (event, data) => {

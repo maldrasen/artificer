@@ -46,7 +46,9 @@ global.CharacterBuilder = (function() {
       preName:     options.preName,
       firstName:   options.firstName,
       lastName:    options.lastName,
-      type:        options.type      || 'minion',
+      type:        options.type        || 'minion',
+      status:      options.status      || 'normal',
+      currentDuty: options.currentDuty || 'role',
       dutyCode:    options.dutyCode  || (await defaultRole()),
       physical:    options.physical  || species.randomizedAttribute('physical'),
       personal:    options.personal  || species.randomizedAttribute('personal'),
@@ -56,8 +58,6 @@ global.CharacterBuilder = (function() {
       loyalty:     options.loyalty   || 10 + Random.upTo(10),
       fear:        options.fear      || 10 + Random.upTo(10),
       lust:        options.lust != null ? options.lust : 20 + Random.upTo(40),
-      status:      'normal',
-      currentDuty: 'role',
     };
 
     let character = await Character.create(params)

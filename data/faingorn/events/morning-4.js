@@ -22,13 +22,14 @@ Event.build('morning-4', {
       { text:`I think it would be a good idea to spend a little time in the morning practicing with these magical powers I find myself with.` },
       { text:`I need to know what I can do, and what my limits are.` },
       { narratorSpeaker:true, text:`You can now spend time meditating.`, alert:{ unlock:'Task: Meditate' }},
-      { narratorSpeaker:true, text:`Spending time in meditation will help you master your magical abilities.`},
+      { narratorSpeaker:true, text:`Spending time in meditation will help you master your magical abilities.` },
     ]
   }],
 
   onFinish: async choices => {
     await Flag.set('plan-view.tasks.meditate','unlocked');
     await AvailableEvent.addAll([
+      { code:'morning-6',          requires:['game.dayNumber=6']},
       { code:'day-8-explore',      requires:['game.dayNumber=8']},
       { code:'magic-practice-1-1', requires:['flag.player.meditate-count>=1']},
       { code:'magic-practice-1-2', requires:['flag.player.meditate-count>=2','player.magical>=12']},

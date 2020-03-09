@@ -22,27 +22,15 @@ Components.LocationView = (function() {
     if (view.flags.showInventoryMenu) { location.find('.menu-show-inventory').removeClass('hide'); }
     if (view.flags.eventActive) { location.find('.active-event-notification').removeClass('hide'); }
     if (view.flags.showPlanAction) { location.find('.create-plan-action').removeClass('hide'); }
+    if (view.summonAvailable) { location.find('.summon-minions-button').removeClass('hide'); }
 
     $('#mainContent').empty().append(location);
 
     if (locationEventActive(view)) {
       showMapFlag();
     }
-
-    each(view.actions||[], action => {
-      addAction(action);
-    });
   }
 
-  function addAction(action) {
-    let link = $('<a>',{ href:'#' }).append(action.name).on('click', Elements.buttonAction(() => {
-      Renderer.sendCommand(action.command, action.data);
-    }));
-
-    let item = $('<li>',{ class:'action' }).append(link);
-
-    $('#locationView ul.actions').append(item);
-  }
 
   function locationEventActive(view) {
     return view.mapData.locations.filter(datum => {
