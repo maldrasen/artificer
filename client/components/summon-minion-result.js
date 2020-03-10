@@ -1,15 +1,11 @@
 Components.SummonMinionResult = (function() {
 
-  function init() {
-    $('document').on('click', '#summonMinionResult .continue-button', Elements.buttonAction(close));
-  }
+  function init() {}
 
   function open(e, data) {
-    console.log("Open:",data)
-  }
+    let view = $('<div>',{ id:"summonMinionResult" }).append($('#summonMinionResultTemplate').html());
 
-  function close() {
-    console.log("Close")
+    $('#mainContent').empty().append(view);
   }
 
   return { init, open };
