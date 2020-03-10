@@ -55,3 +55,6 @@ require(`${ROOT}/client/interface/client`);
 require(`${ROOT}/client/interface/debug`);
 require(`${ROOT}/client/interface/renderer`);
 require(`${ROOT}/client/interface/renderer-commands`);
+
+// === Reference ===
+require(`${ROOT}/client/reference/aspects`);
