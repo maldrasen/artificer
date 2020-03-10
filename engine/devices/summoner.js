@@ -30,6 +30,7 @@ global.Summoner = class Summoner {
 
   getResult() {
     return {
+      possessive: EnglishUtility.possessive(this.character.singleName),
       story: this.story,
       experience: this.experience,
     };
