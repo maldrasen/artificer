@@ -22,6 +22,7 @@ global.RendererCommands = (function() {
 
     ipcRenderer.on('character.show-summonable', Components.SummonMinionDialog.openMinionSelect);
     ipcRenderer.on('character.show-summon-actions', Components.SummonMinionDialog.openActions);
+    ipcRenderer.on('character.show-summon-result', Components.SummonMinionResult.open);
     ipcRenderer.on('character.show-equipment', Components.EquipmentFrame.showEquipment);
     ipcRenderer.on('equipment.show-available', Components.EquipmentFrame.showAvailableEquipment);
 

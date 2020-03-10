@@ -28,6 +28,7 @@ require(`${ROOT}/client/components/player-view`);
 require(`${ROOT}/client/components/report-view`);
 require(`${ROOT}/client/components/saved-games`);
 require(`${ROOT}/client/components/summon-minion-dialog`);
+require(`${ROOT}/client/components/summon-minion-result`);
 
 // === Event View Page Types ===
 require(`${ROOT}/client/components/event-view/form-page`);
