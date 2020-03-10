@@ -24,13 +24,8 @@ global.Summoner = class Summoner {
   get story() { return this._story; }
 
   async execute() {
-    console.log("=== Execute ===");
-    console.log("Action:",this.action.code);
-    console.log("Character:",this.character.name);
-    console.log("Consent:",this.consent);
-
-    this._story = "TODO: Compiling the story will be done in the next task."
     this._experience = await Summoner.Experience.calculate(this);
+    this._story = "TODO: Compiling the story will be done in the next task."
   }
 
   getResult() {

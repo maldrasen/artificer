@@ -3,7 +3,7 @@ Components.ReportView = (function() {
   function init() {}
 
   function build(event, report) {
-    $('#mainContent').empty().append($('<div>',{ id:"reportView" }).append($('#reportTemplate').html()));
+    $('#mainContent').empty().append($('<div>',{ id:"reportView", class:'full-page-panel' }).append($('#reportTemplate').html()));
 
     if (report.project) {
       $('#reportView').find('.projects').removeClass('hide');
