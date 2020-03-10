@@ -55,7 +55,7 @@ describe('Summoner: Experience', function() {
     it('adds a new aspect', function(done) {
       SpecHelper.buildJada().then(jada => {
         Summoner.Experience.addExperience(jada, 'breeder', 20).then(result => {
-          expect(result.aspect).to.equal('Breeder');
+          expect(result.name).to.equal('Breeder');
           expect(result.experience).to.equal(20);
           done();
         });
@@ -66,7 +66,7 @@ describe('Summoner: Experience', function() {
       SpecHelper.buildJada().then(jada => {
         jada.addAspect('breeder', { strength:30 }).then(() => {
           Summoner.Experience.addExperience(jada, 'breeder', 20).then(result => {
-            expect(result.aspect).to.equal('Breeder');
+            expect(result.name).to.equal('Breeder');
             expect(result.experience).to.equal(20);
             done();
           });
@@ -78,7 +78,7 @@ describe('Summoner: Experience', function() {
       SpecHelper.buildJada().then(jada => {
         jada.addAspect('breeder', { strength:190 }).then(() => {
           Summoner.Experience.addExperience(jada, 'breeder', 20).then(result => {
-            expect(result.aspect).to.equal('Breeder');
+            expect(result.name).to.equal('Breeder');
             expect(result.experience).to.equal(20);
             expect(result.gainedLevel).to.equal(1);
             done();
@@ -91,7 +91,7 @@ describe('Summoner: Experience', function() {
       SpecHelper.buildJada().then(jada => {
         jada.addAspect('breeder', { strength:1410 }).then(() => {
           Summoner.Experience.addExperience(jada, 'breeder', -20).then(result => {
-            expect(result.aspect).to.equal('Breeder');
+            expect(result.name).to.equal('Breeder');
             expect(result.experience).to.equal(-20);
             expect(result.lostLevel).to.equal(2);
             done();

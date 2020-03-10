@@ -11,6 +11,7 @@ SummonAction.build('get-blowjob', {
   effects:       'head',
   complementing: ['cock-lover','cum-lover','oral-slut','submissive'],
   conflicting:   ['dominant'],
+  skill:         'oral',
 
   event: 'get-blowjob-standing',
   variants:[

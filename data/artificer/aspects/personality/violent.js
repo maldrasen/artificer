@@ -1,7 +1,7 @@
 Aspect.build('violent', {
   name: 'Violent',
   type: 'personality',
-  description: 'is prone to acts of violence.',
+  description: 'A violent character is prone to acts of violence and prefers rough, brutal sex.',
   refutes: [
     { aspect:'passive' }
   ]

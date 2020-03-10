@@ -6,6 +6,10 @@ Resolver.Lust = (function() {
   //  - A high chaste aspect will build lust much slower or not at all.
   //  - An unhealthy character's lust may decrease.
   //  - Extreme lust levels like 50 or 100 every day may be possible as well.
+  //
+  // This function also sets the character's energy back to 2. It's not really
+  // part of lust generation, but it's related at least, and it had to go
+  // someplace.
   async function applyLust(minion) {
     let slutLevel = 0;
     let slut = await minion.getCharacterAspect('slut');
@@ -32,7 +36,7 @@ Resolver.Lust = (function() {
     if (value > 100) { value = 100; }
     if (value < 0)   { value = 0; }
 
-    await minion.update({ lust:value });
+    await minion.update({ lust:value, energy:2 });
   }
 
   return { applyLust };

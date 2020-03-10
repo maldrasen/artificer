@@ -1,5 +1,5 @@
 Aspect.build('bound', {
   name: 'Bound',
   type: 'sexual',
-  description: 'enjoys being tied up or restrained during sex.',
+  description: 'A bound character enjoys being tied up or restrained during sex.',
 });

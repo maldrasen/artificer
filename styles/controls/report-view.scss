@@ -1,39 +1,9 @@
 #reportView {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  min-width: 1000px;
-
   background-image: url('../../data/image-resources/backgrounds/report.png');
   background-position: center;
   background-size: cover;
 
   h2 { font-size: $fs-bigger; }
-
-  .report-frame {
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    right: 50px;
-    bottom: 108px;
-    background-color: $bg-body-darker;
-    border: $border-light;
-    box-shadow: $shadow-overlay;
-  }
-  .footer {
-    position: fixed;
-    bottom: 50px;
-    left: 54px;
-    right: 54px;
-    height: 32px;
-    padding: 10px;
-    text-align: right;
-    border: $border-light;
-    box-shadow: $shadow-overlay;
-    background-color: $bg-body-even-darker;
-  }
 
   .projects {
     margin: 30px;

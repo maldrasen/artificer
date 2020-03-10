@@ -12,6 +12,7 @@ SummonAction.build('face-fuck', {
   effects:       'head',
   complementing: ['cock-lover','cum-lover','oral-slut','masochist','submissive'],
   conflicting:   ['dominant'],
+  skill:         'oral',
 
   event: 'face-fuck',
   variants:[

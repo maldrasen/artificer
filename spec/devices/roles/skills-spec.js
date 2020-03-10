@@ -28,7 +28,7 @@ describe('Role.Skills', function() {
         Role.Skills.addExperience({ character:jada, skill:'foraging' }).then(notification => {
           jada.getCharacterAspect('foraging').then(aspect => {
             expect(aspect.strength).to.equal(5);
-            expect(notification.skill).to.equal('Foraging');
+            expect(notification.name).to.equal('Foraging');
             expect(notification.experience).to.equal(5);
             done();
           });
@@ -42,7 +42,7 @@ describe('Role.Skills', function() {
           Role.Skills.addExperience({ character:jada, skill:'hunting' }).then(notification => {
             jada.getCharacterAspect('hunting').then(aspect => {
               expect(aspect.strength).to.equal(105);
-              expect(notification.skill).to.equal('Hunting');
+              expect(notification.name).to.equal('Hunting');
               expect(notification.experience).to.equal(5);
               done();
             });
@@ -57,7 +57,7 @@ describe('Role.Skills', function() {
           Role.Skills.addExperience({ character:jada, skill:'hunting' }).then(notification => {
             jada.getCharacterAspect('hunting').then(aspect => {
               expect(aspect.strength).to.equal(200);
-              expect(notification.skill).to.equal('Hunting');
+              expect(notification.name).to.equal('Hunting');
               expect(notification.experience).to.equal(5);
               expect(notification.gainedLevel).to.equal(1);
               done();

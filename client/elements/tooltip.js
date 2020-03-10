@@ -60,6 +60,6 @@ Elements.Tooltip = (function() {
     $('#tooltipFrame').attr('style','').empty().addClass('hide');
   }
 
-  return { init, add }
+  return { init, add, close }
 
 })();

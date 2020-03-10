@@ -27,6 +27,7 @@
   height: 20px;
   line-height: 20px;
   margin-right: 10px;
+  cursor: pointer;
   font-size: $fs-small;
   color: $fg-strong;
   border-radius: 10px;
@@ -45,7 +46,50 @@
     border-radius: 0 10px 10px 0;
   }
 }
+
+.badge-tooltip { margin: 5px 10px; }
+
 .split-badge {
-  .head.hunting { background-color:$bg-hunting; }
+  .head.chaste { background-color: $bg-chaste; }
+  .head.passive { background-color: $bg-passive; }
+  .head.slut { background-color: $bg-slut; }
+  .head.violent { background-color: $bg-violent; }
+
+  .head.anal-averse  { background-color: $bg-anal-averse; }
+  .head.anal-slut    { background-color: $bg-anal-slut; }
+  .head.androphilic  { background-color: $bg-androphilic; }
+  .head.androphobic  { background-color: $bg-androphobic; }
+  .head.ass-obsessed { background-color: $bg-ass-obsessed; }
+  .head.beast-lover  { background-color: $bg-beast-lover; }
+  .head.bound        { background-color: $bg-bound; }
+  .head.breeder      { background-color: $bg-breeder; }
+  .head.cock-lover   { background-color: $bg-cock-lover; }
+  .head.cum-lover    { background-color: $bg-cum-lover; }
+  .head.deviant      { background-color: $bg-deviant; }
+  .head.dominant     { background-color: $bg-dominant; }
+  .head.golden       { background-color: $bg-golden; }
+  .head.gynephilic   { background-color: $bg-gynephilic; }
+  .head.gynephobic   { background-color: $bg-gynephobic; }
+  .head.masochist    { background-color: $bg-masochist; }
+  .head.masterbator  { background-color: $bg-masterbator; }
+  .head.milky        { background-color: $bg-milky; }
+  .head.oral-lover   { background-color: $bg-oral-lover; }
+  .head.oral-slut    { background-color: $bg-oral-slut; }
+  .head.orgy-lover   { background-color: $bg-orgy-lover; }
+  .head.perverted    { background-color: $bg-perverted; }
+  .head.pussy-lover  { background-color: $bg-pussy-lover; }
+  .head.pussy-slut   { background-color: $bg-pussy-slut; }
+  .head.revolting    { background-color: $bg-revolting; }
+  .head.sadist       { background-color: $bg-sadist; }
+  .head.size-queen   { background-color: $bg-size-queen; }
+  .head.stretcher    { background-color: $bg-stretcher; }
+  .head.submissive   { background-color: $bg-submissive; }
+  .head.tit-lover    { background-color: $bg-tit-lover; }
+  .head.tit-slut     { background-color: $bg-tit-slut; }
+
+  .head.hunting  { background-color:$bg-hunting;  }
   .head.foraging { background-color:$bg-foraging; }
+  .head.oral     { background-color:$bg-oral;     }
+
+  &.direction-down .tail { background-color: $bg-sex-down; }
 }

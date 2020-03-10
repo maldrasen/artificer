@@ -1,5 +1,6 @@
 Aspect.build('hunting', {
+  name: 'Hunting',
   type: 'skill',
   attribute: 'physical',
-  description: "is skilled at stalking and killing animals in the wild.",
+  description: "The hunting skill determines how well a character is at stalking and killing animals in the wild.",
 });

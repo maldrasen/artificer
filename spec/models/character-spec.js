@@ -7,6 +7,7 @@ describe('Character', function() {
       await SpecHelper.buildJada({ firstName:'Nope', status:'dead' });
       await SpecHelper.buildJada({ firstName:'Nope', status:'dead' });
       await SpecHelper.buildJada({ firstName:'Nope', currentDuty:'mission' });
+      await SpecHelper.buildJada({ firstName:'Nope', energy:1 });
       await SpecHelper.buildJada({ firstName:'Yarp', currentDuty:'role' });
       await SpecHelper.buildJada({ firstName:'Yarp', currentDuty:'project' });
       await SpecHelper.buildJada({ firstName:'Yarp', currentDuty:'task' });

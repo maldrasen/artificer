@@ -1,7 +1,7 @@
 Aspect.build('pussy-lover', {
   name: 'Pussy Lover',
   type: 'sexual',
-  description: 'is very sexually aroused by pussies.',
+  description: 'A pussy lover is very sexually aroused by pussies.',
   refutes: [
     { aspect:'gynephobic' }
   ]

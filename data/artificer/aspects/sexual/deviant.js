@@ -1,5 +1,5 @@
 Aspect.build('deviant', {
   name: 'Deviant',
   type: 'sexual',
-  description: 'is sexually aroused by strange or unusual bodies.',
+  description: 'A deviant character is sexually aroused by strange or unusual bodies.',
 });

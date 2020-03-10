@@ -31,6 +31,7 @@ global.Renderer = (function() {
     'report',
     'save-game',
     'summon-minion-dialog',
+    'summon-minion-result',
   ];
 
   function init() {
@@ -42,6 +43,7 @@ global.Renderer = (function() {
   // Universal escape handler.
   function handleKeypress(e) {
     if (e.key == 'Escape') {
+      Elements.Tooltip.close();
 
       // If a dialog or floating frame nested inside of an overlay is open, it
       // should be closed without closing the parent overlay.

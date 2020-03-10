@@ -1,5 +1,5 @@
 Aspect.build('breeder', {
   name: 'Breeder',
   type: 'sexual',
-  description: 'is very sexually aroused by pregnancy and giving birth.'
+  description: 'A breeder is very sexually aroused by pregnancy and giving birth.'
 });

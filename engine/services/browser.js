@@ -1,7 +1,7 @@
 global.Browser = (function() {
 
   // This value should be updated as more images are added to the game.
-  const MIN_EXPECTED_IMAGES = 36;
+  const MIN_EXPECTED_IMAGES = 50;
 
   let mainWindow;
 
@@ -48,9 +48,15 @@ global.Browser = (function() {
       }
 
       console.log("> Sending Reference Data to Client");
-      console.log(`    - ${Object.keys(ImageResource.instances).length} Images\n`)
+      console.log(`    - ${Object.keys(ImageResource.instances).length} Images`)
+      console.log(`    - ${Object.keys(Aspect.instances).length} Aspects`);
+      console.log('');
 
-      send('image.init-icon-library',{
+      send('init.aspect-library',{
+        aspects: Object.keys(Aspect.instances).map(code => Aspect.lookup(code).properties)
+      });
+
+      send('init.icon-library',{
         item: Item.forClient(),
         flavor: ItemFlavor.forClient(),
         equipment: Equipment.forClient(),

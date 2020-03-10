@@ -39,6 +39,10 @@ Summoner.Experience = (function() {
     let availableAspects = [{ code:'slut', effect:up }];
     let selectedAspects = [];
 
+    if (direction == 'positive' && action.skill) {
+      availableAspects.push({ code:action.skill, effect:'up' });
+    }
+
     each(action.complementing, code => { availableAspects.push({ code:code, effect:up }); });
     each(action.conflicting,   code => { availableAspects.push({ code:code, effect:down }); });
 
@@ -64,7 +68,7 @@ Summoner.Experience = (function() {
     }
 
     if (value > 0) { await character.addAspect(code, { strength:value }); }
-    return { aspect:Aspect.lookup(code).name, experience:value };
+    return { code:code, name:Aspect.lookup(code).name, experience:value };
   }
 
   async function addExperienceToAspect(character, aspect, value) {
@@ -74,11 +78,11 @@ Summoner.Experience = (function() {
     await aspect.adjustStrength(value);
 
     if (currentStrength == aspect.strength) { return null; }
-    if (currentLevel == aspect.level) { return { aspect:aspect.name, experience:value } }
+    if (currentLevel == aspect.level) { return { code:aspect.code, name:aspect.name, experience:value } }
 
     return value > 0 ?
-      { aspect:aspect.name, experience:value, gainedLevel:aspect.level }:
-      { aspect:aspect.name, experience:value, lostLevel:aspect.level };
+      { code:aspect.code, name:aspect.name, experience:value, gainedLevel:aspect.level }:
+      { code:aspect.code, name:aspect.name, experience:value, lostLevel:aspect.level };
   }
 
   return { calculate, addExperience };

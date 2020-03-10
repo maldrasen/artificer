@@ -56,3 +56,37 @@
   &.input-size-12 input { width: 12em; }
   &.input-size-14 input { width: 14em; }
 }
+
+.full-page-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-width: 1000px;
+
+  .body {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    right: 50px;
+    bottom: 108px;
+    background-color: $bg-body-darker;
+    border: $border-light;
+    box-shadow: $shadow-overlay;
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 50px;
+    left: 54px;
+    right: 54px;
+    height: 32px;
+    padding: 10px;
+    text-align: right;
+    border: $border-light;
+    box-shadow: $shadow-overlay;
+    background-color: $bg-body-even-darker;
+  }
+
+}

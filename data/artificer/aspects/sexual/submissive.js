@@ -1,7 +1,7 @@
 Aspect.build('submissive', {
   name: 'Submissive',
   type: 'sexual',
-  description: 'enjoys serving in a sexual capacity.',
+  description: 'A submissive character enjoys being told what to do and serving in a sexual capacity.',
   refutes: [
     { aspect:'dominant' },
   ]
