@@ -50,6 +50,9 @@ global.AspectAdjuster = (function() {
   // the adjustment level. we just get a random number, based on the level, and
   // add that to the aspect strength. Aspect strength is a number between 0 and
   // 3000, so the amount of strength per level grows exponentially.
+  //
+  // These numbers are much bigger than the adjustments made in other places
+  // because adjustments made during an event should have a bigger impact.
   function aspectAdjustmentStrength(level) {
     let points = {
       1: () => { return Random.upTo(20)+10;   },
