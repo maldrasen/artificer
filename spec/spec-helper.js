@@ -5,13 +5,26 @@ global.SpecHelper = (function() {
   }
 
   async function buildJada(options) {
-    return await CharacterBuilder.build(
-      extend({ firstName:'Jada', lastName:'Fire', species:'elf', gender:'futa' },options)
-    )
+    return await CharacterBuilder.build(extend({
+      firstName: 'Jada',
+      lastName: 'Fire',
+      species: 'elf',
+      gender: 'futa'
+    },options));
   }
 
   async function buildRando() {
     return await CharacterBuilder.build({ species:Random.from(Species.all()).code });
+  }
+
+  async function buildPlayer(game, options) {
+    return await game.createPlayer(extend({
+      title: 'Master',
+      firstName: 'Gary',
+      lastName: 'Gangbang',
+      gender: 'male',
+      species: 'elf',
+    },options));
   }
 
   function tenTimes(done, testFunction) {
@@ -47,6 +60,6 @@ global.SpecHelper = (function() {
   }
 
 
-  return { print, buildJada, buildRando, tenTimes, sleep, adjustCock };
+  return { print, buildJada, buildRando, buildPlayer, tenTimes, sleep, adjustCock };
 
 })();

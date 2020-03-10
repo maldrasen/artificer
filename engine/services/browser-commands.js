@@ -161,7 +161,11 @@ global.BrowserCommands = (function() {
     });
 
     ipcMain.on('character.start-summon-action', async (event, data) => {
-      console.log("Start Summon Event:",data.code,data.id);
+      const summoner = new Summoner(data.id,data.code);
+      await summoner.init();
+      await summoner.execute();
+
+      Browser.send('character.show-summon-result',summoner.getResult());
     });
 
     ipcMain.on('character.make-aspect-adjustment', async (event, data) => {
