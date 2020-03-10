@@ -9,6 +9,7 @@ SummonAction.build('get-pussy-eaten', {
   effects:       'head',
   complementing: ['pussy-lover','oral-slut','submissive'],
   conflicting:   ['dominant'],
+  skill:         'oral',
 
   event: 'get-pussy-eaten',
   variants:[

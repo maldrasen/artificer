@@ -39,6 +39,10 @@ Summoner.Experience = (function() {
     let availableAspects = [{ code:'slut', effect:up }];
     let selectedAspects = [];
 
+    if (direction == 'positive' && action.skill) {
+      availableAspects.push({ code:action.skill, effect:'up' });
+    }
+
     each(action.complementing, code => { availableAspects.push({ code:code, effect:up }); });
     each(action.conflicting,   code => { availableAspects.push({ code:code, effect:down }); });
 
