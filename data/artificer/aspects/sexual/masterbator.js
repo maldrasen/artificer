@@ -1,5 +1,5 @@
 Aspect.build('masterbator', {
   name: 'Masterbator',
   type: 'sexual',
-  description: 'loves pleasuring themselves sexually.'
+  description: 'A masterbator loves pleasuring themselves sexually.'
 });

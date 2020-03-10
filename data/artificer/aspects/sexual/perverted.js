@@ -1,5 +1,5 @@
 Aspect.build('perverted', {
   name: 'Perverted',
   type: 'sexual',
-  description: 'is up for just about anything sexually and perfers dirty filty fucking.',
+  description: 'A pervert is up for just about anything sexually and perfers dirty filty fucking.',
 });

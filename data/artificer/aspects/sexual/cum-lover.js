@@ -1,7 +1,7 @@
 Aspect.build('cum-lover', {
   name: 'Cum Lover',
   type: 'sexual',
-  description: 'is very sexually aroused by the taste of cum.',
+  description: 'A cum lover is very sexually aroused by the taste of cum.',
   refutes: [
     { aspect:'androphobic' },
   ]

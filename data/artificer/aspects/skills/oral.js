@@ -1,5 +1,5 @@
 Aspect.build('oral', {
   type: 'skill',
   attribute: 'physical',
-  description: "is skilled at pleasuring others with their mouth.",
+  description: "The oral skill determines how well a character is at pleasuring others with their mouth.",
 });
