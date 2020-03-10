@@ -27,6 +27,7 @@
   height: 20px;
   line-height: 20px;
   margin-right: 10px;
+  cursor: pointer;
   font-size: $fs-small;
   color: $fg-strong;
   border-radius: 10px;
@@ -46,6 +47,7 @@
   }
 }
 
+.badge-tooltip { margin: 5px 10px; }
 
 .split-badge {
   .head.chaste { background-color: $bg-chaste; }

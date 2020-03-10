@@ -23,9 +23,15 @@ Elements.Badges = (function() {
   }
 
   function buildSplitBadge(options) {
-    return $('<div>',{ class:`split-badge direction-${options.direction}` }).
+    let badge = $('<div>',{ class:`split-badge direction-${options.direction}` }).
       append($('<div>',{ class:`head ${options.code}` }).append(options.name)).
       append($('<div>',{ class:'tail' }).append(options.content));
+
+    Elements.Tooltip.add(badge, {
+      content: $('<div>',{ class:'badge-tooltip' }).append(Aspects.lookup(options.code).description)
+    });
+
+    return badge;
   }
 
   return {
