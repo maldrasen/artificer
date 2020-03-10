@@ -4,6 +4,7 @@ Components.SummonMinionResult = (function() {
 
   function open(e, data) {
     const view = $('<div>',{ id:"summonMinionResult", class:'full-page-panel' }).append($('#summonMinionResultTemplate').html());
+          view.find('.story').append(data.story);
 
     if (data.experience.length > 0) {
       view.find('.experience').removeClass('hide');
