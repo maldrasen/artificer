@@ -75,6 +75,7 @@ Character.getSummonable = async function() {
   const characters = await Character.findAll({ where:{
     type: 'minion',
     status: 'normal',
+    energy: 2,
   }});
 
   return await Character.formatAllForClient(characters.filter(character => {

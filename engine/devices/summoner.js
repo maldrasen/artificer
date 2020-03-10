@@ -26,6 +26,11 @@ global.Summoner = class Summoner {
   async execute() {
     this._experience = await Summoner.Experience.calculate(this);
     this._story = "TODO: Compiling the story will be done in the next task."
+
+    // TODO: Some actions might be exhausting and will set the character's
+    //       energy to 0, which will prevent them from doing anything but
+    //       resting today.
+    await this.character.update({ energy:1 });
   }
 
   getResult() {

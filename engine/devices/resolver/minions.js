@@ -18,12 +18,7 @@ Resolver.Minions = (function() {
     },0);
 
     game.food = game.food - foodEaten;
-
-    if (game.food < 0) {
-      game.food = 0;
-      // TODO: Enqueue an unhappiness event of some sort when there isn't
-      //       enough food to feed all the minions and the player.
-    }
+    if (game.food < 0) { game.food = 0; }
 
     Resolver.Report.completeFood(foodEaten,game.food);
 
