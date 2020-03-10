@@ -72,33 +72,13 @@ Components.ReportView = (function() {
     let frame = $('<div>',{ class:'notifications-frame' });
 
     each(notifications, notification => {
-      if (notification.skill)       { frame.append(buildExperienceNotification(notification)); }
-      if (notification.gainedLevel) { frame.append(buildLevelNotification(notification)); }
+      frame.append(Elements.Badges.buildExperienceNotification(notification));
+      if (notification.gainedLevel) { frame.append(Elements.Badges.buildLevelNotification(notification)); }
     });
 
     return frame;
   }
 
-  function buildExperienceNotification(notification) {
-    return $(`
-      <div class='split-badge experience'>
-        <span class='head ${notification.skill.toLowerCase()}'>${notification.skill}</span><span
-              class='tail ${notification.skill.toLowerCase()}'>
-          <span class='value'>${notification.experience}</span>
-          <span class='unit'>xp</span>
-        </span>
-      </div>
-    `);
-  }
-
-  function buildLevelNotification(notification) {
-    return $(`
-      <div class='split-badge level'>
-        <span class='head ${notification.skill.toLowerCase()}'>${notification.skill}</span><span
-              class='tail ${notification.skill.toLowerCase()}'>Now Level ${notification.gainedLevel}</span>
-      </div>
-    `);
-  }
 
   function isOpen() {
     return $('#reportView').length > 0;

@@ -16,11 +16,10 @@ Components.SummonMinionResult = (function() {
 
   function buildExperienceBadges(element, experience) {
     each(experience, aspect => {
-      let badge = $('<div>',{ class:`split-badge direction-${aspect.experience > 0 ? 'up' : 'down'}` }).
-        append($('<div>',{ class:`head ${aspect.code}` }).append(aspect.name)).
-        append($('<div>',{ class:'tail' }).append(aspect.experience));
-
-      element.append(badge);
+      element.append(Elements.Badges.buildExperienceNotification(aspect));
+      if (aspect.gainedLevel != null || aspect.lostLevel != null) {
+        element.append(Elements.Badges.buildLevelNotification(aspect));
+      }
     });
   }
 
