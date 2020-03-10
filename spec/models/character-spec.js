@@ -1,6 +1,6 @@
 describe('Character', function() {
 
-  describe.only('getSummonable()', function() {
+  describe('getSummonable()', function() {
     async function setup() {
       await SpecHelper.buildJada({ firstName:'Nope', type:'pending' });
       await SpecHelper.buildJada({ firstName:'Nope', status:'missing' });

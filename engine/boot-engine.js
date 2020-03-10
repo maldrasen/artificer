@@ -94,6 +94,9 @@ require(`${ROOT}/engine/devices/roles/injuries`);
 require(`${ROOT}/engine/devices/roles/rest`);
 require(`${ROOT}/engine/devices/roles/skills`);
 
+require(`${ROOT}/engine/devices/summoner`);
+require(`${ROOT}/engine/devices/summoner/experience`);
+
 // === Helpers ===
 require(`${ROOT}/engine/helpers/calendar.js`);
 require(`${ROOT}/engine/helpers/character-agent`);

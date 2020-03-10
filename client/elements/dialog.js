@@ -36,7 +36,6 @@ Elements.Dialog = (function() {
       $('#mainContent').append(currentDialog);
 
       $.each(currentDialog.find('.scrolling-panel'), (i, panel) => {
-        console.log("Build panel:",panel)
         Elements.ScrollingPanel.build($(panel));
       });
     }

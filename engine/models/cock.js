@@ -83,7 +83,7 @@ global.Cock = Database.instance().define('cock', {
     //
     // The widthRatio attribute can also be changed after creation, that way we
     // can have super thick cocks! Each body size class also has a minimum
-    // thickness. If a cock is too short it just get's stubby, not super thin.
+    // thickness. If a cock is too short it just gets stubby, not super thin.
     width() {
       let width = Math.round(0.1548712 * this.length * this.widthRatio);
       return width > this.minimumWidth ? width : this.minimumWidth;

@@ -23,7 +23,7 @@ global.CharacterAgent = (function() {
     throw `Cannot find a character that matches ${descriptive}`;
   }
 
-  // This function get's the chief of the scaven. If the scaven chief flag has
+  // This function gets the chief of the scaven. If the scaven chief flag has
   // been set and that character is still alive this will return that character.
   // Otherwise the strongest scaven will be made chief.
   //
