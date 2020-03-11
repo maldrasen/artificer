@@ -1,4 +1,5 @@
 Location.build('courtyard', {
+  inTheName: 'out in the courtyard',
 
   buildName: async () => {
     return `Ruined Courtyard`;

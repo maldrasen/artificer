@@ -1,4 +1,5 @@
 Location.build('foundry', {
+  inTheName: 'down in the foundry',
 
   buildName: async () => {
     return `Goblin Foundry`;

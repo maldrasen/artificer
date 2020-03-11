@@ -62,6 +62,7 @@ global.CharacterBuilder = (function() {
 
     let character = await Character.create(params)
     await addBody(character, options)
+    await character.determinePersonality();
     await character.update({ portraitCode:(await ImageResource.portraitFor(character)).code });
 
     return character;

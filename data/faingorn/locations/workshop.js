@@ -1,4 +1,5 @@
 Location.build('workshop', {
+  inTheName: 'in my workshop',
 
   buildName: async () => {
     return `Workshop`;

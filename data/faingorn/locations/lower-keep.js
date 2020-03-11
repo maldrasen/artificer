@@ -1,4 +1,5 @@
 Location.build('lower-keep', {
+  inTheName: 'in the lower keep',
 
   buildName: async () => {
     return `Lower Keep`;

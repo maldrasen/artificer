@@ -224,6 +224,12 @@ global.HasAspects = (function() {
     return properties;
   }
 
+  // Just get the level of this aspect or 0 if they don't have it.
+  async function getAspectLevel(code) {
+    const aspect = await this.getCharacterAspect(code);
+    return (aspect == null) ? 0 : aspect.level;
+  }
+
   return { isAppliedTo:function(model) {
     model.prototype.addAspect = addAspect;
     model.prototype.adjustAspect = adjustAspect;
@@ -236,6 +242,7 @@ global.HasAspects = (function() {
     model.prototype.hasAspect = hasAspect;
     model.prototype.hasMirroredAspect = hasMirroredAspect;
     model.prototype.removeAspect = removeAspect;
+    model.prototype.getAspectLevel = getAspectLevel;
   }};
 
 })();

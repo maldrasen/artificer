@@ -1,4 +1,5 @@
 Location.build('heart-of-sin', {
+  inTheName: 'within the sin heart',
 
   buildName: async () => {
     return `The Heart of Sin`;

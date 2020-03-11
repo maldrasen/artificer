@@ -87,7 +87,7 @@ describe('PussyBuilder', function() {
       character.getPussy().then(pussy => {
         expect(pussy.outerLabiaSize).to.be.within(1,5);
         expect(pussy.innerLabiaLength).to.be.within(10,90);
-        expect(pussy.clitLength).to.be.within(1,50);
+        expect(pussy.clitLength).to.be.within(1,60);
         expect(pussy.clitWidth).to.be.within(5,15);
         done();
       });

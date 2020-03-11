@@ -6,6 +6,7 @@ global.Character = Database.instance().define('character', {
   dutyOptions_json: { type:Sequelize.STRING },
   genderCode:       { type:Sequelize.STRING },
   speciesCode:      { type:Sequelize.STRING },
+  personalityCode:  { type:Sequelize.STRING },
   portraitCode:     { type:Sequelize.STRING },
   preName:          { type:Sequelize.STRING },
   firstName:        { type:Sequelize.STRING },
@@ -25,6 +26,7 @@ global.Character = Database.instance().define('character', {
   getterMethods: {
     gender()      { return Gender[this.genderCode]; },
     species()     { return Species.lookup(this.speciesCode); },
+    personality() { return Personality.lookup(this.personalityCode); },
     portrait()    { return ImageResource.lookup(this.portraitCode ? this.portraitCode : 'unknown-portrait'); },
     dutyOptions() { return JSON.parse(this.dutyOptions_json||'{}') },
     role()        { return this.currentDuty == 'role' ? Role.lookup(this.dutyCode) : null; },
@@ -154,10 +156,6 @@ Character.prototype.properties = async function() {
   };
 }
 
-Character.prototype.getPersonality = async function() {
-  return await Personality.forCharacter(this);
-}
-
 Character.prototype.detailForClient = async function() {
   const description = await CharacterDescriber.fullDescription(this);
   const properties =  await this.properties();
@@ -200,4 +198,5 @@ HasAttributes.isAppliedTo(Character);
 HasBody.isAppliedTo(Character);
 HasEquipment.isAppliedTo(Character);
 HasInjuries.isAppliedTo(Character);
+HasPersonality.isAppliedTo(Character);
 HasSexSkills.isAppliedTo(Character);

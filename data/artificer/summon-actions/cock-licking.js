@@ -12,10 +12,28 @@ SummonAction.build('cock-licking', {
   complementing: ['cock-lover','cum-lover','oral-slut','submissive'],
   conflicting:   ['dominant'],
 
-  event: 'cock-licking',
-
   writeStory: async summoner => {
-    return "TODO: Write story for Cock Licking"
+    const game = await Game.instance();
+    const location = Location.lookup(game.location);
+    const player = await Player.instance();
+    const playerOutfit = await player.getEquipment('outfit');
+    const playerCock = await player.getCock();
+    const cockReaction = await summoner.character.reactToCock(playerCock);
+
+    let story = `My dick is far too large for {{C::character.firstName}} to properly suck, but that doesn't mean
+      {{C::gender.he}} can't use {{C::gender.his}} mouth to pleasure me in other ways.`;
+
+    // TODO: Implement clothing.
+    if (playerOutfit == null) {
+      story += ` I'm nude, waiting for {{C::gender.him}} to arrive ${location.inTheName}.`;
+    }
+
+    story += ` I take my soft thick cock by the base and let it swing back and forth. `;
+    story += cockReaction.text;
+
+    const context = new WeaverContext();
+    await context.addCharacter('C',summoner.character);
+    return Weaver.weave(story,context);
   },
 
 });

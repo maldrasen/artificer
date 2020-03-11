@@ -10,7 +10,10 @@ global.Summoner = class Summoner {
   // easier to just recalculate them here. There's no randomness in the
   // calculator, so this should bring the exact same results back.
   async init() {
+    const game = await Game.instance();
+
     this._character = await Character.lookup(this._character_id);
+    this._location = Location.lookup(game.location);
 
     const calculator = new ConsentCalculator(this.character);
     await calculator.init();
@@ -21,6 +24,7 @@ global.Summoner = class Summoner {
   get character() { return this._character; }
   get consent() { return this._consent; }
   get experience() { return this._experience; }
+  get location() { return this._location; }
   get story() { return this._story; }
 
   async execute() {

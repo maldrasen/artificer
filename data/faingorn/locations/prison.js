@@ -1,4 +1,5 @@
 Location.build('prison', {
+  inTheName: 'down in the prison',
 
   buildName: async () => {
     return `Prison`;
