@@ -1,6 +1,6 @@
 describe('Has Personality', function() {
 
-  describe.only('reactToCock()', function() {
+  describe('reactToCock()', function() {
     it('is more desireable when character is a cock lover', function(done) {
       SpecHelper.buildJada({}).then(jada => {
         jada.addAspect('cock-lover',{ level:2 }).then(aspect => {
