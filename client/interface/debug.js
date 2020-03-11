@@ -6,4 +6,8 @@ global.Debug = {
     printFlags: () => { ipcRenderer.send('debug.game.printFlags'); },
   },
 
+  Character:{
+    redescribe: id => { ipcRenderer.send('debug.character.redescribe'); }
+  }
+
 }

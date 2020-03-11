@@ -9,7 +9,7 @@ ipcMain.on('client.ready', () => {
   Database.createDatabase(() => {
     Loader.loadAllData(() => {
       console.log("\n=== Ready ===\n")
-      BrowserCommands.init();
+      Controllers.init();
       Browser.send('engine.ready');
       Browser.sendDataToClient();
     });
