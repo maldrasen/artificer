@@ -154,6 +154,10 @@ Character.prototype.properties = async function() {
   };
 }
 
+Character.prototype.getPersonality = async function() {
+  return await Personality.forCharacter(this);
+}
+
 Character.prototype.detailForClient = async function() {
   const description = await CharacterDescriber.fullDescription(this);
   const properties =  await this.properties();

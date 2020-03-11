@@ -32,6 +32,7 @@ require(`${ROOT}/engine/forms/item`);
 require(`${ROOT}/engine/forms/item-flavor`);
 require(`${ROOT}/engine/forms/location`);
 require(`${ROOT}/engine/forms/mission`);
+require(`${ROOT}/engine/forms/personality`);
 require(`${ROOT}/engine/forms/project`);
 require(`${ROOT}/engine/forms/recipe`);
 require(`${ROOT}/engine/forms/species`);
