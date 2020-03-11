@@ -7,7 +7,8 @@ global.Debug = {
   },
 
   Character:{
-    redescribe: id => { ipcRenderer.send('debug.character.redescribe'); }
+    redescribe: id => { ipcRenderer.send('debug.character.redescribe',{ id }); },
+    setAttribute: (id,attribute,value) => { ipcRenderer.send('debug.character.setAttribute',{ id, attribute, value }); }
   }
 
 }
