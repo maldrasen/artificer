@@ -14,4 +14,8 @@ SummonAction.build('cock-licking', {
 
   event: 'cock-licking',
 
+  writeStory: async summoner => {
+    return "TODO: Write story for Cock Licking"
+  },
+
 });

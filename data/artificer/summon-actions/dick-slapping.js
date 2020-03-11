@@ -1,6 +1,6 @@
 SummonAction.build('dick-slapping', {
   category: 'Oral',
-  name: 'Dick Slapping',
+  name: 'Eat Pussy',
   description: `I'm going to slap my cock against {{C::character.firstName's}} face.`,
   tags: ['player sadist 1'],
 
@@ -14,5 +14,9 @@ SummonAction.build('dick-slapping', {
   conflicting:   ['dominant'],
 
   event: 'dick-slapping',
+
+  writeStory: async summoner => {
+    return "TODO: Write story for Eat Pussy"
+  },
 
 });

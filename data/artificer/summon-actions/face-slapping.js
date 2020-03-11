@@ -13,4 +13,8 @@ SummonAction.build('face-slapping', {
 
   event: 'face-slapping',
 
+  writeStory: async summoner => {
+    return "TODO: Write story for Face Slapping"
+  },
+
 });

@@ -17,4 +17,8 @@ SummonAction.build('give-blowjob', {
     { when:['location.has-chair'], event:'give-blowjob-chair' },
   ],
 
+  writeStory: async summoner => {
+    return "TODO: Write story for Give Blowjob"
+  },
+
 });

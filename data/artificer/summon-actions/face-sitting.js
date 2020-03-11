@@ -16,4 +16,8 @@ SummonAction.build('face-sitting', {
     { when:['location.has-chair'], event:'face-sitting-chair' },
   ],
 
+  writeStory: async summoner => {
+    return "TODO: Write story for Face Sitting"
+  },
+
 });

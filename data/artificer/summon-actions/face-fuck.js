@@ -19,4 +19,8 @@ SummonAction.build('face-fuck', {
     { when:['location.has-table'], event:'face-fuck-table' },
   ],
 
+  writeStory: async summoner => {
+    return "TODO: Write story for Face Fuck"
+  },
+
 });

@@ -18,4 +18,8 @@ SummonAction.build('eat-pussy', {
     { when:['location.has-chair'], event:'eat-pussy-chair' },
   ],
 
+  writeStory: async summoner => {
+    return "TODO: Write story for Eat Pussy"
+  },
+
 });
