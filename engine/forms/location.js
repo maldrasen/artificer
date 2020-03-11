@@ -6,6 +6,7 @@ global.Location = class Location extends Form {
     const summonAvailable = flags['minions.can-summon'] && (typeof this.summonActions == 'function');
 
     const view = {
+      actions: this.actions,
       name: (await this.buildName()),
       description: (await this.buildDescription()),
       flags: (await this.buildFlags(game,flags)),

@@ -15,6 +15,9 @@ global.Configuration = {
 
   onDebugStart: async game => {
     await EventQueue.enqueueEvent('debug-create-player');
+    await Flag.setAll({
+      'map.heart-of-sin': 'unlocked'
+    });
   },
 
 };

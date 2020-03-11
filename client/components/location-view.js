@@ -29,8 +29,19 @@ Components.LocationView = (function() {
     if (locationEventActive(view)) {
       showMapFlag();
     }
+
+    each(view.actions||[], action => {
+      addAction(action);
+    });
   }
 
+  function addAction(action) {
+    $('#locationView ul.actions').append($('<li>',{ class:'small-margin-bottom' }).append(
+      $('<a>',{ href:'#', class:'button-primary' }).append(action.name).on('click', Elements.buttonAction(() => {
+        Renderer.sendCommand(action.command, action.data);
+      }))
+    ));
+  }
 
   function locationEventActive(view) {
     return view.mapData.locations.filter(datum => {
