@@ -59,9 +59,9 @@ Species.build('equian', {
       sheath: 'skin',
       minimumWidth: 30,
       size: {
-        average: 30,
+        average: 10,
         big:     20,
-        huge:    10,
+        huge:    30,
       }
     },
     pussy:{ shape:'horse' },

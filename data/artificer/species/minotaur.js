@@ -61,10 +61,9 @@ Species.build('minotaur', {
       sheath: 'skin',
       minimumWidth: 30,
       size: {
-        small: 10,
-        average: 30,
+        average: 10,
         big: 20,
-        huge: 10,
+        huge: 30,
       }
     },
     pussy:{ shape:'horse' },
