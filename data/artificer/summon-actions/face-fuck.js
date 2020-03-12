@@ -14,13 +14,37 @@ SummonAction.build('face-fuck', {
   conflicting:   ['dominant'],
   skill:         'oral',
 
-  event: 'face-fuck',
-  variants:[
-    { when:['location.has-table'], event:'face-fuck-table' },
-  ],
-
-  writeStory: async summoner => {
-    return "TODO: Write story for Face Fuck"
-  },
-
+  supportClass: () => SummonAction.FaceFuck,
 });
+
+SummonAction.FaceFuck = (function() {
+
+  function writeEnthusiasticStory(summoner) {
+    return "TODO: Enthusiastic Face Fucking Story."
+  }
+
+  function writeConsentStory(summoner) {
+    return "TODO: Consenting Face Fucking Story."
+  }
+
+  function writeReluctantStory(summoner) {
+    return "TODO: Reluctant Face Fucking Story."
+  }
+
+  function writeRapeStory(summoner) {
+    return "TODO: Rape Face Fucking Story."
+  }
+
+  return {
+    writeEnthusiasticStory,
+    writeConsentStory,
+    writeReluctantStory,
+    writeRapeStory,
+  };
+
+})();
+
+// event: 'face-fuck',
+// variants:[
+//   { when:['location.has-table'], event:'face-fuck-table' },
+// ],

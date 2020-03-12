@@ -11,10 +11,32 @@ SummonAction.build('face-slapping', {
   complementing: ['masochist','submissive'],
   conflicting:   ['dominant'],
 
-  event: 'face-slapping',
-
-  writeStory: async summoner => {
-    return "TODO: Write story for Face Slapping"
-  },
-
+  supportClass: () => SummonAction.FaceSlapping,
 });
+
+SummonAction.FaceSlapping = (function() {
+
+  function writeEnthusiasticStory(summoner) {
+    return "TODO: Enthusiastic Face Slapping Story."
+  }
+
+  function writeConsentStory(summoner) {
+    return "TODO: Consenting Face Slapping Story."
+  }
+
+  function writeReluctantStory(summoner) {
+    return "TODO: Reluctant Face Slapping Story."
+  }
+
+  function writeRapeStory(summoner) {
+    return "TODO: Rape Face Slapping Story."
+  }
+
+  return {
+    writeEnthusiasticStory,
+    writeConsentStory,
+    writeReluctantStory,
+    writeRapeStory,
+  };
+
+})();

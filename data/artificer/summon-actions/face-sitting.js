@@ -11,13 +11,37 @@ SummonAction.build('face-sitting', {
   conflicting:   ['dominant'],
   skill:         'oral',
 
-  event: 'face-sitting',
-  variants:[
-    { when:['location.has-chair'], event:'face-sitting-chair' },
-  ],
-
-  writeStory: async summoner => {
-    return "TODO: Write story for Face Sitting"
-  },
-
+  supportClass: () => SummonAction.FaceSitting,
 });
+
+SummonAction.FaceSitting = (function() {
+
+  function writeEnthusiasticStory(summoner) {
+    return "TODO: Enthusiastic Face Sitting Story."
+  }
+
+  function writeConsentStory(summoner) {
+    return "TODO: Consenting Face Sitting Story."
+  }
+
+  function writeReluctantStory(summoner) {
+    return "TODO: Reluctant Face Sitting Story."
+  }
+
+  function writeRapeStory(summoner) {
+    return "TODO: Rape Face Sitting Story."
+  }
+
+  return {
+    writeEnthusiasticStory,
+    writeConsentStory,
+    writeReluctantStory,
+    writeRapeStory,
+  };
+
+})();
+
+// event: 'face-sitting',
+// variants:[
+//   { when:['location.has-chair'], event:'face-sitting-chair' },
+// ],

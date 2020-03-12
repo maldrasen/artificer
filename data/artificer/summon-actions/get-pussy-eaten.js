@@ -11,15 +11,39 @@ SummonAction.build('get-pussy-eaten', {
   conflicting:   ['dominant'],
   skill:         'oral',
 
-  event: 'get-pussy-eaten',
-  variants:[
-    { event:'get-pussy-eaten-face-sit' },
-    { when:['location.has-table'], event:'get-pussy-eaten-table' },
-    { when:['location.has-chair'], event:'get-pussy-eaten-chair' },
-  ],
-
-  writeStory: async summoner => {
-    return "TODO: Write story for Get Pussy Eaten"
-  },
-
+  supportClass: () => SummonAction.GetPussyEaten,
 });
+
+SummonAction.GetPussyEaten = (function() {
+
+  function writeEnthusiasticStory(summoner) {
+    return "TODO: Enthusiastic Get Pussy Eaten Story."
+  }
+
+  function writeConsentStory(summoner) {
+    return "TODO: Consenting Get Pussy Eaten Story."
+  }
+
+  function writeReluctantStory(summoner) {
+    return "TODO: Reluctant Get Pussy Eaten Story."
+  }
+
+  function writeRapeStory(summoner) {
+    return "TODO: Rape Get Pussy Eaten Story."
+  }
+
+  return {
+    writeEnthusiasticStory,
+    writeConsentStory,
+    writeReluctantStory,
+    writeRapeStory,
+  };
+
+})();
+
+// event: 'get-pussy-eaten',
+// variants:[
+//   { event:'get-pussy-eaten-face-sit' },
+//   { when:['location.has-table'], event:'get-pussy-eaten-table' },
+//   { when:['location.has-chair'], event:'get-pussy-eaten-chair' },
+// ],

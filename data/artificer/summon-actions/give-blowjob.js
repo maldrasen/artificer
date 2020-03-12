@@ -12,13 +12,37 @@ SummonAction.build('give-blowjob', {
   complementing: ['oral-lover','dominant'],
   conflicting:   [],
 
-  event: 'give-blowjob',
-  variants:[
-    { when:['location.has-chair'], event:'give-blowjob-chair' },
-  ],
-
-  writeStory: async summoner => {
-    return "TODO: Write story for Give Blowjob"
-  },
-
+  supportClass: () => SummonAction.GiveBlowjob,
 });
+
+SummonAction.GiveBlowjob = (function() {
+
+  function writeEnthusiasticStory(summoner) {
+    return "TODO: Enthusiastic Give Blowjob Story."
+  }
+
+  function writeConsentStory(summoner) {
+    return "TODO: Consenting Give Blowjob Story."
+  }
+
+  function writeReluctantStory(summoner) {
+    return "TODO: Reluctant Give Blowjob Story."
+  }
+
+  function writeRapeStory(summoner) {
+    return "TODO: Rape Give Blowjob Story."
+  }
+
+  return {
+    writeEnthusiasticStory,
+    writeConsentStory,
+    writeReluctantStory,
+    writeRapeStory,
+  };
+
+})();
+
+// event: 'give-blowjob',
+// variants:[
+//   { when:['location.has-chair'], event:'give-blowjob-chair' },
+// ],

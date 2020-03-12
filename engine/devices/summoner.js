@@ -28,8 +28,17 @@ global.Summoner = class Summoner {
   get story() { return this._story; }
 
   async execute() {
+    const context = new WeaverContext();
+    await context.addPlayer();
+    await context.addCharacter('C',this.character);
+
     this._experience = await Summoner.Experience.calculate(this);
-    this._story = await this.action.writeStory(this);
+    this._story = Weaver.weave({
+      enthusiastic: this.action.supportClass().writeEnthusiasticStory,
+      consent: this.action.supportClass().writeConsentStory,
+      reluctant: this.action.supportClass().writeReluctantStory,
+      rape: this.action.supportClass().writeRapeStory,
+    }[this.consent.level](this),context);
 
     // TODO: Some actions might be exhausting and will set the character's
     //       energy to 0, which will prevent them from doing anything but

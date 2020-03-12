@@ -13,14 +13,38 @@ SummonAction.build('get-blowjob', {
   conflicting:   ['dominant'],
   skill:         'oral',
 
-  event: 'get-blowjob-standing',
-  variants:[
-    { event:'get-blowjob-on-back' },
-    { when:['location.has-chair'], event:'get-blowjob-chair' },
-  ],
-
-  writeStory: async summoner => {
-    return "TODO: Write story for Get Blowjob"
-  },
-
+  supportClass: () => SummonAction.GetBlowjob,
 });
+
+SummonAction.GetBlowjob = (function() {
+
+  function writeEnthusiasticStory(summoner) {
+    return "TODO: Enthusiastic Get Blowjob Story."
+  }
+
+  function writeConsentStory(summoner) {
+    return "TODO: Consenting Get Blowjob Story."
+  }
+
+  function writeReluctantStory(summoner) {
+    return "TODO: Reluctant Get Blowjob Story."
+  }
+
+  function writeRapeStory(summoner) {
+    return "TODO: Rape Get Blowjob Story."
+  }
+
+  return {
+    writeEnthusiasticStory,
+    writeConsentStory,
+    writeReluctantStory,
+    writeRapeStory,
+  };
+
+})();
+
+// event: 'get-blowjob-standing',
+// variants:[
+//   { event:'get-blowjob-on-back' },
+//   { when:['location.has-chair'], event:'get-blowjob-chair' },
+// ],
