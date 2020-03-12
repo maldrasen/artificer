@@ -1,5 +1,6 @@
 Location.build('heart-of-sin', {
   inTheName: 'within the sin heart',
+  toTheName: 'to the heart of sin',
 
   buildName: async () => {
     return `The Heart of Sin`;
@@ -20,4 +21,7 @@ Location.build('heart-of-sin', {
       data: { code:'debug-create-minion' }}
   ],
 
+  hasBed: async () => false,
+  hasChair: async () => false,
+  hasTable: async () => false,
 });

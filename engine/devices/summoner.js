@@ -33,7 +33,7 @@ global.Summoner = class Summoner {
     await context.addCharacter('C',this.character);
 
     this._experience = await Summoner.Experience.calculate(this);
-    this._story = Weaver.weave({
+    this._story = Weaver.weave(await {
       enthusiastic: this.action.supportClass().writeEnthusiasticStory,
       consent: this.action.supportClass().writeConsentStory,
       reluctant: this.action.supportClass().writeReluctantStory,

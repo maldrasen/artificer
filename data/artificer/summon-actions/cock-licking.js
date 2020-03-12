@@ -15,22 +15,59 @@ SummonAction.build('cock-licking', {
   supportClass: () => SummonAction.CockLicking,
 });
 
+// The cock licking action is an oral event that's only available when the
+// player's cock is far too large for a minion to suck. As a result they'll
+// only be able to lick and kiss along the shaft, and rub their bodies along it.
+
 SummonAction.CockLicking = (function() {
 
-  function writeEnthusiasticStory(summoner) {
+  async function writeEnthusiasticStory(summoner) {
+    if (summoner.character.speciesCode == 'scaven') { return await enthusiasticScavenStory(summoner); }
     return "TODO: Enthusiastic Cock Licking Story."
   }
 
-  function writeConsentStory(summoner) {
+  async function writeConsentStory(summoner) {
+    if (summoner.character.speciesCode == 'scaven') { return await consentingScavenStory(summoner); }
     return "TODO: Consenting Cock Licking Story."
   }
 
-  function writeReluctantStory(summoner) {
+  async function writeReluctantStory(summoner) {
+    if (summoner.character.speciesCode == 'scaven') { return await reluctantScavenStory(summoner); }
     return "TODO: Reluctant Cock Licking Story."
   }
 
-  function writeRapeStory(summoner) {
+  async function writeRapeStory(summoner) {
+    if (summoner.character.speciesCode == 'scaven') { return await rapeScavenStory(summoner); }
     return "TODO: Rape Cock Licking Story."
+  }
+
+  // === Scaven Specific Stories ===
+  // Starting off with these. The scaven are pretty unique in all the summon
+  // actions because they're so small. The player's cock can be as large as
+  // they are and while licking they'll use their many nipples as well.
+
+  async function enthusiasticScavenStory(summoner) {
+    return "TODO: Enthusiastic Scaven Cock Licking Story."
+  }
+
+  async function consentingScavenStory(summoner) {
+    return "TODO: Consenting Scaven Cock Licking Story."
+  }
+
+  async function reluctantScavenStory(summoner) {
+
+    console.log("Writing...")
+    const character = summoner.character;
+    let story = await StoryTeller.startSummoning({ character });
+
+    console.log("Story:")
+    console.log(story)
+
+    return story;
+  }
+
+  async function rapeScavenStory(summoner) {
+    return "TODO: Rape Scaven Cock Licking Story."
   }
 
   return {
@@ -43,10 +80,6 @@ SummonAction.CockLicking = (function() {
 })();
 
 
-// const game = await Game.instance();
-// const location = Location.lookup(game.location);
-// const player = await Player.instance();
-// const playerOutfit = await player.getEquipment('outfit');
 // const playerCock = await player.getCock();
 //
 // const character = summoner.character;
@@ -54,13 +87,7 @@ SummonAction.CockLicking = (function() {
 // const cockReaction = await summoner.character.reactToCock(playerCock);
 //
 //
-// let story = `My dick is far too large for {{C::character.firstName}} to properly suck, but that doesn't mean
-//   {{C::gender.he}} can't use {{C::gender.his}} mouth to pleasure me in other ways.`;
 //
-// // TODO: Implement clothing.
-// if (playerOutfit == null) {
-//   story += ` I'm nude, waiting for {{C::gender.him}} to arrive ${location.inTheName}.`;
-// }
 //
 // // Do I though? That's one possibility.
 // story += ` I take my soft thick cock by the base and let it swing back and forth. `;

@@ -1,5 +1,6 @@
 Location.build('lower-keep', {
   inTheName: 'in the lower keep',
+  toTheName: 'to the lower keep',
 
   buildName: async () => {
     return `Lower Keep`;
@@ -12,4 +13,7 @@ Location.build('lower-keep', {
       central courtyard. For the time being though, I really have no use for all this extra space.`;
   },
 
+  hasBed: async () => false,
+  hasChair: async () => false,
+  hasTable: async () => false,
 });

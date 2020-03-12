@@ -1,5 +1,6 @@
 Location.build('cellars', {
   inTheName: 'down in the cellars',
+  toTheName: 'down to the cellars',
 
   buildName: async () => {
     return `Cellars`;
@@ -17,4 +18,7 @@ Location.build('cellars', {
     return SummonAction.allStandardActions();
   },
 
+  hasBed: async () => false,
+  hasChair: async () => false,
+  hasTable: async () => false,
 });

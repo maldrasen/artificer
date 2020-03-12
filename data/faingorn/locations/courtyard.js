@@ -1,5 +1,6 @@
 Location.build('courtyard', {
   inTheName: 'out in the courtyard',
+  tnTheName: 'out to the courtyard',
 
   buildName: async () => {
     return `Ruined Courtyard`;
@@ -16,4 +17,7 @@ Location.build('courtyard', {
     return SummonAction.allStandardActions();
   },
 
+  hasBed: async () => false,
+  hasChair: async () => false,
+  hasTable: async () => false,
 });

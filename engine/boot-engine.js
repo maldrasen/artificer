@@ -59,6 +59,7 @@ require(`${ROOT}/engine/devices/aspect-adjuster`);
 require(`${ROOT}/engine/devices/composer`);
 require(`${ROOT}/engine/devices/consent-calculator`);
 require(`${ROOT}/engine/devices/event-queue`);
+require(`${ROOT}/engine/devices/story-teller`);
 
 require(`${ROOT}/engine/devices/abuser`);
 require(`${ROOT}/engine/devices/abusers/anus-abuser`);

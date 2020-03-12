@@ -1,5 +1,6 @@
 Location.build('upper-keep', {
   inTheName: 'in the upper keep',
+  toTheName: 'to the upper keep',
 
   buildName: async () => {
     return `Upper Keep`;
@@ -12,4 +13,7 @@ Location.build('upper-keep', {
       livable again.`;
   },
 
+  hasBed: async () => false,
+  hasChair: async () => false,
+  hasTable: async () => false,
 });

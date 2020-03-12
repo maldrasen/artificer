@@ -1,5 +1,6 @@
 Location.build('great-hall', {
   inTheName: 'in the great hall',
+  toTheName: 'to the great hall',
 
   buildName: async () => {
     return `Great Hall`;
@@ -16,4 +17,10 @@ Location.build('great-hall', {
     return SummonAction.allStandardActions();
   },
 
+  // This is only true until the player moves their bedroom up into the master
+  // suite. At that point I'll need to read a flag to determine if a bed is
+  // still here or not.
+  hasBed: async () => true,
+  hasChair: async () => true,
+  hasTable: async () => true,
 });
