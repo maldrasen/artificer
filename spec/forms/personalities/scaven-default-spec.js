@@ -1,4 +1,4 @@
-describe.only('Personality: Scaven Default', function() {
+describe('Personality: Scaven Default', function() {
 
   // This spec is mostly for development and as a check to make sure nothing
   // blows up unexpectedly, so it makes very few assertions and prints output

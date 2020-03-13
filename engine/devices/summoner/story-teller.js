@@ -6,6 +6,9 @@ Summoner.StoryTeller = class StoryTeller {
     this._segments = [];
   }
 
+  // characterPosition: standing, sitting, laying, kneeling, bent-over
+  // characterPussy: dry, wet
+  // characterCock: soft, hard
   addSegment(segment) {
     console.log("Segment:",segment)
     this._segments.push(segment.text);

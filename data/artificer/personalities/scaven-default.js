@@ -61,9 +61,8 @@ Personality.build('scaven-default', {
   // Give the reaction a character has to being shown the player's cock. Should
   // be proceeded by a sentence where the player is doing something with their
   // dick as it implies that they're looking at it, and is referred to with the
-  // pronoun it, so is clearly the current topic. e.g.
-  //
-  //    I take my soft thick cock by the base and let it swing back and forth.
+  // pronoun it, so is clearly the current topic. Perhaps used following the
+  // StoryTeller.showCock() function for instance.
   //
   // TODO: Eventually I'd like to use the skill skills concern to also look at
   //       the relationship between the size of the cock and the size of the
@@ -71,43 +70,71 @@ Personality.build('scaven-default', {
   //       written. For now though we're pretty sure the character has an
   //       average size cock and that a scaven is still intimated by it.
   reactToCock: async function(character, cock, desirability) {
+    const characterCock = await character.getCock();
+    const characterPussy = await character.getPussy();
+    const options = [];
 
     // Terrible Reaction, probably androphobic.
-    if (desirability < -5) { return Random.from([
-      `As I expose myself to {{C::gender.him}} {{C::gender.he}} makes a disgusted face. {{C::gender.He}}'s clearly not at all interested in my cock.`,
-      `{{C::gender.He}} makes an awful face when {{C::gender.his}} eyes land on it though. I think {{C::gender.he}}'s somewhat repulsed by it.`,
-    ]); }
+    if (desirability < -5) {
+      options.push(`As I expose myself to {{C::gender.him}} {{C::gender.he}} makes a disgusted face and looks away.`);
+      options.push(`From {{C::gender.his}} expression it looks like my cock is the last thing {{C::gender.he}}'s interested in seeing right now.`);
+      options.push(`{{C::gender.He}} makes an awful face when {{C::gender.his}} eyes land on it. I think {{C::gender.he}}'s somewhat repulsed by my cock.`);
+    }
 
     // Very Bad Reaction
-    if (desirability < -3) { return Random.from([
-      `{{C::gender.He}} tries to avoid looking at it though, seemingly uninterested in it.`,
-      `{{C::gender.He}} does what {{C::gender.he}} can to avoid looking at it though. It's clearly making {{C::gender.him}} uncomfortable.`
-    ]); }
+    if (desirability >= -5 && desirability < -2) {
+      options.push(`{{C::gender.He}} tries to avoid looking at it, seemingly uninterested in it.`);
+      options.push(`{{C::gender.He}} tries to avoid looking at it, not really interested seeing my dick at all right now.`);
+      options.push(`{{C::gender.He}} does what {{C::gender.he}} can to avoid looking at it. It's clearly making {{C::gender.him}} uncomfortable.`);
+    }
 
     // Average Reaction
-    if (desirability < 0)  { return Random.from([
-      `{{C::gender.He}} smiles as {{C::gender.his}} eyes move down to glance at it. {{C::gender.He}} seems a bit nervous, probably a bit intimidated by the size of it, but clearly willing to give it a try.`
-    ]); }
+    if (desirability >= -2 && desirability < 1)  {
+      options.push(`{{C::gender.He}} smiles as {{C::gender.his}} eyes move down to glance at it. {{C::gender.He}} seems a bit nervous, probably a bit intimidated by the size of it.`);
+      options.push(`{{C::gender.He}} glances briefly at it, seemingly nervous and uncomfortable at the sight of my cock.`);
+      options.push(`{{C::gender.He}} seems uncomfortable looking at my cock, perhaps intimidated by its size.`);
+    }
 
     // Good Reaction
-    if (desirability == 1) { return Random.from([
-      `{{C::gender.He}} smiles as {{C::gender.he}} looks it over; eyes growing a bit wide as he no doubt imagines it going inside of {{C::gender.him}}.`
-    ]); }
+    if (desirability >= 1 && desirability < 3) {
+      options.push(`{{C::gender.He}} smiles as {{C::gender.he}} looks it over; eyes growing a bit wide as he no doubt imagines it going inside of {{C::gender.him}}.`);
+      options.push(`{{C::gender.He}} glances down at it, enjoying the sight of my cock, but not lingering on it overlong.`);
+    }
 
     // They Love this Cock
-    if (desirability < 4)  { return Random.from([
-      `{{C::gender.He}} looks transfixed by it; licking {{C::gender.his}} lips and practically drooling at the sight of my cock.`
-    ]); }
+    if (desirability >= 3 && desirability < 5)  {
+      options.push(`{{C::gender.He}} smiles in appreciation as his eyes roam over it, as if memorizing the shape of my dick.`);
+    }
 
     // They Fucking Need This Cock
-    if (desirability < 7)  { return Random.from([
-      `{{C::gender.He}} can't seem to take {{C::gender.his}} eyes off of it.`
-    ]); }
+    if (desirability >= 5 && desirability < 8)  {
+      options.push(`{{C::gender.He}} looks transfixed by it; licking {{C::gender.his}} lips and practically drooling at the sight of my cock.`);
+      options.push(`{{C::gender.He}} makes a little moaning sound as {{C::gender.his}} eyes roam over my shaft.`);
+      options.push(`{{C::gender.He}} can't seem to take {{C::gender.his}} eyes off of it.`);
+    }
 
     // They Worship This Cock As A God
-    return Random.from([
-      `At the sight of it {{C::gender.he}} looks as though he can barely contain {{C::gender.him}}self; clearly wanting to get it inside of {{C::gender.him}}self immediately.`
-    ]);
+    if (desirability >= 8) {
+      options.push(`At the sight of it {{C::gender.he}} looks as though he can barely contain {{C::gender.him}}self; clearly wanting to get it inside of {{C::gender.him}}self immediately.`);
+      options.push(`{{C::gender.He}} looks as though he wants to drop to {{C::gender.his}} knees and start worshiping my dick at the sight of it.`);
+      options.push(`{{C::gender.He}} can't seem to help himself as {{C::gender.his}} gasps and starts drooling, panting, and practically begging me for a taste of it.`);
+
+      if (characterPussy) {
+        options.push(`At the sight of it {{C::gender.his}} pussy floods with moisture, enough that I can smell it from here.`);
+        options.push(`I can smell {{C::gender.his}} pussy from here as {{C::gender.he}} drinks in the sight of it; already needing it inside of {{C::gender.him}}.`);
+      }
+      if (characterCock) {
+        options.push(`At the sight of it his own cock begins to grow hard.`);
+        options.push(`{{C::gender.His}} own cock begins to grow hard at the sight of mine.`);
+      }
+    }
+
+    let reaction = { text:Random.from(options) };
+    if (desirability > 5) {
+      if (characterPussy) { reaction.characterPussy = 'wet'; }
+      if (characterPussy) { reaction.characterCock = 'hard'; }
+    }
+    return reaction;
   }
 
 });
