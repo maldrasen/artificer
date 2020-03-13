@@ -25,33 +25,37 @@ Personality.build('scaven-default', {
     // Lust and love share many of the same reactions so add them all to the
     // options and randomly select one if any have been added, otherwise
     // continue on.
-    if (options.length > 0) { return Random.from(options); }
+    if (options.length > 0) {
+      return { text:Random.from(options), characterPosition:'standing' };
+    }
 
-    if (attitude == 'friendly') { return Random.from([
-      `{{C::gender.He}} smiles and nods to me, happy to be of service to {{C::gender.her}} {{P::character.title}}`,
-      `{{C::gender.He}} smiles up at me, ready to serve me in whatever way I would like.`,
-      `{{C::gender.He}} grins and nods, willing to let me use {{C::gender.him}} however I like.`,
-    ]); }
+    if (attitude == 'friendly') {
+      options.push(`{{C::gender.He}} smiles and nods to me, happy to be of service to {{C::gender.her}} {{P::character.title}}.`);
+      options.push(`{{C::gender.He}} smiles up at me, ready to serve me in whatever way I would like.`);
+      options.push(`{{C::gender.He}} grins and nods, willing to let me use {{C::gender.him}} however I like.`);
+    }
 
-    if (attitude == 'resigned') { return Random.from([
-      `{{C::gender.He}} nods, looking resigned and a little nervous, but ready do do what I ask of him.`,
-      `{{C::gender.He}} nods to me, understanding that {{C::gender.his}} body is mine to do with as I like.`,
-      `{{C::gender.He}} looks away shamefully, but seems willing to let me use {{C::gender.his}} body.`,
-      `{{C::gender.He}} glances down at the floor, resigned to let me have my way with {{C::gender.him}}.`,
-    ]); }
+    if (attitude == 'resigned') {
+      options.push(`{{C::gender.He}} nods, looking resigned and a little nervous, but ready do do what I ask of him.`);
+      options.push(`{{C::gender.He}} nods to me, understanding that {{C::gender.his}} body is mine to do with as I like.`);
+      options.push(`{{C::gender.He}} looks away shamefully, but seems willing to let me use {{C::gender.his}} body.`);
+      options.push(`{{C::gender.He}} glances down at the floor, resigned to let me have my way with {{C::gender.him}}.`);
+    }
 
-    if (attitude == 'fearful') { return Random.from([
-      `{{C::gender.He}} looks up at me, clearly afraid and not sure of what I'm about to do to {{C::gender.him}}.`,
-      `{{C::gender.He}} looks up at me, looking afraid and unsure of what I will ask of {{C::gender.him}}.`,
-      `{{C::gender.He}} backs away slightly, looking like {{C::gender.he}} might run from me, but knows {{C::gender.he}} can't.`,
-      `{{C::gender.He}} glances about the room as if looking for a way to escape, but knows {{C::gender.he}} can't.`,
-    ]); }
+    if (attitude == 'fearful') {
+      options.push(`{{C::gender.He}} looks up at me, clearly afraid and not sure of what I'm about to do to {{C::gender.him}}.`);
+      options.push(`{{C::gender.He}} looks up at me, looking afraid and unsure of what I will ask of {{C::gender.him}}.`);
+      options.push(`{{C::gender.He}} backs away slightly, looking like {{C::gender.he}} might run from me, but knows {{C::gender.he}} can't.`);
+      options.push(`{{C::gender.He}} glances about the room as if looking for a way to escape, but knows {{C::gender.he}} can't.`);
+    }
 
-    if (attitude == 'angry') { return Random.from([
-      `{{C::gender.He}} snarls in warning, clearly not at all in the mood for any kind of sexual activity.`,
-      `{{C::gender.He}} backs away looking angry, clearly not interested in doing anything with me right now.`,
-      `{{C::gender.He}} looks angrily up at me, clearly wanting to be anyplace other than here right now.`,
-    ]); }
+    if (attitude == 'angry') {
+      options.push(`{{C::gender.He}} snarls in warning, clearly not at all in the mood for any kind of sexual activity.`);
+      options.push(`{{C::gender.He}} backs away looking angry, clearly not interested in doing anything with me right now.`);
+      options.push(`{{C::gender.He}} looks angrily up at me, clearly wanting to be anyplace other than here right now.`);
+    }
+
+    return { text:Random.from(options), characterPosition:'standing' };
   },
 
   // Give the reaction a character has to being shown the player's cock. Should
