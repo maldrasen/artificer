@@ -14,6 +14,25 @@ global.HasPersonality = (function() {
     return await this.update({ personalityCode:'scaven-default' });
   }
 
+  // Get the character's reaction to seeing the player at the start of a
+  // summoning scene. This will mostly be determined by the character's fear,
+  // loyalty, lust triad.
+  async function reactToPlayer() {
+    let baseConsent = new ConsentCalculator(this).calculateConsent(1);
+    if (baseConsent == 'enthusiastic') {
+      return await this.personality.reactToPlayer(this, 'love');
+    }
+    if (baseConsent == 'consent') {
+      return await this.personality.reactToPlayer(this, this.lust > this.loyalty ? 'lusty' : 'friendly');
+    }
+    if (baseConsent == 'reluctant') {
+      return await this.personality.reactToPlayer(this, this.fear > this.loyalty ? 'fearful' : 'resigned');
+    }
+    if (baseConsent == 'rape') {
+      return await this.personality.reactToPlayer(this, this.loyalty < 30 ? 'angry' : 'fearful');
+    }
+  }
+
   // Get a reaction from this character when they are shown a cock. The
   // character's aspects and cock's attributes all greatly influence how the
   // character reacts. This function calculates the impressions and passes
@@ -67,6 +86,7 @@ global.HasPersonality = (function() {
   return { isAppliedTo:function(model) {
     model.prototype.determinePersonality = determinePersonality;
     model.prototype.reactToCock = reactToCock;
+    model.prototype.reactToPlayer = reactToPlayer;
   }};
 
 })();

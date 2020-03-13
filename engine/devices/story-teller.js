@@ -28,7 +28,7 @@ global.StoryTeller = (function() {
 
     if (start == 'already') {
       let smile = [
-        `I glance over at {{C::character.firstName}} who's here ${location.inTheName} with me.`
+        `I glance over at {{C::character.firstName}} who's here ${location.inTheName} with me.`,
       ];
       let beckon = [
         `I smile at {{C::gender.him}} and beckon {{C::gender.him}} to approach me.`

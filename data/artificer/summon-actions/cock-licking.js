@@ -55,15 +55,15 @@ SummonAction.CockLicking = (function() {
   }
 
   async function reluctantScavenStory(summoner) {
-
-    console.log("Writing...")
+    const segments = []
     const character = summoner.character;
-    let story = await StoryTeller.startSummoning({ character });
+    const player = await Player.instance();
+    const playerOutfit = await player.getEquipment('outfit');
 
-    console.log("Story:")
-    console.log(story)
+    segments.push(await StoryTeller.startSummoning({ character }));
+    segments.push(await character.reactToPlayer());
 
-    return story;
+    return segments.join(' ');
   }
 
   async function rapeScavenStory(summoner) {
