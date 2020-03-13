@@ -55,15 +55,15 @@ SummonAction.CockLicking = (function() {
   }
 
   async function reluctantScavenStory(summoner) {
-    const segments = []
-    const character = summoner.character;
-    const player = await Player.instance();
-    const playerOutfit = await player.getEquipment('outfit');
+    // const character = summoner.character;
+    // const player = await Player.instance();
+    // const playerOutfit = await player.getEquipment('outfit');
 
-    segments.push(await StoryTeller.startSummoning({ character }));
-    segments.push(await character.reactToPlayer());
+    // segments.push(await StoryTeller.startSummoning({ status, character }));
+    // segments.push(await character.reactToPlayer({ status }));
+    // segments.push(await StoryTeller.showCock({ status }));
 
-    return segments.join(' ');
+    // return segments.join(' ');
   }
 
   async function rapeScavenStory(summoner) {
@@ -88,11 +88,6 @@ SummonAction.CockLicking = (function() {
 //
 //
 //
-//
-// // Do I though? That's one possibility.
-// story += ` I take my soft thick cock by the base and let it swing back and forth. `;
-// story += cockReaction.text;
-// story += ` I beckon for him to approach me.`;
 //
 // if (character.speciesCode == 'scaven') {
 //

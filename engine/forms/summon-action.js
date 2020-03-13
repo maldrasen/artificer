@@ -35,7 +35,7 @@ global.SummonAction = class SummonAction extends Form {
   }
 
   static async categorizedForCharacter(character) {
-    const calculator = new ConsentCalculator(character);
+    const calculator = new Summoner.ConsentCalculator(character);
     await calculator.init();
 
     const context = new WeaverContext();

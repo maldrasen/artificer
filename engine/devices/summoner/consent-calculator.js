@@ -1,4 +1,4 @@
-global.ConsentCalculator = class ConsentCalculator {
+Summoner.ConsentCalculator = class ConsentCalculator {
 
   constructor(character) {
     this._character = character;
