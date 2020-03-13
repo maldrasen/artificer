@@ -16,20 +16,29 @@ global.StoryTeller = (function() {
     const location = Location.lookup(game.location);
     const player = await Player.instance();
     const playerOutfit = await player.getEquipment('outfit');
+    const cockToken = player.genderCode == 'female' ? '{{pussy}}' : '{{cock}}'
 
     let start = Random.fromFrequencyMap({
+      already: 3,
       waiting: 10,
       meeting: 10,
-      already: 3,
     });
 
-    if (start == 'already') {
-      let joinMe = `I glance over at {{C::character.firstName}} who's here ${location.inTheName} with me.`;
-      let options = [
-        `I smile at {{C::gender.him}} and beckon {{C::gender.him}} to approach me.`
-      ]
+    // === The character is actually already here with you ===
 
-      return joinMe + Random.from(options);
+    if (start == 'already') {
+      let smile = [
+        `I glance over at {{C::character.firstName}} who's here ${location.inTheName} with me.`
+      ];
+      let beckon = [
+        `I smile at {{C::gender.him}} and beckon {{C::gender.him}} to approach me.`
+      ];
+
+      if (playerOutfit == null) {
+        beckon.push(`I'm already standing here nude so I give {{C::gender.him}} a wink while reaching down to slowly stroke my ${cockToken}.`)
+      }
+
+      return Random.from(smile) + ' ' + Random.from(beckon);
     }
 
     // === Otherwise the player arranges the meeting ===
@@ -44,18 +53,16 @@ global.StoryTeller = (function() {
       heArrives.push(`{{C::gender.He}} arrives not too long after myself.`);
 
       if (playerOutfit == null) {
-        let cock = player.genderCode == 'female' ? 'pussy' : 'cock'
-
         heArrives.push(`I'm standing nude up against a wall when {{C::gender.he}} arrives.`);
-        heArrives.push(`I'm standing nude, up against a wall, ideally stroking my ${cock}, when {{C::gender.he}} arrives.`);
+        heArrives.push(`I'm standing nude, up against a wall, ideally stroking my ${cockToken}, when {{C::gender.he}} arrives.`);
 
         if (await location.hasChair()) {
-          heArrives.push(`I arrive before {{C::gender.him}} and when {{C::gender.he}} arrives I'm sitting in a chair, ideally stroking my ${cock}.`);
-          heArrives.push(`I sitting nude, legs spread wide with one leg hooked over the arm of the chair, when {{C::gender.he}} arrives.`);
+          heArrives.push(`I arrive before {{C::gender.him}} and when {{C::gender.he}} arrives I'm sitting in a chair, ideally stroking my ${cockToken}.`);
+          heArrives.push(`I'm sitting nude, legs spread wide with one leg hooked over the arm of the chair, when {{C::gender.he}} arrives.`);
         }
         if (await location.hasBed()) {
           heArrives.push(`I'm lying nude in bed when {{C::gender.he}} arrives.`)
-          heArrives.push(`I'm nude in bed waiting for {{C::gender.him}} to arrive, and when {{C::gender.he}} does he finds me there ideally stroking my ${cock}.`)
+          heArrives.push(`I'm nude in bed waiting for {{C::gender.him}} to arrive, and when {{C::gender.he}} does he finds me there ideally stroking my ${cockToken}.`)
         }
       }
     }
@@ -68,7 +75,7 @@ global.StoryTeller = (function() {
       heArrives.push(`Like a good pet, {{C::gender.he}}'s waiting there for me when I arrive.`);
     }
 
-    return Random.from(joinMe) + Random.from(heArrives);
+    return Random.from(joinMe) + ' ' + Random.from(heArrives);
   }
 
 
