@@ -6,7 +6,7 @@ describe('Has Personality', function() {
         jada.addAspect('cock-lover',{ level:2 }).then(aspect => {
           jada.getCock().then(cock => {
             jada.reactToCock(cock).then(reaction => {
-              expect(reaction.desirability).to.equal(4);
+              expect(reaction.cockDesirability).to.equal(4);
               done();
             });
           });
@@ -19,7 +19,7 @@ describe('Has Personality', function() {
         jada.addAspect('androphilic',{ level:1 }).then(aspect => {
           jada.getCock().then(cock => {
             jada.reactToCock(cock).then(reaction => {
-              expect(reaction.desirability).to.equal(2);
+              expect(reaction.cockDesirability).to.equal(2);
               done();
             });
           });
@@ -32,7 +32,7 @@ describe('Has Personality', function() {
         jada.addAspect('androphobic',{ level:2 }).then(aspect => {
           jada.getCock().then(cock => {
             jada.reactToCock(cock).then(reaction => {
-              expect(reaction.desirability).to.equal(-4);
+              expect(reaction.cockDesirability).to.equal(-4);
               done();
             });
           });
@@ -45,7 +45,7 @@ describe('Has Personality', function() {
         jada.addAspect('size-queen',{ level:3 }).then(aspect => {
           jada.getCock().then(cock => {
             jada.reactToCock(cock).then(reaction => {
-              expect(reaction.desirability).to.equal(-3);
+              expect(reaction.cockDesirability).to.equal(-3);
               done();
             });
           });
@@ -58,7 +58,7 @@ describe('Has Personality', function() {
         jada.addAspect('size-queen',{ level:3 }).then(aspect => {
           jada.getCock().then(cock => {
             jada.reactToCock(cock).then(reaction => {
-              expect(reaction.desirability).to.equal(3);
+              expect(reaction.cockDesirability).to.equal(3);
               done();
             });
           });
@@ -71,7 +71,7 @@ describe('Has Personality', function() {
         jada.addAspect('size-queen',{ level:3 }).then(aspect => {
           jada.getCock().then(cock => {
             jada.reactToCock(cock).then(reaction => {
-              expect(reaction.desirability).to.equal(6);
+              expect(reaction.cockDesirability).to.equal(6);
               done();
             });
           });
@@ -84,7 +84,7 @@ describe('Has Personality', function() {
         jada.addAspect('beast-lover',{ level:1 }).then(aspect => {
           jada.getCock().then(cock => {
             jada.reactToCock(cock).then(reaction => {
-              expect(reaction.desirability).to.equal(1);
+              expect(reaction.cockDesirability).to.equal(1);
               done();
             });
           });
