@@ -104,6 +104,7 @@ require(`${ROOT}/engine/devices/summoner/story-teller`);
 require(`${ROOT}/engine/helpers/calendar.js`);
 require(`${ROOT}/engine/helpers/character-agent`);
 require(`${ROOT}/engine/helpers/listify.js`);
+require(`${ROOT}/engine/helpers/quote-transformer.js`);
 require(`${ROOT}/engine/helpers/random.js`);
 
 // === Scrutinizers ===

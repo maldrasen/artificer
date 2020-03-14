@@ -46,25 +46,34 @@ SummonAction.CockLicking = (function() {
   // actions because they're so small. The player's cock can be as large as
   // they are and while licking they'll use their many nipples as well.
 
+  async function normalStart(summoner) {
+    const storyTeller = new Summoner.StoryTeller(summoner);
+    await storyTeller.startSummoning();
+    await storyTeller.addSegment(await summoner.character.reactToPlayer())
+    await storyTeller.showCock();
+    await storyTeller.addSegment(await summoner.character.reactToCock(await storyTeller.getPlayerCock()))
+
+    return storyTeller;
+  }
+
   async function enthusiasticScavenStory(summoner) {
-    return "TODO: Enthusiastic Scaven Cock Licking Story."
+    const storyTeller = await normalStart(summoner);
+    return storyTeller.compile();
   }
 
   async function consentingScavenStory(summoner) {
-    return "TODO: Consenting Scaven Cock Licking Story."
+    const storyTeller = await normalStart(summoner);
+    return storyTeller.compile();
   }
 
   async function reluctantScavenStory(summoner) {
-    const storyTeller = new StoryTeller(summoner);
-    await storyTeller.startSummoning();
-    await storyTeller.addSegment(await character.reactToPlayer())
-    await storyTeller.showCock();
-
+    const storyTeller = await normalStart(summoner);
     return storyTeller.compile();
   }
 
   async function rapeScavenStory(summoner) {
-    return "TODO: Rape Scaven Cock Licking Story."
+    const storyTeller = await normalStart(summoner);
+    return storyTeller.compile();
   }
 
   return {

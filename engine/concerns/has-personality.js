@@ -77,10 +77,7 @@ global.HasPersonality = (function() {
     //       will be lacking in future events. For now, assume the character is
     //       used to seeing this particular cock.
 
-    return {
-      desirability: desirability,
-      text: (await this.personality.reactToCock(this, cock, desirability))
-    };
+    return await this.personality.reactToCock(this, cock, desirability)
   }
 
   return { isAppliedTo:function(model) {
