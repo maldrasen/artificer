@@ -99,11 +99,14 @@ Personality.build('scaven-default', {
     if (desirability >= 1 && desirability < 3) {
       options.push(`{{C::gender.He}} smiles as {{C::gender.he}} looks it over; eyes growing a bit wide as he no doubt imagines it going inside of {{C::gender.him}}.`);
       options.push(`{{C::gender.He}} glances down at it, enjoying the sight of my cock, but not lingering on it overlong.`);
+      options.push(`{{C::gender.He}} gasps as {{C::gender.his}} eyes roam over it. My cock's far larger than most scaven's so the size of it might be a little intimidating.`);
     }
 
     // They Love this Cock
     if (desirability >= 3 && desirability < 5)  {
       options.push(`{{C::gender.He}} smiles in appreciation as his eyes roam over it, as if memorizing the shape of my dick.`);
+      options.push(`{{C::gender.He}} grins broadly as {{C::gender.his}} eyes linger on it, ignoring everything else but my shaft.`);
+      options.push(`{{C::gender.He}} licks {{C::gender.his}} lips and grins; eager to have it in {{C::gender.his}} mouth now that it's directly in front of {{C::gender.his}} face like this .`);
     }
 
     // They Fucking Need This Cock
