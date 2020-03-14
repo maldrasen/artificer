@@ -132,7 +132,7 @@ Personality.build('scaven-default', {
       }
     }
 
-    let reaction = { desirability:desirability, text:Random.from(options) };
+    let reaction = { cockDesirability:desirability, text:Random.from(options) };
     if (desirability > 5) {
       if (characterPussy) { reaction.characterPussy = 'wet'; }
       if (characterPussy) { reaction.characterCock = 'hard'; }

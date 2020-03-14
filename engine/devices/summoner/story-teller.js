@@ -9,8 +9,15 @@ Summoner.StoryTeller = class StoryTeller {
   get summoner() { return this._summoner; }
   get character() { return this.summoner.character; }
 
+  // The scene status keeps track of all of the positions and conditions that
+  // might change over the course of the scene. It's likely for a status key to
+  // be null. If that's the case then whatever is being talked about just
+  // hasn't been set in stone yet, so assume it's whatever you need it to be.
+  // Just set it after it's been declaired to be in some state.
+
   getStatus(key) { return this._status[key]; }
   setStatus(key, value) { this._status[key] = value; }
+  mightBe(key, value) { return this.getStatus(key) == null || this.getStatus(key) == value }
 
   // In addition to the text, when adding a segment you can specify the
   // following. These attributes update the scene status, or they format the
@@ -18,7 +25,7 @@ Summoner.StoryTeller = class StoryTeller {
   //
   //   playerSpeaking: true
   //   playerPosition: standing, sitting, laying, kneeling, bent-over
-  //   playerCock: sofy, hard
+  //   playerCock: soft, hard
   //   playerPussy: dry, wet
   //
   //   characterSpeaking: true
@@ -26,13 +33,16 @@ Summoner.StoryTeller = class StoryTeller {
   //   characterCock: soft, hard
   //   characterPussy: dry, wet
   //
+  //   cockDesirability: (-10 to 10 or so)
+  //
   addSegment(segment) {
     if (segment.playerSpeaking)    { segment.text = QuoteTransformer.run(segment.text, { speaker:'player' }); }
     if (segment.characterSpeaking) { segment.text = QuoteTransformer.run(segment.text, { speaker:'other'  }); }
 
     let statusAttributes = [
       'playerPosition', 'playerCock', 'playerPussy',
-      'characterPosition', 'characterPussy', 'characterCock'
+      'characterPosition', 'characterPussy', 'characterCock',
+      'cockDesirability',
     ];
 
     each(statusAttributes, attribute => {
@@ -186,13 +196,46 @@ Summoner.StoryTeller = class StoryTeller {
   // This is done in several different summon actions, mostly oral scenes where
   // a bit of cock worship and such is called for.
   async showCock() {
-    this.addSegment({ text:'Show him my dick!' })
-  }
+    const outfit = await this.getPlayerOutfit();
+    let options = []
 
-  //
-  // // Do I though? That's one possibility.
-  // story += ` I take my soft thick cock by the base and let it swing back and forth. `;
-  // story += cockReaction.text;
-  // story += ` I beckon for him to approach me.`;
+    // The player is already nude and can just present himself. This is the
+    // default for now until clothing is implemented. Once it is this function
+    // will have the player take his clothes off, or just pull his cock out.
+    // I could also still add these segments after they player has removed his
+    // clothing or pulled his cock out.
+    if (outfit == null) {
+
+      if (this.mightBe('playerCock','soft')) {
+        options.push({ text:`I take my still soft cock in my hand and start slowly stroking it.`, playerCock:'soft' });
+        options.push({ text:`I grab my cock under the balls, bunching up my sack and pushing my cock forward.`, playerCock:'soft' });
+      }
+
+      if (this.mightBe('playerCock','hard')) {
+        options.push({ text:`I slowly stroke my shaft, rubbing my hand up and down its hard length.`, playerCock:'hard' });
+      }
+
+      if (this.mightBe('playerPosition','standing')) {
+        if (this.mightBe('playerCock','soft')) {
+          options.push({ text:`I hold my soft cock by the base of the shaft, letting it swing slowly back and forth.`, playerPosition:'standing', playerCock:'soft' });
+        }
+        if (this.mightBe('playerCock','hard')) {
+          options.push({ text:`My dick is already hard. I grab it by the base and let it sway in front of me.`, playerPosition:'standing', playerCock:'hard' });
+        }
+      }
+
+      if (this.mightBe('playerPosition','sitting')) {
+
+      }
+
+      if (this.mightBe('playerPosition','laying')) {
+        if (this.mightBe('playerCock','hard')) {
+          options.push({ text:`My dick is already hard. I grab it by the base and let it sway in the air above me.`, playerPosition:'laying', playerCock:'hard' });
+        }
+      }
+    }
+
+    this.addSegment(Random.from(options));
+  }
 
 }
