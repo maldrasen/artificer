@@ -81,6 +81,11 @@ Summoner.StoryTeller = class StoryTeller {
     return this._playerCock;
   }
 
+  async getCharacterBody() {
+    if (this._characterBody == null) { this._characterBody = await this.character.getBody(); }
+    return this._characterBody;
+  }
+
   async getLocation() {
     return Location.lookup((await this.getGame()).location);
   }
@@ -134,7 +139,7 @@ Summoner.StoryTeller = class StoryTeller {
       ];
       let beckon = [
         { text:`I smile at {{C::gender.him}} and beckon {{C::gender.him}} to approach me.` },
-        { text:`"{{C::character.firstName}}", I say, "come over here for a moment."`, playerSpeaking:true },
+        { text:`"{{C::character.firstName}}," I say, "come over here for a moment."`, playerSpeaking:true },
       ];
 
       if (this.character.speciesCode == 'scaven') {
@@ -166,16 +171,22 @@ Summoner.StoryTeller = class StoryTeller {
       heArrives.push({ text:`{{C::gender.He}} arrives a little later than I would have liked.` });
 
       if (playerOutfit == null) {
-        heArrives.push({ text:`I'm standing nude up against a wall when {{C::gender.he}} arrives.`, playerPosition:'standing' });
-        heArrives.push({ text:`I'm standing nude, up against a wall, ideally stroking my ${cockToken}, when {{C::gender.he}} arrives.`, playerPosition:'standing' });
+        Summoner.StoryTeller.addOptionsWith(heArrives,[
+          `I'm standing nude up against a wall when {{C::gender.he}} arrives.`,
+          `I'm standing nude, up against a wall, ideally stroking my ${cockToken}, when {{C::gender.he}} arrives.`,
+        ],{ playerPosition:'standing' });
 
         if (await location.hasChair()) {
-          heArrives.push({ text:`I arrive before {{C::gender.him}} and when {{C::gender.he}} arrives I'm sitting in a chair, ideally stroking my ${cockToken}.`, playerPosition:'sitting' });
-          heArrives.push({ text:`I'm sitting nude, legs spread wide with one leg hooked over the arm of the chair, when {{C::gender.he}} arrives.`, playerPosition:'sitting' });
+          Summoner.StoryTeller.addOptionsWith(heArrives,[
+            `I arrive before {{C::gender.him}} and when {{C::gender.he}} arrives I'm sitting in a chair, ideally stroking my ${cockToken}.`,
+            `I'm sitting nude, legs spread wide with one leg hooked over the arm of the chair, when {{C::gender.he}} arrives.`,
+          ],{ playerPosition:'sitting' });
         }
         if (await location.hasBed()) {
-          heArrives.push({ text:`I'm lying nude in bed when {{C::gender.he}} arrives. }`, playerPosition:'laying' });
-          heArrives.push({ text:`I'm nude in bed waiting for {{C::gender.him}} to arrive, and when {{C::gender.he}} does he finds me there ideally stroking my ${cockToken}. }`, playerPosition:'laying' });
+          Summoner.StoryTeller.addOptionsWith(heArrives,[
+            `I'm lying nude in bed when {{C::gender.he}} arrives.`,
+            `I'm nude in bed waiting for {{C::gender.him}} to arrive, and when {{C::gender.he}} does he finds me there ideally stroking my ${cockToken}.`,
+          ],{ playerPosition:'laying' });
         }
       }
     }
@@ -205,22 +216,29 @@ Summoner.StoryTeller = class StoryTeller {
     // I could also still add these segments after they player has removed his
     // clothing or pulled his cock out.
     if (outfit == null) {
-
       if (this.mightBe('playerCock','soft')) {
-        options.push({ text:`I take my still soft cock in my hand and start slowly stroking it.`, playerCock:'soft' });
-        options.push({ text:`I grab my cock under the balls, bunching up my sack and pushing my cock forward.`, playerCock:'soft' });
+        Summoner.StoryTeller.addOptionsWith(options,[
+          `I take my still soft cock in my hand and start slowly stroking it.`,
+          `I grab my cock under the balls, bunching up my sack and pushing my cock forward.`,
+        ],{ playerCock:'soft' });
       }
 
       if (this.mightBe('playerCock','hard')) {
-        options.push({ text:`I slowly stroke my shaft, rubbing my hand up and down its hard length.`, playerCock:'hard' });
+        Summoner.StoryTeller.addOptionsWith(options,[
+          `I slowly stroke my shaft, rubbing my hand up and down its hard length.`,
+        ],{ playerCock:'hard' });
       }
 
       if (this.mightBe('playerPosition','standing')) {
         if (this.mightBe('playerCock','soft')) {
-          options.push({ text:`I hold my soft cock by the base of the shaft, letting it swing slowly back and forth.`, playerPosition:'standing', playerCock:'soft' });
+          Summoner.StoryTeller.addOptionsWith(options,[
+            `I hold my soft cock by the base of the shaft, letting it swing slowly back and forth.`,
+          ],{ playerPosition:'standing', playerCock:'soft' });
         }
         if (this.mightBe('playerCock','hard')) {
-          options.push({ text:`My dick is already hard. I grab it by the base and let it sway in front of me.`, playerPosition:'standing', playerCock:'hard' });
+          Summoner.StoryTeller.addOptionsWith(options,[
+            `My dick is already hard. I grab it by the base and let it sway in front of me.`,
+          ],{ playerPosition:'standing', playerCock:'hard' });
         }
       }
 
@@ -230,12 +248,22 @@ Summoner.StoryTeller = class StoryTeller {
 
       if (this.mightBe('playerPosition','laying')) {
         if (this.mightBe('playerCock','hard')) {
-          options.push({ text:`My dick is already hard. I grab it by the base and let it sway in the air above me.`, playerPosition:'laying', playerCock:'hard' });
+          Summoner.StoryTeller.addOptionsWith(options,[
+            `My dick is already hard. I grab it by the base and let it sway in the air above me.`
+          ],{ playerPosition:'laying', playerCock:'hard' });
         }
       }
     }
 
     this.addSegment(Random.from(options));
+  }
+
+  // Utility function to add randomly selectable text to an options array that
+  // all share common state values.
+  static addOptionsWith(options, texts, state) {
+    each(texts, text => {
+      options.push(extend(state, { text }));
+    });
   }
 
 }

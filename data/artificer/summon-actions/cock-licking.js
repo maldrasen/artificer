@@ -63,6 +63,56 @@ SummonAction.CockLicking = (function() {
 
   async function consentingScavenStory(summoner) {
     const storyTeller = await normalStart(summoner);
+    const cock = storyTeller.getPlayerCock();
+    const body = storyTeller.getCharacterBody();
+    const sizeComparison = getSizeComparison(cock.length, body.height);
+
+    // === Part One ===
+    // The character approaches me and starts rubbing and licking my cock,
+    // getting me hard if I'm not already.
+    let options = [];
+
+    // My cock is a managable size, so there's no need to focus on the size
+    // comparison here.
+    if (sizeComparison == 'average') {
+      if (storyTeller.mightBe('playerPosition','standing')) {
+        if (storyTeller.mightBe('playerCock','soft')) {
+          Summoner.StoryTeller.addOptionsWith(options,[
+            `(Get cock hard)`
+          ],{ playerPosition:'standing', playerCock:'hard' });
+        }
+        if (storyTeller.mightBe('playerCock','hard')) {
+          Summoner.StoryTeller.addOptionsWith(options,[
+            `(Cock is hard)`
+          ],{ playerPosition:'standing', playerCock:'hard' });
+        }
+      }
+    }
+
+    // My cock is a third the length of her body, about a big as her arm. It's
+    // size in comparison is worth mentioning.
+    if (sizeComparison == 'third') {
+
+    }
+
+    // My cock is over half of her body length, it least as large as one of her
+    // legs. It's becoming unweildly for her.
+    if (sizeComparison == 'half') {
+
+    }
+
+    // My cock is about as large as she is. It's too large for her to lick in
+    // it's entirety. She could just lay astride the entire thing, licking the
+    // head while grinding against the shaft.
+    if (sizeComparison == 'full') {
+    }
+
+    storyTeller.addSegment(Random.from(options));
+    options = [];
+
+    // Part Two - Licking and nibbling about the glans of my cock.
+    // Part Three - Orgasm
+
     return storyTeller.compile();
   }
 
@@ -76,6 +126,16 @@ SummonAction.CockLicking = (function() {
     return storyTeller.compile();
   }
 
+  // Used specifically by the scaven versions of this action where the cock
+  // length can potentially be a significant percentage of the character's
+  // overall height.
+  function getSizeComparison(cockLength, bodyHeight) {
+    if (cockLength > bodyHeight * 0.8) { return 'full'; }
+    if (cockLength > bodyHeight * 0.5) { return 'half'; }
+    if (cockLength > bodyHeight * 0.3) { return 'third'; }
+    return 'average';
+  }
+
   return {
     writeEnthusiasticStory,
     writeConsentStory,
@@ -86,21 +146,7 @@ SummonAction.CockLicking = (function() {
 })();
 
 
-// const playerCock = await player.getCock();
 //
-// const character = summoner.character;
-// const characterBody = await character.getBody();
-// const cockReaction = await summoner.character.reactToCock(playerCock);
-//
-//
-//
-//
-// if (character.speciesCode == 'scaven') {
-//
-//   let sizeComp = 'small';
-//   if (playerCock.length > characterBody.height/3) { sizeComp = 'third'; }
-//   if (playerCock.length > characterBody.height/2) { sizeComp = 'half'; }
-//   if (playerCock.length > characterBody.height) { sizeComp = 'full'; }
 //
 //   story += ` {{C::gender.He}} only stands about {{C::body.fiveFootTenInches}} tall, which puts {{C::gender.him}} right at eye level with my dick.`;
 //   story += ` I take {{C::gender.him}} by the back of the head and push his face against it.`
