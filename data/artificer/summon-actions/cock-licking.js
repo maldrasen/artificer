@@ -70,6 +70,7 @@ SummonAction.CockLicking = (function() {
     // === Part One ===
     // The character approaches me and starts rubbing and licking my cock,
     // getting me hard if I'm not already.
+    storyTeller.addSeparator();
     let options = [];
 
     // My cock is a managable size, so there's no need to focus on the size
@@ -78,12 +79,28 @@ SummonAction.CockLicking = (function() {
       if (storyTeller.mightBe('playerPosition','standing')) {
         if (storyTeller.mightBe('playerCock','soft')) {
           Summoner.StoryTeller.addOptionsWith(options,[
-            `(Get cock hard)`
+            `{{C::character.firstName}} reaches out and takes my cock in {{C::gender.his}} small hands and starts to
+             slowly rub them up and down its full length. {{C::character.He}}'s so much shorter than myself that
+             {{C::gender.his}} face is right at dick level. {{C::character.He}} closes the space between us and nuzzles
+             {{C::gender.his}} face against the side of my cock, opening {{C::gender.his}} mouth wide and letting
+             {{C::gender.his}} tongue drag along its side as it grows hard in {{C::gender.his}} hands.`,
+
+            `{{C::character.firstName}} closes the space between us and presses {{C::gender.his}} face against my
+             shaft, nuzzling against it affectionately. {{C::gender.He}} opens {{C::gender.his}} mouth wide and lets
+             {{C::gender.his}} tongue loll out of {{C::gender.his}} mouth, then drags it slowly up the length of my
+             cock. And then again. And with each long lick my cock grows harder until it's standing straight up in
+             front of me.`,
+
+            `{{C::character.firstName}} reaches out and takes my cock in {{C::gender.his}} hands, lifting it, feeling
+             it's weight. {{C::gender.He}} leans in closer and, nuzzles {{C::gender.his}} face down against my
+             ballsack, licking and kissing the underside of my dangling balls before running {{C::gender.his}} tongue
+             up the entire length of my hardening shaft. {{C::gender.He}}'s short enough that {{C::gender.he}} needs to
+             stand on {{C::gender.his}} toes to reach the tip of my cock, now standing straight up in front of me.`,
           ],{ playerPosition:'standing', playerCock:'hard' });
         }
         if (storyTeller.mightBe('playerCock','hard')) {
           Summoner.StoryTeller.addOptionsWith(options,[
-            `(Cock is hard)`
+            `(Cock is already hard.)`
           ],{ playerPosition:'standing', playerCock:'hard' });
         }
       }
@@ -92,19 +109,20 @@ SummonAction.CockLicking = (function() {
     // My cock is a third the length of her body, about a big as her arm. It's
     // size in comparison is worth mentioning.
     if (sizeComparison == 'third') {
-
+      options.push({ text:'(TODO: Cock is very large)' })
     }
 
     // My cock is over half of her body length, it least as large as one of her
     // legs. It's becoming unweildly for her.
     if (sizeComparison == 'half') {
-
+      options.push({ text:'(TODO: Cock is extremely large)' })
     }
 
     // My cock is about as large as she is. It's too large for her to lick in
     // it's entirety. She could just lay astride the entire thing, licking the
     // head while grinding against the shaft.
     if (sizeComparison == 'full') {
+      options.push({ text:'(TODO: Cock is unbelievably large)' })
     }
 
     storyTeller.addSegment(Random.from(options));

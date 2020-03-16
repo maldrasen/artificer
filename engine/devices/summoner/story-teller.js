@@ -57,8 +57,12 @@ Summoner.StoryTeller = class StoryTeller {
     console.log("Added Segment:",segment)
   }
 
+  addSeparator() {
+    this._segments.push(`</p><p>`);
+  }
+
   compile() {
-    return this._segments.join(' ');
+    return `<p>${this._segments.join(' ')}</p>`;
   }
 
   // Model cache. If I need to look something up in the database, I might as
