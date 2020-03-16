@@ -100,7 +100,17 @@ SummonAction.CockLicking = (function() {
         }
         if (storyTeller.mightBe('playerCock','hard')) {
           Summoner.StoryTeller.addOptionsWith(options,[
-            `(Cock is already hard.)`
+            `{{C::character.firstName}} closes the distance between us and presses {{C::gender.his}} face against my
+             hard throbbing member, nuzzling its hot flesh and planting kisses over its surface. {{C::gender.He}} opens
+             {{C::gender.his}} mouth wide and drags {{C::gender.his}} tongue up its length, taking long languid strokes
+             from my dangling ballsack all the way to the tip, while softly stroking it with {{C::gender.his}} hands at
+             the same time.`,
+
+            `{{C::character.firstName}} opens {{C::gender.his}} mouth wide, extending {{C::gender.his}} tongue as
+             {{C::gender.he}} presses {{C::gender.his}} face against my hard dick. {{C::gender.He}} starts taking long
+             licks up and down my shaft, slowly, but with a pleasant amount of pressure. At the same time
+             {{C::gender.he}} reaches up under my balls, softly caressing them with the sharp tips of {{C::gender.his}}
+             claws as {{C::gender.he}} kisses and licks the shaft.`
           ],{ playerPosition:'standing', playerCock:'hard' });
         }
       }

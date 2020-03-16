@@ -76,7 +76,7 @@ describe('MouthBuilder', function() {
     CharacterBuilder.build({ gender:'female', species:'naga' }).then(character => {
       character.getMouth().then(mouth => {
         expect(mouth.throatWidth).to.be.within(144,157);
-        expect(mouth.tongueLength).to.be.within(260,330);
+        expect(mouth.tongueLength).to.be.within(260,335);
         expect(mouth.width).to.be.within(450,550);
         done();
       });
