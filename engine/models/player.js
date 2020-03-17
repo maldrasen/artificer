@@ -19,6 +19,7 @@ global.Player = Database.instance().define('player', {
     species()    { return Species.lookup(this.speciesCode); },
     gender()     { return Gender[this.genderCode]; },
     portrait()   { return ImageResource.lookup(this.portraitCode ? this.portraitCode : 'unknown-portrait'); },
+    isPlayer()   { return true; },
   }
 });
 

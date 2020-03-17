@@ -37,6 +37,7 @@ Weaver.CockLoom = (function() {
     if (token == "cock.acorns(knob)") { return acornsKnob(cock); }
     if (token == "cock.anAcorn(knob)") { return EnglishUtility.a_an(acornKnob(cock)); }
     if (token == "cock.furrySheath") { return furrySheath(cock); }
+    if (token == "cock.theGlansOfHisCock") { return theGlansOfHisCock(subject,cock); }
 
     return Weaver.error(`Bad cock token(${token})`);
   }
@@ -99,6 +100,28 @@ Weaver.CockLoom = (function() {
     if (cock.sheath == 'scales') { furry = Random.from(['scaly','scaled']); }
     if (cock.sheath == 'fur') {    furry = Random.from(['furry','furry','fuzzy','soft furry']); }
     return `${furry} {{sheath}}`;
+  }
+
+  // The gender loom doesn't work with the player because of complicated
+  // situations like I'm / he's. If this happens too often though I'll need to
+  // figure out some way to get it into a token.
+  function theGlansOfHisCock(subject,cock) {
+    let im = (subject == 'P') ? `I'm` : `{{${subject}::gender.he}}'s`;
+    let my = (subject == 'P') ? `my` : `{{${subject}::gender.his}}`;
+
+    if (cock.shape == 'horse') {
+      return Random.from([
+        `the wide flair of ${my} horsecock`,
+        `the sensitive rim around the flair of ${my} horsecock`
+      ]);
+    }
+
+    return Random.from([
+      `the glans of ${my} cock`
+      `the glans where ${im} most sensitive`,
+      `the sensitive ridge around the head of ${my} cock`,
+      `the sensitive crown of ${my} cock`,
+    ]);
   }
 
   return { findValue };

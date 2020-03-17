@@ -102,16 +102,44 @@ SummonAction.CockLicking = (function() {
           Summoner.StoryTeller.addOptionsWith(options,[
             `{{C::character.firstName}} closes the distance between us and presses {{C::gender.his}} face against my
              hard throbbing member, nuzzling its hot flesh and planting kisses over its surface. {{C::gender.He}} opens
-             {{C::gender.his}} mouth wide and drags {{C::gender.his}} tongue up its length, taking long languid strokes
-             from my dangling ballsack all the way to the tip, while softly stroking it with {{C::gender.his}} hands at
-             the same time.`,
+             {{C::gender.his}} mouth wide and drags {{C::gender.his}} tongue up its {{P::cock.sixInch}} length, taking
+             long languid strokes from my dangling ballsack all the way to the tip, while softly stroking it with
+             {{C::gender.his}} hands at the same time.`,
 
             `{{C::character.firstName}} opens {{C::gender.his}} mouth wide, extending {{C::gender.his}} tongue as
              {{C::gender.he}} presses {{C::gender.his}} face against my hard dick. {{C::gender.He}} starts taking long
-             licks up and down my shaft, slowly, but with a pleasant amount of pressure. At the same time
-             {{C::gender.he}} reaches up under my balls, softly caressing them with the sharp tips of {{C::gender.his}}
-             claws as {{C::gender.he}} kisses and licks the shaft.`
+             licks up and down my {{P::cock.sixInch}} long shaft, slowly, but with a pleasant amount of pressure. At
+             the same time {{C::gender.he}} reaches up under my balls, softly caressing them with the sharp tips of
+             {{C::gender.his}} claws as {{C::gender.he}} kisses and licks the shaft.`
           ],{ playerPosition:'standing', playerCock:'hard' });
+        }
+      }
+
+      if (storyTeller.mightBe('playerPosition','sitting')) {
+        if (storyTeller.mightBe('playerCock','soft')) {
+          Summoner.StoryTeller.addOptionsWith(options,[
+            `(TODO: Get cock hard while sitting)`
+          ],{ playerPosition:'sitting', playerCock:'hard' });
+        }
+
+        if (storyTeller.mightBe('playerCock','hard')) {
+          Summoner.StoryTeller.addOptionsWith(options,[
+            `(TODO: Cock is already while sitting)`
+          ],{ playerPosition:'sitting', playerCock:'hard' });
+        }
+      }
+
+      if (storyTeller.mightBe('playerPosition','laying')) {
+        if (storyTeller.mightBe('playerCock','soft')) {
+          Summoner.StoryTeller.addOptionsWith(options,[
+            `(TODO: Get cock hard while laying)`
+          ],{ playerPosition:'laying', playerCock:'hard' });
+        }
+
+        if (storyTeller.mightBe('playerCock','hard')) {
+          Summoner.StoryTeller.addOptionsWith(options,[
+            `(TODO: Cock is already hard while laying)`
+          ],{ playerPosition:'laying', playerCock:'hard' });
         }
       }
     }
@@ -139,31 +167,46 @@ SummonAction.CockLicking = (function() {
 
     // === Part Two ===
     // Licking and nibbling about the glans of my cock.
-    let cockheadOptions = [
-      `the glans where I'm most sensitive`,
-      `the sensitive ridge around the head of my cock`,
-      `the sensitive crown of my cock`,
-    ];
-
-    if (playerCock.shape == 'horse') {
-      cockheadOptions = [
-        `the wide flair of my horsecock`,
-        `the sensitive rim around the flair of my horsecock`
-      ]
-    }
-
-    let myCockhead = Random.from(cockheadOptions);
 
     options = [
       `{{C::gender.He}} brings the head of my cock up to {{C::gender.his}} open mouth, trying to open up as wide as
-       {{C::gender.he}} can but {{C::gender.he}} can't quite get {{C::gender.his}} lips all the way around the head.
-       {{C::gender.His}} tongue playfully pokes at my urethra for a few seconds, but then moves down to lick and
-       nibble along ${myCockhead}.`
+       {{C::gender.he}} can but {{C::gender.he}} can't quite get {{C::gender.his}} lips all the way around the
+       {{P::cock.twoInch}} wide head. {{C::gender.His}} tongue playfully pokes at my urethra for a few seconds, but
+       then moves down to lick and nibble along {{P::cock.theGlansOfHisCock}}.`,
+
+      `{{C::gender.He}} opens {{C::gender.his}} mouth and tries to stuff as much of the {{P::cock.twoInch}} wide head
+       into it as {{C::gender.he}} can manage. {{C::gender.He}} sucks hard on the head for a while before moving down
+       to lick and nibble along {{P::cock.theGlansOfHisCock}}.`
     ];
+
+    storyTeller.addSegment({ text:Random.from(options) });
+    options = [];
+
+    // === Part Three ===
+    // Working the shaft.
+
+    if (storyTeller.mightBe('playerPosition','standing')) {
+      Summoner.StoryTeller.addOptionsWith(options,[
+        `(TODO: Work the shaft while standing.)`
+      ],{ playerPosition:'standing' });
+    }
+
+    if (storyTeller.mightBe('playerPosition','sitting')) {
+      Summoner.StoryTeller.addOptionsWith(options,[
+        `(TODO: Work the shaft while sitting.)`
+      ],{ playerPosition:'sitting' });
+    }
+
+    if (storyTeller.mightBe('playerPosition','laying')) {
+      Summoner.StoryTeller.addOptionsWith(options,[
+        `(TODO: Work the shaft while laying.)`
+      ],{ playerPosition:'laying' });
+    }
 
     storyTeller.addSegment(Random.from(options));
 
-    // Part Three - Orgasm
+    // === Part Four ===
+    // Orgasm
 
     return storyTeller.compile();
   }

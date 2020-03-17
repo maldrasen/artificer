@@ -130,8 +130,8 @@ Summoner.StoryTeller = class StoryTeller {
 
     let start = Random.fromFrequencyMap({
       already: 3,
-      // waiting: 10,
-      // meeting: 10,
+      waiting: 10,
+      meeting: 10,
     });
 
     // === The character is actually already here with you ===
