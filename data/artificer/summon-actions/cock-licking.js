@@ -136,9 +136,33 @@ SummonAction.CockLicking = (function() {
     }
 
     storyTeller.addSegment(Random.from(options));
-    options = [];
 
-    // Part Two - Licking and nibbling about the glans of my cock.
+    // === Part Two ===
+    // Licking and nibbling about the glans of my cock.
+    let cockheadOptions = [
+      `the glans where I'm most sensitive`,
+      `the sensitive ridge around the head of my cock`,
+      `the sensitive crown of my cock`,
+    ];
+
+    if (playerCock.shape == 'horse') {
+      cockheadOptions = [
+        `the wide flair of my horsecock`,
+        `the sensitive rim around the flair of my horsecock`
+      ]
+    }
+
+    let myCockhead = Random.from(cockheadOptions);
+
+    options = [
+      `{{C::gender.He}} brings the head of my cock up to {{C::gender.his}} open mouth, trying to open up as wide as
+       {{C::gender.he}} can but {{C::gender.he}} can't quite get {{C::gender.his}} lips all the way around the head.
+       {{C::gender.His}} tongue playfully pokes at my urethra for a few seconds, but then moves down to lick and
+       nibble along ${myCockhead}.`
+    ];
+
+    storyTeller.addSegment(Random.from(options));
+
     // Part Three - Orgasm
 
     return storyTeller.compile();
