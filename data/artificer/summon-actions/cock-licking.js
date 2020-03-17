@@ -135,13 +135,17 @@ SummonAction.CockLicking = (function() {
              unable to keep it in {{C::gender.his}} mouth as it grows to its full {{P::cock.sixInch}} length.
              {{C::gender.He}} keeps {{C::gender.his}} mouth open wide as {{C::gender.he}} starts to rub it up and down
              the side my shaft. {{C::gender.His}} hand rubs against the other side of my cock, keeping it firmly
-             pressed against {{C::gender.his}} face.`
+             pressed against {{C::gender.his}} face.`,
           ],{ playerPosition:'sitting', playerCock:'hard' });
         }
 
         if (storyTeller.mightBe('playerCock','hard')) {
           Summoner.StoryTeller.addOptionsWith(options,[
-            `(TODO: Cock is already hard while sitting)`
+            `{{C::character.firstName}} leans down and takes my cock in {{C::gender.his}} hands, pulling it towards
+             {{C::gender.his}} open mouth. {{C::gender.He}} starts to kiss and swirl {{C::gender.his}} tongue around the
+             tip as {{C::gender.his}} sharp claws lightly stroke up the sides of my {{P::cock.sixInch}} long cock.
+             {{C::gender.He}} lets the head pop wetly out of {{C::gender.his}} mouth before running his soft tongue
+             down then back up the entire length of my shaft.`,
           ],{ playerPosition:'sitting', playerCock:'hard' });
         }
       }
