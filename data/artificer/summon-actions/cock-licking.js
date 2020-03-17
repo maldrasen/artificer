@@ -118,13 +118,33 @@ SummonAction.CockLicking = (function() {
       if (storyTeller.mightBe('playerPosition','sitting')) {
         if (storyTeller.mightBe('playerCock','soft')) {
           Summoner.StoryTeller.addOptionsWith(options,[
-            `(TODO: Get cock hard while sitting)`
+            `{{C::character.firstName}} climbs up into my lap, spreading {{C::gender.his}} legs wide around my own.
+             {{C::character.He}} takes my cock in {{C::gender.his}} small hands and starts to slowly rub them up and
+             down its full {{P::cock.sixInch}} length, urging it to grow hard between us. {{C::character.He}} leans
+             down and nuzzles his face against the head as it grows upward to meet him, then opens his mouth wide to
+             let {{C::gender.his}} tongue swirl around the tip.`,
+
+            `{{C::character.firstName}} puts {{C::gender.his}} head in my lap and nuzzles my soft cock with
+             {{C::gender.his}} face. {{C::gender.He}} starts to kiss and lick me all over my shaft and balls. I feel
+             {{C::gender.his}} tongue work it's way under my foreskin as he coaxes my cock to grow hard. Then, as my
+             dick grows fully erect {{C::gender.he}} climbs up into my lap, dragging his tongue up its entire
+             {{P::cock.sixInch}} length before pressing {{C::gender.his}} body against it, sandwiching it between us.`
           ],{ playerPosition:'sitting', playerCock:'hard' });
         }
 
         if (storyTeller.mightBe('playerCock','hard')) {
           Summoner.StoryTeller.addOptionsWith(options,[
-            `(TODO: Cock is already while sitting)`
+            `{{C::character.firstName}} climbs up into my lap, spreading {{C::gender.his}} legs wide around my own as
+             {{C::gender.he}} presses {{C::gender.his}} body fully against my hard shaft. {{C::gender.He}} knows my
+             {{P::cock.sixInch}} long cock is a bit too large for {{C::gender.him}} to really do much with so
+             {{C::gender.he}} concentrates on pleasuring my cockhead with {{C::gender.his}} mouth and tongue while
+             keeping his {{C::gender.his}} lithe body pressed against the shaft.`,
+
+            `{{C::character.firstName}} starts low, pressing {{C::gender.his}} face into my lap, nuzzling against my
+             ballsack while softly running {{C::gender.his}} claws up the length of my {{P::cock.sixInch}} long shaft.
+             {{C::gender.He}} starts taking long slow licks up the entire length, ending each lick with a kiss on the
+             top of my cockhead. Then, with his last lick he climbs up into my lap and presses his lithe body fully
+             against my shaft, sandwiching it tightly between us.`
           ],{ playerPosition:'sitting', playerCock:'hard' });
         }
       }
@@ -169,7 +189,7 @@ SummonAction.CockLicking = (function() {
     // Licking and nibbling about the glans of my cock.
 
     options = [
-      `{{C::gender.He}} brings the head of my cock up to {{C::gender.his}} open mouth, trying to open up as wide as
+      `{{C::gender.He}} pushes the head of my cock into {{C::gender.his}} open mouth, trying to open up as wide as
        {{C::gender.he}} can but {{C::gender.he}} can't quite get {{C::gender.his}} lips all the way around the
        {{P::cock.twoInch}} wide head. {{C::gender.His}} tongue playfully pokes at my urethra for a few seconds, but
        then moves down to lick and nibble along {{P::cock.theGlansOfHisCock}}.`,
