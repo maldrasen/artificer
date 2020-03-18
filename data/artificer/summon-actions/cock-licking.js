@@ -146,6 +146,13 @@ SummonAction.CockLicking = (function() {
              tip as {{C::gender.his}} sharp claws lightly stroke up the sides of my {{P::cock.sixInch}} long cock.
              {{C::gender.He}} lets the head pop wetly out of {{C::gender.his}} mouth before running his soft tongue
              down then back up the entire length of my shaft.`,
+
+            `I take my hard cock in one hand and the back of {{C::character.firstName's}} head in the other, guiding
+             {{C::gender.his}} face down to my cock. {{C::gender.He}} opens {{C::gender.his}} mouth as wide as
+             {{C::gender.he}} can as I push the head into it, completely stuffing {{C::gender.his}} mouth with its
+             width. I hold {{C::gender.him}} there for a moment while {{C::gender.his}} small hands softly glide up and
+             down my {{P::cock.sixInch}} long cock. Finally I release {{C::gender.him}} and {{C::gender.he}} begins to
+             earnestly lick my cock, taking long slow licks along its entire length.`,
           ],{ playerPosition:'sitting', playerCock:'hard' });
         }
       }
