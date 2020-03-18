@@ -8,11 +8,12 @@ global.Settings = (function() {
   // expected values in the settings.
   function init() {
     console.log("> Loading Settings");
+    loadData(JSON.parse(fs.readFileSync(`${ROOT}/settings.json`)));
+  }
 
-    let data = JSON.parse(fs.readFileSync(`${ROOT}/settings.json`));
-
-    Settings.Metric = !! data['metric'];
-    Settings.FutaPronouns = (data['futa-pronouns'] == 'shi/hir') ? 'shi/hir' : 'she/her';
+  function loadData(data) {
+    Settings.Metric = !! data.metric;
+    Settings.FutaPronouns = (data.futaPronouns == 'shi/hir') ? 'shi/hir' : 'she/her';
   }
 
   function fetch() {
@@ -22,10 +23,24 @@ global.Settings = (function() {
     };
   }
 
-  // When the settings are changed we also need to update all of the character
+  // TODO: When the settings are changed we should update all of the character
   // descriptions because going between she and shi or metric and stupid
-  // could change all of the description text.
-  function update() {
+  // could change all of the description text. The problem with this though is
+  // that the settings are separate to the game itself, so there may not be a
+  // player or characters when the settings are changed. We could only change
+  // settings when the game is running, but that won't really solve the problem
+  // because the settings can change, then a game is loaded with old
+  // descriptions. I think the only way to really fix this is to save some kind
+  // of key based on the settings when a description is loaded. When we pull
+  // up a description we then check to see if the settings have changed, and
+  // regenerate the description when needed. Sounds like a crazy amount of
+  // effort, cache invalidation shit and all, so maybe do this later then I
+  // think.
+  async function update(data) {
+    loadData(data);
+    fs.writeFile(`${ROOT}/settings.json`, JSON.stringify(data), (error) => {
+      if (error) { `Error: Cannot save settings. ${error}` }
+    });
   }
 
   return { init, fetch, update }
