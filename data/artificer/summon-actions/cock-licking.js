@@ -69,6 +69,8 @@ SummonAction.CockLicking = (function() {
     const body = storyTeller.getCharacterBody();
     const sizeComparison = getSizeComparison(cock.length, body.height);
 
+storyTeller.setStatus('playerPosition','laying')
+
     // === Part One ===
     // The character approaches me and starts rubbing and licking my cock,
     // getting me hard if I'm not already.
@@ -157,18 +159,53 @@ SummonAction.CockLicking = (function() {
         }
       }
 
-      if (storyTeller.mightBe('playerPosition','laying')) {
+      // We want to make sure the player is actually laying down here. It
+      // doesn't make sense for the character to "climb on top" of the player
+      // if we don't know they're laying down yet, and if we do know we
+      // don't want to mention it twice.
+      if (storyTeller.getStatus('playerPosition') == 'laying') {
+        let laying = [];
+
         if (storyTeller.mightBe('playerCock','soft')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
-            `(TODO: Get cock hard while laying)`
-          ],{ playerPosition:'laying', playerCock:'hard' });
+          if (storyTeller.character.genderCode == 'female') {
+            laying.push(`{{C::character.firstName}} quickly slips out of {{C::gender.his}} clothing then climbs on top
+              of me, straddling my leg. I feel {{C::gender.his}} pussy hot against my thigh as {{C::gender.he}} nuzzles
+              {{C::gender.his}} face up against my ballsack. {{C::gender.He}} reaches out and grabs my balls in
+              {{C::gender.his}} two small claws and pulls them upward, kissing and licking along the underside of my
+              sack. My cock soon grows hard and {{C::gender.he}} slides up my leg slightly so that {{C::gender.he}} can
+              lick the full length of my {{P::cock.sixInch}} long cock.`);
+          }
+          if (storyTeller.character.genderCode != 'female') {
+            laying.push(`{{C::character.firstName}} quickly slips out of {{C::gender.his}} clothing then climbs on top
+              of me, straddling my leg. I feel {{C::gender.his}} own cock hot and hardening against my thigh as
+              {{C::gender.he}} nuzzles {{C::gender.his}} face up against my ballsack. {{C::gender.He}} reaches out and
+              grabs my balls in {{C::gender.his}} two small claws and pulls them upward, kissing and licking along
+              the underside of my sack. My own cock soon grows hard and {{C::gender.he}} slides up my leg slightly so
+              that {{C::gender.he}} can lick the full length of my {{P::cock.sixInch}} long cock.`);
+          }
         }
 
         if (storyTeller.mightBe('playerCock','hard')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
-            `(TODO: Cock is already hard while laying)`
-          ],{ playerPosition:'laying', playerCock:'hard' });
+          if (storyTeller.character.genderCode == 'female') {
+            laying.push(`{{C::character.firstName}} quickly slips out of {{C::gender.his}} clothing then climbs on top
+              of me, straddling my leg. I feel {{C::gender.his}} pussy hot against my thigh as {{C::gender.he}} lowers
+              {{C::gender.his}} face towards my hard {{P::cock.sixInch}} long cock. {{C::gender.He}} starts by planting
+              light kisses all over my shaft, nuzzling and licking the hot flesh while reaching down to caress my
+              balls. Soon though {{C::gender.he}} props himself up so that {{C::gender.he}} can firmly lick the entire
+              length of my cock, rubbing {{C::gender.his}} pussy against my leg with each long lick.`);
+          }
+          if (storyTeller.character.genderCode != 'female') {
+            laying.push(`{{C::character.firstName}} quickly slips out of {{C::gender.his}} clothing then climbs on top
+              of me, straddling my leg. I feel {{C::gender.his}} own cock hot and hardening against my thigh as
+              {{C::gender.he}} lowers {{C::gender.his}} face towards my hard {{P::cock.sixInch}} long cock.
+              {{C::gender.He}} starts by planting light kisses all over my shaft, nuzzling and licking the hot flesh
+              while reaching down to caress my balls. Soon though {{C::gender.he}} props himself up so that
+              {{C::gender.he}} can firmly lick the entire length of my cock, rubbing {{C::gender.his}}
+              {{C::cock.sixInch}} long dick against my leg with each long lick.`);
+          }
         }
+
+        Summoner.StoryTeller.addOptionsWith(options, laying, { playerCock:'hard' });
       }
     }
 
