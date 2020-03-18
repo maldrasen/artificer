@@ -18,8 +18,8 @@ global.CentralScrutinizer = (function() {
   }
 
   async function meetsRequirement(requirement, context, extra) {
-    if (requirement == 'game.metric')          { return Environment.Metric; }
-    if (requirement == 'game.not-metric')      { return ! Environment.Metric; }
+    if (requirement == 'game.metric')          { return Settings.Metric; }
+    if (requirement == 'game.not-metric')      { return ! Settings.Metric; }
     if (requirement.match(/^game.dayNumber/))  { return await checkDayNumber(requirement); }
     if (requirement.match(/^game.food/))       { return await checkFood(requirement); }
     if (requirement.match(/^flag/))            { return await checkFlag(requirement); }

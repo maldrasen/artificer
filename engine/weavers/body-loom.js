@@ -23,7 +23,7 @@ Weaver.BodyLoom = (function() {
   }
 
   function heightMeasurement(height) {
-    if (Environment.Metric) { return `${Math.round(height/10)} cm` }
+    if (Settings.Metric) { return `${Math.round(height/10)} cm` }
 
     let inches = Math.round(ConversionUtility.milliToInches(height));
     let high = Math.floor(inches / 12);
@@ -35,13 +35,13 @@ Weaver.BodyLoom = (function() {
   // added when we build the weaver context to avoid the asynchronous
   // getWeight() function. Also nested ternaries: ( •_•)>⌐□-□ (⌐□_□)
   function weightMeasurement(body, plural) {
-    return (Environment.Metric) ?
+    return (Settings.Metric) ?
       `${Math.round(body.weight/1000)} ${plural ? 'kilograms' : 'kilogram'}`:
       `${ConversionUtility.gramToPound(body.weight)} ${plural ? 'pounds' : 'pound'}`;
   }
 
   function englishHeightMeasurement(height, plural) {
-    if (Environment.Metric) { return `${Math.round(height/10)} centimeters` }
+    if (Settings.Metric) { return `${Math.round(height/10)} centimeters` }
 
     let foot = plural ? "feet" : "foot";
     let inches = Math.round(ConversionUtility.milliToInches(height));

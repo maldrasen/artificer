@@ -14,10 +14,30 @@ global.Gender = class Gender {
     this.cock = options.cock;
     this.pussy = options.pussy;
     this.tits = options.tits;
-    this.he = options.he;
-    this.him = options.him;
-    this.his = options.his;
-    this.hers = options.hers;
+  }
+
+  get he() {
+    if (this.code == 'male')   { return 'he' }
+    if (this.code == 'female') { return 'she' }
+    return (Settings.FutaPronouns == 'shi/hir') ? 'shi' : 'she';
+  }
+
+  get him() {
+    if (this.code == 'male')   { return 'him' }
+    if (this.code == 'female') { return 'her' }
+    return (Settings.FutaPronouns == 'shi/hir') ? 'hir' : 'her';
+  }
+
+  get his() {
+    if (this.code == 'male')   { return 'his' }
+    if (this.code == 'female') { return 'her' }
+    return (Settings.FutaPronouns == 'shi/hir') ? 'hir' : 'her';
+  }
+
+  get hers() {
+    if (this.code == 'male')   { return 'his' }
+    if (this.code == 'female') { return 'hers' }
+    return (Settings.FutaPronouns == 'shi/hir') ? 'hirs' : 'hers';
   }
 
   get Man() { return TextUtility.titlecase(this.man); }
@@ -41,10 +61,6 @@ Gender.male = new Gender({
   cock: true,
   pussy: false,
   tits: false,
-  he: 'he',
-  him: 'him',
-  his: 'his',
-  hers: 'his',
 });
 
 Gender.female = new Gender({
@@ -57,10 +73,6 @@ Gender.female = new Gender({
   cock: false,
   pussy: true,
   tits: true,
-  he: 'she',
-  him: 'her',
-  his: 'her',
-  hers: 'hers',
 });
 
 Gender.futa = new Gender({
@@ -73,8 +85,4 @@ Gender.futa = new Gender({
   cock: true,
   pussy: true,
   tits: true,
-  he: 'shi',
-  him: 'hir',
-  his: 'hir',
-  hers: 'hirs',
 });

@@ -10,6 +10,7 @@ ipcMain.on('client.ready', () => {
     Loader.loadAllData(() => {
       console.log("\n=== Ready ===\n")
       Controllers.init();
+      Settings.init();
       Browser.send('engine.ready');
       Browser.sendDataToClient();
     });

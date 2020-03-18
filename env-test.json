@@ -1,4 +1,1 @@
-{
-  "debug":  false,
-  "metric": false
-}
+{ "debug":false }
