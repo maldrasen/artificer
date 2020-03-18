@@ -17,6 +17,10 @@ global.GameController = (function() {
       });
     })
 
+    ipcMain.on('game.fetch-settings', () => {
+      Browser.send('render.settings',{ settings:'and stuff' });
+    });
+
     // === Save & Load ===
 
     ipcMain.on('game.save', (event, gameName) => {

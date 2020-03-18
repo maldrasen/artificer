@@ -27,6 +27,7 @@ require(`${ROOT}/client/components/plan-view/tasks`);
 require(`${ROOT}/client/components/player-view`);
 require(`${ROOT}/client/components/report-view`);
 require(`${ROOT}/client/components/saved-games`);
+require(`${ROOT}/client/components/settings`);
 require(`${ROOT}/client/components/summon-minion-dialog`);
 require(`${ROOT}/client/components/summon-minion-result`);
 

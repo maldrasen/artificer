@@ -12,13 +12,14 @@ global.RendererCommands = (function() {
     ipcRenderer.on('render.main-menu', Renderer.showMainMenu);
 
     ipcRenderer.on('render.event', Components.EventView.build);
-    ipcRenderer.on('render.location', Components.LocationView.build);
-    ipcRenderer.on('render.minions', Components.MinionListView.build);
-    ipcRenderer.on('render.minion', Components.MinionDetailView.open);
-    ipcRenderer.on('render.player', Components.PlayerView.open);
     ipcRenderer.on('render.inventory', Components.InventoryView.open);
+    ipcRenderer.on('render.location', Components.LocationView.build);
+    ipcRenderer.on('render.minion', Components.MinionDetailView.open);
+    ipcRenderer.on('render.minions', Components.MinionListView.build);
     ipcRenderer.on('render.plan', Components.PlanView.build);
+    ipcRenderer.on('render.player', Components.PlayerView.open);
     ipcRenderer.on('render.report', Components.ReportView.build);
+    ipcRenderer.on('render.settings', Components.Settings.open);
 
     ipcRenderer.on('image.found', Elements.ImageResource.set);
 
