@@ -21,6 +21,10 @@ global.GameController = (function() {
       Browser.send('render.settings',Settings.fetch());
     });
 
+    ipcMain.on('game.update-settings', (event, settings) => {
+      console.log("Update Settings:",settings);
+    });
+
     // === Save & Load ===
 
     ipcMain.on('game.save', (event, gameName) => {

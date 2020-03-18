@@ -19,7 +19,7 @@ global.RendererCommands = (function() {
     ipcRenderer.on('render.plan', Components.PlanView.build);
     ipcRenderer.on('render.player', Components.PlayerView.open);
     ipcRenderer.on('render.report', Components.ReportView.build);
-    ipcRenderer.on('render.settings', Components.Settings.open);
+    ipcRenderer.on('render.settings', Components.SettingsDialog.open);
 
     ipcRenderer.on('image.found', Elements.ImageResource.set);
 
