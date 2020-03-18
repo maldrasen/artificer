@@ -21,7 +21,8 @@ Summoner.StoryTeller = class StoryTeller {
 
   // In addition to the text, when adding a segment you can specify the
   // following. These attributes update the scene status, or they format the
-  // segment somehow.
+  // segment somehow. The variables below are the common ones, but they could
+  // be set to anything scene specific really.
   //
   //   playerSpeaking: true
   //   playerPosition: standing, sitting, laying, kneeling, bent-over
@@ -46,15 +47,10 @@ Summoner.StoryTeller = class StoryTeller {
     ];
 
     each(statusAttributes, attribute => {
-      if (segment[attribute]) {
-        console.log("  Set:",attribute,"=",segment[attribute]);
-        this.setStatus(attribute, segment[attribute]);
-      }
+      if (segment[attribute]) { this.setStatus(attribute, segment[attribute]); }
     })
 
     this._segments.push(segment.text);
-
-    console.log("Added Segment:",segment)
   }
 
   addSeparator() {

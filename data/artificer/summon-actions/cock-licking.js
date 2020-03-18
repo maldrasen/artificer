@@ -42,7 +42,9 @@ SummonAction.CockLicking = (function() {
   }
 
   // ===========================================================================
+  //
   //                         Scaven Specific Stories
+  //
   // ===========================================================================
   // Starting off with these. The scaven are pretty unique in all the summon
   // actions because they're so small. The player's cock can be as large as
@@ -293,28 +295,51 @@ SummonAction.CockLicking = (function() {
     // === Part Three ===
     // Working the shaft.
 
-    if (storyTeller.mightBe('playerPosition','standing')) {
-      Summoner.StoryTeller.addOptionsWith(options,[
-        `(TODO: Work the shaft while standing.)`
-      ],{ playerPosition:'standing' });
-    }
-
-    if (storyTeller.mightBe('playerPosition','sitting')) {
-      Summoner.StoryTeller.addOptionsWith(options,[
-        `(TODO: Work the shaft while sitting.)`
-      ],{ playerPosition:'sitting' });
+    if (storyTeller.mightBe('playerPosition','standing') || storyTeller.mightBe('playerPosition','sitting')) {
+      options.push(`{{C::gender.He}} starts panting as {{C::gender.he}} starts to really put some more effort into
+        working the shaft. {{C::gender.His}} hands and tongue work opposite each other, licking downwards while
+        stroking upwards then dragging {{C::gender.his}} tongue up along the underside of my cock as {{C::gender.he}}
+        firmly pulls down on my dick flesh. I grab {{C::gender.his}} head in both hands, pulling {{C::gender.his}} open
+        mouth harder against my cock, practically stroking myself with {{C::gender.his}} face.`);
     }
 
     if (storyTeller.mightBe('playerPosition','laying')) {
-      Summoner.StoryTeller.addOptionsWith(options,[
-        `(TODO: Work the shaft while laying.)`
-      ],{ playerPosition:'laying' });
+      if (storyTeller.character.genderCode == 'female') {
+        options.push(`While licking enthusiastically at the head of my cock {{C::gender.he}} lays down fully on the
+          shaft, smashing it between our bodies. {{C::gender.He}} wiggles {{C::gender.his}} furry chest against me,
+          dragging {{C::gender.his}} twelve {{C::tits.shape}} tits and hard nipples across the surface of my cock
+          while humping {{C::gender.his}} wet pussy into my leg.`);
+      }
+      if (storyTeller.character.genderCode == 'male') {
+        options.push(`While licking enthusiastically at the head of my cock {{C::gender.he}} lays down fully on the
+          shaft, smashing it between our bodies. {{C::gender.He}} firmly rubs {{C::gender.his}} muscular furry chest
+          against me, while humping {{C::gender.his}} cock against my leg.`);
+      }
+      if (storyTeller.character.genderCode == 'futa') {
+        options.push(`While licking enthusiastically at the head of my cock {{C::gender.he}} lays down fully on the
+          shaft, smashing it between our bodies. {{C::gender.He}} wiggles {{C::gender.his}} furry chest against me,
+          dragging {{C::gender.his}} twelve {{C::tits.shape}} tits and hard nipples across the surface of my cock
+          while humping {{C::gender.his}} cock against my leg.`);
+      }
     }
 
-    storyTeller.addSegment(Random.from(options));
+    storyTeller.addSegment({ text:Random.from(options) });
 
     // === Part Four ===
-    // Orgasm
+    // Orgasm. I don't really have a lot of details for this yet, amounts of
+    // cum and so forth, so I'll keep this pretty generic for now and expand it
+    // at some later date. This 'cum in mouth' segment could probably be made
+    // generic as well.
+
+    storyTeller.addSeparator();
+    storyTeller.addSegment({ text:`I feel my orgasm slowly building. I grab {{C::character.firstName}} by the back of
+      {{C::gender.his}} head and push {{C::gender.his}} mouth down over my cock, filling it completely. I start to cum.
+      A hard shudder coursing through my body forces my cock even further into {{C::gender.his}} overstuffed mouth.
+      {{C::gender.His}} eyes grow wide as {{C::gender.his}} mouth fills with cum, and with no place else to go
+      {{C::gender.he}} desperately tries to swallow it all. However, after three or four spurts from my cock it begins
+      to dribble freely from {{C::gender.his}} nose. Finally I release {{C::gender.him}}, letting {{C::gender.him}}
+      fall backwards while coughing up cum. Despite nearly drowning in my seed though {{C::gender.he}}'s still
+      smiling.` });
 
     return storyTeller.compile();
   }
