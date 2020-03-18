@@ -7,6 +7,7 @@ log/
 saves/
 !log/.keep
 !saves/.keep
+settings.json
 
 assets/compiled/
 coverage/

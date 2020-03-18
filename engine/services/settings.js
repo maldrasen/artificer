@@ -1,19 +1,21 @@
 const fs = require('fs');
 
 global.Settings = (function() {
+  const filepath = `${ROOT}/settings.json`;
 
   // The init() function reads the settings.json file for the player's settings.
-  // This file will probably get edited (although really all of the files can
-  // be edited) so we are paranoid about how these are loaded, only accepting
-  // expected values in the settings.
+  // If the file doesn't exist the default settings are used. The settings file
+  // is only written when and the settings are set.
   function init() {
     console.log("> Loading Settings");
-    loadData(JSON.parse(fs.readFileSync(`${ROOT}/settings.json`)));
+    fs.exists(filepath, exists => {
+      loadData(exists ? JSON.parse(fs.readFileSync(filepath)) : {});
+    })
   }
 
   function loadData(data) {
     Settings.Metric = !! data.metric;
-    Settings.FutaPronouns = (data.futaPronouns == 'shi/hir') ? 'shi/hir' : 'she/her';
+    Settings.FutaPronouns = (data.futaPronouns == 'she/her') ? 'she/her' : 'shi/hir';
   }
 
   function fetch() {
@@ -38,7 +40,7 @@ global.Settings = (function() {
   // think.
   async function update(data) {
     loadData(data);
-    fs.writeFile(`${ROOT}/settings.json`, JSON.stringify(data), (error) => {
+    fs.writeFile(filepath, JSON.stringify(data), (error) => {
       if (error) { `Error: Cannot save settings. ${error}` }
     });
   }
