@@ -65,11 +65,9 @@ SummonAction.CockLicking = (function() {
 
   async function consentingScavenStory(summoner) {
     const storyTeller = await normalStart(summoner);
-    const cock = storyTeller.getPlayerCock();
-    const body = storyTeller.getCharacterBody();
+    const cock = await storyTeller.getPlayerCock();
+    const body = await storyTeller.getCharacterBody();
     const sizeComparison = getSizeComparison(cock.length, body.height);
-
-storyTeller.setStatus('playerPosition','laying')
 
     // === Part One ===
     // The character approaches me and starts rubbing and licking my cock,
@@ -77,9 +75,7 @@ storyTeller.setStatus('playerPosition','laying')
     storyTeller.addSeparator();
     let options = [];
 
-    // My cock is a managable size, so there's no need to focus on the size
-    // comparison here.
-    if (sizeComparison == 'average') {
+    if (sizeComparison == 'huge') {
       if (storyTeller.mightBe('playerPosition','standing')) {
         if (storyTeller.mightBe('playerCock','soft')) {
           Summoner.StoryTeller.addOptionsWith(options,[
@@ -209,25 +205,19 @@ storyTeller.setStatus('playerPosition','laying')
       }
     }
 
-    // My cock is a third the length of her body, about a big as her arm. It's
-    // size in comparison is worth mentioning, but the text here is essentially
-    // the same as for an average sized cock.
-    if (sizeComparison == 'third') {
-      options.push({ text:'(TODO: Cock is very large)' })
-    }
-
-    // My cock is over half of her body length, it least as large as one of her
-    // legs. It's becoming unweildly for her.
-    if (sizeComparison == 'half') {
+    // My cock is over half of her body length, it's least as large as one of
+    // her legs. We can skip these segments for now. They require an huge cock
+    // which is hard to get at the moment.
+    if (sizeComparison == 'massive') {
       if (storyTeller.mightBe('playerPosition','standing')) {
         if (storyTeller.mightBe('playerCock','soft')) {
           Summoner.StoryTeller.addOptionsWith(options,[
-            `(TODO: Get huge cock hard while standing)`
+            `(TODO: Get massive cock hard while standing)`
           ],{ playerPosition:'standing', playerCock:'hard' });
         }
         if (storyTeller.mightBe('playerCock','hard')) {
           Summoner.StoryTeller.addOptionsWith(options,[
-            `(TODO: Huge cock is already hard while standing)`
+            `(TODO: Massive cock is already hard while standing)`
           ],{ playerPosition:'standing', playerCock:'hard' });
         }
       }
@@ -236,15 +226,15 @@ storyTeller.setStatus('playerPosition','laying')
         if (storyTeller.mightBe('playerCock','soft')) {
           Summoner.StoryTeller.addOptionsWith(options,[
             `{{C::character.firstName}} climbs up into my lap, spreading {{C::gender.his}} legs wide around my own.
-             {{C::character.He}} takes my cock in {{C::gender.his}} small hands and starts to slowly rub them up and
-             down its full {{P::cock.sixInch}} length, urging it to grow hard between us. {{C::character.He}} leans
-             down and nuzzles his face against the head as it grows upward to meet him, then opens his mouth wide to
-             let {{C::gender.his}} tongue swirl around the tip.`,
+             {{C::character.He}} takes my massive cock in {{C::gender.his}} small hands and starts to slowly rub them
+             up and down its full {{P::cock.sixInch}} length, urging it to grow hard between us. {{C::character.He}}
+             leans down and nuzzles his face against the head as it grows upward to meet him, then opens his mouth wide
+             to let {{C::gender.his}} tongue swirl around the tip.`,
 
             `{{C::character.firstName}} puts {{C::gender.his}} head in my lap and nuzzles my soft cock with
              {{C::gender.his}} face. {{C::gender.He}} starts to kiss and lick me all over my shaft and balls. I feel
              {{C::gender.his}} tongue work it's way under my foreskin as he coaxes my cock to grow hard. Then, as my
-             dick grows fully erect {{C::gender.he}} climbs up into my lap, dragging his tongue up its entire
+             massive dick grows fully erect {{C::gender.he}} climbs up into my lap, dragging his tongue up its entire
              {{P::cock.sixInch}} length before pressing {{C::gender.his}} body against it, sandwiching it between us.`
           ],{ playerPosition:'sitting', playerCock:'hard' });
         }
@@ -253,15 +243,15 @@ storyTeller.setStatus('playerPosition','laying')
           Summoner.StoryTeller.addOptionsWith(options,[
             `{{C::character.firstName}} climbs up into my lap, spreading {{C::gender.his}} legs wide around my own as
              {{C::gender.he}} presses {{C::gender.his}} body fully against my hard shaft. {{C::gender.He}} knows my
-             {{P::cock.sixInch}} long cock is a bit too large for {{C::gender.him}} to really do much with so
+             massive {{P::cock.sixInch}} long cock is far too large for {{C::gender.him}} to really do much with, so
              {{C::gender.he}} concentrates on pleasuring my cockhead with {{C::gender.his}} mouth and tongue while
              keeping his {{C::gender.his}} lithe body pressed against the shaft.`,
 
             `{{C::character.firstName}} starts low, pressing {{C::gender.his}} face into my lap, nuzzling against my
-             ballsack while softly running {{C::gender.his}} claws up the length of my {{P::cock.sixInch}} long shaft.
-             {{C::gender.He}} starts taking long slow licks up the entire length, ending each lick with a kiss on the
-             top of my cockhead. Then, with his last lick he climbs up into my lap and presses his lithe body fully
-             against my shaft, sandwiching it tightly between us.`
+             ballsack while softly running {{C::gender.his}} claws up the length of my massive {{P::cock.sixInch}} long
+             shaft. {{C::gender.He}} starts taking long slow licks up the entire length, ending each lick with a kiss
+             on the top of my cockhead. Then, with his last lick he climbs up into my lap and presses his lithe body
+             fully against my shaft, sandwiching it tightly between us.`
           ],{ playerPosition:'sitting', playerCock:'hard' });
         }
       }
@@ -269,59 +259,13 @@ storyTeller.setStatus('playerPosition','laying')
       if (storyTeller.mightBe('playerPosition','laying')) {
         if (storyTeller.mightBe('playerCock','soft')) {
           Summoner.StoryTeller.addOptionsWith(options,[
-            `(TODO: Get huge cock hard while laying)`
+            `(TODO: Get massive cock hard while laying)`
           ],{ playerPosition:'laying', playerCock:'hard' });
         }
 
         if (storyTeller.mightBe('playerCock','hard')) {
           Summoner.StoryTeller.addOptionsWith(options,[
-            `(TODO: Huge cock is already hard while laying)`
-          ],{ playerPosition:'laying', playerCock:'hard' });
-        }
-      }
-    }
-
-    // My cock is about as large as she is. It's too large for her to lick in
-    // it's entirety. She could just lay astride the entire thing, licking the
-    // head while grinding against the shaft.
-    if (sizeComparison == 'full') {
-      if (storyTeller.mightBe('playerPosition','standing')) {
-        if (storyTeller.mightBe('playerCock','soft')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
-            `(TODO: Get unbelievably large cock hard while standing)`
-          ],{ playerPosition:'standing', playerCock:'hard' });
-        }
-        if (storyTeller.mightBe('playerCock','hard')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
-            `(TODO: Unbelievably large cock is already hard while standing)`
-          ],{ playerPosition:'standing', playerCock:'hard' });
-        }
-      }
-
-      if (storyTeller.mightBe('playerPosition','sitting')) {
-        if (storyTeller.mightBe('playerCock','soft')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
-            `(TODO: Get unbelievably large cock hard while sitting)`
-          ],{ playerPosition:'sitting', playerCock:'hard' });
-        }
-
-        if (storyTeller.mightBe('playerCock','hard')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
-            `(TODO: Unbelievably large cock is already hard while sitting)`
-          ],{ playerPosition:'sitting', playerCock:'hard' });
-        }
-      }
-
-      if (storyTeller.mightBe('playerPosition','laying')) {
-        if (storyTeller.mightBe('playerCock','soft')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
-            `(TODO: Get unbelievably large cock hard while laying)`
-          ],{ playerPosition:'laying', playerCock:'hard' });
-        }
-
-        if (storyTeller.mightBe('playerCock','hard')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
-            `(TODO: Huge unbelievably large is already hard while laying)`
+            `(TODO: Massive cock is already hard while laying)`
           ],{ playerPosition:'laying', playerCock:'hard' });
         }
       }
@@ -387,12 +331,14 @@ storyTeller.setStatus('playerPosition','laying')
 
   // Used specifically by the scaven versions of this action where the cock
   // length can potentially be a significant percentage of the character's
-  // overall height.
+  // overall height. I originally had more size classes, but after looking into
+  // this for a bit I think we only need two. This action is gated by mouth
+  // size, so for this event to appear we know the cock is going to be about
+  // arm length. However, even the largest monster cock can't be larger than an
+  // average scaven is tall, so really we just need to consider two size
+  // classes, huge arm sized cocks, or massive leg sized cocks.
   function getSizeComparison(cockLength, bodyHeight) {
-    if (cockLength > bodyHeight * 0.8) { return 'full'; }
-    if (cockLength > bodyHeight * 0.5) { return 'half'; }
-    if (cockLength > bodyHeight * 0.3) { return 'third'; }
-    return 'average';
+    return (cockLength > bodyHeight * 0.5) ? 'massive' : 'huge';
   }
 
   return {
