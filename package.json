@@ -20,13 +20,7 @@
     "asar": false,
     "win": {
       "target": [
-        {
-          "target": "portable",
-          "arch": [
-            "x64",
-            "ia32"
-          ]
-        }
+        { "target":"portable", "arch":["x64","ia32"]}
       ]
     }
   },
@@ -51,7 +45,8 @@
     "jquery": "^3.4.1",
     "object-hash": "^2.0.3",
     "sequelize": "^5.21.5",
-    "sqlite3": "^4.1.1"
+    "sqlite3": "^4.1.1",
+    "minimist": "^1.2.5"
   },
   "devDependencies": {
     "chai": "^4.2.0",
