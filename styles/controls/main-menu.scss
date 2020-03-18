@@ -72,5 +72,14 @@
     border: $border-very-light;
     box-shadow: $shadow-overlay;
   }
+}
 
+#settingsDialog {
+  dt {
+    width: 120px;
+    line-height: 40px;
+  }
+  dd {
+    margin-bottom: 5px;
+  }
 }
