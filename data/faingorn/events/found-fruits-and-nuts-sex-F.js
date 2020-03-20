@@ -15,21 +15,21 @@ Event.build('found-fruits-and-nuts-sex-F', {
   },{
     requires:['minion(C).has-tits','minion(C).has-bigger-than-zero-tits'],
     pages:[
-      { text:`She doesn't look to have an ounce of fat on her, except for her tits perhaps.` },
+      { text:`{{C::gender.He}} doesn't look to have an ounce of fat on {{C::gender.him}}, except for {{C::gender.his}} tits perhaps.` },
       { text:`They barely count though being as small as they are.` },
-      { text:`I'd barely notice them at all if it wern't for her prominent {{C::nipples.length}} long nipples.` },
+      { text:`I'd barely notice them at all if it weren't for {{C::gender.his}} prominent {{C::nipples.length}} long nipples.` },
     ]
   },{
     requires:['minion(C).has-tits','minion(C).has-zero-tits'],
     pages:[
-      { text:`She doesn't look to have an ounce of fat on her.` },
-      { text:`Even her chest is perfectly flat except for her prominent {{C::nipples.length}} long nipples.` },
+      { text:`{{C::gender.He}} doesn't look to have an ounce of fat on {{C::gender.him}}.` },
+      { text:`Even {{C::gender.his}} chest is perfectly flat except for {{C::gender.his}} prominent {{C::nipples.length}} long nipples.` },
     ]
   },{
     requires:['minion(C).has-cock'],
     pages:[
-      { text:`It's impossible to estimate the size of his cock.` },
-      { text:`Given the size of his furry little sheath and ballsack though he must be quite small.` },
+      { text:`It's difficult to estimate the size of {{C::gender.his}} cock.` },
+      { text:`Given the size of {{C::gender.his}} furry little sheath and ballsack though {{C::gender.he}} must be quite small.` },
       { text:`That's fine though, I don't intend to make use of that for the time being.` },
     ]
   },{

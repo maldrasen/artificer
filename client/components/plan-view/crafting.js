@@ -17,7 +17,7 @@ Components.PlanView.Crafting = (function() {
     requestRecipeList();
   }
 
-  // When a recipe is selected we add a task tot he current plan. The engine
+  // When a recipe is selected we add a task to the current plan. The engine
   // needs the task code and the recipe code. The current control needs the
   // time and the ingredients list for if when the task is canceled those
   // resources need to be released.

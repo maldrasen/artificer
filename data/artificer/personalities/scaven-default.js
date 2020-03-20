@@ -97,14 +97,14 @@ Personality.build('scaven-default', {
 
     // Good Reaction
     if (desirability >= 1 && desirability < 3) {
-      options.push(`{{C::gender.He}} smiles as {{C::gender.he}} looks it over; eyes growing a bit wide as he no doubt imagines it going inside of {{C::gender.him}}.`);
+      options.push(`{{C::gender.He}} smiles as {{C::gender.he}} looks it over; eyes growing a bit wide as {{C::gender.he}} no doubt imagines it going inside of {{C::gender.him}}.`);
       options.push(`{{C::gender.He}} glances down at it, enjoying the sight of my cock, but not lingering on it overlong.`);
       options.push(`{{C::gender.He}} gasps as {{C::gender.his}} eyes roam over it. My cock's far larger than most scaven's so the size of it might be a little intimidating.`);
     }
 
     // They Love this Cock
     if (desirability >= 3 && desirability < 5)  {
-      options.push(`{{C::gender.He}} smiles in appreciation as his eyes roam over it, as if memorizing the shape of my dick.`);
+      options.push(`{{C::gender.He}} smiles in appreciation as {{C::gender.his}} eyes roam over it, as if memorizing the shape of my dick.`);
       options.push(`{{C::gender.He}} grins broadly as {{C::gender.his}} eyes linger on it, ignoring everything else but my shaft.`);
       options.push(`{{C::gender.He}} licks {{C::gender.his}} lips and grins; eager to have it in {{C::gender.his}} mouth now that it's directly in front of {{C::gender.his}} face like this .`);
     }
@@ -118,8 +118,8 @@ Personality.build('scaven-default', {
 
     // They Worship This Cock As A God
     if (desirability >= 8) {
-      options.push(`At the sight of it {{C::gender.he}} looks as though he can barely contain {{C::gender.him}}self; clearly wanting to get it inside of {{C::gender.him}}self immediately.`);
-      options.push(`{{C::gender.He}} looks as though he wants to drop to {{C::gender.his}} knees and start worshiping my dick at the sight of it.`);
+      options.push(`At the sight of it {{C::gender.he}} looks as though {{C::gender.he}} can barely contain {{C::gender.him}}self; clearly wanting to get it inside of {{C::gender.him}}self immediately.`);
+      options.push(`{{C::gender.He}} looks as though {{C::gender.he}} wants to drop to {{C::gender.his}} knees and start worshiping my dick at the sight of it.`);
       options.push(`{{C::gender.He}} can't seem to help himself as {{C::gender.his}} gasps and starts drooling, panting, and practically begging me for a taste of it.`);
 
       if (characterPussy) {
@@ -127,7 +127,7 @@ Personality.build('scaven-default', {
         options.push(`I can smell {{C::gender.his}} pussy from here as {{C::gender.he}} drinks in the sight of it; already needing it inside of {{C::gender.him}}.`);
       }
       if (characterCock) {
-        options.push(`At the sight of it his own cock begins to grow hard.`);
+        options.push(`At the sight of it {{C::gender.his}} own cock begins to grow hard.`);
         options.push(`{{C::gender.His}} own cock begins to grow hard at the sight of mine.`);
       }
     }

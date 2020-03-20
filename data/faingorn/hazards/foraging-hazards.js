@@ -38,8 +38,8 @@ Hazard.buildHazard('forage-tit-smash-003', { activity:'foraging-hinterlands', lo
   place: 'left',
   story: `{{C::gender.He}} was gathering juice berries from a bush when {{C::gender.he}} spotted an addercock hiding in
           the leaves. {{C::gender.He}} lept away just in time to avoid the snake's strike but fell hard on
-          {{C::gender.his}} chest. When {{C::gender.he}} landed he crushed a pinecone with {{C::gender.his}} left tit,
-          leaving a painful bruise.`
+          {{C::gender.his}} chest. When {{C::gender.he}} landed {{C::gender.he}} crushed a pinecone with
+          {{C::gender.his}} left tit, leaving a painful bruise.`
 });
 
 Hazard.buildHazard('forage-tit-smash-004', { activity:'foraging-hinterlands', location:'tits', type:'smash', level:2,

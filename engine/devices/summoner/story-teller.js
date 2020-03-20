@@ -149,7 +149,7 @@ Summoner.StoryTeller = class StoryTeller {
       }
       if (playerOutfit == null) {
         beckon.push({ text:`I'm already standing here nude so I give {{C::gender.him}} a wink while reaching down to slowly stroke my ${cockToken}.`, playerPosition:'standing' });
-        beckon.push({ text:`I'm standing here nude, so with a wave of my hand I beckon him to approach me.`, playerPosition:'standing' });
+        beckon.push({ text:`I'm standing here nude, so with a wave of my hand I beckon {{C::gender.him}} to approach me.`, playerPosition:'standing' });
       }
 
       this.addSegment(Random.from(heHere));
@@ -185,7 +185,7 @@ Summoner.StoryTeller = class StoryTeller {
         if (await location.hasBed()) {
           Summoner.StoryTeller.addOptionsWith(heArrives,[
             `I'm lying nude in bed when {{C::gender.he}} arrives.`,
-            `I'm nude in bed waiting for {{C::gender.him}} to arrive, and when {{C::gender.he}} does he finds me there ideally stroking my ${cockToken}.`,
+            `I'm nude in bed waiting for {{C::gender.him}} to arrive, and when {{C::gender.he}} does {{C::gender.he}} finds me there ideally stroking my ${cockToken}.`,
           ],{ playerPosition:'laying' });
         }
       }
@@ -242,14 +242,37 @@ Summoner.StoryTeller = class StoryTeller {
         }
       }
 
-      if (this.mightBe('playerPosition','sitting')) {
-
-      }
-
-      if (this.mightBe('playerPosition','laying')) {
+      // Only if the player is explicitly sitting, which they might be if
+      // startSummoning() indicates that they're waiting in a chair. Could
+      // probably use a couple more variations on this based on size and cock
+      // shape.
+      if (this.getStatus('playerPosition') == 'sitting') {
+        if (this.mightBe('playerCock','soft')) {
+          Summoner.StoryTeller.addOptionsWith(options,[
+            `I lean back and spread my legs slightly, letting my cock and balls lay out heavily in front of me.`,
+          ],{ playerPosition:'laying', playerCock:'soft' });
+        }
         if (this.mightBe('playerCock','hard')) {
           Summoner.StoryTeller.addOptionsWith(options,[
-            `My dick is already hard. I grab it by the base and let it sway in the air above me.`
+            `I lean back, thrusting my stiff cock forward, letting it sway in the air in front of me.`,
+            `I lean back while slowly stroking my already hard cock.`,
+          ],{ playerPosition:'laying', playerCock:'hard' });
+        }
+      }
+
+      // Only if the player is explicitly laying, which they might be if
+      // startSummoning() indicates that they're laying down.
+      if (this.getStatus('playerPosition') == 'laying') {
+        if (this.mightBe('playerCock','soft')) {
+          Summoner.StoryTeller.addOptionsWith(options,[
+            `My cock is soft and hanging over my left leg slightly.`,
+            `I'm resting on my side, letting my cock hang down heavily before me.`,
+          ],{ playerPosition:'laying', playerCock:'soft' });
+        }
+        if (this.mightBe('playerCock','hard')) {
+          Summoner.StoryTeller.addOptionsWith(options,[
+            `My dick is already hard. I grab it by the base and let it sway in the air above me.`,
+            `I stretch a bit, arching my back and letting my cock rise up in the air; it's hard length resting heavily on my stomach.`
           ],{ playerPosition:'laying', playerCock:'hard' });
         }
       }

@@ -86,7 +86,7 @@ Event.build('found-willow-branches-whip', {
       { text:`It only takes her a dozen or so thrusts but suddenly she's cumming, groaning, digging her claws into the wooden table as she thrusts back hard against my finger.` },
       { text:`Finally, she collapses down onto the tabletop.` },
       { text:`I let my finger slip out of her, though I do give her ass one last hard slap before I let her get away.` },
-      { text:`She responds with a high pitched squeak, followed by a giggle as he reaches behind to rub her sore ass.` },
+      { text:`She responds with a high pitched squeak, followed by a giggle as she reaches behind to rub her sore ass.` },
       { actorSpeaker:'C', text:`"Mmm, thank you {{P::character.title}}."` },
     ]
   },{
