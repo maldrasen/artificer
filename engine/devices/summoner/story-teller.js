@@ -205,7 +205,8 @@ Summoner.StoryTeller = class StoryTeller {
 
   // The player pulls out his cock and beckons the character to come service it.
   // This is done in several different summon actions, mostly oral scenes where
-  // a bit of cock worship and such is called for.
+  // a bit of cock worship and such is called for. This segment should always
+  // set the player position and the player cock hardness status.
   async showCock() {
     const outfit = await this.getPlayerOutfit();
     let options = []
@@ -216,28 +217,20 @@ Summoner.StoryTeller = class StoryTeller {
     // I could also still add these segments after they player has removed his
     // clothing or pulled his cock out.
     if (outfit == null) {
-      if (this.mightBe('playerCock','soft')) {
-        Summoner.StoryTeller.addOptionsWith(options,[
-          `I take my still soft cock in my hand and start slowly stroking it.`,
-          `I grab my cock under the balls, bunching up my sack and pushing my cock forward.`,
-        ],{ playerCock:'soft' });
-      }
 
-      if (this.mightBe('playerCock','hard')) {
-        Summoner.StoryTeller.addOptionsWith(options,[
-          `I slowly stroke my shaft, rubbing my hand up and down its hard length.`,
-        ],{ playerCock:'hard' });
-      }
-
+      // The player standing is assumed to be the default position here.
       if (this.mightBe('playerPosition','standing')) {
         if (this.mightBe('playerCock','soft')) {
           Summoner.StoryTeller.addOptionsWith(options,[
             `I hold my soft cock by the base of the shaft, letting it swing slowly back and forth.`,
+            `I take my still soft cock in my hand and start slowly stroking it.`,
+            `I grab my cock under the balls, bunching up my sack and pushing my cock forward.`,
           ],{ playerPosition:'standing', playerCock:'soft' });
         }
         if (this.mightBe('playerCock','hard')) {
           Summoner.StoryTeller.addOptionsWith(options,[
             `My dick is already hard. I grab it by the base and let it sway in front of me.`,
+            `I slowly stroke my shaft, rubbing my hand up and down its hard length.`,
           ],{ playerPosition:'standing', playerCock:'hard' });
         }
       }
