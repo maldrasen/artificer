@@ -24,30 +24,29 @@ SummonAction.GetBlowjob = (function() {
 
   async function writeConsentStory(summoner) {
     const storyTeller = await normalStart(summoner);
-    const location = await storyTeller.getLocation();
+    const position = storyTeller.getStatus('playerPosition')
 
-    if (storyTeller.getStatus('playerPosition') != null) {
-      console.log("Already set:",storyTeller.getStatus('playerPosition'))
+    if (ArrayUtility.contains(['laying','sitting','standing'],position) == false) {
+      throw `Invalid player position - ${position}`
     }
 
-
-    // After the story starts we don't know if we've said that the player is
-    // sitting, standing, or laying down yet. If it hasn't been said yet, we
-    // need to position the player and character.
-    if (storyTeller.getStatus('playerPosition') == null) {
-      let positions = ['standing'];
-      if (await location.hasChair()) { positions.push('sitting'); }
-      if (await location.hasBed()) { positions.push('laying'); }
-
-      let position = Random.from(positions);
-      storyTeller.setStatus('playerPosition',position);
-
-      console.log("Updated position:", position);
-    }
-
-    storyTeller.addSeparator();
+    if (position == 'laying') { await writeConsentLaying(summoner, storyTeller); }
+    if (position == 'sitting') { await writeConsentSitting(summoner, storyTeller); }
+    if (position == 'standing') { await writeConsentStanding(summoner, storyTeller); }
 
     return storyTeller.compile();
+  }
+
+  async function writeConsentLaying(summoner, storyTeller) {
+    storyTeller.addSegment({ text:'Todo: Start blowjob, laying' })
+  }
+
+  async function writeConsentSitting(summoner, storyTeller) {
+    storyTeller.addSegment({ text:'Todo: Start blowjob, sitting' })
+  }
+
+  async function writeConsentStanding(summoner, storyTeller) {
+    storyTeller.addSegment({ text:'Todo: Start blowjob, laying' })
   }
 
   async function writeReluctantStory(summoner) {
