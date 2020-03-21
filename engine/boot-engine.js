@@ -96,8 +96,10 @@ require(`${ROOT}/engine/devices/roles/rest`);
 require(`${ROOT}/engine/devices/roles/skills`);
 
 require(`${ROOT}/engine/devices/summoner`);
+require(`${ROOT}/engine/devices/summoner/cock-segments`);
 require(`${ROOT}/engine/devices/summoner/consent-calculator`);
 require(`${ROOT}/engine/devices/summoner/experience`);
+require(`${ROOT}/engine/devices/summoner/general-segments`);
 require(`${ROOT}/engine/devices/summoner/story-teller`);
 
 // === Helpers ===
