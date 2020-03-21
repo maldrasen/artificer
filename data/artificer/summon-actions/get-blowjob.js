@@ -32,7 +32,8 @@ SummonAction.GetBlowjob = (function() {
 
   async function writeConsentStory(summoner) {
     const storyTeller = await normalStart(summoner);
-    await storyTeller.positionCharacterForGivingOral();
+    storyTeller.addSeparator();
+    await storyTeller.positionCharacterForGivingCockOral();
 
     // const cock = await storyTeller.getPlayerCock();
     // const cockFit = await summoner.character.canSuckCock(cock);

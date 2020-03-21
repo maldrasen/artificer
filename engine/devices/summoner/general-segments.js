@@ -95,8 +95,32 @@ Summoner.GeneralSegments = (function() {
     storyTeller.addSegment(Random.from(heArrives));
   }
 
+  // Height measurement is tricky when switching between metric and stupid,
+  // because the sentence structure can change it's easier to just make two
+  // different versions of the same sentence.
+  async function compareHeights(storyTeller) {
+    const gender = storyTeller.character.gender;
+    const pHeight = (await storyTeller.getPlayerBody()).height;
+    const cHeight = (await storyTeller.getCharacterBody()).height;
+
+    if (Settings.Metric) {
+      return `${gender.He}'s ${EnglishUtility.numberInEnglish(Math.round(cHeight/10))} centimeters tall and I'm ${EnglishUtility.numberInEnglish(Math.round(pHeight/10))}.`;
+    }
+
+    let pInches = Math.round(ConversionUtility.milliToInches(pHeight));
+    let pHigh = EnglishUtility.numberInEnglish(Math.floor(pInches / 12));
+    let pLow = EnglishUtility.numberInEnglish(Math.floor(pInches % 12), { whenZero:'oh' });
+
+    let cInches = Math.round(ConversionUtility.milliToInches(cHeight));
+    let cHigh = EnglishUtility.numberInEnglish(Math.floor(cInches / 12));
+    let cLow = EnglishUtility.numberInEnglish(Math.floor(cInches % 12));
+
+    return `${gender.He}'s ${cHigh} foot ${cLow} inches tall and I'm ${pHigh} ${pLow}`
+  }
+
   return {
     startSummoning,
+    compareHeights,
   };
 
 })();

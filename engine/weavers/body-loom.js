@@ -40,6 +40,11 @@ Weaver.BodyLoom = (function() {
       `${ConversionUtility.gramToPound(body.weight)} ${plural ? 'pounds' : 'pound'}`;
   }
 
+  // These height measurement functions only kind of work for metric
+  // measurements. The whole sentence structure really should change when
+  // giving a metric measurement. Giving a height should be done in it's own
+  // function per sentence rather than a replacement token, and these tokens
+  // should be used sparingly if at all.
   function englishHeightMeasurement(height, plural) {
     if (Settings.Metric) { return `${Math.round(height/10)} centimeters` }
 

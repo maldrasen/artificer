@@ -112,7 +112,8 @@ Summoner.StoryTeller = class StoryTeller {
   //                          Canned Story Segments
   // ===========================================================================
 
-  async positionCharacterForGivingOral() { await Summoner.OralSegments.positionCharacterForGivingOral(this); }
+  async compareHeights() { return await Summoner.GeneralSegments.compareHeights(this); }
+  async positionCharacterForGivingCockOral() { await Summoner.OralSegments.positionCharacterForGivingCockOral(this); }
   async showCock() { await Summoner.CockSegments.showCock(this); }
   async startSummoning() { await Summoner.GeneralSegments.startSummoning(this); }
 
