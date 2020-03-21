@@ -12,6 +12,7 @@ global.Summoner = class Summoner {
   async init() {
     const game = await Game.instance();
 
+    this._player = await Player.instance();
     this._character = await Character.lookup(this._character_id);
     this._location = Location.lookup(game.location);
 
@@ -25,6 +26,7 @@ global.Summoner = class Summoner {
   get consent() { return this._consent; }
   get experience() { return this._experience; }
   get location() { return this._location; }
+  get player() { return this._player; }
   get story() { return this._story; }
 
   async execute() {

@@ -8,6 +8,7 @@ Summoner.StoryTeller = class StoryTeller {
 
   get summoner() { return this._summoner; }
   get character() { return this.summoner.character; }
+  get player() { return this.summoner.player; }
 
   // The scene status keeps track of all of the positions and conditions that
   // might change over the course of the scene. It's likely for a status key to
@@ -71,13 +72,13 @@ Summoner.StoryTeller = class StoryTeller {
     return this._game;
   }
 
-  async getPlayer() {
-    if (this._player == null) { this._player = await Player.instance(); }
-    return this._player;
+  async getPlayerBody() {
+    if (this._playerBody == null) { this._playerBody = await this.player.getBody(); }
+    return this._playerBody;
   }
 
   async getPlayerCock() {
-    if (this._playerCock == null) { this._playerCock = await (await this.getPlayer()).getCock(); }
+    if (this._playerCock == null) { this._playerCock = await this.player.getCock(); }
     return this._playerCock;
   }
 
@@ -98,7 +99,7 @@ Summoner.StoryTeller = class StoryTeller {
     if (this.getStatus('playerNude')) { return null; }
 
     if (this._playerOutfit == null) {
-      this._playerOutfit = await (await this.getPlayer()).getEquipment('outfit');
+      this._playerOutfit = await this.player.getEquipment('outfit');
       if (this._playerOutfit == null) {
         this.getStatus('playerNude',true);
       }
@@ -106,6 +107,10 @@ Summoner.StoryTeller = class StoryTeller {
 
     return this._playerOutfit;
   }
+
+  // ===========================================================================
+  //                          Canned Story Segments
+  // ===========================================================================
 
   // The way all the summon events start is pretty similar, so rather than
   // repeating this pretty boring part of the scene over and over again, I'm
@@ -120,9 +125,8 @@ Summoner.StoryTeller = class StoryTeller {
   //
   async startSummoning() {
     const location = await this.getLocation();
-    const player = await this.getPlayer();
     const playerOutfit = await this.getPlayerOutfit();
-    const cockToken = player.genderCode == 'female' ? '{{pussy}}' : '{{cock}}'
+    const cockToken = this.player.genderCode == 'female' ? '{{pussy}}' : '{{cock}}'
 
     let start = Random.fromFrequencyMap({
       already: 3,
@@ -130,7 +134,7 @@ Summoner.StoryTeller = class StoryTeller {
       meeting: 10,
     });
 
-    // === The character is actually already here with you ===
+    // The character is actually already here with you
 
     if (start == 'already') {
       let heHere = [
@@ -157,7 +161,7 @@ Summoner.StoryTeller = class StoryTeller {
       return;
     }
 
-    // === Otherwise the player arranges the meeting ===
+    // Otherwise the player arranges the meeting
 
     let joinMe = [
       { text:`I ask for {{C::character.firstName}} to join me ${location.inTheName}. ` },
@@ -274,12 +278,31 @@ Summoner.StoryTeller = class StoryTeller {
     this.addSegment(Random.from(options));
   }
 
+  // ===========================================================================
+  //                            Utilities & Helpers
+  // ===========================================================================
+
   // Utility function to add randomly selectable text to an options array that
   // all share common state values.
   static addOptionsWith(options, texts, state) {
     each(texts, text => {
       options.push(extend(state, { text }));
     });
+  }
+
+  // Get a quick estimate of the height difference between the player and the
+  // character. These might need to be tweeked over time. Not sure yet how
+  // common these different classes will be.
+  async heightDifference() {
+    const pHeight = (await this.getPlayerBody()).height;
+    const cHeight = (await this.getCharacterBody()).height;
+
+    if (cHeight <= pHeight * 0.2)                            { return { scale:0, name:"miniCharacter"}; }    // character is smaller than knee high.
+    if (cHeight > pHeight * 0.2 && cHeight <= pHeight * 0.4) { return { scale:1, name:"tinyCharacter"}; }    // character is smaller than waist high.
+    if (cHeight > pHeight * 0.4 && cHeight <= pHeight * 0.6) { return { scale:2, name:"smallCharacter"}; }   // character is about waist high to me.
+    if (cHeight > pHeight * 0.6 && cHeight <= pHeight * 1.3) { return { scale:3, name:"averageCharacter"}; } // character is about my height.
+    if (cHeight > pHeight * 1.3 && cHeight <= pHeight * 1.6) { return { scale:4, name:"bigCharacter"}; }     // character is significantly taller than me.
+    if (cHeight > pHeight * 1.6)                             { return { scale:5, name:"giantCharacter"}; }   // character is gigantic.
   }
 
 }
