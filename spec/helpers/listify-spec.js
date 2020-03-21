@@ -73,7 +73,7 @@ describe('listify()', function() {
     expect(listify([
       { word:'pussy', words:'pussies', count:2 },
       { word:'cock', count:21 }
-    ])).to.equal('two pussies and twenty one cocks');
+    ])).to.equal('two pussies and twenty-one cocks');
   });
 
   it("gets three words", function() {

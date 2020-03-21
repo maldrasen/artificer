@@ -20,36 +20,45 @@ global.EnglishUtility = {
     return (number > 2) ? 'both' : 'all';
   },
 
-  // Returns a number from one to twenty one in English. If an or option is
-  // specified then that is returned for "one" in cases where "a" or "an" would
-  // sound better in a phrase.
-  numberInEnglish(number, options)  {
-    if (number == 1 && options && options.or) { return options.or; }
-    if (number == 0 ) { return "zero" }
-    if (number == 1 ) { return "one" }
-    if (number == 2 ) { return "two" }
-    if (number == 3 ) { return "three" }
-    if (number == 4 ) { return "four" }
-    if (number == 5 ) { return "five" }
-    if (number == 6 ) { return "six" }
-    if (number == 7 ) { return "seven" }
-    if (number == 8 ) { return "eight" }
-    if (number == 9 ) { return "nine" }
-    if (number == 10) { return "ten" }
-    if (number == 11) { return "eleven" }
-    if (number == 12) { return "twelve" }
-    if (number == 13) { return "thirteen" }
-    if (number == 14) { return "fourteen" }
-    if (number == 15) { return "fifteen" }
-    if (number == 16) { return "sixteen" }
-    if (number == 17) { return "seventeen" }
-    if (number == 18) { return "eighteen" }
-    if (number == 19) { return "nineteen" }
-    if (number == 20) { return "twenty" }
-    if (number == 21) { return "twenty one" }
+  // Returns a positive number in English. If a 'whenOne' option is specified
+  // then that is returned for 'one' in cases where "a" or "an" would sound
+  // better in a phrase, i.e. 'a big black cock' is better than 'one big black
+  // cock'. The whenZero options is the same, but for zero.
+  numberInEnglish(number, options={}) {
+    const oneWords = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+    const tenWords = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+    const teenWords = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
 
-    // Just return the digits after 21.
-    return `${number}`
+    let millions = function(n) {
+      return (n >= 1000000) ?
+        `${millions(Math.floor(n/1000000))} million ${thousands(n%1000000)}`:
+        `${thousands(n)}`;
+    }
+
+    let thousands = function(n) {
+      return (n >= 1000) ?
+        `${hundreds(Math.floor(n/1000))} thousand ${hundreds(n%1000)}`:
+        `${hundreds(n)}`
+    }
+
+    let hundreds = function(n) {
+      return (n >= 100) ?
+        `${oneWords[Math.floor(n/100)]} hundred ${tens(n%100)}`:
+        `${tens(n)}`
+    }
+
+    let tens = function(n) {
+      if (n < 10) { return oneWords[n]; }
+      if (n >= 10 && n < 20) { return teenWords[n-10]; }
+      if (n % 10 == 0) { return tenWords[Math.floor(n/10)]; }
+      return `${tenWords[Math.floor(n/10)]}-${oneWords[n%10]}`;
+    }
+
+    if (number < 0)  { throw `Error: Not doing negative numbers in English: ${number}`; }
+    if (number == 0) { return options.whenZero || 'zero'; }
+    if (number == 1) { return options.whenOne || 'one'; }
+
+    return millions(number);
   },
 
   // Same as numberInEnglish(), but upper case.
