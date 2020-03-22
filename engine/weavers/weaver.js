@@ -25,12 +25,15 @@ global.Weaver = (function() {
     while(working) {
       var actorMatch = text.match(/{{([^}]+)::([^}]+)}}/);
       var utilityMatch = text.match(/{{([^}]+)\|([^}]+)}}/);
+      var shortcutMatch = text.match(/{{(he|him|his)}}/i);
       var simpleMatch = text.match(/{{([^}]+)}}/);
 
       if (actorMatch) {
         text = text.replace(actorMatch[0], actorValue(actorMatch[1].trim(), actorMatch[2].trim(), context));
       } else if (utilityMatch) {
         text = text.replace(utilityMatch[0], utilityValue(utilityMatch[1].trim(), utilityMatch[2].trim(), context));
+      } else if (shortcutMatch) {
+        text = text.replace(shortcutMatch[0], shortcutValue(shortcutMatch[1].trim(), context));
       } else if (simpleMatch) {
         text = text.replace(simpleMatch[0], simpleValue(simpleMatch[1].trim()));
       } else {
@@ -58,6 +61,19 @@ global.Weaver = (function() {
     if (utility.toLowerCase().startsWith('game')) { return Weaver.GameLoom.findValue(argument, context); }
     if (utility.toLowerCase().startsWith('random')) { return Weaver.RandomLoom.findValue(utility, argument); }
     return error(`BadToken(${utility}|${argument})`);
+  }
+
+  // The pronoun shortcuts are a little magical. They only work when there is
+  // only a single actor in the scene. When that's the case it shoudn't be
+  // nessessary to specify which one. We only do this for pronouns though
+  // because they're by far the most used tokens. And {{him}} is much easier to
+  // type and read than {{C::gender.him}}.
+  function shortcutValue(token, context) {
+    const keys = Object.keys(context.actors);
+    if (keys.length != 1) {
+      throw `Pronoun shortcuts can only be used when there is exactly one actor in a scene.`;
+    }
+    return (context.actors[keys[0]]).character.gender[token];
   }
 
   function simpleValue(token) {

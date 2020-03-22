@@ -191,14 +191,13 @@ Summoner.ConsentCalculator = class ConsentCalculator {
   }
 
   explainReluctant(details, action) {
-    return `{{C::character.firstName}} is agreeing to do this, but only reluctantly. {{C::gender.He}} won't enjoy it
-            very much and will not receive any experience from it. ${this.explainFeelings(details,action)}`;
+    return `{{C::character.firstName}} is agreeing to do this, but only reluctantly. {{He}} won't enjoy it very much
+            and will not receive any experience from it. ${this.explainFeelings(details,action)}`;
   }
 
   explainRape(details, action) {
-    return `While {{C::gender.he}}'ll technically let me do this, {{C::gender.he}} really doesn't want to.
-            {{C::character.firstName}} will resent and fear me for forcing {{C::gender.him}}.
-            ${this.explainFeelings(details,action)}`
+    return `While {{he}}'ll technically let me do this, {{he}} really doesn't want to. {{C::character.firstName}} will
+            resent and fear me for forcing {{him}}. ${this.explainFeelings(details,action)}`
   }
 
   explainFeelings(details, action) {
@@ -212,17 +211,17 @@ Summoner.ConsentCalculator = class ConsentCalculator {
         tits: 'tits are',
       }[action.effects]
 
-      return `It might have something to do with the fact that {{C::gender.his}} ${part} injured.`
+      return `It might have something to do with the fact that {{his}} ${part} injured.`
     }
 
-    if (details.genderFactor < 1)       { return `I don't think {{C::gender.he}} likes {{P::gender.men}} very much.`; }
-    if (details.aspectFactor < 1)       { return `{{C::gender.He}} might just not enjoy doing that.`; }
-    if (this.character.loyalty < 50)    { return `It could just be that {{C::gender.he}} doesn't like me very much.`; }
-    if (this.character.lust < 50)       { return `It seems like {{C::gender.he}}'s just not in the mood for sex right now.`; }
+    if (details.genderFactor < 1)       { return `I don't think {{he}} likes {{P::gender.men}} very much.`; }
+    if (details.aspectFactor < 1)       { return `{{He}} might just not enjoy doing that.`; }
+    if (this.character.loyalty < 50)    { return `It could just be that {{he}} doesn't like me very much.`; }
+    if (this.character.lust < 50)       { return `It seems like {{he}}'s just not in the mood for sex right now.`; }
     if (details.difficultyFactor < 0.8) { return `To be fair, it would be hard to find anyone who's into that.`; }
 
     // Sort of a catch all situation as adding more fear and loyalty makes anything possible.
-    return `I don't think {{C::gender.he}} respects me enough.`
+    return `I don't think {{he}} respects me enough.`
   }
 
 }

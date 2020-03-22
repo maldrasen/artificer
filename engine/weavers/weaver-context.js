@@ -5,11 +5,13 @@ global.WeaverContext = class WeaverContext {
   }
 
   get properties() { return this._properties; }
+  get actors() { return ObjectUtility.select(this._properties, (key, _) => key.length == 1 && key != 'P'); }
 
   get(key) { return this._properties[key]; }
   set(key, value) {
     this._properties[key] = value;
   }
+
 
   async setEvent(event) {
     this._event = event;
@@ -38,6 +40,8 @@ global.WeaverContext = class WeaverContext {
   }
 
   async addCharacter(key, character) {
+    if (key.length != 1) { throw `Actors in the weaver context should have a single letter key.`; }
+
     const everything = await character.getCompleteBody();
           everything.body.weight = await everything.body.getWeight();
 

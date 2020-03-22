@@ -56,15 +56,15 @@ Summoner.OralSegments = (function() {
 
     if (storyTeller.mightBe('playerCock','soft')) {
       Summoner.StoryTeller.addOptionsWith(options,[
-        `{{C::gender.He}} approaches me, running {{C::gender.his}} fingers up my legs as {{C::gender.he}} looks up at
-         my dangling cock. I completely tower over {{C::gender.him}}.`,
+        `{{He}} approaches me, running {{his}} fingers up my legs as {{he}} looks up at my dangling cock. I completely
+         tower over {{him}}.`,
       ],{ playerCock:'soft' });
     }
 
     if (storyTeller.mightBe('playerCock','hard')) {
       Summoner.StoryTeller.addOptionsWith(options,[
-        `{{C::gender.He}} approaches me, running {{C::gender.his}} fingers up my legs as {{C::gender.he}} looks up at
-        my trobbing cock. I completely tower over {{C::gender.him}}.`,
+        `{{He}} approaches me, running {{his}} fingers up my legs as {{he}} looks up at my trobbing cock. I completely
+        tower over {{him}}.`,
       ],{ playerCock:'hard' });
     }
 
