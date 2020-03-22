@@ -13,6 +13,10 @@ Summoner.OralSegments = (function() {
     const playerPosition = storyTeller.getStatus('playerPosition');
     const heightDifference = await storyTeller.heightDifference();
 
+console.log("=== Positioning ===")
+console.log("Player Start:",playerPosition);
+console.log("Height Difference:",heightDifference);
+
     if (ArrayUtility.contains(['laying','sitting','standing'],playerPosition) == false) {
       throw `Invalid player position - ${playerPosition}`
     }
