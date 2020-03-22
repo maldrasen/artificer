@@ -129,6 +129,10 @@ Summoner.StoryTeller = class StoryTeller {
     });
   }
 
+  async inPlayerBedroom() {
+    return (await Flag.lookupValue('player.bed-location')) == (await this.getLocation()).code;
+  }
+
   // Get a quick estimate of the height difference between the player and the
   // character. These might need to be tweeked over time. Not sure yet how
   // common these different classes will be.

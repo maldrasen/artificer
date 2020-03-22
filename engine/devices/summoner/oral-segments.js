@@ -14,8 +14,8 @@ Summoner.OralSegments = (function() {
     const heightDifference = await storyTeller.heightDifference();
 
 console.log("=== Positioning ===")
-console.log("Player Start:",playerPosition);
-console.log("Height Difference:",heightDifference);
+console.log("  Player Start:",playerPosition);
+console.log("  Height Difference:",heightDifference);
 
     if (ArrayUtility.contains(['laying','sitting','standing'],playerPosition) == false) {
       throw `Invalid player position - ${playerPosition}`
@@ -52,45 +52,96 @@ console.log("Height Difference:",heightDifference);
     if (heightDifference.name == 'giantCharacter') {
       storyTeller.addSegment({ text:'TODO: Position character with much larger character.' });
     }
+
+console.log("Positioned:")
+console.log("  Player Position:",storyTeller.getStatus('playerPosition'));
+console.log("  Character Position:",storyTeller.getStatus('characterPosition'));
+
   }
 
+  // If the player is standing in front of a character that doesn't quite come
+  // up to his waist, then the player needs to move and reposition the
+  // character in a way that it's possible for some oral sex to happen. I'm
+  // probably overcomplicating things here again. This function will set both
+  // the player and the character positions, getting everything ready
+  // essentially.
   async function givingCockOralPositionWhenTinyStanding(storyTeller) {
-    const location = await storyTeller.getLocation();
     const compareHeights = await storyTeller.compareHeights();
+    const myBedroom = await storyTeller.inPlayerBedroom();
+    const location = await storyTeller.getLocation();
     const bed = await location.hasBed();
     const chair = await location.hasChair();
     const table = await location.hasTable();
 
+    let segment;
+    let nextSegment;
     let options = [
-      `{{He}} closes the distance between us and hugs me tightly, resting his head on my knee.`,
-      `{{He}} hugs me tightly around one of my legs, which is as far as {{he}} can reach given how short {{he}} is.`,
+      { text:`{{He}} closes the distance between us and hugs me tightly, resting {{his}} head on my thigh.` },
+      { text:`{{He}} hugs me tightly around one of my legs, which is as far as {{he}} can reach given how short {{he}} is.` },
     ];
 
     if (storyTeller.mightBe('playerCock','soft')) {
-      options.push({ text:`{{He}} approaches me, running {{his}} fingers up my legs as {{he}} looks up at my dangling
-        cock.`, playerCock:'soft' });
+      Summoner.StoryTeller.addOptionsWith(options,[
+        `{{He}} approaches me, running {{his}} fingers up my legs as {{he}} looks up at my dangling cock.`,
+        `{{He}} closes the distance between us, gazing up at my {{P::cock.big}} cock dangling over {{his}} head.`,
+      ],{ playerCock:'soft' });
     }
 
     if (storyTeller.mightBe('playerCock','hard')) {
-      options.push({ text:`{{He}} approaches me, running {{his}} fingers up my legs as {{he}} looks up at my trobbing
-        cock.`, playerCock:'hard' });
+      Summoner.StoryTeller.addOptionsWith(options,[
+        `{{He}} approaches me, running {{his}} fingers up my legs as {{he}} looks up at my trobbing cock.`,
+        `{{He}} closes the distance between us, gazing up at my {{P::cock.big}} cock swawing in the air over {{his}} head.`,
+      ],{ playerCock:'hard' });
     }
 
-    let segment = Random.from(options);
-    segment.text = `${segment.text} ${compareHeights}.`;
+    segment = Random.from(options);
+    segment.text = `${segment.text} ${compareHeights}, so {{he}}'d have some trouble reaching my dick from down there.`;
     options = [];
 
-    if (bed) {
-      // I lead {{him}} over to the bed and lay down
+    if (myBedroom) {
+      if ((await Flag.lookupValue('player.bed-type')) == 'fur-pile') {
+        Summoner.StoryTeller.addOptionsWith(options,[
+          `I lead {{him}} over to the pile or furs I've been using as a bed and lay down, letting {{him}} climb on top of me.`,
+          `I reach down and easily lift {{him}} up, then carry {{him}} over to the pile of furs I've been using as a bed. I drop down into them with {{him}} on top of me.`,
+          `I lay down on the pile of furs I've been using as a bed and motion for {{him}} to come join me.`,
+        ],{ playerPosition:'laying' });
+      }
+    }
+    if (!myBedroom && bed) {
+      Summoner.StoryTeller.addOptionsWith(options,[
+        `I lead {{him}} over to the bed and let {{him}} climb on top of me.`,
+        `I reach down and easily lift {{him}} up, then carry {{him}} over to the bed, dropping down onto it with {{him}} on top of me.`,
+        `I lay down on the bed and motion for {{him}} to come join me.`,
+      ],{ playerPosition:'laying' });
     }
 
     // No other option but to lay on the ground.
     if (!(bed||chair||table)) {
-      options.push({ text:`Seeing no other easy option, I lay down on the ground, and let {{him}} climb on top of me. {{He}}
-        straddles my thigh and rubs {{his}} face against my {{P::balls.twoInch}} wide {{ballsack}}.`, characterPosition:'straddle' });
-      options.push({ text:`Seeing no other easy option, I lay down on the ground, and let {{him}} climb on top of my
-        chest. {{He}} faces down towards my cock while pointing {{his}} inviting ass up towards my face. `, characterPosition:'reverse-straddle' });
+      options.push({ text:`Seeing no other easy option, I lay down on the ground, and let {{him}} climb on top of me.`, playerPosition:'laying' });
     }
+
+    nextSegment = Random.from(options);
+    segment.text = `${segment.text} ${nextSegment.text}`;
+    segment.playerPosition = nextSegment.playerPosition;
+    options = [];
+
+    // The player is laying down, so the character should position herself on
+    // top either on the player's leg facing up, or on their chest facing down.
+    if (segment.playerPosition == 'laying') {
+      Summoner.StoryTeller.addOptionsWith(options,[
+        `{{He}} straddles my thigh and rubs {{his}} face against my {{P::balls.twoInch}} wide {{ballsack}}.`,
+      ],{ characterPosition:'straddle' });
+
+      Summoner.StoryTeller.addOptionsWith(options,[
+        `{{He}} straddles my chest, opening {{his}} legs wide and pointing {{his}} inviting ass up towards my face while {{he}} opens {{his}} mouth for the tip of my cock.`,
+      ],{ characterPosition:'reverse-straddle' });
+    }
+
+    nextSegment = Random.from(options);
+    segment.text = `${segment.text} ${nextSegment.text}`;
+    segment.characterPosition = nextSegment.characterPosition;
+
+    console.log("Segment?",segment)
 
     storyTeller.addSegment(segment);
   }
