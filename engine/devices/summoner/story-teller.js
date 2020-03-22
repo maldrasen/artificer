@@ -31,7 +31,7 @@ Summoner.StoryTeller = class StoryTeller {
   //   playerPussy: dry, wet
   //
   //   characterSpeaking: true
-  //   characterPosition: standing, sitting, laying, kneeling, bent-over
+  //   characterPosition: standing, sitting, laying, kneeling, bent-over, straddle, reverse-straddle
   //   characterCock: soft, hard
   //   characterPussy: dry, wet
   //

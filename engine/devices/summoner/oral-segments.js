@@ -51,25 +51,42 @@ Summoner.OralSegments = (function() {
   }
 
   async function givingCockOralPositionWhenTinyStanding(storyTeller) {
-    let compareHeights = await storyTeller.compareHeights();
-    let options = [];
+    const location = await storyTeller.getLocation();
+    const compareHeights = await storyTeller.compareHeights();
+    const bed = await location.hasBed();
+    const chair = await location.hasChair();
+    const table = await location.hasTable();
+
+    let options = [
+      `{{He}} closes the distance between us and hugs me tightly, resting his head on my knee.`,
+      `{{He}} hugs me tightly around one of my legs, which is as far as {{he}} can reach given how short {{he}} is.`,
+    ];
 
     if (storyTeller.mightBe('playerCock','soft')) {
-      Summoner.StoryTeller.addOptionsWith(options,[
-        `{{He}} approaches me, running {{his}} fingers up my legs as {{he}} looks up at my dangling cock. I completely
-         tower over {{him}}.`,
-      ],{ playerCock:'soft' });
+      options.push({ text:`{{He}} approaches me, running {{his}} fingers up my legs as {{he}} looks up at my dangling
+        cock.`, playerCock:'soft' });
     }
 
     if (storyTeller.mightBe('playerCock','hard')) {
-      Summoner.StoryTeller.addOptionsWith(options,[
-        `{{He}} approaches me, running {{his}} fingers up my legs as {{he}} looks up at my trobbing cock. I completely
-        tower over {{him}}.`,
-      ],{ playerCock:'hard' });
+      options.push({ text:`{{He}} approaches me, running {{his}} fingers up my legs as {{he}} looks up at my trobbing
+        cock.`, playerCock:'hard' });
     }
 
     let segment = Random.from(options);
-    segment.text = `${segment.text} ${compareHeights}. TODO: Move to table.`;
+    segment.text = `${segment.text} ${compareHeights}.`;
+    options = [];
+
+    if (bed) {
+      // I lead {{him}} over to the bed and lay down
+    }
+
+    // No other option but to lay on the ground.
+    if (!(bed||chair||table)) {
+      options.push({ text:`Seeing no other easy option, I lay down on the ground, and let {{him}} climb on top of me. {{He}}
+        straddles my thigh and rubs {{his}} face against my {{P::balls.twoInch}} wide {{ballsack}}.`, characterPosition:'straddle' });
+      options.push({ text:`Seeing no other easy option, I lay down on the ground, and let {{him}} climb on top of my
+        chest. {{He}} faces down towards my cock while pointing {{his}} inviting ass up towards my face. `, characterPosition:'reverse-straddle' });
+    }
 
     storyTeller.addSegment(segment);
   }
