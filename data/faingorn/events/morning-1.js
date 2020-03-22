@@ -108,6 +108,8 @@ Event.build('morning-1', {
       'map.great-hall':         'unlocked',
       'map.lower-keep':         'unlocked',
       'map.upper-keep':         'unlocked',
+      'player.bed-location':    'great-hall',
+      'player.bed-type':        'fur-pile',
     });
   },
 

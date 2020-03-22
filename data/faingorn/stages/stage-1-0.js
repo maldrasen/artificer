@@ -14,6 +14,8 @@ GameStage.build('stage-1-0',{
     'map.upper-keep':                'unlocked',
     'plan-view.allow-idle':          'unlocked',
     'plan-view.roles.forager':       'unlocked',
+    'player.bed-location':           'great-hall',
+    'player.bed-type':               'fur-pile',
     'player.fucks-futas':            'always',
     'player.fucks-men':              'maybe',
     'player.fucks-women':            'always',
