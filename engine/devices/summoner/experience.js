@@ -7,12 +7,19 @@ Summoner.Experience = (function() {
   // characters. This will need to be invoked once per character then. We need
   // to compact the array here at the end because if a selected aspect is capped
   // then the character won't get experience, and a null gets mixed in.
+  //
+  // This function needs to be throttled by some specs when we shotgun the
+  // story creation. Multiple stories can be generated at the same time which
+  // all act on the same character, which causes all kinds of hell when adding
+  // experience. That can't happen in a running game though.
   async function calculate(summoner) {
-    const experience = selectExperienceLevels(summoner);
+    if (!Environment.Throttle) {
+      const experience = selectExperienceLevels(summoner);
 
-    return ArrayUtility.compact(await Promise.all(Object.keys(experience).map(async code => {
-      return await addExperience(summoner.character, code, experience[code]);
-    })));
+      return ArrayUtility.compact(await Promise.all(Object.keys(experience).map(async code => {
+        return await addExperience(summoner.character, code, experience[code]);
+      })));
+    }
   }
 
   function selectExperienceLevels(summoner) {

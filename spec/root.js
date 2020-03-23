@@ -9,6 +9,7 @@ require(`${ROOT}/engine/boot-engine.js`);
 require(`${ROOT}/engine/boot-database.js`);
 require(`${ROOT}/spec/game-helper.js`);
 require(`${ROOT}/spec/spec-helper.js`);
+require(`${ROOT}/spec/summon-action-helper.js`);
 
 global.Settings = {
   Metric: false,
@@ -29,6 +30,7 @@ before(function() {
 // An after each is needed to clean up any models added to the database, and
 // set the mode back to non-metric.
 afterEach(function() {
+  Environment.Throttle = false;
   Settings.Metric = false;
   Settings.FutaPronouns = 'shi/hir';
   Game.clear();

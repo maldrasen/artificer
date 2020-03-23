@@ -36,7 +36,7 @@ Personality.build('scaven-default', {
     }
 
     if (attitude == 'resigned') {
-      options.push(`{{He}} nods, looking resigned and a little nervous, but ready do do what I ask of him.`);
+      options.push(`{{He}} nods, looking resigned and a little nervous, but ready do do what I ask of {{him}}.`);
       options.push(`{{He}} nods to me, understanding that {{his}} body is mine to do with as I like.`);
       options.push(`{{He}} looks away shamefully, but seems willing to let me use {{his}} body.`);
       options.push(`{{He}} glances down at the floor, resigned to let me have my way with {{him}}.`);

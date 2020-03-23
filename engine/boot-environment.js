@@ -20,7 +20,7 @@ const fs = require('fs');
 
   global.Environment = {
     Debug: data.debug || false,
-    Metric: data.metric || false,
+    Throttle: data.throttle || false,
   };
 
 })();

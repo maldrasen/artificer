@@ -45,6 +45,7 @@ SummonAction.GetBlowjob = (function() {
     }
     if (playerPosition == 'sitting') {
       if (characterPosition == 'standing') { return await writeConsentInChair(storyTeller); }
+      if (characterPosition == 'kneeling') { return await writeConsentInChair(storyTeller); }
     }
     if (playerPosition == 'laying') {
       if (characterPosition == 'straddle') { return await writeConsentStraddle(storyTeller); }

@@ -94,7 +94,7 @@ Summoner.OralSegments.CockPositioning = (function() {
     if (storyTeller.mightBe('playerCock','hard')) {
       Summoner.StoryTeller.addOptionsWith(options,[
         `{{He}} approaches me, running {{his}} fingers up my legs as {{he}} looks up at my trobbing cock.`,
-        `{{He}} closes the distance between us, gazing up at my {{P::cock.big}} cock swawing in the air over {{his}} head.`,
+        `{{He}} closes the distance between us, gazing up at my {{P::cock.big}} cock swaying in the air over {{his}} head.`,
       ],{ playerCock:'hard' });
     }
 
@@ -197,15 +197,18 @@ Summoner.OralSegments.CockPositioning = (function() {
   }
 
   async function positionGentlyWhenSmallLaying(storyTeller) {
-    storyTeller.addSegment({ text:'TODO: Position character, they are small, the player is laying.' });
+    storyTeller.addSegment(Random.from([
+      { text:'TODO: They are small and straddling my thigh while I am laying down.', characterPosition:'straddle' },
+      { text:'TODO: They are small and straddling my chest, ass in my face, while I am laying down.', characterPosition:'reverse-straddle' },
+    ]));
   }
 
   async function positionGentlyWhenSmallSitting(storyTeller) {
-    storyTeller.addSegment({ text:'TODO: Position character, they are small, the player is sitting.' });
+    storyTeller.addSegment({ text:'TODO: They are small and kneeling in front of my chair.', characterPosition:'kneeling' });
   }
 
   async function positionGentlyWhenSmallStanding(storyTeller) {
-    storyTeller.addSegment({ text:'TODO: Position character, they are small, the player is standing.' });
+    storyTeller.addSegment({ text:'TODO: They are small and standing in front of me.' });
   }
 
   return {
