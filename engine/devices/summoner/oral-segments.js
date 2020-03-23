@@ -48,11 +48,6 @@ Summoner.OralSegments = (function() {
     if (heightDifference.name == 'giantCharacter') {
       storyTeller.addSegment({ text:'TODO: Position character with much larger character.' });
     }
-
-console.log("Positioned:")
-console.log("  Player Position:",storyTeller.getStatus('playerPosition'));
-console.log("  Character Position:",storyTeller.getStatus('characterPosition'));
-
   }
 
   // If the player is standing in front of a character that doesn't quite come
