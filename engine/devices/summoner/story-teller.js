@@ -113,7 +113,19 @@ Summoner.StoryTeller = class StoryTeller {
   // ===========================================================================
 
   async compareHeights() { return await Summoner.GeneralSegments.compareHeights(this); }
-  async positionCharacterForGivingCockOral() { await Summoner.OralSegments.positionCharacterForGivingCockOral(this); }
+
+  async positionCharacterForGivingCockOral() {
+    (this.summoner.consent.level == 'rape') ?
+       (await Summoner.OralSegments.CockPositioning.positionRoughly(this)):
+       (await Summoner.OralSegments.CockPositioning.positionGently(this)):
+  }
+
+  async positionCharacterForGivingPussyOral() {
+    (this.summoner.consent.level == 'rape') ?
+       (await Summoner.OralSegments.PussyPositioning.positionRoughly(this)):
+       (await Summoner.OralSegments.PussyPositioning.positionGently(this)):
+  }
+
   async showCock() { await Summoner.CockSegments.showCock(this); }
   async startSummoning() { await Summoner.GeneralSegments.startSummoning(this); }
 
