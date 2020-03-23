@@ -1,5 +1,13 @@
 Summoner.OralSegments = (function() {
 
+  // These segments should be short, but rich in detail. My plan is, once the
+  // scene is set and the characters are positioned and so forth then most
+  // every story with oral sex will call into these functions. Start blowjob
+  // has the character starting to suck the cock, then there's a gap to let the
+  // player do something while that's happening, then there's a follow on
+  // continue action, and finally a general cum action that should always be
+  // usable.
+
   async function startFrontBlowjob(storyTeller) {
     storyTeller.addSegment({ text:`TODO: Start front facing blowjob.` })
   }
