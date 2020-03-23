@@ -33,11 +33,44 @@ SummonAction.GetBlowjob = (function() {
   async function writeConsentStory(summoner) {
     const storyTeller = await normalStart(summoner);
     storyTeller.addSeparator();
+
     await storyTeller.positionCharacterForGivingCockOral();
+    storyTeller.addSeparator();
 
-    // const cock = await storyTeller.getPlayerCock();
-    // const cockFit = await summoner.character.canSuckCock(cock);
+    let playerPosition = storyTeller.getStatus('playerPosition');
+    let characterPosition = storyTeller.getStatus('characterPosition');
 
+    if (playerPosition == 'standing') {
+      if (characterPosition == 'table-on-back') { return await writeConsentTableOnBack(storyTeller); }
+    }
+    if (playerPosition == 'sitting') {
+      if (characterPosition == 'standing') { return await writeConsentInChair(storyTeller); }
+    }
+    if (playerPosition == 'laying') {
+      if (characterPosition == 'straddle') { return await writeConsentStraddle(storyTeller); }
+      if (characterPosition == 'reverse-straddle') { return await writeConsentReverseStraddle(storyTeller); }
+    }
+
+    throw `Unexpected positioning Player:${playerPosition} Character:${characterPosition}`
+  }
+
+  async function writeConsentTableOnBack(storyTeller) {
+    storyTeller.addSegment({ text:'TODO: Blowjob, on table lying on back.' })
+    return storyTeller.compile();
+  }
+
+  async function writeConsentInChair(storyTeller) {
+    storyTeller.addSegment({ text:'TODO: Blowjob, standing in front of chair.' })
+    return storyTeller.compile();
+  }
+
+  async function writeConsentStraddle(storyTeller) {
+    storyTeller.addSegment({ text:'TODO: Blowjob, straddling leg.' })
+    return storyTeller.compile();
+  }
+
+  async function writeConsentReverseStraddle(storyTeller) {
+    storyTeller.addSegment({ text:'TODO: Blowjob, straddling chest.' })
     return storyTeller.compile();
   }
 

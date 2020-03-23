@@ -114,6 +114,9 @@ Summoner.StoryTeller = class StoryTeller {
 
   async compareHeights() { return await Summoner.GeneralSegments.compareHeights(this); }
 
+  async positionCharacterForGettingCockOral() {}
+  async positionCharacterForGettingPussyOral() {}
+
   async positionCharacterForGivingCockOral() {
     (this.summoner.consent.level == 'rape') ?
        (await Summoner.OralSegments.CockPositioning.positionRoughly(this)):
