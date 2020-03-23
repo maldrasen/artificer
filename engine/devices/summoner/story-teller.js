@@ -117,13 +117,13 @@ Summoner.StoryTeller = class StoryTeller {
   async positionCharacterForGivingCockOral() {
     (this.summoner.consent.level == 'rape') ?
        (await Summoner.OralSegments.CockPositioning.positionRoughly(this)):
-       (await Summoner.OralSegments.CockPositioning.positionGently(this)):
+       (await Summoner.OralSegments.CockPositioning.positionGently(this));
   }
 
   async positionCharacterForGivingPussyOral() {
     (this.summoner.consent.level == 'rape') ?
        (await Summoner.OralSegments.PussyPositioning.positionRoughly(this)):
-       (await Summoner.OralSegments.PussyPositioning.positionGently(this)):
+       (await Summoner.OralSegments.PussyPositioning.positionGently(this));
   }
 
   async showCock() { await Summoner.CockSegments.showCock(this); }
