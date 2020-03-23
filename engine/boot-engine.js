@@ -96,12 +96,14 @@ require(`${ROOT}/engine/devices/roles/rest`);
 require(`${ROOT}/engine/devices/roles/skills`);
 
 require(`${ROOT}/engine/devices/summoner`);
-require(`${ROOT}/engine/devices/summoner/cock-segments`);
 require(`${ROOT}/engine/devices/summoner/consent-calculator`);
 require(`${ROOT}/engine/devices/summoner/experience`);
-require(`${ROOT}/engine/devices/summoner/general-segments`);
-require(`${ROOT}/engine/devices/summoner/oral-segments`);
 require(`${ROOT}/engine/devices/summoner/story-teller`);
+require(`${ROOT}/engine/devices/summoner/segments/cock-segments`);
+require(`${ROOT}/engine/devices/summoner/segments/general-segments`);
+require(`${ROOT}/engine/devices/summoner/segments/oral-segments`);
+require(`${ROOT}/engine/devices/summoner/segments/oral/cock-positioning`);
+require(`${ROOT}/engine/devices/summoner/segments/oral/pussy-positioning`);
 
 // === Helpers ===
 require(`${ROOT}/engine/helpers/calendar.js`);
