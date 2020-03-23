@@ -112,8 +112,14 @@ Summoner.StoryTeller = class StoryTeller {
   //                          Canned Story Segments
   // ===========================================================================
 
+  // Canned General Segments
   async compareHeights() { return await Summoner.GeneralSegments.compareHeights(this); }
+  async startSummoning() { await Summoner.GeneralSegments.startSummoning(this); }
 
+  // Canned Cock Segments
+  async showCock() { await Summoner.CockSegments.showCock(this); }
+
+  // Canned Oral Segments
   async positionCharacterForGettingCockOral() {}
   async positionCharacterForGettingPussyOral() {}
 
@@ -129,8 +135,11 @@ Summoner.StoryTeller = class StoryTeller {
        (await Summoner.OralSegments.PussyPositioning.positionGently(this));
   }
 
-  async showCock() { await Summoner.CockSegments.showCock(this); }
-  async startSummoning() { await Summoner.GeneralSegments.startSummoning(this); }
+  async startFrontBlowjob()     { await Summoner.OralSegments.startFrontBlowjob(this); }
+  async startOnBackBlowjob()    { await Summoner.OralSegments.startOnBackBlowjob(this); }
+  async continueFrontBlowjob()  { await Summoner.OralSegments.continueFrontBlowjob(this); }
+  async continueOnBackBlowjob() { await Summoner.OralSegments.continueOnBackBlowjob(this); }
+  async cumFromBlowjob()        { await Summoner.OralSegments.cumFromBlowjob(this); }
 
   // ===========================================================================
   //                            Utilities & Helpers

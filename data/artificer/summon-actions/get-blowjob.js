@@ -55,20 +55,33 @@ SummonAction.GetBlowjob = (function() {
   }
 
   async function writeConsentTableOnBack(storyTeller) {
-    storyTeller.addSegment({ text:'TODO: Blowjob, on table lying on back.' })
+    await storyTeller.startOnBackBlowjob();
+    storyTeller.addSegment({ text:`TODO: Pull on {{his}} nipples.` });
+    await storyTeller.continueOnBackBlowjob();
+    await storyTeller.cumFromBlowjob();
     return storyTeller.compile();
   }
 
   async function writeConsentInChair(storyTeller) {
-    storyTeller.addSegment({ text:'TODO: Blowjob, standing in front of chair.' })
+    await storyTeller.startFrontBlowjob();
+    await storyTeller.continueFrontBlowjob();
+    await storyTeller.cumFromBlowjob();
     return storyTeller.compile();
   }
 
   async function writeConsentStraddle(storyTeller) {
-    storyTeller.addSegment({ text:'TODO: Blowjob, straddling leg.' })
+    await storyTeller.startFrontBlowjob();
+    storyTeller.addSegment({ text:`TODO: Rub pussy or cock against my leg.` });
+    await storyTeller.continueFrontBlowjob();
+    await storyTeller.cumFromBlowjob();
     return storyTeller.compile();
   }
 
+  // This position is more complex than the others. It first depends on the
+  // character's height because only a character of about your height will be
+  // a good 69 position. If the character is shorter we still want to finger
+  // their ass or play with their balls or something. They shouldn't be on top
+  // though if they're larger.
   async function writeConsentReverseStraddle(storyTeller) {
     storyTeller.addSegment({ text:'TODO: Blowjob, straddling chest.' })
     return storyTeller.compile();
