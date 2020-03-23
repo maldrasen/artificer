@@ -1,4 +1,4 @@
-describe.only('Summon Action: Get Blowjob', function() {
+describe('Summon Action: Get Blowjob', function() {
 
   it('with tiny consenting scaven character', function(done) {
     let scene = {
