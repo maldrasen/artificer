@@ -80,7 +80,7 @@ global.HasPersonality = (function() {
   }
 
   async function reactToCock(cock) {
-    const desirability = await this.getCockDesirability();
+    const desirability = await this.getCockDesirability(cock);
     return await this.personality.reactToCock(this, cock, desirability)
   }
 
