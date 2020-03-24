@@ -23,36 +23,67 @@ Summoner.OralSegments = (function() {
 
     if (oralSkill.mouthFit == 'painful') {
       if (oralSkill.depthClass == 'very-shallow') {
+        if (desireClass == 'bad') {}
+        if (desireClass == 'average') {}
+        if (desireClass == 'good') {}
+        if (desireClass == 'great') {}
       }
       if (oralSkill.depthClass == 'shallow') {
-
+        if (desireClass == 'bad') {}
+        if (desireClass == 'average') {}
+        if (desireClass == 'good') {}
+        if (desireClass == 'great') {}
       }
       if (oralSkill.depthClass == 'half') {
-
+        if (desireClass == 'bad') {}
+        if (desireClass == 'average') {}
+        if (desireClass == 'good') {}
+        if (desireClass == 'great') {}
       }
       if (oralSkill.depthClass == 'most') {
-
+        if (desireClass == 'bad') {}
+        if (desireClass == 'average') {}
+        if (desireClass == 'good') {}
+        if (desireClass == 'great') {}
       }
       if (oralSkill.depthClass == 'all') {
-
+        if (desireClass == 'bad') {}
+        if (desireClass == 'average') {}
+        if (desireClass == 'good') {}
+        if (desireClass == 'great') {}
       }
     }
 
     if (oralSkill.mouthFit == 'comfortable') {
       if (oralSkill.depthClass == 'very-shallow') {
-
+        if (desireClass == 'bad') {}
+        if (desireClass == 'average') {}
+        if (desireClass == 'good') {}
+        if (desireClass == 'great') {}
       }
       if (oralSkill.depthClass == 'shallow') {
-
+        if (desireClass == 'bad') {}
+        if (desireClass == 'average') {}
+        if (desireClass == 'good') {}
+        if (desireClass == 'great') {}
       }
       if (oralSkill.depthClass == 'half') {
-
+        if (desireClass == 'bad') {}
+        if (desireClass == 'average') {}
+        if (desireClass == 'good') {}
+        if (desireClass == 'great') {}
       }
       if (oralSkill.depthClass == 'most') {
-
+        if (desireClass == 'bad') {}
+        if (desireClass == 'average') {}
+        if (desireClass == 'good') {}
+        if (desireClass == 'great') {}
       }
       if (oralSkill.depthClass == 'all') {
-
+        if (desireClass == 'bad') {}
+        if (desireClass == 'average') {}
+        if (desireClass == 'good') {}
+        if (desireClass == 'great') {}
       }
     }
 
@@ -81,11 +112,69 @@ Summoner.OralSegments = (function() {
     }
 
     if (oralSkill.mouthFit == 'painful') {
-
+      if (oralSkill.depthClass == 'very-shallow') {
+        if (desireClass == 'bad') {}
+        if (desireClass == 'average') {}
+        if (desireClass == 'good') {}
+        if (desireClass == 'great') {}
+      }
+      if (oralSkill.depthClass == 'shallow') {
+        if (desireClass == 'bad') {}
+        if (desireClass == 'average') {}
+        if (desireClass == 'good') {}
+        if (desireClass == 'great') {}
+      }
+      if (oralSkill.depthClass == 'half') {
+        if (desireClass == 'bad') {}
+        if (desireClass == 'average') {}
+        if (desireClass == 'good') {}
+        if (desireClass == 'great') {}
+      }
+      if (oralSkill.depthClass == 'most') {
+        if (desireClass == 'bad') {}
+        if (desireClass == 'average') {}
+        if (desireClass == 'good') {}
+        if (desireClass == 'great') {}
+      }
+      if (oralSkill.depthClass == 'all') {
+        if (desireClass == 'bad') {}
+        if (desireClass == 'average') {}
+        if (desireClass == 'good') {}
+        if (desireClass == 'great') {}
+      }
     }
 
     if (oralSkill.mouthFit == 'comfortable') {
-
+      if (oralSkill.depthClass == 'very-shallow') {
+        if (desireClass == 'bad') {}
+        if (desireClass == 'average') {}
+        if (desireClass == 'good') {}
+        if (desireClass == 'great') {}
+      }
+      if (oralSkill.depthClass == 'shallow') {
+        if (desireClass == 'bad') {}
+        if (desireClass == 'average') {}
+        if (desireClass == 'good') {}
+        if (desireClass == 'great') {}
+      }
+      if (oralSkill.depthClass == 'half') {
+        if (desireClass == 'bad') {}
+        if (desireClass == 'average') {}
+        if (desireClass == 'good') {}
+        if (desireClass == 'great') {}
+      }
+      if (oralSkill.depthClass == 'most') {
+        if (desireClass == 'bad') {}
+        if (desireClass == 'average') {}
+        if (desireClass == 'good') {}
+        if (desireClass == 'great') {}
+      }
+      if (oralSkill.depthClass == 'all') {
+        if (desireClass == 'bad') {}
+        if (desireClass == 'average') {}
+        if (desireClass == 'good') {}
+        if (desireClass == 'great') {}
+      }
     }
 
     storyTeller.addSegment({ text:`TODO: Start on back blowjob.` })
