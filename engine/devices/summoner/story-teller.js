@@ -87,6 +87,16 @@ Summoner.StoryTeller = class StoryTeller {
     return this._characterBody;
   }
 
+  async getCharacterCanSuckCock() {
+    if (this._characterCanSuckCock == null) { this._characterCanSuckCock = await this.character.canSuckCock(await this.getPlayerCock()); }
+    return this._characterCanSuckCock;
+  }
+
+  async getCharacterCockDesirability() {
+    if (this._characterCockDesirability == null) { this._characterCockDesirability = await this.character.getCockDesirability(await this.getPlayerCock()); }
+    return this._characterCockDesirability;
+  }
+
   async getLocation() {
     return Location.lookup((await this.getGame()).location);
   }

@@ -5,6 +5,7 @@ global.HasSexSkills = { isAppliedTo: function(model) {
   //   throatFit: (comfortable, painful, impossible)
   //   depth: (mm) How far can the cock can be thrust, based on skill and throat width. Assume mouth depth is the same
   //          as mouth width in most instances. (lupins and other furries are more like width/2)
+  //   depthClass: (very-shallow, shallow, half, most, all) How deep will this cock sucker be able to take this cock?
   //   knot: (null, mouth, impossible) Can the cock sucker get the knot in their mouth if there is one?
   //   balls: (none, one, entire) Can they fit the balls in their mouth too, either one ball or the entire scrotum?
   //
@@ -56,9 +57,20 @@ global.HasSexSkills = { isAppliedTo: function(model) {
       mouthFit,
       throatFit,
       depth,
+      depthClass: getDepthClass(depth, cock),
       balls,
       knot
     };
+  }
+
+  function getDepthClass(depth, cock) {
+    const depthRatio = depth / cock.length;
+
+    if (depthRatio < 0.2) { return 'very-shallow'; }
+    if (depthRatio < 0.4) { return 'shallow'; }
+    if (depthRatio < 0.7) { return 'half'; }
+    if (depthRatio < 1)   { return 'most'; }
+    return 'all';
   }
 
   function oralSkillBonus(oral, cock, mouth, depth) {

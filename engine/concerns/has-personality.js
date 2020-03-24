@@ -42,7 +42,7 @@ global.HasPersonality = (function() {
   // function wants to do something with it. The desireability should fall
   // somewhere between -9 and 21, but -6 should be treated as very bad and +6
   // as very good. Might get some extra cock worship at around +10.
-  async function reactToCock(cock) {
+  async function getCockDesirability(cock) {
     const cockLover =   await this.getAspectLevel('cock-lover');
     const androphilic = await this.getAspectLevel('androphilic');
     const androphobic = await this.getAspectLevel('androphobic');
@@ -76,12 +76,17 @@ global.HasPersonality = (function() {
     //       seeing the player's dick. There's an element of suprise there that
     //       will be lacking in future events. For now, assume the character is
     //       used to seeing this particular cock.
+    return desirability;
+  }
 
+  async function reactToCock(cock) {
+    const desirability = await this.getCockDesirability();
     return await this.personality.reactToCock(this, cock, desirability)
   }
 
   return { isAppliedTo:function(model) {
     model.prototype.determinePersonality = determinePersonality;
+    model.prototype.getCockDesirability = getCockDesirability;
     model.prototype.reactToCock = reactToCock;
     model.prototype.reactToPlayer = reactToPlayer;
   }};

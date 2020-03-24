@@ -9,24 +9,77 @@ Summoner.OralSegments = (function() {
   // usable.
 
   async function startFrontBlowjob(storyTeller) {
+    const cock = await storyTeller.getPlayerCock();
+    const oralSkill = await storyTeller.getCharacterCanSuckCock();
+    const desirability = await storyTeller.getCharacterCockDesirability();
+
+    console.log("Skill:",oralSkill);
+    console.log("Desirability:",desirability);
+    console.log("Cock Length:",cock.length);
+
+    if (oralSkill.mouthFit == 'impossible') {
+      throw `Error: Can't fit cock into mouth. This should have been a requirement for this action or handled in a seperate branch.`
+    }
+
+    if (oralSkill.mouthFit == 'painful') {
+
+    }
+
+    if (oralSkill.mouthFit == 'comfortable') {
+
+    }
+
     storyTeller.addSegment({ text:`TODO: Start front facing blowjob.` })
   }
 
   async function continueFrontBlowjob(storyTeller) {
+    const cock = await storyTeller.getPlayerCock();
+    const oralSkill = await storyTeller.getCharacterCanSuckCock();
+    const desirability = await storyTeller.getCharacterCockDesirability();
+
     storyTeller.addSegment({ text:`TODO: Continue front facing blowjob.` })
   }
 
   async function startOnBackBlowjob(storyTeller) {
+    const cock = await storyTeller.getPlayerCock();
+    const oralSkill = await storyTeller.getCharacterCanSuckCock();
+    const desirability = await storyTeller.getCharacterCockDesirability();
+
+    console.log("Skill:",oralSkill);
+    console.log("Desirability:",desirability);
+    console.log("Cock Length:",cock.length);
+
+    if (oralSkill.mouthFit == 'impossible') {
+      throw `Error: Can't fit cock into mouth. This should have been a requirement for this action or handled in a seperate branch.`
+    }
+
+    if (oralSkill.mouthFit == 'painful') {
+
+    }
+
+    if (oralSkill.mouthFit == 'comfortable') {
+
+    }
+
     storyTeller.addSegment({ text:`TODO: Start on back blowjob.` })
   }
 
   async function continueOnBackBlowjob(storyTeller) {
+    const cock = await storyTeller.getPlayerCock();
+    const oralSkill = await storyTeller.getCharacterCanSuckCock();
+    const desirability = await storyTeller.getCharacterCockDesirability();
+
     storyTeller.addSegment({ text:`TODO: Continue on back blowjob.` })
   }
 
   async function cumFromBlowjob(storyTeller) {
+    const cock = await storyTeller.getPlayerCock();
+    const oralSkill = await storyTeller.getCharacterCanSuckCock();
+    const desirability = await storyTeller.getCharacterCockDesirability();
+
     storyTeller.addSegment({ text:`TODO: Cum from blowjob.` })
   }
+
 
   return {
     startFrontBlowjob,
