@@ -45,7 +45,7 @@ describe('Summon Action: Get Blowjob', function() {
   // size, and reduce the scaven's size to make sure the size comparason ends
   // up being possible, and needed to reduce the random cock sizes to make the
   // action even possible most of the time.
-  it.only('with tiny consenting scaven character', function(done) {
+  it('with tiny consenting scaven character', function(done) {
     const scene = extend(true, defaultScene(), {
       player:{
         body:{ height:2500 },

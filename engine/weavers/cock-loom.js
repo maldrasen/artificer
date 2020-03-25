@@ -112,12 +112,12 @@ Weaver.CockLoom = (function() {
     if (cock.shape == 'horse') {
       return Random.from([
         `the wide flair of ${my} horsecock`,
-        `the sensitive rim around the flair of ${my} horsecock`
+        `the sensitive rim around the flair of ${my} horsecock`,
       ]);
     }
 
     return Random.from([
-      `the glans of ${my} cock`
+      `the glans of ${my} cock`,
       `the glans where ${im} most sensitive`,
       `the sensitive ridge around the head of ${my} cock`,
       `the sensitive crown of ${my} cock`,

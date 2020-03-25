@@ -145,11 +145,11 @@ Summoner.StoryTeller = class StoryTeller {
        (await Summoner.OralSegments.PussyPositioning.positionGently(this));
   }
 
-  async startFrontBlowjob()     { await Summoner.OralSegments.startFrontBlowjob(this); }
-  async startOnBackBlowjob()    { await Summoner.OralSegments.startOnBackBlowjob(this); }
-  async continueFrontBlowjob()  { await Summoner.OralSegments.continueFrontBlowjob(this); }
-  async continueOnBackBlowjob() { await Summoner.OralSegments.continueOnBackBlowjob(this); }
-  async cumFromBlowjob()        { await Summoner.OralSegments.cumFromBlowjob(this); }
+  async startFrontBlowjob()     { await Summoner.OralSegments.BlowjobSegments.startFrontBlowjob(this); }
+  async startOnBackBlowjob()    { await Summoner.OralSegments.BlowjobSegments.startOnBackBlowjob(this); }
+  async continueFrontBlowjob()  { await Summoner.OralSegments.BlowjobSegments.continueFrontBlowjob(this); }
+  async continueOnBackBlowjob() { await Summoner.OralSegments.BlowjobSegments.continueOnBackBlowjob(this); }
+  async cumFromBlowjob()        { await Summoner.OralSegments.BlowjobSegments.cumFromBlowjob(this); }
 
   // ===========================================================================
   //                            Utilities & Helpers

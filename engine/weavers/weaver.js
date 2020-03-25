@@ -41,7 +41,7 @@ global.Weaver = (function() {
       }
     }
 
-    return text;
+    return text.replace(/\s+/g,' ');
   }
 
   function actorValue(subject, token, context) {

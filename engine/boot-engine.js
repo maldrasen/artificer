@@ -102,6 +102,7 @@ require(`${ROOT}/engine/devices/summoner/story-teller`);
 require(`${ROOT}/engine/devices/summoner/segments/cock-segments`);
 require(`${ROOT}/engine/devices/summoner/segments/general-segments`);
 require(`${ROOT}/engine/devices/summoner/segments/oral-segments`);
+require(`${ROOT}/engine/devices/summoner/segments/oral/blowjob-segments`);
 require(`${ROOT}/engine/devices/summoner/segments/oral/cock-positioning`);
 require(`${ROOT}/engine/devices/summoner/segments/oral/pussy-positioning`);
 
