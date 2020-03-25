@@ -11,11 +11,11 @@ Summoner.OralSegments = (function() {
   async function startFrontBlowjob(storyTeller) {
     const cock = await storyTeller.getPlayerCock();
     const oralSkill = await storyTeller.getCharacterCanSuckCock();
-    const desireClass = await getDesireClass(storyTeller);
+    const desires = await getDesireFramework(storyTeller);
 
     console.log("=== Start Front Facing ===")
     console.log("Skill:",oralSkill);
-    console.log("Desire:",desireClass);
+    console.log("Desires:",desires);
 
     if (oralSkill.mouthFit == 'impossible') {
       throw `Error: Can't fit cock into mouth. This should have been a requirement for this action or handled in a seperate branch.`
@@ -23,67 +23,37 @@ Summoner.OralSegments = (function() {
 
     if (oralSkill.mouthFit == 'painful') {
       if (oralSkill.depthClass == 'very-shallow') {
-        if (desireClass == 'bad') {}
-        if (desireClass == 'average') {}
-        if (desireClass == 'good') {}
-        if (desireClass == 'great') {}
+
       }
       if (oralSkill.depthClass == 'shallow') {
-        if (desireClass == 'bad') {}
-        if (desireClass == 'average') {}
-        if (desireClass == 'good') {}
-        if (desireClass == 'great') {}
+
       }
       if (oralSkill.depthClass == 'half') {
-        if (desireClass == 'bad') {}
-        if (desireClass == 'average') {}
-        if (desireClass == 'good') {}
-        if (desireClass == 'great') {}
+
       }
       if (oralSkill.depthClass == 'most') {
-        if (desireClass == 'bad') {}
-        if (desireClass == 'average') {}
-        if (desireClass == 'good') {}
-        if (desireClass == 'great') {}
+
       }
       if (oralSkill.depthClass == 'all') {
-        if (desireClass == 'bad') {}
-        if (desireClass == 'average') {}
-        if (desireClass == 'good') {}
-        if (desireClass == 'great') {}
+
       }
     }
 
     if (oralSkill.mouthFit == 'comfortable') {
       if (oralSkill.depthClass == 'very-shallow') {
-        if (desireClass == 'bad') {}
-        if (desireClass == 'average') {}
-        if (desireClass == 'good') {}
-        if (desireClass == 'great') {}
+
       }
       if (oralSkill.depthClass == 'shallow') {
-        if (desireClass == 'bad') {}
-        if (desireClass == 'average') {}
-        if (desireClass == 'good') {}
-        if (desireClass == 'great') {}
+
       }
       if (oralSkill.depthClass == 'half') {
-        if (desireClass == 'bad') {}
-        if (desireClass == 'average') {}
-        if (desireClass == 'good') {}
-        if (desireClass == 'great') {}
+
       }
       if (oralSkill.depthClass == 'most') {
-        if (desireClass == 'bad') {}
-        if (desireClass == 'average') {}
-        if (desireClass == 'good') {}
-        if (desireClass == 'great') {}
+
       }
       if (oralSkill.depthClass == 'all') {
-        if (desireClass == 'bad') {}
-        if (desireClass == 'average') {}
-        if (desireClass == 'good') {}
-        if (desireClass == 'great') {}
+
       }
     }
 
@@ -93,7 +63,7 @@ Summoner.OralSegments = (function() {
   async function continueFrontBlowjob(storyTeller) {
     const cock = await storyTeller.getPlayerCock();
     const oralSkill = await storyTeller.getCharacterCanSuckCock();
-    const desireClass = await getDesireClass(storyTeller);
+    const desires = await getDesireFramework(storyTeller);
 
     storyTeller.addSegment({ text:`TODO: Continue front facing blowjob.` })
   }
@@ -101,11 +71,11 @@ Summoner.OralSegments = (function() {
   async function startOnBackBlowjob(storyTeller) {
     const cock = await storyTeller.getPlayerCock();
     const oralSkill = await storyTeller.getCharacterCanSuckCock();
-    const desireClass = await getDesireClass(storyTeller);
+    const desires = await getDesireFramework(storyTeller);
 
     console.log("=== Start On Back   ===")
     console.log("Skill:",oralSkill);
-    console.log("Desire:",desireClass);
+    console.log("Desires:",desires);
 
     if (oralSkill.mouthFit == 'impossible') {
       throw `Error: Can't fit cock into mouth. This should have been a requirement for this action or handled in a seperate branch.`
@@ -113,67 +83,37 @@ Summoner.OralSegments = (function() {
 
     if (oralSkill.mouthFit == 'painful') {
       if (oralSkill.depthClass == 'very-shallow') {
-        if (desireClass == 'bad') {}
-        if (desireClass == 'average') {}
-        if (desireClass == 'good') {}
-        if (desireClass == 'great') {}
+
       }
       if (oralSkill.depthClass == 'shallow') {
-        if (desireClass == 'bad') {}
-        if (desireClass == 'average') {}
-        if (desireClass == 'good') {}
-        if (desireClass == 'great') {}
+
       }
       if (oralSkill.depthClass == 'half') {
-        if (desireClass == 'bad') {}
-        if (desireClass == 'average') {}
-        if (desireClass == 'good') {}
-        if (desireClass == 'great') {}
+
       }
       if (oralSkill.depthClass == 'most') {
-        if (desireClass == 'bad') {}
-        if (desireClass == 'average') {}
-        if (desireClass == 'good') {}
-        if (desireClass == 'great') {}
+
       }
       if (oralSkill.depthClass == 'all') {
-        if (desireClass == 'bad') {}
-        if (desireClass == 'average') {}
-        if (desireClass == 'good') {}
-        if (desireClass == 'great') {}
+
       }
     }
 
     if (oralSkill.mouthFit == 'comfortable') {
       if (oralSkill.depthClass == 'very-shallow') {
-        if (desireClass == 'bad') {}
-        if (desireClass == 'average') {}
-        if (desireClass == 'good') {}
-        if (desireClass == 'great') {}
+
       }
       if (oralSkill.depthClass == 'shallow') {
-        if (desireClass == 'bad') {}
-        if (desireClass == 'average') {}
-        if (desireClass == 'good') {}
-        if (desireClass == 'great') {}
+
       }
       if (oralSkill.depthClass == 'half') {
-        if (desireClass == 'bad') {}
-        if (desireClass == 'average') {}
-        if (desireClass == 'good') {}
-        if (desireClass == 'great') {}
+
       }
       if (oralSkill.depthClass == 'most') {
-        if (desireClass == 'bad') {}
-        if (desireClass == 'average') {}
-        if (desireClass == 'good') {}
-        if (desireClass == 'great') {}
+
       }
       if (oralSkill.depthClass == 'all') {
-        if (desireClass == 'bad') {}
-        if (desireClass == 'average') {}
-        if (desireClass == 'good') {}
-        if (desireClass == 'great') {}
+
       }
     }
 
@@ -183,7 +123,7 @@ Summoner.OralSegments = (function() {
   async function continueOnBackBlowjob(storyTeller) {
     const cock = await storyTeller.getPlayerCock();
     const oralSkill = await storyTeller.getCharacterCanSuckCock();
-    const desireClass = await getDesireClass(storyTeller);
+    const desires = await getDesireFramework(storyTeller);
 
     storyTeller.addSegment({ text:`TODO: Continue on back blowjob.` })
   }
@@ -191,9 +131,26 @@ Summoner.OralSegments = (function() {
   async function cumFromBlowjob(storyTeller) {
     const cock = await storyTeller.getPlayerCock();
     const oralSkill = await storyTeller.getCharacterCanSuckCock();
-    const desireClass = await getDesireClass(storyTeller);
+    const desires = await getDesireFramework(storyTeller);
 
     storyTeller.addSegment({ text:`TODO: Cum from blowjob.` })
+  }
+
+  // ===========================================================================
+  // Desire Framework
+  // ===========================================================================
+
+  // Rather than having cock desirability be its own tree, we can pregenerate
+  // some adjectives and reactions beforehand to use in the segments as they're
+  // being written. We may move this into personality if it looks like the sort
+  // of thing that gets used everywhere.
+
+  async function getDesireFramework(storyTeller) {
+    let desireClass = await getDesireClass(storyTeller);
+
+    return {
+      desireClass,
+    }
   }
 
   // Reduce the base desire level to one of 4 classes. Less that what we use in
