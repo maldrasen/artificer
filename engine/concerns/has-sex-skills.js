@@ -53,11 +53,15 @@ global.HasSexSkills = { isAppliedTo: function(model) {
       knot = cock.knotWidth <= mouth.width ? 'mouth' : 'impossible'
     }
 
+    let convertedDepth = ConversionUtility.milliToInches(depth);
+
     return {
       mouthFit,
       throatFit,
       depth,
       depthClass: getDepthClass(depth, cock),
+      depthInch: EnglishUtility.inchesInEnglish(convertedDepth, false),
+      depthInches: EnglishUtility.inchesInEnglish(convertedDepth, true),
       balls,
       knot
     };
