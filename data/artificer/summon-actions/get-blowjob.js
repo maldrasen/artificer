@@ -128,9 +128,3 @@ SummonAction.GetBlowjob = (function() {
   };
 
 })();
-
-// event: 'get-blowjob-standing',
-// variants:[
-//   { event:'get-blowjob-on-back' },
-//   { when:['location.has-chair'], event:'get-blowjob-chair' },
-// ],
