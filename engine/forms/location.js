@@ -16,7 +16,7 @@ global.Location = class Location extends Form {
       summonAvailable
     };
 
-    if (flags['locationMenu.showDate']) {
+    if (Flag.lookup('locationMenu.showDate')) {
       view.dates.date = Calendar.fullDate(game.dayNumber);
     }
 

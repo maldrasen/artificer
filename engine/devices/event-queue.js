@@ -76,6 +76,7 @@ global.EventQueue = (function() {
 
   async function unqueueEvent() {
     const event = await nextEvent();
+
     if (event) {
       const raw = { code:event.code, state:event.state };
       await event.destroy();

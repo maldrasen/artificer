@@ -1,14 +1,13 @@
 describe('Recipe', function() {
 
   it("gets a list of unlocked craftable items", function(done) {
+    Flag.set('recipe.basket','unlocked');
     Resource.add('willow-branch',10).then(() => {
-      Flag.set('recipe.basket','unlocked').then(() => {
-        Recipe.getRecipeListForPlan({ reserved:{} }).then(list => {
-          expect(list.length).to.equal(1)
-          expect(list[0].name).to.equal('Wicker Basket');
-          expect(list[0].enoughResources).to.be.true;
-          done();
-        });
+      Recipe.getRecipeListForPlan({ reserved:{} }).then(list => {
+        expect(list.length).to.equal(1)
+        expect(list[0].name).to.equal('Wicker Basket');
+        expect(list[0].enoughResources).to.be.true;
+        done();
       });
     });
   });
