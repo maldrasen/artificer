@@ -43,7 +43,7 @@
   async function firstResult(character) {
     await EventQueue.enqueueEvent('found-fruits-and-nuts',{ actors:{ C:character.id }});
 
-    await Flag.setAll({
+    Flag.setAll({
       'item.bitter-fruits':'unlocked',
       'item.goat-nuts':'unlocked',
       'item.juice-berries':'unlocked',
@@ -72,7 +72,7 @@
     await context.addCharacter('C',character);
 
     await EventQueue.enqueueEvent('found-blight-spider',{ actors:{ C:character.id }});
-    await Flag.set('item.blight-spider','unlocked');
+    Flag.set('item.blight-spider','unlocked');
 
     let story = Role.Forager.Stories.tell(await character.getHealthClass(), true, 0);
     let injury =`{{C::gender.He}} was bent over, searching through a thicket of brambles for something to eat, when a

@@ -84,8 +84,11 @@ Event.build('ambush-rat-end-2', {
     await game.save();
     await rat.save();
 
-    await Flag.set('location-menu.minions','unlocked');
-    await Flag.set('character.first-scaven',rat.id);
+    Flag.setAll({
+      'location-menu.minions': 'unlocked',
+      'character.first-scaven': rat.id,
+    });
+
     await EventQueue.enqueueEvent('looking-outside-2');
   },
 

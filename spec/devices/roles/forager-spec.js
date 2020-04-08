@@ -31,64 +31,43 @@ describe('Role: Forager', function() {
     });
   });
 
-  // This spec is kind of fucked too. We have to sleep before we set the flag
-  // to make sure they're cleared from the previous spec, then we sleep after
-  // we set the flags to make sure they're correct when they're read by this
-  // spec.
-  it('goes foraging for a second time.', function(done) {
+  // In the next two specs, it's possible that the character may have been
+  // injured and brought nothing back, so these specs only continue when that's
+  // not the case.
 
-    let flags = {
+  it('goes foraging for a second time.', function(done) {
+    Flag.setAll({
       'role.forage.success-count': 1,
       'role.forage.failure-count': 0,
       'item.goat-nuts': 'unlocked'
-    };
+    });
 
-    SpecHelper.sleep(10).then(() => {
-      Flag.setAll(flags).then(()=> {
-        SpecHelper.buildJada({ species:'scaven' }).then(jada => {
-          SpecHelper.sleep(10).then(() => {
-            Role.Forager.work(jada).then(results => {
-
-              // It's possible that the character may have been injured and
-              // brought nothing back, so this spec is only valid when that's
-              // not the case.
-              if (results.injury == null) {
-                expect(results.notifications[0].name).to.equal('Foraging');
-                expect(results.flavors['goat-nuts']).to.be.at.least(1);
-                expect(results.flavors['willow-branches']).to.equal(1);
-              }
-
-              done();
-            });
-          });
-        });
+    SpecHelper.buildJada({ species:'scaven' }).then(jada => {
+      Role.Forager.work(jada).then(results => {
+        if (results.injury == null) {
+          expect(results.notifications[0].name).to.equal('Foraging');
+          expect(results.flavors['goat-nuts']).to.be.at.least(1);
+          expect(results.flavors['willow-branches']).to.equal(1);
+        }
+        done();
       });
     });
   });
 
   it('goes foraging a third time', function(done) {
-
-    let flags = {
+    Flag.setAll({
       'role.forage.success-count': 2,
       'role.forage.failure-count': 0,
       'item.goat-nuts': 'unlocked'
-    };
+    });
 
-    SpecHelper.sleep(10).then(() => {
-      Flag.setAll(flags).then(()=> {
-        SpecHelper.buildJada({ species:'scaven' }).then(jada => {
-          SpecHelper.sleep(10).then(() => {
-            Role.Forager.work(jada).then(results => {
-
-              if (results.injury == null) {
-                expect(results.notifications[0].name).to.equal('Foraging');
-                expect(Object.keys(results.flavors)).to.eql(['goat-nuts'])
-              }
-
-              done();
-            });
-          });
-        });
+    SpecHelper.buildJada({ species:'scaven' }).then(jada => {
+      Role.Forager.work(jada).then(results => {
+        if (results.injury == null) {
+          expect(results.notifications[0].name).to.equal('Foraging');
+          expect(Object.keys(results.flavors)).to.eql(['goat-nuts'])
+        }
+        done();
       });
     });
   });

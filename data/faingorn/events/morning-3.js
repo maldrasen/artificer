@@ -69,7 +69,8 @@ Event.build('morning-3', {
 
   onFinish: async choices => {
     await EventCollections.addAct_1_1();
-    await Flag.setAll({
+
+    Flag.setAll({
       'plan-view.allow-idle':    'unlocked',
       'plan-view.roles.forager': 'unlocked',
     });

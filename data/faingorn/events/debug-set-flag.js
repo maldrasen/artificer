@@ -7,8 +7,8 @@ Event.build('debug-set-flag', {
   ],
 
   onFinish: async choices => {
-    let flag = await Flag.set(choices.code, choices.value);
-    log(`Set: ${flag.code} = ${flag.value}`);
+    Flag.set(choices.code, choices.value);
+    log(`Set: ${choices.code} = ${choices.value}`);
   },
 
 });

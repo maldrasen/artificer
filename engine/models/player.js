@@ -71,11 +71,13 @@ Player.forge = async function(options) {
   };
 
   await CharacterBuilder.addBody(player, defaultBody);
-  await Flag.setAll({
+  await player.update({ portraitCode:(await ImageResource.portraitFor(player)).code });
+
+  Flag.setAll({
     'player.first-name': player.firstName,
     'player.last-name': player.lastName,
-    'player.title': player.title });
-  await player.update({ portraitCode:(await ImageResource.portraitFor(player)).code });
+    'player.title': player.title
+  });
 }
 
 Player.forClient = async function() {

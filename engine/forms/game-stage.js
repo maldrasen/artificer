@@ -9,7 +9,7 @@ global.GameStage = class GameStage extends Form {
     if (stage.eventQueue)        { await EventQueue.enqueueEvents(stage.eventQueue);       }
     if (stage.availableEvents)   { await AvailableEvent.addAll(stage.availableEvents);     }
     if (stage.availableProjects) { await AvailableProject.addAll(stage.availableProjects); }
-    if (stage.flags)             { await Flag.setAll(stage.flags);                         }
+    if (stage.flags)             { Flag.setAll(stage.flags);                               }
     if (stage.gameDay)           { game.dayNumber = stage.gameDay;                         }
 
     // Creating minions in the game stage may require more than just the builder options, but for now they do not.

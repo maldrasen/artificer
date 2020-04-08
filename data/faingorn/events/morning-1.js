@@ -100,7 +100,8 @@ Event.build('morning-1', {
   onFinish: async choices => {
     await AvailableProject.add({ code:'make-crude-fur-clothing' });
     await Game.updateLocation('great-hall');
-    await Flag.setAll({
+
+    Flag.setAll({
       'location.current-study': 'great-hall',
       'location-menu.map':      'unlocked' ,
       'map.cellars':            'unlocked',

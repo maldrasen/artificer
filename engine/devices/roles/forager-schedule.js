@@ -4,8 +4,8 @@ Role.Forager.Schedule = (function() {
   // time a character forages, either the success or failure flag is
   // incremented. If something happens it's returned as the scheduled.
   async function getScheduled(injured) {
-    let success = Flag.lookupValue('role.forage.success-count');
-    let failure = Flag.lookupValue('role.forage.failure-count');
+    let success = Flag.lookup('role.forage.success-count');
+    let failure = Flag.lookup('role.forage.failure-count');
 
     if (injured) {
       failure += 1;

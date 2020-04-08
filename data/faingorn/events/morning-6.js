@@ -16,7 +16,7 @@ Event.build('morning-6', {
   }],
 
   onFinish: async choices => {
-    await Flag.set('minions.can-summon','unlocked');
+    Flag.set('minions.can-summon','unlocked');
   },
 
 });

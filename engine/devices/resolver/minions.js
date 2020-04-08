@@ -56,7 +56,7 @@ Resolver.Minions = (function() {
       else if (minion.isAfraid) { afraid.push(minion.id); }
     });
 
-    await Flag.setAll({
+    Flag.setAll({
       'minions.count':            minions.length,
       'minions.loyal-count':      loyal.length,
       'minions.afraid-count':     afraid.length,
