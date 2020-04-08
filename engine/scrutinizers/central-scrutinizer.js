@@ -22,8 +22,8 @@ global.CentralScrutinizer = (function() {
     if (requirement == 'game.not-metric')      { return ! Settings.Metric; }
     if (requirement.match(/^game.dayNumber/))  { return await checkDayNumber(requirement); }
     if (requirement.match(/^game.food/))       { return await checkFood(requirement); }
-    if (requirement.match(/^flag/))            { return await checkFlag(requirement); }
-    if (requirement.match(/^no-flag/))         { return await checkFlagNotExists(requirement); }
+    if (requirement.match(/^flag/))            { return checkFlag(requirement); }
+    if (requirement.match(/^no-flag/))         { return checkFlagNotExists(requirement); }
     if (requirement.match(/^state/))           { return checkState(requirement,extra.state); }
     if (requirement.match(/^player/))          { return await PlayerScrutinizer.check(requirement, context); }
     if (requirement.match(/^minion/))          { return await MinionScrutinizer.check(requirement, context); }
@@ -56,22 +56,22 @@ global.CentralScrutinizer = (function() {
   }
 
   // Requirements Like: flag.cock=horse, or flag.dicksSucked>=37
-  async function checkFlag(requirement) {
+  function checkFlag(requirement) {
     let match = requirement.match(/^flag\.([^<>=]+)(<|<=|=|>=|>)([^<>=]+)/);
     if (match == null) {
-      return await checkFlagExists(requirement);
+      return checkFlagExists(requirement);
     }
 
-    let flag = await Flag.lookup(match[1]);
-    return (flag == null) ? false : checkComparisonOperation(flag.value, match[2], match[3]);
+    let value = Flag.lookup(match[1]);
+    return (value == null) ? false : checkComparisonOperation(value, match[2], match[3]);
   }
 
-  async function checkFlagExists(requirement) {
-    return (await Flag.lookup(requirement.match(/^flag\.(.+)/)[1])) != null;
+  function checkFlagExists(requirement) {
+    return Flag.lookup(requirement.match(/^flag\.(.+)/)[1]) != null;
   }
 
-  async function checkFlagNotExists(requirement) {
-    return (await Flag.lookup(requirement.match(/^no-flag\.(.+)/)[1])) == null;
+  function checkFlagNotExists(requirement) {
+    return Flag.lookup(requirement.match(/^no-flag\.(.+)/)[1]) == null;
   }
 
   // Requirements Like: state.sex=filthy, or state.litersOfCum>=37

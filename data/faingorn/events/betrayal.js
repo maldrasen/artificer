@@ -14,10 +14,9 @@ Event.build('betrayal', {
   //       furnature or something perhaps. If this is your only or last minion who betrays you, that will always lead
   //       to a game over. Background will also need to be set to the player's sleeping location.
   onFinish: async () => {
-    const flags = await Flag.getAll();
-    const traitors = flags['minions.traitorous-ids'].split(',');
+    const traitors = Flag.lookup('minions.traitorous-ids').split(',');
 
-    if (flags['minions.traitorous-count'] == 1) {
+    if (Flag.lookup('minions.traitorous-count') == 1) {
       return await EventQueue.enqueueEvent('betrayal-single', { priority:'next', actors:{ C:traitors[0] }});
     }
 

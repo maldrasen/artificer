@@ -2,17 +2,16 @@ global.Location = class Location extends Form {
 
   async buildView() {
     const game = await Game.instance();
-    const flags = await Flag.getAll();
-    const summonAvailable = flags['minions.can-summon'] && (typeof this.summonActions == 'function');
+    const summonAvailable = Flag.lookup('minions.can-summon') && (typeof this.summonActions == 'function');
 
     const view = {
       actions: this.actions,
       name: (await this.buildName()),
       description: (await this.buildDescription()),
-      flags: (await this.buildFlags(game,flags)),
+      flags: (await this.buildFlags(game)),
       attributes: (await this.buildAttributes()),
       flavor: (await this.buildFlavor()),
-      mapData: (await Location.buildMapData(flags)),
+      mapData: (await Location.buildMapData()),
       dates: { day:game.dayNumber },
       summonAvailable
     };
@@ -35,8 +34,9 @@ global.Location = class Location extends Form {
   async buildFlavor()      { return []; }
 
 
-  async buildFlags(game, flags) {
+  async buildFlags(game) {
     let eventActive = await EventQueue.nextLocationEvent(game.location) != null;
+    let flags = Flag.getAll();
 
     return {
       all: flags,
@@ -50,19 +50,19 @@ global.Location = class Location extends Form {
   }
 
   static async summonAvailable() {
-    return (await Flag.lookupValue('minions.can-summon')) &&
-          (typeof Location.lookup((await Game.instance()).location).summonActions == 'function');
+    return Flag.lookup('minions.can-summon') &&
+           (typeof Location.lookup((await Game.instance()).location).summonActions == 'function');
   }
 
   // We build the locations for the map when building the location view. Right
   // now we only need a name and a code, but eventually I think the map will
   // need to be more graphical, so this will need to carry a lot more map state
   // data and image positioning and stuff.
-  static async buildMapData(flags) {
+  static async buildMapData() {
     let current = (await Game.instance()).location;
 
     let locations = await Promise.all(Location.all().map(async location => {
-      if (flags[`map.${location.code}`] == null) { return null; } else {
+      if (Flag.lookup(`map.${location.code}`) == null) { return null; } else {
         let events = await EventQueue.getQueuedLocationEvents(location.code);
         let name = await location.buildName();
 

@@ -18,25 +18,23 @@ describe('CentralScrutinizer', function() {
   });
 
   it('Checks flag values', function(done) {
-    Flag.create({ code:'anus.flavor', value:'grape' }).then(()=>{
-      CentralScrutinizer.meetsRequirements('flag.anus.flavor=grape').then(yep => {
-        CentralScrutinizer.meetsRequirements('flag.anus.flavor=lemon').then(nope => {
-          expect(yep).to.be.true;
-          expect(nope).to.be.false;
-          done();
-        });
+    Flag.set('anus.flavor','grape');
+    CentralScrutinizer.meetsRequirements('flag.anus.flavor=grape').then(yep => {
+      CentralScrutinizer.meetsRequirements('flag.anus.flavor=lemon').then(nope => {
+        expect(yep).to.be.true;
+        expect(nope).to.be.false;
+        done();
       });
     });
   });
 
   it('Checks flag presence', function(done) {
-    Flag.create({ code:'anus.flavor', value:'grape' }).then(()=>{
-      CentralScrutinizer.meetsRequirements('flag.anus.flavor').then(yep => {
-        CentralScrutinizer.meetsRequirements('flag.pussy.flavor').then(nope => {
-          expect(yep).to.be.true;
-          expect(nope).to.be.false;
-          done();
-        });
+    Flag.set('anus.flavor','grape');
+    CentralScrutinizer.meetsRequirements('flag.anus.flavor').then(yep => {
+      CentralScrutinizer.meetsRequirements('flag.pussy.flavor').then(nope => {
+        expect(yep).to.be.true;
+        expect(nope).to.be.false;
+        done();
       });
     });
   });

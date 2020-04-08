@@ -106,7 +106,7 @@ Summoner.OralSegments.CockPositioning = (function() {
     options = [];
 
     if (myBedroom) {
-      if ((await Flag.lookupValue('player.bed-type')) == 'fur-pile') {
+      if (Flag.lookup('player.bed-type') == 'fur-pile') {
         Summoner.StoryTeller.addOptionsWith(options,[
           `I lead {{him}} over to the pile or furs I've been using as a bed and lay down, letting {{him}} climb on top of me.`,
           `I reach down and easily lift {{him}} up, then carry {{him}} over to the pile of furs I've been using as a bed. I drop down into them with {{him}} on top of me.`,

@@ -18,15 +18,6 @@ global.ObjectUtility = {
     return chain;
   },
 
-  // Quick and dirty, get keys of an object.
-  keys(object) {
-    let keys = [];
-    each(object, function(value, key) {
-      keys.push(key);
-    });
-    return keys;
-  },
-
   // Quick and dirty, get values of an object.
   values(object) {
     let values = [];

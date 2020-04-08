@@ -1,89 +1,52 @@
 describe('Flag', function() {
 
-  const scores = {
-    'player.fucks-men':'never',
-    'player.fucks-futas':'maybe',
-    'player.fucks-women':'always',
-  };
-
-  it('sets a raw flag', function(done) {
-    Flag.set('anything','value').then(() => {
-      Flag.lookup('anything').then(flag => {
-        expect(flag.value).to.equal('value');
-        done();
-      });
-    });
+  it('sets a raw flag', function() {
+    Flag.set('anything','value');
+    expect(Flag.lookup('anything')).to.equal('value');
   });
 
-  it('sets a flag with info', function(done) {
-    Flag.set('location-menu.inventory','unlocked').then(() => {
-      Flag.equals('location-menu.inventory','unlocked').then(result => {
-        expect(result).to.be.true;
-        done();
-      });
-    });
+  it('can have a default value set', function() {
+    expect(Flag.lookup('location.keep-name')).to.equal('Faingorn Keep');
   });
 
-  it('sets a flag with an integer value', function(done) {
-    Flag.set('character.scaven-chief',20).then(() => {
-      Flag.lookup('character.scaven-chief').then(flag => {
-        expect(flag.value).to.equal('20');
-        done();
-      });
-    });
+  it('sets a flag with an integer validator', function() {
+    Flag.set('character.scaven-chief', 20);
+    expect(Flag.lookup('character.scaven-chief')).to.equal(20);
   });
 
-  it('sets multiple flags', function(done) {
-    Flag.setAll({ flag1:'one', flag2:'two' }).then(() => {
-      Flag.getAll().then(flags => {
-        expect(flags.flag1).to.equal('one');
-        expect(flags.flag2).to.equal('two');
-        done();
-      });
-    });
+  it('sets a flag with an "in" validator', function() {
+    Flag.set('location-menu.inventory', 'unlocked');
+    expect(Flag.lookup('location-menu.inventory')).to.equal('unlocked');
   });
 
-  it('gets the "always fuck" gender list', function(done) {
-    Flag.setAll(scores).then(() => {
-      Flag.alwaysFuckGenderList().then(list => {
-        expect(list).to.eql(['female'])
-        done();
-      });
-    });
+  it('sets multiple flags', function() {
+    Flag.setAll({ flag1:'one', flag2:'two' });
+    expect(Flag.lookup('flag1')).to.equal('one');
+    expect(Flag.lookup('flag2')).to.equal('two');
   });
 
-  // There's a timing issue here. Setting the same flag too rapidly sometimes
-  // causes the flag to be set then deleted. Getting all the flags first seems
-  // to clear up this issue though.
-
-  it('gets the "maybe fuck" gender list', function(done) {
-    Flag.getAll().then(all => {
-      Flag.setAll(scores).then(() => {
-        Flag.maybeFuckGenderList().then(list => {
-          expect(list).to.eql(['futa'])
-          done();
-        });
+  describe("gender preferences", function() {
+    before(function() {
+      Flag.setAll({
+        'player.fucks-men':'never',
+        'player.fucks-futas':'maybe',
+        'player.fucks-women':'always',
       });
     });
-  });
 
-  it('gets the gender preference scores', function(done) {
-    Flag.getAll().then(all => {
-      Flag.setAll(scores).then(() => {
-        Flag.genderPreferenceScores().then(s => {
-          expect(s.male).to.equal(0);
-          expect(s.futa).to.equal(1);
-          expect(s.female).to.equal(2);
-          done();
-        });
-      });
+    it('gets the "always fuck" gender list', function() {
+      expect(Flag.alwaysFuckGenderList()).to.eql(['female']);
     });
-  });
 
-  it('can have a default value set', function(done) {
-    Flag.lookup('location.keep-name').then(flag => {
-      expect(flag.value).to.equal('Faingorn Keep');
-      done();
+    it('gets the "maybe fuck" gender list', function() {
+      expect(Flag.maybeFuckGenderList()).to.eql(['futa']);
+    });
+
+    it('gets the gender preference scores', function() {
+      let compiled = Flag.genderPreferenceScores();
+      expect(compiled.male).to.equal(0);
+      expect(compiled.futa).to.equal(1);
+      expect(compiled.female).to.equal(2);
     });
   });
 

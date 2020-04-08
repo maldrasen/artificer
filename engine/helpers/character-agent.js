@@ -31,16 +31,15 @@ global.CharacterAgent = (function() {
   //       that the chief is always the strongest scaven. A change in
   //       leadership like that might warrent another event.
   async function scavenChief() {
-    const flag = await Flag.lookup('character.scaven-chief');
-    if (flag) {
-      const chief = await Character.lookup(flag.value);
+    if (Flag.lookup('character.scaven-chief')) {
+      const chief = await Character.lookup(Flag.lookup('character.scaven-chief'));
       if (chief && chief.alive) {
         return chief;
       }
     }
 
     const newChief = await findStrongest('scaven');
-    await Flag.set('character.scaven-chief',newChief.id)
+    Flag.set('character.scaven-chief',newChief.id);
     return newChief;
   }
 

@@ -34,16 +34,14 @@ global.MinionScrutinizer = (function() {
   }
 
   async function checkBetray(context) {
-    await context.addFlags();
-    return parseInt(context.get('flags')['minions.traitorous-count'] || 0) > 0
+    return (Flag.lookup('minions.traitorous-count') || 0) > 0
   }
 
   // You minions will mutiny if you have more rebellious minions than loyal minions. The minimum number of minions that
   // can mutiny is 4, with 3 rebellious and 1 loyal.
   async function checkMutiny(context) {
-    await context.addFlags();
-    let loyal =      parseInt(context.get('flags')['minions.loyal-count'] || 0);
-    let rebellious = parseInt(context.get('flags')['minions.rebellious-count'] || 0);
+    let loyal =      Flag.lookup('minions.loyal-count') || 0;
+    let rebellious = Flag.lookup('minions.rebellious-count') || 0;
     return (loyal + rebellious > 3) && (rebellious > loyal);
   }
 

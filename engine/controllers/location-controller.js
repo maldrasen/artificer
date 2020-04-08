@@ -20,11 +20,10 @@ global.LocationController = (function() {
     ipcMain.on('location.show-minion', async (event, id) => {
       const minion = await Character.lookup(id);
       const details = await minion.detailForClient();
-      const flags = await Flag.getAll();
 
       Browser.send('render.minion', {
         minion: details,
-        flags: flags,
+        flags: Flag.getAll(),
       });
     });
 

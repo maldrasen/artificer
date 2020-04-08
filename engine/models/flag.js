@@ -5,98 +5,107 @@ global.Flag = Database.instance().define('flag', {
   timestamps: false,
 });
 
-Flag.lookup = async function(code) {
-  let flag = await Flag.findOne({ where:{ code:code } });
+Flag._cache = {};
 
-  if (flag == null) {
-    let info = FlagInfo.instances[code];
-    return (info && info.default != null) ? { code:code, value:info.default } : null;
-  }
+Flag.loadFlags = async function() {
+  Flag._cache = {};
 
-  return { code:flag.code, value:flag.value };
+  each((await Flag.findAll()), flag => {
+    Flag._cache[flag.code] = flag.value
+  });
+
+  console.log("Loaded Flags:");
+  console.log(Flag._cache);
 }
 
-Flag.lookupValue = async function(code) {
-  let flag = await Flag.lookup(code);
-  return (flag == null) ? null : flag.value;
-}
-
-Flag.equals = async function(code,value) {
-  const flag = await Flag.lookup(code);
-  return flag != null && flag.value == value;
-}
-
-Flag.setAll = async function(flags) {
-  return await Promise.all(Object.keys(flags).map(async code => {
-    return await Flag.set(code, flags[code]);
+Flag.saveFlags = async function() {
+  await Promise.all(Object.keys(Flag._cache).map(async code => {
+    let flag = await Flag.findOne({ where:{ code:code }});
+    return flag == null ?
+      Flag.create({ code:code, value:value }):
+      flag.update({ value:Flag._cache[code] });
   }));
 }
 
-Flag.set = async function(code, value) {
+// The lookup() function should always be used when reading the value of a flag.
+// If a flag hasn't been set this function will return the flag's default value.
+Flag.lookup = function(code) {
+  let value = null;
+
+  if (Flag._cache[code] != null) {
+    value = Flag._cache[code];
+  }
+  else if (FlagInfo.instances[code] != null) {
+    value = FlagInfo.instances[code].default
+  }
+
+  if (value && typeof value == 'string' && value.match(/\d+/)) {
+    return parseInt(value);
+  }
+
+  return value;
+}
+
+Flag.setAll = function(flags) {
+  each(Object.keys(flags), code => {
+    Flag.set(code, flags[code]);
+  });
+}
+
+Flag.set = function(code, value) {
+  if (value == null) {
+    return delete Flag._cache[code];
+  }
+
   let info = FlagInfo.instances[code];
   if (info) {
     if (info.validateIn != null && info.validateIn.indexOf(value) < 0) { throw `Cannot set flag ${code} to ${value}. Validation failed.` }
     if (info.validateInteger && Number.isInteger(value) == false)      { throw `Cannot set flag ${code} to ${value}. Validation failed.` }
   }
 
-  let flag = await Flag.findOne({ where:{ code:code }});
-  if (flag) {
-    flag.value = value;
-    return await flag.save();
-  }
-
-  return await Flag.create({ code:code, value:value });
+  Flag._cache[code] = `${value}`;
 }
 
-Flag.getAll = async function() {
-  let flags = await Flag.findAll({ where:{}, order: [['code', 'ASC']] });
-
-  let compact = {};
-  each(flags, flag => {
-    compact[flag.code] = flag.value
-  });
-
-  return compact;
+Flag.getAll = function() {
+  return extend({},Flag._cache);
 }
 
 Flag.printFlags = async function() {
-  const flags = await Flag.getAll();
   console.log("\n=== Printing Flags ===");
-  each(flags, (value,code) => { console.log(`    ${code}  -  ${value}`); });
+  each(Object.keys(Flag._cache).sort(), code => {
+    console.log(`    ${code}  -  ${Flag._cache[code]}`);
+  });
 }
 
-Flag.alwaysFuckGenderList = async function() {
-  let flags = await Flag.getAll();
+Flag.alwaysFuckGenderList = function() {
   let always = []
 
-  if (flags['player.fucks-men'] == 'always')   { always.push('male');   }
-  if (flags['player.fucks-futas'] == 'always') { always.push('futa');   }
-  if (flags['player.fucks-women'] == 'always') { always.push('female'); }
+  if (Flag._cache['player.fucks-men'] == 'always')   { always.push('male');   }
+  if (Flag._cache['player.fucks-futas'] == 'always') { always.push('futa');   }
+  if (Flag._cache['player.fucks-women'] == 'always') { always.push('female'); }
 
   return always;
 }
 
-Flag.maybeFuckGenderList = async function() {
-  let flags = await Flag.getAll();
+Flag.maybeFuckGenderList = function() {
   let maybe = []
 
-  if (flags['player.fucks-men'] == 'maybe')   { maybe.push('male');   }
-  if (flags['player.fucks-futas'] == 'maybe') { maybe.push('futa');   }
-  if (flags['player.fucks-women'] == 'maybe') { maybe.push('female'); }
+  if (Flag._cache['player.fucks-men'] == 'maybe')   { maybe.push('male');   }
+  if (Flag._cache['player.fucks-futas'] == 'maybe') { maybe.push('futa');   }
+  if (Flag._cache['player.fucks-women'] == 'maybe') { maybe.push('female'); }
 
   return maybe;
 }
 
-Flag.genderPreferenceScores = async function() {
-  let flags = await Flag.getAll();
+Flag.genderPreferenceScores = function() {
   let scores = { male:0, female:0, futa:0 };
 
-  if (flags['player.fucks-men'] == 'always')   { scores.male = 2;   }
-  if (flags['player.fucks-men'] == 'maybe')    { scores.male = 1;   }
-  if (flags['player.fucks-women'] == 'always') { scores.female = 2; }
-  if (flags['player.fucks-women'] == 'maybe')  { scores.female = 1; }
-  if (flags['player.fucks-futas'] == 'always') { scores.futa = 2;   }
-  if (flags['player.fucks-futas'] == 'maybe')  { scores.futa = 1;   }
+  if (Flag._cache['player.fucks-men'] == 'always')   { scores.male = 2;   }
+  if (Flag._cache['player.fucks-men'] == 'maybe')    { scores.male = 1;   }
+  if (Flag._cache['player.fucks-women'] == 'always') { scores.female = 2; }
+  if (Flag._cache['player.fucks-women'] == 'maybe')  { scores.female = 1; }
+  if (Flag._cache['player.fucks-futas'] == 'always') { scores.futa = 2;   }
+  if (Flag._cache['player.fucks-futas'] == 'maybe')  { scores.futa = 1;   }
 
   return scores;
 }

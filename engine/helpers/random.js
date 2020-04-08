@@ -32,7 +32,7 @@ global.Random = {
   // the ratios between the numbers determine the probability
   fromFrequencyMap(map) {
     let index = 0;
-    let keys = ObjectUtility.keys(map);
+    let keys = Object.keys(map);
     let random = Random.upTo(ObjectUtility.values(map).reduce(function(a,v) { return a+v; }));
 
     for (let i=0; i<keys.length; i++) {

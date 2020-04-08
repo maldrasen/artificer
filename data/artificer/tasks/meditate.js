@@ -6,14 +6,14 @@ Task.build('meditate', {
   limit: 1,
 
   execute: async work => {
-    Flag.set('player.meditate-count', parseInt((await Flag.lookup('player.meditate-count')).value)+1);
+    Flag.set('player.meditate-count', Flag.lookup('player.meditate-count') + 1);
 
     const player = await Player.instance();
-    const maelstrom = await Flag.lookup('player.maelstrom');
-    const adamant =   await Flag.lookup('player.adamant');
-    const gaea =      await Flag.lookup('player.gaea');
-    const morpheus =  await Flag.lookup('player.morpheus');
-    const abyss =     await Flag.lookup('player.abyss');
+    const maelstrom = Flag.lookup('player.maelstrom');
+    const adamant =   Flag.lookup('player.adamant');
+    const gaea =      Flag.lookup('player.gaea');
+    const morpheus =  Flag.lookup('player.morpheus');
+    const abyss =     Flag.lookup('player.abyss');
 
     // Meditation only increases your magical attribute up to 50 points.
     // TODO: The player should still meditate while Abyss remains unlocked.

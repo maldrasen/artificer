@@ -101,15 +101,17 @@ global.EventQueue = (function() {
   // AvailableEvent class, this is done for all events even otherise valid
   // events.
   async function markEventAsEnqueued(code) {
-    const flag = await Flag.lookup(`enqueued.${code}`)
-    if (flag == null) {
-      await Flag.create({ code:`enqueued.${code}`, value:1 })
+    const countCode = `enqueued.${code}`;
+    const count = Flag.lookup(countCode);
+
+    if (count == null) {
+      Flag.set(countCode,1);
       return true;
     }
 
     let event = Event.lookup(code);
     if (event.repeatable) {
-      await Flag.set(flag.code, 1 + parseInt(flag.value));
+      Flag.set(countCode, count+1);
       return true;
     }
 

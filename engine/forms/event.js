@@ -2,11 +2,10 @@ global.Event = class Event extends Form {
 
   static async onFinish(choices) {
     const code = choices.event.code;
-    const flag = await Flag.lookup(`completed.${code}`);
+    const completedCode = `completed.${code}`;
+    const completedValue = Flag.lookup(completedCode) == null ? 1 : Flag.lookup(completedCode) + 1;
 
-    (flag == null) ?
-      (await Flag.create({ code:`completed.${code}`, value:1 })):
-      (await Flag.set(flag.code, 1 + parseInt(flag.value)));
+    Flag.set(completedCode, completedValue);
 
     let finishFunction = Event.lookup(code).onFinish;
     if (finishFunction) {

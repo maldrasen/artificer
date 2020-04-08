@@ -47,10 +47,9 @@ Role.Forager.Results = (function() {
   // Every foraged item flavor must be unlocked befor it can be found. The
   // first scheduled event unlocks the first four items.
   async function getUnlockedItems() {
-    const flags = await Flag.getAll();
     return ItemFlavor.where(flavor => {
       if (['foraged-item','foraged-food','foraged-herb','foraged-insect'].indexOf(flavor.type) >= 0) {
-        if (flags[`item.${flavor.code}`] == 'unlocked') { return flavor; }
+        if (Flag.lookup(`item.${flavor.code}`) == 'unlocked') { return flavor; }
       }
     });
   }

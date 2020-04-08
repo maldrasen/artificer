@@ -19,7 +19,6 @@ global.WeaverContext = class WeaverContext {
     await this.addGame();
     await this.addPlayer();
     await this.addMinionData();
-    await this.addFlags();
 
     await Promise.all(Object.keys(event.actors||[]).map(async key => {
       await this.addActor(key, event.actors[key]);
@@ -59,12 +58,6 @@ global.WeaverContext = class WeaverContext {
     const character = await CharacterAgent.findActor(descriptive);
     if (character) {
       await this.addCharacter(key, character);
-    }
-  }
-
-  async addFlags() {
-    if (this.get('flags') == null) {
-      this.set('flags', (await Flag.getAll()));
     }
   }
 

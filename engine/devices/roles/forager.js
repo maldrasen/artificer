@@ -4,7 +4,7 @@ Role.Forager = (function() {
   const description = 'A forager will go out into the wilds and forrage for food and crafting materials.';
 
   async function canWork(character) {
-    return (await Flag.lookupValue('plan-view.roles.forager')) == 'unlocked'
+    return Flag.lookup('plan-view.roles.forager') == 'unlocked'
   }
 
   async function work(character) {
@@ -38,7 +38,7 @@ Role.Forager = (function() {
   // Normally there's a 5% chance of getting injured when out foraging. If this
   // is the character's first time foraging then it should always be a success.
   async function wasCharacterInjured() {
-    return ((await Flag.lookupValue('role.forage.success-count')) == 0) ? false : Random.upTo(100) > 95;
+    return (Flag.lookup('role.forage.success-count') == 0) ? false : Random.upTo(100) > 95;
   }
 
   // TODO: The number of trips that a character can make is based entirely on

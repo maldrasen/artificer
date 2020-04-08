@@ -12,13 +12,11 @@ describe('Resolver: Minions', function() {
     it('sets the loyalty flags', function(done) {
       buildMinions().then(minions => {
         Resolver.Minions.checkLoyalty(minions).then(() => {
-          Flag.getAll().then(flags => {
-            expect(flags['minions.loyal-count']).to.equal('1');
-            expect(flags['minions.afraid-count']).to.equal('1');
-            expect(flags['minions.rebellious-count']).to.equal('2');
-            expect(flags['minions.traitorous-count']).to.equal('1');
-            done();
-          });
+          expect(Flag.lookup('minions.loyal-count')).to.equal('1');
+          expect(Flag.lookup('minions.afraid-count')).to.equal('1');
+          expect(Flag.lookup('minions.rebellious-count')).to.equal('2');
+          expect(Flag.lookup('minions.traitorous-count')).to.equal('1');
+          done();
         });
       });
     });

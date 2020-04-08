@@ -14,12 +14,11 @@ Event.build('starving', {
   //       how many minions you have, etc. For now though we just enqueue the event for when there is only one minion.
   onFinish: async () => {
     const game = await Game.instance();
-    const flags = await Flag.getAll();
 
     await Character.reduceAllLoyalty(6);
     await AvailableEvent.add({ code:'starving', requires:[`game.dayNumber>${game.dayNumber}`]});
 
-    if (flags['minions.count'] == 1) { return await EventQueue.enqueueEvent('starving-single', { priority:'next' }); }
+    if (Flag.lookup('minions.count') == 1) { return await EventQueue.enqueueEvent('starving-single', { priority:'next' }); }
 
     throw `TODO: Need a starvation event that matches the game's current state.`
   },

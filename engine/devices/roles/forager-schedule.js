@@ -4,15 +4,15 @@ Role.Forager.Schedule = (function() {
   // time a character forages, either the success or failure flag is
   // incremented. If something happens it's returned as the scheduled.
   async function getScheduled(injured) {
-    let success = parseInt(await Flag.lookupValue('role.forage.success-count'));
-    let failure = parseInt(await Flag.lookupValue('role.forage.failure-count'));
+    let success = Flag.lookupValue('role.forage.success-count');
+    let failure = Flag.lookupValue('role.forage.failure-count');
 
     if (injured) {
       failure += 1;
-      await Flag.set('role.forage.failure-count',failure);
+      Flag.set('role.forage.failure-count',failure);
     } else {
       success += 1;
-      await Flag.set('role.forage.success-count',success);
+      Flag.set('role.forage.success-count',success);
     }
 
     let scheduled = injured ? Role.Forager.FailureSchedule[`F.${failure}`]: Role.Forager.SuccessSchedule[`S.${success}`];
@@ -29,7 +29,7 @@ Role.Forager.Schedule = (function() {
   async function executeScheduled(character, scheduled) {
     if (scheduled.special) { return await scheduled.special(character); }
     if (scheduled.event)   { await EventQueue.enqueueEvent(scheduled.event,{ actors:{ C:character.id }}); }
-    if (scheduled.unlock)  { await Flag.set(`item.${scheduled.unlock}`,'unlocked'); }
+    if (scheduled.unlock)  { Flag.set(`item.${scheduled.unlock}`,'unlocked'); }
     return await buildScheduledReport(character, scheduled);
   }
 

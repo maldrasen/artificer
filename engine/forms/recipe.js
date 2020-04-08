@@ -3,11 +3,10 @@ global.Recipe = class Recipe extends Form {
   // === Static functions for the Plan View ===
 
   static async getRecipeListForPlan(state) {
-    let flags = await Flag.getAll();
     let available = await Recipe.getAvailableResources(state.reserved);
 
     let unlocked = Recipe.where(recipe => {
-      return flags[`recipe.${recipe.code}`] == 'unlocked'
+      return Flag.lookup(`recipe.${recipe.code}`) == 'unlocked';
     });
 
     let recipes = await Promise.all(unlocked.map(async recipe => {

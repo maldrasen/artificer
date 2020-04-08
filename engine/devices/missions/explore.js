@@ -28,14 +28,13 @@ Mission.Explore = (function() {
   // discovery doesn't happen there's still a 50% chance of another event
   // happening.
   async function attemptDiscovery(mission) {
-    const flags = Object.keys(await Flag.getAll());
     const discoveries = [];
     const events = {};
     const eventsFreq = {};
 
     await Promise.all(mission.discoveries.map(async possibility => {
       if (await CentralScrutinizer.meetsRequirements(Event.lookup(possibility.code).requires)) {
-        if (flags.indexOf(`enqueued.${possibility.code}`) < 0) {
+        if (Flag.lookup(`enqueued.${possibility.code}`) == null) {
           if (possibility.probability > Random.upTo(100)) {
             discoveries.push(possibility);
           }
