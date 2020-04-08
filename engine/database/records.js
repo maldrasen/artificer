@@ -2,10 +2,13 @@ global.Records = (function() {
 
   function saveToFile(gamename) {
     return new Promise((resolve, reject) => {
-      Player.instance().then(player => {
+      Player.instance().then(async player => {
         let filename = `${player.firstName}.${normalizeFilename(gamename)}`
         if (filename.length > 60) { return reject('Savegame filename is too long'); }
-        saveGame(filename).then(resolve);
+
+        await Flag.saveFlags();
+        await saveGame(filename);
+        resolve();
       });
     });
   }
@@ -57,7 +60,7 @@ global.Records = (function() {
     return new Promise(resolve => {
       Promise.all(instances.map(instance => {
         return model.create(instance);
-      })).then(resolve);
+      })).then(Flag.loadFlags).then(resolve);
     });
   }
 

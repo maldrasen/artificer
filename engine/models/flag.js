@@ -15,16 +15,13 @@ Flag.loadFlags = async function() {
   each((await Flag.findAll()), flag => {
     Flag._cache[flag.code] = flag.value
   });
-
-  console.log("Loaded Flags:");
-  console.log(Flag._cache);
 }
 
 Flag.saveFlags = async function() {
   await Promise.all(Object.keys(Flag._cache).map(async code => {
     let flag = await Flag.findOne({ where:{ code:code }});
     return flag == null ?
-      Flag.create({ code:code, value:value }):
+      Flag.create({ code:code, value:Flag._cache[code] }):
       flag.update({ value:Flag._cache[code] });
   }));
 }
