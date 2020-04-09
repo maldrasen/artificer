@@ -92,9 +92,8 @@
     }
   }
 
-  .list-row {
+  .main-area {
     display: flex;
-    flex-wrap: wrap;
   }
 
   .attributes {
@@ -102,6 +101,12 @@
     margin: 10px;
     dt { width: 5em; }
   }
+  .attributes-title {
+    color: $fg-strong;
+    font-size: $fs-big;
+    border-bottom: $border-light;
+  }
+
   .aspect-list {
     margin: 10px;
     width: 200px;

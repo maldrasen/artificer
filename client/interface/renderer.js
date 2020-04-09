@@ -12,6 +12,7 @@ global.Renderer = (function() {
   };
 
   const TEMPLATES = [
+    'character-aspects',
     'chooser',
     'dialog',
     'event',

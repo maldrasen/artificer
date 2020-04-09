@@ -21,7 +21,6 @@ Components.MinionDetailView = (function() {
 
   function build() {
     let view = $('#overlayContent .minion-detail-view');
-
     view.find('.portrait-frame').append($('<img>',{ src:minion.portrait }));
     view.find('.name-section .name').append(minion.name);
     view.find('.name-section .gender').append(minion.gender);
@@ -31,41 +30,17 @@ Components.MinionDetailView = (function() {
     view.find('.top-row .health-section').addClass(`fg-health-${minion.healthClass}`);
     view.find('.top-row .energy-word').append(minion.energyWord);
     view.find('.top-row .energy-word').addClass(`fg-energy-${minion.energy}`);
-    view.find('.attributes dd.physical .value').append(minion.physical);
-    view.find('.attributes dd.physical .word').append(minion.physicalWord);
-    view.find('.attributes dd.personal .value').append(minion.personal);
-    view.find('.attributes dd.personal .word').append(minion.personalWord);
-    view.find('.attributes dd.mental .value').append(minion.mental);
-    view.find('.attributes dd.mental .word').append(minion.mentalWord);
-    view.find('.attributes dd.magical .value').append(minion.magical);
-    view.find('.attributes dd.magical .word').append(minion.magicalWord);
-    view.find('.attributes dd.fear .value').append(minion.fear);
-    view.find('.attributes dd.fear .word').append(minion.fearWord);
-    view.find('.attributes dd.loyalty .value').append(minion.loyalty);
-    view.find('.attributes dd.loyalty .word').append(minion.loyaltyWord);
-    view.find('.attributes dd.lust .value').append(minion.lust);
-    view.find('.attributes dd.lust .word').append(minion.lustWord);
-
-    view.find('.description-row').append(minion.description);
-
-    addAspects(minion.skillAspects,       view.find('.skill-aspects'));
-    addAspects(minion.personalityAspects, view.find('.personality-aspects'));
-    addAspects(minion.sexualAspects,      view.find('.sexual-aspects'));
+    view.find('.description-area').append(minion.description);
 
     if (Components.MinionListView.isSummonAvailable()) {
       view.find('.summon-minion-button').removeClass('hide').data('id',minion.id);
     }
 
-    Elements.ScrollingPanel.build($('#overlayContent .scrolling-panel'));
+    Components.CharacterViews.buildAspects(view, minion, 'minion');
     Components.EquipmentFrame.build(minion);
+    Elements.ScrollingPanel.build($('#overlayContent .scrolling-panel'));
   }
 
-  function addAspects(aspects, element) {
-    each(aspects, aspect => { element.
-      append($('<dt>').append(aspect.name)).
-      append($('<dd>').append(`<span class='level'>Level ${aspect.level}</span><span class='strength'>${aspect.strength} xp</span>`));
-    });
-  }
 
   // === Rename Minion ===
 
