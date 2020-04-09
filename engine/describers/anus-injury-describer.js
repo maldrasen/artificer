@@ -12,6 +12,24 @@ global.AnusInjuryDescriber = class AnusInjuryDescriber {
   set previousInjury(i) { this._previousInjury = i; }
 
   describeInjuries() {
-    return `[TODO: Anus Injury Descriptions]`;
+    return `${this.describeSmash()}`;
+  }
+
+  // In this case a smash injury is specifically referring to the ass and not
+  // the anus. A smash injury is usually the result of a hard spaking or
+  // whipping event.
+  describeSmash() {
+    if (this.anus.smashLevel == 0) { return ''; }
+
+    let description = Random.from(Description.validForInjury('anus','smash',{
+      character: this.character,
+      anus: this.anus,
+    }));
+
+    if (description == null) {
+      return Weaver.error(`Unable to find a smashed ass description`)
+    }
+
+    return `${description.d}`;
   }
 }

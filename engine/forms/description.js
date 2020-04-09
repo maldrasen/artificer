@@ -63,6 +63,13 @@ global.Description = class Description extends Form {
 
   validForAnusInjury(damageType, context) {
     if (this.type != 'anus-injury') { return false; }
+
+    if (damageType == 'smash') {
+      if (this.damageType != 'smash') { return false; }
+      if (this.level != context.anus.smashLevel) { return false; }
+      if (this.shape != context.anus.smashShape) { return false; }
+    }
+
     return true;
   }
 
