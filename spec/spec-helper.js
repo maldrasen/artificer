@@ -13,8 +13,10 @@ global.SpecHelper = (function() {
     },options));
   }
 
-  async function buildRando() {
-    return await CharacterBuilder.build({ species:Random.from(Species.all()).code });
+  async function buildRando(options={}) {
+    return await CharacterBuilder.build({
+      species: options.species||Random.from(Species.all()).code
+    });
   }
 
   async function buildPlayer(game, options) {
