@@ -15,7 +15,8 @@ global.SpecHelper = (function() {
 
   async function buildRando(options={}) {
     return await CharacterBuilder.build({
-      species: options.species||Random.from(Species.all()).code
+      species: options.species||Random.from(Species.all()).code,
+      gender: options.gender,
     });
   }
 
