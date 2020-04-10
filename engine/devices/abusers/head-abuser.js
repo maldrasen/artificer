@@ -2,29 +2,31 @@ Abuser.HeadAbuser = (function() {
 
   async function addInjury(character, hazard) {
     const body = await character.getBody();
+    const mouth = await character.getMouth();
 
-    if (hazard.type == 'blight') { addBlightInjury(character, body, hazard); }
-    if (hazard.type == 'burn')   { addBurnInjury(character, body, hazard);   }
-    if (hazard.type == 'smash')  { addSmashInjury(character, body, hazard);  }
+    if (hazard.type == 'blight') { addBlightInjury(character, mouth, hazard); }
+    if (hazard.type == 'burn')   { addBurnInjury(character, mouth, hazard);   }
+    if (hazard.type == 'smash')  { addSmashInjury(character, mouth, hazard);  }
 
-    const describer = new BodyDescriber({ character, body });
+    const describer = new BodyDescriber({ character, body, mouth });
     await describer.updateDescription();
+    await mouth.save();
 
-    return body;
+    return mouth;
   }
 
-  function addBlightInjury(character, body, hazard) {}
-  function addBurnInjury(character, body, hazard) {}
+  function addBlightInjury(character, mouth, hazard) {}
+  function addBurnInjury(character, mouth, hazard) {}
 
-  function addSmashInjury(character, body, hazard) {
-    body.smashLevel = Abuser.raiseLevel(body.smashLevel, hazard.level, 5);
-    body.smashCount += 1;
-    body.smashHealing = 0;
+  function addSmashInjury(character, mouth, hazard) {
+    mouth.smashLevel = Abuser.raiseLevel(mouth.smashLevel, hazard.level, 5);
+    mouth.smashCount += 1;
+    mouth.smashHealing = 0;
 
-    if (body.smashTeethMissing < 10) {
-      if (hazard.level == 3 && Random.upTo(10) == 0) { body.smashTeethMissing += 1; }
-      if (hazard.level == 4 && Random.upTo(4) == 0)  { body.smashTeethMissing += Random.between(1,2); }
-      if (hazard.level == 5 && Random.upTo(2) == 0)  { body.smashTeethMissing += Random.between(1,4); }
+    if (mouth.smashTeethMissing < 10) {
+      if (hazard.level == 3 && true || Random.upTo(10) == 0) { mouth.smashTeethMissing += 1; }
+      if (hazard.level == 4 && true || Random.upTo(4) == 0)  { mouth.smashTeethMissing += Random.between(1,2); }
+      if (hazard.level == 5 && true || Random.upTo(2) == 0)  { mouth.smashTeethMissing += Random.between(1,4); }
     }
   }
 

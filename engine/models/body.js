@@ -25,7 +25,6 @@ global.Body = Database.instance().define('body', {
   smashLevel:        { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
   smashCount:        { type:Sequelize.INTEGER },
   smashHealing:      { type:Sequelize.INTEGER },
-  smashTeethMissing: { type:Sequelize.INTEGER },
   description:       { type:Sequelize.STRING },
 },{
   timestamps: false,

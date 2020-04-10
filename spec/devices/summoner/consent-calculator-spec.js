@@ -1,4 +1,4 @@
-describe('Summoner: ConsentCalculator', function() {
+describe.only('Summoner: ConsentCalculator', function() {
 
   async function buildCalculatorWith(buildOptions, otherOptions) {
     const game = await Game.start();

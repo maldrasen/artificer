@@ -3,10 +3,12 @@ global.BodyDescriber = class BodyDescriber {
   constructor(options) {
     this._character = options.character;
     this._body = options.body;
+    this._mouth = options.mouth;
   }
 
   get character() { return this._character; }
   get body() { return this._body; }
+  get mouth() { return this._mouth; }
 
   async updateDescription() {
     if (this.body == null) { this._body = await this.character.getBody(); }
@@ -20,7 +22,7 @@ global.BodyDescriber = class BodyDescriber {
   }
 
   async getDescription() {
-    let injuries = new BodyInjuryDescriber(this.character, this.body);
+    let injuries = new BodyInjuryDescriber(this.character, this.body, this.mouth);
 
     let description = `
       ${this.heightAndWeight()}, ${this.comparativeHeight()}.
