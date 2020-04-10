@@ -1,6 +1,6 @@
 describe('Describer: Cock (injuries)', function() {
 
-  it.only('describes blighted cock', function(done) {
+  it('describes blighted cock', function(done) {
     SpecHelper.tenTimes(done, resolve => {
       SpecHelper.buildRando({ gender:'male' }).then(jada => {
         let level = Random.between(1,5);
