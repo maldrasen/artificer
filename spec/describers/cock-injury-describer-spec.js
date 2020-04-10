@@ -1,47 +1,15 @@
 describe('Describer: Cock (injuries)', function() {
 
-  async function applyBlight(cock) {
-    cock.blightLevel = Random.upTo(5) + 1;
-    cock.blightCount = Random.upTo(3) + 1;
-    cock.blightPlace = Random.from(['cock','balls']);
-
-    await cock.save();
-    return cock;
-  }
-
-  async function applySmash(cock) {
-    cock.smashLevel = Random.upTo(5) + 1;
-    cock.smashCount = Random.upTo(3) + 1;
-    cock.smashShape = Random.from([null,'hoof'])
-
-    await cock.save();
-    return cock;
-  }
-
-  async function describeInjury(type, jada, cock) {
-    let describer = new CockInjuryDescriber(jada, cock);
-
-    let description = describer[{
-      blight: 'describeBlight',
-      burn: 'describeBurn',
-      smash: 'describeSmash',
-    }[type]]();
-
-    let output = await Weaver.weaveWithCharacter(description,'C',jada)
-    let stripped = output.replace(/\n/g,'').replace(/\s+/g,' ');
-
-    SpecHelper.print(`${type}(${cock.blightLevel}) > ${stripped}`);
-  }
-
   it('describes blighted cock', function(done) {
     SpecHelper.tenTimes(done, resolve => {
-      SpecHelper.buildJada({ species:'centaur' }).then(jada => {
-        jada.getCock().then(cock => {
-          applyBlight(cock).then(() => {
-            describeInjury('blight', jada, cock).then(() => {
-              resolve();
-            });
-          });
+      SpecHelper.buildRando({ gender:'male' }).then(jada => {
+        let level = Random.between(1,5);
+        let count = Random.between(1,3);
+        let place = Random.from(['cock','balls']);
+
+        Abuser.CockAbuser.addInjury(jada, { type:'blight', level, count, details:{ place }}).then(cock => {
+          SpecHelper.print(`Blight(${cock.blightPlace}:${cock.blightLevel}) > ${cock.description}`);
+          resolve();
         });
       });
     });

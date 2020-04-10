@@ -1,19 +1,21 @@
 global.BodyInjuryDescriber = class BodyInjuryDescriber {
 
-  constructor(character, body) {
+  constructor(character, body, mouth) {
     this._character = character;
     this._body = body;
+    this._mouth = mouth;
     this._previousInjury = null;
   }
 
   get character() { return this._character; }
   get body() { return this._body; }
+  get mouth() { return this._mouth; }
   get previousInjury() { return this._previousInjury; }
   set previousInjury(i) { this._previousInjury = i; }
 
   headInjuries() {
     return `
-      ${this.describeSmash()}
+      ${this.describeMouthSmash()}
     `;
   }
 
@@ -21,10 +23,8 @@ global.BodyInjuryDescriber = class BodyInjuryDescriber {
     return ''
   }
 
-  describeSmash() {
-    if (this.body.smashLevel == 0) { return ''; }
-
-    let hisHeadHasBeen = `{{C::gender.His}} head has been`;
+  describeMouthSmash() {
+    if (this.mouth.smashLevel == 0) { return ''; }
 
     this.previousInjury = {
       type: 'smash',
@@ -32,56 +32,46 @@ global.BodyInjuryDescriber = class BodyInjuryDescriber {
 
     let description = Random.from(Description.validForInjury('head','smash',{
       character: this.character,
-      body: this.body,
+      mouth: this.mouth,
     }));
 
     if (description == null) {
-      return Weaver.error(`Unable to find a smashed head description`)
+      return Weaver.error(`Unable to find a smashed head description`);
     }
 
-    return `${hisHeadHasBeen} ${description.d}`;
+    return `${description.d} ${this.describeMissingTeeth()}`;
   }
 
-  // === Segments ===
+  describeMissingTeeth() {
+    let teethMissing = this.mouth.smashTeethMissing;
+    if (teethMissing == 0) {
+      return '';
+    }
 
+    if (teethMissing == 1) { return Random.from([
+      `It looks like {{he}}'s missing a tooth as well.`,
+      `{{He}}'s missing a tooth as well.`
+    ]); }
 
-  // We'll need something like this when there is more than one damage type.
-  // No idea how they will partition out at the moment though.
-  // injuryStart(place) {
-  //   if (this.previousInjury == null) {
-  //     if (place == 'balls') { return Random.from([
-  //       '{{C::gender.His}} {{ballsack}} has been',
-  //       '{{C::gender.His}} {{testicles}} have been',
-  //       'It looks like {{C::gender.his}} {{ballsack}} has been',
-  //       'It looks like {{C::gender.his}} {{testicles}} have been',
-  //     ]); }
-  //
-  //     return Random.from([
-  //       `{{C::gender.His}} {{C::cock.cock}} has been`,
-  //       'It looks like {{C::gender.his}} {{C::cock.cock}} has been',
-  //     ]);
-  //   }
-  //
-  //   if (place == 'balls' && this.previousInjury.place == 'balls') { return Random.from([
-  //     `They've also been`,
-  //     `Then, {{C::gender.his}} {{ballsack}} has also been`,
-  //     `Then, {{C::gender.his}} {{testicles}} have also been`,
-  //   ]); }
-  //
-  //   if (place == 'balls' && this.previousInjury.place != 'balls') { return Random.from([
-  //     `Then, {{C::gender.his}} {{ballsack}} has been`,
-  //     `Then, {{C::gender.his}} {{testicles}} have been`,
-  //   ]); }
-  //
-  //   if (place != 'balls' && this.previousInjury.place == 'balls') {
-  //     return `Then, {{C::gender.his}} {{C::cock.cock}} has been`;
-  //   }
-  //
-  //   return Random.from([
-  //     `Then {{C::gender.his}} {{C::cock.cock}} was`,
-  //     `Then it was`,
-  //   ]);
-  // }
+    if (teethMissing == 2) { return Random.from([
+      `It looks like {{he}} may be missing a couple of teeth as well.`,
+      `{{He}}'s missing a pair of teeth, no doubt from the beating {{he}} must have endured.`
+    ]); }
 
+    if (teethMissing == 3) { return Random.from([
+      `It looks like {{he}} may be missing a few teeth as well.`,
+      `{{He}}'s missing at least three teeth in the front of {{his}} mouth.`
+    ]); }
+
+    if (teethMissing > 3 && teethMissing <= 6) { return Random.from([
+      `It looks like {{he}} may be missing some teeth too, at least ${EnglishUtility.numberInEnglish(teethMissing)} from the looks of it.`,
+      `{{He}}'s missing some teeth as well, at least ${EnglishUtility.numberInEnglish(teethMissing)} or so.`
+    ]); }
+
+    return Random.from([
+      `It looks like a significant number of teeth have been knocked out of {{his}} head too.`,
+      `{{He}}'s missing quite a few teeth as well.`
+    ]);
+  }
 
 }

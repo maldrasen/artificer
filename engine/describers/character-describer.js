@@ -5,11 +5,19 @@ global.CharacterDescriber = (function() {
   // description. It's fine if the parts object is empty or incomplete here.
   // Anything missing will be pulled in by the describer.
   async function updateAll(character, parts) {
-    if (parts == null) { parts = {}; }
+    if (parts == null) { parts = {
+      anus:  await character.getAnus(),
+      body:  await character.getBody(),
+      cock:  await character.getCock(),
+      mouth: await character.getMouth(),
+      pussy: await character.getPussy(),
+      tits:  await character.getTits(),
+    }; }
 
     const bodyDescriber =  new BodyDescriber({
       character: character,
-      body: parts.body });
+      body: parts.body,
+      mouth: parts.mouth });
 
     const anusDescriber =  new AnusDescriber({
       character: character,
