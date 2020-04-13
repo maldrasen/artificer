@@ -13,62 +13,66 @@ global.Description = class Description extends Form {
   static buildTitInjury(data)   { return super.build(null,extend(data,{ type:'tit-injury'   })); }
 
   static async select(part, context) {
-    let options = await Description.validFor(part, context);
-    if (options.length == 0) {
-      throw `Cannot find an description for ${part}`;
-    }
-    return Random.from(options);
-  }
-
-  static async validFor(part, context) {
     const data = context.get('C');
 
-    return Description.where(description => {
-      if (description.type != part) { return false; }
+    const valid = ArrayUtility.compact(await Promise.all(
+      ObjectUtility.values(Description.instances).map(async description => {
+        if (description.type != part) { return; }
 
-      if (part == 'cock') {
-        if (description.cockInclusionsValid(data) == false) { return false; }
-        if (description.cockConditionsMet(data) == false) { return false; }
-      }
-      if (part == 'tits') {
-        if (description.titsConditionsMet(data) == false) { return false; }
-      }
+        if (part == 'cock') {
+          if (description.cockInclusionsValid(data) == false) { return; }
+          if (description.cockConditionsMet(data) == false) { return; }
+        }
+        if (part == 'tits') {
+          if (description.titsConditionsMet(data) == false) { return; }
+        }
 
-      return CentralScrutinizer.meetsRequirements(this.requirements, context)
-    });
+        if (await CentralScrutinizer.meetsRequirements(description.requires, context)) {
+          return description;
+        }
+      })
+    ));
+
+    if (valid.length == 0) {
+      throw `Cannot find a description for ${part}`;
+    }
+
+    return Random.from(valid);
   }
 
   static async selectInjury(part, damageType, context) {
-    let options = await Description.validForInjury(part, damageType, context);
-    if (options.length == 0) {
-      throw `Cannot find an injury description for (${damageType},${part})`;
-    }
-    return Random.from(options);
-  }
-
-  static async validForInjury(part, damageType, context) {
     const data = context.get('C');
 
-    return Description.where(description => {
-      if (damageType != description.damageType) { return false; }
+    const valid = ArrayUtility.compact(await Promise.all(
+      ObjectUtility.values(Description.instances).map(async description => {
+        if (damageType != description.damageType) { return; }
 
-      if (part == 'anus'  && !description.validForAnusInjury(damageType, data))  { return false; }
-      if (part == 'body'  && !description.validForBodyInjury(damageType, data))  { return false; }
-      if (part == 'cock'  && !description.validForCockInjury(damageType, data))  { return false; }
-      if (part == 'head'  && !description.validForHeadInjury(damageType, data))  { return false; }
-      if (part == 'pussy' && !description.validForPussyInjury(damageType, data)) { return false; }
-      if (part == 'tits'  && !description.validForTitsInjury(damageType, data))  { return false; }
+        if (part == 'anus'  && !description.validForAnusInjury(damageType, data))  { return; }
+        if (part == 'body'  && !description.validForBodyInjury(damageType, data))  { return; }
+        if (part == 'cock'  && !description.validForCockInjury(damageType, data))  { return; }
+        if (part == 'head'  && !description.validForHeadInjury(damageType, data))  { return; }
+        if (part == 'pussy' && !description.validForPussyInjury(damageType, data)) { return; }
+        if (part == 'tits'  && !description.validForTitsInjury(damageType, data))  { return; }
 
-      if (part == 'cock') {
-        if (description.cockInclusionsValid(data) == false) { return false; }
-        if (description.cockConditionsMet(data) == false) { return false; }
-      }
-      if (part == 'tits') {
-        if (description.titsConditionsMet(data) == false) { return false; }
-      }
+        if (part == 'cock') {
+          if (description.cockInclusionsValid(data) == false) { return; }
+          if (description.cockConditionsMet(data) == false) { return; }
+        }
+        if (part == 'tits') {
+          if (description.titsConditionsMet(data) == false) { return; }
+        }
 
-      return CentralScrutinizer.meetsRequirements(this.requirements, context)
-    });
+        if (await CentralScrutinizer.meetsRequirements(description.requires, context)) {
+          return description;
+        }
+      })
+    ));
+
+    if (valid.length == 0) {
+      throw `Cannot find an injury description for (${damageType},${part})`;
+    }
+
+    return Random.from(valid);
   }
 
   validForBodyInjury(damageType, data) {

@@ -1,4 +1,4 @@
-describe.only('Describer: Anus (injuries)', function() {
+describe('Describer: Anus (injuries)', function() {
 
   it('describes a whipped furry ass', function(done) {
     SpecHelper.tenTimes(done, resolve => {
