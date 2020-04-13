@@ -1,12 +1,12 @@
 global.AnusDescriber = class AnusDescriber {
 
-  constructor(options) {
-    this._character = options.character;
-    this._anus = options.anus;
+  constructor(context) {
+    this._context = context;
   }
 
-  get character() { return this._character; }
-  get anus() { return this._anus; }
+  get context() { return this._context; }
+  get character() { return this.context.get('C').character; }
+  get anus() { return this.context.get('C').anus; }
 
   async updateDescription() {
     if (this.anus == null) { this._anus = await this.character.getAnus(); }
@@ -20,7 +20,7 @@ global.AnusDescriber = class AnusDescriber {
   }
 
   async getDescription() {
-    const injuryDescriber = new AnusInjuryDescriber(this.character, this.anus);
+    const injuryDescriber = new AnusInjuryDescriber(this.context);
 
     let description = `
       [TODO: Anus Description] ${ await injuryDescriber.describeInjuries() }

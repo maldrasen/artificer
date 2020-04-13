@@ -1,12 +1,12 @@
 global.PussyDescriber = class PussyDescriber {
 
-  constructor(options) {
-    this._character = options.character;
-    this._pussy = options.pussy;
+  constructor(context) {
+    this._context = context;
   }
 
-  get character() { return this._character; }
-  get pussy() { return this._pussy; }
+  get context() { return this._context; }
+  get character() { return this.context.get('C').character; }
+  get pussy() { return this.context.get('C').pussy; }
 
   async updateDescription() {
     if (this.pussy == null) { this._pussy = await this.character.getPussy(); }
@@ -21,10 +21,10 @@ global.PussyDescriber = class PussyDescriber {
   }
 
   async getDescription() {
-    let injuries = new PussyInjuryDescriber(this.character, this.pussy).describeInjuries();
+    let injuryDescriber = new PussyInjuryDescriber(this.context);
 
     let description = `
-      [TODO: Pussy Description] ${injuries}
+      [TODO: Pussy Description] ${await injuryDescriber.describeInjuries()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
     return await Weaver.weaveWithCharacter(description,'C',this.character);

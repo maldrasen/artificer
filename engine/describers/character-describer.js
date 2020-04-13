@@ -4,37 +4,16 @@ global.CharacterDescriber = (function() {
   // name has changed or something else happens that might effect every part
   // description. It's fine if the parts object is empty or incomplete here.
   // Anything missing will be pulled in by the describer.
-  async function updateAll(character, parts) {
-    if (parts == null) { parts = {
-      anus:  await character.getAnus(),
-      body:  await character.getBody(),
-      cock:  await character.getCock(),
-      mouth: await character.getMouth(),
-      pussy: await character.getPussy(),
-      tits:  await character.getTits(),
-    }; }
+  async function updateAll(character) {
 
-    const bodyDescriber =  new BodyDescriber({
-      character: character,
-      body: parts.body,
-      mouth: parts.mouth });
+    const context = new WeaverContext();
+    await context.addCharacter('C',character);
 
-    const anusDescriber =  new AnusDescriber({
-      character: character,
-      anus: parts.anus });
-
-    const cockDescriber =  new CockDescriber({
-      character: character,
-      cock: parts.cock });
-
-    const pussyDescriber = new PussyDescriber({
-      character: character,
-      pussy: parts.pussy });
-
-    const titsDescriber =  new TitsDescriber({
-      character: character,
-      nipples: parts.nipples,
-      tits: parts.tits });
+    const bodyDescriber =  new BodyDescriber(context);
+    const anusDescriber =  new AnusDescriber(context);
+    const cockDescriber =  new CockDescriber(context);
+    const pussyDescriber = new PussyDescriber(context);
+    const titsDescriber =  new TitsDescriber(context);
 
     await bodyDescriber.updateDescription();
     await anusDescriber.updateDescription();

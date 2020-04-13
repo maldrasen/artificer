@@ -1,13 +1,14 @@
 global.CockInjuryDescriber = class CockInjuryDescriber {
 
-  constructor(character, cock) {
-    this._character = character;
-    this._cock = cock;
+  constructor(context) {
+    this._context = context;
     this._previousInjury = null;
   }
 
-  get character() { return this._character; }
-  get cock() { return this._cock; }
+  get context() { return this._context; }
+  get character() { return this.context.get('C').character; }
+  get cock() { return this.context.get('C').cock; }
+
   get previousInjury() { return this._previousInjury; }
   set previousInjury(i) { this._previousInjury = i; }
 

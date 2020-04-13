@@ -1,15 +1,12 @@
 global.AnusInjuryDescriber = class AnusInjuryDescriber {
 
-  constructor(character, anus) {
-    this._character = character;
-    this._anus = anus;
-    this._previousInjury = null;
+  constructor(context) {
+    this._context = context;
   }
 
-  get character() { return this._character; }
-  get anus() { return this._anus; }
-  get previousInjury() { return this._previousInjury; }
-  set previousInjury(i) { this._previousInjury = i; }
+  get context() { return this._context; }
+  get character() { return this.context.get('C').character; }
+  get anus() { return this.context.get('C').anus; }
 
   async describeInjuries() {
     return `${await this.describeSmash()}`;

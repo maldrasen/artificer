@@ -1,4 +1,4 @@
-describe('Describer: Tits', function() {
+describe.only('Describer: Tits', function() {
 
   async function applySmash(tits) {
     tits.smashLevel = Random.upTo(5) + 1;

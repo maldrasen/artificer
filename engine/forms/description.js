@@ -16,6 +16,10 @@ global.Description = class Description extends Form {
     return Description.where(description => {
       if (description.type != part) { return false; }
 
+console.log("Checking validity")
+console.log(part)
+console.log(context)
+
       if (part == 'cock') {
         if (description.cockInclusionsValid(context) == false) { return false; }
         if (description.cockConditionsMet(context) == false) { return false; }

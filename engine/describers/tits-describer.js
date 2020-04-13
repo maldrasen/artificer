@@ -1,15 +1,14 @@
 global.TitsDescriber = class TitsDescriber {
 
-  constructor(options) {
-    this._character = options.character;
-    this._tits = options.tits;
-    this._nipples = options.nipples;
+  constructor(context) {
+    this._context = context;
     this._included = [];
   }
 
-  get character() { return this._character; }
-  get nipples() { return this._nipples; }
-  get tits() { return this._tits; }
+  get context() { return this._context; }
+  get character() { return this.context.get('C').character; }
+  get nipples() { return this.context.get('C').nipples; }
+  get tits() { return this.context.get('C').tits; }
 
   addIncluded(key) { this._included.push(key); }
   isIncluded(key) { return this._included.indexOf(key) >= 0; }
@@ -31,12 +30,12 @@ global.TitsDescriber = class TitsDescriber {
   }
 
   async getDescription() {
-    const injuryDescriber = new TitsInjuryDescriber(this.character, this.tits, this.nipples);
+    const injuryDescriber = new TitsInjuryDescriber(this.context);
 
     let description = `
       ${await this.describeTits()}
-      ${await injuryDescriber.describeInjuries()}
       ${await this.describeNipples()}
+      ${await injuryDescriber.describeInjuries()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
     return await Weaver.weaveWithCharacter(description,'C',this.character);

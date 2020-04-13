@@ -1,15 +1,14 @@
 global.TitsInjuryDescriber = class TitsInjuryDescriber {
 
-  constructor(character, tits, nipples) {
-    this._character = character;
-    this._tits = tits;
-    this._nipples = nipples;
-    this._previousInjury = null;
+  constructor(context) {
+    this._context = context;
   }
 
-  get character() { return this._character; }
-  get nipples() { return this._nipples; }
-  get tits() { return this._tits; }
+  get context() { return this._context; }
+  get character() { return this.context.get('C').character; }
+  get nipples() { return this.context.get('C').nipples; }
+  get tits() { return this.context.get('C').tits; }
+
   get previousInjury() { return this._previousInjury; }
   set previousInjury(i) { this._previousInjury = i; }
 

@@ -1,17 +1,14 @@
 global.PussyInjuryDescriber = class PussyInjuryDescriber {
 
-  constructor(character, pussy) {
-    this._character = character;
-    this._pussy = pussy;
-    this._previousInjury = null;
+  constructor(context) {
+    this._context = context;
   }
 
-  get character() { return this._character; }
-  get pussy() { return this._pussy; }
-  get previousInjury() { return this._previousInjury; }
-  set previousInjury(i) { this._previousInjury = i; }
+  get context() { return this._context; }
+  get character() { return this.context.get('C').character; }
+  get pussy() { return this.context.get('C').pussy; }
 
-  describeInjuries() {
+  async describeInjuries() {
     return `[TODO: Pussy Injury Descriptions]`;
   }
 }

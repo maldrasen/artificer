@@ -1,13 +1,13 @@
 global.CockDescriber = class CockDescriber {
 
-  constructor(options) {
-    this._character = options.character;
-    this._cock = options.cock;
+  constructor(context) {
+    this._context = context;
     this._included = [];
   }
 
-  get character() { return this._character; }
-  get cock() { return this._cock; }
+  get context() { return this._context; }
+  get character() { return this.context.get('C').character; }
+  get cock() { return this.context.get('C').cock; }
 
   addIncluded(key) { this._included.push(key); }
   isIncluded(key) { return this._included.indexOf(key) >= 0; }
@@ -25,7 +25,7 @@ global.CockDescriber = class CockDescriber {
   }
 
   async getDescription() {
-    const injuryDescriber = new CockInjuryDescriber(this.character, this.cock);
+    const injuryDescriber = new CockInjuryDescriber(this.context);
 
     let description = `
       ${await this.cockDescription()}
