@@ -22,18 +22,17 @@ global.Description = class Description extends Form {
 
   static async validFor(part,context) {
     return Description.where(description => {
-      return true;
-  //     if (description.type != part) { return false; }
-  //
-  //     if (part == 'cock') {
-  //       if (description.cockInclusionsValid(context) == false) { return false; }
-  //       if (description.cockConditionsMet(context) == false) { return false; }
-  //     }
-  //     if (part == 'tits') {
-  //       if (description.titsConditionsMet(context) == false) { return false; }
-  //     }
-  //
-  //     return description.requirementsMet(context);
+      if (description.type != part) { return false; }
+
+      if (part == 'cock') {
+        if (description.cockInclusionsValid(context) == false) { return false; }
+        if (description.cockConditionsMet(context) == false) { return false; }
+      }
+      if (part == 'tits') {
+        if (description.titsConditionsMet(context) == false) { return false; }
+      }
+
+      return description.requirementsMet(context);
     });
   }
 
@@ -47,25 +46,24 @@ global.Description = class Description extends Form {
 
   static async validForInjury(part, damageType, context) {
     return Description.where(description => {
-      return true;
-  //     if (damageType != description.damageType) { return false; }
-  //
-  //     if (part == 'anus'  && !description.validForAnusInjury(damageType,  context)) { return false; }
-  //     if (part == 'body'  && !description.validForBodyInjury(damageType,  context)) { return false; }
-  //     if (part == 'cock'  && !description.validForCockInjury(damageType,  context)) { return false; }
-  //     if (part == 'head'  && !description.validForHeadInjury(damageType,  context)) { return false; }
-  //     if (part == 'pussy' && !description.validForPussyInjury(damageType, context)) { return false; }
-  //     if (part == 'tits'  && !description.validForTitsInjury(damageType,  context)) { return false; }
-  //
-  //     if (part == 'cock') {
-  //       if (description.cockInclusionsValid(context) == false) { return false; }
-  //       if (description.cockConditionsMet(context) == false) { return false; }
-  //     }
-  //     if (part == 'tits') {
-  //       if (description.titsConditionsMet(context) == false) { return false; }
-  //     }
-  //
-  //     return description.requirementsMet(context);
+      if (damageType != description.damageType) { return false; }
+
+      if (part == 'anus'  && !description.validForAnusInjury(damageType,  context)) { return false; }
+      if (part == 'body'  && !description.validForBodyInjury(damageType,  context)) { return false; }
+      if (part == 'cock'  && !description.validForCockInjury(damageType,  context)) { return false; }
+      if (part == 'head'  && !description.validForHeadInjury(damageType,  context)) { return false; }
+      if (part == 'pussy' && !description.validForPussyInjury(damageType, context)) { return false; }
+      if (part == 'tits'  && !description.validForTitsInjury(damageType,  context)) { return false; }
+
+      if (part == 'cock') {
+        if (description.cockInclusionsValid(context) == false) { return false; }
+        if (description.cockConditionsMet(context) == false) { return false; }
+      }
+      if (part == 'tits') {
+        if (description.titsConditionsMet(context) == false) { return false; }
+      }
+
+      return description.requirementsMet(context);
     });
   }
 
