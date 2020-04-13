@@ -79,8 +79,8 @@ global.HasInjuries = { isAppliedTo: function(model) {
     const mouth = await this.getMouth();
     let levels = 0
 
-    if (body != null) { levels += body.smashLevel; }
-    if (mouth != null) { levels += mouth.smashLevel; }
+    if (body != null) { levels += body.pierceLevel; }
+    if (mouth != null) { levels += mouth.cutLevel + mouth.smashLevel; }
 
     return levels;
   }

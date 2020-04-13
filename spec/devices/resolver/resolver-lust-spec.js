@@ -84,8 +84,8 @@ describe('Resolver: Lust', function() {
 
     if (injuries == 1) { await tits.update({ smashCount:2, smashLevel:2 }); } // injured
     if (injuries == 2) { await tits.update({ smashCount:3, smashLevel:5 }); } // bad
-    if (injuries == 3) { await body.update({ smashCount:3, smashLevel:3 }); } // horrible
-    if (injuries == 4) { await body.update({ smashCount:5, smashLevel:5 }); } // critical
+    if (injuries == 3) { await body.update({ pierceCount:3, pierceLevel:3 }); } // horrible
+    if (injuries == 4) { await body.update({ pierceCount:5, pierceLevel:5 }); } // critical
 
     return jada;
   }
