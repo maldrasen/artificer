@@ -12,14 +12,14 @@ Event.build('found-fruits-and-nuts-sex-M', {
       { text:`Again I'm impressed with {{C::gender.his}} lythe, muscular body.` },
     ]
   },{
-    requires:['minion(C).has-tits','minion(C).has-bigger-than-zero-tits'],
+    requires:['minion(C).has-tits','minion(C).tits.bigger-than-zero'],
     pages:[
       { text:`She doesn't look to have an ounce of fat on her, except for her tits perhaps.` },
       { text:`They barely count though being as small as they are.` },
       { text:`I'd barely notice them at all if it wern't for her prominent {{C::nipples.length}} long nipples.` },
     ]
   },{
-    requires:['minion(C).has-tits','minion(C).has-zero-tits'],
+    requires:['minion(C).has-tits','minion(C).tits.zero'],
     pages:[
       { text:`She doesn't look to have an ounce of fat on her.` },
       { text:`Even her chest is perfectly flat except for her prominent {{C::nipples.length}} long nipples.` },

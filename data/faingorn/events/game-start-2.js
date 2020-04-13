@@ -30,13 +30,13 @@ Event.build('game-start-2', {
       { text:"Given the weather I wish I had choosen something with fur.", requires:"player.not-furry" },
     ]
   },{
-    requires:['player.has-tits','player.has-smaller-than-average-tits'],
+    requires:['player.has-tits','player.tits.smaller-than-average'],
     pages: [
       { text:"Looking down I see that my new body has small, perfectly formed tits." },
       { text:"The cool autumn breeze blowing over my bare chest though has made my nipples hard enough to cut glass." },
     ]
   },{
-    requires:['player.has-tits','player.has-average-tits'],
+    requires:['player.has-tits','player.tits.average'],
     pages: [
       { text:"Looking down I see that my new body has reasonably sized breasts." },
       { text:"Not too large, not too small..." },
@@ -44,7 +44,7 @@ Event.build('game-start-2', {
       { text:"The cool autumn breeze blowing over my bare chest though has made my nipples hard enough to cut glass." },
     ]
   },{
-    requires:['player.has-tits','player.has-bigger-than-average-tits'],
+    requires:['player.has-tits','player.tits.bigger-than-average'],
     pages: [
       { text:"Looking down I see that my new body has impressivly large breasts." },
       { text:"I give a little shake and smile at the way the jiggle." },

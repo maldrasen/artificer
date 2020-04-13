@@ -1,7 +1,12 @@
 global.CharacterScrutinizer = (function() {
 
   // These operations are shared between the Player and Minion scrutinizers.
+  // The CharacterScrutinizer checks the common character attribute. More
+  // specific body part checks are found in their respective part scrutinizers.
   function check(operation, data) {
+    if (operation.match(/^cock/))    { return CockScrutinizer.check(operation,data);    }
+    if (operation.match(/^nipples/)) { return NipplesScrutinizer.check(operation,data); }
+    if (operation.match(/^tits/))    { return TitsScrutinizer.check(operation,data);    }
 
     // Species Properties
     if (operation == 'is-scaven')                     { return data.character.speciesCode == 'scaven' }
@@ -25,21 +30,13 @@ global.CharacterScrutinizer = (function() {
     if (operation == 'height-not-short')              { return ! data.body.heightIsShort; }
     if (operation == 'height-not-tall')               { return ! data.body.heightIsTall; }
 
-    // Body Part Properties
-    if (operation == 'cock-sheath')                   { return data.character.species.hasCockSheath; }
-    if (operation == 'no-cock-sheath')                { return !data.character.species.hasCockSheath; }
+    // Body Part Presence Checks
     if (operation == 'has-cock')                      { return data.cock != null; }
     if (operation == 'no-cock')                       { return data.cock == null; }
-    if (operation == 'has-bigger-than-big-cock')      { return data.cock && ['huge','monster'].indexOf(data.cock.currentSizeClass) >= 0; }
     if (operation == 'has-pussy')                     { return data.pussy != null; }
     if (operation == 'no-pussy')                      { return data.pussy == null; }
     if (operation == 'has-tits')                      { return data.tits != null; }
     if (operation == 'no-tits')                       { return data.tits == null; }
-    if (operation == 'has-zero-tits')                 { return data.tits && data.tits.currentSizeClass == 'zero'; }
-    if (operation == 'has-average-tits')              { return data.tits && data.tits.currentSizeClass == 'average'; }
-    if (operation == 'has-bigger-than-zero-tits')     { return data.tits && data.tits.currentSizeClass != 'zero'; }
-    if (operation == 'has-bigger-than-average-tits')  { return data.tits && ['big','huge','monster'].indexOf(data.tits.currentSizeClass) >= 0; }
-    if (operation == 'has-smaller-than-average-tits') { return data.tits && ['zero','tiny','small'].indexOf(data.tits.currentSizeClass) >= 0; }
 
     // Attributes
     if (operation.match(/^physical/)) { return checkAttribute(operation, data.character) }
