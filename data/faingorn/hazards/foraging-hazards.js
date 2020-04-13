@@ -3,8 +3,15 @@
 
 Hazard.buildHazard('forage-body-cut-001', { activity:'foraging-hinterlands', location:'body', type:'cut', level:1,
   details: { place:'left-arm' },
-  story: `{{C::gender.He}} got a nasty scrape along {{C::gender.his}} left arm when {{C::gender.he}} tripped and fell
-          against a jagged rock.`
+  story: `{{He}} got a nasty scrape along {{his}} left arm when {{he}} tripped and fell against a jagged rock.`
+});
+
+Hazard.buildHazard('forage-body-cut-002', { activity:'foraging-hinterlands', location:'body', type:'cut', level:2,
+  details: { place:'leg' },
+  requires: ['species-scaven'],
+  story: `{{He}} was foraging deep in the woods when {{he}} was spotted by an elven hunter. The elf shot an arrow at
+          your minion, but {{he}} lept into some thick brambles dodging the shot. The thick thorny vines left a cut
+          along {{his}} leg, but at least {{he}} was able to escape.`
 });
 
 // === Cock ===
@@ -12,41 +19,37 @@ Hazard.buildHazard('forage-body-cut-001', { activity:'foraging-hinterlands', loc
 Hazard.buildHazard('forage-cock-blight-001', { activity:'foraging-hinterlands', location:'cock', type:'blight', level:1,
   details: { place:'balls' },
   requires: ['flag.item.blight-spider'],
-  story: `{{C::gender.He}} was crawling through some underbrush when {{C::gender.he}} suddenly felt an intense stinging
-          pain in {{C::gender.his}} {{ballsack}}. Somehow a harry bag blight spider had crept into {{C::gender.his}}
-          pants and went straight after {{C::gender.his}} balls, which had swollen to twice their normal size by the
-          time {{C::gender.he}} made it back to the keep.`
+  story: `{{He}} was crawling through some underbrush when {{he}} suddenly felt an intense stinging pain in {{his}}
+          {{ballsack}}. Somehow a harry bag blight spider had crept into {{his}} pants and went straight after {{his}}
+          balls, which had swollen to twice their normal size by the time {{he}} made it back to the keep.`
 });
 
 // === Tits ===
 
 Hazard.buildHazard('forage-tit-smash-001', { activity:'foraging-hinterlands', location:'tits', type:'smash', level:1,
-  story: `{{C::gender.He}} was on the way home when {{C::gender.he}} tripped and fell chest
-          first onto a large flat rock, bruising {{C::gender.his}} {{tit}}.`
+  story: `{{He}} was on the way home when {{he}} tripped and fell chest first onto a large flat rock, bruising {{his}}
+          {{tit}}.`
 });
 
 Hazard.buildHazard('forage-tit-smash-002', { activity:'foraging-hinterlands', location:'tits', type:'smash', level:1,
   place: 'all',
-  story: `{{C::gender.He}} had spent some time searching the nearby ravines for some goat nuts that grow there when
-          {{C::gender.he}} felt that something was watching {{C::gender.him}}. Not wanting to take a chance on running
-          into an abomination or worse, {{C::gender.he}} started climbing up the side of the ravine. {{C::gender.He}}
-          lost {{C::gender.his}} grip though and fell flat on {{C::gender.his}} chest, badly bruising {{C::gender.his}}
-          tits on the jagged rock below. It turns out that it was just a rabbit, scared off by {{C::gender.his}} fall.`
+  story: `{{He}} had spent some time searching the nearby ravines for some goat nuts that grow there when {{he}} felt
+          that something was watching {{him}}. Not wanting to take a chance on running into an abomination or worse,
+          {{he}} started climbing up the side of the ravine. {{He}} lost {{his}} grip though and fell flat on
+          {{his}} chest, badly bruising {{his}} tits on the jagged rock below. It turns out that it was just a rabbit.`
 });
 
 Hazard.buildHazard('forage-tit-smash-003', { activity:'foraging-hinterlands', location:'tits', type:'smash', level:1,
   place: 'left',
-  story: `{{C::gender.He}} was gathering juice berries from a bush when {{C::gender.he}} spotted an addercock hiding in
-          the leaves. {{C::gender.He}} lept away just in time to avoid the snake's strike but fell hard on
-          {{C::gender.his}} chest. When {{C::gender.he}} landed {{C::gender.he}} crushed a pinecone with
-          {{C::gender.his}} left tit, leaving a painful bruise.`
+  story: `{{He}} was gathering juice berries from a bush when {{he}} spotted an addercock hiding in the leaves. {{He}}
+          lept away just in time to avoid the snake's strike but fell hard on {{his}} chest. When {{he}} landed {{he}}
+          crushed a pinecone with {{his}} left tit, leaving a painful bruise.`
 });
 
 Hazard.buildHazard('forage-tit-smash-004', { activity:'foraging-hinterlands', location:'tits', type:'smash', level:2,
   place: 'right',
   shape: 'hoof',
-  story: `While making {{C::gender.his}} way through a narrow ravine {{C::gender.he}} suddenly came across a deer.
-          Before {{C::gender.he}} could do anything the startled animal reared back and kicked {{C::gender.him}} right
-          in the tit before running off, leaving {{C::gender.him}} with a hoof shaped bruise on {{C::gender.his}} right
-          breast.`
+  story: `While making {{his}} way through a narrow ravine {{he}} suddenly came across a deer. Before {{he}} could do
+          anything the startled animal reared back and kicked {{him}} right in the tit before running off, leaving
+          {{him}} with a hoof shaped bruise on {{his}} right breast.`
 });
