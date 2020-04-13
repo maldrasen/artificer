@@ -13,143 +13,143 @@ global.Description = class Description extends Form {
   static buildTitInjury(data)   { return super.build(null,extend(data,{ type:'tit-injury'   })); }
 
   static async select(part, context) {
-    let options = await Description.validFor(part, context);
+    let options = await Description.validFor(part, context.get('C'));
     if (options.length == 0) {
       throw `Cannot find an description for ${part}`;
     }
     return Random.from(options);
   }
 
-  static async validFor(part,context) {
+  static async validFor(part, data) {
     return Description.where(description => {
       if (description.type != part) { return false; }
 
       if (part == 'cock') {
-        if (description.cockInclusionsValid(context) == false) { return false; }
-        // if (description.cockConditionsMet(context) == false) { return false; }
+        if (description.cockInclusionsValid(data) == false) { return false; }
+        if (description.cockConditionsMet(data) == false) { return false; }
       }
-      // if (part == 'tits') {
-      //   if (description.titsConditionsMet(context) == false) { return false; }
-      // }
+      if (part == 'tits') {
+        if (description.titsConditionsMet(data) == false) { return false; }
+      }
 
-      return CentralScrutinizer.meetsRequirements(this.requirements, context)
+      return CentralScrutinizer.meetsRequirements(this.requirements, data)
     });
   }
 
   static async selectInjury(part, damageType, context) {
-    let options = await Description.validForInjury(part, damageType, context);
+    let options = await Description.validForInjury(part, damageType, context.get('C'));
     if (options.length == 0) {
       throw `Cannot find an injury description for (${damageType},${part})`;
     }
     return Random.from(options);
   }
 
-  static async validForInjury(part, damageType, context) {
+  static async validForInjury(part, damageType, data) {
     return Description.where(description => {
       if (damageType != description.damageType) { return false; }
 
-      // if (part == 'anus'  && !description.validForAnusInjury(damageType,  context)) { return false; }
-      // if (part == 'body'  && !description.validForBodyInjury(damageType,  context)) { return false; }
-      // if (part == 'cock'  && !description.validForCockInjury(damageType,  context)) { return false; }
-      // if (part == 'head'  && !description.validForHeadInjury(damageType,  context)) { return false; }
-      // if (part == 'pussy' && !description.validForPussyInjury(damageType, context)) { return false; }
-      // if (part == 'tits'  && !description.validForTitsInjury(damageType,  context)) { return false; }
-      //
-      // if (part == 'cock') {
-      //   if (description.cockInclusionsValid(context) == false) { return false; }
-      //   if (description.cockConditionsMet(context) == false) { return false; }
-      // }
-      // if (part == 'tits') {
-      //   if (description.titsConditionsMet(context) == false) { return false; }
-      // }
+      if (part == 'anus'  && !description.validForAnusInjury(damageType, data))  { return false; }
+      if (part == 'body'  && !description.validForBodyInjury(damageType, data))  { return false; }
+      if (part == 'cock'  && !description.validForCockInjury(damageType, data))  { return false; }
+      if (part == 'head'  && !description.validForHeadInjury(damageType, data))  { return false; }
+      if (part == 'pussy' && !description.validForPussyInjury(damageType, data)) { return false; }
+      if (part == 'tits'  && !description.validForTitsInjury(damageType, data))  { return false; }
 
-      return CentralScrutinizer.meetsRequirements(this.requirements, context)
+      if (part == 'cock') {
+        if (description.cockInclusionsValid(data) == false) { return false; }
+        if (description.cockConditionsMet(data) == false) { return false; }
+      }
+      if (part == 'tits') {
+        if (description.titsConditionsMet(data) == false) { return false; }
+      }
+
+      return CentralScrutinizer.meetsRequirements(this.requirements, data)
     });
   }
 
-  validForBodyInjury(damageType, context) {
+  validForBodyInjury(damageType, data) {
     if (this.type != 'body-injury') { return false; }
     return true;
   }
 
-  validForHeadInjury(damageType, context) {
+  validForHeadInjury(damageType, data) {
     if (this.type != 'head-injury') { return false; }
     return true;
   }
 
-  validForAnusInjury(damageType, context) {
+  validForAnusInjury(damageType, data) {
     if (this.type != 'anus-injury') { return false; }
 
     if (damageType == 'smash') {
       if (this.damageType != 'smash') { return false; }
-      if (this.level != context.anus.smashLevel) { return false; }
-      if (this.shape != context.anus.smashShape) { return false; }
+      if (this.level != data.anus.smashLevel) { return false; }
+      if (this.shape != data.anus.smashShape) { return false; }
     }
 
     return true;
   }
 
-  validForCockInjury(damageType, context) {
+  validForCockInjury(damageType, data) {
     if (this.type != 'cock-injury') { return false; }
 
     if (damageType == 'blight') {
       if (this.damageType != 'blight') { return false; }
-      if (this.level != context.cock.blightLevel) { return false; }
-      if (this.place == 'balls' && context.cock.blightPlace != 'balls') { return false; }
-      if (this.place != 'balls' && context.cock.blightPlace == 'balls') { return false; }
+      if (this.level != data.cock.blightLevel) { return false; }
+      if (this.place == 'balls' && data.cock.blightPlace != 'balls') { return false; }
+      if (this.place != 'balls' && data.cock.blightPlace == 'balls') { return false; }
     }
     if (damageType == 'burn') {
       if (this.damageType != 'burn') { return false; }
-      if (this.level != context.cock.burnLevel) { return false; }
-      if (this.place == 'balls' && context.cock.blightPlace != 'balls') { return false; }
-      if (this.place != 'balls' && context.cock.blightPlace == 'balls') { return false; }
+      if (this.level != data.cock.burnLevel) { return false; }
+      if (this.place == 'balls' && data.cock.blightPlace != 'balls') { return false; }
+      if (this.place != 'balls' && data.cock.blightPlace == 'balls') { return false; }
     }
     if (damageType == 'smash') {
       if (this.damageType != 'smash') { return false; }
-      if (this.level != context.cock.smashLevel) { return false; }
+      if (this.level != data.cock.smashLevel) { return false; }
     }
 
     return true;
   }
 
   // Pussy injuries need to check both damage type and damage level
-  validForPussyInjury(damageType, context) {
+  validForPussyInjury(damageType, data) {
     if (this.type != 'pussy-injury') { return false; }
 
     if (damageType == 'blight') {
       if (this.damageType != 'blight') { return false; }
-      if (this.level != context.pussy.blightLevel) { return false; }
+      if (this.level != data.pussy.blightLevel) { return false; }
     }
     if (damageType == 'burn') {
       if (this.damageType != 'burn') { return false; }
-      if (this.level != context.pussy.burnLevel) { return false; }
+      if (this.level != data.pussy.burnLevel) { return false; }
     }
     if (damageType == 'smash') {
       if (this.damageType != 'smash') { return false; }
-      if (this.level != context.pussy.smashLevel) { return false; }
+      if (this.level != data.pussy.smashLevel) { return false; }
     }
 
     return true;
   }
 
   // Tit injuries need to check damage type, damage level, and damage place.
-  validForTitsInjury(damageType, context) {
+  validForTitsInjury(damageType, data) {
     if (this.type != 'tit-injury') { return false; }
 
     if (damageType == 'blight') {
       if (this.damageType != 'blight') { return false; }
-      if (this.level != context.tits.blightLevel) { return false; }
-      if (!this.placeMatches(context.tits.blightPlace)) { return false; }
+      if (this.level != data.tits.blightLevel) { return false; }
+      if (!this.placeMatches(data.tits.blightPlace)) { return false; }
     }
     if (damageType == 'burn') {
       if (this.damageType != 'burn') { return false; }
-      if (this.level != context.tits.burnLevel) { return false; }
-      if (!this.placeMatches(context.tits.burnPlace)) { return false; }
+      if (this.level != data.tits.burnLevel) { return false; }
+      if (!this.placeMatches(data.tits.burnPlace)) { return false; }
     }
     if (damageType == 'smash') {
       if (this.damageType != 'smash') { return false; }
-      if (this.level != context.tits.smashLevel) { return false; }
-      if (!this.placeMatches(context.tits.smashPlace)) { return false; }
+      if (this.level != data.tits.smashLevel) { return false; }
+      if (!this.placeMatches(data.tits.smashPlace)) { return false; }
     }
 
     return true;
@@ -175,30 +175,30 @@ global.Description = class Description extends Form {
   // expression is true, if the condition does not exist ensure that the
   // operation is false. We want to know if the check fails though, so negate
   // that result. This is essentially an XOR.
-  conditionFailed(code,expression) {
-    return (this.conditions||[]).indexOf(code) >= 0 ? !expression : expression
+  conditionFailed(code, expression) {
+    return ArrayUtility.contains(this.conditions,code) ? !expression : expression
   }
 
-  cockConditionsMet(context) {
-    if (this.conditionFailed('cock-count-2', context.cock.count == 2)) { return false; }
-    if (this.conditionFailed('cock-count-3', context.cock.count == 3)) { return false; }
+  cockConditionsMet(data) {
+    if (this.conditionFailed('minion(C).cock.count=2', data.cock.count == 2)) { return false; }
+    if (this.conditionFailed('minion(C).cock.count=3', data.cock.count == 3)) { return false; }
     return true;
   }
 
-  titsConditionsMet(context) {
-    if (this.conditionFailed('species-scaven', context.character.speciesCode == 'scaven'))  { return false; }
-    if (this.conditionFailed('tits-size-zero', context.tits.currentSizeClass == 'zero')) { return false; }
+  titsConditionsMet(data) {
+    if (this.conditionFailed('minion(C).is-scaven', data.character.speciesCode == 'scaven'))  { return false; }
+    if (this.conditionFailed('minion(C).tits.zero', data.tits.currentSizeClass == 'zero')) { return false; }
     return true;
   }
 
   // When a cock description includes a description of a cock feature we need
   // to make sure that cock feature is actually present.
-  cockInclusionsValid(context) {
+  cockInclusionsValid(data) {
     for (let i=0; i<(this.includes||[]).length; i++) {
-      if (this.includes[i] == 'knobs'  && context.cock.hasKnobs == false ) { return false; }
-      if (this.includes[i] == 'knot'   && context.cock.hasKnot == false)   { return false; }
-      if (this.includes[i] == 'spines' && context.cock.hasSpines == false) { return false; }
-      if (this.includes[i] == 'sheath' && context.cock.hasSheath == false) { return false; }
+      if (this.includes[i] == 'knobs'  && data.cock.hasKnobs == false ) { return false; }
+      if (this.includes[i] == 'knot'   && data.cock.hasKnot == false)   { return false; }
+      if (this.includes[i] == 'spines' && data.cock.hasSpines == false) { return false; }
+      if (this.includes[i] == 'sheath' && data.cock.hasSheath == false) { return false; }
     }
     return true;
   }

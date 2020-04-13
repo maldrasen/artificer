@@ -5,7 +5,7 @@ Abuser.BodyAbuser = (function() {
   async function addInjury(character, hazard) {
     const body = await character.getBody();
 
-    if (hazard.type == 'pierce') { addPierceInjury(character, body, hazard); }
+    if (hazard.type == 'pierce') { await addPierceInjury(character, body, hazard); }
 
     const context = new WeaverContext();
     await context.addCharacter('C',character);
@@ -16,10 +16,11 @@ Abuser.BodyAbuser = (function() {
 
   // Pierce injuries are rather simple. If you've been stabbed, and it's not
   // fatal, than it's probably in the gut.
-  function addPierceInjury(character, body, hazard) {
+  async function addPierceInjury(character, body, hazard) {
     body.pierceLevel = Abuser.raiseLevel(body.pierceLevel, hazard.level, 5);
     body.pierceCount += hazard.count || 1;
     body.pierceHealing = 0;
+    await body.save();
   }
 
   return { addInjury };

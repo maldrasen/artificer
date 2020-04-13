@@ -17,7 +17,6 @@ global.AnusInjuryDescriber = class AnusInjuryDescriber {
   // whipping event.
   async describeSmash() {
     if (this.anus.smashLevel == 0) { return ''; }
-
     return (await Description.selectInjury('anus','smash',this.context)).d
   }
 }

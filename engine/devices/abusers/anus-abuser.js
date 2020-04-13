@@ -7,7 +7,7 @@ Abuser.AnusAbuser = (function() {
   async function addInjury(character, hazard) {
     const anus = await character.getAnus();
 
-    if (hazard.type == 'smash')  { addSmashInjury(character, anus, hazard);  }
+    if (hazard.type == 'smash')  { await addSmashInjury(character, anus, hazard);  }
 
     const context = new WeaverContext();
     await context.addCharacter('C',character);
@@ -19,11 +19,13 @@ Abuser.AnusAbuser = (function() {
   // Add smash injury. This represents a bruised ass. An ass bruise can have a
   // shape (whip, hand) or it can be left indistinct. The last ass injury will
   // overwrite the shape of the previous injury.
-  function addSmashInjury(character, anus, hazard) {
+  async function addSmashInjury(character, anus, hazard) {
     anus.smashLevel = Abuser.raiseLevel(anus.smashLevel, hazard.level, 5);
     anus.smashCount += hazard.count || 1;
     anus.smashHealing = 0;
     anus.smashShape = ObjectUtility.fetch(hazard,'details','shape');
+
+    await anus.save();
   }
 
   return { addInjury };

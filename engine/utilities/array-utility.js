@@ -2,7 +2,7 @@ global.ArrayUtility = {
 
   // I know this will end up being longer, using indexOf just looks ugly I think.
   contains(array, item) {
-    return array.indexOf(item) >= 0;
+    return (array||[]).indexOf(item) >= 0;
   },
 
   remove(array, element) {
