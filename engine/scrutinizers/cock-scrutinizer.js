@@ -5,8 +5,8 @@ global.CockScrutinizer = (function() {
     if (data.cock == null) { return false; }
     if (operation == 'cock.external-balls')   { return data.cock.internalBalls == false;        }
     if (operation == 'cock.internal-balls')   { return data.cock.internalBalls;                 }
-    if (operation == 'cock.sheath')           { return data.context.cock.hasSheath;             }
-    if (operation == 'cock.no-sheath')        { return data.context.cock.hasSheath == false;    }
+    if (operation == 'cock.sheath')           { return data.cock.hasSheath;                     }
+    if (operation == 'cock.no-sheath')        { return data.cock.hasSheath == false;            }
     if (operation == 'cock.knobs')            { return data.cock.hasKnobs;                      }
     if (operation == 'cock.knot')             { return data.cock.hasKnot;                       }
     if (operation == 'cock.spines')           { return data.cock.hasSpines;                     }
@@ -20,7 +20,7 @@ global.CockScrutinizer = (function() {
     if (operation == 'cock.monster')          { return data.cock.currentSizeClass == 'monster'; }
     if (operation == 'cock.gigantic')         { return data.cock.isGigantic;                    }
     if (operation == 'cock.titanic')          { return data.cock.isTitanic;                     }
-    if (operation == 'cock.bigger-than-big')  { return ArrayUtility.contains(['huge','monster'],data.cock.currentSizeClass); }
+    if (operation == 'cock.bigger-than-big')  { return ArrayUtility.contains(['huge','monster'], data.cock.currentSizeClass); }
 
     if (operation.match(/^cock.count/)) { return checkCockCount(operation, data.cock.count); }
 

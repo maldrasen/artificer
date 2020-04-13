@@ -31,10 +31,8 @@ global.Description = class Description extends Form {
       // if (part == 'tits') {
       //   if (description.titsConditionsMet(context) == false) { return false; }
       // }
-      //
-      // return description.requirementsMet(context);
-      return true;
 
+      return CentralScrutinizer.meetsRequirements(this.requirements, context)
     });
   }
 
@@ -65,8 +63,7 @@ global.Description = class Description extends Form {
       //   if (description.titsConditionsMet(context) == false) { return false; }
       // }
 
-      // return description.requirementsMet(context);
-      return true;
+      return CentralScrutinizer.meetsRequirements(this.requirements, context)
     });
   }
 
@@ -194,63 +191,15 @@ global.Description = class Description extends Form {
     return true;
   }
 
-  // Inclusions are essentially the same as requirements except that when a
-  // description with an inclusion is appended to the full description the
-  // describer remembers that, so that the same feature isn't described again
-  // unnecessarily.
-
+  // When a cock description includes a description of a cock feature we need
+  // to make sure that cock feature is actually present.
   cockInclusionsValid(context) {
     for (let i=0; i<(this.includes||[]).length; i++) {
-      if (this.includes[i] == 'knobs'  && matchRequirement('cock-knobbed',  context) == false) { return false; }
-      if (this.includes[i] == 'knot'   && matchRequirement('cock-knotted',  context) == false) { return false; }
-      if (this.includes[i] == 'spines' && matchRequirement('cock-spined',   context) == false) { return false; }
-      if (this.includes[i] == 'sheath' && matchRequirement('cock.sheath', context) == false) { return false; }
+      if (this.includes[i] == 'knobs'  && context.cock.hasKnobs == false ) { return false; }
+      if (this.includes[i] == 'knot'   && context.cock.hasKnot == false)   { return false; }
+      if (this.includes[i] == 'spines' && context.cock.hasSpines == false) { return false; }
+      if (this.includes[i] == 'sheath' && context.cock.hasSheath == false) { return false; }
     }
     return true;
   }
-
-  requirementsMet(context) {
-    for (let i=0; i<(this.requirements||[]).length; i++) {
-      if (matchRequirement(this.requirements[i], context) == false) { return false; }
-    }
-    return true;
-  }
-}
-
-function matchRequirement(req, context) {
-  if (req == 'species-scaven')           { return context.character.speciesCode == 'scaven'  }
-  if (req == 'species-furry')            { return context.character.species.isFurry          }
-  if (req == 'species-not-furry')        { return context.character.species.isFurry == false }
-  if (req == 'species-demon')            { return context.character.species.isDemon          }
-  if (req == 'cock-count-2')             { return context.cock.count == 2                    }
-  if (req == 'cock-count-3')             { return context.cock.count == 3                    }
-  if (req == 'cock-external-balls')      { return context.cock.internalBalls == false        }
-  if (req == 'cock-size-small')          { return context.cock.currentSizeClass == 'small'   }
-  if (req == 'cock-size-average')        { return context.cock.currentSizeClass == 'average' }
-  if (req == 'cock-size-big')            { return context.cock.currentSizeClass == 'big'     }
-  if (req == 'cock-size-huge')           { return context.cock.currentSizeClass == 'huge'    }
-  if (req == 'cock-size-monster')        { return context.cock.currentSizeClass == 'monster' }
-  if (req == 'cock-size-gigantic')       { return context.cock.isGigantic                    }
-  if (req == 'cock-size-titanic')        { return context.cock.isTitanic                     }
-  if (req == 'cock-shape-dragon')        { return context.cock.shape == 'dragon'             }
-  if (req == 'cock-shape-horse')         { return context.cock.shape == 'horse'              }
-  if (req == 'cock-shape-snake')         { return context.cock.shape == 'snake'              }
-  if (req == 'cock-knobbed')             { return context.cock.hasKnobs                      }
-  if (req == 'cock-knotted')             { return context.cock.hasKnot                       }
-  if (req == 'cock-spined')              { return context.cock.hasSpines                     }
-  if (req == 'cock-sheathed')            { return context.cock.hasSheath                     }
-  if (req == 'nipples-size-big')         { return context.nipples.length >= 20               }
-  if (req == 'nipples-size-huge')        { return context.nipples.length >= 30               }
-  if (req == 'nipples-shape-puffy')      { return context.nipples.shape == 'puffy'           }
-  if (req == 'tits-size-zero')           { return context.tits.currentSizeClass == 'zero'    }
-  if (req == 'tits-size-tiny')           { return context.tits.currentSizeClass == 'tiny'    }
-  if (req == 'tits-size-below-average')  { return context.tits.size < 300                    }
-  if (req == 'tits-shape-conical')       { return context.tits.shape == 'conical'            }
-  if (req == 'tits-shape-perky')         { return context.tits.shape == 'perky'              }
-  if (req == 'tits-smash-count-1')       { return context.tits.smashCount == 1               }
-  if (req == 'tits-smash-count-2')       { return context.tits.smashCount == 2               }
-  if (req == 'tits-smash-count-over-2')  { return context.tits.smashCount > 2                }
-  if (req == 'tits-smash-shape')         { return context.tits.smashShape != null            }
-
-  throw `Unknown Description Requirement - ${req}`
 }
