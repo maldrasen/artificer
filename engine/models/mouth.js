@@ -8,6 +8,9 @@ global.Mouth = Database.instance().define('mouth', {
   smashCount:        { type:Sequelize.INTEGER },
   smashHealing:      { type:Sequelize.INTEGER },
   smashTeethMissing: { type:Sequelize.INTEGER },
+  cutLevel:        { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
+  cutCount:        { type:Sequelize.INTEGER },
+  cutHealing:      { type:Sequelize.INTEGER },
 },{
   timestamps: false,
   getterMethods: {

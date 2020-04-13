@@ -12,6 +12,7 @@ global.BodyDescriber = class BodyDescriber {
 
   async updateDescription() {
     if (this.body == null) { this._body = await this.character.getBody(); }
+    if (this.mouth == null) { this._mouth = await this.character.getMouth(); }
 
     let desc = await this.getDescription();
     if (desc) {

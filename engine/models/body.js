@@ -22,9 +22,9 @@ global.Body = Database.instance().define('body', {
   tailShape:         { type:Sequelize.STRING, validate:{ isIn:[TAIL_SHAPES] }},
   hornShape:         { type:Sequelize.STRING, validate:{ isIn:[HORN_SHAPES] }},
   faceShape:         { type:Sequelize.STRING, validate:{ isIn:[FACE_SHAPES] }},
-  smashLevel:        { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
-  smashCount:        { type:Sequelize.INTEGER },
-  smashHealing:      { type:Sequelize.INTEGER },
+  pierceLevel:       { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
+  pierceCount:       { type:Sequelize.INTEGER },
+  pierceHealing:     { type:Sequelize.INTEGER },
   description:       { type:Sequelize.STRING },
 },{
   timestamps: false,

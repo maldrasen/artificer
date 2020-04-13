@@ -6,6 +6,7 @@ Abuser.HeadAbuser = (function() {
 
     if (hazard.type == 'blight') { addBlightInjury(character, mouth, hazard); }
     if (hazard.type == 'burn')   { addBurnInjury(character, mouth, hazard);   }
+    if (hazard.type == 'cut')    { addCutInjury(character, mouth, hazard);   }
     if (hazard.type == 'smash')  { addSmashInjury(character, mouth, hazard);  }
 
     const describer = new BodyDescriber({ character, body, mouth });
@@ -17,6 +18,12 @@ Abuser.HeadAbuser = (function() {
 
   function addBlightInjury(character, mouth, hazard) {}
   function addBurnInjury(character, mouth, hazard) {}
+
+  function addCutInjury(character, mouth, hazard) {
+    mouth.cutLevel = Abuser.raiseLevel(mouth.cutLevel, hazard.level, 5);
+    mouth.cutCount += 1;
+    mouth.cutHealing = 0;
+  }
 
   function addSmashInjury(character, mouth, hazard) {
     mouth.smashLevel = Abuser.raiseLevel(mouth.smashLevel, hazard.level, 5);

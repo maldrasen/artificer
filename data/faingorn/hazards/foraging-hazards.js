@@ -1,17 +1,24 @@
 
 // === Body ===
 
-Hazard.buildHazard('forage-body-cut-001', { activity:'foraging-hinterlands', location:'body', type:'cut', level:1,
-  details: { place:'left-arm' },
-  story: `{{He}} got a nasty scrape along {{his}} left arm when {{he}} tripped and fell against a jagged rock.`
+Hazard.buildHazard('forage-body-pierce-001', { activity:'foraging-hinterlands', location:'body', type:'pierce', level:3,
+  requires: ['minion(C).is-scaven'],
+  story: `{{He}} was foraging deep in the woods when {{he}} was spotted by an elven hunter. The elf shot an arrow at
+          your minion right into {{his}} gut. Despite {{his}} injury {{he}} was able to escape by crawling through a
+          thicket the elf was too tall to pass through.`
 });
 
-Hazard.buildHazard('forage-body-cut-002', { activity:'foraging-hinterlands', location:'body', type:'cut', level:2,
-  details: { place:'leg' },
+// === Head ===
+
+Hazard.buildHazard('forage-head-cut-001', { activity:'foraging-hinterlands', location:'head', type:'cut', level:1,
+  story: `{{He}} got a nasty scrape along {{his}} cheek when {{he}} tripped and fell against a jagged rock.`
+});
+
+Hazard.buildHazard('forage-head-cut-002', { activity:'foraging-hinterlands', location:'head', type:'cut', level:2,
   requires: ['minion(C).is-scaven'],
   story: `{{He}} was foraging deep in the woods when {{he}} was spotted by an elven hunter. The elf shot an arrow at
           your minion, but {{he}} lept into some thick brambles dodging the shot. The thick thorny vines left a cut
-          along {{his}} leg, but at least {{he}} was able to escape.`
+          across {{his}} face, but at least {{he}} was able to escape.`
 });
 
 // === Cock ===
