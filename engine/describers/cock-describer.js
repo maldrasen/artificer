@@ -13,14 +13,8 @@ global.CockDescriber = class CockDescriber {
   isIncluded(key) { return this._included.indexOf(key) >= 0; }
 
   async updateDescription() {
-    if (this.cock == null) { this._cock = await this.character.getCock(); }
-    if (this.cock == null) { return ""; }
-
-    let desc = await this.getDescription();
-    if (desc) {
-      this.cock.description = desc;
-      await this.cock.save();
-      return this.cock;
+    if (this.cock != null) {
+      await this.cock.update({ description:(await this.getDescription()) });
     }
   }
 
@@ -38,7 +32,7 @@ global.CockDescriber = class CockDescriber {
       ${await injuryDescriber.describeInjuries()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
-    return await Weaver.weaveWithCharacter(description,'C',this.character);
+    return await Weaver.weave(description, this.context);
   }
 
   async cockDescription() {

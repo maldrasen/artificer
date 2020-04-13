@@ -17,15 +17,8 @@ global.TitsDescriber = class TitsDescriber {
   //       that includes the nipples, especially if he has interesting
   //       piercings and such. When piercings get implemented that is.
   async updateDescription() {
-    if (this.tits == null) { this._tits = await this.character.getTits(); }
-    if (this.nipples == null) { this._nipples = await this.character.getNipples(); }
-    if (this.tits == null) { return ""; }
-
-    let desc = await this.getDescription()
-    if (desc) {
-      this.tits.description = desc;
-      await this.tits.save();
-      return this.tits;
+    if (this.tits != null) {
+      await this.tits.update({ description:(await this.getDescription()) });
     }
   }
 
@@ -38,7 +31,7 @@ global.TitsDescriber = class TitsDescriber {
       ${await injuryDescriber.describeInjuries()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
-    return await Weaver.weaveWithCharacter(description,'C',this.character);
+    return await Weaver.weave(description, this.context);
   }
 
   // === Descriptions ===

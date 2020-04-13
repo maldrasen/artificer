@@ -1,10 +1,10 @@
-describe('Describer: Pussy', function() {
+describe('Describer: Pussy (injuries)', function() {
 
   function printPussy(type, pussy) {
     SpecHelper.print(`${type}(${pussy.sizeClass}/${pussy.conditon}) > ${pussy.description}`);
   }
 
-  it('describes normal assholes', function(done) {
+  it('describes normal pussies', function(done) {
     SpecHelper.tenTimes(done, resolve => {
       SpecHelper.buildJada({ }).then(jada => {
         jada.getPussy().then(pussy => {

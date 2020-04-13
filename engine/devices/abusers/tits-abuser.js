@@ -7,10 +7,11 @@ Abuser.TitsAbuser = (function() {
     if (hazard.type == 'burn')   { addBurnInjury(character, tits, hazard);   }
     if (hazard.type == 'smash')  { addSmashInjury(character, tits, hazard);  }
 
-    const describer = new TitsDescriber({ character, tits });
-    await describer.updateDescription();
+    const context = new WeaverContext();
+    await context.addCharacter('C',character);
 
-    return tits;
+    const describer = new TitsDescriber(context);
+    await describer.updateDescription();
   }
 
   function addBlightInjury(character, tits, hazard) {}

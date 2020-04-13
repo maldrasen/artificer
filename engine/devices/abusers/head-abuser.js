@@ -9,11 +9,12 @@ Abuser.HeadAbuser = (function() {
     if (hazard.type == 'cut')    { addCutInjury(character, mouth, hazard);   }
     if (hazard.type == 'smash')  { addSmashInjury(character, mouth, hazard);  }
 
-    const describer = new BodyDescriber({ character, body, mouth });
+    const context = new WeaverContext();
+    await context.addCharacter('C',character);
+
+    const describer = new BodyDescriber(context);
     await describer.updateDescription();
     await mouth.save();
-
-    return mouth;
   }
 
   function addBlightInjury(character, mouth, hazard) {}

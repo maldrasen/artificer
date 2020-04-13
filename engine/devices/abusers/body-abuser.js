@@ -7,10 +7,11 @@ Abuser.BodyAbuser = (function() {
 
     if (hazard.type == 'pierce') { addPierceInjury(character, body, hazard); }
 
-    const describer = new BodyDescriber({ character, body });
-    await describer.updateDescription();
+    const context = new WeaverContext();
+    await context.addCharacter('C',character);
 
-    return body;
+    const describer = new BodyDescriber(context);
+    await describer.updateDescription();
   }
 
   // Pierce injuries are rather simple. If you've been stabbed, and it's not

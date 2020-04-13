@@ -18,15 +18,6 @@ global.AnusInjuryDescriber = class AnusInjuryDescriber {
   async describeSmash() {
     if (this.anus.smashLevel == 0) { return ''; }
 
-    let description = Random.from((await Description.validForInjury('anus','smash',{
-      character: this.character,
-      anus: this.anus,
-    })));
-
-    if (description == null) {
-      return Weaver.error(`Unable to find a smashed ass description`)
-    }
-
-    return `${description.d}`;
+    return (await Description.selectInjury('anus','smash',this.context)).d
   }
 }

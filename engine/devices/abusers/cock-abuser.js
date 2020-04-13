@@ -11,10 +11,11 @@ Abuser.CockAbuser = (function() {
     if (hazard.type == 'burn')   { addBurnInjury(character, cock, hazard);   }
     if (hazard.type == 'smash')  { addSmashInjury(character, cock, hazard);  }
 
-    const describer = new CockDescriber({ character, cock });
-    await describer.updateDescription();
+    const context = new WeaverContext();
+    await context.addCharacter('C',character);
 
-    return cock;
+    const describer = new CockDescriber(context);
+    await describer.updateDescription();
   }
 
   // A Cock:Blight injury can have details set to specify cock or balls.

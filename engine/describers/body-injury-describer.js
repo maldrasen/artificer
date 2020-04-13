@@ -24,31 +24,12 @@ global.BodyInjuryDescriber = class BodyInjuryDescriber {
 
   async describeHeadCut() {
     if (this.mouth.cutLevel == 0) { return ''; }
-
-    let description = Random.from((await Description.validForInjury('head','cut',{
-      character: this.character,
-      mouth: this.mouth,
-    })));
-
-    if (description == null) {
-      return Weaver.error(`Unable to find a cut head description`);
-    }
-
-    return description.d;
+    return (await Description.selectInjury('head','cut',this.context)).d;
   }
 
   async describeHeadSmash() {
     if (this.mouth.smashLevel == 0) { return ''; }
-
-    let description = Random.from((await Description.validForInjury('head','smash',{
-      character: this.character,
-      mouth: this.mouth,
-    })));
-
-    if (description == null) {
-      return Weaver.error(`Unable to find a smashed head description`);
-    }
-
+    const description = await Description.selectInjury('head','smash',this.context);
     return `${description.d} ${this.describeMissingTeeth()}`;
   }
 
@@ -86,17 +67,7 @@ global.BodyInjuryDescriber = class BodyInjuryDescriber {
 
   async describeBodyPierce() {
     if (this.body.pierceLevel == 0) { return ''; }
-
-    let description = Random.from((await Description.validForInjury('body','pierce',{
-      character: this.character,
-      body: this.body,
-    })));
-
-    if (description == null) {
-      return Weaver.error(`Unable to find a pierced body description`);
-    }
-
-    return description.d;
+    return (await Description.selectInjury('body','pierce',this.context)).d;
   }
 
 }

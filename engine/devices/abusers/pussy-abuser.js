@@ -11,10 +11,11 @@ Abuser.PussyAbuser = (function() {
     if (hazard.type == 'burn')   { addBurnInjury(character, pussy, hazard);   }
     if (hazard.type == 'smash')  { addSmashInjury(character, pussy, hazard);  }
 
-    const describer = new PussyDescriber({ character, pussy });
-    await describer.updateDescription();
+    const context = new WeaverContext();
+    await context.addCharacter('C',character);
 
-    return pussy;
+    const describer = new PussyDescriber(context);
+    await describer.updateDescription();
   }
 
   // Assume a blighted pussy covers the entire pussy, from the labia into the

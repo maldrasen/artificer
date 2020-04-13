@@ -10,15 +10,7 @@ global.BodyDescriber = class BodyDescriber {
   get mouth() { return this.context.get('C').mouth; }
 
   async updateDescription() {
-    if (this.body == null) { this._body = await this.character.getBody(); }
-    if (this.mouth == null) { this._mouth = await this.character.getMouth(); }
-
-    let desc = await this.getDescription();
-    if (desc) {
-      this.body.description = desc;
-      await this.body.save();
-      return this.body;
-    }
+    await this.body.update({ description:(await this.getDescription()) });
   }
 
   async getDescription() {
@@ -31,7 +23,7 @@ global.BodyDescriber = class BodyDescriber {
       ${this.skinDescription()} ${await injuries.bodyInjuries()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
-    return await Weaver.weaveWithCharacter(description,'C',this.character);
+    return await Weaver.weave(description, this.context);
   }
 
   heightAndWeight() {

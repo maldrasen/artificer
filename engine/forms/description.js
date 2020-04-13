@@ -12,46 +12,60 @@ global.Description = class Description extends Form {
   static buildPussyInjury(data) { return super.build(null,extend(data,{ type:'pussy-injury' })); }
   static buildTitInjury(data)   { return super.build(null,extend(data,{ type:'tit-injury'   })); }
 
+  static async select(part, context) {
+    let options = await Description.validFor(part, context);
+    if (options.length == 0) {
+      throw `Cannot find an description for ${part}`;
+    }
+    return Random.from(options);
+  }
+
   static async validFor(part,context) {
     return Description.where(description => {
-      if (description.type != part) { return false; }
-
-console.log("Checking validity")
-console.log(part)
-console.log(context)
-
-      if (part == 'cock') {
-        if (description.cockInclusionsValid(context) == false) { return false; }
-        if (description.cockConditionsMet(context) == false) { return false; }
-      }
-      if (part == 'tits') {
-        if (description.titsConditionsMet(context) == false) { return false; }
-      }
-
-      return description.requirementsMet(context);
+      return true;
+  //     if (description.type != part) { return false; }
+  //
+  //     if (part == 'cock') {
+  //       if (description.cockInclusionsValid(context) == false) { return false; }
+  //       if (description.cockConditionsMet(context) == false) { return false; }
+  //     }
+  //     if (part == 'tits') {
+  //       if (description.titsConditionsMet(context) == false) { return false; }
+  //     }
+  //
+  //     return description.requirementsMet(context);
     });
+  }
+
+  static async selectInjury(part, damageType, context) {
+    let options = await Description.validForInjury(part, damageType, context);
+    if (options.length == 0) {
+      throw `Cannot find an injury description for (${damageType},${part})`;
+    }
+    return Random.from(options);
   }
 
   static async validForInjury(part, damageType, context) {
     return Description.where(description => {
-      if (damageType != description.damageType) { return false; }
-
-      if (part == 'anus'  && !description.validForAnusInjury(damageType,  context)) { return false; }
-      if (part == 'body'  && !description.validForBodyInjury(damageType,  context)) { return false; }
-      if (part == 'cock'  && !description.validForCockInjury(damageType,  context)) { return false; }
-      if (part == 'head'  && !description.validForHeadInjury(damageType,  context)) { return false; }
-      if (part == 'pussy' && !description.validForPussyInjury(damageType, context)) { return false; }
-      if (part == 'tits'  && !description.validForTitsInjury(damageType,  context)) { return false; }
-
-      if (part == 'cock') {
-        if (description.cockInclusionsValid(context) == false) { return false; }
-        if (description.cockConditionsMet(context) == false) { return false; }
-      }
-      if (part == 'tits') {
-        if (description.titsConditionsMet(context) == false) { return false; }
-      }
-
-      return description.requirementsMet(context);
+      return true;
+  //     if (damageType != description.damageType) { return false; }
+  //
+  //     if (part == 'anus'  && !description.validForAnusInjury(damageType,  context)) { return false; }
+  //     if (part == 'body'  && !description.validForBodyInjury(damageType,  context)) { return false; }
+  //     if (part == 'cock'  && !description.validForCockInjury(damageType,  context)) { return false; }
+  //     if (part == 'head'  && !description.validForHeadInjury(damageType,  context)) { return false; }
+  //     if (part == 'pussy' && !description.validForPussyInjury(damageType, context)) { return false; }
+  //     if (part == 'tits'  && !description.validForTitsInjury(damageType,  context)) { return false; }
+  //
+  //     if (part == 'cock') {
+  //       if (description.cockInclusionsValid(context) == false) { return false; }
+  //       if (description.cockConditionsMet(context) == false) { return false; }
+  //     }
+  //     if (part == 'tits') {
+  //       if (description.titsConditionsMet(context) == false) { return false; }
+  //     }
+  //
+  //     return description.requirementsMet(context);
     });
   }
 

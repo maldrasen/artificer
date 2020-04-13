@@ -9,10 +9,11 @@ Abuser.AnusAbuser = (function() {
 
     if (hazard.type == 'smash')  { addSmashInjury(character, anus, hazard);  }
 
-    const describer = new AnusDescriber({ character, anus });
-    await describer.updateDescription();
+    const context = new WeaverContext();
+    await context.addCharacter('C',character);
 
-    return anus;
+    const describer = new AnusDescriber(context);
+    await describer.updateDescription();
   }
 
   // Add smash injury. This represents a bruised ass. An ass bruise can have a
