@@ -8,7 +8,7 @@ Hazard.buildHazard('forage-body-cut-001', { activity:'foraging-hinterlands', loc
 
 Hazard.buildHazard('forage-body-cut-002', { activity:'foraging-hinterlands', location:'body', type:'cut', level:2,
   details: { place:'leg' },
-  requires: ['species-scaven'],
+  requires: ['minion(C).is-scaven'],
   story: `{{He}} was foraging deep in the woods when {{he}} was spotted by an elven hunter. The elf shot an arrow at
           your minion, but {{he}} lept into some thick brambles dodging the shot. The thick thorny vines left a cut
           along {{his}} leg, but at least {{he}} was able to escape.`

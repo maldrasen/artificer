@@ -4,6 +4,7 @@ global.CharacterScrutinizer = (function() {
   function check(operation, data) {
 
     // Species Properties
+    if (operation == 'is-scaven')                     { return data.character.speciesCode == 'scaven' }
     if (operation == 'demon')                         { return data.character.species.isDemon; }
     if (operation == 'not-demon')                     { return !data.character.species.isDemon; }
     if (operation == 'elf')                           { return data.character.species.isElf; }
