@@ -29,6 +29,7 @@ global.CharacterScrutinizer = (function() {
     if (operation == 'height-tall')                   { return data.body.heightIsTall; }
     if (operation == 'height-not-short')              { return ! data.body.heightIsShort; }
     if (operation == 'height-not-tall')               { return ! data.body.heightIsTall; }
+    if (operation.match(/^body.pierce-count/))        { return checkPierceCount(operation, data.body.pierceCount); }
 
     // Body Part Presence Checks
     if (operation == 'has-cock')                      { return data.cock != null; }
@@ -45,6 +46,11 @@ global.CharacterScrutinizer = (function() {
     if (operation.match(/^magical/))  { return checkAttribute(operation, data.character) }
 
     throw `Unknown Character Operation - ${operation}`
+  }
+
+  async function checkPierceCount(operation, count) {
+    let match = operation.match(/count(<|<=|=|>=|>)([^<>=]+)/);
+    return CentralScrutinizer.checkComparisonOperation(count,match[1],match[2]);
   }
 
   function checkAttribute(operation, character) {
