@@ -24,7 +24,7 @@ global.TitsScrutinizer = (function() {
   }
 
   async function checkTitSmashCount(operation, count) {
-    let match = requirement.match(/count(<|<=|=|>=|>)([^<>=]+)/);
+    let match = operation.match(/count(<|<=|=|>=|>)([^<>=]+)/);
     return CentralScrutinizer.checkComparisonOperation(count,match[1],match[2]);
   }
 
