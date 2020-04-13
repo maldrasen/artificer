@@ -36,14 +36,7 @@ global.CockDescriber = class CockDescriber {
   }
 
   async cockDescription() {
-    let description = Random.from((await Description.validFor('cock',{
-      character: this.character,
-      cock: this.cock,
-    })));
-
-    if (description == null) {
-      return Weaver.error(`Unable to find a cock description`);
-    }
+    let description = await Description.select('cock', this.context);
 
     if (description.includes) {
       each(description.includes, inclusion => {

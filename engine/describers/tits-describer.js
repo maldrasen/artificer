@@ -37,35 +37,13 @@ global.TitsDescriber = class TitsDescriber {
   // === Descriptions ===
 
   async describeTits() {
-    let description = Random.from((await Description.validFor('tits',{
-      character: this.character,
-      tits: this.tits,
-      nipples: this.nipples
-    })));
-
-    if (description == null) {
-      return Weaver.error(`Unable to find a tits description`)
-    }
-
-    return description.d
+    return (await Description.select('tits', this.context)).d;
   }
 
   async describeNipples() {
     if (this.isIncluded('nipples')) { return ''; }
-
-    let description = Random.from((await Description.validFor('nipples',{
-      character: this.character,
-      tits: this.tits,
-      nipples: this.nipples
-    })));
-
-    if (description == null) {
-      return Weaver.error(`Unable to find a nipple description`)
-    }
-
-    return description.d
+    return (await Description.select('nipples', this.context)).d;
   }
-
 
 }
 

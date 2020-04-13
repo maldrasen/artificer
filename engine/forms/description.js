@@ -13,14 +13,16 @@ global.Description = class Description extends Form {
   static buildTitInjury(data)   { return super.build(null,extend(data,{ type:'tit-injury'   })); }
 
   static async select(part, context) {
-    let options = await Description.validFor(part, context.get('C'));
+    let options = await Description.validFor(part, context);
     if (options.length == 0) {
       throw `Cannot find an description for ${part}`;
     }
     return Random.from(options);
   }
 
-  static async validFor(part, data) {
+  static async validFor(part, context) {
+    const data = context.get('C');
+
     return Description.where(description => {
       if (description.type != part) { return false; }
 
@@ -32,19 +34,21 @@ global.Description = class Description extends Form {
         if (description.titsConditionsMet(data) == false) { return false; }
       }
 
-      return CentralScrutinizer.meetsRequirements(this.requirements, data)
+      return CentralScrutinizer.meetsRequirements(this.requirements, context)
     });
   }
 
   static async selectInjury(part, damageType, context) {
-    let options = await Description.validForInjury(part, damageType, context.get('C'));
+    let options = await Description.validForInjury(part, damageType, context);
     if (options.length == 0) {
       throw `Cannot find an injury description for (${damageType},${part})`;
     }
     return Random.from(options);
   }
 
-  static async validForInjury(part, damageType, data) {
+  static async validForInjury(part, damageType, context) {
+    const data = context.get('C');
+
     return Description.where(description => {
       if (damageType != description.damageType) { return false; }
 
@@ -63,7 +67,7 @@ global.Description = class Description extends Form {
         if (description.titsConditionsMet(data) == false) { return false; }
       }
 
-      return CentralScrutinizer.meetsRequirements(this.requirements, data)
+      return CentralScrutinizer.meetsRequirements(this.requirements, context)
     });
   }
 

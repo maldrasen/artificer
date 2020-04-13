@@ -87,8 +87,8 @@ describe('MouthBuilder', function() {
     CharacterBuilder.build({ gender:'female', species:'pixie' }).then(character => {
       character.getMouth().then(mouth => {
         expect(mouth.throatWidth).to.be.within(6,7);
-        expect(mouth.tongueLength).to.be.within(9,11);
-        expect(mouth.width).to.be.within(9,11);
+        expect(mouth.tongueLength).to.be.within(9,12);
+        expect(mouth.width).to.be.within(9,12);
         done();
       });
     });
