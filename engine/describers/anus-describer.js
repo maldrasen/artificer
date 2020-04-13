@@ -20,8 +20,10 @@ global.AnusDescriber = class AnusDescriber {
   }
 
   async getDescription() {
+    const injuryDescriber = new AnusInjuryDescriber(this.character, this.anus);
+
     let description = `
-      [TODO: Anus Description] ${ new AnusInjuryDescriber(this.character, this.anus).describeInjuries() }
+      [TODO: Anus Description] ${ await injuryDescriber.describeInjuries() }
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
     return await Weaver.weaveWithCharacter(description,'C',this.character);

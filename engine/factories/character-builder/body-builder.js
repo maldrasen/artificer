@@ -13,10 +13,9 @@ global.BodyBuilder = (function() {
       tailShape:  bodyOptions.tailShape  || character.species.bodyOptions.tailShape || null,
       hornShape:  bodyOptions.hornShape  || character.species.random('horn'),
       faceShape:  character.species.getFaceShape(character.genderCode),
-      smashLevel: 0,
-      smashCount: 0,
-      smashHealing: 0,
-      smashTeethMissing: 0,
+      pierceLevel: 0,
+      pierceCount: 0,
+      pierceHealing: 0,
       description: null,
     }
 

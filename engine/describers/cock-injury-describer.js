@@ -11,15 +11,15 @@ global.CockInjuryDescriber = class CockInjuryDescriber {
   get previousInjury() { return this._previousInjury; }
   set previousInjury(i) { this._previousInjury = i; }
 
-  describeInjuries() {
+  async describeInjuries() {
     return `
-      ${this.describeBlight()}
-      ${this.describeBurn()}
-      ${this.describeSmash()}
+      ${await this.describeBlight()}
+      ${await this.describeBurn()}
+      ${await this.describeSmash()}
     `;
   }
 
-  describeBlight() {
+  async describeBlight() {
     if (this.cock.blightLevel == 0) { return ''; }
     let hisCockHasBeen = this.injuryStart(this.cock.blightPlace);
 
@@ -28,10 +28,10 @@ global.CockInjuryDescriber = class CockInjuryDescriber {
       place: this.cock.blightPlace,
     }
 
-    let description = Random.from(Description.validForInjury('cock','blight',{
+    let description = Random.from((await Description.validForInjury('cock','blight',{
       character: this.character,
       cock: this.cock,
-    }));
+    })));
 
     if (description == null) {
       return Weaver.error(`Unable to find a blighted cock description`)
@@ -40,7 +40,7 @@ global.CockInjuryDescriber = class CockInjuryDescriber {
     return `${hisCockHasBeen} ${description.d}`
   }
 
-  describeBurn() {
+  async describeBurn() {
     if (this.cock.burnLevel == 0) { return ''; }
     let hisCockHasBeen = this.injuryStart(this.cock.burnPlace);
 
@@ -49,10 +49,10 @@ global.CockInjuryDescriber = class CockInjuryDescriber {
       place: this.cock.burnPlace,
     }
 
-    let description = Random.from(Description.validForInjury('cock','burn',{
+    let description = Random.from((await Description.validForInjury('cock','burn',{
       character: this.character,
       cock: this.cock,
-    }));
+    })));
 
     if (description == null) {
       return Weaver.error(`Unable to find a burnt cock description`)
@@ -61,7 +61,7 @@ global.CockInjuryDescriber = class CockInjuryDescriber {
     return `${hisCockHasBeen} ${description.d}`
   }
 
-  describeSmash() {
+  async describeSmash() {
     if (this.cock.smashLevel == 0) { return ''; }
 
     let hisCockHasBeen = this.injuryStart('balls');
@@ -71,10 +71,10 @@ global.CockInjuryDescriber = class CockInjuryDescriber {
       place: 'balls',
     }
 
-    let description = Random.from(Description.validForInjury('cock','smash',{
+    let description = Random.from((await Description.validForInjury('cock','smash',{
       character: this.character,
       cock: this.cock,
-    }));
+    })));
 
     if (description == null) {
       return Weaver.error(`Unable to find a smashed cock description`)

@@ -28,8 +28,8 @@ global.BodyDescriber = class BodyDescriber {
     let description = `
       ${this.heightAndWeight()}, ${this.comparativeHeight()}.
       ${this.objectiveBeauty()} ${this.comparativeBeauty()}
-      ${this.headDescription()} ${injuries.headInjuries()}
-      ${this.skinDescription()} ${injuries.bodyInjuries()}
+      ${this.headDescription()} ${await injuries.headInjuries()}
+      ${this.skinDescription()} ${await injuries.bodyInjuries()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
     return await Weaver.weaveWithCharacter(description,'C',this.character);

@@ -25,27 +25,27 @@ global.CockDescriber = class CockDescriber {
   }
 
   async getDescription() {
-    let injuries = new CockInjuryDescriber(this.character, this.cock).describeInjuries();
+    const injuryDescriber = new CockInjuryDescriber(this.character, this.cock);
 
     let description = `
-      ${this.cockDescription()}
+      ${await this.cockDescription()}
       ${this.sheathDescription()}
       ${this.knotDescription()}
       ${this.ridgesDescription()}
       ${this.knobsDescription()}
       ${this.spinesDescription()}
       ${this.ballsDescription()}
-      ${injuries}
+      ${await injuryDescriber.describeInjuries()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
     return await Weaver.weaveWithCharacter(description,'C',this.character);
   }
 
-  cockDescription() {
-    let description = Random.from(Description.validFor('cock',{
+  async cockDescription() {
+    let description = Random.from((await Description.validFor('cock',{
       character: this.character,
       cock: this.cock,
-    }));
+    })));
 
     if (description == null) {
       return Weaver.error(`Unable to find a cock description`);

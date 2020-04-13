@@ -12,7 +12,7 @@ global.Description = class Description extends Form {
   static buildPussyInjury(data) { return super.build(null,extend(data,{ type:'pussy-injury' })); }
   static buildTitInjury(data)   { return super.build(null,extend(data,{ type:'tit-injury'   })); }
 
-  static validFor(part,context) {
+  static async validFor(part,context) {
     return Description.where(description => {
       if (description.type != part) { return false; }
 
@@ -28,7 +28,7 @@ global.Description = class Description extends Form {
     });
   }
 
-  static validForInjury(part, damageType, context) {
+  static async validForInjury(part, damageType, context) {
     return Description.where(description => {
       if (damageType != description.damageType) { return false; }
 

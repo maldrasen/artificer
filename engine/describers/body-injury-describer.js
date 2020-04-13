@@ -4,36 +4,47 @@ global.BodyInjuryDescriber = class BodyInjuryDescriber {
     this._character = character;
     this._body = body;
     this._mouth = mouth;
-    this._previousInjury = null;
   }
 
   get character() { return this._character; }
   get body() { return this._body; }
   get mouth() { return this._mouth; }
-  get previousInjury() { return this._previousInjury; }
-  set previousInjury(i) { this._previousInjury = i; }
 
-  headInjuries() {
+  async headInjuries() {
     return `
-      ${this.describeMouthSmash()}
+      ${await this.describeHeadCut()}
+      ${await this.describeHeadSmash()}
     `;
   }
 
-  bodyInjuries() {
-    return ''
+  async bodyInjuries() {
+    return `
+      ${await this.describeBodyPierce()}
+    `;
   }
 
-  describeMouthSmash() {
-    if (this.mouth.smashLevel == 0) { return ''; }
+  async describeHeadCut() {
+    if (this.mouth.cutLevel == 0) { return ''; }
 
-    this.previousInjury = {
-      type: 'smash',
-    }
-
-    let description = Random.from(Description.validForInjury('head','smash',{
+    let description = Random.from((await Description.validForInjury('head','cut',{
       character: this.character,
       mouth: this.mouth,
-    }));
+    })));
+
+    if (description == null) {
+      return Weaver.error(`Unable to find a cut head description`);
+    }
+
+    return description.d;
+  }
+
+  async describeHeadSmash() {
+    if (this.mouth.smashLevel == 0) { return ''; }
+
+    let description = Random.from((await Description.validForInjury('head','smash',{
+      character: this.character,
+      mouth: this.mouth,
+    })));
 
     if (description == null) {
       return Weaver.error(`Unable to find a smashed head description`);
@@ -72,6 +83,21 @@ global.BodyInjuryDescriber = class BodyInjuryDescriber {
       `It looks like a significant number of teeth have been knocked out of {{his}} head too.`,
       `{{He}}'s missing quite a few teeth as well.`
     ]);
+  }
+
+  async describeBodyPierce() {
+    if (this.body.pierceLevel == 0) { return ''; }
+
+    let description = Random.from((await Description.validForInjury('body','pierce',{
+      character: this.character,
+      body: this.body,
+    })));
+
+    if (description == null) {
+      return Weaver.error(`Unable to find a pierced body description`);
+    }
+
+    return description.d;
   }
 
 }

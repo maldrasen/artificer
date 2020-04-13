@@ -31,12 +31,12 @@ global.TitsDescriber = class TitsDescriber {
   }
 
   async getDescription() {
-    let injuries = new TitsInjuryDescriber(this.character, this.tits, this.nipples).describeInjuries();
+    const injuryDescriber = new TitsInjuryDescriber(this.character, this.tits, this.nipples);
 
     let description = `
-      ${this.describeTits()}
-      ${injuries}
-      ${this.describeNipples()}
+      ${await this.describeTits()}
+      ${await injuryDescriber.describeInjuries()}
+      ${await this.describeNipples()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
     return await Weaver.weaveWithCharacter(description,'C',this.character);
@@ -44,12 +44,12 @@ global.TitsDescriber = class TitsDescriber {
 
   // === Descriptions ===
 
-  describeTits() {
-    let description = Random.from(Description.validFor('tits',{
+  async describeTits() {
+    let description = Random.from((await Description.validFor('tits',{
       character: this.character,
       tits: this.tits,
       nipples: this.nipples
-    }));
+    })));
 
     if (description == null) {
       return Weaver.error(`Unable to find a tits description`)
@@ -58,14 +58,14 @@ global.TitsDescriber = class TitsDescriber {
     return description.d
   }
 
-  describeNipples() {
+  async describeNipples() {
     if (this.isIncluded('nipples')) { return ''; }
 
-    let description = Random.from(Description.validFor('nipples',{
+    let description = Random.from((await Description.validFor('nipples',{
       character: this.character,
       tits: this.tits,
       nipples: this.nipples
-    }));
+    })));
 
     if (description == null) {
       return Weaver.error(`Unable to find a nipple description`)
