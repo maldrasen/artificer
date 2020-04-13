@@ -1,55 +1,42 @@
 global.CockDescriber = class CockDescriber {
 
-  constructor(options) {
-    this._character = options.character;
-    this._cock = options.cock;
+  constructor(context) {
+    this._context = context;
     this._included = [];
   }
 
-  get character() { return this._character; }
-  get cock() { return this._cock; }
+  get context() { return this._context; }
+  get character() { return this.context.get('C').character; }
+  get cock() { return this.context.get('C').cock; }
 
   addIncluded(key) { this._included.push(key); }
   isIncluded(key) { return this._included.indexOf(key) >= 0; }
 
   async updateDescription() {
-    if (this.cock == null) { this._cock = await this.character.getCock(); }
-    if (this.cock == null) { return ""; }
-
-    let desc = await this.getDescription();
-    if (desc) {
-      this.cock.description = desc;
-      await this.cock.save();
-      return this.cock;
+    if (this.cock != null) {
+      await this.cock.update({ description:(await this.getDescription()) });
     }
   }
 
   async getDescription() {
-    let injuries = new CockInjuryDescriber(this.character, this.cock).describeInjuries();
+    const injuryDescriber = new CockInjuryDescriber(this.context);
 
     let description = `
-      ${this.cockDescription()}
+      ${await this.cockDescription()}
       ${this.sheathDescription()}
       ${this.knotDescription()}
       ${this.ridgesDescription()}
       ${this.knobsDescription()}
       ${this.spinesDescription()}
       ${this.ballsDescription()}
-      ${injuries}
+      ${await injuryDescriber.describeInjuries()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
-    return await Weaver.weaveWithCharacter(description,'C',this.character);
+    return await Weaver.weave(description, this.context);
   }
 
-  cockDescription() {
-    let description = Random.from(Description.validFor('cock',{
-      character: this.character,
-      cock: this.cock,
-    }));
-
-    if (description == null) {
-      return Weaver.error(`Unable to find a cock description`);
-    }
+  async cockDescription() {
+    let description = await Description.select('cock', this.context);
 
     if (description.includes) {
       each(description.includes, inclusion => {

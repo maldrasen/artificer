@@ -10,6 +10,10 @@ global.AnusBuilder = (function() {
       sizeClass:      Random.fromFrequencyMap(character.species.bodyOptions.cock.size),
       sizeScale:      Random.upTo(100),
       prolapseLength: 0,
+      smashLevel:     0,
+      smashCount:     0,
+      smashHealing:   0,
+      smashShape:     null,
       description:    null,
     });
 

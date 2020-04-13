@@ -1,44 +1,35 @@
 global.BodyInjuryDescriber = class BodyInjuryDescriber {
 
-  constructor(character, body, mouth) {
-    this._character = character;
-    this._body = body;
-    this._mouth = mouth;
-    this._previousInjury = null;
+  constructor(context) {
+    this._context = context;
   }
 
-  get character() { return this._character; }
-  get body() { return this._body; }
-  get mouth() { return this._mouth; }
-  get previousInjury() { return this._previousInjury; }
-  set previousInjury(i) { this._previousInjury = i; }
+  get context() { return this._context; }
+  get character() { return this.context.get('C').character; }
+  get body() { return this.context.get('C').body; }
+  get mouth() { return this.context.get('C').mouth; }
 
-  headInjuries() {
+  async headInjuries() {
     return `
-      ${this.describeMouthSmash()}
+      ${await this.describeHeadCut()}
+      ${await this.describeHeadSmash()}
     `;
   }
 
-  bodyInjuries() {
-    return ''
+  async bodyInjuries() {
+    return `
+      ${await this.describeBodyPierce()}
+    `;
   }
 
-  describeMouthSmash() {
+  async describeHeadCut() {
+    if (this.mouth.cutLevel == 0) { return ''; }
+    return (await Description.selectInjury('head','cut',this.context)).d;
+  }
+
+  async describeHeadSmash() {
     if (this.mouth.smashLevel == 0) { return ''; }
-
-    this.previousInjury = {
-      type: 'smash',
-    }
-
-    let description = Random.from(Description.validForInjury('head','smash',{
-      character: this.character,
-      mouth: this.mouth,
-    }));
-
-    if (description == null) {
-      return Weaver.error(`Unable to find a smashed head description`);
-    }
-
+    const description = await Description.selectInjury('head','smash',this.context);
     return `${description.d} ${this.describeMissingTeeth()}`;
   }
 
@@ -72,6 +63,11 @@ global.BodyInjuryDescriber = class BodyInjuryDescriber {
       `It looks like a significant number of teeth have been knocked out of {{his}} head too.`,
       `{{He}}'s missing quite a few teeth as well.`
     ]);
+  }
+
+  async describeBodyPierce() {
+    if (this.body.pierceLevel == 0) { return ''; }
+    return (await Description.selectInjury('body','pierce',this.context)).d;
   }
 
 }

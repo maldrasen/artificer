@@ -3,18 +3,19 @@ Abuser.TitsAbuser = (function() {
   async function addInjury(character, hazard) {
     const tits = await character.getTits();
 
-    if (hazard.type == 'blight') { addBlightInjury(character, tits, hazard); }
-    if (hazard.type == 'burn')   { addBurnInjury(character, tits, hazard);   }
-    if (hazard.type == 'smash')  { addSmashInjury(character, tits, hazard);  }
+    if (hazard.type == 'blight') { await addBlightInjury(character, tits, hazard); }
+    if (hazard.type == 'burn')   { await addBurnInjury(character, tits, hazard);   }
+    if (hazard.type == 'smash')  { await addSmashInjury(character, tits, hazard);  }
 
-    const describer = new TitsDescriber({ character, tits });
+    const context = new WeaverContext();
+    await context.addCharacter('C',character);
+
+    const describer = new TitsDescriber(context);
     await describer.updateDescription();
-
-    return tits;
   }
 
-  function addBlightInjury(character, tits, hazard) {}
-  function addBurnInjury(character, tits, hazard) {}
+  async function addBlightInjury(character, tits, hazard) {}
+  async function addBurnInjury(character, tits, hazard) {}
 
   // A Tits:Smash injury can have details set to specify which breast, and also
   // the impact shape.
@@ -28,7 +29,7 @@ Abuser.TitsAbuser = (function() {
   //       be described. New injuries with different shapes will overwrite the
   //       previous shape.
   //
-  function addSmashInjury(character, tits, hazard) {
+  async function addSmashInjury(character, tits, hazard) {
     const place = ObjectUtility.fetch(hazard,'details','place') || Random.from(['left','right']);
     const shape = ObjectUtility.fetch(hazard,'details','shape');
 
@@ -38,6 +39,8 @@ Abuser.TitsAbuser = (function() {
     tits.smashPlace = leftRightOrAll(tits.smashPlace, place)
 
     if (shape) { tits.smashShape = shape; }
+
+    await tits.save();
   }
 
   // Multiple damage types will use the place:[left, right, all] detail to

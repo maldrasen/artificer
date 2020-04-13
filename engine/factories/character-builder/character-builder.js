@@ -72,28 +72,17 @@ global.CharacterBuilder = (function() {
     let body = await BodyBuilder.build(character, options);
 
     await character.update({ body_id:body.id });
+    await AnusBuilder.build(character, options);
+    await CockBuilder.build(character, options);
+    await MouthBuilder.build(character, options);
+    await PussyBuilder.build(character, options);
+    await NipplesBuilder.build(character, options);
+    await TitsBuilder.build(character, options);
 
-    let results = await Promise.all([
-      AnusBuilder.build(character, options),
-      CockBuilder.build(character, options),
-      MouthBuilder.build(character, options),
-      PussyBuilder.build(character, options),
-      NipplesBuilder.build(character, options),
-      TitsBuilder.build(character, options),
-      NameBuilder.build(character, options),
-    ]);
+    let nameAdjustments = await NameBuilder.build(character, options);
 
-    await CharacterAdjuster.apply(character, options, results[6])
-
-    await CharacterDescriber.updateAll(character, {
-      body: body,
-      anus: results[0],
-      cock: results[1],
-      mouth: results[2],
-      pussy: results[3],
-      nipples: results[4],
-      tits: results[5],
-    });
+    await CharacterAdjuster.apply(character, options, nameAdjustments);
+    await CharacterDescriber.updateAll(character);
 
     return character
   }

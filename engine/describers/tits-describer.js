@@ -1,15 +1,14 @@
 global.TitsDescriber = class TitsDescriber {
 
-  constructor(options) {
-    this._character = options.character;
-    this._tits = options.tits;
-    this._nipples = options.nipples;
+  constructor(context) {
+    this._context = context;
     this._included = [];
   }
 
-  get character() { return this._character; }
-  get nipples() { return this._nipples; }
-  get tits() { return this._tits; }
+  get context() { return this._context; }
+  get character() { return this.context.get('C').character; }
+  get nipples() { return this.context.get('C').nipples; }
+  get tits() { return this.context.get('C').tits; }
 
   addIncluded(key) { this._included.push(key); }
   isIncluded(key) { return this._included.indexOf(key) >= 0; }
@@ -18,62 +17,33 @@ global.TitsDescriber = class TitsDescriber {
   //       that includes the nipples, especially if he has interesting
   //       piercings and such. When piercings get implemented that is.
   async updateDescription() {
-    if (this.tits == null) { this._tits = await this.character.getTits(); }
-    if (this.nipples == null) { this._nipples = await this.character.getNipples(); }
-    if (this.tits == null) { return ""; }
-
-    let desc = await this.getDescription()
-    if (desc) {
-      this.tits.description = desc;
-      await this.tits.save();
-      return this.tits;
+    if (this.tits != null) {
+      await this.tits.update({ description:(await this.getDescription()) });
     }
   }
 
   async getDescription() {
-    let injuries = new TitsInjuryDescriber(this.character, this.tits, this.nipples).describeInjuries();
+    const injuryDescriber = new TitsInjuryDescriber(this.context);
 
     let description = `
-      ${this.describeTits()}
-      ${injuries}
-      ${this.describeNipples()}
+      ${await this.describeTits()}
+      ${await this.describeNipples()}
+      ${await injuryDescriber.describeInjuries()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
-    return await Weaver.weaveWithCharacter(description,'C',this.character);
+    return await Weaver.weave(description, this.context);
   }
 
   // === Descriptions ===
 
-  describeTits() {
-    let description = Random.from(Description.validFor('tits',{
-      character: this.character,
-      tits: this.tits,
-      nipples: this.nipples
-    }));
-
-    if (description == null) {
-      return Weaver.error(`Unable to find a tits description`)
-    }
-
-    return description.d
+  async describeTits() {
+    return (await Description.select('tits', this.context)).d;
   }
 
-  describeNipples() {
+  async describeNipples() {
     if (this.isIncluded('nipples')) { return ''; }
-
-    let description = Random.from(Description.validFor('nipples',{
-      character: this.character,
-      tits: this.tits,
-      nipples: this.nipples
-    }));
-
-    if (description == null) {
-      return Weaver.error(`Unable to find a nipple description`)
-    }
-
-    return description.d
+    return (await Description.select('nipples', this.context)).d;
   }
-
 
 }
 

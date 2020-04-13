@@ -41,42 +41,42 @@ Description.buildTitInjury({ damageType:'blight', level:5, place:'all',
 
 
 
-Description.buildTitInjury({ damageType:'blight', level:1, place:'lr', conditions:['species-scaven'],
+Description.buildTitInjury({ damageType:'blight', level:1, place:'lr', conditions:['minion(C).is-scaven'],
   d: `TODO: Single slightly blighted rat tit.`,
 });
 
-Description.buildTitInjury({ damageType:'blight', level:2, place:'lr', conditions:['species-scaven'],
+Description.buildTitInjury({ damageType:'blight', level:2, place:'lr', conditions:['minion(C).is-scaven'],
   d: `TODO: Single lightly blighted rat tit.`,
 });
 
-Description.buildTitInjury({ damageType:'blight', level:3, place:'lr', conditions:['species-scaven'],
+Description.buildTitInjury({ damageType:'blight', level:3, place:'lr', conditions:['minion(C).is-scaven'],
   d: `TODO: Single blighted rat tit.`,
 });
 
-Description.buildTitInjury({ damageType:'blight', level:4, place:'lr', conditions:['species-scaven'],
+Description.buildTitInjury({ damageType:'blight', level:4, place:'lr', conditions:['minion(C).is-scaven'],
   d: `TODO: Single well blighted rat tit.`,
 });
 
-Description.buildTitInjury({ damageType:'blight', level:5, place:'lr', conditions:['species-scaven'],
+Description.buildTitInjury({ damageType:'blight', level:5, place:'lr', conditions:['minion(C).is-scaven'],
   d: `TODO: Single completely blighted rat tit.`,
 });
 
-Description.buildTitInjury({ damageType:'blight', level:1, place:'all', conditions:['species-scaven'],
+Description.buildTitInjury({ damageType:'blight', level:1, place:'all', conditions:['minion(C).is-scaven'],
   d: `TODO: All slightly blighted rat tits.`,
 });
 
-Description.buildTitInjury({ damageType:'blight', level:2, place:'all', conditions:['species-scaven'],
+Description.buildTitInjury({ damageType:'blight', level:2, place:'all', conditions:['minion(C).is-scaven'],
   d: `TODO: All lightly blighted rat tits.`,
 });
 
-Description.buildTitInjury({ damageType:'blight', level:3, place:'all', conditions:['species-scaven'],
+Description.buildTitInjury({ damageType:'blight', level:3, place:'all', conditions:['minion(C).is-scaven'],
   d: `TODO: All blighted rat tits.`,
 });
 
-Description.buildTitInjury({ damageType:'blight', level:4, place:'all', conditions:['species-scaven'],
+Description.buildTitInjury({ damageType:'blight', level:4, place:'all', conditions:['minion(C).is-scaven'],
   d: `TODO: All well blighted rat tits.`,
 });
 
-Description.buildTitInjury({ damageType:'blight', level:5, place:'all', conditions:['species-scaven'],
+Description.buildTitInjury({ damageType:'blight', level:5, place:'all', conditions:['minion(C).is-scaven'],
   d: `TODO: All completely blighted rat tits.`,
 });

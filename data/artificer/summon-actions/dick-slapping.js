@@ -6,7 +6,7 @@ SummonAction.build('dick-slapping', {
 
   requirements: [
     'player.has-cock',
-    'player.has-bigger-than-big-cock'],
+    'player.cock.bigger-than-big'],
 
   difficulty:    2,
   effects:       'head',

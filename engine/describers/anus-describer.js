@@ -1,30 +1,25 @@
 global.AnusDescriber = class AnusDescriber {
 
-  constructor(options) {
-    this._character = options.character;
-    this._anus = options.anus;
+  constructor(context) {
+    this._context = context;
   }
 
-  get character() { return this._character; }
-  get anus() { return this._anus; }
+  get context() { return this._context; }
+  get character() { return this.context.get('C').character; }
+  get anus() { return this.context.get('C').anus; }
 
   async updateDescription() {
-    if (this.anus == null) { this._anus = await this.character.getAnus(); }
-
-    let desc = await this.getDescription();
-    if (desc) {
-      this.anus.description = desc;
-      await this.anus.save();
-      return this.anus;
-    }
+    await this.anus.update({ description:(await this.getDescription()) });
   }
 
   async getDescription() {
+    const injuryDescriber = new AnusInjuryDescriber(this.context);
+
     let description = `
-      [TODO: Anus Description] ${ new AnusInjuryDescriber(this.character, this.anus).describeInjuries() }
+      [TODO: Anus Description] ${ await injuryDescriber.describeInjuries() }
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
-    return await Weaver.weaveWithCharacter(description,'C',this.character);
+    return await Weaver.weave(description, this.context);
   }
 
 }

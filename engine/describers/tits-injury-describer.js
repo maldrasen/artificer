@@ -1,27 +1,26 @@
 global.TitsInjuryDescriber = class TitsInjuryDescriber {
 
-  constructor(character, tits, nipples) {
-    this._character = character;
-    this._tits = tits;
-    this._nipples = nipples;
-    this._previousInjury = null;
+  constructor(context) {
+    this._context = context;
   }
 
-  get character() { return this._character; }
-  get nipples() { return this._nipples; }
-  get tits() { return this._tits; }
+  get context() { return this._context; }
+  get character() { return this.context.get('C').character; }
+  get nipples() { return this.context.get('C').nipples; }
+  get tits() { return this.context.get('C').tits; }
+
   get previousInjury() { return this._previousInjury; }
   set previousInjury(i) { this._previousInjury = i; }
 
-  describeInjuries() {
+  async describeInjuries() {
     return `
-      ${this.describeBlight()}
-      ${this.describeBurn()}
-      ${this.describeSmash()}
+      ${await this.describeBlight()}
+      ${await this.describeBurn()}
+      ${await this.describeSmash()}
     `;
   }
 
-  describeBlight() {
+  async describeBlight() {
     if (this.tits.blightLevel == 0) { return ''; }
     let herTitsHaveBeen = this.injuryStart(this.tits.blightPlace);
 
@@ -30,20 +29,11 @@ global.TitsInjuryDescriber = class TitsInjuryDescriber {
       place: this.tits.blightPlace,
     }
 
-    let description = Random.from(Description.validForInjury('tits','blight',{
-      character: this.character,
-      tits: this.tits,
-      nipples: this.nipples
-    }));
-
-    if (description == null) {
-      return Weaver.error(`Unable to find a blighted tit description`)
-    }
-
+    const description = await Description.selectInjury('tits','blight',this.context);
     return `${herTitsHaveBeen} ${description.d}`
   }
 
-  describeBurn() {
+  async describeBurn() {
     if (this.tits.burnLevel == 0) { return ''; }
     let herTitsHaveBeen = this.injuryStart(this.tits.burnPlace);
 
@@ -52,16 +42,7 @@ global.TitsInjuryDescriber = class TitsInjuryDescriber {
       place: this.tits.burnPlace,
     }
 
-    let description = Random.from(Description.validForInjury('tits','burn',{
-      character: this.character,
-      tits: this.tits,
-      nipples: this.nipples
-    }));
-
-    if (description == null) {
-      return Weaver.error(`Unable to find a burnt tit description`)
-    }
-
+    const description = await Description.selectInjury('tits','burn',this.context);
     return `${herTitsHaveBeen} ${description.d}`
   }
 
@@ -71,25 +52,17 @@ global.TitsInjuryDescriber = class TitsInjuryDescriber {
   // fur is generally thinner) I think this is really only used for bruises
   // on chests. Everything else should be pretty obvious, although body smash
   // descriptions may need something similar.
-  describeSmash() {
+  async describeSmash() {
     if (this.tits.smashLevel == 0) { return ''; }
 
-    let herTitsHaveBeen = this.injuryStart(this.tits.smashPlace);
+    const herTitsHaveBeen = this.injuryStart(this.tits.smashPlace);
 
     this.previousInjury = {
       type: 'smash',
       place: this.tits.smashPlace,
     }
 
-    let description = Random.from(Description.validForInjury('tits','smash',{
-      character: this.character,
-      tits: this.tits,
-      nipples: this.nipples
-    }));
-
-    if (description == null) {
-      return Weaver.error(`Unable to find a smashed tit description`)
-    }
+    const description = await Description.selectInjury('tits','smash',this.context);
 
     if (this.character.species.isFurry && description.furryAddendum) {
       let bruisesAre = {

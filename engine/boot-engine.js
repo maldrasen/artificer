@@ -116,9 +116,12 @@ require(`${ROOT}/engine/helpers/random.js`);
 // === Scrutinizers ===
 require(`${ROOT}/engine/scrutinizers/central-scrutinizer`);
 require(`${ROOT}/engine/scrutinizers/character-scrutinizer`);
+require(`${ROOT}/engine/scrutinizers/cock-scrutinizer`);
 require(`${ROOT}/engine/scrutinizers/minion-scrutinizer`);
+require(`${ROOT}/engine/scrutinizers/nipples-scrutinizer`);
 require(`${ROOT}/engine/scrutinizers/player-scrutinizer`);
 require(`${ROOT}/engine/scrutinizers/sexual-scrutinizer`);
+require(`${ROOT}/engine/scrutinizers/tits-scrutinizer`);
 
 // === Factories ===
 require(`${ROOT}/engine/factories/character-builder/character-builder`);

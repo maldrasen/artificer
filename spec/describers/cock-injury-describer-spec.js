@@ -1,6 +1,6 @@
 describe('Describer: Cock (injuries)', function() {
 
-  it('describes blighted cock', function(done) {
+  it('describes blighted cocks', function(done) {
     SpecHelper.tenTimes(done, resolve => {
       SpecHelper.buildRando({ gender:'male' }).then(jada => {
         let level = Random.between(1,5);
@@ -8,8 +8,10 @@ describe('Describer: Cock (injuries)', function() {
         let place = Random.from(['cock','balls']);
 
         Abuser.CockAbuser.addInjury(jada, { type:'blight', level, count, details:{ place }}).then(cock => {
-          SpecHelper.print(`Blight(${cock.blightPlace}:${cock.blightLevel}) > ${cock.description}`);
-          resolve();
+          jada.getCock().then(cock => {
+            SpecHelper.print(`Blight(${cock.blightPlace}:${cock.blightLevel}) > ${cock.description}`);
+            resolve();
+          });
         });
       });
     });

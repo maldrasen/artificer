@@ -1,38 +1,29 @@
 global.BodyDescriber = class BodyDescriber {
 
-  constructor(options) {
-    this._character = options.character;
-    this._body = options.body;
-    this._mouth = options.mouth;
+  constructor(context) {
+    this._context = context;
   }
 
-  get character() { return this._character; }
-  get body() { return this._body; }
-  get mouth() { return this._mouth; }
+  get context() { return this._context; }
+  get character() { return this.context.get('C').character; }
+  get body() { return this.context.get('C').body; }
+  get mouth() { return this.context.get('C').mouth; }
 
   async updateDescription() {
-    if (this.body == null) { this._body = await this.character.getBody(); }
-    if (this.mouth == null) { this._mouth = await this.character.getMouth(); }
-
-    let desc = await this.getDescription();
-    if (desc) {
-      this.body.description = desc;
-      await this.body.save();
-      return this.body;
-    }
+    await this.body.update({ description:(await this.getDescription()) });
   }
 
   async getDescription() {
-    let injuries = new BodyInjuryDescriber(this.character, this.body, this.mouth);
+    let injuries = new BodyInjuryDescriber(this.context);
 
     let description = `
       ${this.heightAndWeight()}, ${this.comparativeHeight()}.
       ${this.objectiveBeauty()} ${this.comparativeBeauty()}
-      ${this.headDescription()} ${injuries.headInjuries()}
-      ${this.skinDescription()} ${injuries.bodyInjuries()}
+      ${this.headDescription()} ${await injuries.headInjuries()}
+      ${this.skinDescription()} ${await injuries.bodyInjuries()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
-    return await Weaver.weaveWithCharacter(description,'C',this.character);
+    return await Weaver.weave(description, this.context);
   }
 
   heightAndWeight() {
