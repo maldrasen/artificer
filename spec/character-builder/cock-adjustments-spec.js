@@ -1,6 +1,6 @@
 describe('Adjustments - Cock', function() {
 
-  it ('gives small cock', function(done) {
+  it('gives small cock', function(done) {
     CharacterBuilder.build({ firstName:'X', species:'elf', gender:'male', triggers:['small-cock'] }).then(character => {
       character.getCock().then(cock => {
         expect(cock.convertedLength).to.equal(6);
@@ -9,7 +9,7 @@ describe('Adjustments - Cock', function() {
     });
   });
 
-  it ('gives big cock', function(done) {
+  it('gives big cock', function(done) {
     CharacterBuilder.build({ firstName:'X', species:'elf', gender:'male', triggers:['big-cock'] }).then(character => {
       character.getCock().then(cock => {
         expect(cock.convertedLength).to.equal(14);
@@ -18,7 +18,7 @@ describe('Adjustments - Cock', function() {
     });
   });
 
-  it ('gives monster cock', function(done) {
+  it('gives monster cock', function(done) {
     CharacterBuilder.build({ firstName:'X', species:'elf', gender:'futa', triggers:['monster-cock'] }).then(character => {
       character.getCock().then(cock => {
         expect(cock.convertedLength).to.equal(20);
@@ -27,7 +27,7 @@ describe('Adjustments - Cock', function() {
     });
   });
 
-  it ('gives big balls', function(done) {
+  it('gives big balls', function(done) {
     CharacterBuilder.build({ firstName:'X', species:'elf', gender:'male', triggers:['big-balls'] }).then(character => {
       character.getCock().then(cock => {
         expect(cock.ballsSizeFactor).to.equal(1.5);
@@ -36,7 +36,7 @@ describe('Adjustments - Cock', function() {
     });
   });
 
-  it ('gives monster balls', function(done) {
+  it('gives monster balls', function(done) {
     CharacterBuilder.build({ firstName:'X', species:'elf', gender:'male', triggers:['monster-balls'] }).then(character => {
       character.getCock().then(cock => {
         expect(cock.ballsSizeFactor).to.equal(2);
@@ -45,7 +45,7 @@ describe('Adjustments - Cock', function() {
     });
   });
 
-  it ('gives horse cocks', function(done) {
+  it('gives horse cocks', function(done) {
     CharacterBuilder.build({ firstName:'X', species:'elf', gender:'male', triggers:['horse-cock'] }).then(character => {
       character.getCock().then(cock => {
         expect(cock.shape).to.equal('horse');
@@ -55,7 +55,7 @@ describe('Adjustments - Cock', function() {
     });
   });
 
-  it ('inflates horse cocks', function(done) {
+  it('inflates horse cocks', function(done) {
     CharacterBuilder.build({ firstName:'X', species:'equian', gender:'male', cock:{ sizeClass:'huge', sizeScale:50 }, triggers:['horse-cock'] }).then(character => {
       character.getCock().then(cock => {
         expect(cock.shape).to.equal('horse');
@@ -66,7 +66,7 @@ describe('Adjustments - Cock', function() {
     });
   });
 
-  it ('gives dog cocks', function(done) {
+  it('gives dog cocks', function(done) {
     CharacterBuilder.build({ firstName:'X', species:'elf', gender:'male', triggers:['dog-cock'] }).then(character => {
       character.getCock().then(cock => {
         expect(cock.shape).to.equal('dog');
@@ -76,7 +76,7 @@ describe('Adjustments - Cock', function() {
     });
   });
 
-  it ('inflates dog cocks', function(done) {
+  it('inflates dog cocks', function(done) {
     CharacterBuilder.build({ firstName:'X', species:'lupin', gender:'male', cock:{ sizeClass:'huge', sizeScale:50, knotWidthRatio:2 }, triggers:['dog-cock'] }).then(character => {
       character.getCock().then(cock => {
         expect(cock.shape).to.equal('dog');
@@ -87,8 +87,7 @@ describe('Adjustments - Cock', function() {
     });
   });
 
-
-  it ('gives multiple cocks', function(done) {
+  it('gives multiple cocks', function(done) {
     CharacterBuilder.build({ firstName:'X', species:'elf', gender:'male', triggers:['multi-cock'] }).then(character => {
       character.getCock().then(cock => {
         expect(cock.count).to.equal(2);
@@ -97,7 +96,7 @@ describe('Adjustments - Cock', function() {
     });
   });
 
-  it ('gives a cock tonugue', function(done) {
+  it('gives a cock tonugue', function(done) {
     CharacterBuilder.build({ firstName:'X', species:'elf', gender:'male', triggers:['cock-tongue'] }).then(character => {
       character.getMouth().then(mouth => {
         expect(mouth.tongueShape).to.equal('cock');
