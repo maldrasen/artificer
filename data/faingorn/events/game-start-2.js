@@ -1,4 +1,6 @@
 Event.build('game-start-2', {
+
+  // TODO: Background, a field with the keep in the far distance.
   background:{ code:'field' },
 
   stages:[{
@@ -44,7 +46,8 @@ Event.build('game-start-2', {
     requires:['player.has-cock','player.cock.average'],
     pages: [
       { text:`I reach down and take a hold of my cock, feeling it's heft.` },
-      { text:`It's of average size I would say. Large enough to do what it needs to, but not so large as to be inconvenient.` },
+      { text:`It's of average size I would say. Large enough to do what it needs to, but not so large as to be
+              inconvenient.` },
     ]
   },{
     requires:['player.has-cock','player.cock.big'],
@@ -56,11 +59,39 @@ Event.build('game-start-2', {
     requires:['player.has-cock','player.cock.bigger-than-big'],
     pages: [
       { text:`I reach down and take a hold of my huge cock, feeling it's heft.` },
-      { text:`I couldn't help but give myself a massive dick.` },
+      { text:`I couldn't help but give myself a massive cock. Everyone loves dick after all.` },
     ]
   },{
     pages: [
-      { text:`NEXT` }
+      { text:`While I'd love to spend some more time exploring my new body I have other pressing matters at hand. I
+              need to get inside that keep before nightfall, and so I begin the long lonely walk to what will
+              ultimately be my new home.` },
+
+      // TODO: Background, outside of the keep.
+      { text:`It takes a little over an hour to reach the deserted keep, and in that time I saw no signs of
+              civilization whatsoever.` },
+      { text:`It makes me wonder though. If no one lives here, or anywhere even close by, then why build a
+              fortress here?` },
+      { text:`Perhaps it once served as a watchtower, in some long ago conflict. Far enough removed from this time that
+              the lands that it was meant to watch over have all been reclaimed by nature.` },
+      { text:`For such an old structure though it's in remarkably good shape. I would have expected the stonework to be
+              crumbling, but it looks both solid and ancient, as if carved from a single great monolith that once stood
+              here.` },
+      { text:`However, while the stonework is in remarkably good shape, anything that was made of wood has badly
+              deteriorated.` },
+      { text:`The keep's massive doors lay open, fallen to the ground in a heap of splinters and rust. At least getting
+              inside is a trivial matter, although even I'm a bit shocked when I see the keep's central courtyard.` },
+
+      // TODO: Background, horse statue in the central courtyard.
+      { text:`In the middle of the courtyard is a statue of a horse. The horse is being penetrated and lifted off of
+              the ground by a tentacle cock as wide as a pine tree.` },
+      { text:`Bulges beneath the horse's skin show the path the tentacle is taking through his body until ultimately
+              the deformed head of the demonic looking cock erupts from the horse's mouth.` },
+      { text:`The horse's expression is pure terror and agony, but his own oversized cock juts forward hard and eager.` },
+      { text:`It's shocking, but beautifully rendered none the less. I have to force myself to tear my eyes away from
+              it and concentrate on the matter at hand; gathering wood for a fire.` },
+      { text:`It's getting rather late in the evening now and the high walls of the keep flood the courtyard in shadow.
+              I can begin my explorations more fully in the daylight, but for now I had best make camp.` },
     ]
   },{
     formPage: 'splash-screen'

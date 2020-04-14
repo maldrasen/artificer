@@ -39,9 +39,9 @@ Event.build('game-start-1', {
         { text:`I'm dead.` },
         { text:`No, that doesn't sound right, but I can't really remember.` },
         { text:`I can't remember anything.`,     darkenBackground:90 },
-        { text:`Who am I?`,                      darkenBackground:85 },
-        { text:`What happened to my body?`,      darkenBackground:70 },
-        { text:`&hellip;`,                       darkenBackground:60 },
+        { text:`Who am I?`,                      darkenBackground:60 },
+        { text:`What happened to my body?`,      darkenBackground:30 },
+        { text:`&hellip;`,                       darkenBackground:0 },
         { text:`It's impossible to say how long long I've been here, in this void between life and death.` },
         { text:`I could stay here of course. That's always an option.` },
         { text:`There's no pain here, and no suffering, but I feel something pulling at me. ` },
@@ -60,12 +60,11 @@ Event.build('game-start-1', {
     },{
       pages:[
         { text:`Yes. And now I must return. Return to this world that has wronged me so many time in the past.` },
-        { text:`I think.`,                       darkenBackground:58 },
-        { text:`&hellip;`,                       darkenBackground:55 },
-        { text:`I think I must reform myself.`,  darkenBackground:52 },
-        { text:`A new body.`,                    darkenBackground:50 },
-        { text:`A new name.`,                    darkenBackground:45 },
-        { text:`That is the first step.`,        darkenBackground:40 },
+        { text:`&hellip;` },
+        { text:`I must reform myself.` },
+        { text:`A new body.` },
+        { text:`A new name.` },
+        { text:`That is the first step.` },
       ]
     },{
       chooserPage: true,

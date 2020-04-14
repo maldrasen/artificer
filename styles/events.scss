@@ -1,22 +1,33 @@
 
 // === Game Start ===
-#gameTitleFrame {
+#splashScreen {
   cursor: pointer;
-  position: absolute;
-  display: flex;
-  width: 100%;
+  position: fixed;
   bottom: 0;
   top: 0;
-}
-#gameTitle {
-  margin: auto;
-  color: white;
+  left: 0;
+  right: 0;
   text-align: center;
-  align-items: center;
-  font-family: roboto-black;
-  font-size: 250px;
-  text-shadow: 5px 5px 10px black;
-  user-select: none;
+
+  background-image: url("../../data/image-resources/backgrounds/void.png");
+  background-position: center;
+  background-size: cover;
+
+  .logo {
+    margin: 100px auto 0;
+  }
+
+  .welcome-text {
+    margin: 20px auto;
+    text-align: left;
+    width: 80%;
+    padding: 20px;
+    color: $fg-narrator-quote;
+    background-color: rgba(0,0,0,0.5);
+    box-sizing: border-box;
+    border: $border-light;
+    box-shadow: $shadow-frame;
+  }
 }
 
 #warningFrame {
