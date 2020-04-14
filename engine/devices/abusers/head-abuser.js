@@ -21,7 +21,7 @@ Abuser.HeadAbuser = (function() {
 
   async function addCutInjury(character, mouth, hazard) {
     mouth.cutLevel = Abuser.raiseLevel(mouth.cutLevel, hazard.level, 5);
-    mouth.cutCount += 1;
+    mouth.cutCount += hazard.count || 1;
     mouth.cutHealing = 0;
     await mouth.save();
   }

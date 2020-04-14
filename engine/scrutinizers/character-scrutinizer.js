@@ -29,7 +29,8 @@ global.CharacterScrutinizer = (function() {
     if (operation == 'height-tall')                   { return data.body.heightIsTall; }
     if (operation == 'height-not-short')              { return ! data.body.heightIsShort; }
     if (operation == 'height-not-tall')               { return ! data.body.heightIsTall; }
-    if (operation.match(/^body.pierce-count/))        { return checkPierceCount(operation, data.body.pierceCount); }
+    if (operation.match(/^body.pierce-count/))        { return checkCount(operation, data.body.pierceCount); }
+    if (operation.match(/^head.cut-count/))           { return checkCount(operation, data.mouth.cutCount); }
 
     // Body Part Presence Checks
     if (operation == 'has-cock')                      { return data.cock != null; }
@@ -48,7 +49,8 @@ global.CharacterScrutinizer = (function() {
     throw `Unknown Character Operation - ${operation}`
   }
 
-  async function checkPierceCount(operation, count) {
+  // This will actually work with any property name that ends with count.
+  async function checkCount(operation, count) {
     let match = operation.match(/count(<|<=|=|>=|>)([^<>=]+)/);
     return CentralScrutinizer.checkComparisonOperation(count,match[1],match[2]);
   }

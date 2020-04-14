@@ -34,7 +34,7 @@ Abuser.TitsAbuser = (function() {
     const shape = ObjectUtility.fetch(hazard,'details','shape');
 
     tits.smashLevel = Abuser.raiseLevel(tits.smashLevel, hazard.level, 5);
-    tits.smashCount += 1;
+    tits.smashCount += hazard.count || 1;
     tits.smashHealing = 0;
     tits.smashPlace = leftRightOrAll(tits.smashPlace, place)
 

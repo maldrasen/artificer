@@ -1,14 +1,12 @@
 describe('Describer: Body (injuries)', function() {
 
-  it('describes a cut face', function(done) {
+  it.only('describes a cut face', function(done) {
     SpecHelper.tenTimes(done, resolve => {
       SpecHelper.buildRando().then(jada => {
-        let level = Random.between(1,2);
-
-        Abuser.HeadAbuser.addInjury(jada, { type:'cut', level, count:1 }).then(() => {
+        Abuser.HeadAbuser.addInjury(jada, { type:'cut', level:Random.between(1,2), count:Random.between(1,3) }).then(() => {
           jada.getMouth().then(mouth => {
             jada.getBody().then(body => {
-              SpecHelper.print(`Smash(${mouth.cutLevel}) > ${body.description}`);
+              SpecHelper.print(`Cut(${mouth.cutLevel}:${mouth.cutCount}) > ${body.description}`);
               resolve();
             });
           });

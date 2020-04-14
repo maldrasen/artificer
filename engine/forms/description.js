@@ -77,11 +77,23 @@ global.Description = class Description extends Form {
 
   validForBodyInjury(damageType, data) {
     if (this.type != 'body-injury') { return false; }
+
+    if (damageType == 'pierce') {
+      if (this.damageType != 'pierce') { return false; }
+      if (this.level != data.body.pierceLevel) { return false; }
+    }
+
     return true;
   }
 
   validForHeadInjury(damageType, data) {
     if (this.type != 'head-injury') { return false; }
+
+    if (damageType == 'cut') {
+      if (this.damageType != 'cut') { return false; }
+      if (this.level != data.mouth.cutLevel) { return false; }
+    }
+
     return true;
   }
 
