@@ -1,6 +1,6 @@
 describe('Describer: Body (injuries)', function() {
 
-  it.only('describes a cut face', function(done) {
+  it('describes a cut face', function(done) {
     SpecHelper.tenTimes(done, resolve => {
       SpecHelper.buildRando().then(jada => {
         Abuser.HeadAbuser.addInjury(jada, { type:'cut', level:Random.between(1,2), count:Random.between(1,3) }).then(() => {
