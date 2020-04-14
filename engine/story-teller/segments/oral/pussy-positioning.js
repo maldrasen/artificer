@@ -1,4 +1,4 @@
-Summoner.OralSegments.PussyPositioning = (function() {
+StoryTeller.OralSegments.PussyPositioning = (function() {
 
   async function positionRoughly(storyTeller) {
     // TODO: Roughly put the character into position for oral sex on a pussy.

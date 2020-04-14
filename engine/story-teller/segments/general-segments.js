@@ -1,4 +1,4 @@
-Summoner.GeneralSegments = (function() {
+StoryTeller.GeneralSegments = (function() {
 
   // The way all the summon events start is pretty similar, so rather than
   // repeating this pretty boring part of the scene over and over again, I'm
@@ -63,19 +63,19 @@ Summoner.GeneralSegments = (function() {
       heArrives.push({ text:`{{He}} arrives a little later than I would have liked.` });
 
       if (playerOutfit == null) {
-        Summoner.StoryTeller.addOptionsWith(heArrives,[
+        StoryTeller.addOptionsWith(heArrives,[
           `I'm standing nude up against a wall when {{he}} arrives.`,
           `I'm standing nude, up against a wall, ideally stroking my ${cockToken}, when {{he}} arrives.`,
         ],{ playerPosition:'standing' });
 
         if (await location.hasChair()) {
-          Summoner.StoryTeller.addOptionsWith(heArrives,[
+          StoryTeller.addOptionsWith(heArrives,[
             `I arrive before {{him}} and when {{he}} arrives I'm sitting in a chair, ideally stroking my ${cockToken}.`,
             `I'm sitting nude, legs spread wide with one leg hooked over the arm of the chair, when {{he}} arrives.`,
           ],{ playerPosition:'sitting' });
         }
         if (await location.hasBed()) {
-          Summoner.StoryTeller.addOptionsWith(heArrives,[
+          StoryTeller.addOptionsWith(heArrives,[
             `I'm lying nude in bed when {{he}} arrives.`,
             `I'm nude in bed waiting for {{him}} to arrive, and when {{he}} does {{he}} finds me there ideally stroking my ${cockToken}.`,
           ],{ playerPosition:'laying' });

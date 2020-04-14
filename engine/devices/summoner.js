@@ -16,7 +16,7 @@ global.Summoner = class Summoner {
     this._character = await Character.lookup(this._character_id);
     this._location = Location.lookup(game.location);
 
-    const calculator = new Summoner.ConsentCalculator(this.character);
+    const calculator = new ConsentCalculator(this.character);
     await calculator.init();
     this._consent = await calculator.getConsentDetails(this.action);
   }

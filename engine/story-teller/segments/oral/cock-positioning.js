@@ -1,4 +1,4 @@
-Summoner.OralSegments.CockPositioning = (function() {
+StoryTeller.OralSegments.CockPositioning = (function() {
 
   async function positionRoughly(storyTeller) {
     // TODO: Roughly put the character into position for oral sex on a cock.
@@ -85,14 +85,14 @@ Summoner.OralSegments.CockPositioning = (function() {
     ];
 
     if (storyTeller.mightBe('playerCock','soft')) {
-      Summoner.StoryTeller.addOptionsWith(options,[
+      StoryTeller.addOptionsWith(options,[
         `{{He}} approaches me, running {{his}} fingers up my legs as {{he}} looks up at my dangling cock.`,
         `{{He}} closes the distance between us, gazing up at my {{P::cock.big}} cock dangling over {{his}} head.`,
       ],{ playerCock:'soft' });
     }
 
     if (storyTeller.mightBe('playerCock','hard')) {
-      Summoner.StoryTeller.addOptionsWith(options,[
+      StoryTeller.addOptionsWith(options,[
         `{{He}} approaches me, running {{his}} fingers up my legs as {{he}} looks up at my trobbing cock.`,
         `{{He}} closes the distance between us, gazing up at my {{P::cock.big}} cock swaying in the air over {{his}} head.`,
       ],{ playerCock:'hard' });
@@ -107,7 +107,7 @@ Summoner.OralSegments.CockPositioning = (function() {
 
     if (myBedroom) {
       if (Flag.lookup('player.bed-type') == 'fur-pile') {
-        Summoner.StoryTeller.addOptionsWith(options,[
+        StoryTeller.addOptionsWith(options,[
           `I lead {{him}} over to the pile or furs I've been using as a bed and lay down, letting {{him}} climb on top of me.`,
           `I reach down and easily lift {{him}} up, then carry {{him}} over to the pile of furs I've been using as a bed. I drop down into them with {{him}} on top of me.`,
           `I lay down on the pile of furs I've been using as a bed and motion for {{him}} to come join me.`,
@@ -115,7 +115,7 @@ Summoner.OralSegments.CockPositioning = (function() {
       }
     }
     if (!myBedroom && bed) {
-      Summoner.StoryTeller.addOptionsWith(options,[
+      StoryTeller.addOptionsWith(options,[
         `I lead {{him}} over to the bed and let {{him}} climb on top of me.`,
         `I reach down and easily lift {{him}} up, then carry {{him}} over to the bed, dropping down onto it with {{him}} on top of me.`,
         `I lay down on the bed and motion for {{him}} to come join me.`,
@@ -124,13 +124,13 @@ Summoner.OralSegments.CockPositioning = (function() {
 
     if (chair) {
       if (storyTeller.mightBe('playerCock','soft')) {
-        Summoner.StoryTeller.addOptionsWith(options,[
+        StoryTeller.addOptionsWith(options,[
           `I take a seat and spread my legs slightly, to let my cock flop out in front of me.`,
           `I take a seat and spread my legs slightly, letting my soft cock lay out in front of me.`,
         ],{ playerPosition:'sitting', playerCock:'soft' });
       }
       if (storyTeller.mightBe('playerCock','hard')) {
-        Summoner.StoryTeller.addOptionsWith(options,[
+        StoryTeller.addOptionsWith(options,[
           `I take a seat and lean back a bit, letting my {{P::cock.big}} hard cock stand out boldly before me.`,
           `I take a seat and lean back a bit while slowly stroking my hard cock.`,
         ],{ playerPosition:'sitting', playerCock:'hard' });
@@ -140,7 +140,7 @@ Summoner.OralSegments.CockPositioning = (function() {
     // If there's a table in the room the player can remain standing if they
     // position the character on the table.
     if (table) {
-      Summoner.StoryTeller.addOptionsWith(options,[
+      StoryTeller.addOptionsWith(options,[
         `I gesture towards the table. {{He}} nods and climbs up onto the table, laying on {{his}} back with {{his}} head extending past the tabletop slightly.`,
         `I reach down and easily lift {{him}} up, then carry {{him}} over to the table, laying {{him}} on {{his}} back with {{his}} head extending past the tabletop slightly.`,
       ],{ playerPosition:'standing' });
@@ -162,19 +162,19 @@ Summoner.OralSegments.CockPositioning = (function() {
     // The player is laying down, so the character should position herself on
     // top either on the player's leg facing up, or on their chest facing down.
     if (segment.playerPosition == 'laying') {
-      Summoner.StoryTeller.addOptionsWith(options,[
+      StoryTeller.addOptionsWith(options,[
         `{{He}} straddles my thigh and rubs {{his}} face against my {{P::balls.twoInch}} wide {{ballsack}}.`,
         `{{He}} straddles my thigh, squeezing it tightly between {{his}} legs as {{he}} rests {{his}} face against my soft cock, nuzzling up against the hot flesh.`,
       ],{ characterPosition:'straddle' });
 
-      Summoner.StoryTeller.addOptionsWith(options,[
+      StoryTeller.addOptionsWith(options,[
         `{{He}} straddles my chest, opening {{his}} legs wide and pointing {{his}} inviting ass up towards my face as {{he}} opens {{his}} mouth for the tip of my cock.`,
         `{{He}} straddles my chest, opening {{his}} legs wide and pointing {{his}} inviting ass up towards my face before planting a kiss on the tip of my dick.`,
       ],{ characterPosition:'reverse-straddle' });
     }
 
     if (segment.playerPosition == 'sitting') {
-      Summoner.StoryTeller.addOptionsWith(options,[
+      StoryTeller.addOptionsWith(options,[
         `{{He}} pushes {{his}} body up between my legs, reaching down to gently stroke my balls while lowering {{his}} face to kiss the head of my cock.`,
         `Sitting in the chair puts {{him}} at just the right height to press {{his}} face against the hard flesh of my cock.`,
       ],{ characterPosition:'standing' });
@@ -183,7 +183,7 @@ Summoner.OralSegments.CockPositioning = (function() {
     // If the player is standing, the minion is already up on the tabletop. If
     // that's the case we really just have them gesture and set their position.
     if (segment.playerPosition == 'standing') {
-      Summoner.StoryTeller.addOptionsWith(options,[
+      StoryTeller.addOptionsWith(options,[
         `{{He}} smiles upside down at me and opens his mouth wide for my cock, letting {{his}} tongue hang out lewdly.`,
         `{{He}} smiles upside down at me then puts two fingers into {{his}} mouth, pulling it open wide for my cock.`,
       ],{ characterPosition:'table-on-back' });

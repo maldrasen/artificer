@@ -51,7 +51,7 @@ SummonAction.CockLicking = (function() {
   // they are and while licking they'll use their many nipples as well.
 
   async function normalStart(summoner) {
-    const storyTeller = new Summoner.StoryTeller(summoner);
+    const storyTeller = new StoryTeller(summoner);
     await storyTeller.startSummoning();
     await storyTeller.addSegment(await summoner.character.reactToPlayer())
     await storyTeller.showCock();
@@ -80,7 +80,7 @@ SummonAction.CockLicking = (function() {
     if (sizeComparison == 'huge') {
       if (storyTeller.mightBe('playerPosition','standing')) {
         if (storyTeller.mightBe('playerCock','soft')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
+          StoryTeller.addOptionsWith(options,[
             `{{C::character.firstName}} reaches out and takes my cock in {{C::gender.his}} small hands and starts to
              slowly rub them up and down its full {{P::cock.sixInch}} length. {{C::character.He}}'s so much shorter
              than myself so {{C::gender.his}} face is right at dick level. {{C::character.He}} closes the space
@@ -103,7 +103,7 @@ SummonAction.CockLicking = (function() {
           ],{ playerPosition:'standing', playerCock:'hard' });
         }
         if (storyTeller.mightBe('playerCock','hard')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
+          StoryTeller.addOptionsWith(options,[
             `{{C::character.firstName}} closes the distance between us and presses {{C::gender.his}} face against my
              hard throbbing member, nuzzling its hot flesh and planting kisses over its surface. {{C::gender.He}} opens
              {{C::gender.his}} mouth wide and drags {{C::gender.his}} tongue up its {{P::cock.sixInch}} length, taking
@@ -121,7 +121,7 @@ SummonAction.CockLicking = (function() {
 
       if (storyTeller.mightBe('playerPosition','sitting')) {
         if (storyTeller.mightBe('playerCock','soft')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
+          StoryTeller.addOptionsWith(options,[
             `{{C::character.firstName}} leans down and rests {{C::gender.his}} head in my lap, nuzzling up against my
              ballsack. I feel {{C::gender.his}} wet tongue snake out between my balls and leg, licking the day's sweat
              off of me as {{C::gender.he}} takes hold of my soft cock and starts rubbing it against the side of
@@ -140,7 +140,7 @@ SummonAction.CockLicking = (function() {
         }
 
         if (storyTeller.mightBe('playerCock','hard')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
+          StoryTeller.addOptionsWith(options,[
             `{{C::character.firstName}} leans down and takes my cock in {{C::gender.his}} hands, pulling it towards
              {{C::gender.his}} open mouth. {{C::gender.He}} starts to kiss and swirl {{C::gender.his}} tongue around the
              tip as {{C::gender.his}} sharp claws lightly stroke up the sides of my {{P::cock.sixInch}} long cock.
@@ -203,7 +203,7 @@ SummonAction.CockLicking = (function() {
           }
         }
 
-        Summoner.StoryTeller.addOptionsWith(options, laying, { playerCock:'hard' });
+        StoryTeller.addOptionsWith(options, laying, { playerCock:'hard' });
       }
     }
 
@@ -213,12 +213,12 @@ SummonAction.CockLicking = (function() {
     if (sizeComparison == 'massive') {
       if (storyTeller.mightBe('playerPosition','standing')) {
         if (storyTeller.mightBe('playerCock','soft')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
+          StoryTeller.addOptionsWith(options,[
             `(TODO: Get massive cock hard while standing)`
           ],{ playerPosition:'standing', playerCock:'hard' });
         }
         if (storyTeller.mightBe('playerCock','hard')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
+          StoryTeller.addOptionsWith(options,[
             `(TODO: Massive cock is already hard while standing)`
           ],{ playerPosition:'standing', playerCock:'hard' });
         }
@@ -226,7 +226,7 @@ SummonAction.CockLicking = (function() {
 
       if (storyTeller.mightBe('playerPosition','sitting')) {
         if (storyTeller.mightBe('playerCock','soft')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
+          StoryTeller.addOptionsWith(options,[
             `{{C::character.firstName}} climbs up into my lap, spreading {{C::gender.his}} legs wide around my own.
              {{C::character.He}} takes my massive cock in {{C::gender.his}} small hands and starts to slowly rub them
              up and down its full {{P::cock.sixInch}} length, urging it to grow hard between us. {{C::character.He}}
@@ -243,7 +243,7 @@ SummonAction.CockLicking = (function() {
         }
 
         if (storyTeller.mightBe('playerCock','hard')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
+          StoryTeller.addOptionsWith(options,[
             `{{C::character.firstName}} climbs up into my lap, spreading {{C::gender.his}} legs wide around my own as
              {{C::gender.he}} presses {{C::gender.his}} body fully against my hard shaft. {{C::gender.He}} knows my
              massive {{P::cock.sixInch}} long cock is far too large for {{C::gender.him}} to really do much with, so
@@ -261,13 +261,13 @@ SummonAction.CockLicking = (function() {
 
       if (storyTeller.mightBe('playerPosition','laying')) {
         if (storyTeller.mightBe('playerCock','soft')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
+          StoryTeller.addOptionsWith(options,[
             `(TODO: Get massive cock hard while laying)`
           ],{ playerPosition:'laying', playerCock:'hard' });
         }
 
         if (storyTeller.mightBe('playerCock','hard')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
+          StoryTeller.addOptionsWith(options,[
             `(TODO: Massive cock is already hard while laying)`
           ],{ playerPosition:'laying', playerCock:'hard' });
         }

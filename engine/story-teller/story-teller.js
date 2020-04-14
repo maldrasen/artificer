@@ -1,4 +1,4 @@
-Summoner.StoryTeller = class StoryTeller {
+global.StoryTeller = class StoryTeller {
 
   constructor(summoner, status) {
     this._summoner = summoner;
@@ -123,11 +123,11 @@ Summoner.StoryTeller = class StoryTeller {
   // ===========================================================================
 
   // Canned General Segments
-  async compareHeights() { return await Summoner.GeneralSegments.compareHeights(this); }
-  async startSummoning() { await Summoner.GeneralSegments.startSummoning(this); }
+  async compareHeights() { return await StoryTeller.GeneralSegments.compareHeights(this); }
+  async startSummoning() { await StoryTeller.GeneralSegments.startSummoning(this); }
 
   // Canned Cock Segments
-  async showCock() { await Summoner.CockSegments.showCock(this); }
+  async showCock() { await StoryTeller.CockSegments.showCock(this); }
 
   // Canned Oral Segments
   async positionCharacterForGettingCockOral() {}
@@ -135,21 +135,21 @@ Summoner.StoryTeller = class StoryTeller {
 
   async positionCharacterForGivingCockOral() {
     (this.summoner.consent.level == 'rape') ?
-       (await Summoner.OralSegments.CockPositioning.positionRoughly(this)):
-       (await Summoner.OralSegments.CockPositioning.positionGently(this));
+       (await StoryTeller.OralSegments.CockPositioning.positionRoughly(this)):
+       (await StoryTeller.OralSegments.CockPositioning.positionGently(this));
   }
 
   async positionCharacterForGivingPussyOral() {
     (this.summoner.consent.level == 'rape') ?
-       (await Summoner.OralSegments.PussyPositioning.positionRoughly(this)):
-       (await Summoner.OralSegments.PussyPositioning.positionGently(this));
+       (await StoryTeller.OralSegments.PussyPositioning.positionRoughly(this)):
+       (await StoryTeller.OralSegments.PussyPositioning.positionGently(this));
   }
 
-  async startFrontBlowjob()     { await Summoner.OralSegments.BlowjobSegments.startFrontBlowjob(this); }
-  async startOnBackBlowjob()    { await Summoner.OralSegments.BlowjobSegments.startOnBackBlowjob(this); }
-  async continueFrontBlowjob()  { await Summoner.OralSegments.BlowjobSegments.continueFrontBlowjob(this); }
-  async continueOnBackBlowjob() { await Summoner.OralSegments.BlowjobSegments.continueOnBackBlowjob(this); }
-  async cumFromBlowjob()        { await Summoner.OralSegments.BlowjobSegments.cumFromBlowjob(this); }
+  async startFrontBlowjob()     { await StoryTeller.OralSegments.BlowjobSegments.startFrontBlowjob(this); }
+  async startOnBackBlowjob()    { await StoryTeller.OralSegments.BlowjobSegments.startOnBackBlowjob(this); }
+  async continueFrontBlowjob()  { await StoryTeller.OralSegments.BlowjobSegments.continueFrontBlowjob(this); }
+  async continueOnBackBlowjob() { await StoryTeller.OralSegments.BlowjobSegments.continueOnBackBlowjob(this); }
+  async cumFromBlowjob()        { await StoryTeller.OralSegments.BlowjobSegments.cumFromBlowjob(this); }
 
   // ===========================================================================
   //                            Utilities & Helpers

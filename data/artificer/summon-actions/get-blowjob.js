@@ -111,7 +111,7 @@ SummonAction.GetBlowjob = (function() {
   // Same as the normal start for cock licking as well. Will probably be
   // similar for all of the oral scenes with a dick.
   async function normalStart(summoner) {
-    const storyTeller = new Summoner.StoryTeller(summoner);
+    const storyTeller = new StoryTeller(summoner);
     await storyTeller.startSummoning();
     await storyTeller.addSegment(await summoner.character.reactToPlayer())
     await storyTeller.showCock();
