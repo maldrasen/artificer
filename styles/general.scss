@@ -65,34 +65,34 @@
 .font-light { font-family: roboto-light; }
 .font-thin { font-family: roboto-thin; }
 
-.fg-body { color: $fg-body; }
-.fg-strong { color: $fg-strong; }
-.fg-weak { color: $fg-weak; }
-.fg-very-weak { color: $fg-very-weak; }
-.fg-danger { color:$fg-button-danger; }
-.fg-warning { color:$fg-button-warning; }
-.fg-success { color:$fg-button-success; }
+.fg-body      { color: $fg-body;          }
+.fg-strong    { color: $fg-strong;        }
+.fg-weak      { color: $fg-weak;          }
+.fg-very-weak { color: $fg-very-weak;     }
+.fg-danger    { color:$fg-button-danger;  }
+.fg-warning   { color:$fg-button-warning; }
+.fg-success   { color:$fg-button-success; }
 
-.fg-health-dead     { color:$fg-health-dead; }
+.fg-physical { color:$fg-physical; }
+.fg-personal { color:$fg-personal; }
+.fg-mental   { color:$fg-mental;   }
+.fg-magical  { color:$fg-magical;  }
+
+.fg-health-dead     { color:$fg-health-dead;     }
 .fg-health-critical { color:$fg-health-critical; }
 .fg-health-horrible { color:$fg-health-horrible; }
-.fg-health-bad      { color:$fg-health-bad; }
-.fg-health-injured  { color:$fg-health-injured; }
-.fg-health-healthy  { color:$fg-health-healthy; }
+.fg-health-bad      { color:$fg-health-bad;      }
+.fg-health-injured  { color:$fg-health-injured;  }
+.fg-health-healthy  { color:$fg-health-healthy;  }
 
 .weaver-error { color:$fg-button-danger; }
 
-.fs-huge { font-size: $fs-huge; }
+.fs-huge   { font-size: $fs-huge;   }
 .fs-bigger { font-size: $fs-bigger; }
-.fs-big { font-size: $fs-big; }
-.fs-normal { font-size: $fs-body; }
-.fs-small { font-size: $fs-small; }
-.fs-tiny { font-size: $fs-tiny; }
-
-// ul.padded {
-//   li { padding-bottom: 5px; }
-//   li:last-child { padding-bottom: 0; }
-// }
+.fs-big    { font-size: $fs-big;    }
+.fs-normal { font-size: $fs-body;   }
+.fs-small  { font-size: $fs-small;  }
+.fs-tiny   { font-size: $fs-tiny;   }
 
 // Flex Container Classes
 .flex { display:flex;  }

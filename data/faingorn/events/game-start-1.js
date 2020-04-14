@@ -1,3 +1,33 @@
+
+const conquestTooltip = `
+  <ul class='game-start-goal-tooltip'>
+    <li>I will have a stronger body.</li>
+    <li>My minions get a savagery bonus on raiding missions.</li>
+  </ul>
+`;
+
+const followersTooltip = `
+  <ul class='game-start-goal-tooltip'>
+    <li>I will be generally more likable.</li>
+    <li>My new minions will be more loyal.</li>
+  </ul>
+`;
+
+const knowledgeTooltip = `
+  <ul class='game-start-goal-tooltip'>
+    <li>I will be naturally smarter.</li>
+    <li>I'm more likely to make discoveries though experimentation.</li>
+  </ul>
+`;
+
+const powerTooltip = `
+  <ul class='game-start-goal-tooltip'>
+    <li>Bonus magical attribute</li>
+    <li>I will be able to gain mana more rapidly.</li>
+  </ul>
+`;
+
+
 Event.build('game-start-1', {
   background: { code:'void' },
   darkenBackground: 100,
@@ -7,22 +37,36 @@ Event.build('game-start-1', {
       formPage: 'warning-form'
     },{
       pages: [
-        { text:"I'm dead." },
-        { text:"No, that's not right." },
-        { text:"I'm alive.",                      darkenBackground:98 },
-        { text:"Maybe?",                          darkenBackground:95 },
-        { text:"I can't remember.",               darkenBackground:90 },
-        { text:"I can't remember anything.",      darkenBackground:85 },
-        { text:"...",                             darkenBackground:80 },
-        { text:"Who am I?",                       darkenBackground:75 },
-        { text:"...",                             darkenBackground:65 },
-        { text:"Where is my body?",               darkenBackground:50 },
-        { text:"...",                             darkenBackground:40 },
-        { text:"I think.",                        darkenBackground:30 },
-        { text:"I think I must reform myself.",   darkenBackground:20 },
-        { text:"A new body.",                     darkenBackground:10 },
-        { text:"A new name.",                     darkenBackground:0  },
-        { text:"That is the first step." }
+        { text:`I'm dead.` },
+        { text:`No, that doesn't sound right, but I can't really remember.` },
+        { text:`I can't remember anything.`,     darkenBackground:90 },
+        { text:`Who am I?`,                      darkenBackground:85 },
+        { text:`What happened to my body?`,      darkenBackground:70 },
+        { text:`&hellip;`,                       darkenBackground:60 },
+        { text:`It's impossible to say how long long I've been here, in this void between life and death.` },
+        { text:`I could stay here of course. That's always an option.` },
+        { text:`There's no pain here, and no suffering, but I feel something pulling at me. ` },
+        { text:`Some greater purpose drives me forward. My great work is left undone.` },
+        { text:`What is it?` },
+      ]
+    },{
+      selectionPage: true,
+      selectionKey: 'goal',
+      selections:[
+        { text:`<span class='game-start-goal fg-physical'>Conquest</span> I will conquer these lands.`, value:'conquest', tooltip:conquestTooltip },
+        { text:`<span class='game-start-goal fg-personal'>Followers</span> They will all kneel before me.`, value:'followers', tooltip:followersTooltip },
+        { text:`<span class='game-start-goal fg-mental'>Knowledge</span> I will learn the secrets of this world.`, value:'knowledge', tooltip:knowledgeTooltip },
+        { text:`<span class='game-start-goal fg-magical'>Power</span> None will rival my power.`, value:'power', tooltip:powerTooltip },
+      ]
+    },{
+      pages:[
+        { text:`Yes. And now I must return. Return to this world that has wronged me so many time in the past.` },
+        { text:`I think.`,                       darkenBackground:58 },
+        { text:`&hellip;`,                       darkenBackground:55 },
+        { text:`I think I must reform myself.`,  darkenBackground:52 },
+        { text:`A new body.`,                    darkenBackground:50 },
+        { text:`A new name.`,                    darkenBackground:45 },
+        { text:`That is the first step.`,        darkenBackground:40 },
       ]
     },{
       chooserPage: true,
@@ -40,10 +84,8 @@ Event.build('game-start-1', {
       pages: [
         { text:"(Species Comment)", onShow:'species-comment' },
         { text:"With that form in mind I will myself to again be made flesh." },
-        { text:"It's impossible to say how long it takes." },
-        { text:"It could be minutes or years." },
-        { text:"Time has no meaning here after all, wherever it is that here is." },
-        { text:"Before I can really determine the nature of this place, this void between life and death, I am awoken by the feeling of grass under my back." },
+        { text:"It's impossible to say how long it takes. It could be minutes. It could be years." },
+        { text:"I can't even say for certain when I first feel the soft wetness of the grass against my back." },
       ]
     }
   ],

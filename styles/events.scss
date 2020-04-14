@@ -83,3 +83,11 @@
     transition-duration: 3s;
   }
 }
+
+.game-start-goal {
+  display: inline-block;
+  font-size: $fs-big;
+  font-family: roboto-black;
+  width: 6em;
+  margin-left: 1em;
+}
