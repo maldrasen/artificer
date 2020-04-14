@@ -102,13 +102,6 @@ require(`${ROOT}/engine/devices/roles/skills`);
 require(`${ROOT}/engine/devices/summoner`);
 require(`${ROOT}/engine/devices/summoner/consent-calculator`);
 require(`${ROOT}/engine/devices/summoner/experience`);
-require(`${ROOT}/engine/devices/summoner/story-teller`);
-require(`${ROOT}/engine/devices/summoner/segments/cock-segments`);
-require(`${ROOT}/engine/devices/summoner/segments/general-segments`);
-require(`${ROOT}/engine/devices/summoner/segments/oral-segments`);
-require(`${ROOT}/engine/devices/summoner/segments/oral/blowjob-segments`);
-require(`${ROOT}/engine/devices/summoner/segments/oral/cock-positioning`);
-require(`${ROOT}/engine/devices/summoner/segments/oral/pussy-positioning`);
 
 // === Helpers ===
 require(`${ROOT}/engine/helpers/calendar.js`);
@@ -126,6 +119,15 @@ require(`${ROOT}/engine/scrutinizers/nipples-scrutinizer`);
 require(`${ROOT}/engine/scrutinizers/player-scrutinizer`);
 require(`${ROOT}/engine/scrutinizers/sexual-scrutinizer`);
 require(`${ROOT}/engine/scrutinizers/tits-scrutinizer`);
+
+// === Story Teller ===
+require(`${ROOT}/engine/story-teller/story-teller`);
+require(`${ROOT}/engine/story-teller/segments/cock-segments`);
+require(`${ROOT}/engine/story-teller/segments/general-segments`);
+require(`${ROOT}/engine/story-teller/segments/oral-segments`);
+require(`${ROOT}/engine/story-teller/segments/oral/blowjob-segments`);
+require(`${ROOT}/engine/story-teller/segments/oral/cock-positioning`);
+require(`${ROOT}/engine/story-teller/segments/oral/pussy-positioning`);
 
 // === Factories ===
 require(`${ROOT}/engine/factories/character-builder/character-builder`);

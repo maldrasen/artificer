@@ -1,4 +1,4 @@
-Summoner.StoryTeller = class StoryTeller {
+global.StoryTeller = class StoryTeller {
 
   constructor(summoner, status) {
     this._summoner = summoner;

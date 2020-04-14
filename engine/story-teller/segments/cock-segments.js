@@ -18,14 +18,14 @@ Summoner.CockSegments = (function() {
       // The player standing is assumed to be the default position here.
       if (storyTeller.mightBe('playerPosition','standing')) {
         if (storyTeller.mightBe('playerCock','soft')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
+          StoryTeller.addOptionsWith(options,[
             `I hold my soft cock by the base of the shaft, letting it swing slowly back and forth.`,
             `I take my still soft cock in my hand and start slowly stroking it.`,
             `I grab my cock under the balls, bunching up my sack and pushing my cock forward.`,
           ],{ playerPosition:'standing', playerCock:'soft' });
         }
         if (storyTeller.mightBe('playerCock','hard')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
+          StoryTeller.addOptionsWith(options,[
             `My dick is already hard. I grab it by the base and let it sway in front of me.`,
             `I slowly stroke my shaft, rubbing my hand up and down its hard length.`,
           ],{ playerPosition:'standing', playerCock:'hard' });
@@ -38,12 +38,12 @@ Summoner.CockSegments = (function() {
       // shape.
       if (storyTeller.getStatus('playerPosition') == 'sitting') {
         if (storyTeller.mightBe('playerCock','soft')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
+          StoryTeller.addOptionsWith(options,[
             `I lean back and spread my legs slightly, letting my cock and balls lay out heavily in front of me.`,
           ],{ playerPosition:'laying', playerCock:'soft' });
         }
         if (storyTeller.mightBe('playerCock','hard')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
+          StoryTeller.addOptionsWith(options,[
             `I lean back, thrusting my stiff cock forward, letting it sway in the air in front of me.`,
             `I lean back while slowly stroking my already hard cock.`,
           ],{ playerPosition:'laying', playerCock:'hard' });
@@ -54,13 +54,13 @@ Summoner.CockSegments = (function() {
       // startSummoning() indicates that they're laying down.
       if (storyTeller.getStatus('playerPosition') == 'laying') {
         if (storyTeller.mightBe('playerCock','soft')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
+          StoryTeller.addOptionsWith(options,[
             `My cock is soft and hanging over my left leg slightly.`,
             `I'm resting on my side, letting my cock hang down heavily before me.`,
           ],{ playerPosition:'laying', playerCock:'soft' });
         }
         if (storyTeller.mightBe('playerCock','hard')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
+          StoryTeller.addOptionsWith(options,[
             `My dick is already hard. I grab it by the base and let it sway in the air above me.`,
             `I stretch a bit, arching my back and letting my cock rise up in the air; it's hard length resting heavily on my stomach.`
           ],{ playerPosition:'laying', playerCock:'hard' });

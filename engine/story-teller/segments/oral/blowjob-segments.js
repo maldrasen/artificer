@@ -28,13 +28,13 @@ Summoner.OralSegments.BlowjobSegments = (function() {
 
     if (oralSkill.depthClass == 'very-shallow') {
       if (storyTeller.mightBe('playerCock','soft')) {
-        Summoner.StoryTeller.addOptionsWith(options,[
+        StoryTeller.addOptionsWith(options,[
           `{{He}} takes the head of my cock as into {{his}} mouth and starts sucking and licking
            {{P::cock.theGlansOfHisCock}}, getting me fully hard within the shallow confines of {{his}} mouth`,
         ],{ playerCock:'hard' });
       }
       if (storyTeller.mightBe('playerCock','hard')) {
-        Summoner.StoryTeller.addOptionsWith(options,[
+        StoryTeller.addOptionsWith(options,[
           `I thrust my cock into {{his}} mouth but I can barely push more than ${oralSkill.depthInch} in before I feel
            my thick head press against the too narrow entrance of {{his}} throat.`,
         ],{ playerCock:'hard' });
@@ -59,14 +59,14 @@ Summoner.OralSegments.BlowjobSegments = (function() {
     if (oralSkill.mouthFit == 'painful') {
       if (oralSkill.depthClass == 'very-shallow') {
         if (storyTeller.mightBe('playerCock','soft')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
+          StoryTeller.addOptionsWith(options,[
             `{{He}} takes my cock in {{his}} hand and sucks the head into {{his}} mouth, swirling {{his}} tongue around
              my sensitive glans as my cock grows fully hard within {{his}} mouth. {{He}} closes {{his}} eyes and winces
              in pain as my cockhead swells to its full {{P::cock.twoInch}} wide thickness.`,
           ],{ playerCock:'hard' });
         }
         if (storyTeller.mightBe('playerCock','hard')) {
-          Summoner.StoryTeller.addOptionsWith(options,[
+          StoryTeller.addOptionsWith(options,[
             `{{He}} closes {{his}} eyes and opens {{his}} mouth as wide as {{he}} can for my cock but still struggles
             to wrap {{his}} lips around the {{P::cock.twoInch}} wide head. {{He}} starts sucking the thick head filling
             {{his}} mouth, but struggles to take anything more than just the head.`,
