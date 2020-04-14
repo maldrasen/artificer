@@ -91,3 +91,11 @@
   width: 6em;
   margin-left: 1em;
 }
+
+.game-start-goal-tooltip {
+  list-style: circle;
+  text-align: left;
+  margin: 10px 10px 10px 20px;
+  line-height: 20px;
+  li:first-child { margin-bottom: 10px; }
+}

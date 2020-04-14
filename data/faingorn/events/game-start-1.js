@@ -2,7 +2,7 @@
 const conquestTooltip = `
   <ul class='game-start-goal-tooltip'>
     <li>I will have a stronger body.</li>
-    <li>My minions get a savagery bonus on raiding missions.</li>
+    <li>My minions will be more savage and effective when raiding.</li>
   </ul>
 `;
 
@@ -16,7 +16,7 @@ const followersTooltip = `
 const knowledgeTooltip = `
   <ul class='game-start-goal-tooltip'>
     <li>I will be naturally smarter.</li>
-    <li>I'm more likely to make discoveries though experimentation.</li>
+    <li>It will be easier to make discoveries though experimentation.</li>
   </ul>
 `;
 
@@ -26,7 +26,6 @@ const powerTooltip = `
     <li>I will be able to gain mana more rapidly.</li>
   </ul>
 `;
-
 
 Event.build('game-start-1', {
   background: { code:'void' },

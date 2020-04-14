@@ -6,6 +6,9 @@ ImageResource.build('gender.futa',   { url:`${IMAGE_ROOT}/choosers/g-futa.png` }
 ImageResource.build('species.caprien-f',  { url:`${IMAGE_ROOT}/choosers/f-caprien.png`,  species:'caprien',  gender:'female' });
 ImageResource.build('species.dark-elf-f', { url:`${IMAGE_ROOT}/choosers/f-dark-elf.png`, species:'dark-elf', gender:'female' });
 ImageResource.build('species.elf-f',      { url:`${IMAGE_ROOT}/choosers/f-elf.png`,      species:'elf',      gender:'female' });
+ImageResource.build('species.equian-f',   { url:`${IMAGE_ROOT}/choosers/f-equian.png`,   species:'equian',   gender:'female' });
+ImageResource.build('species.lupin-f',    { url:`${IMAGE_ROOT}/choosers/f-lupin.png`,    species:'lupin',    gender:'female' });
+ImageResource.build('species.minotaur-f', { url:`${IMAGE_ROOT}/choosers/f-minotaur.png`, species:'minotaur', gender:'female' });
 ImageResource.build('species.neko-f',     { url:`${IMAGE_ROOT}/choosers/f-neko.png`,     species:'neko',     gender:'female' });
 ImageResource.build('species.nymph-f',    { url:`${IMAGE_ROOT}/choosers/f-nymph.png`,    species:'nymph',    gender:'female' });
 ImageResource.build('species.viera-f',    { url:`${IMAGE_ROOT}/choosers/f-viera.png`,    species:'viera',    gender:'female' });

@@ -272,7 +272,7 @@ Components.EventView = (function() {
   //   selectionKey: 'question',
   //   selections:[
   //     { text:'Yes.', value:'yes', effects:['player fucks-horses 2']},
-  //     { text:'No.',  value:'no',  effects:['player fucks-horses -1']},
+  //     { text:'No.',  value:'no',  effects:['player fucks-horses -1'], tooltip:"Tooltip Yo" },
 
   function buildSelectionPage() {
     $('#currentEvent .selection-content').removeClass('hide');
@@ -286,6 +286,10 @@ Components.EventView = (function() {
     let button = $('<a>',{ href:'#', class:'button selection-button' }).append(
       $('<span>',{ class:'text' }).append(selection.text)
     ).data('value',selection.value).append(badges);
+
+    if (selection.tooltip) {
+      Elements.Tooltip.add(button, { content:selection.tooltip, delay:0 });
+    }
 
     each(selection.effects, strang => {
       button.addClass('with-badges');
