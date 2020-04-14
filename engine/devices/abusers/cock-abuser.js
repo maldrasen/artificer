@@ -11,7 +11,7 @@ Abuser.CockAbuser = (function() {
     if (hazard.type == 'burn')   { await addBurnInjury(character, cock, hazard);   }
     if (hazard.type == 'smash')  { await addSmashInjury(character, cock, hazard);  }
 
-    const context = new WeaverContext();
+    const context = new Context();
     await context.addCharacter('C',character);
 
     const describer = new CockDescriber(context);

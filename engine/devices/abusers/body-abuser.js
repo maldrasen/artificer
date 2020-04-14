@@ -7,7 +7,7 @@ Abuser.BodyAbuser = (function() {
 
     if (hazard.type == 'pierce') { await addPierceInjury(character, body, hazard); }
 
-    const context = new WeaverContext();
+    const context = new Context();
     await context.addCharacter('C',character);
 
     const describer = new BodyDescriber(context);

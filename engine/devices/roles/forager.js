@@ -8,7 +8,7 @@ Role.Forager = (function() {
   }
 
   async function work(character) {
-    const context = new WeaverContext();
+    const context = new Context();
     await context.addCharacter('C',character);
 
     const health = await character.getHealthClass();

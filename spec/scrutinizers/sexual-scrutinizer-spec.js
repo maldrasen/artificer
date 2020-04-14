@@ -1,7 +1,7 @@
 describe('SexualScrutinizer', function() {
 
   async function buildContext(jada) {
-    const context = new WeaverContext();
+    const context = new Context();
     await context.addPlayer();
     await context.addCharacter('C',jada);
     return context;

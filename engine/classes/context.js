@@ -1,4 +1,4 @@
-global.WeaverContext = class WeaverContext {
+global.Context = class Context {
 
   constructor(properties) {
     this._properties = properties || {};
@@ -11,7 +11,6 @@ global.WeaverContext = class WeaverContext {
   set(key, value) {
     this._properties[key] = value;
   }
-
 
   async setEvent(event) {
     this._event = event;

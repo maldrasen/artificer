@@ -30,7 +30,7 @@ global.Summoner = class Summoner {
   get story() { return this._story; }
 
   async execute() {
-    const context = new WeaverContext();
+    const context = new Context();
     await context.addPlayer();
     await context.addCharacter('C',this.character);
 

@@ -5,7 +5,7 @@ global.Weaver = (function() {
   // Don't do this in a loop, adding a character looks up all of their body
   // parts and shit after all.
   async function weaveWithCharacter(text, key, character) {
-    const context = new WeaverContext();
+    const context = new Context();
     await context.addCharacter(key, character);
 
     return weave(text, context);

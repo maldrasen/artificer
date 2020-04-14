@@ -1,7 +1,7 @@
 describe('CharacterScrutinizer', function() {
 
   it('Checks an attribute value', function(done) {
-    let context = new WeaverContext();
+    let context = new Context();
 
     SpecHelper.buildJada({ magical:20 }).then(jada => {
       context.addCharacter('C',jada).then(() => {

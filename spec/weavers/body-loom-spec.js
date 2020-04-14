@@ -1,7 +1,7 @@
 describe('Body Loom', function() {
 
   function buildContext(options) {
-    const context = new WeaverContext();
+    const context = new Context();
 
     return new Promise(resolve => {
       CharacterBuilder.build({ firstName:'Jada', lastName:'Fire', species:'elf', gender:'female', body:options}).then(character => {

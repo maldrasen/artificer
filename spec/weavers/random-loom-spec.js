@@ -1,5 +1,5 @@
 describe('Random Loom', function() {
-  let context = new WeaverContext();
+  let context = new Context();
 
   it('gets a random digit', function() {
     expect(Weaver.weave("{{random|9-12}} inch cock", context).indexOf('error')).to.equal(-1)

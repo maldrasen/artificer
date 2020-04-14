@@ -9,7 +9,7 @@ Abuser.AnusAbuser = (function() {
 
     if (hazard.type == 'smash')  { await addSmashInjury(character, anus, hazard);  }
 
-    const context = new WeaverContext();
+    const context = new Context();
     await context.addCharacter('C',character);
 
     const describer = new AnusDescriber(context);

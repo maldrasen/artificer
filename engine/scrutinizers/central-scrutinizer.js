@@ -2,11 +2,11 @@ global.CentralScrutinizer = (function() {
 
   // The CentralScrutinizer is used by a variety of other models including the
   // Weaver to check if all requirements are met. The requires argument can be
-  // either a string or an array of strings. Context should be a weaver context,
-  // if the context is null a new weaver context will be built over time.
+  // either a string or an array of strings. If the context is null a new
+  // context will be built over time.
   async function meetsRequirements(requires, context, extra) {
     if (requires == null) { return true; }
-    if (context == null) { context = new WeaverContext(); }
+    if (context == null) { context = new Context(); }
     if (extra == null) { extra = {}; }
 
     let requirements = (typeof requires == "string") ? [requires] : requires;

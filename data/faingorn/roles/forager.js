@@ -68,7 +68,7 @@
   // bring the spider back or anything. Plus, I want to use a canned hazard
   // here, but the injury the minion gets depends on their gender.
   async function blightSpider(character) {
-    const context = new WeaverContext();
+    const context = new Context();
     await context.addCharacter('C',character);
 
     await EventQueue.enqueueEvent('found-blight-spider',{ actors:{ C:character.id }});

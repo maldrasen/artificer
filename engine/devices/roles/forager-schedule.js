@@ -35,7 +35,7 @@ Role.Forager.Schedule = (function() {
 
   // Acutally get all the items and build the report for the scheduled foraging.
   async function buildScheduledReport(character, scheduled) {
-    const context = new WeaverContext();
+    const context = new Context();
     await context.addCharacter('C',character);
 
     let trips = await Role.Forager.getTrips(character, scheduled.injured);

@@ -50,7 +50,7 @@ global.SummonActionHelper = (function() {
   // action under test, so we need to check the requirements of each action
   // before building the scene.
   async function buildAndExecute(character, action) {
-    const context = new WeaverContext();
+    const context = new Context();
     await context.addCharacter('C',character);
     await context.addPlayer();
 

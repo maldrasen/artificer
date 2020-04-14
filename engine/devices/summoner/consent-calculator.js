@@ -56,7 +56,7 @@ Summoner.ConsentCalculator = class ConsentCalculator {
       level: level,
     };
 
-    const context = new WeaverContext()
+    const context = new Context()
     await context.addCharacter('C',this.character);
     await context.addPlayer();
 

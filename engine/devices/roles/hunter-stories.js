@@ -27,7 +27,7 @@ Role.Hunter.Stories = (function() {
         failureInjury(injury);
     }
 
-    const context = new WeaverContext();
+    const context = new Context();
     await context.addCharacter('H',character)
 
     return Weaver.weave(phrase, context);

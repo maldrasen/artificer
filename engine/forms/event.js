@@ -22,7 +22,7 @@ global.Event = class Event extends Form {
       await event.onStart(queuedEvent.state);
     }
 
-    const context = new WeaverContext();
+    const context = new Context();
     await context.setEventState(queuedEvent.state);
     await context.setEvent(event);
 

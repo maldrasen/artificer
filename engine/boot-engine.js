@@ -41,6 +41,9 @@ require(`${ROOT}/engine/forms/summon-action`);
 require(`${ROOT}/engine/forms/task`);
 require(`${ROOT}/engine/forms/task-story`);
 
+// === Classes ===
+require(`${ROOT}/engine/classes/context`);
+
 // === Describers ===
 require(`${ROOT}/engine/describers/character-describer`);
 require(`${ROOT}/engine/describers/body-describer`);
@@ -58,6 +61,7 @@ require(`${ROOT}/engine/describers/tits-injury-describer`);
 require(`${ROOT}/engine/devices/aspect-adjuster`);
 require(`${ROOT}/engine/devices/composer`);
 require(`${ROOT}/engine/devices/event-queue`);
+require(`${ROOT}/engine/devices/weaver`);
 
 require(`${ROOT}/engine/devices/abuser`);
 require(`${ROOT}/engine/devices/abusers/anus-abuser`);
@@ -150,16 +154,14 @@ require(`${ROOT}/engine/utilities/object-utility.js`);
 require(`${ROOT}/engine/utilities/text-utility.js`);
 
 // === Weavers ===
-require(`${ROOT}/engine/weavers/weaver`);
-require(`${ROOT}/engine/weavers/weaver-context`);
-require(`${ROOT}/engine/weavers/balls-loom`);
-require(`${ROOT}/engine/weavers/body-loom`);
-require(`${ROOT}/engine/weavers/character-loom`);
-require(`${ROOT}/engine/weavers/cock-loom`);
-require(`${ROOT}/engine/weavers/flag-loom`);
-require(`${ROOT}/engine/weavers/game-loom`);
-require(`${ROOT}/engine/weavers/gender-loom`);
-require(`${ROOT}/engine/weavers/nipples-loom`);
-require(`${ROOT}/engine/weavers/random-loom`);
-require(`${ROOT}/engine/weavers/species-loom`);
-require(`${ROOT}/engine/weavers/tits-loom`);
+require(`${ROOT}/engine/looms/balls-loom`);
+require(`${ROOT}/engine/looms/body-loom`);
+require(`${ROOT}/engine/looms/character-loom`);
+require(`${ROOT}/engine/looms/cock-loom`);
+require(`${ROOT}/engine/looms/flag-loom`);
+require(`${ROOT}/engine/looms/game-loom`);
+require(`${ROOT}/engine/looms/gender-loom`);
+require(`${ROOT}/engine/looms/nipples-loom`);
+require(`${ROOT}/engine/looms/random-loom`);
+require(`${ROOT}/engine/looms/species-loom`);
+require(`${ROOT}/engine/looms/tits-loom`);

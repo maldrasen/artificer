@@ -5,7 +5,7 @@ global.TaskStory = class TaskStory extends Form {
   }
 
   static async select(code, work) {
-    const context = new WeaverContext();
+    const context = new Context();
     await context.addPlayer();
 
     if (work.minions.length == 1) {

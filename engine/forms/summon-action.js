@@ -20,7 +20,7 @@ global.SummonAction = class SummonAction extends Form {
     const actions = await location.summonActions();
 
     if (context == null) {
-      context = new WeaverContext();
+      context = new Context();
       await context.addCharacter('C',character);
       await context.addPlayer();
     }
@@ -38,7 +38,7 @@ global.SummonAction = class SummonAction extends Form {
     const calculator = new Summoner.ConsentCalculator(character);
     await calculator.init();
 
-    const context = new WeaverContext();
+    const context = new Context();
     await context.addCharacter('C',character);
     await context.addPlayer();
 

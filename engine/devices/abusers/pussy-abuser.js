@@ -11,7 +11,7 @@ Abuser.PussyAbuser = (function() {
     if (hazard.type == 'burn')   { await addBurnInjury(character, pussy, hazard);   }
     if (hazard.type == 'smash')  { await addSmashInjury(character, pussy, hazard);  }
 
-    const context = new WeaverContext();
+    const context = new Context();
     await context.addCharacter('C',character);
 
     const describer = new PussyDescriber(context);

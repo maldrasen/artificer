@@ -6,7 +6,7 @@ global.CharacterDescriber = (function() {
   // Anything missing will be pulled in by the describer.
   async function updateAll(character) {
 
-    const context = new WeaverContext();
+    const context = new Context();
     await context.addCharacter('C',character);
 
     const bodyDescriber =  new BodyDescriber(context);
