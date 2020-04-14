@@ -1,4 +1,4 @@
-Summoner.OralSegments.BlowjobSegments = (function() {
+StoryTeller.OralSegments.BlowjobSegments = (function() {
 
   // These segments should be short, but rich in detail. My plan is, once the
   // scene is set and the characters are positioned and so forth then most

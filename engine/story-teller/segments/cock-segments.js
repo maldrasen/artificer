@@ -1,4 +1,4 @@
-Summoner.CockSegments = (function() {
+StoryTeller.CockSegments = (function() {
 
   // The player pulls out his cock and beckons the character to come service it.
   // This is done in several different summon actions, mostly oral scenes where

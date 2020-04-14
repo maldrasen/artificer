@@ -1,4 +1,4 @@
-Summoner.GeneralSegments = (function() {
+StoryTeller.GeneralSegments = (function() {
 
   // The way all the summon events start is pretty similar, so rather than
   // repeating this pretty boring part of the scene over and over again, I'm
