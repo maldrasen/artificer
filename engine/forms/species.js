@@ -1,6 +1,5 @@
 global.Species = class Species extends Form {
 
-  get isFurry()  { return this.hasFlag('furry');  }
   get isFae()    { return this.hasFlag('fae');    }
   get isElf()    { return this.hasFlag('elf');    }
   get isDemon()  { return this.hasFlag('demon');  }
@@ -42,6 +41,7 @@ global.Species = class Species extends Form {
     return (['dragon','kobold','lupin','naga','scaven']).indexOf(this.code) >= 0
   }
 
+  isFurry(gender) { return (this.code == 'caprien') ? (gender == 'male') : this.hasFlag('furry'); }
   hasFlag(flag)  { return (this.flags||[]).indexOf(flag) >= 0; }
 
   // Pick a random gender code based on a species' gender frequency map.

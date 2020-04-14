@@ -16,8 +16,8 @@ global.CharacterScrutinizer = (function() {
     if (operation == 'not-elf')                       { return !data.character.species.isElf; }
     if (operation == 'fae')                           { return data.character.species.isFae; }
     if (operation == 'not-fae')                       { return !data.character.species.isFae; }
-    if (operation == 'furry')                         { return data.character.species.isFurry; }
-    if (operation == 'not-furry')                     { return !data.character.species.isFurry; }
+    if (operation == 'furry')                         { return data.character.isFurry; }
+    if (operation == 'not-furry')                     { return !data.character.isFurry; }
     if (operation == 'scalie')                        { return data.character.species.isScalie; }
     if (operation == 'not-scalie')                    { return !data.character.species.isScalie; }
     if (operation == 'wolf-blooded')                  { return ['lupin','wood-elf'].indexOf(data.character.speciesCode) >= 0; }

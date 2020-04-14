@@ -19,6 +19,7 @@ global.Player = Database.instance().define('player', {
     species()    { return Species.lookup(this.speciesCode); },
     gender()     { return Gender[this.genderCode]; },
     portrait()   { return ImageResource.lookup(this.portraitCode ? this.portraitCode : 'unknown-portrait'); },
+    isFurry()    { return this.species.isFurry(this.genderCode); },
     isPlayer()   { return true; },
   }
 });
@@ -62,12 +63,12 @@ Player.forge = async function(options) {
   let defaultBody = { anus:{ conditon:'virgin' }};
 
   if (options.gender != 'female') {
-    defaultBody.cock = { sizeClass:'average' }
+    defaultBody.cock = { sizeClass:Random.fromFrequencyMap({ average:2, big:5 }) }
   };
 
   if (options.gender != 'male') {
-    defaultBody.tits = { sizeClass:'average' };
-    defaultBody.pussy = { sizeClass:'average', conditon:'virgin' }
+    defaultBody.tits = { sizeClass:Random.fromFrequencyMap({ small:1, average:2, big:3 }) };
+    defaultBody.pussy = { sizeClass:Random.fromFrequencyMap({ small:2, average:5, big:1 }), conditon:'virgin' };
   };
 
   await CharacterBuilder.addBody(player, defaultBody);

@@ -64,7 +64,7 @@ global.TitsInjuryDescriber = class TitsInjuryDescriber {
 
     const description = await Description.selectInjury('tits','smash',this.context);
 
-    if (this.character.species.isFurry && description.furryAddendum) {
+    if (this.character.isFurry && description.furryAddendum) {
       let bruisesAre = {
         'red-color':     `The bright red color is`,
         'bruise':        `The purple bruise is`,

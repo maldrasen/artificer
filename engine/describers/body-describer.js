@@ -161,7 +161,7 @@ global.BodyDescriber = class BodyDescriber {
     if (typeof this.character.species.skinDescription == 'string') {
       return this.character.species.skinDescription;
     }
-    if (this.character.species.isFurry) { return Random.from([
+    if (this.character.isFurry) { return Random.from([
       `{{C::gender.His}} body is covered in {{C::body.furColor}} fur.`,
       `{{C::gender.He}} has {{C::body.furColor}} fur covering {{C::gender.his}} entire body.`,
     ]); }

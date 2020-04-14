@@ -161,7 +161,7 @@ global.HasAspects = (function() {
       }
 
       if (refutement.character == 'furry') {
-        return resolve(character.species.isFurry == false);
+        return resolve(character.isFurry == false);
       }
 
       reject(`Unhandled refutement type: ${JSON.stringify(refutement)}`);

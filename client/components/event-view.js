@@ -288,7 +288,8 @@ Components.EventView = (function() {
     ).data('value',selection.value).append(badges);
 
     if (selection.tooltip) {
-      Elements.Tooltip.add(button, { content:selection.tooltip, delay:0 });
+      Elements.Tooltip.add(button, { content:selection.tooltip, delay:50 });
+      button.on('click',Elements.Tooltip.close);
     }
 
     each(selection.effects, strang => {

@@ -22,7 +22,7 @@ const knowledgeTooltip = `
 
 const powerTooltip = `
   <ul class='game-start-goal-tooltip'>
-    <li>Bonus magical attribute</li>
+    <li>My magic will be more potant.</li>
     <li>I will be able to gain mana more rapidly.</li>
   </ul>
 `;

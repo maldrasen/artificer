@@ -3,7 +3,7 @@ Elements.Tooltip = (function() {
 
   function init() {
     $(document).on('mouseover','.tooltip-parent',startOpen)
-    $(document).on('mouseout','.tooltip-parent',close)
+    $(document).on('mouseout','.tooltip-parent',checkClose)
   }
 
   // Tooltips can be added to an element with this add function or if an
@@ -53,6 +53,20 @@ Elements.Tooltip = (function() {
         left: offset.left
       });
     }
+  }
+
+  // Mouseout events will be triggered from any element under the tooltip
+  // parent element so on mouseout we need to check every element that we're
+  // currently hovering over to see if any of them are the tooltip element
+  // still.
+  function checkClose() {
+    let release = true;
+
+    each($(':hover'), e => {
+      if ($(e).hasClass('tooltip-parent')) { release = false; }
+    });
+
+    if (release) { close(); }
   }
 
   function close() {

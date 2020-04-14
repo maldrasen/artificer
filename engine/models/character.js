@@ -36,6 +36,7 @@ global.Character = Database.instance().define('character', {
     singleName()  { return this.forcedName || this.firstName },
     portrait()    { return ImageResource.lookup(this.portraitCode || 'unknown-portrait'); },
 
+    isFurry()      { return this.species.isFurry(this.genderCode); },
     isPlayer()     { return false; },
     isLoyal()      { return this.loyalty >= 25 },
     isAfraid()     { return this.fear >= 25 },
