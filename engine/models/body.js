@@ -56,8 +56,7 @@ global.Body = Database.instance().define('body', {
 //
 // Futa characters are assumed to be midway between male and female weight.
 // This function can also be called durning events where a character has no
-// gender yet, but are put into a weaver context. Just return 0 when that
-// happens.
+// gender yet, but are put into a context. Just return 0 when that happens.
 Body.prototype.getWeight = async function() {
   const character = await Character.findOne({ where:{ body_id:this.id }});
 

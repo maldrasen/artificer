@@ -32,8 +32,8 @@ Weaver.BodyLoom = (function() {
   }
 
   // Body normally doesn't have a weight attribute. This weight property is
-  // added when we build the weaver context to avoid the asynchronous
-  // getWeight() function. Also nested ternaries: ( •_•)>⌐□-□ (⌐□_□)
+  // added when we build the context to avoid the asynchronous getWeight()
+  // function. Also nested ternaries: ( •_•)>⌐□-□ (⌐□_□)
   function weightMeasurement(body, plural) {
     return (Settings.Metric) ?
       `${Math.round(body.weight/1000)} ${plural ? 'kilograms' : 'kilogram'}`:

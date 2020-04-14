@@ -12,10 +12,9 @@ Elements.AdjustmentBadge = class AdjustmentBadge {
   // level.
   //
   // Subject: This is the actor, or group of actors getting adjusted. Normally
-  //          a character being adjusted will be in the weaver context so we
-  //          look there first. If the subject isn't in the actors list, we
-  //          send it as is, and the CharacterAgent figures out who we're
-  //          talking about.
+  //          a character being adjusted will be in the context so we look
+  //          there first. If the subject isn't in the actors list, we send it
+  //          as is, and the CharacterAgent figures out who we're talking about.
   //
   // Aspect:  The Aspect being adjusted. This should either map to an attribute
   //          like fear or loyalty, to an aspect like golden, or to something

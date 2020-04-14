@@ -38,7 +38,7 @@ global.Context = class Context {
   }
 
   async addCharacter(key, character) {
-    if (key.length != 1) { throw `Actors in the weaver context should have a single letter key.`; }
+    if (key.length != 1) { throw `Actors in the context should have a single letter key.`; }
 
     const everything = await character.getCompleteBody();
           everything.body.weight = await everything.body.getWeight();
