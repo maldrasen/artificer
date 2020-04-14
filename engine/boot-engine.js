@@ -42,6 +42,7 @@ require(`${ROOT}/engine/forms/task`);
 require(`${ROOT}/engine/forms/task-story`);
 
 // === Classes ===
+require(`${ROOT}/engine/classes/consent-calculator`);
 require(`${ROOT}/engine/classes/context`);
 
 // === Describers ===
@@ -100,7 +101,6 @@ require(`${ROOT}/engine/devices/roles/rest`);
 require(`${ROOT}/engine/devices/roles/skills`);
 
 require(`${ROOT}/engine/devices/summoner`);
-require(`${ROOT}/engine/devices/summoner/consent-calculator`);
 require(`${ROOT}/engine/devices/summoner/experience`);
 
 // === Helpers ===

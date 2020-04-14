@@ -1,4 +1,4 @@
-describe('Summoner: ConsentCalculator', function() {
+describe('ConsentCalculator', function() {
 
   async function buildCalculatorWith(buildOptions, otherOptions) {
     const game = await Game.start();
@@ -20,7 +20,7 @@ describe('Summoner: ConsentCalculator', function() {
     if (otherOptions.injure == 'pussy.1') { await Abuser.PussyAbuser.addInjury(jada, { type:'burn', level:1 }); }
     if (otherOptions.injure == 'pussy.3') { await Abuser.PussyAbuser.addInjury(jada, { type:'burn', level:3 }); }
 
-    let calc = new Summoner.ConsentCalculator(jada);
+    let calc = new ConsentCalculator(jada);
     await calc.init();
     return calc;
   }
