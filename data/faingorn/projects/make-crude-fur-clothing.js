@@ -5,6 +5,10 @@ Project.build('make-crude-fur-clothing', {
   effort: 2,
   help: { max:0, min:0 },
 
+  onStart: async () => {
+    await EventQueue.enqueueEvent('morning-1-end');
+  },
+
   onFinish: async () => {
     await EventQueue.enqueueEvent('morning-2');
   },

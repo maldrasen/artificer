@@ -3,7 +3,6 @@ Event.build('morning-2', {
 
   stages:[{
     pages:[
-      { text:`Having fashioned some scraps of clothing to at least keep me warm, I finally wrap myself in my pile of furs for the night.` },
       { text:`I sleep soundly, still exhausted from the previous day, but in the early morning hours I'm suddenly awoken.` },
       { text:`Again, the strong sensation that I'm being watched.` },
       { text:`I sit up and quickly look around.` },
