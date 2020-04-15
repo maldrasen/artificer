@@ -40,9 +40,7 @@ Player.forge = async function(options) {
   if (options.species == null) { throw 'Player species is required'; }
 
   if (options.title == null || options.title.length == 0) {
-    if (options.gender == 'male')   { options.title = 'master'; }
-    if (options.gender == 'female') { options.title = 'mistress'; }
-    if (options.gender == 'futa')   { options.title = 'mystress'; }
+    options.title = (options.gender == 'male') ? 'master' : 'mistress';
   }
 
   let species = Species.lookup(options.species);

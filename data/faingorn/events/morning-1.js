@@ -38,8 +38,8 @@ Event.build('morning-1', {
   },{
     choice:{ task:'supplies' },
     pages:[
-      { text:`Traipsing about nude through the keep seems ill advised. While the place certainly seems abandoned that
-              doesn't mean that its free from all danger. Some shoes at the very least would be nice to have. `},
+      { text:`Wandering about the keep in the nude seems ill advised. While the place certainly seems abandoned that
+              doesn't mean that it's free from all danger. Some shoes would be nice to have at the very least. `},
     ]
   },{
     choice:{ task:'food' },
@@ -77,7 +77,7 @@ Event.build('morning-1', {
               plumbing would be centralized in this one small area, though it look like there's only the single shared
               bathroom for the keep. It's large enough that a dozen or so people could use it at once, if they had no
               qualms or need for privacy.` },
-      { text:`With that sorted out at least I continue my search.` }
+      { text:`With that sorted out I continue my search.` }
     ]
   }],
 

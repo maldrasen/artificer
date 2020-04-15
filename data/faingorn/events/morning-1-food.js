@@ -75,6 +75,12 @@ Event.build('morning-1-food', {
       { text:`In any case, I still have some searching to do. I'd like to see if anything at all usable remains in this
               place.` }
     ]
+  },{
+    requires:['flag.enqueued.morning-1-supplies'],
+    pages:[
+      { text:`In any case, I've managed to find food, water, clothing, and shelter; and so I return to the keep's great
+              hall to decide what to do from there.` }
+    ]
   }],
 
   onFinish: async choices => {
