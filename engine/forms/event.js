@@ -96,6 +96,10 @@ global.Event = class Event extends Form {
       page.text = `<span class='narrator-quote'>${page.text}</span>`;
     }
 
+    if (page.text.match(/^\(\*\)\s/)) {
+      page.text = `<span class='fg-placeholder'><span class='font-medium'>[Placeholder]</span> ${page.text.substring(4,page.text.length)}</span>`
+    }
+
     return page;
   }
 

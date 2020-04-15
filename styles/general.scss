@@ -64,28 +64,30 @@
 .font-regular { font-family: roboto-regular; }
 .font-light { font-family: roboto-light; }
 .font-thin { font-family: roboto-thin; }
+.font-medium-italic { font-family: roboto-medium-italic; }
 
-.fg-body      { color: $fg-body;          }
-.fg-strong    { color: $fg-strong;        }
-.fg-weak      { color: $fg-weak;          }
-.fg-very-weak { color: $fg-very-weak;     }
-.fg-danger    { color:$fg-button-danger;  }
-.fg-warning   { color:$fg-button-warning; }
-.fg-success   { color:$fg-button-success; }
+.fg-body        { color: $fg-body;           }
+.fg-strong      { color: $fg-strong;         }
+.fg-weak        { color: $fg-weak;           }
+.fg-very-weak   { color: $fg-very-weak;      }
+.fg-danger      { color: $fg-button-danger;  }
+.fg-warning     { color: $fg-button-warning; }
+.fg-success     { color: $fg-button-success; }
+.fg-placeholder { color: $fg-placeholder;    }
 
-.fg-physical { color:$fg-physical; }
-.fg-personal { color:$fg-personal; }
-.fg-mental   { color:$fg-mental;   }
-.fg-magical  { color:$fg-magical;  }
+.fg-physical { color: $fg-physical; }
+.fg-personal { color: $fg-personal; }
+.fg-mental   { color: $fg-mental;   }
+.fg-magical  { color: $fg-magical;  }
 
-.fg-health-dead     { color:$fg-health-dead;     }
-.fg-health-critical { color:$fg-health-critical; }
-.fg-health-horrible { color:$fg-health-horrible; }
-.fg-health-bad      { color:$fg-health-bad;      }
-.fg-health-injured  { color:$fg-health-injured;  }
-.fg-health-healthy  { color:$fg-health-healthy;  }
+.fg-health-dead     { color: $fg-health-dead;     }
+.fg-health-critical { color: $fg-health-critical; }
+.fg-health-horrible { color: $fg-health-horrible; }
+.fg-health-bad      { color: $fg-health-bad;      }
+.fg-health-injured  { color: $fg-health-injured;  }
+.fg-health-healthy  { color: $fg-health-healthy;  }
 
-.weaver-error { color:$fg-button-danger; }
+.weaver-error { color: $fg-button-danger; }
 
 .fs-huge   { font-size: $fs-huge;   }
 .fs-bigger { font-size: $fs-bigger; }

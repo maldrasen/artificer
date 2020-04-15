@@ -3,7 +3,7 @@ Event.build('morning-1-end', {
 
   stages:[{
     pages:[
-      { text:'End' }
+      { text:'(*) End' }
     ]
   }],
 

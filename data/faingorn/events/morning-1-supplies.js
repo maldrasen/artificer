@@ -3,12 +3,12 @@ Event.build('morning-1-supplies', {
 
   stages:[{
     pages:[
-      { text:'[[Get Supplies]]' }
+      { text:'(*) Get Supplies' }
     ]
   },{
     requires:['no-flag.enqueued.morning-1-food'],
     pages:[
-      { text:'[[Now go get food.]]' }
+      { text:'(*) Now go get food.' }
     ]
   }],
 
