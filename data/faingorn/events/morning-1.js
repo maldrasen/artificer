@@ -25,7 +25,7 @@ Event.build('morning-1', {
   }],
 
   onFinish: async choices => {
-    console.log("Choose",choices.task)
+    await EventQueue.enqueueEvent(`morning-1-${choices.task}`);
   },
 
 });
