@@ -26,7 +26,14 @@ Event.build('morning-1-food', {
   },{
     choice:{ approach:'grab' },
     pages:[
-      { text:`(*) Crushing Bird Fist!`},
+      { text:`I raise my arms and expand my aura into the room. I really don't know what I'm doing exactly. It feels
+              right though; extending my being into the rafters above me. My thoughts reach out to one of the pigeons
+              and close around it. I can feel it in my grip, and while it doesn't feel exactly real, it feels real
+              enough.` },
+      { text:`It struggles, trying to flap its wings against my grip. Trying to escape from something it can't really
+              understand. With a quick sharp thought I snap its neck, letting it fall into my outstretched hand. I kill
+              another in the same manner, catching it as well before it falls into the bird shit below.` },
+      { text:`The other birds, they don't even seem to react, perhaps they drop dead like this all the time.` },
     ]
   },{
     choice:{ approach:'fire' },
@@ -65,7 +72,8 @@ Event.build('morning-1-food', {
   },{
     requires:['no-flag.enqueued.morning-1-supplies'],
     pages:[
-      { text:'(*) Now go get supplies' }
+      { text:`In any case, I still have some searching to do. I'd like to see if anything at all usable remains in this
+              place.` }
     ]
   }],
 
