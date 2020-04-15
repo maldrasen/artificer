@@ -26,6 +26,9 @@ Event.build('morning-1-old', {
       { text:`I can hear the wind howling, but the high walls that surround the courtyard are shielding me from it.` },
       { text:`Still, I'm completely naked and it feels like it might be early winter.` },
       { text:`I think the best course of action would be to get inside at least, maybe scavenge for some supplies and explore this place a bit.` },
+
+
+
       { text:`Later&hellip;`,  background:{ code:'black' }},
       { text:`I spend most of the day exploring the keep.`, background:{ location:'great-hall', time:'evening' }},
       { text:`It looks like it's been abandoned for decades.` },
@@ -49,6 +52,9 @@ Event.build('morning-1-old', {
       { text:`But for now at least I have food, clothing, and shelter.` },
       { narratorSpeaker:true, text:`During the day you will be able to plan that day's activities.`, alert:{ unlock:"Projects" }},
       { narratorSpeaker:true, text:`For today, add a project to create some crude fur clothing.` },
+
+
+
       { text:`This place though, it's strange.` },
       { text:`The architecture here, from the way it was constructed to how it was decorated, it's unsettling.` },
       { text:`I wouldn't say that I was disturbed by it; it takes a lot to disturb me.` },
