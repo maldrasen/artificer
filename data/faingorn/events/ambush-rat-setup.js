@@ -38,13 +38,9 @@ Event.build('ambush-rat-setup', {
     ]
   }],
 
-  // If the player didn't do the looking-outside-1 event (which assumes that
-  // the player is alone) it's removed from the event queue. Nothing really
-  // important happens in it though.
   onFinish: async choices => {
     const rat = await EventFunctions.createFirstMinion(choices.gender);
     await EventQueue.enqueueEvent('ambush-rat-capture',{ priority:'next', actors:{ R:rat.id }});
-    await EventQueue.removeEvent('looking-outside-1');
   },
 
 });

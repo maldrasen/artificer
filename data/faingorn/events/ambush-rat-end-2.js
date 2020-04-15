@@ -88,8 +88,6 @@ Event.build('ambush-rat-end-2', {
       'location-menu.minions': 'unlocked',
       'character.first-scaven': rat.id,
     });
-
-    await EventQueue.enqueueEvent('looking-outside-2');
   },
 
 });
