@@ -80,8 +80,6 @@ global.Weaver = (function() {
   function simpleValue(token) {
     if (token == 'ballsack')  { return Random.from(['ballsack','ballsack','scrotum']); }
     if (token == 'maleDemon') { return Random.from(['Abaddon','Baal','Baphomet','Behemoth','Lucifer','Maldrasen','Mephistopheles','Satan','Slaanesh']); }
-    if (token == 'aMeter')    { return Settings.Metric ? 'a meter' : 'three feet'; }
-    if (token == 'meters')    { return Settings.Metric ? 'meters' : 'yards'; }
     if (token == 'cock')      { return Random.from(['cock','cock','dick']); }
     if (token == 'pussy')     { return Random.from(['pussy','pussy','cunt']); }
     if (token == 'sheath')    { return Random.from(['sheath','cocksheath']); }

@@ -4,9 +4,11 @@ Weaver.MeasurementLoom = (function() {
   //   These utility tokens will get a measurement in english, in metric or
   //   american depending on what the user preference is currently set to.
   //
-  // TODO: Add feet, foot, yard, and yards when they're needed.
+  // TODO: Add yard, and yards if they're needed.
   //
   function findValue(utility, argument) {
+    if (utility == 'foot')   { return feet(argument,false) }
+    if (utility == 'feet')   { return feet(argument,true) }
     if (utility == 'inch')   { return inches(argument,false); }
     if (utility == 'inches') { return inches(argument,true);  }
 
@@ -25,6 +27,33 @@ Weaver.MeasurementLoom = (function() {
     return Settings.Metric ?
       `${EnglishUtility.numberInEnglish(Math.round(value * 2.54))} ${cm}` :
       `${EnglishUtility.numberInEnglish(value)} ${inch}`;
+  }
+
+
+  function feet(value, plural) {
+    const m = plural ? 'meters' : 'meter';
+    const ft = plural ? 'feet' : 'foot';
+
+    // Plural units are weird. I think the pluralness of a unit depends on if
+    // the unit comes before or after the thing it's describing? But with feet
+    // or meters the plural may change or not. And to further complicate things
+    // the plurality also changes if the article 'a' should be included or not.
+    //
+    //   Plural: "This dick is {{feet|3}} long" =>
+    //      "This dick is (a meter) long"
+    //      "This disk is (three feet) long"
+    //
+    //   Not Plural: "He has a {{foot|3}} long dick" =>
+    //      "He has a (meter) long dick"
+    //      "He has a (three foot) long dick."
+    //
+    // Big dicks and nesting ternaries. Like a boss.
+    if (value == 3) { return (Settings.Metric) ?
+      (plural ? `a meter`    : `meter`):
+      (plural ? `three feet` : `three foot`);
+    }
+
+    throw "Actually, I haven't implemented this yet for any length other than 3 feet."
   }
 
   return { findValue };
