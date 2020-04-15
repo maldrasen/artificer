@@ -56,7 +56,7 @@ Event.build('morning-1', {
       // TODO: Background, the keep's front door.
       { text:`I approach the keep's entrance. The front door's in better shape than the courtyard gate. It's hanging
               open, but it remains on its hinges at least.` },
-      { text:`Looking down at the threshold I can see pawprints in the dust. They're about four inches long and padded.
+      { text:`Looking down at the threshold I can see pawprints in the dust. They're about {{inches|4}} long and padded.
               Made by animals of some sort, though not anything I recognize. It isn't surprising that something would
               want to make this place into their lair. The question is what exactly?` },
       { text:`Well, whatever it is isn't going to stop me, so I press on and begin my search.` },

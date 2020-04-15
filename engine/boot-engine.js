@@ -110,6 +110,20 @@ require(`${ROOT}/engine/helpers/listify.js`);
 require(`${ROOT}/engine/helpers/quote-transformer.js`);
 require(`${ROOT}/engine/helpers/random.js`);
 
+// === Looms ===
+require(`${ROOT}/engine/looms/balls-loom`);
+require(`${ROOT}/engine/looms/body-loom`);
+require(`${ROOT}/engine/looms/character-loom`);
+require(`${ROOT}/engine/looms/cock-loom`);
+require(`${ROOT}/engine/looms/flag-loom`);
+require(`${ROOT}/engine/looms/game-loom`);
+require(`${ROOT}/engine/looms/gender-loom`);
+require(`${ROOT}/engine/looms/measurement-loom`);
+require(`${ROOT}/engine/looms/nipples-loom`);
+require(`${ROOT}/engine/looms/random-loom`);
+require(`${ROOT}/engine/looms/species-loom`);
+require(`${ROOT}/engine/looms/tits-loom`);
+
 // === Scrutinizers ===
 require(`${ROOT}/engine/scrutinizers/central-scrutinizer`);
 require(`${ROOT}/engine/scrutinizers/character-scrutinizer`);
@@ -154,16 +168,3 @@ require(`${ROOT}/engine/utilities/english-utility.js`);
 require(`${ROOT}/engine/utilities/math-utility.js`);
 require(`${ROOT}/engine/utilities/object-utility.js`);
 require(`${ROOT}/engine/utilities/text-utility.js`);
-
-// === Weavers ===
-require(`${ROOT}/engine/looms/balls-loom`);
-require(`${ROOT}/engine/looms/body-loom`);
-require(`${ROOT}/engine/looms/character-loom`);
-require(`${ROOT}/engine/looms/cock-loom`);
-require(`${ROOT}/engine/looms/flag-loom`);
-require(`${ROOT}/engine/looms/game-loom`);
-require(`${ROOT}/engine/looms/gender-loom`);
-require(`${ROOT}/engine/looms/nipples-loom`);
-require(`${ROOT}/engine/looms/random-loom`);
-require(`${ROOT}/engine/looms/species-loom`);
-require(`${ROOT}/engine/looms/tits-loom`);

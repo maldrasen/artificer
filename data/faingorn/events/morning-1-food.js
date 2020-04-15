@@ -36,12 +36,21 @@ Event.build('morning-1-food', {
               extend my hand and &hellip; don't do quite what I had hoped to.` },
       { text:`There was flame, a bright flash of searing heat that may have singed a few feathers, but the overall
               effect of was to scare the birds out of the rafters.` },
-      { text:`Well shit. Looks like I'm having pigeon eggs for breakfast after all.` },
+      { text:`Well shit. Looks like I'm having pigeon eggs for breakfast after all. Collecting eggs out of the bird's
+              nests telekinetically proves to be a simple task, and soon I've gathered enough to feed me for the day.` },
     ]
   },{
     choice:{ approach:'eggs' },
     pages:[
-      { text:`(*) Looks like I'm eating eggs.`},
+      { text:`Pigeons. Nasty creatures. Rats with wings as far as I'm concerned. If I remember right their eggs aren't
+              half bad though.` },
+      { text:`I raise my arms and expand my aura into the room. I really don't know what I'm doing exactly. It feels
+              right though; extending my being into the rafters above me. My thoughts reach into one of the nests, and
+              close around one of the small eggs. I can feel it in my grip, and while it doesn't feel exactly real, it
+              feels real enough.` },
+      { text:`The birds look confused as their eggs float slowly down to me, though they don't really react otherwise.
+              They're probably incapable of comprehending what's happening after all. Soon I'm able to collect a couple
+              dozen of the eggs, enough to feed me for the day at least.` },
     ]
   },{
     pages:[
