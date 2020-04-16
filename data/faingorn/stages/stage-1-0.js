@@ -19,6 +19,7 @@ GameStage.build('stage-1-0',{
     'player.fucks-futas':            'always',
     'player.fucks-men':              'maybe',
     'player.fucks-women':            'always',
+    'player.goal':                   'conquest',
   },
 
   setup: async game => {

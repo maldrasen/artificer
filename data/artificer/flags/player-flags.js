@@ -6,6 +6,10 @@ FlagInfo.build('player.first-name', {});
 FlagInfo.build('player.last-name', {});
 FlagInfo.build('player.title', {});
 
+FlagInfo.build('player.goal', {
+  validateIn: ['conquest','followers','knowledge','power']
+});
+
 // The player's gender preference for men.
 FlagInfo.build('player.fucks-men', {
   validateIn: ['always','maybe','never']

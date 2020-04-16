@@ -54,8 +54,10 @@ Event.build('ambush-rat-end-2', {
       { text:`As slaves?` },
       { text:`As companions?` },
       { text:`For now I'll just have to play this by ear.` },
-      { playerSpeaker:true, text:`I nod and stand up, pulling on my fur clothing as I tower over the small rat, "I
-          see. I accept your offer of service. There is much work to be done."` },
+      { playerSpeaker:true, text:`Nodding I say, "I see. Very well then {{R::character.firstName}}. I accept your offer
+          of service, that is if you do agree to belong to me and do whatever I may ask of you."` },
+      { actorSpeaker:'R', text:`The scaven, though clearly nervous about the whole situation, nods and accepts with a
+          simple, "Yes {{P::character.title}}."` },
       { narratorSpeaker:true, text:`You have acquired your first minion.`, alert:{ unlock:'Minions' }},
       { narratorSpeaker:true, text:`Minions can be assigned roles when you create your plan for that day, and will
           eventually be able to help you to complete projects or be sent on missions. From the minion menu you can
@@ -78,10 +80,12 @@ Event.build('ambush-rat-end-2', {
     const rat = await Character.lookup(choices.event.actorIDs.R)
     await rat.update({type:'minion'});
 
-    Flag.setAll({
+    await Flag.setAll({
       'location-menu.minions': 'unlocked',
       'character.first-scaven': rat.id,
     });
+
+    await EventQueue.enqueueEvent('morning-3',{ actors:{ R:rat.id }});
   },
 
 });

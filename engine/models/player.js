@@ -69,13 +69,19 @@ Player.forge = async function(options) {
     defaultBody.pussy = { sizeClass:Random.fromFrequencyMap({ small:2, average:5, big:1 }), conditon:'virgin' };
   };
 
+  if (options.goal == 'conquest')  { player.physical = player.physical + 10; }
+  if (options.goal == 'followers') { player.personal = player.personal + 10; }
+  if (options.goal == 'knowledge') { player.mental =   player.mental + 10; }
+  if (options.goal == 'power')     { player.magical =  player.magical + 10; }
+
   await CharacterBuilder.addBody(player, defaultBody);
   await player.update({ portraitCode:(await ImageResource.portraitFor(player)).code });
 
   Flag.setAll({
     'player.first-name': player.firstName,
     'player.last-name': player.lastName,
-    'player.title': player.title
+    'player.title': player.title,
+    'player.goal': options.goal,
   });
 }
 

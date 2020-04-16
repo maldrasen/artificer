@@ -17,6 +17,10 @@ global.EventFunctions = {
     if (rat.physical < 8) { rat.physical = 8 + Random.upTo(6) }
     if (rat.personal < 10) { rat.personal = 10 + Random.upTo(6) }
 
+    if (Flag.lookup('player.goal') == 'followers') {
+      rat.loyalty = rat.loyalty + 10;
+    }
+
     await rat.save();
     await CharacterDescriber.updateAll(rat);
 

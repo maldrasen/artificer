@@ -6,7 +6,7 @@ Components.EventView.FormPage.register('name-form', {
      $('input#title').val({
       male:   'Master',
       female: 'Mistress',
-      futa:   'Mystress'
+      futa:   'Mistress'
     }[Components.EventView.getChoices().gender]);
   },
 
