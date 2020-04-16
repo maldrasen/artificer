@@ -87,7 +87,7 @@ global.EnglishUtility = {
     if(part > 6 && inch == 'inch' && plural) { inch = 'inches'; }
 
     if (number == 0) {
-      if (part > 6) { return 'three quarters of an inch'; }
+      if (part > 6) { return 'nearly inch'; }
       if (part > 4) { return `${a}half an inch`; }
       if (part > 1) { return `${a}quarter of an inch`; }
       return `${a}fraction of an inch`;
