@@ -5,7 +5,6 @@ global.CharacterDescriber = (function() {
   // description. It's fine if the parts object is empty or incomplete here.
   // Anything missing will be pulled in by the describer.
   async function updateAll(character) {
-
     const context = new Context();
     await context.addCharacter('C',character);
 
