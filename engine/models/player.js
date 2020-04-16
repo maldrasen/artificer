@@ -61,7 +61,7 @@ Player.forge = async function(options) {
   let defaultBody = { anus:{ conditon:'virgin' }};
 
   if (options.gender != 'female') {
-    defaultBody.cock = { sizeClass:Random.fromFrequencyMap({ average:2, big:5 }) }
+    defaultBody.cock = { sizeClass:Random.fromFrequencyMap({ average:5, big:2 }) }
   };
 
   if (options.gender != 'male') {
