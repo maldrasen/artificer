@@ -23,13 +23,13 @@ Event.build('day-8-explore', {
           highest rooms in the keep have suffered the most damage, so I haven't held out much hope for these rooms.
           That and I haven't been exactly thrilled about wading barefoot through several decades worth of bird shit
           again.` },
-      { text:`Oh well, perhaps I'll have {{R::character.firstName}} lick my feet clean tonight.` },
+      { text:`Perhaps I'll have {{R::character.firstName}} lick my feet clean tonight&hellip;` },
       { text:`There's a statue at the landing of the topmost stairwell depicting a caprien woman in labor. Her features
           are very sheep like, but also twisted in pain and horror. Her legs are spread far apart and large wolf snout
           has pushed half way out of her very stretched pussy.` },
       { text:`From the size of the snarling mouth it looks like she's trying to give birth to a full grown wolf, and
           from the expression on its face it looks like it intends to devour her once that happens.` },
-      { text:`The statue also has an inch or so of bird shit heaped on top of it. I'm not sure if that enhances or
+      { text:`The statue also has {{inch|1}} or so of bird shit heaped on top of it. I'm not sure if that enhances or
           detracts from whatever it was that the sculptor was going for here.` },
       { text:`Pressing on, I begin to search through the other rooms up here.` },
       { text:`I'm really tempted to just set fire to it all. The stone walls have been magically hardened and wouldn't
@@ -41,20 +41,20 @@ Event.build('day-8-explore', {
           that's left now are heaps of rot and scat and nothing at all that looks remotely useful.` },
       { text:`It's not until I'm searching what was once a study when I finally find something interesting. A large oak
           desk lies in the center of the room, crushed under a large wooden beam. The inside of the desk though, a
-          couple of drawers at least, look like they've been fairly well sealed away. There's no way I'm opening the
-          drawers normally, so I simply rip the side of the desk off with a telekinetic yank.` },
-      { text:`Within, I find two things; a brass timekeeping device of some sort, and an old journal.` },
-      { text:`What's surprising is that they're both in absolutely perfect condition.` },
+          couple of drawers at least, look like they've been fairly well sealed away.` },
+      { text:`There's no way I'm opening the drawers normally, so I simply rip the side of the desk off with a
+          telekinetic yank. Within, I find two things; a brass timekeeping device of some sort, and an old journal.
+          What's surprising is that they're both in absolutely perfect condition.` },
       { text:`I examine the device first, a wheel of polished brass about the size of a dinner plate. It's a calendar I
           think. I mean I can't remember seeing anything quite like it, but I do somehow know what it is.` },
       { text:`The face of the calendar is divided into seven concentric rings. Reading from the outer ring in the date
           is, {{game|fullDate}}.` },
       { text:`Huh.` },
       { text:`Well, that doesn't help at all.` },
-      { text:`I mean, I guess that's good to know, but it doesn't really help matters any.` },
-      { text:`I take a look at the book next. It's an old leather bound journal with vellum pages maybe an inch or so
-          thick. Giving the book a quick flip through I can see that it's about halfway full and handwritten in a neat
-          thin script.` },
+      { text:`I mean, I guess that's good to know, but it doesn't really change matters any.` },
+      { text:`I take a look at the book next. It's an old leather bound journal with vellum pages maybe {{inch|1}} or
+          so thick. Giving the book a quick flip through I can see that it's about halfway full and handwritten in a
+          neat thin script.` },
       { text:`Both items are clearly magical and perhaps enchanted with spells of permanency that have prevented them
           from aging. It's an interesting find though and might shed some light on what happened here. Perhaps I'll
           read a bit of it this evening.` },

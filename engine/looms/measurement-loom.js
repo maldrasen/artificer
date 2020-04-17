@@ -15,14 +15,15 @@ Weaver.MeasurementLoom = (function() {
     return Weaver.error(`Bad random token(${utility})`);
   }
 
-  // Turns a token like {{inches|4}} into "four inches" or "ten centimeters"
+  // Turns a token like {{inches|4}} into "four inches" or "ten centimeters" or
+  // common phrases like "a couple of inches" into their metric equivalents.
   function inches(value, plural) {
     const cm = plural ? 'centimeters' : 'centimeter';
     const inch = plural ? 'inches' : 'inch';
 
-    if (value == 1) {
-      return Settings.Metric ? `two ${cm}` : 'an inch';
-    }
+    if (value == 'a-couple-of') { return Settings.Metric ? `five ${cm}` : `a couple of inches` }
+    if (value == 'a-few') { return Settings.Metric ? `eight ${cm}` : `a few inches` }
+    if (value == 1) { return Settings.Metric ? `two ${cm}` : 'an inch'; }
 
     return Settings.Metric ?
       `${EnglishUtility.numberInEnglish(Math.round(value * 2.54))} ${cm}` :

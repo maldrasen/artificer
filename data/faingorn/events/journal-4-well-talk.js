@@ -25,7 +25,7 @@ Event.build('journal-4-well-talk', {
       { actorSpeaker:'C', text:`"Here {{P::character.title}}, tight crack. Down, down it crawls. Into the deep."` },
       { text:`It takes me a little while for me to even spot what {{C::gender.he}}'s talking about.` },
       { text:`A narrow crack, between the back and side wall of the cell {{C::gender.he}} squeezed into.` },
-      { text:`It's a <i>tight crack</i> all right, at one point it looks like it's only a couple of inches wide.` },
+      { text:`It's a <i>tight crack</i> all right, at one point it looks like it's only {{inches|a-few}} wide.` },
       { text:`I'm amazed that {{C::gender.he}} can squeeze through there.` },
       { text:`I certainly won't be able to.` },
       { text:`Although Malcolm and Wren wouldn't have been able to squeeze through there either, meaning there's some other passageway down here that I've overlooked.` },

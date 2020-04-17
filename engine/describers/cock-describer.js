@@ -131,7 +131,7 @@ global.CockDescriber = class CockDescriber {
         `The entire length of {{C::gender.his}} cock is textured with gnarled {{C::cock.acorn(knob)}} sized bumps.`,
         `{{C::gender.His}} {{C::cock.cock}} is studded, seemingly at random, with hard nubs the size of
          {{C::cock.acorns(knob)}}.`,
-        `Gnarled, {{C::cock.acorn(knob)}} sized bulges adorn every inch of {{C::gender.his}} shaft.`
+        `Gnarled, {{C::cock.acorn(knob)}} sized bulges adorn every {{inch}} of {{C::gender.his}} shaft.`
       ]);
 
       if (knobHeight > 12) { ArrayUtility.addAll(choices,[
@@ -149,7 +149,7 @@ global.CockDescriber = class CockDescriber {
        {{C::cock.acorn(knob)}} sized bumps.`,
       `{{C::gender.His}} {{C::cock.cocks}} are studded, seemingly at random, with hard nubs the size of
        {{C::cock.acorns(knob)}}.`,
-      `Gnarled, {{C::cock.acorn(knob)}} sized bulges, adorn every inch of {{C::gender.his}} shafts.`,
+      `Gnarled, {{C::cock.acorn(knob)}} sized bulges, adorn every {{inch}} of {{C::gender.his}} shafts.`,
     ]);
 
     if (knobHeight > 12) { ArrayUtility.addAll(choices,[
@@ -157,7 +157,7 @@ global.CockDescriber = class CockDescriber {
        bumps, each the size of {{C::cock.anAcorn(knob)}}.`,
       `{{C::gender.His}} {{C::cock.cocks}} are studded, seemingly at random, with hard {{C::cock.twoInches(knob)}} wide
        knobs, each the size of {{C::cock.anAcorn(knob)}}.`,
-      `Thick, {{C::cock.acorn(knob)}} sized bulges, adorn every inch of {{C::gender.his}} shafts.`,
+      `Thick, {{C::cock.acorn(knob)}} sized bulges, adorn every {{inch}} of {{C::gender.his}} shafts.`,
     ]); }
 
     return Random.from(choices);

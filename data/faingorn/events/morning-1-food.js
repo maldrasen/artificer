@@ -7,7 +7,7 @@ Event.build('morning-1-food', {
     pages:[
       { text:`It doesn't take too long for me to find my way into the keep's tower.` },
       { text:`It's condition is much as I expected it would be. With the roof having collapsed numerous birds have been
-              nesting among the exposed rafters; and probably have been for decades given the two inch deep bird shit
+              nesting among the exposed rafters; and probably have been for decades given the {{inch|2}} deep bird shit
               that covers every surface up here.` },
       { text:`Disgusting doesn't even begin to describe the scent. It's not enough to put a dent in my appetite, though
               I do wish I had been able to find some shoes.` },

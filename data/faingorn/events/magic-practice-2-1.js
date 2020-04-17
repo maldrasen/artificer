@@ -12,7 +12,7 @@ Event.build('magic-practice-2-1', {
       { text:`The Great Hall is still basically empty. I sit on the bare floor in the center of the room, close my
           eyes, and start to concentrate on my breathing.` },
       { text:`Slowly, carefully, I begin to gather threads of magical force around me, and while still sitting
-          crosslegged, I hover a few inches off of the stone floor. I find it easier to envision The Maelstrom while
+          crosslegged, I hover {{inches|a-few}} off of the stone floor. I find it easier to envision The Maelstrom while
           channeling its energies.` },
       { text:`It's a roiling firestorm of pure chaos, but I feel like there is something hidden here, hidden within
           The Maelstrom itself. But then, what does that even mean?` },
