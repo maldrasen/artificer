@@ -3,29 +3,28 @@ Event.build('magic-practice-1-4', {
 
   stages:[{
     pages:[
-      { text:`My morning magic practice has become a regular routine now.` },
-      { text:`It's a good way I think to greet the dawn.` },
-      { text:`And after a week or so of meditation and practice, I feel like my understanding has really grown.` },
+      { text:`My morning meditation has become a regular routine now. It's a good way I think to greet the dawn.
+          And in the time since I started this regular practice I feel like my understanding has really grown.` },
       { text:`When I close my eyes I can envision the roiling chaotic well of energy I draw power from.` },
-      { text:`I call it The Maelstrom.` },
-      { text:`I'm not sure if it's something I've just made up, some way to visualize what I do, or if really exists in some way.` },
-      { text:`The Maelstrom might just be in my head, but that doesn't mean it's not real.` },
-      { text:`It seems familiar though, in the same way that all the forces were familiar to me once I remembered how to control them.` },
-      { text:`Feeling a bit more energetic than usual I walk outside to the courtyard.`, background:{ location:'courtyard', time:'morning' }},
-      { text:`The early morning air is cool and crisp.` },
-      { text:`I raise my arms and form a whirlwind around me.` },
-      { text:`Moving the air is just another application of force after all.` },
-      { text:`Small sticks, leaves, and other debris are drawn into the vortex.` },
-      { text:`I light it all on fire, surrounding myself in burning embers.` },
-      { text:`It's taking everything that I have, but I want more.` },
-      { text:`The air crackles with energy, sparks arcing from the stones and pebbles flying around me.` },
-      { text:`Finally, I drop to my knees, letting the energy storm dissipate.` },
+      { text:`The Maelstrom.` },
+      { text:`I'm not sure if it's something I'm just imagining, some way to visualize what I do, or if really exists
+          in some way.` },
+      { text:`The Maelstrom might just be in my head, but that doesn't mean it's not real. It seems familiar, in the
+          same way that all the forces were familiar to me once I remembered how to control them.` },
+
+      { background:{ location:'courtyard', time:'morning' },
+        text:`Feeling a bit more energetic than usual I walk outside to the courtyard.` },
+      { text:`The early morning air is cool and crisp. I raise my arms and form a whirlwind around me. Moving the air
+          is just another application of force after all.` },
+      { text:`Small sticks, leaves, and other debris are drawn into the vortex. I light it all on fire, surrounding
+          myself in burning embers. It's taking everything that I have, but I want more.` },
+      { text:`The air crackles with energy, sparks arcing from the stones and pebbles flying around me. Finally, I drop
+          to my knees, letting the energy storm dissipate.` },
       { text:`I'm spent.` },
-      { text:`Still, it's a noticeable improvement.` },
-      { text:`I'm far stronger than I was when I first arrived here.` },
-      { narratorSpeaker:true, text:`You have fully unlocked the Maelstrom sphere.`, alert:{ unlock:'Sphere: Maelstrom' }},
-      { narratorSpeaker:true, text:`Each sphere of magic represents a domain of control over a certain substance.` },
-      { narratorSpeaker:true, text:`As you unlock more spheres the variety of things you can do magically will increase.` },
+      { text:`Still, it's a noticeable improvement, and I'm far stronger than I was when I first arrived here.` },
+      { narratorSpeaker:true, alert:{ unlock:'Sphere: Maelstrom' }, text:`You have fully unlocked the Maelstrom sphere.
+          Each sphere of magic represents a domain of control. As you unlock more spheres the variety of things you can
+          do magically will increase.` },
     ]
   }],
 
