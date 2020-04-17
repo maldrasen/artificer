@@ -34,9 +34,9 @@ Event.build('journal-1', {
           official or otherwise. And so, he decided to form an expedition of sorts, to travel deep into the Hinterlands
           to see this keep, or at least whatever was left of it, for himself.` },
       { text:`It was a small expedition, just three people. Lord Malcolm himself, his assistant Wren, and a woodsman
-          named Ravingari. It took six weeks for them to reach the Hinterlands, though they were traveling slowly.
-          Whoever these people were who erased the existence of the keep might not have any qualms about erasing the
-          existence of those who went looking into it either.` },
+          named Ravingari. It took six weeks for them to reach the Hinterlands, though they were traveling slowly.` },
+      { text:`Whoever these people were who erased the existence of the keep might not have any qualms about erasing
+          the existence of those who went looking into it either.` },
       { text:`And so they traveled lightly, doing whatever they could to not draw attention to themselves. They took
           the back roads and cut through the wilderness whenever they could. And they made sure not to tell anyone
           where they were going or even that they had left.` },
