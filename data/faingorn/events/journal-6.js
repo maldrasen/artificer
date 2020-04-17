@@ -4,60 +4,48 @@ Event.build('journal-6', {
 
   stages:[{
     pages:[
-      { text:`Out of curiosity I flip through the pages of Malcolm's journal.` },
-      { text:`Disappointingly, there are only a couple dozen entries left.` },
-      { text:`The rest of the book contains nothing but empty pages.` },
-      { text:`It would seem I'm quickly approaching the end of his tale.` },
-      { text:`He is writing less often though, with each entry covering a longer time period.` },
-      { text:`Without a way to decipher the carvings, and with Wren having returned to Dennevar, Malcolm took over the
-              work of maintaining and improving their home.` },
-      { text:`Throughout the winter he worked at the forge or the loom, crafting rugs and candle sconces, really
-              anything to make the keep a more comfortable place to live.` },
-      { text:`Wren however is absent for an unusually long time, and it's well into spring by the time she returns.` },
-      { text:`In the end she was unable to find anything that would even be remotely helpful in deciphering the carvings.` },
-      { text:`There were no references, no other examples, no one who had any more knowledge than they had.` },
-      { text:`There were rumors though; of places down in the deep, below even the kingdoms of the Goblins and the
-              Dark Elves, where strange unknowable symbols could be found.` },
-      { text:`Rumors were less than what they had now though, and if anything they were now the foremost authority on these writings.` },
-      { text:`She did however return with something useful.` },
-      { text:`Or someone rather.` },
-      { text:`Caspar Gamblegold, a gnomish artificer.` },
-      { text:`The artificers are master craftsmen who specialize in the creation of magical artifacts.` },
-      { text:`The conundrum of the bottomless well piqued his interest.` },
-      { text:`Artificers love nothing more than a seemingly unsolvable problem, and then of course crafting a solution for it.` },
-      { text:`His plan was to construct a craft of some sort here on site that would be capable of making the journey.` },
-      { text:`He brought wagons with him, with all the materials and tools he could conceivably need.` },
-      { text:`Which is curious as I haven't seen any such wagons or even remains of wagons.` },
-      { text:`He began work immediately but it would be weeks before he finished.` },
-      { text:`In that time Malcolm and Wren completed their work on the keep, having made it as comfortable and
-              livable as possible with the tools and materials they had at their disposal.` },
-      { text:`Finally on the Day of the Toad, Summer, Year of The Bloody Fox, in the 13th Age, just over a year after
-              their arrival, they were prepared to descend into the well.` },
-      { text:`Gamblegold had built what he called a drop ship.` },
-      { text:`Malcolm found it's shape rather embarrassing, but given that the craft was primarily a tube filled with
-              crystal mana cells, it's long phallic shape was unavoidable.` },
-      { text:`The plan was that once they were all onboard, they would simply drop the craft down into The Well.` },
-      { text:`As soon as they saw the bottom they would engage the mana cells, decelerating the craft to a manageable slow fall, allowing them to safely land.` },
-      { text:`Slowing from the decent should only take about 10% of the mana that they're bringing with them, allowing the rest to be used for the return trip.` },
-      { text:`Surprisingly Gamblegold wasn't much of a risk taker, preferring wide margins of error when journeying into the unknown.` },
-      { text:`Then, with everything well prepared and every eventuality planned for, they descended into The Well.` },
-      { text:`And it's there that the journal comes to an end.` },
-      { text:`They never made it back.` },
-      { text:`&hellip;` },
-      { text:`What's more, nothing had happened to the keep.` },
-      { text:`No disaster at least, other than weather, an infestation of scaven, and a half century of time.` },
-      { text:`Sighing I set the book aside.` },
-      { text:`Nothing but enigmas and mysteries; not a single answer.` },
-      { text:`The Well.` },
-      { text:`The Inscriptions.` },
-      { text:`The Abominations.` },
-      { text:`Hell, even the purpose of this keep.` },
-      { text:`Such things will have to wait I suppose.` },
-      { text:`Survival is all that matters now.` },
-      { text:`Clothing.` },
-      { text:`Food.` },
-      { text:`Shelter.` },
-      { text:`Once these things are fully taken care of I can worry about long dead mysteries.` },
+      { text:`As the journal nears its end Lord Malcolm Eigendrax's writings grow increasingly frustrated. Unable to
+          make any progress on deciphering the engravings or really any meaningful progress on other investigations, he
+          turns once again to his favorite pass time; capturing and torturing scaven to death.` },
+      { text:`He and Ravingari argued constantly. It seems like most of the latter journal entries are devoted solely
+          to venting about the woodsman's shortcomings. At least when he's not documenting the atrocities he's
+          performing on the little rat girls he keeps chained up in the tower.` },
+      { text:`Things grow even worse between them once the day they expected Wren to return came and passed. Malcolm
+          had plenty of explanations of course. A lot can happen in the three months it can take to travel there and
+          back, but Ravingari was having none of it.` },
+      { text:`In the end he decided to leave to go search for Wren.` },
+      { text:`There was plenty of food in the larder, so it wasn't as though Malcolm would starve. By leaving though he
+          would  be betraying his lord, a crime punishable by death in Dennevar, though there wasn't anything the lord
+          could do to stop him here out in the Hinterlands.` },
+      { text:`And so in the end it was just Malcolm here alone; isolated with only his mysteries and the whimperings of
+          rats to keep him company.` },
+      { text:`The last entry though, it's a hastily written mess. The ink is terribly smeared, so much so that I have
+          difficulty making it out. I can make out a few words and phrases though. "She betrayed", "captured", "at the
+          gates", "church", "coming for me".` },
+      { text:`She betrayed him? Someone came for him? The church? What church?` },
+      { text:`It doesn't make any sense, not by itself. It tempting to read too much into it, but it does sound like
+          someone or maybe a group of people came for him to either kill or capture him and he wrote this as quick as
+          he was able before hiding it away in his desk.` },
+      { text:`But that's where the journal ends, with far more questions than answers.` },
+      { text:`I haven't really thought about it, but there's the possibility that I too could be attacked here. There's
+          some hidden danger here. I can't identify it yet, but when I look out into the wasteland and across the
+          forests I can sense a malice there.` },
+      { text:`I take a moment to consider my options. I could always leave here; set out into the wilderness and
+          perhaps find some hint of civilization elsewhere. It would be safer.` },
+      { text:`I shake my head, driving away these lingering doubts.` },
+      { requires:'flag.player.goal=conquest', text:`No. I came here to conquer these lands. There's no running away,
+          and I'm not a pompous ass like Lord Eigendrax. If <i>they're</i> coming for me, I say let them come. I will
+          meet them on the field of battle.` },
+      { requires:'flag.player.goal=followers', text:`No. This is my keep. If <i>they</i> come for me I won't be here
+          alone. They'll find me and a my host of adoring followers, ready to fight to the death for me if that's what
+          I require of them.` },
+      { requires:'flag.player.goal=knowledge', text:`No, there's a mystery here that must be unraveled. Lord Eigendrax
+          was right about that at least. To uncover what was hidden, that's worth the risk. And <i>they</i>, whoever
+          <i>they<i> are, can't intimidate me.` },
+      { requires:'flag.player.goal=power', text:`No. Lord Eigendrax was a weakling. A spineless little man unable to do
+          anything to defend himself. If <i>they</i> want to come for me they'll find a far more formidable foe.` },
+      { text:`I set the book aside. It might still prove useful someday. He may have been a coward and an asshole, but
+          at least he took excellent notes.` },
     ]
   }],
 
