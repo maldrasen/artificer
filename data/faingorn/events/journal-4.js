@@ -2,49 +2,64 @@ Event.build('journal-4', {
   background: { code:'journal' },
   time:'afternoon',
 
+  actors: { R:'any-scaven' },
+
   stages:[{
     pages:[
       { text:`Again, I prepare for bed by reading a bit of Malcolm's journal.` },
-      { text:`Though he spends several days at it, there isn't much more he can learn from the enigmatic hole.` },
-      { text:`In the end, the longest he's able to track something falling into The Well is twenty seconds.` },
-      { requires:'game.metric',     text:`Which means that it must be at least a few kilometers deep.` },
-      { requires:'game.not-metric', text:`Which means that it must be at least a mile deep.` },
-      { text:`That's an insurmountable depth, even for a mage.` },
-      { text:`I can manage a rudimentary flight spell, enough to propel me a hundred {{meters}} or so.` },
-      { requires:'game.metric',     text:`Flying though feels like sprinting, so while a hundred meters is manageable, flying several kilometers?` },
-      { requires:'game.not-metric', text:`Flying though feels like sprinting, so while a hundred yards is manageable, flying a mile?` },
-      { text:`Vertically?` },
-      { text:`Well, it's nothing I could do.` },
-      { text:`Not without the risk that I would simply pass out from the effort it would take to fly back up.` },
-      { text:`Unconscious, I would then fall to my death for sure.` },
-      { text:`Malcolm seems to have come to the same conclusion.` },
-      { text:`He rules out everything else that obviously wouldn't work as well.` },
-      { requires:'game.metric',     text:`A kilometer long rope would break under it's own weight.` },
-      { requires:'game.not-metric', text:`A mile long rope would break under it's own weight.` },
-      { text:`Climbing down The Well would take days.` },
-      { text:`And what happens when you climb for days and still find no sign of the bottom?` },
+      { text:`Though he spends several days at it, there isn't much more he can learn from the enigmatic hole. In the
+          end, the longest he's able to track something falling into The Well is twenty seconds.` },
+      { requires:'game.metric', text:`Which means that it must be at least a few kilometers deep. That's an
+          insurmountable depth, even for a mage. I can manage a rudimentary flight spell, enough to propel me a
+          hundred meters or so. Flying though feels like sprinting, so while a hundred meters is manageable, flying
+          several kilometers?` },
+      { requires:'game.not-metric', text:`Which means that it must be at least a mile deep. That's an insurmountable
+          depth, even for a mage. I can manage a rudimentary flight spell, enough to propel me a few hundred feet or
+          so. Flying though feels like sprinting, so while a hundred yards is manageable, flying a mile?` },
+      { text:`Vertically? Well, it's nothing I could do. Not without the risk that I would simply pass out from the
+          effort it would take to fly back up. Unconscious, I would then fall to my death for sure.` },
+      { requires:'game.metric', text:`Malcolm seems to have come to the same conclusion and rules out everything else
+          that obviously wouldn't work. A kilometer long rope would break under it's own weight. Climbing down The
+          Well would take days, and what happens when you climb for days and still find no sign of the bottom?` },
+      { requires:'game.not-metric', text:`Malcolm seems to have come to the same conclusion and rules out everything
+          else that obviously wouldn't work. A mile long rope would break under it's own weight. Climbing down The
+          Well would take days, and what happens when you climb for days and still find no sign of the bottom?` },
       { text:`No, a better solution would have to be found.` },
-      { text:`Instead of worrying about The Well, Malcolm instead turned his attention to the rest of the ancient vaults.` },
-      { text:`Various architectural elements of the vault had been finely carved, but the carvings were difficult to understand.` },
-      { text:`They're entirely abstract, and might simply be decorative, though he felt there had to be some deeper meaning in them.` },
-      { text:`The carvings were organic in places and sharply angular and geometric in others; phasing between sensual and mechanical.` },
-      { text:`The overall impression they left in Malcolm was of something deeply unsettling, though it was difficult for him to explain why.` },
-      { text:`Meanwhile, while Malcolm was deep underground, Wren spent her time in more industrious pursuits.` },
-      { text:`The keep's central courtyard was to become a small farm.` },
-      { text:`What food they had brought with them couldn't last them forever, so their plan was to start growing some of their own once spring arrived.` },
-      { text:`Game is plentiful here, even in the winter, so Wren would spend one or two days a week hunting to supplement their food supply.` },
-      { text:`One day while out hunting she came across a field of sisal.` },
-      { text:`Malcolm made note of this in his journal, taking note of the field's location should they ever need to harvest some.` },
-      { text:`Sisal is a hearty plant, and a course and durable fiber can be harvested from its leaves.` },
-      { text:`It's used to make rope primarily, but you can also use it to make rugs and burlap cloth.` },
-      { text:`In fact, having some sisal would be of great benefit to me in my current situation.` },
-      { text:`But that's enough of their tale for one night at least.` },
+      { text:`Instead of worrying about The Well, Malcolm instead turned his attention to the rest of the ancient
+          vaults. Various architectural elements of the vault had expertly engraved, but the engravings were difficult
+          to understand.` },
+      { text:`They're entirely abstract, and while they might simply be decorative, he felt there had to be some deeper
+          meaning to them. The carvings were organic in places and sharply angular and geometric in others; phasing
+          between sensual and mechanical.` },
+      { text:`The overall impression they left in Malcolm was of something deeply unsettling, though it was difficult
+          for him to explain why.` },
+      { text:`Meanwhile, while Malcolm was deep underground, Wren and Ravingari spent most of their time working on the
+          sort of crafts best suited for the winter months, pottery, blacksmithing and the like. Ravingari had run out
+          of the sisal that he had been using to make rugs though, so new rugs would have to wait until spring.` },
+      { text:`Hmm, sisal. Now that I think about it having some sisal would be of great benefit to me in my current
+          situation. It's is a hearty plant, and a course and durable fiber can be harvested from its leaves. It's used
+          to make rope primarily, but you can also use it to make rugs and burlap cloth.` },
+      { text:`Perhaps I could send {{R::character.firstName}} out to gather some for me. {{He}} needs to find it first
+          obviously, but I think our food situation is steady enough that I should be able to send {{him}} out every
+          once and a while to explore the sorrounding area.` },
+      { narratorSpeaker:true, text:`You've unlocked the ability to send your minions out on missions. Missions may
+          take your minions away from the keep for several days or longer so you should supply them with food and
+          equipment for the journey.`, alert:{ unlock:'Missions' }},
+      { narratorSpeaker:true, text:`Exploring the Hinterlands will open up new places and new resources for your
+          minions to collect, though without tools they'll only be able to bring back what they can harvest by hand
+          and carry.` },
     ]
   }],
 
   onFinish: async () => {
     AvailableEvent.add({ code:'journal-5' });
-    Flag.set('mission.sisal-discoverable','unlocked');
+    Flag.setAll({
+      'plan-view.missions': 'unlocked',
+      'mission.gather-stone': 'unlocked',
+      'mission.gather-timber': 'unlocked',
+      'mission.explore-hinterlands': 'unlocked',
+      'mission.explore-far-hinterlands': 'unlocked',
+    });
   },
 
 });
