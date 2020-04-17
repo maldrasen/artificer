@@ -59,8 +59,8 @@ global.Weaver = (function() {
   function utilityValue(utility, argument, context) {
     if (utility.startsWith('flag')) { return Weaver.FlagLoom.findValue(argument, context); }
     if (utility.startsWith('game')) { return Weaver.GameLoom.findValue(argument, context); }
-    if (utility.startsWith('random')) { return Weaver.RandomLoom.findValue(utility, argument); }
-    if (utility.match('^(inch|foot|feet|yard|yards)')) { return Weaver.MeasurementLoom.findValue(utility, argument); }
+    if (utility.match(/^[rR]andom/)) { return Weaver.RandomLoom.findValue(utility, argument); }
+    if (utility.match(/^(inch|foot|feet|yard|yards)/)) { return Weaver.MeasurementLoom.findValue(utility, argument); }
     return error(`BadToken(${utility}|${argument})`);
   }
 
