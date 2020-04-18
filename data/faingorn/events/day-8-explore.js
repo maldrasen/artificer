@@ -1,8 +1,10 @@
 Event.build('day-8-explore', {
-  location: 'upper-keep',
-  background:{ location:'upper-keep', time:'afternoon' },
-
   actors: { R:'any-scaven' },
+
+  setting: {
+    phase: 'early',
+    location: 'upper-keep',
+  },
 
   stages:[{
     pages:[

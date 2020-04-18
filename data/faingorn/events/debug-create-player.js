@@ -1,5 +1,9 @@
 Event.build('debug-create-player', {
-  background: { code:'void' },
+
+  setting: {
+    phase: 'early',
+    location: 'void'
+  },
 
   stages:[
     { chooserPage: true,

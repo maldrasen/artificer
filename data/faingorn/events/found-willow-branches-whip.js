@@ -1,5 +1,4 @@
 Event.build('found-willow-branches-whip', {
-  background:{ location:'great-hall', time:'evening' },
 
   stages:[{
     pages:[

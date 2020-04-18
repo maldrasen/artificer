@@ -1,6 +1,9 @@
 Event.build('morning-1', {
-  location: 'courtyard',
-  background:{ location:'courtyard', time:'morning' },
+
+  setting: {
+    phase: 'morning',
+    location: 'courtyard'
+  },
 
   stages:[{
     pages:[
@@ -82,7 +85,7 @@ Event.build('morning-1', {
   }],
 
   onFinish: async choices => {
-    EventQueue.chain(`morning-1-${choices.task}`);
+    CurrentEvent.chain(`morning-1-${choices.task}`);
   },
 
 });

@@ -1,5 +1,4 @@
 Event.build('morning-1-supplies', {
-  background:{ location:'empty-room', time:'morning' },
 
   stages:[{
     pages:[
@@ -31,7 +30,7 @@ Event.build('morning-1-supplies', {
   }],
 
   onFinish: async choices => {
-    EventQueue.chain(Flag.lookup('enqueued.morning-1-food') ? 'morning-1-work' : 'morning-1-food');
+    CurrentEvent.chain(Flag.lookup('enqueued.morning-1-food') ? 'morning-1-work' : 'morning-1-food');
   },
 
 });

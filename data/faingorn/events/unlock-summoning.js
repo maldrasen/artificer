@@ -3,8 +3,11 @@
 // actions should even get unlocked first.
 
 Event.build('unlock-summoning', {
-  background:{ location:'great-hall', time:'morning' },
-  time: 'morning',
+
+  setting: {
+    phase: 'wake',
+    location: 'great-hall'
+  },
 
   actors: { C:'any-minion' },
 

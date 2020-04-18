@@ -1,5 +1,4 @@
 Event.build('ambush-rat-befriend', {
-  background:{ location:'great-hall', time:'evening' },
 
   stages:[{
     pages:[
@@ -47,7 +46,7 @@ Event.build('ambush-rat-befriend', {
 
   onFinish: async choices => {
     await Game.updateLocation('great-hall');
-    EventQueue.chain('ambush-rat-end-1');
+    CurrentEvent.chain('ambush-rat-end-1');
   },
 
 });

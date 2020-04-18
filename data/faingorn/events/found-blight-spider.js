@@ -1,5 +1,9 @@
 Event.build('found-blight-spider', {
-  background:{ location:'great-hall', time:'evening' },
+
+  setting: {
+    phase: 'after-work',
+    location: 'great-hall',
+  },
 
   stages:[{
     pages:[
@@ -57,12 +61,12 @@ Event.build('found-blight-spider', {
 
     if (cock) {
       Abuser.CockAbuser.addInjury(character, { type:'blight', level:3, details:{ place:'balls' }});
-      EventQueue.chain(choices['torment-balls'] == 'yes' ?
+      CurrentEvent.chain(choices['torment-balls'] == 'yes' ?
         'found-blight-spider-torment-balls':
         'found-blight-spider-normal');
     } else {
       Abuser.PussyAbuser.addInjury(character, { type:'blight', level:3 });
-      EventQueue.chain(choices['torment-pussy'] == 'yes' ?
+      CurrentEvent.chain(choices['torment-pussy'] == 'yes' ?
         'found-blight-spider-torment-pussy':
         'found-blight-spider-normal');
     }

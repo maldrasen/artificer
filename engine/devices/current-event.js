@@ -1,7 +1,15 @@
-global.EventQueue = (function() {
+global.CurrentEvent = (function() {
+
+  let _currentEvents;
+
+  function clear() {
+    _currentEvents = {
+      
+    }
+  }
 
   // EventQueue add starts a new event.
-  function add(code, state={}) {
+  function set(code, state={}) {
 
     // let canEnqueue = await markEventAsEnqueued(code);
     // if (canEnqueue) {
@@ -100,6 +108,7 @@ global.EventQueue = (function() {
   }
 
   return {
+    clear,
     enqueueEvents,
     enqueueEvent,
     removeEvent,

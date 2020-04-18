@@ -1,6 +1,10 @@
 Event.build('starving', {
-  background:{ location:'great-hall', time:'morning' },
   repeatable: true,
+
+  setting: {
+    phase: 'early',
+    location: 'great-hall'
+  },
 
   stages:[{
     requires: 'flag.minions.count=1',
@@ -18,7 +22,7 @@ Event.build('starving', {
     await Character.reduceAllLoyalty(6);
     await AvailableEvent.add('starving', { requires:[`game.dayNumber>${game.dayNumber}`]});
 
-    if (Flag.lookup('minions.count') == 1) { return EventQueue.chain('starving-single'); }
+    if (Flag.lookup('minions.count') == 1) { return CurrentEvent.chain('starving-single'); }
 
     throw `TODO: Need a starvation event that matches the game's current state.`
   },

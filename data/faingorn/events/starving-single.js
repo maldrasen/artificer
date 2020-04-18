@@ -1,5 +1,4 @@
 Event.build('starving-single', {
-  background:{ location:'great-hall', time:'morning' },
   repeatable: true,
 
   actors:{ C:'any-minion' },

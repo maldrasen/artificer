@@ -1,10 +1,14 @@
 Event.build('magic-practice-1-4', {
-  background: { location:'great-hall', time:'morning' },
+
+  setting: {
+    phase: 'after-work',
+    location: 'great-hall'
+  },
 
   stages:[{
     pages:[
-      { text:`My morning meditation has become a regular routine now. It's a good way I think to greet the dawn.
-          And in the time since I started this regular practice I feel like my understanding has really grown.` },
+      { text:`Meditating has become a regular routine now. It's a good way I think to center myself during the day. And
+          in the time since I started this regular practice I feel like my understanding has really grown.` },
       { text:`When I close my eyes I can envision the roiling chaotic well of energy I draw power from.` },
       { text:`The Maelstrom.` },
       { text:`I'm not sure if it's something I'm just imagining, some way to visualize what I do, or if really exists

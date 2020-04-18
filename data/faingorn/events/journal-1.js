@@ -1,6 +1,10 @@
 Event.build('journal-1', {
   background: { code:'journal' },
-  time:'afternoon',
+
+  setting: {
+    phase: 'night',
+    location: 'player-bedroom'
+  },
 
   stages:[{
     pages:[

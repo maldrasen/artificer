@@ -1,5 +1,9 @@
 Event.build('morning-2', {
-  background:{ location:'great-hall', time:'morning' },
+
+  setting: {
+    phase: 'wake',
+    location: 'great-hall'
+  },
 
   stages:[{
     pages:[

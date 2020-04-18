@@ -30,7 +30,6 @@ before(function() {
 // An after each is needed to clean up any models added to the database, and
 // set the mode back to non-metric.
 afterEach(function() {
-  Flag.clearFlags();
   Environment.Throttle = false;
   Settings.Metric = false;
   Settings.FutaPronouns = 'shi/hir';

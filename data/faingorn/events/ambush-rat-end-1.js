@@ -1,6 +1,4 @@
 Event.build('ambush-rat-end-1', {
-  location: 'great-hall',
-  background:{ location:'great-hall', time:'evening' },
 
   stages:[{
     pages:[
@@ -19,7 +17,7 @@ Event.build('ambush-rat-end-1', {
   }],
 
   onFinish: async choices => {
-    EventQueue.chain('ambush-rat-end-2');
+    CurrentEvent.chain('ambush-rat-end-2');
     Flag.setAll({
       'player.fucks-men': choices.men,
       'player.fucks-futas': choices.futas,

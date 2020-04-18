@@ -5,7 +5,7 @@ global.Flag = Database.instance().define('flag', {
   timestamps: false,
 });
 
-Flag.clearFlags = function() {
+Flag.clear = function() {
   Flag._cache = {};
 }
 
@@ -108,5 +108,3 @@ Flag.genderPreferenceScores = function() {
 
   return scores;
 }
-
-Flag.clearFlags();

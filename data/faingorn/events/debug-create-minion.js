@@ -1,6 +1,10 @@
 Event.build('debug-create-minion', {
-  background: { code:'void' },
   repeatable: true,
+
+  setting: {
+    phase: 'any-time',
+    location: 'void'
+  },
 
   stages:[
     { formPage:'debug-create-minion' },

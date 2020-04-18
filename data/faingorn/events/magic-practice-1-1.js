@@ -1,5 +1,9 @@
 Event.build('magic-practice-1-1', {
-  background: { location:'great-hall', time:'morning' },
+
+  setting: {
+    phase: 'after-work',
+    location: 'great-hall'
+  },
 
   stages:[{
     pages:[

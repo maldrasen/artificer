@@ -1,5 +1,4 @@
 Event.build('ambush-rat-end-2', {
-  background:{ location:'great-hall', time:'evening' },
 
   stages:[{
     requires:['player.never-fucks-men'],

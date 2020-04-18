@@ -1,6 +1,10 @@
 Event.build('journal-3', {
   background: { code:'journal' },
-  time:'afternoon',
+
+  setting: {
+    phase: 'night',
+    location: 'player-bedroom'
+  },
 
   actors: { R:'any-scaven' },
 

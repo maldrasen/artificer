@@ -1,6 +1,9 @@
 Event.build('journal-4-well-talk', {
-  location: 'cellars',
-  background:{ location:'cellars' },
+
+  setting: {
+    phase: 'morning',
+    location: 'cellars'
+  },
 
   actors:{ C:'any-scaven' },
 

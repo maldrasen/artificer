@@ -6,11 +6,11 @@ Project.build('make-crude-fur-clothing', {
   help: { max:0, min:0 },
 
   onStart: async () => {
-    await EventQueue.enqueueEvent('morning-1-end');
+    await CurrentEvent.set('morning-1-end');
   },
 
   onFinish: async () => {
-    await EventQueue.enqueueEvent('morning-2');
+    await CurrentEvent.set('morning-2');
   },
 
 });

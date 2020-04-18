@@ -1,5 +1,9 @@
 Event.build('found-blood-berries', {
-  background:{ location:'great-hall', time:'evening' },
+
+  setting: {
+    phase: 'after-work',
+    location: 'great-hall',
+  },
 
   stages:[{
     pages:[

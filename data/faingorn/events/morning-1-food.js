@@ -1,7 +1,4 @@
 Event.build('morning-1-food', {
-  background:{ location:'ruined-tower', time:'morning' },
-
-  // TODO: Background, ruined tower.
 
   stages:[{
     pages:[
@@ -84,7 +81,7 @@ Event.build('morning-1-food', {
   }],
 
   onFinish: async choices => {
-    EventQueue.chain(Flag.lookup('enqueued.morning-1-supplies') ? 'morning-1-work' : 'morning-1-supplies');
+    CurrentEvent.chain(Flag.lookup('enqueued.morning-1-supplies') ? 'morning-1-work' : 'morning-1-supplies');
   },
 
 });

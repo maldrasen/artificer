@@ -1,6 +1,9 @@
 Event.build('ambush-rat-setup', {
-  location: 'upper-keep',
-  background:{ location:'great-hall-gallery', time:'morning' },
+
+  setting: {
+    phase: 'morning',
+    location: 'upper-keep',
+  },
 
   stages:[{
     pages:[
@@ -43,7 +46,7 @@ Event.build('ambush-rat-setup', {
 
   onFinish: async choices => {
     const rat = await EventFunctions.createFirstMinion(choices.gender);
-    EventQueue.chain('ambush-rat-capture',{ actors:{ R:rat.id }});
+    CurrentEvent.chain('ambush-rat-capture',{ actors:{ R:rat.id }});
   },
 
 });

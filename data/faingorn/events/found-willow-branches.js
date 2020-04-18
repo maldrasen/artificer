@@ -1,5 +1,9 @@
 Event.build('found-willow-branches', {
-  background:{ location:'great-hall', time:'evening' },
+
+  setting: {
+    phase: 'after-work',
+    location: 'great-hall',
+  },
 
   stages:[{
     pages:[
@@ -74,7 +78,7 @@ Event.build('found-willow-branches', {
     });
 
     if (choices.whip == 'yes') {
-      EventQueue.chain(`found-willow-branches-whip`);
+      CurrentEvent.chain(`found-willow-branches-whip`);
     }
   },
 

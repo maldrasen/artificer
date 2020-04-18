@@ -1,5 +1,9 @@
 Event.build('betrayal', {
-  background:{ location:'great-hall', time:'evening' },
+
+  setting:{
+    phase: 'late-night',
+    location: 'player-bedroom',
+  },
 
   stages:[{
     pages:[
@@ -17,7 +21,7 @@ Event.build('betrayal', {
     const traitors = Flag.lookup('minions.traitorous-ids').split(',');
 
     if (Flag.lookup('minions.traitorous-count') == 1) {
-      return EventQueue.chain('betrayal-single', { actors:{ C:traitors[0] }});
+      return CurrentEvent.chain('betrayal-single', { actors:{ C:traitors[0] }});
     }
 
     throw `TODO: Need a betrayal event that matches the game's current state.`

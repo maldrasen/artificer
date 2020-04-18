@@ -1,6 +1,10 @@
 Event.build('debug-set-flag', {
   background: { code:'void' },
-  repeatable: true,
+
+  setting: {
+    phase: 'any-time',
+    location: 'void'
+  },
 
   stages:[
     { formPage:'debug-set-flag' },

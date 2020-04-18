@@ -1,5 +1,4 @@
 Event.build('ambush-rat-capture', {
-  background:{ location:'great-hall', time:'evening' },
 
   stages:[{
     pages:[
@@ -45,7 +44,7 @@ Event.build('ambush-rat-capture', {
   }],
 
   onFinish: async choices => {
-    EventQueue.chain(choices.approach == 'befriend' ?
+    CurrentEvent.chain(choices.approach == 'befriend' ?
       'ambush-rat-befriend':
       'ambush-rat-torment');
   },
