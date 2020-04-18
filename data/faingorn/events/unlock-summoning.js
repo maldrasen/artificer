@@ -1,4 +1,8 @@
-Event.build('morning-6', {
+
+// Actually, I'm going to unlock this later in act one. Day 6 is a bit too early I think, and I think the training
+// actions should even get unlocked first.
+
+Event.build('unlock-summoning', {
   background:{ location:'great-hall', time:'morning' },
   time: 'morning',
 

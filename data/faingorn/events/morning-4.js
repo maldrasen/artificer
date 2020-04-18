@@ -28,7 +28,6 @@ Event.build('morning-4', {
     Flag.set('plan-view.tasks.meditate','unlocked');
 
     await AvailableEvent.addAll([
-      { code:'morning-6',          requires:['game.dayNumber=6']},
       { code:'day-8-explore',      requires:['game.dayNumber=8']},
       { code:'magic-practice-1-1', requires:['flag.player.meditate-count>=1']},
       { code:'magic-practice-1-2', requires:['flag.player.meditate-count>=2','player.magical>=12']},

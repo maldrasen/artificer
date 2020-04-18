@@ -15,9 +15,8 @@
     "missions/*",
     "projects/*",
     "roles/*",
-    "stages/*",
+    "game-stages/*",
     "task-stories/*",
-    "event-collections",
     "event-functions"
   ]
 }

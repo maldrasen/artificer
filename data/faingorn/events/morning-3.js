@@ -52,7 +52,8 @@ Event.build('morning-3', {
   }],
 
   onFinish: async choices => {
-    await EventCollections.addAct_1_1();
+    await GameStage.EventCollections.addBetrayalEvents();
+    await GameStage.EventCollections.addAct_1_1();
 
     Flag.setAll({
       'plan-view.allow-idle':    'unlocked',

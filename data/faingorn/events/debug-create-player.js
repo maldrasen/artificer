@@ -15,12 +15,15 @@ Event.build('debug-create-player', {
       selectionPage: true,
       selectionKey: 'stage',
       selections:[
-        { text:'Stage 1 - The Real Game Begins', value:'stage-1-0' },
+        { text:'Act 1.1 - The Real Game Begins', value:'stage-1-1' },
+        { text:'Act 1.2 - Missions Unlocked', value:'stage-1-2' },
       ]
     },
   ],
 
   onFinish: async choices => {
+    choices.goal = Random.from(['conquest','followers','knowledge','power']);
+
     await (await Game.instance()).createPlayer(choices);
     await GameStage.setStage(choices.stage);
   },

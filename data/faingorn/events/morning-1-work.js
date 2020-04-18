@@ -19,20 +19,9 @@ Event.build('morning-1-work', {
   }],
 
   onFinish: async choices => {
+    GameStage.FlagCollections.setDefaults();
     await AvailableProject.add({ code:'make-crude-fur-clothing' });
     await Game.updateLocation('great-hall');
-
-    Flag.setAll({
-      'location.current-study': 'great-hall',
-      'location-menu.map':      'unlocked' ,
-      'map.cellars':            'unlocked',
-      'map.courtyard':          'unlocked',
-      'map.great-hall':         'unlocked',
-      'map.lower-keep':         'unlocked',
-      'map.upper-keep':         'unlocked',
-      'player.bed-location':    'great-hall',
-      'player.bed-type':        'fur-pile',
-    });
   },
 
 });

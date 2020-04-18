@@ -82,6 +82,7 @@ Event.build('ambush-rat-end-2', {
 
     await Flag.setAll({
       'location-menu.minions': 'unlocked',
+      'report-view.show-food': 'unlocked',
       'character.first-scaven': rat.id,
     });
 
