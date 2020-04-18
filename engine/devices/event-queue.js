@@ -1,44 +1,24 @@
 global.EventQueue = (function() {
 
-  async function printEventQueue() {
-    console.log("\n=== Printing Event Queue ===");
-    const events = await QueuedEvent.findAll({ order: [['id', 'ASC']] });
-    each (events, event => {
-      console.log(`    ${event.code} [${event.location}] - ${event.state_json}`);
-    });
+  // EventQueue add starts a new event.
+  function add(code, state={}) {
+
+    // let canEnqueue = await markEventAsEnqueued(code);
+    // if (canEnqueue) {
+    //   return await QueuedEvent.create({
+    //     code: code,
+    //     priority: state.priority || 'normal',
+    //     location: Event.lookup(code).location || 'none',
+    //     state_json: JSON.stringify(state||{})
+    //   });
+    // }
   }
 
-  async function enqueueEvents(events) {
-    await Promise.all(events.map(async event => {
-      return await this.enqueueEvent(event.code, event.state);
-    }));
-  }
+  // EventQueue.chain() continues an event. The state carries over from the
+  // previous event, but if changes are nessessary can be added to the new
+  // state argument and merged into the current state.
+  function chain(code, state={}) {
 
-  async function removeEvent(code) {
-    const event = await QueuedEvent.findOne({ where:{ code }});
-    if (event != null) {
-      await event.destroy();
-    }
-  }
-
-  // Enqueue an event in the form { code:'make-god-cry', state:{ hail:'Satan' }}
-  //   code: (required) The event code.
-  //   state: (optional) The event state object.
-  //
-  // An event can have a priority value set in the state. If priority is 'next' that event should always come before
-  // any event without a priority set. If the priority is 'last' all events without last being set will come first.
-  async function enqueueEvent(code, state) {
-    if (state == null) { state = {}; }
-
-    let canEnqueue = await markEventAsEnqueued(code);
-    if (canEnqueue) {
-      return await QueuedEvent.create({
-        code: code,
-        priority: state.priority || 'normal',
-        location: Event.lookup(code).location || 'none',
-        state_json: JSON.stringify(state||{})
-      });
-    }
   }
 
   async function getQueuedEvents() {
@@ -129,7 +109,6 @@ global.EventQueue = (function() {
     nextLocationEvent,
     unqueueEvent,
     unqueueLocationEvent,
-    printEventQueue,
   }
 
 })();

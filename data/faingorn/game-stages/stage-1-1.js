@@ -1,6 +1,6 @@
 GameStage.build('stage-1-1',{
   location: 'great-hall',
-  gameDay: 3,
+  dayNumber: 3,
 
   setup: async game => {
     GameStage.FlagCollections.setDefaults();

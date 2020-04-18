@@ -43,7 +43,7 @@ Event.build('ambush-rat-setup', {
 
   onFinish: async choices => {
     const rat = await EventFunctions.createFirstMinion(choices.gender);
-    await EventQueue.enqueueEvent('ambush-rat-capture',{ priority:'next', actors:{ R:rat.id }});
+    EventQueue.chain('ambush-rat-capture',{ actors:{ R:rat.id }});
   },
 
 });

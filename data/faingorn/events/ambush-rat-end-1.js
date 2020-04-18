@@ -19,7 +19,7 @@ Event.build('ambush-rat-end-1', {
   }],
 
   onFinish: async choices => {
-    await EventQueue.enqueueEvent('ambush-rat-end-2',{ priority:'next', actors:{ R:choices.event.actorIDs.R }});
+    EventQueue.chain('ambush-rat-end-2');
     Flag.setAll({
       'player.fucks-men': choices.men,
       'player.fucks-futas': choices.futas,

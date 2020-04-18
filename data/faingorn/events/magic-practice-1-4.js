@@ -31,9 +31,9 @@ Event.build('magic-practice-1-4', {
   onFinish: async choices => {
     const count = Flag.lookup('player.meditate-count');
 
-    await AvailableEvent.addAll([
-      { code:'magic-practice-2-1', requires:[`flag.player.meditate-count=${count+3}`,`player.magical>=20`]},
-    ]);
+    AvailableEvent.add('magic-practice-2-1', {
+      requires:[`flag.player.meditate-count=${count+3}`,`player.magical>=20`]
+    });
 
     Flag.set('player.maelstrom','Y');
   },

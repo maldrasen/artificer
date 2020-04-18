@@ -9,10 +9,6 @@ global.DebugController = (function() {
       AvailableEvent.printAll();
     });
 
-    ipcMain.on('debug.game.printEventQueue', async () => {
-      EventQueue.printEventQueue();
-    });
-
     // === Debug Character ===
 
     ipcMain.on('debug.character.redescribe', async (event, data) => {

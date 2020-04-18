@@ -6,15 +6,11 @@ global.Configuration = {
   // another mod to set up a completely different scenario.
   onStart: async game => {
     await game.update({ location:'courtyard' });
-    await EventQueue.enqueueEvents([
-      { code:'game-start-1' },
-      { code:'game-start-2' },
-      { code:'morning-1' },
-    ]);
+    EventQueue.add('game-start-1');
   },
 
   onDebugStart: async game => {
-    await EventQueue.enqueueEvent('debug-create-player');
+    EventQueue.add('debug-create-player');
     Flag.setAll({
       'map.heart-of-sin': 'Y'
     });

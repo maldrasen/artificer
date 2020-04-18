@@ -7,7 +7,7 @@ Event.build('debug-create-minion', {
   ],
 
   onFinish: async choices => {
-    let char = await CharacterBuilder.build({
+    await CharacterBuilder.build({
       gender: choices.gender,
       species: choices.species
     });

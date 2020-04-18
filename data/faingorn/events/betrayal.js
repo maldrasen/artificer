@@ -17,7 +17,7 @@ Event.build('betrayal', {
     const traitors = Flag.lookup('minions.traitorous-ids').split(',');
 
     if (Flag.lookup('minions.traitorous-count') == 1) {
-      return await EventQueue.enqueueEvent('betrayal-single', { priority:'next', actors:{ C:traitors[0] }});
+      return EventQueue.chain('betrayal-single', { actors:{ C:traitors[0] }});
     }
 
     throw `TODO: Need a betrayal event that matches the game's current state.`

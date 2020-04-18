@@ -90,6 +90,9 @@ Event.build('game-start-1', {
 
   onFinish: async choices => {
     await (await Game.instance()).createPlayer(choices);
+
+    EventQueue.chain('game-start-2');
+    LocationEvent.enable('morning-1');
   },
 
 });

@@ -68,11 +68,7 @@ Event.build('found-fruits-and-nuts', {
 
     if (ArrayUtility.contains(['normal','filthy'],choices.sex)) {
       const player = await Player.instance();
-      await EventQueue.enqueueEvent(`found-fruits-and-nuts-sex-${player.genderCode == 'female' ? 'F':'M'}`,{
-        priority: 'next',
-        style: choices.sex,
-        actors:{ C:choices.event.actorIDs.C }
-      });
+      EventQueue.chain(`found-fruits-and-nuts-sex-${player.genderCode == 'female' ? 'F':'M'}`,{ style:choices.sex });
     }
   },
 

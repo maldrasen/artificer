@@ -52,7 +52,7 @@ Event.build('journal-4', {
   }],
 
   onFinish: async () => {
-    AvailableEvent.add({ code:'journal-5' });
+    AvailableEvent.add('journal-5');
     Flag.setAll({
       'plan-view.missions': 'Y',
       'mission.gather-stone': 'Y',

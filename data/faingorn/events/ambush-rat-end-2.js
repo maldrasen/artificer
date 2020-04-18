@@ -80,12 +80,12 @@ Event.build('ambush-rat-end-2', {
     const rat = await Character.lookup(choices.event.actorIDs.R)
     await rat.update({type:'minion'});
 
-    await Flag.setAll({
+    Flag.setAll({
       'location-menu.minions': 'Y',
       'report-view.show-food': 'Y',
     });
 
-    await EventQueue.enqueueEvent('morning-3',{ actors:{ R:rat.id }});
+    await LocationEvent.enable('morning-3',{ actors:{ R:rat.id }});
   },
 
 });

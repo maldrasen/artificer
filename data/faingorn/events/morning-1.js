@@ -82,7 +82,7 @@ Event.build('morning-1', {
   }],
 
   onFinish: async choices => {
-    await EventQueue.enqueueEvent(`morning-1-${choices.task}`);
+    EventQueue.chain(`morning-1-${choices.task}`);
   },
 
 });

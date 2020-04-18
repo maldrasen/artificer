@@ -51,22 +51,20 @@ Event.build('found-blight-spider', {
   }],
 
   onFinish: async choices => {
-    const state = { priority:'next', actors:{ C:choices.event.actorIDs.C }};
     const character = await Character.lookup(choices.event.actorIDs.C);
     const cock = await character.getCock();
     const pussy = await character.getPussy();
 
     if (cock) {
       Abuser.CockAbuser.addInjury(character, { type:'blight', level:3, details:{ place:'balls' }});
-      choices['torment-balls'] == 'yes' ?
-        (await EventQueue.enqueueEvent('found-blight-spider-torment-balls',state)):
-        (await EventQueue.enqueueEvent('found-blight-spider-normal',state));
-    }
-    else {
+      EventQueue.chain(choices['torment-balls'] == 'yes' ?
+        'found-blight-spider-torment-balls':
+        'found-blight-spider-normal');
+    } else {
       Abuser.PussyAbuser.addInjury(character, { type:'blight', level:3 });
-      choices['torment-pussy'] == 'yes' ?
-        (await EventQueue.enqueueEvent('found-blight-spider-torment-pussy',state)):
-        (await EventQueue.enqueueEvent('found-blight-spider-normal',state));
+      EventQueue.chain(choices['torment-pussy'] == 'yes' ?
+        'found-blight-spider-torment-pussy':
+        'found-blight-spider-normal');
     }
   },
 

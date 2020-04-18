@@ -44,7 +44,7 @@ Event.build('journal-5', {
   }],
 
   onFinish: async () => {
-    AvailableEvent.add({ code:'journal-6' });
+    AvailableEvent.add('journal-6');
   },
 
 });

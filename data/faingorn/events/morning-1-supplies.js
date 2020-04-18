@@ -31,7 +31,7 @@ Event.build('morning-1-supplies', {
   }],
 
   onFinish: async choices => {
-    await EventQueue.enqueueEvent(Flag.lookup('enqueued.morning-1-food') ? 'morning-1-work' : 'morning-1-food');
+    EventQueue.chain(Flag.lookup('enqueued.morning-1-food') ? 'morning-1-work' : 'morning-1-food');
   },
 
 });

@@ -47,7 +47,7 @@ Event.build('ambush-rat-befriend', {
 
   onFinish: async choices => {
     await Game.updateLocation('great-hall');
-    await EventQueue.enqueueEvent('ambush-rat-end-1',{ priority:'next', actors:{ R:choices.event.actorIDs.R }});
+    EventQueue.chain('ambush-rat-end-1');
   },
 
 });
