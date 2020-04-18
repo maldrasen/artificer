@@ -56,8 +56,16 @@ GameStage.FlagCollections = {
       'player.maelstrom':            'unlocked',
       'player.meditate-count':       8,
       'recipe.basket':               'unlocked',
-      'role.forage.success-count':   9
+      'role.forage.success-count':   9,
     });
   },
+
+  // Now that we're working in Act 1.3 remember to set flags here at the same
+  // time they're added in other events.
+  setAct_1_3: function() {
+    Flag.setAll({
+
+    });
+  }
 
 };
