@@ -1,6 +1,6 @@
 GameStage.build('stage-1-2',{
   location: 'great-hall',
-  gameDay: 3,
+  gameDay: 12,
 
   // TODO: Still setting this.
 
@@ -8,8 +8,8 @@ GameStage.build('stage-1-2',{
     GameStage.FlagCollections.setDefaults();
     GameStage.FlagCollections.setRandomSexuality();
     GameStage.FlagCollections.setAct_1_1();
+    GameStage.FlagCollections.setAct_1_2();
     await GameStage.EventCollections.addBetrayalEvents();
-    await GameStage.EventCollections.addAct_1_1();
     await GameStage.MinionCollections.createFirstMinion();
   },
 

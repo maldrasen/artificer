@@ -58,7 +58,6 @@ Event.build('journal-4', {
       'mission.gather-stone': 'unlocked',
       'mission.gather-timber': 'unlocked',
       'mission.explore-hinterlands': 'unlocked',
-      'mission.explore-far-hinterlands': 'unlocked',
     });
   },
 

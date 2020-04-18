@@ -37,4 +37,27 @@ GameStage.FlagCollections = {
     });
   },
 
+  setAct_1_2: function() {
+    Flag.setAll({
+      'item.bitter-fruits':          'unlocked',
+      'item.blood-berries':          'unlocked',
+      'item.goat-nuts':              'unlocked',
+      'item.juice-berries':          'unlocked',
+      'item.sweet-fruits':           'unlocked',
+      'item.willow-branches':        'unlocked',
+      'location-menu.inventory':     'unlocked',
+      'location-menu.show-date':     'unlocked',
+      'mission.gather-stone':        'unlocked',
+      'mission.gather-timber':       'unlocked',
+      'mission.explore-hinterlands': 'unlocked',
+      'plan-view.missions':          'unlocked',
+      'plan-view.tasks.craft':       'unlocked',
+      'plan-view.tasks.meditate':    'unlocked',
+      'player.maelstrom':            'unlocked',
+      'player.meditate-count':       8,
+      'recipe.basket':               'unlocked',
+      'role.forage.success-count':   9
+    });
+  },
+
 };

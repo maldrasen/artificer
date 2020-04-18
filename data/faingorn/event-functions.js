@@ -24,6 +24,8 @@ global.EventFunctions = {
     await rat.save();
     await CharacterDescriber.updateAll(rat);
 
+    Flag.set('character.first-scaven',rat.id);
+
     return rat;
   },
 
