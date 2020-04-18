@@ -57,7 +57,9 @@ Resolver.Report = (function() {
   }
 
   function completeFood(foodEaten, foodLeft) {
-    Resolver.currentReport().food.story = `Today my minions and I produced <b>${Resolver.currentReport().food.new}</b> food. We ate <b>${foodEaten}</b>, leaving us with <b>${foodLeft}</b>.`;
+    if (Flag.lookup('report-view.show-food')) {
+      Resolver.currentReport().food.story = `Today my minions and I produced <b>${Resolver.currentReport().food.new}</b> food. We ate <b>${foodEaten}</b>, leaving us with <b>${foodLeft}</b>.`;
+    }
   }
 
   return {

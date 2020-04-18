@@ -17,11 +17,16 @@ Components.ReportView = (function() {
       });
     }
 
-    each(report.minions, minion => {
-      addMinionFrame(minion);
-    });
+    if (Object.keys(report.minions).length > 0) {
+      $('#reportView').find('.minions').removeClass('hide');
+      each(report.minions, minion => {
+        addMinionFrame(minion);
+      });
+    }
 
-    $('#reportView').find('.food').append(report.food.story);
+    if (report.food.story) {
+      $('#reportView').find('.food').removeClass('hide').append(report.food.story);
+    }
 
     Elements.ScrollingPanel.build($('#reportView .scrolling-panel'));
   }
