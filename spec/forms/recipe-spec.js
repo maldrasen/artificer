@@ -1,7 +1,7 @@
 describe('Recipe', function() {
 
   it("gets a list of unlocked craftable items", function(done) {
-    Flag.set('recipe.basket','unlocked');
+    Flag.set('recipe.basket','Y');
     Resource.add('willow-branch',10).then(() => {
       Recipe.getRecipeListForPlan({ reserved:{} }).then(list => {
         expect(list.length).to.equal(1)

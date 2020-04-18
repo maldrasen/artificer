@@ -56,8 +56,8 @@ Event.build('morning-3', {
     await GameStage.EventCollections.addAct_1_1();
 
     Flag.setAll({
-      'plan-view.allow-idle':    'unlocked',
-      'plan-view.roles.forager': 'unlocked',
+      'plan-view.allow-idle':    'Y',
+      'plan-view.roles.forager': 'Y',
     });
   },
 

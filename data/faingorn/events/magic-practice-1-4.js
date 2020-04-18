@@ -22,9 +22,9 @@ Event.build('magic-practice-1-4', {
           to my knees, letting the energy storm dissipate.` },
       { text:`I'm spent.` },
       { text:`Still, it's a noticeable improvement, and I'm far stronger than I was when I first arrived here.` },
-      { narratorSpeaker:true, alert:{ unlock:'Sphere: Maelstrom' }, text:`You have fully unlocked the Maelstrom sphere.
-          Each sphere of magic represents a domain of control. As you unlock more spheres the variety of things you can
-          do magically will increase.` },
+      { narratorSpeaker:true, alert:{ unlock:'Sphere: Maelstrom' }, text:`You now have a full understanding of the
+          Maelstrom sphere. Each sphere of magic represents a domain of control. As you unlock more spheres the
+          variety of things you can do magically will increase.` },
     ]
   }],
 
@@ -35,7 +35,7 @@ Event.build('magic-practice-1-4', {
       { code:'magic-practice-2-1', requires:[`flag.player.meditate-count=${count+3}`,`player.magical>=20`]},
     ]);
 
-    Flag.set('player.maelstrom','unlocked');
+    Flag.set('player.maelstrom','Y');
   },
 
 });

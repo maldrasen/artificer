@@ -22,7 +22,7 @@ Event.build('unlock-summoning', {
   }],
 
   onFinish: async choices => {
-    Flag.set('minions.can-summon','unlocked');
+    Flag.set('minions.can-summon','Y');
   },
 
 });

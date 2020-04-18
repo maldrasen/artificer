@@ -50,7 +50,7 @@ Components.PlanView = (function() {
     })
   }
 
-  function allowIdle() { return getPlanData().flags['plan-view.allow-idle'] == 'unlocked'; }
+  function allowIdle() { return getPlanData().flags['plan-view.allow-idle'] == 'Y'; }
   function enableConfirm() { $('#planView .plan-confirm').removeClass('disabled-button'); }
   function disableConfirm() { $('#planView .plan-confirm').addClass('disabled-button'); }
   function getPlanData() { return $('#planView').data('planData'); }

@@ -41,9 +41,9 @@ global.Location = class Location extends Form {
     return {
       all: flags,
       showPlanAction: (flags['location.current-study'] == game.location),
-      showMapMenu: (flags['location-menu.map'] == 'unlocked'),
-      showMinionMenu: (flags['location-menu.minions'] == 'unlocked'),
-      showInventoryMenu: (flags['location-menu.inventory'] == 'unlocked'),
+      showMapMenu: (flags['location-menu.map'] == 'Y'),
+      showMinionMenu: (flags['location-menu.minions'] == 'Y'),
+      showInventoryMenu: (flags['location-menu.inventory'] == 'Y'),
       playerMenuName: flags['player.first-name'],
       eventActive: eventActive
     };

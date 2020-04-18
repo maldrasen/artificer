@@ -32,8 +32,8 @@ FlagInfo.build('player.meditate-count', {
 });
 
 // The spheres of magic that have been unlocked.
-FlagInfo.build('player.maelstrom', { validateIn: ['unlocked'] });
-FlagInfo.build('player.adamant',   { validateIn: ['unlocked'] });
-FlagInfo.build('player.gaea',      { validateIn: ['unlocked'] });
-FlagInfo.build('player.morpheus',  { validateIn: ['unlocked'] });
-FlagInfo.build('player.abyss',     { validateIn: ['unlocked'] });
+FlagInfo.build('player.maelstrom', { validateIn:['Y'] });
+FlagInfo.build('player.adamant',   { validateIn:['Y'] });
+FlagInfo.build('player.gaea',      { validateIn:['Y'] });
+FlagInfo.build('player.morpheus',  { validateIn:['Y'] });
+FlagInfo.build('player.abyss',     { validateIn:['Y'] });

@@ -2,8 +2,6 @@ GameStage.build('stage-1-2',{
   location: 'great-hall',
   gameDay: 12,
 
-  // TODO: Still setting this.
-
   setup: async game => {
     GameStage.FlagCollections.setDefaults();
     GameStage.FlagCollections.setRandomSexuality();

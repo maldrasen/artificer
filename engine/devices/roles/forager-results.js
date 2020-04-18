@@ -49,7 +49,7 @@ Role.Forager.Results = (function() {
   async function getUnlockedItems() {
     return ItemFlavor.where(flavor => {
       if (['foraged-item','foraged-food','foraged-herb','foraged-insect'].indexOf(flavor.type) >= 0) {
-        if (Flag.lookup(`item.${flavor.code}`) == 'unlocked') { return flavor; }
+        if (Flag.lookup(`item.${flavor.code}`) == 'Y') { return flavor; }
       }
     });
   }

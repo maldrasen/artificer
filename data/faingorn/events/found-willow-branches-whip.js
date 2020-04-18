@@ -122,12 +122,11 @@ Event.build('found-willow-branches-whip', {
     ]
   },{
     pages:[
-      { text:'...' },
-      { text:'..' },
-      { text:'.' },
-      { narratorSpeaker:true, text:`Crafting has been unlocked. When planning your day's activity you can now add
-          crafting tasks to your daily plan. You can start by crafting a basket to help your minion carry more when out
-          foraging`,  alert:{ unlock:'Crafting' }},
+      { narratorSpeaker:true, text:'Also&hellip' },
+      { narratorSpeaker:true, text:`You can now craft times. You can start by crafting a basket to help your minion
+          carry more when out foraging. However, in order to craft something you must first have the materials
+          available for the item you want to create, so it may be another day until you have enough branches to make a
+          basket.`, alert:{ unlock:'Crafting' }},
     ]
   }],
 

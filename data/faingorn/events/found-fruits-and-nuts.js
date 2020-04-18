@@ -23,10 +23,7 @@ Event.build('found-fruits-and-nuts', {
           to start gathering whip tree branches too. Once we have enough I can make a wicker basket for you, and
           perhaps some other useful things as well."` },
       { text:`{{He}} nods cautiously, perhaps not exactly thrilled about stocking the keep with "good slashy whips".` },
-      { narratorSpeaker:true, text:`Tasks and crafting have been unlocked. Tasks are repeatable and you may be able to
-          work on several in a single day. To work a crafting task though you must first have the materials available
-          for the item you want to create..`, alert:{ unlock:'Tasks' }},
-      { narratorSpeaker:true, text:`The inventory has also been unlocked. From the inventory you can see your items,
+      { narratorSpeaker:true, text:`You can view your inventory now. From the inventory you can see your items,
           equipment, and how much food you have in storage. You'll need to keep an eye on your food supply because
           starving minions are unhappy minions.`, alert:{ unlock:'The Inventory' }},
     ]
@@ -67,7 +64,7 @@ Event.build('found-fruits-and-nuts', {
   }],
 
   onFinish: async choices => {
-    Flag.set('location-menu.inventory','unlocked');
+    Flag.set('location-menu.inventory','Y');
 
     if (ArrayUtility.contains(['normal','filthy'],choices.sex)) {
       const player = await Player.instance();

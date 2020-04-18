@@ -6,7 +6,7 @@ global.Recipe = class Recipe extends Form {
     let available = await Recipe.getAvailableResources(state.reserved);
 
     let unlocked = Recipe.where(recipe => {
-      return Flag.lookup(`recipe.${recipe.code}`) == 'unlocked';
+      return Flag.lookup(`recipe.${recipe.code}`) == 'Y';
     });
 
     let recipes = await Promise.all(unlocked.map(async recipe => {

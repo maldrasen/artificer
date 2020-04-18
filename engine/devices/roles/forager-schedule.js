@@ -29,7 +29,7 @@ Role.Forager.Schedule = (function() {
   async function executeScheduled(character, scheduled) {
     if (scheduled.special) { return await scheduled.special(character); }
     if (scheduled.event)   { await EventQueue.enqueueEvent(scheduled.event,{ actors:{ C:character.id }}); }
-    if (scheduled.unlock)  { Flag.set(`item.${scheduled.unlock}`,'unlocked'); }
+    if (scheduled.unlock)  { Flag.set(`item.${scheduled.unlock}`,'Y'); }
     return await buildScheduledReport(character, scheduled);
   }
 

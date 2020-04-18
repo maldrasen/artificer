@@ -81,8 +81,8 @@ Event.build('ambush-rat-end-2', {
     await rat.update({type:'minion'});
 
     await Flag.setAll({
-      'location-menu.minions': 'unlocked',
-      'report-view.show-food': 'unlocked',
+      'location-menu.minions': 'Y',
+      'report-view.show-food': 'Y',
     });
 
     await EventQueue.enqueueEvent('morning-3',{ actors:{ R:rat.id }});

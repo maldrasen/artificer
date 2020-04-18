@@ -15,8 +15,8 @@ describe('Flag', function() {
   });
 
   it('sets a flag with an "in" validator', function() {
-    Flag.set('location-menu.inventory', 'unlocked');
-    expect(Flag.lookup('location-menu.inventory')).to.equal('unlocked');
+    Flag.set('location-menu.inventory', 'Y');
+    expect(Flag.lookup('location-menu.inventory')).to.equal('Y');
   });
 
   it('sets multiple flags', function() {

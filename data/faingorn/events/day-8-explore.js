@@ -62,7 +62,7 @@ Event.build('day-8-explore', {
   }],
 
   onFinish: async () => {
-    Flag.set('location-menu.show-date','unlocked');
+    Flag.set('location-menu.show-date','Y');
     AvailableEvent.add({ code:'journal-1' });
   },
 

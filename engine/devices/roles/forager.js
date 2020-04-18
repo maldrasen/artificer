@@ -4,7 +4,7 @@ Role.Forager = (function() {
   const description = 'A forager will go out into the wilds and forrage for food and crafting materials.';
 
   async function canWork(character) {
-    return Flag.lookup('plan-view.roles.forager') == 'unlocked'
+    return Flag.lookup('plan-view.roles.forager') == 'Y'
   }
 
   async function work(character) {

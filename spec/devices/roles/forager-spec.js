@@ -39,7 +39,7 @@ describe('Role: Forager', function() {
     Flag.setAll({
       'role.forage.success-count': 1,
       'role.forage.failure-count': 0,
-      'item.goat-nuts': 'unlocked'
+      'item.goat-nuts': 'Y'
     });
 
     SpecHelper.buildJada({ species:'scaven' }).then(jada => {
@@ -58,7 +58,7 @@ describe('Role: Forager', function() {
     Flag.setAll({
       'role.forage.success-count': 2,
       'role.forage.failure-count': 0,
-      'item.goat-nuts': 'unlocked'
+      'item.goat-nuts': 'Y'
     });
 
     SpecHelper.buildJada({ species:'scaven' }).then(jada => {

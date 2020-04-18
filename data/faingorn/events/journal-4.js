@@ -42,9 +42,9 @@ Event.build('journal-4', {
       { text:`Perhaps I could send {{R::character.firstName}} out to gather some for me. {{He}} needs to find it first
           obviously, but I think our food situation is steady enough that I should be able to send {{him}} out every
           once and a while to explore the sorrounding area.` },
-      { narratorSpeaker:true, text:`You've unlocked the ability to send your minions out on missions. Missions may
-          take your minions away from the keep for several days or longer so you should supply them with food and
-          equipment for the journey.`, alert:{ unlock:'Missions' }},
+      { narratorSpeaker:true, text:`You can now send your minions out on missions. Missions may take your minions away
+          from the keep for several days or longer so you should supply them with food and equipment for the
+          journey.`, alert:{ unlock:'Missions' }},
       { narratorSpeaker:true, text:`Exploring the Hinterlands will open up new places and new resources for your
           minions to collect, though without tools they'll only be able to bring back what they can harvest by hand
           and carry.` },
@@ -54,10 +54,10 @@ Event.build('journal-4', {
   onFinish: async () => {
     AvailableEvent.add({ code:'journal-5' });
     Flag.setAll({
-      'plan-view.missions': 'unlocked',
-      'mission.gather-stone': 'unlocked',
-      'mission.gather-timber': 'unlocked',
-      'mission.explore-hinterlands': 'unlocked',
+      'plan-view.missions': 'Y',
+      'mission.gather-stone': 'Y',
+      'mission.gather-timber': 'Y',
+      'mission.explore-hinterlands': 'Y',
     });
   },
 

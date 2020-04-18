@@ -44,10 +44,10 @@
     await EventQueue.enqueueEvent('found-fruits-and-nuts',{ actors:{ C:character.id }});
 
     Flag.setAll({
-      'item.bitter-fruits':'unlocked',
-      'item.goat-nuts':'unlocked',
-      'item.juice-berries':'unlocked',
-      'item.sweet-fruits':'unlocked',
+      'item.bitter-fruits':'Y',
+      'item.goat-nuts':'Y',
+      'item.juice-berries':'Y',
+      'item.sweet-fruits':'Y',
     });
 
     const flavors = {
@@ -72,7 +72,7 @@
     await context.addCharacter('C',character);
 
     await EventQueue.enqueueEvent('found-blight-spider',{ actors:{ C:character.id }});
-    Flag.set('item.blight-spider','unlocked');
+    Flag.set('item.blight-spider','Y');
 
     let story = Role.Forager.Stories.tell(await character.getHealthClass(), true, 0);
     let injury =`{{C::gender.He}} was bent over, searching through a thicket of brambles for something to eat, when a

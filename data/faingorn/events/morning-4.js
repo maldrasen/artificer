@@ -25,7 +25,7 @@ Event.build('morning-4', {
   }],
 
   onFinish: async choices => {
-    Flag.set('plan-view.tasks.meditate','unlocked');
+    Flag.set('plan-view.tasks.meditate','Y');
 
     await AvailableEvent.addAll([
       { code:'day-8-explore',      requires:['game.dayNumber=8']},

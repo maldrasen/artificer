@@ -4,7 +4,7 @@ Role.Hunter = (function() {
   const description = 'A hunter will hunt animals for meat and hides. They can also capture animals.';
 
   async function canWork(character) {
-    return Flag.lookup('plan-view.roles.hunter') == 'unlocked'
+    return Flag.lookup('plan-view.roles.hunter') == 'Y'
   }
 
   // TODO: Tier is set to 0 now, but this will be based entirely on the
