@@ -71,7 +71,9 @@ Game.setPhase = function(phase) {
 // === Game Event Queues =======================================================
 
 Game.log = function(message,header) {
-  console.log(header ? `\n=== ${message} ===` : `-     ${message}`);
+  if (Environment.Verbose) {
+    console.log(header ? `\n=== ${message} ===` : `-     ${message}`);
+  }
 }
 
 Game.currentEvent = function() {

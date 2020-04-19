@@ -22,11 +22,9 @@ global.AvailableEvent = Database.instance().define('available_event', {
 //   chance:       1-100 percent chance of happening
 AvailableEvent.add = async function(code, data={}) {
   let event = Event.lookup(code);
-  let eventType = (event.location != null) ? 'location' : event.eventType;
 
   return await AvailableEvent.create({
     code:          code,
-    eventType:     eventType,
     state_json:    JSON.stringify(data.state||{}),
     requires_json: JSON.stringify(data.requires||[]),
     chance:        data.chance || 100,

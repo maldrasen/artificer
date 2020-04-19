@@ -21,6 +21,7 @@ const fs = require('fs');
   global.Environment = {
     Debug: data.debug || false,
     Throttle: data.throttle || false,
+    Verbose: data.verbose || false,
   };
 
 })();
