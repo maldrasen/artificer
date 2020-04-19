@@ -8,17 +8,10 @@ global.GameHelper = (function() {
       { type:'minion', species:'scaven', gender:'female', fear:Random.between(40,60), loyalty:Random.between(10,20) },
     ];
 
+    await SpecHelper.buildPlayer({});
     await Promise.all(testCharacters.map((options) => {
       return CharacterBuilder.build(options);
     }));
-
-    await game.createPlayer({
-      title: "Master",
-      firstName: "Testes",
-      lastName: "Baggywrinkle",
-      gender: "male",
-      species: "caprien",
-    });
   }
 
   return { setupTestGame };

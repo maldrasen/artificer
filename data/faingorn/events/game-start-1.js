@@ -92,7 +92,7 @@ Event.build('game-start-1', {
   ],
 
   onFinish: async choices => {
-    await (await Game.instance()).createPlayer(choices);
+    await Player.forge(choices);
 
     CurrentEvent.chain('game-start-2');
     LocationEvent.enable('morning-1');

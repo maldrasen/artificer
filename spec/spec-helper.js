@@ -20,13 +20,14 @@ global.SpecHelper = (function() {
     });
   }
 
-  async function buildPlayer(game, options) {
-    return await game.createPlayer(extend({
+  async function buildPlayer(options) {
+    return await Player.forge(extend({
       title: 'Master',
       firstName: 'Gary',
       lastName: 'Gangbang',
       gender: 'male',
-      species: 'elf',
+      species: 'equian',
+      goal: 'conquest',
     },options));
   }
 

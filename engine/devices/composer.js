@@ -18,16 +18,10 @@ global.Composer = (function(){
   // this side waits for anything it does. Also because the Browser doesn't
   // exist in the specs none of this is tested. :)
 
-  function render(game) {
-    if (typeof Browser != 'undefined') {
-      game ? _render(game) : Game.instance().then(game => { _render(game); });
-    }
-  }
+  async function render(game) {
+    if (typeof Browser == 'undefined') { return; }
 
-  async function _render(game) {
-    // First render a view from the game's event queue if one exists. Location
-    // events should only be run when triggered from a link at the location.
-    // Other events however will need to be triggered like this too.
+    // First render the current event if it exists.
     const event = await CurrentEvent.fetch();
     if (event) {
       return renderEvent(event);

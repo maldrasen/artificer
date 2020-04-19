@@ -2,12 +2,12 @@ global.Configuration = {
   exploreFailureEvent: 'explore-failed',
   startingFood: 25,
 
-  onStart: async game => {
+  onStart: async () => {
     CurrentEvent.set('game-start-1');
-    Game.updateLocation('courtyard');
+    Game.setLocation('courtyard');
   },
 
-  onDebugStart: async game => {
+  onDebugStart: async () => {
     CurrentEvent.set('debug-create-player');
     Flag.set('map.heart-of-sin','Y');
   },

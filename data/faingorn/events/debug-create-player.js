@@ -28,7 +28,7 @@ Event.build('debug-create-player', {
   onFinish: async choices => {
     choices.goal = Random.from(['conquest','followers','knowledge','power']);
 
-    await (await Game.instance()).createPlayer(choices);
+    await Player.forge(choices);
     await GameStage.setStage(choices.stage);
   },
 

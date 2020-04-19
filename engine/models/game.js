@@ -33,15 +33,15 @@ Game.start = async function(debugStart) {
   Game._instance = await Game.create({
     id: 1,
     dayNumber: 1,
-    time: 'early',
+    phase: 'early',
     food: Configuration.startingFood,
   });
 
-  (debugStart ? Configuration.onDebugStart : Configuration.onStart)(Game._instance).then(() => {
-    Composer.render(Game._instance);
-  });
+  debugStart ?
+    (await Configuration.onDebugStart()):
+    (await Configuration.onStart());
 
-  return Game._instance;
+  await Composer.render();
 }
 
 Game.clear = async function() {
@@ -54,10 +54,10 @@ Game.clear = async function() {
   }));
 }
 
-Game.prototype.createPlayer = async function(options) {
-  await Player.forge(options);
+Game.setLocation = async function(code) {
+  Game._instance.location = Location.lookup(code).code;
 }
 
-Game.updateLocation = async function(code) {
-  Game._instance.location = Location.lookup(code).code;
+Game.setPhase = async function(phase) {
+  Game._instance.phase = phase;
 }

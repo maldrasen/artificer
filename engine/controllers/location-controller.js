@@ -2,9 +2,8 @@ global.LocationController = (function() {
 
   function init() {
     ipcMain.on('location.change', (event, data) => {
-      Game.updateLocation(data.code).then(()=>{
-        Composer.render();
-      });
+      Game.setLocation(data.code);
+      Composer.render();
     });
 
     ipcMain.on('location.show-minions', async () => {

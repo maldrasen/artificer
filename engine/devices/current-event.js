@@ -2,16 +2,47 @@ global.CurrentEvent = (function() {
 
   let _currentEvents;
 
+  // Clear the event queue. This must be done between specs though it really
+  // shouldn't be nessessary because the current event should be clear when all
+  // of the events in it are completed.
   function clear() {
     _currentEvents = {};
   }
 
+  // Set the current event for an upcoming phase if the event is valid. If an
+  // event cannot be added this will throw an exception. That shouldn't be a
+  // problem though. The resolver should know when it's safe to set an event,
+  // but we'll see. It may be nessessary to add an isValid() function that does
+  // the same checks and returns true or false.
   function set(code, state={}) {
     const event = Event.lookup(code);
-    const phase = event.setting.phase;
 
-    if (isValid(event,phase)) {
-      push(phase,{ event, state });
+    ensureValid(event);
+    push(event.setting.phase,{ event, state });
+  }
+
+  // Ensure that the event can be added to the current events. In order for an
+  // event to be set as a current event it must not be a location event. There
+  // cannot already be an event in the phase if it's one of the limited phases.
+  //
+  // Also you cannot set an event outside of the control gate where the event
+  // happens, meaning you cannot set an evening event when the game is in the
+  // morning phases. This is because the current events are not saved and will
+  // be cleared when the game is quit and loaded.
+  function ensureValid(event) {
+    const eventPhase = event.setting.phase;
+    const eventPhaseData = CurrentEvent.EventPhases[eventPhase];
+    const currentPhase = Game.instance().phase;
+    const currentPhaseData = CurrentEvent.EventPhases[currentPhase];
+
+    if (eventPhaseData == null) {
+      throw `Cannot set ${code} as a current event. The phase isn't correct.` }
+
+    if (eventPhaseData.limit == 1 && (_currentEvents[eventPhase]||[]).length > 0) {
+      throw `A current event is already set for ${phase}`; }
+
+    if (eventPhaseData.control != currentPhaseData.control) {
+      throw `Cannot set ${code}. The phase is in the wrong control state.`
     }
   }
 
@@ -34,23 +65,16 @@ global.CurrentEvent = (function() {
     return data ? data[0] : null;
   }
 
+  // The check() function is here for the specs mostly, and just returns
+  // whatever happens to be set in the given phase.
+  function check(phase) {
+    return _currentEvents[phase];
+  }
+
   function remove() {
     return (_currentEvents[Game.instance().phase]||[]).shift();
   }
 
-  function isValid(event, phase) {
-    const phaseData = CurrentEvent.EventPhases[phase];
-
-    if (phaseData == null) {
-      throw `Cannot set ${code} as a current event. The phase isn't correct.` }
-
-    if (phaseData.limit == 1 && (_currentEvents[phase]||[]).length > 0) {
-      throw `A current event is already set for ${phase}`; }
-
-    // Check repeatable or not? Need to check everything to make sure it wasn't
-    // nessessary.
-    return true;
-  }
 
   function push(phase,data) {
     if (_currentEvents[phase] == null) _currentEvents[phase] = [];
@@ -62,6 +86,7 @@ global.CurrentEvent = (function() {
     set,
     chain,
     fetch,
+    check,
     remove,
   }
 
@@ -69,11 +94,11 @@ global.CurrentEvent = (function() {
 
 CurrentEvent.clear();
 CurrentEvent.EventPhases = {
-  'wake':        { limit:1 },
-  'early':       { limit:1 },
-  'before-work': { },
-  'after-work':  { },
-  'planning':    { },
-  'night':       { limit:1 },
-  'late-night':  { limit:1 },
+  'wake':        { control:'trainPlan', limit:1 },
+  'early':       { control:'trainPlan', limit:1 },
+  'before-work': { control:'workPlan'   },
+  'after-work':  { control:'workPlan'   },
+  'planning':    { control:'trainPlan'  },
+  'night':       { control:'trainPlan', limit:1 },
+  'late-night':  { control:'trainPlan', limit:1 },
 };

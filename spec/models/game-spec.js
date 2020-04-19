@@ -8,11 +8,19 @@ describe('Game', function() {
     });
   });
 
-  // TODO: Finish this spec before completing this task please.
-  it('clears the game, flags, events, and models', function(done) {
+  it('clears the game, flags, and models', function(done) {
     Game.start().then(game => {
       Flag.set('flag','derp');
-      done();
+      AvailableEvent.add('journal-1').then(() => {
+        Game.clear().then(() => {
+          expect(Game.instance()).to.be.null;
+          expect(Flag.lookup('flag')).to.be.null;
+          AvailableEvent.findAll().then(events => {
+            expect(events).to.be.empty;
+            done();
+          })
+        });
+      });
     });
   });
 

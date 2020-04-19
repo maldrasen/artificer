@@ -9,8 +9,8 @@ global.SummonActionHelper = (function() {
     await game.update({
       location: (scene.location || 'great-hall')
     })
-    await game.createPlayer({
-      title: 'Master', firstName: 'Biggus', lastName: 'Dickus',
+
+    await SpecHelper.buildPlayer({
       gender: (scene.player.gender || 'male'),
       species: (scene.player.species || 'elf'),
     });

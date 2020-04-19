@@ -1,10 +1,9 @@
 describe('ConsentCalculator', function() {
 
   async function buildCalculatorWith(buildOptions, otherOptions) {
-    const game = await Game.start();
     const jada = await SpecHelper.buildJada(buildOptions);
 
-    await game.createPlayer({
+    await Player.forge({
       title: "Master",
       firstName: "Gary",
       lastName: "Gangbang",
