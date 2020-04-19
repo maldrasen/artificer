@@ -2,7 +2,7 @@
 global.Game = Database.instance().define('game', {
   location:                 { type:Sequelize.STRING  },
   dayNumber:                { type:Sequelize.INTEGER },
-  phase:                    { type:Sequelize.STRING, validate:{ isIn:['morning','evening'] }},
+  phase:                    { type:Sequelize.STRING  },
   food:                     { type:Sequelize.INTEGER },
   currentProject:           { type:Sequelize.STRING  },
   currentProjectProgress:   { type:Sequelize.INTEGER },
@@ -34,6 +34,7 @@ Game.instance = function() { return Game._instance; }
 Game.start = async function(debugStart) {
   if (Game._instance != null) { throw "Cannot start a new Game. A Game currently exists." }
 
+  Game.clearEventQueues();
   Game._instance = await Game.create({
     id: 1,
     dayNumber: 1,
@@ -92,7 +93,7 @@ Game.addEvent = function(code, state={}) {
 
   ensureValidEvent(event);
 
-  Game._eventQueues[phase].push(data);
+  Game._eventQueues[phase].push({ event, state });
 }
 
 // chainEvent() continues the currently running event. The state carries over
@@ -151,12 +152,11 @@ function ensureValidEvent(event) {
   const currentPhaseData = Game.EventPhases[currentPhase];
 
   if (ArrayUtility.contains(['single','queue'],eventPhaseData.type) == false) {
-    throw `Cannot add ${event.code}. ${eventPhase} has the wrong phase type.`
-  }
+    throw `Cannot add ${event.code}. ${eventPhase} has the wrong phase type.`; }
+
   if (eventPhaseData.type == 'single' && Game._eventQueues[eventPhase].length > 0) {
     throw `Cannot add ${event.code}. An event is already set for ${phase}`; }
-  }
+
   if (eventPhaseData.control != currentPhaseData.control) {
-    throw `Cannot add ${code}. The phase is in the wrong control state.`
-  }
+    throw `Cannot add ${code}. The phase is in the wrong control state.`; }
 }
