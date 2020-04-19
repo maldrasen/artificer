@@ -69,6 +69,10 @@ Game.setPhase = function(phase) {
 
 // === Game Event Queues =======================================================
 
+Game.currentEvent = function() {
+  return Game._currentEvent;
+}
+
 Game.clearEventQueues = function() {
   Game._currentEvent = null;
   Game._eventQueues = {
@@ -100,8 +104,10 @@ Game.addEvent = function(code, state={}) {
 // from the previous event, but if changes are nessessary can be added to the
 // new state argument and merged into the current state.
 Game.chainEvent = function(code, state={}) {
+  if (Game._currentEvent == null) { throw `Cannot chain event because there is no current event.` }
+
   Game._currentEvent.event = Event.lookup(code);
-  Game._currentEvent.state = extend(_currentEvents[phase][0].state, state);
+  Game._currentEvent.state = extend(Game._currentEvent.state, state);
 }
 
 // The pullNextEvent() function is used to display the next event that should
@@ -120,15 +126,15 @@ Game.pullNextEvent = function() {
     return Game._currentEvent;
   }
 
-  if (phase = 'wake')        { Game.setPhase('early');        return Game.pullNextEvent(); }
-  if (phase = 'early')       { Game.setPhase('morning');      return null; }
-  if (phase = 'morning')     { /* Control Phase */            return null; }
-  if (phase = 'before-work') { Game.setPhase('work-report');  return null; }
-  if (phase = 'after-work')  { Game.setPhase('evening');      return null; }
-  if (phase = 'evening')     { /* Control Phase */            return null; }
-  if (phase = 'training')    { Game.setPhase('train-report'); return null; }
-  if (phase = 'night')       { Game.setPhase('late-night');   return Game.pullNextEvent(); }
-  if (phase = 'late-night')  { Game.setPhase('wake');         return Game.pullNextEvent(); }
+  if (phase == 'wake')        { Game.setPhase('early');        return Game.pullNextEvent(); }
+  if (phase == 'early')       { Game.setPhase('morning');      return null; }
+  if (phase == 'morning')     { /* Control Phase */            return null; }
+  if (phase == 'before-work') { Game.setPhase('work-report');  return null; }
+  if (phase == 'after-work')  { Game.setPhase('evening');      return null; }
+  if (phase == 'evening')     { /* Control Phase */            return null; }
+  if (phase == 'training')    { Game.setPhase('train-report'); return null; }
+  if (phase == 'night')       { Game.setPhase('late-night');   return Game.pullNextEvent(); }
+  if (phase == 'late-night')  { Game.setPhase('wake');         return Game.pullNextEvent(); }
 }
 
 // If an event or events have been set for the current game phase then fetch
