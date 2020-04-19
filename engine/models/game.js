@@ -64,6 +64,7 @@ Game.setLocation = function(code) {
 }
 
 Game.setPhase = function(phase) {
+  console.log(`   [phase change] ${phase}`);
   Game._instance.phase = phase;
 }
 

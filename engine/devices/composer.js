@@ -21,15 +21,15 @@ global.Composer = (function(){
   async function render(game) {
     if (typeof Browser == 'undefined') { return; }
 
+    console.log("=== Rendering ===")
+
     // First render the current event if it exists. This isn't correct. The
     // game will need to advance phases until it reaches a control phase or an
     // event...
     const eventData = Game.pullNextEvent();
 
-console.log("=== Rendering ===")
-console.log("Fetched:",event)
-
     if (eventData) {
+      console.log("Rendering Event: ",eventData.event.code,"\n");
       return renderEvent(eventData);
     }
 
