@@ -1,8 +1,8 @@
 Event.build('found-fruits-and-nuts', {
 
   setting: {
-    location: 'great-hall',
     phase: 'after-work',
+    location: 'great-hall',
   },
 
   stages:[{

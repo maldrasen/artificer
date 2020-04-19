@@ -8,4 +8,12 @@ describe('Game', function() {
     });
   });
 
+  // TODO: Finish this spec before completing this task please.
+  it('clears the game, flags, events, and models', function(done) {
+    Game.start().then(game => {
+      Flag.set('flag','derp');
+      done();
+    });
+  });
+
 });

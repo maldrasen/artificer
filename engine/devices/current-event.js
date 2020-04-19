@@ -3,116 +3,77 @@ global.CurrentEvent = (function() {
   let _currentEvents;
 
   function clear() {
-    _currentEvents = {
-
-    }
+    _currentEvents = {};
   }
 
-  // EventQueue add starts a new event.
   function set(code, state={}) {
+    const event = Event.lookup(code);
+    const phase = event.setting.phase;
 
-    // let canEnqueue = await markEventAsEnqueued(code);
-    // if (canEnqueue) {
-    //   return await QueuedEvent.create({
-    //     code: code,
-    //     priority: state.priority || 'normal',
-    //     location: Event.lookup(code).location || 'none',
-    //     state_json: JSON.stringify(state||{})
-    //   });
-    // }
+    if (isValid(event,phase)) {
+      push(phase,{ event, state });
+    }
   }
 
   // EventQueue.chain() continues an event. The state carries over from the
   // previous event, but if changes are nessessary can be added to the new
   // state argument and merged into the current state.
+  //
+  // When chaining events the chain() function always replaces the event at the
+  // head of the array.
   function chain(code, state={}) {
-
+    const phase = Game.instance().phase;
+    _currentEvents[phase][0].event = Event.lookup(code);
+    _currentEvents[phase][0].state = extend(_currentEvents[phase][0].state, state);
   }
 
-  // async function getQueuedEvents() {
-  //   return await QueuedEvent.findAll({ where:{ location:'none' }, order:[['id', 'ASC']] });
-  // }
-  //
-  // async function getQueuedLocationEvents(location) {
-  //   return await QueuedEvent.findAll({ where:{ location:location }, order:[['id', 'ASC']] });
-  // }
-  //
-  // async function nextEvent() {
-  //   const events = await getQueuedEvents();
-  //
-  //   let firstNext;
-  //   let firstNormal;
-  //   let firstLast;
-  //
-  //   for (let i=0; i<events.length; i++) {
-  //     if (firstNext == null &&   events[i].priority == 'next')   { firstNext = events[i];   }
-  //     if (firstNormal == null && events[i].priority == 'normal') { firstNormal = events[i]; }
-  //     if (firstLast == null &&   events[i].priority == 'last')   { firstLast = events[i];   }
-  //   }
-  //
-  //   if (firstNext) { return firstNext; }
-  //   if (firstNormal) { return firstNormal; }
-  //   if (firstLast) { return firstLast; }
-  //
-  //   return null;
-  // }
-  //
-  // async function nextLocationEvent(location) {
-  //   const events = await getQueuedLocationEvents(location);
-  //   return events[0]
-  // }
-  //
-  // async function unqueueEvent() {
-  //   const event = await nextEvent();
-  //
-  //   if (event) {
-  //     const raw = { code:event.code, state:event.state };
-  //     await event.destroy();
-  //     return raw;
-  //   }
-  // }
-  //
-  // async function unqueueLocationEvent(location) {
-  //   const event = await nextLocationEvent(location);
-  //   if (event) {
-  //     const raw = { code:event.code, location:event.location, state:event.state };
-  //     await event.destroy();
-  //     return raw;
-  //   }
-  // }
-  //
-  // // When an event is queued we set a flag letting us know that the event has
-  // // been enqueued before. This is just a general rule so that events are not
-  // // repeatable by default. If an event has been queued before, and that event
-  // // is not marked as repeatable, then this function returns false.
-  // //
-  // // This is separate from the event requirement checking that's done in the
-  // // AvailableEvent class, this is done for all events even otherise valid
-  // // events.
-  // async function markEventAsEnqueued(code) {
-  //   const countCode = `enqueued.${code}`;
-  //   const count = Flag.lookup(countCode);
-  //
-  //   if (count == null) {
-  //     Flag.set(countCode,1);
-  //     return true;
-  //   }
-  //
-  //   let event = Event.lookup(code);
-  //   if (event.repeatable) {
-  //     Flag.set(countCode, count+1);
-  //     return true;
-  //   }
-  //
-  //   return false;
-  // }
+  // If an event or events have been set for the current game phase then fetch
+  // the first event in the queue.
+  function fetch() {
+    let data = _currentEvents[Game.instance().phase];
+    return data ? data[0] : null;
+  }
+
+  function remove() {
+    return (_currentEvents[Game.instance().phase]||[]).shift();
+  }
+
+  function isValid(event, phase) {
+    const phaseData = CurrentEvent.EventPhases[phase];
+
+    if (phaseData == null) {
+      throw `Cannot set ${code} as a current event. The phase isn't correct.` }
+
+    if (phaseData.limit == 1 && (_currentEvents[phase]||[]).length > 0) {
+      throw `A current event is already set for ${phase}`; }
+
+    // Check repeatable or not? Need to check everything to make sure it wasn't
+    // nessessary.
+    return true;
+  }
+
+  function push(phase,data) {
+    if (_currentEvents[phase] == null) _currentEvents[phase] = [];
+    _currentEvents[phase].push(data);
+  }
 
   return {
     clear,
     set,
     chain,
+    fetch,
+    remove,
   }
 
 })();
 
 CurrentEvent.clear();
+CurrentEvent.EventPhases = {
+  'wake':        { limit:1 },
+  'early':       { limit:1 },
+  'before-work': { },
+  'after-work':  { },
+  'planning':    { },
+  'night':       { limit:1 },
+  'late-night':  { limit:1 },
+};

@@ -1,85 +1,44 @@
 describe.only('CurrentEvent', function() {
 
-  // it("Can add events with state", function(done) {
-  //   EventQueue.enqueueEvent('morning-2',{ horse:'cock' }).then(() => {
-  //     EventQueue.nextEvent().then(event => {
-  //       expect(event.code).to.equal('morning-2');
-  //       expect(event.state.horse).to.equal('cock');
-  //       done();
-  //     })
-  //   });
-  // });
+  it('can set the current event', function(done) {
+    Game.start().then(game => { game.phase = 'night';
+      CurrentEvent.set('journal-1');
+      expect(CurrentEvent.fetch().event.code).to.equal('journal-1');
+      done();
+    });
+  });
 
-  // it("Can add location events with state", function(done) {
-  //   EventQueue.enqueueEvent('morning-3',{ horse:'cock' }).then(() => {
-  //     EventQueue.nextLocationEvent('great-hall').then(event => {
-  //       expect(event.code).to.equal('morning-3');
-  //       expect(event.location).to.equal('great-hall');
-  //       expect(event.state.horse).to.equal('cock');
-  //       done();
-  //     })
-  //   });
-  // });
-  //
-  // it("Acts as a queue, removing events from the front", function(done) {
-  //   let eventList = [
-  //     { code:'found-blight-spider' },
-  //     { code:'found-blood-berries' },
-  //     { code:'found-fruits-and-nuts' }]
-  //
-  //   EventQueue.enqueueEvents(eventList).then(() => {
-  //     EventQueue.unqueueEvent().then(event => {
-  //       expect(event.code).to.equal('found-blight-spider');
-  //       done();
-  //     });
-  //   });
-  // });
-  //
-  // it("Acts as a prioritized queue, removing high priority events first", function(done) {
-  //   let eventList = [
-  //     { code:'found-blight-spider' },
-  //     { code:'found-blood-berries' },
-  //     { code:'found-fruits-and-nuts', state:{ priority:'next' }}]
-  //
-  //   // Some kind of SQLite bullshit happening here where the event queue is
-  //   // being created and cleared too quickly for SQLlite to keep up with.
-  //   // Shouldn't be a real problem in production though as we don't clear the
-  //   // event queue out but one event at a time.
-  //   setTimeout(() => {
-  //     EventQueue.enqueueEvents(eventList).then(() => {
-  //       EventQueue.unqueueEvent().then(event => {
-  //         expect(event.code).to.equal('found-fruits-and-nuts');
-  //         done();
-  //       });
-  //     });
-  //   },10)
-  // });
-  //
-  // it("Acts as a prioritized queue, removing last events last", function(done) {
-  //   let eventList = [
-  //     { code:'found-blight-spider', state:{ priority:'last' }},
-  //     { code:'found-blood-berries' },
-  //     { code:'found-fruits-and-nuts', state:{ priority:'last' }}]
-  //
-  //   setTimeout(() => {
-  //     EventQueue.enqueueEvents(eventList).then(() => {
-  //       EventQueue.unqueueEvent().then(event => {
-  //         expect(event.code).to.equal('found-blood-berries');
-  //         done();
-  //       });
-  //     });
-  //   },10);
-  // });
-  //
-  // it("unqueues location events", function(done) {
-  //   EventQueue.enqueueEvent('looking-outside-1').then(() => {
-  //     Game.start().then(game => {
-  //       EventQueue.unqueueLocationEvent('courtyard').then(event => {
-  //         expect(event.code).to.equal('looking-outside-1');
-  //         done();
-  //       });
-  //     });
-  //   });
-  // });
+  it("can add events with state", function(done) {
+    Game.start().then(game => { game.phase = 'wake';
+      CurrentEvent.set('morning-2',{ horse:'cock' });
+      expect(CurrentEvent.fetch().state.horse).to.equal('cock');
+      done();
+    });
+  });
+
+  it("can act as a queue for some phases", function(done) {
+    Game.start().then(game => { game.phase = 'after-work';
+      CurrentEvent.set('found-blight-spider');
+      CurrentEvent.set('found-blood-berries');
+      CurrentEvent.set('found-fruits-and-nuts');
+      expect(CurrentEvent.remove().event.code).to.equal('found-blight-spider')
+      expect(CurrentEvent.remove().event.code).to.equal('found-blood-berries')
+      expect(CurrentEvent.remove().event.code).to.equal('found-fruits-and-nuts')
+      done();
+    });
+  });
+
+  it("chains events together and merges their state", function(done) {
+    Game.start().then(game => { game.phase = 'after-work';
+      CurrentEvent.set('found-blight-spider',{ blighted:'balls', horse:'cock' });
+      CurrentEvent.chain('found-blight-spider-normal',{ horse:'pussy', moist:'anus' });
+
+      expect(CurrentEvent.fetch().event.code).to.equal('found-blight-spider-normal');
+      expect(CurrentEvent.fetch().state.blighted).to.equal('balls');
+      expect(CurrentEvent.fetch().state.horse).to.equal('pussy');
+      expect(CurrentEvent.fetch().state.moist).to.equal('anus');
+      done();
+    });
+  });
 
 });
