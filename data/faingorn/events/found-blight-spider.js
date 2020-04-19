@@ -61,12 +61,12 @@ Event.build('found-blight-spider', {
 
     if (cock) {
       Abuser.CockAbuser.addInjury(character, { type:'blight', level:3, details:{ place:'balls' }});
-      CurrentEvent.chain(choices['torment-balls'] == 'yes' ?
+      Game.chainEvent(choices['torment-balls'] == 'yes' ?
         'found-blight-spider-torment-balls':
         'found-blight-spider-normal');
     } else {
       Abuser.PussyAbuser.addInjury(character, { type:'blight', level:3 });
-      CurrentEvent.chain(choices['torment-pussy'] == 'yes' ?
+      Game.chainEvent(choices['torment-pussy'] == 'yes' ?
         'found-blight-spider-torment-pussy':
         'found-blight-spider-normal');
     }

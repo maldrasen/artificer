@@ -30,7 +30,7 @@ Event.build('morning-1-supplies', {
   }],
 
   onFinish: async choices => {
-    CurrentEvent.chain(Flag.lookup('enqueued.morning-1-food') ? 'morning-1-work' : 'morning-1-food');
+    Game.chainEvent(Flag.lookup('enqueued.morning-1-food') ? 'morning-1-work' : 'morning-1-food');
   },
 
 });

@@ -17,7 +17,7 @@ Event.build('ambush-rat-end-1', {
   }],
 
   onFinish: async choices => {
-    CurrentEvent.chain('ambush-rat-end-2');
+    Game.chainEvent('ambush-rat-end-2');
     Flag.setAll({
       'player.fucks-men': choices.men,
       'player.fucks-futas': choices.futas,

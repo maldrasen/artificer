@@ -78,7 +78,7 @@ Event.build('found-willow-branches', {
     });
 
     if (choices.whip == 'yes') {
-      CurrentEvent.chain(`found-willow-branches-whip`);
+      Game.chainEvent(`found-willow-branches-whip`);
     }
   },
 

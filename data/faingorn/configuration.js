@@ -3,12 +3,12 @@ global.Configuration = {
   startingFood: 25,
 
   onStart: async () => {
-    CurrentEvent.set('game-start-1');
+    Game.addEvent('game-start-1');
     Game.setLocation('courtyard');
   },
 
   onDebugStart: async () => {
-    CurrentEvent.set('debug-create-player');
+    Game.addEvent('debug-create-player');
     Flag.set('map.heart-of-sin','Y');
   },
 

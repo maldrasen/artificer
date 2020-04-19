@@ -72,7 +72,7 @@ Event.build('found-fruits-and-nuts', {
 
     if (ArrayUtility.contains(['normal','filthy'],choices.sex)) {
       const player = await Player.instance();
-      CurrentEvent.chain(`found-fruits-and-nuts-sex-${player.genderCode == 'female' ? 'F':'M'}`,{ style:choices.sex });
+      Game.chainEvent(`found-fruits-and-nuts-sex-${player.genderCode == 'female' ? 'F':'M'}`,{ style:choices.sex });
     }
   },
 

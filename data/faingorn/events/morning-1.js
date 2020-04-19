@@ -85,7 +85,7 @@ Event.build('morning-1', {
   }],
 
   onFinish: async choices => {
-    CurrentEvent.chain(`morning-1-${choices.task}`);
+    Game.chainEvent(`morning-1-${choices.task}`);
   },
 
 });

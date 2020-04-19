@@ -61,7 +61,6 @@ require(`${ROOT}/engine/describers/tits-injury-describer`);
 // === Devices ===
 require(`${ROOT}/engine/devices/aspect-adjuster`);
 require(`${ROOT}/engine/devices/composer`);
-require(`${ROOT}/engine/devices/current-event`);
 require(`${ROOT}/engine/devices/weaver`);
 
 require(`${ROOT}/engine/devices/abuser`);

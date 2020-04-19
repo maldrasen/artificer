@@ -21,10 +21,16 @@ global.Composer = (function(){
   async function render(game) {
     if (typeof Browser == 'undefined') { return; }
 
-    // First render the current event if it exists.
-    const event = await CurrentEvent.fetch();
-    if (event) {
-      return renderEvent(event);
+    // First render the current event if it exists. This isn't correct. The
+    // game will need to advance phases until it reaches a control phase or an
+    // event...
+    const eventData = Game.pullNextEvent();
+
+console.log("=== Rendering ===")
+console.log("Fetched:",event)
+
+    if (eventData) {
+      return renderEvent(eventData);
     }
 
     // If there are no events happening, but a report is ready, show the report.
@@ -37,8 +43,8 @@ global.Composer = (function(){
   // If an event has an init promise that promise will be resolved first. The
   // event is then sent to the weaver for template replacement. Once that's
   // done the brower is sent the completed event object.
-  function renderEvent(event) {
-    Event.prepare(event).then(prepared => {
+  function renderEvent(eventData) {
+    Event.prepare(eventData).then(prepared => {
       Browser.send('render.event',prepared);
     });
   }

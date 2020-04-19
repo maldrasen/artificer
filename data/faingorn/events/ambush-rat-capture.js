@@ -44,7 +44,7 @@ Event.build('ambush-rat-capture', {
   }],
 
   onFinish: async choices => {
-    CurrentEvent.chain(choices.approach == 'befriend' ?
+    Game.chainEvent(choices.approach == 'befriend' ?
       'ambush-rat-befriend':
       'ambush-rat-torment');
   },

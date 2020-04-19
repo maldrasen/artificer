@@ -46,7 +46,7 @@ Event.build('ambush-rat-setup', {
 
   onFinish: async choices => {
     const rat = await EventFunctions.createFirstMinion(choices.gender);
-    CurrentEvent.chain('ambush-rat-capture',{ actors:{ R:rat.id }});
+    Game.chainEvent('ambush-rat-capture',{ actors:{ R:rat.id }});
   },
 
 });

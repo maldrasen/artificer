@@ -6,11 +6,12 @@ Project.build('make-crude-fur-clothing', {
   help: { max:0, min:0 },
 
   onStart: async () => {
-    await CurrentEvent.set('morning-1-end');
+    Game.addEvent('morning-1-end');
   },
 
   onFinish: async () => {
-    await CurrentEvent.set('morning-2');
+    Game.setPhase('wake');
+    Game.addEvent('morning-2');
   },
 
 });

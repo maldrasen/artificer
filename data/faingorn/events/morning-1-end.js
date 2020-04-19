@@ -1,7 +1,7 @@
 Event.build('morning-1-end', {
 
   setting: {
-    phase: 'morning',
+    phase: 'before-work',
     location: 'great-hall'
   },
 

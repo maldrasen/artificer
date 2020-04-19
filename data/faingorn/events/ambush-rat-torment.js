@@ -87,7 +87,7 @@ Event.build('ambush-rat-torment', {
 
   onFinish: async choices => {
     Game.setLocation('great-hall');
-    CurrentEvent.chain('ambush-rat-end-1');
+    Game.chainEvent('ambush-rat-end-1');
   },
 
 });
