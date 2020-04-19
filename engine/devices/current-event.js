@@ -4,7 +4,7 @@ global.CurrentEvent = (function() {
 
   function clear() {
     _currentEvents = {
-      
+
     }
   }
 

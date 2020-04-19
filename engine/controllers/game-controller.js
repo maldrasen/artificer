@@ -64,14 +64,9 @@ global.GameController = (function() {
       });
     });
 
-    ipcMain.on('game.start-action-event', (event, data) => {
-      EventQueue.enqueueEvent(data.code, data.state).then(() => {
-        Composer.render();
-      });
-    });
-
-    ipcMain.on('game.start-location-event', () => {
-      Composer.renderLocationEvent();
+    ipcMain.on('game.start-event', (event, data) => {
+      CurrentEvent.set(data.code, data.state||{})
+      Composer.render();
     });
 
     ipcMain.on('game.open-plan-view', () => {

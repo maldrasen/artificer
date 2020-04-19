@@ -16,6 +16,12 @@ Components.LocationView = (function() {
         location.find('.menu-show-player').append(view.flags.playerMenuName);
         location.data('mapData',view.mapData);
 
+    // TODO: Wire up the .start-location-event button. This used to just get the next location event off of the queue,
+    //       But I've changed it so that they're enabled, not queued. However this means that I don't have a code for
+    //       the event. So I may need to send the location event code up with the location data so that it triggers the
+    //       right event. Normally this would never fly in a real web app, i.e. trusting data from the client, but an
+    //       electron app is really all client. Especially this one. And I don't care about cheating at all.
+
     if (view.dates.date) { location.find('.date').append(`, ${view.dates.date}`); }
     if (view.flags.showMapMenu) { location.find('.menu-show-map').removeClass('hide'); }
     if (view.flags.showMinionMenu) { location.find('.menu-show-minions').removeClass('hide'); }

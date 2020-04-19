@@ -28,7 +28,7 @@ global.Composer = (function(){
     // First render a view from the game's event queue if one exists. Location
     // events should only be run when triggered from a link at the location.
     // Other events however will need to be triggered like this too.
-    const event = await EventQueue.unqueueEvent();
+    const event = await CurrentEvent.fetch();
     if (event) {
       return renderEvent(event);
     }
@@ -38,12 +38,6 @@ global.Composer = (function(){
 
     // If there's no active event or anything like that:
     renderLocation(game.location)
-  }
-
-  async function renderLocationEvent() {
-    const game = await Game.instance();
-    const event = await EventQueue.unqueueLocationEvent(game.location);
-    renderEvent(event);
   }
 
   // If an event has an init promise that promise will be resolved first. The
@@ -92,7 +86,6 @@ global.Composer = (function(){
 
   return {
     render,
-    renderLocationEvent,
     renderPlanView,
   };
 
