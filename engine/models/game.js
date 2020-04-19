@@ -34,7 +34,7 @@ Game.start = async function(debugStart) {
 
 Game.clear = async function() {
   Flag.clear();
-  EventQueue.clear();
+  CurrentEvent.clear();
 
   await Promise.all(Database.getPersistedModels().map(model => {
     return model.destroy({ where:{}, truncate:true })

@@ -1,5 +1,7 @@
 Resolver.Events = (function() {
 
+  // TODO: Yeah, this all needs redone.
+
   async function enqueueAvailable() {
     const game = await Game.instance();
     const available = await AvailableEvent.findAll();

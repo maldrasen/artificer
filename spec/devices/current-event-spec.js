@@ -1,4 +1,4 @@
-describe.only('EventQueue', function() {
+describe.only('CurrentEvent', function() {
 
   // it("Can add events with state", function(done) {
   //   EventQueue.enqueueEvent('morning-2',{ horse:'cock' }).then(() => {

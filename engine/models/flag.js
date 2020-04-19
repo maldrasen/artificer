@@ -108,3 +108,5 @@ Flag.genderPreferenceScores = function() {
 
   return scores;
 }
+
+Flag.clear();
