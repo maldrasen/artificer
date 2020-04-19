@@ -23,8 +23,8 @@ Event.build('morning-2', {
   }],
 
   onFinish: async () => {
-    await LocationEvent.enable('ambush-rat-setup');
-    await LocationEvent.enable('looking-outside-1');
+    await AvailableEvent.add('ambush-rat-setup');
+    await AvailableEvent.add('looking-outside-1');
   },
 
 });

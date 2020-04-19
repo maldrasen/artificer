@@ -33,9 +33,10 @@ global.Location = class Location extends Form {
   async buildAttributes()  { return []; }
   async buildFlavor()      { return []; }
 
-
   async buildFlags(game) {
-    let eventActive = await EventQueue.nextLocationEvent(game.location) != null;
+    // TODO: Use AvailableEvent to determine if there's a location event for
+    //       this location.
+    // let eventActive = await EventQueue.nextLocationEvent(game.location) != null;
     let flags = Flag.getAll();
 
     return {
@@ -45,7 +46,8 @@ global.Location = class Location extends Form {
       showMinionMenu: (flags['location-menu.minions'] == 'Y'),
       showInventoryMenu: (flags['location-menu.inventory'] == 'Y'),
       playerMenuName: flags['player.first-name'],
-      eventActive: eventActive
+      eventActive: false,
+      // eventActive: eventActive
     };
   }
 
@@ -63,7 +65,9 @@ global.Location = class Location extends Form {
 
     let locations = await Promise.all(Location.all().map(async location => {
       if (Flag.lookup(`map.${location.code}`) == null) { return null; } else {
-        let events = await EventQueue.getQueuedLocationEvents(location.code);
+
+        // TODO: Use AvailableEvent to get location events for any location.
+        let events = []//await EventQueue.getQueuedLocationEvents(location.code);
         let name = await location.buildName();
 
         return {

@@ -3,23 +3,23 @@ Resolver.Events = (function() {
   // TODO: Yeah, this all needs redone.
 
   async function enqueueAvailable() {
-    const game = await Game.instance();
-    const available = await AvailableEvent.findAll();
-
-    const valid = await Promise.all(available.map(async availableEvent => {
-      return await checkRequirements(game, availableEvent);
-    }));
-
-    await Promise.all(filterEvents(valid).map(async availableEvent => {
-      await EventQueue.enqueueEvent(availableEvent.code, availableEvent.state);
-      await availableEvent.destroy();
-    }));
+    // const game = await Game.instance();
+    // const available = await AvailableEvent.findAll();
+    //
+    // const valid = await Promise.all(available.map(async availableEvent => {
+    //   return await checkRequirements(game, availableEvent);
+    // }));
+    //
+    // await Promise.all(filterEvents(valid).map(async availableEvent => {
+    //   await EventQueue.enqueueEvent(availableEvent.code, availableEvent.state);
+    //   await availableEvent.destroy();
+    // }));
   }
 
   async function checkRequirements(game, availableEvent) {
-    const event = Event.lookup(availableEvent.code);
-    const valid = await CentralScrutinizer.meetsRequirements(availableEvent.requires);
-    return (valid == false || event.time && event.time != game.time) ? null : availableEvent;
+    // const event = Event.lookup(availableEvent.code);
+    // const valid = await CentralScrutinizer.meetsRequirements(availableEvent.requires);
+    // return (valid == false || event.time && event.time != game.time) ? null : availableEvent;
   }
 
   // Because of how the events are added by other events and such I really have
@@ -38,26 +38,26 @@ Resolver.Events = (function() {
   // allows a single morining event through. I had to do it this way because
   // I can't add an event and immeadietly check to see if it's there or not.
   function filterEvents(events) {
-    let morningEventQueued = false;
-    let afternoonEventQueued = false;
-
-    return events.filter(availableEvent => {
-      if (availableEvent) {
-        let time = Event.lookup(availableEvent.code).time;
-
-        if (time == null) {
-          return true;
-        }
-        if (time == 'morning' && morningEventQueued == false) {
-          morningEventQueued = true;
-          return true;
-        }
-        if (time == 'afternoon' && afternoonEventQueued == false) {
-          afternoonEventQueued = true;
-          return true;
-        }
-      }
-    });
+    // let morningEventQueued = false;
+    // let afternoonEventQueued = false;
+    //
+    // return events.filter(availableEvent => {
+    //   if (availableEvent) {
+    //     let time = Event.lookup(availableEvent.code).time;
+    //
+    //     if (time == null) {
+    //       return true;
+    //     }
+    //     if (time == 'morning' && morningEventQueued == false) {
+    //       morningEventQueued = true;
+    //       return true;
+    //     }
+    //     if (time == 'afternoon' && afternoonEventQueued == false) {
+    //       afternoonEventQueued = true;
+    //       return true;
+    //     }
+    //   }
+    // });
   }
 
   return { enqueueAvailable };

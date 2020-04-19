@@ -95,7 +95,7 @@ Event.build('game-start-1', {
     await Player.forge(choices);
 
     Game.chainEvent('game-start-2');
-    LocationEvent.enable('morning-1');
+    AvailableEvent.add('morning-1');
   },
 
 });

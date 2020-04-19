@@ -58,10 +58,9 @@ global.GameController = (function() {
 
     // === Game Events ===
 
-    ipcMain.on('game.end-event', (event, choices) => {
-      Event.onFinish(choices).then(() => {
-        Composer.render();
-      });
+    ipcMain.on('game.end-event', async (event, choices) => {
+      await Game.endEvent(choices);
+      Composer.render();
     });
 
     ipcMain.on('game.start-event', (event, data) => {

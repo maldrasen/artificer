@@ -43,7 +43,7 @@ Event.build('journal-3', {
 
   onFinish: async () => {
     AvailableEvent.add('journal-4');
-    LocationEvent.enable('journal-4-well-talk');
+    AvailableEvent.add('journal-4-well-talk');
   },
 
 });

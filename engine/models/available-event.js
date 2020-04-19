@@ -42,3 +42,11 @@ AvailableEvent.printAll = async function() {
     console.log(`    ${event.code}  -  Requires:${event.requires} Valid:${valid}`);
   });
 }
+
+AvailableEvent.locationEventsAt = async function(location) {
+
+}
+
+AvailableEvent.locationEvents = async function() {
+
+}

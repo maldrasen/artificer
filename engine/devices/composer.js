@@ -21,7 +21,11 @@ global.Composer = (function(){
   async function render(game) {
     if (typeof Browser == 'undefined') { return; }
 
-    console.log("=== Rendering ===")
+    if (Game.currentEvent()) {
+      return renderEvent(Game.currentEvent());
+    }
+
+    Game.log(`Rendering [${Game.instance().phase}]`,true)
 
     // First render the current event if it exists. This isn't correct. The
     // game will need to advance phases until it reaches a control phase or an
@@ -29,15 +33,21 @@ global.Composer = (function(){
     const eventData = Game.pullNextEvent();
 
     if (eventData) {
-      console.log("Rendering Event: ",eventData.event.code,"\n");
+      Game.log(`Rendering Event: ${eventData.event.code}`);
       return renderEvent(eventData);
     }
 
     // If there are no events happening, but a report is ready, show the report.
-    if (Resolver.currentReport() != null) { return renderReport(); }
+    // TODO: This should be changed to check the game phase to see if we're in
+    //       a report phase
+    if (Resolver.currentReport() != null) {
+      Game.log("Rendering Report")
+      return renderReport();
+    }
 
     // If there's no active event or anything like that:
-    renderLocation(game.location)
+    Game.log("Rendering Location");
+    renderLocation(Game.instance().location)
   }
 
   // If an event has an init promise that promise will be resolved first. The

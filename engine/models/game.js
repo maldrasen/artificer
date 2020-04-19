@@ -64,11 +64,15 @@ Game.setLocation = function(code) {
 }
 
 Game.setPhase = function(phase) {
-  console.log(`   [phase change] ${phase}`);
+  Game.log(`[phase change] ${phase}`);
   Game._instance.phase = phase;
 }
 
 // === Game Event Queues =======================================================
+
+Game.log = function(message,header) {
+  console.log(header ? `\n=== ${message} ===` : `-     ${message}`);
+}
 
 Game.currentEvent = function() {
   return Game._currentEvent;
@@ -98,6 +102,7 @@ Game.addEvent = function(code, state={}) {
 
   ensureValidEvent(event);
 
+  Game.log(`Event Added [${phase}]  - ${event.code}`);
   Game._eventQueues[phase].push({ event, state });
 }
 
@@ -107,6 +112,7 @@ Game.addEvent = function(code, state={}) {
 Game.chainEvent = function(code, state={}) {
   if (Game._currentEvent == null) { throw `Cannot chain event because there is no current event.` }
 
+  Game.log(`Chained: ${code}`);
   Game._currentEvent.event = Event.lookup(code);
   Game._currentEvent.state = extend(Game._currentEvent.state, state);
 }
@@ -142,6 +148,19 @@ Game.pullNextEvent = function() {
 // the first event in the queue.
 Game.checkEvent = function(phase) {
   return Game._eventQueues[phase||Game.instance().phase][0];
+}
+
+// Ending an event is a little tricky. If an event is chained it should happen
+// in the event's onFinish() function. If a new event hasn't been chained we
+// want to clear the current event.
+Game.endEvent = async function(choices) {
+  const startingCode = Game._currentEvent.event.code;
+  await Event.onFinish(choices);
+
+  if (startingCode == Game._currentEvent.event.code) {
+    Game.log(`Ending Event: ${startingCode}`);
+    Game._currentEvent = null;
+  }
 }
 
 // Ensure that the event can be added to the current events. In order for an
