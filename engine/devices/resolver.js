@@ -20,14 +20,13 @@ global.Resolver = (function() {
 
     Game.log("Work Plan Submitted",true);
     Game.log(`Plan: ${JSON.stringify(plan)}`);
-    Game.setPhase('before-work');
 
+    await Game.setPhase('before-work');
     await Resolver.Report.start();
     await Resolver.Roles.assignRoles(plan.assignedRoles);
     await Resolver.Projects.startProject(plan.projectWork);
     await Resolver.Tasks.workTasks(plan.taskWork);
     await Resolver.Missions.startMissions(plan.missionWork);
-    await Resolver.Events.enqueueAvailable();
     await Resolver.Roles.workRoles();
     await Resolver.Projects.workProject();
     await Resolver.Missions.workMissions();
@@ -36,9 +35,7 @@ global.Resolver = (function() {
   }
 
   async function startAfterWork() {
-    Game.setPhase('after-work');
-
-    await Resolver.Events.enqueueAvailable();
+    await Game.setPhase('after-work');
     await Promise.all(Resolver._finishers.map(async action => {
       await action();
     }));

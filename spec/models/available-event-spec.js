@@ -8,7 +8,7 @@ describe('AvailableEvent', function() {
     await AvailableEvent.add('looking-outside-1', { requires:'flag.derp' });
 
     Game.setLocation('courtyard');
-    Game.setPhase('morning');
+    Game._instance.phase = 'morning';
   }
 
   it('can add an event with default values', function(done) {
@@ -45,7 +45,7 @@ describe('AvailableEvent', function() {
 
   it('can get all valid normal events', function(done) {
     setupLocationEvents().then(() => {
-      Game.setPhase('night');
+      Game._instance.phase = 'night';
       AvailableEvent.validEvents().then(events => {
         expect(events.length).to.equal(1);
         expect(events[0].code).to.equal('journal-1');
