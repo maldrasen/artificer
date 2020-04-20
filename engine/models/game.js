@@ -66,27 +66,24 @@ Game.clear = async function() {
   }));
 }
 
-Game.addFood = function(count) {
-  Game._instance.food += count;
-}
-
-Game.setDayNumber = function(day) {
-  Game._instance.dayNumber = day;
-}
-
-Game.setLocation = function(code) {
-  Game._instance.location = Location.lookup(code).code;
-}
+Game.setDayNumber = function(day) { Game._instance.dayNumber = day; }
+Game.setLocation = function(code) { Game._instance.location = Location.lookup(code).code; }
+Game.addFood =    function(count) { Game._instance.food += count; }
+Game.removeFood = function(count) { Game._instance.food = Math.max(0, Game._instance.food - count); }
 
 Game.setPhase = function(phase) {
   Game.log(`[phase change] ${phase}`);
   Game._instance.phase = phase;
 }
 
-Game.setProject = function(project) {
+Game.setCurrentProject = function(project) {
   Game._instance.currentProject = project;
   Game._instance.currentProjectProgress = 0;
 }
+
+Game.currentProject = function() { return Game._instance.currentProject }
+Game.currentProjectProgress = function() { return Game._instance.currentProjectProgress }
+Game.addProjectProgress = function(value) { Game._instance.currentProjectProgress += value; }
 
 // === Game Event Queues =======================================================
 

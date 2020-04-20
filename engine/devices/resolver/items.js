@@ -20,14 +20,12 @@ Resolver.Items = (function() {
 
   async function commit() {
     const queue = Resolver.itemsToAdd();
-    const game = await Game.instance();
     let newFood = 0;
 
     each(queue, (count, code) => {
       if (code == 'food') {
         newFood += count;
-        game.food += count;
-        game.save();
+        Game.addFood(count);
       } else {
         commitItem(code, count);
       }

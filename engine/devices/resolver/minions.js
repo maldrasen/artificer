@@ -11,18 +11,13 @@ Resolver.Minions = (function() {
 
   async function eatFood(minions) {
     const player = await Player.instance();
-    const game = await Game.instance();
 
     let foodEaten = player.species.foodPerDay + minions.reduce((total, minion) => {
       return total + minion.species.foodPerDay;
     },0);
 
-    game.food = game.food - foodEaten;
-    if (game.food < 0) { game.food = 0; }
-
-    Resolver.Report.completeFood(foodEaten,game.food);
-
-    await game.save();
+    Game.removeFood(foodEaten)
+    Resolver.Report.completeFood(foodEaten);
   }
 
   async function applyHealing(minions) {

@@ -6,7 +6,7 @@ Resolver.Projects = (function() {
     const project = Project.lookup(projectWork.code);
     const minions = await Character.findAll({ where:{ id:projectWork.minions }});
 
-    Game.setProject(project.code)
+    Game.setCurrentProject(project.code)
     await Resource.consume(project.materials);
 
     // All the minions who were assigned to this project should have their
@@ -29,41 +29,35 @@ Resolver.Projects = (function() {
   }
 
   async function workProject() {
-    const game = await Game.instance();
-    if (game.currentProject == null) { return false; }
+    if (Game.currentProject() == null) { return false; }
     const minions = await Character.findAll({ where:{ currentDuty:'project' }});
-    const project = Project.lookup(game.currentProject);
+    const project = Project.lookup(Game.currentProject());
 
     // Do Work. 10 hours for player + 5 each assigned minion.
-    game.currentProjectProgress += (minions.length * 5) + 10;
-    await game.save();
+    Game.addProjectProgress((minions.length * 5) + 10);
 
     // Set progress if incomplete.
-    if (game.currentProjectProgress < project.effort) {
+    if (Game.currentProjectProgress() < project.effort) {
       return Resolver.Report.setProjectProgressText(project, minions);
     }
 
     // The project has been completed.
-    await completeProject(game, project, minions);
+    await completeProject(project, minions);
   }
 
-  async function completeProject(game, project, minions) {
+  async function completeProject(project, minions) {
     if (typeof project.onFinish == 'function') {
       Resolver.addFinisher(async () => { await project.onFinish({ minions }); });
     }
-
-    game.currentProject = null;
-    game.currentProjectProgress = 0;
-    await game.save();
 
     // It 'should' be safe to update the minion's current tasks without waiting
     // here. I don't think we need to read this value again until sometime
     // after the report is done.
     each(minions, minion => {
-      minion.currentDuty = 'role'
-      minion.save();
+      minion.update({ currentDuty:'role' });
     });
 
+    Game.setCurrentProject(null)
     Resolver.Report.setProjectCompletedText(project, minions)
   }
 
