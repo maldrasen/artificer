@@ -75,7 +75,6 @@ require(`${ROOT}/engine/devices/missions/explore`);
 require(`${ROOT}/engine/devices/missions/gather`);
 
 require(`${ROOT}/engine/devices/resolver`);
-require(`${ROOT}/engine/devices/resolver/events`);
 require(`${ROOT}/engine/devices/resolver/healing`);
 require(`${ROOT}/engine/devices/resolver/items`);
 require(`${ROOT}/engine/devices/resolver/lust`);

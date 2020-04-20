@@ -68,7 +68,10 @@ Game.clear = async function() {
 
 Game.nextDay = async function() {
   Game.setDayNumber(Game.dayNumber()+1);
+  Game.log(`Starting Day ${Game.dayNumber()}`,true);
+
   await Game.setPhase('wake');
+
   // await Resolver.Minions.dailyUpdate();
 }
 
@@ -84,12 +87,6 @@ Game.setDayNumber = function(day) { Game._instance.dayNumber = day; }
 Game.setLocation = function(code) { Game._instance.location = Location.lookup(code).code; }
 Game.addFood =    function(count) { Game._instance.food += count; }
 Game.removeFood = function(count) { Game._instance.food = Math.max(0, Game._instance.food - count); }
-
-Game.setPhase = async function(phase) {
-  Game.log(`[phase change] ${phase}`);
-  Game._instance.phase = phase;
-  // Also, add events for the new phase...
-}
 
 Game.setCurrentProject = function(project) {
   Game._instance.currentProject = project;
@@ -223,6 +220,30 @@ Game.pullNextEvent = async function() {
 // the first event in the queue, if a queue for this phase exists.
 Game.checkEvent = function(phase) {
   return (Game._eventQueues[phase||Game.phase()]||[])[0];
+}
+
+// When the game phase changes we need to add any valid available events that
+// may be ready to enqueue.
+Game.setPhase = async function(phase) {
+  Game._instance.phase = phase;
+  Game.log(`[phase change] ${phase}`);
+
+  let available = (await AvailableEvent.validEvents()).filter(availableEvent => {
+    return Random.upTo(100) < availableEvent.chance
+  });
+
+  // If multiple events are available for this single event phase, then just
+  // choose one at random. I don't really have any way of knowing which event
+  // should take priority over another right now, though that might be a
+  // thing I want to add.
+  if (available.length > 0 && Game.EventPhases[Game.phase()].type == 'single') {
+    available = [Random.from(available)];
+  }
+
+  await Promise.all(available.map(async availableEvent => {
+    Game.addEvent(availableEvent.code, availableEvent.state)
+    await availableEvent.destroy();
+  }));
 }
 
 // Ending an event is a little tricky. If an event is chained it should happen
