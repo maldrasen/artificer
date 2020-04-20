@@ -5,6 +5,8 @@ Event.build('magic-practice-1-1', {
     location: 'great-hall'
   },
 
+  requires: ['flag.player.meditate-count>=1'],
+
   stages:[{
     pages:[
       { text:`I first find a comfortable place to sit on the pile of hides and fur that has been serving as my bed. I

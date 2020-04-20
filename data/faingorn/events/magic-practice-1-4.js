@@ -5,6 +5,8 @@ Event.build('magic-practice-1-4', {
     location: 'great-hall'
   },
 
+  requires: ['flag.player.meditate-count>=8','player.magical>=15'],
+
   stages:[{
     pages:[
       { text:`Meditating has become a regular routine now. It's a good way I think to center myself during the day. And

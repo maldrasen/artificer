@@ -1,10 +1,12 @@
 Event.build('day-8-explore', {
-  actors: { R:'any-scaven' },
 
   setting: {
     phase: 'early',
     location: 'upper-keep',
   },
+
+  actors: { R:'any-scaven' },
+  requires: ['game.dayNumber=8'],
 
   stages:[{
     pages:[

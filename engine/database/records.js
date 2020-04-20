@@ -7,6 +7,7 @@ global.Records = (function() {
         if (filename.length > 60) { return reject('Savegame filename is too long'); }
 
         await Flag.saveFlags();
+        await Game.saveGame();
         await saveGame(filename);
         resolve();
       });
@@ -60,7 +61,7 @@ global.Records = (function() {
     return new Promise(resolve => {
       Promise.all(instances.map(instance => {
         return model.create(instance);
-      })).then(Flag.loadFlags).then(resolve);
+      })).then(Flag.loadFlags).then(Game.loadGame).then(resolve);
     });
   }
 

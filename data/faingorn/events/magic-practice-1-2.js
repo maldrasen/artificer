@@ -5,6 +5,8 @@ Event.build('magic-practice-1-2', {
     location: 'great-hall'
   },
 
+  requires: ['flag.player.meditate-count>=2','player.magical>=12'],
+
   stages:[{
     pages:[
       { text:`I've decided to do something a little more practical for today's practice. I found a stone out in the

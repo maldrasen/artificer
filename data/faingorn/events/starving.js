@@ -6,6 +6,8 @@ Event.build('starving', {
     location: 'great-hall'
   },
 
+  requires: ['game.food=0'],
+
   stages:[{
     requires: 'flag.minions.count=1',
     pages:[{ text:`My minion and I have run out of food.` }],

@@ -5,6 +5,11 @@ Event.build('betrayal', {
     location: 'player-bedroom',
   },
 
+  requires: [
+    'minions.will-betray',
+    'minions.will-not-mutiny'
+  ],
+
   stages:[{
     pages:[
       { text:`I startle awake sometime in the middle of the night.` },

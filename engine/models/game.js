@@ -27,9 +27,16 @@ Game.EventPhases = {
   'late-night':   { type:'single',  label:'Late Night',    control:'evening' },
 };
 
-Game.loadGame = async function() { Game._instance = await Game.findByPk(1); }
-Game.saveGame = async function() { await Game._instance.save(); }
 Game.instance = function() { return Game._instance; }
+
+Game.saveGame = async function() {
+  await Game._instance.save();
+}
+
+Game.loadGame = async function() {
+  Game.clearEventQueues();
+  Game._instance = await Game.findByPk(1);
+}
 
 Game.start = async function(debugStart) {
   if (Game._instance != null) { throw "Cannot start a new Game. A Game currently exists." }
@@ -147,9 +154,9 @@ Game.pullNextEvent = function() {
 }
 
 // If an event or events have been set for the current game phase then fetch
-// the first event in the queue.
+// the first event in the queue, if a queue for this phase exists.
 Game.checkEvent = function(phase) {
-  return Game._eventQueues[phase||Game.instance().phase][0];
+  return (Game._eventQueues[phase||Game.instance().phase]||[])[0];
 }
 
 // Ending an event is a little tricky. If an event is chained it should happen
