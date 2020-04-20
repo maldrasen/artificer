@@ -24,6 +24,8 @@ global.AvailableEvent = Database.instance().define('available_event', {
 //   requires:     []
 //   chance:       1-100 percent chance of happening
 AvailableEvent.add = async function(code, data={}) {
+  await ensureCanAdd(code);
+
   const setting = Event.lookup(code).setting;
   const type = (Game.EventPhases[setting.phase].type == 'control') ? 'location' : 'normal';
 
@@ -75,6 +77,16 @@ AvailableEvent.prototype.isValid = async function() {
 
   return (await CentralScrutinizer.meetsRequirements(this.requires)) &&
          (await CentralScrutinizer.meetsRequirements(Event.lookup(this.code).requires))
+}
+
+async function ensureCanAdd(code) {
+  if ((await AvailableEvent.findOne({ where:{ code:code }})) != null) {
+    throw `Cannot add ${code}, the event is already available.`
+  }
+
+  if (Flag.lookup(`completed.${code}`) && Event.lookup(code).repeatable != true) {
+    throw `Cannot add ${code}, it has already been done and is not repeatable.`
+  }
 }
 
 async function validateEvents(events) {
