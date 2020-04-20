@@ -17,7 +17,7 @@ Resolver.Minions = (function() {
     },0);
 
     Game.removeFood(foodEaten)
-    Resolver.Report.completeFood(foodEaten);
+    Resolver.Report.ateFood(foodEaten);
   }
 
   async function applyHealing(minions) {

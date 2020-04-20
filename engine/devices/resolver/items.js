@@ -31,7 +31,7 @@ Resolver.Items = (function() {
       }
     });
 
-    Resolver.Report.setNewFood(newFood);
+    Resolver.Report.producedFood(newFood);
   }
 
   async function commitItem(code, count) {
@@ -39,7 +39,7 @@ Resolver.Items = (function() {
     if (item.type == 'resource') {
       return await Resource.add(code,count);
     }
-    throw `How do I commit ${code}?`
+    throw `How do I commit a ${item.type} item?`
   }
 
   return { add, commit }

@@ -2,12 +2,11 @@ Resolver.Roles = (function() {
 
   async function assignRoles(assignments) {
     await Promise.all(assignments.map(async assignment => {
-      const character = await Character.lookup(assignment.id);
-            character.currentDuty = 'role';
-            character.dutyCode = assignment.role;
-            character.dutyOptions = assignment.options || {};
-
-      await character.save();
+      await (await Character.lookup(assignment.id)).update({
+        currentDuty: 'role',
+        dutyCode: assignment.role,
+        dutyOptions: (assignment.options || {}),
+      });
     }));
   }
 
@@ -15,8 +14,8 @@ Resolver.Roles = (function() {
     const characters = await Character.findAll({ where:{ currentDuty:'role' }});
 
     await Promise.all(characters.map(async character => {
-      let result = await Role.lookup(character.dutyCode).work(character);
-      let flavors = result.flavors;
+      const result = await Role.lookup(character.dutyCode).work(character);
+      const flavors = result.flavors;
 
       result.flavors = ItemFlavor.forReport(flavors);
       result.items = ItemFlavor.itemize(flavors);

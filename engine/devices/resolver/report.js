@@ -52,14 +52,15 @@ Resolver.Report = (function() {
     Resolver.currentReport().minions[minion.id][key] = value;
   }
 
-  function setNewFood(value) {
-    Resolver.currentReport().food.new = value;
+  function producedFood(value) {
+    if (Flag.lookup('report-view.show-food') && value > 0) {
+      Resolver.currentReport().food = `Today my minions and I produced <b>${value}</b>food.`;
+    }
   }
 
-  function completeFood(foodEaten) {
+  function ateFood(value) {
     if (Flag.lookup('report-view.show-food')) {
-      Resolver.currentReport().food.story = `Today my minions and I produced <b>${Resolver.currentReport().food.new}</b>
-        food. We ate <b>${foodEaten}</b>, leaving us with <b>${Game.food()}</b>.`;
+      Resolver.currentReport().food.story = `Altogether, my minions and I ate <b>${value}</b> food, leaving us with <b>${Game.food()}</b>.`;
     }
   }
 
@@ -70,8 +71,8 @@ Resolver.Report = (function() {
     setProjectIdleText,
     addTask,
     setMinionData,
-    setNewFood,
-    completeFood,
+    producedFood,
+    ateFood,
   }
 
 })();

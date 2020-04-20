@@ -66,6 +66,14 @@ Game.clear = async function() {
   }));
 }
 
+Game.nextDay = async function() {
+  Game.setDayNumber(Game.dayNumber()+1);
+  Game.setPhase('wake');
+  // await Resolver.Minions.dailyUpdate();
+}
+
+// === Short Cut Accessors and Mutators ========================================
+
 Game.dayNumber = function() { return Game._instance.dayNumber; }
 Game.phase = function() { return Game._instance.phase; }
 Game.time = function() { return Game._instance.time; }
@@ -155,7 +163,7 @@ Game.chainEvent = function(code, state={}) {
 // queue for the current phase. If not we advance the phase and check the next
 // queue if we advance phases until we reach a control phase we stop and return
 // null.
-Game.pullNextEvent = function() {
+Game.pullNextEvent = async function() {
   let phase = Game.phase();
 
   // There is an event, wonderful. Remove it from the event queue for the
@@ -165,15 +173,28 @@ Game.pullNextEvent = function() {
     return Game._currentEvent;
   }
 
-  if (phase == 'wake')        { Game.setPhase('early');        return Game.pullNextEvent(); }
+  if (phase == 'wake')        { Game.setPhase('early');        return await Game.pullNextEvent(); }
   if (phase == 'early')       { Game.setPhase('morning');      return null; }
   if (phase == 'morning')     { /* Control Phase */            return null; }
   if (phase == 'before-work') { Game.setPhase('work-report');  return null; }
-  if (phase == 'after-work')  { Game.setPhase('evening');      return null; }
+
+  // If there are no after-work events and the training has been unlocked then
+  // advance the game to the evening phase. Otherwise skip the evening and the
+  // training report and advance to the night phase, then pull any night events.
+  if (phase == 'after-work')  {
+    if (Flag.lookup('training-view') == 'Y') {
+      Game.setPhase('evening');
+      return null;
+    } else {
+      Game.setPhase('night');
+      return Game.pullNextEvent();
+    }
+  }
+
   if (phase == 'evening')     { /* Control Phase */            return null; }
   if (phase == 'training')    { Game.setPhase('train-report'); return null; }
-  if (phase == 'night')       { Game.setPhase('late-night');   return Game.pullNextEvent(); }
-  if (phase == 'late-night')  { Game.setPhase('wake');         return Game.pullNextEvent(); }
+  if (phase == 'night')       { Game.setPhase('late-night');   return await Game.pullNextEvent(); }
+  if (phase == 'late-night')  { await Game.nextDay();          return await Game.pullNextEvent(); }
 }
 
 // If an event or events have been set for the current game phase then fetch

@@ -13,7 +13,7 @@ global.Resolver = (function() {
   //       { id:1, role:'hunter', { capture:true }}
   //     ],
   //
-  async function startWork(plan) {
+  async function submitWorkPlan(plan) {
     Resolver._currentReport = {};
     Resolver._finishers = [];
     Resolver._itemsToAdd = {};
@@ -27,20 +27,16 @@ global.Resolver = (function() {
     await Resolver.Projects.startProject(plan.projectWork);
     await Resolver.Tasks.workTasks(plan.taskWork);
     await Resolver.Missions.startMissions(plan.missionWork);
-    // await Resolver.Events.enqueueAvailable();
-    // await Resolver.Roles.workRoles();
-    // await Resolver.Projects.workProject();
-    // await Resolver.Missions.workMissions();
-    // await Resolver.Items.commit();
-    // await Resolver.Minions.dailyUpdate();
+    await Resolver.Events.enqueueAvailable();
+    await Resolver.Roles.workRoles();
+    await Resolver.Projects.workProject();
+    await Resolver.Missions.workMissions();
+    await Resolver.Items.commit();
     await Composer.render();
   }
 
-  async function startDay() {
-
-    // This did nothing by advance the game number. I deleted resolver game,
-    // but that still needs to be done.
-    //   await Resolver.Game.becomeMorning();
+  async function startAfterWork() {
+    Game.setPhase('after-work');
 
     await Resolver.Events.enqueueAvailable();
     await Promise.all(Resolver._finishers.map(async action => {
@@ -53,16 +49,31 @@ global.Resolver = (function() {
     await Composer.render();
   }
 
+  // The training plan and the evening phase only happen once traing has been
+  // unlocked. Because of that nothing that has to happen every day should be
+  // triggered here.
+  async function submitTrainingPlan() {
+  }
+
+  async function startNight() {
+    // await Resolver.Events.enqueueAvailable();
+    // await Promise.all(Resolver._finishers.map(async action => {
+    //   await action();
+    // }));
+  }
+
   function addFinisher(finisher) { Resolver._finishers.push(finisher); }
   function currentReport() { return Resolver._currentReport; }
   function itemsToAdd() { return Resolver._itemsToAdd; }
 
   return {
+    submitWorkPlan,
+    startAfterWork,
+    submitTrainingPlan,
+    startNight,
     addFinisher,
     currentReport,
     itemsToAdd,
-    startDay,
-    startWork,
-  }
+  };
 
 })();

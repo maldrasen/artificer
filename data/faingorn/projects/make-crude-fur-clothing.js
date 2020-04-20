@@ -10,8 +10,7 @@ Project.build('make-crude-fur-clothing', {
   },
 
   onFinish: async () => {
-    Game.setPhase('wake');
-    Game.addEvent('morning-2');
+    AvailableEvent.add('morning-2');
   },
 
 });

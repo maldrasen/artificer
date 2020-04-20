@@ -30,7 +30,7 @@ global.Composer = (function(){
     // First render the current event if it exists. This isn't correct. The
     // game will need to advance phases until it reaches a control phase or an
     // event...
-    const eventData = Game.pullNextEvent();
+    const eventData = await Game.pullNextEvent();
 
     if (eventData) {
       Game.log(`Rendering Event: ${eventData.event.code}`);

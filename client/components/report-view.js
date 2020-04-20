@@ -24,8 +24,8 @@ Components.ReportView = (function() {
       });
     }
 
-    if (report.food.story) {
-      $('#reportView').find('.food').removeClass('hide').append(report.food.story);
+    if (report.food) {
+      $('#reportView').find('.food').removeClass('hide').append(report.food);
     }
 
     Elements.ScrollingPanel.build($('#reportView .scrolling-panel'));

@@ -54,13 +54,20 @@ describe('Game', function() {
         Game.addEvent('found-blood-berries');
         Game.addEvent('found-fruits-and-nuts');
 
-        expect(Game.pullNextEvent().event.code).to.equal('found-blight-spider')
-        expect(Game.pullNextEvent().event.code).to.equal('found-blood-berries')
-        expect(Game.pullNextEvent().event.code).to.equal('found-fruits-and-nuts')
-        expect(Game.pullNextEvent()).to.be.null;
-        expect(Game.phase()).to.equal('evening')
-
-        done();
+        Game.pullNextEvent().then(e1 => {
+          Game.pullNextEvent().then(e2 => {
+            Game.pullNextEvent().then(e3 => {
+              Game.pullNextEvent().then(e4 => {
+                expect(e1.event.code).to.equal('found-blight-spider');
+                expect(e2.event.code).to.equal('found-blood-berries');
+                expect(e3.event.code).to.equal('found-fruits-and-nuts');
+                expect(e4).to.be.null;
+                expect(Game.phase()).to.equal('morning');
+                done();
+              });
+            });
+          });
+        });
       });
     });
 
