@@ -18,6 +18,7 @@ Event.build('morning-1-work', {
   }],
 
   onFinish: async choices => {
+    Flag.set('events.morning-1',null);
     GameStage.FlagCollections.setDefaults();
     Game.setLocation('great-hall');
     await AvailableProject.add('make-crude-fur-clothing');

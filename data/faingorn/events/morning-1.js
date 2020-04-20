@@ -85,6 +85,7 @@ Event.build('morning-1', {
   }],
 
   onFinish: async choices => {
+    Flag.set('events.morning-1',`did-${choices.task}`);
     Game.chainEvent(`morning-1-${choices.task}`);
   },
 

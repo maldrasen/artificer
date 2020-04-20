@@ -15,13 +15,13 @@ Event.build('morning-1-supplies', {
               of emergency cache, perhaps some fur trapper making their living out in the nearby wilderness?` },
     ]
   },{
-    requires:['no-flag.enqueued.morning-1-food'],
+    requires:['flag.events.morning-1=did-supplies'],
     pages:[
       { text:`I'll have to deal with them if they return for their goods, but I'm taking them for now. Dried fruit and
               nuts will hardly suffice though, and so before doing anything else I go in search of some more food.` }
     ]
   },{
-    requires:['flag.enqueued.morning-1-food'],
+    requires:['flag.events.morning-1=did-both'],
     pages:[
       { text:`I'll have to deal with them if they return for their goods, but I'm taking them for now. But least I've
               managed to find food, water, clothing, and shelter; and so I return to the keep's great hall to decide
@@ -30,7 +30,12 @@ Event.build('morning-1-supplies', {
   }],
 
   onFinish: async choices => {
-    Game.chainEvent(Flag.lookup('enqueued.morning-1-food') ? 'morning-1-work' : 'morning-1-food');
+    if (Flag.lookup('events.morning-1') == 'did-supplies') {
+      Flag.set('events.morning-1','did-both');
+      Game.chainEvent('morning-1-food');
+    } else {
+      Game.chainEvent('morning-1-work');
+    }
   },
 
 });

@@ -66,6 +66,10 @@ Game.clear = async function() {
   }));
 }
 
+Game.addFood = function(count) {
+  Game._instance.food += count;
+}
+
 Game.setDayNumber = function(day) {
   Game._instance.dayNumber = day;
 }
