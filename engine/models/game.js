@@ -197,5 +197,5 @@ function ensureValidEvent(event) {
     throw `Cannot add ${event.code}. An event is already set for ${phase}`; }
 
   if (eventPhaseData.control != currentPhaseData.control) {
-    throw `Cannot add ${code}. The phase is in the wrong control state.`; }
+    throw `Cannot add ${event.code}. The phase is in the wrong control state.`; }
 }
