@@ -62,12 +62,15 @@ global.Location = class Location extends Form {
   // need to be more graphical, so this will need to carry a lot more map state
   // data and image positioning and stuff.
   static async buildMapData() {
+    let allEvents = await AvailableEvent.locationEvents();
+
     const locations = await Promise.all(Location.all().map(async location => {
       if (Flag.lookup(`map.${location.code}`) == null) { return null; } else {
 
-        // TODO: Use AvailableEvent to get location events for any location.
-        let events = []//await EventQueue.getQueuedLocationEvents(location.code);
         let name = await location.buildName();
+        let events = allEvents.filter(e => {
+          return Event.lookup(e.code).setting.location == location.code
+        });
 
         return {
           code: location.code,

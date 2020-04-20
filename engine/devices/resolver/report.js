@@ -53,7 +53,7 @@ Resolver.Report = (function() {
   }
 
   function producedFood(value) {
-    Flag.set('report-view.produced-food',`Today my minions and I produced <b>${value}</b>food.`);
+    Flag.set('report-view.produced-food',`Today my minions and I produced <b>${value}</b> food.`);
   }
 
   function ateFood(value) {
