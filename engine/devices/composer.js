@@ -1,56 +1,36 @@
-global.Composer = (function(){
+global.Composer = (function() {
 
-  // When the game state changes the composer needs to create everything in the
-  // view for the client to render. In its simplist state this just sends a
-  // path to an HTML file for the view to render. In most cases though this
-  // will need to create a document object that the client will need to turn
-  // into an actual html view.
+  async function render() {
+    if (typeof Browser == 'undefined') { return; }
 
-  // The Game model is an optional argument here. If you've just added an event
-  // to the game model it's likely that fetching a new game instance won't have
-  // the queued event, so if you have an instance of game that you've been
-  // changing it should be passed to the renderer so it can use the most up to
-  // date game state. If the game hasn't been touched in a while it's probably
-  // fine.
+    // If a current event is set then it should be rendered. This will happen
+    // when events are chained together.
+    if (Game.currentEvent()) { return renderEvent(Game.currentEvent()); }
 
-  // This is a weird function because when it's called will eventually fire off
-  // an event to the browser, but it's not a promise though because nothing on
-  // this side waits for anything it does. Also because the Browser doesn't
-  // exist in the specs none of this is tested. :)
+    Game.log(`Rendering [${Game.phase()}]`,true)
 
-  function render(game) {
-    if (typeof Browser != 'undefined') {
-      game ? _render(game) : Game.instance().then(game => { _render(game); });
-    }
-  }
-
-  async function _render(game) {
-    // First render a view from the game's event queue if one exists. Location
-    // events should only be run when triggered from a link at the location.
-    // Other events however will need to be triggered like this too.
-    const event = await EventQueue.unqueueEvent();
-    if (event) {
-      return renderEvent(event);
+    // If there isn't a current event set in the Game then try to find one.
+    // This function will advance the game time until a phase with an event is
+    // found or it will return null if there are no events.
+    const eventData = await Game.pullNextEvent();
+    if (eventData) {
+      Game.log(`Rendering Event: ${eventData.event.code}`);
+      return renderEvent(eventData);
     }
 
     // If there are no events happening, but a report is ready, show the report.
-    if (Resolver.currentReport() != null) { return renderReport(); }
+    if (Resolver.currentReport() != null) {
+      Game.log("Rendering Report")
+      return renderReport();
+    }
 
     // If there's no active event or anything like that:
-    renderLocation(game.location)
+    Game.log(`Rendering Location: ${Game.location()}`);
+    renderLocation(Game.location());
   }
 
-  async function renderLocationEvent() {
-    const game = await Game.instance();
-    const event = await EventQueue.unqueueLocationEvent(game.location);
-    renderEvent(event);
-  }
-
-  // If an event has an init promise that promise will be resolved first. The
-  // event is then sent to the weaver for template replacement. Once that's
-  // done the brower is sent the completed event object.
-  function renderEvent(event) {
-    Event.prepare(event).then(prepared => {
+  function renderEvent(eventData) {
+    Event.prepare(eventData).then(prepared => {
       Browser.send('render.event',prepared);
     });
   }
@@ -66,14 +46,14 @@ global.Composer = (function(){
   }
 
   async function renderPlanView() {
-    const game = await Game.instance();
+    const currentProject = Game.currentProject();
     const flags = {
       'plan-view.allow-idle': Flag.lookup('plan-view.allow-idle'),
     };
 
     let planData = {
-      currentProject: game.currentProject,
-      currentProjectProgress: game.currentProjectProgress,
+      currentProject: currentProject,
+      currentProjectProgress: Game.currentProjectProgress(),
       projects: (await AvailableProject.all()),
       missions: (await Mission.availableForClient()),
       minions: (await Character.allForClient()),
@@ -81,8 +61,8 @@ global.Composer = (function(){
       flags: flags,
     }
 
-    if (game.currentProject) {
-      let current = Project.lookup(game.currentProject);
+    if (currentProject) {
+      let current = Project.lookup(currentProject);
       planData.currentProjectName = current.name;
       planData.currentProjectEffort = current.effort;
     }
@@ -92,7 +72,6 @@ global.Composer = (function(){
 
   return {
     render,
-    renderLocationEvent,
     renderPlanView,
   };
 

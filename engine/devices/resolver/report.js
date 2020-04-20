@@ -2,9 +2,9 @@ Resolver.Report = (function() {
 
   async function start() {
     const report = Resolver.currentReport();
-    const minions = await Character.findAll({where:{ type:'minion', status:'normal' }});
+    const minions = await Character.findAll({ where:{ type:'minion', status:'normal' }});
 
-    report.food = {};
+    report.food = null;
     report.minions = {};
     report.tasks = [];
 
@@ -52,13 +52,13 @@ Resolver.Report = (function() {
     Resolver.currentReport().minions[minion.id][key] = value;
   }
 
-  function setNewFood(value) {
-    Resolver.currentReport().food.new = value;
+  function producedFood(value) {
+    Flag.set('report-view.produced-food',`Today my minions and I produced <b>${value}</b> food.`);
   }
 
-  function completeFood(foodEaten, foodLeft) {
+  function ateFood(value) {
     if (Flag.lookup('report-view.show-food')) {
-      Resolver.currentReport().food.story = `Today my minions and I produced <b>${Resolver.currentReport().food.new}</b> food. We ate <b>${foodEaten}</b>, leaving us with <b>${foodLeft}</b>.`;
+      Resolver.currentReport().food = `${Flag.lookup('report-view.produced-food')} We ate <b>${value}</b> food, leaving us with <b>${Game.food()}</b>.`;
     }
   }
 
@@ -69,8 +69,8 @@ Resolver.Report = (function() {
     setProjectIdleText,
     addTask,
     setMinionData,
-    setNewFood,
-    completeFood,
+    producedFood,
+    ateFood,
   }
 
 })();

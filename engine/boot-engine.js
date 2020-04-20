@@ -61,7 +61,6 @@ require(`${ROOT}/engine/describers/tits-injury-describer`);
 // === Devices ===
 require(`${ROOT}/engine/devices/aspect-adjuster`);
 require(`${ROOT}/engine/devices/composer`);
-require(`${ROOT}/engine/devices/event-queue`);
 require(`${ROOT}/engine/devices/weaver`);
 
 require(`${ROOT}/engine/devices/abuser`);
@@ -76,8 +75,6 @@ require(`${ROOT}/engine/devices/missions/explore`);
 require(`${ROOT}/engine/devices/missions/gather`);
 
 require(`${ROOT}/engine/devices/resolver`);
-require(`${ROOT}/engine/devices/resolver/events`);
-require(`${ROOT}/engine/devices/resolver/game`);
 require(`${ROOT}/engine/devices/resolver/healing`);
 require(`${ROOT}/engine/devices/resolver/items`);
 require(`${ROOT}/engine/devices/resolver/lust`);

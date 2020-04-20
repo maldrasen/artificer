@@ -45,7 +45,7 @@ Components.PlanView = (function() {
     Elements.Confirm.showConfirm({
       message: message,
       yes: () => {
-        Renderer.sendCommand('resolver.start-work',plan);
+        Renderer.sendCommand('resolver.submit-work-plan',plan);
       }
     })
   }

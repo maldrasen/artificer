@@ -1,6 +1,7 @@
 global.Random = {
 
-  // Random number between 0 and the limit.
+  // Random number between 0 and the limit exclusive, meaning upTo(100) will
+  // return between 0 and 99.
   upTo(limit) {
     return Math.floor(Math.random() * limit);
   },

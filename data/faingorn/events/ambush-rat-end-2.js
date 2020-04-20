@@ -1,5 +1,4 @@
 Event.build('ambush-rat-end-2', {
-  background:{ location:'great-hall', time:'evening' },
 
   stages:[{
     requires:['player.never-fucks-men'],
@@ -19,14 +18,14 @@ Event.build('ambush-rat-end-2', {
           it's ok.` },
     ]
   },{
-    requires:['flag.enqueued.ambush-rat-befriend'],
+    requires:['flag.completed.ambush-rat-befriend'],
     pages: [
       { text:`{{He}} looks like the same scaven I spoke with yesterday, {{R::character.firstName}} I think. Truth be
           told, I'm suprised {{he}} didn't try to kill me in my sleep. Perhaps {{he}} has some small amount of respect
           for my power after all.` },
     ]
   },{
-    requires:['flag.enqueued.ambush-rat-torment'],
+    requires:['flag.completed.ambush-rat-torment'],
     pages: [
       { text:`{{He}} looks like the same rat I held against the wall and abused yesterday, {{R::character.firstName}} I
           think. Truth be told, I'm suprised {{he}} didn't try to kill me in my sleep. Perhaps {{R::gender.he}}'s too
@@ -71,21 +70,17 @@ Event.build('ambush-rat-end-2', {
   // We have to artifically advance the day today as there's really nothing
   // unlocked that the player can do to create the day's plan.
   onFinish: async choices => {
-    const game = await Game.instance();
-    await game.update({
-      time: 'morning',
-      dayNumber: (game.dayNumber+1)
-    });
+    await Game.nextDay();
 
     const rat = await Character.lookup(choices.event.actorIDs.R)
     await rat.update({type:'minion'});
 
-    await Flag.setAll({
+    Flag.setAll({
       'location-menu.minions': 'Y',
       'report-view.show-food': 'Y',
     });
 
-    await EventQueue.enqueueEvent('morning-3',{ actors:{ R:rat.id }});
+    await AvailableEvent.add('morning-3',{ state:{ actors:{ R:rat.id }}});
   },
 
 });

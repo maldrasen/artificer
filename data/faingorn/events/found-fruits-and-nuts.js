@@ -1,5 +1,9 @@
 Event.build('found-fruits-and-nuts', {
-  background:{ location:'great-hall', time:'evening' },
+
+  setting: {
+    phase: 'after-work',
+    location: 'great-hall',
+  },
 
   stages:[{
     pages:[
@@ -68,11 +72,7 @@ Event.build('found-fruits-and-nuts', {
 
     if (ArrayUtility.contains(['normal','filthy'],choices.sex)) {
       const player = await Player.instance();
-      await EventQueue.enqueueEvent(`found-fruits-and-nuts-sex-${player.genderCode == 'female' ? 'F':'M'}`,{
-        priority: 'next',
-        style: choices.sex,
-        actors:{ C:choices.event.actorIDs.C }
-      });
+      Game.chainEvent(`found-fruits-and-nuts-sex-${player.genderCode == 'female' ? 'F':'M'}`,{ style:choices.sex });
     }
   },
 

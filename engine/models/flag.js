@@ -5,7 +5,7 @@ global.Flag = Database.instance().define('flag', {
   timestamps: false,
 });
 
-Flag.clearFlags = function() {
+Flag.clear = function() {
   Flag._cache = {};
 }
 
@@ -38,7 +38,7 @@ Flag.lookup = function(code) {
     value = FlagInfo.instances[code].default
   }
 
-  if (value && typeof value == 'string' && value.match(/\d+/)) {
+  if (value && typeof value == 'string' && value.match(/^\d+$/)) {
     return parseInt(value);
   }
 
@@ -109,4 +109,4 @@ Flag.genderPreferenceScores = function() {
   return scores;
 }
 
-Flag.clearFlags();
+Flag.clear();

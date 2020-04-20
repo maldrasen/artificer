@@ -18,15 +18,19 @@ describe('Role: Forager', function() {
   // then the standard foraging.
 
   it('goes foraging for the first time.', function(done) {
-    SpecHelper.buildJada({ species:'scaven' }).then(jada => {
-      Role.Forager.work(jada).then(results => {
-        expect(results.injury).to.be.undefined;
-        expect(results.flavors['bitter-fruits']).to.equal(2);
-        expect(results.flavors['goat-nuts']).to.equal(3);
-        expect(results.flavors['juice-berries']).to.equal(2);
-        expect(results.flavors['sweet-fruits']).to.equal(1);
-        expect(results.notifications).to.eql([{ code:'foraging', name:'Foraging', experience:14 }]);
-        done();
+    Game.start().then(() => {
+      Game.setPhase('after-work').then(() => {
+        SpecHelper.buildJada({ species:'scaven' }).then(jada => {
+          Role.Forager.work(jada).then(results => {
+            expect(results.injury).to.be.undefined;
+            expect(results.flavors['bitter-fruits']).to.equal(2);
+            expect(results.flavors['goat-nuts']).to.equal(3);
+            expect(results.flavors['juice-berries']).to.equal(2);
+            expect(results.flavors['sweet-fruits']).to.equal(1);
+            expect(results.notifications).to.eql([{ code:'foraging', name:'Foraging', experience:14 }]);
+            done();
+          });
+        });
       });
     });
   });
@@ -42,14 +46,18 @@ describe('Role: Forager', function() {
       'item.goat-nuts': 'Y'
     });
 
-    SpecHelper.buildJada({ species:'scaven' }).then(jada => {
-      Role.Forager.work(jada).then(results => {
-        if (results.injury == null) {
-          expect(results.notifications[0].name).to.equal('Foraging');
-          expect(results.flavors['goat-nuts']).to.be.at.least(1);
-          expect(results.flavors['willow-branches']).to.equal(1);
-        }
-        done();
+    Game.start().then(() => {
+      Game.setPhase('after-work').then(() => {
+        SpecHelper.buildJada({ species:'scaven' }).then(jada => {
+          Role.Forager.work(jada).then(results => {
+            if (results.injury == null) {
+              expect(results.notifications[0].name).to.equal('Foraging');
+              expect(results.flavors['goat-nuts']).to.be.at.least(1);
+              expect(results.flavors['willow-branches']).to.equal(1);
+            }
+            done();
+          });
+        });
       });
     });
   });
@@ -61,13 +69,17 @@ describe('Role: Forager', function() {
       'item.goat-nuts': 'Y'
     });
 
-    SpecHelper.buildJada({ species:'scaven' }).then(jada => {
-      Role.Forager.work(jada).then(results => {
-        if (results.injury == null) {
-          expect(results.notifications[0].name).to.equal('Foraging');
-          expect(Object.keys(results.flavors)).to.eql(['goat-nuts'])
-        }
-        done();
+    Game.start().then(() => {
+      Game.setPhase('after-work').then(() => {
+        SpecHelper.buildJada({ species:'scaven' }).then(jada => {
+          Role.Forager.work(jada).then(results => {
+            if (results.injury == null) {
+              expect(results.notifications[0].name).to.equal('Foraging');
+              expect(Object.keys(results.flavors)).to.eql(['goat-nuts'])
+            }
+            done();
+          });
+        });
       });
     });
   });

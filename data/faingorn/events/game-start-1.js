@@ -28,11 +28,15 @@ const powerTooltip = `
 `;
 
 Event.build('game-start-1', {
-  background: { code:'void' },
   darkenBackground: 100,
 
-  stages:[
-    {
+  noSettingCard: true,
+  setting: {
+    phase: 'early',
+    location: 'void'
+  },
+
+  stages:[{
       formPage: 'warning-form'
     },{
       pages: [
@@ -89,7 +93,10 @@ Event.build('game-start-1', {
   ],
 
   onFinish: async choices => {
-    await (await Game.instance()).createPlayer(choices);
+    await Player.forge(choices);
+
+    Game.chainEvent('game-start-2');
+    AvailableEvent.add('morning-1');
   },
 
 });

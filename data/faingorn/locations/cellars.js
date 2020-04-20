@@ -2,11 +2,11 @@ Location.build('cellars', {
   inTheName: 'down in the cellars',
   toTheName: 'down to the cellars',
 
-  buildName: async () => {
+  buildName: () => {
     return `Cellars`;
   },
 
-  buildDescription: async () => {
+  buildDescription: () => {
     return `The keep's cellars are composed of a dozen or so small chambers, arranged haphazardly and cut directly from
       the bedrock on which the keep sits. Supposedly there's an entrance somewhere in these twisted passages that lead
       even further down, into the warrens where the Deep Hole tribe dwells. I haven't investigated these cellars overly
@@ -18,7 +18,7 @@ Location.build('cellars', {
     return SummonAction.allStandardActions();
   },
 
-  hasBed: async () => false,
-  hasChair: async () => false,
-  hasTable: async () => false,
+  hasBed: () => false,
+  hasChair: () => false,
+  hasTable: () => false,
 });

@@ -1,5 +1,9 @@
 Event.build('morning-2', {
-  background:{ location:'great-hall', time:'morning' },
+
+  setting: {
+    phase: 'wake',
+    location: 'great-hall'
+  },
 
   stages:[{
     pages:[
@@ -15,15 +19,12 @@ Event.build('morning-2', {
               footprint in the dust. Small. Animal like. Maybe {{inches|4}} in length. I can't say for certain that it
               wasn't there yesterday, but it does look fresh.` },
       { text:`It's enough for me. I'm not alone here.` },
-      { narratorSpeaker:true, text:`Some events will occur in other rooms, use the map to travel throughout the keep.` },
     ]
   }],
 
   onFinish: async () => {
-    await EventQueue.enqueueEvents([
-      { code:'ambush-rat-setup' },
-      { code:'looking-outside-1' },
-    ]);
+    await AvailableEvent.add('ambush-rat-setup');
+    await AvailableEvent.add('looking-outside-1');
   },
 
 });

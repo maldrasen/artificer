@@ -1,5 +1,12 @@
 Event.build('mutiny', {
 
+  setting: {
+    phase: 'wake',
+    location: 'great-hall'
+  },
+
+  requires: ['minions.will-mutiny'],
+
   stages:[{
     pages:[
       { text:`TODO: My minions have mutinied, but I don't have any events written for that yet.` },

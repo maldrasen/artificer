@@ -1,6 +1,10 @@
 Event.build('journal-1', {
   background: { code:'journal' },
-  time:'afternoon',
+
+  setting: {
+    phase: 'night',
+    location: 'player-bedroom'
+  },
 
   stages:[{
     pages:[
@@ -56,7 +60,7 @@ Event.build('journal-1', {
   }],
 
   onFinish: async choices => {
-    AvailableEvent.add({ code:'journal-2' });
+    AvailableEvent.add('journal-2');
     Flag.set('location.keep-name',choices.name);
   },
 

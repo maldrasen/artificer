@@ -70,9 +70,9 @@ StoryTeller.OralSegments.CockPositioning = (function() {
     const compareHeights = await storyTeller.compareHeights();
     const myBedroom = await storyTeller.inPlayerBedroom();
     const location = await storyTeller.getLocation();
-    const bed = await location.hasBed();
-    const chair = await location.hasChair();
-    const table = await location.hasTable();
+    const bed = location.hasBed();
+    const chair = location.hasChair();
+    const table = location.hasTable();
 
     // === Part 1 ===
     // The character is too damn short.

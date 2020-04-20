@@ -1,5 +1,9 @@
 Event.build('found-willow-branches', {
-  background:{ location:'great-hall', time:'evening' },
+
+  setting: {
+    phase: 'after-work',
+    location: 'great-hall',
+  },
 
   stages:[{
     pages:[
@@ -74,7 +78,7 @@ Event.build('found-willow-branches', {
     });
 
     if (choices.whip == 'yes') {
-      await EventQueue.enqueueEvent(`found-willow-branches-whip`, { priority:'next', actors:{ C:choices.event.actorIDs.C }});
+      Game.chainEvent(`found-willow-branches-whip`);
     }
   },
 

@@ -1,1 +1,5 @@
-{ "debug":true, "throttle":false }
+{
+  "debug": true,
+  "throttle": false,
+  "verbose": true
+}

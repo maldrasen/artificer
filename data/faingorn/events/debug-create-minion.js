@@ -1,13 +1,17 @@
 Event.build('debug-create-minion', {
-  background: { code:'void' },
   repeatable: true,
+
+  setting: {
+    phase: 'any-time',
+    location: 'void'
+  },
 
   stages:[
     { formPage:'debug-create-minion' },
   ],
 
   onFinish: async choices => {
-    let char = await CharacterBuilder.build({
+    await CharacterBuilder.build({
       gender: choices.gender,
       species: choices.species
     });

@@ -1,6 +1,10 @@
 Event.build('journal-3', {
   background: { code:'journal' },
-  time:'afternoon',
+
+  setting: {
+    phase: 'night',
+    location: 'player-bedroom'
+  },
 
   actors: { R:'any-scaven' },
 
@@ -38,10 +42,8 @@ Event.build('journal-3', {
   }],
 
   onFinish: async () => {
-    AvailableEvent.addAll([
-      { code:'journal-4' },
-      { code:'journal-4-well-talk' },
-    ]);
+    AvailableEvent.add('journal-4');
+    AvailableEvent.add('journal-4-well-talk');
   },
 
 });

@@ -1,6 +1,11 @@
 Event.build('morning-4', {
-  background:{ location:'great-hall', time:'morning' },
-  time: 'morning',
+
+  setting: {
+    phase: 'wake',
+    location: 'great-hall'
+  },
+
+  requires: ['game.dayNumber=4'],
 
   stages:[{
     pages:[
@@ -26,14 +31,11 @@ Event.build('morning-4', {
 
   onFinish: async choices => {
     Flag.set('plan-view.tasks.meditate','Y');
-
-    await AvailableEvent.addAll([
-      { code:'day-8-explore',      requires:['game.dayNumber=8']},
-      { code:'magic-practice-1-1', requires:['flag.player.meditate-count>=1']},
-      { code:'magic-practice-1-2', requires:['flag.player.meditate-count>=2','player.magical>=12']},
-      { code:'magic-practice-1-3', requires:['flag.player.meditate-count>=5','player.magical>=14']},
-      { code:'magic-practice-1-4', requires:['flag.player.meditate-count>=8','player.magical>=15']},
-    ]);
+    AvailableEvent.add('day-8-explore');
+    AvailableEvent.add('magic-practice-1-1');
+    AvailableEvent.add('magic-practice-1-2');
+    AvailableEvent.add('magic-practice-1-3');
+    AvailableEvent.add('magic-practice-1-4');
   },
 
 });

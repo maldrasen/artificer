@@ -47,7 +47,7 @@ Resource.add = async function(code, count) {
 // Before calling this function you should make sure that the consumed
 // materials are actually in the inventory because I don't check that here.
 Resource.consume = async function(materials) {
-  await Promise.all(Object.keys(materials).map(async code => {
+  await Promise.all(Object.keys(materials||{}).map(async code => {
     const resource = await Resource.findOne({ where:{ code:code }});
           resource.count = resource.count - materials[code];
 

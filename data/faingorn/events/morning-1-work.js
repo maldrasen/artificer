@@ -1,5 +1,4 @@
 Event.build('morning-1-work', {
-  background:{ location:'great-hall', time:'morning' },
 
   stages:[{
     pages:[
@@ -19,9 +18,10 @@ Event.build('morning-1-work', {
   }],
 
   onFinish: async choices => {
+    Flag.set('events.morning-1',null);
     GameStage.FlagCollections.setDefaults();
-    await AvailableProject.add({ code:'make-crude-fur-clothing' });
-    await Game.updateLocation('great-hall');
+    Game.setLocation('great-hall');
+    await AvailableProject.add('make-crude-fur-clothing');
   },
 
 });

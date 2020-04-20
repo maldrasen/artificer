@@ -9,7 +9,7 @@ describe('SexualScrutinizer', function() {
 
   // More specs might be needed? More setup than spec at this point though.
   async function setupForOral(cockOptions, mouthOptions) {
-    let game = await GameHelper.setupTestGame();
+    await GameHelper.setupTestGame();
     let player = await Player.instance();
     let cock = await SpecHelper.adjustCock(player,cockOptions);
     let jada = await SpecHelper.buildJada({ mouth:mouthOptions });

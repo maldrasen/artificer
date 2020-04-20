@@ -9,7 +9,7 @@ Mission.Explore = (function() {
   async function resolve(data) {
     const discovery = await attemptDiscovery(data.mission);
 
-    EventQueue.enqueueEvent((discovery == null ? Configuration.exploreFailureEvent : discovery.code), {
+    Game.addEvent((discovery == null ? Configuration.exploreFailureEvent : discovery.code), {
       ids: data.minions.map(minion => { return minion.id })
     });
 
@@ -34,7 +34,7 @@ Mission.Explore = (function() {
 
     await Promise.all(mission.discoveries.map(async possibility => {
       if (await CentralScrutinizer.meetsRequirements(Event.lookup(possibility.code).requires)) {
-        if (Flag.lookup(`enqueued.${possibility.code}`) == null) {
+        if (Flag.lookup(`completed.${possibility.code}`) == null) {
           if (possibility.probability > Random.upTo(100)) {
             discoveries.push(possibility);
           }

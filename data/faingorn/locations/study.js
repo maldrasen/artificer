@@ -2,15 +2,15 @@ Location.build('study', {
   inTheName: 'in my study',
   toTheName: 'to my study',
 
-  buildName: async () => {
+  buildName: () => {
     return `Study`;
   },
 
-  buildDescription: async () => {
+  buildDescription: () => {
     return `TODO: Study Description`;
   },
 
-  hasBed: async () => false,
-  hasChair: async () => true,
-  hasTable: async () => true,
+  hasBed: () => false,
+  hasChair: () => true,
+  hasTable: () => true,
 });

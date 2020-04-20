@@ -1,7 +1,7 @@
 describe('SummonAction', function() {
 
   it('gets a list of available actions', function(done) {
-    GameHelper.setupTestGame().then(game => {
+    GameHelper.setupTestGame().then(() => {
       SpecHelper.buildJada({ gender:'male' }).then(jada => {
         SummonAction.forCharacter(jada).then(actions => {
           let codes = actions.map(action => { return action.code; });
@@ -14,7 +14,7 @@ describe('SummonAction', function() {
   });
 
   it('gets a categorized list of available actions', function(done) {
-    GameHelper.setupTestGame().then(game => {
+    GameHelper.setupTestGame().then(() => {
       SpecHelper.buildJada({ gender:'female' }).then(jada => {
         SummonAction.categorizedForCharacter(jada).then(actions => {
           let names = actions['Oral'].map(action => { return action.name; });

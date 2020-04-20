@@ -1,5 +1,4 @@
 Event.build('betrayal-single', {
-  background:{ location:'great-hall', time:'evening' },
 
   stages:[{
     pages:[

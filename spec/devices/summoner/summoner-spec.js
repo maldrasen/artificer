@@ -1,8 +1,8 @@
 describe('Summoner', function() {
 
   async function setupGame(options) {
-    const game = await Game.start();
-    const player = await SpecHelper.buildPlayer(game,{})
+    await Game.start();
+    const player = await SpecHelper.buildPlayer({})
     const jada = await SpecHelper.buildJada(options.jada||{});
 
     await Promise.all(Object.keys(options.aspects||[]).map(async code => {

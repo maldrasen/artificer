@@ -35,6 +35,10 @@ Components.EventView = (function() {
     if (event.darkenBackground != null) { darkenBackground(event.darkenBackground); }
 
     buildStage();
+
+    if (event.settingCard) {
+      showSettingCard(event.settingCard.time, event.settingCard.place);
+    }
   }
 
   function clickAdvance() {
@@ -159,6 +163,16 @@ Components.EventView = (function() {
     try {
       eventData.stages[stage].pages[page].text = text;
     } catch(e) {}
+  }
+
+  function showSettingCard(time, place) {
+    const card = $('<div>').append(`<h1>${place}, ${time}</h1>`);
+    const settingCard = $('#currentEvent .setting-card').removeClass('hide').append(card)
+
+    if (DEBUG) { card.append(`<pre>${eventData.code}</pre>`) }
+
+    setTimeout(() => { settingCard.addClass('fade-out'); },0);
+    setTimeout(() => { settingCard.addClass('hide'); },4000);
   }
 
   // === Paged View ===

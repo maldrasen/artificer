@@ -1,5 +1,11 @@
 Event.build('magic-practice-1-2', {
-  background: { location:'great-hall', time:'morning' },
+
+  setting: {
+    phase: 'before-work',
+    location: 'great-hall'
+  },
+
+  requires: ['flag.player.meditate-count>=2','player.magical>=12'],
 
   stages:[{
     pages:[

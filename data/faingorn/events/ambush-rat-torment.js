@@ -1,5 +1,4 @@
 Event.build('ambush-rat-torment', {
-  background:{ location:'great-hall', time:'evening' },
 
   stages:[{
     pages:[
@@ -87,8 +86,8 @@ Event.build('ambush-rat-torment', {
   }],
 
   onFinish: async choices => {
-    await Game.updateLocation('great-hall');
-    await EventQueue.enqueueEvent('ambush-rat-end-1',{ priority:'next', actors:{ R:choices.event.actorIDs.R }});
+    Game.setLocation('great-hall');
+    Game.chainEvent('ambush-rat-end-1');
   },
 
 });

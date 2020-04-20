@@ -49,7 +49,7 @@ global.CharacterBuilder = (function() {
       type:        options.type        || 'minion',
       status:      options.status      || 'normal',
       currentDuty: options.currentDuty || 'role',
-      dutyCode:    options.dutyCode  || (await defaultRole()),
+      dutyCode:    options.dutyCode  || Role.defaultRole(),
       physical:    options.physical  || species.randomizedAttribute('physical'),
       personal:    options.personal  || species.randomizedAttribute('personal'),
       mental:      options.mental    || species.randomizedAttribute('mental'),
@@ -164,12 +164,6 @@ global.CharacterBuilder = (function() {
     });
 
     return params;
-  }
-
-  // New minions are created with the forager role, until resting is unlocked,
-  // then they are created with the rest role.
-  async function defaultRole() {
-    return Flag.lookup('plan-view.roles.rest') == 'Y' ? 'rest' : 'forager'
   }
 
   return {

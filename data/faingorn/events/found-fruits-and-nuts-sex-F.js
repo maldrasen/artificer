@@ -1,5 +1,4 @@
 Event.build('found-fruits-and-nuts-sex-F', {
-  background:{ location:'great-hall', time:'evening' },
 
   stages:[{
     pages:[

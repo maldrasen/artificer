@@ -15,7 +15,6 @@ global.Context = class Context {
   async setEvent(event) {
     this._event = event;
 
-    await this.addGame();
     await this.addPlayer();
     await this.addMinionData();
 
@@ -30,11 +29,6 @@ global.Context = class Context {
     await Promise.all(Object.keys(state.actors||[]).map(async key => {
       await this.addCharacter(key,(await Character.lookup(state.actors[key])));
     }));
-  }
-
-  async addGame() {
-    const game = await Game.instance();
-    this.set('game', game);
   }
 
   async addCharacter(key, character) {

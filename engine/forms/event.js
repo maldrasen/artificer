@@ -16,26 +16,36 @@ global.Event = class Event extends Form {
   // Before an event can be rendered in the browser it needs to be prepared.
   // This function will to all of the token and path replacement in the event
   // stages. It will also call the event's onStart() function if it exists.
-  static async prepare(queuedEvent) {
-    const event = Event.lookup(queuedEvent.code).properties;
+  // Calling properties on the event turns it into a plain object that can be
+  // manipulated and sent to the browser.
+  static async prepare(eventData) {
+    const event = eventData.event.properties;
+
     if (event.onStart) {
-      await event.onStart(queuedEvent.state);
+      await event.onStart(eventData.state);
+    }
+
+    if (event.setting && event.noSettingCard == null) {
+      event.settingCard = {
+        time: Game.time(),
+        place: Location.lookup(Game.location()).buildName(),
+      }
     }
 
     const context = new Context();
-    await context.setEventState(queuedEvent.state);
+    await context.setEventState(eventData.state);
     await context.setEvent(event);
 
-    await Event.transformEvent(event, context, queuedEvent);
+    await Event.transformEvent(event, eventData.state, context);
 
     return event;
   }
 
   // === Event Transformation  ===
 
-  static async transformEvent(event, context, queuedEvent) {
+  static async transformEvent(event, state, context) {
     event.stages = await Promise.all(event.stages.map(async stage => {
-      const valid = await CentralScrutinizer.meetsRequirements(stage.requires, context, { state:queuedEvent.state });
+      const valid = await CentralScrutinizer.meetsRequirements(stage.requires, context, { state });
       if (valid) { return await Event.transformStage(stage, context); }
     }));
 
@@ -47,7 +57,7 @@ global.Event = class Event extends Form {
     each(event.actors, (value, key) => {
       event.actorIDs[key] = context.get(key).character.id;
     });
-    each(queuedEvent.state.actors||{}, (id, key) => {
+    each(state.actors||{}, (id, key) => {
       event.actorIDs[key] = context.get(key).character.id;
     });
   }

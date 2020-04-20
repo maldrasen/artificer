@@ -1,7 +1,4 @@
 Event.build('morning-1-food', {
-  background:{ location:'ruined-tower', time:'morning' },
-
-  // TODO: Background, ruined tower.
 
   stages:[{
     pages:[
@@ -70,13 +67,13 @@ Event.build('morning-1-food', {
               that these magical powers must act like muscles that grow stronger the more they're used.` },
     ]
   },{
-    requires:['no-flag.enqueued.morning-1-supplies'],
+    requires:['flag.events.morning-1=did-food'],
     pages:[
       { text:`In any case, I still have some searching to do. I'd like to see if anything at all usable remains in this
               place.` }
     ]
   },{
-    requires:['flag.enqueued.morning-1-supplies'],
+    requires:['flag.events.morning-1=did-both'],
     pages:[
       { text:`In any case, I've managed to find food, water, clothing, and shelter; and so I return to the keep's great
               hall to decide what to do from there.` }
@@ -84,7 +81,14 @@ Event.build('morning-1-food', {
   }],
 
   onFinish: async choices => {
-    await EventQueue.enqueueEvent(Flag.lookup('enqueued.morning-1-supplies') ? 'morning-1-work' : 'morning-1-supplies');
+    if (choices.approach == 'grab') { Game.addFood(10); }
+
+    if (Flag.lookup('events.morning-1') == 'did-food') {
+      Flag.set('events.morning-1','did-both');
+      Game.chainEvent('morning-1-supplies');
+    } else {
+      Game.chainEvent('morning-1-work');
+    }
   },
 
 });

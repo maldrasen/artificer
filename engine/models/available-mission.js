@@ -11,18 +11,9 @@ global.AvailableMission = Database.instance().define('available_mission', {
   }
 });
 
-AvailableMission.addAll = async function(missions) {
-  return await Promise.all(missions.map(async event => {
-    return await AvailableMission.add(event);
-  }));
-}
-
-// Data should have the following format:
-//   code:         (*) code
-//   requires:     []
-AvailableMission.add = async function(data) {
+AvailableMission.add = async function(code, data={}) {
   return AvailableMission.create({
-    code:          data.code,
+    code: code,
     requires_json: JSON.stringify(data.requires||[]),
   });
 }

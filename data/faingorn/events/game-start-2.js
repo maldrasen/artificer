@@ -1,7 +1,5 @@
 Event.build('game-start-2', {
-
   // TODO: Background, a field with the keep in the far distance.
-  background:{ code:'field' },
 
   stages:[{
     pages: [

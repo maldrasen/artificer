@@ -2,9 +2,8 @@ global.LocationController = (function() {
 
   function init() {
     ipcMain.on('location.change', (event, data) => {
-      Game.updateLocation(data.code).then(()=>{
-        Composer.render();
-      });
+      Game.setLocation(data.code);
+      Composer.render();
     });
 
     ipcMain.on('location.show-minions', async () => {
@@ -28,10 +27,9 @@ global.LocationController = (function() {
     });
 
     ipcMain.on('location.show-inventory', async () => {
-      const game = await Game.instance();
       const resources = await Resource.allForClient();
       const equipment = await CharacterEquipment.forInventory();
-      Browser.send('render.inventory',{ resources, equipment, food:game.food });
+      Browser.send('render.inventory',{ resources, equipment, food:Game.food() });
     });
   }
 

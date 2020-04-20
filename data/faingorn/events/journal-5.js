@@ -1,6 +1,10 @@
 Event.build('journal-5', {
   background: { code:'journal' },
-  time:'afternoon',
+
+  setting: {
+    phase: 'night',
+    location: 'player-bedroom'
+  },
 
   stages:[{
     pages:[
@@ -44,7 +48,7 @@ Event.build('journal-5', {
   }],
 
   onFinish: async () => {
-    AvailableEvent.add({ code:'journal-6' });
+    AvailableEvent.add('journal-6');
   },
 
 });

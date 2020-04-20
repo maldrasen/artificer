@@ -1,10 +1,16 @@
 Event.build('magic-practice-1-4', {
-  background: { location:'great-hall', time:'morning' },
+
+  setting: {
+    phase: 'before-work',
+    location: 'great-hall'
+  },
+
+  requires: ['flag.player.meditate-count>=8','player.magical>=15'],
 
   stages:[{
     pages:[
-      { text:`My morning meditation has become a regular routine now. It's a good way I think to greet the dawn.
-          And in the time since I started this regular practice I feel like my understanding has really grown.` },
+      { text:`Meditating has become a regular routine now. It's a good way I think to center myself during the day. And
+          in the time since I started this regular practice I feel like my understanding has really grown.` },
       { text:`When I close my eyes I can envision the roiling chaotic well of energy I draw power from.` },
       { text:`The Maelstrom.` },
       { text:`I'm not sure if it's something I'm just imagining, some way to visualize what I do, or if really exists
@@ -31,9 +37,9 @@ Event.build('magic-practice-1-4', {
   onFinish: async choices => {
     const count = Flag.lookup('player.meditate-count');
 
-    await AvailableEvent.addAll([
-      { code:'magic-practice-2-1', requires:[`flag.player.meditate-count=${count+3}`,`player.magical>=20`]},
-    ]);
+    AvailableEvent.add('magic-practice-2-1', {
+      requires:[`flag.player.meditate-count=${count+3}`,`player.magical>=20`]
+    });
 
     Flag.set('player.maelstrom','Y');
   },

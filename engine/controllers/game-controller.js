@@ -58,20 +58,19 @@ global.GameController = (function() {
 
     // === Game Events ===
 
-    ipcMain.on('game.end-event', (event, choices) => {
-      Event.onFinish(choices).then(() => {
-        Composer.render();
-      });
+    ipcMain.on('game.end-event', async (event, choices) => {
+      await Game.endEvent(choices);
+      Composer.render();
     });
 
-    ipcMain.on('game.start-action-event', (event, data) => {
-      EventQueue.enqueueEvent(data.code, data.state).then(() => {
-        Composer.render();
-      });
+    ipcMain.on('game.start-event', (event, data) => {
+      Game.addEvent(data.code, data.state);
+      Composer.render();
     });
 
-    ipcMain.on('game.start-location-event', () => {
-      Composer.renderLocationEvent();
+    ipcMain.on('game.start-location-event', async (event, data) => {
+      await Game.startLocationEvent(data.code);
+      Composer.render();
     });
 
     ipcMain.on('game.open-plan-view', () => {

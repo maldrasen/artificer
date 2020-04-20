@@ -20,20 +20,18 @@ Resolver.Items = (function() {
 
   async function commit() {
     const queue = Resolver.itemsToAdd();
-    const game = await Game.instance();
     let newFood = 0;
 
     each(queue, (count, code) => {
       if (code == 'food') {
         newFood += count;
-        game.food += count;
-        game.save();
+        Game.addFood(count);
       } else {
         commitItem(code, count);
       }
     });
 
-    Resolver.Report.setNewFood(newFood);
+    Resolver.Report.producedFood(newFood);
   }
 
   async function commitItem(code, count) {
@@ -41,7 +39,7 @@ Resolver.Items = (function() {
     if (item.type == 'resource') {
       return await Resource.add(code,count);
     }
-    throw `How do I commit ${code}?`
+    throw `How do I commit a ${item.type} item?`
   }
 
   return { add, commit }

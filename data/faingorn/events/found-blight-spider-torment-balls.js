@@ -1,5 +1,4 @@
 Event.build('found-blight-spider-torment-balls', {
-  background:{ location:'great-hall', time:'evening' },
 
   stages:[{
     pages:[

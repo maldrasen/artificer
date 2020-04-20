@@ -2,15 +2,15 @@ Location.build('chapel', {
   inTheName: 'in the chapel',
   toTheName: 'to the chapel',
 
-  buildName: async () => {
+  buildName: () => {
     return `Chapel`;
   },
 
-  buildDescription: async () => {
+  buildDescription: () => {
     return `TODO: Describe Chapel.`;
   },
 
-  hasBed: async () => false,
-  hasChair: async () => true,
-  hasTable: async () => false,
+  hasBed: () => false,
+  hasChair: () => true,
+  hasTable: () => false,
 });

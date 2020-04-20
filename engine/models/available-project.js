@@ -11,18 +11,9 @@ global.AvailableProject = Database.instance().define('available_project', {
   }
 });
 
-AvailableProject.addAll = async function(projects) {
-  return await Promise.all(projects.map(async project => {
-    return await AvailableProject.add(project);
-  }));
-}
-
-// Data should have the following format:
-//   code:         (*) code
-//   requires:     []
-AvailableProject.add = async function(data) {
+AvailableProject.add = async function(code,data={}) {
   return AvailableProject.create({
-    code:          data.code,
+    code: code,
     requires_json: JSON.stringify(data.requires||[]),
   });
 }

@@ -1,8 +1,12 @@
 Event.build('day-8-explore', {
-  location: 'upper-keep',
-  background:{ location:'upper-keep', time:'afternoon' },
+
+  setting: {
+    phase: 'early',
+    location: 'upper-keep',
+  },
 
   actors: { R:'any-scaven' },
+  requires: ['game.dayNumber=8'],
 
   stages:[{
     pages:[
@@ -63,7 +67,7 @@ Event.build('day-8-explore', {
 
   onFinish: async () => {
     Flag.set('location-menu.show-date','Y');
-    AvailableEvent.add({ code:'journal-1' });
+    AvailableEvent.add('journal-1');
   },
 
 });

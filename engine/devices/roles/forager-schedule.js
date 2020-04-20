@@ -28,7 +28,7 @@ Role.Forager.Schedule = (function() {
   // or in the case of a special happening() will farm that work out to it.
   async function executeScheduled(character, scheduled) {
     if (scheduled.special) { return await scheduled.special(character); }
-    if (scheduled.event)   { await EventQueue.enqueueEvent(scheduled.event,{ actors:{ C:character.id }}); }
+    if (scheduled.event)   { await Game.addEvent(scheduled.event,{ actors:{ C:character.id }}); }
     if (scheduled.unlock)  { Flag.set(`item.${scheduled.unlock}`,'Y'); }
     return await buildScheduledReport(character, scheduled);
   }
