@@ -4,8 +4,15 @@ global.Location = class Location extends Form {
     const game = await Game.instance();
     const summonAvailable = Flag.lookup('minions.can-summon') && (typeof this.summonActions == 'function');
 
+    let locationEvent = null;
+    let locationEvents = await AvailableEvent.currentLocationEvents();
+    if (locationEvents.length > 0) {
+      locationEvent = locationEvents[0].code;
+    }
+
     const view = {
       actions: this.actions,
+      activeEvent: locationEvent,
       name: (await this.buildName()),
       description: (await this.buildDescription()),
       flags: (await this.buildFlags(game)),
@@ -13,6 +20,7 @@ global.Location = class Location extends Form {
       flavor: (await this.buildFlavor()),
       mapData: (await Location.buildMapData()),
       dates: { day:game.dayNumber },
+      time: game.time,
       summonAvailable
     };
 
@@ -34,9 +42,6 @@ global.Location = class Location extends Form {
   async buildFlavor()      { return []; }
 
   async buildFlags(game) {
-    // TODO: Use AvailableEvent to determine if there's a location event for
-    //       this location.
-    // let eventActive = await EventQueue.nextLocationEvent(game.location) != null;
     let flags = Flag.getAll();
 
     return {
@@ -46,8 +51,6 @@ global.Location = class Location extends Form {
       showMinionMenu: (flags['location-menu.minions'] == 'Y'),
       showInventoryMenu: (flags['location-menu.inventory'] == 'Y'),
       playerMenuName: flags['player.first-name'],
-      eventActive: false,
-      // eventActive: eventActive
     };
   }
 

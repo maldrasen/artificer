@@ -1,32 +1,27 @@
 Components.LocationView = (function() {
   function init() {
-    $(document).on('click','.menu-show-load',      Elements.buttonAction(Renderer.showLoadGame));
-    $(document).on('click','.menu-show-save',      Elements.buttonAction(Renderer.showSaveGame));
-    $(document).on('click','.menu-show-map',       Elements.buttonAction(Renderer.showMap));
-    $(document).on('click','.menu-show-minions',   Elements.buttonAction(() => { Renderer.sendCommand('location.show-minions');   }));
-    $(document).on('click','.menu-show-inventory', Elements.buttonAction(() => { Renderer.sendCommand('location.show-inventory'); }));
-    $(document).on('click','.menu-show-player',    Elements.buttonAction(() => { Renderer.sendCommand('location.show-player');    }));
+    $(document).on('click','.menu-show-load',       Elements.buttonAction(Renderer.showLoadGame));
+    $(document).on('click','.menu-show-save',       Elements.buttonAction(Renderer.showSaveGame));
+    $(document).on('click','.menu-show-map',        Elements.buttonAction(Renderer.showMap));
+    $(document).on('click','.menu-show-minions',    Elements.buttonAction(() => { Renderer.sendCommand('location.show-minions');   }));
+    $(document).on('click','.menu-show-inventory',  Elements.buttonAction(() => { Renderer.sendCommand('location.show-inventory'); }));
+    $(document).on('click','.menu-show-player',     Elements.buttonAction(() => { Renderer.sendCommand('location.show-player');    }));
+    $(document).on('click','.start-location-event', Elements.buttonAction(startLocationEvent));
   }
 
   function build(transport, view) {
     let location = $('<div>',{ id:"locationView" }).append($('#locationTemplate').html());
         location.find('.location-name').append(view.name);
         location.find('.location-description').append(view.description);
-        location.find('.date').append(`Day ${view.dates.day}`);
+        location.find('.date').append(`${view.time}, Day ${view.dates.day}`);
         location.find('.menu-show-player').append(view.flags.playerMenuName);
         location.data('mapData',view.mapData);
-
-    // TODO: Wire up the .start-location-event button. This used to just get the next location event off of the queue,
-    //       But I've changed it so that they're enabled, not queued. However this means that I don't have a code for
-    //       the event. So I may need to send the location event code up with the location data so that it triggers the
-    //       right event. Normally this would never fly in a real web app, i.e. trusting data from the client, but an
-    //       electron app is really all client. Especially this one. And I don't care about cheating at all.
 
     if (view.dates.date) { location.find('.date').append(`, ${view.dates.date}`); }
     if (view.flags.showMapMenu) { location.find('.menu-show-map').removeClass('hide'); }
     if (view.flags.showMinionMenu) { location.find('.menu-show-minions').removeClass('hide'); }
     if (view.flags.showInventoryMenu) { location.find('.menu-show-inventory').removeClass('hide'); }
-    if (view.flags.eventActive) { location.find('.active-event-notification').removeClass('hide'); }
+    if (view.activeEvent) { location.find('.active-event-notification').data('code',view.activeEvent).removeClass('hide'); }
     if (view.flags.showPlanAction) { location.find('.create-plan-action').removeClass('hide'); }
     if (view.summonAvailable) { location.find('.summon-minions-button').removeClass('hide'); }
 
@@ -53,6 +48,10 @@ Components.LocationView = (function() {
     return view.mapData.locations.filter(datum => {
       return datum.eventFlag && !datum.current;
     }).length > 0;
+  }
+
+  function startLocationEvent() {
+    Renderer.sendCommand('game.start-location-event', { code:$(this).data('code') });
   }
 
   function showMapFlag() {

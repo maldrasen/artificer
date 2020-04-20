@@ -9,7 +9,7 @@ global.Game = Database.instance().define('game', {
 },{
   timestamps: false,
   getterMethods: {
-    time: function() { return GAME_PHASES[Game._instance.phase]; }
+    time: function() { return Game.EventPhases[Game._instance.phase].label; }
   }
 });
 
@@ -117,6 +117,13 @@ Game.addEvent = function(code, state={}) {
 
   Game.log(`Event Added [${phase}]  - ${event.code}`);
   Game._eventQueues[phase].push({ event, state });
+}
+
+Game.startLocationEvent = function(code, state={}) {
+  Game.log(`Location Event Started - ${code}`);
+  Game._currentEvent = { event:Event.lookup(code), state:state };
+
+  AvailableEvent.remove(code);
 }
 
 // chainEvent() continues the currently running event. The state carries over

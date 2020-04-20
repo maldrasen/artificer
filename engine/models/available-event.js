@@ -37,6 +37,11 @@ AvailableEvent.add = async function(code, data={}) {
   });
 }
 
+AvailableEvent.remove = async function(code) {
+  const event = await AvailableEvent.findOne({ where:{ code:code }});
+  await event.destroy();
+}
+
 AvailableEvent.printAll = async function() {
   const events = await AvailableEvent.findAll({ order:[['code', 'ASC']] });
 

@@ -68,6 +68,11 @@ global.GameController = (function() {
       Composer.render();
     });
 
+    ipcMain.on('game.start-location-event', (event, data) => {
+      Game.startLocationEvent(data.code, data.state);
+      Composer.render();
+    });
+
     ipcMain.on('game.open-plan-view', () => {
       Composer.renderPlanView();
     });
