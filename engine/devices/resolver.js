@@ -18,23 +18,30 @@ global.Resolver = (function() {
     Resolver._finishers = [];
     Resolver._itemsToAdd = {};
 
+    Game.log("Work Plan Submitted",true);
+    Game.log(`Plan: ${JSON.stringify(plan)}`);
+    Game.setPhase('before-work');
+
     await Resolver.Report.start();
-    await Resolver.Game.becomeAfternoon();
     await Resolver.Roles.assignRoles(plan.assignedRoles);
     await Resolver.Projects.startProject(plan.projectWork);
     await Resolver.Tasks.workTasks(plan.taskWork);
-    await Resolver.Missions.startMissions(plan.missionWork);
-    await Resolver.Events.enqueueAvailable();
-    await Resolver.Roles.workRoles();
-    await Resolver.Projects.workProject();
-    await Resolver.Missions.workMissions();
-    await Resolver.Items.commit();
-    await Resolver.Minions.dailyUpdate();
+    // await Resolver.Missions.startMissions(plan.missionWork);
+    // await Resolver.Events.enqueueAvailable();
+    // await Resolver.Roles.workRoles();
+    // await Resolver.Projects.workProject();
+    // await Resolver.Missions.workMissions();
+    // await Resolver.Items.commit();
+    // await Resolver.Minions.dailyUpdate();
     await Composer.render();
   }
 
   async function startDay() {
-    await Resolver.Game.becomeMorning();
+
+    // This did nothing by advance the game number. I deleted resolver game,
+    // but that still needs to be done.
+    //   await Resolver.Game.becomeMorning();
+
     await Resolver.Events.enqueueAvailable();
     await Promise.all(Resolver._finishers.map(async action => {
       await action();

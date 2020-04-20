@@ -3,17 +3,11 @@ Resolver.Projects = (function() {
   async function startProject(projectWork) {
     if (projectWork == null) { return false; }
 
-    let project = Project.lookup(projectWork.code);
-    let minions = await Character.findAll({ where:{ id:projectWork.minions }});
+    const project = Project.lookup(projectWork.code);
+    const minions = await Character.findAll({ where:{ id:projectWork.minions }});
 
-    const game = await Game.instance();
-    game.currentProject = project.code;
-    game.currentProjectProgress = 0;
-    await game.save();
-
-    if (project.materials) {
-      await Resource.consume(project.materials);
-    }
+    Game.setProject(project.code)
+    await Resource.consume(project.materials);
 
     // All the minions who were assigned to this project should have their
     // current task set to project. This will prevent them from getting

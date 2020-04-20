@@ -83,6 +83,11 @@ Game.setPhase = function(phase) {
   Game._instance.phase = phase;
 }
 
+Game.setProject = function(project) {
+  Game._instance.currentProject = project;
+  Game._instance.currentProjectProgress = 0;
+}
+
 // === Game Event Queues =======================================================
 
 Game.log = function(message,header) {

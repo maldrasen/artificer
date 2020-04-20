@@ -3,6 +3,7 @@ Resolver.Roles = (function() {
   async function assignRoles(assignments) {
     await Promise.all(assignments.map(async assignment => {
       const character = await Character.lookup(assignment.id);
+            character.currentDuty = 'role';
             character.dutyCode = assignment.role;
             character.dutyOptions = assignment.options || {};
 

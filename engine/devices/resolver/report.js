@@ -2,7 +2,7 @@ Resolver.Report = (function() {
 
   async function start() {
     const report = Resolver.currentReport();
-    const minions = await Character.findAll({where:{ type:'minion', status:'normal' }});
+    const minions = await Character.findAll({ where:{ type:'minion', status:'normal' }});
 
     report.food = {};
     report.minions = {};

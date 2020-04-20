@@ -1,11 +1,9 @@
 Resolver.Tasks = (function() {
 
   async function workTasks(taskWork) {
-    if (taskWork && taskWork.length > 0) {
-      await Promise.all(taskWork.map(async task => {
-        return workTask(task);
-      }));
-    }
+    await Promise.all((taskWork||[]).map(async task => {
+      await workTask(task);
+    }));
   }
 
   async function workTask(taskWork) {
@@ -14,7 +12,7 @@ Resolver.Tasks = (function() {
     if (taskWork.minions) {
       taskWork.minions = await Character.findAll({ where:{ id:taskWork.minions }});
       await Promise.all(taskWork.minions.map(async minion => {
-        return minion.update({ currentDuty:'task' });
+        await minion.update({ currentDuty:'task' });
       }));
     }
 
