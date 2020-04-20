@@ -4,7 +4,7 @@ Resolver.Report = (function() {
     const report = Resolver.currentReport();
     const minions = await Character.findAll({ where:{ type:'minion', status:'normal' }});
 
-    report.food = {};
+    report.food = null;
     report.minions = {};
     report.tasks = [];
 
@@ -53,14 +53,12 @@ Resolver.Report = (function() {
   }
 
   function producedFood(value) {
-    if (Flag.lookup('report-view.show-food') && value > 0) {
-      Resolver.currentReport().food = `Today my minions and I produced <b>${value}</b>food.`;
-    }
+    Flag.set('report-view.produced-food',`Today my minions and I produced <b>${value}</b>food.`);
   }
 
   function ateFood(value) {
     if (Flag.lookup('report-view.show-food')) {
-      Resolver.currentReport().food.story = `Altogether, my minions and I ate <b>${value}</b> food, leaving us with <b>${Game.food()}</b>.`;
+      Resolver.currentReport().food = `${Flag.lookup('report-view.produced-food')} We ate <b>${value}</b> food, leaving us with <b>${Game.food()}</b>.`;
     }
   }
 

@@ -71,8 +71,6 @@ Game.nextDay = async function() {
   Game.log(`Starting Day ${Game.dayNumber()}`,true);
 
   await Game.setPhase('wake');
-
-  // await Resolver.Minions.dailyUpdate();
 }
 
 // === Short Cut Accessors and Mutators ========================================

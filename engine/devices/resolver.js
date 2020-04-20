@@ -31,6 +31,7 @@ global.Resolver = (function() {
     await Resolver.Projects.workProject();
     await Resolver.Missions.workMissions();
     await Resolver.Items.commit();
+    await Resolver.Minions.dailyUpdate();
     await Composer.render();
   }
 
