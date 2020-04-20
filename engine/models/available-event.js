@@ -47,16 +47,27 @@ AvailableEvent.printAll = async function() {
 }
 
 // Get all of the valid location events for this location.
-AvailableEvent.locationEventsAt = async function(location) {
-  return await validateEvents((await AvailableEvent.findAll({ where:{ type:'location', location:validLocations() }})));
+AvailableEvent.currentLocationEvents = async function() {
+  return await validateEvents((await AvailableEvent.findAll({ where:{ eventType:'location', location:validLocations() }})));
 }
 
 // Get all valid location events.
 AvailableEvent.locationEvents = async function() {
-  return await validateEvents((await AvailableEvent.findAll({ where:{ type:'location' }})));
+  return await validateEvents((await AvailableEvent.findAll({ where:{ eventType:'location' }})));
+}
+
+// Get all valid non-location events.
+AvailableEvent.validEvents = async function() {
+  return await validateEvents((await AvailableEvent.findAll({ where:{ eventType:'normal' }})));
 }
 
 AvailableEvent.prototype.isValid = async function() {
+  const event = Event.lookup(this.code);
+
+  if (event.setting.phase != 'any-time') {
+    if (event.setting.phase != Game.instance().phase) { return false; }
+  }
+
   return (await CentralScrutinizer.meetsRequirements(this.requires)) &&
          (await CentralScrutinizer.meetsRequirements(Event.lookup(this.code).requires))
 }

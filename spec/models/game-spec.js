@@ -1,7 +1,8 @@
 describe('Game', function() {
 
   it('can start a new game', function(done) {
-    Game.start().then(game => {
+    Game.start().then(() => {
+      let game = Game.instance();
       expect(game.id).to.equal(1);
       expect(game.dayNumber).to.equal(1);
       done();
@@ -9,7 +10,7 @@ describe('Game', function() {
   });
 
   it('clears the game, flags, and models', function(done) {
-    Game.start().then(game => {
+    Game.start().then(() => {
       Flag.set('flag','derp');
       AvailableEvent.add('journal-1').then(() => {
         Game.clear().then(() => {
@@ -24,7 +25,7 @@ describe('Game', function() {
     });
   });
 
-  describe.only('Game: Events', function() {
+  describe('Game: Events', function() {
 
     it('can add an event', function(done) {
       Game.start().then(() => {
