@@ -9,7 +9,7 @@ Mission.Explore = (function() {
   async function resolve(data) {
     const discovery = await attemptDiscovery(data.mission);
 
-    CurrentEvent.set((discovery == null ? Configuration.exploreFailureEvent : discovery.code), {
+    Game.addEvent((discovery == null ? Configuration.exploreFailureEvent : discovery.code), {
       ids: data.minions.map(minion => { return minion.id })
     });
 

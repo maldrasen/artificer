@@ -1,7 +1,7 @@
 global.GameHelper = (function() {
 
   async function setupTestGame() {
-    let game = await Game.start();
+    await Game.start();
 
     let testCharacters = [
       { type:'minion', species:'scaven', gender:'male',   fear:Random.between(40,60), loyalty:Random.between(10,20) },

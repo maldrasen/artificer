@@ -1,4 +1,4 @@
-describe.only('AvailableEvent', function() {
+describe('AvailableEvent', function() {
 
   async function setupLocationEvents() {
     await Game.start();

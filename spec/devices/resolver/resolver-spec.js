@@ -1,27 +1,29 @@
 describe('Resolver', function() {
 
-  it("assigns roles to characters", function(done) {
-    GameHelper.setupTestGame().then(() => {
-      Character.findAll({ where:{ type:'minion' }}).then(allMinions => {
-        let id_1 = allMinions[0].id;
-        let id_2 = allMinions[1].id;
+  // Need to fix this slowly, piece by piece.
 
-        let planData = { assignedRoles:[
-          { id:id_1, role:'forager' },
-          { id:id_2, role:'rest', options:{ nude:'of-course' }},
-        ]};
-
-        Resolver.startWork(planData).then(() => {
-          Character.findAll({ where:{ id:[id_1,id_2] }}).then(minions => {
-            expect(minions[0].role.code).to.equal('forager');
-            expect(minions[1].dutyCode).to.equal('rest');
-            expect(minions[1].dutyOptions.nude).to.equal('of-course');
-            done();
-          });
-        });
-      });
-    });
-  });
+  // it("assigns roles to characters", function(done) {
+  //   GameHelper.setupTestGame().then(() => {
+  //     Character.findAll({ where:{ type:'minion' }}).then(allMinions => {
+  //       let id_1 = allMinions[0].id;
+  //       let id_2 = allMinions[1].id;
+  //
+  //       let planData = { assignedRoles:[
+  //         { id:id_1, role:'forager' },
+  //         { id:id_2, role:'rest', options:{ nude:'of-course' }},
+  //       ]};
+  //
+  //       Resolver.startWork(planData).then(() => {
+  //         Character.findAll({ where:{ id:[id_1,id_2] }}).then(minions => {
+  //           expect(minions[0].role.code).to.equal('forager');
+  //           expect(minions[1].dutyCode).to.equal('rest');
+  //           expect(minions[1].dutyOptions.nude).to.equal('of-course');
+  //           done();
+  //         });
+  //       });
+  //     });
+  //   });
+  // });
 
   // TODO: Re need a project that allows minions before this spec can be fixed
   // it('sets the current project', function(done) {

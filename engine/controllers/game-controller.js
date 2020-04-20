@@ -64,7 +64,7 @@ global.GameController = (function() {
     });
 
     ipcMain.on('game.start-event', (event, data) => {
-      CurrentEvent.set(data.code, data.state||{})
+      Game.addEvent(data.code, data.state);
       Composer.render();
     });
 
