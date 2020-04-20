@@ -18,14 +18,14 @@ Event.build('ambush-rat-end-2', {
           it's ok.` },
     ]
   },{
-    requires:['flag.enqueued.ambush-rat-befriend'],
+    requires:['flag.completed.ambush-rat-befriend'],
     pages: [
       { text:`{{He}} looks like the same scaven I spoke with yesterday, {{R::character.firstName}} I think. Truth be
           told, I'm suprised {{he}} didn't try to kill me in my sleep. Perhaps {{he}} has some small amount of respect
           for my power after all.` },
     ]
   },{
-    requires:['flag.enqueued.ambush-rat-torment'],
+    requires:['flag.completed.ambush-rat-torment'],
     pages: [
       { text:`{{He}} looks like the same rat I held against the wall and abused yesterday, {{R::character.firstName}} I
           think. Truth be told, I'm suprised {{he}} didn't try to kill me in my sleep. Perhaps {{R::gender.he}}'s too

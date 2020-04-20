@@ -34,7 +34,7 @@ Mission.Explore = (function() {
 
     await Promise.all(mission.discoveries.map(async possibility => {
       if (await CentralScrutinizer.meetsRequirements(Event.lookup(possibility.code).requires)) {
-        if (Flag.lookup(`enqueued.${possibility.code}`) == null) {
+        if (Flag.lookup(`completed.${possibility.code}`) == null) {
           if (possibility.probability > Random.upTo(100)) {
             discoveries.push(possibility);
           }
