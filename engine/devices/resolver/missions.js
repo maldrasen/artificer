@@ -3,7 +3,7 @@ Resolver.Missions = (function() {
   async function startMissions(missionWork) {
     if (missionWork && missionWork.length > 0) {
       await Promise.all(missionWork.map(async orders => {
-        return await startMission(orders);
+        await startMission(orders);
       }));
     }
   }
@@ -75,9 +75,9 @@ Resolver.Missions = (function() {
   async function resetDuty(minions) {
     Resolver.addFinisher(async () => {
       await Promise.all(minions.map(async minion => {
-        return await minion.update({
+        await minion.update({
           currentDuty: 'role',
-          dutyCode: null,
+          dutyCode: Role.defaultRole(),
         });
       }));
     });

@@ -27,3 +27,9 @@ global.Role = (function() {
   }
 
 })();
+
+// New minions are created with the forager role, until resting is unlocked,
+// then they are created with the rest role. This is true for missions as well.
+Role.defaultRole = function() {
+  return Flag.lookup('plan-view.roles.rest') == 'Y' ? 'rest' : 'forager'
+}

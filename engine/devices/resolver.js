@@ -26,7 +26,7 @@ global.Resolver = (function() {
     await Resolver.Roles.assignRoles(plan.assignedRoles);
     await Resolver.Projects.startProject(plan.projectWork);
     await Resolver.Tasks.workTasks(plan.taskWork);
-    // await Resolver.Missions.startMissions(plan.missionWork);
+    await Resolver.Missions.startMissions(plan.missionWork);
     // await Resolver.Events.enqueueAvailable();
     // await Resolver.Roles.workRoles();
     // await Resolver.Projects.workProject();
