@@ -12,11 +12,11 @@ global.Location = class Location extends Form {
     const view = {
       actions: this.actions,
       activeEvent: locationEvent,
-      name: (await this.buildName()),
-      description: (await this.buildDescription()),
-      flags: (await this.buildFlags()),
-      attributes: (await this.buildAttributes()),
-      flavor: (await this.buildFlavor()),
+      name: this.buildName(),
+      description: this.buildDescription(),
+      flags: this.buildFlags(),
+      attributes: this.buildAttributes(),
+      flavor: this.buildFlavor(),
       mapData: (await Location.buildMapData()),
       dates: { day:Game.dayNumber() },
       time: Game.time(),
@@ -35,12 +35,12 @@ global.Location = class Location extends Form {
   // Additionally the way each location determines it's name is unique to that
   // location and should be implemented in the form itself. The functions below
   // should be overwritten for this purpose.
-  async buildName()        { return '[TODO]'; }
-  async buildDescription() { return '[TODO]'; }
-  async buildAttributes()  { return []; }
-  async buildFlavor()      { return []; }
+  buildName()        { return '[TODO]'; }
+  buildDescription() { return '[TODO]'; }
+  buildAttributes()  { return []; }
+  buildFlavor()      { return []; }
 
-  async buildFlags() {
+  buildFlags() {
     let flags = Flag.getAll();
 
     return {

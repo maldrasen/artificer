@@ -2,15 +2,15 @@ Location.build('prison', {
   inTheName: 'down in the prison',
   toTheName: 'down to the prison',
 
-  buildName: async () => {
+  buildName: () => {
     return `Prison`;
   },
 
-  buildDescription: async () => {
+  buildDescription: () => {
     return `TODO: Prison Description`;
   },
 
-  hasBed: async () => true,
-  hasChair: async () => true,
-  hasTable: async () => true,
+  hasBed: () => true,
+  hasChair: () => true,
+  hasTable: () => true,
 });

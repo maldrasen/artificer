@@ -2,11 +2,11 @@ Location.build('heart-of-sin', {
   inTheName: 'within the sin heart',
   toTheName: 'to the heart of sin',
 
-  buildName: async () => {
+  buildName: () => {
     return `The Heart of Sin`;
   },
 
-  buildDescription: async () => {
+  buildDescription: () => {
     return `A perfectly flat and infinite plane of gray smooth stone stretches out in all directions. Anything is
             possible here. All it takes is the willpower to conjure it into being.`;
   },
@@ -21,7 +21,7 @@ Location.build('heart-of-sin', {
       data: { code:'debug-create-minion' }}
   ],
 
-  hasBed: async () => false,
-  hasChair: async () => false,
-  hasTable: async () => false,
+  hasBed: () => false,
+  hasChair: () => false,
+  hasTable: () => false,
 });

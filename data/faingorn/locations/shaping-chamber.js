@@ -2,15 +2,15 @@ Location.build('shaping-chamber', {
   inTheName: 'in the shaping chamber',
   toTheName: 'to the shaping chamber',
 
-  buildName: async () => {
+  buildName: () => {
     return `Shaping Chamber`;
   },
 
-  buildDescription: async () => {
+  buildDescription: () => {
     return `TODO: Describe Shaping Chamber`;
   },
 
-  hasBed: async () => false,
-  hasChair: async () => true,
-  hasTable: async () => true,
+  hasBed: () => false,
+  hasChair: () => true,
+  hasTable: () => true,
 });

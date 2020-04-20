@@ -20,8 +20,16 @@ global.Event = class Event extends Form {
   // manipulated and sent to the browser.
   static async prepare(eventData) {
     const event = eventData.event.properties;
+
     if (event.onStart) {
       await event.onStart(eventData.state);
+    }
+
+    if (event.setting && event.noSettingCard == null) {
+      event.settingCard = {
+        time: Game.time(),
+        place: Location.lookup(Game.location()).buildName(),
+      }
     }
 
     const context = new Context();

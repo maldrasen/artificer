@@ -1,7 +1,7 @@
 Event.build('magic-practice-1-1', {
 
   setting: {
-    phase: 'after-work',
+    phase: 'before-work',
     location: 'great-hall'
   },
 

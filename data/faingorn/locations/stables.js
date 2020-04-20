@@ -2,15 +2,15 @@ Location.build('stables', {
   inTheName: 'out in the stables',
   toTheName: 'out to the stables',
 
-  buildName: async () => {
+  buildName: () => {
     return `Stables`;
   },
 
-  buildDescription: async () => {
+  buildDescription: () => {
     return `TODO: Stables Description`;
   },
 
-  hasBed: async () => false,
-  hasChair: async () => false,
-  hasTable: async () => false,
+  hasBed: () => false,
+  hasChair: () => false,
+  hasTable: () => false,
 });

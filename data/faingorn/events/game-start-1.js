@@ -30,6 +30,7 @@ const powerTooltip = `
 Event.build('game-start-1', {
   darkenBackground: 100,
 
+  noSettingCard: true,
   setting: {
     phase: 'early',
     location: 'void'

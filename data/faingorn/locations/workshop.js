@@ -2,15 +2,15 @@ Location.build('workshop', {
   inTheName: 'in my workshop',
   inTheName: 'to my workshop',
 
-  buildName: async () => {
+  buildName: () => {
     return `Workshop`;
   },
 
-  buildDescription: async () => {
+  buildDescription: () => {
     return `TODO: Workshop Description`;
   },
 
-  hasBed: async () => false,
-  hasChair: async () => true,
-  hasTable: async () => true,
+  hasBed: () => false,
+  hasChair: () => true,
+  hasTable: () => true,
 });
