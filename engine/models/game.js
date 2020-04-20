@@ -66,6 +66,10 @@ Game.clear = async function() {
   }));
 }
 
+Game.setDayNumber = function(day) {
+  Game._instance.dayNumber = day;
+}
+
 Game.setLocation = function(code) {
   Game._instance.location = Location.lookup(code).code;
 }
