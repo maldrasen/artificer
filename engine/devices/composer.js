@@ -18,14 +18,14 @@ global.Composer = (function(){
   // this side waits for anything it does. Also because the Browser doesn't
   // exist in the specs none of this is tested. :)
 
-  async function render(game) {
+  async function render() {
     if (typeof Browser == 'undefined') { return; }
 
     if (Game.currentEvent()) {
       return renderEvent(Game.currentEvent());
     }
 
-    Game.log(`Rendering [${Game.instance().phase}]`,true)
+    Game.log(`Rendering [${Game.phase()}]`,true)
 
     // First render the current event if it exists. This isn't correct. The
     // game will need to advance phases until it reaches a control phase or an
@@ -47,7 +47,7 @@ global.Composer = (function(){
 
     // If there's no active event or anything like that:
     Game.log("Rendering Location");
-    renderLocation(Game.instance().location)
+    renderLocation(Game.location());
   }
 
   // If an event has an init promise that promise will be resolved first. The
@@ -70,14 +70,14 @@ global.Composer = (function(){
   }
 
   async function renderPlanView() {
-    const game = await Game.instance();
+    const currentProject = Game.currentProject();
     const flags = {
       'plan-view.allow-idle': Flag.lookup('plan-view.allow-idle'),
     };
 
     let planData = {
-      currentProject: game.currentProject,
-      currentProjectProgress: game.currentProjectProgress,
+      currentProject: currentProject,
+      currentProjectProgress: Game.currentProjectProgress(),
       projects: (await AvailableProject.all()),
       missions: (await Mission.availableForClient()),
       minions: (await Character.allForClient()),
@@ -85,8 +85,8 @@ global.Composer = (function(){
       flags: flags,
     }
 
-    if (game.currentProject) {
-      let current = Project.lookup(game.currentProject);
+    if (currentProject) {
+      let current = Project.lookup(currentProject);
       planData.currentProjectName = current.name;
       planData.currentProjectEffort = current.effort;
     }

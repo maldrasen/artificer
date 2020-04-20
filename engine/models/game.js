@@ -66,6 +66,12 @@ Game.clear = async function() {
   }));
 }
 
+Game.dayNumber = function() { return Game._instance.dayNumber; }
+Game.phase = function() { return Game._instance.phase; }
+Game.time = function() { return Game._instance.time; }
+Game.location = function() { return Game._instance.location; }
+Game.food = function() { return Game._instance.food; }
+
 Game.setDayNumber = function(day) { Game._instance.dayNumber = day; }
 Game.setLocation = function(code) { Game._instance.location = Location.lookup(code).code; }
 Game.addFood =    function(count) { Game._instance.food += count; }
@@ -150,7 +156,7 @@ Game.chainEvent = function(code, state={}) {
 // queue if we advance phases until we reach a control phase we stop and return
 // null.
 Game.pullNextEvent = function() {
-  let phase = Game.instance().phase;
+  let phase = Game.phase();
 
   // There is an event, wonderful. Remove it from the event queue for the
   // phase, set it to the current event and return it.
@@ -173,7 +179,7 @@ Game.pullNextEvent = function() {
 // If an event or events have been set for the current game phase then fetch
 // the first event in the queue, if a queue for this phase exists.
 Game.checkEvent = function(phase) {
-  return (Game._eventQueues[phase||Game.instance().phase]||[])[0];
+  return (Game._eventQueues[phase||Game.phase()]||[])[0];
 }
 
 // Ending an event is a little tricky. If an event is chained it should happen

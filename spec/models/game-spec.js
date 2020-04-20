@@ -58,7 +58,7 @@ describe('Game', function() {
         expect(Game.pullNextEvent().event.code).to.equal('found-blood-berries')
         expect(Game.pullNextEvent().event.code).to.equal('found-fruits-and-nuts')
         expect(Game.pullNextEvent()).to.be.null;
-        expect(Game.instance().phase).to.equal('evening')
+        expect(Game.phase()).to.equal('evening')
 
         done();
       });

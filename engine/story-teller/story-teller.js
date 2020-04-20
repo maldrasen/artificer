@@ -67,11 +67,6 @@ global.StoryTeller = class StoryTeller {
   // what might be needed though as the story is written so there's no point in
   // preloading anything.
 
-  async getGame() {
-    if (this._game == null) { this._game = await Game.instance(); }
-    return this._game;
-  }
-
   async getPlayerBody() {
     if (this._playerBody == null) { this._playerBody = await this.player.getBody(); }
     return this._playerBody;
@@ -98,7 +93,7 @@ global.StoryTeller = class StoryTeller {
   }
 
   async getLocation() {
-    return Location.lookup((await this.getGame()).location);
+    return Location.lookup(Game.location());
   }
 
   // Getting the player outfit will attempt to get the clothes the player is

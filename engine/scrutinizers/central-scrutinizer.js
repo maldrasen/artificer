@@ -46,13 +46,13 @@ global.CentralScrutinizer = (function() {
   // Day number requirement (game.dayNumber=3) (game.dayNumber>20)
   async function checkDayNumber(requirement) {
     let match = requirement.match(/dayNumber(<|<=|=|>=|>)([^<>=]+)/);
-    return checkComparisonOperation((await Game.instance()).dayNumber,match[1],match[2]);
+    return checkComparisonOperation(Game.dayNumber(),match[1],match[2]);
   }
 
   // Food number requirement (game.food=0) (game.food>100)
   async function checkFood(requirement) {
     let match = requirement.match(/food(<|<=|=|>=|>)([^<>=]+)/);
-    return checkComparisonOperation((await Game.instance()).food,match[1],match[2]);
+    return checkComparisonOperation(Game.food(),match[1],match[2]);
   }
 
   // Requirements Like: flag.cock=horse, or flag.dicksSucked>=37

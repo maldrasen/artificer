@@ -1,8 +1,8 @@
 describe('Summoner: Experience', function() {
 
   async function setupSummoner(options) {
-    const game = await Game.start();
-    const player = await SpecHelper.buildPlayer(game,{})
+    await Game.start();
+    const player = await SpecHelper.buildPlayer({});
     const jada = await SpecHelper.buildJada(options);
 
     const summoner = new Summoner(jada.id,'cock-licking');

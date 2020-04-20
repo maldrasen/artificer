@@ -15,8 +15,7 @@ global.SummonAction = class SummonAction extends Form {
   }
 
   static async forCharacter(character, context) {
-    const game = await Game.instance();
-    const location = Location.lookup(game.location);
+    const location = Location.lookup(Game.location());
     const actions = await location.summonActions();
 
     if (context == null) {

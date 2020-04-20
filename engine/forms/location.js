@@ -1,7 +1,6 @@
 global.Location = class Location extends Form {
 
   async buildView() {
-    const game = await Game.instance();
     const summonAvailable = Flag.lookup('minions.can-summon') && (typeof this.summonActions == 'function');
 
     let locationEvent = null;
@@ -15,17 +14,17 @@ global.Location = class Location extends Form {
       activeEvent: locationEvent,
       name: (await this.buildName()),
       description: (await this.buildDescription()),
-      flags: (await this.buildFlags(game)),
+      flags: (await this.buildFlags()),
       attributes: (await this.buildAttributes()),
       flavor: (await this.buildFlavor()),
       mapData: (await Location.buildMapData()),
-      dates: { day:game.dayNumber },
-      time: game.time,
+      dates: { day:Game.dayNumber() },
+      time: Game.time(),
       summonAvailable
     };
 
     if (Flag.lookup('locationMenu.showDate')) {
-      view.dates.date = Calendar.fullDate(game.dayNumber);
+      view.dates.date = Calendar.fullDate(Game.dayNumber());
     }
 
     return view;
@@ -41,12 +40,12 @@ global.Location = class Location extends Form {
   async buildAttributes()  { return []; }
   async buildFlavor()      { return []; }
 
-  async buildFlags(game) {
+  async buildFlags() {
     let flags = Flag.getAll();
 
     return {
       all: flags,
-      showPlanAction: (flags['location.current-study'] == game.location),
+      showPlanAction: (flags['location.current-study'] == Game.location()),
       showMapMenu: (flags['location-menu.map'] == 'Y'),
       showMinionMenu: (flags['location-menu.minions'] == 'Y'),
       showInventoryMenu: (flags['location-menu.inventory'] == 'Y'),
@@ -55,8 +54,7 @@ global.Location = class Location extends Form {
   }
 
   static async summonAvailable() {
-    return Flag.lookup('minions.can-summon') &&
-           (typeof Location.lookup((await Game.instance()).location).summonActions == 'function');
+    return Flag.lookup('minions.can-summon') && (typeof Location.lookup(Game.location()).summonActions == 'function');
   }
 
   // We build the locations for the map when building the location view. Right
@@ -64,9 +62,7 @@ global.Location = class Location extends Form {
   // need to be more graphical, so this will need to carry a lot more map state
   // data and image positioning and stuff.
   static async buildMapData() {
-    let current = (await Game.instance()).location;
-
-    let locations = await Promise.all(Location.all().map(async location => {
+    const locations = await Promise.all(Location.all().map(async location => {
       if (Flag.lookup(`map.${location.code}`) == null) { return null; } else {
 
         // TODO: Use AvailableEvent to get location events for any location.
@@ -75,7 +71,7 @@ global.Location = class Location extends Form {
 
         return {
           code: location.code,
-          current: location.code == current,
+          current: location.code == Game.location(),
           name: name,
           eventFlag: (events.length > 0)
         };

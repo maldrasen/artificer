@@ -19,10 +19,8 @@ Event.build('starving', {
   // TODO: The starvation event will be slightly different depending on the state of the keep, what upgrades you have,
   //       how many minions you have, etc. For now though we just enqueue the event for when there is only one minion.
   onFinish: async () => {
-    const game = await Game.instance();
-
     await Character.reduceAllLoyalty(6);
-    await AvailableEvent.add('starving', { requires:[`game.dayNumber>${game.dayNumber}`]});
+    await AvailableEvent.add('starving', { requires:[`game.dayNumber>${Game.dayNumber()}`]});
 
     if (Flag.lookup('minions.count') == 1) { return Game.chainEvent('starving-single'); }
 

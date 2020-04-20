@@ -72,7 +72,7 @@ AvailableEvent.prototype.isValid = async function() {
   const event = Event.lookup(this.code);
 
   if (event.setting.phase != 'any-time') {
-    if (event.setting.phase != Game.instance().phase) { return false; }
+    if (event.setting.phase != Game.phase()) { return false; }
   }
 
   return (await CentralScrutinizer.meetsRequirements(this.requires)) &&
@@ -98,7 +98,7 @@ async function validateEvents(events) {
 // Sometimes a location may be represented in several ways in the event. If the
 // event setting is set to void it's valid for any location.
 function validLocations() {
-  const current = Game.instance().location;
+  const current = Game.location();
   const locations = [current,'void'];
 
   if (current == Flag.lookup('player.bed-location')) {

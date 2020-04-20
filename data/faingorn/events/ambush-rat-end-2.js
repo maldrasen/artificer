@@ -70,11 +70,8 @@ Event.build('ambush-rat-end-2', {
   // We have to artifically advance the day today as there's really nothing
   // unlocked that the player can do to create the day's plan.
   onFinish: async choices => {
-    const game = await Game.instance();
-    await game.update({
-      time: 'morning',
-      dayNumber: (game.dayNumber+1)
-    });
+    Game.setDayNumber(Game.dayNumber()+1);
+    Game.setPhase('morning');
 
     const rat = await Character.lookup(choices.event.actorIDs.R)
     await rat.update({type:'minion'});
