@@ -38,7 +38,7 @@ Flag.lookup = function(code) {
     value = FlagInfo.instances[code].default
   }
 
-  if (value && typeof value == 'string' && value.match(/\d+/)) {
+  if (value && typeof value == 'string' && value.match(/^\d+$/)) {
     return parseInt(value);
   }
 
