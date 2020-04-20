@@ -39,17 +39,12 @@ AvailableEvent.add = async function(code, data={}) {
   });
 }
 
-AvailableEvent.remove = async function(code) {
-  const event = await AvailableEvent.findOne({ where:{ code:code }});
-  await event.destroy();
-}
-
 AvailableEvent.printAll = async function() {
   const events = await AvailableEvent.findAll({ order:[['code', 'ASC']] });
 
   console.log("\n=== Printing Available Events ===");
   each(events, async event => {
-    console.log(`    ${event.code} - Valid:${await event.isValid()}`);
+    console.log(`    ${event.code} - Valid:${await event.isValid()} State:${event.state_json}`);
   });
 }
 

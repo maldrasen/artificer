@@ -135,11 +135,13 @@ Game.addEvent = function(code, state={}) {
   Game._eventQueues[phase].push({ event, state });
 }
 
-Game.startLocationEvent = function(code, state={}) {
-  Game.log(`Location Event Started - ${code}`);
-  Game._currentEvent = { event:Event.lookup(code), state:state };
+Game.startLocationEvent = async function(code) {
+  const availableEvent = await AvailableEvent.findOne({ where:{ code:code }});
 
-  AvailableEvent.remove(code);
+  Game.log(`Location Event Started - ${code}`);
+  Game._currentEvent = { event:Event.lookup(code), state:availableEvent.state };
+
+  await availableEvent.destroy();
 }
 
 // chainEvent() continues the currently running event. The state carries over

@@ -10,7 +10,7 @@ Event.build('morning-3', {
       { text:`I stoke the fire in the great hall. I want to ensure that the room is a comfortable temperature for the
           next few hours at least. I beckon {{R::character.firstName}} to come sit next to me in front of the fire
           so that we can chat for a bit.` },
-      { text:`{{R::gender.He}}'s still nervous and obviously uncomfortable being around me, though that might have
+      { text:`{{He}}'s still nervous and obviously uncomfortable being around me, though that might have
           something to do with the fact that I've been in the nude since {{he}} woke me up. Better for {{him}} to be
           uncomfortable than for me to show the slightest bit of concern, so for now that's how I'll have to remain.` },
       { playerSpeaker:true, text:`"Tell me more about your people {{R::character.firstName}}. Do some of your tribesmen
@@ -46,7 +46,7 @@ Event.build('morning-3', {
       { actorSpeaker:'R', text:`{{He}} nods, more confidently now that {{he}}'s pretty sure I'm not going to kill
           {{him}} right away. "Yes {{P::character.title}}. Deep Holes are the best at sneaking finding."` },
       { playerSpeaker:true, text:`"Good. You may leave as soon as you're able, and be back before dark," and with that
-          I dismiss {{R::gender.him}} for the time being. There are things I need to think about.` },
+          I dismiss {{him}} for the time being. There are things I need to think about.` },
       { narratorSpeaker:true, text:`You can now assign your minions to the Forage role. A foraging minion will spend
           the day looking for food and other useful items out in the hinterlands. Keep an eye on their health though,
           because it's a dangerous job and they can get injured. And injured minions will do worse at any task they're

@@ -68,8 +68,8 @@ global.GameController = (function() {
       Composer.render();
     });
 
-    ipcMain.on('game.start-location-event', (event, data) => {
-      Game.startLocationEvent(data.code, data.state);
+    ipcMain.on('game.start-location-event', async (event, data) => {
+      await Game.startLocationEvent(data.code);
       Composer.render();
     });
 
