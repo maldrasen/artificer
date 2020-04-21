@@ -64,11 +64,9 @@ Mission.Explore = (function() {
     });
 
     if (fullyExplored) {
-      console.log("Fully Explored Hinterlands!")
       Flag.set(`mission.${mission.code}`,'done');
     }
   }
-
 
   return { resolve };
 
