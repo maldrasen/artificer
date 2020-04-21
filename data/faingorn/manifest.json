@@ -9,6 +9,7 @@
 
   "engineFiles":[
     "events/*",
+    "events-missions/*",
     "flags/*",
     "hazards/*",
     "locations/*",

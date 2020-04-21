@@ -9,6 +9,7 @@ GameStage.FlagCollections = {
       'location-menu.map':       'Y',
       'player.bed-location':     'great-hall',
       'player.bed-type':         'fur-pile',
+      'player.report-location':  'great-hall',
       'map.bath':                'Y',
       'map.cellars':             'Y',
       'map.courtyard':           'Y',
@@ -48,8 +49,6 @@ GameStage.FlagCollections = {
       'item.willow-branches':        'Y',
       'location-menu.inventory':     'Y',
       'location-menu.show-date':     'Y',
-      'mission.gather-stone':        'Y',
-      'mission.gather-timber':       'Y',
       'mission.explore-hinterlands': 'Y',
       'plan-view.missions':          'Y',
       'plan-view.tasks.craft':       'Y',
@@ -66,7 +65,8 @@ GameStage.FlagCollections = {
   // time they're added in other events.
   setAct_1_3: function() {
     Flag.setAll({
-
+      // 'mission.gather-stone':        'Y',
+      // 'mission.gather-timber':       'Y',
     });
   }
 

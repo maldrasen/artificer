@@ -1,17 +1,10 @@
 Mission.Explore = (function() {
 
-  // Interestingly, this is the first use of the event status. We need to know
-  // the IDs of the minions that were on the explore mission when we render the
-  // explore event. I knew I added that for a reason.
-  //
-  // input:  { mission, state, minions }
-  //
+  // data:  { mission, state, minions }
   async function resolve(data) {
     const discovery = await attemptDiscovery(data.mission);
 
-    Game.addEvent((discovery == null ? Configuration.exploreFailureEvent : discovery.code), {
-      ids: data.minions.map(minion => { return minion.id })
-    });
+    Game.addEvent((discovery == null ? Configuration.exploreFailureEvent : discovery.code), { actors:Event.randomActorMap(data.minions) });
 
     each(data.minions, minion => {
       Resolver.Report.setMinionData(minion, 'work', {
@@ -21,6 +14,7 @@ Mission.Explore = (function() {
       });
     });
   }
+
 
   // For a discovery to be valid, all the requirements for the associated
   // discovery event must be met. The discovery cannot have happened before,

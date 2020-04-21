@@ -1,5 +1,21 @@
 global.Event = class Event extends Form {
 
+  // Built a randomised actor map from an array of minions. We don't need to
+  // worry about having too few keys here. It doesn't matter how many minions
+  // were actually involved in the mission, the context keys are just for
+  // speaking roles in the assocaited events and shouldn't have more than 5.
+  static randomActorMap(minions) {
+    const keys = ['C','D','E','F'];
+    const map = {};
+
+    let i=0;
+    each(ArrayUtility.shuffle(minions), minion => {
+      map[keys[i++]||'G'] = minion.id;
+    });
+
+    return map;
+  }
+
   static async onFinish(choices) {
     const code = choices.event.code;
     const completedCode = `completed.${code}`;

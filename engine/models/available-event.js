@@ -96,6 +96,10 @@ function validLocations() {
   const current = Game.location();
   const locations = [current,'void'];
 
+  if (current == Flag.lookup('player.report-location')) {
+    locations.push('report-location');
+  }
+
   if (current == Flag.lookup('player.bed-location')) {
     locations.push('player-bedroom');
   }

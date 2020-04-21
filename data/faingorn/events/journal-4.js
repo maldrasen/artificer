@@ -59,8 +59,6 @@ Event.build('journal-4', {
     AvailableEvent.add('journal-5');
     Flag.setAll({
       'plan-view.missions': 'Y',
-      'mission.gather-stone': 'Y',
-      'mission.gather-timber': 'Y',
       'mission.explore-hinterlands': 'Y',
     });
   },

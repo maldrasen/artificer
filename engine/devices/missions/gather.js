@@ -15,18 +15,18 @@ Mission.Gather = (function() {
     });
   }
 
-  // Resolve the mission for this minion.
+  // Resolve the mission for this minion. This will need redone, obviously.
   function resolveMinion(mission, minion) {
-    let results = mission.tempResults;
-
-    let gathered = {};
-        gathered[results.flavor] = Random.between(results.min, results.max);
-
-    Resolver.Items.add(ItemFlavor.itemize(gathered));
-    Resolver.Report.setMinionData(minion, 'work', {
-      story: `[TODO: ${mission.code} mission story]`,
-      flavors: ItemFlavor.forReport(gathered),
-    });
+    // let results = mission.tempResults;
+    //
+    // let gathered = {};
+    //     gathered[results.flavor] = Random.between(results.min, results.max);
+    //
+    // Resolver.Items.add(ItemFlavor.itemize(gathered));
+    // Resolver.Report.setMinionData(minion, 'work', {
+    //   story: `[TODO: ${mission.code} mission story]`,
+    //   flavors: ItemFlavor.forReport(gathered),
+    // });
   }
 
   return { resolve };

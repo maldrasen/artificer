@@ -1,5 +1,5 @@
 global.Configuration = {
-  exploreFailureEvent: 'explore-failed',
+  exploreFailureEvent: 'explore.failed',
   startingFood: 25,
 
   onStart: async () => {

@@ -23,6 +23,10 @@ Resolver.Missions = (function() {
       });
     }));
 
+    if (typeof mission.onStart == 'function') {
+      await mission.onStart(minions);
+    }
+
     // Missions that only take a day are immeadietly resolved.
     if (mission.time == 1) {
       await Mission.resolve({ mission:mission, minions:minions, state:{ minions:orders.minions }});
