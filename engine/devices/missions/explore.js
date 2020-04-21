@@ -13,8 +13,9 @@ Mission.Explore = (function() {
           `${minion.singleName} ${discovery.brief}`
       });
     });
-  }
 
+    lockWhenFullyExplored(data.mission, discovery);
+  }
 
   // For a discovery to be valid, all the requirements for the associated
   // discovery event must be met. The discovery cannot have happened before,
@@ -48,6 +49,26 @@ Mission.Explore = (function() {
 
     return events[Random.fromFrequencyMap(eventsFreq)];
   }
+
+  // Once all the discoveries for this explore mission have been completed the
+  // location is removed. It's worth remembering that events that happen while
+  // exploring should not be critical path missions because it's possible to
+  // lock away the explore mission without seeing any fallback events.
+  function lockWhenFullyExplored(mission, current) {
+    let fullyExplored = true;
+
+    each(mission.discoveries, discovery => {
+      if (current.code != discovery.code && Flag.lookup(`completed.${discovery.code}`) == null) {
+        fullyExplored = false
+      }
+    });
+
+    if (fullyExplored) {
+      console.log("Fully Explored Hinterlands!")
+      Flag.set(`mission.${mission.code}`,'done');
+    }
+  }
+
 
   return { resolve };
 
