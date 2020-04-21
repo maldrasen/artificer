@@ -40,6 +40,7 @@ GameStage.FlagCollections = {
   setAct_1_2: function() {
     Flag.setAll({
       'item.bitter-fruits':          'Y',
+      'item.blight-spider':          'Y',
       'item.blood-berries':          'Y',
       'item.goat-nuts':              'Y',
       'item.juice-berries':          'Y',
@@ -56,7 +57,8 @@ GameStage.FlagCollections = {
       'player.maelstrom':            'Y',
       'player.meditate-count':       8,
       'recipe.basket':               'Y',
-      'role.forage.success-count':   9,
+      'role.forage.failure-count':   1,
+      'role.forage.success-count':   8,
     });
   },
 
