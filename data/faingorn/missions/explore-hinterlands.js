@@ -18,7 +18,9 @@ Mission.build('explore-hinterlands', {
   ],
 
   onStart: minions => {
-    Game.addEvent('first-mission',{ actors:{ C:minions[0].id }});
+    if (Flag.lookup('completed.first-mission') == null) {
+      Game.addEvent('first-mission',{ actors:{ C:minions[0].id }});
+    }
   },
 
 });
