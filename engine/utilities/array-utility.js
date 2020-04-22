@@ -11,7 +11,7 @@ global.ArrayUtility = {
   },
 
   addAll(target, array) {
-    each(array, function(item) { target.push(item); });
+    each((array||[]), function(item) { target.push(item); });
   },
 
   unique(array) {

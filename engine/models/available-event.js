@@ -26,15 +26,19 @@ global.AvailableEvent = Database.instance().define('available_event', {
 AvailableEvent.add = async function(code, data={}) {
   await ensureCanAdd(code);
 
-  const setting = Event.lookup(code).setting;
-  const type = (Game.EventPhases[setting.phase].type == 'control') ? 'location' : 'normal';
+  const event = Event.lookup(code);
+  const type = (Game.EventPhases[event.setting.phase].type == 'control') ? 'location' : 'normal';
+  const requirements = [];
+
+  ArrayUtility.addAll(requirements, data.requires);
+  ArrayUtility.addAll(requirements, event.requires);
 
   return await AvailableEvent.create({
     code:          code,
     eventType:     type,
-    location:      setting.location,
+    location:      event.setting.location,
     state_json:    JSON.stringify(data.state||{}),
-    requires_json: JSON.stringify(data.requires||[]),
+    requires_json: JSON.stringify(requirements),
     chance:        data.chance || 100,
   });
 }
