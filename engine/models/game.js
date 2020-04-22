@@ -46,6 +46,7 @@ Game.start = async function(debugStart) {
     id: 1,
     dayNumber: 1,
     phase: 'early',
+    location: 'courtyard',
     food: Configuration.startingFood,
   });
 

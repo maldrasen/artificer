@@ -4,6 +4,7 @@
 
 Event.build('demo-over', {
 
+  noSettingCard: true,
   setting: {
     phase: 'late-night',
     location: 'void',

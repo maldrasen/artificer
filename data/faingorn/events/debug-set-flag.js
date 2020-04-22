@@ -1,6 +1,6 @@
 Event.build('debug-set-flag', {
-  background: { code:'void' },
 
+  noSettingCard: true,
   setting: {
     phase: 'any-time',
     location: 'void'

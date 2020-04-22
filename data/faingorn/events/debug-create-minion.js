@@ -1,6 +1,7 @@
 Event.build('debug-create-minion', {
   repeatable: true,
 
+  noSettingCard: true,
   setting: {
     phase: 'any-time',
     location: 'void'

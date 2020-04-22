@@ -53,7 +53,6 @@ global.Event = class Event extends Form {
     await context.setEvent(event);
 
     await Event.transformEvent(event, eventData.state, context);
-
     return event;
   }
 

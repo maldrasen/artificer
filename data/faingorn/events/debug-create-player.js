@@ -1,5 +1,6 @@
 Event.build('debug-create-player', {
 
+  noSettingCard: true,
   setting: {
     phase: 'early',
     location: 'void'
