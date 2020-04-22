@@ -7,6 +7,7 @@ global.MinionScrutinizer = (function() {
     if (requirement == 'minions.will-mutiny')          { return await checkMutiny(context); }
     if (requirement == 'minions.will-not-mutiny')      { return await checkMutiny(context) == false; }
 
+    if (requirement.match(/minions\.forager-count/)) { return await checkDutyCount(requirement,'forager') }
     if (requirement.match(/^minion\(.+\)\./)) { return checkMinion(requirement, context); }
 
     throw `Unknown Minion Requirement - ${requirement}`;
@@ -31,6 +32,12 @@ global.MinionScrutinizer = (function() {
     let count = context.get('minionData').workingCount;
     let match = requirement.match(/project(<|<=|=|>=|>)([^<>=]+)/);
     return CentralScrutinizer.checkComparisonOperation(count,match[1],match[2]);
+  }
+
+  async function checkDutyCount(requirement,dutyCode) {
+    const characters = await Character.findAll({ where:{ status:'normal', currentDuty:'role', dutyCode:dutyCode }});
+    const match = requirement.match(/count(<|<=|=|>=|>)([^<>=]+)/);
+    return CentralScrutinizer.checkComparisonOperation(characters.length,match[1],match[2]);
   }
 
   async function checkBetray(context) {

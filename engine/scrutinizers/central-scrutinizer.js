@@ -35,8 +35,8 @@ global.CentralScrutinizer = (function() {
 
   // Check to see if a resource or a number of resources are in the inventory.
   // The requirement can be formatted in one of two ways:
-  //    requirement.ITEM       checks for > 0
-  //    requirement.ITEM=N     checks for N items, any operator can be used.
+  //    resource.ITEM       checks for > 0
+  //    resource.ITEM=N     checks for N items, any operator can be used.
   async function checkResource(requirement) {
     let match = requirement.match(/^resource\.([^<>=]+)(<|<=|=|>=|>)([^<>=]+)/);
     if (match) {

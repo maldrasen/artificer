@@ -60,5 +60,10 @@ Event.build('found-blood-berries', {
       { actorSpeaker:'C', text:`{{He}} grins and squeeks, "Yes {{P::character.title}}," as I lean back into my chair,
           already drawing up plans for an alchemy laboratory in my mind.` },
     ]
-  }]
+  }],
+
+  onFinish: async choices => {
+    AvailableEvent.add('rat-thief-1');
+  },
+
 });

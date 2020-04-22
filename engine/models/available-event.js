@@ -28,10 +28,7 @@ AvailableEvent.add = async function(code, data={}) {
 
   const event = Event.lookup(code);
   const type = (Game.EventPhases[event.setting.phase].type == 'control') ? 'location' : 'normal';
-  const requirements = [];
-
-  ArrayUtility.addAll(requirements, data.requires);
-  ArrayUtility.addAll(requirements, event.requires);
+  const requirements = (data.requires||[]).concat(event.requires||[]);
 
   return await AvailableEvent.create({
     code:          code,

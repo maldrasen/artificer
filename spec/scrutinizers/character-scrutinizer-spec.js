@@ -16,4 +16,16 @@ describe('CharacterScrutinizer', function() {
     });
   });
 
+  it('checks the number of minions working a role', function(done) {
+    SpecHelper.buildJada({ currentDuty:'role', dutyCode:'forager' }).then(jada => {
+      CentralScrutinizer.meetsRequirements('minions.forager-count=1').then(yep => {
+        CentralScrutinizer.meetsRequirements('minions.forager-count=2').then(nope => {
+          expect(yep).to.be.true;
+          expect(nope).to.be.false;
+          done();
+        });
+      });
+    });
+  });
+
 });

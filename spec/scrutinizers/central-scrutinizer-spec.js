@@ -75,7 +75,42 @@ describe('CentralScrutinizer', function() {
       expect(CentralScrutinizer.checkComparisonOperation('4','>','3')).to.be.true;
       expect(CentralScrutinizer.checkComparisonOperation('3','>','3')).to.be.false;
     });
+  });
 
+  describe('checkResource()', function() {
+    it('checks for item presence', function(done) {
+      Resource.add('blood-berries',50).then(() => {
+        CentralScrutinizer.meetsRequirements('resource.blood-berries').then(check => {
+          expect(check).to.be.true;
+          done();
+        });
+      });
+    });
+
+    it('checks for item presence (negative)', function(done) {
+      CentralScrutinizer.meetsRequirements('resource.blood-berries').then(check => {
+        expect(check).to.be.false;
+        done();
+      });
+    });
+
+    it('checks for item quantity', function(done) {
+      Resource.add('blood-berries',50).then(() => {
+        CentralScrutinizer.meetsRequirements('resource.blood-berries=50').then(check => {
+          expect(check).to.be.true;
+          done();
+        });
+      });
+    });
+
+    it('checks for item quantity (negative)', function(done) {
+      Resource.add('blood-berries',50).then(() => {
+        CentralScrutinizer.meetsRequirements('resource.blood-berries>=100').then(check => {
+          expect(check).to.be.false;
+          done();
+        });
+      });
+    });
   });
 
 });
