@@ -18,7 +18,7 @@ Event.build('rat-thief-1', {
   }],
 
   onFinish: async choices => {
-    // Add project
+    AvailableProject.add('build-storeroom')
   },
 
 });

@@ -1,33 +1,39 @@
 global.Project = class Project extends Form {
 
-  // TODO: This function needs to check to see if all of the required materials
-  //       and such
   async readyState() {
-    if (this.materials == null) {
-      return { ready:true };
-    }
-
-    // I might as well just get everything and check that, rather then doing
-    // a complex async version. There's won't be enough resource types to
-    // matter in terms of effeciency.
-    let inventory = await Resource.findAll();
-    let insufficient = [];
-
-    each(this.materials, (count,code) => {
-      if (inventoryContains(count,code,inventory) == false) {
-        insufficient.push({ count, code });
-      }
+    let insufficient = this.checkMaterials({
+      resources: (await Resource.counts()),
+      equipment: (await CharacterEquipment.availableCounts()),
     });
 
     return (insufficient.length == 0) ?
       { ready:true } :
       { ready:false, excuse:makeExcuse(insufficient) };
   }
+
+  // This function checks to see if all of the required materials are available
+  // for the project to use. If not it returns an array with the materials
+  // that are currently lacking.
+  checkMaterials(inventory) {
+    const insufficient = [];
+
+    each((this.materials||{}), (count,code) => {
+      if (inventoryContains(count,code,inventory) == false) {
+        insufficient.push({ count, code });
+      }
+    });
+
+    return insufficient;
+  }
 }
 
+// The inventoryContains() function needs to check both resouece and equipment
+// there may be other types of items that need to be checked at some point as
+// well.
 function inventoryContains(count,code,inventory) {
-  let resource = inventory.filter(item => { return item.code == code })[0];
-  return (resource == null) ? false : resource.count >= count;
+  if (inventory.resources[code]) { return inventory.resources[code] >= count; }
+  if (inventory.equipment[code]) { return inventory.equipment[code] >= count; }
+  return false;
 }
 
 function makeExcuse(insufficient) {
@@ -47,7 +53,7 @@ function makeExcuse(insufficient) {
 }
 
 function twoHides(item) {
-  let form = Item.lookup(item.code);
+  let form = Item.instances[item.code] || Equipment.instances[item.code];
   return (item.count == 1) ?
     `one ${form.name.toLowerCase()}`:
     `${EnglishUtility.numberInEnglish(item.count)} ${form.plural.toLowerCase()}`;

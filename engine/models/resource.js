@@ -23,6 +23,18 @@ Resource.allForClient = async function() {
   });
 }
 
+// Similar to the client list, but only includes the codes and counts in a map.
+Resource.counts = async function() {
+  const resources = await Resource.findAll();
+  const counts = {};
+
+  each(resources, resource => {
+    counts[resource.code] = resource.count;
+  });
+
+  return counts;
+}
+
 Resource.lookup = async function(code) {
   return await Resource.findOne({ where:{ code:code } });
 }

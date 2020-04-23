@@ -34,6 +34,20 @@ CharacterEquipment.notEquipped = async function() {
   return await CharacterEquipment.findAll({ where:{ character_id:null }});
 }
 
+// This isn't the most efficient way to check for a free item of one type or
+// another, but beause this return a plain map of code and counts it can be
+// easily used in a loop without worying about all the async crap.
+CharacterEquipment.availableCounts = async function() {
+  const equipment = await CharacterEquipment.notEquipped();
+  const counts = {}
+
+  each(equipment, item => {
+    counts[item.code] = (counts[item.code] == null) ? 1 : counts[item.code]+1;
+  });
+
+  return counts;
+}
+
 // TODO: Some equipment when it breaks should break back down into some useful
 //       materials. This function should get the list of materials from the
 //       form, add them to the inventory, and return a sentence explaining what

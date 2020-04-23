@@ -1,5 +1,7 @@
 global.Equipment = class Equipment extends Form {
 
+  get plural() { return (this.pluralName == null) ? `${this.name}s` : this.pluralName; }
+
   // forClient() is used when building the icon cache for equipment.
   static forClient() {
     let data = {
