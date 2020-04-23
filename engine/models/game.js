@@ -136,13 +136,21 @@ Game.addEvent = function(code, state={}) {
   Game._eventQueues[phase].push({ event, state });
 }
 
+// Start a location event. Location events are usually made available in the
+// client when an associated available event is added, however they can also be
+// started directly with an action as is the case with the debug actions, in
+// which case there will be no available event.
 Game.startLocationEvent = async function(code) {
-  const availableEvent = await AvailableEvent.findOne({ where:{ code:code }});
+  let availableEvent = await AvailableEvent.findOne({ where:{ code:code }});
+  let state = {};
+
+  if (availableEvent) {
+    state = availableEvent.state || {};
+    await availableEvent.destroy();
+  }
 
   Game.log(`Location Event Started - ${code}`);
-  Game._currentEvent = { event:Event.lookup(code), state:availableEvent.state };
-
-  await availableEvent.destroy();
+  Game._currentEvent = { event:Event.lookup(code), state:state };
 }
 
 // chainEvent() continues the currently running event. The state carries over

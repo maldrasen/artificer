@@ -13,11 +13,15 @@ Location.build('heart-of-sin', {
 
   actions:[
     { name: 'Set Flag',
-      command: 'game.start-event',
+      command: 'game.start-location-event',
       data: { code:'debug-set-flag' }},
 
+    { name: 'Add Item',
+      command: 'game.start-location-event',
+      data: { code:'debug-add-item' }},
+
     { name: 'Create Minion',
-      command: 'game.start-event',
+      command: 'game.start-location-event',
       data: { code:'debug-create-minion' }}
   ],
 
