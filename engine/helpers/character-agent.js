@@ -11,8 +11,9 @@ global.CharacterAgent = (function() {
   }
 
   async function findActor(descriptive) {
-    if (descriptive == 'player')              { return await Player.instance();      }
-    if (descriptive == 'any-minion')          { return await findAny();              }
+    if (descriptive == 'player')              { return await Player.instance(); }
+    if (descriptive == 'any-minion')          { return await findAny();         }
+    if (descriptive == 'most-injured-minion') { return await findMostInjured(); }
 
     // Scaven
     if (descriptive == 'any-scaven')          { return await findAny('scaven');      }
@@ -47,6 +48,18 @@ global.CharacterAgent = (function() {
     return (species == null) ?
       Character.findOne({ where:{ type:'minion', status:'normal' }}):
       Character.findOne({ where:{ type:'minion', status:'normal', speciesCode:species }});
+  }
+
+  // Is this ugly or beautiful? Functional and technically done in a single
+  // line, but yikes. This function maps the minions to an array of objects
+  // with the minion and their health value, then sorts by the health values,
+  // then grabs the first minion.
+  async function findMostInjured() {
+    return (await Promise.all((await Character.getNormalMinions()).map(async minion => {
+      return { minion:minion, health:(await minion.getHealth()) };
+    }))).sort((m1,m2) => {
+      return m1.health - m2.health;
+    })[0].minion;
   }
 
   function findSmartest(species) {
