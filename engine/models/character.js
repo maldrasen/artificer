@@ -80,12 +80,7 @@ Character.getNormalMinions = async function() {
 // right not, so they can't be summoned. Can't figure out the sequalize method
 // for not queries so I'm just doing this the "I'm stupid" way.
 Character.getSummonable = async function() {
-  const characters = await Character.findAll({ where:{
-    type: 'minion',
-    status: 'normal',
-    energy: 2,
-  }});
-
+  const characters = await Character.findAll({ where:{ type:'minion', status:'normal', energy:2 }});
   return await Character.formatAllForClient(characters.filter(character => {
     return character.currentDuty != 'mission'
   }));
@@ -108,7 +103,7 @@ Character.formatAllForClient = async function(characters) {
 // If the minion's loyalty is already at 0 their fear will begin to drop
 // instead.
 Character.reduceAllLoyalty = async function(severity) {
-  const minions = await Character.findAll({ where:{ type:'minion' }});
+  const minions = await Character.getNormalMinions();
 
   await Promise.all(minions.map(async minion => {
     minion.loyalty = minion.loyalty - Random.upTo(severity);

@@ -11,7 +11,7 @@ Resolver.Roles = (function() {
   }
 
   async function workRoles() {
-    const characters = await Character.findAll({ where:{ currentDuty:'role' }});
+    const characters = await Character.findAll({ where:{ type:'minion', status:'normal', currentDuty:'role' }});
 
     await Promise.all(characters.map(async character => {
       const result = await Role.lookup(character.dutyCode).work(character);

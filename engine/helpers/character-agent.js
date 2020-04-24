@@ -18,12 +18,11 @@ global.CharacterAgent = (function() {
     if (descriptive.match(/^flag=/))          { return await characterAtFlag(descriptive); }
 
     // TODO: Replace with regular expressions that match any species.
-    if (descriptive == 'any-scaven')          { return await findAny('scaven');      }
-    if (descriptive == 'a-sexy-scaven')       { return await findSexable('scaven');  }
-    if (descriptive == 'the-smartest-scaven') { return await findSmartest('scaven'); }
+    if (descriptive == 'any-scaven')          { return await findAny('scaven'); }
 
-    // TODO: Maybe get rid of this now?
-    if (descriptive == 'scaven-chief')        { return await scavenChief();          }
+    // TODO: Figure out if we still want to use this. It's use in the specs but
+    //       In the game currently.
+    if (descriptive == 'scaven-chief')        { return await scavenChief(); }
 
     throw `Cannot find a character that matches ${descriptive}`;
   }
@@ -86,66 +85,69 @@ global.CharacterAgent = (function() {
     return Character.findOne({ where:{ speciesCode:species }, order:[['personal','DESC']]});
   }
 
+  // TODO: This should all be redone using the consent calculator to also
+  //       determine which minions are horny.
+
   // Finds a character of a given species that the player might prefer sexually.
   // The species attribute is optional here. A character of any species will be
   // selected if it's excluded.
-  async function findSexable(species) {
-    const always = await Flag.alwaysFuckGenderList();
-    const maybe = await Flag.maybeFuckGenderList();
-    let genderList = [];
+  // async function findSexable(species) {
+  //   const always = await Flag.alwaysFuckGenderList();
+  //   const maybe = await Flag.maybeFuckGenderList();
+  //   let genderList = [];
+  //
+  //   // We usually select a character with a gender that the player has the
+  //   // strongist preference for, sometimes though we include the maybe list of
+  //   // genders as well.
+  //   if (always.length > 0 && maybe.length > 0) {
+  //     genderList = (Random.upTo(3) == 0) ? [...always, ...maybe] : always
+  //   }
+  //
+  //   // Attempt one, preferred genders.
+  //   let characters = await sexableSearch(species, genderList);
+  //   if (characters.length > 0) {
+  //     return Random.from(uglyFilter(characters));
+  //   }
+  //
+  //   // Attempt two, possibly ok genders.
+  //   characters = await sexableSearch(species, maybe);
+  //   if (characters.length > 0) {
+  //     return Random.from(uglyFilter(characters));
+  //   }
+  //
+  //   // Attempt three, any hole will do.
+  //   characters = await ungenderedSexableSearch(species);
+  //   return Random.from(uglyFilter(characters));
+  // }
 
-    // We usually select a character with a gender that the player has the
-    // strongist preference for, sometimes though we include the maybe list of
-    // genders as well.
-    if (always.length > 0 && maybe.length > 0) {
-      genderList = (Random.upTo(3) == 0) ? [...always, ...maybe] : always
-    }
-
-    // Attempt one, preferred genders.
-    let characters = await sexableSearch(species, genderList);
-    if (characters.length > 0) {
-      return Random.from(uglyFilter(characters));
-    }
-
-    // Attempt two, possibly ok genders.
-    characters = await sexableSearch(species, maybe);
-    if (characters.length > 0) {
-      return Random.from(uglyFilter(characters));
-    }
-
-    // Attempt three, any hole will do.
-    characters = await ungenderedSexableSearch(species);
-    return Random.from(uglyFilter(characters));
-  }
-
-  function sexableSearch(species,gender) {
-    return (species != null) ?
-      Character.findAll({ where:{ speciesCode:species, genderCode:gender }, order:[['personal','DESC']]}):
-      Character.findAll({ where:{ genderCode:gender }, order:[['personal','DESC']]});
-  }
-
-  function ungenderedSexableSearch(species) {
-    return (species != null) ?
-      Character.findAll({ where:{ speciesCode:species }, order:[['personal','DESC']]}):
-      Character.findAll({ where:{}, order:[['personal','DESC']]});
-  }
+  // function sexableSearch(species,gender) {
+  //   return (species != null) ?
+  //     Character.findAll({ where:{ type:'minion', status:'normal', speciesCode:species, genderCode:gender }, order:[['personal','DESC']]}):
+  //     Character.findAll({ where:{ type:'minion', status:'normal', genderCode:gender }, order:[['personal','DESC']]});
+  // }
+  //
+  // function ungenderedSexableSearch(species) {
+  //   return (species != null) ?
+  //     Character.findAll({ where:{ type:'minion', status:'normal', speciesCode:species }, order:[['personal','DESC']]}):
+  //     Character.findAll({ where:{ type:'minion', status:'normal' }, order:[['personal','DESC']]});
+  // }
 
   // Find the most beautiful person in the list, and remove anyone who's half
   // as attractive. Not guaranteed to find attractive characters, just the
   // relatively attractive ones
-  function uglyFilter(characters) {
-    let maxPersonal = characters[0].personal;
-    return characters.filter((character)=>{
-      return character.personal*2 >= maxPersonal
-    });
-  }
+  // function uglyFilter(characters) {
+  //   let maxPersonal = characters[0].personal;
+  //   return characters.filter((character)=>{
+  //     return character.personal*2 >= maxPersonal
+  //   });
+  // }
 
   // The allOfSpecies() function gets all the minions of a given species. I
   // think this function should only ever return living minions, not those who
   // are dead or missing, and shouldn't return the player, if if the player is
   // of the specified species.
-  function allOfSpecies(code) {
-    return Character.findAll({ where:{ speciesCode:code, status:'normal', type:'minion' }});
+  async function allOfSpecies(code) {
+    return await Character.findAll({ where:{ type:'minion', status:'normal', speciesCode:code }});
   }
 
   return {

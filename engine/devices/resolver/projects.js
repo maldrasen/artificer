@@ -56,7 +56,7 @@ Resolver.Projects = (function() {
 
   async function workProject() {
     if (Game.currentProject() == null) { return false; }
-    const minions = await Character.findAll({ where:{ currentDuty:'project' }});
+    const minions = await Character.findAll({ where:{ type:'minion', status:'normal', currentDuty:'project' }});
     const project = Project.lookup(Game.currentProject());
 
     // Do Work. 10 hours for player + 5 each assigned minion.

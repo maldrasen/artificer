@@ -14,7 +14,9 @@ Mission.Explore = (function() {
       });
     });
 
-    lockWhenFullyExplored(data.mission, discovery);
+    if (discovery) {
+      lockWhenFullyExplored(data.mission, discovery);
+    }
   }
 
   // For a discovery to be valid, all the requirements for the associated

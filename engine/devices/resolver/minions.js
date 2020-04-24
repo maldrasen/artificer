@@ -7,7 +7,7 @@ Resolver.Minions = (function() {
   // report. Things that change daily that don't involve minions can be done in
   // the Game though.
   async function dailyUpdate() {
-    const minions = await Character.findAll({ where:{ type:'minion' } });
+    const minions = await Character.getNormalMinions();
 
     await eatFood(minions);
     await applyHealing(minions);
