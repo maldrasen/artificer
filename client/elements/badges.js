@@ -18,7 +18,7 @@ Elements.Badges = (function() {
       direction: aspect.experience > 0 ? 'up' : 'down',
       code: aspect.code,
       name: aspect.name,
-      content: `Now Level ${notification.gainedLevel || notification.lostLevel}`
+      content: `Now Level ${aspect.gainedLevel || aspect.lostLevel}`
     });
   }
 

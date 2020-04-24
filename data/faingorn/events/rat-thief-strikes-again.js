@@ -7,7 +7,7 @@ Event.build('rat-thief-strikes-again', {
   },
 
   requires:[
-    'resource.blood-berries>50',
+    'resource.blood-berries>30',
   ],
 
   stages:[{
