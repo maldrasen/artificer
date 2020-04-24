@@ -166,7 +166,7 @@ Game.startLocationEvent = async function(code) {
 Game.chainEvent = function(code, state={}, choices={}) {
   if (Game._currentEvent == null) { throw `Cannot chain event because there is no current event.` }
 
-  if (choices) {
+  if (choices.event && choices.event.actorIDs) {
     if (state.actors == null) { state.actors = {}; }
     each(Object.keys(choices.event.actorIDs), key => {
       state.actors[key] = choices.event.actorIDs[key]
