@@ -7,7 +7,7 @@ Resolver.Projects = (function() {
     const minions = await Character.findAll({ where:{ id:projectWork.minions }});
 
     Game.setCurrentProject(project.code)
-    await Resource.consume(project.materials);
+    await consumeMaterials(project.materials);
 
     // All the minions who were assigned to this project should have their
     // current task set to project. This will prevent them from getting
@@ -26,6 +26,32 @@ Resolver.Projects = (function() {
     // destroy the AvailableProject so that it can't be started again. I
     // shouldn't need to wait for this to complete.
     AvailableProject.destroy({ where:{ code:project.code }});
+  }
+
+  // A project's materials will come in as a map of codes to counts. The codes
+  // can represent resources or equipment (and hopefully there's never any code
+  // overlap) This function needs to loop through the map and consume both
+  // resources and equipment. They may be other item types to consume in the
+  // future as well.
+  async function consumeMaterials(materials) {
+    await Promise.all(Object.keys(materials).map(async code => {
+
+      if (Item.instances[code]) {
+        return await Resource.consume({ [code]:materials[code] });
+      }
+
+      // Equipment isn't normally destroyed like this. We need to first gather
+      // up enough unequipped ids to meet the material cost, then we destroy
+      // character equipment with those ids.
+      let equipment = await CharacterEquipment.notEquipped(code);
+      let toDestroy = [];
+
+      for (i=0; i<materials[code]; i++) {
+        toDestroy.push(equipment[i].id);
+      }
+
+      await CharacterEquipment.destroy({ where:{ id:toDestroy }});
+    }));
   }
 
   async function workProject() {

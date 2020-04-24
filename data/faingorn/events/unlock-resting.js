@@ -10,7 +10,7 @@ Event.build('unlock-resting', {
 
   stages:[{
     pages:[
-      { text:`(*) {{C::character.first-name}} is badly injured. I should let them rest.` }
+      { text:`(*) {{C::character.firstName}} is badly injured. I should let them rest.` }
     ]
   }],
 

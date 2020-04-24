@@ -30,8 +30,10 @@ CharacterEquipment.forInventory = async function() {
   });
 }
 
-CharacterEquipment.notEquipped = async function() {
-  return await CharacterEquipment.findAll({ where:{ character_id:null }});
+CharacterEquipment.notEquipped = async function(code) {
+  let query = { where:{ character_id:null }};
+  if (code) { query.where.code = code; }
+  return await CharacterEquipment.findAll(query);
 }
 
 // This isn't the most efficient way to check for a free item of one type or

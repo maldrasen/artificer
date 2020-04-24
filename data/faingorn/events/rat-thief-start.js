@@ -6,7 +6,7 @@ Event.build('rat-thief-1', {
   },
 
   requires:[
-    'resource.blood-berries>30',
+    'resource.blood-berries>=24',
     `minions.forager-count>0`
   ],
 

@@ -7,7 +7,7 @@ Event.build('rat-thief-strikes-again', {
   },
 
   requires:[
-    'resource.blood-berries>30',
+    'resource.blood-berries>=24',
   ],
 
   stages:[{
@@ -18,6 +18,7 @@ Event.build('rat-thief-strikes-again', {
   }],
 
   onFinish: async choices => {
+    Resource.destroy({ where:{ code:'blood-berries' }});
     AvailableEvent.add('rat-thief-strikes-again');
   },
 

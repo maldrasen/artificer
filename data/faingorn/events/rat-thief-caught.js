@@ -1,4 +1,4 @@
-Event.build('rat-thief-2', {
+Event.build('rat-thief-caught', {
 
   setting: {
     phase: 'late-night',
@@ -6,7 +6,7 @@ Event.build('rat-thief-2', {
   },
 
   requires:[
-    'resource.blood-berries>20',
+    'resource.blood-berries>=36',
   ],
 
   stages:[{
