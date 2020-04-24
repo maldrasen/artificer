@@ -137,7 +137,7 @@ Event.build('found-willow-branches-whip', {
       in: character.genderCode == 'male' ? 'cock' : 'pussy'
     });
 
-    Abuser.AnusAbuser.addInjury(character, { type:'smash', level:1, count:5, details:{ shape:'whip' }});
+    Abuser.addAnusInjury(character, { type:'smash', level:1, count:5, details:{ shape:'whip' }});
   }
 
 });

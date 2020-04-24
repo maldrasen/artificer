@@ -60,12 +60,12 @@ Event.build('found-blight-spider', {
     const pussy = await character.getPussy();
 
     if (cock) {
-      Abuser.CockAbuser.addInjury(character, { type:'blight', level:3, details:{ place:'balls' }});
+      Abuser.addCockInjury(character, { type:'blight', level:3, details:{ place:'balls' }});
       Game.chainEvent(choices['torment-balls'] == 'yes' ?
         'found-blight-spider-torment-balls':
         'found-blight-spider-normal');
     } else {
-      Abuser.PussyAbuser.addInjury(character, { type:'blight', level:3 });
+      Abuser.addPussyInjury(character, { type:'blight', level:3 });
       Game.chainEvent(choices['torment-pussy'] == 'yes' ?
         'found-blight-spider-torment-pussy':
         'found-blight-spider-normal');

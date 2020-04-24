@@ -7,7 +7,16 @@ global.MinionScrutinizer = (function() {
     if (requirement == 'minions.will-mutiny')          { return await checkMutiny(context); }
     if (requirement == 'minions.will-not-mutiny')      { return await checkMutiny(context) == false; }
 
+    // Injuries
+    if (requirement.match(/^minions.injured-count/))            { return await checkInjuredCount(requirement,100); }
+    if (requirement.match(/^minions.badly-injured-count/))      { return await checkInjuredCount(requirement,76);  }
+    if (requirement.match(/^minions.horribly-injured-count/))   { return await checkInjuredCount(requirement,51);  }
+    if (requirement.match(/^minions.critically-injured-count/)) { return await checkInjuredCount(requirement,26);  }
+
+    // Roles
     if (requirement.match(/minions\.forager-count/)) { return await checkDutyCount(requirement,'forager') }
+
+    // Single Minion
     if (requirement.match(/^minion\(.+\)\./)) { return checkMinion(requirement, context); }
 
     throw `Unknown Minion Requirement - ${requirement}`;
@@ -32,6 +41,17 @@ global.MinionScrutinizer = (function() {
     let count = context.get('minionData').workingCount;
     let match = requirement.match(/project(<|<=|=|>=|>)([^<>=]+)/);
     return CentralScrutinizer.checkComparisonOperation(count,match[1],match[2]);
+  }
+
+  async function checkInjuredCount(requirement, health) {
+    const match = requirement.match(/count(<|<=|=|>=|>)([^<>=]+)/);
+    const minions = await Character.getNormalMinions();
+
+    const injured = ArrayUtility.compact((await Promise.all(minions.map(async minion => {
+      return (await minion.getHealth()) < health ? minion : null;
+    }))));
+
+    return CentralScrutinizer.checkComparisonOperation(injured.length,match[1],match[2]);
   }
 
   async function checkDutyCount(requirement,dutyCode) {

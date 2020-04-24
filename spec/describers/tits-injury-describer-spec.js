@@ -8,7 +8,7 @@ describe('Describer: Tit (injuries)', function() {
         let place = Random.from(['left','right','all']);
         let shape = Random.from([null,'hoof'])
 
-        Abuser.TitsAbuser.addInjury(jada, { type:'smash', level, count, place, shape }).then(tits => {
+        Abuser.addTitsInjury(jada, { type:'smash', level, count, place, shape }).then(tits => {
           jada.getTits().then(tits => {
             SpecHelper.print(`Smash(${tits.smashLevel}) > ${tits.description}`);
             resolve();
@@ -26,7 +26,7 @@ describe('Describer: Tit (injuries)', function() {
         let place = Random.from(['left','right','all']);
         let shape = Random.from([null,'hoof'])
 
-        Abuser.TitsAbuser.addInjury(jada, { type:'smash', level, count, place, shape }).then(() => {
+        Abuser.addTitsInjury(jada, { type:'smash', level, count, place, shape }).then(() => {
           jada.getTits().then(tits => {
             SpecHelper.print(`Smash(${tits.smashLevel}) > ${tits.description}`);
             resolve();

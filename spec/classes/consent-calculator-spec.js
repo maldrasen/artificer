@@ -15,9 +15,9 @@ describe('ConsentCalculator', function() {
       return jada.addAspect(code, { level:otherOptions.aspects[code] });
     }));
 
-    if (otherOptions.injure == 'head.2')  { await Abuser.HeadAbuser.addInjury(jada, { type:'smash', level:2 }); }
-    if (otherOptions.injure == 'pussy.1') { await Abuser.PussyAbuser.addInjury(jada, { type:'burn', level:1 }); }
-    if (otherOptions.injure == 'pussy.3') { await Abuser.PussyAbuser.addInjury(jada, { type:'burn', level:3 }); }
+    if (otherOptions.injure == 'head.2')  { await Abuser.addHeadInjury(jada, { type:'smash', level:2 }); }
+    if (otherOptions.injure == 'pussy.1') { await Abuser.addPussyInjury(jada, { type:'burn', level:1 }); }
+    if (otherOptions.injure == 'pussy.3') { await Abuser.addPussyInjury(jada, { type:'burn', level:3 }); }
 
     let calc = new ConsentCalculator(jada);
     await calc.init();

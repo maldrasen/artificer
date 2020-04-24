@@ -7,7 +7,7 @@ describe('Describer: Cock (injuries)', function() {
         let count = Random.between(1,3);
         let place = Random.from(['cock','balls']);
 
-        Abuser.CockAbuser.addInjury(jada, { type:'blight', level, count, details:{ place }}).then(cock => {
+        Abuser.addCockInjury(jada, { type:'blight', level, count, details:{ place }}).then(cock => {
           jada.getCock().then(cock => {
             SpecHelper.print(`Blight(${cock.blightPlace}:${cock.blightLevel}) > ${cock.description}`);
             resolve();

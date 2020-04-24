@@ -71,6 +71,10 @@ Character.lookup = async function(id) {
   return (id == 1000000000) ? (await Player.instance()) : (await Character.findByPk(id));
 }
 
+Character.getNormalMinions = async function() {
+  return await Character.findAll({ where:{ type:'minion', status:'normal' }});
+}
+
 // A character scope that gets all the minions that can currently be summoned
 // for sex actions and such. Characters in the mission are not in the keep
 // right not, so they can't be summoned. Can't figure out the sequalize method
