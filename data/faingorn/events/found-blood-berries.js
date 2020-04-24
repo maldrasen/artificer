@@ -63,7 +63,7 @@ Event.build('found-blood-berries', {
   }],
 
   onFinish: async choices => {
-    AvailableEvent.add('rat-thief-1');
+    AvailableEvent.add('rat-thief-start');
   },
 
 });

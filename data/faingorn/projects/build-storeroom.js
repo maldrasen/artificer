@@ -11,7 +11,8 @@ Project.build('build-storeroom', {
 
   onFinish: async () => {
     Game.addEvent('storeroom-built');
-    AvailableEvent.add('rat-thief-2');
+    AvailableEvent.add('rat-thief-caught');
+    AvailableEvent.remove('rat-thief-strikes-again');
   },
 
 });

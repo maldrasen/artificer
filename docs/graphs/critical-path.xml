@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2020-04-24T14:23:05.764Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/13.0.1 Chrome/80.0.3987.163 Electron/8.2.1 Safari/537.36" etag="pVTEg_dB2yQKtNWTKGKt" compressed="false" version="13.0.1" type="device">
+<mxfile host="Electron" modified="2020-04-24T16:11:29.352Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/13.0.1 Chrome/80.0.3987.163 Electron/8.2.1 Safari/537.36" etag="u5aiMb4pWjs0KkaDeHzN" compressed="false" version="13.0.1" type="device">
   <diagram id="melmm9enP0P-Hva5XilJ" name="Page-1">
     <mxGraphModel dx="1762.89" dy="-319.55" grid="1" gridSize="10" guides="0" tooltips="1" connect="1" arrows="0" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="1">
       <root>
@@ -787,7 +787,10 @@
         <mxCell id="Z1zs-XdwQP_PzTnPQ_Y9-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="Z1zs-XdwQP_PzTnPQ_Y9-2" target="Z1zs-XdwQP_PzTnPQ_Y9-6" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="Z1zs-XdwQP_PzTnPQ_Y9-2" value="rat-thief-1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+        <mxCell id="yog-aIinqbcFmUBSvZKb-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="Z1zs-XdwQP_PzTnPQ_Y9-2" target="yog-aIinqbcFmUBSvZKb-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Z1zs-XdwQP_PzTnPQ_Y9-2" value="rat-thief-start" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="-1000" y="860" width="160" height="30" as="geometry" />
         </mxCell>
         <mxCell id="yog-aIinqbcFmUBSvZKb-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Z1zs-XdwQP_PzTnPQ_Y9-6" target="Z1zs-XdwQP_PzTnPQ_Y9-8">
@@ -796,7 +799,7 @@
         <mxCell id="Z1zs-XdwQP_PzTnPQ_Y9-6" value="build-storeroom" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
           <mxGeometry x="-920" y="915" width="160" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Z1zs-XdwQP_PzTnPQ_Y9-8" value="rat-thief (2...)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+        <mxCell id="Z1zs-XdwQP_PzTnPQ_Y9-8" value="rat-thief-caught" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="-841" y="970" width="160" height="30" as="geometry" />
         </mxCell>
         <mxCell id="Ntv098Dax7duw6y3NNwu-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="Ntv098Dax7duw6y3NNwu-3" target="Ntv098Dax7duw6y3NNwu-6" edge="1">
@@ -863,6 +866,18 @@
         </mxCell>
         <mxCell id="yog-aIinqbcFmUBSvZKb-6" value="unlock-hunting" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
           <mxGeometry x="-840" y="710" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yog-aIinqbcFmUBSvZKb-15" value="rat-thief-strikes-again" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="-800" y="860" width="160" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yog-aIinqbcFmUBSvZKb-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="yog-aIinqbcFmUBSvZKb-15" target="yog-aIinqbcFmUBSvZKb-15">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-620" y="875" />
+              <mxPoint x="-620" y="840" />
+              <mxPoint x="-720" y="840" />
+            </Array>
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>

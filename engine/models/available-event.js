@@ -40,6 +40,10 @@ AvailableEvent.add = async function(code, data={}) {
   });
 }
 
+AvailableEvent.remove = async function(code) {
+  await AvailableEvent.destroy({ where:{ code }});
+}
+
 AvailableEvent.printAll = async function() {
   const events = await AvailableEvent.findAll({ order:[['code', 'ASC']] });
 

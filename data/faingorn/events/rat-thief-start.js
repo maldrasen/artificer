@@ -6,7 +6,7 @@ Event.build('rat-thief-1', {
   },
 
   requires:[
-    'resource.blood-berries>20',
+    'resource.blood-berries>40',
     `minions.forager-count>0`
   ],
 
@@ -18,7 +18,9 @@ Event.build('rat-thief-1', {
   }],
 
   onFinish: async choices => {
-    AvailableProject.add('build-storeroom')
+    Resource.destroy({ where:{ code:'blood-berries' }});
+    AvailableEvent.add('rat-thief-strikes-again');
+    AvailableProject.add('build-storeroom');
   },
 
 });
