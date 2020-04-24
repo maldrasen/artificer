@@ -30,6 +30,25 @@ global.CharacterBuilder = (function() {
     'tit-slut':     7,
   };
 
+  // Builds a new standard minion given the options. This function should be
+  // used over the build() function for most minions, unless it's a character
+  // with specific needs for some reason. At least the species must be
+  // specified in the options. Options
+  //
+  //   minion             Options for CharacterBuilder.build()  e.g. { species:'scaven' }
+  //   randomAspectCount  Number of random aspects to give this character, can be null for a random number of aspects.
+  //
+  async function buildStandardMinion(options) {
+    const minion = await CharacterBuilder.build(options.minion);
+    await CharacterBuilder.addRandomAspects(minion,{ count:options.randomAspectCount });
+
+    if (Flag.lookup('player.goal') == 'followers') {
+      await minion.update({ loyalty:(minion.loyalty + 10) });
+    }
+
+    return minion;
+  }
+
   // So the process for the full build is build the body, pick a name, make adjectments to body based on name.
   // preName:            { type:Sequelize.STRING },
   // firstName:          { type:Sequelize.STRING },
@@ -168,6 +187,7 @@ global.CharacterBuilder = (function() {
 
   return {
     build,
+    buildStandardMinion,
     addBody,
     addRandomAspects,
     baseline,

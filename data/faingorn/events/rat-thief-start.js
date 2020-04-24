@@ -1,4 +1,4 @@
-Event.build('rat-thief-1', {
+Event.build('rat-thief-start', {
 
   setting: {
     phase: 'after-work',
@@ -18,9 +18,12 @@ Event.build('rat-thief-1', {
   }],
 
   onFinish: async choices => {
+    const rat = await CharacterBuilder.buildStandardMinion({ minion:{ type:'pending', species:'scaven' }});
+
     Resource.destroy({ where:{ code:'blood-berries' }});
     AvailableEvent.add('rat-thief-strikes-again');
     AvailableProject.add('build-storeroom');
+    Flag.set('character.rat-thief',rat.id);
   },
 
 });

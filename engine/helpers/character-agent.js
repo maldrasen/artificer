@@ -15,13 +15,25 @@ global.CharacterAgent = (function() {
     if (descriptive == 'any-minion')          { return await findAny();         }
     if (descriptive == 'most-injured-minion') { return await findMostInjured(); }
 
-    // Scaven
+    if (descriptive.match(/^flag=/))          { return await characterAtFlag(descriptive); }
+
+    // TODO: Replace with regular expressions that match any species.
     if (descriptive == 'any-scaven')          { return await findAny('scaven');      }
     if (descriptive == 'a-sexy-scaven')       { return await findSexable('scaven');  }
     if (descriptive == 'the-smartest-scaven') { return await findSmartest('scaven'); }
+
+    // TODO: Maybe get rid of this now?
     if (descriptive == 'scaven-chief')        { return await scavenChief();          }
 
     throw `Cannot find a character that matches ${descriptive}`;
+  }
+
+  async function characterAtFlag(descriptive) {
+    const flag = descriptive.match(/^flag=(.+)/)[1];
+    const id = Flag.lookup(flag);
+
+    console.log('Flag:',flag,id)
+    return await Character.lookup(id);
   }
 
   // This function gets the chief of the scaven. If the scaven chief flag has
