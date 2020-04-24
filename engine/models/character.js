@@ -194,6 +194,22 @@ Character.prototype.orgasmed = async function(options) {
   await this.update({ lust });
 }
 
+// Completely remove a character and their dependant models. If for some reason
+// the destroyed character has equipment it should be removed first, or else
+// this function will detroy it. (also, why is body on backwards?)
+Character.prototype.completelyRemove = async function(options={}) {
+  await Anus.destroy({ where:{ character_id:this.id }});
+  await Body.destroy({ where:{ id:this.body_id }});
+  await CharacterAspect.destroy({ where:{ character_id:this.id }});
+  await CharacterEquipment.destroy({ where:{ character_id:this.id }})
+  await Cock.destroy({ where:{ character_id:this.id }});
+  await Mouth.destroy({ where:{ character_id:this.id }});
+  await Nipples.destroy({ where:{ character_id:this.id }});
+  await Pussy.destroy({ where:{ character_id:this.id }});
+  await Tits.destroy({ where:{ character_id:this.id }});
+  await this.destroy();
+}
+
 HasAspects.isAppliedTo(Character);
 HasAttributes.isAppliedTo(Character);
 HasBody.isAppliedTo(Character);
