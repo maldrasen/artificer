@@ -21,28 +21,49 @@ Elements.AdjustmentBadge = class AdjustmentBadge {
   //          player specific, like rat-fucker.
   //
   // Level:   The level of the adjustment, -3 to 3, but not 0.
+  //
+  // You can also build a badge that isn't used to set ajust an aspect.
+  // Anything inside of parentheses will be displayed without doing anything.
+  // Useful for one time actions like setting flags.
 
   constructor(strang, actors) {
-    let parts = strang.split(' ');
-    this.subject = this.lookupSubject(parts[0], actors);
-    this.aspect = parts[1];
-    this.level = parts[2];
+    const parts = strang.split(' ');
+    const match = strang.match(/^\((.+)\)$/);
+
+    if (match) {
+      this.label = match[1];
+    } else {
+      this.subject = this.lookupSubject(parts[0], actors);
+      this.aspect = parts[1];
+      this.level = parts[2];
+    }
   }
 
   get aspectLabel() {
-    return this.aspect.replace(/-/,' ');
+    console.log("Wat?",this.label,this.aspect)
+    return this.label || this.aspect.replace(/-/,' ');
   }
 
   get arrow() {
-    return $('<span>',{ class:'arrow' }).append({
-      '1':'↑', '2':'⇑', '3':'⤊', '-1':'↓', '-2':'⇓', '-3':'⤋',
-    }[`${this.level}`]).prop('outerHTML');
+    if (this.level) {
+      return $('<span>',{ class:'arrow' }).append({
+        '1':'↑', '2':'↑↑', '3':'↑↑↑', '-1':'↓', '-2':'↓↓', '-3':'↓↓↓',
+      }[`${this.level}`]).prop('outerHTML');
+    }
+
+    return '';
   }
 
   // TODO: The event's actors map should have something that's recognizable by
   //       the character agent. This works for actors like the rat chief at
   //       least, but won't work with randomish actors. Need to find a place to
   //       store minion IDs in the event data for shit like this.
+  //
+  // TODO: Addendum. We do have the actors in the state now, but as a design
+  //       choice we've only been adjusting the player in these decisions, and
+  //       adjusting the minions in the event itself. Maybe the adjustment
+  //       badge should only show be defined with an adjustment and an Level
+  //       now? Or should just be a random label.
   lookupSubject(subject, actors) {
     return (actors && actors[subject]) ? actors[subject] : subject;
   }
@@ -59,11 +80,14 @@ Elements.AdjustmentBadge = class AdjustmentBadge {
 
   execute() {
     Alerts.showAlert({ adjustment:`${this.aspectLabel} ${this.arrow}`, classname:this.aspect });
-    Renderer.sendCommand('character.make-aspect-adjustment',{
-      subject: this.subject,
-      aspect: this.aspect,
-      level: this.level
-    });
+
+    if (this.aspect) {
+      Renderer.sendCommand('character.make-aspect-adjustment',{
+        subject: this.subject,
+        aspect: this.aspect,
+        level: this.level
+      });
+    }
   }
 
 }

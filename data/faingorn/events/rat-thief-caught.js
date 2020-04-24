@@ -17,14 +17,25 @@ Event.build('rat-thief-caught', {
     selectionPage: true,
     selectionKey: 'action',
     selections:[
-      { text:'Kill them.', value:'kill' },
-      { text:'Let them go.', value:'release' },
-      { text:'Have them serve me.', value:'recruit' },
+      { text:'Torture them to death.', value:'kill',    effects:['player sadist 3','(Reputation: The Butcher)']},
+      { text:'Let them go.',           value:'release', effects:['player sadist -1','(Reputation: The Benevolent)']},
+      { text:'Have them serve me.',    value:'recruit', effects:['(Reputation: The Seductive)']},
     ]
   }],
 
   onFinish: async choices => {
-    console.log("Do:",choices.action)
+    if (choices.action == 'kill') {
+      Flag.set('player.scaven-reputations.the-butcher','Y')
+      Game.chainEvent('rat-thief-kill',{},choices);
+    }
+    if (choices.action == 'release') {
+      Flag.set('player.scaven-reputations.the-benevolent','Y')
+      Game.chainEvent('rat-thief-release',{},choices);
+    }
+    if (choices.action == 'recruit') {
+      Flag.set('player.scaven-reputations.the-seductive','Y')
+      Game.chainEvent('rat-thief-recruit',{},choices);
+    }
   },
 
 });

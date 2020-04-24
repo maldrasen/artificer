@@ -156,8 +156,22 @@ Game.startLocationEvent = async function(code) {
 // chainEvent() continues the currently running event. The state carries over
 // from the previous event, but if changes are nessessary can be added to the
 // new state argument and merged into the current state.
-Game.chainEvent = function(code, state={}) {
+//
+// If the original event is queued without the actors already in the state
+// they're probably being selected after the event starts by the
+// CharacterAgent. When this is the case we will almost always want to chain
+// these selected actors to the next event, but their IDs are stashed in the
+// choices object. If we pass the choices back into the chain though we
+// automatically fetch the actors from it.
+Game.chainEvent = function(code, state={}, choices={}) {
   if (Game._currentEvent == null) { throw `Cannot chain event because there is no current event.` }
+
+  if (choices) {
+    if (state.actors == null) { state.actors = {}; }
+    each(Object.keys(choices.event.actorIDs), key => {
+      state.actors[key] = choices.event.actorIDs[key]
+    });
+  }
 
   Game.log(`Chained: ${code}`);
   Game._currentEvent.event = Event.lookup(code);
