@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2020-04-25T21:12:34.463Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/13.0.1 Chrome/80.0.3987.163 Electron/8.2.1 Safari/537.36" etag="mK-vXTHiDcUsTgbZNi5o" compressed="false" version="13.0.1" type="device">
+<mxfile host="Electron" modified="2020-04-25T22:17:33.184Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/13.0.1 Chrome/80.0.3987.163 Electron/8.2.1 Safari/537.36" etag="zhC-qYqeK5BNyFdI4IVd" compressed="false" version="13.0.1" type="device">
   <diagram id="melmm9enP0P-Hva5XilJ" name="Page-1">
-    <mxGraphModel dx="2392.49" dy="164.58" grid="1" gridSize="10" guides="0" tooltips="1" connect="1" arrows="0" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="1">
+    <mxGraphModel dx="1359.82" dy="-200.76" grid="1" gridSize="10" guides="0" tooltips="1" connect="1" arrows="0" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="0" shadow="1">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -735,11 +735,6 @@
         </mxCell>
         <mxCell id="Z1zs-XdwQP_PzTnPQ_Y9-6" value="build-storeroom" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
           <mxGeometry x="-920" y="915" width="160" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="kY1UbT0NU9WPXWTasfgu-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="Z1zs-XdwQP_PzTnPQ_Y9-8">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="-440" y="40" as="targetPoint" />
-          </mxGeometry>
         </mxCell>
         <mxCell id="Z1zs-XdwQP_PzTnPQ_Y9-8" value="rat-thief-caught" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="-841" y="970" width="160" height="30" as="geometry" />
