@@ -317,7 +317,7 @@ Components.EventView = (function() {
   function acceptSelection() {
     choices[currentStage().selectionKey] = $(this).data('value');
 
-    $.each($(this).find('.adjustment-badge'), (i, badgeElement) => {
+    $.each($(this).find('.selection-badge'), (i, badgeElement) => {
       $(badgeElement).data('badge').execute();
     });
 
