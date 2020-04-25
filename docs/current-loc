@@ -6,20 +6,20 @@ terrible measure of progress and doneness normally, but this project involves a
 ton of writing, so knowing how many lines this has is actually useful. I'm
 thinking once we approach 500,000 lines we'll be close to done.
 
-Prickle-Prickle, the 11th day of Discord in the YOLD 3186 / 25 Mar 2020
+Setting Orange, the 42nd day of Discord in the YOLD 3186 / 25 Apr 2020
 
 ---------- Result ------------
 
-            Physical :  32226
-              Source :  25332
-             Comment :  2627
- Single-line comment :  2621
-       Block comment :  6
+            Physical :  33897
+              Source :  26280
+             Comment :  3066
+ Single-line comment :  3052
+       Block comment :  14
                Mixed :  44
  Empty block comment :  0
-               Empty :  4311
-               To Do :  194
+               Empty :  4595
+               To Do :  210
 
-Number of files read :  540
+Number of files read :  581
 
 ----------------------------
