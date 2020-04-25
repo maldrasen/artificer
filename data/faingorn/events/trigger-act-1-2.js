@@ -6,7 +6,6 @@ Event.build('trigger-act-1-2', {
   },
 
   requires:[
-    'flag.completed.rat-thief-caught',
     'flag.plan-view.missions',
     'flag.plan-view.roles.hunter',
   ],
