@@ -1,4 +1,10 @@
 
+Item.build('leather-scraps', {
+  type: 'resource',
+  name: 'Leather Scraps',
+  maxStock: 200,
+});
+
 Item.build('hide', {
   type: 'resource',
   name: 'Hide',

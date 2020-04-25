@@ -25,6 +25,7 @@ global.CentralScrutinizer = (function() {
     if (requirement.match(/^flag/))            { return checkFlag(requirement); }
     if (requirement.match(/^no-flag/))         { return checkFlagNotExists(requirement); }
     if (requirement.match(/^resource/))        { return await checkResource(requirement); }
+    if (requirement.match(/^equipment/))       { return await checkEquipment(requirement); }
     if (requirement.match(/^state/))           { return checkState(requirement,extra.state); }
     if (requirement.match(/^player/))          { return await PlayerScrutinizer.check(requirement, context); }
     if (requirement.match(/^minion/))          { return await MinionScrutinizer.check(requirement, context); }
@@ -47,6 +48,19 @@ global.CentralScrutinizer = (function() {
       let code = requirement.match(/^resource\.(.+)/)[1];
       return (await Resource.lookup(code)) != null
     }
+  }
+
+  // the base equipment check just operates over either all equipment or on
+  // unequipped equipment. The MinionScrutinizer is used to check equipped
+  // equipment (or it will once that's implemented)
+  //
+  //    equipment.available.CODE      checks for > 0 available (unequipped)
+  //    equipment.available.CODE=N    checks for N available
+  //    equipment.all.CODE            checks for >0 total
+  //    equipment.all.CODE=N          checks for N total
+  async function checkEquipment(requirement) {
+    // TEMP
+    return true;
   }
 
   // This function is used by any requirement check that needs to compare two

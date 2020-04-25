@@ -11,6 +11,7 @@ Project.build('make-crude-fur-clothing', {
 
   onFinish: async () => {
     AvailableEvent.add('morning-2');
+    Resource.add('leather-scraps',6);
   },
 
 });

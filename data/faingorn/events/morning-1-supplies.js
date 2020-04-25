@@ -10,9 +10,9 @@ Event.build('morning-1-supplies', {
       { text:`It's obvious that the place has already been completely picked over by other scavengers though. Rooms
               that were closed up and dry lie almost completely empty. I did manage to find some supplies though, which
               in truth is a bit odd.` },
-      { text:`In one of the smaller rooms someone had hidden a small leather bag stuffed with dried fruit and nuts
-              placed upon a large pile of furs. If I had to guess it looks like someone had left it there as some kind
-              of emergency cache, perhaps some fur trapper making their living out in the nearby wilderness?` },
+      { text:`In one of the smaller rooms I found an old skinning knife and a small leather bag wrapped up in a big
+              bundle of furs. The bag is stuffed with dried fruit and nuts. Perhaps someone had left it there as some
+              kind of emergency cache? Maybe some fur trapper making their living out in the nearby wilderness?` },
     ]
   },{
     requires:['flag.events.morning-1=did-supplies'],
