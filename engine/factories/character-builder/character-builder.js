@@ -46,6 +46,15 @@ global.CharacterBuilder = (function() {
       await minion.update({ loyalty:(minion.loyalty + 10) });
     }
 
+    if (minion.speciesCode == 'scaven') {
+      if (Flag.lookup('player.scaven-reputations.the-butcher')) {
+        await minion.update({ fear:(minion.fear + Random.between(5,10)) });
+      }
+      if (Flag.lookup('player.scaven-reputations.the-seductive')) {
+        await minion.update({ loyalty:(minion.loyalty + Random.between(5,10)) });
+      }
+    }
+
     return minion;
   }
 
