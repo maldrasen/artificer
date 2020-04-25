@@ -59,6 +59,7 @@ Event.build('morning-3', {
     await GameStage.EventCollections.addAct_1_1();
 
     Flag.setAll({
+      'game.current-act':        'act-1-1',
       'plan-view.allow-idle':    'Y',
       'plan-view.roles.forager': 'Y',
     });

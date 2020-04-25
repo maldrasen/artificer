@@ -81,7 +81,6 @@ Event.build('ambush-rat-end-2', {
     });
 
     await AvailableEvent.add('morning-3',{ state:{ actors:{ R:rat.id }}});
-    await AvailableEvent.add('unlock-resting');
   },
 
 });
