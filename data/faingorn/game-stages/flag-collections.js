@@ -34,6 +34,7 @@ GameStage.FlagCollections = {
       'location-menu.minions':   'Y',
       'plan-view.allow-idle':    'Y',
       'plan-view.roles.forager': 'Y',
+      'plan-view.roles.rest':    'Y',
       'report-view.show-food':   'Y',
     });
   },
@@ -51,7 +52,6 @@ GameStage.FlagCollections = {
       'location-menu.show-date':     'Y',
       'mission.explore-hinterlands': 'Y',
       'plan-view.missions':          'Y',
-      'plan-view.roles.rest':        'Y',
       'plan-view.tasks.craft':       'Y',
       'plan-view.tasks.meditate':    'Y',
       'player.maelstrom':            'Y',

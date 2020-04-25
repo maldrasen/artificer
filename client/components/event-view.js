@@ -222,7 +222,7 @@ Components.EventView = (function() {
 
   function applyPageEffects(effects) {
     each(effects, strang => {
-      new Elements.AdjustmentBadge(strang, eventData.actorIDs).execute();
+      new Adjustment(strang, eventData.actorIDs).execute();
     });
   }
 
@@ -308,7 +308,7 @@ Components.EventView = (function() {
 
     each(selection.effects, strang => {
       button.addClass('with-badges');
-      badges.append(new Elements.AdjustmentBadge(strang, eventData.actors).build());
+      badges.append(new Elements.SelectionBadge(strang, eventData.actors).build());
     });
 
     return $('<li>',{ class:'selection'}).append(button);
@@ -317,8 +317,8 @@ Components.EventView = (function() {
   function acceptSelection() {
     choices[currentStage().selectionKey] = $(this).data('value');
 
-    $.each($(this).find('.adjustment-badge'), (i, badge) => {
-      $(badge).data('badge').execute();
+    $.each($(this).find('.adjustment-badge'), (i, badgeElement) => {
+      $(badgeElement).data('badge').execute();
     });
 
     $('#currentEvent .selection-content').addClass('hide');

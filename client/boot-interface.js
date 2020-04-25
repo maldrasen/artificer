@@ -37,7 +37,6 @@ require(`${ROOT}/client/components/event-view/form-page`);
 
 // === Elements ===
 require(`${ROOT}/client/elements/elements`);
-require(`${ROOT}/client/elements/adjustment-badge`);
 require(`${ROOT}/client/elements/alert`);
 require(`${ROOT}/client/elements/badges`);
 require(`${ROOT}/client/elements/buttons`);
@@ -49,9 +48,11 @@ require(`${ROOT}/client/elements/image-resource`);
 require(`${ROOT}/client/elements/paged-content`);
 require(`${ROOT}/client/elements/radio-buttons`);
 require(`${ROOT}/client/elements/scrolling-panel`);
+require(`${ROOT}/client/elements/selection-badge`);
 require(`${ROOT}/client/elements/tooltip`);
 
 // === Interface ===
+require(`${ROOT}/client/interface/adjustment`);
 require(`${ROOT}/client/interface/alerts`);
 require(`${ROOT}/client/interface/client`);
 require(`${ROOT}/client/interface/debug`);

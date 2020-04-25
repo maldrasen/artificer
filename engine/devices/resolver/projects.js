@@ -34,7 +34,7 @@ Resolver.Projects = (function() {
   // resources and equipment. They may be other item types to consume in the
   // future as well.
   async function consumeMaterials(materials) {
-    await Promise.all(Object.keys(materials).map(async code => {
+    await Promise.all(Object.keys(materials||{}).map(async code => {
 
       if (Item.instances[code]) {
         return await Resource.consume({ [code]:materials[code] });

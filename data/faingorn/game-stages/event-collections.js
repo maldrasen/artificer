@@ -8,7 +8,6 @@ GameStage.EventCollections = {
 
   addAct_1_1: async function() {
     await AvailableEvent.add('morning-4');
-    await AvailableEvent.add('unlock-resting');
   },
 
 };
