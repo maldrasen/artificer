@@ -77,6 +77,65 @@ describe('CentralScrutinizer', function() {
     });
   });
 
+  describe('checkEquipment()', function() {
+    async function setup() {
+      const p1 = await CharacterEquipment.create({ code:'huge-anal-plug', condition:100 });
+      const p2 = await CharacterEquipment.create({ code:'huge-anal-plug', condition:100 });
+      const p3 = await CharacterEquipment.create({ code:'monster-anal-plug', condition:100 });
+
+      const jada = await SpecHelper.buildJada({});
+      await jada.equip(p1,'anus');
+    }
+
+    it('checks available presence', function(done) {
+      setup().then(_ => {
+        CentralScrutinizer.meetsRequirements('equipment.available.monster-anal-plug').then(yep => {
+          CentralScrutinizer.meetsRequirements('equipment.available.small-anal-plug').then(nope => {
+            expect(yep).to.be.true;
+            expect(nope).to.be.false;
+            done();
+          });
+        });
+      });
+    });
+
+    it('checks available count', function(done) {
+      setup().then(_ => {
+        CentralScrutinizer.meetsRequirements('equipment.available.huge-anal-plug=1').then(yep => {
+          CentralScrutinizer.meetsRequirements('equipment.available.huge-anal-plug=2').then(nope => {
+            expect(yep).to.be.true;
+            expect(nope).to.be.false;
+            done();
+          });
+        });
+      });
+    });
+
+    it('checks total presence', function(done) {
+      setup().then(_ => {
+        CentralScrutinizer.meetsRequirements('equipment.all.monster-anal-plug').then(yep => {
+          CentralScrutinizer.meetsRequirements('equipment.all.small-anal-plug').then(nope => {
+            expect(yep).to.be.true;
+            expect(nope).to.be.false;
+            done();
+          });
+        });
+      });
+    });
+
+    it('checks total count', function(done) {
+      setup().then(_ => {
+        CentralScrutinizer.meetsRequirements('equipment.all.huge-anal-plug=2').then(yep => {
+          CentralScrutinizer.meetsRequirements('equipment.all.huge-anal-plug=1').then(nope => {
+            expect(yep).to.be.true;
+            expect(nope).to.be.false;
+            done();
+          });
+        });
+      });
+    });
+  });
+
   describe('checkResource()', function() {
     it('checks for item presence', function(done) {
       Resource.add('blood-berries',50).then(() => {

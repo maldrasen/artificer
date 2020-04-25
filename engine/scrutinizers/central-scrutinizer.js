@@ -59,8 +59,18 @@ global.CentralScrutinizer = (function() {
   //    equipment.all.CODE            checks for >0 total
   //    equipment.all.CODE=N          checks for N total
   async function checkEquipment(requirement) {
-    // TEMP
-    return true;
+    let presenceMatch = requirement.match(/^equipment\.(available|all)\.([^<>=]+)/);
+    let operationMatch = requirement.match(/^equipment\.(available|all)\.([^<>=]+)(<|<=|=|>=|>)([^<>=]+)/);
+
+    let type = presenceMatch[1];
+    let code = presenceMatch[2];
+
+    let count = ((type == 'all') ?
+      (await CharacterEquipment.findAll({ where:{ code }})) :
+      (await CharacterEquipment.notEquipped(code))).length;
+
+    return (operationMatch == null) ? (count > 0) :
+      CentralScrutinizer.checkComparisonOperation(count,operationMatch[3],operationMatch[4]);
   }
 
   // This function is used by any requirement check that needs to compare two
