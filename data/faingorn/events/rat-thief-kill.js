@@ -15,6 +15,7 @@ Event.build('rat-thief-kill', {
   }],
 
   onFinish: async choices => {
+    Flag.set('character.rat-thief',null);
     if (choices.method == 'skin-yes') { Game.chainEvent('rat-thief-kill-skin', { sex:'yes' }); }
     if (choices.method == 'skin-no')  { Game.chainEvent('rat-thief-kill-skin', { sex:'no'  }); }
     if (choices.method == 'mount')    { Game.chainEvent('rat-thief-kill-mount'); }

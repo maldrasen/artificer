@@ -80,7 +80,7 @@ Event.build('ambush-rat-end-2', {
       'report-view.show-food': 'Y',
     });
 
-    await AvailableEvent.add('morning-3',{ state:{ actors:{ R:rat.id }}});
+    await AvailableEvent.add('trigger-act-1-1',{ state:{ actors:{ R:rat.id }}});
   },
 
 });

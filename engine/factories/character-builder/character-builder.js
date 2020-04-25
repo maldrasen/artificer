@@ -170,8 +170,12 @@ global.CharacterBuilder = (function() {
       if (genderAspects.indexOf('m') >= 0) { await character.addAspect('androphilic', { strength: 200+Random.upTo(400) }); }
       if (genderAspects.indexOf('f') >= 0) { await character.addAspect('gynephilic',  { strength: 200+Random.upTo(400) });  }
 
-      if (genderAspects == 'm' && Random.upTo(4) == 0) { await character.addAspect('gynephobic',  { strength: 200+Random.upTo(400) }); }
-      if (genderAspects == 'f' && Random.upTo(4) == 0) { await character.addAspect('androphobic', { strength: 200+Random.upTo(400) }); }
+      if (genderAspects == 'm' && Random.upTo(4) == 0 && character.canAddAspect('gynephobic')) {
+        await character.addAspect('gynephobic',  { strength: 200+Random.upTo(400) });
+      }
+      if (genderAspects == 'f' && Random.upTo(4) == 0 && character.canAddAspect('androphobic')) {
+        await character.addAspect('androphobic', { strength: 200+Random.upTo(400) });
+      }
     }
   }
 

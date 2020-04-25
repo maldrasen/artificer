@@ -1,4 +1,4 @@
-Event.build('morning-3', {
+Event.build('trigger-act-1-1', {
 
   setting: {
     phase: 'morning',
@@ -59,9 +59,10 @@ Event.build('morning-3', {
     await GameStage.EventCollections.addAct_1_1();
 
     Flag.setAll({
-      'game.current-act':        'act-1-1',
-      'plan-view.allow-idle':    'Y',
-      'plan-view.roles.forager': 'Y',
+      'game.current-act':         'act-1-1',
+      'game.current-act-started': Game.dayNumber(),
+      'plan-view.allow-idle':     'Y',
+      'plan-view.roles.forager':  'Y',
     });
   },
 

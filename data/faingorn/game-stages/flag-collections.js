@@ -31,17 +31,19 @@ GameStage.FlagCollections = {
 
   setAct_1_1: function() {
     Flag.setAll({
-      'game.current-act':        'act-1-1',
-      'location-menu.minions':   'Y',
-      'plan-view.allow-idle':    'Y',
-      'plan-view.roles.forager': 'Y',
-      'report-view.show-food':   'Y',
+      'game.current-act':         'act-1-1',
+      'game.current-act-started': 3,
+      'location-menu.minions':    'Y',
+      'plan-view.allow-idle':     'Y',
+      'plan-view.roles.forager':  'Y',
+      'report-view.show-food':    'Y',
     });
   },
 
   setAct_1_2: function() {
     Flag.setAll({
       'game.current-act':            'act-1-2',
+      'game.current-act-started':    12,
       'item.bitter-fruits':          'Y',
       'item.blight-spider':          'Y',
       'item.blood-berries':          'Y',
@@ -52,26 +54,24 @@ GameStage.FlagCollections = {
       'location-menu.inventory':     'Y',
       'location-menu.show-date':     'Y',
       'mission.explore-hinterlands': 'Y',
+      'mission.gather-stone':        'Y',
+      'mission.gather-timber':       'Y',
       'plan-view.missions':          'Y',
+      'plan-view.roles.hunter':      'Y',
       'plan-view.roles.rest':        'Y',
       'plan-view.tasks.craft':       'Y',
       'plan-view.tasks.meditate':    'Y',
       'player.maelstrom':            'Y',
       'player.meditate-count':       8,
       'recipe.basket':               'Y',
+      'recipe.sling':                'Y',
       'role.forage.failure-count':   1,
       'role.forage.success-count':   8,
     });
   },
 
-  // Now that we're working in Act 1.3 remember to set flags here at the same
-  // time they're added in other events. I'm still building act 1-2 at the
-  // moment though.
+  // Add these as they happen of course.
   setAct_1_3: function() {
-    Flag.setAll({
-      // 'mission.gather-stone':        'Y',
-      // 'mission.gather-timber':       'Y',
-    });
   }
 
 };

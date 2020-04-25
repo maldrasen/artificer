@@ -1,4 +1,4 @@
-Event.build('morning-4', {
+Event.build('start-act-1-1', {
 
   setting: {
     phase: 'wake',
@@ -31,11 +31,6 @@ Event.build('morning-4', {
 
   onFinish: async choices => {
     Flag.set('plan-view.tasks.meditate','Y');
-    AvailableEvent.add('day-8-explore');
-    AvailableEvent.add('magic-practice-1-1');
-    AvailableEvent.add('magic-practice-1-2');
-    AvailableEvent.add('magic-practice-1-3');
-    AvailableEvent.add('magic-practice-1-4');
   },
 
 });
