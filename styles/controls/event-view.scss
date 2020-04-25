@@ -144,10 +144,16 @@
 
     .selection a.with-badges { line-height: 40px; }
 
+    // 414 width is a bit of a mystery. It's needed to get the warning badges
+    // to line up on the left, when everything else is right aligned. Should
+    // probably actually convert this to a float layout, but then I would need
+    // left and right containers for the badges.
     .badge-area {
       position: absolute;
       bottom: -15px;
       right: 3px;
+      width: 414px;
+      text-align: right;
     }
   }
 

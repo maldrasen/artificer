@@ -22,7 +22,7 @@ Elements.SelectionBadge = class SelectionBadge {
 
   get classname() {
     if (this.label) { return 'label-badge'; }
-    if (this.warning) { return 'warning-badge'; }
+    if (this.warning) { return `warning-badge ${this.warning}-warning`; }
 
     const level = (this.adjustment.level > 0) ?
       `up-${this.adjustment.level}`:

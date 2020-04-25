@@ -17,7 +17,7 @@ Event.build('rat-thief-caught', {
     selectionPage: true,
     selectionKey: 'action',
     selections:[
-      { text:'Torture them to death.', value:'kill',    effects:['player sadist 3','(Reputation: The Butcher)']},
+      { text:'Torture them to death.', value:'kill',    effects:['-snuff-','player sadist 3','(Reputation: The Butcher)']},
       { text:'Let them go.',           value:'release', effects:['player sadist -1','(Reputation: The Benevolent)']},
       { text:'Have them serve me.',    value:'recruit', effects:['(Reputation: The Seductive)']},
     ]

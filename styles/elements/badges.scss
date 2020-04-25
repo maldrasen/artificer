@@ -12,7 +12,7 @@
   box-shadow: $shadow-shallow;
 }
 
-.adjustment-badge {
+.selection-badge {
   margin: 0 2px;
   &.up-1   { color: $fg-adjust-up-1;   }
   &.up-2   { color: $fg-adjust-up-2;   }
@@ -20,6 +20,18 @@
   &.down-1 { color: $fg-adjust-down-1; }
   &.down-2 { color: $fg-adjust-down-2; }
   &.down-3 { color: $fg-adjust-down-3; }
+}
+
+.label-badge { color: $fg-weak; }
+
+.warning-badge {
+  float: left;
+  position: relative;
+  top: 10px;
+
+  &.piss-warning  { color: $fg-sex-piss;  }
+  &.scat-warning  { color: $fg-sex-scat;  }
+  &.snuff-warning { color: $fg-sex-snuff; }
 }
 
 .split-badge {
