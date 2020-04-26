@@ -5,7 +5,10 @@ Event.build('trigger-act-1-2', {
     location: 'courtyard'
   },
 
-  requires:['flag.plan-view.missions','flag.plan-view.roles.hunter'],
+  requires:[
+    'flag.plan-view.missions',
+    'flag.plan-view.roles.hunter',
+  ],
   actors: { C:'flag=character.first-scaven' },
 
   stages:[{
