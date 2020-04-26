@@ -7,11 +7,8 @@ Role.Hunter = (function() {
     return Flag.lookup('plan-view.roles.hunter') == 'Y'
   }
 
-  // TODO: Tier is set to 0 now, but this will be based entirely on the
-  //       character's equipment. Tier 0 is the baseline though, and indicates
-  //       that the character has no equipment at all.
   async function work(character) {
-    let tier = 0;
+    let tier = await calculateTier(character);
     let skill = await Role.Skills.skillLevel(character,'hunting');
     let chance = successChance(character.physical, skill);
     let success = Random.roll(100) < chance
@@ -21,6 +18,19 @@ Role.Hunter = (function() {
     } else {
       return await huntingFailure(character,tier,skill);
     }
+  }
+
+  // Hunting tier is based entirely on a character's equipment, primarily on
+  // the weapon used, though other tools will play into this later I think.
+  // Poison tipped arrows are thing, but is ammo a tool then?
+  //   Tier 0 - No equipment.
+  //   Tier 1 - Sling.
+  //   Tier 2 - Bow and arrows.
+  //   Tier 3 - Bow and arrows with poison.
+  async function calculateTier(character) {
+    const weapon = await character.getEquipment('weapon');
+    if (weapon == null) { return 0; }
+    if (weapon.code == 'sling') { return 1; }
   }
 
   async function huntingSuccess(character,tier,skill) {
@@ -46,8 +56,8 @@ Role.Hunter = (function() {
 
     if (raw.items)         { result.items = raw.items; }
     if (raw.notifications) { result.notifications = raw.notifications; }
-    if (raw.injury)        { result.injury = raw.injury.story }
-    if (raw.flavors)       { result.flavors = ItemFlavor.forReport(raw.flavors); }
+    if (raw.injury)        { result.injury = raw.injury.story; }
+    if (raw.flavors)       { result.flavors = raw.flavors; }
 
     return result;
   }
@@ -74,13 +84,25 @@ Role.Hunter = (function() {
   //       so that minions hunting in the caverns, Greenwood, or Mephidross
   //       will bring back different shit.
   function huntingResults(tier, skill) {
-    return {
-      tier_0:{
+    if (tier == 0) {
+      return {
+        skill_0:[{ type:'small-game', min:0, max:1 },{ type:'small-game-pelt', min:0, max:1 }],
+        skill_1:[{ type:'small-game', min:1, max:2 },{ type:'small-game-pelt', min:0, max:1 }],
+        skill_2:[{ type:'small-game', min:2, max:4 },{ type:'small-game-pelt', min:1, max:2 }],
+        skill_3:[{ type:'small-game', min:3, max:6 },{ type:'small-game-pelt', min:1, max:2 }],
+      }[`skill_${skill}`];
+    }
+
+    if (tier == 1) {
+      return {
         skill_0:[{ type:'small-game', min:3, max:6  },{ type:'small-game-pelt', min:0, max:2 }],
         skill_1:[{ type:'small-game', min:4, max:8  },{ type:'small-game-pelt', min:0, max:3 }],
         skill_2:[{ type:'small-game', min:5, max:10 },{ type:'small-game-pelt', min:1, max:4 }],
         skill_3:[{ type:'small-game', min:6, max:12 },{ type:'small-game-pelt', min:3, max:5 }],
-    }}[`tier_${tier}`][`skill_${skill}`];
+      }[`skill_${skill}`];
+    }
+
+    throw `Need to implement results for hunting tier ${tier}`;
   }
 
   // Success chance is based on physical attribute and skill level alone.
