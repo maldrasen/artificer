@@ -4,12 +4,20 @@ Resolver.Healing = (function() {
     let parts = await minion.getCompleteBody();
     let healed = {};
 
-    await healPart(minion, parts.body, 'smash', healed);
+    await healPart(minion, parts.anus, 'smash', healed);
+    await healPart(minion, parts.body, 'pierce', healed);
+    await healPart(minion, parts.mouth, 'cut', healed);
+    await healPart(minion, parts.mouth, 'smash', healed);
 
     if (parts.cock) {
       await healPart(minion, parts.cock, 'blight', healed);
       await healPart(minion, parts.cock, 'burn', healed);
       await healPart(minion, parts.cock, 'smash', healed);
+    }
+    if (parts.pussy) {
+      await healPart(minion, parts.pussy, 'blight', healed);
+      await healPart(minion, parts.pussy, 'burn', healed);
+      await healPart(minion, parts.pussy, 'smash', healed);
     }
     if (parts.tits) {
       await healPart(minion, parts.tits, 'blight', healed);
@@ -51,14 +59,16 @@ Resolver.Healing = (function() {
     if (healed[partName] == null) { healed[partName] = []; }
     healed[partName].push(type);
 
-    if (type == 'blight') { await resetBlight(part); }
-    if (type == 'burn')   { await resetBurn(part);   }
-    if (type == 'smash')  { await resetSmash(part);  }
+    if (type == 'blight') { resetBlight(part); }
+    if (type == 'burn')   { resetBurn(part);   }
+    if (type == 'cut')    { resetCut(part);   }
+    if (type == 'pierce') { resetPierce(part); }
+    if (type == 'smash')  { resetSmash(part);  }
 
     await part.save();
   }
 
-  async function resetBlight(part) {
+  function resetBlight(part) {
     part.blightLevel = 0;
     part.blightCount = 0;
     part.blightHealing = 0;
@@ -66,7 +76,7 @@ Resolver.Healing = (function() {
     if (part.blightPlace) { part.blightPlace = null; }
   }
 
-  async function resetBurn(part) {
+  function resetBurn(part) {
     part.burnLevel = 0;
     part.burnCount = 0;
     part.burnHealing = 0;
@@ -74,7 +84,19 @@ Resolver.Healing = (function() {
     if (part.burnPlace) { part.burnPlace = null; }
   }
 
-  async function resetSmash(part) {
+  function resetCut(part) {
+    part.cutLevel = 0;
+    part.cutCount = 0;
+    part.cutHealing = 0;
+  }
+
+  function resetPierce(part) {
+    part.pierceLevel = 0;
+    part.pierceCount = 0;
+    part.pierceHealing = 0;
+  }
+
+  function resetSmash(part) {
     part.smashLevel = 0;
     part.smashCount = 0;
     part.smashHealing = 0;

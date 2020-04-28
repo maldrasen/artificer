@@ -14,9 +14,9 @@ Event.build('trigger-act-1-2', {
   stages:[{
     pages:[
       { text:`I wake up early today. Early enough to step out onto the courtyard walls to watch the sun rise. I feel
-          like I've really started to make some progress getting settled into {{game|dayNumber}}. It's not comfortable
+          like I've really started to make some progress getting settled into {{game|keepName}}. It's not comfortable
           living by any means, though I feel like I'm at the point where I can start making it so.` },
-      { text:`There's so much still to do though. The entire keep's still basically a ruin. I've done what I can to
+      { text:`There is still so much to do though. The entire keep's still basically a ruin. I've done what I can to
           clean out the great hall, but there are piles of debris, dirt, bones and shit scattered throughout the rest
           of the keep.` },
       { text:`My first priority should be getting the place cleaned up a bit better. At least the lower floors.` },
