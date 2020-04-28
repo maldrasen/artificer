@@ -22,8 +22,7 @@ describe("CharacterEquipment", function() {
     });
   });
 
-
-  describe.only("degrade()", function() {
+  describe("degrade()", function() {
 
     async function setup() {
       const plug = await CharacterEquipment.create({ code:'small-anal-plug', condition:100 });
@@ -78,7 +77,6 @@ describe("CharacterEquipment", function() {
         });
       });
     });
-
   });
 
 });
