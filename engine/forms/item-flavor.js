@@ -11,6 +11,17 @@ global.ItemFlavor = class ItemFlavor extends Form {
     return data;
   }
 
+  static listify(flavors) {
+    return listify(Object.keys(flavors).map(code => {
+      let flavor = ItemFlavor.lookup(code);
+      return {
+        word: flavor.storyWord,
+        words: flavor.storyWords,
+        count: flavors[code]
+      };
+    }));
+  }
+
   // Given an object of item flavors we want to create an object of items that
   // can be added to the inventory or to the game state. Some item flavors turn
   // into a larger quantity of an item than others.

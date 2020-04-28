@@ -16,8 +16,8 @@ Role.Hunter.Stories = (function() {
     // === Success ===
     if (success) {
       phrase += (injury == null) ?
-        successNoInjury(compile(flavors), count) :
-        successInjury(compile(flavors), injury);
+        successNoInjury(ItemFlavor.listify(flavors), count) :
+        successInjury(ItemFlavor.listify(flavors), injury);
     }
 
     // === Failure ===
@@ -31,17 +31,6 @@ Role.Hunter.Stories = (function() {
     await context.addCharacter('H',character)
 
     return Weaver.weave(phrase, context);
-  }
-
-  function compile(flavors) {
-    return listify(Object.keys(flavors).map(code => {
-      let flavor = ItemFlavor.lookup(code);
-      return {
-        word: flavor.storyWord,
-        words: flavor.storyWords,
-        count: flavors[code]
-      };
-    }));
   }
 
   function failureNoInjury() {

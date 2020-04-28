@@ -1,7 +1,8 @@
 
 Item.build('leather-scraps', {
   type: 'resource',
-  name: 'Leather Scraps',
+  name: 'Scrap of Leather',
+  pluralName: 'Leather Scraps',
   maxStock: 200,
 });
 

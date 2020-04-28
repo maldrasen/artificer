@@ -39,6 +39,13 @@ Resource.lookup = async function(code) {
   return await Resource.findOne({ where:{ code:code } });
 }
 
+// Add all resources given an item object. { code:count... }
+Resource.addAll = async function(items) {
+  await Promise.all(Object.keys(items).map(async code => {
+    await Resource.add(code,items[code]);
+  }));
+}
+
 // Add a single resource. If the resource hasn't been created this function
 // creates it, otherwise it increases the resource quentity.
 Resource.add = async function(code, count) {

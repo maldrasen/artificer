@@ -24,7 +24,7 @@ Role.Forager = (function() {
     const flavors = await Role.Forager.Results.getItems(total);
     const story = Role.Forager.Stories.tell(health, injured, trips);
     const injuryStory = injured ? await Role.Injuries.applyInjury(character, context, Hazard.hinterlandsForaging) : null;
-    const equipmentStory = await updateEquipment(character,trips);
+    const equipmentStory = await CharacterEquipment.degrade(character,trips);
     const notifications = await getNotifications(character, flavors);
 
     return {
@@ -52,33 +52,6 @@ Role.Forager = (function() {
 
   async function getNotifications(character, flavors) {
     return [await Role.Skills.addExperience({ character:character, skill:'foraging', flavors:flavors })];
-  }
-
-  async function updateEquipment(character, trips) {
-    if (trips == 0) { return ''; }
-
-    let stories = await Promise.all((await character.getAllEquipment()).map(async equipment => {
-      if (equipment.degrades) {
-        await equipment.update({ condition: equipment.condition - degradeTimes(equipment.code, trips) })
-        if (equipment.condition < 1) {
-          return await equipment.break();
-        }
-      }
-      return ""
-    }))
-
-    return stories.join(' ');
-  }
-
-  function degradeTimes(code,trips) {
-    let form = Equipment.lookup(code);
-    let damage = 0;
-
-    for (let i=0; i<trips; i++) {
-      damage += form.degrade();
-    }
-
-    return damage;
   }
 
   return {

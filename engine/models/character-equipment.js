@@ -8,7 +8,6 @@ global.CharacterEquipment = Database.instance().define('character_equipment', {
   getterMethods: {
     form() { return Equipment.lookup(this.code); },
     name() { return this.form.name },
-    degrades() { return typeof this.form.degrade == 'function' },
   },
 });
 
@@ -50,25 +49,6 @@ CharacterEquipment.availableCounts = async function() {
   return counts;
 }
 
-// TODO: Some equipment when it breaks should break back down into some useful
-//       materials. This function should get the list of materials from the
-//       form, add them to the inventory, and return a sentence explaining what
-//       was added.
-//
-// The whenBroken attribute on the form determines what happens to the item
-// when broken. Right now just destroy is implemented. Recycle should be
-// another option. There might be another to leave the broken equipment for
-// manual recycling or repair as a task for more complex equipment.
-CharacterEquipment.prototype.break = async function() {
-  let form = this.form;
-
-  if (form.whenBroken == 'destroy') {
-    await this.destroy();
-    return form.whenBrokenStory;
-  }
-
-  throw `Equipment ${this.code} was broken, but has no whenBroken option.`
-}
 
 // Both the inventory panels and the equipment panels use this format.
 CharacterEquipment.prototype.formattedForView = function() {
@@ -78,4 +58,56 @@ CharacterEquipment.prototype.formattedForView = function() {
     name: this.name,
     condition: this.condition,
   };
+}
+
+// Equipment degrades over time when used. This function loops through all of
+// the character's equipment and degrades the equipment that matches the role
+// that the character is working. Some equipment is degraded when used in any
+// role, and some never degrades. If equipment breaks during use this function
+// returns a sentence that should be displayed in the report, to let the player
+// know that some equipment has broken. The way equipment degrades is governed
+// by the equipment form, which has the following options:
+//
+//    minDamage         Minimum damage to degrade by.
+//    maxDamage         Maximum damage to degrade by.
+//    when              Minion must have this assigned duty to degrade. (forager, hunter, all)
+//    whenBroken        What to do when the item breaks. (destroy) There may be other options here someday, for now
+//                      though the character  equipment is always just destroyed. Perhaps one day we'll add some
+//                      destroyed version of the item into the inventory.
+//    whenBrokenStory   Text to print when an equipped item is destroyed.
+//    breaksInto        An object of resource keys to quantities of resources to add when the item breaks.
+//                      { 'leather-scraps':1 }
+//
+CharacterEquipment.degrade = async function(character, times=1) {
+  if (times == 0) { return ''; }
+
+  const stories = await Promise.all((await character.getAllEquipment()).map(async equipment => {
+    let degrades = Equipment.lookup(equipment.code).degrades;
+
+    if  (degrades && (degrades.when == 'all' || degrades.when == character.dutyCode)) {
+      let min = degrades.minDamage || 0;
+      let max = degrades.maxDamage;
+      await equipment.update({ condition: equipment.condition - Random.between(min*times,max*times) })
+      if (equipment.condition < 1) { return await equipment.break(); }
+    }
+    return ''
+  }));
+
+  return `<span class='broken-equipment'>${stories.join(' ')}</span>`.replace(/\s+/g,' ');
+}
+
+// The whenBroken attribute on the form determines what happens to the item
+// when broken. Right now just destroy is implemented, so this only destroys
+// the equipment right now. It may need to branch in the future.
+CharacterEquipment.prototype.break = async function() {
+  let degrades = this.form.degrades;
+  let story = degrades.whenBrokenStory;
+
+  if (degrades.breaksInto) {
+    await Resource.addAll(degrades.breaksInto||{});
+    story += ` I was able to recover ${Item.listify(degrades.breaksInto)} from the broken ${this.form.name}.`
+  }
+
+  await this.destroy();
+  return story;
 }
