@@ -8,6 +8,11 @@ global.CharacterScrutinizer = (function() {
     if (operation.match(/^nipples/)) { return NipplesScrutinizer.check(operation,data); }
     if (operation.match(/^tits/))    { return TitsScrutinizer.check(operation,data);    }
 
+    // Gender Properties
+    if (operation == 'is-male')                       { return data.character.genderCode == 'male'; }
+    if (operation == 'is-female')                     { return data.character.genderCode == 'female'; }
+    if (operation == 'is-futa')                       { return data.character.genderCode == 'futa'; }
+
     // Species Properties
     if (operation == 'is-scaven')                     { return data.character.speciesCode == 'scaven' }
     if (operation == 'demon')                         { return data.character.species.isDemon; }

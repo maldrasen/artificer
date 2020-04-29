@@ -3,7 +3,7 @@ describe('Adjustments - Pussy', function() {
   it ('gives a big pussy', function(done) {
     CharacterBuilder.build({ species:'elf', gender:'female', triggers:['big-pussy'] }).then(character => {
       character.getPussy().then(pussy => {
-        expect(pussy.convertedWidth).to.equal(2.25);
+        expect(pussy.convertedWidth).to.be.within(2,2.5);
         done();
       });
     });
@@ -12,7 +12,7 @@ describe('Adjustments - Pussy', function() {
   it ('gives a monster pussy', function(done) {
     CharacterBuilder.build({ species:'elf', gender:'female', triggers:['monster-pussy'] }).then(character => {
       character.getPussy().then(pussy => {
-        expect(pussy.convertedWidth).to.equal(3);
+        expect(pussy.convertedWidth).to.be.within(2.5,3.5);
         done();
       });
     });
@@ -71,15 +71,6 @@ describe('Adjustments - Pussy', function() {
     CharacterBuilder.build({ species:'elf', gender:'female', triggers:['horse-pussy'] }).then(character => {
       character.getPussy().then(pussy => {
         expect(pussy.shape).to.equal('horse');
-        done();
-      });
-    });
-  });
-
-  it ('gives an anal prolapse', function(done) {
-    CharacterBuilder.build({ species:'elf', gender:'female', triggers:['anal-prolapse'] }).then(character => {
-      character.getAnus().then(anus => {
-        expect(anus.convertedProlapseLength).to.be.within(1,3);
         done();
       });
     });

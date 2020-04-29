@@ -1,37 +1,44 @@
 
-Adjustment.build('small-tits', {
-  apply: (character) => { return new Promise(resolve => {
-    character.getTits().then(tits => {
-      tits.sizeClass = 'tiny';
-      tits.sizeScale = 0;
-      tits.shape = 'flat'
-      tits.save().then(resolve);
+Adjustment.build('zero-tits', {
+  requires: ['minion(C).has-tits'],
+  apply: async character => {
+    await (await character.getTits()).update({
+      sizeClass: 'zero',
+      sizeScale: 0,
+      shape:     'flat',
     });
-  })}
+  }
+});
+
+Adjustment.build('small-tits', {
+  requires: ['minion(C).has-tits'],
+  apply: async character => {
+    await (await character.getTits()).update({
+      sizeClass: 'tiny',
+      sizeScale: Random.upTo(20),
+      shape:     'flat',
+    });
+  }
 });
 
 Adjustment.build('big-tits', {
-  apply: (character) => { return new Promise(resolve => {
-    character.getTits().then(tits => {
-      growTits(tits,'huge')
-      tits.save().then(resolve);
-    });
-  })}
+  requires: ['minion(C).has-tits'],
+  apply: async character => {
+    await growTits((await character.getTits()),'huge');
+  }
 });
 
 Adjustment.build('monster-tits', {
-  apply: (character) => { return new Promise(resolve => {
-    character.getTits().then(tits => {
-      growTits(tits,'monster')
-      tits.save().then(resolve);
-    });
-  })}
+  requires: ['minion(C).has-tits'],
+  apply: async character => {
+    await growTits((await character.getTits()),'monster');
+  }
 });
 
-function growTits(tits, size) {
-  tits.sizeClass = size;
-  tits.sizeScale = 50;
-  if (['round','dangling','bell'].indexOf(tits.shape) < 0) {
-    tits.shape = Random.fromFrequencyMap({ round:50, dangling:100, bell:80 });
-  }
+async function growTits(tits, size) {
+  await tits.update({
+    sizeClass: size,
+    sizeScale: Random.between(25,75),
+    shape: Random.fromFrequencyMap({ round:50, dangling:100, bell:80 }),
+  });
 }

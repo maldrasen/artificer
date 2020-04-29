@@ -1,6 +1,14 @@
 global.CharacterAdjuster = (function() {
 
-  async function apply(character, options, nameAdjustments) {
+  // The applyAll() function takes an array of adjustments and apply the
+  // adjustments that can be made to the character. If an aspect or adjustment
+  // is invalid it's just ignored.
+  async function applyAll(character, adjustments) {
+
+  }
+
+  // Old version, I should be able to move everything into applyAll eventually.
+  async function apply(character, options, nameAdjustments={}) {
     let triggers = nameAdjustments.triggers.concat(options.triggers||[]);
     let aspects =  nameAdjustments.aspects.concat(options.aspects||[]);
 
@@ -60,6 +68,6 @@ global.CharacterAdjuster = (function() {
     return await Adjustment.lookup(trigger).apply(character);
   }
 
-  return { apply:apply };
+  return { apply, applyAll };
 
 })();

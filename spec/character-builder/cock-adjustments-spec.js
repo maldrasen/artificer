@@ -3,7 +3,7 @@ describe('Adjustments - Cock', function() {
   it('gives small cock', function(done) {
     CharacterBuilder.build({ firstName:'X', species:'elf', gender:'male', triggers:['small-cock'] }).then(character => {
       character.getCock().then(cock => {
-        expect(cock.convertedLength).to.equal(6);
+        expect(cock.convertedLength).to.be.within(5,7);
         done();
       });
     });
@@ -12,7 +12,7 @@ describe('Adjustments - Cock', function() {
   it('gives big cock', function(done) {
     CharacterBuilder.build({ firstName:'X', species:'elf', gender:'male', triggers:['big-cock'] }).then(character => {
       character.getCock().then(cock => {
-        expect(cock.convertedLength).to.equal(14);
+        expect(cock.convertedLength).to.be.within(13,15);
         done();
       });
     });
@@ -21,7 +21,7 @@ describe('Adjustments - Cock', function() {
   it('gives monster cock', function(done) {
     CharacterBuilder.build({ firstName:'X', species:'elf', gender:'futa', triggers:['monster-cock'] }).then(character => {
       character.getCock().then(cock => {
-        expect(cock.convertedLength).to.equal(20);
+        expect(cock.convertedLength).to.be.within(18,22);
         done();
       });
     });
