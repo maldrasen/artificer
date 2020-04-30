@@ -4,20 +4,28 @@ global.SpecHelper = (function() {
     if (VERBOSE) { console.log(`      ${message}`); }
   }
 
-  async function buildJada(options) {
-    return await CharacterBuilder.build(extend({
+  async function buildJada(options, adjustments=[]) {
+    const jada = await CharacterBuilder.build(extend({
       firstName: 'Jada',
       lastName: 'Fire',
       species: 'elf',
       gender: 'futa'
     },options));
+
+    await CharacterAdjuster.applyAll(jada,adjustments);
+
+    return jada;
   }
 
-  async function buildRando(options={}) {
-    return await CharacterBuilder.build({
+  async function buildRando(options={}, adjustments=[]) {
+    const rando = await CharacterBuilder.build({
       species: options.species||Random.from(Species.all()).code,
       gender: options.gender,
     });
+
+    await CharacterAdjuster.applyAll(rando,adjustments);
+
+    return rando;
   }
 
   async function buildPlayer(options) {

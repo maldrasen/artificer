@@ -21,7 +21,7 @@ AvailableProject.add = async function(code,data={}) {
 AvailableProject.all = async function() {
   const projects = await AvailableProject.findAll({ where:{} });
   const ready = await Promise.all(projects.map(async available => {
-    if (!CentralScrutinizer.meetsRequirements(available.requires)) { return null; } else {
+    if ((await CentralScrutinizer.meetsRequirements(available.requires)) == false) { return null; } else {
       let project = Project.lookup(available.code);
       let readyState = await project.readyState();
       return {

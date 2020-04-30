@@ -109,8 +109,9 @@ global.CharacterBuilder = (function() {
 
     let nameAdjustments = await NameBuilder.build(character, options);
 
-    await CharacterAdjuster.apply(character, options, nameAdjustments);
-    await CharacterDescriber.updateAll(character);
+    // TODO: Don't do this when adding body...
+    // await CharacterAdjuster.apply(character, options, nameAdjustments);
+    // await CharacterDescriber.updateAll(character);
 
     return character
   }
