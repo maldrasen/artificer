@@ -1,6 +1,6 @@
 describe('CharacterBuilder', function() {
 
-  it.only('builds a standard minion using the options', function(done) {
+  it('builds a standard minion using the options', function(done) {
 
     let options = {
       minion: { species:'goblin', gender:'futa' },

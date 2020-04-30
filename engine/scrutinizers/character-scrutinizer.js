@@ -12,6 +12,9 @@ global.CharacterScrutinizer = (function() {
     if (operation == 'is-male')                       { return data.character.genderCode == 'male'; }
     if (operation == 'is-female')                     { return data.character.genderCode == 'female'; }
     if (operation == 'is-futa')                       { return data.character.genderCode == 'futa'; }
+    if (operation == 'is-not-male')                   { return data.character.genderCode != 'male'; }
+    if (operation == 'is-not-female')                 { return data.character.genderCode != 'female'; }
+    if (operation == 'is-not-futa')                   { return data.character.genderCode != 'futa'; }
 
     // Species Properties
     if (operation == 'is-scaven')                     { return data.character.speciesCode == 'scaven' }

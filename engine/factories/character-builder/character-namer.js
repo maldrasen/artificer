@@ -1,39 +1,27 @@
 global.CharacterNamer = (function() {
 
-  function execute(character, options) {
-    return new Promise((resolve, reject) => {
-      if (character.id == null) { reject('Character must be persisted.'); }
-      if (character.firstName) {
-        return resolve({ aspects:[], triggers:[], events:[] });
-      }
+  async function execute(character) {
+    if (character.id == null) { throw 'Character must be persisted.'; }
+    if (character.firstName) { return []; }
 
-      selectNames(0, character, (character.species.nameGenerator || ElfNameGenerator), names => {
-        character.update(nameMap(names)).then(() => {
-          resolve(allAdjustments(names));
-        });
-      });
-    });
+    let names = await selectNames(0, character, (character.species.nameGenerator || ElfNameGenerator));
+
+    await character.update(nameMap(names));
+    return allAdjustments(names);
   }
 
-  // OK, this is super ugly. We get a name from the name generator, but we need
-  // to make sure that it's a valid name. This method passes the name off to the
-  // validate promise. If the name is invalid the promise is rejected, then
-  // this method calls itself to get a new name from the name generator to try
-  // again. If the function fails to find a valid name after ten tries, it gives
-  // up and just returns an invalid name.
-  function selectNames(failureCount, character, nameGenerator, callback) {
-    nameGenerator.getNames(character).then(names => {
-      validate(character, names).then(valid => {
-        callback(names);
-      }).catch(invalid => {
-        if (failureCount++ < 10) {
-          warningMessage(names, invalid);
-          selectNames(failureCount, character, nameGenerator, callback)
-        } else {
-          callback(names);
-        }
-      })
-    });
+  async function selectNames(failureCount, character, nameGenerator) {
+    const names = await nameGenerator.getNames(character);
+    const problem = await validate(character, names);
+
+    if (problem == null) {
+      return names;
+    }
+
+    if (failureCount++ < 10) {
+      warningMessage(names, problem);
+      return selectNames(failureCount, character, nameGenerator)
+    }
   }
 
   // Print a warning to the log if we're in debug mode.
@@ -44,51 +32,22 @@ global.CharacterNamer = (function() {
 
   // Check to see if a name is valid for this character. This promise should
   // reject on an invalid name.
-  function validate(character, names) {
-    return new Promise((resolve, reject) => {
-      nameIsUnique({ names:names, character:character }).then(noNamesRestricted).then(resolve).catch(reject);
-    });
-  }
-
-  // Reject if there exists a character with this exact name.
-  function nameIsUnique(chain) {
-    return new Promise((resolve, reject) => {
-      Character.findOne({ where:nameMap(chain.names) }).then(character => {
-        (character == null) ? resolve(chain) : reject("Name is not unique")
-      });
-    });
-  }
-
-  function noNamesRestricted(chain) {
-    return new Promise((resolve, reject) => {
-      if (chain.names.pre && !allowed(chain.character, chain.names.pre)) {
-        return reject(`Name (${chain.names.pre.name}) is restricted to ${chain.names.pre.restriction}`);
-      }
-      if (chain.names.first && !allowed(chain.character, chain.names.first)) {
-        return reject(`Name (${chain.names.first.name}) is restricted to ${chain.names.first.restriction}`);
-      }
-      if (chain.names.last && !allowed(chain.character, chain.names.last)) {
-        return reject(`Name (${chain.names.last.name}) is restricted to ${chain.names.last.restriction}`);
-      }
-      resolve(chain)
-    });
-  }
-
-  // Check to see if a name is allowed. These are all gender restrictions for
-  // the time being. I'm basing the presence of a cock or pussy on the gender,
-  // otherwise I'd have to mix more async shit into this than there already is.
-  function allowed(character, name) {
-    if (name.restriction != null) {
-      if (name.restriction == 'male')       { return character.genderCode == 'male'   }
-      if (name.restriction == 'female')     { return character.genderCode == 'female' }
-      if (name.restriction == 'not-male')   { return character.genderCode != 'male'   }
-      if (name.restriction == 'not-female') { return character.genderCode != 'female' }
-      if (name.restriction == 'has-cock')   { return character.gender.cock  }
-      if (name.restriction == 'has-pussy')  { return character.gender.pussy }
-      if (name.restriction == 'has-tits')   { return character.gender.tite  }
-      if (name.restriction == 'has-scales') { return character.species.code == 'dragon' }
+  async function validate(character, names) {
+    if ((await Character.findOne({ where:nameMap(names) })) != null) {
+      return "Name is not unique";
     }
-    return true;
+
+    const context = new Context();
+    await context.addCharacter('C',character);
+
+    if (await check(names.pre, context) == false) { return `Name (${names.pre.name}) requires ${names.pre.requires}.` }
+    if (await check(names.first, context) == false) { return `Name (${names.first.name}) requires ${names.first.requires}.` }
+    if (await check(names.last, context) == false) { return `Name (${names.last.name}) requires ${names.last.requires}.` }
+  }
+
+  async function check(name, context) {
+    if (name == null || name.requires == null) { return true }
+    return await CentralScrutinizer.meetsRequirements(name.requires, context);
   }
 
   function nameMap(names) {
@@ -100,28 +59,10 @@ global.CharacterNamer = (function() {
   }
 
   function allAdjustments(names) {
-    let adjustments = {
-      aspects:[],
-      triggers:[],
-      events:[],
-    }
-
-    if (names.pre) {
-      each(names.pre.aspects, code =>    { adjustments.aspects.push(code);  });
-      each(names.pre.triggers, code =>   { adjustments.triggers.push(code); });
-      each(names.pre.events, code =>     { adjustments.events.push(code);   });
-    }
-    if (names.first) {
-      each(names.first.aspects, code =>  { adjustments.aspects.push(code);  });
-      each(names.first.triggers, code => { adjustments.triggers.push(code); });
-      each(names.first.events, code =>   { adjustments.events.push(code);   });
-    }
-    if (names.last) {
-      each(names.last.aspects, code =>   { adjustments.aspects.push(code);  });
-      each(names.last.triggers, code =>  { adjustments.triggers.push(code); });
-      each(names.last.events, code =>    { adjustments.events.push(code);   });
-    }
-
+    const adjustments = [];
+    ArrayUtility.addAll(adjustments, (names.pre  ||{}).adjustments);
+    ArrayUtility.addAll(adjustments, (names.first||{}).adjustments);
+    ArrayUtility.addAll(adjustments, (names.last ||{}).adjustments);
     return adjustments;
   }
 

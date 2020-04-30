@@ -1,39 +1,25 @@
 global.Name = Database.instance().define('name', {
-  name:          { type:Sequelize.STRING },
-  species:       { type:Sequelize.STRING },
-  triggers_json: { type:Sequelize.STRING },
-  aspects_json:  { type:Sequelize.STRING },
-  events_json:   { type:Sequelize.STRING },
-  restriction:   { type:Sequelize.STRING, validate:{ isIn:[['male','female','not-male','not-female','has-cock','has-pussy','has-tits','has-scales']] }},
-  position:      { type:Sequelize.STRING, validate:{ isIn:[['pre','first','last']] }},
+  name:             { type:Sequelize.STRING },
+  species:          { type:Sequelize.STRING },
+  adjustments_json: { type:Sequelize.STRING },
+  requires:         { type:Sequelize.STRING },
+  restriction:      { type:Sequelize.STRING, validate:{ isIn:[['male','not-male']] }},
+  position:         { type:Sequelize.STRING, validate:{ isIn:[['pre','first','last']] }},
 },{
   timestamps: false,
   getterMethods: {
-    triggers() { return JSON.parse(this.triggers_json||'[]') },
-    aspects()  { return JSON.parse(this.aspects_json||'[]')   },
-    events()   { return JSON.parse(this.events_json||'[]')   },
+    adjustments() { return JSON.parse(this.adjustments_json||'[]'); },
   }
 });
 
 Name.add = function(data, options) {
-
-  // This looks complicated because the aspects can have their strength
-  // included with the aspect code. Anything after a dot needs to be stripped.
-  each(data.aspects, (code) => {
-    Aspect.lookup(code.match(/([^.]*)\.?/)[1]);
-  })
-
-  each(data.triggers, (code) => {
-    Adjustment.lookup(code)
-  });
-
   Name.create({
-    name:          data.name,
-    species:       options.species,
-    restriction:   data.restriction || options.restriction,
-    position:      data.position    || options.position,
-    triggers_json: JSON.stringify(data.triggers),
-    aspects_json:  JSON.stringify(data.aspects),
-    events_json:   JSON.stringify(data.events),
+    name:             data.name,
+    species:          options.species,
+
+    requires:         data.requires,
+    restriction:      options.restriction,
+    position:         data.position || options.position,
+    adjustments_json: JSON.stringify(data.adjustments),
   })
 }

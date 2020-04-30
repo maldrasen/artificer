@@ -41,7 +41,7 @@ global.CharacterBuilder = (function() {
   //
   async function buildStandardMinion(options) {
     const minion = await CharacterBuilder.build(options.minion);
-    await CharacterBuilder.addRandomAspects(minion,{ count:options.randomAspectCount });
+    await addRandomAspects(minion,options.randomAspectCount);
     await CharacterAdjuster.applyAll(minion, options.adjustments);
 
     if (Flag.lookup('player.goal') == 'followers') {
@@ -58,8 +58,8 @@ global.CharacterBuilder = (function() {
     }
 
     if (minion.firstName == null) {
-      let adjustments = await CharacterNamer.execute(minion, options);
-      console.log("Name Adjustments?",adjustments)
+      let adjustments = await CharacterNamer.execute(minion);
+      await CharacterAdjuster.applyAll(minion, adjustments);
     }
 
     await CharacterDescriber.updateAll(minion);
@@ -67,11 +67,7 @@ global.CharacterBuilder = (function() {
     return minion;
   }
 
-  // So the process for the full build is build the body, pick a name, make adjectments to body based on name.
-  // preName:            { type:Sequelize.STRING },
-  // firstName:          { type:Sequelize.STRING },
-  // lastName:           { type:Sequelize.STRING },
-  //
+  // Build a complete Character model with all of the associated body parts.
   async function build(options) {
     if (options.species == null) { throw 'Species is required'; }
 
@@ -127,7 +123,7 @@ global.CharacterBuilder = (function() {
   // Options:
   //     count   number of aspects to add or random between 1 and 4
   //
-  async function addRandomAspects(character, options) {
+  async function addRandomAspects(character, count) {
     const speciesFrequencies = character.species.aspectFrequencies||{};
     const combinedFrequencies = {};
 
@@ -143,7 +139,8 @@ global.CharacterBuilder = (function() {
 
     // Randomly add count number of aspects. Aspects are removed from the
     // frequency map after they're added so that they're not added twice.
-    let count = (options||{}).count || Random.between(1,4);
+    // Remember 0 and null are both falsy.
+    count = (count == 0) ? 0 : Random.between(1,4);
 
     while (count > 0) {
       let code = Random.fromFrequencyMap(combinedFrequencies);
