@@ -17,10 +17,6 @@ global.CharacterAdjuster = (function() {
       await Promise.all(adjustments.map(async adjustment => {
         await applyAdjustment(character, context, Adjustment.lookup(adjustment));
       }));
-
-      if (adjustments.length > 0) {
-        await CharacterDescriber.updateAll(character);
-      }
     }
   }
 

@@ -1,4 +1,4 @@
-describe('NameBuilder', function() {
+describe.only('CharacterNamer', function() {
 
   let namePrinter = function(options, done) {
     SpecHelper.print(`[${options.species} names]`);

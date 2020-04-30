@@ -36,11 +36,13 @@ global.CharacterBuilder = (function() {
   // specified in the options. Options
   //
   //   minion             Options for CharacterBuilder.build()  e.g. { species:'scaven' }
+  //   adjustments        Array of adjustment codes or aspect adjustments.
   //   randomAspectCount  Number of random aspects to give this character, can be null for a random number of aspects.
   //
   async function buildStandardMinion(options) {
     const minion = await CharacterBuilder.build(options.minion);
     await CharacterBuilder.addRandomAspects(minion,{ count:options.randomAspectCount });
+    await CharacterAdjuster.applyAll(minion, options.adjustments);
 
     if (Flag.lookup('player.goal') == 'followers') {
       await minion.update({ loyalty:(minion.loyalty + 10) });
@@ -54,6 +56,13 @@ global.CharacterBuilder = (function() {
         await minion.update({ loyalty:(minion.loyalty + Random.between(5,10)) });
       }
     }
+
+    if (minion.firstName == null) {
+      let adjustments = await CharacterNamer.execute(minion, options);
+      console.log("Name Adjustments?",adjustments)
+    }
+
+    await CharacterDescriber.updateAll(minion);
 
     return minion;
   }
@@ -107,12 +116,6 @@ global.CharacterBuilder = (function() {
     await NipplesBuilder.build(character, options);
     await TitsBuilder.build(character, options);
 
-    let nameAdjustments = await NameBuilder.build(character, options);
-
-    // TODO: Don't do this when adding body...
-    // await CharacterAdjuster.apply(character, options, nameAdjustments);
-    // await CharacterDescriber.updateAll(character);
-
     return character
   }
 
@@ -125,7 +128,7 @@ global.CharacterBuilder = (function() {
   //     count   number of aspects to add or random between 1 and 4
   //
   async function addRandomAspects(character, options) {
-    const speciesFrequencies = character.species.aspectFrequencies;
+    const speciesFrequencies = character.species.aspectFrequencies||{};
     const combinedFrequencies = {};
 
     const currentAspects = (await character.getCharacterAspects()).map(aspect => {

@@ -1,6 +1,6 @@
-global.NameBuilder = (function() {
+global.CharacterNamer = (function() {
 
-  function build(character, options) {
+  function execute(character, options) {
     return new Promise((resolve, reject) => {
       if (character.id == null) { reject('Character must be persisted.'); }
       if (character.firstName) {
@@ -125,6 +125,6 @@ global.NameBuilder = (function() {
     return adjustments;
   }
 
-  return { build:build };
+  return { execute };
 
 })();

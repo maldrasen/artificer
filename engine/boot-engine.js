@@ -143,13 +143,13 @@ require(`${ROOT}/engine/story-teller/segments/oral/cock-positioning`);
 require(`${ROOT}/engine/story-teller/segments/oral/pussy-positioning`);
 
 // === Factories ===
-require(`${ROOT}/engine/factories/character-builder/character-builder`);
 require(`${ROOT}/engine/factories/character-builder/character-adjuster`);
+require(`${ROOT}/engine/factories/character-builder/character-builder`);
+require(`${ROOT}/engine/factories/character-builder/character-namer`);
 require(`${ROOT}/engine/factories/character-builder/anus-builder`);
 require(`${ROOT}/engine/factories/character-builder/body-builder`);
 require(`${ROOT}/engine/factories/character-builder/cock-builder`);
 require(`${ROOT}/engine/factories/character-builder/mouth-builder`);
-require(`${ROOT}/engine/factories/character-builder/name-builder`);
 require(`${ROOT}/engine/factories/character-builder/nipples-builder`);
 require(`${ROOT}/engine/factories/character-builder/pussy-builder`);
 require(`${ROOT}/engine/factories/character-builder/tits-builder`);

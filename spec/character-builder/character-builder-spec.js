@@ -1,5 +1,23 @@
 describe('CharacterBuilder', function() {
 
+  it.only('builds a standard minion using the options', function(done) {
+
+    let options = {
+      minion: { species:'goblin', gender:'futa' },
+      adjustments: ['big-cock'],
+      randomAspectCount: 4,
+    };
+
+    CharacterBuilder.buildStandardMinion(options).then(minion => {
+      minion.getCharacterAspects().then(aspects => {
+        minion.getCock().then(cock => {
+          console.log(minion.name)
+          done();
+        });
+      });
+    });
+  })
+
   it('builds a completely random character given a species', function(done) {
     CharacterBuilder.build({ species:'scaven' }).then(character => {
       expect(character.species).to.exist;
