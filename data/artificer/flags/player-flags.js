@@ -31,6 +31,10 @@ FlagInfo.build('player.meditate-count', {
   default: 0,
 });
 
+FlagInfo.build('player.meditated-today', {
+  validateIn: ['yes','no']
+});
+
 // The spheres of magic that have been unlocked.
 FlagInfo.build('player.maelstrom', { validateIn:['Y'] });
 FlagInfo.build('player.adamant',   { validateIn:['Y'] });

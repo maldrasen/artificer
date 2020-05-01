@@ -21,6 +21,8 @@ global.Resolver = (function() {
     Game.log("Work Plan Submitted",true);
     Game.log(`Plan: ${JSON.stringify(plan)}`);
 
+    setPlanFlags(plan);
+
     await Game.setPhase('before-work');
     await Resolver.Report.start();
     await Resolver.Roles.assignRoles(plan.assignedRoles);
@@ -33,6 +35,14 @@ global.Resolver = (function() {
     await Resolver.Items.commit();
     await Resolver.Minions.dailyUpdate();
     await Composer.render();
+  }
+
+  // This came up in the magic practice events. I needed a way to know if the
+  // player had meditated or not today, but had no way of knowing. This
+  // function sets a flag for that, but maybe more flags will be needed later.
+  function setPlanFlags(plan) {
+    let taskCodes = plan.taskWork.map(task => task.code);
+    Flag.set('player.meditated-today', ArrayUtility.contains(taskCodes,'meditate') ? 'yes' : 'no');
   }
 
   async function startAfterWork() {

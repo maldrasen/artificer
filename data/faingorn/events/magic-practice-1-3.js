@@ -5,7 +5,11 @@ Event.build('magic-practice-1-3', {
     location: 'great-hall'
   },
 
-  requires: ['flag.player.meditate-count>=5','player.magical>=14'],
+  requires: [
+    'flag.player.meditated-today=yes',
+    'flag.player.meditate-count>=5',
+    'player.magical>=14'
+  ],
 
   stages:[{
     pages:[

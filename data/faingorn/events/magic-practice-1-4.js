@@ -5,7 +5,11 @@ Event.build('magic-practice-1-4', {
     location: 'great-hall'
   },
 
-  requires: ['flag.player.meditate-count>=8','player.magical>=15'],
+  requires: [
+    'flag.player.meditated-today=yes',
+    'flag.player.meditate-count>=8',
+    'player.magical>=15'
+  ],
 
   stages:[{
     pages:[
@@ -37,8 +41,10 @@ Event.build('magic-practice-1-4', {
   onFinish: async choices => {
     const count = Flag.lookup('player.meditate-count');
 
-    AvailableEvent.add('magic-practice-2-1', {
-      requires:[`flag.player.meditate-count=${count+3}`,`player.magical>=20`]
+    AvailableEvent.add('magic-practice-2-1', { requires:[
+      'flag.player.meditated-today=yes',
+      `flag.player.meditate-count=${count+3}`,
+      `player.magical>=20`]
     });
 
     Flag.set('player.maelstrom','Y');
