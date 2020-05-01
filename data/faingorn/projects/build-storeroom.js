@@ -10,6 +10,7 @@ Project.build('build-storeroom', {
   },
 
   onFinish: async () => {
+    Flag.set('map.storeroom','Y');
     Game.addEvent('storeroom-built');
     AvailableEvent.add('rat-thief-caught');
     AvailableEvent.remove('rat-thief-strikes-again');

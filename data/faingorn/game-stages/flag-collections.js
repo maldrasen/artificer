@@ -72,6 +72,9 @@ GameStage.FlagCollections = {
 
   // Add these as they happen of course.
   setAct_1_3: function() {
+    Flag.setAll({
+      'map.storeroom':     'Y',
+    });
   }
 
 };
