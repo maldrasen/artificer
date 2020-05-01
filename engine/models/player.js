@@ -75,6 +75,7 @@ Player.forge = async function(options) {
   if (options.goal == 'power')     { player.magical =  player.magical + 10; }
 
   await CharacterBuilder.addBody(player, defaultBody);
+  await CharacterNamer.execute(player);
   await player.update({ portraitCode:(await ImageResource.portraitFor(player)).code });
 
   Flag.setAll({

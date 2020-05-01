@@ -12,6 +12,7 @@ global.EventFunctions = {
     await rat.addAspect('androphilic',{ strength:200+Random.upTo(400) });
     await rat.addAspect('gynephilic', { strength:200+Random.upTo(400) });
     await CharacterBuilder.addRandomAspects(rat,{ count:3 });
+    await CharacterNamer.execute(rat);
 
     if (rat.mental < 6) { rat.mental = 6 + Random.upTo(6) }
     if (rat.physical < 8) { rat.physical = 8 + Random.upTo(6) }

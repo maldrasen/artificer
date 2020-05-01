@@ -34,8 +34,10 @@ Event.build('rat-thief-start', {
   }],
 
   onFinish: async choices => {
-    const rat = await CharacterBuilder.buildStandardMinion({ minion:{ type:'pending', species:'scaven' }});
-    await CharacterAdjuster.applyAll(rat,['thin','short','zero-tits']);
+    const rat = await CharacterBuilder.buildStandardMinion({
+      minion:{ type:'pending', species:'scaven' },
+      adjustments:['thin','short','zero-tits']
+    });
 
     Resource.destroy({ where:{ code:'blood-berries' }});
     AvailableEvent.add('rat-thief-strikes-again');
