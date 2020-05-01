@@ -23,6 +23,7 @@ Components.LocationView = (function() {
     if (view.flags.showInventoryMenu) { location.find('.menu-show-inventory').removeClass('hide'); }
     if (view.activeEvent) { location.find('.active-event-notification').data('code',view.activeEvent).removeClass('hide'); }
     if (view.flags.showPlanAction) { location.find('.create-plan-action').removeClass('hide'); }
+    if (view.flags.showManageAction) { location.find('.manage-action').removeClass('hide'); }
     if (view.summonAvailable) { location.find('.summon-minions-button').removeClass('hide'); }
 
     $('#mainContent').empty().append(location);

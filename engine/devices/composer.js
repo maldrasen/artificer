@@ -45,6 +45,10 @@ global.Composer = (function() {
     });
   }
 
+  async function renderManageView() {
+    console.log("=== Render Manage View ===")
+  }
+
   async function renderPlanView() {
     const currentProject = Game.currentProject();
     const flags = {
@@ -73,6 +77,7 @@ global.Composer = (function() {
   return {
     render,
     renderPlanView,
+    renderManageView,
   };
 
 })();

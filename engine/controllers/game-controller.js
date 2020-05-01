@@ -77,6 +77,10 @@ global.GameController = (function() {
       Composer.renderPlanView();
     });
 
+    ipcMain.on('game.open-manage-view', () => {
+      Composer.renderManageView();
+    });
+
     ipcMain.on('game.cancel', () => {
       Composer.render();
     });
