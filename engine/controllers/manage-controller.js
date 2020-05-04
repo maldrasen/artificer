@@ -8,6 +8,10 @@ global.ManageController = (function() {
       });
       Composer.renderManageView();
     });
+
+    ipcMain.on('manage.set-order', async (event, data) => {
+      Flag.set(data.code, data.value);
+    });
   }
 
   return { init };

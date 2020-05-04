@@ -32,7 +32,7 @@ Components.ManageView = (function() {
   function buildBooleanOrder(order) {
     const value = viewData.flags[`order.${order.code}`];
     const updateOrder = selected => {
-      console.log("Selected:",selected);
+      Renderer.sendCommand('manage.set-order',{ code:`order.${order.code}`, value:selected.value });
     }
 
     const radioButtons = new Elements.RadioButtons({ onSelect:updateOrder, currentValue:value, choices:[
