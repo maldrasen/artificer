@@ -46,7 +46,7 @@ global.Composer = (function() {
   }
 
   async function renderManageView() {
-    console.log("=== Render Manage View ===")
+    Browser.send('render.manage', { orders:Order.forClient() });
   }
 
   async function renderPlanView() {

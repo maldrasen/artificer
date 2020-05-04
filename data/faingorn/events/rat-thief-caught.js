@@ -66,15 +66,15 @@ Event.build('rat-thief-caught', {
 
   onFinish: async choices => {
     if (choices.action == 'kill') {
-      Flag.set('player.scaven-reputations.the-butcher','Y')
+      Flag.set('player.scaven-reputations.the-butcher','Y');
       Game.chainEvent('rat-thief-kill',{},choices);
     }
     if (choices.action == 'release') {
-      Flag.set('player.scaven-reputations.the-benevolent','Y')
+      Flag.set('player.scaven-reputations.the-benevolent','Y');
       Game.chainEvent('rat-thief-release',{},choices);
     }
     if (choices.action == 'recruit') {
-      Flag.set('player.scaven-reputations.the-seductive','Y')
+      Flag.set('player.scaven-reputations.the-seductive','Y');
       Game.chainEvent('rat-thief-recruit',{},choices);
     }
   },

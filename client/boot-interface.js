@@ -15,6 +15,7 @@ require(`${ROOT}/client/components/equipment-frame`);
 require(`${ROOT}/client/components/event-view`);
 require(`${ROOT}/client/components/inventory-view`);
 require(`${ROOT}/client/components/location-view`);
+require(`${ROOT}/client/components/manage-view`);
 require(`${ROOT}/client/components/minion-detail-view`);
 require(`${ROOT}/client/components/minion-list-view`);
 require(`${ROOT}/client/components/minion-select-dialog`);

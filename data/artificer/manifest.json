@@ -12,6 +12,7 @@
     "item-flavors/*",
     "items/*",
     "names/*",
+    "orders/*",
     "personalities/*",
     "recipes/*",
     "species/*",

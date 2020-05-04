@@ -11,6 +11,8 @@ Event.build('rat-thief-recruit', {
   onFinish: async choices => {
     const rat = await Character.lookup(choices.event.actorIDs.C)
     await rat.update({ type:'minion' });
+
+    Flag.set('order.reward-blood-berries','Y');
   },
 
 });
