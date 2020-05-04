@@ -33,7 +33,6 @@ GameStage.FlagCollections = {
     Flag.setAll({
       'game.current-act':         'act-1-1',
       'game.current-act-started': 3,
-      'game.keep-management':     'Y',
       'location-menu.minions':    'Y',
       'plan-view.allow-idle':     'Y',
       'plan-view.roles.forager':  'Y',
@@ -45,6 +44,7 @@ GameStage.FlagCollections = {
     Flag.setAll({
       'game.current-act':            'act-1-2',
       'game.current-act-started':    12,
+      'game.keep-management':        'Y',
       'item.bitter-fruits':          'Y',
       'item.blight-spider':          'Y',
       'item.blood-berries':          'Y',

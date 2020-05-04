@@ -76,7 +76,6 @@ Event.build('ambush-rat-end-2', {
     await rat.update({type:'minion'});
 
     Flag.setAll({
-      'game.keep-management': 'Y',
       'location-menu.minions': 'Y',
       'report-view.show-food': 'Y',
     });

@@ -56,12 +56,19 @@ Event.build('journal-1', {
   },{
     formPage: 'keep-name-form'
   },{
-    pages:[{ text:`And with that decided, I retire for the evening.` }]
+    pages:[
+      { text:`And with that decided, I retire for the evening.` },
+      { narratorSpeaker:true, text:`You have unlocked keep management. This will allow you to rename your keep or change
+          your title. More options will be unlocked as the game progresses.`, alert:{ unlock:'Keep Management' }},
+    ]
   }],
 
   onFinish: async choices => {
     AvailableEvent.add('journal-2');
-    Flag.set('location.keep-name',choices.name);
+    Flag.setAll({
+      'location.keep-name':   choices.name,
+      'game.keep-management': 'Y',
+    });
   },
 
 });
