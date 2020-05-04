@@ -46,7 +46,12 @@ global.Composer = (function() {
   }
 
   async function renderManageView() {
-    Browser.send('render.manage', { orders:Order.forClient() });
+    Browser.send('render.manage', {
+      orders: Order.forClient(),
+      flags:{
+        keepName: Flag.lookup('location.keep-name')
+      },
+    });
   }
 
   async function renderPlanView() {

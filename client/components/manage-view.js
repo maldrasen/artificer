@@ -1,9 +1,15 @@
 Components.ManageView = (function() {
+  let viewData;
 
   function open(event, data) {
-    console.log("Open Manage View : ",data);
+    viewData = data;
+    Renderer.showManage();
   }
 
-  return { open };
+  function build() {
+    $('#overlayTitle h2').append(`Manage ${viewData.flags.keepName}`);
+  }
+
+  return { open, build };
 
 })();
