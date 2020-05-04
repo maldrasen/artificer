@@ -1,12 +1,28 @@
 
 Components.EventView.FormPage.register('sexuality-form', {
   view: 'data/faingorn/views/sexuality-form.html',
-  onSubmit: () => {
 
+  onLoad: page => {
+    const options = { currentValue:'always', choices:[
+      { label:'Always', value:'always' },
+      { label:'Maybe',  value:'maybe' },
+      { label:'Never',  value:'never' },
+    ]}
+
+    const menOptions = new Elements.RadioButtons(options);
+    const futaOptions = new Elements.RadioButtons(options);
+    const womenOptions = new Elements.RadioButtons(options);
+
+    page.find('#fuckMen').append(menOptions.element);
+    page.find('#fuckFutas').append(futaOptions.element);
+    page.find('#fuckWomen').append(womenOptions.element);
+  },
+
+  onSubmit: () => {
     let choices = {
-      men:   ($('#fuckMen').data('value')||'always'),
-      futas: ($('#fuckFutas').data('value')||'always'),
-      women: ($('#fuckWomen').data('value')||'always'),
+      men:   ($('#fuckMen .radio-button').data('controller').currentValue),
+      futas: ($('#fuckFutas .radio-button').data('controller').currentValue),
+      women: ($('#fuckWomen .radio-button').data('controller').currentValue),
     };
 
     if (! (choices.men=='never' && choices.futas=='never' && choices.women=='never')) {

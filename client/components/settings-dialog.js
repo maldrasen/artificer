@@ -1,4 +1,6 @@
 Components.SettingsDialog = (function() {
+  let measurementSettings
+  let futaSettings
 
   function init() {
     $(document).on('click','.menu-show-settings',  Elements.buttonAction(fetchSettings));
@@ -17,16 +19,28 @@ Components.SettingsDialog = (function() {
       id: 'settingsDialog',
       template: '#settingsDialogTemplate',
       dialog: 'small',
+      afterOpen: dialog => { build(dialog, data); },
     });
+  }
 
-    Elements.RadioButtons.setValue($('#settingsDialog .radio-buttons.metric'),`${data.metric}`);
-    Elements.RadioButtons.setValue($('#settingsDialog .radio-buttons.futa-pronouns'),data.futaPronouns);
-    Elements.RadioButtons.wire();
+  function build(dialog, data) {
+    measurementSettings = new Elements.RadioButtons({ currentValue:data.metric, choices:[
+      { label:'American', value:false },
+      { label:'Metric',   value:true },
+    ]});
+
+    futaSettings = new Elements.RadioButtons({ currentValue:data.futaPronouns, choices:[
+      { label:'Shi / Hir', value:'shi/hir' },
+      { label:'She / Her', value:'she/her' },
+    ]});
+
+    dialog.find('.measurement-settings').append(measurementSettings.element);
+    dialog.find('.futa-settings').append(futaSettings.element);
   }
 
   function acceptSettings() {
-    const metric = Elements.RadioButtons.getValue($('#settingsDialog .radio-buttons.metric'));
-    const futaPronouns = Elements.RadioButtons.getValue($('#settingsDialog .radio-buttons.futa-pronouns'));
+    const metric = measurementSettings.currentValue;
+    const futaPronouns = futaSettings.currentValue;
 
     Renderer.sendCommand('game.update-settings',{ metric, futaPronouns });
     Elements.Dialog.close();

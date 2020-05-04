@@ -1,45 +1,52 @@
-Elements.RadioButtons = (function() {
-  "use strict";
+Elements.RadioButtons = class RadioButtons {
 
-  function init() {
+  static init() {
     $(document).on('click', '.radio-buttons .radio-button', function() {
-      var button = $(this);
-      var group = button.closest('.radio-buttons');
+      $(this).data('controller').setValue($(this).data('value'));
+    });
+  }
 
-      group.find('.on').removeClass('on');
-      group.data('value', button.data('value'));
+  // RadioButtons have the following options:
+  //   currentValue:  Currently selected value.
+  //   onSelect:      Select callback, only triggers when value changes.
+  //   choices:       [{ label:'Yes', value:'Y' },...]
+  constructor(options) {
+    this._currentValue = options.currentValue;
+    this._choices = options.choices;
+    this._onSelect = options.onSelect;
+    this._element = $('<div>',{ class:'radio-buttons' });
+
+    each((options.choices||[]), choice => {
+      this.addChoice(choice);
+    });
+  }
+
+  get element() { return this._element; }
+  get currentValue() { return this._currentValue; }
+
+  addChoice(choice) {
+    let button = $('<a>',{ href:'#', class:'radio-button' }).
+      attr('data-value',choice.value).
+      data('controller',this).
+      append(choice.label);
+
+    if (choice.value == this.currentValue) {
       button.addClass('on');
+    }
 
-      $(group).trigger($.Event('radio-buttons.changed'));
-    });
+    this.element.append(button);
   }
 
-  /*
-  * After a page has been rendered this function should be called to set the
-  * value of the .radio-buttons group to the selected button's value, if any
-  * are rendered as on at the beginning.
-  */
-  function wire() {
-    $.each($('.radio-buttons'), function(i, group) {
-      $(group).data('value',$(group).find('.radio-button.on').data('value'));
-    });
-  }
+  setValue(value) {
+    if (value != this.currentValue) {
+      this._currentValue = value;
+      this.element.find('.on').removeClass('on');
+      this.element.find(`.radio-button[data-value="${value}"]`).addClass('on');
 
-  function setValue(group, value) {
-    var button = group.find(`.radio-button[data-value="${value}"]`);
-    group.find('.on').removeClass('on');
-    group.data('value', null);
-
-    if (button.length == 1) {
-      group.data('value', value);
-      button.addClass('on')
+      if (typeof this._onSelect == 'function') {
+        this._onSelect({ radioButtons:this, value:value });
+      }
     }
   }
 
-  function getValue(group) {
-    return group.data('value');
-  }
-
-  return { init, wire, setValue, getValue };
-
-})();
+}

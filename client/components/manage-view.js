@@ -12,9 +12,47 @@ Components.ManageView = (function() {
   }
 
   function build() {
-    $('#overlayTitle h2').append(`Manage ${viewData.flags.keepName}`);
-    $('#overlayFrame #nameOptions .keep-name').append(viewData.flags.keepName);
-    $('#overlayFrame #nameOptions .player-title').append(viewData.flags.playerTitle);
+    const orderList = $('#overlayFrame #orderList');
+    const keepName = viewData.flags['location.keep-name'];
+    const playerTitle = viewData.flags['player.title'];
+
+    $('#overlayTitle h2').append(`Manage ${keepName}`);
+    $('#overlayFrame #nameOptions .keep-name').append(keepName);
+    $('#overlayFrame #nameOptions .player-title').append(playerTitle);
+
+    if (viewData.orders.length) {
+      orderList.removeClass('hide');
+    }
+
+    each(viewData.orders, order => {
+      if (order.type == 'boolean') { orderList.append(buildBooleanOrder(order)); }
+    });
+
+  }
+
+  function buildBooleanOrder(order) {
+    const value = viewData.flags[`order.${order.code}`];
+    const updateOrder = selected => {
+      console.log("Selected:",selected);
+    }
+
+    const radioButtons = new Elements.RadioButtons({ onSelect:updateOrder, currentValue:value, choices:[
+      { label:'Yes', value:'Y' },
+      { label:'No',  value:'N' },
+    ]});
+
+    const item = buildEmptyOrder(order);
+    item.find('.control').append(radioButtons.element);
+    return item;
+  }
+
+  function buildEmptyOrder(order) {
+    return $(`
+      <li class='order boolean-order'>
+        <div class='label fs-big fg-strong'>${order.label}</div>
+        <div class='description'>${order.description}</div>
+        <div class='control'></div>
+      </li>`);
   }
 
   function openChangeNames() {

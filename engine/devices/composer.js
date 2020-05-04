@@ -48,10 +48,7 @@ global.Composer = (function() {
   async function renderManageView() {
     Browser.send('render.manage', {
       orders: Order.forClient(),
-      flags:{
-        keepName: Flag.lookup('location.keep-name'),
-        playerTitle: Flag.lookup('player.title'),
-      },
+      flags: Flag.getAll(),
     });
   }
 
