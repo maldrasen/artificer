@@ -27,7 +27,6 @@ Components.ManageView = (function() {
     each(viewData.orders, order => {
       if (order.type == 'boolean') { orderList.append(buildBooleanOrder(order)); }
     });
-
   }
 
   function buildBooleanOrder(order) {
@@ -49,9 +48,13 @@ Components.ManageView = (function() {
   function buildEmptyOrder(order) {
     return $(`
       <li class='order boolean-order'>
-        <div class='label fs-big fg-strong'>${order.label}</div>
-        <div class='description'>${order.description}</div>
-        <div class='control'></div>
+        <div class='flex'>
+          <div>
+            <div class='label fs-big fg-strong'>${order.label}</div>
+            <div class='description'>${order.description}</div>
+          </div>
+          <div class='control'></div>
+        </div>
       </li>`);
   }
 
@@ -62,8 +65,8 @@ Components.ManageView = (function() {
       template: '#manageChangeNamesDialogTemplate',
       dialog: 'small',
       afterOpen: dialog => {
-        dialog.find('input#title').val(viewData.flags.playerTitle);
-        dialog.find('input#keepName').val(viewData.flags.keepName);
+        dialog.find('input#title').val(viewData.flags['player.title']);
+        dialog.find('input#keepName').val(viewData.flags['location.keep-name']);
       }
     });
   }
@@ -72,13 +75,15 @@ Components.ManageView = (function() {
     const dialog = Elements.Dialog.current();
 
     let names = {
-      playerTitle: dialog.find('input#title').val(),
-      keepName: dialog.find('input#keepName').val(),
+      playerTitle: dialog.find('input#title').val().trim().toLowerCase(),
+      keepName: dialog.find('input#keepName').val().trim(),
     }
 
-    Elements.Dialog.close();
-    Renderer.sendCommand('manage.set-names',names);
-    Renderer.removeOverlay();
+    if (names.playerTitle.length && names.keepName.length) {
+      Elements.Dialog.close();
+      Renderer.sendCommand('manage.set-names',names);
+      Renderer.removeOverlay();
+    }
   }
 
   return { init, open, build };
