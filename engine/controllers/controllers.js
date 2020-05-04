@@ -7,6 +7,7 @@ global.Controllers = (function() {
     GameController.init();
     ImageController.init();
     LocationController.init();
+    ManageController.init();
     PlanController.init();
     ResolverController.init();
   }

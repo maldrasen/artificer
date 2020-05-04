@@ -24,6 +24,7 @@ $(document).ready(function() {
   Components.EventView.init();
   Components.InventoryView.init();
   Components.LocationView.init();
+  Components.ManageView.init();
   Components.MinionListView.init();
   Components.MinionDetailView.init();
   Components.MinionSelectDialog.init();

@@ -18,6 +18,7 @@ Elements.Dialog = (function() {
   //     - simple       Almost full screen, no scrolling panel.
   //     - medium       60% of screen width with scrolling panel.
   //     - small        Small centered dialog, no scrolling panel.
+  //   afterOpen        Callback executed after the dialog is opened.
   //
   function open(options) {
     if (!isOpen()) {
@@ -38,6 +39,10 @@ Elements.Dialog = (function() {
       $.each(currentDialog.find('.scrolling-panel'), (i, panel) => {
         Elements.ScrollingPanel.build($(panel));
       });
+
+      if (options.afterOpen) {
+        options.afterOpen(currentDialog);
+      }
     }
   }
 
@@ -52,6 +57,10 @@ Elements.Dialog = (function() {
     return currentDialog != null;
   }
 
-  return { init, open, close, isOpen }
+  function current() {
+    return currentDialog;
+  }
+
+  return { init, open, close, isOpen, current }
 
 })();

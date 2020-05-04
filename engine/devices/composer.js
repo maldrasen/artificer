@@ -49,7 +49,8 @@ global.Composer = (function() {
     Browser.send('render.manage', {
       orders: Order.forClient(),
       flags:{
-        keepName: Flag.lookup('location.keep-name')
+        keepName: Flag.lookup('location.keep-name'),
+        playerTitle: Flag.lookup('player.title'),
       },
     });
   }
