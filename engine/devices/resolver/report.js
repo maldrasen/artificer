@@ -7,6 +7,7 @@ Resolver.Report = (function() {
     report.food = null;
     report.minions = {};
     report.tasks = [];
+    report.incidentals = [];
 
     each(minions, minion => {
       report.minions[minion.id] = {
@@ -48,6 +49,10 @@ Resolver.Report = (function() {
     Resolver.currentReport().tasks.push(story);
   }
 
+  function addIncidental(story) {
+    Resolver.currentReport().incidentals.push(story);
+  }
+
   function setMinionData(minion, key, value) {
     Resolver.currentReport().minions[minion.id][key] = value;
   }
@@ -68,6 +73,7 @@ Resolver.Report = (function() {
     setProjectCompletedText,
     setProjectIdleText,
     addTask,
+    addIncidental,
     setMinionData,
     producedFood,
     ateFood,

@@ -79,6 +79,7 @@ require(`${ROOT}/engine/devices/missions/steal`);
 
 require(`${ROOT}/engine/devices/resolver`);
 require(`${ROOT}/engine/devices/resolver/healing`);
+require(`${ROOT}/engine/devices/resolver/incidentals`);
 require(`${ROOT}/engine/devices/resolver/items`);
 require(`${ROOT}/engine/devices/resolver/lust`);
 require(`${ROOT}/engine/devices/resolver/minions`);

@@ -10,17 +10,24 @@ Components.ReportView = (function() {
       $('#reportView').find('.projects .text').append(report.project.text);
     }
 
-    if (report.tasks.length > 0) {
+    if (report.tasks.length) {
       $('#reportView').find('.tasks').removeClass('hide');
       each(report.tasks, task => {
         $('#reportView').find('.tasks .task-stories').append(buildTaskItem(task));
       });
     }
 
-    if (Object.keys(report.minions).length > 0) {
+    if (Object.keys(report.minions).length) {
       $('#reportView').find('.minions').removeClass('hide');
       each(report.minions, minion => {
         addMinionFrame(minion);
+      });
+    }
+
+    if (report.incidentals.length) {
+      let incidentals = $('#reportView').find('.incidentals').removeClass('hide');
+      each(report.incidentals, story => {
+        incidentals.append($('<li>').append(story));
       });
     }
 

@@ -71,8 +71,8 @@ Character.lookup = async function(id) {
   return (id == 1000000000) ? (await Player.instance()) : (await Character.findByPk(id));
 }
 
-Character.getNormalMinions = async function() {
-  return await Character.findAll({ where:{ type:'minion', status:'normal' }});
+Character.getNormalMinions = async function(where) {
+  return await Character.findAll({ where:extend((where||{}),{ type:'minion', status:'normal' }) });
 }
 
 // A character scope that gets all the minions that can currently be summoned
@@ -100,24 +100,23 @@ Character.formatAllForClient = async function(characters) {
 
 // Reduce the loyality of all the player's minions. This happens in the
 // starvation event, but may also happen at other disastrous moments as well.
-// If the minion's loyalty is already at 0 their fear will begin to drop
-// instead.
-Character.reduceAllLoyalty = async function(severity) {
-  const minions = await Character.getNormalMinions();
-
-  await Promise.all(minions.map(async minion => {
-    minion.loyalty = minion.loyalty - Random.upTo(severity);
-    minion.loyalty = minion.loyalty < 0 ? 0 : minion.loyalty;
-
-    if (minion.loyalty == 0) {
-      minion.fear = minion.fear - Random.upTo(Math.ceil(severity/2));
-      minion.fear = minion.fear < 0 ? 0 : minion.fear;
-    }
-
-    await minion.save();
+Character.reduceAllLoyalty = async function(amount) {
+  await Promise.all((await Character.getNormalMinions()).map(async minion => {
+    await minion.reduceLoyalty(amount);
   }));
+}
 
-  return minions;
+// Randomly reduce a minion's loyalty by a value between 0 and the amount
+// specified. If the minion's loyalty is already at 0 their fear will begin to
+// drop instead.
+Character.prototype.reduceLoyalty = async function(amount) {
+  (this.loyalty > 0) ?
+    (await this.update({ loyalty: Math.max(0, this.loyalty - Random.between(1,amount)) })):
+    (await this.update({ fear: Math.max(0, this.fear - Random.between(1,Math.ceil(amount/2))) }));
+}
+
+Character.prototype.increaseLoyalty = async function(amount) {
+  await this.update({ loyalty: Math.min(100, this.loyalty + Random.between(1,amount)) });
 }
 
 Character.prototype.properties = async function() {
