@@ -1,18 +1,17 @@
 describe('Describer: Anus', function() {
 
-  function printAnus(type, anus) {
-    SpecHelper.print(`${type}(${anus.sizeClass}/${anus.conditon}) > ${anus.description}`);
+  function printAnus(title, options, done) {
+    SpecHelper.tenTimes(done, async resolve => {
+      const jada = await SpecHelper.buildJada(options);
+      await CharacterDescriber.updateAll(jada);
+      const anus = await jada.getAnus();
+      SpecHelper.print(`${title}(${anus.shape}/${anus.sizeClass}/${anus.conditon}) > ${anus.description}`);
+      resolve();
+    });
   }
 
-  it('describes normal assholes', function(done) {
-    SpecHelper.tenTimes(done, resolve => {
-      SpecHelper.buildJada({ }).then(jada => {
-        jada.getAnus().then(anus => {
-          printAnus('normal',anus)
-          resolve();
-        });
-      });
-    });
+  it('describes random assholes', function(done) {
+    printAnus('Random', {}, done);
   });
 
 });

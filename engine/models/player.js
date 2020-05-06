@@ -58,7 +58,7 @@ Player.forge = async function(options) {
     magical:     Math.max(10,species.randomizedAttribute('magical')),
   });
 
-  let defaultBody = { anus:{ conditon:'virgin' }};
+  let defaultBody = { anus:{ conditon:'tight' }};
 
   if (options.gender != 'female') {
     defaultBody.cock = { sizeClass:Random.fromFrequencyMap({ average:5, big:2 }) }
@@ -66,7 +66,7 @@ Player.forge = async function(options) {
 
   if (options.gender != 'male') {
     defaultBody.tits = { sizeClass:Random.fromFrequencyMap({ small:1, average:2, big:3 }) };
-    defaultBody.pussy = { sizeClass:Random.fromFrequencyMap({ small:2, average:5, big:1 }), conditon:'virgin' };
+    defaultBody.pussy = { sizeClass:Random.fromFrequencyMap({ small:2, average:5, big:1 }), conditon:'tight' };
   };
 
   if (options.goal == 'conquest')  { player.physical = player.physical + 10; }

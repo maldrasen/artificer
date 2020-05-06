@@ -5,7 +5,7 @@ global.AnusBuilder = (function() {
 
     let params = CharacterBuilder.baseline('anus', options, character.species, {
       character_id:   character.id,
-      shape:          "normal",
+      shape:          Random.from(['normal','normal','puffy']),
       conditon:       randomCondition(character.species),
       sizeClass:      Random.fromFrequencyMap(character.species.bodyOptions.cock.size),
       sizeScale:      Random.upTo(100),
@@ -18,6 +18,14 @@ global.AnusBuilder = (function() {
     });
 
     params.sizeFactor = character.species.sizeFactor();
+
+    if (params.conditon == 'loose') {
+      if (params.sizeClass == 'small') { params.sizeClass= 'average'; }
+    }
+    if (params.conditon == 'gaping') {
+      if (params.sizeClass == 'small') { params.sizeClass = 'big'; }
+      if (params.sizeClass == 'average') { params.sizeClass = 'big'; }
+    }
 
     return Anus.create(params);
   }

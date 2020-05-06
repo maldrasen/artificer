@@ -1,9 +1,9 @@
 const ANUS_SIZES = ['small','average','big','huge','monster'];
-const ANUS_CONDITIONS = ['virgin','tight','average','loose','gaping'];
+const ANUS_CONDITIONS = ['tight','average','loose','gaping'];
 
 global.Anus = Database.instance().define('anus', {
   character_id:    { type:Sequelize.INTEGER },
-  shape:           { type:Sequelize.STRING, validate:{ isIn:[['normal','horse','mouth']] }},
+  shape:           { type:Sequelize.STRING, validate:{ isIn:[['normal','puffy','horse','mouth']] }},
   conditon:        { type:Sequelize.STRING, validate:{ isIn:[ANUS_CONDITIONS] }},
   sizeClass:       { type:Sequelize.STRING, validate:{ isIn:[ANUS_SIZES] }},
   sizeScale:       { type:Sequelize.DOUBLE, validate:{ min:0, max:100 }},
@@ -28,6 +28,12 @@ global.Anus = Database.instance().define('anus', {
     convertedWidth()          { return ConversionUtility.milliToInches(this.width); },
   }
 });
+
+// TODO: Not doing anything yet to change anus size and condition, but I will
+//       at some point. It's important to remember that some size / condition
+//       combinations are impossible. You can't have small/loose, small/gaping
+//       or average/gaping. If you go up to loose increase size class to at
+//       least average, and increase size class to at least big if gaping.
 
 // The Anus size classes are just like the pussies, but about 20% smaller.
 Anus.SizeRanges = {

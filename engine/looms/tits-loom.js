@@ -38,10 +38,10 @@ Weaver.TitsLoom = (function() {
 
   function shape(tits) {
     return Random.from({
-      flat:     ['flat','completely flat','nonexistent'],
-      bell:     ['heavy','swinging','bulbous'],
-      conical:  ['conical','cone shaped','tapered','pointed','pear shaped'],
-      dangling: ['bell shaped','dangling','soft','swaying'],
+      flat:     ['flat','boyish','nonexistent'],
+      bell:     ['heavy','swinging','bulbous','bell shaped'],
+      conical:  ['conical','cone shaped','tapered','pointed','pointy','pear shaped'],
+      dangling: ['dangling','soft','swaying','sagging'],
       perky:    ['perky'],
       round:    ['round','plump','shapely','full','apple shaped'],
     }[tits.shape]);

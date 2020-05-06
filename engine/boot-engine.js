@@ -126,6 +126,7 @@ require(`${ROOT}/engine/looms/species-loom`);
 require(`${ROOT}/engine/looms/tits-loom`);
 
 // === Scrutinizers ===
+require(`${ROOT}/engine/scrutinizers/anus-scrutinizer`);
 require(`${ROOT}/engine/scrutinizers/central-scrutinizer`);
 require(`${ROOT}/engine/scrutinizers/character-scrutinizer`);
 require(`${ROOT}/engine/scrutinizers/cock-scrutinizer`);

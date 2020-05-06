@@ -16,7 +16,8 @@ global.AnusDescriber = class AnusDescriber {
     const injuryDescriber = new AnusInjuryDescriber(this.context);
 
     let description = `
-      [TODO: Anus Description] ${ await injuryDescriber.describeInjuries() }
+      ${(await Description.select('anus', this.context)).d}
+      ${await injuryDescriber.describeInjuries()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
     return await Weaver.weave(description, this.context);

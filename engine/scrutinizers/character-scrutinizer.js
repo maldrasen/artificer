@@ -4,6 +4,7 @@ global.CharacterScrutinizer = (function() {
   // The CharacterScrutinizer checks the common character attribute. More
   // specific body part checks are found in their respective part scrutinizers.
   function check(operation, data) {
+    if (operation.match(/^anus/))    { return AnusScrutinizer.check(operation,data);    }
     if (operation.match(/^cock/))    { return CockScrutinizer.check(operation,data);    }
     if (operation.match(/^nipples/)) { return NipplesScrutinizer.check(operation,data); }
     if (operation.match(/^tits/))    { return TitsScrutinizer.check(operation,data);    }

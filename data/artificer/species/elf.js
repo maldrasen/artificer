@@ -29,13 +29,11 @@ Species.build('elf', {
       big:     30,
     }},
     pussy:{ condition:{
-      virgin: 5,
       tight: 25,
       average: 75,
       loose: 15,
     }},
     anus:{ condition:{
-      virgin: 20,
       tight: 60,
       average: 30,
       loose: 10,

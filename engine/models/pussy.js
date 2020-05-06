@@ -1,6 +1,6 @@
 const PUSSY_SHAPES = ['normal','dog','horse','snake','dragon'];
 const PUSSY_SIZES = ['small','average','big','huge','monster'];
-const PUSSY_CONDITIONS = ['virgin','tight','average','loose','gaping'];
+const PUSSY_CONDITIONS = ['tight','average','loose','gaping'];
 
 global.Pussy = Database.instance().define('pussy', {
   character_id:      { type:Sequelize.INTEGER },
