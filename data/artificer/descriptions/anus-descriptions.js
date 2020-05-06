@@ -109,19 +109,18 @@ Description.buildAnus({
 
 Description.buildAnus({
   requires:['minion(C).anus.normal','minion(C).anus.condition.average','minion(C).anus.huge','minion(C).is-male'],
-  d: `He has an unusually large asshole. It's darkened wrinkled flesh extending from his balls to halfway up his
-      asscrack.`
+  d: `He has an unusually large asshole. It's darkened wrinkled flesh extends from his balls to halfway up his asscrack.`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.normal','minion(C).anus.condition.average','minion(C).anus.huge','minion(C).has-pussy'],
-  d: `{{He}} has an unusually large asshole. It's darkened wrinkled flesh extending from the bottom of his pussy to
-      halfway up his asscrack.`
+  d: `{{He}} has an unusually large asshole. It's darkened wrinkled flesh extends from the bottom of {{his}} pussy to
+      halfway up {{his}} asscrack.`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.normal','minion(C).anus.condition.average','minion(C).anus.monster'],
-  d: `A gigantic asshole takes up most of the space between {{his}} shapely ass cheeks. The opening of his ass is a
+  d: `A gigantic asshole takes up most of the space between {{his}} shapely ass cheeks. The opening of {{his}} ass is a
       deep inch long gash sorrounded by a patch of dark wrinkled flesh as wide as {{his}} hand. `
 });
 
@@ -135,39 +134,80 @@ Description.buildAnus({
 
 Description.buildAnus({
   requires:['minion(C).anus.normal','minion(C).anus.condition.loose','minion(C).anus.average'],
-  d: ``
+  d: `{{His}} asshole is a deep pit sorrounded by loose folds of dark and wrinkled flesh. It's seen enough rough use
+      that it always remains just slightly open.`
+});
+
+Description.buildAnus({
+  requires:['minion(C).anus.normal','minion(C).anus.condition.loose','minion(C).anus.average','minion(C).is-male'],
+  d: `His asshole is a deep pit that rests just above the swell of his taint. The dark and wrinkled flesh there looks
+      well used, a bit loose, and is always slightly open.`
+});
+
+Description.buildAnus({
+  requires:['minion(C).anus.normal','minion(C).anus.condition.loose','minion(C).anus.average','minion(C).has-pussy'],
+  d: `{{His}} asshole is a deep pit just behind {{his}} {{pussy}}. The dark and wrinkled flesh there looks well used, a
+      bit loose, and is always slightly open.`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.normal','minion(C).anus.condition.loose','minion(C).anus.big'],
-  d: ``
+  d: `{{He}} has an large and well worn asshole. The deep opening is sorrounded by a wide patch of dark and wrinked
+      skin that hangs open enough to easily slide a finger into at any time.`
+});
+
+Description.buildAnus({
+  requires:['minion(C).anus.normal','minion(C).anus.condition.loose','minion(C).anus.big'],
+  d: `{{His}} anus is a deep pit sorrounded by a wide patch of dark and wrinked skin. It's seen so much rough use that
+      it would be easy to slide a finger into it at any time.`
+});
+
+Description.buildAnus({
+  requires:['minion(C).anus.normal','minion(C).anus.condition.loose','minion(C).anus.huge','minion(C).is-male'],
+  d: `He has an unusually large and well worn asshole. It's darkened wrinkled flesh extends from his balls to halfway
+      up his asscrack and is always just slightly open.`
+});
+
+Description.buildAnus({
+  requires:['minion(C).anus.normal','minion(C).anus.condition.loose','minion(C).anus.huge','minion(C).has-pussy'],
+  d: `{{He}} has an unusually large and well worn asshole. It's darkened wrinkled flesh extends from the bottom of
+      {{his}} pussy to halfway up {{his}} asscrack and is always just slightly open.`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.normal','minion(C).anus.condition.loose','minion(C).anus.huge'],
-  d: ``
+  d: `{{His}} asshole is a huge and deep pit sorrounded by loose folds of dark wrinkled skin. It's seen so much rough
+      use that it would be easy to slide a couple fingers into it at any time.`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.normal','minion(C).anus.condition.loose','minion(C).anus.monster'],
-  d: ``
+  d: `A gigantic asshole takes up most of the space between {{his}} shapely ass cheeks. It's seen so much hard use that
+      it never really completely closes by itself anymore. The loose opening is a deep pit sorrounded by a patch of
+      dark wrinkled flesh as wide as {{his}} hand. `
+});
+
+Description.buildAnus({
+  requires:['minion(C).anus.normal','minion(C).anus.condition.average','minion(C).anus.monster'],
+  d: `{{His}} loose asshole is gigantic, a deep and slightly open pit sorrounded by a patch of dark wrinkled flesh as
+      wide as {{his}} hand. It's so massive that it takes up almost all the space between {{his}} ass cheeks.`
 });
 
 // Normal, Gaping
 
 Description.buildAnus({
   requires:['minion(C).anus.normal','minion(C).anus.condition.gaping','minion(C).anus.big'],
-  d: ``
+  d: `Normal/Gaping/Big`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.normal','minion(C).anus.condition.gaping','minion(C).anus.huge'],
-  d: ``
+  d: `Normal/Gaping/Huge`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.normal','minion(C).anus.condition.gaping','minion(C).anus.monster'],
-  d: ``
+  d: `Normal/Gaping/Monster`
 });
 
 // === Puffy ==================================================================
@@ -181,29 +221,29 @@ Description.buildAnus({
 
 Description.buildAnus({
   requires:['minion(C).anus.puffy','minion(C).anus.condition.tight','minion(C).anus.average'],
-  d: ``
+  d: `Puffy/Tight/Average`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.puffy','minion(C).anus.condition.tight','minion(C).anus.big'],
-  d: ``
+  d: `Puffy/Tight/Big`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.puffy','minion(C).anus.condition.tight','minion(C).anus.huge'],
-  d: ``
+  d: `Puffy/Tight/Huge`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.puffy','minion(C).anus.condition.tight','minion(C).anus.monster'],
-  d: ``
+  d: `Puffy/Tight/Monster`
 });
 
 // Puffy, Average
 
 Description.buildAnus({
   requires:['minion(C).anus.puffy','minion(C).anus.condition.average','minion(C).anus.small'],
-  d: ``
+  d: `Puffy/Average/Small`
 });
 
 Description.buildAnus({
@@ -213,56 +253,56 @@ Description.buildAnus({
 
 Description.buildAnus({
   requires:['minion(C).anus.puffy','minion(C).anus.condition.average','minion(C).anus.big'],
-  d: ``
+  d: `Puffy/Average/Big`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.puffy','minion(C).anus.condition.average','minion(C).anus.huge'],
-  d: ``
+  d: `Puffy/Average/Huge`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.puffy','minion(C).anus.condition.average','minion(C).anus.monster'],
-  d: ``
+  d: `Puffy/Average/Monster`
 });
 
 // Puffy, Loose
 
 Description.buildAnus({
   requires:['minion(C).anus.puffy','minion(C).anus.condition.loose','minion(C).anus.average'],
-  d: ``
+  d: `Puffy/Loose/Average`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.puffy','minion(C).anus.condition.loose','minion(C).anus.big'],
-  d: ``
+  d: `Puffy/Loose/Big`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.puffy','minion(C).anus.condition.loose','minion(C).anus.huge'],
-  d: ``
+  d: `Puffy/Loose/Huge`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.puffy','minion(C).anus.condition.loose','minion(C).anus.monster'],
-  d: ``
+  d: `Puffy/Loose/Monster`
 });
 
 // Puffy, Gaping
 
 Description.buildAnus({
   requires:['minion(C).anus.puffy','minion(C).anus.condition.gaping','minion(C).anus.big'],
-  d: ``
+  d: `Puffy/Gaping/Big`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.puffy','minion(C).anus.condition.gaping','minion(C).anus.huge'],
-  d: ``
+  d: `Puffy/Gaping/Huge`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.puffy','minion(C).anus.condition.gaping','minion(C).anus.monster'],
-  d: ``
+  d: `Puffy/Gaping/Monster`
 });
 
 // === Horse ==================================================================
@@ -271,34 +311,34 @@ Description.buildAnus({
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.tight','minion(C).anus.small'],
-  d: ``
+  d: `Horse/Tight/Small`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.tight','minion(C).anus.average'],
-  d: ``
+  d: `Horse/Tight/Average`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.tight','minion(C).anus.big'],
-  d: ``
+  d: `Horse/Tight/Big`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.tight','minion(C).anus.huge'],
-  d: ``
+  d: `Horse/Tight/Huge`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.tight','minion(C).anus.monster'],
-  d: ``
+  d: `Horse/Tight/Monster`
 });
 
 // Horse, Average
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.average','minion(C).anus.small'],
-  d: ``
+  d: `Horse/Average/Small`
 });
 
 Description.buildAnus({
@@ -308,58 +348,57 @@ Description.buildAnus({
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.average','minion(C).anus.big'],
-  d: ``
+  d: `Horse/Average/Big`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.average','minion(C).anus.huge'],
-  d: ``
+  d: `Horse/Average/Huge`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.average','minion(C).anus.monster'],
-  d: ``
+  d: `Horse/Average/Monster`
 });
 
 // Horse, Loose
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.loose','minion(C).anus.average'],
-  d: ``
+  d: `Horse/Loose/Average`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.loose','minion(C).anus.big'],
-  d: ``
+  d: `Horse/Loose/Big`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.loose','minion(C).anus.huge'],
-  d: ``
+  d: `Horse/Loose/Huge`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.loose','minion(C).anus.monster'],
-  d: ``
+  d: `Horse/Loose/Monster`
 });
 
 // Horse, Gaping
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.gaping','minion(C).anus.big'],
-  d: ``
+  d: `Horse/Gaping/Big`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.gaping','minion(C).anus.huge'],
-  d: ``
+  d: `Horse/Gaping/Huge`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.gaping','minion(C).anus.monster'],
-  d: ``
+  d: `Horse/Gaping/Monster`
 });
-
 
 // === Mouth ==================================================================
 // TODO: These don't exist yet.
