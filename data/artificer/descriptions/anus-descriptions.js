@@ -31,7 +31,7 @@ Description.buildAnus({
 
 Description.buildAnus({
   requires:['minion(C).anus.normal','minion(C).anus.condition.tight','minion(C).anus.big'],
-  d: `{{He}} has a large but tight looking asshole; a wide patch of dark wrinked skin sorrounding {{his}} taut opening. `
+  d: `{{He}} has a large but tight looking asshole; a wide patch of dark wrinked skin sorrounding {{his}} taut opening.`
 });
 
 Description.buildAnus({
@@ -41,19 +41,39 @@ Description.buildAnus({
 
 Description.buildAnus({
   requires:['minion(C).anus.normal','minion(C).anus.condition.tight','minion(C).anus.huge'],
-  d: ``
+  d: `{{He}} has a huge asshole, a deep sunken patch of wrinkled skin. Despite it's size though {{his}} anus looks
+      tight and strong.`
+});
+
+Description.buildAnus({
+  requires:['minion(C).anus.normal','minion(C).anus.condition.tight','minion(C).anus.huge'],
+  d: `{{His}} deep wrinkled asshole looks huge but also tight and muscular.`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.normal','minion(C).anus.condition.tight','minion(C).anus.monster'],
-  d: ``
+  d: `A gigantic asshole takes up most of the space between {{his}} shapely ass cheeks. The opening of his ass is a
+      deep inch long gash sorrounded by a patch of dark wrinkled flesh as wide as {{his}} hand. Despite it's size
+      though {{his}} anus looks tight and strong.`
+});
+
+Description.buildAnus({
+  requires:['minion(C).anus.normal','minion(C).anus.condition.tight','minion(C).anus.monster'],
+  d: `{{His}} asshole is gigantic, a deeply set inch long gash sorrounded by a patch of dark wrinkled flesh as wide as
+      {{his}} hand. It's so massive that it takes up almost all the space between {{his}} ass cheeks. Despite it's size
+      though {{his}} anus looks tight and strong.`
 });
 
 // Normal, Average
 
 Description.buildAnus({
   requires:['minion(C).anus.normal','minion(C).anus.condition.average','minion(C).anus.small'],
-  d: ``
+  d: `{{He}} has a small little asshole, a barely noticable little dimple nestled between {{his}} butt cheeks`
+});
+
+Description.buildAnus({
+  requires:['minion(C).anus.normal','minion(C).anus.condition.average','minion(C).anus.small'],
+  d: `{{His}} asshole is small but otherwise average looking, a deep little dimple between {{his}} butt cheeks`
 });
 
 Description.buildAnus({
@@ -62,18 +82,53 @@ Description.buildAnus({
 });
 
 Description.buildAnus({
+  requires:['minion(C).anus.normal','minion(C).anus.condition.average','minion(C).anus.average','minion(C).is-male'],
+  d: `{{His}} asshole is unremarkable, just a smooth little opening a little above his balls.`
+});
+
+Description.buildAnus({
+  requires:['minion(C).anus.normal','minion(C).anus.condition.tight','minion(C).anus.average','minion(C).has-pussy'],
+  d: `{{His}} asshole is unremarkable, just a little smooth opening right above {{his}} {{pussy}}.`
+});
+
+Description.buildAnus({
   requires:['minion(C).anus.normal','minion(C).anus.condition.average','minion(C).anus.big'],
-  d: ``
+  d: `{{He}} has a rather large asshole with noticably dark and wrinked skin sorrounding {{his}} opening.`
+});
+
+Description.buildAnus({
+  requires:['minion(C).anus.normal','minion(C).anus.condition.average','minion(C).anus.big'],
+  d: `A wide patch of dark and wrinkled skin sorrounds {{his}} deeply set asshole.`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.normal','minion(C).anus.condition.average','minion(C).anus.huge'],
-  d: ``
+  d: `{{His}} asshole has a normal shape to it, but it's unusually large. Dark wrinkled flesh extends an inch in every
+      direction from the deeply sunken hole at its center.`
+});
+
+Description.buildAnus({
+  requires:['minion(C).anus.normal','minion(C).anus.condition.average','minion(C).anus.huge','minion(C).is-male'],
+  d: `He has an unusually large asshole. It's darkened wrinkled flesh extending from his balls to halfway up his
+      asscrack.`
+});
+
+Description.buildAnus({
+  requires:['minion(C).anus.normal','minion(C).anus.condition.average','minion(C).anus.huge','minion(C).has-pussy'],
+  d: `{{He}} has an unusually large asshole. It's darkened wrinkled flesh extending from the bottom of his pussy to
+      halfway up his asscrack.`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.normal','minion(C).anus.condition.average','minion(C).anus.monster'],
-  d: ``
+  d: `A gigantic asshole takes up most of the space between {{his}} shapely ass cheeks. The opening of his ass is a
+      deep inch long gash sorrounded by a patch of dark wrinkled flesh as wide as {{his}} hand. `
+});
+
+Description.buildAnus({
+  requires:['minion(C).anus.normal','minion(C).anus.condition.average','minion(C).anus.monster'],
+  d: `{{His}} asshole is gigantic, a deeply set inch long gash sorrounded by a patch of dark wrinkled flesh as wide as
+      {{his}} hand. It's so massive that it takes up almost all the space between {{his}} ass cheeks.`
 });
 
 // Normal, Loose
