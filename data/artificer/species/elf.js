@@ -28,12 +28,12 @@ Species.build('elf', {
       average: 50,
       big:     30,
     }},
-    pussy:{ condition:{
+    pussy:{ conditionMap:{
       tight: 25,
       average: 75,
       loose: 15,
     }},
-    anus:{ condition:{
+    anus:{ conditionMap:{
       tight: 60,
       average: 30,
       loose: 10,

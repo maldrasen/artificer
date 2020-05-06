@@ -49,13 +49,13 @@ Species.build('ogre', {
         huge: 10,
       }
     },
-    pussy:{ condition:{
+    pussy:{ conditionMap:{
       tight: 10,
       average: 30,
       loose: 20,
       gaping: 10,
     }},
-    anus:{ condition:{
+    anus:{ conditionMap:{
       tight: 40,
       average: 30,
       loose: 10,

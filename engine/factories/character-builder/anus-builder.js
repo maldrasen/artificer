@@ -6,7 +6,7 @@ global.AnusBuilder = (function() {
     let params = CharacterBuilder.baseline('anus', options, character.species, {
       character_id:   character.id,
       shape:          Random.from(['normal','normal','puffy']),
-      conditon:       randomCondition(character.species),
+      condition:      randomCondition(character.species),
       sizeClass:      Random.fromFrequencyMap(character.species.bodyOptions.cock.size),
       sizeScale:      Random.upTo(100),
       prolapseLength: 0,
@@ -19,10 +19,10 @@ global.AnusBuilder = (function() {
 
     params.sizeFactor = character.species.sizeFactor();
 
-    if (params.conditon == 'loose') {
+    if (params.condition == 'loose') {
       if (params.sizeClass == 'small') { params.sizeClass= 'average'; }
     }
-    if (params.conditon == 'gaping') {
+    if (params.condition == 'gaping') {
       if (params.sizeClass == 'small') { params.sizeClass = 'big'; }
       if (params.sizeClass == 'average') { params.sizeClass = 'big'; }
     }
@@ -33,8 +33,8 @@ global.AnusBuilder = (function() {
   // Only a couple species have condition maps set, the default map to use is the elf map.
   function randomCondition(species) {
     return Random.fromFrequencyMap(
-      ObjectUtility.fetch(species, 'bodyOptions', 'anus', 'condition') ||
-      Species.lookup('elf').bodyOptions.anus.condition);
+      ObjectUtility.fetch(species, 'bodyOptions', 'anus', 'conditionMap') ||
+      Species.lookup('elf').bodyOptions.anus.conditionMap);
   }
 
   return { build:build }

@@ -14,7 +14,7 @@ describe('PussyBuilder', function() {
       shape: 'horse',
       sizeClass: 'monster',
       sizeScale: 100,
-      conditon: 'gaping',
+      condition: 'gaping',
       outerLabiaSize: 5,
       innerLabiaLength: 500,
       clitLength: 200,
@@ -27,7 +27,7 @@ describe('PussyBuilder', function() {
         expect(pussy.shape).to.equal('horse');
         expect(pussy.sizeClass).to.equal('monster');
         expect(pussy.sizeScale).to.equal(100);
-        expect(pussy.conditon).to.equal('gaping');
+        expect(pussy.condition).to.equal('gaping');
         expect(pussy.outerLabiaSize).to.equal(5);
         expect(pussy.innerLabiaLength).to.equal(500);
         expect(pussy.clitLength).to.equal(200);

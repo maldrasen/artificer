@@ -11,10 +11,10 @@ global.AnusScrutinizer = (function() {
     if (operation == 'anus.puffy')             { return data.anus.shape == 'puffy' }
     if (operation == 'anus.horse')             { return data.anus.shape == 'horse' }
     if (operation == 'anus.mouth')             { return data.anus.shape == 'mouth' }
-    if (operation == 'anus.condition.tight')   { return data.anus.conditon == 'tight' }
-    if (operation == 'anus.condition.average') { return data.anus.conditon == 'average' }
-    if (operation == 'anus.condition.loose')   { return data.anus.conditon == 'loose' }
-    if (operation == 'anus.condition.gaping')  { return data.anus.conditon == 'gaping' }
+    if (operation == 'anus.condition.tight')   { return data.anus.condition == 'tight' }
+    if (operation == 'anus.condition.average') { return data.anus.condition == 'average' }
+    if (operation == 'anus.condition.loose')   { return data.anus.condition == 'loose' }
+    if (operation == 'anus.condition.gaping')  { return data.anus.condition == 'gaping' }
     if (operation == 'anus.prolapsed')         { return data.anus.prolapseLength > 0; }
 
     throw `Unknown Anus Operation - ${operation}`

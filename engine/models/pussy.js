@@ -6,7 +6,7 @@ global.Pussy = Database.instance().define('pussy', {
   character_id:      { type:Sequelize.INTEGER },
   placement:         { type:Sequelize.STRING, validate:{ isIn:[['normal','nipple']] }},
   shape:             { type:Sequelize.STRING, validate:{ isIn:[PUSSY_SHAPES] }},
-  conditon:          { type:Sequelize.STRING, validate:{ isIn:[PUSSY_CONDITIONS] }},
+  condition:         { type:Sequelize.STRING, validate:{ isIn:[PUSSY_CONDITIONS] }},
   sizeClass:         { type:Sequelize.STRING, validate:{ isIn:[PUSSY_SIZES] }},
   sizeScale:         { type:Sequelize.DOUBLE, validate:{ min:0, max:100 }},
   sizeFactor:        { type:Sequelize.DOUBLE  },

@@ -8,7 +8,7 @@ global.PussyBuilder = (function() {
       character_id:     character.id,
       shape:            'normal',
       placement:        'normal',
-      conditon:         randomCondition(character.species),
+      condition:        randomCondition(character.species),
       sizeClass:        Random.fromFrequencyMap(character.species.bodyOptions.cock.size),
       sizeScale:        Random.upTo(100),
       outerLabiaSize:   Random.upTo(5)+1,
@@ -37,8 +37,8 @@ global.PussyBuilder = (function() {
   // Only a couple species have condition maps set, the default map to use is the elf map.
   function randomCondition(species) {
     return Random.fromFrequencyMap(
-      ObjectUtility.fetch(species, 'bodyOptions', 'pussy', 'condition') ||
-      Species.lookup('elf').bodyOptions.pussy.condition);
+      ObjectUtility.fetch(species, 'bodyOptions', 'pussy', 'conditionMap') ||
+      Species.lookup('elf').bodyOptions.pussy.conditionMap);
   }
 
   return { build:build }

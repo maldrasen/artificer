@@ -1,7 +1,7 @@
 describe('Describer: Pussy (injuries)', function() {
 
   function printPussy(type, pussy) {
-    SpecHelper.print(`${type}(${pussy.sizeClass}/${pussy.conditon}) > ${pussy.description}`);
+    SpecHelper.print(`${type}(${pussy.sizeClass}/${pussy.condition}) > ${pussy.description}`);
   }
 
   it('describes normal pussies', function(done) {

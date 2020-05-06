@@ -4,7 +4,7 @@ describe('AnusBuilder', function() {
     let options = { gender:'male', species:'elf', anus:{
       shape: 'horse',
       prolapseLength: 400,
-      conditon: 'gaping',
+      condition: 'gaping',
       sizeClass: 'monster',
       sizeScale: 100,
     }};
@@ -13,7 +13,7 @@ describe('AnusBuilder', function() {
       character.getAnus().then(anus => {
         expect(anus.shape).to.equal('horse');
         expect(anus.prolapseLength).to.equal(400);
-        expect(anus.conditon).to.equal('gaping');
+        expect(anus.condition).to.equal('gaping');
         expect(anus.sizeClass).to.equal('monster');
         expect(anus.sizeScale).to.equal(100);
         done();

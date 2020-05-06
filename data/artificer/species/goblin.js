@@ -45,13 +45,13 @@ Species.build('goblin', {
       big:     20,
       huge:    10,
     }},
-    pussy:{ condition:{
+    pussy:{ conditionMap:{
       tight: 20,
       average: 40,
       loose: 20,
       gaping: 10,
     }},
-    anus:{ condition:{
+    anus:{ conditionMap:{
       tight: 40,
       average: 30,
       loose: 10,
