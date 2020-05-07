@@ -19,6 +19,9 @@ global.Description = class Description extends Form {
       ObjectUtility.values(Description.instances).map(async description => {
         if (description.type != part) { return; }
 
+        if (part == 'anus') {
+          if (description.anusConditionsMet(data) == false) { return; }
+        }
         if (part == 'cock') {
           if (description.cockInclusionsValid(data) == false) { return; }
           if (description.cockConditionsMet(data) == false) { return; }
@@ -197,6 +200,11 @@ global.Description = class Description extends Form {
   // that result. This is essentially an XOR.
   conditionFailed(code, expression) {
     return ArrayUtility.contains(this.conditions,code) ? !expression : expression
+  }
+
+  anusConditionsMet(data) {
+    if (this.conditionFailed('minion(C).anus.prolapsed', data.anus.prolapseLength > 0)) { return false; }
+    return true;
   }
 
   cockConditionsMet(data) {

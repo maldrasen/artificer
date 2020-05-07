@@ -18,10 +18,12 @@ global.SpecHelper = (function() {
   }
 
   async function buildRando(options={}, adjustments=[]) {
-    const rando = await CharacterBuilder.build({
+    const rando = await CharacterBuilder.build(extend({
+      firstName: 'Rando',
+      lastName: 'Random',
       species: options.species||Random.from(Species.all()).code,
       gender: options.gender,
-    });
+    },options));
 
     await CharacterAdjuster.applyAll(rando,adjustments);
 

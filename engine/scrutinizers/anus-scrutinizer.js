@@ -16,6 +16,7 @@ global.AnusScrutinizer = (function() {
     if (operation == 'anus.condition.loose')   { return data.anus.condition == 'loose' }
     if (operation == 'anus.condition.gaping')  { return data.anus.condition == 'gaping' }
     if (operation == 'anus.prolapsed')         { return data.anus.prolapseLength > 0; }
+    if (operation == 'anus.not-prolapsed')     { return data.anus.prolapseLength == 0; }
 
     throw `Unknown Anus Operation - ${operation}`
   }

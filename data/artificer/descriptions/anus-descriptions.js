@@ -141,7 +141,7 @@ Description.buildAnus({
 Description.buildAnus({
   requires:['minion(C).anus.normal','minion(C).anus.condition.loose','minion(C).anus.average','minion(C).is-male'],
   d: `His asshole is a deep pit that rests just above the swell of his taint. The dark and wrinkled flesh there looks
-      well used, a bit loose, and is always slightly open.`
+      well used and is always slightly open.`
 });
 
 Description.buildAnus({
@@ -197,12 +197,19 @@ Description.buildAnus({
 
 Description.buildAnus({
   requires:['minion(C).anus.normal','minion(C).anus.condition.gaping','minion(C).anus.big'],
-  d: `Normal/Gaping/Big`
+  d: `{{His}} wide asshole has been completely destroyed and lies open in a permanent gape. The rim of {{his}} gaping
+      asshole is smooth and featureless, just an open hole filled with red glistening meat.`
+});
+
+Description.buildAnus({
+  requires:['minion(C).anus.normal','minion(C).anus.condition.gaping','minion(C).anus.big'],
+  d: `{{His}} asshole lies open in a wide and permanent gape, allowing anyone passing by to see the dark red inside of
+      {{his}} colon.`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.normal','minion(C).anus.condition.gaping','minion(C).anus.huge'],
-  d: `Normal/Gaping/Huge`
+  d: `{{His}}`
 });
 
 Description.buildAnus({
@@ -400,5 +407,12 @@ Description.buildAnus({
   d: `Horse/Gaping/Monster`
 });
 
-// === Mouth ==================================================================
+// === Mouth ===================================================================
 // TODO: These don't exist yet.
+
+
+// === Prolapsed Asses =========================================================
+Description.buildAnus({
+  conditions: 'minion(C).anus.prolapsed',
+  d: `(TODO: Any Prolapse)`
+});

@@ -32,6 +32,7 @@ Species.build('incubus', {
       red:    40,
     },
 
+    tits: false,
     mouth: {
       tongueShape: 'forked',
       averageTongueLength: 80,
