@@ -209,12 +209,15 @@ Description.buildAnus({
 
 Description.buildAnus({
   requires:['minion(C).anus.normal','minion(C).anus.condition.gaping','minion(C).anus.huge'],
-  d: `{{His}}`
+  d: `{{His}} unusually large asshole has been completely destroyed and lies open in a permanent gape. One could easily
+      slide their hand into the loose flesh of {{his}} anal ring without resistance.`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.normal','minion(C).anus.condition.gaping','minion(C).anus.monster'],
-  d: `Normal/Gaping/Monster`
+  d: `{{His}} gigantic asshole has been stretched beyond belief. It's an open yawning cavern of flesh that takes up all
+      the space between {{his}} ass cheeks. The loose skin of {{his}} anal ring is ragged and hangs limply around the
+      gaping maw that is {{his}} anus.`
 });
 
 // === Puffy ==================================================================

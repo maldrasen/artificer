@@ -2,6 +2,7 @@ describe.only('Describer: Anus', function() {
 
   function printAnus(title, options, done) {
     SpecHelper.tenTimes(done, async resolve => {
+
       let prolapseLength = 0;
       let condition = Random.from(['tight','average','loose','gaping']);
       let sizeClass = Random.from({
@@ -17,7 +18,7 @@ describe.only('Describer: Anus', function() {
         prolapseLength = Random.between(1,100);
       }
 
-      const rando = await SpecHelper.buildRando({ gender:'futa', anus:{ sizeClass, condition, prolapseLength }});
+      const rando = await SpecHelper.buildRando({ gender:'futa', anus:{ shape:options.shape, sizeClass, condition, prolapseLength }});
       await CharacterDescriber.updateAll(rando);
       const anus = await rando.getAnus();
 
@@ -39,7 +40,7 @@ describe.only('Describer: Anus', function() {
     printAnus('Horse', { shape:'horse' }, done);
   });
 
-  it.only('describes prolapsed assholes', function(done) {
+  it('describes prolapsed assholes', function(done) {
     printAnus('Prolapse', { prolapse:true }, done);
   });
 
