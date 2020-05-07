@@ -1,12 +1,3 @@
-/* I used wood reclaimed from around the keep to build some completely
-haphazard shelves. Which is good because it hides their true purpose. The
-basketof blood berries are on the top shelf. To get at them the thief will have
-to climb, but thier weight should be enough to cause the haphazard shelves to
-collapse, and when they do they'll collapse onto the door, slaming it shut,
-trapping the theif inside, and making a lot of noise. At least that's how it
-should work in theory. Lots that could go wrong with this sort of setup, but I
-think it has a fair chance of working.*/
-
 Event.build('storeroom-built', {
 
   setting: {
@@ -16,7 +7,14 @@ Event.build('storeroom-built', {
 
   stages:[{
     pages:[
-      { text:`(*) I have built the storeroom and set the trap.` },
+      { text:`I've finished building my combination store room and rat trap.` },
+      { text:`I used wood reclaimed from around the keep to build some completely haphazard shelves. I could have done
+          a better job on them, but their janky nature hides their true purpose.` },
+      { text:`The basket of blood berries are on the top shelf. To get at them the thief will have to climb the
+          shelves, but their weight should be enough to cause the unstable shelves to collapse, and when they do
+          they'll collapse onto the door, slamming it shut, trapping the thief inside, and making a lot of noise.` },
+      { text:`At least that's how it should work in theory.` },
+      { text:`A lot could go wrong with this sort of setup, but I think it has a fair chance of working.` },
     ]
   }],
 

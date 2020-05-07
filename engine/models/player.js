@@ -76,6 +76,8 @@ Player.forge = async function(options) {
 
   await CharacterBuilder.addBody(player, defaultBody);
   await CharacterNamer.execute(player);
+  await CharacterDescriber.updateAll(player);
+
   await player.update({ portraitCode:(await ImageResource.portraitFor(player)).code });
 
   Flag.setAll({
