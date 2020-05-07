@@ -28,7 +28,7 @@ describe.only('Describer: Anus', function() {
     });
   }
 
-  it.only('describes normal assholes', function(done) {
+  it('describes normal assholes', function(done) {
     printAnus('Normal', { shape:'normal' }, done);
   });
 
