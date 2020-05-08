@@ -64,17 +64,16 @@ global.Weaver = (function() {
     return error(`BadToken(${utility}|${argument})`);
   }
 
-  // The pronoun shortcuts are a little magical. They only work when there is
-  // only a single actor in the scene. When that's the case it shoudn't be
-  // nessessary to specify which one. We only do this for pronouns though
-  // because they're by far the most used tokens. And {{him}} is much easier to
-  // type and read than {{C::gender.him}}.
+  // The pronoun shortcuts are a little magical. They only work when there is a
+  // a single actor or a 'C' actor in the scene. What that the case we don't
+  // need to specify which actor is being talked about. We only do this for
+  // pronouns though because they're by far the most used tokens. And {{him}}
+  // is much easier to type and read than {{C::gender.him}}.
   function shortcutValue(token, context) {
     const keys = Object.keys(context.actors);
-    if (keys.length != 1) {
-      throw `Pronoun shortcuts can only be used when there is exactly one actor in a scene.`;
-    }
-    return (context.actors[keys[0]]).character.gender[token];
+    if (keys.length == 1) { return (context.actors[keys[0]]).character.gender[token]; }
+    if (context.actors['C']) { return (context.actors['C']).character.gender[token]; }
+    throw `Pronoun shortcuts can only be used when there is only one actor in a scene, or when there is a 'C' actor.`;
   }
 
   function simpleValue(token) {
