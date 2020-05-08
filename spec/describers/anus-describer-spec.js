@@ -1,4 +1,4 @@
-describe.only('Describer: Anus', function() {
+describe('Describer: Anus', function() {
 
   function printAnus(title, options, done) {
     SpecHelper.tenTimes(done, async resolve => {
