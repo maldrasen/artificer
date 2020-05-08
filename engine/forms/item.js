@@ -7,7 +7,7 @@ global.Item = class Item extends Form {
       let item = Item.lookup(code);
       return {
         word: item.name,
-        words: item.pluralName,
+        words: item.pluralName || `${item.name}s`,
         count: items[code]
       };
     }));
@@ -19,6 +19,7 @@ global.Item = class Item extends Form {
     each(Item.instances, (item, code) => {
       data[code] = {
         name: item.name,
+        pluralName: item.pluralName || `${item.name}s`,
         url: ImageResource.getIcon('item',code).url }
     });
     return data;

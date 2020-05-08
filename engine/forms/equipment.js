@@ -11,6 +11,7 @@ global.Equipment = class Equipment extends Form {
     each(Equipment.instances, (equipment, code) => {
       data[code] = {
         name: equipment.name,
+        pluralName: equipment.pluralName || `${equipment.name}s`,
         url: ImageResource.getIcon('equipment',code).url }
     });
 

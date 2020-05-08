@@ -1,25 +1,37 @@
 Elements.ImageResource = (function() {
   let iconData;
 
-  function initIconLibrary(event, data) { iconData = data; }
+  function initIconLibrary(event, data) {
+    iconData = data;
+console.log("Data:",data)
+  }
 
   // Build an item icon from the type (equipment, item, or flavor), the item
   // code, and the count. If the count is set to 1 the count span will be
   // hidden.
-  function iconElement(type, code, count) {
-    let countSpan = (count > 1) ? `<span class='count'>${count}</span>` : '';
-    let data = iconData[type][code];
+  function iconElement(type, code, count, tooltip=true) {
+    const countSpan = (count > 1) ? `<span class='count'>${count}</span>` : '';
+    const data = iconData[type][code];
 
     if (data == null) {
       throw `No icon for (${type},${code}) found in icon data`;
     }
 
-    return $(`
+    const icon = $(`
       <div class='item-icon large-icon'>
         ${countSpan}
-        <span class='name'>${data.name}</span>
         <img src='${data.url}' height=40 width=40/>
       </div>`);
+
+    if (tooltip) {
+      const tooltip = $('<div>',{
+        class:'align-left small-padding padding-left padding-right'
+      }).append(count > 1 ? `${count} ${data.pluralName}` : data.name);
+
+      Elements.Tooltip.add(icon, { content:tooltip, delay:10 });
+    }
+
+    return icon;
   }
 
   function loadBackground(selector, argument) {

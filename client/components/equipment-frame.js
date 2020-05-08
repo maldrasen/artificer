@@ -70,8 +70,8 @@ Components.EquipmentFrame = (function() {
 
   function getIcon(item) {
     return (item == null) ?
-      Elements.ImageResource.iconElement('equipment', 'empty', 1):
-      Elements.ImageResource.iconElement('equipment', item.code, 1);
+      Elements.ImageResource.iconElement('equipment', 'empty', 1, false):
+      Elements.ImageResource.iconElement('equipment', item.code, 1, false);
   }
 
   // === Available Items Floating Frame ===
@@ -116,7 +116,7 @@ Components.EquipmentFrame = (function() {
 
     let listItem = $('<li>',{ class:'available-equipment-item' });
         listItem.data('id',item.id);
-        listItem.append(Elements.ImageResource.iconElement('equipment', item.code, 1));
+        listItem.append(Elements.ImageResource.iconElement('equipment', item.code, 1, false));
         listItem.append(nameArea);
 
     return listItem;
