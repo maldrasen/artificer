@@ -13,6 +13,8 @@ Components.PlanView = (function() {
   }
 
   function build(event, planData) {
+    Elements.reset();
+
     $('#mainContent').empty().append($('<div>',{ id:"planView" }).append($('#planTemplate').html()));
     $('#planView').data('planData', planData).addClass('can-cancel');
 

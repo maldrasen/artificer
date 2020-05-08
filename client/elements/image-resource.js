@@ -3,7 +3,6 @@ Elements.ImageResource = (function() {
 
   function initIconLibrary(event, data) {
     iconData = data;
-console.log("Data:",data)
   }
 
   // Build an item icon from the type (equipment, item, or flavor), the item

@@ -8,7 +8,7 @@ Elements.Buttons = (function() {
   //   action:   Button Action
   function iconButtonWithLabel(options) {
     let label = $('<div>',{ class:'label'}).append(options.label);
-    let icon = Elements.ImageResource.iconElement(options.type,options.code,options.count);
+    let icon = Elements.ImageResource.iconElement(options.type,options.code,options.count,false);
     let button = $('<a>',{ href:'#', class:'button-icon-with-label' }).append(icon).append(label);
 
     button.on('click', Elements.buttonAction(e => {

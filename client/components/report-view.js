@@ -3,6 +3,8 @@ Components.ReportView = (function() {
   function init() {}
 
   function build(event, report) {
+    Elements.reset();
+
     $('#mainContent').empty().append($('<div>',{ id:"reportView", class:'full-page-panel' }).append($('#reportTemplate').html()));
 
     if (report.project) {

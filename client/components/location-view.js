@@ -10,6 +10,8 @@ Components.LocationView = (function() {
   }
 
   function build(transport, view) {
+    Elements.reset();
+
     let location = $('<div>',{ id:"locationView" }).append($('#locationTemplate').html());
         location.find('.location-name').append(view.name);
         location.find('.location-description').append(view.description);

@@ -17,6 +17,7 @@ Components.EventView = (function() {
   // Build an event given all of the event options. All of the event options
   // are described in detail on the Wiki now.
   function build(transport, event) {
+    Elements.reset();
     Components.EventView.Page = {};
 
     skipActive = false;

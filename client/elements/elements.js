@@ -1,5 +1,9 @@
 global.Elements = (function() {
 
+  function reset() {
+    Elements.Tooltip.close();
+  }
+
   function clearSelection() {
     if (window.getSelection) { return window.getSelection().removeAllRanges(); }
   }
@@ -20,6 +24,7 @@ global.Elements = (function() {
   return {
     buttonAction,
     clearSelection,
+    reset,
   };
 
 })();
