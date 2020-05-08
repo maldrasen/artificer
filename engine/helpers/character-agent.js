@@ -30,8 +30,6 @@ global.CharacterAgent = (function() {
   async function characterAtFlag(descriptive) {
     const flag = descriptive.match(/^flag=(.+)/)[1];
     const id = Flag.lookup(flag);
-
-    console.log('Flag:',flag,id)
     return await Character.lookup(id);
   }
 
