@@ -8,6 +8,7 @@ ImageResource.buildIcon('icon-unknown', { url:`${IMAGE_ROOT}/icons/unknown.png` 
 
 ImageResource.buildIcon('icon-equipment-basket',         { url:`${IMAGE_ROOT}/icons/basket.png` });
 ImageResource.buildIcon('icon-equipment-empty',          { url:`${IMAGE_ROOT}/icons/empty.png` });
+ImageResource.buildIcon('icon-equipment-sling',          { url:`${IMAGE_ROOT}/icons/sling.png` });
 ImageResource.buildIcon('icon-equipment-skinning-knife', { url:`${IMAGE_ROOT}/icons/skinning-knife.png` });
 
 ImageResource.buildIcon('icon-item-blight-spider',  { url:`${IMAGE_ROOT}/icons/blight-spider.png` });

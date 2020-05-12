@@ -62,7 +62,7 @@ Task.build('exercise', {
 
     return {
       title:`Exercise`,
-      text:`I spent a couple hours exercising{occurrence.story}`
+      text:`I spent a couple hours exercising${occurrence.story}`
     };
   }
 
