@@ -92,8 +92,9 @@ global.Weaver = (function() {
 
     // It's generally fine to assume meters and yards are equal. Use the
     // measurement loom though to get something in feet.
-    if (token == 'meter') { return Settings.Metric ? 'meter' : 'yard' }
-    if (token == 'meters') { return Settings.Metric ? 'meters' : 'yards' }
+    if (token == 'meter')     { return Settings.Metric ? 'meter' : 'yard' }
+    if (token == 'threeFeet') { return Settings.Metric ? 'a meter' : 'three feet' }
+    if (token == 'meters')    { return Settings.Metric ? 'meters' : 'yards' }
 
     // Just for phrases like "every inch of his cock" where there's no actual length value
     if (token == 'inch') { return Settings.Metric ? 'centimeter' : 'inch' }

@@ -27,8 +27,8 @@ Event.build('rat-thief-kill-quick', {
       { text:`I leave {{his}} face intact though. I want them to know who this was.` },
       { text:`Finally, now that blood and guts are strewn about on every conceivable surface I return upstairs. As I
           reach the stairs though I think I hear the soft sound of small quiet feet running away.` },
-      { text:`{{R::character.firstName}} was probably watching. Well, that's fine. {{He}} should understand too what
-          happens to those who cross me.` },
+      { text:`{{R::character.firstName}} was probably watching. Well, that's fine. {{R::gender.He}} should understand
+          too what happens to those who cross me.` },
     ]
   }],
 
