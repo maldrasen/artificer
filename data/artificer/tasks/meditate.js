@@ -1,6 +1,6 @@
 Task.build('meditate', {
   name: 'Meditate',
-  description: 'I will spend a few hours in meditation.',
+  description: 'I will spend a couple of hours in meditation.',
   requires: ['flag.plan-view.tasks.meditate'],
   time: 1,
   limit: 1,
@@ -21,7 +21,7 @@ Task.build('meditate', {
     if (player.magical > 50) {
       return {
         title:`Meditation`,
-        text:`I spend a couple hours meditating this morning. The exercise left me feeling more relaxed, but no more powerful.`
+        text:`I spent a couple hours meditating this morning. It left me feeling more relaxed, but no more powerful.`
       };
     }
 
@@ -32,7 +32,6 @@ Task.build('meditate', {
     // need to randomize their skill gain. The more magical a player has, the
     // harder it is to increase.
     let occurance = Random.from([
-      { bonus:  0,  story:`Well, I actually spent the time masterbating, but it had the same effect. `},
       { bonus:  0,  story:`I'm feeling more relaxed.` },
       { bonus:  0,  story:`I have become more self aware.` },
       { bonus:  0,  story:`I feel like I understand myself a bit better now.` },
@@ -57,7 +56,7 @@ Task.build('meditate', {
 
     return {
       title:`Meditation`,
-      text:`I spend a couple hours meditating this morning. ${occurance.story}`
+      text:`I spent a couple of hours meditating. ${occurance.story}`
     };
   }
 

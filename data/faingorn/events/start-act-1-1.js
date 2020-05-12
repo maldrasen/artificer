@@ -24,13 +24,19 @@ Event.build('start-act-1-1', {
           I barely know who I am at all.` },
       { text:`I think it would be a good idea to spend a little time in the morning practicing with these magical
           powers I find myself with. I need to know what I can do, and what my limits are.` },
-      { narratorSpeaker:true, text:`You can now meditate during the day. Spending time in meditation will help you
-          master your magical abilities.`, alert:{ unlock:'Task: Meditate' }},
+      { text:`While I'm at it I should do something to build my physical strength as well. Pushups, situps, running up
+          and down the central stairwell; anything really would help to build my strength and stamina.` },
+      { narratorSpeaker:true, text:`You can now exercise and meditate during the day. Spending time in meditation will
+          help you master your magical abilities while exercise helps build your physical strength.`,
+          alert:{ unlock:'Tasks: Exercise & Meditate' }},
     ]
   }],
 
   onFinish: async choices => {
-    Flag.set('plan-view.tasks.meditate','Y');
+    Flag.setAll({
+      'plan-view.tasks.exercise': 'Y',
+      'plan-view.tasks.meditate': 'Y',
+    });
   },
 
 });

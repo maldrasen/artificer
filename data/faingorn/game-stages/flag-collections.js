@@ -61,6 +61,7 @@ GameStage.FlagCollections = {
       'plan-view.roles.hunter':      'Y',
       'plan-view.roles.rest':        'Y',
       'plan-view.tasks.craft':       'Y',
+      'plan-view.tasks.exercise':    'Y',
       'plan-view.tasks.meditate':    'Y',
       'player.maelstrom':            'Y',
       'player.meditate-count':       8,

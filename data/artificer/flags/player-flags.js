@@ -25,15 +25,14 @@ FlagInfo.build('player.fucks-women', {
   validateIn: ['always','maybe','never']
 });
 
-// The number of times the player has meditated.
-FlagInfo.build('player.meditate-count', {
-  validateInteger: true,
-  default: 0,
-});
+// The number of times the player has exercised.
+FlagInfo.build('player.exercise-count',  { validateInteger:true, default:0 });
+FlagInfo.build('player.exercised-today', { validateIn:['yes','no'] });
+FlagInfo.build('player.exercised-last',  { validateInteger:true });
 
-FlagInfo.build('player.meditated-today', {
-  validateIn: ['yes','no']
-});
+// The number of times the player has meditated.
+FlagInfo.build('player.meditate-count',  { validateInteger:true, default:0 });
+FlagInfo.build('player.meditated-today', { validateIn:['yes','no'] });
 
 // The spheres of magic that have been unlocked.
 FlagInfo.build('player.maelstrom', { validateIn:['Y'] });
