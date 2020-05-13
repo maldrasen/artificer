@@ -36,7 +36,7 @@ describe('Describer: Anus', function() {
     printAnus('Puffy', { shape:'puffy' }, done);
   });
 
-  it('describes puffy assholes', function(done) {
+  it.only('describes horse assholes', function(done) {
     printAnus('Horse', { shape:'horse' }, done);
   });
 
