@@ -566,7 +566,7 @@ Description.buildAnus({
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.average','minion(C).anus.huge'],
-  d: `{{He}} has a huge horse asshole, a fat doughnut of black wrinkled flesh that protrudes far past {{his}} round ass
+  d: `{{He}} has a huge horse asshole, a fat doughnut of black wrinkled flesh that protrudes past {{his}} round ass
       cheeks.`
 });
 
@@ -576,40 +576,73 @@ Description.buildAnus({
       cheeks.`
 });
 
-
-
-
-
-
-
-
-
+Description.buildAnus({
+  requires:['minion(C).anus.horse','minion(C).anus.condition.average','minion(C).anus.monster'],
+  d: `The mountain of flesh that is {{his}} gigantic horse asshole extends well past {{his}} ass cheeks. Its black
+      wrinkled flesh is wider than {{his}} hand.`
+});
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.average','minion(C).anus.monster'],
-  d: `Horse/Average/Monster`
+  d: `{{His}} asshole is gigantic, a mountain of black wrinkled flesh wider than {{his}} hand. It's so massive that it
+      extends well past {{his}} ass cheeks.`
 });
 
 // Horse, Loose
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.loose','minion(C).anus.average'],
-  d: `Horse/Loose/Average`
+  d: `{{His}} thick protruding horse asshole is a sagging doughnut of black wrinkled flesh. It's seen enough rough use
+      that it always remains just slightly open, flashing its bright red interior.`
+});
+
+Description.buildAnus({
+  requires:['minion(C).anus.horse','minion(C).anus.condition.loose','minion(C).anus.average'],
+  d: `{{His}} loose horse asshole is an extended mass of black wrinkled flesh. It looks well used and always hangs just
+      slightly open, flashing its bright red interior.`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.loose','minion(C).anus.big'],
-  d: `Horse/Loose/Big`
+  d: `{{He}} has an large and well worn horse asshole. It’s a fat sagging doughnut of black wrinkled skin that hangs
+      open enough to easily slide a finger or two into at any time.`
+});
+
+Description.buildAnus({
+  requires:['minion(C).anus.horse','minion(C).anus.condition.loose','minion(C).anus.big'],
+  d: `{{His}} anus is a fat sagging doughnut of black wrinkled skin. It's seen so much rough use that it would be easy
+      to slide a finger or two into it at any time.`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.loose','minion(C).anus.huge'],
-  d: `Horse/Loose/Huge`
+  d: `{{His}} loose horse asshole is a huge doughnut of thick black wrinkled skin. It's seen so much rough use that it
+      would be easy to slide a few fingers into it at any time.`
+});
+
+Description.buildAnus({
+  requires:['minion(C).anus.horse','minion(C).anus.condition.loose','minion(C).anus.huge','minion(C).is-male'],
+  d: `{{He}} has an huge and well worn horse asshole. The fat doughnut of black wrinkled flesh extends from {{his}}
+      balls to halfway up {{his}} asscrack and always hangs just slightly open.`
+});
+
+Description.buildAnus({
+  requires:['minion(C).anus.horse','minion(C).anus.condition.loose','minion(C).anus.huge','minion(C).has-pussy'],
+  d: `{{He}} has a huge and well worn horse asshole. The fat doughnut of black wrinkled flesh extends from the bottom
+      of {{his}} pussy to halfway up {{his}} asscrack and always hangs just slightly open.`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.loose','minion(C).anus.monster'],
-  d: `Horse/Loose/Monster`
+  d: `A gigantic horse asshole is squeezed between {{his}} shapely ass cheeks. It's seen so much hard use that it
+     never really completely closes by itself anymore. The loose opening is a fat sagging tire of black wrinkled flesh
+     as wide as {{his}} hand.`
+});
+
+Description.buildAnus({
+  requires:['minion(C).anus.horse','minion(C).anus.condition.loose','minion(C).anus.monster'],
+  d: `{{His}} loose horse asshole is a gigantic mountain of black wrinkled flesh as wide as {{his}} hand. It's so
+      massive that the thick sagging doughnut protrudes well beyond {{his}} round ass cheeks.`
 });
 
 // Horse, Gaping
@@ -631,10 +664,3 @@ Description.buildAnus({
 
 // === Mouth ===================================================================
 // TODO: These don't exist yet.
-
-
-// === Prolapsed Asses =========================================================
-Description.buildAnus({
-  conditions: 'minion(C).anus.prolapsed',
-  d: `(TODO: Any Prolapse)`
-});
