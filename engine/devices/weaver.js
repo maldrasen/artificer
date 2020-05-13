@@ -78,7 +78,6 @@ global.Weaver = (function() {
 
   function simpleValue(token) {
     if (token == 'ballsack')  { return Random.from(['ballsack','ballsack','scrotum']); }
-    if (token == 'maleDemon') { return Random.from(['Abaddon','Baal','Baphomet','Behemoth','Lucifer','Maldrasen','Mephistopheles','Satan','Slaanesh']); }
     if (token == 'cock')      { return Random.from(['cock','cock','dick']); }
     if (token == 'pussy')     { return Random.from(['pussy','pussy','cunt']); }
     if (token == 'sheath')    { return Random.from(['sheath','cocksheath']); }
@@ -88,7 +87,16 @@ global.Weaver = (function() {
     if (token == 'throb')     { return Random.from(['throb','pulse']); }
     if (token == 'throbbing') { return Random.from(['throbbing','pulsing']); }
     if (token == 'wide')      { return Random.from(['wide','thick']); }
-    if (token == 'unholy')    { return Random.from(['unholy','demonic','infernal','satanic','corrupt','blasphemous','cursed','accursed']); }
+
+    if (token == 'maleDemon') { return Random.from(['Abaddon','Baal','Baphomet','Behemoth','Lucifer','Maldrasen',
+                                                    'Mephistopheles','Satan','Slaanesh']); }
+
+    if (token == 'unholy')    { return Random.from(['unholy','demonic','infernal','satanic','corrupt','blasphemous',
+                                                     'cursed','accursed']); }
+
+    if (token == 'massive')   { return Random.from(['massive','massively huge','enormous','mammoth','immense',
+                                                    'monstrous','monstrously huge','huge fucking','titanic','giant',
+                                                    'gigantic']); }
 
     // It's generally fine to assume meters and yards are equal. Use the
     // measurement loom though to get something in feet.

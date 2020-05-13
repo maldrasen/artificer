@@ -1,5 +1,6 @@
 Species.build('elf-lord', {
   name: 'Elf Lord',
+  adjective: 'elven',
 
   physical: 20,
   personal: 30,

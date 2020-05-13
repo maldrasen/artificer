@@ -111,7 +111,7 @@ global.Cock = Database.instance().define('cock', {
     // calculating the cock width (which the testicleWidth is based on) however
     // we want the balls to swell more than cocks, so the same factors are
     // applied again, essentially doubling the swelling effects on the balls.
-    testicleWidth()          {
+    testicleWidth() {
       let smash = (this.smashLevel * 0.01)+1;
       let blight = (this.blightLevel * 0.05)+1;
       return this.width * this.ballsSizeFactor * smash * blight;

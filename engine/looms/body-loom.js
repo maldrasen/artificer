@@ -113,16 +113,16 @@ Weaver.BodyLoom = (function() {
   }
 
   function humanSkinWord(shade) {
-    if (shade == 1) { return Random.from(["ebony","deep mahogany","dark umber","dark bronze","coffee"]); }
-    if (shade == 2) { return Random.from(["golden brown","russet brown","bronze","deep amber","copper"]); }
-    if (shade == 3) { return Random.from(["golden","copper","amber","light brown","honey"]); }
-    if (shade == 4) { return Random.from(["light amber","pale","tawny","light golden","pale honey"]); }
-    if (shade == 5) { return Random.from(["very pale","alabaster","ivory","porcelain"]); }
+    if (shade == 1) { return Random.from(["ebony","black","dark bronze","dark brown"]); }
+    if (shade == 2) { return Random.from(["brown","bronze","golden brown"]); }
+    if (shade == 3) { return Random.from(["tan","tanned","light brown","golden"]); }
+    if (shade == 4) { return Random.from(["pale","tawny","light pink","flushed"]); }
+    if (shade == 5) { return Random.from(["white","alabaster","ivory","porcelain"]); }
   }
 
   function redSkinWord(shade) {
-    if (shade == 1) { return Random.from(["deep crimson","dark red"]); }
-    if (shade == 2) { return Random.from(["garnet","maroon","blood red"]); }
+    if (shade == 1) { return Random.from(["black","red black"]); }
+    if (shade == 2) { return Random.from(["dark red","blood red"]); }
     if (shade == 3) { return Random.from(["red","bright red","ruby red"]); }
     if (shade == 4) { return Random.from(["pink","dusty pink"]); }
     if (shade == 5) { return Random.from(["light pink","bright pink"]); }

@@ -1,5 +1,6 @@
 Species.build('dragon', {
   name: 'Dragon',
+  adjective: 'draconic',
 
   physical: 40,
   personal: 30,

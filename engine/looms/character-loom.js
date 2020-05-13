@@ -15,8 +15,6 @@ Weaver.CharacterLoom = (function() {
     if (token == "character.lastName")    { return `${character.lastName}`; }
     if (token == "character.title")       { return `${character.title}`; }
     if (token == "character.Title")       { return `${TextUtility.titlecase(character.title)}`; }
-    if (token == "character.elf")         { return character.species.name.toLowerCase(); }
-    if (token == "character.an_elf")      { return EnglishUtility.a_an(character.species.name.toLowerCase()); }
 
     return Weaver.error(`Bad character token(${token})`);
   }

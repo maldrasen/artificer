@@ -8,9 +8,9 @@ Event.build('found-fruits-and-nuts-sex-M', {
       { actorSpeaker:'C', requires:'player.cock.average', text:`Though I'm really only of an average size, my dick is
           still much bigger than any scaven's and must look absolutely humongous to {{him}}. {{He}} nods slowly and
           says, "I understand {{P::character.title}}," and begins to remove what little clothing {{he}} has.` },
-      { actorSpeaker:'C', requires:'player.cock.big', text:`Even for {{P::character.an_elf}} I'm rather well endowed,
-          but to a scaven my cock must look absolutely gigantic. {{He}} nods slowly, not taking {{his}} eyes off of my
-          dick and says, "I understand {{P::character.title}}," and begins to remove what little clothing {{he}} has.` },
+      { actorSpeaker:'C', requires:'player.cock.big', text:`For {{P::species.an_elf}} I'm rather well endowed, but to a
+          scaven my cock must look absolutely gigantic. {{He}} nods slowly, not taking {{his}} eyes off of my dick and
+          says, "I understand {{P::character.title}}," and begins to remove what little clothing {{he}} has.` },
       { text:`Soon, {{he}} stands nude in front of me, looking away and again I'm impressed with {{his}} lythe,
           muscular body.` },
     ]

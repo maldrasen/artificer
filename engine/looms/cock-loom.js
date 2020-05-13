@@ -9,18 +9,16 @@ Weaver.CockLoom = (function() {
     let body = context.get(subject).body;
     let cock = context.get(subject).cock;
 
-    if (token == "cock.big") { return size(cock); }
-    if (token == "cock.aBig") { return EnglishUtility.a_an(size(cock)); }
     if (token == "cock.count") { return EnglishUtility.numberInEnglish(cock.count); }
     if (token == "cock.both") { return (cock.count == 2) ? 'both' : 'all'; }
-    if (token == "cock.cock") { return cockWord(cock,false); }
-    if (token == "cock.cocks") { return cockWord(cock,true); }
+
     if (token == "cock.sixInch") { return lengthInches(cock,false); }
     if (token == "cock.sixInches") { return lengthInches(cock,true); }
     if (token == "cock.twoInch") { return widthInches(cock,false); }
     if (token == "cock.twoInches") { return widthInches(cock,true); }
     if (token == "cock.inchLongAndWide") { return bothInches(cock,false); }
     if (token == "cock.inchesLongAndWide") { return bothInches(cock,true); }
+
     if (token == "cock.twoInch(knot)") { return knotWidthInches(cock,false); }
     if (token == "cock.twoInches(knot)") { return knotWidthInches(cock,true); }
     if (token == "cock.twoInch(ridge)") { return ridgeHeightInches(cock,false); }
@@ -29,6 +27,7 @@ Weaver.CockLoom = (function() {
     if (token == "cock.twoInches(spine)") { return spineHeightInches(cock,true); }
     if (token == "cock.twoInch(knob)") { return knobHeightInches(cock,false); }
     if (token == "cock.twoInches(knob)") { return knobHeightInches(cock,true); }
+
     if (token == "cock.huge(knot)") { return hugeKnot(cock); }
     if (token == "cock.aHuge(knot)") { return EnglishUtility.a_an(hugeKnot(cock)); }
     if (token == "cock.apple(knot)") { return appleKnot(cock); }
@@ -42,15 +41,15 @@ Weaver.CockLoom = (function() {
     return Weaver.error(`Bad cock token(${token})`);
   }
 
-  function lengthInches(cock, plural) { return EnglishUtility.inchesInEnglish(cock.convertedLength, plural); }
-  function widthInches(cock, plural) { return EnglishUtility.inchesInEnglish(cock.convertedWidth, plural); }
-  function knotWidthInches(cock, plural) { return EnglishUtility.inchesInEnglish(cock.convertedKnotWidth, plural); }
-  function ridgeHeightInches(cock, plural) { return EnglishUtility.inchesInEnglish(cock.convertedRidgeHeight, plural); }
-  function spineHeightInches(cock, plural) { return EnglishUtility.inchesInEnglish(cock.convertedSpineHeight, plural); }
-  function knobHeightInches(cock, plural) { return EnglishUtility.inchesInEnglish(cock.convertedKnobHeight, plural); }
-  function appleKnot(cock) { return EnglishUtility.roundWidthComparator(cock.convertedKnotWidth); }
-  function acornKnob(cock) { return EnglishUtility.roundWidthComparator(cock.convertedKnobHeight); }
-  function acornsKnob(cock) { return EnglishUtility.pluralRoundWidthComparator(cock.convertedKnobHeight); }
+  function lengthInches(cock, plural) { return EnglishUtility.lengthInEnglish(cock.convertedLength, plural); }
+  function widthInches(cock, plural) { return EnglishUtility.lengthInEnglish(cock.convertedWidth, plural); }
+  function knotWidthInches(cock, plural) { return EnglishUtility.lengthInEnglish(cock.convertedKnotWidth, plural); }
+  function ridgeHeightInches(cock, plural) { return EnglishUtility.lengthInEnglish(cock.convertedRidgeHeight, plural); }
+  function spineHeightInches(cock, plural) { return EnglishUtility.lengthInEnglish(cock.convertedSpineHeight, plural); }
+  function knobHeightInches(cock, plural) { return EnglishUtility.lengthInEnglish(cock.convertedKnobHeight, plural); }
+  function appleKnot(cock) { return EnglishUtility.roundWidthComparator(cock.knotWidth); }
+  function acornKnob(cock) { return EnglishUtility.roundWidthComparator(cock.knobHeight); }
+  function acornsKnob(cock) { return EnglishUtility.pluralRoundWidthComparator(cock.spineHeight); }
 
   // Generates a phrase like:
   //    twelve inches long and 2 inches wide
@@ -59,16 +58,6 @@ Weaver.CockLoom = (function() {
     let length = lengthInches(cock,plural);
     let width = widthInches(cock,plural);
     return `${length} long and ${width} {{wide}}`;
-  }
-
-  function size(cock) {
-    return Random.from({
-      small:   ['small','small','small','short','stubby'],
-      average: ['long','lengthy','nice sized','well proportioned'],
-      big:     ['large','fat','thick','big','larger than average','nice big','big beautiful','heavy'],
-      huge:    ['huge','very large','very thick','very big','huge fat','enormous','mammoth','formidable','immense','ponderous'],
-      monster: ['massive','massively huge','monstrous','monstrously huge','huge fucking','titanic','giant','gigantic','towering','excessively huge'],
-    }[cock.currentSizeClass]);
   }
 
   function cockWord(cock,plural) {
@@ -85,12 +74,12 @@ Weaver.CockLoom = (function() {
   }
 
   function hugeKnot(cock) {
-    let width = cock.convertedKnotWidth;
-    if (width < 2) { return Random.from(['sizable','fat','thick','plump','bulbous']); }
-    if (width < 3) { return Random.from(['huge','very large','very thick','bulbous']); }
-    if (width < 4) { return Random.from(['massive','massively huge','massively thick','incredibly thick']); }
-    if (width < 5) { return Random.from(['monstrous','monstrously huge','monstrously thick','fucking huge','unbelievably thick']); }
-    if (width < 6) { return Random.from(['gigantic','giant','immense','fucking gigantic','pussy destroying','cunt ripping']); }
+    let width = cock.knotWidth;
+    if (width < 50) { return Random.from(['sizable','fat','thick','plump','bulbous']); }
+    if (width < 76) { return Random.from(['huge','very large','very thick','bulbous']); }
+    if (width < 102) { return Random.from(['massive','massively huge','massively thick','incredibly thick']); }
+    if (width < 127) { return Random.from(['monstrous','monstrously huge','monstrously thick','fucking huge','unbelievably thick']); }
+    if (width < 152) { return Random.from(['gigantic','giant','immense','fucking gigantic','pussy destroying','cunt ripping']); }
     return Random.from(['titanic','colossal','gargantuan','tremendously thick','pelvis splitting','pelvis shattering','massively titanic']);
   }
 

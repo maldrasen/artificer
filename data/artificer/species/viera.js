@@ -1,5 +1,6 @@
 Species.build('viera', {
   name: 'Viera',
+  adjective: 'vieran',
 
   physical: 30,
   personal: 30,

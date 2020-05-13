@@ -1,5 +1,6 @@
 Species.build('goblin', {
   name: 'Goblin',
+  adjective: 'goblish',
 
   physical: 20,
   personal: 10,

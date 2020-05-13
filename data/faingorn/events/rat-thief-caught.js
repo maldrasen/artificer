@@ -47,7 +47,7 @@ Event.build('rat-thief-caught', {
       { text:`The question is of course what to do with {{him}} now that I've caught {{him}}.` },
       { text:`I could just let {{him}} go I suppose, let {{him}} off with a warning and tell {{him}} to never come into
           the keep again. Rumors would no doubt circulate among the rest of the scaven that I can be a kind
-          {{P::character.elf}}.` },
+          {{P::species.elf}}.` },
       { text:`I could also kill {{him}}, slowly, painfully. {{His}} screams would echo down into the scaven warrens
           letting them know that I can also be incredibly cruel to those who cross me.` },
       { text:`Another option though would be to recruit {{him}}. {{He}}'s small and terribly thin indicating that

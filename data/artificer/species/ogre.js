@@ -1,5 +1,6 @@
 Species.build('ogre', {
   name: 'Ogre',
+  adjective: 'ogrish',
 
   physical: 70,
   personal: 10,

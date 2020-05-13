@@ -1,5 +1,6 @@
 Species.build('dark-elf', {
   name: 'Dark Elf',
+  adjective: 'elven',
 
   physical: 30,
   personal: 20,

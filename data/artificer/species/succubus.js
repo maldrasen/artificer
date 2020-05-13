@@ -1,5 +1,6 @@
 Species.build('succubus', {
   name: 'Succubus',
+  adjective: 'demonic',
 
   physical: 10,
   personal: 40,

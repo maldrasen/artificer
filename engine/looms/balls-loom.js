@@ -24,10 +24,10 @@ Weaver.BallsLoom = (function() {
     return Weaver.error(`Bad balls token(${token})`);
   }
 
-  function scrotumWidthComparator(cock) { return EnglishUtility.roundWidthComparator(cock.convertedScrotumWidth); }
-  function testicleWidthComparator(cock) { return EnglishUtility.roundWidthComparator(cock.convertedTesticleWidth); }
-  function scrotumWidthInches(cock, plural) { return EnglishUtility.inchesInEnglish(cock.convertedScrotumWidth, plural); }
-  function testicleWidthInches(cock, plural) { return EnglishUtility.inchesInEnglish(cock.convertedTesticleWidth, plural); }
+  function scrotumWidthComparator(cock) { return EnglishUtility.roundWidthComparator(cock.scrotumWidth); }
+  function testicleWidthComparator(cock) { return EnglishUtility.roundWidthComparator(cock.testicleWidth); }
+  function scrotumWidthInches(cock, plural) { return EnglishUtility.lengthInEnglish(cock.convertedScrotumWidth, plural); }
+  function testicleWidthInches(cock, plural) { return EnglishUtility.lengthInEnglish(cock.convertedTesticleWidth, plural); }
 
   // Slightly different from the cock size adjectives.
   function size(cock) {

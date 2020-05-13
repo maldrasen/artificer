@@ -1,5 +1,6 @@
 Species.build('gnome', {
   name: 'Gnome',
+  adjective: 'gnomish',
 
   physical: 15,
   personal: 15,
