@@ -649,18 +649,44 @@ Description.buildAnus({
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.gaping','minion(C).anus.big'],
-  d: `Horse/Gaping/Big`
+  d: `{{His}} thick horse asshole has been completely destroyed and lies open in a permanent gape. The stretched
+      doughnut shaped anus looks swollen and ragged.`
+});
+
+Description.buildAnus({
+  requires:['minion(C).anus.horse','minion(C).anus.condition.gaping','minion(C).anus.big'],
+  d: `{{His}} unusually large horse asshole lies open and spread wide in a permanent gape, allowing anyone passing by
+      to see the dark red inside of {{his}} big stretched out doughnut.`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.gaping','minion(C).anus.huge'],
-  d: `Horse/Gaping/Huge`
+  d: `{{His}} huge horse asshole has been completely destroyed and lies open in a permanent gape. One could easily
+      slide their hand and then some into the wide open doughnut of {{his}} anal ring without resistance.`
+});
+
+Description.buildAnus({
+  requires:['minion(C).anus.horse','minion(C).anus.condition.gaping','minion(C).anus.huge'],
+  d: `{{He}} has huge a swollen mound of an asshole that lies open in a permanent gape. One could easily slide their
+      hand and more into the thick black doughnut shaped horse anus without resistance.`
 });
 
 Description.buildAnus({
   requires:['minion(C).anus.horse','minion(C).anus.condition.gaping','minion(C).anus.monster'],
-  d: `Horse/Gaping/Monster`
+  d: `{{His}} gigantic horse asshole has been stretched beyond belief. The mountainous doughnut of black wrinkled
+      flesh forms a yawning cavern that protrudes far past {{his}} ass cheeks.`
 });
 
-// === Mouth ===================================================================
-// TODO: These don't exist yet.
+Description.buildAnus({
+  requires:['minion(C).anus.horse','minion(C).anus.condition.gaping','minion(C).anus.monster','minion(C).is-male'],
+  d: `{{His}} massive horse asshole is a mountain of black wrinkled flesh that extends well past {{his}} ass cheeks.
+      It's been so widely stretched that the huge anal doughnut extends from {{his}} ballsack all the way to the top
+      of {{his}} asscrack.`
+});
+
+Description.buildAnus({
+  requires:['minion(C).anus.horse','minion(C).anus.condition.gaping','minion(C).anus.monster','minion(C).has-pussy'],
+  d: `{{His}} massive horse asshole is a mountain of black wrinkled flesh that extends well past {{his}} ass cheeks.
+      It's been so widely stretched that the huge anal doughnut extends from the bottom of {{his}} {{pussy}} all the
+      way to the top of {{his}} asscrack.`
+});
