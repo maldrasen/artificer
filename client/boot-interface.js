@@ -34,7 +34,9 @@ require(`${ROOT}/client/components/summon-minion-dialog`);
 require(`${ROOT}/client/components/summon-minion-result`);
 
 // === Event View Page Types ===
+require(`${ROOT}/client/components/event-view/chooser-page`);
 require(`${ROOT}/client/components/event-view/form-page`);
+require(`${ROOT}/client/components/event-view/selection-page`);
 
 // === Elements ===
 require(`${ROOT}/client/elements/elements`);

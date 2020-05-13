@@ -1,5 +1,6 @@
 Components.EventView = (function() {
   let skipActive = false;
+  let skipContinue = false;
   let skipRate = 50;
 
   let eventData;
@@ -8,10 +9,10 @@ Components.EventView = (function() {
   let choices;
 
   function init() {
+    Components.EventView.ChooserPage.init();
+    Components.EventView.SelectionPage.init();
     $(document).on('click', '#currentEvent .click-advance', clickAdvance);
     $(document).on('click', '#currentEvent .activate-skip', Elements.buttonAction(activateSkip));
-    $(document).on('click', '#currentEvent .chooser-accept', Elements.buttonAction(acceptChoice));
-    $(document).on('click', '#currentEvent .selection-button', Elements.buttonAction(acceptSelection));
   }
 
   // Build an event given all of the event options. All of the event options
@@ -20,7 +21,6 @@ Components.EventView = (function() {
     Elements.reset();
     Components.EventView.Page = {};
 
-    skipActive = false;
     eventData = event;
     stageIndex = 0;
     pageIndex = 0;
@@ -66,7 +66,10 @@ Components.EventView = (function() {
   }
 
   function endEvent() {
-    skipActive = false;
+    if (skipActive) {
+      skipActive = false;
+      skipContinue = true;
+    }
     Renderer.sendCommand('game.end-event',choices);
   }
 
@@ -83,18 +86,25 @@ Components.EventView = (function() {
     // These views can be skipped through.
     if (stage.pages) { return buildPagedView(); }
 
-    // These views cannot be skipped through.
-    skipActive = false;
-    if (stage.chooserPage)   { return buildChooserPage(); }
-    if (stage.selectionPage) { return buildSelectionPage(); }
+    // The following views cannot be skipped but skipping should continue
+    // after the choice has been made or the form is submitted or whatever.
+    if (skipActive) {
+      skipActive = false;
+      skipContinue = true;
+    }
 
-    // So far, all of the custom views fall under form pages.
-    if (stage.formPage) { return Components.EventView.FormPage.load(stage.formPage); }
+    if (stage.chooserPage)   { return Components.EventView.ChooserPage.build(); }
+    if (stage.selectionPage) { return Components.EventView.SelectionPage.build(); }
+    if (stage.formPage)      { return Components.EventView.FormPage.load(stage.formPage); }
 
     throw "Unrecognized Stage Type"
   }
 
   function nextStage() {
+    if (skipContinue) {
+      skipActive = true;
+      skipContinue = false;
+    }
     if (stageIndex < eventData.stages.length-1) {
       closeStage();
       stageIndex += 1;
@@ -167,6 +177,9 @@ Components.EventView = (function() {
   }
 
   function showSettingCard(time, place) {
+    skipActive = false;
+    skipContinue = false;
+
     const card = $('<div>').append(`<h1>${place}, ${time}</h1>`);
     const settingCard = $('#currentEvent .setting-card').removeClass('hide').append(card)
 
@@ -183,6 +196,13 @@ Components.EventView = (function() {
     $('#currentEvent .event-text-actions').removeClass('hide');
     $('#currentEvent .click-advance').removeClass('hide');
     buildPage();
+
+    if (skipContinue) {
+      skipActive = true;
+      skipContinue = false;
+    }
+
+    if (skipActive) { doSkip(); }
   }
 
   function buildPage() {
@@ -227,132 +247,6 @@ Components.EventView = (function() {
     });
   }
 
-  // === Chooser Pages ===
-
-  // A chooser page has the following arguments on the stage:
-  //     chooserTitle:       (*) Title
-  //     options:            (*) List of choice options with the following attributes:
-  //       - value:          (*) value to set.
-  //       - label:          (*) label name,
-  //       - body:           (*) choice description,
-  //       - imageResource:  (*) image resource loader arguments,
-  //       - locked:         Show the option, but make it non-selectable.
-  //
-  //       (choices can also be a string like "gender-choices" or "species-choices", in which case a function will be
-  //        called to fetch the list from some canned function defined by a mod.)
-  //
-  //     text:         Text to display in the footer.
-  //     name:         Name under which to save the chosen value.
-  //
-  //     onAccept:     A named function called with the chosen value when the choice is accepted. We can't just stick a
-  //                   actual accept function onto the page because the page data is coming from the engine and run in
-  //                   the client, and functions can't be safely serialized and deserialized (at least I don't think
-  //                   they can.)
-  //
-  //                   Events that are called onAccet are therefor stored on the chooser component and called by name.
-  //                   Mods that add onAccept functions will just need to add the functions onto the
-  //                   Elements.Chooser.OnAcceptFunctions object when their mod is loaded in the client. When adding an
-  //                   onAccept function the function name should be prefixed with the event code.
-  //
-  //                   An onAccept function needs to select the next stage. The entire reason for including it is so
-  //                   choices made in the chooser can show a different stage depending on the choice made.
-  //
-  function buildChooserPage() {
-    let stage = currentStage();
-    let content = $('#currentEvent .chooser-content').empty().removeClass('hide').append($($("#chooserPageTemplate").html()));
-    let options = (typeof stage.options === 'string') ? Elements.Chooser.OptionsFunctions[stage.options](choices) : stage.options;
-
-    stage.chooser = new Elements.Chooser({
-      title: stage.chooserTitle,
-      element: $('#currentEvent .chooser-target'),
-      height: (stage.chooserHeight || 500),
-      width: (stage.chooserWidth || 800),
-      imageWidth: (stage.imageWidth || 500),
-    });
-
-    each(options, option => {
-      stage.chooser.addChoice(option);
-    });
-
-    content.find('.chooser-frame').css({ width:(stage.chooserWidth || 800) });
-    content.find('.text').append(stage.text);
-  }
-
-  // === Selection Page ===
-  // Selection Pages are for normal multiple choice options in an event.
-  // Selection can have effect badges which can be displayed on the selection.
-  // They are created like this:
-  //
-  //   selectionPage: true,
-  //   selectionKey: 'question',
-  //   selections:[
-  //     { text:'Yes.', value:'yes', effects:['player fucks-horses 2']},
-  //     { text:'No.',  value:'no',  effects:['player fucks-horses -1'], tooltip:"Tooltip Yo" },
-
-  function buildSelectionPage() {
-    $('#currentEvent .selection-content').removeClass('hide');
-    each(currentStage().selections, selection => {
-      $('#currentEvent .selection-list').append(buildSelection(selection));
-    });
-  }
-
-  function buildSelection(selection) {
-    let badges = $('<span>', { class:'badge-area' })
-    let button = $('<a>',{ href:'#', class:'button selection-button' }).append(
-      $('<span>',{ class:'text' }).append(selection.text)
-    ).data('value',selection.value).append(badges);
-
-    if (selection.tooltip) {
-      Elements.Tooltip.add(button, { content:selection.tooltip, delay:50 });
-      button.on('click',Elements.Tooltip.close);
-    }
-
-    each(selection.effects, strang => {
-      button.addClass('with-badges');
-      badges.append(new Elements.SelectionBadge(strang, eventData.actors).build());
-    });
-
-    return $('<li>',{ class:'selection'}).append(button);
-  }
-
-  function acceptSelection() {
-    choices[currentStage().selectionKey] = $(this).data('value');
-
-    $.each($(this).find('.selection-badge'), (i, badgeElement) => {
-      $(badgeElement).data('badge').execute();
-    });
-
-    $('#currentEvent .selection-content').addClass('hide');
-    $('#currentEvent .selection-list').empty();
-    nextStage();
-  }
-
-  // === Custom Pages ===
-
-  function buildCustomPage() {
-    let stage = currentStage();
-
-    $('#currentEvent .custom-content').removeClass('hide').empty().append($(stage.html));
-
-    if (stage.clickAdvance) {
-      $('#currentEvent .click-advance').removeClass('hide');
-    }
-  }
-
-  // === Choices ===
-  // The choices object is updated as the event progresses. When the event is
-  // complete the choices the player has made are send to the engine.
-
-  function acceptChoice() {
-    let stage = currentStage();
-    let value = stage.chooser.selectedValue;
-    if (stage.name) { choices[stage.name] = value; }
-    stage.onAccept == null ? nextStage() : Elements.Chooser.OnAcceptFunctions[stage.onAccept](value);
-  }
-
-  function updateChoices(map) { choices = extend(choices,map); }
-  function getChoices() { return choices; }
-
   // === Effects ===
 
   function showCenterImage(url) {
@@ -372,20 +266,33 @@ Components.EventView = (function() {
     $('#currentEvent .full-screen-background').css({filter:`brightness(${100-value}%)`});
   }
 
-  function isOpen() {
-    return $('#currentEvent').length > 0;
-  }
+  // === Choices ===
+
+  function getEventData() { return eventData; }
+  function getActors() { return eventData.actors; }
+  function getChoices() { return choices; }
+  function setChoice(key,value) { choices[key] = value; }
+  function updateChoices(map) { choices = extend(choices,map); }
+  function isOpen() { return $('#currentEvent').length > 0; }
 
   return {
     init,
     build,
     stopSkip,
+
+    getEventData,
+    getActors,
+    getChoices,
+    setChoice,
+    updateChoices,
+
+    currentStage,
     nextStage,
     setStage,
+
     getPageText,
     setPageText,
-    updateChoices,
-    getChoices,
+
     setBackground,
     isOpen,
   };

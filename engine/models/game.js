@@ -273,12 +273,14 @@ Game.setPhase = async function(phase) {
 // in the event's onFinish() function. If a new event hasn't been chained we
 // want to clear the current event.
 Game.endEvent = async function(choices) {
-  const startingCode = Game._currentEvent.event.code;
-  await Event.onFinish(choices);
+  if (Game._currentEvent) {
+    const startingCode = Game._currentEvent.event.code;
+    await Event.onFinish(choices);
 
-  if (startingCode == Game._currentEvent.event.code) {
-    Game.log(`Ending Event: ${startingCode}`);
-    Game._currentEvent = null;
+    if (startingCode == Game._currentEvent.event.code) {
+      Game.log(`Ending Event: ${startingCode}`);
+      Game._currentEvent = null;
+    }
   }
 }
 
