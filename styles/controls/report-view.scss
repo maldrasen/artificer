@@ -9,6 +9,13 @@
     margin-bottom: 30px;
   }
 
+  .task-stories {
+    dt {
+      width: 10em;
+      color: $fg-strong;
+    }
+  }
+
   .food {
     border: $border-light;
     box-shadow: $shadow-frame;

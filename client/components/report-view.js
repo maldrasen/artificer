@@ -41,10 +41,10 @@ Components.ReportView = (function() {
   }
 
   function buildTaskItem(task) {
-    return $(`<li>
-      <div class='title'>${task.title}</div>
-      <div class='text'>${task.text}</div>
-    </li>`);
+    return $(`
+      <dt>${task.title}</dt>
+      <dd>${task.text}</dd>
+    `);
   }
 
   function addMinionFrame(minion) {
