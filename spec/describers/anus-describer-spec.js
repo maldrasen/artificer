@@ -14,7 +14,8 @@ describe('Describer: Anus', function() {
 
       if (options.prolapse) {
         condition = 'gaping'
-        sizeClass = Random.from(['big','huge','monster'])
+        sizeClass = Random.from(['big','huge','monster']);
+        options.shape = Random.from(['normal','puffy','horse']);
         prolapseLength = Random.between(1,100);
       }
 
@@ -36,7 +37,7 @@ describe('Describer: Anus', function() {
     printAnus('Puffy', { shape:'puffy' }, done);
   });
 
-  it.only('describes horse assholes', function(done) {
+  it('describes horse assholes', function(done) {
     printAnus('Horse', { shape:'horse' }, done);
   });
 

@@ -202,10 +202,11 @@ global.Description = class Description extends Form {
     return ArrayUtility.contains(this.conditions,code) ? !expression : expression
   }
 
-  anusConditionsMet(data) {
-    if (this.conditionFailed('minion(C).anus.prolapsed', data.anus.prolapseLength > 0)) { return false; }
-    return true;
-  }
+  // This once checked to ensure that a prolapsed asshole would get a prolapse
+  // description, but they were moved into a seperate describeProlapse()
+  // function and are no longer part of the descriptions. Still this might be
+  // needed at some point so leave it in for now.
+  anusConditionsMet(data) { return true; }
 
   cockConditionsMet(data) {
     if (this.conditionFailed('minion(C).cock.count=2', data.cock.count == 2)) { return false; }

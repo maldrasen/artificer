@@ -25,10 +25,22 @@ global.AnusDescriber = class AnusDescriber {
 
     let description = `
       ${(await Description.select('anus', this.context)).d}
+      ${this.describeProlapse()}
       ${await injuryDescriber.describeInjuries()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
     return await Weaver.weave(description, this.context);
+  }
+
+  // If an asshole is prolapsed the prolapse description is tacked on after.
+  // This should only return a description though if the character has no anal
+  // equipment. An anal plug should obscure or stuff a prolapse back in unless
+  // of course we have special prolapse equipment, bows, ropes, chains, or
+  // jewelry for instance.
+  describeProlapse() {
+    if (this.anus.prolapseLength > 0) {
+      return `(TODO: Describe Anal Prolapse)`
+    }
   }
 
 }
