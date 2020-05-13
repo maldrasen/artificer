@@ -38,9 +38,8 @@ global.AnusDescriber = class AnusDescriber {
   // of course we have special prolapse equipment, bows, ropes, chains, or
   // jewelry for instance.
   describeProlapse() {
-    if (this.anus.prolapseLength > 0) {
-      return `(TODO: Describe Anal Prolapse)`
-    }
+    if (this.anus.prolapseLength == 0) { return '' }
+    return `(TODO: Describe Anal Prolapse)`
   }
 
 }
