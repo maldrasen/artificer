@@ -28,8 +28,12 @@ Elements.Alert = class Alert {
     this.parent.append(this.element);
     setTimeout(() => {
       this.element.addClass('fade');
+      this.element.addClass('running');
       setTimeout(() => {
-        this.element.remove();
+        this.element.removeClass('running');
+        if (this.parent.find('.running').length == 0) {
+          this.parent.empty();
+        }
       },1000);
     },1000);
   }

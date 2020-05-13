@@ -4,6 +4,7 @@
   position: fixed;
   bottom: 60vh;
   width: 100%;
+  align-items: flex-start;
   justify-content: center;
   z-index: $z-alerts;
 }
@@ -20,6 +21,7 @@
   position: fixed;
   bottom: 177px;
   width: 100%;
+  align-items: flex-start;
   justify-content: center;
   z-index: $z-alerts;
 }
@@ -30,7 +32,7 @@
   background-color: rgba(0,0,0,0.8);
   border: $border-normal;
   box-shadow: $shadow-frame;
-  transition: margin-bottom 1s, opacity 1s, transform 1s;
+  transition: margin-bottom 2s, opacity 1s, transform 2s;
   transition-timing-function: ease-in;
 
   &.fade {
@@ -57,7 +59,7 @@
   margin-right: 5px;
   padding: 5px 10px;
 
-  &.fade { margin-bottom: 45px; }
+  &.fade { margin-bottom: 90px; }
 }
 
 .alert.side {
@@ -65,7 +67,7 @@
   margin-bottom: 5px;
   padding: 5px 10px;
 
-  &.fade { margin-bottom: 45px; }
+  &.fade { margin-bottom: 90px; }
 }
 
 // Alert - Attribute Adjusted
