@@ -6,54 +6,74 @@ describe.only('Describer: Cock', function() {
       let species = options.species || 'elf'
       let sizeClass = options.size || Random.from(['small','average','big','huge','monster']);
 
-      const rando = await SpecHelper.buildRando({ species:species, gender:'male', cock:{ sizeClass }});
+      const rando = await SpecHelper.buildRando({ species:species, gender:'futa', cock:{ sizeClass }});
       await CharacterDescriber.updateAll(rando);
       const cock = await rando.getCock();
 
-      SpecHelper.print(`${title}(${cock.length}) > ${cock.description}`);
+      SpecHelper.print(`${title}(${cock.sizeClass},${cock.length}) > ${cock.description}`);
 
       resolve();
     });
   }
 
-  it('describes small normal cocks', function(done) {
-    printCock('Small Normal', { size:'small' }, done);
+  // it('describes small normal cocks', function(done) {
+  //   printCock('Small Normal', { size:'small' }, done);
+  // });
+  //
+  // it('describes average normal cocks', function(done) {
+  //   printCock('Average Normal', { size:'average' }, done);
+  // });
+  //
+  // it('describes big normal cocks', function(done) {
+  //   printCock('Big Normal', { size:'big' }, done);
+  // });
+  //
+  // it('describes huge normal cocks', function(done) {
+  //   printCock('Huge Normal', { size:'huge' }, done);
+  // });
+  //
+  // it('describes monster normal cocks', function(done) {
+  //   printCock('Monster Normal', { size:'monster' }, done);
+  // });
+  //
+  // it('describes small canine cocks', function(done) {
+  //   printCock('Small Canine', { species:'lupin', size:'small' }, done);
+  // });
+  //
+  // it('describes average canine cocks', function(done) {
+  //   printCock('Average Canine', { species:'lupin', size:'average' }, done);
+  // });
+  //
+  // it('describes big canine cocks', function(done) {
+  //   printCock('Big Canine', { species:'lupin', size:'big' }, done);
+  // });
+  //
+  // it('describes huge canine cocks', function(done) {
+  //   printCock('Huge Canine', { species:'lupin', size:'huge' }, done);
+  // });
+  //
+  // it('describes monster canine cocks', function(done) {
+  //   printCock('Monster Canine', { species:'lupin', size:'monster' }, done);
+  // });
+
+  // it('describes small horse cocks', function(done) {
+  //   printCock('Small Horse', { species:'equian', size:'small' }, done);
+  // });
+  //
+  // it('describes average horse cocks', function(done) {
+  //   printCock('Average Horse', { species:'equian', size:'average' }, done);
+  // });
+  //
+  // it('describes big horse cocks', function(done) {
+  //   printCock('Big Horse', { species:'equian', size:'big' }, done);
+  // });
+
+  it('describes huge horse cocks', function(done) {
+    printCock('Huge Horse', { species:'equian', size:'huge' }, done);
   });
 
-  it('describes average normal cocks', function(done) {
-    printCock('Average Normal', { size:'average' }, done);
-  });
-
-  it('describes big normal cocks', function(done) {
-    printCock('Big Normal', { size:'big' }, done);
-  });
-
-  it('describes huge normal cocks', function(done) {
-    printCock('Huge Normal', { size:'huge' }, done);
-  });
-
-  it('describes monster normal cocks', function(done) {
-    printCock('Monster Normal', { size:'monster' }, done);
-  });
-
-  it('describes small canine cocks', function(done) {
-    printCock('Small Canine', { species:'lupin', size:'small' }, done);
-  });
-
-  it('describes average canine cocks', function(done) {
-    printCock('Average Canine', { species:'lupin', size:'average' }, done);
-  });
-
-  it('describes big canine cocks', function(done) {
-    printCock('Big Canine', { species:'lupin', size:'big' }, done);
-  });
-
-  it('describes huge canine cocks', function(done) {
-    printCock('Huge Canine', { species:'lupin', size:'huge' }, done);
-  });
-
-  it('describes monster canine cocks', function(done) {
-    printCock('Monster Canine', { species:'lupin', size:'monster' }, done);
+  it('describes monster horse cocks', function(done) {
+    printCock('Monster Horse', { species:'equian', size:'monster' }, done);
   });
 
 

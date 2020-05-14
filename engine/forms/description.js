@@ -208,7 +208,13 @@ global.Description = class Description extends Form {
   // needed at some point so leave it in for now.
   anusConditionsMet(data) { return true; }
 
+
+  // The normal cock descriptions don't really make a lot of sense when used to
+  // describe horse cocks, mostly because of the size comparason stuff, so
+  // horsecocks always need to use horsecock specific descriptions. Multicock
+  // descriptions are also distinct.
   cockConditionsMet(data) {
+    if (this.conditionFailed('minion(C).cock.horse',   data.cock.shape == 'horse')) { return false; }
     if (this.conditionFailed('minion(C).cock.count=2', data.cock.count == 2)) { return false; }
     if (this.conditionFailed('minion(C).cock.count=3', data.cock.count == 3)) { return false; }
     return true;
