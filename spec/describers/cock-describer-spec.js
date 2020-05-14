@@ -99,22 +99,21 @@ describe.only('Describer: Cock', function() {
   });
 
   it('describes monster dragon cocks', function(done) {
-    printCock('Dragon', { species:'dragon', size:'monster' }, done);
+    printCock('Monster Dragon', { species:'dragon', size:'monster' }, done);
   });
 
+  it('describes demon cocks', function(done) {
+    printCock('Demon', { species:'succubus' }, done);
+  });
 
+  it('describes huge demon cocks', function(done) {
+    printCock('Huge Demon', { species:'succubus', size:'huge' }, done);
+  });
 
-  // it('describes demon cocks', function(done) {
-  //   SpecHelper.tenTimes(done, resolve => {
-  //     SpecHelper.buildJada({ species:'succubus' }).then(jada => {
-  //       jada.getCock().then(cock => {
-  //         printCock('demon',cock)
-  //         resolve();
-  //       });
-  //     });
-  //   });
-  // });
-  //
+  it('describes monster demon cocks', function(done) {
+    printCock('Monster Demon', { species:'succubus', size:'monster' }, done);
+  });
+
   // it('describes spined cocks', function(done) {
   //   SpecHelper.tenTimes(done, resolve => {
   //     SpecHelper.buildJada({ species:'elf', cock:{ spineHeight:Random.upTo(37)+1 }}).then(jada => {
