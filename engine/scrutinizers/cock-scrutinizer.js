@@ -13,6 +13,8 @@ global.CockScrutinizer = (function() {
     if (operation == 'cock.dragon')           { return data.cock.shape == 'dragon';             }
     if (operation == 'cock.horse')            { return data.cock.shape == 'horse';              }
     if (operation == 'cock.snake')            { return data.cock.shape == 'snake';              }
+    if (operation == 'cock.tiny')             { return data.cock.isTiny;                        }
+    if (operation == 'cock.not-tiny')         { return !data.cock.isTiny;                       }
     if (operation == 'cock.small')            { return data.cock.currentSizeClass == 'small';   }
     if (operation == 'cock.average')          { return data.cock.currentSizeClass == 'average'; }
     if (operation == 'cock.big')              { return data.cock.currentSizeClass == 'big';     }

@@ -70,9 +70,11 @@ global.Cock = Database.instance().define('cock', {
     // so they're not really separate size classes, but they're sometimes used
     // in the describers for really huge cocks.
     //  Gigantic: 20in - 30in
-    //  Titanic:  >30in
+    //  Titanic:  > 30in
+    //  Tiny:     < 5in
     isGigantic() { return this.length >= 508 && this.length < 762 },
     isTitanic()  { return this.length >= 762 },
+    isTiny()     { return this.length < 127 },
 
     // Get each cock's diameter in mm.
     //

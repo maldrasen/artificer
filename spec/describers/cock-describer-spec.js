@@ -1,12 +1,14 @@
 describe.only('Describer: Cock', function() {
 
   function printCock(title, options, done) {
-    Settings.Metric = Random.from([true,false]);
+    Settings.Metric = Random.from([true,false,false]);
     SpecHelper.tenTimes(done, async resolve => {
-      let species = options.species || 'elf'
-      let sizeClass = options.size || Random.from(['small','average','big','huge','monster']);
+      const rando = await SpecHelper.buildRando({
+        gender: 'futa',
+        species: (options.species || 'elf'),
+        cock: { sizeClass:options.size }
+      });
 
-      const rando = await SpecHelper.buildRando({ species:species, gender:'futa', cock:{ sizeClass }});
       await CharacterDescriber.updateAll(rando);
       const cock = await rando.getCock();
 
@@ -16,57 +18,57 @@ describe.only('Describer: Cock', function() {
     });
   }
 
-  // it('describes small normal cocks', function(done) {
-  //   printCock('Small Normal', { size:'small' }, done);
-  // });
-  //
-  // it('describes average normal cocks', function(done) {
-  //   printCock('Average Normal', { size:'average' }, done);
-  // });
-  //
-  // it('describes big normal cocks', function(done) {
-  //   printCock('Big Normal', { size:'big' }, done);
-  // });
-  //
-  // it('describes huge normal cocks', function(done) {
-  //   printCock('Huge Normal', { size:'huge' }, done);
-  // });
-  //
-  // it('describes monster normal cocks', function(done) {
-  //   printCock('Monster Normal', { size:'monster' }, done);
-  // });
-  //
-  // it('describes small canine cocks', function(done) {
-  //   printCock('Small Canine', { species:'lupin', size:'small' }, done);
-  // });
-  //
-  // it('describes average canine cocks', function(done) {
-  //   printCock('Average Canine', { species:'lupin', size:'average' }, done);
-  // });
-  //
-  // it('describes big canine cocks', function(done) {
-  //   printCock('Big Canine', { species:'lupin', size:'big' }, done);
-  // });
-  //
-  // it('describes huge canine cocks', function(done) {
-  //   printCock('Huge Canine', { species:'lupin', size:'huge' }, done);
-  // });
-  //
-  // it('describes monster canine cocks', function(done) {
-  //   printCock('Monster Canine', { species:'lupin', size:'monster' }, done);
-  // });
+  it('describes small normal cocks', function(done) {
+    printCock('Small Normal', { size:'small' }, done);
+  });
 
-  // it('describes small horse cocks', function(done) {
-  //   printCock('Small Horse', { species:'equian', size:'small' }, done);
-  // });
-  //
-  // it('describes average horse cocks', function(done) {
-  //   printCock('Average Horse', { species:'equian', size:'average' }, done);
-  // });
-  //
-  // it('describes big horse cocks', function(done) {
-  //   printCock('Big Horse', { species:'equian', size:'big' }, done);
-  // });
+  it('describes average normal cocks', function(done) {
+    printCock('Average Normal', { size:'average' }, done);
+  });
+
+  it('describes big normal cocks', function(done) {
+    printCock('Big Normal', { size:'big' }, done);
+  });
+
+  it('describes huge normal cocks', function(done) {
+    printCock('Huge Normal', { size:'huge' }, done);
+  });
+
+  it('describes monster normal cocks', function(done) {
+    printCock('Monster Normal', { size:'monster' }, done);
+  });
+
+  it('describes small canine cocks', function(done) {
+    printCock('Small Canine', { species:'lupin', size:'small' }, done);
+  });
+
+  it('describes average canine cocks', function(done) {
+    printCock('Average Canine', { species:'lupin', size:'average' }, done);
+  });
+
+  it('describes big canine cocks', function(done) {
+    printCock('Big Canine', { species:'lupin', size:'big' }, done);
+  });
+
+  it('describes huge canine cocks', function(done) {
+    printCock('Huge Canine', { species:'lupin', size:'huge' }, done);
+  });
+
+  it('describes monster canine cocks', function(done) {
+    printCock('Monster Canine', { species:'lupin', size:'monster' }, done);
+  });
+
+  it('describes small horse cocks', function(done) {
+    printCock('Small Horse', { species:'equian', size:'small' }, done);
+  });
+
+  it('describes average horse cocks', function(done) {
+    printCock('Average Horse', { species:'equian', size:'average' }, done);
+  });
+
+  it('describes big horse cocks', function(done) {
+    printCock('Big Horse', { species:'equian', size:'big' }, done);
+  });
 
   it('describes huge horse cocks', function(done) {
     printCock('Huge Horse', { species:'equian', size:'huge' }, done);
@@ -76,53 +78,18 @@ describe.only('Describer: Cock', function() {
     printCock('Monster Horse', { species:'equian', size:'monster' }, done);
   });
 
+  it('describes scaven cocks', function(done) {
+    printCock('Scaven', { species:'scaven' }, done);
+  });
 
+  it('describes kobold cocks', function(done) {
+    printCock('Kobold', { species:'kobold' }, done);
+  });
 
+  it('describes goat cocks', function(done) {
+    printCock('Caprien', { species:'caprien' }, done);
+  });
 
-  // it('describes scaven cocks', function(done) {
-  //   SpecHelper.tenTimes(done, resolve => {
-  //     SpecHelper.buildJada({ species:'scaven' }).then(jada => {
-  //       jada.getCock().then(cock => {
-  //         printCock('normal',cock)
-  //         resolve();
-  //       });
-  //     });
-  //   });
-  // });
-  //
-  // it('describes goat cocks', function(done) {
-  //   SpecHelper.tenTimes(done, resolve => {
-  //     SpecHelper.buildJada({ species:'caprien' }).then(jada => {
-  //       jada.getCock().then(cock => {
-  //         printCock('goat',cock)
-  //         resolve();
-  //       })
-  //     });
-  //   });
-  // });
-  //
-  // it('describes dog cocks', function(done) {
-  //   SpecHelper.tenTimes(done, resolve => {
-  //     SpecHelper.buildJada({ species:'lupin' }).then(jada => {
-  //       jada.getCock().then(cock => {
-  //         printCock('dog',cock)
-  //         resolve();
-  //       })
-  //     });
-  //   });
-  // });
-  //
-  // it('describes horse cocks', function(done) {
-  //   SpecHelper.tenTimes(done, resolve => {
-  //     SpecHelper.buildJada({ species:'centaur' }).then(jada => {
-  //       jada.getCock().then(cock => {
-  //         printCock('horse',cock)
-  //         resolve();
-  //       });
-  //     });
-  //   });
-  // });
-  //
   // it('describes snake cocks', function(done) {
   //   SpecHelper.tenTimes(done, resolve => {
   //     SpecHelper.buildJada({ species:'naga' }).then(jada => {
@@ -134,16 +101,7 @@ describe.only('Describer: Cock', function() {
   //   });
   // });
   //
-  // it('describes kobold cocks', function(done) {
-  //   SpecHelper.tenTimes(done, resolve => {
-  //     SpecHelper.buildJada({ species:'kobold' }).then(jada => {
-  //       jada.getCock().then(cock => {
-  //         printCock('kobold',cock)
-  //         resolve();
-  //       });
-  //     });
-  //   });
-  // });
+
   //
   // it('describes dragon cocks', function(done) {
   //   SpecHelper.tenTimes(done, resolve => {

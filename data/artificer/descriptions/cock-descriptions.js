@@ -1,32 +1,51 @@
 
+// === Tiny Cocks (mostly scaven)
+
+Description.buildCock({ requires:['minion(C).cock.tiny'], includes:['sheath'],
+  d: `{{His}} {{C::body.skinColor}} {{cock}} is tucked away is a tiny little cocksheath. When aroused {{his}} little
+      dick is only {{C::cock.sixInches}} long.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.tiny'], includes:['sheath'],
+  d: `{{His}} tiny {{C::cock.sixInch}} long {{cock}} is tucked away in a cute little cocksheath.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.tiny'],
+  d: `{{He}} has a very small, little {{C::species.elven}} dick measuring at most {{C::cock.sixInches}} in length.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.tiny'],
+  d: `{{His}} miniature {{C::species.elf}} cock is only {{C::cock.sixInches}} long when hard.`
+});
+
 // === Small Cock ===
 
-Description.buildCock({ requires:['minion(C).cock.small'],
+Description.buildCock({ requires:['minion(C).cock.not-tiny','minion(C).cock.small'],
   d: `{{His}} {{C::body.skinColor}} {{C::species.elven}} {{cock}} is on the smaller side, only {{C::cock.sixInches}}
       long.`
 });
 
-Description.buildCock({ requires:['minion(C).cock.small'],
-  d: `{{His}} {{cock}} is small for {{C::species.an_elf}}, only {{C::cock.sixInches}} in length.`
-});
-
-Description.buildCock({ requires:['minion(C).cock.small'],
-  d: `{{His}} {{C::cock.sixInch}} long {{cock}} is smaller than most other {{C::species.elves}} {{his}} size.`
-});
-
-Description.buildCock({ requires:['minion(C).cock.small'],
+Description.buildCock({ requires:['minion(C).cock.not-tiny','minion(C).cock.small'],
   d: `{{He}} has a smaller than average {{cock}}, {{C::cock.inchesLongAndWide}}.`
 });
 
-Description.buildCock({ requires:['minion(C).cock.small'],
+Description.buildCock({ requires:['minion(C).cock.not-tiny','minion(C).cock.small'],
   d: `{{He}} has a small {{C::species.elven}} {{cock}} measuring at most {{C::cock.sixInches}} in length.`
 });
 
-Description.buildCock({ requires:['minion(C).cock.small'],
+Description.buildCock({ requires:['minion(C).cock.not-tiny','minion(C).cock.small','minion(C).height-average'],
+  d: `{{His}} {{cock}} is small for {{C::species.an_elf}}, only {{C::cock.sixInches}} in length.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.not-tiny','minion(C).cock.small','minion(C).height-average'],
+  d: `{{His}} {{C::cock.sixInch}} long {{cock}} is smaller than most other {{C::species.elves}} {{his}} size.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.not-tiny','minion(C).cock.small','minion(C).height-average'],
   d: `{{He}} has a small {{cock}} for {{C::species.an_elf}}. Even when hard it's only {{C::cock.sixInches}} long.`
 });
 
-Description.buildCock({ requires:['minion(C).cock.small'],
+Description.buildCock({ requires:['minion(C).cock.not-tiny','minion(C).cock.small','minion(C).height-average'],
   d: `{{He}} has a modest {{C::cock.sixInch}} long {{cock}}; smaller than most other {{C::species.elves}} {{his}}
       size.`
 });
