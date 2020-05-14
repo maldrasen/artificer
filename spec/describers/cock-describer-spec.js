@@ -36,6 +36,29 @@ describe.only('Describer: Cock', function() {
     printCock('Monster Normal', { size:'monster' }, done);
   });
 
+  it('describes small canine cocks', function(done) {
+    printCock('Small Canine', { species:'lupin', size:'small' }, done);
+  });
+
+  it('describes average canine cocks', function(done) {
+    printCock('Average Canine', { species:'lupin', size:'average' }, done);
+  });
+
+  it('describes big canine cocks', function(done) {
+    printCock('Big Canine', { species:'lupin', size:'big' }, done);
+  });
+
+  it('describes huge canine cocks', function(done) {
+    printCock('Huge Canine', { species:'lupin', size:'huge' }, done);
+  });
+
+  it('describes monster canine cocks', function(done) {
+    printCock('Monster Canine', { species:'lupin', size:'monster' }, done);
+  });
+
+
+
+
   // it('describes scaven cocks', function(done) {
   //   SpecHelper.tenTimes(done, resolve => {
   //     SpecHelper.buildJada({ species:'scaven' }).then(jada => {

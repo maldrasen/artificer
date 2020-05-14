@@ -1,5 +1,13 @@
 global.Weaver = (function() {
 
+  const MassiveList = ['massive','massively huge','enormous','mammoth','immense','monstrous','monstrously huge',
+                       'titanic','giant','gigantic']
+
+  const MaleDemonList = ['Abaddon','Baal','Baphomet','Behemoth','Lucifer','Maldrasen','Mephistopheles','Satan',
+                         'Slaanesh']
+
+  const UnholyList = ['unholy','demonic','infernal','satanic','corrupt','blasphemous','cursed','accursed']
+
   // Shortcut function for when you want to do some token replacement on a
   // single string and you only have a single character to put in the context.
   // Don't do this in a loop, adding a character looks up all of their body
@@ -88,15 +96,10 @@ global.Weaver = (function() {
     if (token == 'throbbing') { return Random.from(['throbbing','pulsing']); }
     if (token == 'wide')      { return Random.from(['wide','thick']); }
 
-    if (token == 'maleDemon') { return Random.from(['Abaddon','Baal','Baphomet','Behemoth','Lucifer','Maldrasen',
-                                                    'Mephistopheles','Satan','Slaanesh']); }
-
-    if (token == 'unholy')    { return Random.from(['unholy','demonic','infernal','satanic','corrupt','blasphemous',
-                                                     'cursed','accursed']); }
-
-    if (token == 'massive')   { return Random.from(['massive','massively huge','enormous','mammoth','immense',
-                                                    'monstrous','monstrously huge','huge fucking','titanic','giant',
-                                                    'gigantic']); }
+    if (token == 'maleDemon') { return Random.from(MaleDemonList); }
+    if (token == 'unholy')    { return Random.from(UnholyList); }
+    if (token == 'massive')   { return Random.from(MassiveList); }
+    if (token == 'aMassive')  { return EnglishUtility.a_an(Random.from(MassiveList)); }
 
     // It's generally fine to assume meters and yards are equal. Use the
     // measurement loom though to get something in feet.

@@ -47,30 +47,25 @@ global.CockDescriber = class CockDescriber {
     return description.d;
   }
 
+  // TODO: These are for average sized knots, add more for other sizes.
   knotDescription() {
     if (! this.cock.hasKnot) { return ''; }
     if (this.isIncluded('knot')) { return ''; }
 
     if (this.cock.count > 1) {
       return Random.from([
-        `{{C::gender.His}} {{C::cock.cocks}} all swell to {{C::cock.huge(knot)}} {{C::cock.twoInch(knot)}} {{wide}}
-         knots at their bases.`,
-        `Each of {{C::gender.his}} {{C::cock.count}} {{C::cock.cocks}} swell to {{C::cock.aHuge(knot)}}
-         {{C::cock.twoInch(knot)}} {{wide}} knot near the base.`,
-        `At the base of each of {{C::gender.his}} {{C::cock.cocks}} is a {{C::cock.twoInch(knot)}} {{wide}} knot the
-         size of {{C::cock.anApple(knot)}}.`,
+        `{{His}} cocks are all adorned with {{C::cock.huge(knot)}} {{C::cock.twoInch(knot)}} {{wide}} knots at their bases.`,
+        `Each of {{his}} {{C::cock.count}} cocks have a {{C::cock.aHuge(knot)}} {{C::cock.twoInch(knot)}} {{wide}} knot near the base.`,
+        `At the base of each of {{his}} dogcocks is a {{C::cock.twoInch(knot)}} {{wide}} knot the size of {{C::cock.anApple(knot)}}.`,
       ]);
     }
 
     return Random.from([
-      `{{C::gender.His}} {{C::cock.cock}} swells to {{C::cock.aHuge(knot)}} {{C::cock.twoInch(knot)}} {{wide}} knot
-       near its base.`,
-      `The base of {{C::gender.his}} {{C::cock.cock}} swells to {{C::cock.aHuge(knot)}} {{C::cock.twoInch(knot)}}
-       {{wide}} knot.`,
-      `At the base of {{C::gender.his}} {{C::cock.cock}} is a {{C::cock.aHuge(knot)}} knot the size of
-       {{C::cock.anApple(knot)}}.`,
-      `The knot at the base of {{C::gender.his}} {{C::cock.cock}} is the size of {{C::cock.anApple(knot)}} at around
-       {{C::cock.twoInches(knot)}} {{wide}}.`,
+      `{{His}} cock is adorned with a {{C::cock.huge(knot)}} {{C::cock.twoInch(knot)}} {{wide}} knot at its base.`,
+      `{{His}} {{cock}} swells to {{C::cock.aHuge(knot)}} {{C::cock.twoInch(knot)}} {{wide}} knot near its base.`,
+      `The base of {{his}} {{cock}} swells to {{C::cock.aHuge(knot)}} {{C::cock.twoInch(knot)}} {{wide}} knot.`,
+      `At the base of {{his}} {{cock}} is a {{C::cock.aHuge(knot)}} knot the size of {{C::cock.anApple(knot)}}.`,
+      `The knot at the base of {{his}} {{cock}} is the size of {{C::cock.anApple(knot)}} at around {{C::cock.twoInches(knot)}} {{wide}}.`,
     ]);
   }
 
@@ -78,31 +73,26 @@ global.CockDescriber = class CockDescriber {
     if (this.cock.sheath == null) { return '' }
     if (this.isIncluded('sheath')) { return ''; }
 
-    if (this.cock.count == 2) {
+    if (this.cock.count > 2) {
       return Random.from([
-        `Both of {{C::gender.his}} {{C::cock.cocks}} emerge from a tightly stretched {{C::cock.furrySheath}} between
-         {{C::gender.his}} legs.`,
-        `{{C::gender.His}} twin {{C::cock.cocks}} extend out from an oversized {{C::cock.furrySheath}}.`,
-        `The two {{C::cock.big}} shafts emerge from a {{wide}} {{C::cock.furrySheath}}, situated between
-         {{C::gender.his}} legs.`,
+        `{{His}} {{C::cock.count}} cocks emerge from an oversized {{C::cock.furrySheath}} between {{his}} legs.`,
+        `{{His}} {{C::cock.count}} cocks extend out from an oversized {{C::cock.furrySheath}}.`,
+        `The {{C::cock.count}} shafts emerge from an increadibly wide {{C::cock.furrySheath}}.`,
       ]);
     }
 
-    if (this.cock.count > 2) {
+    if (this.cock.count == 2) {
       return Random.from([
-        `{{C::gender.His}} {{C::cock.count}} {{C::cock.cocks}} emerge from a hugely stretched {{C::cock.furrySheath}}
-         between {{C::gender.his}} legs.`,
-        `{{C::gender.His}} {{C::cock.count}} {{C::cock.cocks}} extend out from a hugely oversized
-         {{C::cock.furrySheath}}.`,
-        `The {{C::cock.count}} {{C::cock.big}} shafts emerge from an increadibly wide {{C::cock.furrySheath}} tucked
-         between {{C::gender.his}} legs.`,
+        `Both of {{his}} cocks emerge from a overstuffed {{C::cock.furrySheath}} between {{his}} legs.`,
+        `{{His}} twin cocks extend out from an oversized {{C::cock.furrySheath}}.`,
+        `The two shafts emerge from a {{wide}} {{C::cock.furrySheath}}, situated between {{his}} legs.`,
       ]);
     }
 
     return Random.from([
-      `{{C::gender.His}} {{C::cock.cock}} emerges from {{C::cock.aBig}} {{C::cock.furrySheath}} between {{C::gender.his}} legs.`,
-      `{{C::gender.His}} {{C::cock.cock}} lies tucked within {{C::cock.aBig}} {{C::cock.furrySheath}}.`,
-      `The {{C::cock.big}} shaft emerges from a {{C::cock.furrySheath}} tucked between {{C::gender.his}} legs.`,
+      `{{His}} cock emerges from a {{C::cock.furrySheath}} tucked between {{C::gender.his}} legs.`,
+      `{{His}} cock lies tucked within a {{C::cock.furrySheath}}.`,
+      `The {{C::body.skinColor}} shaft emerges from a {{C::cock.furrySheath}} tucked between {{C::gender.his}} legs.`,
     ]);
   }
 
@@ -111,10 +101,9 @@ global.CockDescriber = class CockDescriber {
     if (this.isIncluded('ridges')) { return ''; }
 
     return Random.from([
-      `A series of thick bony ridges run down the entire length of {{C::gender.his}} {{C::cock.cock}}.`,
-      `{{C::gender.His}} {{C::cock.cock}} has a series of thick bony ridges that extend {{C::cock.twoInches(ridge)}}
-       from {{C::gender.his}} cock's scaley skin.`,
-      `Thick bony ridges protrude {{C::cock.twoInches(ridge)}} from the surface of {{C::gender.his}} shaft.`,
+      `A series of thick bony ridges run down the entire length of {{his}} {{cock}}.`,
+      `{{His}} {{cock}} has a series of thick bony ridges that extend {{C::cock.twoInches(ridge)}} from {{his}} cock's scaley skin.`,
+      `Thick bony ridges protrude {{C::cock.twoInches(ridge)}} from the surface of {{his}} shaft.`,
       `The entire shaft of dragon meat is ringed with thick bony ridges.`,
     ]);
   }
@@ -128,36 +117,33 @@ global.CockDescriber = class CockDescriber {
 
     if (this.cock.count == 1) {
       ArrayUtility.addAll(choices,[
-        `The entire length of {{C::gender.his}} cock is textured with gnarled {{C::cock.acorn(knob)}} sized bumps.`,
-        `{{C::gender.His}} {{C::cock.cock}} is studded, seemingly at random, with hard nubs the size of
-         {{C::cock.acorns(knob)}}.`,
-        `Gnarled, {{C::cock.acorn(knob)}} sized bulges adorn every {{inch}} of {{C::gender.his}} shaft.`
+        `The entire length of {{his}} cock is textured with gnarled {{C::cock.acorn(knob)}} sized bumps.`,
+        `{{His}} {{cock}} is studded, seemingly at random, with hard nubs the size of {{C::cock.acorns(knob)}}.`,
+        `Gnarled, {{C::cock.acorn(knob)}} sized bulges adorn every {{inch}} of {{his}} shaft.`
       ]);
 
       if (knobHeight > 12) { ArrayUtility.addAll(choices,[
-        `The entire length of {{C::gender.his}} cock is textured with gnarled {{C::cock.twoInches(knob)}} high bumps,
-         each the size of {{C::cock.anAcorn(knob)}}`,
-        `{{C::gender.His}} {{C::cock.cock}} is studded, seemingly at random, with hard {{C::cock.twoInches(knob)}} wide
-         knobs, each the size of {{C::cock.anAcorn(knob)}}.`,
+        `The entire length of {{his}} cock is textured with gnarled {{C::cock.twoInches(knob)}} high bumps, each the
+         size of {{C::cock.anAcorn(knob)}}`,
+        `{{His}} {{cock}} is studded, seemingly at random, with hard {{C::cock.twoInches(knob)}} wide knobs, each the
+         size of {{C::cock.anAcorn(knob)}}.`,
       ]); }
 
       return Random.from(choices);
     }
 
     ArrayUtility.addAll(choices,[
-      `{{C::gender.His}} {{C::cock.count}} {{C::cock.cocks}} are {{C::cock.both}} textured with gnarled
-       {{C::cock.acorn(knob)}} sized bumps.`,
-      `{{C::gender.His}} {{C::cock.cocks}} are studded, seemingly at random, with hard nubs the size of
-       {{C::cock.acorns(knob)}}.`,
-      `Gnarled, {{C::cock.acorn(knob)}} sized bulges, adorn every {{inch}} of {{C::gender.his}} shafts.`,
+      `{{His}} {{C::cock.count}} cocks are {{C::cock.both}} textured with gnarled {{C::cock.acorn(knob)}} sized bumps.`,
+      `{{His}} cocks are studded, seemingly at random, with hard nubs the size of {{C::cock.acorns(knob)}}.`,
+      `Gnarled, {{C::cock.acorn(knob)}} sized bulges, adorn every {{inch}} of {{his}} shafts.`,
     ]);
 
     if (knobHeight > 12) { ArrayUtility.addAll(choices,[
-      `The {{C::cock.count}} {{C::cock.cocks}} are {{C::cock.both}} textured with gnarled {{C::cock.twoInches(knob)}}
-       bumps, each the size of {{C::cock.anAcorn(knob)}}.`,
-      `{{C::gender.His}} {{C::cock.cocks}} are studded, seemingly at random, with hard {{C::cock.twoInches(knob)}} wide
-       knobs, each the size of {{C::cock.anAcorn(knob)}}.`,
-      `Thick, {{C::cock.acorn(knob)}} sized bulges, adorn every {{inch}} of {{C::gender.his}} shafts.`,
+      `The {{C::cock.count}} cocks are {{C::cock.both}} textured with gnarled {{C::cock.twoInches(knob)}} bumps, each
+       the size of {{C::cock.anAcorn(knob)}}.`,
+      `{{His}} cocks are studded, seemingly at random, with hard {{C::cock.twoInches(knob)}} wide knobs, each the size
+       of {{C::cock.anAcorn(knob)}}.`,
+      `Thick, {{C::cock.acorn(knob)}} sized bulges, adorn every {{inch}} of {{his}} shafts.`,
     ]); }
 
     return Random.from(choices);
@@ -171,63 +157,57 @@ global.CockDescriber = class CockDescriber {
 
     if (this.cock.count == 1) {
       if (spineHeight < 6) { return Random.from([
-        `The entire length of {{C::gender.his}} cock is covered in sharp little, backward facing spines.`,
-        `Like a cat, {{C::gender.his}} cock is covered in sharp little, backward facing spines.`,
-        `Small sharp spikes adorn the length of {{C::gender.his}} cock, giving it a rough feline texture.`,
+        `The entire length of {{his}} cock is covered in sharp little, backward facing spines.`,
+        `Like a cat, {{his}} cock is covered in sharp little, backward facing spines.`,
+        `Small sharp spikes adorn the length of {{his}} cock, giving it a rough feline texture.`,
       ]); }
 
       if (spineHeight < 25) { return Random.from([
-        `The entire length of {{C::gender.his}} cock is covered in hard, backward facing spines. The spines are
-         {{C::cock.twoInch(spine)}} long around the crown of {{C::gender.his}} cockhead, but grow shorter near the
-         base.`,
+        `The entire length of {{his}} cock is covered in hard, backward facing spines. The spines are
+         {{C::cock.twoInch(spine)}} long around the crown of {{his}} cockhead, but grow shorter near the base.`,
 
-        `Firm {{C::cock.twoInches(spine)}} long spines adorn the length of {{C::gender.his}} cock, facing backwards so
-         that they rub painfully at whatever {{C::gender.his}} cock is thrust into.`,
+        `Firm {{C::cock.twoInches(spine)}} long spines adorn the length of {{his}} cock, facing backwards so that they
+         rub painfully at whatever {{his}} cock is thrust into.`,
 
-        `Wicked {{C::cock.twoInches(spine)}} long, backward facing spines completely cover {{C::gender.his}}
-         {{C::cock.cock}}. The wide, dull spikes are thickest around the crown of {{C::gender.his}} cockhead and
-         flatten out near the base.`,
+        `Wicked {{C::cock.twoInches(spine)}} long, backward facing spines completely cover {{his}} {{cock}}. The wide,
+         dull spikes are thickest around the crown of {{his}} cockhead and flatten out near the base.`,
       ]); }
 
       return Random.from([
-        `Thick {{C::cock.twoInch(spine)}} long spines cover the length of {{C::gender.his}} cock. The bony spurs are
-         thick and dull, but stiff like short fingers protruding backwards from the surface of {{C::gender.his}} cock.`,
+        `Thick {{C::cock.twoInch(spine)}} long spines cover the length of {{his}} cock. The bony spurs are thick and
+         dull, but stiff like short fingers pointing backwards from the surface of {{his}} cock.`,
 
-        `{{C::gender.His}} {{C::cock.cock}} is a true cunt destroyer; it's entire surface is covered in thick
-         {{C::cock.twoInch(spine)}} long spikes. The spines are firm and dull, like thick fingers made to rake
-         painfully against whatever they're thrust into. The spines are thickest around {{C::gender.his}} cockhead,
-         but grow shorter near the base.`
+        `{{His}} {{cock}} is a true cunt destroyer; it's entire surface is covered in thick {{C::cock.twoInch(spine)}}
+         long spikes. The spines are firm and dull, like thick fingers made to rake painfully against whatever they're
+         thrust into. The spines are thickest around {{his}} cockhead, but grow shorter near the base.`
       ]);
     }
 
     if (spineHeight < 6) { return Random.from([
-      `{{C::gender.His}} cocks are {{C::cock.both}} covered in sharp little, backward facing spines like a cat's.`,
-      `Like a cat, {{C::gender.his}} {{C::cock.cocks}} are covered in sharp little, backward facing spines.`,
-      `Small sharp spikes adorn {{C::cock.both}} of {{C::gender.his}} cocks, giving them a rough feline texture.`,
+      `{{His}} cocks are {{C::cock.both}} covered in sharp little, backward facing spines like a cat's.`,
+      `Like a cat, {{his}} cocks are covered in sharp little, backward facing spines.`,
+      `Small sharp spikes adorn {{C::cock.both}} of {{his}} cocks, giving them a rough feline texture.`,
     ]); }
 
     if (spineHeight < 25) { return Random.from([
-      `{{C::gender.his}} {{C::cock.count}} {{C::cock.cocks}} are covered in hard, backward facing spines. The spines
-       are {{C::cock.twoInches(spine)}} long around the heads of {{C::gender.his}} {{C::cock.cocks}}, but grow shorter
-       near their bases.`,
+      `{{his}} {{C::cock.count}} cocks are covered in hard, backward facing spines. The spines are
+       {{C::cock.twoInches(spine)}} long around the heads of {{his}} cocks, but grow shorter near the base.`,
 
-      `Firm {{C::cock.twoInch(spine)}} long spines adorn the length of {{C::gender.his}} {{C::cock.cocks}}, facing
-       backwards so that they rub painfully at whatever they're thrust into.`,
+      `Firm {{C::cock.twoInch(spine)}} long spines adorn the length of {{his}} cocks, facing backwards so that they
+       rub painfully at whatever they're thrust into.`,
 
       `Wicked {{C::cock.twoInch(spine)}} long, backward facing spines completely cover {{C::cock.both}} of
-       {{C::gender.his}} {{C::cock.cocks}}. The thick, dull spikes are thickest around the crowns of {{C::gender.his}}
-       cockheads and thin out near their base where they lie flat.`
+       {{his}} cocks. The thick, dull spikes are thickest around the crowns of {{his}} cockheads and thin out near
+       their base where they lie flat.`
     ]); }
 
     return Random.from([
-      `Thick {{C::cock.twoInch(spine)}} long spines cover the length {{C::gender.his}} {{C::cock.cocks}}. The bony
-       spurs are thick and dull, but stiff like short fingers protruding backwards from the surface of
-       {{C::gender.his}} {{C::cock.cocks}}.`,
+      `Thick {{C::cock.twoInch(spine)}} long spines cover the length {{his}} cocks. The bony spurs are thick and dull,
+       but stiff like short fingers pointing backwards from the surface of {{his}} cocks.`,
 
-      `{{C::gender.His}} {{C::cock.count}} {{C::cock.cocks}} are true cunt destroyers, their surfaces are covered in
-       thick {{C::cock.twoInch(spine)}} long spurs. They're firm and dull, like thick fingers made to rake painfully
-       against whatever they're thrust into. The spines are thickest around {{C::gender.his}} cockheads, but grow
-       shorter near their base.`
+      `{{His}} {{C::cock.count}} cocks are true cunt destroyers, their surfaces are covered in thick
+       {{C::cock.twoInch(spine)}} long spurs. They're firm and dull, like thick fingers made to rake painfully against
+       whatever they're thrust into. The spines are thickest around {{his}} cockheads, but grow shorter near their base.`
     ]);
   }
 
@@ -235,22 +215,21 @@ global.CockDescriber = class CockDescriber {
     if (this.cock.internalBalls) { return ''; }
 
     if (this.cock.sheath) { return Random.from([
-      `{{C::gender.His}} {{C::balls.big}} {{C::balls.furryBallsack}} is the size of {{C::balls.anApple}}.`,
-      `{{C::gender.His}} {{C::balls.big}} {{C::balls.furryBallsack}} hangs tightly up against {{C::gender.his}}
-       cocksheath and measures {{C::balls.fourInches}} across.`,
-      `{{C::gender.He}} has {{C::balls.aBig}} {{C::balls.apple}} sized {{ballsack}} hanging under {{C::gender.his}}
-       {{C::cock.furrySheath}}.`,
-      `{{C::gender.His}} {{C::balls.big}} {{testicles}} each measure {{C::balls.twoInches}} across, tucked in a tight
+      `{{His}} {{C::balls.big}} {{C::balls.furryBallsack}} is the size of {{C::balls.anApple}}.`,
+      `{{He}} has {{C::balls.aBig}} {{C::balls.apple}} sized {{ballsack}} hanging under {{his}} {{C::cock.furrySheath}}.`,
+      `{{His}} {{C::balls.big}} {{C::balls.furryBallsack}} hangs tightly up against {{his}} cocksheath and measures
+       {{C::balls.fourInches}} across.`,
+      `{{His}} {{C::balls.big}} {{testicles}} each measure {{C::balls.twoInches}} across, tucked in a tight
        {{C::balls.apple}} sized {{ballsack}} hanging under {{C::gender.his}} {{C::cock.furrySheath}}.`
     ]); }
 
     return Random.from([
-      `{{C::gender.He}} has {{C::balls.aBig}} {{C::balls.apple}} sized {{ballsack}}.`,
-      `{{C::gender.His}} {{C::balls.big}} {{ballsack}} is the size of {{C::balls.anApple}}.`,
-      `{{C::gender.He}} has {{C::balls.big}} {{C::balls.egg}} sized {{testicles}} tucked in a tight wrinkled
-       {{ballsack}} measuring {{C::balls.fourInches}} across.`,
-      `{{C::gender.His}} {{C::balls.big}} {{testicles}} each measure {{C::balls.twoInches}} across, tucked in a tight
-       crinkled {{C::balls.apple}} sized {{ballsack}}.`
+      `{{He}} has {{C::balls.aBig}} {{C::balls.apple}} sized {{ballsack}}.`,
+      `{{His}} {{C::balls.big}} {{ballsack}} is the size of {{C::balls.anApple}}.`,
+      `{{He}} has {{C::balls.big}} {{C::balls.egg}} sized {{testicles}} tucked in a tight wrinkled {{ballsack}}
+       measuring {{C::balls.fourInches}} across.`,
+      `{{His}} {{C::balls.big}} {{testicles}} each measure {{C::balls.twoInches}} across, tucked in a tight crinkled
+       {{C::balls.apple}} sized {{ballsack}}.`
     ]);
   }
 

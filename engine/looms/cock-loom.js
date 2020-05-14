@@ -32,9 +32,11 @@ Weaver.CockLoom = (function() {
     if (token == "cock.aHuge(knot)") { return EnglishUtility.a_an(hugeKnot(cock)); }
     if (token == "cock.apple(knot)") { return appleKnot(cock); }
     if (token == "cock.anApple(knot)") { return EnglishUtility.a_an(appleKnot(cock)); }
+
     if (token == "cock.acorn(knob)") { return acornKnob(cock); }
     if (token == "cock.acorns(knob)") { return acornsKnob(cock); }
     if (token == "cock.anAcorn(knob)") { return EnglishUtility.a_an(acornKnob(cock)); }
+
     if (token == "cock.furrySheath") { return furrySheath(cock); }
     if (token == "cock.theGlansOfHisCock") { return theGlansOfHisCock(subject,cock); }
 

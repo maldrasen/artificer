@@ -85,15 +85,15 @@ Description.buildCock({ requires:['minion(C).cock.big'],
 });
 
 Description.buildCock({ requires:['minion(C).cock.big'],
-  d: `At {{C::cock.inchesLongAndWide}} {{his}} larger than average {{cock}} looks impressive on his
+  d: `At {{C::cock.inchesLongAndWide}} {{his}} larger than average {{cock}} looks impressive on {{his}}
       {{C::species.elven}} frame.`
 });
 
 // === Huge Cock ===
 
 Description.buildCock({ requires:['minion(C).cock.huge'],
-  d: `{{His}} huge {{C::body.skinColor}} {{cock}} takes at least two hands to hold. His {{C::species.elven}} {{cock}}
-      is {{C::cock.inchesLongAndWide}}.`
+  d: `{{His}} huge {{C::body.skinColor}} {{cock}} takes at least two hands to hold. {{His}} {{C::species.elven}}
+      {{cock}} is {{C::cock.inchesLongAndWide}}.`
 });
 
 Description.buildCock({ requires:['minion(C).cock.huge'],
@@ -101,7 +101,7 @@ Description.buildCock({ requires:['minion(C).cock.huge'],
       than most other {{C::species.demons}} {{his}} size.`
 });
 
-Description.buildCock({ requires:['minion(C).cock.big'],
+Description.buildCock({ requires:['minion(C).cock.huge'],
 d: `{{He}}'s been truely blessed with a huge {{C::cock.sixInch}} long {{cock}} that swells to a full
     {{C::cock.twoInches}} wide when fully hard.`
 });
@@ -124,16 +124,33 @@ Description.buildCock({ requires:['minion(C).cock.huge'],
 // === Monster Cock ===
 
 Description.buildCock({ requires:['minion(C).cock.monster'],
-  d: `At {{C::cock.inchesLongAndWide}}, {{his}} {{massive}} {{cock}} hangs down nearly to {{his}} knees.`
-});
-
-Description.buildCock({ requires:['minion(C).cock.monster'],
-  d: `{{His}} {{massive}} {{cock}} would look large on a horse, at {{C::cock.inchesLongAndWide}}.`
-});
-
-Description.buildCock({ requires:['minion(C).cock.monster'],
-  d: `At {{C::cock.inchesLongAndWide}}, {{his}} {{massive}} {{cock}} would look large on a creature twice
+  d: `At {{C::cock.inchesLongAndWide}} {{his}} {{massive}} {{cock}} would look large on a creature twice
       {{his}} size.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.monster'],
+  d: `At {{C::cock.inchesLongAndWide}} {{his}} {{massive}} {{C::body.skinColor}} {{cock}} looks unbelievably huge on
+      {{his}} {{C::species.elven}} frame.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.monster'],
+  d: `{{His}} {{massive}} {{C::cock.sixInch}} long {{cock}} hangs pendulously down between {{his}} legs. The {{massive}}
+      {{C::body.skinColor}} shaft swells to a cunt splitting {{C::cock.twoInches}} thick when fully hard.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.monster'],
+  d: `{{His}} {{massive}} {{C::species.elven}} {{cock}} is far larger than almost any other {{C::species.elf}} {{his}}
+      size, at {{C::cock.inchesLongAndWide}}.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.monster'],
+  d: `Thick veins cover the length of {{his}} {{massive}} {{C::cock.sixInch}} long {{cock}}. The pendulous mass of
+      cockflesh swells to an incredible {{C::cock.twoInches}} thick when fully hard.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.monster'],
+  d: `{{He}} has {{aMassive}} {{C::body.skinColor}} {{cock}} that when fully hard grows to {{aMassive}}
+      {{C::cock.inchesLongAndWide}}.`
 });
 
 // === Gigantic Monster Cock ===
@@ -144,31 +161,83 @@ Description.buildCock({ requires:['minion(C).cock.gigantic'],
       thick when fully hard.`
 });
 
+Description.buildCock({ requires:['minion(C).cock.gigantic'],
+  d: `{{His}} {{massive}} {{C::body.skinColor}} {{cock}} would look large on a horse. {{His}} {{massive}}
+      {{C::species.elven}} fuckmeat grows to an ass destroying {{C::cock.inchesLongAndWide}}.`
+});
+
 // === Titanic Monster Cock ===
 
+// TODO: Add a few more of these. I'd like to include a few "hangs down to {{his}} knees" or "past {{his}} knees" type
+//       descriptions but that would require a character height / cock length scrutinizer which doesn't exist yet.
+
 Description.buildCock({ requires:['minion(C).cock.titanic'],
-  d: `{{maleDemon}} himself would be proud to possess a {{massive}} {{C::body.skinColor}} cock like the ponderous
+  d: `{{maleDemon}} himself would be proud to possess {{aMassive}} {{C::body.skinColor}} cock like the ponderous
       tower of flesh swinging down between {{C::character.firstName's}} legs. The {{massive}} shaft is
       {{C::cock.inchesLongAndWide}} when fully hard.`
 });
 
+// === Dog Cocks, With Sheath and Knot ===
 
-// // === Dog Cocks, With Knot ===
-//
-// Description.buildCock({ includes:['knot','sheath'],
-//   d: `{{He}} has a dog shaped cock, hidden in {{C::cock.aBig}} furry cocksheath when soft. When hard though, {{his}}
-//       BIG cock grows to {{C::cock.inchesLongAndWide}} with {{C::cock.aHuge(knot)}}
-//       {{C::cock.twoInch(knot)}} {{wide}} knot at its base.`
-// });
-//
-// Description.buildCock({ includes:['knot','sheath'],
-//   d: `{{He}} has {{C::cock.aBig}} furry sheath nestled between {{his}} legs, holding {{his}} BIG,
-//       {{C::cock.twoInch}} {{wide}} {{cock}}. {{His}} {{cock}} is {{C::cock.sixInches}} long when hard
-//       and has {{C::cock.aHuge(knot)}} knot at its base that can swell up to {{C::cock.twoInches(knot)}} wide.`
-// });
-//
-//
-// // === Horse Cocks ===
+Description.buildCock({ requires:['minion(C).cock.small'], includes:['knot','sheath'],
+  d: `{{He}} has a small dogcock, packed away in a tight furry little cocksheath. When hard though {{his}} modest cock
+      grows to {{C::cock.inchesLongAndWide}} with a {{C::cock.twoInch(knot)}} {{wide}} knot at its base.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.small'], includes:['knot','sheath'],
+  d: `{{His}} small {{C::body.skinColor}} canine cock is tucked away in a furry little cocksheath. When it emerges
+      {{his}} cock grows to {{C::cock.inchesLongAndWide}} with a {{C::cock.twoInch(knot)}} {{wide}} knot at its base.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.average'], includes:['knot','sheath'],
+  d: `{{His}} {{C::cock.sixInch}} long dogcock is tucked away in {{his}} furry cocksheath. When hard, {{his}} cock
+      grows to {{C::cock.inchesLongAndWide}} with {{C::cock.aHuge(knot)}} {{C::cock.twoInch(knot)}} {{wide}} knot at
+      its base.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.average'], includes:['knot','sheath'],
+  d: `{{His}} canine cock is held in a plump furry sheath nestled between {{his}} legs. The {{C::body.skinColor}}
+      dogcock is {{C::cock.sixInches}} long when hard and has {{C::cock.aHuge(knot)}} {{C::cock.twoInch(knot)}}
+      {{wide}} knot at its base.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.big'], includes:['knot','sheath'],
+  d: `{{His}} big {{C::body.skinColor}} {{cock}}, currently tucked away in {{his}} thick {{C::cock.furrySheath}}, is
+      longer than most other {{C::species.elves}} {{his}} size, at {{C::cock.inchesLongAndWide}} with
+      {{C::cock.aHuge(knot)}} {{C::cock.twoInch(knot)}} {{wide}} knot at its base.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.big'], includes:['knot','sheath'],
+  d: `{{He}}'s been blessed with a big {{C::cock.sixInch}} long dogcock that swells to a full {{C::cock.twoInches}}
+      wide when fully hard and out of {{his}} {{C::cock.furrySheath}}. The {{C::cock.huge(knot)}} knot at the base of
+      {{his}} shaft is about the size of {{C::cock.anApple(knot)}}.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.huge'], includes:['knot','sheath'],
+  d: `{{He}} has an impressively huge {{C::cock.sixInch}} long canine {{cock}} that swells to a full {{C::cock.twoInches}}
+      wide when fully hard. The big {{C::body.skinColor}} shaft of doggy fuckmeat is adorned with
+      {{C::cock.anApple(knot)}} sized knot that rests just above his huge {{C::cock.furrySheath}}.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.huge'], includes:['knot','sheath'],
+  d: `Thick veins cover the length of {{his}} huge {{C::cock.sixInch}} long dogcock. The tower of {{C::body.skinColor}}
+      flesh emerging from his thick {{C::cock.furrySheath}} has {{C::cock.aHuge(knot)}} {{C::cock.twoInch(knot)}}
+      {{wide}} knot at its base, much thicker than most other {{C::species.elves}}.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.monster'], includes:['knot','sheath'],
+  d: `{{He}} has {{aMassive}} {{C::cock.sixInch}} long canine {{cock}} that swells to a full {{C::cock.twoInches}}
+      wide when fully hard. The {{aMassive}} {{C::body.skinColor}} shaft of canine fuckmeat is adorned with {{aMassive}}
+      knot the size of {{C::cock.anApple(knot)}} that rests just above his {{massive}} {{C::cock.furrySheath}}.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.monster'], includes:['knot','sheath'],
+  d: `Thick veins cover the length of {{his}} {{massive}} {{C::cock.sixInch}} long dogcock. The pendulous mass of
+      {{C::body.skinColor}} cockflesh emerging from his {{massive}} {{C::cock.furrySheath}} has an ass destroying
+      {{C::cock.twoInch(knot)}} {{wide}} knot at its base.`
+});
+
+// === Horse Cocks ===
 //
 // Description.buildCock({ requires:['minion(C).cock.horse'],
 //   d: `{{His}} BIG {{C::cock.twoInch}} {{wide}} {{cock}} is tipped with a wide flat cockhead which
