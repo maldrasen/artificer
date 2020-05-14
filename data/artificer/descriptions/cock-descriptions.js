@@ -53,14 +53,6 @@ Description.buildCock({ requires:['minion(C).cock.not-tiny','minion(C).cock.smal
 // === Average Cock ===
 
 Description.buildCock({ requires:['minion(C).cock.average'],
-  d: `{{His}} {{C::cock.sixInch}} long {{cock}} is average for {{C::species.an_elf}} {{his}} size.`
-});
-
-Description.buildCock({ requires:['minion(C).cock.average'],
-  d: `{{He}} has a {{C::cock.sixInch}} long {{cock}}, which is about average for {{C::species.an_elf}}.`
-});
-
-Description.buildCock({ requires:['minion(C).cock.average'],
   d: `{{He}} has a weighty {{C::cock.twoInch}} {{wide}} {{cock}}, that grows to {{C::cock.sixInches}} long when hard.`
 });
 
@@ -68,22 +60,34 @@ Description.buildCock({ requires:['minion(C).cock.average'],
   d: `{{He}} has a nicely formed {{C::cock.sixInch}} long {{cock}}.`
 });
 
-Description.buildCock({ requires:['minion(C).cock.average'],
+Description.buildCock({ requires:['minion(C).cock.average','minion(C).height-short'],
+  d: `{{His}} {{C::body.skinColor}} {{C::species.elven}} {{cock}} is {{C::cock.inchesLongAndWide}}. It's not huge, but
+      it looks quite large on his small body.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.average','minion(C).height-short'],
+  d: `{{He}} has a nicely formed {{C::cock.inchLongAndWide}} {{cock}}. It's not the biggest dick, but on {{his}} short
+      frame it looks quite large.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.average','minion(C).height-average'],
+  d: `{{His}} {{C::cock.sixInch}} long {{cock}} is average for {{C::species.an_elf}} {{his}} size.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.average','minion(C).height-average'],
+  d: `{{He}} has a {{C::cock.sixInch}} long {{cock}}, which is about average for {{C::species.an_elf}}.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.average','minion(C).height-average'],
   d: `{{His}} {{C::body.skinColor}} {{cock}} is average for {{C::species.an_elf}} {{his}} size, at
       {{C::cock.inchesLongAndWide}}.`
 });
 
-Description.buildCock({ requires:['minion(C).cock.average'],
-  d: `At {{C::cock.inchesLongAndWide}} {{his}} beautifully formed {{cock}} is about average for
-      {{C::species.an_elf}}.`
+Description.buildCock({ requires:['minion(C).cock.average','minion(C).height-average'],
+  d: `At {{C::cock.inchesLongAndWide}} {{his}} beautifully formed {{cock}} is about average for {{C::species.an_elf}}.`
 });
 
 // === Big Cock ===
-
-Description.buildCock({ requires:['minion(C).cock.big'],
-  d: `{{His}} big {{C::body.skinColor}} {{cock}} is longer than most other {{C::species.elves}} {{his}} size,
-      at {{C::cock.inchesLongAndWide}}.`
-});
 
 Description.buildCock({ requires:['minion(C).cock.big'],
   d: `{{He}}'s been blessed with a big {{C::cock.sixInch}} long {{cock}} that swells to a full
@@ -91,19 +95,34 @@ Description.buildCock({ requires:['minion(C).cock.big'],
 });
 
 Description.buildCock({ requires:['minion(C).cock.big'],
+  d: `{{He}} has a big beautiful {{C::cock.sixInch}} long {{cock}}.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.big','minion(C).height-short'],
+  d: `{{His}} big {{C::body.skinColor}} {{cock}} is {{C::cock.sixInch}} long {{cock}} and looks especially large on
+      {{his}} small {{C::species.elven}} body.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.big','minion(C).height-short'],
+  d: `{{He}}'s been blessed with a big {{C::cock.inchesLongAndWide}} {{cock}}, which is much larger than most other
+      {{C::species.elves}} {{his}} size.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.big','minion(C).height-average'],
+  d: `{{His}} big {{C::body.skinColor}} {{cock}} is longer than most other {{C::species.elves}} {{his}} size,
+      at {{C::cock.inchesLongAndWide}}.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.big','minion(C).height-average'],
   d: `{{His}} {{cock}} is large for {{C::species.an_elf}}. It's {{C::cock.inchesLongAndWide}} when fully
       hard.`
 });
 
-Description.buildCock({ requires:['minion(C).cock.big'],
+Description.buildCock({ requires:['minion(C).cock.big','minion(C).height-average'],
   d: `{{His}} impressively sized {{C::cock.sixInch}} long {{cock}} is large for {{C::species.an_elf}}.`
 });
 
-Description.buildCock({ requires:['minion(C).cock.big'],
-  d: `{{He}} has a big beautiful {{C::cock.sixInch}} long {{cock}}.`
-});
-
-Description.buildCock({ requires:['minion(C).cock.big'],
+Description.buildCock({ requires:['minion(C).cock.big','minion(C).height-average'],
   d: `At {{C::cock.inchesLongAndWide}} {{his}} larger than average {{cock}} looks impressive on {{his}}
       {{C::species.elven}} frame.`
 });
@@ -116,18 +135,8 @@ Description.buildCock({ requires:['minion(C).cock.huge'],
 });
 
 Description.buildCock({ requires:['minion(C).cock.huge'],
-  d: `At {{C::cock.inchesLongAndWide}} {{his}} huge {{C::body.skinColor}} {{cock}} is far longer and thicker
-      than most other {{C::species.demons}} {{his}} size.`
-});
-
-Description.buildCock({ requires:['minion(C).cock.huge'],
 d: `{{He}}'s been truely blessed with a huge {{C::cock.sixInch}} long {{cock}} that swells to a full
     {{C::cock.twoInches}} wide when fully hard.`
-});
-
-Description.buildCock({ requires:['minion(C).cock.huge'],
-  d: `{{His}} huge {{C::species.elven}} {{cock}} is far larger than almost any other {{C::species.elf}} {{his}} size,
-      at {{C::cock.inchesLongAndWide}}.`
 });
 
 Description.buildCock({ requires:['minion(C).cock.huge'],
@@ -135,31 +144,26 @@ Description.buildCock({ requires:['minion(C).cock.huge'],
       wide when fully hard.`
 });
 
-Description.buildCock({ requires:['minion(C).cock.huge'],
+Description.buildCock({ requires:['minion(C).cock.huge','minion(C).height-average'],
+  d: `{{His}} huge {{C::species.elven}} {{cock}} is far larger than almost any other {{C::species.elf}} {{his}} size,
+      at {{C::cock.inchesLongAndWide}}.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.huge','minion(C).height-average'],
   d: `Thick veins cover the length of {{his}} huge {{C::cock.sixInch}} long {{cock}}. The tower of
       {{C::body.skinColor}} flesh is far larger than most other {{C::species.elves}}.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.huge','minion(C).height-average'],
+  d: `At {{C::cock.inchesLongAndWide}} {{his}} huge {{C::body.skinColor}} {{cock}} is far longer and thicker
+      than most other {{C::species.demons}} {{his}} size.`
 });
 
 // === Monster Cock ===
 
 Description.buildCock({ requires:['minion(C).cock.monster'],
-  d: `At {{C::cock.inchesLongAndWide}} {{his}} {{massive}} {{cock}} would look large on a creature twice
-      {{his}} size.`
-});
-
-Description.buildCock({ requires:['minion(C).cock.monster'],
-  d: `At {{C::cock.inchesLongAndWide}} {{his}} {{massive}} {{C::body.skinColor}} {{cock}} looks unbelievably huge on
-      {{his}} {{C::species.elven}} frame.`
-});
-
-Description.buildCock({ requires:['minion(C).cock.monster'],
   d: `{{His}} {{massive}} {{C::cock.sixInch}} long {{cock}} hangs pendulously down between {{his}} legs. The {{massive}}
       {{C::body.skinColor}} shaft swells to a cunt splitting {{C::cock.twoInches}} thick when fully hard.`
-});
-
-Description.buildCock({ requires:['minion(C).cock.monster'],
-  d: `{{His}} {{massive}} {{C::species.elven}} {{cock}} is far larger than almost any other {{C::species.elf}} {{his}}
-      size, at {{C::cock.inchesLongAndWide}}.`
 });
 
 Description.buildCock({ requires:['minion(C).cock.monster'],
@@ -172,15 +176,35 @@ Description.buildCock({ requires:['minion(C).cock.monster'],
       {{C::cock.inchesLongAndWide}}.`
 });
 
+Description.buildCock({ requires:['minion(C).cock.monster','minion(C).height-average'],
+  d: `At {{C::cock.inchesLongAndWide}} {{his}} {{massive}} {{cock}} would look large on a creature twice
+      {{his}} size.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.monster','minion(C).height-average'],
+  d: `At {{C::cock.inchesLongAndWide}} {{his}} {{massive}} {{C::body.skinColor}} {{cock}} looks unbelievably huge on
+      {{his}} {{C::species.elven}} frame.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.monster','minion(C).height-average'],
+  d: `{{His}} {{massive}} {{C::species.elven}} {{cock}} is far larger than almost any other {{C::species.elf}} {{his}}
+      size, at {{C::cock.inchesLongAndWide}}.`
+});
+
 // === Gigantic Monster Cock ===
 
-Description.buildCock({ requires:['minion(C).cock.gigantic'],
+Description.buildCock({ requires:['minion(C).cock.gigantic','minion(C).height-average'],
+  d: `{{His}} {{C::body.skinColor}} {{C::species.elf}} {{cock}} is a truely {{massive}} shaft of fuckmeat. The heavily
+      veined ass reamer is {{C::cock.inchesLongAndWide}}.`
+});
+
+Description.buildCock({ requires:['minion(C).cock.gigantic','minion(C).height-average'],
   d: `{{His}} {{massive}} {{C::body.skinColor}} {{cock}} would rank among the largest of all {{C::species.elves}}. The
       {{massive}} swinging shaft is {{C::cock.sixInches}} long and swells to an cunt splitting {{C::cock.twoInches}}
       thick when fully hard.`
 });
 
-Description.buildCock({ requires:['minion(C).cock.gigantic'],
+Description.buildCock({ requires:['minion(C).cock.gigantic','minion(C).height-average'],
   d: `{{His}} {{massive}} {{C::body.skinColor}} {{cock}} would look large on a horse. {{His}} {{massive}}
       {{C::species.elven}} fuckmeat grows to an ass destroying {{C::cock.inchesLongAndWide}}.`
 });
