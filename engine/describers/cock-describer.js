@@ -124,7 +124,7 @@ global.CockDescriber = class CockDescriber {
 
       if (knobHeight > 12) { ArrayUtility.addAll(choices,[
         `The entire length of {{his}} cock is textured with gnarled {{C::cock.twoInches(knob)}} high bumps, each the
-         size of {{C::cock.anAcorn(knob)}}`,
+         size of {{C::cock.anAcorn(knob)}}.`,
         `{{His}} {{cock}} is studded, seemingly at random, with hard {{C::cock.twoInches(knob)}} wide knobs, each the
          size of {{C::cock.anAcorn(knob)}}.`,
       ]); }

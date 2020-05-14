@@ -1,4 +1,4 @@
-describe.only('Describer: Cock', function() {
+describe('Describer: Cock', function() {
 
   function printCock(title, options, done) {
     Settings.Metric = Random.from([true,false,false]);
@@ -125,26 +125,12 @@ describe.only('Describer: Cock', function() {
     printCock('Multiple Spined', { species:'naga', spines:true }, done);
   });
 
-  // it('describes knobbed cocks', function(done) {
-  //   SpecHelper.tenTimes(done, resolve => {
-  //     SpecHelper.buildJada({ species:'elf', cock:{ knobHeight:Random.upTo(24)+1 }}).then(jada => {
-  //       jada.getCock().then(cock => {
-  //         printCock('knobbed elf',cock);
-  //         resolve();
-  //       });
-  //     });
-  //   });
-  // });
-  //
-  // it('describes multiple knobbed cocks', function(done) {
-  //   SpecHelper.tenTimes(done, resolve => {
-  //     SpecHelper.buildJada({ species:'naga', cock:{ knobHeight:Random.upTo(24)+1 }}).then(jada => {
-  //       jada.getCock().then(cock => {
-  //         printCock('knobbed naga',cock);
-  //         resolve();
-  //       });
-  //     });
-  //   });
-  // });
+  it('describes knobbed cocks', function(done) {
+    printCock('Knobbed', { knobs:true }, done);
+  });
+
+  it('describes multiple knobbed cocks', function(done) {
+    printCock('Knobbed', { species:'naga', knobs:true }, done);
+  });
 
 });
