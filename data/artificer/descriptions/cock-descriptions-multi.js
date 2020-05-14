@@ -1,20 +1,7 @@
 
-// Basic descriptions, should apply to most multi-cock minions. It's very rare
-// that a minion will spawn with multiple cocks, but the name adjustments can
-// make it happen, so it does need to be handled. This will be extended though
-// at a later time once it becomes more common.
-
-Description.buildCock({ conditions:['minion(C).cock.count=2'],
-  d:`{{His}} twin {{C::cock.cocks}} are {{C::cock.big}}, {{C::cock.inchesLongAndWide}} when hard.`
-});
-
-Description.buildCock({ conditions:['minion(C).cock.count=2'],
-  d:`{{He}} has a pair of {{C::cock.big}}, {{C::cock.twoInch}} wide cocks. {{His}} twin {{C::cock.cocks}} are {{C::cock.sixInches}} long when hard.`
-});
-
-Description.buildCock({ conditions:['minion(C).cock.count=2'],
-  d:`Between {{his}} legs are a pair of {{C::cock.big}}, {{C::cock.twoInch}} wide {{C::cock.cocks}}. Both grow to {{C::cock.sixInches}} long when hard.`
-});
+// TODO: These need to be entirely redone, but I can hold off until multiple
+//       cocks are a thing that are remotely possible for any characters other
+//       than naga.
 
 //     params = { min_count: 2, max_count:nil }
 //     batch_create_descriptions params do |tokens|

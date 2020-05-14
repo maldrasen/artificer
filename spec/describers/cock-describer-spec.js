@@ -90,17 +90,11 @@ describe.only('Describer: Cock', function() {
     printCock('Caprien', { species:'caprien' }, done);
   });
 
-  // it('describes snake cocks', function(done) {
-  //   SpecHelper.tenTimes(done, resolve => {
-  //     SpecHelper.buildJada({ species:'naga' }).then(jada => {
-  //       jada.getCock().then(cock => {
-  //         printCock('snake',cock)
-  //         resolve();
-  //       });
-  //     });
-  //   });
-  // });
-  //
+  it.only('describes snake cocks', function(done) {
+    printCock('Naga', { species:'naga' }, done);
+  });
+
+
 
   //
   // it('describes dragon cocks', function(done) {

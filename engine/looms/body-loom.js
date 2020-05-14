@@ -107,6 +107,7 @@ Weaver.BodyLoom = (function() {
 
     if (color == 'human') { return humanSkinWord(shade); }
     if (color == 'red')   { return redSkinWord(shade);   }
+    if (color == 'green') { return greenSkinWord(shade); }
     if (color == 'black') { return blackSkinWord();      }
 
     return Weaver.error(`Need to describe ${color} as a skin color.`);
@@ -126,6 +127,14 @@ Weaver.BodyLoom = (function() {
     if (shade == 3) { return Random.from(["red","bright red","ruby red"]); }
     if (shade == 4) { return Random.from(["pink","dusty pink"]); }
     if (shade == 5) { return Random.from(["light pink","bright pink"]); }
+  }
+
+  function greenSkinWord(shade) {
+    if (shade == 1) { return Random.from(["black","green black"]); }
+    if (shade == 2) { return Random.from(["dark green","olive green"]); }
+    if (shade == 3) { return Random.from(["emerald green","bright green"]); }
+    if (shade == 4) { return Random.from(["tea green","sage green"]); }
+    if (shade == 5) { return Random.from(["light green","pale green"]); }
   }
 
   function blackSkinWord() {
