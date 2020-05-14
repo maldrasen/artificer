@@ -3,10 +3,13 @@ describe.only('Describer: Cock', function() {
   function printCock(title, options, done) {
     Settings.Metric = Random.from([true,false,false]);
     SpecHelper.tenTimes(done, async resolve => {
+      const spineHeight = options.spines ? Random.between(1,38) : null;
+      const knobHeight = options.knobs ? Random.between(1,24) : null;
+
       const rando = await SpecHelper.buildRando({
         gender: 'futa',
         species: (options.species || 'elf'),
-        cock: { sizeClass:options.size }
+        cock: { sizeClass:options.size, spineHeight, knobHeight }
       });
 
       await CharacterDescriber.updateAll(rando);
@@ -114,28 +117,14 @@ describe.only('Describer: Cock', function() {
     printCock('Monster Demon', { species:'succubus', size:'monster' }, done);
   });
 
-  // it('describes spined cocks', function(done) {
-  //   SpecHelper.tenTimes(done, resolve => {
-  //     SpecHelper.buildJada({ species:'elf', cock:{ spineHeight:Random.upTo(37)+1 }}).then(jada => {
-  //       jada.getCock().then(cock => {
-  //         printCock('spined elf',cock);
-  //         resolve();
-  //       });
-  //     });
-  //   });
-  // });
-  //
-  // it('describes multiple spined cocks', function(done) {
-  //   SpecHelper.tenTimes(done, resolve => {
-  //     SpecHelper.buildJada({ species:'naga', cock:{ spineHeight:Random.upTo(37)+1 }}).then(jada => {
-  //       jada.getCock().then(cock => {
-  //         printCock('spined naga',cock);
-  //         resolve();
-  //       });
-  //     });
-  //   });
-  // });
-  //
+  it('describes spined cocks', function(done) {
+    printCock('Spined', { spines:true }, done);
+  });
+
+  it('describes multiple spined cocks', function(done) {
+    printCock('Multiple Spined', { species:'naga', spines:true }, done);
+  });
+
   // it('describes knobbed cocks', function(done) {
   //   SpecHelper.tenTimes(done, resolve => {
   //     SpecHelper.buildJada({ species:'elf', cock:{ knobHeight:Random.upTo(24)+1 }}).then(jada => {
