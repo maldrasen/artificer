@@ -94,10 +94,13 @@ describe.only('Describer: Cock', function() {
     printCock('Naga', { species:'naga' }, done);
   });
 
-  it.only('describes dragon cocks', function(done) {
+  it('describes dragon cocks', function(done) {
     printCock('Dragon', { species:'dragon' }, done);
   });
 
+  it('describes monster dragon cocks', function(done) {
+    printCock('Dragon', { species:'dragon', size:'monster' }, done);
+  });
 
 
 
