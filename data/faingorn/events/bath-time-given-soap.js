@@ -2,7 +2,7 @@ Event.build('bath-time-given-soap', {
 
   setting: {
     phase: 'morning',
-    location: 'courtyard'
+    location: 'bath'
   },
 
   stages:[{
