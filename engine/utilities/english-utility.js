@@ -81,6 +81,7 @@ global.EnglishUtility = {
   //    His twenty-eight centimeter long cock.
   //
   centimetersInEnglish(value, plural) {
+    if (value == 1) { return 'one centimeter'; }
     return `${EnglishUtility.numberInEnglish(value)} centimeter${plural ? 's' : ''}`
   },
 

@@ -124,7 +124,7 @@ global.CockDescriber = class CockDescriber {
 
       if (knobHeight > 12) { ArrayUtility.addAll(choices,[
         `The entire length of {{his}} cock is textured with gnarled {{C::cock.twoInches(knob)}} high bumps, each the
-         size of {{C::cock.anAcorn(knob)}}`,
+         size of {{C::cock.anAcorn(knob)}}.`,
         `{{His}} {{cock}} is studded, seemingly at random, with hard {{C::cock.twoInches(knob)}} wide knobs, each the
          size of {{C::cock.anAcorn(knob)}}.`,
       ]); }
@@ -166,10 +166,10 @@ global.CockDescriber = class CockDescriber {
         `The entire length of {{his}} cock is covered in hard, backward facing spines. The spines are
          {{C::cock.twoInch(spine)}} long around the crown of {{his}} cockhead, but grow shorter near the base.`,
 
-        `Firm {{C::cock.twoInches(spine)}} long spines adorn the length of {{his}} cock, facing backwards so that they
-         rub painfully at whatever {{his}} cock is thrust into.`,
+        `Firm {{C::cock.twoInch(spine)}} long spines adorn the length of {{his}} cock, facing backwards so that they
+         rub painfully against whoever {{his}} cock is thrust into.`,
 
-        `Wicked {{C::cock.twoInches(spine)}} long, backward facing spines completely cover {{his}} {{cock}}. The wide,
+        `Wicked {{C::cock.twoInch(spine)}} long, backward facing spines completely cover {{his}} {{cock}}. The wide,
          dull spikes are thickest around the crown of {{his}} cockhead and flatten out near the base.`,
       ]); }
 
@@ -178,7 +178,7 @@ global.CockDescriber = class CockDescriber {
          dull, but stiff like short fingers pointing backwards from the surface of {{his}} cock.`,
 
         `{{His}} {{cock}} is a true cunt destroyer; it's entire surface is covered in thick {{C::cock.twoInch(spine)}}
-         long spikes. The spines are firm and dull, like thick fingers made to rake painfully against whatever they're
+         long spikes. The spines are firm and dull, like thick fingers made to rake painfully against whoever they're
          thrust into. The spines are thickest around {{his}} cockhead, but grow shorter near the base.`
       ]);
     }
@@ -194,7 +194,7 @@ global.CockDescriber = class CockDescriber {
        {{C::cock.twoInches(spine)}} long around the heads of {{his}} cocks, but grow shorter near the base.`,
 
       `Firm {{C::cock.twoInch(spine)}} long spines adorn the length of {{his}} cocks, facing backwards so that they
-       rub painfully at whatever they're thrust into.`,
+       rub painfully against the insides of whoever they're thrust into.`,
 
       `Wicked {{C::cock.twoInch(spine)}} long, backward facing spines completely cover {{C::cock.both}} of
        {{his}} cocks. The thick, dull spikes are thickest around the crowns of {{his}} cockheads and thin out near
@@ -207,7 +207,7 @@ global.CockDescriber = class CockDescriber {
 
       `{{His}} {{C::cock.count}} cocks are true cunt destroyers, their surfaces are covered in thick
        {{C::cock.twoInch(spine)}} long spurs. They're firm and dull, like thick fingers made to rake painfully against
-       whatever they're thrust into. The spines are thickest around {{his}} cockheads, but grow shorter near their base.`
+       whoever they're thrust into. The spines are thickest around {{his}} cockheads, but grow shorter near their base.`
     ]);
   }
 

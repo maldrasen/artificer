@@ -11,8 +11,7 @@ describe('CharacterBuilder', function() {
     CharacterBuilder.buildStandardMinion(options).then(minion => {
       minion.getCharacterAspects().then(aspects => {
         minion.getCock().then(cock => {
-          console.log(minion.name)
-          done();
+          done(); // It doesn't blow up I guess?
         });
       });
     });

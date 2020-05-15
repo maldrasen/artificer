@@ -105,10 +105,13 @@ Weaver.BodyLoom = (function() {
     let color = body.skinColor
     let shade = body.skinShade
 
-    if (color == 'human') { return humanSkinWord(shade); }
-    if (color == 'red')   { return redSkinWord(shade);   }
-    if (color == 'green') { return greenSkinWord(shade); }
-    if (color == 'black') { return blackSkinWord();      }
+    if (color == 'human')  { return humanSkinWord(shade);  }
+    if (color == 'red')    { return redSkinWord(shade);    }
+    if (color == 'gold')   { return goldSkinWord(shade);   }
+    if (color == 'green')  { return greenSkinWord(shade);  }
+    if (color == 'blue')   { return blueSkinWord(shade); }
+    if (color == 'purple') { return purpleSkinWord(shade); }
+    if (color == 'black')  { return blackSkinWord();       }
 
     return Weaver.error(`Need to describe ${color} as a skin color.`);
   }
@@ -129,12 +132,37 @@ Weaver.BodyLoom = (function() {
     if (shade == 5) { return Random.from(["light pink","bright pink"]); }
   }
 
+  // Might only be used to describe dragon cocks.
+  function goldSkinWord(shade) {
+    if (shade == 1) { return Random.from(["black bronze"]); }
+    if (shade == 2) { return Random.from(["bronze","dark copper"]); }
+    if (shade == 3) { return Random.from(["light bronze","copper"]); }
+    if (shade == 4) { return Random.from(["gold","golden"]); }
+    if (shade == 5) { return Random.from(["brass","white gold"]); }
+  }
+
   function greenSkinWord(shade) {
     if (shade == 1) { return Random.from(["black","green black"]); }
     if (shade == 2) { return Random.from(["dark green","olive green"]); }
     if (shade == 3) { return Random.from(["emerald green","bright green"]); }
     if (shade == 4) { return Random.from(["tea green","sage green"]); }
     if (shade == 5) { return Random.from(["light green","pale green"]); }
+  }
+
+  function blueSkinWord(shade) {
+    if (shade == 1) { return Random.from(["blue black","midnight blue"]); }
+    if (shade == 2) { return Random.from(["indigo blue","dark blue"]); }
+    if (shade == 3) { return Random.from(["sapphire","royal blue"]); }
+    if (shade == 4) { return Random.from(["sky blue","steel blue"]); }
+    if (shade == 5) { return Random.from(["white blue","light blue"]); }
+  }
+
+  function purpleSkinWord(shade) {
+    if (shade == 1) { return Random.from(["black","purple black"]); }
+    if (shade == 2) { return Random.from(["indigo purple"]); }
+    if (shade == 3) { return Random.from(["rich violet"]); }
+    if (shade == 4) { return Random.from(["amethyst"]); }
+    if (shade == 5) { return Random.from(["lavender purple"]); }
   }
 
   function blackSkinWord() {
