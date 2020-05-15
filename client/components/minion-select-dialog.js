@@ -34,6 +34,10 @@ Components.MinionSelectDialog = (function() {
     }
   }
 
+  function isOpen() {
+    return $('#minionSelectDialog').hasClass('hide') == false;
+  }
+
   function close() {
     $('#minionSelectCover').addClass('hide');
     $('#minionSelectDialog').addClass('hide');
@@ -100,6 +104,6 @@ Components.MinionSelectDialog = (function() {
   function enable() { $('#minionSelectDialog .confirm').removeClass('disabled-button'); }
   function disable() { $('#minionSelectDialog .confirm').addClass('disabled-button'); }
 
-  return { init, open, close, setStatus, enable, disable };
+  return { init, open, isOpen, close, setStatus, enable, disable };
 
 })();
