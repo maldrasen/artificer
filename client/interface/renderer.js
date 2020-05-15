@@ -54,6 +54,7 @@ global.Renderer = (function() {
       if (Elements.Dialog.isOpen()) { return Elements.Dialog.close(); }
       if (Elements.FloatingFrame.isOpen()) { return Elements.FloatingFrame.close(); }
       if (Elements.Confirm.isOpen()) { return Elements.Confirm.hideConfirm(); }
+      if (Components.MinionSelectDialog.isOpen()) { return Components.MinionSelectDialog.close(); }
       if (Components.Backlog.isOpen()) { return Components.Backlog.close(); }
       if ($('#overlayContent').children().length > 0) { return removeOverlay(); }
 

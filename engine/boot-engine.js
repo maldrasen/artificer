@@ -73,6 +73,7 @@ require(`${ROOT}/engine/devices/abusers/pussy-abuser`);
 require(`${ROOT}/engine/devices/abusers/tits-abuser`);
 
 require(`${ROOT}/engine/devices/missions/catch`);
+require(`${ROOT}/engine/devices/missions/event`);
 require(`${ROOT}/engine/devices/missions/explore`);
 require(`${ROOT}/engine/devices/missions/gather`);
 require(`${ROOT}/engine/devices/missions/steal`);

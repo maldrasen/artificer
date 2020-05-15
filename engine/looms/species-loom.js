@@ -2,7 +2,7 @@ Weaver.SpeciesLoom = (function() {
 
   // Replaces token placeholders in the form of:
   //   {{actor::species.elf}}     Specific species name, like elf, gnome, or lupin
-  //   {{actor::species.an_elf}}  Singular species name, like an elf or a gnome.
+  //   {{actor::species.anElf}}   Singular species name, like an elf or a gnome.
   //   {{actor::species.elven}}   Species adjective, like elven or canine.
   //   {{actor::species.elves}}   Plural species name, like elves or succubi.
   //   {{actor::species.elf}}     Species class name like elves, or fae, or demons
@@ -14,7 +14,7 @@ Weaver.SpeciesLoom = (function() {
     let species = context.get(subject).character.species;
 
     if (token == "species.elf")      { return species.name.toLowerCase(); }
-    if (token == "species.an_elf")   { return EnglishUtility.a_an(species.name.toLowerCase()); }
+    if (token == "species.anElf")   { return EnglishUtility.a_an(species.name.toLowerCase()); }
     if (token == "species.elven")    { return species.adjective; }
     if (token == "species.elves")    { return species.pluralName.toLowerCase(); }
     if (token == "species.demon")    { return species.classname; }

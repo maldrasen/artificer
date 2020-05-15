@@ -29,6 +29,11 @@ Mission.Explore = (function() {
     const events = {};
     const eventsFreq = {};
 
+    // Because decoveries are made randomly it can be difficult to test one
+    // in isolation. Best way to do that in development is to just return the
+    // discovery by index from the mission's discovery array:
+    //     return mission.discoveries[0];
+
     await Promise.all(mission.discoveries.map(async possibility => {
       if (await CentralScrutinizer.meetsRequirements(Event.lookup(possibility.code).requires)) {
         if (Flag.lookup(`completed.${possibility.code}`) == null) {

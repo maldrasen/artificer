@@ -30,13 +30,15 @@ AvailableEvent.add = async function(code, data={}) {
   const type = (Game.EventPhases[event.setting.phase].type == 'control') ? 'location' : 'normal';
   const requirements = (data.requires||[]).concat(event.requires||[]);
 
+  const chance = data.chance || event.chance || 100;
+
   return await AvailableEvent.create({
     code:          code,
     eventType:     type,
+    chance:        chance,
     location:      event.setting.location,
     state_json:    JSON.stringify(data.state||{}),
     requires_json: JSON.stringify(requirements),
-    chance:        data.chance || 100,
   });
 }
 

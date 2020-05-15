@@ -34,7 +34,7 @@ Description.buildCock({ requires:['minion(C).cock.not-tiny','minion(C).cock.smal
 });
 
 Description.buildCock({ requires:['minion(C).cock.not-tiny','minion(C).cock.small','minion(C).height-average'],
-  d: `{{His}} {{cock}} is small for {{C::species.an_elf}}, only {{C::cock.sixInches}} in length.`
+  d: `{{His}} {{cock}} is small for {{C::species.anElf}}, only {{C::cock.sixInches}} in length.`
 });
 
 Description.buildCock({ requires:['minion(C).cock.not-tiny','minion(C).cock.small','minion(C).height-average'],
@@ -42,7 +42,7 @@ Description.buildCock({ requires:['minion(C).cock.not-tiny','minion(C).cock.smal
 });
 
 Description.buildCock({ requires:['minion(C).cock.not-tiny','minion(C).cock.small','minion(C).height-average'],
-  d: `{{He}} has a small {{cock}} for {{C::species.an_elf}}. Even when hard it's only {{C::cock.sixInches}} long.`
+  d: `{{He}} has a small {{cock}} for {{C::species.anElf}}. Even when hard it's only {{C::cock.sixInches}} long.`
 });
 
 Description.buildCock({ requires:['minion(C).cock.not-tiny','minion(C).cock.small','minion(C).height-average'],
@@ -71,20 +71,20 @@ Description.buildCock({ requires:['minion(C).cock.average','minion(C).height-sho
 });
 
 Description.buildCock({ requires:['minion(C).cock.average','minion(C).height-average'],
-  d: `{{His}} {{C::cock.sixInch}} long {{cock}} is average for {{C::species.an_elf}} {{his}} size.`
+  d: `{{His}} {{C::cock.sixInch}} long {{cock}} is average for {{C::species.anElf}} {{his}} size.`
 });
 
 Description.buildCock({ requires:['minion(C).cock.average','minion(C).height-average'],
-  d: `{{He}} has a {{C::cock.sixInch}} long {{cock}}, which is about average for {{C::species.an_elf}}.`
+  d: `{{He}} has a {{C::cock.sixInch}} long {{cock}}, which is about average for {{C::species.anElf}}.`
 });
 
 Description.buildCock({ requires:['minion(C).cock.average','minion(C).height-average'],
-  d: `{{His}} {{C::body.skinColor}} {{cock}} is average for {{C::species.an_elf}} {{his}} size, at
+  d: `{{His}} {{C::body.skinColor}} {{cock}} is average for {{C::species.anElf}} {{his}} size, at
       {{C::cock.inchesLongAndWide}}.`
 });
 
 Description.buildCock({ requires:['minion(C).cock.average','minion(C).height-average'],
-  d: `At {{C::cock.inchesLongAndWide}} {{his}} beautifully formed {{cock}} is about average for {{C::species.an_elf}}.`
+  d: `At {{C::cock.inchesLongAndWide}} {{his}} beautifully formed {{cock}} is about average for {{C::species.anElf}}.`
 });
 
 // === Big Cock ===
@@ -114,12 +114,12 @@ Description.buildCock({ requires:['minion(C).cock.big','minion(C).height-average
 });
 
 Description.buildCock({ requires:['minion(C).cock.big','minion(C).height-average'],
-  d: `{{His}} {{cock}} is large for {{C::species.an_elf}}. It's {{C::cock.inchesLongAndWide}} when fully
+  d: `{{His}} {{cock}} is large for {{C::species.anElf}}. It's {{C::cock.inchesLongAndWide}} when fully
       hard.`
 });
 
 Description.buildCock({ requires:['minion(C).cock.big','minion(C).height-average'],
-  d: `{{His}} impressively sized {{C::cock.sixInch}} long {{cock}} is large for {{C::species.an_elf}}.`
+  d: `{{His}} impressively sized {{C::cock.sixInch}} long {{cock}} is large for {{C::species.anElf}}.`
 });
 
 Description.buildCock({ requires:['minion(C).cock.big','minion(C).height-average'],
