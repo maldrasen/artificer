@@ -11,23 +11,23 @@ Description.buildCock({ conditions:['minion(C).cock.horse'], requires:['minion(C
 });
 
 Description.buildCock({ conditions:['minion(C).cock.horse'], requires:['minion(C).cock.small'], includes:['sheath'],
-  d: `{{His}} {{cock}} is very small for {{C::species.an_elf}}, only {{C::cock.sixInches}} in length. It's currently
+  d: `{{His}} {{cock}} is very small for {{C::species.anElf}}, only {{C::cock.sixInches}} in length. It's currently
       tucked away in a cute {{C::cock.furrySheath}}.`
 });
 
 // === Average Horse Cocks ===
 
 Description.buildCock({ conditions:['minion(C).cock.horse'], requires:['minion(C).cock.average'], includes:['sheath'],
-   d: `{{His}} {{C::cock.sixInch}} long horsecock is small for {{C::species.an_elf}} {{his}} size, currently tucked
+   d: `{{His}} {{C::cock.sixInch}} long horsecock is small for {{C::species.anElf}} {{his}} size, currently tucked
        away in a tight {{C::cock.furrySheath}}.`
 });
 
 Description.buildCock({ conditions:['minion(C).cock.horse'], requires:['minion(C).cock.average'],
-  d: `{{He}} has a {{C::cock.sixInch}} long horsecock, which is a bit small for {{C::species.an_elf}}.`
+  d: `{{He}} has a {{C::cock.sixInch}} long horsecock, which is a bit small for {{C::species.anElf}}.`
 });
 
 Description.buildCock({ conditions:['minion(C).cock.horse'], requires:['minion(C).cock.average'],
-  d: `{{His}} mottled {{C::body.skinColor}} horse dick is on the small side for {{C::species.an_elf}} {{his}} size, at
+  d: `{{His}} mottled {{C::body.skinColor}} horse dick is on the small side for {{C::species.anElf}} {{his}} size, at
       {{C::cock.inchesLongAndWide}}.`
 });
 
