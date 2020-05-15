@@ -1,15 +1,13 @@
-Event.build('minion-robs-campsite', {
+Event.build('minion-steals-from-campsite', {
 
   setting: {
-    phase: 'late-night',
+    phase: 'after-work',
     location: 'hinterlands-woods'
   },
 
-  chance: 50,
-
   stages:[{
     pages:[
-      { text:`(*) {{C::character.firstName}} robs the campsite without my permission.` }
+      { text:`(*) {{C::character.firstName}} steals from the campsite.` }
     ]
   }],
 

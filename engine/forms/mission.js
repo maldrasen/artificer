@@ -13,6 +13,7 @@ global.Mission = class Mission extends Form {
   }
 
   static async resolve(data) {
+    if (data.mission.type == 'event') { return await Mission.Event.resolve(data); }
     if (data.mission.type == 'explore') { return await Mission.Explore.resolve(data); }
     if (data.mission.type == 'gather')  { return await Mission.Gather.resolve(data);  }
     if (data.mission.type == 'steal')  { return await Mission.Steal.resolve(data);  }

@@ -11,6 +11,8 @@ Event.build('investigating-campsite', {
     ]
   }],
 
-  onFinish: async choices => {},
+  onFinish: async choices => {
+    AvailableEvent.add('bath-time-given-soap');
+  },
 
 });
