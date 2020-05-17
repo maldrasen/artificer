@@ -1,12 +1,4 @@
 
-ItemFlavor.build('rabbit-meat', {
-  name: 'Rabbit Haunch',
-  type: 'small-game',
-  foodValue: 3,
-  storyWord: 'rabbit',
-  xp: 2,
-});
-
 ItemFlavor.build('squirrel-meat', {
   name: 'Squirrel Bits',
   type: 'small-game',
