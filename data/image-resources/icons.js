@@ -17,6 +17,7 @@ ImageResource.buildIcon('icon-item-leather-scraps', { url:`${IMAGE_ROOT}/icons/l
 ImageResource.buildIcon('icon-item-itchweed',       { url:`${IMAGE_ROOT}/icons/itchweed.png`       });
 ImageResource.buildIcon('icon-item-stone',          { url:`${IMAGE_ROOT}/icons/stone.png`          });
 ImageResource.buildIcon('icon-item-willow-branch',  { url:`${IMAGE_ROOT}/icons/willow-branch.png`  });
+ImageResource.buildIcon('icon-item-wood',           { url:`${IMAGE_ROOT}/icons/wood.png`  });
 
 ImageResource.buildIcon('icon-flavor-bitter-fruits',   { url:`${IMAGE_ROOT}/icons/bitter-fruits.png` });
 ImageResource.buildIcon('icon-flavor-blight-spider',   { url:`${IMAGE_ROOT}/icons/blight-spider.png` });
