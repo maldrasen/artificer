@@ -6,16 +6,17 @@
 
 ImageResource.buildIcon('icon-unknown', { url:`${IMAGE_ROOT}/icons/unknown.png` });
 
-ImageResource.buildIcon('icon-equipment-basket',         { url:`${IMAGE_ROOT}/icons/basket.png` });
-ImageResource.buildIcon('icon-equipment-empty',          { url:`${IMAGE_ROOT}/icons/empty.png` });
-ImageResource.buildIcon('icon-equipment-sling',          { url:`${IMAGE_ROOT}/icons/sling.png` });
+ImageResource.buildIcon('icon-equipment-basket',         { url:`${IMAGE_ROOT}/icons/basket.png`         });
+ImageResource.buildIcon('icon-equipment-empty',          { url:`${IMAGE_ROOT}/icons/empty.png`          });
+ImageResource.buildIcon('icon-equipment-sling',          { url:`${IMAGE_ROOT}/icons/sling.png`          });
 ImageResource.buildIcon('icon-equipment-skinning-knife', { url:`${IMAGE_ROOT}/icons/skinning-knife.png` });
 
-ImageResource.buildIcon('icon-item-blight-spider',  { url:`${IMAGE_ROOT}/icons/blight-spider.png` });
-ImageResource.buildIcon('icon-item-blood-berries',  { url:`${IMAGE_ROOT}/icons/blood-berries.png` });
+ImageResource.buildIcon('icon-item-blight-spider',  { url:`${IMAGE_ROOT}/icons/blight-spider.png`  });
+ImageResource.buildIcon('icon-item-blood-berries',  { url:`${IMAGE_ROOT}/icons/blood-berries.png`  });
 ImageResource.buildIcon('icon-item-leather-scraps', { url:`${IMAGE_ROOT}/icons/leather-scraps.png` });
-ImageResource.buildIcon('icon-item-stone',          { url:`${IMAGE_ROOT}/icons/stone.png` });
-ImageResource.buildIcon('icon-item-willow-branch',  { url:`${IMAGE_ROOT}/icons/willow-branch.png` });
+ImageResource.buildIcon('icon-item-itchweed',       { url:`${IMAGE_ROOT}/icons/itchweed.png`       });
+ImageResource.buildIcon('icon-item-stone',          { url:`${IMAGE_ROOT}/icons/stone.png`          });
+ImageResource.buildIcon('icon-item-willow-branch',  { url:`${IMAGE_ROOT}/icons/willow-branch.png`  });
 
 ImageResource.buildIcon('icon-flavor-bitter-fruits',   { url:`${IMAGE_ROOT}/icons/bitter-fruits.png` });
 ImageResource.buildIcon('icon-flavor-blight-spider',   { url:`${IMAGE_ROOT}/icons/blight-spider.png` });
