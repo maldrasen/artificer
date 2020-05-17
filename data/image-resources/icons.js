@@ -23,6 +23,7 @@ ImageResource.buildIcon('icon-item-wood',           { url:`${IMAGE_ROOT}/icons/w
 ImageResource.buildIcon('icon-flavor-bitter-fruits',   { url:`${IMAGE_ROOT}/icons/bitter-fruits.png` });
 ImageResource.buildIcon('icon-flavor-blight-spider',   { url:`${IMAGE_ROOT}/icons/blight-spider.png` });
 ImageResource.buildIcon('icon-flavor-blood-berries',   { url:`${IMAGE_ROOT}/icons/blood-berries.png` });
+ImageResource.buildIcon('icon-flavor-fox-pelt',        { url:`${IMAGE_ROOT}/icons/fox-pelt.png`      });
 ImageResource.buildIcon('icon-flavor-goat-nuts',       { url:`${IMAGE_ROOT}/icons/goat-nuts.png`     });
 ImageResource.buildIcon('icon-flavor-juice-berries',   { url:`${IMAGE_ROOT}/icons/juice-berries.png` });
 ImageResource.buildIcon('icon-flavor-rabbit-pelt',     { url:`${IMAGE_ROOT}/icons/rabbit-pelt.png`   });
