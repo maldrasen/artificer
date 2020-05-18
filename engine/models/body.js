@@ -9,9 +9,11 @@ const HORN_SHAPES = ['deer','curved-ram','forward-cow','curved-back','wide-buffa
 const SCALE_COLORS = ['red','gold','green','blue','purple','black','gray','white'];
 const SKIN_COLORS = ['human','red','black','green','pale-green','gray','blue','purple','gold'];
 const TAIL_SHAPES = ['rat','dog','fox','horse','seal','cow','snake','dragon','cat','demon','goat'];
+const FACE_TYPES = ['plain','hard','soft','exotic'];
 
 global.Body = Database.instance().define('body', {
   height:            { type:Sequelize.INTEGER },
+  faceType:          { type:Sequelize.STRING, validate:{ isIn:[FACE_TYPES] }},
   eyeColor:          { type:Sequelize.STRING, validate:{ isIn:[EYE_COLORS] }},
   scaleColor:        { type:Sequelize.STRING, validate:{ isIn:[SCALE_COLORS] }},
   hairColor:         { type:Sequelize.STRING, validate:{ isIn:[HAIR_COLORS] }},
@@ -85,3 +87,5 @@ Body.prototype.getWeight = async function() {
 
   return weight;
 }
+
+Body.FACE_TYPES = FACE_TYPES;

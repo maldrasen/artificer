@@ -17,17 +17,17 @@ global.BodyDescriber = class BodyDescriber {
     let injuries = new BodyInjuryDescriber(this.context);
 
     let description = `
-      ${this.heightAndWeight()}, ${this.comparativeHeight()}.
       ${this.objectiveBeauty()} ${this.comparativeBeauty()}
       ${this.headDescription()} ${await injuries.headInjuries()}
       ${this.skinDescription()} ${await injuries.bodyInjuries()}
+      ${this.heightAndWeight()}${this.comparativeHeight()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
     return await Weaver.weave(description, this.context);
   }
 
   heightAndWeight() {
-    return `{{C::gender.He}} is {{C::body.fiveFootTenInches}} tall, and weighs {{C::body.fiftyPounds}}`;
+    return `{{He}} is {{C::body.fiveFootTenInches}} tall, and weighs {{C::body.fiftyPounds}}`;
   }
 
   comparativeHeight() {
@@ -35,73 +35,146 @@ global.BodyDescriber = class BodyDescriber {
     let height = this.body.height;
     let average = species.averageHeight();
 
-    if (height < average * 0.8) { return `which is short for {{C::species.anElf}}`; }
-    if (height < average * 0.9) { return `which is a little short for {{C::species.anElf}}`; }
-    if (height > average * 1.1) { return `which makes {{C::gender.him}} a bit large for {{C::species.anElf}}`; }
-    if (height > average * 1.2) { return `which makes {{C::gender.him}} larger then most {{C::species.elves}}`; }
-    return` which is about average for {{C::species.anElf}}`;
+    if (height < average * 0.8) { return Random.from([
+      `; shorter than most {{C::species.elves}}.`,
+      `, which is short for {{C::species.anElf}}.`,
+      `, which makes {{him}} small for {{C::species.anElf}}.`
+    ]); }
+
+    if (height < average * 0.9) { return Random.from([
+      `; a bit shorter than most {{C::species.elves}}.`,
+      `, which is a little short for {{C::species.anElf}}.`,
+      `, which makes {{him}} a bit small for {{C::species.anElf}}.`
+    ]); }
+
+    if (height > average * 1.1) { return Random.from([
+      `; a bit taller than most {{C::species.elves}}.`,
+      `, which is a bit tall for {{C::species.anElf}}.`,
+      `, which makes {{him}} a bit large for {{C::species.anElf}}.`
+    ]); }
+
+    if (height > average * 1.2) { return Random.from([
+      `; taller than most {{C::species.elves}}.`,
+      `, which is tall for {{C::species.anElf}}.`,
+      `, which makes {{him}} large for {{C::species.anElf}}.`
+    ]); }
+
+    return Random.from([
+      `; an average height for {{C::species.anElf}}.`,
+      `, which is about average for {{C::species.anElf}}.`,
+      `, which makes him about as tall as most {{C::species.elves}}.`,
+    ]);
   }
 
+  // TODO: Right now the body's face type is only used in this function to build
+  //       up the character's description. Once the personality system is more
+  //       fleshed out though we should use the the face type to influence the
+  //       personality or visa versa.
+  //
+  //         - Violent minions should have hard faces.
+  //         - Passive minions should have soft faces.
+  //         - Plain faced minions are not influenced one way or the other.
+  //         - Exotic faces should have some influence, but not sure what.
+  //
+  // TODO: Goblins are going to need their own descriptions because of their
+  //       unusual faces. They may even need their own goblin only faceTypes.
   objectiveBeauty() {
-    let sentences = [];
-    let personal = this.character.personal;
+    const personal = this.character.personal;
+    const faceType = this.body.faceType;
+    const options = [];
 
-    if (personal == 0) { ArrayUtility.addAll(sentences,[
-      `{{C::character.firstName}} is flat out ugly. Just disgusting to look at, like dog shit given a face if you could call it that. Seriously. Uglier than a bag of smashed horse assholes, with all the pretty ones taken out.`,
+    if (personal == 0) { ArrayUtility.addAll(options,[
+      `{{C::character.firstName}} is horrendously ugly. Uglier than a bag of smashed horse assholes, with all the pretty ones taken out.`,
+      `{{C::character.firstName}} is flat out ugly. Just disgusting to look at, like dog shit given a face.`,
+      `{{C::character.firstName}} is terrifyingly ugly, with a face like a melted turd.`,
     ]); }
 
-    if (personal > 0 && personal < 10) { ArrayUtility.addAll(sentences,[
+    if (personal > 0 && personal < 5) { ArrayUtility.addAll(options,[
       `{{C::character.firstName}} is not at all attractive with weirdly asymmetrical facial features.`,
       `{{C::character.firstName}} is hopelessly unattractive with a face that looks like it was put together in the dark.`,
-      `{{C::character.firstName}} has a face that was made for a gimp mask, or for doggy style, or really any activity that has {{C::gender.him}} facing away from me.`,
+      `{{C::character.firstName}} has a face that was made for a gimp mask, or for doggy style, or really any activity that has {{him}} facing away from me.`,
     ]); }
 
-    if (personal >= 10 && personal < 20) { ArrayUtility.addAll(sentences,[
-      `{{C::character.firstName}} is rather plain looking, nondescript an inoffensive.`,
-      `{{C::character.firstName}} is rather average looking. {{C::gender.He}}'s not the sort of person who would stand out in a crowd.`,
-      `{{C::character.firstName}} could be called homely, not unattractive per se, but certainly not beautiful.`,
-    ]); }
-
-    if (personal >= 20 && personal < 30) { ArrayUtility.addAll(sentences,[
-      `{{C::character.firstName}} is a good looking {{C::species.elf}} with a symmetrical, traditionally attractive sort of face.`,
-    ]); }
-
-    if (this.character.genderCode == 'male') {
-      if (personal > 0 && personal < 10) { ArrayUtility.addAll(sentences,[
-        `{{C::character.firstName}} has a face that looks like it's been through a few fights, moreover that {{C::gender.he}}'s lost every single one of them.`,
-        `{{C::character.firstName}} has a very punchable looking face. I'm not sure what it is. Every time I see {{C::gender.him}} I feel like knocking a few of {{C::gender.his}} teeth out.`,
+    if (personal >= 5 && personal < 20) {
+      if (faceType == 'plain') { ArrayUtility.addAll(options,[
+        `{{C::character.firstName}} is rather plain looking, nondescript and inoffensive.`,
+        `{{C::character.firstName}} is rather average looking. {{He}}'s not the sort of {{C::species.elf}} who wouldn't stand out in a crowd.`,
+        `{{C::character.firstName}} could be called homely, not unattractive per se, but certainly not beautiful.`,
       ]); }
-
-      if (personal >= 10 && personal < 20) { ArrayUtility.addAll(sentences,[
-        `{{C::character.firstName}} has a face that looks as though it was ravaged by disease at some point. It's pockmarked and misshapen.`,
+      if (faceType == 'hard') { ArrayUtility.addAll(options,[
+        `{{C::character.firstName}} has a hard looking face, the kind of face that is the result of years of difficult living.`,
+        `{{C::character.firstName's}} face is battle scared . {{He}} may have been attractive once, but years of fighting have left their mark.`,
+        `Years of difficult living have left {{C::character.firstName's}} face looking hard and scared.`
       ]); }
-
-      if (personal >= 20 && personal < 30) { ArrayUtility.addAll(sentences,[
-        `I would call {{C::character.firstName}} handsome. {{C::gender.His}} face has a certain charming quality to it.`,
-        `{{C::character.firstName}} is a handsome {{C::species.elf}}. While not overly attractive, {{C::gender.he}}'s pleasant to look upon at least.`,
+      if (faceType == 'soft') { ArrayUtility.addAll(options,[
+        `{{C::character.firstName}} has as face that's youthful and innocent looking, although {{he}}'s not very attractive.`,
+        `{{C::character.firstName}} isn't attractive, but {{his}} large eyes give {{him}} a eager and friendly sort of face.`,
+        `{{C::character.firstName}} isn't attractive, but has a friendly and youthful looking face.`,
+      ]); }
+      if (faceType == 'exotic') { ArrayUtility.addAll(options,[
+        `{{C::character.firstName}} isn't ugly but {{his}} face is strangely shaped making it instantly recognizable.`,
+        `{{C::character.firstName's}} face is rather striking looking. {{He}} isn't exactly ugly but also doesn't look like most other {{C::species.elves}}.`,
+        `{{C::character.firstName}} has a bizarrely constructed face that while {{he}} isn't ugly exactly, doesn't look like most other {{C::species.elves}}.`,
       ]); }
     }
 
-    if (this.character.genderCode != 'male') {
-      if (personal > 0 && personal < 10) { ArrayUtility.addAll(sentences,[
-        `{{C::character.firstName}} is not an attractive {{C::species.elf}}. {{C::gender.He}} has the sort of face that could only be improved by repeatedly slapping it.`,
+    if (personal >= 20 && personal < 30) {
+      if (faceType == 'plain') { ArrayUtility.addAll(options,[
+        `{{C::character.firstName}} is a good looking {{C::species.elf}} with a symmetrical, traditionally attractive sort of face.`,
       ]); }
-
-      if (personal >= 10 && personal < 20) { ArrayUtility.addAll(sentences,[
-        `{{C::character.firstName}} is not unattractive, but not what anyone would consider beautiful either.`,
+      if (faceType == 'hard') { ArrayUtility.addAll(options,[
+        `{{C::character.firstName}} has an naturally attractive and honest looking face.`,
       ]); }
-
-      if (personal >= 20 && personal < 30) { ArrayUtility.addAll(sentences,[
-        `I would call {{C::character.firstName}} pretty. {{C::gender.His}} face has a certain charming quality to it.`,
-        `{{C::character.firstName}} is a pretty {{C::species.elf}}. While not beautiful, {{C::gender.he}}'s pleasant to look upon at least.`,
+      if (faceType == 'soft') { ArrayUtility.addAll(options,[
+        `{{C::character.firstName}} has an attractively youthful and sweet looking face.`,
+      ]); }
+      if (faceType == 'exotic') { ArrayUtility.addAll(options,[
+        `{{C::character.firstName}} has an attractively exotic face with interesting and rather striking facial features.`,
       ]); }
     }
 
-    if (sentences.length == 0) {
+//
+//     if (this.character.genderCode == 'male') {
+//       if (personal > 0 && personal < 5) { ArrayUtility.addAll(options,[
+//         `{{C::character.firstName}} has a face that looks like it's been through a few fights, and {{he}}'s lost every single one of them.`,
+//         `{{C::character.firstName}} has a very punchable looking face. I'm not sure what it is. Every time I see {{him}} I feel like knocking a few of {{his}} teeth out.`,
+//         `{{C::character.firstName}} has a face that looks as though it was ravaged by disease at some point. It's pockmarked and misshapen.`,
+//       ]); }
+//
+//       if (personal >= 5 && personal < 20) { ArrayUtility.addAll(options,[
+//         `{{C::character.firstName}} isn't handsome, but {{he}}'s not offensive to look at either.`,
+//         `{{C::character.firstName}} doesn't have a face anyone could call handsome, but {{he}}'s not really bad looking either.`,
+//         `{{C::character.firstName}} has an intersting face. He's neither ugly nor handsome, but has unusually striking features that make {{his}} face an easy one to remember.`,
+//       ]); }
+//
+//       if (personal >= 20 && personal < 30) { ArrayUtility.addAll(options,[
+//         `I would call {{C::character.firstName}} handsome. {{C::gender.His}} face has a certain charming quality to it.`,
+//         `{{C::character.firstName}} is a handsome {{C::species.elf}}. While not overly attractive, {{C::gender.he}}'s pleasant to look upon at least.`,
+//       ]); }
+//     }
+//
+//     if (this.character.genderCode != 'male') {
+// // Beaten with a bag full of goat dicks
+//
+//       if (personal > 5 && personal < 10) { ArrayUtility.addAll(options,[
+//         `{{C::character.firstName}} is not an attractive {{C::species.elf}}. {{C::gender.He}} has the sort of face that could only be improved by repeatedly slapping it.`,
+//       ]); }
+//
+//       if (personal >= 10 && personal < 20) { ArrayUtility.addAll(options,[
+//         `{{C::character.firstName}} is not unattractive, but not what anyone would consider beautiful either.`,
+//       ]); }
+//
+//       if (personal >= 20 && personal < 30) { ArrayUtility.addAll(options,[
+//         `I would call {{C::character.firstName}} pretty. {{C::gender.His}} face has a certain charming quality to it.`,
+//         `{{C::character.firstName}} is a pretty {{C::species.elf}}. While not beautiful, {{C::gender.he}}'s pleasant to look upon at least.`,
+//       ]); }
+//     }
+
+    if (options.length == 0) {
       return Weaver.error('Body Describer objectiveBeauty() seeds descriptions above 30 personal.');
     }
 
-    return Random.from(sentences);
+    return Random.from(options);
   }
 
   // TODO: Could use a lot more variety and we might want to consider splitting
