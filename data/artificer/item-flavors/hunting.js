@@ -1,6 +1,6 @@
 
 ItemFlavor.build('squirrel-meat', {
-  name: 'Squirrel Bits',
+  name: 'Squirrel Chunks',
   type: 'small-game',
   foodValue: 2,
   storyWord: 'squirrel',
@@ -8,7 +8,7 @@ ItemFlavor.build('squirrel-meat', {
 });
 
 ItemFlavor.build('rat-meat', {
-  name: 'Rat Chunks',
+  name: 'Rat Scraps',
   type: 'small-game',
   foodValue: 2,
   storyWord: 'rat',
