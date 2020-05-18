@@ -1,18 +1,22 @@
 describe('Describer: Body', function() {
 
-  function printBody(type, body) {
-    SpecHelper.print(`${type} > ${body.description}`);
+  function printBody(title, options, done) {
+    Settings.Metric = Random.from([true,false,false]);
+
+    SpecHelper.tenTimes(done, async resolve => {
+
+      const rando = await SpecHelper.buildRando(options);
+      await CharacterDescriber.updateAll(rando);
+      const body = await rando.getBody();
+
+      SpecHelper.print(`${title} (${rando.personal}/${body.faceType}) > ${body.description}`);
+
+      resolve();
+    });
   }
 
-  it('describes a body', function(done) {
-    SpecHelper.tenTimes(done, resolve => {
-      SpecHelper.buildJada({ species:'caprien', gender:'female' }).then(jada => {
-        jada.getBody().then(body => {
-          printBody('normal',body)
-          resolve();
-        });
-      });
-    });
+  it.only('describes scaven', function(done) {
+    printBody('Scaven', { species:'scaven' }, done);
   });
 
 });

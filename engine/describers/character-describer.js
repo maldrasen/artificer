@@ -2,8 +2,7 @@ global.CharacterDescriber = (function() {
 
   // Update the entire character description. This is needed when a character's
   // name has changed or something else happens that might effect every part
-  // description. It's fine if the parts object is empty or incomplete here.
-  // Anything missing will be pulled in by the describer.
+  // description.
   async function updateAll(character) {
     const context = new Context();
     await context.addCharacter('C',character);
