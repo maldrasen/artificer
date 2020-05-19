@@ -15,7 +15,11 @@ describe('Describer: Body', function() {
     });
   }
 
-  it.only('describes scaven', function(done) {
+  it.only('describes elves', function(done) {
+    printBody('Elf', { species:'elf' }, done);
+  });
+
+  it('describes scaven', function(done) {
     printBody('Scaven', { species:'scaven' }, done);
   });
 
