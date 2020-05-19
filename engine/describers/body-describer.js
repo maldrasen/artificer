@@ -47,34 +47,19 @@ global.BodyDescriber = class BodyDescriber {
   //       rewrites all of these descriptions from a first person perspective.
   //       The tone is wrong for a person describing their own face.
   //
-  // TODO: It should be hard to change a character's face. I think even when a
-  //       character is redescribed their face description should remain. That
-  //       would mean saving the face description off as a separate attribute.
-  //       To regenerate a character's face description you'd first have to
-  //       null out the saved off description.
-  //
-  // TODO: As I continue to expand this, I think it's clear that I'm going to
-  //       need to move all of this into a face descriptions data object. It's
-  //       getting too complex. I forgot that we also generate a separate face
-  //       description that includes hair and eye color, but I think that needs
-  //       to be part of all this. That means that this needs rewritten again
-  //       to fold all of that into one big face description section that
-  //       handles all of it. Fuck...
-  //
   async getfaceDescription() {
-
-
     let description = await Description.select('face', this.context);
 
+    // TODO: If a character's personal attribute is over 90 we should select a
+    //       description, then add some extra details about how unworldly their
+    //       beauty has become.
+
+    // TODO: Facial Includes
     // if (description.includes) {
     //   each(description.includes, inclusion => {
     //     this.addIncluded(inclusion);
     //   });
     // }
-
-
-    // `.replace(/\n/g,'').replace(/\s+/g,' ');
-
 
     return await Weaver.weave(description.d, this.context);
   }

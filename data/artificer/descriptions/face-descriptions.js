@@ -1,5 +1,6 @@
 
-// === Hideous Faces ===
+// === Hideous Faces ===================================================================================================
+
 Description.buildFace({ requires:['minion(C).face.hideous'],
   d: `{{C::character.firstName}} is terrifyingly ugly, with a face like a melted turd.`
 });
@@ -13,7 +14,7 @@ Description.buildFace({ requires:['minion(C).face.hideous'],
       pretty ones taken out.`
 });
 
-// === Ugly Faces ===
+// === Ugly Faces ======================================================================================================
 
 Description.buildFace({ requires:['minion(C).face.ugly'],
   d: `{{C::character.firstName}} is not at all attractive with weirdly asymmetrical facial features.`
@@ -27,6 +28,8 @@ Description.buildFace({ requires:['minion(C).face.ugly'],
   d: `{{C::character.firstName}} has a face that was made for a gimp mask, or for doggy style, or really any activity
       that has {{him}} facing away from me.`
 });
+
+// Average - Masculine
 
 Description.buildFace({ requires:['minion(C).face.ugly','minion(C).is-male'],
   d: `{{C::character.firstName}} has a face that looks like it's been through a few fights, and {{he}}'s lost every
@@ -43,6 +46,8 @@ Description.buildFace({ requires:['minion(C).face.ugly','minion(C).is-male'],
       I feel like knocking a few of {{his}} teeth out.`
 });
 
+// Average - Feminine
+
 Description.buildFace({ requires:['minion(C).face.ugly','minion(C).is-not-male'],
   d: `{{C::character.firstName}} is just flat out ugly with a weirdly misshaped head like {{he}} spent the last several
      years getting slapped in the face with a bag full of goat dicks.`
@@ -53,57 +58,169 @@ Description.buildFace({ requires:['minion(C).face.ugly','minion(C).is-not-male']
       that could only be improved by repeatedly slapping it.`
 });
 
-// 'face.plain'
-// 'face.hard'
-// 'face.soft'
-// 'face.exotic'
-// 'face.hideous'
-// 'face.ugly'
-// 'face.average'
-// 'face.pretty'
-// 'face.beautiful'
-// 'face.breathtaking'
-// 'face.mythic'
+// === Average Faces ===================================================================================================
 
-Description.buildFace({ requires:['minion(C).face.average'],
-  d: `(WIP Average Face)`
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.plain'],
+  d: `{{C::character.firstName}} is somewhat attractive though a little plain looking.`
 });
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.plain'],
+  d: `{{C::character.firstName's}} face is rather nondescript but inoffensive enough.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.plain'],
+  d: `{{C::character.firstName}} is rather plain looking, nondescript and inoffensive.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.plain'],
+  d: `{{C::character.firstName}} could be called homely, not unattractive per se, but certainly not beautiful.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.plain'],
+  d: `{{C::character.firstName}} is rather average looking. {{He}}'s not the sort of {{C::species.elf}} who wouldn't
+      stand out in a crowd.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.hard'],
+  d: `Years of difficult living have left {{C::character.firstName's}} face looking hard and scared.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.hard'],
+  d: `{{C::character.firstName}} has a hard looking face, the kind of face that is the result of years of difficult
+      living.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.hard'],
+  d: `{{C::character.firstName's}} face is badle battle scared. {{He}} may have been attractive once, but years of
+      fighting have left their mark.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.soft'],
+  d: `{{C::character.firstName}} isn't attractive, but has a friendly and youthful looking face.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.soft'],
+  d: `{{C::character.firstName}} has as face that's youthful and innocent looking, although {{he}}'s not very
+      attractive.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.soft'],
+  d: `{{C::character.firstName}} isn't attractive, but {{his}} large eyes give {{him}} a eager and friendly sort of
+      face.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.exotic'],
+  d: `{{C::character.firstName}} isn't ugly but {{his}} face is strangely shaped making it instantly recognizable.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.exotic'],
+  d: `{{C::character.firstName's}} face is rather striking looking. {{He}} isn't exactly ugly but also doesn't look
+      like most other {{C::species.elves}}.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.exotic'],
+  d: `{{C::character.firstName}} has a bizarrely constructed face that while {{he}} isn't ugly exactly, doesn't look
+      like most other {{C::species.elves}}.`
+});
+
+// Average - Masculine
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).is-male'],
+  d: `{{C::character.firstName}} isn't handsome, but {{he}}'s not offensive to look at either.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).is-male'],
+  d: `{{C::character.firstName}} doesn't have a face anyone could call handsome, but {{he}}'s not really bad looking
+      either.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.plain','minion(C).is-male'],
+  d: `{{C::character.firstName}} is somewhat handsome though a little plain looking.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.hard','minion(C).is-male'],
+  d: `{{C::character.firstName}} couldn't be called handsome, but {{his}} face is chisled and manly looking.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.hard','minion(C).is-male'],
+  d: `{{C::character.firstName}} isn't incredibly handsome, but there's a rugged charm to {{his}} face.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.soft','minion(C).is-male'],
+  d: `{{C::character.firstName}} isn't handome, but at least has a friendly and boyishly innocent looking face.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.soft','minion(C).is-male'],
+  d: `{{C::character.firstName}} couldn't be called handsome, but has a certain roguish charm about {{him}}.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.exotic','minion(C).is-male'],
+  d: `{{C::character.firstName}} has an interesting face. {{He}}'s neither ugly nor handsome, but has unusually
+      striking features that make {{his}} face an easy one to remember.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.exotic','minion(C).is-male'],
+  d: `{{C::character.firstName}} is an interesting looking {{C::species.elf}}. While {{he}} couldn't really be called
+      handsome, there's something about {{his}} face that's interesting and compelling.`
+});
+
+// Average - Feminine
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).is-not-male'],
+  d: `{{C::character.firstName}} is not unattractive, but not what anyone would consider beautiful either.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).is-not-male'],
+  d: `{{C::character.firstName}} isn't beautiful, but {{he}}'s not offensive to look at either.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).is-not-male'],
+  d: `I wouldn't call {{C::character.firstName}} pretty, but there's a certain charming quality to {{his}} face.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).is-not-male'],
+  d: `{{C::character.firstName}} doesn't have a face anyone could call beautiful, but {{he}}'s not really bad looking
+      either.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).is-not-male'],
+  d: `{{C::character.firstName}} is a pretty enough {{C::species.elf}}. While not exactly beautiful, {{he}}'s
+      pleasant to look at.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.hard','minion(C).is-not-male'],
+  d: `{{C::character.firstName}} isn't unattractive, but years of hard living have left {{him}} with a hard and angry
+      looking face.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.hard','minion(C).is-not-male'],
+  d: `{{C::character.firstName}} isn't unattractive but has a savage and wild look about {{him}}.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.soft','minion(C).is-not-male'],
+  d: `{{C::character.firstName}} isn't beautiful, but has a friendly and innocent looking face.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.soft','minion(C).is-not-male'],
+  d: `{{C::character.firstName}} couldn't be called beautiful, but {{he}} has a certain girlish charm about {{him}}.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.exotic','minion(C).is-not-male'],
+  d: `{{C::character.firstName}} has an interesting face. {{He}}'s neither ugly nor beautiful, but has unusually
+      striking features that make {{his}} face an easy one to remember.`
+});
+
+Description.buildFace({ requires:['minion(C).face.average','minion(C).face.exotic','minion(C).is-not-male'],
+  d: `{{C::character.firstName}} is an interesting looking {{C::species.elf}}. While {{he}} couldn't really be called
+      beautiful, there's something about {{his}} face that's interesting and compelling.`
+});
+
+// === Pretty Faces ===
 
 Description.buildFace({ requires:['minion(C).face.pretty'],
   d: `(WIP Pretty Face)`
 });
 
-Description.buildFace({ requires:['minion(C).face.beautiful'],
-  d: `(WIP Beautiful Face)`
-});
-
-
-//   if (personal >= 5 && personal < 20) {
-//     if (faceType == 'plain') { ArrayUtility.addAll(options,[
-//       `{{C::character.firstName}} is somewhat attractive though a little plain looking.`,
-//       `{{C::character.firstName's}} face is rather nondescript but inoffensive enough.`,
-//       `{{C::character.firstName}} is rather plain looking, nondescript and inoffensive.`,
-//       `{{C::character.firstName}} could be called homely, not unattractive per se, but certainly not beautiful.`,
-//       `{{C::character.firstName}} is rather average looking. {{He}}'s not the sort of {{C::species.elf}} who wouldn't stand out in a crowd.`,
-//     ]); }
-//     if (faceType == 'hard') { ArrayUtility.addAll(options,[
-//       `Years of difficult living have left {{C::character.firstName's}} face looking hard and scared.`,
-//       `{{C::character.firstName}} has a hard looking face, the kind of face that is the result of years of difficult living.`,
-//       `{{C::character.firstName's}} face is badle battle scared. {{He}} may have been attractive once, but years of fighting have left their mark.`,
-//     ]); }
-//     if (faceType == 'soft') { ArrayUtility.addAll(options,[
-//       `{{C::character.firstName}} isn't attractive, but has a friendly and youthful looking face.`,
-//       `{{C::character.firstName}} has as face that's youthful and innocent looking, although {{he}}'s not very attractive.`,
-//       `{{C::character.firstName}} isn't attractive, but {{his}} large eyes give {{him}} a eager and friendly sort of face.`,
-//     ]); }
-//     if (faceType == 'exotic') { ArrayUtility.addAll(options,[
-//       `{{C::character.firstName}} isn't ugly but {{his}} face is strangely shaped making it instantly recognizable.`,
-//       `{{C::character.firstName's}} face is rather striking looking. {{He}} isn't exactly ugly but also doesn't look like most other
-//          {{C::species.elves}}.`,
-//       `{{C::character.firstName}} has a bizarrely constructed face that while {{he}} isn't ugly exactly, doesn't look like most other
-//          {{C::species.elves}}.`,
-//     ]); }
-//   }
 //
 //   if (personal >= 20 && personal < 30) {
 //     if (faceType == 'plain') { ArrayUtility.addAll(options,[
@@ -121,36 +238,8 @@ Description.buildFace({ requires:['minion(C).face.beautiful'],
 //     ]); }
 //   }
 //
-//   // === Masculine faces ===
 //   if (this.character.genderCode == 'male') {
 //
-//     if (personal >= 5 && personal < 20) {
-//       ArrayUtility.addAll(options,[
-//         `{{C::character.firstName}} isn't handsome, but {{he}}'s not offensive to look at either.`,
-//         `{{C::character.firstName}} doesn't have a face anyone could call handsome, but {{he}}'s not really bad looking either.`,
-//       ]);
-//
-//       if (faceType == 'plain') { ArrayUtility.addAll(options,[
-//         `{{C::character.firstName}} is somewhat handsome though a little plain looking.`,
-//       ]); }
-//
-//       if (faceType == 'hard') { ArrayUtility.addAll(options,[
-//         `{{C::character.firstName}} couldn't be called handsome, but {{his}} face is chisled and manly looking.`,
-//         `{{C::character.firstName}} isn't incredibly handsome, but there's a rugged charm to {{his}} face.`,
-//       ]); }
-//
-//       if (faceType == 'soft') { ArrayUtility.addAll(options,[
-//         `{{C::character.firstName}} isn't handome, but at least has a friendly and boyishly innocent looking face.`,
-//         `{{C::character.firstName}} couldn't be called handsome, but has a certain roguish charm about {{him}}.`,
-//       ]); }
-//
-//       if (faceType == 'exotic') { ArrayUtility.addAll(options,[
-//         `{{C::character.firstName}} has an interesting face. {{He}}'s neither ugly nor handsome, but has unusually striking features
-//            that make {{his}} face an easy one to remember.`,
-//         `{{C::character.firstName}} is an interesting looking {{C::species.elf}}. While {{he}} couldn't really be called handsome,
-//            there's something about {{his}} face that's interesting and compelling.`,
-//       ]); }
-//     }
 //
 //     if (personal >= 20 && personal < 30) {
 //       ArrayUtility.addAll(options,[
@@ -178,61 +267,8 @@ Description.buildFace({ requires:['minion(C).face.beautiful'],
 //         `{{C::character.firstName}} is a handome and interesting looking {{C::species.elf}} with striking and strangely compelling facial features.`,
 //       ]); }
 //     }
-//
-//     if (personal >= 30 && personal < 40) {
-//       if (faceType == 'plain') { ArrayUtility.addAll(options,[
-//       ]); }
-//       if (faceType == 'hard') { ArrayUtility.addAll(options,[
-//       ]); }
-//       if (faceType == 'soft') { ArrayUtility.addAll(options,[
-//       ]); }
-//       if (faceType == 'exotic') { ArrayUtility.addAll(options,[
-//       ]); }
-//     }
-//
-//     if (personal >= 50) {
-//       if (faceType == 'plain') { ArrayUtility.addAll(options,[
-//       ]); }
-//       if (faceType == 'hard') { ArrayUtility.addAll(options,[
-//         `{{C::character.firstName}} is dashingly handsome, with a hard dangerous look about {{him}} the kind of face that really makes a
-//            pussy wet with both fear and lust.`,
-//       ]); }
-//       if (faceType == 'soft') { ArrayUtility.addAll(options,[
-//       ]); }
-//       if (faceType == 'exotic') { ArrayUtility.addAll(options,[
-//       ]); }
-//     }
-//   }
-//
-//   // === Feminine Faces ===
 //   if (this.character.genderCode != 'male') {
 //
-//     if (personal >= 5 && personal < 20) {
-//       ArrayUtility.addAll(options,[
-//         `{{C::character.firstName}} is not unattractive, but not what anyone would consider beautiful either.`,
-//         `{{C::character.firstName}} isn't beautiful, but {{he}}'s not offensive to look at either.`,
-//         `I wouldn't call {{C::character.firstName}} pretty, but there's a certain charming quality to {{his}} face.`,
-//         `{{C::character.firstName}} doesn't have a face anyone could call beautiful, but {{he}}'s not really bad looking either.`,
-//         `{{C::character.firstName}} is a pretty enough {{C::species.elf}}. While not exactly beautiful, {{he}}'s  pleasant to look at.`,
-//       ]);
-//
-//       if (faceType == 'hard') { ArrayUtility.addAll(options,[
-//         `{{C::character.firstName}} isn't unattractive but has a savage and wild look about {{him}}.`,
-//         `{{C::character.firstName}} isn't unattractive, but years of hard living have left {{him}} with a hard and angry looking face.`,
-//       ]); }
-//
-//       if (faceType == 'soft') { ArrayUtility.addAll(options,[
-//         `{{C::character.firstName}} isn't beautiful, but has a friendly and innocent looking face.`,
-//         `{{C::character.firstName}} couldn't be called beautiful, but {{he}} has a certain girlish charm about {{him}}.`,
-//       ]); }
-//
-//       if (faceType == 'exotic') { ArrayUtility.addAll(options,[
-//         `{{C::character.firstName}} has an interesting face. {{He}}'s neither ugly nor beautiful, but has unusually striking features
-//            that make {{his}} face an easy one to remember.`,
-//         `{{C::character.firstName}} is an interesting looking {{C::species.elf}}. While {{he}} couldn't really be called beautiful,
-//            there's something about {{his}} face that's interesting and compelling.`,
-//       ]); }
-//     }
 //
 //     if (personal >= 20 && personal < 30) {
 //       ArrayUtility.addAll(options,[
@@ -260,7 +296,13 @@ Description.buildFace({ requires:['minion(C).face.beautiful'],
 //         `{{C::character.firstName}} is a beautiful and interesting looking {{C::species.elf}} with striking and strangely compelling facial features.`,
 //       ]); }
 //     }
-//
+
+// === Beautiful Faces ===
+
+Description.buildFace({ requires:['minion(C).face.beautiful'],
+  d: `(WIP Beautiful Face)`
+});
+
 //     if (personal >= 30 && personal < 40) {
 //       if (faceType == 'plain') { ArrayUtility.addAll(options,[
 //         `{{C::character.firstName}} has a beautifully symmetrical and statuesque face.`,
@@ -278,9 +320,18 @@ Description.buildFace({ requires:['minion(C).face.beautiful'],
 //         `{{C::character.firstName}} is beautiful with striking and strangely erotic looking facial features.`,
 //         `{{C::character.firstName}} is beautiful with an exotic facial structure that gives her a lewd, erotic appearance.`
 //       ]); }
-//     }
-//
-//     if (personal >= 50) {
+
+// === Breathtaking Faces ===
+
+Description.buildFace({ requires:['minion(C).face.breathtaking-or-mythic'],
+  d: `(WIP Beautiful Face)`
+});
+
+//       if (faceType == 'hard') { ArrayUtility.addAll(options,[
+//         `{{C::character.firstName}} is dashingly handsome, with a hard dangerous look about {{him}} the kind of face that really makes a
+//            pussy wet with both fear and lust.`,
+//       ]); }
+
 //       if (faceType == 'plain') { ArrayUtility.addAll(options,[
 //         `{{C::character.firstName}} is incredibly beautiful with a gorgeous, statuesque face.`,
 //         `{{C::character.firstName}} is absolutely gorgeous with a serene, angelic face.`,
@@ -302,14 +353,3 @@ Description.buildFace({ requires:['minion(C).face.beautiful'],
 //     }
 //   }
 //
-//   let description = Random.from(options);
-//
-//   // TODO: If a character's personal attribute is over 50 we should select a
-//   //       beautiful description, then add some extra details about how
-//   //       unworldly their beauty has become.
-//
-//   return description.
-//     replace(/\[NAME\]/,`{{C::character.firstName}}`).
-//     replace(/\[NAME'S\]/,`{{C::character.firstName's}}`)
-//
-// }
