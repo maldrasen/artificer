@@ -1,26 +1,23 @@
 describe.only('Describer: Body', function() {
 
-  function printBody(title, options, done) {
+  function printFace(title, options, done) {
     Settings.Metric = Random.from([true,false,false]);
-
     SpecHelper.tenTimes(done, async resolve => {
-
       const rando = await SpecHelper.buildRando(options);
       await CharacterDescriber.updateAll(rando);
       const body = await rando.getBody();
 
-      SpecHelper.print(`${title} (${rando.personal}/${body.faceType}) > ${body.description}`);
-
+      SpecHelper.print(`${title} (${rando.personal}/${body.faceType}) > ${body.faceDescription}`);
       resolve();
     });
   }
 
-  it('describes elves', function(done) {
-    printBody('Elf', { species:'elf' }, done);
+  it('describes elf faces', function(done) {
+    printFace('Elf', { species:'elf' }, done);
   });
 
-  it('describes scaven', function(done) {
-    printBody('Scaven', { species:'scaven' }, done);
+  it('describes scaven faces', function(done) {
+    printFace('Scaven', { species:'scaven' }, done);
   });
 
 });

@@ -27,11 +27,13 @@ global.Body = Database.instance().define('body', {
   pierceLevel:       { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
   pierceCount:       { type:Sequelize.INTEGER },
   pierceHealing:     { type:Sequelize.INTEGER },
-  description:       { type:Sequelize.STRING },
+  bodyDescription:   { type:Sequelize.STRING },
+  faceDescription:   { type:Sequelize.STRING },
 },{
   timestamps: false,
   getterMethods: {
     convertedHeight() { return ConversionUtility.milliToInches(this.height); },
+    description() { return `${this.faceDescription} ${this.bodyDescription}`; },
 
     // Both finger and fist sizes are entirely dependent on height.
     fistWidth()   { return Math.round(this.height*(86/1750)); },
