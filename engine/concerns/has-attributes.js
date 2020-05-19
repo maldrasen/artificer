@@ -20,13 +20,15 @@ global.HasAttributes = { isAppliedTo: function(model) {
     return 'savant';
   }
 
+  // Personal has a different value range than the other attributes, weighted
+  // towards more people being more attractive.
   model.prototype.getPersonalWord = function() {
-    if (this.personal < 7)  { return 'hideous'; }
-    if (this.personal < 15) { return 'ugly'; }
-    if (this.personal < 25) { return 'attractive'; }
-    if (this.personal < 50) { return 'beautiful'; }
-    if (this.personal < 75) { return 'breathtaking'; }
-    if (this.personal < 100) { return 'gorgeous'; }
+    if (this.personal == 0)  { return 'hideous'; }
+    if (this.personal < 5)   { return 'ugly'; }
+    if (this.personal < 20)  { return 'average'; }
+    if (this.personal < 35)  { return this.genderCode == 'male' ? 'handsome' : 'pretty'; }
+    if (this.personal < 60)  { return this.genderCode == 'male' ? 'magnificent' : 'beautiful'; }
+    if (this.personal < 90)  { return 'breathtaking'; }
     return 'mythic';
   }
 

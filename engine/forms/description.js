@@ -2,6 +2,7 @@ global.Description = class Description extends Form {
 
   static buildAnus(data)        { return super.build(null,extend(data,{ type:'anus'         })); }
   static buildCock(data)        { return super.build(null,extend(data,{ type:'cock'         })); }
+  static buildFace(data)        { return super.build(null,extend(data,{ type:'face'         })); }
   static buildNipples(data)     { return super.build(null,extend(data,{ type:'nipples'      })); }
   static buildPussy(data)       { return super.build(null,extend(data,{ type:'pussy'        })); }
   static buildTits(data)        { return super.build(null,extend(data,{ type:'tits'         })); }

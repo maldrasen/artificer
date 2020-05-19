@@ -5,7 +5,10 @@ global.CharacterScrutinizer = (function() {
   // specific body part checks are found in their respective part scrutinizers.
   function check(operation, data) {
     if (operation.match(/^anus/))    { return AnusScrutinizer.check(operation,data);    }
+    if (operation.match(/^body/))    { return BodyScrutinizer.check(operation,data);    }
     if (operation.match(/^cock/))    { return CockScrutinizer.check(operation,data);    }
+    if (operation.match(/^face/))    { return BodyScrutinizer.check(operation,data);    }
+    if (operation.match(/^head/))    { return BodyScrutinizer.check(operation,data);    }
     if (operation.match(/^nipples/)) { return NipplesScrutinizer.check(operation,data); }
     if (operation.match(/^tits/))    { return TitsScrutinizer.check(operation,data);    }
 
@@ -32,15 +35,6 @@ global.CharacterScrutinizer = (function() {
     if (operation == 'wolf-blooded')                  { return ['lupin','wood-elf'].indexOf(data.character.speciesCode) >= 0; }
     if (operation == 'not-wolf-blooded')              { return ['lupin','wood-elf'].indexOf(data.character.speciesCode) < 0; }
 
-    // Body Properties
-    if (operation == 'height-short')                  { return data.body.heightIsShort; }
-    if (operation == 'height-average')                { return data.body.heightIsAverage; }
-    if (operation == 'height-tall')                   { return data.body.heightIsTall; }
-    if (operation == 'height-not-short')              { return ! data.body.heightIsShort; }
-    if (operation == 'height-not-tall')               { return ! data.body.heightIsTall; }
-    if (operation.match(/^body.pierce-count/))        { return checkCount(operation, data.body.pierceCount); }
-    if (operation.match(/^head.cut-count/))           { return checkCount(operation, data.mouth.cutCount); }
-
     // Body Part Presence Checks
     if (operation == 'has-cock')                      { return data.cock != null; }
     if (operation == 'no-cock')                       { return data.cock == null; }
@@ -56,12 +50,6 @@ global.CharacterScrutinizer = (function() {
     if (operation.match(/^magical/))  { return checkAttribute(operation, data.character) }
 
     throw `Unknown Character Operation - ${operation}`
-  }
-
-  // This will actually work with any property name that ends with count.
-  async function checkCount(operation, count) {
-    let match = operation.match(/count(<|<=|=|>=|>)([^<>=]+)/);
-    return CentralScrutinizer.checkComparisonOperation(count,match[1],match[2]);
   }
 
   function checkAttribute(operation, character) {

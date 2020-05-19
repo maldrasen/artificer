@@ -12,12 +12,16 @@ describe.only('Describer: Body', function() {
     });
   }
 
+  it('describes scaven faces', function(done) {
+    printFace('Scaven', { species:'scaven' }, done);
+  });
+
   it('describes elf faces', function(done) {
     printFace('Elf', { species:'elf' }, done);
   });
 
-  it('describes scaven faces', function(done) {
-    printFace('Scaven', { species:'scaven' }, done);
+  it('describes nymph faces', function(done) {
+    printFace('Nymph', { species:'nymph' }, done);
   });
 
 });

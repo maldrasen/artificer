@@ -62,7 +62,21 @@ global.BodyDescriber = class BodyDescriber {
   //       handles all of it. Fuck...
   //
   async getfaceDescription() {
-    return await Weaver.weave('(Face: work in progress)', this.context);
+
+
+    let description = await Description.select('face', this.context);
+
+    // if (description.includes) {
+    //   each(description.includes, inclusion => {
+    //     this.addIncluded(inclusion);
+    //   });
+    // }
+
+
+    // `.replace(/\n/g,'').replace(/\s+/g,' ');
+
+
+    return await Weaver.weave(description.d, this.context);
   }
 
   heightAndWeight() {
