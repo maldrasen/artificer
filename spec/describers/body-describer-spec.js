@@ -1,4 +1,4 @@
-describe('Describer: Body', function() {
+describe.only('Describer: Body', function() {
 
   function printBody(title, options, done) {
     Settings.Metric = Random.from([true,false,false]);
@@ -15,7 +15,7 @@ describe('Describer: Body', function() {
     });
   }
 
-  it.only('describes elves', function(done) {
+  it('describes elves', function(done) {
     printBody('Elf', { species:'elf' }, done);
   });
 
