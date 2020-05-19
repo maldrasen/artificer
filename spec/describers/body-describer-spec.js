@@ -20,6 +20,10 @@ describe.only('Describer: Body', function() {
     printFace('Elf', { species:'elf' }, done);
   });
 
+  it('describes vieran faces', function(done) {
+    printFace('Viera', { species:'viera' }, done);
+  });
+
   it('describes nymph faces', function(done) {
     printFace('Nymph', { species:'nymph' }, done);
   });

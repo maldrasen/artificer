@@ -1,5 +1,8 @@
 global.BodyBuilder = (function() {
 
+  // TODO: Face types should come from a map on the species. Just so we don't
+  //       give nymphs hard battlescarred faces and ogres sweet boyish faces.
+  //
   function build(character, options) {
     if (character.gender == null)  { throw 'Gender must be set before body can be built.'; }
     if (character.species == null) { throw 'Species must be set before body can be built.'; }
