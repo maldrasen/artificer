@@ -333,8 +333,29 @@ Description.buildFace({ requires:['minion(C).face.pretty','minion(C).face.exotic
 
 // Beautiful - Masculine
 
-Description.buildFace({ requires:['minion(C).face.beautiful','minion(C).is-male'],
-  d: `(WIP Beautiful Male Faces)`
+Description.buildFace({ requires:['minion(C).face.beautiful','minion(C).face.plain','minion(C).is-male'],
+  d: `{{C::character.firstName}} is handsome with facial features that seem both serene and sensual.`
+});
+
+Description.buildFace({ requires:['minion(C).face.beautiful','minion(C).face.hard','minion(C).is-male'],
+  d: `{{C::character.firstName}} is handsome with a hard and dangerous look about him.`
+});
+
+Description.buildFace({ requires:['minion(C).face.beautiful','minion(C).face.hard','minion(C).is-male'],
+  d: `{{C::character.firstName}} is dangerously handsome with unmistakably masculine features, high cheekbones and an
+      angular jaw.`
+});
+
+Description.buildFace({ requires:['minion(C).face.beautiful','minion(C).face.soft','minion(C).is-male'],
+  includes:['eye-color'],
+  d: `{{C::character.firstName}} is devilishly handsome with bright {{C::body.eyeColor}} eyes that accentuate {{his}}
+      roguish charm.`
+});
+
+Description.buildFace({ requires:['minion(C).face.beautiful','minion(C).face.exotic','minion(C).is-male'],
+  includes:['eye-color'],
+  d: `{{C::character.firstName}} is strangely handsome with distinct and pronounced masculine features, high
+      cheakbones, and piercing {{C::body.eyeColor}} eyes.`
 });
 
 // Beautiful - Feminine
@@ -377,8 +398,9 @@ Description.buildFace({ requires:['minion(C).face.beautiful','minion(C).face.exo
 
 // Breathtaking - Masculine
 
-Description.buildFace({ requires:['minion(C).face.breathtaking-or-mythic','minion(C).is-male'],
-  d: `(WIP Breathtaking Male Faces)`
+Description.buildFace({ requires:['minion(C).face.breathtaking-or-mythic','minion(C).face.plain','minion(C).is-male'],
+  d: `{{C::character.firstName}} is incredibly handsome; serene, and sensual with features like they were molded from
+      granite`
 });
 
 Description.buildFace({ requires:['minion(C).face.breathtaking-or-mythic','minion(C).face.hard','minion(C).is-male'],
@@ -386,10 +408,27 @@ Description.buildFace({ requires:['minion(C).face.breathtaking-or-mythic','minio
       really makes a pussy wet with both fear and lust.`
 });
 
+Description.buildFace({ requires:['minion(C).face.breathtaking-or-mythic','minion(C).face.hard','minion(C).is-male'],
+  d: `{{C::character.firstName}} is incredibly handsome with unmistakably masculine features, high cheekbones and an
+      angular jaw.`
+});
+
+Description.buildFace({ requires:['minion(C).face.breathtaking-or-mythic','minion(C).face.soft','minion(C).is-male'],
+  includes:['eye-color'],
+  d: `{{C::character.firstName}} is devilishly handsome with bright {{C::body.eyeColor}} eyes that accentuate {{his}}
+      roguish charm.`
+});
+
+Description.buildFace({ requires:['minion(C).face.breathtaking-or-mythic','minion(C).face.exotic','minion(C).is-male'],
+  includes:['eye-color'],
+  d: `{{C::character.firstName}} is incredibly handsome with distinct and pronounced masculine features,
+      high cheakbones, and piercing {{C::body.eyeColor}} eyes.`
+});
+
 // Breathtaking - Feminine
 
 Description.buildFace({ requires:['minion(C).face.breathtaking-or-mythic','minion(C).face.plain','minion(C).is-not-male'],
-  d: `{{C::character.firstName}} is incredibly beautiful with a gorgeous, statuesque face.`
+  d: `{{C::character.firstName}} is breathtakingly beautiful with a gorgeous, statuesque face.`
 });
 
 Description.buildFace({ requires:['minion(C).face.breathtaking-or-mythic','minion(C).face.plain','minion(C).is-not-male'],
