@@ -177,7 +177,7 @@ Weaver.BodyLoom = (function() {
     if (body.scaleColor == 'blue')   { return Random.from(["sapphire"]) }
     if (body.scaleColor == 'purple') { return Random.from(["amethyst","violet"]) }
     if (body.scaleColor == 'black')  { return Random.from(["obsidian","onyx"]) }
-    if (body.scaleColor == 'gray')   { return Random.from(["ashen","slate","stone"]) }
+    if (body.scaleColor == 'gray')   { return Random.from(["ashen","slate"]) }
     if (body.scaleColor == 'white')  { return Random.from(["alabaster"]) }
     return Weaver.error(`Need to describe ${body.scaleColor} as a scale color.`);
   }

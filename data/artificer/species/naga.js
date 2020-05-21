@@ -3,7 +3,7 @@ Species.build('naga', {
   adjective: 'serpentine',
 
   physical: 20,
-  personal: 10,
+  personal: 15,
   mental:   30,
   magical:  20,
 

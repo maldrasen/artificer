@@ -262,8 +262,53 @@ Description.buildHead({ species:'minotaur', requires:['minion(C).face.hard'],
 });
 
 // === Naga ===
+// More naga features depend on face type. In order to maintain consistancy
+// all naga head descriptions need to include their type.
+//   Plain:  Elongated, glistening.
+//   Hard:   Wide and dull scaled.
+//   Soft:   Large Eyes.
+//   Exotic: Cobra hoods.
 
-// headDescription: `{{He}} has a snake's face, with {{C::body.scaleColor}} scales and {{C::body.eyeColor}} eyes.`,
+Description.buildHead({ species:'naga', requires:['minion(C).face.plain'],
+  includes:['scale-color','eye-color'],
+  d: `{{He}} has an elongated snake-like head, with glistening {{C::body.scaleColor}} scales and {{C::body.eyeColor}} eyes.`,
+});
+
+Description.buildHead({ species:'naga', requires:['minion(C).face.plain'],
+  includes:['scale-color'],
+  d: `{{His}} elongated snake-like head is covered in glistining {{C::body.scaleColor}} scales.`,
+});
+
+Description.buildHead({ species:'naga', requires:['minion(C).face.hard'],
+  includes:['scale-color','eye-color'],
+  d: `{{He}} has a wide snake head with {{C::body.eyeColor}} eyes and dull {{C::body.scaleColor}} scales.`,
+});
+
+Description.buildHead({ species:'naga', requires:['minion(C).face.hard'],
+  includes:['scale-color','eye-color'],
+  d: `{{His}} snake head is broad with dull {{C::body.scaleColor}} scales and {{C::body.eyeColor}} eyes.`,
+});
+
+Description.buildHead({ species:'naga', requires:['minion(C).face.soft'],
+  includes:['eye-color'],
+  d: `Big {{C::body.eyeColor}} eyes shine hypnotically in {{his}} snake-like head.`,
+});
+
+Description.buildHead({ species:'naga', requires:['minion(C).face.soft'],
+  includes:['scale-color','eye-color'],
+  d: `{{His}} head is distinctly snake-like with large {{C::body.eyeColor}} eyes and {{C::body.scaleColor}} scales.`,
+});
+
+Description.buildHead({ species:'naga', requires:['minion(C).face.exotic'],
+  includes:['scale-color','eye-color'],
+  d: `{{He}} has a cobra like head with a wide flared hood, {{C::body.scaleColor}} scales, and {{C::body.eyeColor}} eyes.`,
+});
+
+Description.buildHead({ species:'naga', requires:['minion(C).face.exotic'],
+  includes:['eye-color'],
+  d: `{{His}} head resembles a cobra with a wide flared hood at the back of his head and mesmerizing
+      {{C::body.eyeColor}} eyes.`,
+});
 
 // === Neko ===
 

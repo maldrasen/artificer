@@ -36,8 +36,12 @@ describe.only('Describer: Body', function() {
     printFace('Lupin', { species:'lupin' }, done);
   });
 
-  it.only('describes minotaur faces', function(done) {
+  it('describes minotaur faces', function(done) {
     printFace('Minotaur', { species:'minotaur' }, done);
+  });
+
+  it.only('describes naga faces', function(done) {
+    printFace('Naga', { species:'naga' }, done);
   });
 
   it('describes nymph faces', function(done) {
