@@ -217,6 +217,17 @@ Weaver.BodyLoom = (function() {
       if (body.faceType == 'hard') { return 'long backswept horns' }
       return 'sharp backswept horns';
     }
+    if (body.hornShape == 'forward-cow') {
+      if (body.faceType == 'soft') { return 'short forward facing steer horns' }
+      if (body.faceType == 'hard') { return 'long forward facing steer horns' }
+      return 'sharp forward facing steer horns';
+    }
+    if (body.hornShape == 'wide-buffalo') {
+      if (body.faceType == 'soft') { return 'short thick buffalo horns' }
+      if (body.faceType == 'hard') { return 'long and wide buffalo horns' }
+      return 'thick buffalo horns';
+    }
+
     return Weaver.error(`Unknown horn shape: ${body.hornShape}`);
   }
 

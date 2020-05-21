@@ -21,8 +21,8 @@ Description.buildHead({ species:'caprien', requires:['minion(C).is-male'],
   d: `{{His}} {{C::body.furColor}} fur covered head is distinctly goat shaped and topped with two {{C::body.ramHorns}}.`
 });
 
-Description.buildHead({ species:'caprien', requires:['minion(C).is-male','minion(C).face.hard'],
-  d: `{{His}} hardened face is distinctly goat shaped and crowned with two {{C::body.ramHorns}}.`
+Description.buildHead({ species:'caprien', requires:['minion(C).is-male'],
+  d: `{{His}} {{C::body.furColor}} furry head is distinctly goat shaped and crowned with two {{C::body.ramHorns}}.`
 });
 
 Description.buildHead({ species:'caprien', requires:['minion(C).is-male','minion(C).face.soft'],
@@ -204,26 +204,62 @@ Description.buildHead({ species:'lupin', requires:['minion(C).face.soft'],
       {{C::body.eyeColor}} eyes and his canine face is covered in soft {{C::body.furColor}} fur.`
 });
 
-
-
 // === Minotaurs ===
+// Minotaurs, like Capriens have bull headed males and cow headed females. (Usually)
 
-// Head description is complex for a caprien because males have anthro goat
-// heads and females do not.
-// headDescription: (character,body) => {
-//   let horns = {
-//     'forward-cow': 'sharp forward facing steer horns',
-//     'wide-buffalo': 'wide and thick buffalo horns',
-//   }[body.hornShape];
-//
-//   if (character.genderCode == 'male') {
-//     return `{{He}} has a big bull's head covered in {{C::body.furColor}} fur, {{C::body.eyeColor}} eyes,
-//             and ${horns}.`;
-//   }
-//
-//   return `{{He}} has a big cows's head covered in {{C::body.furColor}} fur, {{C::body.eyeColor}} eyes,
-//           and ${horns}.`;
-// },
+Description.buildHead({ species:'minotaur', requires:['minion(C).is-male'],
+  includes:['eye-color','fur-color','hair-color'],
+  d: `{{He}} has a big bull's head covered in {{C::body.furColor}} fur, {{C::body.eyeColor}} eyes, and two
+      {{C::body.ramHorns}}. Between {{his}} horns is a shaggy tuft of {{C::body.hairColor}} hair.`
+});
+
+Description.buildHead({ species:'minotaur', requires:['minion(C).is-male'],
+  includes:['eye-color','fur-color','hair-color'],
+  d: `{{He}} has the head of a bull with {{C::body.eyeColor}} eyes, {{C::body.ramHorns}}, and is covered in
+      {{C::body.furColor}} fur. Between {{his}} horns is a shaggy tuft of {{C::body.hairColor}} hair.`
+});
+
+Description.buildHead({ species:'minotaur', requires:['minion(C).is-male'],
+  includes:['fur-color','hair-color'],
+  d: `{{His}} {{C::body.furColor}} fur covered head is distinctly bull shaped, with a shaggy tuft of
+      {{C::body.hairColor}} hair growing between {{his}} two {{C::body.ramHorns}}.`
+});
+
+Description.buildHead({ species:'minotaur', requires:['minion(C).is-male','minion(C).face.soft'],
+  includes:['fur-color','hair-color'],
+  d: `{{His}} {{C::body.furColor}} furred boyish face is distinctly cow-like and crowned with two {{C::body.ramHorns}}.
+      A shaggy tuft of {{C::body.hairColor}} hair grows out from between {{his}} horns.`
+});
+
+Description.buildHead({ species:'minotaur', requires:['minion(C).is-not-male'],
+  includes:['eye-color','fur-color','hair-color'],
+  d: `{{He}} has a big cow's head covered in {{C::body.furColor}} fur, {{C::body.eyeColor}} eyes, and two
+      {{C::body.ramHorns}}. Between {{his}} horns is a shaggy tuft of {{C::body.hairColor}} hair.`
+});
+
+Description.buildHead({ species:'minotaur', requires:['minion(C).is-not-male'],
+  includes:['eye-color','fur-color','hair-color'],
+  d: `{{He}} has the head of a cow with {{C::body.eyeColor}} eyes, {{C::body.ramHorns}}, and is covered in
+      {{C::body.furColor}} fur. Between {{his}} horns is a shaggy tuft of {{C::body.hairColor}} hair.`
+});
+
+Description.buildHead({ species:'minotaur', requires:['minion(C).is-not-male'],
+  includes:['fur-color','hair-color'],
+  d: `{{His}} {{C::body.furColor}} fur covered head is distinctly cow shaped, with a shaggy tuft of
+      {{C::body.hairColor}} hair growing between {{his}} two {{C::body.ramHorns}}.`
+});
+
+Description.buildHead({ species:'minotaur', requires:['minion(C).is-not-male','minion(C).face.soft'],
+  includes:['fur-color','hair-color'],
+  d: `{{His}} {{C::body.furColor}} furred head is distinctly cow-like and crowned with two {{C::body.ramHorns}}.
+      A shaggy tuft of {{C::body.hairColor}} hair grows out from between {{his}} horns.`
+});
+
+Description.buildHead({ species:'minotaur', requires:['minion(C).face.hard'],
+  includes:['eye-color','hair-color'],
+  d: `{{His}} angry looking, {{C::body.eyeColor}} eyed, bull head is crowned with two {{C::body.ramHorns}}. A shaggy
+      tuft of {{C::body.hairColor}} hair grows out from between {{his}} horns.`
+});
 
 // === Naga ===
 
