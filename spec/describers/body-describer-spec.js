@@ -12,20 +12,23 @@ describe.only('Describer: Body', function() {
     });
   }
 
-
   it('describes caprien faces', function(done) {
     printFace('Caprien', { species:'caprien' }, done);
   });
 
-  it.only('describes dryad faces', function(done) {
+  it('describes dryad faces', function(done) {
     printFace('Dryad', { species:'dryad' }, done);
   });
 
-  it('describes elf face', function(done) {
+  it('describes elf faces', function(done) {
     printFace('Elf', { species:'elf' }, done);
   });
 
-  it('describes nymph faces', function(done) {
+  it('describes equian faces', function(done) {
+    printFace('Equian', { species:'equian' }, done);
+  });
+
+  it.only('describes nymph faces', function(done) {
     printFace('Nymph', { species:'nymph' }, done);
   });
 

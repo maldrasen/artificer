@@ -121,7 +121,42 @@ Description.buildHead({ species:'dryad', requires:['minion(C).face.soft'],
 
 // === Equians ===
 
-// headDescription: `{{C::gender.He}} has a big horse shaped head with {{C::body.furColor}} fur and {{C::body.eyeColor}} eyes.`,
+Description.buildHead({ species:'equian',
+  includes:['fur-color','hair-color'],
+  d: `{{C::gender.He}} has a big horse shaped head covered in short {{C::body.furColor}} fur and topped with long
+      {{C::body.hairColor}} hair.`,
+});
+
+Description.buildHead({ species:'equian',
+  includes:['eye-color','fur-color','hair-color'],
+  d: `{{C::gender.He}} has a big horse shaped head with {{C::body.furColor}} fur and {{C::body.eyeColor}} eyes. Long
+      {{C::body.hairColor}} hair hangs loosly down one side of {{his}} face.`,
+});
+
+Description.buildHead({ species:'equian',
+  includes:['eye-color','fur-color','hair-color'],
+  d: `{{C::gender.He}} has a head like that of a horse with {{C::body.furColor}} fur and {{C::body.eyeColor}} eyes.
+      Long {{C::body.hairColor}} hair hangs loosly down one side of {{his}} face.`,
+});
+
+Description.buildHead({ species:'equian',
+  includes:['eye-color','fur-color','hair-color'],
+  d: `{{C::gender.His}} large {{C::body.furColor}} furred head is distinctly horse shaped with large
+      {{C::body.eyeColor}} eyes. Long {{C::body.hairColor}} hair hangs loosly down one side of {{his}} face.`,
+});
+
+Description.buildHead({ species:'equian', requires:['minion(C).face.hard','minion(C).is-male'],
+  includes:['eye-color','fur-color','hair-color'],
+  d: `{{C::gender.He}} has a big muscular head like that of a large drafthorse with {{C::body.furColor}} fur and
+      {{C::body.eyeColor}} eyes. Long {{C::body.hairColor}} hair hangs loosly down one side of {{his}} face.`,
+});
+
+Description.buildHead({ species:'equian', requires:['minion(C).face.hard','minion(C).is-male'],
+  includes:['fur-color','hair-color'],
+  d: `{{C::gender.He}} has a big muscular head like that of a large drafthorse with {{C::body.furColor}} fur and
+      long {{C::body.hairColor}} hair that hangs loosly down one side of {{his}} face.`,
+});
+
 
 // === Kobolds ===
 

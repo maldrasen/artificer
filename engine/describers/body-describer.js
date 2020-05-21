@@ -133,34 +133,45 @@ global.BodyDescriber = class BodyDescriber {
     return addition;
   }
 
+  // To finish up the head description we need to figure out what parts were
+  // not described by the face and head descriptions.
   finishHead() {
-    // console.log("Finish",this._included)
-    // Furries
+    if (this.body.furColor && this.body.hairColor) {
+      if (this.isNotIncluded('eye-color') && this.isNotIncluded('fur-color') && this.isNotIncluded('hair-color')) { return this.describeEyesHairAndFur(); }
+      if (this.isNotIncluded('fur-color') && this.isNotIncluded('hair-color')) { return this.describeHairAndFur();  }
+      if (this.isNotIncluded('eye-color') && this.isNotIncluded('hair-color')) { return this.describeEyesAndHair(); }
+      if (this.isNotIncluded('eye-color') && this.isNotIncluded('fur-color'))  { return this.describeEyesAndFur();  }
+      if (this.isNotIncluded('eye-color'))  { return this.describeEyes(); }
+      if (this.isNotIncluded('fur-color'))  { return this.describeFur();  }
+      if (this.isNotIncluded('hair-color')) { return this.describeHair(); }
+    }
+
     if (this.body.furColor && this.isNotIncluded('fur-color')) {
-      if (this.isIncluded('eye-color')) {
-        return `(Describe {{C::body.furColor}} fur)`
-      }
-      return `(Describe {{C::body.eyeColor}} eyes and {{C::body.furColor}} fur)`
+      return this.isIncluded('eye-color') ? this.describeFur() : this.describeEyesAndFur();
     }
 
-    // Scalies
-    if (this.body.scaleColor && this.isNotIncluded('scale-color')) {
-      if (this.isIncluded('eye-color')) {
-        return `(Describe {{C::body.scaleColor}} scales)`
-      }
-      return `(Describe {{C::body.eyeColor}} eyes and {{C::body.scaleColor}} scales)`
-    }
-
-    // Skinnies?
+    // We don't worry about describing skin or scales if they're not included,
+    // that will be taken care of in the body description. We do want to take
+    // care of hair and eyes though.
     if (this.body.hairColor && this.isNotIncluded('hair-color')) {
-      if (this.isIncluded('eye-color')) {
-        return `(Describe {{C::body.hairColor}} hair)`
-      }
-      return `(Describe {{C::body.eyeColor}} eyes and {{C::body.hairColor}} hair)`
+      return this.isIncluded('eye-color') ? this.describeHair() : this.describeEyesAndHair();
+    }
+
+    if (this.isNotIncluded('eye-color')) {
+      return this.describeEyes();
     }
 
     return '';
   }
+
+  describeEyes() { return `[EYES]` }
+  describeEyesAndFur() { return `[EYES AND FUR]` }
+  describeEyesAndHair() { return `[EYES AND HAIR]` }
+  describeEyesHairAndFur() { return `[EYES, HAIR, AND FUR]` }
+  describeFur() { return `[FUR]` }
+  describeHair() { return `[HAIR]` }
+  describeHairAndFur() { return `[HAIR AND FUR]` }
+
 
   // === Body Additions ===
 
@@ -204,14 +215,12 @@ global.BodyDescriber = class BodyDescriber {
     ]);
   }
 
-
   // Moving, Caprien
   // skinDescription: (character,body) => {
   //   return (character.genderCode == 'male') ?
   //     `{{C::gender.His}} body is also covered in thick {{C::body.furColor}} fur and {{C::gender.he}} has a small goat tail resting just above {{C::gender.his}} ass.`:
   //     `{{C::gender.He}} has {{C::body.skinColor}} skin and a small goat tail resting just above {{C::gender.his}} shapely ass.`
   // },
-
 
   skinDescription() {
     if (typeof this.character.species.skinDescription == 'function') {
