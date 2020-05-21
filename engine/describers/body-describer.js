@@ -134,7 +134,7 @@ global.BodyDescriber = class BodyDescriber {
   }
 
   finishHead() {
-    console.log("Finish",this._included)
+    // console.log("Finish",this._included)
     // Furries
     if (this.body.furColor && this.isNotIncluded('fur-color')) {
       if (this.isIncluded('eye-color')) {

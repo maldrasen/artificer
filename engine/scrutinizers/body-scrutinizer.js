@@ -24,6 +24,8 @@ global.BodyScrutinizer = (function() {
     if (operation == 'face.beautiful')                { return ArrayUtility.contains(['magnificent','beautiful'], data.character.getPersonalWord()); }
     if (operation == 'face.breathtaking')             { return data.character.getPersonalWord() == 'breathtaking' }
     if (operation == 'face.mythic')                   { return data.character.getPersonalWord() == 'mythic'       }
+    if (operation == 'face.at-least-average')         { return data.character.personal >= 5; } // not hideous or ugly
+    if (operation == 'face.below-average')            { return data.character.personal < 5;  } // hideous or ugly
     if (operation == 'face.breathtaking-or-mythic')   { return data.character.personal >= 60; }
 
     // Head Properties

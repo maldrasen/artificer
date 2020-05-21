@@ -77,9 +77,6 @@ Species.build('scaven', {
     'size-queen': 15,
   },
 
-  headDescription: `The scaven's face is unsurprisingly rat-like with {{C::body.eyeColor}} eyes, a short muzzle, long
-                    whiskers and a twitchy pink nose.`,
-
   nameGenerator: ScavenNameGenerator,
   flags: ['furry']
 });

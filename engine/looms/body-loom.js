@@ -71,7 +71,7 @@ Weaver.BodyLoom = (function() {
   }
 
   function brownFurWord(shade) {
-    if (shade == 1) { return Random.from(["dark umber","dark bronze","coffee","chocolate"]); }
+    if (shade == 1) { return Random.from(["dark umber","dark bronze","coffee colored","chocolate colored"]); }
     if (shade == 2) { return Random.from(["deep amber","russet brown","bronze","walnut"]); }
     if (shade == 3) { return Random.from(["amber","golden brown","chestnut"]); }
     if (shade == 4) { return Random.from(["light amber","tawny","light golden","pale honey"]); }
@@ -79,7 +79,7 @@ Weaver.BodyLoom = (function() {
   }
 
   function redFurWord(shade) {
-    if (shade == 1) { return Random.from(["mahogany","dark red"]); }
+    if (shade == 1) { return Random.from(["mahogany colored","dark red"]); }
     if (shade == 2) { return Random.from(["burgundy","maroon"]); }
     if (shade == 3) { return Random.from(["red","auburn"]); }
     if (shade == 4) { return Random.from(["copper","light ginger"]); }
@@ -88,8 +88,8 @@ Weaver.BodyLoom = (function() {
 
   function grayFurWord(shade) {
     if (shade == 1) { return blackFurWord(); }
-    if (shade == 2) { return Random.from(["iron gray","smoke","lead gray"]); }
-    if (shade == 3) { return Random.from(["gray","stone gray","salt and pepper"]); }
+    if (shade == 2) { return Random.from(["iron gray","smoke colored","lead gray"]); }
+    if (shade == 3) { return Random.from(["gray","stone gray","salt and pepper streaked"]); }
     if (shade == 4) { return Random.from(["ash gray","light gray"]); }
     if (shade == 5) { return whiteFurWord(); }
   }

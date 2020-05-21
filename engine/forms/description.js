@@ -225,8 +225,10 @@ global.Description = class Description extends Form {
     return true;
   }
 
+  // Head descriptions are simplier, we only need to check to see if the
+  // species matches for non-elven looking species.
   headConditionsMet(data) {
-    if (this.conditionFailed('minion(C).is-caprien', data.character.speciesCode == 'caprien')) { return false; }
+    return ArrayUtility.contains(['caprien','scaven'],data.character.speciesCode) ? (data.character.speciesCode == this.species) : true;
   }
 
   titsConditionsMet(data) {
