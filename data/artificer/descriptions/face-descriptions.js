@@ -352,10 +352,12 @@ Description.buildFace({ requires:['minion(C).face.beautiful','minion(C).face.sof
       roguish charm.`
 });
 
+Description.buildFace({ requires:['minion(C).face.beautiful','minion(C).face.soft','minion(C).is-male'],
+  d: `{{C::character.firstName}} is devilishly handsome with big eyes that accentuate {{his}} roguish charm.`
+});
+
 Description.buildFace({ requires:['minion(C).face.beautiful','minion(C).face.exotic','minion(C).is-male'],
-  includes:['eye-color'],
-  d: `{{C::character.firstName}} is strangely handsome with distinct and pronounced masculine features, high
-      cheakbones, and piercing {{C::body.eyeColor}} eyes.`
+  d: `{{C::character.firstName}} is strangely handsome with distinct and pronounced masculine features.`
 });
 
 // Beautiful - Feminine
@@ -374,6 +376,11 @@ Description.buildFace({ requires:['minion(C).face.beautiful','minion(C).face.har
 
 Description.buildFace({ requires:['minion(C).face.beautiful','minion(C).face.hard','minion(C).is-not-male'],
   d: `{{C::character.firstName}} has a face that's both hard and beautiful, severe and statuesque like a dominatrix.`,
+});
+
+Description.buildFace({ requires:['minion(C).face.beautiful','minion(C).face.soft','minion(C).is-not-male'],
+  d: `{{C::character.firstName}} has a beautiful and youthful face with {{his}} soft lips perpetually curved up into
+      an impish grin.`,
 });
 
 Description.buildFace({ requires:['minion(C).face.beautiful','minion(C).face.soft','minion(C).is-not-male'], includes:['eye-color'],

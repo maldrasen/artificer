@@ -311,8 +311,23 @@ Description.buildHead({ species:'naga', requires:['minion(C).face.exotic'],
 });
 
 // === Neko ===
+// Neko fur is the same as their hair color, so no need to mention it twice.
 
-// need to call out cat ears
+Description.buildHead({ species:'neko',
+  includes:['eye-color','hair-color','fur-color'],
+  d: `{{He}} has shining {{C::body.eyeColor}} cat eyes and a pair of {{C::body.furColor}} furred ears.`
+});
+
+Description.buildHead({ species:'neko',
+  includes:['eye-color','hair-color','fur-color'],
+  d: `{{He}} has bright {{C::body.eyeColor}} cat eyes and a pair of furry ears that poke out from {{his}}
+      {{C::body.hairColor}} hair.`
+});
+
+Description.buildHead({ species:'neko',
+  includes:['hair-color','fur-color'],
+  d: `{{He}} has a pair of tall furry ears parting {{his}} {{C::body.hairColor}} hair.`
+});
 
 // === Scaven ===
 

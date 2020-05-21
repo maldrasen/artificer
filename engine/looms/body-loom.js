@@ -67,7 +67,9 @@ Weaver.BodyLoom = (function() {
     if (color == 'gray')  { return grayFurWord(shade);  }
     if (color == 'black') { return blackFurWord();      }
 
-    return Weaver.error(`Need to describe ${color} as a fur color.`);
+    // If fur color is not one of the above assume that it's one of the hair
+    // colors like blond or light-purple.
+    return body.furColor.replace(/-/,' ')
   }
 
   function brownFurWord(shade) {

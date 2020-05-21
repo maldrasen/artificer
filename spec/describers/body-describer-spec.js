@@ -40,8 +40,12 @@ describe.only('Describer: Body', function() {
     printFace('Minotaur', { species:'minotaur' }, done);
   });
 
-  it.only('describes naga faces', function(done) {
+  it('describes naga faces', function(done) {
     printFace('Naga', { species:'naga' }, done);
+  });
+
+  it.only('describes neko faces', function(done) {
+    printFace('Neko', { species:'neko' }, done);
   });
 
   it('describes nymph faces', function(done) {
