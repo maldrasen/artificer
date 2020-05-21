@@ -7,7 +7,7 @@ describe.only('Describer: Body', function() {
       await CharacterDescriber.updateAll(rando);
       const body = await rando.getBody();
 
-      SpecHelper.print(`${title} (${rando.personal}/${body.faceType}) > ${body.faceDescription}`);
+      SpecHelper.print(`${title} (${rando.genderCode}/${rando.personal}/${body.faceType}) > ${body.faceDescription}`);
       resolve();
     });
   }

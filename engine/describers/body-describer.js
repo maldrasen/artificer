@@ -134,15 +134,31 @@ global.BodyDescriber = class BodyDescriber {
   }
 
   finishHead() {
+    console.log("Finish",this._included)
+    // Furries
+    if (this.body.furColor && this.isNotIncluded('fur-color')) {
+      if (this.isIncluded('eye-color')) {
+        return `(Describe {{C::body.furColor}} fur)`
+      }
+      return `(Describe {{C::body.eyeColor}} eyes and {{C::body.furColor}} fur)`
+    }
+
+    // Scalies
+    if (this.body.scaleColor && this.isNotIncluded('scale-color')) {
+      if (this.isIncluded('eye-color')) {
+        return `(Describe {{C::body.scaleColor}} scales)`
+      }
+      return `(Describe {{C::body.eyeColor}} eyes and {{C::body.scaleColor}} scales)`
+    }
+
+    // Skinnies?
     if (this.body.hairColor && this.isNotIncluded('hair-color')) {
       if (this.isIncluded('eye-color')) {
-        return `(Describe just hair)`
+        return `(Describe {{C::body.hairColor}} hair)`
       }
-      return `(Describe eyes and hair)`
+      return `(Describe {{C::body.eyeColor}} eyes and {{C::body.hairColor}} hair)`
     }
-    if (this.isNotIncluded('eye-color')) {
-      return `(Describe eyes)`
-    }
+
     return '';
   }
 

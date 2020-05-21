@@ -38,6 +38,9 @@ global.BodyBuilder = (function() {
     let hairColor =  bodyOptions.hairColor || character.species.random('hair',character.genderCode);
     params.hairColor = (hairColor == 'human') ? randomHumanHairColor() : hairColor;
 
+    // Caprien edge case, the caprien males don't have hair, only fur.
+    if (character.speciesCode == 'caprien' && character.genderCode == 'male') { params.hairColor = null; }
+
     if (params.skinColor == 'dragon') { params.skinColor = params.scaleColor; }
     if (params.eyeColor == 'dragon') { params.eyeColor = params.scaleColor; }
     if (params.eyeColor == 'human') { params.eyeColor = randomHumanEyeColor(); }

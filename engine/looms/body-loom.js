@@ -204,9 +204,19 @@ Weaver.BodyLoom = (function() {
     return (body.hairColor && body.hairColor != "") ? body.hairColor.replace(/-/,' ') : Weaver.error(`Body.hairColor is blank.`);
   }
 
+  // Rule of thumb for caprians and other horned species. Harder faces have
+  // longer horns, soft faces have short horns.
   function hornShape(body, plural) {
-    if (body.hornShape == 'curved-ram') { return 'curved ram horns'; }
-    if (body.hornShape == 'curved-back') { return 'long swept back horns'; }
+    if (body.hornShape == 'curved-ram') {
+      if (body.faceType == 'soft') { return 'small ram horns' }
+      if (body.faceType == 'hard') { return 'large curved ram horns' }
+      return 'curved ram horns';
+    }
+    if (body.hornShape == 'curved-back') {
+      if (body.faceType == 'soft') { return 'short back facing horns' }
+      if (body.faceType == 'hard') { return 'long backswept horns' }
+      return 'sharp backswept horns';
+    }
     return Weaver.error(`Unknown horn shape: ${body.hornShape}`);
   }
 
