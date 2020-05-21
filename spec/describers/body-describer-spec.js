@@ -1,4 +1,4 @@
-describe.only('Describer: Body', function() {
+describe('Describer: Body', function() {
 
   function printFace(title, options, done) {
     Settings.Metric = Random.from([true,false,false]);
@@ -60,7 +60,7 @@ describe.only('Describer: Body', function() {
     printFace('Selkie', { species:'selkie' }, done);
   });
 
-  it.only('describes vieran faces', function(done) {
+  it('describes vieran faces', function(done) {
     printFace('Viera', { species:'viera' }, done);
   });
 

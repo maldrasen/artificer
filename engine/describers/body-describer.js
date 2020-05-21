@@ -145,8 +145,9 @@ global.BodyDescriber = class BodyDescriber {
       if (this.isNotIncluded('hair-color')) { return this.describeHair(); }
     }
 
-    if (this.body.furColor && this.isNotIncluded('fur-color')) {
-      return this.isIncluded('eye-color') ? this.describeFur() : this.describeEyesAndFur();
+    // Only bother describing fur if the eyes haven't been described yet.
+    if (this.body.furColor && this.isNotIncluded('fur-color') && this.isNotIncluded('eye-color')) {
+      return this.describeEyesAndFur();
     }
 
     // We don't worry about describing skin or scales if they're not included,
