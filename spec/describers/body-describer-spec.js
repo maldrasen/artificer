@@ -28,7 +28,11 @@ describe.only('Describer: Body', function() {
     printFace('Equian', { species:'equian' }, done);
   });
 
-  it.only('describes nymph faces', function(done) {
+  it.only('describes kobold faces', function(done) {
+    printFace('Kobold', { species:'kobold' }, done);
+  });
+
+  it('describes nymph faces', function(done) {
     printFace('Nymph', { species:'nymph' }, done);
   });
 
