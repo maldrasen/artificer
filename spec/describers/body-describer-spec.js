@@ -44,7 +44,7 @@ describe.only('Describer: Body', function() {
     printFace('Naga', { species:'naga' }, done);
   });
 
-  it.only('describes neko faces', function(done) {
+  it('describes neko faces', function(done) {
     printFace('Neko', { species:'neko' }, done);
   });
 
@@ -56,7 +56,11 @@ describe.only('Describer: Body', function() {
     printFace('Scaven', { species:'scaven' }, done);
   });
 
-  it('describes vieran faces', function(done) {
+  it('describes selkie faces', function(done) {
+    printFace('Selkie', { species:'selkie' }, done);
+  });
+
+  it.only('describes vieran faces', function(done) {
     printFace('Viera', { species:'viera' }, done);
   });
 

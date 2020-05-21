@@ -355,8 +355,30 @@ Description.buildHead({ species:'scaven', requires:['minion(C).face.below-averag
 });
 
 // === Selkie ===
-// headDescription: `{{He}} has a face like a seal with {{C::body.furColor}} fur and {{C::body.eyeColor}} eyes.`,
+
+Description.buildHead({ species:'selkie',
+  includes:['eye-color','fur-color'],
+  d: `{{He}} has a head like a seal with short and shiny {{C::body.furColor}} fur and {{C::body.eyeColor}} eyes.`
+});
+
+Description.buildHead({ species:'selkie',
+  includes:['eye-color','fur-color'],
+  d: `{{His}} head is seal shaped with glistening {{C::body.furColor}} fur and {{C::body.eyeColor}} eyes.`
+});
 
 // === Viera ===
-// headDescription: `{{He}} has {{C::body.eyeColor}} eyes and a face like an elf except that two long rabbit
-//                   ears press upward from {{his}} {{C::body.hairColor}} hair.`,
+
+Description.buildHead({ species:'viera',
+  includes:['eye-color','hair-color','fur-color'],
+  d: `{{He}} has {{C::body.eyeColor}} eyes and a face like an elf except for two long rabbit ears pressing upward from {{his}} {{C::body.hairColor}} hair.`
+});
+
+Description.buildHead({ species:'viera',
+  includes:['hair-color','fur-color'],
+  d: `{{His}} elven face has two long rabbit ears pressing upward from {{his}} {{C::body.hairColor}} hair.`
+});
+
+Description.buildHead({ species:'viera',
+  includes:['hair-color','fur-color'],
+  d: `{{His}} elven face has two long furry rabbit ears parting {{his}} {{C::body.hairColor}} hair.`
+});
