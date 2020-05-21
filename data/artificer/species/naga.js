@@ -55,7 +55,5 @@ Species.build('naga', {
     pussy:{ shape:'snake' },
   },
 
-  headDescription: `{{C::gender.He}} has a snake's face, with {{C::body.scaleColor}} scales and {{C::body.eyeColor}} eyes.`,
-
   flags: ['scalie']
 });

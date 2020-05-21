@@ -228,7 +228,8 @@ global.Description = class Description extends Form {
   // Head descriptions are simplier, we only need to check to see if the
   // species matches for non-elven looking species.
   headConditionsMet(data) {
-    return ArrayUtility.contains(['caprien','scaven'],data.character.speciesCode) ? (data.character.speciesCode == this.species) : true;
+    const nonElves = ['caprien','dragon','scaven','dryad','equian','kobold','lupin','minotaur','naga','neko','selkie','viera']
+    return ArrayUtility.contains(nonElves,data.character.speciesCode) ? (data.character.speciesCode == this.species) : true;
   }
 
   titsConditionsMet(data) {
