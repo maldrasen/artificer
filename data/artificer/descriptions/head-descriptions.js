@@ -183,7 +183,28 @@ Description.buildHead({ species:'kobold', requires:['minion(C).face.soft','minio
 
 // === Lupins ===
 
-// headDescription: `{{He}} has the face of a wolf with {{C::body.furColor}} fur and {{C::body.eyeColor}} eyes.`,
+Description.buildHead({ species:'lupin',
+  includes:['fur-color'],
+  d: `{{His}} has a {{C::body.furColor}} furred wolf shaped head.`,
+});
+
+Description.buildHead({ species:'lupin',
+  includes:['eye-color','fur-color'],
+  d: `{{He}} has the head of a wolf with {{C::body.furColor}} fur and {{C::body.eyeColor}} eyes.`,
+});
+
+Description.buildHead({ species:'lupin', requires:['minion(C).face.hard'],
+  includes:['fur-color'],
+  d: `{{He}} has a savage, feral looking wolf head covered in coarse {{C::body.furColor}} fur.`
+});
+
+Description.buildHead({ species:'lupin', requires:['minion(C).face.soft'],
+  includes:['eye-color','fur-color'],
+  d: `{{He}} has a sweet looking wolf head that gives {{him}} a more dog than wolf-like appearance. {{He}} has
+      {{C::body.eyeColor}} eyes and his canine face is covered in soft {{C::body.furColor}} fur.`
+});
+
+
 
 // === Minotaurs ===
 

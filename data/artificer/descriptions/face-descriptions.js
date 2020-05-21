@@ -77,7 +77,7 @@ Description.buildFace({ requires:['minion(C).face.average','minion(C).face.plain
 });
 
 Description.buildFace({ requires:['minion(C).face.average','minion(C).face.plain'],
-  d: `{{C::character.firstName}} is rather average looking. {{He}}'s not the sort of {{C::species.elf}} who wouldn't
+  d: `{{C::character.firstName}} is rather average looking. {{He}}'s not the sort of {{C::species.elf}} who would
       stand out in a crowd.`
 });
 

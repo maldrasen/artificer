@@ -41,7 +41,7 @@ Event.build('journal-4', {
           sort of crafts best suited for the winter months, pottery, blacksmithing and the like. Ravingari had run out
           of the sisal that he had been using to make rugs though, so new rugs would have to wait until spring.` },
       { text:`Hmm, sisal. Now that I think about it having some sisal would be of great benefit to me in my current
-          situation. It's is a hearty plant, and a course and durable fiber can be harvested from its leaves. It's used
+          situation. It's is a hearty plant, and a coarse and durable fiber can be harvested from its leaves. It's used
           to make rope primarily, but you can also use it to make rugs and burlap cloth.` },
       { text:`Perhaps I could send {{R::character.firstName}} out to gather some for me. {{He}} needs to find it first
           obviously, but I think our food situation is steady enough that I should be able to send {{him}} out every

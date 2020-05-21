@@ -142,7 +142,6 @@ global.BodyDescriber = class BodyDescriber {
       if (this.isNotIncluded('eye-color') && this.isNotIncluded('hair-color')) { return this.describeEyesAndHair(); }
       if (this.isNotIncluded('eye-color') && this.isNotIncluded('fur-color'))  { return this.describeEyesAndFur();  }
       if (this.isNotIncluded('eye-color'))  { return this.describeEyes(); }
-      if (this.isNotIncluded('fur-color'))  { return this.describeFur();  }
       if (this.isNotIncluded('hair-color')) { return this.describeHair(); }
     }
 
@@ -164,14 +163,32 @@ global.BodyDescriber = class BodyDescriber {
     return '';
   }
 
-  describeEyes() { return `[EYES]` }
-  describeEyesAndFur() { return `[EYES AND FUR]` }
-  describeEyesAndHair() { return `[EYES AND HAIR]` }
-  describeEyesHairAndFur() { return `[EYES, HAIR, AND FUR]` }
-  describeFur() { return `[FUR]` }
-  describeHair() { return `[HAIR]` }
-  describeHairAndFur() { return `[HAIR AND FUR]` }
+  // It's likely that the face and head descriptions will not include eye color.
+  describeEyes() {
+    if (this.body.faceType == 'hard') { return Random.from([
+      `{{He}} has small, hard looking {{C::body.eyeColor}} eyes.`,
+      `{{His}} {{C::body.eyeColor}} eyes are small and hard looking.`,
+    ]); }
 
+    if (this.body.faceType == 'soft') { return Random.from([
+      `{{He}} has big {{C::body.eyeColor}} eyes.`,
+      `{{His}} {{C::body.eyeColor}} eyes are big and friendly looking.`,
+    ]); }
+
+    if (this.body.faceType == 'exotic') { return Random.from([
+      `{{He}} has seductive {{C::body.eyeColor}} eyes.`,
+      `{{His}} {{C::body.eyeColor}} eyes are sly and seductive looking.`,
+    ]); }
+
+    return `{{He}} has {{C::body.eyeColor}} eyes.`;
+  }
+
+  // These may not be needed. Keeping them around to make sure though.
+  describeEyesAndFur() { return `[TODO: EYES AND FUR]` }
+  describeEyesAndHair() { return `[TODO: EYES AND HAIR]` }
+  describeEyesHairAndFur() { return `[TODO: EYES, HAIR, AND FUR]` }
+  describeHair() { return `[TODO: HAIR]` }
+  describeHairAndFur() { return `[TODO: HAIR AND FUR]` }
 
   // === Body Additions ===
 
