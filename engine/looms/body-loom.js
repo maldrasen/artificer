@@ -18,6 +18,7 @@ Weaver.BodyLoom = (function() {
     if (token == "body.hairColor")         { return hairColorWord(body); }
     if (token == "body.fiftyPound")        { return weightMeasurement(body, false); }
     if (token == "body.fiftyPounds")       { return weightMeasurement(body, true); }
+    if (token == "body.ramHorns")          { return hornShape(body,true) }
 
     return Weaver.error(`Bad body token(${token})`);
   }
@@ -201,6 +202,12 @@ Weaver.BodyLoom = (function() {
   // spaces.
   function hairColorWord(body) {
     return (body.hairColor && body.hairColor != "") ? body.hairColor.replace(/-/,' ') : Weaver.error(`Body.hairColor is blank.`);
+  }
+
+  function hornShape(body, plural) {
+    if (body.hornShape == 'curved-ram') { return 'curved ram horns'; }
+    if (body.hornShape == 'curved-back') { return 'long swept back horns'; }
+    return Weaver.error(`Unknown horn shape: ${body.hornShape}`);
   }
 
   return { findValue };

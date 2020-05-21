@@ -189,6 +189,14 @@ global.BodyDescriber = class BodyDescriber {
   }
 
 
+  // Moving, Caprien
+  // skinDescription: (character,body) => {
+  //   return (character.genderCode == 'male') ?
+  //     `{{C::gender.His}} body is also covered in thick {{C::body.furColor}} fur and {{C::gender.he}} has a small goat tail resting just above {{C::gender.his}} ass.`:
+  //     `{{C::gender.He}} has {{C::body.skinColor}} skin and a small goat tail resting just above {{C::gender.his}} shapely ass.`
+  // },
+
+
   skinDescription() {
     if (typeof this.character.species.skinDescription == 'function') {
       return this.character.species.skinDescription(this.character, this.body);

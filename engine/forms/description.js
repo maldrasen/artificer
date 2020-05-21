@@ -28,6 +28,9 @@ global.Description = class Description extends Form {
           if (description.cockInclusionsValid(data) == false) { return; }
           if (description.cockConditionsMet(data) == false) { return; }
         }
+        if (part == 'head') {
+          if (description.headConditionsMet(data) == false) { return; }
+        }
         if (part == 'tits') {
           if (description.titsConditionsMet(data) == false) { return; }
         }
@@ -220,6 +223,10 @@ global.Description = class Description extends Form {
     if (this.conditionFailed('minion(C).cock.count=2', data.cock.count == 2)) { return false; }
     if (this.conditionFailed('minion(C).cock.count=3', data.cock.count == 3)) { return false; }
     return true;
+  }
+
+  headConditionsMet(data) {
+    if (this.conditionFailed('minion(C).is-caprien', data.character.speciesCode == 'caprien')) { return false; }
   }
 
   titsConditionsMet(data) {

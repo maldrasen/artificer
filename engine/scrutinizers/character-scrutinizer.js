@@ -21,7 +21,8 @@ global.CharacterScrutinizer = (function() {
     if (operation == 'is-not-futa')                   { return data.character.genderCode != 'futa'; }
 
     // Species Properties
-    if (operation == 'is-scaven')                     { return data.character.speciesCode == 'scaven' }
+    if (operation == 'is-caprien')                    { return data.character.speciesCode == 'caprien'; }
+    if (operation == 'is-scaven')                     { return data.character.speciesCode == 'scaven'; }
     if (operation == 'demon')                         { return data.character.species.isDemon; }
     if (operation == 'not-demon')                     { return !data.character.species.isDemon; }
     if (operation == 'elf')                           { return data.character.species.isElf; }
@@ -34,6 +35,7 @@ global.CharacterScrutinizer = (function() {
     if (operation == 'not-scalie')                    { return !data.character.species.isScalie; }
     if (operation == 'wolf-blooded')                  { return ['lupin','wood-elf'].indexOf(data.character.speciesCode) >= 0; }
     if (operation == 'not-wolf-blooded')              { return ['lupin','wood-elf'].indexOf(data.character.speciesCode) < 0; }
+
 
     // Body Part Presence Checks
     if (operation == 'has-cock')                      { return data.cock != null; }

@@ -28,7 +28,11 @@ describe.only('Describer: Body', function() {
     printFace('Nymph', { species:'nymph' }, done);
   });
 
-  it.only('describes mythic faces (~95 personal)', function(done) {
+  it.only('describes caprien faces', function(done) {
+    printFace('Caprien', { species:'caprien' }, done);
+  });
+
+  it('describes mythic faces (~95 personal)', function(done) {
     printFace('Mythic', { species:'dragon', personal:Random.between(90,100) }, done);
   });
 

@@ -27,6 +27,7 @@ global.BodyScrutinizer = (function() {
     if (operation == 'face.breathtaking-or-mythic')   { return data.character.personal >= 60; }
 
     // Head Properties
+    if (operation.match(/^head.has-horns/))           { return data.body.hornShape != null; }
     if (operation.match(/^head.cut-count/))           { return checkCount(operation, data.mouth.cutCount); }
 
     throw `Unknown Body Operation - ${operation}`
