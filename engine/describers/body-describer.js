@@ -2,6 +2,7 @@ global.BodyDescriber = class BodyDescriber {
 
   constructor(context) {
     this._context = context;
+    this._included = [];
   }
 
   get context() { return this._context; }
@@ -9,12 +10,17 @@ global.BodyDescriber = class BodyDescriber {
   get body() { return this.context.get('C').body; }
   get mouth() { return this.context.get('C').mouth; }
 
+  addInclusions(inclusions) { each(inclusions||[], inclusion => { this.addIncluded(inclusion); }); }
+  addIncluded(key) { this._included.push(key); }
+  isIncluded(key) { return this._included.indexOf(key) >= 0; }
+  isNotIncluded(key) { return !this.isIncluded(key); }
+
   async updateDescription() {
-    if (this.body.bodyDescription == null) {
-      await this.body.update({ bodyDescription: (await this.getBodyDescription()) });
-    }
     if (this.body.faceDescription == null) {
       await this.body.update({ faceDescription: (await this.getfaceDescription()) });
+    }
+    if (this.body.bodyDescription == null) {
+      await this.body.update({ bodyDescription: (await this.getBodyDescription()) });
     }
   }
 
@@ -48,21 +54,99 @@ global.BodyDescriber = class BodyDescriber {
   //       The tone is wrong for a person describing their own face.
   //
   async getfaceDescription() {
-    let description = await Description.select('face', this.context);
+    const descriptions = await this.selectFaceAndHead();
+    this.addInclusions(descriptions.face.includes);
+    this.addInclusions(descriptions.head.includes);
 
-    // TODO: If a character's personal attribute is over 90 we should select a
-    //       description, then add some extra details about how unworldly their
-    //       beauty has become.
+    const text = `${descriptions.face.d} ${this.mythicAdditions()} ${descriptions.head.d} ${this.finishHead()}`
 
-    // TODO: Facial Includes
-    // if (description.includes) {
-    //   each(description.includes, inclusion => {
-    //     this.addIncluded(inclusion);
-    //   });
-    // }
-
-    return await Weaver.weave(description.d, this.context);
+    return await Weaver.weave(text, this.context);
   }
+
+  // This function will randomly select a face and head description. The two
+  // main descriptions here can't share any of the same inclusions. We don't
+  // want a character's eyes described twice. This shouldn't loop forever if
+  // there are enough descriptions without inclusions to fall back on.
+  async selectFaceAndHead() {
+    const faceDescription = await Description.select('face', this.context);
+    const headDescription = await Description.select('head', this.context);
+
+    for (let i=0; i<(faceDescription.includes||[]).length; i++) {
+      if ((headDescription.includes||[]).indexOf(faceDescription.includes[i])>=0) {
+        return await this.selectFaceAndHead();
+      }
+    }
+
+    return { face:faceDescription, head:headDescription };
+  }
+
+  // === Face Additions ===
+
+  // If a character has more than 90 personal they fall into the mythic beauty
+  // category. In this case they still get a 'breathtaking' description but
+  // with an additional sentence to highlight they their beauty is otherworldly.
+  mythicAdditions() {
+    if (this.character.personal < 90) { return ''; }
+
+    const additions = [
+      `{{His}} face is so perfect that it's almost unnatural, like some otherworldly being come to dwell with us mere mortals.`,
+    ]
+
+    if (this.isNotIncluded('eye-color')) {
+      ArrayUtility.addAll(additions,[
+        `{{His}} beautiful and memorizing {{C::body.eyeColor}} eyes shine with an otherworldly sheen.`,
+        `{{His}} {{C::body.eyeColor}} eyes somehow always seem to catch the light in the most perfect way possible`,
+      ]);
+
+      if (this.body.faceType == 'plain') { additions.push(`{{His}} {{C::body.eyeColor}} eyes are so compelling,
+        beautiful and memorizing, that there's almost a danger of getting lost within them for an eternity.`) }
+
+      if (this.body.faceType == 'exotic') { additions.push(`{{His}} face is so strangely compelling that I could see
+        getting lost in {{his}} piercing {{C::body.eyeColor}} eyes for an eternity.`); }
+    }
+
+    if (this.isNotIncluded('skin-color') && this.character.hasSkinBody) { ArrayUtility.addAll(additions,[
+      `{{His}} {{C::body.skinColor}} skin is absolutely perfect and shines like polished marble.`,
+      `{{His}} {{C::body.skinColor}} skin somehow always manages to catch the light in the most perfect way possible.`,
+    ]); }
+
+    if (this.isNotIncluded('scale-color') && this.character.isScalie) { ArrayUtility.addAll(additions,[
+      `{{His}} {{C::body.scaleColor}} scales are absolutely perfect and shine like polished gemstones.`,
+      `{{His}} {{C::body.scaleColor}} scales are absolutely perfect and shine like glittering jewels.`,
+    ]); }
+
+    if (this.body.faceType == 'soft') { additions.push(`I'm not sure how to describe it, but {{he}} has an aura about
+      {{him}} that makes me want to possess {{him}} in every way.`); }
+
+    if (this.body.faceType == 'hard') { additions.push(`I'm not sure how to describe it, but {{he}} has an aura about
+      {{him}} that could make anyone want to be possessed by {{him}}.`); }
+
+    if (this.body.faceType == 'exotic') { additions.push(`There's something about {{him}} that seems absolutely
+      otherworldly.`); }
+
+    const addition = Random.from(additions);
+
+    if (addition.match(/eyeColor/)) { this.addIncluded('eye-color'); }
+    if (addition.match(/skinColor/)) { this.addIncluded('skin-color'); }
+    if (addition.match(/scaleColor/)) { this.addIncluded('scale-color'); }
+
+    return addition;
+  }
+
+  finishHead() {
+    if (this.body.hairColor && this.isNotIncluded('hair-color')) {
+      if (this.isIncluded('eye-color')) {
+        return `(Describe just hair)`
+      }
+      return `(Describe eyes and hair)`
+    }
+    if (this.isNotIncluded('eye-color')) {
+      return `(Describe eyes)`
+    }
+    return '';
+  }
+
+  // === Body Additions ===
 
   heightAndWeight() {
     return `{{He}} is {{C::body.fiveFootTenInches}} tall, and weighs {{C::body.fiftyPounds}}`;
@@ -104,55 +188,6 @@ global.BodyDescriber = class BodyDescriber {
     ]);
   }
 
-  // TODO: Could use a lot more variety and we might want to consider splitting
-  //       the male descriptions from the females and futas. Might consider
-  //       making this it's own class even.
-  comparativeBeauty() {
-    let averagePersonal = Math.floor(this.character.species.personal * 1.333);
-    let lowPersonal =     Math.ceil(this.character.species.personal  * 0.666);
-
-    if (this.character.speciesCode == 'scaven') {
-      if (this.character.personal <= lowPersonal)  { return Random.from([
-        `Even for a scaven {{he}}'s ugly; just chewed up looking to be honest.`,
-        `{{He}}'s even uglier than most scaven, which really is saying a lot.`,
-      ]); }
-
-      if (this.character.personal <= averagePersonal) { return Random.from([
-        `Which can of course be expected of a scaven; they're not the most attractive creatures after all.`,
-        `Which is expected of course, given that {{he}}'s a scaven.`,
-        `For a scaven though, {{he}}'s about average looking.`,
-      ]); }
-
-      return Random.from([
-        `{{He}}'s unusually attractive though for a scaven, who tend to be rather rough looking.`,
-        `For a scaven though, {{he}}'s far better looking than most of {{his}} species.`,
-      ]);
-    }
-
-    if (this.character.personal <= lowPersonal)  { return Random.from([
-      `I've seen far better looking {{C::species.elves}} in my time though.`,
-      `{{He}} certinally wouldn't be considered attractive among other {{C::species.elves}}.`
-    ]); }
-
-    if (this.character.personal > averagePersonal)  { return Random.from([
-      `{{He}} is quite good looking though for {{C::species.anElf}}.`
-    ]); }
-
-    // No need to comment further on average looking characters.
-    return ''
-  }
-
-  headDescription() {
-    if (typeof this.character.species.headDescription == 'function') {
-      return this.character.species.headDescription(this.character, this.body);
-    }
-    if (typeof this.character.species.headDescription == 'string') {
-      return this.character.species.headDescription;
-    }
-    return Random.from([
-      `{{He}} has an elven face with {{C::body.eyeColor}} eyes and {{C::body.hairColor}} hair.`,
-    ]);
-  }
 
   skinDescription() {
     if (typeof this.character.species.skinDescription == 'function') {

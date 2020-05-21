@@ -12,20 +12,24 @@ describe.only('Describer: Body', function() {
     });
   }
 
-  it('describes scaven faces', function(done) {
+  it('describes scaven faces (~10 personal)', function(done) {
     printFace('Scaven', { species:'scaven' }, done);
   });
 
-  it('describes elf faces', function(done) {
+  it('describes elf face (~20 personal)', function(done) {
     printFace('Elf', { species:'elf' }, done);
   });
 
-  it('describes vieran faces', function(done) {
+  it('describes vieran faces (~30 personal)', function(done) {
     printFace('Viera', { species:'viera' }, done);
   });
 
-  it('describes nymph faces', function(done) {
+  it('describes nymph faces (~40 personal)', function(done) {
     printFace('Nymph', { species:'nymph' }, done);
+  });
+
+  it.only('describes mythic faces (~95 personal)', function(done) {
+    printFace('Mythic', { species:'dragon', personal:Random.between(90,100) }, done);
   });
 
 });

@@ -37,6 +37,9 @@ global.Character = Database.instance().define('character', {
     portrait()    { return ImageResource.lookup(this.portraitCode || 'unknown-portrait'); },
 
     isFurry()      { return this.species.isFurry(this.genderCode); },
+    isScalie()     { return this.species.isScalie; },
+    hasSkinBody()  { return !this.isFurry && !this.isScalie; },
+    hasHair()      { return this.hasSkinBody || this.species.hasHair() },
     isPlayer()     { return false; },
     isLoyal()      { return this.loyalty >= 25 },
     isAfraid()     { return this.fear >= 25 },
