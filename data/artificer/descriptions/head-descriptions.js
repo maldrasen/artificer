@@ -55,7 +55,7 @@ Description.buildHead({ species:'caprien', requires:['minion(C).is-not-male','mi
       demonic.`
 });
 
-// === Dragon ===
+// === Dragons ===
 
 Description.buildHead({ species:'dragon',
   d: `{{C::gender.He}} has a distincly dragon-shaped head topped with a long pair of ridged backswept horns.`
@@ -93,24 +93,48 @@ Description.buildHead({ species:'dragon',
       head.`
 });
 
+// === Dryads ===
 
+Description.buildHead({ species:'dryad',
+  includes:['hair-color'],
+  d: `Like other dryads {{he}} has a pair of deer antlers that crown the top of {{his}} head, emerging from {{his}}
+      {{C::body.hairColor}} hair.`
+});
 
-// Dryad
-// headDescription: `{{C::gender.He}} has {{C::body.eyeColor}} eyes and a face like an elf except that {{C::gender.his}}
-//                   head is crowned with a rack of deer antlers parting {{C::gender.his}} {{C::body.hairColor}} hair.`,
+Description.buildHead({ species:'dryad',
+  includes:['eye-color','hair-color'],
+  d: `{{He}} has an elf-like face with {{C::body.eyeColor}} eyes and a rack of deer antlers parting {{his}}
+      {{C::body.hairColor}} hair.`
+});
 
-// Equian
+Description.buildHead({ species:'dryad', requires:['minion(C).face.hard'],
+  includes:['eye-color','hair-color'],
+  d: `{{He}} has a savage looking face like that of a {{C::body.eyeColor}} eyed elf, but with a large branching rack of
+      deer antlers parting {{his}} {{C::body.hairColor}} hair.`
+});
+
+Description.buildHead({ species:'dryad', requires:['minion(C).face.soft'],
+  includes:['eye-color','hair-color'],
+  d: `{{He}} has a kind and friendly looking face like that of a {{C::body.eyeColor}} eyed elf, but with two small deer
+      horns parting {{his}} {{C::body.hairColor}} hair.`
+});
+
+// === Equians ===
+
 // headDescription: `{{C::gender.He}} has a big horse shaped head with {{C::body.furColor}} fur and {{C::body.eyeColor}} eyes.`,
 
-// Kobold
+// === Kobolds ===
+
 // headDescription: `{{C::gender.He}} has a face like a dragon, though smaller and meaner looking, with
 //                   {{C::body.scaleColor}} scales, {{C::body.eyeColor}} eyes, and a short pair of ridged
 //                   back facing horns.`,
 
-// Lupin
+// === Lupins ===
+
 // headDescription: `{{C::gender.He}} has the face of a wolf with {{C::body.furColor}} fur and {{C::body.eyeColor}} eyes.`,
 
-// Mino
+// === Minotaurs ===
+
 // Head description is complex for a caprien because males have anthro goat
 // heads and females do not.
 // headDescription: (character,body) => {
@@ -128,10 +152,12 @@ Description.buildHead({ species:'dragon',
 //           and ${horns}.`;
 // },
 
-// Naga
+// === Naga ===
+
 // headDescription: `{{C::gender.He}} has a snake's face, with {{C::body.scaleColor}} scales and {{C::body.eyeColor}} eyes.`,
 
-// Neko
+// === Neko ===
+
 // need to call out cat ears
 
 // === Scaven ===
@@ -159,9 +185,9 @@ Description.buildHead({ species:'scaven', requires:['minion(C).face.below-averag
       of {{C::body.furColor}} fur.`
 });
 
-// Selkie
+// === Selkie ===
 // headDescription: `{{C::gender.He}} has a face like a seal with {{C::body.furColor}} fur and {{C::body.eyeColor}} eyes.`,
 
-// Viera
+// === Viera ===
 // headDescription: `{{C::gender.He}} has {{C::body.eyeColor}} eyes and a face like an elf except that two long rabbit
 //                   ears press upward from {{C::gender.his}} {{C::body.hairColor}} hair.`,
