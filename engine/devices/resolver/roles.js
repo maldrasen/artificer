@@ -15,13 +15,14 @@ Resolver.Roles = (function() {
 
     await Promise.all(characters.map(async character => {
       const result = await Role.work(character);
+      const report = await result.forReport();
       const flavors = result.flavors;
 
       result.flavors = ItemFlavor.forReport(flavors);
       result.items = ItemFlavor.itemize(flavors);
 
       Resolver.Items.add(result.items);
-      Resolver.Report.setMinionData(character,'work',(await result.forReport()));
+      Resolver.Report.setMinionData(character,'work',report);
     }));
   }
 

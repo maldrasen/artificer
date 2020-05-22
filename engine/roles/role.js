@@ -5,18 +5,12 @@ global.Role = (function() {
     await context.addCharacter('C',character);
     const result = new RoleResult(context);
 
-console.log("Built result:",result,result.story)
+    if (character.role == 'forager') { }
+    if (character.role == 'hunter') { }
+    if (character.role == 'rest') { Role.Rest.work(character,result); }
 
     return result;
   }
-
-  // function lookup(code) {
-  //   return {
-  //     forager: Role.Forager,
-  //     hunter:  Role.Hunter,
-  //     rest:    Role.Rest,
-  //   }[code];
-  // }
 
   async function getAvailableRoles(character) {
     const roles = [];

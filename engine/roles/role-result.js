@@ -9,11 +9,12 @@ global.RoleResult = class RoleResult {
   get character() { return this.context.get('C').character; }
 
   get story() { return this._story; }
-
   get items() { return []; }
   get notifications() { return []; }
   get flavors() { return []; }
   get injury() { return null; }
+
+  set story(text) { this._story = text; }
 
   // Because the report is rendered in the view, the result needs to be turned
   // into a plain object.
