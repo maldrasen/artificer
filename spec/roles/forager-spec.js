@@ -39,51 +39,47 @@ describe.only('Role: Forager', function() {
 
   // In the next two specs, it's possible that the character may have been
   // injured and brought nothing back, so these specs only continue when that's
-  // not the case.
+  // not the case. The second event is another scheduled event where the willow
+  // branches are found, but it's a different type of event than the first
+  // scheduled event so it needs its own spec.
+  it('goes foraging for a second time.', function(done) {
+    Flag.setAll({
+      'role.forage.success-count': 1,
+      'role.forage.failure-count': 0,
+      'item.goat-nuts': 'Y'
+    });
 
-  // it('goes foraging for a second time.', function(done) {
-  //   Flag.setAll({
-  //     'role.forage.success-count': 1,
-  //     'role.forage.failure-count': 0,
-  //     'item.goat-nuts': 'Y'
-  //   });
-  //
-  //   Game.start().then(() => {
-  //     Game.setPhase('after-work').then(() => {
-  //       SpecHelper.buildJada({ species:'scaven' }).then(jada => {
-  //         Role.Forager.work(jada).then(results => {
-  //           if (results.injury == null) {
-  //             expect(results.notifications[0].name).to.equal('Foraging');
-  //             expect(results.flavors['goat-nuts']).to.be.at.least(1);
-  //             expect(results.flavors['willow-branches']).to.equal(1);
-  //           }
-  //           done();
-  //         });
-  //       });
-  //     });
-  //   });
-  // });
-  //
-  // it('goes foraging a third time', function(done) {
-  //   Flag.setAll({
-  //     'role.forage.success-count': 2,
-  //     'role.forage.failure-count': 0,
-  //     'item.goat-nuts': 'Y'
-  //   });
-  //
-  //   Game.start().then(() => {
-  //     Game.setPhase('after-work').then(() => {
-  //       SpecHelper.buildJada({ species:'scaven' }).then(jada => {
-  //         Role.Forager.work(jada).then(results => {
-  //           if (results.injury == null) {
-  //             expect(results.notifications[0].name).to.equal('Foraging');
-  //             expect(Object.keys(results.flavors)).to.eql(['goat-nuts'])
-  //           }
-  //           done();
-  //         });
-  //       });
-  //     });
-  //   });
-  // });
+    setup().then(jada => {
+      Role.work(jada).then(result => {
+        if (result.injury == null) {
+          expect(result.notifications[0].name).to.equal('Foraging');
+          expect(result.flavors['goat-nuts']).to.be.at.least(1);
+          expect(result.flavors['willow-branches']).to.equal(1);
+        }
+        done();
+      });
+    });
+  });
+
+  // The third time should be a default foraging trip.
+  it('goes foraging a third time', function(done) {
+    Flag.setAll({
+      'role.forage.success-count': 2,
+      'role.forage.failure-count': 0,
+      'item.goat-nuts': 'Y'
+    });
+
+    setup().then(jada => {
+      jada.addAspect('foraging',{ strength:50 }).then(_ => {
+        Role.work(jada).then(result => {
+          if (result.injury == null) {
+            expect(result.notifications[0].name).to.equal('Foraging');
+            expect(Object.keys(result.flavors)).to.eql(['goat-nuts'])
+          }
+          done();
+        });
+      });
+    });
+  });
 
 });

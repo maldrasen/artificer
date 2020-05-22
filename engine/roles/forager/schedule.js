@@ -28,18 +28,13 @@ Role.Forager.Schedule = (function() {
   // function to do whatever it likes to the result.
   async function executeScheduled(character, result, scheduled) {
     if (scheduled.special) { return await scheduled.special(character, result); }
-
-    // TODO: Needs specs
-    // if (scheduled.event)   { await Game.addEvent(scheduled.event,{ actors:{ C:character.id }}); }
-    // if (scheduled.unlock)  { Flag.set(`item.${scheduled.unlock}`,'Y'); }
-    // return await buildScheduledReport(character, scheduled);
+    if (scheduled.event)   { await Game.addEvent(scheduled.event,{ actors:{ C:character.id }}); }
+    if (scheduled.unlock)  { Flag.set(`item.${scheduled.unlock}`,'Y'); }
+    return await buildScheduledReport(character, result, scheduled);
   }
 
   // Acutally get all the items and build the report for the scheduled foraging.
-  async function buildScheduledReport(character, scheduled) {
-    const context = new Context();
-    await context.addCharacter('C',character);
-
+  async function buildScheduledReport(character, result, scheduled) {
     let trips = await Role.Forager.getTrips(character, scheduled.injured);
     let total = await Role.Forager.Results.getTotalItems(character,trips);
     let bringBack = scheduled.unlock && scheduled.bringBack != false;
@@ -49,17 +44,11 @@ Role.Forager.Schedule = (function() {
     if (bringBack) { flavors[scheduled.unlock] = 1 }
 
     const health = await character.getHealthClass();
-    const story = Role.Forager.Stories.tell(health,scheduled.injured,trips);
+    result.story = Role.Forager.Stories.tell(health,scheduled.injured,trips);
 
-    // Injury story may also need to be specified by the schedule. Only do this if it is not.
-    const injuryStory = scheduled.injured ? await Role.Injuries.applyInjury(character, context, Hazard.hinterlandsForaging) : null;
-
-    return {
-      story: Weaver.weave(story,context),
-      injury: injuryStory,
-      notifications: await Role.Forager.getNotifications(character, flavors),
-      flavors: flavors,
-    };
+    // TODO NOW: Not sure if apply Injury here works, needs to be tested separately.
+    result.injury = scheduled.injured ? await Role.Injuries.applyInjury(character, context, Hazard.hinterlandsForaging) : null;
+    result.flavors = flavors;
   }
 
   return { getScheduled, executeScheduled };

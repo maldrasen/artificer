@@ -8,22 +8,17 @@ Role.Forager = (function() {
     if (scheduled) {
       await Role.Forager.Schedule.executeScheduled(character, result, scheduled);
       await complete(result);
+      return;
     }
 
-  //   const trips = await getTrips(character, injured);
-  //   const total = await Role.Forager.Results.getTotalItems(character,trips);
-  //   const flavors = await Role.Forager.Results.getItems(total);
-  //   const story = Role.Forager.Stories.tell(health, injured, trips);
-  //   const injuryStory = injured ? await Role.Injuries.applyInjury(character, context, Hazard.hinterlandsForaging) : null;
-  //   const equipmentStory = await CharacterEquipment.degrade(character,trips);
-  //   const notifications = await getNotifications(character, flavors);
-  //
-  //   return {
-  //     story: Weaver.weave(`${story} ${equipmentStory}`,context),
-  //     injury: injuryStory,
-  //     notifications: notifications,
-  //     flavors: flavors,
-  //   };
+    const trips = await getTrips(character, injured);
+    const total = await Role.Forager.Results.getTotalItems(character,trips);
+
+    result.flavors = await Role.Forager.Results.getItems(total);
+    result.story = `${Role.Forager.Stories.tell(health, injured, trips)} ${await CharacterEquipment.degrade(character, trips)}`
+    result.injury = injured ? await Role.Injuries.applyInjury(character, context, Hazard.hinterlandsForaging) : null;
+
+    await complete(result);
   }
 
   // Normally there's a 5% chance of getting injured when out foraging. If this
@@ -48,6 +43,6 @@ Role.Forager = (function() {
     await Role.addExperience(result,'foraging');
   }
 
-  return { work };
+  return { work, getTrips };
 
 })();
