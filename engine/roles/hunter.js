@@ -129,6 +129,6 @@ Role.Hunter = (function() {
   //   resolveResults,
   // };
 
-  return {};
+  return { work };
 
 })();

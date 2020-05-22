@@ -1,8 +1,9 @@
 describe.only('Role: Forager', function() {
 
-  async setup() {
+  async function setup() {
     await Game.start();
     await Game.setPhase('after-work');
+    return await SpecHelper.buildJada({ species:'scaven', dutyCode:'forager' });
   }
 
   // TODO: I would have liked to have run this ten times so that it goes
@@ -23,23 +24,17 @@ describe.only('Role: Forager', function() {
   // then the standard foraging.
 
   it('goes foraging for the first time.', function(done) {
-        // SpecHelper.buildJada({ species:'scaven' }).then(jada => {
-        //   Role.Forager.work(jada).then(results => {
-        //
-        //     const context = new Context();
-        //     await context.addCharacter('C',character);
-        //     const result = new RoleResult(context);
-        //
-        //
-        //     // expect(results.injury).to.be.undefined;
-        //     // expect(results.flavors['bitter-fruits']).to.equal(2);
-        //     // expect(results.flavors['goat-nuts']).to.equal(3);
-        //     // expect(results.flavors['juice-berries']).to.equal(2);
-        //     // expect(results.flavors['sweet-fruits']).to.equal(1);
-        //     // expect(results.notifications).to.eql([{ code:'foraging', name:'Foraging', experience:14 }]);
-        //     done();
-        //   });
-        // });
+    setup().then(jada => {
+      Role.work(jada).then(result => {
+        expect(result.injury).to.be.undefined;
+        expect(result.flavors['bitter-fruits']).to.equal(2);
+        expect(result.flavors['goat-nuts']).to.equal(3);
+        expect(result.flavors['juice-berries']).to.equal(2);
+        expect(result.flavors['sweet-fruits']).to.equal(1);
+        expect(result.notifications).to.eql([{ code:'foraging', name:'Foraging', experience:14 }]);
+        done();
+      });
+    });
   });
 
   // In the next two specs, it's possible that the character may have been

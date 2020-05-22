@@ -40,7 +40,7 @@
 
   // The first time a character goes foraging they need to bring back at least
   // one of each available item, because they'll be mentioned in the event.
-  async function firstResult(character) {
+  async function firstResult(character, result) {
     await Game.addEvent('found-fruits-and-nuts',{ actors:{ C:character.id }});
 
     Flag.setAll({
@@ -50,18 +50,14 @@
       'item.sweet-fruits':'Y',
     });
 
-    const flavors = {
+    result.flavors = {
       'bitter-fruits': 2,
       'goat-nuts': 3,
       'juice-berries': 2,
       'sweet-fruits': 1,
     };
 
-    return {
-      story: await Weaver.weaveWithCharacter(Role.Forager.Stories.tell('healthy',false,4), 'C', character),
-      notifications: await Role.Forager.getNotifications(character, flavors),
-      flavors: flavors,
-    };
+    result.story = Role.Forager.Stories.tell('healthy',false,4);
   }
 
   // The event where you find the blight spider is strange because you don't

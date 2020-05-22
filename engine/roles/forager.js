@@ -5,11 +5,9 @@ Role.Forager = (function() {
     const injured = await wasCharacterInjured()
     const scheduled = await Role.Forager.Schedule.getScheduled(injured);
 
-    console.log('Working')
-    console.log(scheduled)
-
     if (scheduled) {
-      // return await Role.Forager.Schedule.executeScheduled(character, scheduled);
+      await Role.Forager.Schedule.executeScheduled(character, result, scheduled);
+      await complete(result);
     }
 
   //   const trips = await getTrips(character, injured);
@@ -43,21 +41,13 @@ Role.Forager = (function() {
     return injured ? Random.upTo(maxTrips-1) : maxTrips;
   }
 
-  // async function getNotifications(character, flavors) {
-  //   return [await Role.Skills.addExperience({ character:character, skill:'foraging', flavors:flavors })];
-  // }
-  //
-  // return {
-  //   code,
-  //   name,
-  //   description,
-  //   canWork,
-  //   work,
-  //
-  //   getTrips,
-  //   getNotifications,
-  // };
+  // When completing a foraging event we add experience to the foraging skill.
+  // The experience added is determined by the flavors that have been added to
+  // the result object.
+  async function complete(result) {
+    await Role.addExperience(result,'foraging');
+  }
 
-  return {};
+  return { work };
 
 })();

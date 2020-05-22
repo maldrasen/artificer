@@ -3,18 +3,32 @@ global.RoleResult = class RoleResult {
   constructor(context) {
     this._context = context;
     this._story = '{{C::character.firstName}} did a work';
+
+    this._flavors = [];
+    this._items = [];
+    this._notifications = [];
   }
 
-  get context() { return this._context; }
-  get character() { return this.context.get('C').character; }
+  get character()     { return this.context.get('C').character; }
+  get context()       { return this._context; }
+  get flavors()       { return this._flavors; }
+  get injury()        { return this._injury; }
+  get items()         { return this._items; }
+  get notifications() { return this._notifications; }
+  get story()         { return this._story; }
 
-  get story() { return this._story; }
-  get items() { return []; }
-  get notifications() { return []; }
-  get flavors() { return []; }
-  get injury() { return null; }
+  set story(text)   { this._story = text;   }
+  set flavors(list) { this._flavors = list; }
 
-  set story(text) { this._story = text; }
+  // Experience notifications should have the following attributes. These are
+  // simply passed to the view to be rendered in the report.
+  //    code         aspect.code,
+  //    name         aspect.name,
+  //    experience   experience,
+  //    gainedLevel  (optional)
+  addNotification(notification) {
+    this._notifications.push(notification);
+  }
 
   // Because the report is rendered in the view, the result needs to be turned
   // into a plain object.
@@ -27,7 +41,5 @@ global.RoleResult = class RoleResult {
       injury: this.injury
     }
   }
-
-
 
 }
