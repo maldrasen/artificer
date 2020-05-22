@@ -3,9 +3,6 @@ Role.Rest = (function() {
   // const name = 'Rest';
   // const description = 'This minion will rest and relax. Resing minions heal faster and will entertain themselves.';
   //
-  // async function canWork(character) {
-  //   return Flag.lookup('plan-view.roles.rest') == 'Y';
-  // }
   //
   // async function work(character) {
   //   return { story:`${character.singleName} spent the day resting.` };

@@ -21,7 +21,7 @@ Resolver.Roles = (function() {
       result.items = ItemFlavor.itemize(flavors);
 
       Resolver.Items.add(result.items);
-      Resolver.Report.setMinionData(character,'work',result);
+      Resolver.Report.setMinionData(character,'work',(await result.forReport()));
     }));
   }
 

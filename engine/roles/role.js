@@ -1,13 +1,13 @@
 global.Role = (function() {
 
   async function work(character) {
-    return {
-      story: '{{C::character.firstName}} did a work',
-      items: null,
-      notifications: null,
-      injury: null,
-      flavors: null,
-    }
+    const context = new Context();
+    await context.addCharacter('C',character);
+    const result = new RoleResult(context);
+
+console.log("Built result:",result,result.story)
+
+    return result;
   }
 
   // function lookup(code) {
@@ -19,21 +19,11 @@ global.Role = (function() {
   // }
 
   async function getAvailableRoles(character) {
-
-    return [
-      { code:'hunter', name:'Hunter' },
-    ];
-
-    // const roles = [];
-    // const rest = await Role.Rest.canWork(character);
-    // const hunt = await Role.Hunter.canWork(character);
-    // const forage = await Role.Forager.canWork(character);
-    //
-    // if (rest) { roles.push({ code:'rest', name:'Rest' }); }
-    // if (hunt) { roles.push({ code:'hunter', name:'Hunter' }); }
-    // if (forage) { roles.push({ code:'forager', name:'Forager' }); }
-    //
-    // return roles;
+    const roles = [];
+    if (Flag.lookup('plan-view.roles.forager') == 'Y') { roles.push({ code:'forager', name:'Forager' }); }
+    if (Flag.lookup('plan-view.roles.hunter') == 'Y')  { roles.push({ code:'hunter',  name:'Hunter' });  }
+    if (Flag.lookup('plan-view.roles.rest') == 'Y')    { roles.push({ code:'rest',    name:'Rest'   });  }
+    return roles;
   }
 
   return {

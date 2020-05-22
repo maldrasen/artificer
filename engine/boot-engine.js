@@ -118,6 +118,7 @@ require(`${ROOT}/engine/looms/tits-loom`);
 require(`${ROOT}/engine/roles/role`);
 require(`${ROOT}/engine/roles/forager`);
 require(`${ROOT}/engine/roles/hunter`);
+require(`${ROOT}/engine/roles/role-result`);
 require(`${ROOT}/engine/roles/rest`);
 require(`${ROOT}/engine/roles/forager/results`);
 require(`${ROOT}/engine/roles/forager/schedule`);

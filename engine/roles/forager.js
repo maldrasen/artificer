@@ -3,9 +3,6 @@ Role.Forager = (function() {
   // const name = 'Forager';
   // const description = 'A forager will go out into the wilds and forrage for food and crafting materials.';
   //
-  // async function canWork(character) {
-  //   return Flag.lookup('plan-view.roles.forager') == 'Y'
-  // }
   //
   // async function work(character) {
   //   const context = new Context();

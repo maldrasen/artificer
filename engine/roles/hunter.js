@@ -3,9 +3,6 @@ Role.Hunter = (function() {
   // const name = 'Hunter';
   // const description = 'A hunter will hunt animals for meat and hides. They can also capture animals.';
   //
-  // async function canWork(character) {
-  //   return Flag.lookup('plan-view.roles.hunter') == 'Y'
-  // }
   //
   // async function work(character) {
   //   let tier = await calculateTier(character);

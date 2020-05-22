@@ -54,6 +54,9 @@ Resolver.Report = (function() {
   }
 
   function setMinionData(minion, key, value) {
+
+console.log("Setting Minon Data:",minion.id,key,value)
+
     Resolver.currentReport().minions[minion.id][key] = value;
   }
 
