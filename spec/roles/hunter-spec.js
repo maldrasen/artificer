@@ -1,5 +1,21 @@
 describe.only('Role: Hunter', function() {
 
+  async function setup() {
+    await Game.start();
+    await Game.setPhase('after-work');
+    return await SpecHelper.buildJada({ species:'scaven', dutyCode:'hunter' });
+  }
+
+  it('goes hunting', function(done) {
+    setup().then(jada => {
+      Role.work(jada).then(result => {
+
+        console.log(result);
+        done();
+      });
+    });
+  });
+
   // describe('successChance()', function() {
   //   it("A weak character has a low chance of success", function() {
   //     expect(Role.Hunter.successChance(0,0)).to.equal(30)

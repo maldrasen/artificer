@@ -1,4 +1,4 @@
-describe.only('Role: Forager', function() {
+describe('Role: Forager', function() {
 
   async function setup() {
     await Game.start();

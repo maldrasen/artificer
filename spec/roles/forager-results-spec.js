@@ -1,4 +1,4 @@
-describe.only('Role: Forager.Results', function() {
+describe('Role: Forager.Results', function() {
 
   describe("getItems()", function() {
     it('gets the requested number of items', function(done) {

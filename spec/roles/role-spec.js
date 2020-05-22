@@ -1,4 +1,4 @@
-describe.only('Role', function() {
+describe('Role', function() {
 
   async function setupResult() {
     const jada = await SpecHelper.buildJada({ species:'scaven' });

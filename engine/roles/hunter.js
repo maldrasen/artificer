@@ -1,32 +1,30 @@
 Role.Hunter = (function() {
 
   async function work(character, result) {
-    // let tier = await calculateTier(character);
-    // let skill = await Role.Skills.skillLevel(character,'hunting');
-    // let chance = successChance(character.physical, skill);
-    // let success = Random.roll(100) < chance
-    //
-    // if (success) {
-    //   return await huntingSuccess(character,tier,skill)
-    // } else {
-    //   return await huntingFailure(character,tier,skill);
-    // }
+    const tier = await calculateTier(character);
+    const skill = await Role.skillLevel(character,'hunting');
+    const chance = successChance(character.physical, skill);
+
+    (Random.roll(100) < chance) ?
+      await huntingSuccess(result,tier,skill):
+      await huntingFailure(result,tier,skill);
   }
 
-  // // Hunting tier is based entirely on a character's equipment, primarily on
-  // // the weapon used, though other tools will play into this later I think.
-  // // Poison tipped arrows are thing, but is ammo a tool then?
-  // //   Tier 0 - No equipment.
-  // //   Tier 1 - Sling.
-  // //   Tier 2 - Bow and arrows.
-  // //   Tier 3 - Bow and arrows with poison.
-  // async function calculateTier(character) {
-  //   const weapon = await character.getEquipment('weapon');
-  //   if (weapon == null) { return 0; }
-  //   if (weapon.code == 'sling') { return 1; }
-  // }
-  //
-  // async function huntingSuccess(character,tier,skill) {
+  // Hunting tier is based entirely on a character's equipment, primarily on
+  // the weapon used, though other tools will play into this later I think.
+  // Poison tipped arrows are thing, but is ammo a tool then?
+  //   Tier 0 - No equipment.
+  //   Tier 1 - Sling.
+  //   Tier 2 - Bow and arrows.
+  //   Tier 3 - Bow and arrows with poison.
+  async function calculateTier(character) {
+    const weapon = await character.getEquipment('weapon');
+    if (weapon == null) { return 0; }
+    if (weapon.code == 'sling') { return 1; }
+  }
+
+  async function huntingSuccess(result, tier, skill) {
+    console.log("Success");
   //   const flavors = resolveResults(huntingResults(tier, skill))
   //   const items = ItemFlavor.itemize(flavors);
   //   const injury = await Role.Hunter.Injuries.resolve({ character:character, skill:skill, tier:tier, success:true });
@@ -37,16 +35,17 @@ Role.Hunter = (function() {
   //   const notifications = [await Role.Skills.addExperience({ character, flavors, skill:'hunting' })];
   //
   //   return forReport({ flavors, items, story, injury, notifications });
-  // }
-  //
-  // async function huntingFailure(character,tier,skill) {
+  }
+
+  async function huntingFailure(result, tier, skill) {
+    console.log("Failure");
   //   const injury = await Role.Hunter.Injuries.resolve({ character:character, skill:skill, tier:tier, success:false });
   //   const story = await Role.Hunter.Stories.tell(false,{},injury,character);
   //   const notifications = [await Role.Skills.addExperience({ character, skill:'hunting'})];
   //
   //   return forReport({ story, injury, notifications })
-  // }
-  //
+  }
+
   // function forReport(raw) {
   //   let result = { story:raw.story }
   //
@@ -100,29 +99,22 @@ Role.Hunter = (function() {
   //
   //   throw `Need to implement results for hunting tier ${tier}`;
   // }
-  //
-  // // Success chance is based on physical attribute and skill level alone.
-  // function successChance(physical, skillLevel) {
-  //   let bonus = 0;
-  //
-  //   if (physical >= 10 && physical < 20) { bonus = 2; }
-  //   if (physical >= 20 && physical < 30) { bonus = 4; }
-  //   if (physical >= 30)                  { bonus = 5; }
-  //
-  //   if (skillLevel == 1) { bonus += 1; }
-  //   if (skillLevel == 2) { bonus += 2; }
-  //   if (skillLevel == 3) { bonus += 5; }
-  //
-  //   return [30,50,60,65,70,75,80,83,86,89,90][bonus];
-  // }
-  //
-  // return {
-  //   code,
-  //   name,
-  //   description,
-  //   canWork,
-  //   work,
-  //
+
+  // Success chance is based on physical attribute and skill level alone.
+  function successChance(physical, skillLevel) {
+    let bonus = 0;
+
+    if (physical >= 10 && physical < 20) { bonus = 2; }
+    if (physical >= 20 && physical < 30) { bonus = 4; }
+    if (physical >= 30)                  { bonus = 5; }
+
+    if (skillLevel == 1) { bonus += 1; }
+    if (skillLevel == 2) { bonus += 2; }
+    if (skillLevel == 3) { bonus += 5; }
+
+    return [30,50,60,65,70,75,80,83,86,89,90][bonus];
+  }
+
   //   // === Hunter specific or for specs ===
   //   successChance,
   //   huntingResults,
