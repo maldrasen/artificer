@@ -1,7 +1,5 @@
 Role.Forager.Results = (function() {
 
-  // TODO NOW: This should be made more general purpose.
-
   // This function returns a map of item flavors randomly selected from the
   // foraging location's frequency map.
   async function getItems(total) {
