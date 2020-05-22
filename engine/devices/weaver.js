@@ -28,6 +28,8 @@ global.Weaver = (function() {
   // Everything that the weaver uses should already be in the context, that way
   // this function can remain synchronous.
   function weave(text, context) {
+    if (text == null) { return ''; }
+
     var working = true;
 
     while(working) {
