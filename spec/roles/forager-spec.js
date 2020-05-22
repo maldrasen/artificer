@@ -70,14 +70,12 @@ describe.only('Role: Forager', function() {
     });
 
     setup().then(jada => {
-      jada.addAspect('foraging',{ strength:50 }).then(_ => {
-        Role.work(jada).then(result => {
-          if (result.injury == null) {
-            expect(result.notifications[0].name).to.equal('Foraging');
-            expect(Object.keys(result.flavors)).to.eql(['goat-nuts'])
-          }
-          done();
-        });
+      Role.work(jada).then(result => {
+        if (result.injury == null) {
+          expect(result.notifications[0].name).to.equal('Foraging');
+          expect(Object.keys(result.flavors)).to.eql(['goat-nuts'])
+        }
+        done();
       });
     });
   });

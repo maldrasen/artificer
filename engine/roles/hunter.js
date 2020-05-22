@@ -1,16 +1,16 @@
 Role.Hunter = (function() {
 
   async function work(character, result) {
-  //   let tier = await calculateTier(character);
-  //   let skill = await Role.Skills.skillLevel(character,'hunting');
-  //   let chance = successChance(character.physical, skill);
-  //   let success = Random.roll(100) < chance
-  //
-  //   if (success) {
-  //     return await huntingSuccess(character,tier,skill)
-  //   } else {
-  //     return await huntingFailure(character,tier,skill);
-  //   }
+    // let tier = await calculateTier(character);
+    // let skill = await Role.Skills.skillLevel(character,'hunting');
+    // let chance = successChance(character.physical, skill);
+    // let success = Random.roll(100) < chance
+    //
+    // if (success) {
+    //   return await huntingSuccess(character,tier,skill)
+    // } else {
+    //   return await huntingFailure(character,tier,skill);
+    // }
   }
 
   // // Hunting tier is based entirely on a character's equipment, primarily on
