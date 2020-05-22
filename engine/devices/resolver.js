@@ -38,12 +38,17 @@ global.Resolver = (function() {
     await Composer.render();
   }
 
-  // This came up in the magic practice events. I needed a way to know if the
-  // player had meditated or not today, but had no way of knowing. This
-  // function sets a flag for that, but maybe more flags will be needed later.
+  // These flags are based on the day's plan and can be used to trigger events
+  // that depend on what the characters spent their day doing.
   function setPlanFlags(plan) {
-    let taskCodes = plan.taskWork.map(task => task.code);
-    Flag.set('player.meditated-today', ArrayUtility.contains(taskCodes,'meditate') ? 'yes' : 'no');
+    const taskCodes = plan.taskWork.map(task => task.code);
+    const meditated = ArrayUtility.contains(taskCodes,'meditate') ? 'yes' : 'no';
+
+    Flag.setAll({
+      'player.meditated-today': meditated,
+      'role.hunter.success-today': '',
+      'role.hunter.failure-today': '',
+    });
   }
 
   async function startAfterWork() {

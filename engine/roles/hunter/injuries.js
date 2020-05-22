@@ -1,5 +1,7 @@
 Role.Hunter.Injuries = (function() {
 
+
+
   // // I think I completely reworked injuries in the time that hunting wasn't
   // // available. It looks like all of this needs to be completely redone now.
   // // Fortunately not getting injured was always an option, so this can just
@@ -93,6 +95,6 @@ Role.Hunter.Injuries = (function() {
   //   meetsRequirement
   // };
 
-  return {};
+  return {  };
 
 })();

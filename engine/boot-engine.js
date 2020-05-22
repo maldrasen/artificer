@@ -123,6 +123,7 @@ require(`${ROOT}/engine/roles/rest`);
 require(`${ROOT}/engine/roles/forager/results`);
 require(`${ROOT}/engine/roles/forager/schedule`);
 require(`${ROOT}/engine/roles/forager/stories`);
+require(`${ROOT}/engine/roles/hunter/results`);
 require(`${ROOT}/engine/roles/hunter/injuries`);
 require(`${ROOT}/engine/roles/hunter/stories`);
 
