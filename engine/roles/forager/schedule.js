@@ -45,9 +45,7 @@ Role.Forager.Schedule = (function() {
 
     const health = await character.getHealthClass();
     result.story = Role.Forager.Stories.tell(health,scheduled.injured,trips);
-
-    // TODO NOW: Not sure if apply Injury here works, needs to be tested separately.
-    result.injury = scheduled.injured ? await Role.Injuries.applyInjury(character, context, Hazard.hinterlandsForaging) : null;
+    result.injury = scheduled.injured ? await Role.Injuries.applyInjury(character, Hazard.hinterlandsForaging) : null;
     result.flavors = flavors;
   }
 

@@ -1,5 +1,11 @@
 global.Role = (function() {
 
+  // New minions are created with the forager role, until resting is unlocked,
+  // then they are created with the rest role. This is true for missions as well.
+  function defaultRole() {
+    return Flag.lookup('plan-view.roles.rest') == 'Y' ? 'rest' : 'forager'
+  }
+
   async function work(character) {
     const context = new Context();
     await context.addCharacter('C',character);
@@ -64,14 +70,15 @@ global.Role = (function() {
     }
   }
 
-  // === Injuries ===
-  async function applyInjury(character, context, hazardFunction) {
-    let injury = await getInjury(context, hazardFunction);
-    await character.addInjury(injury);
-    return Weaver.weave(injury.story, context);
+  // === Role Injuries ===
+
+  async function addInjury(result, hazardFunction) {
+    let injury = await selectInjury(result.context, hazardFunction);
+    await result.character.addInjury(injury);
+    result.injury = injury.story;
   }
 
-  async function getInjury(context, hazardFunction) {
+  async function selectInjury(context, hazardFunction) {
     return Random.from(ArrayUtility.compact(
       await Promise.all(hazardFunction().map(async hazard => {
         if (await CentralScrutinizer.meetsRequirements(hazard.requires, context)) { return hazard; }
@@ -81,17 +88,11 @@ global.Role = (function() {
 
   return {
     work,
+    defaultRole,
     getAvailableRoles,
     skillLevel,
     addExperience,
-    applyInjury,
-    getInjury,
+    addInjury,
   }
 
 })();
-
-// New minions are created with the forager role, until resting is unlocked,
-// then they are created with the rest role. This is true for missions as well.
-Role.defaultRole = function() {
-  return Flag.lookup('plan-view.roles.rest') == 'Y' ? 'rest' : 'forager'
-}

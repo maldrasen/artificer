@@ -18,6 +18,7 @@ global.RoleResult = class RoleResult {
   get story()         { return this._story; }
 
   set story(text)   { this._story = text;   }
+  set injury(text)  { this._injury = text;  }
   set flavors(list) { this._flavors = list; }
 
   // Experience notifications should have the following attributes. These are
@@ -34,11 +35,11 @@ global.RoleResult = class RoleResult {
   // into a plain object.
   async forReport() {
     return {
-      story: (await Weaver.weave(this.story,this.context)),
-      items: this.items,
+      story: (await Weaver.weave(this.story, this.context)),
+      injury: (await Weaver.weave(this.injury, this.context)),
       notifications: this.notifications,
       flavors: this.flavors,
-      injury: this.injury
+      items: this.items,
     }
   }
 

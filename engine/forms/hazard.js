@@ -1,6 +1,6 @@
 global.Hazard = class Hazard extends Form {
 
-  // Because the requirements for the injust locations are added automatically
+  // Because the requirements for the injury locations are added automatically
   // all hazard stories must use {{C::}} to denote the minion. All injuries are
   // also assumed to be painful injuries, unless they're head injuries which
   // are criticl by default.
