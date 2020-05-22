@@ -1,10 +1,6 @@
 Role.Hunter = (function() {
-  // const code = 'hunter';
-  // const name = 'Hunter';
-  // const description = 'A hunter will hunt animals for meat and hides. They can also capture animals.';
-  //
-  //
-  // async function work(character) {
+
+  async function work(character, result) {
   //   let tier = await calculateTier(character);
   //   let skill = await Role.Skills.skillLevel(character,'hunting');
   //   let chance = successChance(character.physical, skill);
@@ -15,8 +11,8 @@ Role.Hunter = (function() {
   //   } else {
   //     return await huntingFailure(character,tier,skill);
   //   }
-  // }
-  //
+  }
+
   // // Hunting tier is based entirely on a character's equipment, primarily on
   // // the weapon used, though other tools will play into this later I think.
   // // Poison tipped arrows are thing, but is ammo a tool then?

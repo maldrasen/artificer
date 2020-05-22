@@ -5,9 +5,9 @@ global.Role = (function() {
     await context.addCharacter('C',character);
     const result = new RoleResult(context);
 
-    if (character.role == 'forager') { }
-    if (character.role == 'hunter') { }
-    if (character.role == 'rest') { Role.Rest.work(character,result); }
+    if (character.role == 'forager') { await Role.Forager.work(character,result); }
+    if (character.role == 'hunter')  { await Role.Hunter.work(character,result); }
+    if (character.role == 'rest')    { await Role.Rest.work(character,result); }
 
     return result;
   }

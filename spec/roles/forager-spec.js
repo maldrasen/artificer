@@ -1,5 +1,10 @@
 describe.only('Role: Forager', function() {
 
+  async setup() {
+    await Game.start();
+    await Game.setPhase('after-work');
+  }
+
   // TODO: I would have liked to have run this ten times so that it goes
   //       through the first several events, setting flags and unlocking items
   //       and enqueueing events and all that, but again we run into the
@@ -16,24 +21,26 @@ describe.only('Role: Forager', function() {
   // Each one of these specs hit a different branch. First, a scheduled
   // foraging with a special() function, then a normal scheduled foraging,
   // then the standard foraging.
-  //
-  // it('goes foraging for the first time.', function(done) {
-  //   Game.start().then(() => {
-  //     Game.setPhase('after-work').then(() => {
-  //       SpecHelper.buildJada({ species:'scaven' }).then(jada => {
-  //         Role.Forager.work(jada).then(results => {
-  //           expect(results.injury).to.be.undefined;
-  //           expect(results.flavors['bitter-fruits']).to.equal(2);
-  //           expect(results.flavors['goat-nuts']).to.equal(3);
-  //           expect(results.flavors['juice-berries']).to.equal(2);
-  //           expect(results.flavors['sweet-fruits']).to.equal(1);
-  //           expect(results.notifications).to.eql([{ code:'foraging', name:'Foraging', experience:14 }]);
-  //           done();
-  //         });
-  //       });
-  //     });
-  //   });
-  // });
+
+  it('goes foraging for the first time.', function(done) {
+        // SpecHelper.buildJada({ species:'scaven' }).then(jada => {
+        //   Role.Forager.work(jada).then(results => {
+        //
+        //     const context = new Context();
+        //     await context.addCharacter('C',character);
+        //     const result = new RoleResult(context);
+        //
+        //
+        //     // expect(results.injury).to.be.undefined;
+        //     // expect(results.flavors['bitter-fruits']).to.equal(2);
+        //     // expect(results.flavors['goat-nuts']).to.equal(3);
+        //     // expect(results.flavors['juice-berries']).to.equal(2);
+        //     // expect(results.flavors['sweet-fruits']).to.equal(1);
+        //     // expect(results.notifications).to.eql([{ code:'foraging', name:'Foraging', experience:14 }]);
+        //     done();
+        //   });
+        // });
+  });
 
   // In the next two specs, it's possible that the character may have been
   // injured and brought nothing back, so these specs only continue when that's
