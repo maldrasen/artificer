@@ -5,7 +5,6 @@ global.RoleResult = class RoleResult {
     this._story = '{{C::character.firstName}} did a work';
 
     this._flavors = [];
-    this._items = [];
     this._notifications = [];
   }
 
@@ -13,7 +12,7 @@ global.RoleResult = class RoleResult {
   get context()       { return this._context; }
   get flavors()       { return this._flavors; }
   get injury()        { return this._injury; }
-  get items()         { return this._items; }
+  get items()         { return ItemFlavor.itemize(this._flavors); }
   get notifications() { return this._notifications; }
   get story()         { return this._story; }
 
@@ -38,8 +37,7 @@ global.RoleResult = class RoleResult {
       story: (await Weaver.weave(this.story, this.context)),
       injury: (await Weaver.weave(this.injury, this.context)),
       notifications: this.notifications,
-      flavors: this.flavors,
-      items: this.items,
+      flavors: ItemFlavor.forReport(this.flavors),
     }
   }
 
