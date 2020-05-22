@@ -29,7 +29,7 @@ global.Character = Database.instance().define('character', {
     personality() { return Personality.lookup(this.personalityCode); },
     portrait()    { return ImageResource.lookup(this.portraitCode ? this.portraitCode : 'unknown-portrait'); },
     dutyOptions() { return JSON.parse(this.dutyOptions_json||'{}') },
-    role()        { return this.currentDuty == 'role' ? Role.lookup(this.dutyCode) : null; },
+    role()        { return this.currentDuty == 'role' ? this.dutyCode : null; },
     isMale()      { return this.genderCode == 'male'; },
     isFemale()    { return this.genderCode == 'female'; },
     alive()       { return this.status == 'normal' },
