@@ -1,31 +1,32 @@
-describe.only('Role: Hunter', function() {
+describe('Role: Hunter', function() {
 
-  async function setup() {
+  async function setup(flag) {
+    Settings.DebugSwitches[flag] = true;
+
     await Game.start();
     await Game.setPhase('after-work');
     return await SpecHelper.buildJada({ species:'scaven', dutyCode:'hunter' });
   }
 
-  it('goes hunting', function(done) {
-    Settings.DebugSwitches['never-injure'] = true;
+  // Not much we can actually assert in these specs. Mostly ensure that it
+  // doesn't blow up.
 
-    setup().then(jada => {
+  it('goes hunting', function(done) {
+    setup('never-injure').then(jada => {
       Role.work(jada).then(result => {
         result.forReport().then(report => {
-          console.log(report)
+          expect(report.story).to.exist;
           done();
         });
       });
     });
   });
 
-  it.only('goes hunting and gets injured', function(done) {
-    Settings.DebugSwitches['always-injure'] = true;
-
-    setup().then(jada => {
+  it('goes hunting and gets injured', function(done) {
+    setup('always-injure').then(jada => {
       Role.work(jada).then(result => {
         result.forReport().then(report => {
-          console.log(report)
+          expect(report.story).to.exist;
           done();
         });
       });

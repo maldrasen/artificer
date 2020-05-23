@@ -14,6 +14,7 @@ global.Settings = (function() {
   }
 
   function loadData(data) {
+    Settings.DebugSwitches = {};
     Settings.Metric = !! data.metric;
     Settings.FutaPronouns = (data.futaPronouns == 'she/her') ? 'she/her' : 'shi/hir';
   }
