@@ -1,8 +1,10 @@
 Role.Hunter.Stories = (function() {
 
-  // // TODO: It seems possible that the hunting was successful, but nothing was
-  // //       brought back?
-  // async function tell(success, flavors, injury, character) {
+  //    options:   { character, injured, hunted }
+  async function tell(options) {
+    return 'Story in progress'
+  }
+
   //
   //   let count = Object.keys(flavors).reduce((total, key) => {
   //     return total + flavors[key];
@@ -103,9 +105,7 @@ Role.Hunter.Stories = (function() {
   //     `. Despite being badly hurt while out on the hunt, he returned home with ${aFox}.`,
   //   ]);
   // }
-  //
-  // return { tell };
 
-  return {};
+  return { tell };
 
 })();

@@ -3,18 +3,24 @@ Role.Hunter = (function() {
   async function work(character, result) {
     const skill = await Role.skillLevel(character,'hunting');
     const injured = wasInjured(character,skill);
-    const hunted = Role.Hunter.Results.hunt({ character, skill, injured });
+    const hunted = await Role.Hunter.Results.hunt({ character, skill, injured });
+
+    const huntStory = await Role.Hunter.Stories.tell({ character, injured, hunted });
+    const equipmentStory = await CharacterEquipment.degrade(character);
+
+    result.flavors = hunted.flavors;
+    result.story = `${huntStory} ${equipmentStory}`;
+
+    updateFlag((Object.keys(hunted.flavors).length == 0 ?
+      'role.hunter.failure-today':
+      'role.hunter.success-today'
+    ), character.id);
+
+    await Role.addExperience(result,'hunting');
   }
 
   // === Old ===
-  // updateFlag('role.hunter.success-today', result.character.id);
-  // updateFlag('role.hunter.failure-today', result.character.id);
-  // const flavors = resolveResults(huntingResults(tier, skill))
-  // const items = ItemFlavor.itemize(flavors);
   // const injury = await Role.Hunter.Injuries.resolve({ character:character, skill:skill, tier:tier, success:true });
-  // const equipmentStory = await CharacterEquipment.degrade(character);
-  // const story = await Role.Hunter.Stories.tell(true,flavors,injury,character);
-  // const notifications = [await Role.Skills.addExperience({ character, flavors, skill:'hunting' })];
   // return forReport({ flavors, items, story, injury, notifications });
 
   function wasInjured(character, skill) {
