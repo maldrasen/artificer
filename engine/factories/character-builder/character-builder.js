@@ -41,30 +41,55 @@ global.CharacterBuilder = (function() {
   //
   async function buildStandardMinion(options) {
     const minion = await CharacterBuilder.build(options.minion);
-    await addRandomAspects(minion,options.randomAspectCount);
-    await CharacterAdjuster.applyAll(minion, options.adjustments);
 
-    if (Flag.lookup('player.goal') == 'followers') {
-      await minion.update({ loyalty:(minion.loyalty + 10) });
-    }
+    try {
+      await addRandomAspects(minion,options.randomAspectCount);
+      await CharacterAdjuster.applyAll(minion, options.adjustments);
 
-    if (minion.speciesCode == 'scaven') {
-      if (Flag.lookup('player.scaven-reputations.the-butcher')) {
-        await minion.update({ fear:(minion.fear + Random.between(5,10)) });
+      if (Flag.lookup('player.goal') == 'followers') {
+        await minion.update({ loyalty:(minion.loyalty + 10) });
       }
-      if (Flag.lookup('player.scaven-reputations.the-seductive')) {
-        await minion.update({ loyalty:(minion.loyalty + Random.between(5,10)) });
+
+      if (minion.speciesCode == 'scaven') {
+        if (Flag.lookup('player.scaven-reputations.the-butcher')) {
+          await minion.update({ fear:(minion.fear + Random.between(5,10)) });
+        }
+        if (Flag.lookup('player.scaven-reputations.the-seductive')) {
+          await minion.update({ loyalty:(minion.loyalty + Random.between(5,10)) });
+        }
       }
+
+      if (minion.firstName == null) {
+        let adjustments = await CharacterNamer.execute(minion);
+        await CharacterAdjuster.applyAll(minion, adjustments);
+      }
+
+      await CharacterDescriber.updateAll(minion);
+
+      return minion;
+    } catch(error) {
+      return await cleanupAndRetry(error,options,minion);
     }
+  }
 
-    if (minion.firstName == null) {
-      let adjustments = await CharacterNamer.execute(minion);
-      await CharacterAdjuster.applyAll(minion, adjustments);
-    }
+  // Because of all the randomness in creating a standard character it's
+  // possible to get some weird contradictory options. When that happens just
+  // throw the character away and try to build a new one with the same options.
+  // We only retry ten times though because something could actually be wrong.
+  async function cleanupAndRetry(error,options,minion) {
+    const aspects = await minion.getCharacterAspects();
 
-    await CharacterDescriber.updateAll(minion);
+    console.log("\nWARNING: Could not create character.",error)
+    console.log(`   Name:`,minion.name);
+    console.log(`   Aspects:`,aspects.map(a => a.code).join(','),'\n');
 
-    return minion;
+    await minion.completelyRemove();
+
+    if (options._try == null) { options._try = 0; }
+    if (options._try == 10) { throw `A character cannot be created with the options: ${JSON.stringify(options)}`; }
+    options._try++;
+
+    return CharacterBuilder.buildStandardMinion(options);
   }
 
   // Build a complete Character model with all of the associated body parts.

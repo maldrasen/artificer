@@ -1,5 +1,8 @@
 describe('CharacterBuilder', function() {
 
+  // This test just exercises the buildStandardMinion() option by calling it
+  // ten times. There's a lot that can go wrong in character creation, so this
+  // tests the error handling more than anything.
   it('builds a standard minion using the options', function(done) {
 
     let options = {
@@ -8,14 +11,16 @@ describe('CharacterBuilder', function() {
       randomAspectCount: 4,
     };
 
-    CharacterBuilder.buildStandardMinion(options).then(minion => {
-      minion.getCharacterAspects().then(aspects => {
-        minion.getCock().then(cock => {
-          done(); // It doesn't blow up I guess?
+    SpecHelper.tenTimes(done, resolve => {
+      CharacterBuilder.buildStandardMinion(options).then(minion => {
+        minion.getCharacterAspects().then(aspects => {
+          minion.getCock().then(cock => {
+            resolve();
+          });
         });
       });
     });
-  })
+  });
 
   it('builds a completely random character given a species', function(done) {
     CharacterBuilder.build({ species:'scaven' }).then(character => {
