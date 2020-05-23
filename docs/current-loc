@@ -6,20 +6,20 @@ terrible measure of progress and doneness normally, but this project involves a
 ton of writing, so knowing how many lines this has is actually useful. I'm
 thinking once we approach 500,000 lines we'll be close to done.
 
-Setting Orange, the 42nd day of Discord in the YOLD 3186 / 25 Apr 2020
+Pungenday, the 70th day of Discord in the YOLD 3186 / 23 May 2020
 
 ---------- Result ------------
 
-            Physical :  33897
-              Source :  26280
-             Comment :  3066
- Single-line comment :  3052
-       Block comment :  14
+            Physical :  37326
+              Source :  28939
+             Comment :  3135
+ Single-line comment :  3134
+       Block comment :  1
                Mixed :  44
  Empty block comment :  0
-               Empty :  4595
-               To Do :  210
+               Empty :  5296
+               To Do :  226
 
-Number of files read :  581
+Number of files read :  619
 
 ----------------------------
