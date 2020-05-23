@@ -6,11 +6,9 @@ Role.Hunter.Results = (function() {
   async function hunt(options) {
     const huntCount = await calculateCount(options);
     const huntMap = await buildFrequencyMap(options);
+    const hunted = [];
 
-    console.log("Count",huntCount);
-    console.log("Map",huntMap);
-
-    return [];
+    return hunted;
   }
 
   // Count is determined by looking at the character's health, skill, and if
@@ -210,6 +208,6 @@ Role.Hunter.Results = (function() {
   //
   // return { getItems, getTotalItems, getUnlockedItems, getCapacity };
 
-  return { hunt };
+  return { hunt, calculateCount };
 
 })();
