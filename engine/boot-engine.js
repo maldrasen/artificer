@@ -118,14 +118,14 @@ require(`${ROOT}/engine/looms/tits-loom`);
 require(`${ROOT}/engine/roles/role`);
 require(`${ROOT}/engine/roles/forager`);
 require(`${ROOT}/engine/roles/hunter`);
-require(`${ROOT}/engine/roles/role-result`);
 require(`${ROOT}/engine/roles/rest`);
-require(`${ROOT}/engine/roles/forager/results`);
-require(`${ROOT}/engine/roles/forager/schedule`);
-require(`${ROOT}/engine/roles/forager/stories`);
-require(`${ROOT}/engine/roles/hunter/results`);
-require(`${ROOT}/engine/roles/hunter/injuries`);
-require(`${ROOT}/engine/roles/hunter/stories`);
+require(`${ROOT}/engine/roles/role-result`);
+require(`${ROOT}/engine/roles/forager/forager-results`);
+require(`${ROOT}/engine/roles/forager/forager-schedule`);
+require(`${ROOT}/engine/roles/forager/forager-stories`);
+require(`${ROOT}/engine/roles/hunter/hunter-injuries`);
+require(`${ROOT}/engine/roles/hunter/hunter-results`);
+require(`${ROOT}/engine/roles/hunter/hunter-stories`);
 
 // === Scrutinizers ===
 require(`${ROOT}/engine/scrutinizers/anus-scrutinizer`);
