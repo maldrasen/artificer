@@ -2,42 +2,40 @@ Role.Hunter.Stories = (function() {
 
   //    options:   { character, injured, hunted }
   async function tell(options) {
-    return 'Story in progress'
+    const count = flavorCount(options.hunted.flavors)
+    const list = ItemFlavor.listify(options.hunted.flavors)
+
+    console.log("--- Compiling Story ---")
+    console.log(count,list)
+    console.log()
+
+    let phrase = Random.from([
+      `{{C::character.firstName}} spent the day hunting`,
+      `{{C::character.firstName}} went out hunting`,
+      `{{C::character.firstName}} spent the day hunting out in the Hinterlands`,
+      `{{C::character.firstName}} went hunting out in the Hinterlands`,
+    ]);
+
+    if (count > 0) {
+      phrase += options.injured ?
+        successInjury(list):
+        successNoInjury(list, count);
+    } else {
+      phrase += options.injured ?
+        failureNoInjury() :
+        failureInjury();
+    }
+
+    return phrase
   }
 
-  //
-  //   let count = Object.keys(flavors).reduce((total, key) => {
-  //     return total + flavors[key];
-  //   },0);
-  //
-  //   let phrase = Random.from([
-  //     `{{H::character.firstName}} spent the day hunting`,
-  //     `{{H::character.firstName}} went out hunting`,
-  //     `{{H::character.firstName}} spent the day hunting out in the Hinterlands`,
-  //     `{{H::character.firstName}} went hunting out in the Hinterlands`,
-  //   ]);
-  //
-  //   // === Success ===
-  //   if (success) {
-  //     phrase += (injury == null) ?
-  //       successNoInjury(ItemFlavor.listify(flavors), count) :
-  //       successInjury(ItemFlavor.listify(flavors), injury);
-  //   }
-  //
-  //   // === Failure ===
-  //   if (!success) {
-  //     phrase += (injury == null) ?
-  //       failureNoInjury() :
-  //       failureInjury(injury);
-  //   }
-  //
-  //   const context = new Context();
-  //   await context.addCharacter('H',character)
-  //
-  //   return Weaver.weave(phrase, context);
-  // }
-  //
-  // function failureNoInjury() {
+  function flavorCount(flavors) {
+    return Object.keys(flavors).reduce((total, key) => {
+      return total + flavors[key];
+    },0);
+  }
+
+  function failureNoInjury() {
   //   return Random.from([
   //     ` but was unable to catch anything.`,
   //     ` but failed to catch anything.`,
@@ -54,9 +52,9 @@ Role.Hunter.Stories = (function() {
   //     `. {{H::gender.He}} almost caught a rabbit, but it got away.`,
   //     `. {{H::gender.He}} almost caught a squirrel, but it got away.`,
   //   ]);
-  // }
-  //
-  // function failureInjury(injury) {
+  }
+
+  function failureInjury(injury) {
   //   stories = [
   //     ` but returned home in defeat.`,
   //     ` but was badly hurt and had to limp home.`,
@@ -72,9 +70,9 @@ Role.Hunter.Stories = (function() {
   //   }
   //
   //   return Random.from(stories);
-  // }
-  //
-  // function successNoInjury(aFox, count) {
+  }
+
+  function successNoInjury(aFox, count) {
   //   if (count == 1 && Random.upTo(1)==0) {
   //     return Random.from([
   //       `. Through {{H::gender.he}} was out the entire day, {{H::gender.he}} only caught ${aFox}.`,
@@ -91,9 +89,9 @@ Role.Hunter.Stories = (function() {
   //     `. {{H::gender.He}} ended up catching ${aFox}.`,
   //     `. {{H::gender.He}} was out the entire day and caught ${aFox},`,
   //   ]);
-  // }
-  //
-  // function successInjury(aFox, injury) {
+  }
+
+  function successInjury(aFox) {
   //   return Random.from([
   //     ` but was badly hurt. Still, {{H::gender.he}} managed to bring home ${aFox}, even though {{H::gender.he}} was injured.`,
   //     ` but was badly hurt. Still, {{H::gender.he}} managed to bring home ${aFox}.`,
@@ -104,7 +102,7 @@ Role.Hunter.Stories = (function() {
   //     `. Despite being badly hurt while out on the hunt, he brought back ${aFox}.`,
   //     `. Despite being badly hurt while out on the hunt, he returned home with ${aFox}.`,
   //   ]);
-  // }
+  }
 
   return { tell };
 

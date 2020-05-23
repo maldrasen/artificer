@@ -9,7 +9,10 @@ describe.only('Role: Hunter', function() {
   it('goes hunting', function(done) {
     setup().then(jada => {
       Role.work(jada).then(result => {
-        done();
+        result.forReport().then(report => {
+          console.log(report)
+          done();
+        });
       });
     });
   });
