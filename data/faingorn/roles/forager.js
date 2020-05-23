@@ -40,7 +40,7 @@
 
   // The first time a character goes foraging they need to bring back at least
   // one of each available item, because they'll be mentioned in the event.
-  async function firstResult(character) {
+  async function firstResult(character, result) {
     await Game.addEvent('found-fruits-and-nuts',{ actors:{ C:character.id }});
 
     Flag.setAll({
@@ -50,41 +50,26 @@
       'item.sweet-fruits':'Y',
     });
 
-    const flavors = {
+    result.flavors = {
       'bitter-fruits': 2,
       'goat-nuts': 3,
       'juice-berries': 2,
       'sweet-fruits': 1,
     };
 
-    return {
-      story: await Weaver.weaveWithCharacter(Role.Forager.Stories.tell('healthy',false,4), 'C', character),
-      notifications: await Role.Forager.getNotifications(character, flavors),
-      flavors: flavors,
-    };
+    result.story = Role.Forager.Stories.tell('healthy',false,4);
   }
 
   // The event where you find the blight spider is strange because you don't
   // bring the spider back or anything. Plus, I want to use a canned hazard
   // here, but the injury the minion gets depends on their gender.
-  async function blightSpider(character) {
-    const context = new Context();
-    await context.addCharacter('C',character);
-
+  async function blightSpider(character, result) {
     await Game.addEvent('found-blight-spider',{ actors:{ C:character.id }});
     Flag.set('item.blight-spider','Y');
 
-    let story = Role.Forager.Stories.tell(await character.getHealthClass(), true, 0);
-    let injury =`{{C::gender.He}} was bent over, searching through a thicket of brambles for something to eat, when a
-      harry bag spider dropped into {{C::gender.his}} loincloth and bit {{C::gender.him}} right on the
-      ${character.gender.cock ? 'balls' : 'cunt'}.`;
-
-    return {
-      story: Weaver.weave(story,context),
-      injury: Weaver.weave(injury, context),
-      notifications: await Role.Forager.getNotifications(character,[]),
-      flavors:[],
-    };
+    result.story = Role.Forager.Stories.tell(await character.getHealthClass(), true, 0);
+    result.injury = `{{He}} was bent over, searching through a thicket of brambles for something to eat, when a blight
+      spider dropped into {{his}} loincloth and bit {{him}} right on the ${character.gender.cock ? 'balls' : 'cunt'}.`;
   }
 
 })();

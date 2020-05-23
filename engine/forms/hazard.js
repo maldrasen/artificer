@@ -1,6 +1,6 @@
 global.Hazard = class Hazard extends Form {
 
-  // Because the requirements for the injust locations are added automatically
+  // Because the requirements for the injury locations are added automatically
   // all hazard stories must use {{C::}} to denote the minion. All injuries are
   // also assumed to be painful injuries, unless they're head injuries which
   // are criticl by default.
@@ -27,12 +27,8 @@ global.Hazard = class Hazard extends Form {
 
   // === Hazard Groups ===
 
-  static painfulHinterlandsHunting() {
-    return Hazard.where(hazard => { return hazard.severity == 'painful' && hazard.activity == 'hunting-hinterlands'; });
-  }
-
-  static criticalHinterlandsHunting() {
-    return Hazard.where(hazard => { return hazard.severity == 'critical' && hazard.activity == 'hunting-hinterlands'; });
+  static hinterlandsHunting() {
+    return Hazard.where(hazard => { return hazard.activity == 'hunting-hinterlands'; });
   }
 
   static hinterlandsForaging() {

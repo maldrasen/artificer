@@ -14,6 +14,7 @@ require(`${ROOT}/spec/summon-action-helper.js`);
 global.Settings = {
   Metric: false,
   FutaPronouns: 'shi/hir',
+  DebugSwitches: {},
 };
 
 // If the before function returns a Promise, Mocha will ensure that the Promise
@@ -33,5 +34,6 @@ afterEach(function() {
   Environment.Throttle = false;
   Settings.Metric = false;
   Settings.FutaPronouns = 'shi/hir';
+  Settings.DebugSwitches = {};
   Game.clear();
 });

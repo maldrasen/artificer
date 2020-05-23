@@ -90,18 +90,6 @@ require(`${ROOT}/engine/devices/resolver/report`);
 require(`${ROOT}/engine/devices/resolver/roles`);
 require(`${ROOT}/engine/devices/resolver/tasks`);
 
-require(`${ROOT}/engine/devices/role`);
-require(`${ROOT}/engine/devices/roles/forager`);
-require(`${ROOT}/engine/devices/roles/forager-results`);
-require(`${ROOT}/engine/devices/roles/forager-schedule`);
-require(`${ROOT}/engine/devices/roles/forager-stories`);
-require(`${ROOT}/engine/devices/roles/hunter`);
-require(`${ROOT}/engine/devices/roles/hunter-stories`);
-require(`${ROOT}/engine/devices/roles/hunter-injuries`);
-require(`${ROOT}/engine/devices/roles/injuries`);
-require(`${ROOT}/engine/devices/roles/rest`);
-require(`${ROOT}/engine/devices/roles/skills`);
-
 require(`${ROOT}/engine/devices/summoner`);
 require(`${ROOT}/engine/devices/summoner/experience`);
 
@@ -125,6 +113,18 @@ require(`${ROOT}/engine/looms/nipples-loom`);
 require(`${ROOT}/engine/looms/random-loom`);
 require(`${ROOT}/engine/looms/species-loom`);
 require(`${ROOT}/engine/looms/tits-loom`);
+
+// === Roles ===
+require(`${ROOT}/engine/roles/role`);
+require(`${ROOT}/engine/roles/forager`);
+require(`${ROOT}/engine/roles/hunter`);
+require(`${ROOT}/engine/roles/rest`);
+require(`${ROOT}/engine/roles/role-result`);
+require(`${ROOT}/engine/roles/forager/forager-results`);
+require(`${ROOT}/engine/roles/forager/forager-schedule`);
+require(`${ROOT}/engine/roles/forager/forager-stories`);
+require(`${ROOT}/engine/roles/hunter/hunter-results`);
+require(`${ROOT}/engine/roles/hunter/hunter-stories`);
 
 // === Scrutinizers ===
 require(`${ROOT}/engine/scrutinizers/anus-scrutinizer`);

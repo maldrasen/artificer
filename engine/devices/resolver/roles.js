@@ -14,14 +14,11 @@ Resolver.Roles = (function() {
     const characters = await Character.findAll({ where:{ type:'minion', status:'normal', currentDuty:'role' }});
 
     await Promise.all(characters.map(async character => {
-      const result = await Role.lookup(character.dutyCode).work(character);
-      const flavors = result.flavors;
-
-      result.flavors = ItemFlavor.forReport(flavors);
-      result.items = ItemFlavor.itemize(flavors);
+      const result = await Role.work(character);
+      const report = await result.forReport();
 
       Resolver.Items.add(result.items);
-      Resolver.Report.setMinionData(character,'work',result);
+      Resolver.Report.setMinionData(character,'work',report);
     }));
   }
 

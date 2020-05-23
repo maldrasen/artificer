@@ -1,8 +1,7 @@
 Role.Forager.Results = (function() {
 
-  // This function returns a map of item flavors, either randomly selected from
-  // the list of possible items, or a map that's been tweeked a bit by one of
-  // the foraging schedules.
+  // This function returns a map of item flavors randomly selected from the
+  // foraging location's frequency map.
   async function getItems(total) {
     const frequencyMap = await buildFrequencyMap('Hinterlands');
 
@@ -21,7 +20,7 @@ Role.Forager.Results = (function() {
   // character's health, equipment, and skill.
   async function getTotalItems(character,trips) {
     const capacity = await getCapacity(character);
-    const skill = await Role.Skills.skillLevel(character,'foraging');
+    const skill = await Role.skillLevel(character,'foraging');
     return Math.ceil((capacity+skill) * trips * (Random.upTo(50)+75)/100);
   }
 

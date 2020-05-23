@@ -5,3 +5,6 @@
 // with the foraging.
 FlagInfo.build('role.forage.success-count', { validateInteger:true, default:0 });
 FlagInfo.build('role.forage.failure-count', { validateInteger:true, default:0 });
+
+FlagInfo.build('role.hunter.success-today');
+FlagInfo.build('role.hunter.failure-today');
