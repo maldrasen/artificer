@@ -27,12 +27,8 @@ global.Hazard = class Hazard extends Form {
 
   // === Hazard Groups ===
 
-  static painfulHinterlandsHunting() {
-    return Hazard.where(hazard => { return hazard.severity == 'painful' && hazard.activity == 'hunting-hinterlands'; });
-  }
-
-  static criticalHinterlandsHunting() {
-    return Hazard.where(hazard => { return hazard.severity == 'critical' && hazard.activity == 'hunting-hinterlands'; });
+  static hinterlandsHunting() {
+    return Hazard.where(hazard => { return hazard.activity == 'hunting-hinterlands'; });
   }
 
   static hinterlandsForaging() {

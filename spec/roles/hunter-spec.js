@@ -7,6 +7,21 @@ describe.only('Role: Hunter', function() {
   }
 
   it('goes hunting', function(done) {
+    Settings.DebugSwitches['never-injure'] = true;
+
+    setup().then(jada => {
+      Role.work(jada).then(result => {
+        result.forReport().then(report => {
+          console.log(report)
+          done();
+        });
+      });
+    });
+  });
+
+  it.only('goes hunting and gets injured', function(done) {
+    Settings.DebugSwitches['always-injure'] = true;
+
     setup().then(jada => {
       Role.work(jada).then(result => {
         result.forReport().then(report => {

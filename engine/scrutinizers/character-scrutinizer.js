@@ -3,7 +3,7 @@ global.CharacterScrutinizer = (function() {
   // These operations are shared between the Player and Minion scrutinizers.
   // The CharacterScrutinizer checks the common character attribute. More
   // specific body part checks are found in their respective part scrutinizers.
-  function check(operation, data) {
+  async function check(operation, data) {
     if (operation.match(/^anus/))    { return AnusScrutinizer.check(operation,data);    }
     if (operation.match(/^body/))    { return BodyScrutinizer.check(operation,data);    }
     if (operation.match(/^cock/))    { return CockScrutinizer.check(operation,data);    }
@@ -23,6 +23,8 @@ global.CharacterScrutinizer = (function() {
     // Species Properties
     if (operation == 'is-caprien')                    { return data.character.speciesCode == 'caprien'; }
     if (operation == 'is-scaven')                     { return data.character.speciesCode == 'scaven'; }
+    if (operation == 'biter')                         { return data.character.species.biter; }
+    if (operation == 'not-biter')                     { return !data.character.species.biter; }
     if (operation == 'demon')                         { return data.character.species.isDemon; }
     if (operation == 'not-demon')                     { return !data.character.species.isDemon; }
     if (operation == 'elf')                           { return data.character.species.isElf; }
@@ -35,7 +37,6 @@ global.CharacterScrutinizer = (function() {
     if (operation == 'not-scalie')                    { return !data.character.species.isScalie; }
     if (operation == 'wolf-blooded')                  { return ['lupin','wood-elf'].indexOf(data.character.speciesCode) >= 0; }
     if (operation == 'not-wolf-blooded')              { return ['lupin','wood-elf'].indexOf(data.character.speciesCode) < 0; }
-
 
     // Body Part Presence Checks
     if (operation == 'has-cock')                      { return data.cock != null; }
@@ -50,6 +51,9 @@ global.CharacterScrutinizer = (function() {
     if (operation.match(/^mental/))   { return checkAttribute(operation, data.character) }
     if (operation.match(/^personal/)) { return checkAttribute(operation, data.character) }
     if (operation.match(/^magical/))  { return checkAttribute(operation, data.character) }
+
+    // Equipment (may need its own scrutinizer)
+    if (operation == 'equipment.unarmed') { return await checkWeaponSlot(null, data.character); }
 
     throw `Unknown Character Operation - ${operation}`
   }
@@ -67,6 +71,11 @@ global.CharacterScrutinizer = (function() {
     if (match[1] == 'magical')  { attribute = character.magical;  }
 
     return CentralScrutinizer.checkComparisonOperation(attribute,match[2],match[3]);
+  }
+
+  async function checkWeaponSlot(code, character) {
+    const weapon = await character.getEquipment('weapon');
+    return (weapon == null) ? (code == null) : (weapon.code == code);
   }
 
   return { check };

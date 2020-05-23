@@ -10,13 +10,15 @@ Role.Forager = (function() {
       await complete(result);
       return;
     }
+    if (injured) {
+      await Role.addInjury(result, Hazard.hinterlandsForaging);
+    }
 
     const trips = await getTrips(character, injured);
     const total = await Role.Forager.Results.getTotalItems(character,trips);
 
     result.flavors = await Role.Forager.Results.getItems(total);
     result.story = `${Role.Forager.Stories.tell(health, injured, trips)} ${await CharacterEquipment.degrade(character, trips)}`
-    result.injury = injured ? await Role.Injuries.applyInjury(character, context, Hazard.hinterlandsForaging) : null;
 
     await complete(result);
   }

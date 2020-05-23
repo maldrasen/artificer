@@ -1,13 +1,15 @@
 Role.Hunter.Stories = (function() {
 
-  //    options:   { character, injured, hunted }
+  //    options:   { character, injury, hunted }
   async function tell(options) {
     const count = flavorCount(options.hunted.flavors)
     const list = ItemFlavor.listify(options.hunted.flavors)
 
     console.log("--- Compiling Story ---")
     console.log(count,list)
-    console.log()
+    if (options.injury) {
+      console.log('Injury:',options.injury.properties)
+    }
 
     let phrase = Random.from([
       `{{C::character.firstName}} spent the day hunting`,

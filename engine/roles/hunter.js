@@ -5,7 +5,11 @@ Role.Hunter = (function() {
     const injured = wasInjured(character,skill);
     const hunted = await Role.Hunter.Results.hunt({ character, skill, injured });
 
-    const huntStory = await Role.Hunter.Stories.tell({ character, injured, hunted });
+    if (injured) {
+      await Role.addInjury(result, Hazard.hinterlandsHunting);
+    }
+
+    const huntStory = await Role.Hunter.Stories.tell({ character, hunted, injury:result.injury });
     const equipmentStory = await CharacterEquipment.degrade(character);
 
     result.flavors = hunted.flavors;
@@ -19,11 +23,9 @@ Role.Hunter = (function() {
     await Role.addExperience(result,'hunting');
   }
 
-  // === Old ===
-  // const injury = await Role.Hunter.Injuries.resolve({ character:character, skill:skill, tier:tier, success:true });
-  // return forReport({ flavors, items, story, injury, notifications });
-
   function wasInjured(character, skill) {
+    if (Settings.DebugSwitches['always-injure']) { return true; }
+    if (Settings.DebugSwitches['never-injure'])  { return false; }
     return Random.roll(100) < injuryChance(character, skill);
   }
 
