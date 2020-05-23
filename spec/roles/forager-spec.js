@@ -1,6 +1,7 @@
 describe('Role: Forager', function() {
 
-  async function setup() {
+  async function setup(flag) {
+    Settings.DebugSwitches[flag] = true;
     await Game.start();
     await Game.setPhase('after-work');
     return await SpecHelper.buildJada({ species:'scaven', dutyCode:'forager' });
@@ -24,7 +25,7 @@ describe('Role: Forager', function() {
   // then the standard foraging.
 
   it('goes foraging for the first time.', function(done) {
-    setup().then(jada => {
+    setup('never-injure').then(jada => {
       Role.work(jada).then(result => {
         expect(result.injury).to.be.undefined;
         expect(result.flavors['bitter-fruits']).to.equal(2);
@@ -49,13 +50,11 @@ describe('Role: Forager', function() {
       'item.goat-nuts': 'Y'
     });
 
-    setup().then(jada => {
+    setup('never-injure').then(jada => {
       Role.work(jada).then(result => {
-        if (result.injury == null) {
-          expect(result.notifications[0].name).to.equal('Foraging');
-          expect(result.flavors['goat-nuts']).to.be.at.least(1);
-          expect(result.flavors['willow-branches']).to.equal(1);
-        }
+        expect(result.notifications[0].name).to.equal('Foraging');
+        expect(result.flavors['goat-nuts']).to.be.at.least(1);
+        expect(result.flavors['willow-branches']).to.equal(1);
         done();
       });
     });
@@ -69,12 +68,25 @@ describe('Role: Forager', function() {
       'item.goat-nuts': 'Y'
     });
 
-    setup().then(jada => {
+    setup('never-injure').then(jada => {
       Role.work(jada).then(result => {
-        if (result.injury == null) {
-          expect(result.notifications[0].name).to.equal('Foraging');
-          expect(Object.keys(result.flavors)).to.eql(['goat-nuts'])
-        }
+        expect(result.notifications[0].name).to.equal('Foraging');
+        expect(Object.keys(result.flavors)).to.eql(['goat-nuts'])
+        done();
+      });
+    });
+  });
+
+  it('goes foraging a third time and is injured', function(done) {
+    Flag.setAll({
+      'role.forage.success-count': 2,
+      'role.forage.failure-count': 0,
+      'item.goat-nuts': 'Y'
+    });
+
+    setup('always-injure').then(jada => {
+      Role.work(jada).then(result => {
+        expect(result.injury).to.exist;
         done();
       });
     });

@@ -26,6 +26,8 @@ Role.Forager = (function() {
   // Normally there's a 5% chance of getting injured when out foraging. If this
   // is the character's first time foraging then it should always be a success.
   async function wasCharacterInjured() {
+    if (Settings.DebugSwitches['always-injure']) { return true; }
+    if (Settings.DebugSwitches['never-injure']) { return false; }
     return (Flag.lookup('role.forage.success-count') == 0) ? false : Random.upTo(100) > 95;
   }
 
