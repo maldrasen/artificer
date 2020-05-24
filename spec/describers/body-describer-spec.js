@@ -4,6 +4,10 @@ describe('Describer: Body', function() {
     Settings.Metric = Random.from([true,false,false]);
     SpecHelper.tenTimes(done, async resolve => {
       const rando = await SpecHelper.buildRando(options);
+      if (options._injury == 'head.1') {
+        await Abuser.addHeadInjury(rando, { type:'smash', level:1 });
+      }
+
       await CharacterDescriber.updateAll(rando);
       const body = await rando.getBody();
 
@@ -66,6 +70,10 @@ describe('Describer: Body', function() {
 
   it('describes mythic faces (~95 personal)', function(done) {
     printFace('Mythic', { species:'dragon', personal:Random.between(90,100) }, done);
+  });
+
+  it.only('describes injured faces', function(done) {
+    printFace('Injured', { species:'scaven', _injury:'head.1' }, done);
   });
 
 });
