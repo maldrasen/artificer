@@ -4,7 +4,7 @@ describe('Describer: Body', function() {
     const rando = await SpecHelper.buildRando(options);
 
     if (options._injury == 'head.1') { await Abuser.addHeadInjury(rando, { type:'smash', level:1 }); }
-    if (options._injury == 'body.1') { await Abuser.addBodyInjury(rando, { type:'pierce', level:1 }); }
+    if (options._injury == 'body.1') { await Abuser.addBodyInjury(rando, { type:'pierce', level:3 }); }
 
     await CharacterDescriber.updateAll(rando);
     const body = await rando.getBody();
@@ -89,8 +89,8 @@ describe('Describer: Body', function() {
     printFace('Injured', { species:'scaven', _injury:'head.1' }, done);
   });
 
-  // it.only('describes injured bodies', function(done) {
-  //   printBody('Injured', { species:'elf', _injury:'body.1' }, done);
-  // });
+  it('describes injured bodies', function(done) {
+    printBody('Injured', { species:'elf', _injury:'body.1' }, done);
+  });
 
 });

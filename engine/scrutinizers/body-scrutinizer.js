@@ -28,6 +28,15 @@ global.BodyScrutinizer = (function() {
     if (operation == 'face.below-average')            { return data.character.personal < 5;  } // hideous or ugly
     if (operation == 'face.breathtaking-or-mythic')   { return data.character.personal >= 60; }
 
+    // Physique
+    if (operation == 'body.physique.feeble')          { return data.character.getPhysicalWord() == 'feeble';     }
+    if (operation == 'body.physique.weak')            { return data.character.getPhysicalWord() == 'weak';       }
+    if (operation == 'body.physique.average')         { return data.character.getPhysicalWord() == 'average';    }
+    if (operation == 'body.physique.strong')          { return data.character.getPhysicalWord() == 'strong';     }
+    if (operation == 'body.physique.mighty')          { return data.character.getPhysicalWord() == 'mighty';     }
+    if (operation == 'body.physique.tremendous')      { return data.character.getPhysicalWord() == 'tremendous'; }
+    if (operation == 'body.physique.legendary')       { return data.character.getPhysicalWord() == 'legendary';  }
+
     // Head Properties
     if (operation.match(/^head.has-horns/))           { return data.body.hornShape != null; }
     if (operation.match(/^head.cut-count/))           { return checkCount(operation, data.mouth.cutCount); }
