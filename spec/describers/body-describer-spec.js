@@ -89,6 +89,16 @@ describe('Describer: Body', function() {
     printFace('Injured', { species:'scaven', _injury:'head.1' }, done);
   });
 
+  // === Bodies ===
+
+  it('describes wood elves', function(done) {
+    printBody('Wood Elf', { species:'wood-elf' }, done);
+  });
+
+  it('describes equian', function(done) {
+    printBody('Equine', { species:'equian' }, done);
+  });
+
   it.only('describes scaven', function(done) {
     printBody('Scaven', { species:'scaven' }, done);
   });

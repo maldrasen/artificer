@@ -219,18 +219,21 @@ global.Description = class Description extends Form {
 
   // Some species have their own species specific body descriptions. The elf
   // races just have average human-like bodies. The 'furry' species are similar
-  // enough to not need distinct body descriptions, except for the selkie who
-  // are a bit different.
+  // enough to not need distinct body descriptions, except for the caprien and
+  // selkie who are different enough to need their own descriptions. All the
+  // other species need their own custom descriptions:
+  //
+  // Custom Descriptions Needed
+  //    Caprien, Centaur, Dragon, Dryad, Goblin, Incubus, Kobold,
+  //    Naga, Ogre, Scaven, Selkie, Succubus
+  //
   bodyConditionsMet(data) {
     const elfBodied = ['dark-elf','elf','gnome','neko','nymph','sylph','viera','wood-elf'];
-    const furryBodied = ['caprien','equian','lupin','minotaur'];
+    const furryBodied = ['equian','lupin','minotaur'];
 
     if (ArrayUtility.contains(elfBodied, data.character.speciesCode)) { return this.species == 'elf' }
-    if (ArrayUtility.contains(elfBodied, data.character.speciesCode)) { return this.species == 'furry' }
+    if (ArrayUtility.contains(furryBodied, data.character.speciesCode)) { return this.species == 'furry' }
 
-    // All the other species need their own custom descriptions:
-    //    Centaur, Dragon, Dryad, Goblin, Incubus, Kobold,
-    //    Naga, Ogre, Scaven, Selkie, Succubus
     return this.species == data.character.speciesCode;
   }
 

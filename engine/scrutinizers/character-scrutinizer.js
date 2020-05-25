@@ -4,13 +4,13 @@ global.CharacterScrutinizer = (function() {
   // The CharacterScrutinizer checks the common character attribute. More
   // specific body part checks are found in their respective part scrutinizers.
   async function check(operation, data) {
-    if (operation.match(/^anus/))    { return AnusScrutinizer.check(operation,data);    }
-    if (operation.match(/^body/))    { return BodyScrutinizer.check(operation,data);    }
-    if (operation.match(/^cock/))    { return CockScrutinizer.check(operation,data);    }
-    if (operation.match(/^face/))    { return BodyScrutinizer.check(operation,data);    }
-    if (operation.match(/^head/))    { return BodyScrutinizer.check(operation,data);    }
-    if (operation.match(/^nipples/)) { return NipplesScrutinizer.check(operation,data); }
-    if (operation.match(/^tits/))    { return TitsScrutinizer.check(operation,data);    }
+    if (operation.match(/^anus/))    { return await AnusScrutinizer.check(operation,data);    }
+    if (operation.match(/^body/))    { return await BodyScrutinizer.check(operation,data);    }
+    if (operation.match(/^cock/))    { return await CockScrutinizer.check(operation,data);    }
+    if (operation.match(/^face/))    { return await BodyScrutinizer.check(operation,data);    }
+    if (operation.match(/^head/))    { return await BodyScrutinizer.check(operation,data);    }
+    if (operation.match(/^nipples/)) { return await NipplesScrutinizer.check(operation,data); }
+    if (operation.match(/^tits/))    { return await TitsScrutinizer.check(operation,data);    }
 
     // Gender Properties
     if (operation == 'is-male')                       { return data.character.genderCode == 'male'; }

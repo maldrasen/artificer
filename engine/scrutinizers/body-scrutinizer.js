@@ -2,15 +2,18 @@ global.BodyScrutinizer = (function() {
 
   // The body scrutinizer handles the body, face, and head properties as they're
   // actually all stored on the body model.
-  function check(operation, data) {
+  async function check(operation, data) {
 
     // Body Properties
-    if (operation == 'body.height-short')             { return data.body.heightIsShort; }
-    if (operation == 'body.height-average')           { return data.body.heightIsAverage; }
-    if (operation == 'body.height-tall')              { return data.body.heightIsTall; }
-    if (operation == 'body.height-not-short')         { return ! data.body.heightIsShort; }
-    if (operation == 'body.height-not-tall')          { return ! data.body.heightIsTall; }
-    if (operation.match(/^body.pierce-count/))        { return checkCount(operation, data.body.pierceCount); }
+    if (operation == 'body.height-short')                  { return data.body.heightIsShort; }
+    if (operation == 'body.height-average')                { return data.body.heightIsAverage; }
+    if (operation == 'body.height-tall')                   { return data.body.heightIsTall; }
+    if (operation == 'body.height-not-short')              { return ! data.body.heightIsShort; }
+    if (operation == 'body.height-not-tall')               { return ! data.body.heightIsTall; }
+    if (operation === 'body.height-short-for-species')     { return (await data.character.heightForSpecies()) == 'short'; }
+    if (operation === 'body.height-average-for-species')   { return (await data.character.heightForSpecies()) == 'average'; }
+    if (operation === 'body.height-tall-for-species')      { return (await data.character.heightForSpecies()) == 'tall'; }
+    if (operation.match(/^body.pierce-count/))             { return checkCount(operation, data.body.pierceCount); }
 
     // Face Properties
     if (operation == 'face.plain')                    { return data.body.faceType == 'plain';  }

@@ -1,7 +1,7 @@
 global.TitsScrutinizer = (function() {
 
   // Inspect specific tits attributes.
-  function check(operation, data) {
+  async function check(operation, data) {
     if (data.tits == null) { return false; }
 
     if (operation == 'tits.conical')              { return data.tits.shape == 'conical'             }

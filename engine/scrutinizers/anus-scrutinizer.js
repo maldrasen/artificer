@@ -1,7 +1,7 @@
 global.AnusScrutinizer = (function() {
 
   // Inspect specific cock attributes.
-  function check(operation, data) {
+  async function check(operation, data) {
     if (operation == 'anus.small')             { return data.anus.sizeClass == 'small' }
     if (operation == 'anus.average')           { return data.anus.sizeClass == 'average' }
     if (operation == 'anus.big')               { return data.anus.sizeClass == 'big' }

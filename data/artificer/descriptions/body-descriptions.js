@@ -11,6 +11,12 @@ Description.buildBody({ species:'furry', requires:[],
   d: `(TODO: Furry Bodies)`
 });
 
+// === Caprien Bodes ===
+
+Description.buildBody({ species:'caprien', requires:[],
+  d: `(TODO: Caprien Bodies)`
+});
+
 // === Centaur Bodies ===
 
 Description.buildBody({ species:'centaur', requires:[],
@@ -62,7 +68,8 @@ Description.buildBody({ species:'ogre', requires:[],
 // === Scaven Bodies ===
 
 Description.buildBody({ species:'scaven', requires:[],
-  d: `Is a scaven.`
+  includes:['height-weight'],
+  d: `{{His}} small lythe body is {{C::body.fiveFootTenInches}} tall, and {{he}} weighs {{C::body.fiftyPounds}}.`
 });
 
 // === Selkie Bodies ===
@@ -76,3 +83,11 @@ Description.buildBody({ species:'selkie', requires:[],
 Description.buildBody({ species:'succubus', requires:[],
   d: `(TODO: Succubus Bodies)`
 });
+
+
+// Moving, Caprien
+// skinDescription: (character,body) => {
+//   return (character.genderCode == 'male') ?
+//     `{{C::gender.His}} body is also covered in thick {{C::body.furColor}} fur and {{C::gender.he}} has a small goat tail resting just above {{C::gender.his}} ass.`:
+//     `{{C::gender.He}} has {{C::body.skinColor}} skin and a small goat tail resting just above {{C::gender.his}} shapely ass.`
+// },

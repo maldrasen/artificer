@@ -1,7 +1,7 @@
 global.CockScrutinizer = (function() {
 
   // Inspect specific cock attributes.
-  function check(operation, data) {
+  async function check(operation, data) {
     if (data.cock == null) { return false; }
     if (operation == 'cock.external-balls')   { return data.cock.internalBalls == false;        }
     if (operation == 'cock.internal-balls')   { return data.cock.internalBalls;                 }

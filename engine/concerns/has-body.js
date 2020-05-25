@@ -46,5 +46,18 @@ global.HasBody = { isAppliedTo: function(model) {
     });
   }
 
+  // Height for species compares this character's height to the average
+  // height of the character of that species: short, average, or tall. The body
+  // class has functions for overall height, but comparative heights need to be
+  // on the character model because it needs access to both the species and body.
+  model.prototype.heightForSpecies = async function() {
+    const height = (await this.getBody()).height;
+    const average = this.species.averageHeight();
+
+    if (height < average * 0.8) { return 'short'; }
+    if (height > average * 1.2) { return 'tall';  }
+
+    return 'average';
+  }
 
 }};

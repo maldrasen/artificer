@@ -28,6 +28,31 @@ global.BodyDescriber = class BodyDescriber {
     const injuries = await (new BodyInjuryDescriber(this.context)).bodyInjuries();
     const description = await Description.select('body', this.context);
 
+    // TODO: Needs to check inclusions just like the faces.
+
+    // Fur
+    //     `{{His}} body is covered in {{C::body.furColor}} fur.`,
+    //     `{{He}} has {{C::body.furColor}} fur covering {{his}} entire body.`,
+
+    // Height and Weight
+    //   if (height < average * 0.8) { return Random.from([
+    //     `; shorter than most {{C::species.elves}}.`,
+    //     `, which is short for {{C::species.anElf}}.`,
+    //     `, which makes {{him}} small for {{C::species.anElf}}.`
+    //   ]); }
+
+    //   if (height > average * 1.2) { return Random.from([
+    //     `; taller than most {{C::species.elves}}.`,
+    //     `, which is tall for {{C::species.anElf}}.`,
+    //     `, which makes {{him}} large for {{C::species.anElf}}.`
+    //   ]); }
+
+    //   return Random.from([
+    //     `; an average height for {{C::species.anElf}}.`,
+    //     `, which is about average for {{C::species.anElf}}.`,
+    //     `, which makes {{him}} about as tall as most {{C::species.elves}}.`,
+    //   ]);
+
     return await Weaver.weave(`${description.d} ${injuries}`, this.context);
   }
 
@@ -188,72 +213,5 @@ global.BodyDescriber = class BodyDescriber {
   describeEyesHairAndFur() { return `[TODO: EYES, HAIR, AND FUR]` }
   describeHair() { return `[TODO: HAIR]` }
   describeHairAndFur() { return `[TODO: HAIR AND FUR]` }
-
-  // === Body Additions ===
-
-  heightAndWeight() {
-    return `{{He}} is {{C::body.fiveFootTenInches}} tall, and weighs {{C::body.fiftyPounds}}`;
-  }
-
-  comparativeHeight() {
-    let species = this.character.species;
-    let height = this.body.height;
-    let average = species.averageHeight();
-
-    if (height < average * 0.8) { return Random.from([
-      `; shorter than most {{C::species.elves}}.`,
-      `, which is short for {{C::species.anElf}}.`,
-      `, which makes {{him}} small for {{C::species.anElf}}.`
-    ]); }
-
-    if (height < average * 0.9) { return Random.from([
-      `; a bit shorter than most {{C::species.elves}}.`,
-      `, which is a little short for {{C::species.anElf}}.`,
-      `, which makes {{him}} a bit small for {{C::species.anElf}}.`
-    ]); }
-
-    if (height > average * 1.1) { return Random.from([
-      `; a bit taller than most {{C::species.elves}}.`,
-      `, which is a bit tall for {{C::species.anElf}}.`,
-      `, which makes {{him}} a bit large for {{C::species.anElf}}.`
-    ]); }
-
-    if (height > average * 1.2) { return Random.from([
-      `; taller than most {{C::species.elves}}.`,
-      `, which is tall for {{C::species.anElf}}.`,
-      `, which makes {{him}} large for {{C::species.anElf}}.`
-    ]); }
-
-    return Random.from([
-      `; an average height for {{C::species.anElf}}.`,
-      `, which is about average for {{C::species.anElf}}.`,
-      `, which makes {{him}} about as tall as most {{C::species.elves}}.`,
-    ]);
-  }
-
-  // Moving, Caprien
-  // skinDescription: (character,body) => {
-  //   return (character.genderCode == 'male') ?
-  //     `{{C::gender.His}} body is also covered in thick {{C::body.furColor}} fur and {{C::gender.he}} has a small goat tail resting just above {{C::gender.his}} ass.`:
-  //     `{{C::gender.He}} has {{C::body.skinColor}} skin and a small goat tail resting just above {{C::gender.his}} shapely ass.`
-  // },
-
-  skinDescription() {
-    if (typeof this.character.species.skinDescription == 'function') {
-      return this.character.species.skinDescription(this.character, this.body);
-    }
-    if (typeof this.character.species.skinDescription == 'string') {
-      return this.character.species.skinDescription;
-    }
-    if (this.character.isFurry) { return Random.from([
-      `{{His}} body is covered in {{C::body.furColor}} fur.`,
-      `{{He}} has {{C::body.furColor}} fur covering {{his}} entire body.`,
-    ]); }
-    if (this.character.species.isScalie) {
-      return Weaver.error(`TODO: skinDescription() needs to describe scales.`);
-    }
-    return Weaver.error(`TODO: skinDescription() needs to describe skin.`);
-  }
-
 
 }
