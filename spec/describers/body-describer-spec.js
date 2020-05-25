@@ -1,13 +1,30 @@
 describe('Describer: Body', function() {
 
+  async function buildCharacter(options) {
+    const rando = await SpecHelper.buildRando(options);
+
+    if (options._injury == 'head.1') { await Abuser.addHeadInjury(rando, { type:'smash', level:1 }); }
+    if (options._injury == 'body.1') { await Abuser.addBodyInjury(rando, { type:'pierce', level:3 }); }
+
+    await CharacterDescriber.updateAll(rando);
+    const body = await rando.getBody();
+    return { rando, body };
+  }
+
+  function printBody(title, options, done) {
+    Settings.Metric = Random.from([true,false,false]);
+    SpecHelper.tenTimes(done, async resolve => {
+      const c = await buildCharacter(options);
+      SpecHelper.print(`${title} (${c.rando.genderCode}/${c.rando.physical}) > ${c.body.bodyDescription}`);
+      resolve();
+    });
+  }
+
   function printFace(title, options, done) {
     Settings.Metric = Random.from([true,false,false]);
     SpecHelper.tenTimes(done, async resolve => {
-      const rando = await SpecHelper.buildRando(options);
-      await CharacterDescriber.updateAll(rando);
-      const body = await rando.getBody();
-
-      SpecHelper.print(`${title} (${rando.genderCode}/${rando.personal}/${body.faceType}) > ${body.faceDescription}`);
+      const c = await buildCharacter(options);
+      SpecHelper.print(`${title} (${c.rando.genderCode}/${c.rando.personal}/${c.body.faceType}) > ${c.body.faceDescription}`);
       resolve();
     });
   }
@@ -66,6 +83,14 @@ describe('Describer: Body', function() {
 
   it('describes mythic faces (~95 personal)', function(done) {
     printFace('Mythic', { species:'dragon', personal:Random.between(90,100) }, done);
+  });
+
+  it('describes injured faces', function(done) {
+    printFace('Injured', { species:'scaven', _injury:'head.1' }, done);
+  });
+
+  it('describes injured bodies', function(done) {
+    printBody('Injured', { species:'elf', _injury:'body.1' }, done);
   });
 
 });

@@ -25,15 +25,11 @@ global.BodyDescriber = class BodyDescriber {
   }
 
   async getBodyDescription() {
-    return await Weaver.weave('(Body: work in progress)', this.context);
+    const injuries = await (new BodyInjuryDescriber(this.context)).bodyInjuries();
 
-    // let injuries = new BodyInjuryDescriber(this.context);
-    //
-    // let description = `
-    //   Work in progress
-    // `.replace(/\n/g,'').replace(/\s+/g,' ');
-    //
-    //
+    let description = `${injuries}`;
+
+    return await Weaver.weave(description, this.context);
   }
 
   // TODO: Right now the body's face type is only used in this function to build
@@ -54,11 +50,14 @@ global.BodyDescriber = class BodyDescriber {
   //       The tone is wrong for a person describing their own face.
   //
   async getfaceDescription() {
+    const injuries = await (new BodyInjuryDescriber(this.context)).headInjuries()
     const descriptions = await this.selectFaceAndHead();
+
     this.addInclusions(descriptions.face.includes);
     this.addInclusions(descriptions.head.includes);
 
-    const text = `${descriptions.face.d} ${this.mythicAdditions()} ${descriptions.head.d} ${this.finishHead()}`
+    const text = `${descriptions.face.d} ${this.mythicAdditions()}
+      ${descriptions.head.d} ${this.finishHead()} ${injuries}`
 
     return await Weaver.weave(text, this.context);
   }
