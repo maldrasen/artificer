@@ -26,6 +26,7 @@ ImageResource.buildIcon('icon-flavor-blood-berries',   { url:`${IMAGE_ROOT}/icon
 ImageResource.buildIcon('icon-flavor-fox-pelt',        { url:`${IMAGE_ROOT}/icons/fox-pelt.png`      });
 ImageResource.buildIcon('icon-flavor-goat-nuts',       { url:`${IMAGE_ROOT}/icons/goat-nuts.png`     });
 ImageResource.buildIcon('icon-flavor-juice-berries',   { url:`${IMAGE_ROOT}/icons/juice-berries.png` });
+ImageResource.buildIcon('icon-flavor-other-meat',      { url:`${IMAGE_ROOT}/icons/other-meat.png`    });
 ImageResource.buildIcon('icon-flavor-rabbit-pelt',     { url:`${IMAGE_ROOT}/icons/rabbit-pelt.png`   });
 ImageResource.buildIcon('icon-flavor-raccoon-pelt',    { url:`${IMAGE_ROOT}/icons/raccoon-pelt.png`  });
 ImageResource.buildIcon('icon-flavor-rat-meat',        { url:`${IMAGE_ROOT}/icons/rat-meat.png`      });
