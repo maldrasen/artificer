@@ -26,10 +26,9 @@ global.BodyDescriber = class BodyDescriber {
 
   async getBodyDescription() {
     const injuries = await (new BodyInjuryDescriber(this.context)).bodyInjuries();
+    const description = await Description.select('body', this.context);
 
-    let description = `${injuries}`;
-
-    return await Weaver.weave(description, this.context);
+    return await Weaver.weave(`${description.d} ${injuries}`, this.context);
   }
 
   // TODO: Right now the body's face type is only used in this function to build
@@ -56,10 +55,10 @@ global.BodyDescriber = class BodyDescriber {
     this.addInclusions(descriptions.face.includes);
     this.addInclusions(descriptions.head.includes);
 
-    const text = `${descriptions.face.d} ${this.mythicAdditions()}
-      ${descriptions.head.d} ${this.finishHead()} ${injuries}`
-
-    return await Weaver.weave(text, this.context);
+    return await Weaver.weave(`
+      ${descriptions.face.d} ${this.mythicAdditions()}
+      ${descriptions.head.d} ${this.finishHead()} ${injuries}`,
+    this.context);
   }
 
   // This function will randomly select a face and head description. The two

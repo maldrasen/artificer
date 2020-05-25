@@ -39,7 +39,7 @@ describe('CharacterBuilder', function() {
       firstName: 'Jada',
       lastName: 'Fire',
       gender: 'futa',
-      species: 'elf-lord',
+      species: 'lupin',
       physical: 10,
       personal: 20,
       mental: 30,
@@ -50,7 +50,7 @@ describe('CharacterBuilder', function() {
       expect(character.firstName).to.equal('Jada');
       expect(character.lastName).to.equal('Fire');
       expect(character.gender.code).to.equal('futa');
-      expect(character.species.code).to.equal('elf-lord');
+      expect(character.species.code).to.equal('lupin');
       expect(character.physical).to.equal(10);
       expect(character.personal).to.equal(20);
       expect(character.mental).to.equal(30);

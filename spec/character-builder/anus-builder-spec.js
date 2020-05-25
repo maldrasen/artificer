@@ -59,9 +59,5 @@ describe('AnusBuilder', function() {
     it('sets the width according to species (goblin)', function(done) {
       testAnalWidth('goblin',14,33,done);
     });
-
-    it('sets the width according to species (pixie)', function(done) {
-      testAnalWidth('pixie',4,10,done);
-    });
   });
 });

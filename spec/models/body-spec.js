@@ -114,16 +114,5 @@ describe("Body", function() {
       });
     });
 
-    it("calculates the weight of the smallest pixie", function(done) {
-      CharacterBuilder.build({ firstName:'X', gender:'female', species:'pixie', body:{ height:300 }}).then(character => {
-        character.getBody().then(body => {
-          body.getWeight().then(weight => {
-            expect(ConversionUtility.gramToPound(weight)).to.equal(10);
-            done();
-          });
-        });
-      });
-    });
-
   });
 });

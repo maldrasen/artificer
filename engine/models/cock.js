@@ -133,7 +133,7 @@ global.Cock = Database.instance().define('cock', {
 // size scale are used to get the size of the cock, as if that cock was on a
 // human sized person. We then scale the cock size based on the character's
 // height, so that a minotaur can have an average cock, but it's still massivly
-// larger than a monster sized pixie cock. These values are in milimeters.
+// larger than a monster sized scaven cock. These values are in milimeters.
 
 Cock.SizeRanges = {
   small:   { min:127, max:178 }, // 5 - 7 inch

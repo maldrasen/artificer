@@ -83,7 +83,6 @@ Body.prototype.getWeight = async function() {
     (base * this.height/1520):
     ((perCentimeter * (this.height - 1520)) + base);
 
-  if (character.speciesCode == 'pixie') { return weight/2; }
   if (character.speciesCode == 'dryad') { return weight*1.8; }
   if (character.speciesCode == 'centaur') { return weight*4; }
 

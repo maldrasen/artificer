@@ -53,7 +53,7 @@ global.Tits = Database.instance().define('tits', {
 });
 
 // The breast sizes are abstract values. Because the species in the Rhysh have
-// such dramatically different sizes, from pixies to ogres, we measure breast
+// such dramatically different sizes, from scaven to ogres, we measure breast
 // size by how they look on a body. Human sizes generally align to:
 //     0 - 100  : A cup
 //   100 - 200  : B cup

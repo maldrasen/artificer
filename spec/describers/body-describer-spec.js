@@ -89,6 +89,10 @@ describe('Describer: Body', function() {
     printFace('Injured', { species:'scaven', _injury:'head.1' }, done);
   });
 
+  it.only('describes scaven', function(done) {
+    printBody('Scaven', { species:'scaven' }, done);
+  });
+
   it('describes injured bodies', function(done) {
     printBody('Injured', { species:'elf', _injury:'body.1' }, done);
   });

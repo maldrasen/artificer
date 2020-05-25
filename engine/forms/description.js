@@ -1,6 +1,7 @@
 global.Description = class Description extends Form {
 
   static buildAnus(data)        { return super.build(null,extend(data,{ type:'anus'         })); }
+  static buildBody(data)        { return super.build(null,extend(data,{ type:'body'         })); }
   static buildCock(data)        { return super.build(null,extend(data,{ type:'cock'         })); }
   static buildFace(data)        { return super.build(null,extend(data,{ type:'face'         })); }
   static buildHead(data)        { return super.build(null,extend(data,{ type:'head'         })); }
@@ -23,6 +24,9 @@ global.Description = class Description extends Form {
 
         if (part == 'anus') {
           if (description.anusConditionsMet(data) == false) { return; }
+        }
+        if (part == 'body') {
+          if (description.bodyConditionsMet(data) == false) { return; }
         }
         if (part == 'cock') {
           if (description.cockInclusionsValid(data) == false) { return; }
@@ -213,6 +217,22 @@ global.Description = class Description extends Form {
   // needed at some point so leave it in for now.
   anusConditionsMet(data) { return true; }
 
+  // Some species have their own species specific body descriptions. The elf
+  // races just have average human-like bodies. The 'furry' species are similar
+  // enough to not need distinct body descriptions, except for the selkie who
+  // are a bit different.
+  bodyConditionsMet(data) {
+    const elfBodied = ['dark-elf','elf','gnome','neko','nymph','sylph','viera','wood-elf'];
+    const furryBodied = ['caprien','equian','lupin','minotaur'];
+
+    if (ArrayUtility.contains(elfBodied, data.character.speciesCode)) { return this.species == 'elf' }
+    if (ArrayUtility.contains(elfBodied, data.character.speciesCode)) { return this.species == 'furry' }
+
+    // All the other species need their own custom descriptions:
+    //    Centaur, Dragon, Dryad, Goblin, Incubus, Kobold,
+    //    Naga, Ogre, Scaven, Selkie, Succubus
+    return this.species == data.character.speciesCode;
+  }
 
   // The normal cock descriptions don't really make a lot of sense when used to
   // describe horse cocks, mostly because of the size comparason stuff, so

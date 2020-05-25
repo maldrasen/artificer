@@ -76,10 +76,6 @@ describe('PussyBuilder', function() {
     it('sets the width according to species (goblin)', function(done) {
       testPussyWidth('goblin',17,41,done);
     });
-
-    it('sets the width according to species (pixie)', function(done) {
-      testPussyWidth('pixie',6,12,done);
-    });
   });
 
   it('sets random labia and clit sizes', function(done) {
