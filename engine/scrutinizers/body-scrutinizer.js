@@ -32,13 +32,17 @@ global.BodyScrutinizer = (function() {
     if (operation == 'face.breathtaking-or-mythic')   { return data.character.personal >= 60; }
 
     // Physique
-    if (operation == 'body.physique.feeble')          { return data.character.getPhysicalWord() == 'feeble';     }
-    if (operation == 'body.physique.weak')            { return data.character.getPhysicalWord() == 'weak';       }
-    if (operation == 'body.physique.average')         { return data.character.getPhysicalWord() == 'average';    }
-    if (operation == 'body.physique.strong')          { return data.character.getPhysicalWord() == 'strong';     }
-    if (operation == 'body.physique.mighty')          { return data.character.getPhysicalWord() == 'mighty';     }
-    if (operation == 'body.physique.tremendous')      { return data.character.getPhysicalWord() == 'tremendous'; }
-    if (operation == 'body.physique.legendary')       { return data.character.getPhysicalWord() == 'legendary';  }
+    if (operation == 'body.physique.feeble')             { return data.character.getPhysicalWord() == 'feeble';     }
+    if (operation == 'body.physique.weak')               { return data.character.getPhysicalWord() == 'weak';       }
+    if (operation == 'body.physique.average')            { return data.character.getPhysicalWord() == 'average';    }
+    if (operation == 'body.physique.strong')             { return data.character.getPhysicalWord() == 'strong';     }
+    if (operation == 'body.physique.mighty')             { return data.character.getPhysicalWord() == 'mighty';     }
+    if (operation == 'body.physique.tremendous')         { return data.character.getPhysicalWord() == 'tremendous'; }
+    if (operation == 'body.physique.legendary')          { return data.character.getPhysicalWord() == 'legendary';  }
+    if (operation == 'body.physique.below-average')      { return ArrayUtility.contains(['feeble','weak'],           data.character.getPhysicalWord()); }
+    if (operation == 'body.physique.above-average')      { return ArrayUtility.contains(['strong','mighty'],         data.character.getPhysicalWord()); }
+    if (operation == 'body.physique.far-above-average')  { return ArrayUtility.contains(['tremendous','legendary'],  data.character.getPhysicalWord()); }
+
 
     // Head Properties
     if (operation.match(/^head.has-horns/))           { return data.body.hornShape != null; }

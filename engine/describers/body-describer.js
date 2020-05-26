@@ -260,6 +260,7 @@ global.BodyDescriber = class BodyDescriber {
         `{{He}} weighs {{C::body.fiftyPounds}} and is {{C::body.fiveFootTenInches}} tall, which is a bit short for {{C::species.anElf}}.`,
       ])
     }
+
     if (height > average * 1.2) {
       return Random.from([
         `{{He}}'s larger than most {{C::species.elves}}, weighing {{C::body.fiftyPounds}} and standing {{C::body.fiveFootTenInches}} tall.`,
