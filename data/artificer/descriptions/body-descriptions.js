@@ -72,6 +72,21 @@ Description.buildBody({ species:'scaven', requires:[],
   d: `{{His}} small lythe body is {{C::body.fiveFootTenInches}} tall, and {{he}} weighs {{C::body.fiftyPounds}}.`
 });
 
+Description.buildBody({ species:'scaven', requires:['minion(C).body.height-average-for-species'],
+  includes:['fur-color'],
+  d: `{{His}} rat-like body is covered in {{C::body.furColor}} fur.`
+});
+
+Description.buildBody({ species:'scaven', requires:['minion(C).body.height-short-for-species'],
+  includes:['height-weight'],
+  d: `At {{C::body.fiveFootTenInches}} tall {{he}}'s even smaller than most scaven and only weighs {{C::body.fiftyPounds}}.`
+});
+
+Description.buildBody({ species:'scaven', requires:['minion(C).body.height-tall-for-species'],
+  includes:['height-weight'],
+  d: `Though still small, he is {{C::body.fiveFootTenInches}} tall, which is a bit bigger than most other scaven. His rat-like body weighs {{C::body.fiftyPounds}}.`
+});
+
 // === Selkie Bodies ===
 
 Description.buildBody({ species:'selkie', requires:[],

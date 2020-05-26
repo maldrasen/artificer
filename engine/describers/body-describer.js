@@ -28,32 +28,12 @@ global.BodyDescriber = class BodyDescriber {
     const injuries = await (new BodyInjuryDescriber(this.context)).bodyInjuries();
     const description = await Description.select('body', this.context);
 
-    // TODO: Needs to check inclusions just like the faces.
+    this.addInclusions(description.includes);
 
-    // Fur
-    //     `{{His}} body is covered in {{C::body.furColor}} fur.`,
-    //     `{{He}} has {{C::body.furColor}} fur covering {{his}} entire body.`,
 
-    // Height and Weight
-    //   if (height < average * 0.8) { return Random.from([
-    //     `; shorter than most {{C::species.elves}}.`,
-    //     `, which is short for {{C::species.anElf}}.`,
-    //     `, which makes {{him}} small for {{C::species.anElf}}.`
-    //   ]); }
-
-    //   if (height > average * 1.2) { return Random.from([
-    //     `; taller than most {{C::species.elves}}.`,
-    //     `, which is tall for {{C::species.anElf}}.`,
-    //     `, which makes {{him}} large for {{C::species.anElf}}.`
-    //   ]); }
-
-    //   return Random.from([
-    //     `; an average height for {{C::species.anElf}}.`,
-    //     `, which is about average for {{C::species.anElf}}.`,
-    //     `, which makes {{him}} about as tall as most {{C::species.elves}}.`,
-    //   ]);
-
-    return await Weaver.weave(`${description.d} ${injuries}`, this.context);
+    return await Weaver.weave(
+      `${description.d} ${injuries} ${this.finishBody()}`
+    , this.context);
   }
 
   // TODO: Right now the body's face type is only used in this function to build
@@ -187,6 +167,22 @@ global.BodyDescriber = class BodyDescriber {
     return '';
   }
 
+  // Checks to make sure that all the nessessary inclusions have been added.
+  // This runs after the finishHead() function and includes the fur and skin
+  // colors if they were skipped by the head description. Always assume that
+  // the base description will include either fur or skin or height and weight.
+  finishBody() {
+    if (this.body.furColor && this.isNotIncluded('fur-color')) {
+      return this.describeFur();
+    }
+
+    if (this.isNotIncluded('height-weight')) {
+      return this.describeHeightWeight();
+    }
+
+    return '';
+  }
+
   // It's likely that the face and head descriptions will not include eye color.
   describeEyes() {
     if (this.body.faceType == 'hard') { return Random.from([
@@ -207,11 +203,59 @@ global.BodyDescriber = class BodyDescriber {
     return `{{He}} has {{C::body.eyeColor}} eyes.`;
   }
 
-  // These may not be needed. Keeping them around to make sure though.
-  describeEyesAndFur() { return `[TODO: EYES AND FUR]` }
-  describeEyesAndHair() { return `[TODO: EYES AND HAIR]` }
-  describeEyesHairAndFur() { return `[TODO: EYES, HAIR, AND FUR]` }
-  describeHair() { return `[TODO: HAIR]` }
-  describeHairAndFur() { return `[TODO: HAIR AND FUR]` }
+  describeEyesAndFur() {
+    return `[TODO: EYES AND FUR]`
+    this.addIncluded('fur-color');
+  }
+
+  describeEyesAndHair() {
+    return `[TODO: EYES AND HAIR]`
+    this.addIncluded('hair-color');
+  }
+
+  describeEyesHairAndFur() {
+    return `[TODO: EYES, HAIR, AND FUR]`
+    this.addIncluded('fur-color');
+    this.addIncluded('hair-color');
+  }
+
+  describeFur() {
+    return `[TODO: FUR]`
+    this.addIncluded('fur-color');
+    //     `{{His}} body is covered in {{C::body.furColor}} fur.`,
+    //     `{{He}} has {{C::body.furColor}} fur covering {{his}} entire body.`,
+  }
+
+  describeHair() {
+    return `[TODO: HAIR]`
+    this.addIncluded('hair-color');
+  }
+
+  describeHairAndFur() {
+    return `[TODO: HAIR AND FUR]`
+    this.addIncluded('fur-color');
+    this.addIncluded('hair-color');
+  }
+
+  describeHeightWeight() {
+    return `[TODO: HEIGHT WEIGHT]`
+    //   if (height < average * 0.8) { return Random.from([
+      //     `; shorter than most {{C::species.elves}}.`,
+      //     `, which is short for {{C::species.anElf}}.`,
+      //     `, which makes {{him}} small for {{C::species.anElf}}.`
+      //   ]); }
+
+      //   if (height > average * 1.2) { return Random.from([
+        //     `; taller than most {{C::species.elves}}.`,
+        //     `, which is tall for {{C::species.anElf}}.`,
+        //     `, which makes {{him}} large for {{C::species.anElf}}.`
+        //   ]); }
+
+        //   return Random.from([
+          //     `; an average height for {{C::species.anElf}}.`,
+          //     `, which is about average for {{C::species.anElf}}.`,
+          //     `, which makes {{him}} about as tall as most {{C::species.elves}}.`,
+          //   ]);
+  }
 
 }
