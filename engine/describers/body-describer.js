@@ -204,58 +204,75 @@ global.BodyDescriber = class BodyDescriber {
   }
 
   describeEyesAndFur() {
-    return `[TODO: EYES AND FUR]`
     this.addIncluded('fur-color');
+    return `[TODO: EYES AND FUR]`
   }
 
   describeEyesAndHair() {
-    return `[TODO: EYES AND HAIR]`
     this.addIncluded('hair-color');
+    return `[TODO: EYES AND HAIR]`
   }
 
   describeEyesHairAndFur() {
-    return `[TODO: EYES, HAIR, AND FUR]`
     this.addIncluded('fur-color');
     this.addIncluded('hair-color');
+    return `[TODO: EYES, HAIR, AND FUR]`
   }
 
   describeFur() {
-    return `[TODO: FUR]`
     this.addIncluded('fur-color');
-    //     `{{His}} body is covered in {{C::body.furColor}} fur.`,
-    //     `{{He}} has {{C::body.furColor}} fur covering {{his}} entire body.`,
+
+    let adjectives = [];
+    if (this.body.faceType == 'hard') { adjectives = ['rough','coarse']; }
+    if (this.body.faceType == 'soft') { adjectives = ['soft','smooth','supple']; }
+    let soft = Random.from(adjectives) || ''
+
+    return Random.from([
+      `{{His}} body is covered in ${soft} {{C::body.furColor}} fur.`,
+      `{{He}} has ${soft} {{C::body.furColor}} fur covering {{his}} entire body.`,
+    ]);
   }
 
   describeHair() {
-    return `[TODO: HAIR]`
     this.addIncluded('hair-color');
+    return `[TODO: HAIR]`
   }
 
   describeHairAndFur() {
-    return `[TODO: HAIR AND FUR]`
     this.addIncluded('fur-color');
     this.addIncluded('hair-color');
+    return `[TODO: HAIR AND FUR]`
   }
 
+  // I'm just going to recreate the short tall logic from the HasBody concern
+  // here, rather than making everything up to this point async. We already
+  // have the character and the body which is why it needed to be async in the
+  // first place.
   describeHeightWeight() {
-    return `[TODO: HEIGHT WEIGHT]`
-    //   if (height < average * 0.8) { return Random.from([
-      //     `; shorter than most {{C::species.elves}}.`,
-      //     `, which is short for {{C::species.anElf}}.`,
-      //     `, which makes {{him}} small for {{C::species.anElf}}.`
-      //   ]); }
+    const height = this.body.height;
+    const average = this.character.species.averageHeight();
 
-      //   if (height > average * 1.2) { return Random.from([
-        //     `; taller than most {{C::species.elves}}.`,
-        //     `, which is tall for {{C::species.anElf}}.`,
-        //     `, which makes {{him}} large for {{C::species.anElf}}.`
-        //   ]); }
+    if (height < average * 0.8) {
+      return Random.from([
+        `{{He}}'s smaller than most {{C::species.elves}}, weighing {{C::body.fiftyPounds}} and standing {{C::body.fiveFootTenInches}} tall.`,
+        `{{He}}'s shorter than most {{C::species.elves}}; {{C::body.fiveFootTenInches}} tall and weighing {{C::body.fiftyPounds}}.`,
+        `{{He}}'s {{C::body.fiveFootTenInches}} tall, and weighs {{C::body.fiftyPounds}}, which makes {{him}} a bit small for {{C::species.anElf}}.`,
+        `{{He}} weighs {{C::body.fiftyPounds}} and is {{C::body.fiveFootTenInches}} tall, which is a bit short for {{C::species.anElf}}.`,
+      ])
+    }
+    if (height > average * 1.2) {
+      return Random.from([
+        `{{He}}'s larger than most {{C::species.elves}}, weighing {{C::body.fiftyPounds}} and standing {{C::body.fiveFootTenInches}} tall.`,
+        `{{He}}'s taller than most {{C::species.elves}}; {{C::body.fiveFootTenInches}} tall and weighing {{C::body.fiftyPounds}}.`,
+        `{{He}}'s {{C::body.fiveFootTenInches}} tall, and weighs {{C::body.fiftyPounds}}, which makes {{him}} large for {{C::species.anElf}}.`,
+        `{{He}} weighs {{C::body.fiftyPounds}} and is {{C::body.fiveFootTenInches}} tall, which is a tall for {{C::species.anElf}}.`,
+      ])
+    }
 
-        //   return Random.from([
-          //     `; an average height for {{C::species.anElf}}.`,
-          //     `, which is about average for {{C::species.anElf}}.`,
-          //     `, which makes {{him}} about as tall as most {{C::species.elves}}.`,
-          //   ]);
+    return Random.from([
+      `{{He}}'s {{C::body.fiveFootTenInches}} tall, and weighs {{C::body.fiftyPounds}}.`,
+      `{{He}} weighs {{C::body.fiftyPounds}} and is {{C::body.fiveFootTenInches}} tall.`,
+    ]);
   }
 
 }
