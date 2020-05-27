@@ -175,7 +175,9 @@ global.BodyDescriber = class BodyDescriber {
     if (this.body.furColor && this.isNotIncluded('fur-color')) {
       return this.describeFur();
     }
-
+    if (this.body.skinColor && this.isNotIncluded('skin-color')) {
+      return this.describeSkin();
+    }
     if (this.isNotIncluded('height-weight')) {
       return this.describeHeightWeight();
     }
@@ -274,6 +276,20 @@ global.BodyDescriber = class BodyDescriber {
       `{{He}}'s {{C::body.fiveFootTenInches}} tall, and weighs {{C::body.fiftyPounds}}.`,
       `{{He}} weighs {{C::body.fiftyPounds}} and is {{C::body.fiveFootTenInches}} tall.`,
     ]);
+  }
+
+  describeSkin() {
+    this.addIncluded('skin-color');
+
+    if (this.character.physical >= 25) {
+      return (this.character.isMale) ?
+        `Thick muscles undulate beneath {{his}} {{C::body.skinColor}} skin.`:
+        `Subtle muscles undulate under {{his}} smooth {{C::body.skinColor}} skin giving {{his}} body a toned athletic appearance.`;
+    }
+
+    return this.character.isMale ?
+      `{{His}} masculine {{C::species.elven}} body has toned {{C::body.skinColor}} skin.`:
+      `{{His}} feminine {{C::species.elven}} body has soft {{C::body.skinColor}} skin.`;
   }
 
 }

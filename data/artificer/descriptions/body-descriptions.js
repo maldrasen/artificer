@@ -164,9 +164,31 @@ Description.buildBody({ species:'caprien', requires:['minion(C).is-not-male'],
 });
 
 // === Centaur Bodies ===
+// The minion's face type partially drives what kind of lower body the character has.
 
-Description.buildBody({ species:'centaur', requires:[],
-  d: `(TODO: Centaur Bodies)`
+Description.buildBody({ species:'centaur',
+  includes:['fur-color','height-weight'],
+  d: `{{He}} has the lower body of a horse with {{C::body.furColor}} fur. With {{his}} elven upper body {{he}}'s
+      {{C::body.fiveFootTenInches}} tall.`
+});
+
+Description.buildBody({ species:'centaur', requires:['minion(C).face.hard'],
+  includes:['fur-color','height-weight'],
+  d: `{{He}}'s a centaur with the lower body of a draft horse. {{His}} fetlocks are thick and shaggy with long
+      {{C::body.furColor}} hair. With {{his}} upper body {{he}}'s {{C::body.fiveFootTenInches}} tall.`
+});
+
+Description.buildBody({ species:'elf', requires:['minion(C).is-male','minion(C).body.physique.above-average'],
+  includes:['skin-color','fur-color','height-weight'],
+  d: `{{His}} lower horse body is large and muscular and covered in thick {{C::body.furColor}} fur. With {{his}} well
+      toned and {{C::body.skinColor}} skinned upper body {{he}}'s {{C::body.fiveFootTenInches}} tall.`
+});
+
+Description.buildBody({ species:'elf', requires:['minion(C).is-male','minion(C).body.physique.far-above-average'],
+  includes:['skin-color'],
+  d: `{{He}} has a very large and burly lower horse body, bulging with hard muscles and covered in thick
+      {{C::body.furColor}} fur. With {{his}} muscular and {{C::body.skinColor}} skinned upper body {{he}}'s
+      {{C::body.fiveFootTenInches}} tall.`
 });
 
 // === Dragon Bodies ===

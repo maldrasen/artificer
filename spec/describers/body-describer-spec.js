@@ -99,20 +99,20 @@ describe('Describer: Body', function() {
 
   // === Bodies ===
 
-  it.only('describes elven bodies', function(done) {
+  it('describes elven bodies', function(done) {
     printBody('Elven', { species:'elven' }, done);
   });
 
-  it.only('describes furry bodies', function(done) {
+  it('describes furry bodies', function(done) {
     printBody('Furry', { species:'furry' }, done);
   });
 
-  it.only('describes caprien', function(done) {
+  it('describes caprien', function(done) {
     printBody('Caprien', { species:'caprien' }, done);
   });
 
-  it('describes equian', function(done) {
-    printBody('Equine', { species:'equian' }, done);
+  it.only('describes centaur', function(done) {
+    printBody('Centaur', { species:'centaur' }, done);
   });
 
   it('describes scaven', function(done) {

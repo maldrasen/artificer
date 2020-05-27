@@ -38,8 +38,8 @@ Weaver.BodyLoom = (function() {
   // function. Also nested ternaries: ( •_•)>⌐□-□ (⌐□_□)
   function weightMeasurement(body, plural) {
     return (Settings.Metric) ?
-      `${Math.round(body.weight/1000)} ${plural ? 'kilograms' : 'kilogram'}`:
-      `${ConversionUtility.gramToPound(body.weight)} ${plural ? 'pounds' : 'pound'}`;
+      `${EnglishUtility.numberInEnglish(Math.round(body.weight/1000))} ${plural ? 'kilograms' : 'kilogram'}`:
+      `${EnglishUtility.numberInEnglish(ConversionUtility.gramToPound(body.weight))} ${plural ? 'pounds' : 'pound'}`;
   }
 
   // When in metric mode inchPlural controls the plural of centimeters.
