@@ -45,7 +45,7 @@ describe.only('Describer: Body', function() {
     printFace('Dryad', { species:'dryad' }, done);
   });
 
-  it.only('describes elf faces', function(done) {
+  it('describes elf faces', function(done) {
     printFace('Elf', { species:'elf' }, done);
   });
 
@@ -77,7 +77,7 @@ describe.only('Describer: Body', function() {
     printFace('Nymph', { species:'nymph' }, done);
   });
 
-  it('describes scaven faces', function(done) {
+  it.only('describes scaven faces', function(done) {
     printFace('Scaven', { species:'scaven' }, done);
   });
 

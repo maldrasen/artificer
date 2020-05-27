@@ -3,6 +3,7 @@ global.BodyDescriber = class BodyDescriber {
   constructor(context) {
     this._context = context;
     this._included = [];
+    this._tries = 0;
   }
 
   get context() { return this._context; }
@@ -67,14 +68,22 @@ global.BodyDescriber = class BodyDescriber {
 
   // This function will randomly select a face and head description. The two
   // main descriptions here can't share any of the same inclusions. We don't
-  // want a character's eyes described twice. This shouldn't loop forever if
-  // there are enough descriptions without inclusions to fall back on.
+  // want a character's eyes described twice. It can happen tough, so I'm
+  // printing out a big warning when it happens so I know to add more
+  // descriptions.
   async selectFaceAndHead() {
     const faceDescription = await Description.select('face', this.context);
     const headDescription = await Description.select('head', this.context);
 
+    if (this._tries++ == 10) {
+      console.log(`Warning: There doesn't seem to be enough face and head descriptions so this character's`);
+      console.log(`         description will probably share inclusions.`);
+      console.log(` - Face: ${faceDescription.d}`)
+      console.log(` - Head: ${headDescription.d}`)
+    }
+
     for (let i=0; i<(faceDescription.includes||[]).length; i++) {
-      if ((headDescription.includes||[]).indexOf(faceDescription.includes[i])>=0) {
+      if (this._tries < 10 && (headDescription.includes||[]).indexOf(faceDescription.includes[i])>=0) {
         return await this.selectFaceAndHead();
       }
     }
@@ -305,7 +314,7 @@ global.BodyDescriber = class BodyDescriber {
     let soft = Random.from(adjectives) || ''
 
     if (this.character.physical >= 25) {
-      if (character.isMale) {
+      if (this.character.isMale) {
         return Random.from([
           `{{His}} muscular body is covered in ${soft} {{C::body.furColor}} fur.`,
           `Thick muscles undulate beneath {{his}} ${soft} {{C::body.furColor}} fur.`

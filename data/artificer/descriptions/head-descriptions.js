@@ -328,6 +328,11 @@ Description.buildHead({ species:'neko',
 
 // === Scaven ===
 
+Description.buildHead({ species:'scaven',
+  includes:['eye-color'],
+  d: `The scaven had a face like a rat with beady {{C::body.eyeColor}} eyes.`
+});
+
 Description.buildHead({ species:'scaven', requires:['minion(C).face.at-least-average'],
   includes:['eye-color'],
   d: `The scaven's face is unsurprisingly rat-like with beady {{C::body.eyeColor}} eyes, a short muzzle, long whiskers

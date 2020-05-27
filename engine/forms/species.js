@@ -4,7 +4,8 @@ global.Species = class Species extends Form {
   get isElf()    { return this.hasFlag('elf');    }
   get isDemon()  { return this.hasFlag('demon');  }
   get isScalie() { return this.hasFlag('scalie'); }
-  get hasCockSheath() { return this.bodyOptions.cock.sheath != null }
+  get hasCockSheath() { return this.bodyOptions.cock.sheath != null; }
+  get hasHair() { return this.bodyOptions.hairColors != null; }
 
   get pluralName() {
     if (this.code == 'dark-elf') { return 'Dark Elves'; }
