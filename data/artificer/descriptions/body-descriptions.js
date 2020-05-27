@@ -2,9 +2,8 @@
 // === Elf Bodies ===
 
 Description.buildBody({ species:'elf',
-  includes:['height-weight','skin-color'],
-  d: `{{His}} {{C::species.elven}} body is {{C::body.fiveFeetTenInches}} tall, weighs {{C::body.fiftyPounds}}, and
-      {{he}} has {{C::body.skinColor}} skin.`
+  includes:['height-weight'],
+  d: `{{His}} {{C::species.elven}} body is {{C::body.fiveFeetTenInches}} tall, weighs {{C::body.fiftyPounds}}.`
 });
 
 Description.buildBody({ species:'elf', requires:['minion(C).is-male','minion(C).body.physique.below-average'],

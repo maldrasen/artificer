@@ -1,4 +1,4 @@
-describe('Describer: Body', function() {
+describe.only('Describer: Body', function() {
 
   async function buildCharacter(options) {
     const tweeked = Object.assign({}, options, {
@@ -111,7 +111,7 @@ describe('Describer: Body', function() {
     printBody('Caprien', { species:'caprien' }, done);
   });
 
-  it.only('describes centaur', function(done) {
+  it('describes centaur', function(done) {
     printBody('Centaur', { species:'centaur' }, done);
   });
 

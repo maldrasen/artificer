@@ -172,17 +172,10 @@ global.BodyDescriber = class BodyDescriber {
   // colors if they were skipped by the head description. Always assume that
   // the base description will include either fur or skin or height and weight.
   finishBody() {
-    if (this.body.furColor && this.isNotIncluded('fur-color')) {
-      return this.describeFur();
-    }
-    if (this.body.skinColor && this.isNotIncluded('skin-color')) {
-      return this.describeSkin();
-    }
-    if (this.isNotIncluded('height-weight')) {
-      return this.describeHeightWeight();
-    }
-
-    return '';
+    if (this.body.furColor && this.isNotIncluded('fur-color'))     { return this.describeFur();    }
+    if (this.body.skinColor && this.isNotIncluded('skin-color'))   { return this.describeSkin();   }
+    if (this.body.scaleColor && this.isNotIncluded('scale-color')) { return this.describeScales(); }
+    return this.isNotIncluded('height-weight') ? this.describeHeightWeight() : '';
   }
 
   // It's likely that the face and head descriptions will not include eye color.
@@ -221,20 +214,6 @@ global.BodyDescriber = class BodyDescriber {
     return `[TODO: EYES, HAIR, AND FUR]`
   }
 
-  describeFur() {
-    this.addIncluded('fur-color');
-
-    let adjectives = [];
-    if (this.body.faceType == 'hard') { adjectives = ['rough','coarse']; }
-    if (this.body.faceType == 'soft') { adjectives = ['soft','smooth','supple']; }
-    let soft = Random.from(adjectives) || ''
-
-    return Random.from([
-      `{{His}} body is covered in ${soft} {{C::body.furColor}} fur.`,
-      `{{He}} has ${soft} {{C::body.furColor}} fur covering {{his}} entire body.`,
-    ]);
-  }
-
   describeHair() {
     this.addIncluded('hair-color');
     return `[TODO: HAIR]`
@@ -244,6 +223,81 @@ global.BodyDescriber = class BodyDescriber {
     this.addIncluded('fur-color');
     this.addIncluded('hair-color');
     return `[TODO: HAIR AND FUR]`
+  }
+
+  // Skin fur and scale descriptions are similar, but probably not similar
+  // enough to combine. Still if we tweek the descriptions in one of the
+  // hair/fur/scales function it probably would make sense to make the same
+  // adjustment to the other functions.
+
+  describeSkin() {
+    this.addIncluded('skin-color');
+
+    if (this.character.physical >= 25) {
+      return (this.character.isMale) ?
+        `Thick muscles undulate beneath {{his}} {{C::body.skinColor}} skin.`:
+        `Subtle muscles undulate under {{his}} smooth {{C::body.skinColor}} skin giving {{his}} body a toned athletic appearance.`;
+    }
+
+    return this.character.isMale ?
+      `{{His}} masculine {{C::species.elven}} body has toned {{C::body.skinColor}} skin.`:
+      `{{His}} feminine {{C::species.elven}} body has soft {{C::body.skinColor}} skin.`;
+  }
+
+  describeFur() {
+    this.addIncluded('fur-color');
+
+    let adjectives = [];
+    if (this.body.faceType == 'hard') { adjectives = ['rough','coarse']; }
+    if (this.body.faceType == 'soft') { adjectives = ['soft','smooth','supple']; }
+    let soft = Random.from(adjectives) || ''
+
+    if (this.character.physical >= 25) {
+      if (character.isMale) {
+        return Random.from([
+          `{{His}} muscular body is covered in ${soft} {{C::body.furColor}} fur.`,
+          `Thick muscles undulate beneath {{his}} ${soft} {{C::body.furColor}} fur.`
+        ]);
+      }
+
+      return Random.from([
+        `{{His}} toned athletic body is covered in ${soft} {{C::body.furColor}} fur.`,
+        `Subtle muscles undulate under {{his}} ${soft} {{C::body.furColor}} fur giving {{his}} body a toned athletic appearance.`,
+      ]);
+    }
+
+    return Random.from([
+      `{{His}} body is covered in ${soft} {{C::body.furColor}} fur.`,
+      `{{He}} has ${soft} {{C::body.furColor}} fur covering {{his}} entire body.`,
+    ]);
+  }
+
+  describeScales() {
+    this.addIncluded('scale-color');
+
+    let adjectives = [];
+    if (this.body.faceType == 'hard') { adjectives = ['dull','thick','rough']; }
+    if (this.body.faceType == 'soft') { adjectives = ['smooth','glistening','gleaming']; }
+    let dull = Random.from(adjectives) || ''
+
+    if (this.character.physical >= 25) {
+      if (character.isMale) {
+        return Random.from([
+          `{{His}} muscular body is covered in ${dull} {{C::body.scaleColor}} scales.`,
+          `Thick muscles undulate beneath {{his}} ${dull} {{C::body.scaleColor}} scales.`
+        ]);
+      }
+
+      return Random.from([
+        `{{His}} toned athletic body is covered in ${dull} {{C::body.scaleColor}} scales.`,
+        `Subtle muscles undulate under {{his}} ${dull} {{C::body.scaleColor}} scales giving {{his}} body a toned athletic appearance.`,
+      ]);
+    }
+
+    return Random.from([
+      `{{His}} body is covered in ${dull} {{C::body.scaleColor}} scales.`,
+      `{{He}} has ${dull} {{C::body.scaleColor}} scales covering {{his}} entire body.`,
+    ]);
   }
 
   // I'm just going to recreate the short tall logic from the HasBody concern
@@ -277,19 +331,4 @@ global.BodyDescriber = class BodyDescriber {
       `{{He}} weighs {{C::body.fiftyPounds}} and is {{C::body.fiveFootTenInches}} tall.`,
     ]);
   }
-
-  describeSkin() {
-    this.addIncluded('skin-color');
-
-    if (this.character.physical >= 25) {
-      return (this.character.isMale) ?
-        `Thick muscles undulate beneath {{his}} {{C::body.skinColor}} skin.`:
-        `Subtle muscles undulate under {{his}} smooth {{C::body.skinColor}} skin giving {{his}} body a toned athletic appearance.`;
-    }
-
-    return this.character.isMale ?
-      `{{His}} masculine {{C::species.elven}} body has toned {{C::body.skinColor}} skin.`:
-      `{{His}} feminine {{C::species.elven}} body has soft {{C::body.skinColor}} skin.`;
-  }
-
 }
