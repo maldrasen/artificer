@@ -202,6 +202,40 @@ global.BodyDescriber = class BodyDescriber {
     return `[TODO: EYES AND FUR]`
   }
 
+  // For now, gender and face shape are used to determine hair style when
+  // mentioned. This might change at some point if I feel like implementing
+  // hair styling more fully.
+  describeHair() {
+    this.addIncluded('hair-color');
+
+    if (this.character.isMale) {
+      if (this.body.faceShape == 'exotic') { return Random.from([
+        `{{He}} has long {{C::body.hairColor}} hair that hangs loosely down {{his}} back.`,
+        `{{He}} has long {{C::body.hairColor}} hair tied up in a neat ponytail.`,
+      ]); }
+
+      return Random.from([
+        `{{He}} has short {{C::body.hairColor}} hair.`,
+        `{{His}} {{C::body.hairColor}} hair is short and spiky.`,
+        `{{His}} {{C::body.hairColor}} hair is short and neat.`,
+        `{{His}} {{C::body.hairColor}} hair is short and a little messy.`,
+      ]);
+    }
+
+    if (this.body.faceShape == 'soft') { return Random.from([
+      `{{His}} {{C::body.hairColor}} hair is long and curly and hangs down {{his}} back in long rings.`,
+      `{{His}} hair is short and curly with thick {{C::body.hairColor}} ringlets adorning the top of {{her}} head.`,
+    ]); }
+
+    Random.from([
+      `{{He}} has long straight {{C::body.hairColor}} hair that hangs loosely down {{his}} back.`,
+      `{{His}} {{C::body.hairColor}} hair is long and wavy and hangs loosely down {{his}} back.`,
+      `{{He}} has long {{C::body.hairColor}} hair tied up in a neat ponytail.`,
+    ]);
+
+    return `[TODO: HAIR]`
+  }
+
   describeEyesAndHair() {
     this.addIncluded('hair-color');
     return `[TODO: EYES AND HAIR]`
@@ -211,11 +245,6 @@ global.BodyDescriber = class BodyDescriber {
     this.addIncluded('fur-color');
     this.addIncluded('hair-color');
     return `[TODO: EYES, HAIR, AND FUR]`
-  }
-
-  describeHair() {
-    this.addIncluded('hair-color');
-    return `[TODO: HAIR]`
   }
 
   describeHairAndFur() {
