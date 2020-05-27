@@ -23,6 +23,8 @@ global.SpecHelper = (function() {
       lastName: 'Random',
       species: options.species||Random.from(Species.all()).code,
       gender: options.gender||Random.from(['male','female','futa']),
+      physical: options.physical,
+      personal: options.personal,
     },options));
 
     await CharacterAdjuster.applyAll(rando,adjustments);

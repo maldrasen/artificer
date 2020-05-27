@@ -12,8 +12,8 @@ Species.build('wood-elf', {
   foodPerDay: 4,
 
   bodyOptions: {
-    baseHeight: 1350,
-    heightRange: 300,
+    baseHeight: 1200,
+    heightRange: 400,
     maleHeightAdjust: 100,
 
     tailShape: 'dog',

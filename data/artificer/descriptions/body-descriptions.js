@@ -1,8 +1,55 @@
 
 // === Elf Bodies ===
 
-Description.buildBody({ species:'elf', requires:[],
-  d: `(TODO: Elf Bodies)`
+Description.buildBody({ species:'elf',
+  includes:['height-weight','skin-color'],
+  d: `{{He}} has an elven body with {{C::body.skinColor}} skin, weighs {{C::body.fiftyPounds}}, and is
+      {{C::body.fiveFeetTenInches}} tall.`
+});
+
+Description.buildBody({ species:'elf',
+  includes:['height-weight','skin-color'],
+  d: `{{His}} elven body is {{C::body.fiveFeetTenInches}} tall, weighs {{C::body.fiftyPounds}}, and {{he}} has
+      {{C::body.skinColor}} skin.`
+});
+
+Description.buildBody({ species:'elf', requires:['minion(C).is-male','minion(C).body.physique.below-average'],
+  includes:['skin-color'],
+  d: `{{He}} has a thin but unmistakably masculine elven body with {{C::body.skinColor}} skin.`
+});
+
+Description.buildBody({ species:'elf', requires:['minion(C).is-not-male','minion(C).body.physique.feeble'],
+  includes:['skin-color'],
+  d: `{{He}} is very thin with a lithe and flexible looking body with {{C::body.skinColor}} skin.`
+});
+
+Description.buildBody({ species:'elf', requires:['minion(C).body.physique.below-average','minion(C).body.height-short-for-species'],
+  includes:['height-weight'],
+  d: `{{He}}'s a very small elf, both thin and short. {{He}}'s only {{C::body.fiveFeetTenInches}} tall and weighs
+      {{C::body.fiftyPounds}}.`
+});
+
+Description.buildBody({ species:'elf', requires:['minion(C).body.physique.below-average','minion(C).body.height-average-for-species'],
+  includes:['skin-color'],
+  d: `{{His}} graceful elven body is slender and a little fragile looking with {{C::body.skinColor}} skin.`
+});
+
+Description.buildBody({ species:'elf', requires:['minion(C).body.physique.below-average','minion(C).body.height-tall-for-species'],
+  includes:['height-weight'],
+  d: `{{His}} body is tall and willowy, very thin and fragile looking while also being taller than most other
+      {{C::species.elves}}. {{He}} is {{C::body.fiveFeetTenInches}} tall but only weighs {{C::body.fiftyPounds}}.`
+});
+
+Description.buildBody({ species:'elf', requires:['minion(C).is-male','minion(C).body.physique.above-average'],
+  includes:['skin-color'],
+  d: `{{He}}'s a strong looking {{C::species.elf}} with hard well defined muscles rippling under {{his}}
+      {{C::body.skinColor}} skin.`
+});
+
+Description.buildBody({ species:'elf', requires:['minion(C).is-male','minion(C).body.physique.far-above-average'],
+  includes:['skin-color'],
+  d: `{{He}}'s a very strong and masculine {{C::species.elf}} with rock hard cords of muscle rippling under {{his}}
+      {{C::body.skinColor}} skin.`
 });
 
 // === Furry Bodies ===

@@ -61,8 +61,12 @@ global.Body = Database.instance().define('body', {
 // Futa characters are assumed to be midway between male and female weight.
 // This function can also be called durning events where a character has no
 // gender yet, but are put into a context. Just return 0 when that happens.
+//
+// We then take the ideal weight and adjust it up or down depending on that
+// character's physique. Physique effects males more than females though.
 Body.prototype.getWeight = async function() {
   const character = await Character.findOne({ where:{ body_id:this.id }});
+  const physique = character.getPhysicalWord();
 
   if (character == null) { return 0; }
   if (character.genderCode == null) { return 0; }
@@ -83,10 +87,24 @@ Body.prototype.getWeight = async function() {
     (base * this.height/1520):
     ((perCentimeter * (this.height - 1520)) + base);
 
-  if (character.speciesCode == 'dryad') { return weight*1.8; }
-  if (character.speciesCode == 'centaur') { return weight*4; }
+  if (character.speciesCode == 'dryad')   { weight *= 1.8; }
+  if (character.speciesCode == 'centaur') { weight *= 4; }
 
-  return weight;
+  if (character.genderCode == 'male') {
+    if (physique == 'feeble')  { return weight * 0.9; }
+    if (physique == 'weak')    { return weight; }
+    if (physique == 'average') { return weight * 1.1; }
+    if (physique == 'strong')  { return weight * 1.2; }
+    if (physique == 'mighty')  { return weight * 1.33; }
+    return weight * 1.5;
+  }
+
+  if (physique == 'feeble')  { return weight * 0.7; }
+  if (physique == 'weak')    { return weight * 0.8; }
+  if (physique == 'average') { return weight * 0.9; }
+  if (physique == 'strong')  { return weight * 1;   }
+  if (physique == 'mighty')  { return weight * 1.1; }
+  return weight * 1.2;
 }
 
 Body.FACE_TYPES = FACE_TYPES;

@@ -1,7 +1,10 @@
 describe('Describer: Body', function() {
 
   async function buildCharacter(options) {
-    const rando = await SpecHelper.buildRando(options);
+    const rando = await SpecHelper.buildRando(Object.assign({},options,{
+      physical: options.physical || Random.between(1,100),
+      personal: options.personal || Random.between(1,80),
+    }));
 
     if (options._injury == 'head.1') { await Abuser.addHeadInjury(rando, { type:'smash', level:1 }); }
     if (options._injury == 'body.1') { await Abuser.addBodyInjury(rando, { type:'pierce', level:3 }); }
@@ -91,6 +94,10 @@ describe('Describer: Body', function() {
 
   // === Bodies ===
 
+  it.only('describes elven bodies', function(done) {
+    printBody('Elven', { species:'wood-elf' }, done);
+  });
+
   it.only('describes caprien', function(done) {
     printBody('Caprien', { species:'caprien' }, done);
   });
@@ -101,10 +108,6 @@ describe('Describer: Body', function() {
 
   it('describes scaven', function(done) {
     printBody('Scaven', { species:'scaven' }, done);
-  });
-
-  it('describes wood elves', function(done) {
-    printBody('Wood Elf', { species:'wood-elf' }, done);
   });
 
   it('describes injured bodies', function(done) {

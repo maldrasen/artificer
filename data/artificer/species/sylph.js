@@ -2,7 +2,7 @@ Species.build('sylph', {
   name: 'Sylph',
   adjective: 'sylphic',
 
-  physical: 10,
+  physical: 5,
   personal: 20,
   mental:   30,
   magical:  15,
