@@ -1,10 +1,15 @@
 describe('Describer: Body', function() {
 
   async function buildCharacter(options) {
-    const rando = await SpecHelper.buildRando(Object.assign({},options,{
+    const tweeked = Object.assign({}, options, {
       physical: options.physical || Random.between(1,100),
       personal: options.personal || Random.between(1,80),
-    }));
+    });
+
+    if (options.species == 'elven') { tweeked.species = Random.from(['dark-elf','elf','gnome','neko','nymph','sylph','viera','wood-elf']); }
+    if (options.species == 'furry') { tweeked.species = Random.from(['equian','lupin','minotaur']); }
+
+    const rando = await SpecHelper.buildRando(tweeked);
 
     if (options._injury == 'head.1') { await Abuser.addHeadInjury(rando, { type:'smash', level:1 }); }
     if (options._injury == 'body.1') { await Abuser.addBodyInjury(rando, { type:'pierce', level:3 }); }
@@ -95,7 +100,11 @@ describe('Describer: Body', function() {
   // === Bodies ===
 
   it.only('describes elven bodies', function(done) {
-    printBody('Elven', { species:'wood-elf' }, done);
+    printBody('Elven', { species:'elven' }, done);
+  });
+
+  it.only('describes furry bodies', function(done) {
+    printBody('Furry', { species:'furry' }, done);
   });
 
   it.only('describes caprien', function(done) {
