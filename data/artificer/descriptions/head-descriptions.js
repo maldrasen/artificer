@@ -1,11 +1,8 @@
 
-Description.buildHead({ requires:[], includes:['eye-color'],
-  d: `({{He}} has a normal elven head with {{C::body.eyeColor}} eyes.)`
-});
-
-Description.buildHead({ requires:[],
-  d: `({{He}} has a normal elven head)`
-});
+// Sometimes with elves there isn't anything to say about the head, so we can
+// just use an empty description and let the finishHead() function add details
+// about the eyes and hair.
+Description.buildHead({ d:`` });
 
 // == Masculine Capriens ===
 // Capriens specifically have goat headed males, but elven faced females.

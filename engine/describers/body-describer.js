@@ -227,18 +227,42 @@ global.BodyDescriber = class BodyDescriber {
       `{{His}} hair is short and curly with thick {{C::body.hairColor}} ringlets adorning the top of {{her}} head.`,
     ]); }
 
-    Random.from([
+    return Random.from([
       `{{He}} has long straight {{C::body.hairColor}} hair that hangs loosely down {{his}} back.`,
       `{{His}} {{C::body.hairColor}} hair is long and wavy and hangs loosely down {{his}} back.`,
       `{{He}} has long {{C::body.hairColor}} hair tied up in a neat ponytail.`,
     ]);
-
-    return `[TODO: HAIR]`
   }
 
+  // Lots of copy pasta between the hair description functions, but I think it
+  // would be too difficult to programatically include eye descriptions or not.
   describeEyesAndHair() {
     this.addIncluded('hair-color');
-    return `[TODO: EYES AND HAIR]`
+
+    if (this.character.isMale) {
+      if (this.body.faceShape == 'exotic') { return Random.from([
+        `{{He}} has {{C::body.eyeColor}} eyes and long {{C::body.hairColor}} hair that hangs loosely down {{his}} back.`,
+        `{{He}} has {{C::body.eyeColor}} eyes and long {{C::body.hairColor}} hair tied up in a neat ponytail.`,
+      ]); }
+
+      return Random.from([
+        `{{He}} has {{C::body.eyeColor}} eyes and short {{C::body.hairColor}} hair.`,
+        `{{He}} has {{C::body.eyeColor}} eyes and {{his}} {{C::body.hairColor}} hair is short and spiky.`,
+        `{{He}} has {{C::body.eyeColor}} eyes and {{his}} {{C::body.hairColor}} hair is short and neat.`,
+        `{{He}} has {{C::body.eyeColor}} eyes and {{his}} {{C::body.hairColor}} hair is short and a little messy.`,
+      ]);
+    }
+
+    if (this.body.faceShape == 'soft') { return Random.from([
+      `{{He}} has {{C::body.eyeColor}} eyes and {{his}} {{C::body.hairColor}} hair is long and curly and hangs down {{his}} back in long rings.`,
+      `{{He}} has {{C::body.eyeColor}} eyes and {{his}} hair is short and curly with thick {{C::body.hairColor}} ringlets adorning the top of {{her}} head.`,
+    ]); }
+
+    return Random.from([
+      `{{He}} has {{C::body.eyeColor}} eyes and short long straight {{C::body.hairColor}} hair that hangs loosely down {{his}} back.`,
+      `{{He}} has {{C::body.eyeColor}} eyes and short long {{C::body.hairColor}} hair tied up in a neat ponytail.`,
+      `{{He}} has {{C::body.eyeColor}} eyes and {{his}} {{C::body.hairColor}} hair is long and wavy and hangs loosely down {{his}} back.`,
+    ]);
   }
 
   describeEyesHairAndFur() {
