@@ -177,13 +177,13 @@ Description.buildBody({ species:'centaur', requires:['minion(C).face.hard'],
       {{C::body.furColor}} hair. With {{his}} upper body {{he}}'s {{C::body.fiveFootTenInches}} tall.`
 });
 
-Description.buildBody({ species:'elf', requires:['minion(C).is-male','minion(C).body.physique.above-average'],
+Description.buildBody({ species:'centaur', requires:['minion(C).is-male','minion(C).body.physique.above-average'],
   includes:['skin-color','fur-color','height-weight'],
   d: `{{His}} lower horse body is large and muscular and covered in thick {{C::body.furColor}} fur. With {{his}} well
       toned and {{C::body.skinColor}} skinned upper body {{he}}'s {{C::body.fiveFootTenInches}} tall.`
 });
 
-Description.buildBody({ species:'elf', requires:['minion(C).is-male','minion(C).body.physique.far-above-average'],
+Description.buildBody({ species:'centaur', requires:['minion(C).is-male','minion(C).body.physique.far-above-average'],
   includes:['skin-color'],
   d: `{{He}} has a very large and burly lower horse body, bulging with hard muscles and covered in thick
       {{C::body.furColor}} fur. With {{his}} muscular and {{C::body.skinColor}} skinned upper body {{he}}'s

@@ -30,7 +30,6 @@ global.BodyDescriber = class BodyDescriber {
 
     this.addInclusions(description.includes);
 
-
     return await Weaver.weave(
       `${description.d} ${injuries} ${this.finishBody()}`
     , this.context);

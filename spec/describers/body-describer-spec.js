@@ -45,7 +45,7 @@ describe.only('Describer: Body', function() {
     printFace('Dryad', { species:'dryad' }, done);
   });
 
-  it('describes elf faces', function(done) {
+  it.only('describes elf faces', function(done) {
     printFace('Elf', { species:'elf' }, done);
   });
 

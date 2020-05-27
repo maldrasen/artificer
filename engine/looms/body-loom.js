@@ -58,6 +58,7 @@ Weaver.BodyLoom = (function() {
     let color = body.furColor
     let shade = body.furShade
 
+    if (color == null)    { throw `Body has no fur.`;   }
     if (color == 'brown') { return brownFurWord(shade); }
     if (color == 'red')   { return redFurWord(shade);   }
     if (color == 'white') { return whiteFurWord();      }
@@ -66,7 +67,7 @@ Weaver.BodyLoom = (function() {
 
     // If fur color is not one of the above assume that it's one of the hair
     // colors like blond or light-purple.
-    return body.furColor.replace(/-/,' ')
+    return color.replace(/-/,' ')
   }
 
   function brownFurWord(shade) {
