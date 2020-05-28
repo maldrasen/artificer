@@ -19,6 +19,7 @@ Species.build('dryad', {
     maleHeightAdjust: 100,
 
     skinColors: 'pale-green',
+    furColors: { brown:1 },
     hornShapes: 'deer',
     hairColors: {
       'dark-brown':  30,

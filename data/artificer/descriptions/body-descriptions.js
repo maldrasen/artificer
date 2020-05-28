@@ -191,42 +191,53 @@ Description.buildBody({ species:'centaur', requires:['minion(C).is-male','minion
 });
 
 // === Dragon Bodies ===
+// TODO: We'll need more of these when more dragons are in the game.
 
 Description.buildBody({ species:'dragon', requires:[],
-  d: `(TODO: Dragon Bodies)`
+  includes:['height-weight'],
+  d: `{{His}} large muscular dragon body is {{C::body.fiveFootTenInches}} tall. {{He}} has a long thick tail and
+      clawed feet and hands.`
 });
 
 // === Dryad Bodies ===
+// TODO: We'll need more of these when more dryads are in the game.
 
 Description.buildBody({ species:'dryad', requires:[],
-  d: `(TODO: Dryad Bodies)`
+  includes:['height-weight','fur-color'],
+  d: `{{He}} has a body like a centaur, except {{his}} lower body is that of a deer with {{C::body.furColor}} fur. With
+      {{his}} upper body {{he}}'s {{C::body.fiveFootTenInches}} tall.`
 });
 
 // === Goblin Bodies ===
+// TODO: We'll need more of these when more goblins are in the game.
 
 Description.buildBody({ species:'goblin', requires:[],
   d: `(TODO: Goblin Bodies)`
 });
 
 // === Incubus Bodies ===
+// TODO: We'll need more of these when more demons are in the game.
 
 Description.buildBody({ species:'incubus', requires:[],
   d: `(TODO: Incubus Bodies)`
 });
 
 // === Kobold Bodies ===
+// TODO: We'll need more of these when more kobolds are in the game.
 
 Description.buildBody({ species:'kobold', requires:[],
   d: `(TODO: Kobold Bodies)`
 });
 
 // === Naga Bodies ===
+// TODO: We'll need more of these when more naga are in the game.
 
 Description.buildBody({ species:'naga', requires:[],
   d: `(TODO: Naga Bodies)`
 });
 
 // === Ogre Bodies ===
+// TODO: We'll need more of these when more ogres are in the game.
 
 Description.buildBody({ species:'ogre', requires:[],
   d: `(TODO: Ogre Bodies)`
@@ -255,12 +266,14 @@ Description.buildBody({ species:'scaven', requires:['minion(C).body.height-tall-
 });
 
 // === Selkie Bodies ===
+// TODO: We'll need more of these when more selkie are in the game.
 
 Description.buildBody({ species:'selkie', requires:[],
   d: `(TODO: Selkie Bodies)`
 });
 
 // === Succubus Bodies ===
+// TODO: We'll need more of these when more demons are in the game.
 
 Description.buildBody({ species:'succubus', requires:[],
   d: `(TODO: Succubus Bodies)`

@@ -115,6 +115,14 @@ describe.only('Describer: Body', function() {
     printBody('Centaur', { species:'centaur' }, done);
   });
 
+  it.only('describes dragons', function(done) {
+    printBody('Dragon', { species:'dragon' }, done);
+  });
+
+  it.only('describes dryads', function(done) {
+    printBody('Dryad', { species:'dryad' }, done);
+  });
+
   it('describes scaven', function(done) {
     printBody('Scaven', { species:'scaven' }, done);
   });
