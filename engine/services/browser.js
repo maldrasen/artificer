@@ -8,7 +8,7 @@ global.Browser = (function() {
   function open() {
     mainWindow = new electron.BrowserWindow({
       width: (Environment.Debug ? 1800 : 1200),
-      height: (Environment.Debug ? 1000 : 800),
+      height: (Environment.Debug ? 1000 : 1000),
       webPreferences: { nodeIntegration:true },
     });
 
@@ -18,6 +18,8 @@ global.Browser = (function() {
     if (Environment.Debug) {
       mainWindow.webContents.openDevTools();
       mainWindow.webContents.executeJavaScript('window.DEBUG = true;');
+    } else {
+      mainWindow.webContents.executeJavaScript('window.DEBUG = false;');
     }
 
     mainWindow.on('closed', () => {
