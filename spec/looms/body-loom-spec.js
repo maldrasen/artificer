@@ -4,7 +4,7 @@ describe('Body Loom', function() {
     const context = new Context();
 
     return new Promise(resolve => {
-      CharacterBuilder.build({ firstName:'Jada', lastName:'Fire', species:'elf', gender:'female', body:options}).then(character => {
+      CharacterBuilder.build({ firstName:'Jada', lastName:'Fire', species:'elf', gender:'female', physical:20, body:options}).then(character => {
         context.addCharacter('C',character).then(()=>{
           resolve(context);
         });
@@ -15,21 +15,21 @@ describe('Body Loom', function() {
   describe("Gets weight", function() {
     it('tiny', function(done) {
       buildContext({ height:1520 }).then(context => {
-        expect(Weaver.weave('{{C::body.fiftyPound}}',context)).to.equal('100 pound');
+        expect(Weaver.weave('{{C::body.fiftyPound}}',context)).to.equal('ninety pound');
         done();
       });
     });
 
     it('average', function(done) {
       buildContext({ height:1800 }).then(context => {
-        expect(Weaver.weave('{{C::body.fiftyPound}}',context)).to.equal('156 pound');
+        expect(Weaver.weave('{{C::body.fiftyPound}}',context)).to.equal('one hundred forty pound');
         done();
       });
     });
 
     it('heavy', function(done) {
       buildContext({ height:2500 }).then(context => {
-        expect(Weaver.weave('{{C::body.fiftyPounds}}',context)).to.equal('295 pounds');
+        expect(Weaver.weave('{{C::body.fiftyPounds}}',context)).to.equal('two hundred sixty-five pounds');
         done();
       });
     });
@@ -37,7 +37,7 @@ describe('Body Loom', function() {
     it('average metric', function(done) {
       Settings.Metric = true;
       buildContext({ height:1800 }).then(context => {
-        expect(Weaver.weave('{{C::body.fiftyPounds}}',context)).to.equal('71 kilograms');
+        expect(Weaver.weave('{{C::body.fiftyPounds}}',context)).to.equal('sixty-four kilograms');
         done();
       });
     });
@@ -68,7 +68,7 @@ describe('Body Loom', function() {
     it(`metric measurement`, function(done) {
       Settings.Metric = true;
       buildContext({ height:1600 }).then(context => {
-        expect(Weaver.weave('{{C::body.fiveFeetTenInches}}',context)).to.equal('160 centimeters');
+        expect(Weaver.weave('{{C::body.fiveFeetTenInches}}',context)).to.equal('one hundred sixty centimeters');
         done();
       });
     });

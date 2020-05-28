@@ -54,6 +54,13 @@ global.Body = Database.instance().define('body', {
   }
 });
 
+// This could be a character body or a player body. The two classes are similar
+// enough that they're just ducttyped together by the body, but it's important
+// to remember that getBodyHaver() can return a Character or the Player.
+Body.prototype.getBodyHaver = async function() {
+  return (await Character.findOne({ where:{ body_id:this.id }})) || (await Player.instance());
+}
+
 // In grams, uses the Hamwi formula
 //   Male ideal body weight = 48 kilograms + 110 grams × (height (mm) − 1520)
 //   Female ideal body weight = 45.4 kilograms + 90 grams × (height (mm) − 1520)
@@ -65,11 +72,8 @@ global.Body = Database.instance().define('body', {
 // We then take the ideal weight and adjust it up or down depending on that
 // character's physique. Physique effects males more than females though.
 Body.prototype.getWeight = async function() {
-  const character = await Character.findOne({ where:{ body_id:this.id }});
+  const character = await this.getBodyHaver();
   const physique = character.getPhysicalWord();
-
-  if (character == null) { return 0; }
-  if (character.genderCode == null) { return 0; }
 
   const base = {
     male:   48000,
@@ -87,8 +91,9 @@ Body.prototype.getWeight = async function() {
     (base * this.height/1520):
     ((perCentimeter * (this.height - 1520)) + base);
 
-  if (character.speciesCode == 'dryad')   { weight *= 1.8; }
   if (character.speciesCode == 'centaur') { weight *= 4; }
+  if (character.speciesCode == 'dryad')   { weight *= 1.8; }
+  if (character.speciesCode == 'naga')    { weight *= 2.5; }
 
   if (character.genderCode == 'male') {
     if (physique == 'feeble')  { return weight * 0.9; }

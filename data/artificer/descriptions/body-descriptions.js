@@ -208,39 +208,21 @@ Description.buildBody({ species:'dryad', requires:[],
       {{his}} upper body {{he}}'s {{C::body.fiveFootTenInches}} tall.`
 });
 
-// === Goblin Bodies ===
-// TODO: We'll need more of these when more goblins are in the game.
-
-Description.buildBody({ species:'goblin', requires:[],
-  d: `(TODO: Goblin Bodies)`
-});
-
-// === Incubus Bodies ===
-// TODO: We'll need more of these when more demons are in the game.
-
-Description.buildBody({ species:'incubus', requires:[],
-  d: `(TODO: Incubus Bodies)`
-});
-
 // === Kobold Bodies ===
 // TODO: We'll need more of these when more kobolds are in the game.
 
 Description.buildBody({ species:'kobold', requires:[],
-  d: `(TODO: Kobold Bodies)`
+  includes:['height-weight'],
+  d: `{{His}} small draconic body is {{C::body.fiveFootTenInches}} tall, and {{he}} weighs {{C::body.fiftyPounds}}.`
 });
 
 // === Naga Bodies ===
 // TODO: We'll need more of these when more naga are in the game.
 
 Description.buildBody({ species:'naga', requires:[],
-  d: `(TODO: Naga Bodies)`
-});
-
-// === Ogre Bodies ===
-// TODO: We'll need more of these when more ogres are in the game.
-
-Description.buildBody({ species:'ogre', requires:[],
-  d: `(TODO: Ogre Bodies)`
+  includes:['height-weight'],
+  d: `When {{he}} holds {{him}}self upright {{he}}'s about {{C::body.fiveFootTenInches}} tall, though {{his}} long
+      serpentine body is fully {{C::body.nagaFeet}} long.`
 });
 
 // === Scaven Bodies ===
@@ -269,12 +251,20 @@ Description.buildBody({ species:'scaven', requires:['minion(C).body.height-tall-
 // TODO: We'll need more of these when more selkie are in the game.
 
 Description.buildBody({ species:'selkie', requires:[],
-  d: `(TODO: Selkie Bodies)`
+  includes:['fur-color'],
+  d: `{{He}} has the short sleek body of an otter with thick and gleaming {{C::body.furColor}} fur.`
 });
 
-// === Succubus Bodies ===
-// TODO: We'll need more of these when more demons are in the game.
+// === Goblin Bodies ===
+// TODO: Goblins and Ogres will probably need their own body describer. I want
+//       their bodies to have a lot of variety and to be rather unusual.
 
-Description.buildBody({ species:'succubus', requires:[],
-  d: `(TODO: Succubus Bodies)`
-});
+Description.buildBody({ species:'goblin', requires:[], d:`(TODO: Goblin Bodies)` });
+Description.buildBody({ species:'ogre', requires:[], d:`(TODO: Ogre Bodies)` });
+
+// === Incubus Bodies ===
+// TODO: And while we're at it, the same is probably true for demons who will
+//       have a bunch of unusual and demonic features.
+
+Description.buildBody({ species:'incubus', requires:[], d:`(TODO: Incubus Bodies)` });
+Description.buildBody({ species:'succubus', requires:[], d:`(TODO: Succubus Bodies)` });

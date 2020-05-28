@@ -1,4 +1,4 @@
-describe.only('Describer: Body', function() {
+describe('Describer: Body', function() {
 
   async function buildCharacter(options) {
     const tweeked = Object.assign({}, options, {
@@ -115,16 +115,28 @@ describe.only('Describer: Body', function() {
     printBody('Centaur', { species:'centaur' }, done);
   });
 
-  it.only('describes dragons', function(done) {
+  it('describes dragons', function(done) {
     printBody('Dragon', { species:'dragon' }, done);
   });
 
-  it.only('describes dryads', function(done) {
+  it('describes dryads', function(done) {
     printBody('Dryad', { species:'dryad' }, done);
+  });
+
+  it('describes kobold', function(done) {
+    printBody('Kobold', { species:'kobold' }, done);
+  });
+
+  it('describes naga', function(done) {
+    printBody('Naga', { species:'naga' }, done);
   });
 
   it('describes scaven', function(done) {
     printBody('Scaven', { species:'scaven' }, done);
+  });
+
+  it('describes selkie', function(done) {
+    printBody('Selkie', { species:'selkie' }, done);
   });
 
   it('describes injured bodies', function(done) {

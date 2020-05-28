@@ -19,7 +19,8 @@ Weaver.BodyLoom = (function() {
     if (token == "body.hairColor")         { return hairColorWord(body); }
     if (token == "body.fiftyPound")        { return weightMeasurement(body, false); }
     if (token == "body.fiftyPounds")       { return weightMeasurement(body, true); }
-    if (token == "body.ramHorns")          { return hornShape(body,true) }
+    if (token == "body.ramHorns")          { return hornShape(body,true); }
+    if (token == "body.nagaFeet")          { return englishHeightMeasurementNoInches(body.height*3, true); }
 
     return Weaver.error(`Bad body token(${token})`);
   }
@@ -44,7 +45,7 @@ Weaver.BodyLoom = (function() {
 
   // When in metric mode inchPlural controls the plural of centimeters.
   function englishHeightMeasurement(height, footPlural, inchPlural) {
-    if (Settings.Metric) { return `${Math.round(height/10)} ${inchPlural ? 'centimeters' : 'centimeter'}` }
+    if (Settings.Metric) { return `${EnglishUtility.numberInEnglish(Math.round(height/10))} ${inchPlural ? 'centimeters' : 'centimeter'}` }
 
     let foot = footPlural ? "feet" : "foot";
     let inches = Math.round(ConversionUtility.milliToInches(height));
@@ -52,6 +53,16 @@ Weaver.BodyLoom = (function() {
     let low = EnglishUtility.numberInEnglish(Math.floor(inches % 12));
 
     return (low == "zero") ? `${high} feet` : `${high} ${foot} ${low} ${inchPlural ? 'inches' : 'inch'}`;
+  }
+
+  // Use meters rather than centimeters because this is for much longer
+  // measurements than the standard feet/inches.
+  function englishHeightMeasurementNoInches(height, plural) {
+    if (Settings.Metric) { return `${EnglishUtility.numberInEnglish(Math.round(height/1000))} ${plural ? 'meters' : 'meter'}` }
+
+    let inches = Math.round(ConversionUtility.milliToInches(height));
+    let feet = EnglishUtility.numberInEnglish(Math.floor(inches / 12));
+    return `${feet} ${plural ? "feet" : "foot"}`;
   }
 
   function furColorWord(body) {
