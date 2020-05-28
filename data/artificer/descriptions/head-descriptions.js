@@ -330,7 +330,7 @@ Description.buildHead({ species:'neko',
 
 Description.buildHead({ species:'scaven',
   includes:['eye-color'],
-  d: `The scaven had a face like a rat with beady {{C::body.eyeColor}} eyes.`
+  d: `The scaven has a face like a rat with beady {{C::body.eyeColor}} eyes.`
 });
 
 Description.buildHead({ species:'scaven', requires:['minion(C).face.at-least-average'],
