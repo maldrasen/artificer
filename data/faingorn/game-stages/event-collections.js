@@ -14,7 +14,8 @@ GameStage.EventCollections = {
     await AvailableEvent.add('magic-practice-1-3');
     await AvailableEvent.add('magic-practice-1-4');
     await AvailableEvent.add('unlock-resting');
-    await AvailableEvent.add('trigger-act-1-2')
+    await AvailableEvent.add('trigger-act-1-2');
+    await AvailableEvent.add('demo-over');
   },
 
 };
