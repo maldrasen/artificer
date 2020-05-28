@@ -180,9 +180,9 @@ global.BodyDescriber = class BodyDescriber {
   // colors if they were skipped by the head description. Always assume that
   // the base description will include either fur or skin or height and weight.
   finishBody() {
-    if (this.body.furColor && this.isNotIncluded('fur-color'))     { return this.describeFur();    }
-    if (this.body.skinColor && this.isNotIncluded('skin-color'))   { return this.describeSkin();   }
-    if (this.body.scaleColor && this.isNotIncluded('scale-color')) { return this.describeScales(); }
+    if (this.character.hasSkinBody && this.isNotIncluded('skin-color')) { return this.describeSkin();   }
+    if (this.body.scaleColor && this.isNotIncluded('scale-color'))      { return this.describeScales(); }
+    if (this.body.furColor && this.isNotIncluded('fur-color'))          { return this.describeFur();    }
     return this.isNotIncluded('height-weight') ? this.describeHeightWeight() : '';
   }
 
@@ -342,7 +342,7 @@ global.BodyDescriber = class BodyDescriber {
     let dull = Random.from(adjectives) || ''
 
     if (this.character.physical >= 25) {
-      if (character.isMale) {
+      if (this.character.isMale) {
         return Random.from([
           `{{His}} muscular body is covered in ${dull} {{C::body.scaleColor}} scales.`,
           `Thick muscles undulate beneath {{his}} ${dull} {{C::body.scaleColor}} scales.`
