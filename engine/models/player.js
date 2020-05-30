@@ -1,16 +1,15 @@
 global.Player = Database.instance().define('player', {
+  body_id:       { type:Sequelize.INTEGER },
   title:         { type:Sequelize.STRING  },
   firstName:     { type:Sequelize.STRING  },
   lastName:      { type:Sequelize.STRING  },
   genderCode:    { type:Sequelize.STRING  },
   speciesCode:   { type:Sequelize.STRING  },
   portraitCode:  { type:Sequelize.STRING  },
-  body_id:       { type:Sequelize.INTEGER },
   physical:      { type:Sequelize.INTEGER, validate:{ min:0 }},
   mental:        { type:Sequelize.INTEGER, validate:{ min:0 }},
   personal:      { type:Sequelize.INTEGER, validate:{ min:0 }},
   magical:       { type:Sequelize.INTEGER, validate:{ min:0 }},
-
 },{
   timestamps: false,
   getterMethods: {
