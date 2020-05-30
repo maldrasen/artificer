@@ -21,6 +21,7 @@ require(`${ROOT}/engine/forms/form`);
 require(`${ROOT}/engine/forms/adjustment`);
 require(`${ROOT}/engine/forms/aspect`);
 require(`${ROOT}/engine/forms/area`);
+require(`${ROOT}/engine/forms/breed`);
 require(`${ROOT}/engine/forms/description`);
 require(`${ROOT}/engine/forms/equipment`);
 require(`${ROOT}/engine/forms/event`);

@@ -13,6 +13,7 @@ global.Database = (function() {
       logging: writeToLog,
     });
 
+    require(`${ROOT}/engine/models/animal`);
     require(`${ROOT}/engine/models/anus`);
     require(`${ROOT}/engine/models/available-event`);
     require(`${ROOT}/engine/models/available-mission`);
@@ -40,6 +41,7 @@ global.Database = (function() {
     persistedModels = [
       Game,
       Flag,
+      Animal,
       AvailableEvent,
       AvailableMission,
       AvailableProject,
