@@ -1,4 +1,5 @@
 global.Character = Database.instance().define('character', {
+  body_id:          { type:Sequelize.INTEGER },
   type:             { type:Sequelize.STRING, validate:{ isIn:[['pending','minion']] }},
   status:           { type:Sequelize.STRING, validate:{ isIn:[['normal','missing','dead']] }},
   currentDuty:      { type:Sequelize.STRING, validate:{ isIn:[['role','project','mission','task']] }},
@@ -20,7 +21,9 @@ global.Character = Database.instance().define('character', {
   loyalty:          { type:Sequelize.INTEGER, validate:{ min:0, max:100 }},
   fear:             { type:Sequelize.INTEGER, validate:{ min:0, max:100 }},
   lust:             { type:Sequelize.INTEGER, validate:{ min:0, max:100 }},
-  body_id:          { type:Sequelize.INTEGER },
+  pregnantWith:     { type:Sequelize.STRING  },
+  pregnantDays:     { type:Sequelize.INTEGER },
+  pregnantTotal:    { type:Sequelize.INTEGER },
 },{
   timestamps: false,
   getterMethods: {
@@ -43,6 +46,7 @@ global.Character = Database.instance().define('character', {
     isPlayer()     { return false; },
     isLoyal()      { return this.loyalty >= 25 },
     isAfraid()     { return this.fear >= 25 },
+    isPregnant()   { return this.pregnantWith != null },
 
     // For a minion to be rebellus they either need to have low fear or low
     // loyalty. The more they don't like you, the less fear of you they need
