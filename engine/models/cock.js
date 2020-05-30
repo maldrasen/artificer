@@ -1,7 +1,8 @@
 const COCK_SIZES = ['small','average','big','huge','monster'];
 
 global.Cock = Database.instance().define('cock', {
-  character_id:      { type:Sequelize.INTEGER },
+  parent_id:         { type:Sequelize.INTEGER },
+  parent_class:      { type:Sequelize.STRING },
   placement:         { type:Sequelize.STRING, validate:{ isIn:[['normal','nipple','tongue']] }},
   count:             { type:Sequelize.INTEGER },
   shape:             { type:Sequelize.STRING, validate:{ isIn:[['normal','horse','dog','snake','dragon']] }},

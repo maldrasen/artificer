@@ -1,7 +1,8 @@
 const NIPPLE_SHAPES = ['cock','heart','inverted','mouth','normal','puffy','pussy','star','teat'];
 
 global.Nipples = Database.instance().define('nipples', {
-  character_id:      { type:Sequelize.INTEGER },
+  parent_id:         { type:Sequelize.INTEGER },
+  parent_class:      { type:Sequelize.STRING },
   count:             { type:Sequelize.INTEGER },
   shade:             { type:Sequelize.INTEGER },
   shape:             { type:Sequelize.STRING, validate:{ isIn:[NIPPLE_SHAPES] }},

@@ -5,7 +5,8 @@ global.CockBuilder = (function() {
     if (character.gender.cock == false) { return; }
 
     let params = CharacterBuilder.baseline('cock', options, character.species, {
-      character_id:     character.id,
+      parent_id:        character.id,
+      parent_class:     character.constructor.name,
       shape:            "normal",
       placement:        "normal",
       sheath:           null,

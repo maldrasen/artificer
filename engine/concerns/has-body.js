@@ -1,25 +1,25 @@
 global.HasBody = { isAppliedTo: function(model) {
 
-  model.prototype.getBody = function() {
-    return Body.findByPk(this.body_id)
-  }
   model.prototype.getAnus = function() {
-    return Anus.findOne({ where:{ character_id:this.id }});
+    return Anus.findOne({ where:{ parent_id:this.id, parent_class:this.constructor.name }});
+  }
+  model.prototype.getBody = function() {
+    return Body.findOne({ where:{ parent_id:this.id, parent_class:this.constructor.name }})
   }
   model.prototype.getCock = function() {
-    return Cock.findOne({ where:{ character_id:this.id }});
+    return Cock.findOne({ where:{ parent_id:this.id, parent_class:this.constructor.name }});
   }
   model.prototype.getMouth = function() {
-    return Mouth.findOne({ where:{ character_id:this.id }});
+    return Mouth.findOne({ where:{ parent_id:this.id, parent_class:this.constructor.name }});
   }
   model.prototype.getNipples = function() {
-    return Nipples.findOne({ where:{ character_id:this.id }});
+    return Nipples.findOne({ where:{ parent_id:this.id, parent_class:this.constructor.name }});
   }
   model.prototype.getPussy = function() {
-    return Pussy.findOne({ where:{ character_id:this.id }});
+    return Pussy.findOne({ where:{ parent_id:this.id, parent_class:this.constructor.name }});
   }
   model.prototype.getTits = function() {
-    return Tits.findOne({ where:{ character_id:this.id }});
+    return Tits.findOne({ where:{ parent_id:this.id, parent_class:this.constructor.name }});
   }
 
   model.prototype.getCompleteBody = function() {
@@ -44,6 +44,16 @@ global.HasBody = { isAppliedTo: function(model) {
         });
       });
     });
+  }
+
+  model.prototype.completelyRemoveBody = async function() {
+    await Anus.destroy({    where:{ parent_id:this.id, parent_class:this.constructor.name }});
+    await Body.destroy({    where:{ parent_id:this.id, parent_class:this.constructor.name }});
+    await Cock.destroy({    where:{ parent_id:this.id, parent_class:this.constructor.name }});
+    await Mouth.destroy({   where:{ parent_id:this.id, parent_class:this.constructor.name }});
+    await Nipples.destroy({ where:{ parent_id:this.id, parent_class:this.constructor.name }});
+    await Pussy.destroy({   where:{ parent_id:this.id, parent_class:this.constructor.name }});
+    await Tits.destroy({    where:{ parent_id:this.id, parent_class:this.constructor.name }});
   }
 
   // Height for species compares this character's height to the average

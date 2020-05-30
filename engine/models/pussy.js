@@ -3,7 +3,8 @@ const PUSSY_SIZES = ['small','average','big','huge','monster'];
 const PUSSY_CONDITIONS = ['tight','average','loose','gaping'];
 
 global.Pussy = Database.instance().define('pussy', {
-  character_id:      { type:Sequelize.INTEGER },
+  parent_id:         { type:Sequelize.INTEGER },
+  parent_class:      { type:Sequelize.STRING },
   placement:         { type:Sequelize.STRING, validate:{ isIn:[['normal','nipple']] }},
   shape:             { type:Sequelize.STRING, validate:{ isIn:[PUSSY_SHAPES] }},
   condition:         { type:Sequelize.STRING, validate:{ isIn:[PUSSY_CONDITIONS] }},

@@ -4,7 +4,8 @@ global.MouthBuilder = (function() {
     if (character.id == null) { throw 'Character must be persisted.'; }
 
     let params = CharacterBuilder.baseline('mouth', options, character.species, {
-      character_id: character.id,
+      parent_id:    character.id,
+      parent_class: character.constructor.name,
       throatWidth: null,
       tongueShape: 'normal',
       tongueLength: null,

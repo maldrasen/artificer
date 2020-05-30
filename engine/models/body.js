@@ -12,6 +12,8 @@ const TAIL_SHAPES = ['rat','dog','fox','horse','seal','cow','snake','dragon','ca
 const FACE_TYPES = ['plain','hard','soft','exotic'];
 
 global.Body = Database.instance().define('body', {
+  parent_id:         { type:Sequelize.INTEGER },
+  parent_class:      { type:Sequelize.STRING },
   height:            { type:Sequelize.INTEGER },
   faceType:          { type:Sequelize.STRING, validate:{ isIn:[FACE_TYPES] }},
   eyeColor:          { type:Sequelize.STRING, validate:{ isIn:[EYE_COLORS] }},
@@ -58,7 +60,9 @@ global.Body = Database.instance().define('body', {
 // enough that they're just ducttyped together by the body, but it's important
 // to remember that getBodyHaver() can return a Character or the Player.
 Body.prototype.getBodyHaver = async function() {
-  return (await Character.findOne({ where:{ body_id:this.id }})) || (await Player.instance());
+  if (this.parent_class == 'player')    { return Player.instance(); }
+  if (this.parent_class == 'character') { return Character.lookup(this.parent_id); }
+  if (this.parent_class == 'animal')    { return Animal.findByPk(this.parent_id); }
 }
 
 // In grams, uses the Hamwi formula

@@ -10,17 +10,19 @@ global.BodyBuilder = (function() {
 
     let bodyOptions = options.body || {};
     let params = {
-      faceType:   bodyOptions.faceType   || Random.from(Body.FACE_TYPES),
-      height:     bodyOptions.height     || character.species.randomHeight(character.genderCode),
-      eyeColor:   bodyOptions.eyeColor   || character.species.random('eye'),
-      scaleColor: bodyOptions.scaleColor || character.species.random('scale'),
-      tailShape:  bodyOptions.tailShape  || character.species.bodyOptions.tailShape || null,
-      hornShape:  bodyOptions.hornShape  || character.species.random('horn'),
-      faceShape:  character.species.getFaceShape(character.genderCode),
-      pierceLevel: 0,
-      pierceCount: 0,
+      parent_id:     character.id,
+      parent_class:  character.constructor.name,
+      faceType:      bodyOptions.faceType   || Random.from(Body.FACE_TYPES),
+      height:        bodyOptions.height     || character.species.randomHeight(character.genderCode),
+      eyeColor:      bodyOptions.eyeColor   || character.species.random('eye'),
+      scaleColor:    bodyOptions.scaleColor || character.species.random('scale'),
+      tailShape:     bodyOptions.tailShape  || character.species.bodyOptions.tailShape || null,
+      hornShape:     bodyOptions.hornShape  || character.species.random('horn'),
+      faceShape:     character.species.getFaceShape(character.genderCode),
+      pierceLevel:   0,
+      pierceCount:   0,
       pierceHealing: 0,
-      description: null,
+      description:   null,
     }
 
     let skinColor = bodyOptions.skinColor || character.species.random('skin',character.genderCode);

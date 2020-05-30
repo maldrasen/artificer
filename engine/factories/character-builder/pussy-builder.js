@@ -5,7 +5,8 @@ global.PussyBuilder = (function() {
     if (character.gender.pussy == false) { return; }
 
     let params = CharacterBuilder.baseline('pussy', options, character.species, {
-      character_id:     character.id,
+      parent_id:        character.id,
+      parent_class:     character.constructor.name,
       shape:            'normal',
       placement:        'normal',
       condition:        randomCondition(character.species),

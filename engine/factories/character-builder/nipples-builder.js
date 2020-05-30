@@ -5,13 +5,14 @@ global.NipplesBuilder = (function() {
     if (character.species.bodyOptions.nipples == false) { return; }
 
     let params = CharacterBuilder.baseline('nipples', options, character.species, {
-      character_id: character.id,
-      count: 1,
-      width: null,
-      length: null,
-      shade: Random.upTo(5)+1,
-      shape: 'normal',
-      orificeWidth: 0,
+      parent_id:         character.id,
+      parent_class:      character.constructor.name,
+      count:             1,
+      width:             null,
+      length:            null,
+      shade:             Random.upTo(5)+1,
+      shape:             'normal',
+      orificeWidth:      0,
       orificeElasticity: 0,
     });
 

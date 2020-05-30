@@ -1,5 +1,4 @@
 global.Player = Database.instance().define('player', {
-  body_id:       { type:Sequelize.INTEGER },
   title:         { type:Sequelize.STRING  },
   firstName:     { type:Sequelize.STRING  },
   lastName:      { type:Sequelize.STRING  },

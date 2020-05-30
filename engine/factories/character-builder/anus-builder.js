@@ -4,7 +4,8 @@ global.AnusBuilder = (function() {
     if (character.id == null) { throw 'Character must be persisted.'; }
 
     let params = CharacterBuilder.baseline('anus', options, character.species, {
-      character_id:   character.id,
+      parent_id:      character.id,
+      parent_class:   character.constructor.name,
       shape:          Random.from(['normal','normal','puffy']),
       condition:      randomCondition(character.species),
       sizeClass:      Random.fromFrequencyMap(character.species.bodyOptions.cock.size),

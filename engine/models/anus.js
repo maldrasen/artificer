@@ -2,7 +2,8 @@ const ANUS_SIZES = ['small','average','big','huge','monster'];
 const ANUS_CONDITIONS = ['tight','average','loose','gaping'];
 
 global.Anus = Database.instance().define('anus', {
-  character_id:    { type:Sequelize.INTEGER },
+  parent_id:       { type:Sequelize.INTEGER },
+  parent_class:    { type:Sequelize.STRING },
   shape:           { type:Sequelize.STRING, validate:{ isIn:[['normal','puffy','horse','mouth']] }},
   condition:       { type:Sequelize.STRING, validate:{ isIn:[ANUS_CONDITIONS] }},
   sizeClass:       { type:Sequelize.STRING, validate:{ isIn:[ANUS_SIZES] }},

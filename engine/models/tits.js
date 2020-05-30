@@ -2,7 +2,8 @@ const TITS_SHAPES = ['flat','bell','conical','dangling','perky','round'];
 const TITS_SIZES = ['zero','tiny','small','average','big','huge','monster'];
 
 global.Tits = Database.instance().define('tits', {
-  character_id:    { type:Sequelize.INTEGER },
+  parent_id:       { type:Sequelize.INTEGER },
+  parent_class:    { type:Sequelize.STRING },
   sizeClass:       { type:Sequelize.STRING, validate:{ isIn:[TITS_SIZES] }},
   sizeScale:       { type:Sequelize.DOUBLE, validate:{ min:0, max:100 }},
   shape:           { type:Sequelize.STRING, validate:{ isIn:[TITS_SHAPES] }},
