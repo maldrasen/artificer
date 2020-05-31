@@ -3,9 +3,11 @@ global.Mission = class Mission extends Form {
   static async available() {
     if (Flag.lookup('plan-view.missions') != 'Y') { return []; }
 
-    return Mission.all().filter(mission => {
-      return Flag.lookup(`mission.${mission.code}`) == 'Y';
-    });
+    return ArrayUtility.compact(await Promise.all(Mission.all().map(async mission => {
+      if ((Flag.lookup(`mission.${mission.code}`) == 'Y') && (await CentralScrutinizer.meetsRequirements(mission.requires))) {
+        return mission;
+      };
+    })));
   }
 
   static async availableForClient() {

@@ -7,7 +7,8 @@ Event.build('explore.discover-sheep', {
 
   stages:[{
     pages:[
-      { text:`(*) {{C::character.firstName}} returns from exploring. {{He}} discovered a flock of sheep.` },
+      { text:`(*) {{C::character.firstName}} returns from exploring. {{He}} discovered a flock of sheep. Even though
+          you have discovered sheep you cannot capture them until you have a spinning wheel and a sheepfold.` },
     ]
   }],
 

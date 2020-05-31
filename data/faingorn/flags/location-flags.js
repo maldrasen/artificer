@@ -10,3 +10,8 @@ FlagInfo.build('location.current-study', {
 FlagInfo.build('location.keep-name', {
   default: 'Faingorn Keep'
 });
+
+// Before we can catch a sheep we need a place to put them. This isn't
+// implemented yet. Sheep can be discovered, but they can't be caught and we
+// needed a way to turn that mission availibility off.
+FlagInfo.build('location.sheepfold-built', { validateIn:['Y'] });
