@@ -6,8 +6,10 @@ Event.build('solstice-start', {
   },
 
   actors: { C:'was-hunting' },
+  chance: 10,
 
   requires:[
+    'game.dayNumber>20',
     'minions.hunter-count>0',
     { or:['player.physical>=20','player.magical>=20'] }
   ],
