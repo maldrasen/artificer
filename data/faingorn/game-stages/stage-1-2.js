@@ -8,6 +8,7 @@ GameStage.build('stage-1-2',{
     GameStage.FlagCollections.setAct_1_1();
     GameStage.FlagCollections.setAct_1_2();
     await GameStage.EventCollections.addBetrayalEvents();
+    await GameStage.EventCollections.addAct_1_2();
     await GameStage.MinionCollections.createFirstMinion();
     await GameStage.MinionCollections.createRatThief();
 

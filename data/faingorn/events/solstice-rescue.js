@@ -1,6 +1,12 @@
 Event.build('solstice-rescue', {
 
-  actors: { C:'solstice' },
+  // Because this is a chained event, the minion who discovered Solstice is the
+  // C minion, and because we technically have 2 minions in the scene now we
+  // can't use the pronoun shortcuts. However I can call her she until I find
+  // out about her dick, which should be done in the first scene. She should
+  // let you know in case it's a problem for the character.
+
+  actors: { S:'solstice' },
 
   stages:[{
     pages:[
@@ -25,7 +31,7 @@ Event.build('solstice-rescue', {
     pages:[{ text:`(*) I fuck up their shit, then blow their shit up.` }],
   },{
     pages:[{ text:`(*) Long conversation with Solstice. She explains how she was captured and offers to become my
-      minion. She probably offers to blow me.` }],
+      minion. She probably also offers to blow me.` }],
   }],
 
   onFinish: async choices => {

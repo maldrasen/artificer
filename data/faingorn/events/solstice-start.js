@@ -14,7 +14,7 @@ Event.build('solstice-start', {
 
   stages:[{
     pages:[
-      { text:`(*) When {{C::character.first-name}} was out hunting {{he}} spotted a caprien girl who had been captured
+      { text:`(*) When {{C::character.firstName}} was out hunting {{he}} spotted a caprien girl who had been captured
           and tied to a tree. Having been captured by paladins, she probably won't last the night. You should go rescue
           her.` }
     ]
@@ -32,7 +32,7 @@ Event.build('solstice-start', {
 
   onFinish: async choices => {
     if (choices.action == 'rescue') {
-      EventFunctions.createSolstice();
+      await EventFunctions.createSolstice();
       Game.chainEvent('solstice-rescue');
     }
   },

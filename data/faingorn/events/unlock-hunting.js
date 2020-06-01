@@ -21,6 +21,7 @@ Event.build('unlock-hunting', {
 
   onFinish: async choices => {
     Flag.set('plan-view.roles.hunter','Y');
+    AvailableEvent.add('solstice-start');
   },
 
 });

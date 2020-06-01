@@ -18,4 +18,8 @@ GameStage.EventCollections = {
     await AvailableEvent.add('demo-over');
   },
 
+  addAct_1_2: async function() {
+    await AvailableEvent.add('solstice-start');
+  }
+
 };
