@@ -6,7 +6,6 @@ Event.build('first-mission', {
     location: 'great-hall'
   },
 
-
   stages:[{
     pages:[
       { text:`(*) I'm sending {{C::character.firstName}} out on {{his}} first mission.` }

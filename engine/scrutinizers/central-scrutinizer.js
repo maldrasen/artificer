@@ -3,18 +3,38 @@ global.CentralScrutinizer = (function() {
   // The CentralScrutinizer is used by a variety of other models including the
   // Weaver to check if all requirements are met. The requires argument can be
   // either a string or an array of strings. If the context is null a new
-  // context will be built over time.
+  // context will be built over time. Requires can have the following forms:
+  //
+  //   single requirements:    'flag.cock=huge'
+  //   and requirements:       ['flag.tits=huge','flag.cock=huge']
+  //   or requirements:        [{ or:['flag.anus=huge','flag.pussy=huge'] }]
+  //   and/or requirements:    ['flag.cock=huge',{ or:['flag.anus=huge','flag.pussy=huge'] }]
+  //
+  // There's no further nesting of more ands inside of ors though. This isn't
+  // recursive, and I don't think we'll get to that level of complexity with
+  // requirement checking, or if we do there should be some other way to
+  // implement what's needed.
+  //
+  // Specific requirement formats are explained in their respective
+  // scrutinizers, though for the most part they're very simple and
+  // self-explanitory.
   async function meetsRequirements(requires, context, extra) {
     if (requires == null) { return true; }
     if (context == null) { context = new Context(); }
     if (extra == null) { extra = {}; }
 
     let requirements = (typeof requires == "string") ? [requires] : requires;
-    let checks = await Promise.all((requirements).map(async requirement => {
-      return await meetsRequirement(requirement, context, extra);
-    }));
+    return (await Promise.all((requirements).map(async requirement => {
+      return requirement.or ?
+        (await checkOrRequirements(requirement.or, context, extra)):
+        (await meetsRequirement(requirement, context, extra));
+    }))).indexOf(false) < 0;
+  }
 
-    return checks.indexOf(false) < 0;
+  async function checkOrRequirements(requirements, context, extra) {
+    return (await Promise.all((requirements).map(async requirement => {
+      return await meetsRequirement(requirement, context, extra);
+    }))).indexOf(true) >= 0;
   }
 
   async function meetsRequirement(requirement, context, extra) {

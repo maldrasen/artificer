@@ -520,7 +520,6 @@ let names = [
   { name:"Snow", adjustments:['light-skin','white-hair']},
   { name:"Snowquiet" },
   { name:"Sodomy", adjustments:['anal-slut.2','cock-lover.2','cum-lover.2']},
-  { name:"Solstice" },
   { name:"Soma" },
   { name:"Sombre" },
   { name:"Somerhild" },

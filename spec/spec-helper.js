@@ -13,22 +13,18 @@ global.SpecHelper = (function() {
     },options));
 
     await CharacterAdjuster.applyAll(jada,adjustments);
-
     return jada;
   }
 
   async function buildRando(options={}, adjustments=[]) {
     const rando = await CharacterBuilder.build(extend({
       firstName: 'Rando',
-      lastName: 'Random',
-      species: options.species||Random.from(Species.all()).code,
-      gender: options.gender||Random.from(['male','female','futa']),
-      physical: options.physical,
-      personal: options.personal,
+      lastName:  'Random',
+      species:   options.species || Random.from(Species.all()).code,
+      gender:    options.gender  || Random.from(['male','female','futa']),
     },options));
 
     await CharacterAdjuster.applyAll(rando,adjustments);
-
     return rando;
   }
 

@@ -15,6 +15,7 @@ global.MinionScrutinizer = (function() {
 
     // Roles
     if (requirement.match(/minions\.forager-count/)) { return await checkDutyCount(requirement,'forager') }
+    if (requirement.match(/minions\.hunter-count/)) { return await checkDutyCount(requirement,'forager') }
 
     // Single Minion
     if (requirement.match(/^minion\(.+\)\./)) { return checkMinion(requirement, context); }

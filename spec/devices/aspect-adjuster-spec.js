@@ -2,7 +2,7 @@ describe('AspectAdjuster', function() {
 
   it("Adjusts multiple character's attributes", function(done) {
     GameHelper.setupTestGame().then(() => {
-      CharacterAgent.findActor('scaven-chief').then(chief => {
+      CharacterAgent.findActor('any-scaven').then(chief => {
         let oldValue = chief.loyalty;
         let id = chief.id;
 

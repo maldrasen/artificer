@@ -16,6 +16,29 @@ describe('CentralScrutinizer', function() {
     });
   });
 
+  it('checks or conditions', function(done) {
+    Flag.setAll({ tits:'small', ass:'big' });
+    CentralScrutinizer.meetsRequirements([{ or:['flag.tits=big','flag.ass=big']}]).then(yep => {
+      CentralScrutinizer.meetsRequirements([{ or:['flag.tits=big','flag.cock=big']}]).then(nope => {
+        expect(yep).to.be.true;
+        expect(nope).to.be.false;
+        done();
+      });
+    })
+  });
+
+  it('checks combined and/or conditions', function(done) {
+    Flag.setAll({ cock:'huge', tits:'big', ass:'big' });
+    CentralScrutinizer.meetsRequirements(['flag.cock=huge',{ or:['flag.tits=big','flag.ass=big']}]).then(yep => {
+      CentralScrutinizer.meetsRequirements(['flag.cock=not-huge',{ or:['flag.tits=big','flag.ass=big']}]).then(nope => {
+        expect(yep).to.be.true;
+        expect(nope).to.be.false;
+        done();
+      });
+    })
+  });
+
+
   it('Checks flag values', function(done) {
     Flag.set('anus.flavor','grape');
     CentralScrutinizer.meetsRequirements('flag.anus.flavor=grape').then(yep => {
