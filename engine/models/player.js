@@ -109,9 +109,9 @@ Player.forClient = async function() {
   };
 }
 
-Player.hasCock =  async function() { return await Cock.findOne({  where:{ character_id:1000000000 }}) != null; }
-Player.hasPussy = async function() { return await Pussy.findOne({ where:{ character_id:1000000000 }}) != null; }
-Player.hasTits =  async function() { return await Tits.findOne({  where:{ character_id:1000000000 }}) != null; }
+Player.hasCock =  async function() { return await Cock.findOne({  where:{ parent_class:'player' }}) != null; }
+Player.hasPussy = async function() { return await Pussy.findOne({ where:{ parent_class:'player' }}) != null; }
+Player.hasTits =  async function() { return await Tits.findOne({  where:{ parent_class:'player' }}) != null; }
 
 HasAttributes.isAppliedTo(Player);
 HasAspects.isAppliedTo(Player);

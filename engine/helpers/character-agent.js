@@ -28,6 +28,8 @@ global.CharacterAgent = (function() {
   //
   async function findActor(descriptive) {
     if (descriptive == 'player')              { return await Player.instance(); }
+    if (descriptive == 'solstice')            { return await characterAtFlag('flag=character.solstice'); }
+
     if (descriptive == 'any-minion')          { return await findAny(); }
     if (descriptive == 'any-scaven')          { return await findAnySpecies('scaven'); }
     if (descriptive == 'most-injured-minion') { return await findMostInjured(); }

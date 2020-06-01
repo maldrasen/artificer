@@ -16,6 +16,6 @@ GameStage.MinionCollections = {
     const rat = await CharacterBuilder.buildStandardMinion({ minion:{ species:'scaven' }});
     Flag.set('character.rat-thief',rat.id);
     Flag.set('player.scaven-reputations.the-seductive','Y');
-  }
+  },
 
 };

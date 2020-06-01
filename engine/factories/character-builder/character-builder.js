@@ -119,12 +119,16 @@ global.CharacterBuilder = (function() {
       pregnantWith:  options.pregnantWith  || null,
       pregnantDays:  options.pregnantDays  || 0,
       pregnantTotal: options.pregnantTotal || 0,
+      portraitCode:  options.portraitCode,
     };
 
     let character = await Character.create(params)
     await addBody(character, options)
     await character.determinePersonality();
-    await character.update({ portraitCode:(await ImageResource.portraitFor(character)).code });
+
+    if (character.portraitCode == null) {
+      await character.update({ portraitCode:(await ImageResource.portraitFor(character)).code });
+    }
 
     return character;
   }

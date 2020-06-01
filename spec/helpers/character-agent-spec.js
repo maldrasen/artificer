@@ -27,4 +27,13 @@ describe("CharacterAgent", function() {
     });
   });
 
+  it('gets a named character, and characters by flag', function(done) {
+    EventFunctions.createSolstice().then(_ => {
+      CharacterAgent.findActor('solstice').then(solstice => {
+        expect(solstice.name).to.equal('Solstice Blackriver');
+        done();
+      });
+    });
+  });
+
 });

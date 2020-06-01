@@ -30,4 +30,27 @@ global.EventFunctions = {
     return rat;
   },
 
+  // TODO: I can add more body adjustments or body parameters when I know
+  //       what her portrait will look like. Hair color, etc.
+  createSolstice: async function() {
+    const solstice = await CharacterBuilder.build({
+      firstName:    'Solstice',
+      lastName:     'Blackriver',
+      gender:       'futa',
+      species:      'caprien',
+      loyalty:      Random.between(51,57),
+      portraitCode: 'solstice',
+    });
+
+    const adjustments = ['beautiful','magical','anal-slut.2','beast-lover.1','perverted.2'];
+
+    if ((await Player.hasCock()))  { adjustments.push('androphilic'); }
+    if ((await Player.hasPussy())) { adjustments.push('gynephilic'); }
+
+    await CharacterAdjuster.applyAll(solstice, adjustments);
+    await CharacterDescriber.updateAll(solstice);
+
+    Flag.set('character.solstice',solstice.id);
+  },
+
 }
