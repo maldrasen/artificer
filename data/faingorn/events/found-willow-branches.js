@@ -81,7 +81,8 @@ Event.build('found-willow-branches', {
       Game.chainEvent(`found-willow-branches-whip`);
     }
 
-    AvailableEvent.add('prepare-for-hunting',{ requires:[`game.dayNumber>${Game.dayNumber()+2}`] });
+    AvailableEvent.add('unlock-training');
+    AvailableEvent.add('prepare-for-hunting',{ requires:[`game.dayNumber>${Game.dayNumber()+4}`] });
   },
 
 });
