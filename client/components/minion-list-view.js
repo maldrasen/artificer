@@ -1,5 +1,4 @@
 Components.MinionListView = (function() {
-  let summonAvailable = false;
 
   function init() {
     $(document).on('click','#minionListView .back-button', Elements.buttonAction(Renderer.sendCancel));
@@ -11,8 +10,6 @@ Components.MinionListView = (function() {
   }
 
   function build(event, data) {
-    summonAvailable = data.summonAvailable;
-
     $('#mainContent').empty().append($('<div>',{ id:"minionListView", class:'full can-cancel' }).append($('#minionListTemplate').html()));
     $('#minionListView .back-bar').removeClass('hide');
 
@@ -54,16 +51,11 @@ Components.MinionListView = (function() {
     return frame;
   }
 
-  function isSummonAvailable() {
-    return summonAvailable;
-  }
-
   return {
     init,
     build,
     buildForPlan,
     buildMinionFrame,
-    isSummonAvailable,
   };
 
 })();

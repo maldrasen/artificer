@@ -34,8 +34,6 @@ global.Renderer = (function() {
     'report',
     'save-game',
     'settings-dialog',
-    'summon-minion-dialog',
-    'summon-minion-result',
   ];
 
   function init() {

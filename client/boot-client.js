@@ -33,8 +33,6 @@ $(document).ready(function() {
   Components.ReportView.init();
   Components.SavedGames.init();
   Components.SettingsDialog.init();
-  Components.SummonMinionDialog.init();
-  Components.SummonMinionResult.init();
 
   // === Init Interface ===
   Renderer.init();

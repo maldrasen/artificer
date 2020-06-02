@@ -7,8 +7,6 @@ Components.SettingsDialog = (function() {
     $(document).on('click','#settingsDialog .accept-settings',  Elements.buttonAction(acceptSettings));
   }
 
-  // === Summon Minion Select ===
-
   function fetchSettings() {
     Renderer.sendCommand('game.fetch-settings');
   }

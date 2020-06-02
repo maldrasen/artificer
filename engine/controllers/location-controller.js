@@ -8,8 +8,7 @@ global.LocationController = (function() {
 
     ipcMain.on('location.show-minions', async () => {
       const minions = await Character.allForClient();
-      const summonAvailable = await Location.summonAvailable();
-      Browser.send('render.minions', { minions, summonAvailable });
+      Browser.send('render.minions', { minions });
     });
 
     ipcMain.on('location.show-player', async () => {
