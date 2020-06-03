@@ -22,6 +22,10 @@ global.HasBody = { isAppliedTo: function(model) {
     return Tits.findOne({ where:{ parent_id:this.id, parent_class:this.constructor.name }});
   }
 
+  model.prototype.hasCock =  async function() { return (await this.getCock()) != null;  }
+  model.prototype.hasPussy = async function() { return (await this.getPussy()) != null; }
+  model.prototype.hasTits =  async function() { return (await this.getTits()) != null;  }
+
   model.prototype.getCompleteBody = function() {
     return new Promise(resolve => {
       Promise.all([

@@ -13,10 +13,6 @@ Location.build('great-hall', {
       still usable.`;
   },
 
-  summonActions: async () => {
-    return SummonAction.allStandardActions();
-  },
-
   // This is only true until the player moves their bedroom up into the master
   // suite. At that point I'll need to read a flag to determine if a bed is
   // still here or not.

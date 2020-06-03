@@ -22,6 +22,7 @@ require(`${ROOT}/engine/forms/adjustment`);
 require(`${ROOT}/engine/forms/aspect`);
 require(`${ROOT}/engine/forms/area`);
 require(`${ROOT}/engine/forms/breed`);
+require(`${ROOT}/engine/forms/course`);
 require(`${ROOT}/engine/forms/description`);
 require(`${ROOT}/engine/forms/equipment`);
 require(`${ROOT}/engine/forms/event`);
@@ -39,7 +40,6 @@ require(`${ROOT}/engine/forms/personality`);
 require(`${ROOT}/engine/forms/project`);
 require(`${ROOT}/engine/forms/recipe`);
 require(`${ROOT}/engine/forms/species`);
-require(`${ROOT}/engine/forms/summon-action`);
 require(`${ROOT}/engine/forms/task`);
 require(`${ROOT}/engine/forms/task-story`);
 
@@ -90,9 +90,6 @@ require(`${ROOT}/engine/devices/resolver/projects`);
 require(`${ROOT}/engine/devices/resolver/report`);
 require(`${ROOT}/engine/devices/resolver/roles`);
 require(`${ROOT}/engine/devices/resolver/tasks`);
-
-require(`${ROOT}/engine/devices/summoner`);
-require(`${ROOT}/engine/devices/summoner/experience`);
 
 // === Helpers ===
 require(`${ROOT}/engine/helpers/calendar.js`);
@@ -165,6 +162,9 @@ require(`${ROOT}/engine/factories/name-generators/elf-name-generator`);
 require(`${ROOT}/engine/factories/name-generators/goblin-name-generator`);
 require(`${ROOT}/engine/factories/name-generators/kobold-name-generator`);
 require(`${ROOT}/engine/factories/name-generators/scaven-name-generator`);
+
+// === Training ===
+require(`${ROOT}/engine/training/training-plan`);
 
 // === Utilities ===
 require(`${ROOT}/engine/utilities/array-utility.js`);

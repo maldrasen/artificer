@@ -6,6 +6,7 @@
     "aspects/personality/*",
     "aspects/sexual/*",
     "aspects/skills/*",
+    "courses/*",
     "descriptions/*",
     "equipment/*",
     "flags/*",
@@ -16,7 +17,6 @@
     "personalities/*",
     "recipes/*",
     "species/*",
-    "summon-actions/*",
     "tasks/*"
   ]
 }

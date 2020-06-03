@@ -13,10 +13,6 @@ Location.build('courtyard', {
       brambles, and a big pile of rotting timber was probably the stables before it collapsed in on itself.`;
   },
 
-  summonActions: async () => {
-    return SummonAction.allStandardActions();
-  },
-
   hasBed: () => false,
   hasChair: () => false,
   hasTable: () => false,
