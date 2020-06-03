@@ -11,9 +11,9 @@ global.ConsentCalculator = class ConsentCalculator {
 
   // Get all of the models that will be needed to determine consent in this
   // function, that way everything else can be synchronous. This could be
-  // modified to use another character instead of the player if we at some
-  // point need to calculate consent between two minions, but I don't think that
-  // will really ever be needed.
+  // modified to use another character instead of the player if we need to
+  // calculate consent between two minions at some point, but I don't think
+  // that will really ever be needed.
   async init() {
     this._player = await Player.instance();
     this._aspects = {}
@@ -26,43 +26,35 @@ global.ConsentCalculator = class ConsentCalculator {
   // To get the consent level for an action we need to calculate a factor
   // specific to that action. The starting factor is determined by the action
   // difficulty. It can then be increased by complementing aspects, or
-  // decreased by conflicting asepects. If the character has an injury in the
+  // decreased by conflicting aspects. If the character has an injury in the
   // effected area that also reduces the consent factor.
-  //
-  // Difficulty Chart:
-  //        0 (2)    very easy       - cuddling, backrubs, headpats
-  //        1 (1.5)  easy            - cock licking, handjob, fingering
-  //        2 (1.1)  pretty easy     - blowjob
-  //        3 (1)    average         - sex
-  //        4 (0.9)  difficult       - anal sex, face slapping
-  //        5 (0.75) very difficult  - fisting, tit punching
-  //        6 (0.5)  impossible      - wound fucking, shit eating
-  async getConsentDetails(action) {
-    const difficultyFactor = [2, 1.5, 1.1, 1, 0.9, 0.75, 0.5][action.difficulty]||1;
+  async getConsentDetails(action, style) {
+    const difficultyFactor = action.getDifficultyFactor(style);
     const genderFactor = this.calculateGenderFactor();
     const injuryFactor = await this.calculateInjuryFactor(action);
-    const aspectFactor = this.calculateAspectFactor(action);
-    const overallFactor = difficultyFactor * genderFactor * injuryFactor * aspectFactor;
-    const level = this.calculateConsent(overallFactor);
+    const aspectFactor = await this.calculateAspectFactor(action, style);
 
-    let details = {
-      difficultyFactor: TextUtility.formatNumber(difficultyFactor),
-      genderFactor: TextUtility.formatNumber(genderFactor),
-      injuryFactor: TextUtility.formatNumber(injuryFactor),
-      aspectFactor: TextUtility.formatNumber(aspectFactor),
-      overallFactor: TextUtility.formatNumber(overallFactor),
-      fear: this.character.fear,
-      desire: Math.round((this.character.loyalty + this.character.lust) / 2),
-      level: level,
-    };
-
-    const context = new Context()
-    await context.addCharacter('C',this.character);
-    await context.addPlayer();
-
-    details.explanation = Weaver.weave(this.explainLevel(details, action), context);
-
-    return details;
+  //   const overallFactor = difficultyFactor * genderFactor * injuryFactor * aspectFactor;
+  //   const level = this.calculateConsent(overallFactor);
+  //
+  //   let details = {
+  //     difficultyFactor: TextUtility.formatNumber(difficultyFactor),
+  //     genderFactor: TextUtility.formatNumber(genderFactor),
+  //     injuryFactor: TextUtility.formatNumber(injuryFactor),
+  //     aspectFactor: TextUtility.formatNumber(aspectFactor),
+  //     overallFactor: TextUtility.formatNumber(overallFactor),
+  //     fear: this.character.fear,
+  //     desire: Math.round((this.character.loyalty + this.character.lust) / 2),
+  //     level: level,
+  //   };
+  //
+  //   const context = new Context()
+  //   await context.addCharacter('C',this.character);
+  //   await context.addPlayer();
+  //
+  //   details.explanation = Weaver.weave(this.explainLevel(details, action), context);
+  //
+  //   return details;
   }
 
   // Using the character's four possible gender aspects determines how
@@ -113,6 +105,11 @@ global.ConsentCalculator = class ConsentCalculator {
     if (action.effects == 'pussy') { levels = await this.character.getPussyPainLevel();   }
     if (action.effects == 'tits')  { levels = await this.character.getTitsPainLevel();    }
 
+    if (action.effects == 'ass-pussy') { levels = Math.max(
+      (await this.character.getAnusPainLevel()),
+      (await this.character.getPussyPainLevel()));
+    }
+
     if (masochism == 3) {
       if (levels == 0) { return 0.9; }
       if (levels == 1) { return 1;   }
@@ -131,16 +128,16 @@ global.ConsentCalculator = class ConsentCalculator {
   // Having aspects that complement the action raises the consent level whereas
   // aspects that conflict with the action lowers it. Conflicting aspects have
   // a greater influence than complementing aspects.
-  calculateAspectFactor(action) {
+  async calculateAspectFactor(action, style) {
     let factor = 1;
 
-    each(action.complementing, code => {
+    each((await action.getComplementingAspects(style, this.player, this.character)), code => {
       if (this.aspects[code] == 1) { factor *= 1.1; }
       if (this.aspects[code] == 2) { factor *= 1.2; }
       if (this.aspects[code] == 3) { factor *= 1.3; }
     });
 
-    each(action.conflicting, code => {
+    each((await action.getConflictingAspects(style, this.player, this.character)), code => {
       if (this.aspects[code] == 1) { factor *= 0.9; }
       if (this.aspects[code] == 2) { factor *= 0.7; }
       if (this.aspects[code] == 3) { factor *= 0.5; }
@@ -148,80 +145,80 @@ global.ConsentCalculator = class ConsentCalculator {
 
     return factor;
   }
-
-  // Consent is based on the consent graph I put together. It's basically a
-  // chart with four regions for the four baseline consent states, rape,
-  // reluctant, consent, and enthusiastic. These three regions are defined by
-  // three lines, so when calculating baseline consent I just determine if the
-  // point (fear,desire) is over the enthusiastic line, over the consent line,
-  // or over the reluctant line.
   //
-  // The desire is normally just the average of the character's lust and
-  // loyalty. The factor is a per action multiplier that pulls the desire for
-  // an action either up or down.
+  // // Consent is based on the consent graph I put together. It's basically a
+  // // chart with four regions for the four baseline consent states, rape,
+  // // reluctant, consent, and enthusiastic. These three regions are defined by
+  // // three lines, so when calculating baseline consent I just determine if the
+  // // point (fear,desire) is over the enthusiastic line, over the consent line,
+  // // or over the reluctant line.
+  // //
+  // // The desire is normally just the average of the character's lust and
+  // // loyalty. The factor is a per action multiplier that pulls the desire for
+  // // an action either up or down.
+  // //
+  // //    Rape Line:           y = -3/10x + 40
+  // //    Consent Line:        y =   2/5x + 50
+  // //    Enthusiastic Line:   y =  3/20x + 80
+  // //
+  // calculateConsent(factor) {
+  //   let x = this.character.fear;
+  //   let y = factor * (this.character.loyalty + this.character.lust) / 2;
+  //   if (y > ( 3 / 20 * x) + 80) { return 'enthusiastic'; }
+  //   if (y > ( 2 / 5  * x) + 50) { return 'consent'; }
+  //   if (y > (-3 / 10 * x) + 40) { return 'reluctant'; }
+  //   return 'rape'
+  // }
   //
-  //    Rape Line:           y = -3/10x + 40
-  //    Consent Line:        y =   2/5x + 50
-  //    Enthusiastic Line:   y =  3/20x + 80
+  // // === Consent Explanation ===
   //
-  calculateConsent(factor) {
-    let x = this.character.fear;
-    let y = factor * (this.character.loyalty + this.character.lust) / 2;
-    if (y > ( 3 / 20 * x) + 80) { return 'enthusiastic'; }
-    if (y > ( 2 / 5  * x) + 50) { return 'consent'; }
-    if (y > (-3 / 10 * x) + 40) { return 'reluctant'; }
-    return 'rape'
-  }
-
-  // === Consent Explanation ===
-
-  explainLevel(details, action) {
-    if (details.level == 'enthusiastic') { return this.explainEnthusiastic(details, action); }
-    if (details.level == 'consent')      { return this.explainConsent(details, action);      }
-    if (details.level == 'reluctant')    { return this.explainReluctant(details, action);    }
-    if (details.level == 'rape')         { return this.explainRape(details, action);         }
-  }
-
-  explainEnthusiastic(details, action) {
-    return `{{C::character.firstName}} would really enjoy doing this.`;
-  }
-
-  explainConsent(details, action) {
-    return `{{C::character.firstName}} would like to do this.`;
-  }
-
-  explainReluctant(details, action) {
-    return `{{C::character.firstName}} is agreeing to do this, but only reluctantly. {{He}} won't enjoy it very much
-            and will not receive any experience from it. ${this.explainFeelings(details,action)}`;
-  }
-
-  explainRape(details, action) {
-    return `While {{he}}'ll technically let me do this, {{he}} really doesn't want to. {{C::character.firstName}} will
-            resent and fear me for forcing {{him}}. ${this.explainFeelings(details,action)}`
-  }
-
-  explainFeelings(details, action) {
-    if (details.injuryFactor < 1) {
-      let part = {
-        body: 'face is',
-        head: 'face is',
-        anus: 'ass is',
-        cock: 'cock is',
-        pussy: 'pussy is',
-        tits: 'tits are',
-      }[action.effects]
-
-      return `It might have something to do with the fact that {{his}} ${part} injured.`
-    }
-
-    if (details.genderFactor < 1)       { return `I don't think {{he}} likes {{P::gender.men}} very much.`; }
-    if (details.aspectFactor < 1)       { return `{{He}} might just not enjoy doing that.`; }
-    if (this.character.loyalty < 50)    { return `It could just be that {{he}} doesn't like me very much.`; }
-    if (this.character.lust < 50)       { return `It seems like {{he}}'s just not in the mood for sex right now.`; }
-    if (details.difficultyFactor < 0.8) { return `To be fair, it would be hard to find anyone who's into that.`; }
-
-    // Sort of a catch all situation as adding more fear and loyalty makes anything possible.
-    return `I don't think {{he}} respects me enough.`
-  }
+  // explainLevel(details, action) {
+  //   if (details.level == 'enthusiastic') { return this.explainEnthusiastic(details, action); }
+  //   if (details.level == 'consent')      { return this.explainConsent(details, action);      }
+  //   if (details.level == 'reluctant')    { return this.explainReluctant(details, action);    }
+  //   if (details.level == 'rape')         { return this.explainRape(details, action);         }
+  // }
+  //
+  // explainEnthusiastic(details, action) {
+  //   return `{{C::character.firstName}} would really enjoy doing this.`;
+  // }
+  //
+  // explainConsent(details, action) {
+  //   return `{{C::character.firstName}} would like to do this.`;
+  // }
+  //
+  // explainReluctant(details, action) {
+  //   return `{{C::character.firstName}} is agreeing to do this, but only reluctantly. {{He}} won't enjoy it very much
+  //           and will not receive any experience from it. ${this.explainFeelings(details,action)}`;
+  // }
+  //
+  // explainRape(details, action) {
+  //   return `While {{he}}'ll technically let me do this, {{he}} really doesn't want to. {{C::character.firstName}} will
+  //           resent and fear me for forcing {{him}}. ${this.explainFeelings(details,action)}`
+  // }
+  //
+  // explainFeelings(details, action) {
+  //   if (details.injuryFactor < 1) {
+  //     let part = {
+  //       body: 'face is',
+  //       head: 'face is',
+  //       anus: 'ass is',
+  //       cock: 'cock is',
+  //       pussy: 'pussy is',
+  //       tits: 'tits are',
+  //     }[action.effects]
+  //
+  //     return `It might have something to do with the fact that {{his}} ${part} injured.`
+  //   }
+  //
+  //   if (details.genderFactor < 1)       { return `I don't think {{he}} likes {{P::gender.men}} very much.`; }
+  //   if (details.aspectFactor < 1)       { return `{{He}} might just not enjoy doing that.`; }
+  //   if (this.character.loyalty < 50)    { return `It could just be that {{he}} doesn't like me very much.`; }
+  //   if (this.character.lust < 50)       { return `It seems like {{he}}'s just not in the mood for sex right now.`; }
+  //   if (details.difficultyFactor < 0.8) { return `To be fair, it would be hard to find anyone who's into that.`; }
+  //
+  //   // Sort of a catch all situation as adding more fear and loyalty makes anything possible.
+  //   return `I don't think {{he}} respects me enough.`
+  // }
 
 }

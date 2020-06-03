@@ -46,6 +46,7 @@ require(`${ROOT}/engine/forms/task-story`);
 // === Classes ===
 require(`${ROOT}/engine/classes/consent-calculator`);
 require(`${ROOT}/engine/classes/context`);
+require(`${ROOT}/engine/classes/sex-action`);
 
 // === Describers ===
 require(`${ROOT}/engine/describers/character-describer`);

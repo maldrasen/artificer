@@ -1,40 +1,36 @@
-// This needs to be rewritten to use the courses rather than the summon actions
+describe.only('ConsentCalculator', function() {
 
-// describe('ConsentCalculator', function() {
-//
-//   async function buildCalculatorWith(buildOptions, otherOptions) {
-//     const jada = await SpecHelper.buildJada(buildOptions);
-//
-//     await Player.forge({
-//       title: "Master",
-//       firstName: "Gary",
-//       lastName: "Gangbang",
-//       gender: (otherOptions.playerGender || 'male'),
-//       species: "elf",
-//     });
-//
-//     await Promise.all(Object.keys(otherOptions.aspects||[]).map(async code => {
-//       return jada.addAspect(code, { level:otherOptions.aspects[code] });
-//     }));
-//
-//     if (otherOptions.injure == 'head.2')  { await Abuser.addHeadInjury(jada, { type:'smash', level:2 }); }
-//     if (otherOptions.injure == 'pussy.1') { await Abuser.addPussyInjury(jada, { type:'burn', level:1 }); }
-//     if (otherOptions.injure == 'pussy.3') { await Abuser.addPussyInjury(jada, { type:'burn', level:3 }); }
-//
-//     let calc = new ConsentCalculator(jada);
-//     await calc.init();
-//     return calc;
-//   }
-//
-//   it('calculates the baseline consent for an average action', function(done) {
-//     buildCalculatorWith({ fear:10, loyalty:30, lust:50 },{}).then(calc => {
-//       calc.getConsentDetails(SummonAction.lookup('face-sitting')).then(detail => {
-//         expect(detail.level).to.equal('reluctant');
-//         done();
-//       });
-//     });
-//   });
-//
+  async function buildCalculatorWith(options = {}) {
+    const player = await SpecHelper.buildPlayer(options.player);
+    const jada = await SpecHelper.buildJada(options.minion);
+
+    await Promise.all(Object.keys(options.aspects||[]).map(async code => {
+      return jada.addAspect(code, { level:options.aspects[code] });
+    }));
+
+    if (options.injure == 'head.2')  { await Abuser.addHeadInjury(jada, { type:'smash', level:2 }); }
+    if (options.injure == 'pussy.1') { await Abuser.addPussyInjury(jada, { type:'burn', level:1 }); }
+    if (options.injure == 'pussy.3') { await Abuser.addPussyInjury(jada, { type:'burn', level:3 }); }
+
+    let calc = new ConsentCalculator(jada);
+    await calc.init();
+    return calc;
+  }
+
+  function averageAction() {
+    return new SexAction({ difficulty:3 });
+  }
+
+  it('calculates the baseline consent for an average action', function(done) {
+    buildCalculatorWith({ minion:{ fear:10, loyalty:30, lust:50 }}).then(calc => {
+      calc.getConsentDetails(averageAction()).then(detail => {
+        // expect(detail.level).to.equal('reluctant');
+        done();
+      });
+    });
+  });
+
+
 //   it('combines everything into one consent detail object', function(done) {
 //     buildCalculatorWith({ fear:10, loyalty:40, lust:40 },{ injure:'head.2', aspects:{ androphilic:2, masochist:3, submissive:2 }}).then(calc => {
 //       calc.getConsentDetails(SummonAction.lookup('dick-slapping')).then(detail => {
@@ -130,4 +126,4 @@
 //     });
 //   });
 //
-// });
+});

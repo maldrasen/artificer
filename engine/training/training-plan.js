@@ -16,9 +16,18 @@ global.TrainingPlan = class TrainingPlan {
     await context.addPlayer();
     await context.addCharacter('C',minion);
 
+    const calculator = new ConsentCalculator(minion);
+    await calculator.init();
+
     await Promise.all(Course.all().map(async course => {
       if ((await CentralScrutinizer.meetsRequirements(course.requires,context))) {
-        courses[course.category].push(course.properties);
+
+
+
+        courses[course.category].push({
+          code: course.code,
+          name: course.name,
+        });
       }
     }));
 
