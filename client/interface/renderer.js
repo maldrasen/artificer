@@ -57,13 +57,9 @@ global.Renderer = (function() {
       if (Components.Backlog.isOpen()) { return Components.Backlog.close(); }
       if ($('#overlayContent').children().length > 0) { return removeOverlay(); }
 
-      // TODO: Minion select dialog was being stupid, but I can't fix it right
-      //       now, because there's nothing that actually opens it. Should just
-      //       convert the minion dialog into a regular dialog, but smaller.
-
       // A view can only be canceled when the first child of #mainContent has
-      // the can-cancel class. This applies to the PlanView and the
-      // MinionListView, and probably to others in the future.
+      // the can-cancel class. This applies to the PlanView, the
+      // TrainingPlanView, and the MinionListView.
       if ($($('#mainContent').children()[0]).hasClass('can-cancel')) {
         return sendCancel();
       }

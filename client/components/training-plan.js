@@ -2,15 +2,21 @@ Components.TrainingPlan = (function() {
   let planData;
 
   function init() {
+    $(document).on('click', '#trainingPlan .training-plan-cancel', Elements.buttonAction(Renderer.sendCancel));
+    $(document).on('click', '#trainingPlan .training-plan-confirm', Elements.buttonAction(confirmPlan));
     $(document).on('click','#trainingPlan .add-minion-button', Elements.buttonAction(selectMinion));
+    $(document).on('click','#trainingPlan .cancel-training', Elements.buttonAction(cancelTraining));
   }
 
   function build(event, data) {
     Elements.reset();
     planData = data;
-    $('#mainContent').empty().append($('<div>',{ id:"trainingPlan" }).append($('#trainingPlanTemplate').html()));
+    $('#mainContent').empty().append($('<div>',{ id:"trainingPlan" }).addClass('can-cancel').append($('#trainingPlanTemplate').html()));
   }
 
+  // Right now, we only have one minion that can train, so this function always
+  // sends all minions. When we can select more than one we need to filter the
+  // minions array to exclude the ones that are already in the plan.
   function selectMinion() {
     Components.MinionSelectDialog.open({
       title:'Select Minion to Train',
@@ -42,12 +48,22 @@ Components.TrainingPlan = (function() {
     }
   }
 
+  function cancelTraining() {
+    $(this).closest('li.minion-plan').remove();
+    $('#trainingPlan .add-minion-item').removeClass('hide');
+  }
+
   function addCourseButton(element, course) {
     element.find('.course-list').append(
       $('<li>',{ class:'course' }).append(
         $('<a>',{ href:'#', class:'button button-small' }).
           append(course.name).
           data('code',course.code)));
+  }
+
+  // If minions have been added to the plan ensure that a course is selected.
+  function confirmPlan() {
+    console.log("Confirm Plan.");
   }
 
   return { init, build, addMinion };

@@ -12,33 +12,31 @@
 
 <div id='trainingMinionPlanTemplate' class='hide'>
   <li class='minion-plan'>
+    <a href='#' class='cancel-training'>X</a>
 
     <div class='top-row'>
       <div class='minion-data'>
         <div class='portrait'></div>
         <div class='name'></div>
-        <div class='lust'><span class='lust-word'></span> (<span class='lust-value'></span>)</div>
+        <div class='lust'><span class='lust-value'></span> <span class='lust-word'></span></div>
       </div>
       <div class='tab-row'>
-        <a href='#' class='tab' data-tab='.physical-tab'>Physical</a>
-        <a href='#' class='tab' data-tab='.social-tab'>Social</a>
-        <a href='#' class='tab' data-tab='.sexual-tab'>Sexual</a>
+        <a href='#' class='tab-button active' data-tab='.physical-tab'>Physical</a>
+        <a href='#' class='tab-button' data-tab='.social-tab'>Social</a>
+        <a href='#' class='tab-button' data-tab='.sexual-tab'>Sexual</a>
       </div>
     </div>
 
     <div class='tab-container'>
-      <div class='physical-tab' class='hide'>
-        <div class='header'>Physical</div>
+      <div class='tab active physical-tab' class='hide'>
         <ul class='course-list'></ul>
       </div>
 
-      <div class='social-tab' class='hide'>
-        <div class='header'>Social</div>
+      <div class='tab social-tab' class='hide'>
         <ul class='course-list'></ul>
       </div>
 
-      <div class='sexual-tab' class='hide'>
-        <div class='header'>Sexual</div>
+      <div class='tab sexual-tab' class='hide'>
         <ul class='course-list'></ul>
       </div>
     </div>
