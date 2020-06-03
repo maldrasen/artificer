@@ -13,6 +13,7 @@ require(`${ROOT}/engine/controllers/location-controller.js`);
 require(`${ROOT}/engine/controllers/manage-controller.js`);
 require(`${ROOT}/engine/controllers/plan-controller.js`);
 require(`${ROOT}/engine/controllers/resolver-controller.js`);
+require(`${ROOT}/engine/controllers/training-controller.js`);
 
 require(`${ROOT}/engine/services/browser.js`);
 require(`${ROOT}/engine/services/settings.js`);

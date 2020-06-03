@@ -42,7 +42,8 @@ global.Context = class Context {
   }
 
   async addPlayer() {
-    if (this.get('P') == null) { await this.addCharacter('P',(await Player.instance())); }
+    const player = await Player.instance();
+    if (player && this.get('P') == null) { await this.addCharacter('P',player); }
   }
 
   async addActor(key, descriptive) {

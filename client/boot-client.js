@@ -33,6 +33,7 @@ $(document).ready(function() {
   Components.ReportView.init();
   Components.SavedGames.init();
   Components.SettingsDialog.init();
+  Components.TrainingPlan.init();
 
   // === Init Interface ===
   Renderer.init();

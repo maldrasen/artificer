@@ -79,7 +79,8 @@ global.Composer = (function() {
 
   async function renderTrainingView() {
     Browser.send('render.training-plan',{
-      courses: (await TrainingPlan.availableCourses())
+      minionCount: TrainingPlan.minionCount(),
+      minions: (await Character.allForClient()),
     });
   }
 

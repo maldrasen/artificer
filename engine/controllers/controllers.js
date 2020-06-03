@@ -10,6 +10,7 @@ global.Controllers = (function() {
     ManageController.init();
     PlanController.init();
     ResolverController.init();
+    TrainingController.init();
   }
 
   return { init };

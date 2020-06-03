@@ -21,13 +21,14 @@ global.RendererCommands = (function() {
     ipcRenderer.on('render.player', Components.PlayerView.open);
     ipcRenderer.on('render.report', Components.ReportView.build);
     ipcRenderer.on('render.settings', Components.SettingsDialog.open);
+    ipcRenderer.on('render.training-plan', Components.TrainingPlan.build);
 
     ipcRenderer.on('image.found', Elements.ImageResource.set);
 
     ipcRenderer.on('character.show-equipment', Components.EquipmentFrame.showEquipment);
     ipcRenderer.on('equipment.show-available', Components.EquipmentFrame.showAvailableEquipment);
-
     ipcRenderer.on('plan.crafting.showRecipeList', Components.PlanView.Crafting.showRecipeList);
+    ipcRenderer.on('training-plan.add-minion', Components.TrainingPlan.addMinion);
   }
 
   return { init };
