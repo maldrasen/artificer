@@ -6,16 +6,16 @@ Components.TrainingPlan = (function() {
     $(document).on('click', '#trainingPlan .training-plan-confirm', Elements.buttonAction(confirmPlan));
     $(document).on('click','#trainingPlan .add-minion-button', Elements.buttonAction(selectMinion));
     $(document).on('click','#trainingPlan .cancel-training', Elements.buttonAction(cancelTraining));
+    $(document).on('click','#trainingPlan .select-course', Elements.buttonAction(selectCourse));
   }
 
   function build(event, data) {
-    Elements.reset();
-
     planData = data;
-
+    Elements.reset();
     $('#mainContent').empty().append($('<div>',{ id:"trainingPlan" }).addClass('can-cancel').append($('#trainingPlanTemplate').html()));
   }
 
+  // === Minion Selection ===
   // Right now, we only have one minion that can train, so this function always
   // sends all minions. When we can select more than one we need to filter the
   // minions array to exclude the ones that are already in the plan.
@@ -37,7 +37,7 @@ Components.TrainingPlan = (function() {
     const classname = `train-minion-${data.minion.id}`
 
     minionRow.addClass(classname);
-    minionRow.data('id',data.minion.id);
+    minionRow.data('minionData',data);
     minionRow.find('.portrait').append($('<img>',{ src:data.minion.portrait }));
     minionRow.find('.name').append(data.minion.name);
     minionRow.find('.lust-word').append(data.minion.lustWord);
@@ -65,9 +65,22 @@ Components.TrainingPlan = (function() {
   function addCourseButton(element, course) {
     element.find('.course-list').append(
       $('<li>',{ class:'course' }).append(
-        $('<a>',{ href:'#', class:'button button-small' }).
+        $('<a>',{ href:'#', class:'select-course button button-small' }).
           append(course.name).
           data('code',course.code)));
+  }
+
+  // === Course Selection ===
+
+  function selectCourse() {
+    let course = findCourse($(this));
+    console.log(course);
+  }
+
+  function findCourse(button) {
+    let code = button.data('code');
+    let courses = button.closest('.minion-plan').data('minionData').courses;
+    return [...courses.physical, ...courses.social, ...courses.sexual].filter(course => course.code == code)[0];
   }
 
   // If minions have been added to the plan ensure that a course is selected.
