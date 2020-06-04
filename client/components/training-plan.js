@@ -10,7 +10,9 @@ Components.TrainingPlan = (function() {
 
   function build(event, data) {
     Elements.reset();
+
     planData = data;
+
     $('#mainContent').empty().append($('<div>',{ id:"trainingPlan" }).addClass('can-cancel').append($('#trainingPlanTemplate').html()));
   }
 
@@ -32,7 +34,9 @@ Components.TrainingPlan = (function() {
   function addMinion(event, data) {
     const minionRow = $($('#trainingMinionPlanTemplate').html());
     const mainArea = $('#trainingPlan .main-area').append(minionRow);
+    const classname = `train-minion-${data.minion.id}`
 
+    minionRow.addClass(classname);
     minionRow.data('id',data.minion.id);
     minionRow.find('.portrait').append($('<img>',{ src:data.minion.portrait }));
     minionRow.find('.name').append(data.minion.name);
@@ -46,6 +50,11 @@ Components.TrainingPlan = (function() {
     if (mainArea.find('li.minion-plan').length == planData.minionCount) {
       mainArea.find('.add-minion-item').addClass('hide');
     }
+
+    new Elements.Tabs({
+      tabButtons: `#trainingPlan .${classname} .tab-buttons`,
+      tabContainer: `#trainingPlan .${classname} .tab-container`,
+    });
   }
 
   function cancelTraining() {

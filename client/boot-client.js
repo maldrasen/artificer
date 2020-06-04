@@ -16,6 +16,7 @@ $(document).ready(function() {
   Elements.PagedContent.init();
   Elements.RadioButtons.init();
   Elements.ScrollingPanel.init();
+  Elements.Tabs.init();
   Elements.Tooltip.init();
 
   // === Init Components ===
