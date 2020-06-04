@@ -36,8 +36,8 @@ async function normalDescription(context) {
 
 async function roughDescription(context) {
   return {
-    cock:  `I'm going to roughly fuck {{C::character.firstName}} face with my cock, ramming it as deep into {{his}} throat as I can.`,
-    both:  `I'm going to roughly fuck {{C::character.firstName}} face with my cock, ramming it as deep into {{his}} throat as I can.`,
+    cock:  `I'm going to roughly fuck {{C::character.firstName's}} face with my cock, ramming it as deep into {{his}} throat as I can.`,
+    both:  `I'm going to roughly fuck {{C::character.firstName's}} face with my cock, ramming it as deep into {{his}} throat as I can.`,
     pussy: `I'm going to straddle {{C::character.firstName's}} face and smother him with my pussy, grinding my cunt into {{his}} face as {{he}} struggles for air underneath me.`,
   }[position(context)];
 }

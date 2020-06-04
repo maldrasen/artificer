@@ -1,4 +1,4 @@
-describe.only('Course', function() {
+describe('Course', function() {
 
   async function setup(options) {
     const player = await SpecHelper.buildPlayer(options.player);
