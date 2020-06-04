@@ -50,4 +50,34 @@ describe.only('Course', function() {
     });
   });
 
+  describe('Course: Oral', function() {
+    it('describes futa', function(done) {
+      setup({ player:{ gender:'futa' }}).then(context => {
+        Course.lookup('oral').description(context).then(desc => {
+          expect(desc).to.match(/pleasure me with {{his}} mouth, both sucking my cock and eating my pussy/)
+          done();
+        });
+      });
+    });
+
+    it('describes rough male', function(done) {
+      setup({ player:{ gender:'male' }}).then(context => {
+        Course.lookup('oral').sexAction.styles.rough.description(context).then(desc => {
+          expect(desc).to.match(/ramming it as deep into {{his}} throat as I can/)
+          done();
+        });
+      });
+    });
+
+    it('describes abusive female', function(done) {
+      setup({ player:{ gender:'female' }}).then(context => {
+        Course.lookup('oral').sexAction.styles.abusive.description(context).then(desc => {
+          expect(desc).to.match(/grind my ass and pussy against {{his}} face/)
+          done();
+        });
+      });
+    });
+  });
+
+
 });

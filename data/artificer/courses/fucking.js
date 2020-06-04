@@ -2,7 +2,6 @@ Course.build('fucking', {
   name: 'Fucking',
   category: 'sexual',
   requires: 'sex.fuckingPossible',
-
   description: normalDescription,
 
   sexAction: new SexAction({
