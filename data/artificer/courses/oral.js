@@ -6,10 +6,10 @@ Course.build('oral', {
     difficulty: 2,
     effects: 'head',
 
-    complementing: async (player, minion) => {
-      const aspects = ['oral-slut'];
-      if ((await player.hasCock())) { ArrayUtility.addAll(aspects,['cock-lover','cum-lover']); }
-      if ((await player.hasPussy())) { aspects.push('pussy-lover'); }
+    complementing: context => {
+      let aspects = ['oral-slut'];
+      if (context.player.cock)  { aspects = [...aspects, 'cock-lover', 'cum-lover']; }
+      if (context.player.pussy) { aspects.push('pussy-lover'); }
       return aspects
     },
 

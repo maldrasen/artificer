@@ -9,7 +9,7 @@ Course.build('fucking', {
 
     // Anal sex is always a possibility when fucking, all of the consent
     // calculations take both ass and pussy attributes into consideration.
-    complementing: async context => {
+    complementing: context => {
       const aspects = ['anal-slut','breeder'];
 
       if (context.player.cock) { aspects.push('cock-lover'); }
@@ -22,9 +22,7 @@ Course.build('fucking', {
       return aspects;
     },
 
-    conflicting: async (player, minion) => {
-      return ['anal-averse'];
-    },
+    conflicting: ['anal-averse'],
 
     styles:{
       rough:{ difficulty:4, complementing:['submissive'], conflicting:['dominant']},

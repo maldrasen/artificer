@@ -1,38 +1,30 @@
-describe.only('SexAction', function() {
+describe('SexAction', function() {
 
   describe('getComplementingAspects()', function() {
-
-    it('gets nothing', function(done) {
-      (new SexAction({})).getComplementingAspects().then(aspects => {
-        expect(aspects).to.eql([]);
-        done();
-      });
+    it('gets nothing', function() {
+      expect((new SexAction({})).getComplementingAspects()).to.eql([]);
     });
 
-    it('gets arrays', function(done) {
-      (new SexAction({ complementing:['ass'] }).getComplementingAspects().then(aspects => {
-        expect(aspects).to.eql(['ass']);
-        done();
-      }));
+    it('gets arrays', function() {
+      expect(new SexAction({ complementing:['ass'] }).getComplementingAspects()).to.eql(['ass']);
     });
 
-    it('also gets aspects from styles', function(done) {
-      (new SexAction({ complementing:['ass'], styles:{ hard:{ complementing:['fist'] }}}).getComplementingAspects('hard').then(aspects => {
-        expect(aspects).to.eql(['ass','fist']);
-        done();
-      }));
-    });
-
-    it('calls functions to get aspects', function(done) {
+    it('also gets aspects from styles', function() {
       let action = new SexAction({
-        complementing: async (player, character) => ['eat'],
-        styles:{ hard:{ complementing: async (player, character) => ['shit'] }},
+        complementing:['ass'],
+        styles:{ hard:{ complementing:['fist']
+      }}});
+
+      expect(action.getComplementingAspects('hard')).to.eql(['ass','fist']);
+    });
+
+    it('calls functions to get aspects', function() {
+      let action = new SexAction({
+        complementing: context => ['eat'],
+        styles:{ hard:{ complementing: context => ['shit'] }},
       });
 
-      action.getComplementingAspects('hard').then(aspects => {
-        expect(aspects).to.eql(['eat','shit']);
-        done();
-      });
+      expect(action.getComplementingAspects('hard')).to.eql(['eat','shit']);
     });
   });
 

@@ -22,10 +22,11 @@ global.SexAction = class SexAction {
     this._effects = properties.effects || 'body';
     this._complementing = properties.complementing || [];
     this._conflicting = properties.conflicting || [];
-    this._styles = properties.styles || [];
+    this._styles = properties.styles || {};
   }
 
   get effects() { return this._effects; }
+  get styles() { return this._styles; }
 
   // SexAction Difficulty Chart:
   //   0 (2)    very easy       - cuddling, backrubs, headpats
@@ -46,23 +47,23 @@ global.SexAction = class SexAction {
   // The complementing and conflicting properties on the action and on the
   // action's styles can be null, an array, or a function. Sometimes the list
   // of aspects change depending on the genders of those involved.
-  async getComplementingAspects(style, player, character) {
+  getComplementingAspects(style, context) {
     return [
-      ...(await aspectsFrom(this._complementing, player, character)),
-      ...(await aspectsFrom((this._styles[style]||{}).complementing, player, character))
+      ...aspectsFrom(this._complementing, context),
+      ...aspectsFrom((this._styles[style]||{}).complementing, context)
     ];
   }
 
-  async getConflictingAspects(style, player, character) {
+  getConflictingAspects(style, context) {
     return [
-      ...(await aspectsFrom(this._conflicting, player, character)),
-      ...(await aspectsFrom((this._styles[style]||{}).conflicting, player, character))
+      ...aspectsFrom(this._conflicting, context),
+      ...aspectsFrom((this._styles[style]||{}).conflicting, context)
     ];
   }
 }
 
-async function aspectsFrom(property, player, character) {
+function aspectsFrom(property, context) {
   if (property == null) { return []; }
-  if (typeof property == 'function') { return property(player,character); }
+  if (typeof property == 'function') { return property(context); }
   return property;
 }
