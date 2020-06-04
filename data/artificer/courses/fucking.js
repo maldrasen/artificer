@@ -60,8 +60,8 @@ async function roughDescription(context) {
 
 async function abusiveDescription(context) {
   return {
-    'giving-ass':       `I'm going to slap, choak, and abusivly fuck the shit out of {{C::character.firstName}}.`,
-    'giving-ass/pussy': `I'm going to slap, choak, and abusivly fuck the shit out of {{C::character.firstName}}.`,
+    'giving-ass':       `I'm going to slap, choke, and abusively fuck the shit out of {{C::character.firstName}}.`,
+    'giving-ass/pussy': `I'm going to slap, choke, and abusively fuck the shit out of {{C::character.firstName}}.`,
     'taking-ass/pussy': `I'm going to straddle {{C::character.firstName}} and harshly abuse {{him}} while I'm riding {{his}} cock.`,
     'dildos':           `I'll brutally pound {{C::character.firstName's}} fuck holes with something huge and phallic.`,
   }[position(context)];
