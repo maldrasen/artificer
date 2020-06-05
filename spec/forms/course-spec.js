@@ -14,7 +14,7 @@ describe('Course', function() {
     it('describes an unskilled fight', function(done) {
       setup({}).then(context => {
         Course.lookup('fighting').description(context).then(desc => {
-          expect(desc).to.match(/Both he and I should improve/);
+          expect(desc).to.match(/Both {{he}} and I should improve/);
           done();
         });
       });
