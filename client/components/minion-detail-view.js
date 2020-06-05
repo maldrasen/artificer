@@ -32,10 +32,6 @@ Components.MinionDetailView = (function() {
     view.find('.top-row .energy-word').addClass(`fg-energy-${minion.energy}`);
     view.find('.description-area').append(minion.description);
 
-    if (Components.MinionListView.isSummonAvailable()) {
-      view.find('.summon-minion-button').removeClass('hide').data('id',minion.id);
-    }
-
     Components.CharacterViews.buildAspects(view, minion, 'minion');
     Components.EquipmentFrame.build(minion);
     Elements.ScrollingPanel.build($('#overlayContent .scrolling-panel'));

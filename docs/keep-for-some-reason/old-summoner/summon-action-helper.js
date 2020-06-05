@@ -1,3 +1,5 @@
+// This was required by the specs. Might need something like it going forward though.
+
 global.SummonActionHelper = (function() {
 
   async function setupScene(scene) {

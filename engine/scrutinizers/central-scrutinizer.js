@@ -49,7 +49,7 @@ global.CentralScrutinizer = (function() {
     if (requirement.match(/^state/))           { return checkState(requirement,extra.state); }
     if (requirement.match(/^player/))          { return await PlayerScrutinizer.check(requirement, context); }
     if (requirement.match(/^minion/))          { return await MinionScrutinizer.check(requirement, context); }
-    if (requirement.match(/^canSuckCock/))     { return await SexualScrutinizer.check(requirement, context); }
+    if (requirement.match(/^sex/))             { return await SexualScrutinizer.check(requirement, context); }
 
     throw `Unknown Requirement - ${requirement}`;
   }

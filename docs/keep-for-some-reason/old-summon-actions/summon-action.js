@@ -35,7 +35,6 @@ global.SummonAction = class SummonAction extends Form {
 
   static async categorizedForCharacter(character) {
     const calculator = new ConsentCalculator(character);
-    await calculator.init();
 
     const context = new Context();
     await context.addCharacter('C',character);

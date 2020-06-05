@@ -27,11 +27,15 @@ describe("CharacterAgent", function() {
     });
   });
 
+  // Creating Solstice requires the player to exist because she gets the
+  // androphilic or gynephilic aspect depending on the player's gender.
   it('gets a named character, and characters by flag', function(done) {
-    EventFunctions.createSolstice().then(_ => {
-      CharacterAgent.findActor('solstice').then(solstice => {
-        expect(solstice.name).to.equal('Solstice Blackriver');
-        done();
+    SpecHelper.buildPlayer().then(_ => {
+      EventFunctions.createSolstice().then(_ => {
+        CharacterAgent.findActor('solstice').then(solstice => {
+          expect(solstice.name).to.equal('Solstice Blackriver');
+          done();
+        });
       });
     });
   });

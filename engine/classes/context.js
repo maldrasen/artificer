@@ -6,6 +6,7 @@ global.Context = class Context {
 
   get properties() { return this._properties; }
   get actors() { return ObjectUtility.select(this._properties, (key, _) => key.length == 1 && key != 'P'); }
+  get player() { return this.get('P'); }
 
   get(key) { return this._properties[key]; }
   set(key, value) {
@@ -37,14 +38,12 @@ global.Context = class Context {
     const everything = await character.getCompleteBody();
           everything.body.weight = await everything.body.getWeight();
 
-    this.set(key, extend(everything, { character:character }));
+    this.set(key, { character, ...everything });
   }
 
   async addPlayer() {
     const player = await Player.instance();
-    if (player) {
-      await this.addCharacter('P',player)
-    }
+    if (player && this.get('P') == null) { await this.addCharacter('P',player); }
   }
 
   async addActor(key, descriptive) {

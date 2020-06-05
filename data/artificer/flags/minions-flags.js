@@ -1,6 +1,4 @@
 
-FlagInfo.build('minions.can-summon', { validateIn:['Y'] });
-
 FlagInfo.build('minions.count',            { validateInteger:true, default:0 });
 FlagInfo.build('minions.loyal-count',      { validateInteger:true, default:0 });
 FlagInfo.build('minions.afraid-count',     { validateInteger:true, default:0 });

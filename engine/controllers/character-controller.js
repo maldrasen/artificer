@@ -28,25 +28,6 @@ global.CharacterController = (function() {
       Browser.send('render.minions', (await Character.allForClient()));
     });
 
-    ipcMain.on('character.get-summonable', async (event, data) => {
-      Browser.send('character.show-summonable',{ characters:(await Character.getSummonable()) });
-    });
-
-    ipcMain.on('character.get-summon-actions', async (event, data) => {
-      const character = await Character.lookup(data.id);
-      const actions = await SummonAction.categorizedForCharacter(character);
-
-      Browser.send('character.show-summon-actions',{ actions, id:data.id });
-    });
-
-    ipcMain.on('character.start-summon-action', async (event, data) => {
-      const summoner = new Summoner(data.id,data.code);
-      await summoner.init();
-      await summoner.execute();
-
-      Browser.send('character.show-summon-result',summoner.getResult());
-    });
-
     ipcMain.on('character.make-aspect-adjustment', async (event, data) => {
       AspectAdjuster.adjust(data);
     });

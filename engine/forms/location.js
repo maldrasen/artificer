@@ -1,8 +1,6 @@
 global.Location = class Location extends Form {
 
   async buildView() {
-    const summonAvailable = Flag.lookup('minions.can-summon') && (typeof this.summonActions == 'function');
-
     let locationEvent = null;
     let locationEvents = await AvailableEvent.currentLocationEvents();
     if (locationEvents.length > 0) {
@@ -20,7 +18,6 @@ global.Location = class Location extends Form {
       mapData: (await Location.buildMapData()),
       dates: { day:Game.dayNumber() },
       time: Game.time(),
-      summonAvailable
     };
 
     if (Flag.lookup('locationMenu.showDate')) {
@@ -41,21 +38,29 @@ global.Location = class Location extends Form {
   buildFlavor()      { return []; }
 
   buildFlags() {
-    let flags = Flag.getAll();
-
     return {
-      all: flags,
-      showPlanAction: (flags['location.current-study'] == Game.location()),
-      showManageAction: (flags['location.current-study'] == Game.location() && flags['game.keep-management'] == 'Y'),
-      showMapMenu: (flags['location-menu.map'] == 'Y'),
-      showMinionMenu: (flags['location-menu.minions'] == 'Y'),
-      showInventoryMenu: (flags['location-menu.inventory'] == 'Y'),
-      playerMenuName: flags['player.first-name'],
+      playerMenuName: Flag.lookup('player.first-name'),
+      showInventoryMenu: (Flag.lookup('location-menu.inventory') == 'Y'),
+      showManageAction: this.showManageAction(),
+      showMapMenu: (Flag.lookup('location-menu.map') == 'Y'),
+      showMinionMenu: (Flag.lookup('location-menu.minions') == 'Y'),
+      showPlanAction: this.showPlanAction(),
+      showTrainAction: this.showTrainAction(),
     };
   }
 
-  static async summonAvailable() {
-    return Flag.lookup('minions.can-summon') && (typeof Location.lookup(Game.location()).summonActions == 'function');
+  showPlanAction() {
+    return Flag.lookup('location.current-study') == Game.location() && Game.phase() == 'morning';
+  }
+
+  showManageAction() {
+    return Flag.lookup('location.current-study') == Game.location() && Flag.lookup('game.keep-management') == 'Y';
+  }
+
+  showTrainAction() {
+    return Flag.lookup('location.current-study') == Game.location() &&
+           Game.phase() == 'evening' &&
+           Flag.lookup('training-view') == 'Y';
   }
 
   // We build the locations for the map when building the location view. Right

@@ -31,10 +31,6 @@ Location.build('cellars', {
     return description;
   },
 
-  summonActions: async () => {
-    return SummonAction.allStandardActions();
-  },
-
   hasBed: () => false,
   hasChair: () => false,
   hasTable: () => false,

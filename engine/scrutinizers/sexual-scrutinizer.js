@@ -1,7 +1,8 @@
 global.SexualScrutinizer = (function() {
 
   async function check(requirement, context) {
-    if (requirement.match(/^canSuckCock/)) { return await checkOral(requirement,context); }
+    if (requirement.match(/^sex.canSuckCock/)) { return await checkOral(requirement,context); }
+    if (requirement.match(/^sex.fuckingPossible/)) { return await checkFuckingPossible(context); }
   }
 
   // Check a requirement with the forms:
@@ -18,7 +19,7 @@ global.SexualScrutinizer = (function() {
   //   balls:     (none, one, entire)
   //
   async function checkOral(requirement, context) {
-    let matchData = requirement.match(/^canSuckCock\((.+),(.+)\)\.([^!]+)!?=(.+)/)
+    let matchData = requirement.match(/^sex.canSuckCock\((.+),(.+)\)\.([^!]+)!?=(.+)/)
     let sucker = context.get(matchData[1]);
     let sucked = context.get(matchData[2]);
 
@@ -36,6 +37,23 @@ global.SexualScrutinizer = (function() {
     if (value == null)  { throw `Could not parse value from ${requirement}`;  }
 
     return (requirement.indexOf('!') > 0) ? `${data[key]}` != value : `${data[key]}` == value
+  }
+
+  async function checkFuckingPossible(context) {
+    await context.addPlayer();
+
+    if (context.actors.length == 0) { throw 'There should at least be one minion in the context.' };
+    if (context.player.cock) { return true; }
+
+    const cocks = ArrayUtility.compact(await Promise.all(Object.keys(context.actors).map(async key => {
+      return await context.get(key).cock;
+    })));
+
+    if (cocks.length > 0) { return true; }
+
+    // TODO: Fucking will also be possible if there are dildos in the inventory
+    //       at some point.
+    return false;
   }
 
   return { check };

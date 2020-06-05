@@ -58,7 +58,7 @@ global.Composer = (function() {
       'plan-view.allow-idle': Flag.lookup('plan-view.allow-idle'),
     };
 
-    let planData = {
+    const planData = {
       currentProject: currentProject,
       currentProjectProgress: Game.currentProjectProgress(),
       projects: (await AvailableProject.all()),
@@ -77,10 +77,18 @@ global.Composer = (function() {
     Browser.send('render.plan',planData);
   }
 
+  async function renderTrainingView() {
+    Browser.send('render.training-plan',{
+      minionCount: TrainingPlan.minionCount(),
+      minions: (await Character.allForClient()),
+    });
+  }
+
   return {
     render,
     renderPlanView,
     renderManageView,
+    renderTrainingView,
   };
 
 })();

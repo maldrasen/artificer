@@ -9,7 +9,6 @@ require(`${ROOT}/engine/boot-engine.js`);
 require(`${ROOT}/engine/boot-database.js`);
 require(`${ROOT}/spec/game-helper.js`);
 require(`${ROOT}/spec/spec-helper.js`);
-require(`${ROOT}/spec/summon-action-helper.js`);
 
 global.Settings = {
   Metric: false,

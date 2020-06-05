@@ -30,8 +30,7 @@ require(`${ROOT}/client/components/player-view`);
 require(`${ROOT}/client/components/report-view`);
 require(`${ROOT}/client/components/saved-games`);
 require(`${ROOT}/client/components/settings-dialog`);
-require(`${ROOT}/client/components/summon-minion-dialog`);
-require(`${ROOT}/client/components/summon-minion-result`);
+require(`${ROOT}/client/components/training-plan`);
 
 // === Event View Page Types ===
 require(`${ROOT}/client/components/event-view/chooser-page`);
@@ -45,6 +44,7 @@ require(`${ROOT}/client/elements/badges`);
 require(`${ROOT}/client/elements/buttons`);
 require(`${ROOT}/client/elements/chooser`);
 require(`${ROOT}/client/elements/confirm`);
+require(`${ROOT}/client/elements/consent-badge`);
 require(`${ROOT}/client/elements/dialog`);
 require(`${ROOT}/client/elements/floating-frame`);
 require(`${ROOT}/client/elements/image-resource`);
@@ -52,6 +52,7 @@ require(`${ROOT}/client/elements/paged-content`);
 require(`${ROOT}/client/elements/radio-buttons`);
 require(`${ROOT}/client/elements/scrolling-panel`);
 require(`${ROOT}/client/elements/selection-badge`);
+require(`${ROOT}/client/elements/tabs`);
 require(`${ROOT}/client/elements/tooltip`);
 
 // === Interface ===

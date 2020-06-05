@@ -39,7 +39,7 @@ Event.build('found-fruits-and-nuts-sex-M', {
       { text:`I'm surprised too by how wide {{he}}'s able to open {{his}} mouth.` },
     ]
   },{
-    requires:['canSuckCock(C,P).mouthFit=impossible'],
+    requires:['sex.canSuckCock(C,P).mouthFit=impossible'],
     pages:[
       { text:`Even so, there's no way {{he}} can wrap {{his}} mouth completely around the thickness of my
           {{P::cock.twoInch}} wide cockhead.` },
@@ -48,7 +48,7 @@ Event.build('found-fruits-and-nuts-sex-M', {
           over the top of my cock occasionally, playfully pushing into the piss slit.`},
     ]
   },{
-    requires:['canSuckCock(C,P).mouthFit=painful'],
+    requires:['sex.canSuckCock(C,P).mouthFit=painful'],
     pages:[
       { text:`With some obvious strain {{he}} opens {{his}} mouth as wide as {{he}} possibly can and lowers {{his}}
           lips around my {{P::cock.twoInch}} wide cock head. I feel my cock jam against the entrance of {{his}} throat,
@@ -59,7 +59,7 @@ Event.build('found-fruits-and-nuts-sex-M', {
           {{his}} furry chest as {{he}} rubs it.` },
     ]
   },{
-    requires:['canSuckCock(C,P).mouthFit=comfortable'],
+    requires:['sex.canSuckCock(C,P).mouthFit=comfortable'],
     pages:[
       { text:`{{He}} opens wide and lowers {{his}} lips around my {{P::cock.twoInch}} wide cock head. I feel my cock
           jam against the entrance of {{his}} throat, but {{he}} handles it well.` },
@@ -107,19 +107,19 @@ Event.build('found-fruits-and-nuts-sex-M', {
       { text:`{{He}} pulls back, gasping for air.` },
     ]
   },{
-    requires:['state.style=filthy','canSuckCock(C,P).mouthFit=impossible'],
+    requires:['state.style=filthy','sex.canSuckCock(C,P).mouthFit=impossible'],
     pages:[{ text:`I let {{him}} have three deep breaths, then grab {{him}} again and slam my overlarge cock into
       {{his}} face. {{His}} hands quickly wrap around my cock and start quickly stroking, perhaps in the hope that
       I'll stop punching {{him}} in the face with my fat cockhead.` },
     ]
   },{
-    requires:['state.style=filthy','canSuckCock(C,P).mouthFit!=impossible'],
+    requires:['state.style=filthy','sex.canSuckCock(C,P).mouthFit!=impossible'],
     pages:[{ text:`I let {{him}} have three deep breaths, then grab {{him}} again and slam my cock back into {{his}}
       mouth. Groaning deeply, I fuck {{his}} mouth hard. {{His}} hands once again wrap around my dick and {{he}} begins
       to firmly stroke my cock while sucking hard on the head.` },
     ]
   },{
-    requires:['canSuckCock(C,P).mouthFit=impossible'],
+    requires:['sex.canSuckCock(C,P).mouthFit=impossible'],
     pages:[
       { text:`I soon feel myself getting closer.` },
       { text:`I take {{C::character.firstName's}} head in my hands and start to guide {{him}} more forcefully, pressing
@@ -130,7 +130,7 @@ Event.build('found-fruits-and-nuts-sex-M', {
           so that {{he}} has no choice but to swallow mouthfuls of my cum.`, effects:['actor(C) cum-lover 1']},
     ]
   },{
-    requires:['canSuckCock(C,P).mouthFit!=impossible'],
+    requires:['sex.canSuckCock(C,P).mouthFit!=impossible'],
     pages:[
       { text:`I soon feel myself getting closer.` },
       { text:`I take {{C::character.firstName's}} head in my hands and start to guide {{him}} more forcefully, pulling

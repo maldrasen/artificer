@@ -26,7 +26,7 @@ Components.LocationView = (function() {
     if (view.activeEvent) { location.find('.active-event-notification').data('code',view.activeEvent).removeClass('hide'); }
     if (view.flags.showPlanAction) { location.find('.create-plan-action').removeClass('hide'); }
     if (view.flags.showManageAction) { location.find('.manage-action').removeClass('hide'); }
-    if (view.summonAvailable) { location.find('.summon-minions-button').removeClass('hide'); }
+    if (view.flags.showTrainAction) { location.find('.train-action').removeClass('hide'); }
 
     $('#mainContent').empty().append(location);
 

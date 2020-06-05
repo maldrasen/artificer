@@ -18,7 +18,10 @@ global.HasPersonality = (function() {
   // summoning scene. This will mostly be determined by the character's fear,
   // loyalty, lust triad.
   async function reactToPlayer() {
-    let baseConsent = new ConsentCalculator(this).calculateConsent(1);
+    const context = new Context();
+    await context.addCharacter('C',this);
+
+    let baseConsent = new ConsentCalculator(context).calculateConsent(1);
     if (baseConsent == 'enthusiastic') {
       return await this.personality.reactToPlayer(this, 'love');
     }

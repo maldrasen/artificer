@@ -16,6 +16,7 @@ $(document).ready(function() {
   Elements.PagedContent.init();
   Elements.RadioButtons.init();
   Elements.ScrollingPanel.init();
+  Elements.Tabs.init();
   Elements.Tooltip.init();
 
   // === Init Components ===
@@ -33,8 +34,7 @@ $(document).ready(function() {
   Components.ReportView.init();
   Components.SavedGames.init();
   Components.SettingsDialog.init();
-  Components.SummonMinionDialog.init();
-  Components.SummonMinionResult.init();
+  Components.TrainingPlan.init();
 
   // === Init Interface ===
   Renderer.init();

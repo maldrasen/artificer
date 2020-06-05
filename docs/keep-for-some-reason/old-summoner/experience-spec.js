@@ -1,3 +1,5 @@
+// Will move this functionality into training execution
+
 describe('Summoner: Experience', function() {
 
   async function setupSummoner(options) {
