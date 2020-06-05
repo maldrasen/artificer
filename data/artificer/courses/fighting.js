@@ -23,5 +23,5 @@ async function description(context) {
   if (minionLevel - playerLevel > 2)  { return `${description} {{He}}'s a much better fighter than I am and I'd probably learn a lot from sparring with {{him}}.`; }
   if (playerLevel - minionLevel == 2) { return `${description} I'm a better fighter than {{him}}. Sparring with me should help {{him}} get better.`; }
   if (playerLevel - minionLevel > 2)  { return `${description} I'm a much better fighter than {{he}} is. Sparring with me should improve {{his}} skill dramatically.`; }
-  return `${description} Both he and I should improve from the training.`;
+  return `${description} Both {{he}} and I should improve from the training.`;
 }

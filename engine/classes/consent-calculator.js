@@ -28,6 +28,7 @@ global.ConsentCalculator = class ConsentCalculator {
 
     const difficultyFactor = action.getDifficultyFactor(style);
     const genderFactor = this.calculateGenderFactor();
+    const sizeFactor = await this.calculateSizeFactor(action);
     const injuryFactor = await this.calculateInjuryFactor(action);
     const aspectFactor = await this.calculateAspectFactor(action, style);
 
@@ -39,6 +40,7 @@ global.ConsentCalculator = class ConsentCalculator {
       style: style,
       difficultyFactor: TextUtility.formatNumber(difficultyFactor),
       genderFactor: TextUtility.formatNumber(genderFactor),
+      sizeFactor: TextUtility.formatNumber(sizeFactor),
       injuryFactor: TextUtility.formatNumber(injuryFactor),
       aspectFactor: TextUtility.formatNumber(aspectFactor),
       overallFactor: TextUtility.formatNumber(overallFactor),
@@ -79,6 +81,16 @@ global.ConsentCalculator = class ConsentCalculator {
     }
     return factor;
   }
+
+  // TODO: Implement calculateSizeFactor() once we're able to calculate the
+  //       cock vs. orifice size differences in the sexual scrutinizer.
+  //
+  // Characters will be more reluctant to have penetrative sex if there's an
+  // extreme size difference present. A cock that's too small will be
+  // unsatisfying, whereas a cock that's too large is painful. The exception to
+  // this rule is if the character has the size-queen aspect, then they prefer
+  // painful insertions.
+  async calculateSizeFactor(action) { return 1; }
 
   // If a character is weakly masochististic (level 1) they only get an
   // overall boost to their consent to painful actions. A masochististic
@@ -209,7 +221,7 @@ global.ConsentCalculator = class ConsentCalculator {
 
     if (details.genderFactor < 1)       { return `I don't think {{he}} likes {{P::gender.men}} very much.`; }
     if (details.aspectFactor < 1)       { return `{{He}} might just not enjoy doing that.`; }
-    if (this.character.loyalty < 50)    { return `It could just be that {{he}} doesn't like me very much.`; }
+    if (this.character.loyalty < 50)    { return `{{His}} devotion to me is lacking.`; }
     if (this.character.lust < 50)       { return `It seems like {{he}}'s just not in the mood for sex right now.`; }
     if (details.difficultyFactor < 0.8) { return `To be fair, it would be hard to find anyone who's into that.`; }
 

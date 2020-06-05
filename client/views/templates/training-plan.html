@@ -20,28 +20,39 @@
         <div class='name'></div>
         <div class='lust'><span class='lust-value'></span> <span class='lust-word'></span></div>
       </div>
-      <div class='tab-buttons'>
+      <div class='course-tab-buttons tab-buttons'>
         <a href='#' class='tab-button active' data-tab='.physical-tab'>Physical</a>
         <a href='#' class='tab-button' data-tab='.social-tab'>Social</a>
         <a href='#' class='tab-button' data-tab='.sexual-tab'>Sexual</a>
       </div>
     </div>
 
-    <div class='tab-container'>
+    <div class='course-tab-container tab-container'>
       <div class='tab active physical-tab' class='hide'>
-        <ul class='course-list'></ul>
+        <ul class='flex course-list'></ul>
       </div>
 
       <div class='tab social-tab' class='hide'>
-        <ul class='course-list'></ul>
+        <ul class='flex course-list'></ul>
       </div>
 
       <div class='tab sexual-tab' class='hide'>
-        <ul class='course-list'></ul>
+        <ul class='flex course-list'></ul>
       </div>
     </div>
 
-    <div class='selected-course hide'>
-    </div>
+    <div class='selected-course hide'></div>
   </li>
+</div>
+
+<div id='trainingCourseTemplate' class='hide'>
+  <div id='training-course'>
+    <div class='top-row'>
+      <a href='#' class='float-right cancel-course'>X</a>
+      <div class='name'></div>
+      <div class='badge consent-badge hide'></div>
+      <div class='description'></div>
+    </div>
+    <div class='style-select hide'></div>
+  </div>
 </div>

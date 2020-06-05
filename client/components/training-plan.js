@@ -7,6 +7,7 @@ Components.TrainingPlan = (function() {
     $(document).on('click','#trainingPlan .add-minion-button', Elements.buttonAction(selectMinion));
     $(document).on('click','#trainingPlan .cancel-training', Elements.buttonAction(cancelTraining));
     $(document).on('click','#trainingPlan .select-course', Elements.buttonAction(selectCourse));
+    $(document).on('click','#trainingPlan .cancel-course', Elements.buttonAction(cancelCourse));
   }
 
   function build(event, data) {
@@ -75,14 +76,77 @@ Components.TrainingPlan = (function() {
   // === Course Selection ===
 
   function selectCourse() {
-    let course = findCourse($(this));
+    const course = findCourse($(this));
+    const minionElement = $(this).closest('.minion-plan');
+    const courseElement = $($('#trainingCourseTemplate').html());
+
     console.log(course);
+
+    courseElement.find('.top-row .name').append(course.name)
+    courseElement.find('.top-row .description').append(course.description)
+
+    if (course.consentLevels) {
+      setCourseInfo(courseElement, course,'normal');
+    }
+
+    if (Object.keys(course.styleDescriptions||{}).length > 0) {
+      courseElement.find('.style-select').removeClass('hide').append(buildStyleSelect(courseElement, course));
+    }
+
+    minionElement.find('.course-tab-buttons').addClass('hide');
+    minionElement.find('.course-tab-container').addClass('hide');
+    minionElement.find('.selected-course').removeClass('hide').append(courseElement);
+  }
+
+  function cancelCourse() {
+    const minionElement = $(this).closest('.minion-plan');
+    minionElement.find('.course-tab-buttons').removeClass('hide');
+    minionElement.find('.course-tab-container').removeClass('hide');
+    minionElement.find('.selected-course').empty().addClass('hide');
   }
 
   function findCourse(button) {
-    let code = button.data('code');
-    let courses = button.closest('.minion-plan').data('minionData').courses;
+    const code = button.data('code');
+    const courses = button.closest('.minion-plan').data('minionData').courses;
     return [...courses.physical, ...courses.social, ...courses.sexual].filter(course => course.code == code)[0];
+  }
+
+  function setCourseInfo(courseElement, course, style) {
+    const consent = course.consentLevels[style];
+
+    courseElement.data('selected-style',style);
+    courseElement.find('.top-row .consent-badge').empty().
+      append(consent.level).
+      attr('class','badge consent-badge').
+      addClass(`consent-level-${consent.level}`);
+
+    courseElement.find('.top-row .description').empty().
+      append(style == 'normal' ? course.description : course.styleDescriptions[style]);
+  }
+
+  // This goes in the consent window...
+  // $('<span>',{ class:'explanation' }).append(consent.explanation);
+
+  // Builds the radio buttons for the styles if there are more styles than just
+  // the normal one. The buttons are sorted so that the normal option is always
+  // first.
+  function buildStyleSelect(courseElement, course) {
+    const choices = Object.keys(course.consentLevels).map(key => ({ label:styleLabel(course, key), value:key })).sort((a,b) => {
+      return a.label == course.name ? -1 : a.label.localeCompare(b.label);
+    });
+
+    return new Elements.RadioButtons({
+      currentValue: 'normal',
+      choices: choices,
+      onSelect: e => setCourseInfo(courseElement, course, e.value),
+    }).element;
+  }
+
+  // Given a course named 'Fucking', 'Fucking' is the normal label. Styles
+  // should be adjectives that can be tacked onto the front of the course name
+  // so that an abusive style becomes 'Abusive Fucking'.
+  function styleLabel(course, style) {
+    return (style == 'normal') ? course.name : `${style.charAt(0).toUpperCase()}${style.substring(1)} ${course.name}`;
   }
 
   // If minions have been added to the plan ensure that a course is selected.

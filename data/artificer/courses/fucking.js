@@ -12,14 +12,9 @@ Course.build('fucking', {
     // calculations take both ass and pussy attributes into consideration.
     complementing: context => {
       const aspects = ['anal-slut','breeder'];
-
       if (context.player.cock) { aspects.push('cock-lover'); }
       if (context.player.pussy) { aspects.push('pussy-lover'); }
       if (context.get('C').pussy) { aspects.push('pussy-slut'); }
-
-      // TODO: Use the sexual scrutinizer to check for size differences and add
-      //       size-queen if insertion is painful or if cock is very large.
-
       return aspects;
     },
 
