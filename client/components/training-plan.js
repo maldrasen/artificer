@@ -148,9 +148,8 @@ Components.TrainingPlan = (function() {
     return (style == 'normal') ? course.description : course.styleDescriptions[style]
   }
 
-  // If minions have been added to the plan ensure that a course is selected.
-  function confirmPlan() {
-    let incomplete = false;
+  function compilePlan() {
+    let ready = true;
 
     const courses = [...$('#trainingPlan .minion-plan').map((i, minionElement) => {
       const minion = $(minionElement).data('minionData').minion;
@@ -158,7 +157,7 @@ Components.TrainingPlan = (function() {
       const style = $(minionElement).data('selected-style');
 
       if (course == null) {
-        incomplete = true;
+        ready = false;
         if ($('#centerAlerts .alert').length == 0) {
           Alerts.showAlert({ warning:`I need to choose what to do with ${minion.name}` });
         }
@@ -167,17 +166,22 @@ Components.TrainingPlan = (function() {
       return { id:minion.id, course, style };
     })];
 
-    if (incomplete) {
-      return false;
+    return { ready, courses };
+  }
+
+  function confirmPlan() {
+    const { ready, courses } = compilePlan();
+
+    if (ready) {
+      const message = (courses.length == 0) ?
+        `I haven't planned anything. Should I skip training this evening?` :
+        `Is this my plan for tonight's training?`;
+
+      Elements.Confirm.showConfirm({ message:message, yes:_ => {
+        Renderer.lock();
+        Renderer.sendCommand('training-plan.submitted',{ courses });
+      }});
     }
-
-    const message = (courses.length == 0) ?
-      `I haven't planned anything. Should I skip training this evening?` :
-      `Is this my plan for tonight's training?`;
-
-    Elements.Confirm.showConfirm({ message:message, yes:_ => {
-      console.log("Send Plan:",courses);
-    }});
   }
 
   return { init, build, addMinion };

@@ -9,6 +9,10 @@ global.TrainingController = (function() {
         courses: (await TrainingPlan.availableCourses(minion))
       });
     });
+
+    ipcMain.on('training-plan.submitted', async (event, data) => {
+      console.log("Training Plan Submitted:",data)
+    });
   }
 
   return { init };
