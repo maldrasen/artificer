@@ -34,6 +34,13 @@
   &.snuff-warning { color: $fg-sex-snuff; }
 }
 
+.consent-badge {
+  &.consent-level-rape         { color:$fg-consent-rape;         border-color: transparentize($fg-consent-rape,         0.75); }
+  &.consent-level-reluctant    { color:$fg-consent-reluctant;    border-color: transparentize($fg-consent-reluctant,    0.75); }
+  &.consent-level-consent      { color:$fg-consent-consent;      border-color: transparentize($fg-consent-consent,      0.75); }
+  &.consent-level-enthusiastic { color:$fg-consent-enthusiastic; border-color: transparentize($fg-consent-enthusiastic, 0.75); }
+}
+
 .split-badge {
   display: inline-block;
   height: 20px;

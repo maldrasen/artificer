@@ -63,11 +63,13 @@ Components.TrainingPlan = (function() {
   }
 
   function addCourseButton(element, course) {
-    element.find('.course-list').append(
-      $('<li>',{ class:'course' }).append(
-        $('<a>',{ href:'#', class:'select-course button button-small' }).
-          append(course.name).
-          data('code',course.code)));
+    let button = $('<a>',{ href:'#', class:'select-course button button-small' }).
+      append(course.name).
+      data('code',course.code);
+
+    button.addClass(course.consentLevels ? `button-consent-${course.consentLevels.normal.level}` : 'button-primary');
+
+    element.find('.course-list').append($('<li>',{ class:'course' }).append(button));
   }
 
   // === Course Selection ===

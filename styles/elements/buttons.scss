@@ -34,6 +34,11 @@
 .button-primary { @include button($fg-button-primary); }
 .button-secondary { @include button($fg-button-secondary); }
 
+.button-consent-rape { @include button($fg-consent-rape); }
+.button-consent-reluctant { @include button($fg-consent-reluctant); }
+.button-consent-consent { @include button($fg-consent-consent); }
+.button-consent-enthusiastic { @include button($fg-consent-enthusiastic); }
+
 .button-small {
   padding: 0 8px;
   line-height: 18px;
