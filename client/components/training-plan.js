@@ -80,26 +80,27 @@ Components.TrainingPlan = (function() {
     const minionElement = $(this).closest('.minion-plan');
     const courseElement = $($('#trainingCourseTemplate').html());
 
-    console.log(course);
-
     courseElement.find('.top-row .name').append(course.name)
     courseElement.find('.top-row .description').append(course.description)
 
-    if (course.consentLevels) {
-      setCourseInfo(courseElement, course,'normal');
-    }
+    minionElement.data('selected-course',course.code);
+    minionElement.find('.course-tab-buttons').addClass('hide');
+    minionElement.find('.course-tab-container').addClass('hide');
+    minionElement.find('.selected-course').removeClass('hide').append(courseElement);
 
     if (Object.keys(course.styleDescriptions||{}).length > 0) {
       courseElement.find('.style-select').removeClass('hide').append(buildStyleSelect(courseElement, course));
     }
 
-    minionElement.find('.course-tab-buttons').addClass('hide');
-    minionElement.find('.course-tab-container').addClass('hide');
-    minionElement.find('.selected-course').removeClass('hide').append(courseElement);
+    if (course.consentLevels) {
+      setCourseInfo(courseElement, course, 'normal');
+    }
   }
 
   function cancelCourse() {
     const minionElement = $(this).closest('.minion-plan');
+    minionElement.data('selected-course',null);
+    minionElement.data('selected-style',null);
     minionElement.find('.course-tab-buttons').removeClass('hide');
     minionElement.find('.course-tab-container').removeClass('hide');
     minionElement.find('.selected-course').empty().addClass('hide');
@@ -112,7 +113,7 @@ Components.TrainingPlan = (function() {
   }
 
   function setCourseInfo(courseElement, course, style) {
-    courseElement.data('selected-style',style);
+    courseElement.closest('.minion-plan').data('selected-style',style);
     courseElement.find('.consent-span').empty().append(Elements.ConsentBadge.build(course.consentLevels[style]));
     courseElement.find('.top-row .name').empty().append(styleLabel(course, style));
     courseElement.find('.top-row .description').empty().append(styleDescription(course, style));
@@ -149,7 +150,34 @@ Components.TrainingPlan = (function() {
 
   // If minions have been added to the plan ensure that a course is selected.
   function confirmPlan() {
-    console.log("Confirm Plan.");
+    let incomplete = false;
+
+    const courses = [...$('#trainingPlan .minion-plan').map((i, minionElement) => {
+      const minion = $(minionElement).data('minionData').minion;
+      const course = $(minionElement).data('selected-course');
+      const style = $(minionElement).data('selected-style');
+
+      if (course == null) {
+        incomplete = true;
+        if ($('#centerAlerts .alert').length == 0) {
+          Alerts.showAlert({ warning:`I need to choose what to do with ${minion.name}` });
+        }
+      }
+
+      return { id:minion.id, course, style };
+    })];
+
+    if (incomplete) {
+      return false;
+    }
+
+    const message = (courses.length == 0) ?
+      `I haven't planned anything. Should I skip training this evening?` :
+      `Is this my plan for tonight's training?`;
+
+    Elements.Confirm.showConfirm({ message:message, yes:_ => {
+      console.log("Send Plan:",courses);
+    }});
   }
 
   return { init, build, addMinion };
