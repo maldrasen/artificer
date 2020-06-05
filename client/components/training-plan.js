@@ -112,16 +112,10 @@ Components.TrainingPlan = (function() {
   }
 
   function setCourseInfo(courseElement, course, style) {
-    const consent = course.consentLevels[style];
-
     courseElement.data('selected-style',style);
-    courseElement.find('.top-row .consent-badge').empty().
-      append(consent.level).
-      attr('class','badge consent-badge').
-      addClass(`consent-level-${consent.level}`);
-
-    courseElement.find('.top-row .description').empty().
-      append(style == 'normal' ? course.description : course.styleDescriptions[style]);
+    courseElement.find('.consent-span').empty().append(Elements.ConsentBadge.build(course.consentLevels[style]));
+    courseElement.find('.top-row .name').empty().append(styleLabel(course, style));
+    courseElement.find('.top-row .description').empty().append(styleDescription(course, style));
   }
 
   // This goes in the consent window...
@@ -147,6 +141,10 @@ Components.TrainingPlan = (function() {
   // so that an abusive style becomes 'Abusive Fucking'.
   function styleLabel(course, style) {
     return (style == 'normal') ? course.name : `${style.charAt(0).toUpperCase()}${style.substring(1)} ${course.name}`;
+  }
+
+  function styleDescription(course, style) {
+    return (style == 'normal') ? course.description : course.styleDescriptions[style]
   }
 
   // If minions have been added to the plan ensure that a course is selected.

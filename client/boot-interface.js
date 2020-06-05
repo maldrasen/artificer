@@ -44,6 +44,7 @@ require(`${ROOT}/client/elements/badges`);
 require(`${ROOT}/client/elements/buttons`);
 require(`${ROOT}/client/elements/chooser`);
 require(`${ROOT}/client/elements/confirm`);
+require(`${ROOT}/client/elements/consent-badge`);
 require(`${ROOT}/client/elements/dialog`);
 require(`${ROOT}/client/elements/floating-frame`);
 require(`${ROOT}/client/elements/image-resource`);
