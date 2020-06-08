@@ -14,17 +14,18 @@ global.Game = Database.instance().define('game', {
 });
 
 Game.EventPhases = {
-  'wake':         { type:'single',  label:'Early Morning', control:'evening' },
-  'early':        { type:'single',  label:'Early Morning', control:'evening' },
-  'morning':      { type:'control', label:'Morning'                          },
-  'before-work':  { type:'queue',   label:'Afternoon',     control:'morning' },
-  'work-report':  { type:'report',                                           },
-  'after-work':   { type:'queue',   label:'Afternoon',     control:'morning' },
-  'evening':      { type:'control', label:'Evening'                          },
-  'training':     { type:'queue',   label:'Evening',       control:'evening' },
-  'train-report': { type:'report'                                            },
-  'night':        { type:'single',  label:'Night',         control:'evening' },
-  'late-night':   { type:'single',  label:'Late Night',    control:'evening' },
+  'wake':            { type:'single',  label:'Early Morning', control:'evening' },
+  'early':           { type:'single',  label:'Early Morning', control:'evening' },
+  'morning':         { type:'control', label:'Morning'                          },
+  'before-work':     { type:'queue',   label:'Afternoon',     control:'morning' },
+  'work-report':     { type:'report',                                           },
+  'after-work':      { type:'queue',   label:'Afternoon',     control:'morning' },
+  'evening':         { type:'control', label:'Evening'                          },
+  'before-training': { type:'queue',   label:'Evening',       control:'evening' },
+  'training-report': { type:'report',                                           },
+  'after-training':  { type:'queue',   label:'Evening',       control:'evening' },
+  'night':           { type:'single',  label:'Night',         control:'evening' },
+  'late-night':      { type:'single',  label:'Late Night',    control:'evening' },
 };
 
 Game.instance = function() { return Game._instance; }
@@ -111,13 +112,14 @@ Game.currentEvent = function() {
 Game.clearEventQueues = function() {
   Game._currentEvent = null;
   Game._eventQueues = {
-    'wake':        [],
-    'early':       [],
-    'before-work': [],
-    'after-work':  [],
-    'planning':    [],
-    'night':       [],
-    'late-night':  [],
+    'wake':            [],
+    'early':           [],
+    'before-work':     [],
+    'after-work':      [],
+    'before-training': [],
+    'after-training':  [],
+    'night':           [],
+    'late-night':      [],
   };
 }
 
@@ -225,9 +227,13 @@ Game.pullNextEvent = async function() {
   if (phase == 'evening') {
     return null;
   }
-  if (phase == 'training') {
-    await Game.setPhase('train-report');
+  if (phase == 'before-training') {
+    await Game.setPhase('training-report');
     return null;
+  }
+  if (phase == 'after-training') {
+    await Game.setPhase('night');
+    return Game.pullNextEvent();
   }
   if (phase == 'night') {
     await Game.setPhase('late-night');

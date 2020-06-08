@@ -23,6 +23,10 @@ global.Composer = (function() {
       Game.log("Rendering Report")
       return renderReport();
     }
+    if (TrainingPlan.currentReport() != null) {
+      Game.log("Rendering Training Report")
+      return await renderTrainingReport();
+    }
 
     // If there's no active event or anything like that:
     Game.log(`Rendering Location: ${Game.location()}`);
@@ -79,9 +83,14 @@ global.Composer = (function() {
 
   async function renderTrainingView() {
     Browser.send('render.training-plan',{
-      minionCount: TrainingPlan.minionCount(),
+      maxMinionCount: TrainingPlan.maxMinionCount(),
       minions: (await Character.allForClient()),
     });
+  }
+
+  async function renderTrainingReport() {
+    Browser.send('render.training-report', TrainingPlan.currentReport());
+    await TrainingPlan.reportViewed();
   }
 
   return {
@@ -89,6 +98,7 @@ global.Composer = (function() {
     renderPlanView,
     renderManageView,
     renderTrainingView,
+    renderTrainingReport,
   };
 
 })();

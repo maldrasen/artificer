@@ -11,8 +11,8 @@ Components.TrainingPlan = (function() {
   }
 
   function build(event, data) {
-    planData = data;
     Elements.reset();
+    planData = data;
     $('#mainContent').empty().append($('<div>',{ id:"trainingPlan" }).addClass('can-cancel').append($('#trainingPlanTemplate').html()));
   }
 
@@ -48,7 +48,7 @@ Components.TrainingPlan = (function() {
     each(data.courses.social, course => { addCourseButton(minionRow.find('.social-tab'), course); });
     each(data.courses.sexual, course => { addCourseButton(minionRow.find('.sexual-tab'), course); });
 
-    if (mainArea.find('li.minion-plan').length == planData.minionCount) {
+    if (mainArea.find('li.minion-plan').length == planData.maxMinionCount) {
       mainArea.find('.add-minion-item').addClass('hide');
     }
 
@@ -178,7 +178,6 @@ Components.TrainingPlan = (function() {
         `Is this my plan for tonight's training?`;
 
       Elements.Confirm.showConfirm({ message:message, yes:_ => {
-        Renderer.lock();
         Renderer.sendCommand('training-plan.submitted',{ courses });
       }});
     }

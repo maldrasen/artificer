@@ -11,7 +11,7 @@ global.TrainingController = (function() {
     });
 
     ipcMain.on('training-plan.submitted', async (event, data) => {
-      console.log("Training Plan Submitted:",data)
+      await TrainingPlan.execute(data);
     });
   }
 

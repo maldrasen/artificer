@@ -1,12 +1,51 @@
 global.TrainingPlan = class TrainingPlan {
 
-  constructor(data) {
-    console.log("Build a training plan with ",data);
+  constructor(course, style, context) {
+    this._course = course;
+    this._style = style;
+    this._context = context;
   }
+
+  get context() { return this._context; }
+  get course() { return this._course; }
+  get minion() { return this.context.get('C').character; }
+  get player() { return this.context.player.character; }
+  get style() { return this._style; }
+
+  async train() {
+    console.log("Execute this training");
+    return "Wat happen?"
+  }
+
+  // The execute() function is called with the plan data from the view. It
+  // needs to build the TrainingPlan object. Execute the training for each
+  // minion in the plan. Then return the TrainingPlan to render the report in
+  // the view.
+  static async execute(data) {
+    await Game.setPhase('before-training');
+
+    TrainingPlan.setReport({ reports:(await Promise.all(data.courses.map(async coursePlan => {
+      const minion = await Character.lookup(coursePlan.id);
+      const course = Course.lookup(coursePlan.course);
+
+      const context = new Context();
+      await context.addPlayer();
+      await context.addCharacter('C',minion);
+
+      const plan = new TrainingPlan(course, coursePlan.style, context);
+      const story = await plan.train();
+
+      return { minion:(await minion.properties), story };
+    }))) });
+
+    await Composer.render();
+  }
+
+  // === Planning View ===
 
   // Eventually you'll be able to train more than one minion. I'm not sure yet
   // how that number is raised though.
-  static minionCount() { return 1; }
+  static maxMinionCount() { return 1; }
 
   // Get the courses available for the selected minion.
   static async availableCourses(minion) {
@@ -24,6 +63,16 @@ global.TrainingPlan = class TrainingPlan {
     }));
 
     return courses;
+  }
+
+  // === Current Report ===
+
+  static setReport(report) { TrainingPlan._currentReport = report; }
+  static currentReport() { return TrainingPlan._currentReport; }
+
+  static async reportViewed() {
+    await Game.setPhase('after-training');
+    TrainingPlan._currentReport = null;
   }
 }
 

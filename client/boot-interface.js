@@ -31,6 +31,7 @@ require(`${ROOT}/client/components/report-view`);
 require(`${ROOT}/client/components/saved-games`);
 require(`${ROOT}/client/components/settings-dialog`);
 require(`${ROOT}/client/components/training-plan`);
+require(`${ROOT}/client/components/training-report`);
 
 // === Event View Page Types ===
 require(`${ROOT}/client/components/event-view/chooser-page`);

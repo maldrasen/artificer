@@ -35,6 +35,7 @@ global.Renderer = (function() {
     'save-game',
     'settings-dialog',
     'training-plan',
+    'training-report',
   ];
 
   function init() {
