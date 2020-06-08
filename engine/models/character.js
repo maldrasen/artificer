@@ -46,6 +46,8 @@ global.Character = Database.instance().define('character', {
     isLoyal()      { return this.loyalty >= 25 },
     isAfraid()     { return this.fear >= 25 },
     isPregnant()   { return this.pregnantWith != null },
+    isForager()    { return this.currentDuty == 'role' && this.dutyCode == 'forager' },
+    isHunter()     { return this.currentDuty == 'role' && this.dutyCode == 'hunter' },
 
     // For a minion to be rebellus they either need to have low fear or low
     // loyalty. The more they don't like you, the less fear of you they need

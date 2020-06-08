@@ -88,11 +88,24 @@ function untrustworthyStory(plan) {
 
 function waveringStory(plan) {
   let options = [
-    ''
+    `We have a good chat though, talking through the things that worry {{him}}.`,
+    `We spend some time talking about my plans for {{Faingorn}}.`,
   ];
 
+  if (plan.minion.isForager) { options = [...options,
+    `{{He}} opens up a bit though once we start talking about {{his}} trips out into the Hinterlands.`
+  ]; }
+
+  if (plan.minion.isHunter) { options = [...options,
+    `{{He}} opens up a bit though once we start talking about {{his}} hunting.`
+  ]; }
+
+  if (plan.minion.speciesCode == 'scaven') { options = [...options,
+    `{{He}} spends a little time telling me about the Deep Hole Scaven and what it was like for {{him}} growing up in the tribe.`,
+  ]; }
+
   return `{{C::character.firstName}} seems a little uncomfortable talking with me. ${Random.from(options)} We made some
-    progress today, I feel like {{he}}'s starting to trust me more.`;
+    progress today, and I feel like {{he}}'s starting to trust me more.`;
 }
 
 function loyalStory(plan) {
@@ -101,11 +114,17 @@ function loyalStory(plan) {
     `We chat for a bit about the future, talking about {{his}} hopes and goals.`,
   ];
 
-  if (plan.minion.speciesCode == 'scaven') {
-    options = [...options,
-      `{{He}} tells me an amusing anecdote about a scaven who got her whole face stuck inside of a wild boar.`
-    ]
-  }
+  if (plan.minion.isForager) { options = [...options,
+    `We talk for a while about some of the interesting things he saw while out foraging today.`,
+  ]; }
+
+  if (plan.minion.isHunter) { options = [...options,
+    `We talk for a while about some of the interesting things he saw while out hunting today.`,
+  ]; }
+
+  if (plan.minion.speciesCode == 'scaven') { options = [...options,
+    `{{He}} tells me an amusing anecdote about a scaven who got her whole face stuck inside of a wild boar.`
+  ]; }
 
   return `{{C::character.firstName}} and I spend some quality time together. ${Random.from(options)} I feel like we're
     getting along well now and that {{he}} really trusts me.`;
