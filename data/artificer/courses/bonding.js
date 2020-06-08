@@ -130,19 +130,17 @@ function loyalStory(plan) {
     getting along well now and that {{he}} really trusts me.`;
 }
 
-function faithfulStory(plan) {
-  let options = [
-    ''
-  ];
+// We'll expand on the higher levels of loyalty later. I'd like for the later
+// levels to include more stuff from the character's aspects and personality
+// and such, but a lot of that hasn't been written yet.
 
+function faithfulStory(plan) {
+  let options = ['We spend some good quality time together, laughing and joking with each other.'];
   return `${Random.from(options)} {{He}}'s a good and loyal minion, and I feel like we grew a little closer today.`;
 }
 
 function dedicatedStory(plan) {
-  let options = [
-    ''
-  ];
-
+  let options = ['We spend some good quality time together, laughing and joking with each other.'];
   return `${Random.from(options)} {{His}} devotion to me is unmistakable.`;
 }
 
