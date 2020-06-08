@@ -19,6 +19,8 @@ Course.build('oral', {
       abusive: { difficulty:5, complementing:['masochist'],  conflicting:['dominant'], description:abusiveDescription },
     }
   }),
+
+  execute: async plan => { return { story:"Oral Story" }},
 });
 
 function position(context) {

@@ -26,6 +26,7 @@ Course.build('fucking', {
     }
   }),
 
+  execute: async plan => { return { story:"Fucking Story" }},
 });
 
 

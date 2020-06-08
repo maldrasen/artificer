@@ -2,6 +2,7 @@ Course.build('fighting', {
   name: 'Fighting',
   category: 'physical',
   description: description,
+  execute: async plan => { return { story:"Fighting Story" }},
 });
 
 // The description for the fighting training is a little complicated. The

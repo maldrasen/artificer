@@ -6,4 +6,5 @@ Course.build('bonding', {
     to know each other better. {{He}}'ll grow to like and trust me more if we spend time together which will make
     {{him}} more loyal to me in the long run.`,
 
+  execute: async plan => { return { story:"Bonding Story" }},
 });

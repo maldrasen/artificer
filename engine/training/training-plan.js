@@ -12,11 +12,6 @@ global.TrainingPlan = class TrainingPlan {
   get player() { return this.context.player.character; }
   get style() { return this._style; }
 
-  async train() {
-    console.log("Execute this training");
-    return "Wat happen?"
-  }
-
   // The execute() function is called with the plan data from the view. It
   // needs to build the TrainingPlan object. Execute the training for each
   // minion in the plan. Then return the TrainingPlan to render the report in
@@ -32,10 +27,10 @@ global.TrainingPlan = class TrainingPlan {
       await context.addPlayer();
       await context.addCharacter('C',minion);
 
-      const plan = new TrainingPlan(course, coursePlan.style, context);
-      const story = await plan.train();
-
-      return { minion:(await minion.properties), story };
+      return {
+        ...(await course.execute(new TrainingPlan(course, coursePlan.style, context))),
+        minion:(await minion.properties())
+      };
     }))) });
 
     await Composer.render();

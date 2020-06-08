@@ -15,7 +15,8 @@ Course.build('fondle', {
       return aspects;
     },
 
-    conflicting: ['bound','dominant','masochist','perverted','sadist']
+    conflicting: ['bound','dominant','masochist','perverted','sadist'],
+    execute: async plan => { return { story:"Fondling Story" }},
   }),
 
 });

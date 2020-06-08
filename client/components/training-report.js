@@ -6,8 +6,8 @@ Components.TrainingReport = (function() {
   }
 
   function buildReport(report) {
-    console.log("Build Report: ",report)
     const reportElement = $('<div>',{ class:'minion-report' }).append($('#trainingReportMinionTemplate').html());
+    reportElement.find('.header .name').append(report.minion.name);
     reportElement.find('.story').append(report.story);
     return reportElement;
   }
