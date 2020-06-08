@@ -51,7 +51,7 @@ Event.build('journal-1', {
           finding any answers about the place. And so they decided to set up a permanent camp in the keep so that they
           could spend the next several months pulling apart its secrets.` },
       { text:`So, this is Faingorn Keep then&hellip; Well, at least I have a name for the place now, though as the
-          keep's new {{P::character.title}} perhaps I should name it after myself?` },
+          keep's new {{master}} perhaps I should name it after myself?` },
     ]
   },{
     formPage: 'keep-name-form'

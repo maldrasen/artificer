@@ -13,8 +13,6 @@ Weaver.CharacterLoom = (function() {
     if (token == "character.firstName's") { return `${EnglishUtility.possessive(character.singleName)}`; }
     if (token == "character.preName")     { return `${character.preName}`; }
     if (token == "character.lastName")    { return `${character.lastName}`; }
-    if (token == "character.title")       { return `${character.title}`; }
-    if (token == "character.Title")       { return `${TextUtility.titlecase(character.title)}`; }
 
     return Weaver.error(`Bad character token(${token})`);
   }

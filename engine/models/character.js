@@ -58,7 +58,7 @@ global.Character = Database.instance().define('character', {
       return false;
     },
 
-    // Essentially the same as the rebellious but wile the rebellious cutoff is
+    // Essentially the same as the rebellious but while the rebellious cutoff is
     // about fear + loyalty being less than 32, the cutoff for traitorous is 16
     isTraitorous() { return (this.fear + this.loyalty) < 16 },
 

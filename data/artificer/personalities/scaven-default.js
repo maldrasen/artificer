@@ -30,7 +30,7 @@ Personality.build('scaven-default', {
     }
 
     if (attitude == 'friendly') {
-      options.push(`{{He}} smiles and nods to me, happy to be of service to {{his}} {{P::character.title}}.`);
+      options.push(`{{He}} smiles and nods to me, happy to be of service to {{his}} {{master}}.`);
       options.push(`{{He}} smiles up at me, ready to serve me in whatever way I would like.`);
       options.push(`{{He}} grins and nods, willing to let me use {{him}} however I like.`);
     }

@@ -1,5 +1,4 @@
 global.Player = Database.instance().define('player', {
-  title:         { type:Sequelize.STRING  },
   firstName:     { type:Sequelize.STRING  },
   lastName:      { type:Sequelize.STRING  },
   genderCode:    { type:Sequelize.STRING  },
@@ -15,6 +14,7 @@ global.Player = Database.instance().define('player', {
     name()       { return `${TextUtility.titlecase(this.title)} ${this.firstName} ${this.lastName}` },
     singleName() { return this.firstName },
     species()    { return Species.lookup(this.speciesCode); },
+    title()      { return Flag.lookup('player.title'); },
     gender()     { return Gender[this.genderCode]; },
     portrait()   { return ImageResource.lookup(this.portraitCode ? this.portraitCode : 'unknown-portrait'); },
     isFurry()    { return this.species.isFurry(this.genderCode); },
@@ -81,7 +81,7 @@ Player.forge = async function(options) {
   Flag.setAll({
     'player.first-name': player.firstName,
     'player.last-name': player.lastName,
-    'player.title': player.title,
+    'player.title': options.title,
     'player.goal': options.goal,
   });
 }

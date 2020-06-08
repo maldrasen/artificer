@@ -4,8 +4,8 @@ Event.build('found-willow-branches-whip', {
     pages:[
       { playerSpeaker:true, text:`I glance over at my rat, "You seem nervous {{C::character.firstName}}. Are whippings
           with branches like these common among your people?"` },
-      { actorSpeaker:'C', text:`{{He}} sheepishly comes closer to me and says, "Yes, {{P::character.title}}. Very. The
-          big scaven, they like to whip the smaller ones."` },
+      { actorSpeaker:'C', text:`{{He}} sheepishly comes closer to me and says, "Yes, {{master}}. Very. The big scaven,
+          they like to whip the smaller ones."` },
       { playerSpeaker:true, text:`I bring the tip of the switch up to {{his}} chest, gently flicking the tip over one
           of {{his}} nipples. "I see&hellip; and which were you? Did you enjoy whipping your fellow scaven or were you
           the one getting whipped?"` },
@@ -23,12 +23,12 @@ Event.build('found-willow-branches-whip', {
       up under his loincloth and lift his ballsack gently with the tip of the branch.` }],
   },{
     pages:[
-      { actorSpeaker:'C', text:`{{He}} inhales sharply as I toy with {{him}}, "Yes, {{P::character.title}}."` },
+      { actorSpeaker:'C', text:`{{He}} inhales sharply as I toy with {{him}}, "Yes, {{master}}."` },
       { playerSpeaker:true, text:`I grin, "Well I'm glad we understand each other then. Tell me rat, where am I going
           to whip you?"` },
       { text:`It's not a question {{he}} was expecting. I can almost see all the thoughts racing in {{his}} head as
           {{he}} tries to think of an answer that would be the least punishing.` },
-      { actorSpeaker:'C', text:`Finally {{he}} stammers, "M, My ass {{P::character.title}}?"` },
+      { actorSpeaker:'C', text:`Finally {{he}} stammers, "M, My ass {{master}}?"` },
       { playerSpeaker:true, text:`I nod slowly, "You know what you need to do then yes?" {{He}} nods and quickly gets
           naked, then climbs on top of one of the old wooden tables. {{He}} gets up on {{his}} hands and knees first,
           then lowers {{his}} chest down onto the rough splintery surface, a position that pushes {{his}} ass as high
@@ -48,25 +48,24 @@ Event.build('found-willow-branches-whip', {
       { playerSpeaker:true, text:`It's a position that's certain to make {{him}} even more frightened. "Now tell
           me&hellip; how many?"` },
       { actorSpeaker:'C', text:`The rat squirms on the tabletop, trying to come up with an acceptable answer. Finally
-          {{he}} asks, "Thirteen {{P::character.title}}?"` },
+          {{he}} asks, "Thirteen {{master}}?"` },
       { playerSpeaker:true, text:`"Wrong!", I yell and suddenly slash at {{his}} ass with the willow branch, landing a
           blow eavenly across both ass cheeks.`, effects:['actor(C) fear 1']},
       { actorSpeaker:'C', text:`{{He}} howls and almost collapses against the tabletop but quickly recovers, returning
-          to the ass up position. "Ahh! Don't know {{P::character.title}}."` },
+          to the ass up position. "Ahh! Don't know {{master}}."` },
       { playerSpeaker:true, text:`"Count then!" I growl and hit {{him}} again with the branch.`, effects:['actor(C) fear 1']},
       { actorSpeaker:'C', text:`{{He}} grunts as the branch slaps against {{his}} ass, "Ahh! Two!"` },
       { playerSpeaker:true, text:`"Do scaven start counting at two?" I slash at {{his}} ass again, this time landing a
           single blow vertically across {{his}} left cheek. "Start over!"`, effects:['actor(C) fear 1']},
-      { actorSpeaker:'C', text:`"Ahh! One {{P::character.title}}!"` },
+      { actorSpeaker:'C', text:`"Ahh! One {{master}}!"` },
       { text:`Again, a vertical slash against {{his}} right cheek now.`, effects:['actor(C) fear 1']},
-      { actorSpeaker:'C', text:`"Aghh! Two {{P::character.title}}!"` },
+      { actorSpeaker:'C', text:`"Aghh! Two {{master}}!"` },
       { text:`Finally another horizontal blow, dangerously low this time.`, effects:['actor(C) fear 1']},
-      { actorSpeaker:'C', text:`"Ooah! Three {{P::character.title}}."` },
+      { actorSpeaker:'C', text:`"Ooah! Three {{master}}."` },
       { playerSpeaker:true, text:`Finally, I place the branch down and start to massage {{his}} ass, firmly rubbing the
           places I just beat {{him}}. "There&hellip; just three. Isn't that kind of me?"` },
       { actorSpeaker:'C', text:`{{He}} groans and squirms in my grip, clearly {{his}} ass is sore and rubbing just
-          makes {{him}} notice how sore {{he}} really is. "Uhh. Yes {{P::character.title}}. Thank you
-          {{P::character.title}}."` },
+          makes {{him}} notice how sore {{he}} really is. "Uhh. Yes {{master}}. Thank you {{master}}."` },
       { text:`There's no blood. Scaven fur is quite thick and shielded {{him}} from the worst of it. Under the fur
           though there's going to be some significant bruising.` },
     ]
@@ -77,7 +76,7 @@ Event.build('found-willow-branches-whip', {
           "Oh? And what's this?" While still keeping one hand rubbing and squeezing her sore ass I push the other
           between her legs, letting my finger sink between her pussy lips to rest firmly against her clit. "You've got
           an awfully wet pussy for a rat who's just had their ass whipped."` },
-      { actorSpeaker:'C', text:`"Ahh&hellip; {{P::character.title}}&hellip; please?"` },
+      { actorSpeaker:'C', text:`"Ahh&hellip; {{master}}&hellip; please?"` },
       { playerSpeaker:true, text:`I slowly but firmly begin to rub her swollen clit, matching the movements of her hips
           as she pushes back against me. "You want a reward little rat?"` },
       { actorSpeaker:'C', text:`Her pussy is absolutely dripping, soaking the back of my hand as I toy with her clit.
@@ -89,7 +88,7 @@ Event.build('found-willow-branches-whip', {
           wooden table as she thrusts back hard against my finger. Finally, she collapses down onto the tabletop. I let
           my finger slip out of her, though I do give her ass one last hard slap before I let her get away.` },
       { actorSpeaker:'C', text:`She responds with a high pitched squeak, followed by a giggle as she reaches behind to
-          rub her sore ass. "Mmm, thank you {{P::character.title}}."` },
+          rub her sore ass. "Mmm, thank you {{master}}."` },
     ]
   },{
     requires:['minion(C).has-cock'],
@@ -99,7 +98,7 @@ Event.build('found-willow-branches-whip', {
           What's this I'm feeling? You have an awfully hard cock for a rat who's just had their ass whipped."` },
       { actorSpeaker:'C', text:`While massaging his sore ass, I gently start rubbing two fingers up and down his
           {{C::cock.sixInch}} long shaft, pinching its thick head between my fingers when I reach it. "Ahh&hellip;
-          {{P::character.title}}&hellip; please?"` },
+          {{master}}&hellip; please?"` },
       { playerSpeaker:true, text:`I finally wrap my fingers fully around his cock, squeezing it firmly though not
           rubbing quite yet. "You want a reward little rat?"` },
       { actorSpeaker:'C', text:`Softly he sighs, "Yes."` },
@@ -117,7 +116,7 @@ Event.build('found-willow-branches-whip', {
           slip out of him, though I do give his ass one last hard slap with my cum covered hand before I let him get
           away.` },
       { actorSpeaker:'C', text:`He responds with a loud squeak, followed by a chuckle as he reaches behind to rub his
-          sore ass. "Mmm, thank you {{P::character.title}}."` },
+          sore ass. "Mmm, thank you {{master}}."` },
     ]
   },{
     pages:[

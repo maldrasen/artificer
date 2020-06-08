@@ -23,9 +23,9 @@ Event.build('trigger-act-1-1', {
       { text:`Interesting. Perhaps the Rat King is some kind of invisible god to the scaven and the Bone Woman his
           priestess? The one who's really in charge. It's a plausible theory.` },
       { playerSpeaker:true, text:`"So you all serve? What does it mean for a scaven to serve? What would you do for
-          your {{P::character.title}}? For me?"` },
+          your {{master}}? For me?"` },
       { actorSpeaker:'R', text:`{{R::character.firstName}} swallows, clearly not liking the direction this conversation
-          is going, "Anything {{P::character.title}}. {{R::character.firstName}} belongs to you now."` },
+          is going, "Anything {{master}}. {{R::character.firstName}} belongs to you now."` },
       { playerSpeaker:true, text:`"Anything? And what if I wanted to kill you?"` },
       { actorSpeaker:'R', text:`{{He}} nods, "Yes. Wizard kills scaven to become strong. When wizard gets strong
           {{P::gender.he}} makes scaven tribe strong. Tribe all that matters."` },
@@ -44,7 +44,7 @@ Event.build('trigger-act-1-1', {
           of us. Food and anything useful that can be found in these lands."` },
       { playerSpeaker:true, text:`"Can you do that?"` },
       { actorSpeaker:'R', text:`{{He}} nods, more confidently now that {{he}}'s pretty sure I'm not going to kill
-          {{him}} right away. "Yes {{P::character.title}}. Deep Holes are the best at sneaking finding."` },
+          {{him}} right away. "Yes {{master}}. Deep Holes are the best at sneaking finding."` },
       { playerSpeaker:true, text:`"Good. You may leave as soon as you're able, and be back before dark," and with that
           I dismiss {{him}} for the time being. There are things I need to think about.` },
       { narratorSpeaker:true, text:`You can now assign your minions to the Forage role. A foraging minion will spend

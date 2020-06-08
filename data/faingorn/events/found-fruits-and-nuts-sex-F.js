@@ -7,8 +7,8 @@ Event.build('found-fruits-and-nuts-sex-F', {
           a little intimidated.` },
       { text:`I'm much larger than the average scaven so {{he}} must be worried about satisfying me. I'm not worried
           though, it's been a very long time after all.` },
-      { actorSpeaker:'C', text:`{{He}} nods slowly, "I understand {{P::character.title}}," and begins to remove what
-          little clothing {{he}} has.` },
+      { actorSpeaker:'C', text:`{{He}} nods slowly, "I understand {{master}}," and begins to remove what little
+          clothing {{he}} has.` },
       { text:`Soon, {{he}} stands nude in front of me, looking away, and again I'm impressed with {{his}} lythe,
           muscular physique.` },
     ]

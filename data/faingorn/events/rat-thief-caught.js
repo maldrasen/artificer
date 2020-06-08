@@ -52,7 +52,7 @@ Event.build('rat-thief-caught', {
           letting them know that I can also be incredibly cruel to those who cross me.` },
       { text:`Another option though would be to recruit {{him}}. {{He}}'s small and terribly thin indicating that
           {{he}}'s probably on the very bottom rung of scaven society. It wouldn't take much for {{him}} to accept me
-          as {{his}} new {{P::character.title}}; the promise of food, the occasional blood berry as a reward.` },
+          as {{his}} new {{master}}; the promise of food, the occasional blood berry as a reward.` },
     ]
   },{
     selectionPage: true,

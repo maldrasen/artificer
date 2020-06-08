@@ -10,8 +10,8 @@ Event.build('found-blight-spider-torment-pussy', {
           {{him}} to grimace in pain.` },
       { playerSpeaker:true, text:`"You say a spider bite did this?"` },
       { actorSpeaker:'C', text:`Through gritted teeth {{he}} manages to say, "Yes The spiderblight
-          {{P::character.title}}. All the crawling things of the wood carry the blight. The blight, it changes you. It
-          feeds on you. But {{C::character.firstName}} is strong. It will &hellip; go away soon."` },
+          {{master}}. All the crawling things of the wood carry the blight. The blight, it changes you. It feeds on
+          you. But {{C::character.firstName}} is strong. It will &hellip; go away soon."` },
       { text:`{{He}} starts panting in pain as I pull {{his}} pussy lips open with both hands. They're so bloated that
           I can hardly pull them apart, and the inside of {{his}} cunt looks worse than the outside, with thick strands
           of black mucous draped between {{his}} labia.` },
@@ -27,7 +27,7 @@ Event.build('found-blight-spider-torment-pussy', {
           foraging, I'd like for you to bring them back with you. I have the feeling that they might be useful."` },
       { actorSpeaker:'C', text:`{{His}} eyes widen and {{he}} looks like {{he}} might throw up at the thought of
           purposefully having to capture one. I give {{his}} pussy lips another firm tug and {{he}} gasps, "Ugh!
-          Yes {{P::character.title}}. {{C::character.firstName}} will do this."`, effects:['actor(C) loyal -2', 'actor(C) fear 2']},
+          Yes {{master}}. {{C::character.firstName}} will do this."`, effects:['actor(C) loyal -2', 'actor(C) fear 2']},
       { text:`I finally let {{him}} go and {{he}} collapses on the ground in front of me. I nod to the rat, indicating
           that {{he}}'s dismissed, and {{he}} crawls out of the room as fast as {{he}} can manage in {{his}} current
           state.` },

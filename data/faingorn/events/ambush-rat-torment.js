@@ -68,12 +68,12 @@ Event.build('ambush-rat-torment', {
   },{
     pages:[
       { playerSpeaker:true, text:`"I do have need of servents though, so I'll make you a deal. I would like for you to
-          return to your chief and let him know that a powerful wizard is now the {{P::character.title}} of this keep.
-          If the Deep Hole Scaven serve me, they will become powerful, and feared again."` },
+          return to your chief and let him know that a powerful wizard is now the {{master}} of this keep. If the Deep
+          Hole Scaven serve me, they will become powerful, and feared again."` },
       { playerSpeaker:true, text:`"If they do not, I will kill every single one of you, slowly and painfully. Do you
           understand?"` },
       { actorSpeaker:'R', text:`The scaven slowly nods and with a quivering voice says, "Yes, yes
-          {{P::character.title}}, I will go tell the chief this."` },
+          {{master}}, I will go tell the chief this."` },
       { playerSpeaker:true, text:`"Good," I say, finally releasing {{him}}, "You may go."` },
       { text:`The scaven sprints from the room, running on all fours. As soon as {{he}} leaves though I collapse into a
           nearby chair. I'm panting, sweating. Heh, some powerful wizard, I can barely use magic at all without almost

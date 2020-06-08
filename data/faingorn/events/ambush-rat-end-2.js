@@ -56,7 +56,7 @@ Event.build('ambush-rat-end-2', {
       { playerSpeaker:true, text:`Nodding I say, "I see. Very well then {{R::character.firstName}}. I accept your offer
           of service, that is if you do agree to belong to me and do whatever I may ask of you."` },
       { actorSpeaker:'R', text:`The scaven, though clearly nervous about the whole situation, nods and accepts with a
-          simple, "Yes {{P::character.title}}."` },
+          simple, "Yes {{master}}."` },
       { narratorSpeaker:true, text:`You have acquired your first minion.`, alert:{ unlock:'Minions' }},
       { narratorSpeaker:true, text:`Minions can be assigned roles when you create your plan for that day, and will
           eventually be able to help you to complete projects or be sent on missions. From the minion menu you can

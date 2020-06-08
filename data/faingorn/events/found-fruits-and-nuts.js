@@ -11,7 +11,7 @@ Event.build('found-fruits-and-nuts', {
           the fire, waiting for {{him}} to arrive. This is the last trip {{he}}'ll be able to make tonight so I invite
           {{him}} to join me for a while.` },
       { playerSpeaker:true, text:`"You did well today," I tell {{him}}.` },
-      { actorSpeaker:'C', text:`"Thank you {{P::character.title}}."` },
+      { actorSpeaker:'C', text:`"Thank you {{master}}."` },
       { playerSpeaker:true, text:`I give {{him}} a good looking over as {{he}} grows near. If possible {{he}}'s even
           more filthy than {{he}} was this morning, covered in dirt with berry juice staining {{C::gender.his}} arms.
           "I've been thinking though. What you're doing right now is inefficient."` },
@@ -19,7 +19,7 @@ Event.build('found-fruits-and-nuts', {
           them juice berries, not the most original name, but descriptive. The plump berry is slightly tart and sweet,
           but mostly water. "You could gather more if you had something to carry things in, a basket perhaps?"` },
       { actorSpeaker:'C', text:`{{He}} nods while nibbling on a goat nut, another local delicacy. "The Deep Hole Clan
-          has baskets {{P::character.title}}. I could steal one."` },
+          has baskets {{master}}. I could steal one."` },
       { playerSpeaker:true, text:`I shake my head, "No, I don't want to risk you getting caught; I have another idea.
           In the forest there's a tree with long flexible branches called a willow. Do you know it?"` },
       { actorSpeaker:'C', text:`{{He}} nods, "A whip tree. The branches make good slashy whips."` },

@@ -26,13 +26,11 @@ Event.build('rat-thief-recruit', {
       { actorSpeaker:'C', text:`{{He}} nods and wipes the blood from the corners of {{his}} mouth, "Yes. The bigger
           ones, the hunters, they keep it all for themselves."` },
       { playerSpeaker:true, text:`I nod. I thought that might be the case. "All right thief, I'd like to make you an
-          offer then. I will be your {{P::character.title}} and you will serve me. I will own you completely. You will
-          do anything and everything I tell you. In return I will feed and shelter you. You will be part of my
-          tribe."` },
+          offer then. I will be your {{master}} and you will serve me. I will own you completely. You will do anything
+          and everything I tell you. In return I will feed and shelter you. You will be part of my tribe."` },
       { text:`{{He}} looks up at me, thinking it over for a few seconds before nodding.` },
       { playerSpeaker:true, text:`"Do you accept then?" I ask.` },
-      { actorSpeaker:'C', text:`"Yes {{P::character.title}}," he says, "{{C::character.firstName}} will belong to you
-          now."` },
+      { actorSpeaker:'C', text:`"Yes {{master}}," he says, "{{C::character.firstName}} will belong to you now."` },
       { playerSpeaker:true, text:`I smile down at {{him}}, "Good, good. Come, I will take you to
           {{R::character.firstName}}, {{R::gender.he}} can show you what's expected of you."`,
           alert:{ unlock:'Minion: {{C::character.firstName}}' }},

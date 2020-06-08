@@ -29,12 +29,11 @@ Event.build('found-blight-spider', {
     ]
   },{
     pages:[
-      { actorSpeaker:'C', text:`{{He}} sheepishly approaches me saying, "Ahh sorry {{P::character.title}}. I had to
-          stop today." {{His}} hands drop down to cover {{him}}self up, but I push {{his}} hands away so I can get a
-          better look.` },
+      { actorSpeaker:'C', text:`{{He}} sheepishly approaches me saying, "Ahh sorry {{master}}. I had to stop today."
+          {{His}} hands drop down to cover {{him}}self up, but I push {{his}} hands away so I can get a better look.` },
       { playerSpeaker:true, text:`"Holy fuck. What the hell happened to you?"` },
-      { actorSpeaker:'C', text:`"The spiderblight {{P::character.title}}. They sneak and sting us&hellip; and they
-          like the soft parts best." I nod, still transfixed by the changes that have come over {{his}} body.` },
+      { actorSpeaker:'C', text:`"The spiderblight {{master}}. They sneak and sting us&hellip; and they like the soft
+          parts best." I nod, still transfixed by the changes that have come over {{his}} body.` },
     ]
   },{
     requires:[`minion(C).has-cock`,`player.accepts-men`],

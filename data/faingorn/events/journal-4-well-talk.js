@@ -17,7 +17,7 @@ Event.build('journal-4-well-talk', {
           warrens are."` },
       { actorSpeaker:'C', text:`{{He}} looks up at me a bit nervously, perhaps thinking that I'm going to start
           slaughtering {{his}} tribesmen like Malcolm used to. Eventually {{he}} nods, "Yes. Of course
-          {{P::character.title}}. This way," and starts leading me through the cellars.` },
+          {{master}}. This way," and starts leading me through the cellars.` },
       { text:`The cellars are made up of a dozen or so small rooms, connected by short hallways. The rooms down here
           are like cells, small and thick walled to support the structure above. Though most of the rooms were used
           for storage, it's clear that a few of them must have held prisoners too at some point.` },
@@ -25,8 +25,8 @@ Event.build('journal-4-well-talk', {
           indicating what they were used for. {{C::character.firstName}} leads me to the back of the prison area and
           slips into one of these prison cells.` },
       { actorSpeaker:'C', text:`{{He}}'s small enough that {{he}} doesn't need to open the rusted bars. {{He}} just
-          slips between them and scurries to the back of the cell. "Here {{P::character.title}}, tight crack. Down,
-          down it crawls. Into the deep."` },
+          slips between them and scurries to the back of the cell. "Here {{master}}, tight crack. Down, down it crawls.
+          Into the deep."` },
       { text:`It takes a little while to even spot what {{he}}'s talking about. A narrow gap in the back corner where
           the two walls come together. It's a <i>tight crack</i> all right, at one point it looks like it's only
           {{inches|a-few}} wide.` },

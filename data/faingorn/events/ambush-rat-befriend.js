@@ -27,15 +27,14 @@ Event.build('ambush-rat-befriend', {
       { text:`I can use this to my advantage.` },
       { playerSpeaker:true, text:`"Well, it would seem you are in luck then," I say, "I have come here to claim this
           keep as my own. Everything within this place now belongs to me. I have need of servents though. I would like
-          for you to return to your chief and let him know that a powerful wizard is now the {{P::character.title}} of
-          this keep."` },
+          for you to return to your chief and let him know that a powerful wizard is now the {{master}} of this keep."` },
       { playerSpeaker:true, text:`"If the Deep Hole Scaven serve me, they will become powerful, and feared again. Do
           you understand?"`, effects:['actor(R) loyal 1']},
       { text:`{{He}} looks me up and down somewhat doubtfully, noting that I'm dressed in nothing but some stolen furs.
           To make my point, I reach out towards the dry wood in the fireplace and with a dramatic hand motion cause it
           to burst into flame.` },
       { actorSpeaker:'R', text:`The rat cowers away from the sudden cascade of sparks and smoke erupting from the
-          fireplace. "Eek! Yes, yes {{P::character.title}}, I will go tell the chief this."` },
+          fireplace. "Eek! Yes, yes {{master}}, I will go tell the chief this."` },
       { playerSpeaker:true, text:`"Good. You may go."` },
       { text:`The scaven sprints from the room, running on all fours. As soon as {{he}} leaves though I collapse into a
           nearby chair. I'm panting, sweating. Heh, some powerful wizard, I can barely use magic at all without almost

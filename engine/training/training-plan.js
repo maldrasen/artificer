@@ -27,10 +27,11 @@ global.TrainingPlan = class TrainingPlan {
       await context.addPlayer();
       await context.addCharacter('C',minion);
 
-      return {
-        ...(await course.execute(new TrainingPlan(course, coursePlan.style, context))),
-        minion:(await minion.properties())
-      };
+      const plan = new TrainingPlan(course, coursePlan.style, context);
+      const report = await course.execute(plan);
+            report.story = Weaver.weave(report.story, context);
+
+      return { ...report, minion:(await minion.properties()) };
     }))) });
 
     await Composer.render();

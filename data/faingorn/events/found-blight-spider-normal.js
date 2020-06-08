@@ -10,9 +10,9 @@ Event.build('found-blight-spider-normal', {
           resulting in them being covered in numerous lesions and sores, all weeping a black viscous pus.` },
       { playerSpeaker:true, text:`For them to have grown so much in this short of a time, well it's obviously more than
           {{his}} body could handle. "You say a spider bite did this?"` },
-      { actorSpeaker:'C', text:`"Yes, the spiderblight {{P::character.title}}. All the crawling things of the wood
-          carry the blight. The blight, it changes you. It feeds on you. But {{C::character.firstName}} is strong. It
-          will go away soon."` },
+      { actorSpeaker:'C', text:`"Yes, the spiderblight {{master}}. All the crawling things of the wood carry the
+          blight. The blight, it changes you. It feeds on you. But {{C::character.firstName}} is strong. It will go
+          away soon."` },
       { text:`It's a fascinating disease.` },
       { text:`I've never seen anything quite like it, well not that I could remember if I had. It's almost certainly
           magical, and makes me wonder if the spider's blighted venom could be extracted and refined somehow.` },

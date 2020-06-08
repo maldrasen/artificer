@@ -87,6 +87,9 @@ global.Weaver = (function() {
   }
 
   function simpleValue(token) {
+    if (token == 'master')    { return Flag.lookup('player.title'); }
+    if (token == 'Master')    { return TextUtility.titlecase(Flag.lookup('player.title')); }
+
     if (token == 'ballsack')  { return Random.from(['ballsack','ballsack','scrotum']); }
     if (token == 'cock')      { return Random.from(['cock','cock','dick']); }
     if (token == 'pussy')     { return Random.from(['pussy','pussy','cunt']); }
