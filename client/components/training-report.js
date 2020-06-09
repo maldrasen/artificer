@@ -2,6 +2,9 @@ Components.TrainingReport = (function() {
 
   function build(event, data) {
     $('#mainContent').empty().append($('<div>',{ id:"trainingReport" }).append($('#trainingReportTemplate').html()));
+
+console.log("Build:",data)
+
     each(data.results, result => $('#trainingReport .results').append(buildResult(result)));
   }
 

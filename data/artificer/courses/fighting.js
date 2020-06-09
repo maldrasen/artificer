@@ -44,7 +44,8 @@ async function description(context) {
   return `${description} Both {{he}} and I should improve from the training.`;
 }
 
-async function execute(plan, result) {
+async function execute(plan) {
+  const result = new TrainingResult(plan.context);
   const skills = await getSkills(plan.context);
   const report = {};
 
@@ -78,6 +79,7 @@ async function execute(plan, result) {
   }
 
   result.story = 'Did a fighting'
+  return result;
 }
 
 // The improveSkill() function will get training level from 1 to 4 which is

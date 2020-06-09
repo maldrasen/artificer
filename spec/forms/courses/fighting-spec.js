@@ -1,6 +1,8 @@
 describe('Course: Fighting', function() {
 
   async function setup(options) {
+    TrainingResult.startReport();
+
     const player = await SpecHelper.buildPlayer(options.player||{});
     const jada = await SpecHelper.buildJada(options.minion||{});
 
@@ -25,8 +27,7 @@ describe('Course: Fighting', function() {
 
   it('executes when both characters are unskilled.', function(done) {
     setup({}).then(plan => {
-      const result = new TrainingResult(plan.context);
-      Course.lookup('fighting').execute(plan, result).then(_ => {
+      Course.lookup('fighting').execute(plan).then(result => {
         result.forReport().then(report => {
           done();
         });
@@ -36,8 +37,7 @@ describe('Course: Fighting', function() {
 
   it('executes when player is stronger.', function(done) {
     setup({ minionSkill:1, playerSkill:3 }).then(plan => {
-      const result = new TrainingResult(plan.context);
-      Course.lookup('fighting').execute(plan, result).then(_ => {
+      Course.lookup('fighting').execute(plan).then(result => {
         result.forReport().then(report => {
           done();
         });
@@ -47,8 +47,7 @@ describe('Course: Fighting', function() {
 
   it('executes when player is much stronger.', function(done) {
     setup({ playerSkill:2 }).then(plan => {
-      const result = new TrainingResult(plan.context);
-      Course.lookup('fighting').execute(plan, result).then(_ => {
+      Course.lookup('fighting').execute(plan).then(result => {
         result.forReport().then(report => {
           done();
         });
@@ -58,8 +57,7 @@ describe('Course: Fighting', function() {
 
   it('executes when minion is stronger.', function(done) {
     setup({ playerSkill:1, minionSkill:3 }).then(plan => {
-      const result = new TrainingResult(plan.context);
-      Course.lookup('fighting').execute(plan, result).then(_ => {
+      Course.lookup('fighting').execute(plan).then(result => {
         result.forReport().then(report => {
           done();
         });
@@ -69,8 +67,7 @@ describe('Course: Fighting', function() {
 
   it('executes when minion is much stronger.', function(done) {
     setup({ minionSkill:3 }).then(plan => {
-      const result = new TrainingResult(plan.context);
-      Course.lookup('fighting').execute(plan, result).then(_ => {
+      Course.lookup('fighting').execute(plan).then(result => {
         result.forReport().then(report => {
           done();
         });

@@ -26,8 +26,9 @@ global.TrainingResult = class RoleResult {
   // Because the report is rendered in the view, the result needs to be turned
   // into a plain object.
   async forReport() {
+    const minion = this.context.get('C').character;
     return {
-      minion: (await this.context.get('C').character.properties()),
+      minion: { name:minion.name, portrait:minion.portrait },
       story: (await Weaver.weave(this.story, this.context)),
       notifications: this.notifications,
     }
@@ -35,16 +36,15 @@ global.TrainingResult = class RoleResult {
 
   // === Current Report ===
 
-  static setReport(report) { TrainingResult._currentReport = report; }
+  static startReport() { TrainingResult._currentReport = { results:[], playerNotifications:[] }; }
   static currentReport() { return TrainingResult._currentReport; }
 
   static addPlayerNotification(notification) {
-    if (TrainingResult._currentReport) {
-      if (TrainingResult._currentReport.playerNotifications == null) {
-        TrainingResult._currentReport.playerNotifications = [];
-      }
-      TrainingResult._currentReport.playerNotifications.push(notification);
-    }
+    TrainingResult._currentReport.playerNotifications.push(notification);
+  }
+
+  static async addResult(result) {
+    TrainingResult._currentReport.results.push(await result.forReport());
   }
 
   static async reportViewed() {

@@ -13,7 +13,8 @@ Course.build('bonding', {
 // their trust, and it's harder to further increase their trust in the higher
 // tiers. I start out with these number for now, and tweak them if I feel
 // loyalty builds too quickly or too slowly.
-async function execute(plan, result) {
+async function execute(plan) {
+  const result = new TrainingResult(plan.context);
   const loyalty = plan.minion.getLoyaltyWord();
 
   if (loyalty != 'absolute') {
@@ -34,6 +35,8 @@ async function execute(plan, result) {
   if (loyalty == 'loyal') { result.story = loyalStory(plan); }
   if (loyalty == 'faithful') { result.story = faithfulStory(plan); }
   if (loyalty == 'dedicated') { result.story = dedicatedStory(plan); }
+
+  return result;
 }
 
 // The isTraitorous() function on the character model also takes fear into

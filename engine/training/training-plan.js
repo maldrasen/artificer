@@ -19,7 +19,9 @@ global.TrainingPlan = class TrainingPlan {
   static async execute(data) {
     await Game.setPhase('before-training');
 
-    TrainingResult.setReport({ results:(await Promise.all(data.courses.map(async coursePlan => {
+    TrainingResult.startReport();
+
+    await Promise.all(data.courses.map(async coursePlan => {
       const minion = await Character.lookup(coursePlan.id);
       const course = Course.lookup(coursePlan.course);
 
@@ -28,12 +30,10 @@ global.TrainingPlan = class TrainingPlan {
       await context.addCharacter('C',minion);
 
       const plan = new TrainingPlan(course, coursePlan.style, context);
-      const result = new TrainingResult(context);
+      const result = await course.execute(plan);
 
-      await course.execute(plan,result);
-
-      return await result.forReport();
-    }))) });
+      await TrainingResult.addResult(result);
+    }));
 
     await Composer.render();
   }
