@@ -166,6 +166,8 @@ require(`${ROOT}/engine/factories/name-generators/scaven-name-generator`);
 
 // === Training ===
 require(`${ROOT}/engine/training/training-plan`);
+require(`${ROOT}/engine/training/training-experience`);
+require(`${ROOT}/engine/training/training-result`);
 
 // === Utilities ===
 require(`${ROOT}/engine/utilities/array-utility.js`);

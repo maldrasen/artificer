@@ -13,7 +13,7 @@ Course.build('bonding', {
 // their trust, and it's harder to further increase their trust in the higher
 // tiers. I start out with these number for now, and tweak them if I feel
 // loyalty builds too quickly or too slowly.
-async function execute(plan) {
+async function execute(plan, result) {
   const loyalty = plan.minion.getLoyaltyWord();
 
   if (loyalty != 'absolute') {
@@ -27,17 +27,13 @@ async function execute(plan) {
     }[loyalty]);
   }
 
-  let story;
-
-  if (plan.minion.isTraitorous) { story = traitorousStory(plan); }
-  if (plan.minion.isRebellious || loyalty == 'traitorous') { story = rebelliousStory(plan); }
-  if (loyalty == 'untrustworthy') { story = untrustworthyStory(plan); }
-  if (loyalty == 'wavering') { story = waveringStory(plan); }
-  if (loyalty == 'loyal') { story = loyalStory(plan); }
-  if (loyalty == 'faithful') { story = faithfulStory(plan); }
-  if (loyalty == 'dedicated') { story = dedicatedStory(plan); }
-
-  return { story };
+  if (plan.minion.isTraitorous) { result.story = traitorousStory(plan); }
+  if (plan.minion.isRebellious || loyalty == 'traitorous') { result.story = rebelliousStory(plan); }
+  if (loyalty == 'untrustworthy') { result.story = untrustworthyStory(plan); }
+  if (loyalty == 'wavering') { result.story = waveringStory(plan); }
+  if (loyalty == 'loyal') { result.story = loyalStory(plan); }
+  if (loyalty == 'faithful') { result.story = faithfulStory(plan); }
+  if (loyalty == 'dedicated') { result.story = dedicatedStory(plan); }
 }
 
 // The isTraitorous() function on the character model also takes fear into

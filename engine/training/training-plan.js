@@ -19,7 +19,7 @@ global.TrainingPlan = class TrainingPlan {
   static async execute(data) {
     await Game.setPhase('before-training');
 
-    TrainingPlan.setReport({ reports:(await Promise.all(data.courses.map(async coursePlan => {
+    TrainingResult.setReport({ results:(await Promise.all(data.courses.map(async coursePlan => {
       const minion = await Character.lookup(coursePlan.id);
       const course = Course.lookup(coursePlan.course);
 
@@ -28,10 +28,11 @@ global.TrainingPlan = class TrainingPlan {
       await context.addCharacter('C',minion);
 
       const plan = new TrainingPlan(course, coursePlan.style, context);
-      const report = await course.execute(plan);
-            report.story = Weaver.weave(report.story, context);
+      const result = new TrainingResult(context);
 
-      return { ...report, minion:(await minion.properties()) };
+      await course.execute(plan,result);
+
+      return await result.forReport();
     }))) });
 
     await Composer.render();
@@ -59,16 +60,6 @@ global.TrainingPlan = class TrainingPlan {
     }));
 
     return courses;
-  }
-
-  // === Current Report ===
-
-  static setReport(report) { TrainingPlan._currentReport = report; }
-  static currentReport() { return TrainingPlan._currentReport; }
-
-  static async reportViewed() {
-    await Game.setPhase('after-training');
-    TrainingPlan._currentReport = null;
   }
 }
 

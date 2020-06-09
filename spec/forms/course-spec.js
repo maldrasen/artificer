@@ -10,17 +10,6 @@ describe('Course', function() {
     return context;
   }
 
-  describe('Course: Fighting', function() {
-    it('describes an unskilled fight', function(done) {
-      setup({}).then(context => {
-        Course.lookup('fighting').description(context).then(desc => {
-          expect(desc).to.match(/Both {{he}} and I should improve/);
-          done();
-        });
-      });
-    });
-  });
-
   describe('Course: Fucking', function() {
     it('describes male/male', function(done) {
       setup({ player:{ gender:'male' }, minion:{ gender:'male' }}).then(context => {

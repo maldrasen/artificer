@@ -29,14 +29,17 @@ global.SpecHelper = (function() {
   }
 
   async function buildPlayer(options) {
-    return await Player.forge(extend({
+    await Player.forge({
       title: 'Master',
       firstName: 'Gary',
       lastName: 'Gangbang',
       gender: 'male',
       species: 'equian',
       goal: 'conquest',
-    },options));
+      ...options,
+    });
+
+    return await Player.instance();
   }
 
   function tenTimes(done, testFunction) {

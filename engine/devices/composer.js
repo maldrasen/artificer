@@ -23,7 +23,7 @@ global.Composer = (function() {
       Game.log("Rendering Report")
       return renderReport();
     }
-    if (TrainingPlan.currentReport() != null) {
+    if (TrainingResult.currentReport() != null) {
       Game.log("Rendering Training Report")
       return await renderTrainingReport();
     }
@@ -89,8 +89,8 @@ global.Composer = (function() {
   }
 
   async function renderTrainingReport() {
-    Browser.send('render.training-report', TrainingPlan.currentReport());
-    await TrainingPlan.reportViewed();
+    Browser.send('render.training-report', TrainingResult.currentReport());
+    await TrainingResult.reportViewed();
   }
 
   return {
