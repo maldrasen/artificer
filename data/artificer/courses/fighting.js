@@ -105,10 +105,35 @@ async function execute(plan) {
 // need to limit the skill level that can be gained by just training with your
 // minions. The upper tiers may need to be unlocked somehow. Something to
 // figure out later though.
+//
+// I can also expand the sort of things that happen during a fight, adding
+// injuries, punch fisting for the loser, that sort of thing. Need to have the
+// sex history in place though for anything sexy to happen during training.
 
 // You and your minion are not good fighters and fumble through your training.
 function writeFumblingThrough(result) {
-  result.story = 'TODO: Fumbling Through'
+  result.story = `{{C::character.firstName}} and I aren't skilled fighters so we work on some of the very basics.`;
+
+  if (result.minion.speciesCode == 'scaven') {
+    let options = [
+      `{{He}} is nimble though, so we practice {{his}} dodging abilities, with me trying to grab or strike at {{him}}
+       while {{he}} tries to dodge me.`,
+      `{{He}} does need to learn how to fight against a much larger opponent though, so we spar for a while with
+       {{him}} slashing at my legs with a broken willow branch while I try to kick at {{him}}.`,
+      `I feel like I can learn a bit from {{his}} animalistic, instinctive way of fighting. I can learn how to defend
+       myself against someone who fights like {{him}}; reading {{his}} body language and anticipating {{his}} attacks.`,
+    ];
+
+    // TODO: Only allow when there is a sexual history.
+    if (result.context.get('C').tits) {
+      options.push(`{{He}} is quick and nimble though, which gives me an idea. I suggest that we spar in the nude.
+        {{He}}'ll try to dodge my attacks while I try to slap {{his}} {{C::tits.size}} {{tits}} and shapely ass. By the
+        end of our training {{his}} ass and twelve tits are very sore, but at least {{he}}'s learned to dodge me a bit
+        better.`);
+    }
+
+    result.story += ` {{He}}'s a scaven, so our height difference is a bit of a problem. ${Random.from(options)}`;
+  }
 }
 
 // You're not a good fighter, but your minion knows a thing or two.

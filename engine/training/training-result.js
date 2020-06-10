@@ -7,6 +7,8 @@ global.TrainingResult = class RoleResult {
   }
 
   get context()       { return this._context; }
+  get minion()        { return this.context.get('C').character; }
+  get player()        { return this.context.player.character; }
   get notifications() { return this._notifications; }
   get story()         { return this._story; }
   set story(text)     { this._story = text; }
