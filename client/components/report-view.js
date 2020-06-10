@@ -20,6 +20,11 @@ Components.ReportView = (function() {
       each(report.minionResults, result => minionList.append(Components.ReportRow.build(result)));
     }
 
+    if (report.type == 'work') {
+      reportView.find('.continue-button').data('command','resolver.start-after-work')
+    }
+
+
     // if (report.project) {
     //   $('#reportView').find('.projects').removeClass('hide');
     //   $('#reportView').find('.projects .text').append(report.project.text);

@@ -9,8 +9,16 @@ Components.ReportRow = (function() {
     rowElement.find('.minion-name').append(result.name);
     storyRow.find('.story').append(result.awayText || result.story);
 
-    if (result.flavors) { lowerRow.append(buildSpoilsRow(result.flavors)); }
-    if (result.notifications) { lowerRow.append(buildNotificationsFrame(result.notifications)); }
+    if ((result.flavors||[]).length > 0) {
+      lowerRow.removeClass('hide').
+      append(buildSpoilsRow(result.flavors));
+    }
+
+    if ((result.notifications||[]).length > 0) {
+      lowerRow.removeClass('hide').
+      append(buildNotificationsFrame(result.notifications));
+    }
+
     if (result.injury) { storyRow.append($('<span>',{ class:'injury-story' }).append(` ${result.injury}`)); }
     if (result.healed) { storyRow.append($('<span>',{ class:'healed-story' }).append(` ${result.healed}`)); }
 
