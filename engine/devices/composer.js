@@ -40,7 +40,7 @@ global.Composer = (function() {
   }
 
   function renderReport() {
-    Browser.send('render.report', Resolver.currentReport());
+    Browser.send('render.report', Resolver.reportForView());
   }
 
   function renderLocation(code) {

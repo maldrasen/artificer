@@ -11,7 +11,7 @@ Components.ReportRow = (function() {
 
     if ((result.flavors||[]).length > 0) {
       lowerRow.removeClass('hide').
-      append(buildSpoilsRow(result.flavors));
+      append(buildSpoils(result.flavors));
     }
 
     if ((result.notifications||[]).length > 0) {
@@ -25,15 +25,12 @@ Components.ReportRow = (function() {
     return rowElement;
   }
 
-  function buildSpoilsRow(flavors) {
-    let frame = $('<div>',{ class:'spoils-frame icon-pit' });
-    let row = $('<div>',{ class:'spoils-row' }).append(frame);
-
+  function buildSpoils(flavors) {
+    let frame = $('<div>',{ class:'spoils-frame' });
     each(flavors, flavor => {
       frame.append(Elements.ImageResource.iconElement('flavor', flavor.code, flavor.count));
     });
-
-    return row;
+    return frame;
   }
 
   function buildNotificationsFrame(notifications) {

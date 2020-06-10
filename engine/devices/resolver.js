@@ -63,31 +63,33 @@ global.Resolver = (function() {
     await Composer.render();
   }
 
-  // The training plan and the evening phase only happen once traing has been
-  // unlocked. Because of that nothing that has to happen every day should be
-  // triggered here.
-  async function submitTrainingPlan() {
-  }
-
-  async function startNight() {
-    // await Resolver.Events.enqueueAvailable();
-    // await Promise.all(Resolver._finishers.map(async action => {
-    //   await action();
-    // }));
-  }
-
   function addFinisher(finisher) { Resolver._finishers.push(finisher); }
   function currentReport() { return Resolver._currentReport; }
   function itemsToAdd() { return Resolver._itemsToAdd; }
 
+  // We need to format the report for the view. When we build the report we
+  // handle the minions as a map because of the way we add minion data. The
+  // view however expects the minion data to be an array of flat objects.
+  function reportForView() {
+    const report = { type:'work', ...Resolver._currentReport };
+
+    report.minionResults = Object.keys(report.minions).map(id => {
+      const result = { ...report.minions[id], ...report.minions[id].work };
+      delete result.work;
+      return result;
+    });
+
+    delete report.minions;
+    return report
+  }
+
   return {
     submitWorkPlan,
     startAfterWork,
-    submitTrainingPlan,
-    startNight,
     addFinisher,
     currentReport,
     itemsToAdd,
+    reportForView,
   };
 
 })();
