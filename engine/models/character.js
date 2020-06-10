@@ -109,21 +109,37 @@ Character.formatAllForClient = async function(characters) {
 // starvation event, but may also happen at other disastrous moments as well.
 Character.reduceAllLoyalty = async function(amount) {
   await Promise.all((await Character.getNormalMinions()).map(async minion => {
-    await minion.reduceLoyalty(amount);
+    await minion.adjustLoyalty(0 - Random.between(1,amount));
   }));
 }
 
-// Randomly reduce a minion's loyalty by a value between 0 and the amount
-// specified. If the minion's loyalty is already at 0 their fear will begin to
+// Adjust loyalty by the amount either up or down, clamping loyalty between 0
+// and 100. If the minion's loyalty is already at 0 their fear will begin to
 // drop instead.
-Character.prototype.reduceLoyalty = async function(amount) {
-  (this.loyalty > 0) ?
-    (await this.update({ loyalty: Math.max(0, this.loyalty - Random.between(1,amount)) })):
-    (await this.update({ fear: Math.max(0, this.fear - Random.between(1,Math.ceil(amount/2))) }));
+Character.prototype.adjustLoyalty = async function(amount) {
+  if (amount < 0 && this.loyalty == 0) {
+    return await this.adjustFear(Math.ceil(amount/2));
+  }
+  let value = this.loyalty + amount;
+  if (value < 0) { value = 0; }
+  if (value > 100) { value = 100; }
+  await this.update({ loyalty:value })
 }
 
-Character.prototype.increaseLoyalty = async function(amount) {
-  await this.update({ loyalty: Math.min(100, this.loyalty + Random.between(1,amount)) });
+// Adjust fear by the amount either up or down, clamping fear between 0 and 100.
+Character.prototype.adjustFear = async function(amount) {
+  let value = this.fear + amount;
+  if (value < 0) { value = 0; }
+  if (value > 100) { value = 100; }
+  await this.update({ fear:value })
+}
+
+// Adjust lust by the amount either up or down, clamping fear between 0 and 100.
+Character.prototype.adjustLust = async function(amount) {
+  let value = this.lust + amount;
+  if (value < 0) { value = 0; }
+  if (value > 100) { value = 100; }
+  await this.update({ lust:value })
 }
 
 Character.prototype.properties = async function() {

@@ -206,5 +206,6 @@ async function improveSkill(character, level) {
 
 function adjustFear(character, value) {
   let random = value + Random.between(-2,2);
+  character.adjustFear(random);
   return (random != 0) ? { code:'fear', name:'Fear', experience:random } : null;
 }

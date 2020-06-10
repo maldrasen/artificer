@@ -10,6 +10,7 @@ global.TrainingPlan = class TrainingPlan {
   get course() { return this._course; }
   get minion() { return this.context.get('C').character; }
   get player() { return this.context.player.character; }
+  get sexAction() { return this._course.sexAction; }
   get style() { return this._style; }
 
   // The execute() function is called with the plan data from the view. It
@@ -60,6 +61,11 @@ global.TrainingPlan = class TrainingPlan {
     }));
 
     return courses;
+  }
+
+  // === Execution ===
+  async calculateConsent() {
+    return await (new ConsentCalculator(this.context)).getConsentDetails(this.sexAction, this.style);
   }
 }
 

@@ -18,14 +18,14 @@ async function execute(plan) {
   const loyalty = plan.minion.getLoyaltyWord();
 
   if (loyalty != 'absolute') {
-    await plan.minion.increaseLoyalty({
+    await plan.minion.adjustLoyalty(Random.between(1,{
       traitorous:    1,
       untrustworthy: 2,
       wavering:      3,
       loyal:         6,
       faithful:      3,
       dedicated:     1,
-    }[loyalty]);
+    }[loyalty]));
   }
 
   if (plan.minion.isTraitorous) { result.story = traitorousStory(plan); }

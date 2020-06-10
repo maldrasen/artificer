@@ -21,7 +21,7 @@ Resolver.Incidentals = (function() {
     if (scaven.length == 0) { return false; }
 
     each(scaven, character => {
-      character.increaseLoyalty(10);
+      character.adjustLoyalty(Random.between(1,10));
     });
 
     await resource.update({ count:Random.between(40,50) });
