@@ -22,7 +22,6 @@ global.RendererCommands = (function() {
     ipcRenderer.on('render.report', Components.ReportView.build);
     ipcRenderer.on('render.settings', Components.SettingsDialog.open);
     ipcRenderer.on('render.training-plan', Components.TrainingPlan.build);
-    ipcRenderer.on('render.training-report', Components.TrainingReport.build);
 
     ipcRenderer.on('image.found', Elements.ImageResource.set);
 

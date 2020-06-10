@@ -89,7 +89,7 @@ global.Composer = (function() {
   }
 
   async function renderTrainingReport() {
-    Browser.send('render.training-report', TrainingResult.currentReport());
+    Browser.send('render.report', TrainingResult.currentReport());
     await TrainingResult.reportViewed();
   }
 

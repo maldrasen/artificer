@@ -1,39 +1,64 @@
 #reportView {
-  background-image: url('../../data/image-resources/backgrounds/report.png');
-  background-position: center;
-  background-size: cover;
 
-  h2 { font-size: $fs-bigger; }
-
-  .projects {
-    margin-bottom: 30px;
+  &.training-report {
+    background-image: url('../../data/image-resources/backgrounds/training-report.jpg');
+    background-position: center;
+    background-size: cover;
   }
 
-  .task-stories {
-    dt {
-      width: 10em;
-      color: $fg-strong;
-    }
+  &.work-report {
+    background-image: url('../../data/image-resources/backgrounds/work-report.jpg');
+    background-position: center;
+    background-size: cover;
   }
 
-  .food {
-    border: $border-light;
-    box-shadow: $shadow-frame;
-    margin: 20px;
-    padding: 10px;
+  // h2 { font-size: $fs-bigger; }
+  //
+  // .projects {
+  //   margin-bottom: 30px;
+  // }
+  //
+  // .task-stories {
+  //   dt {
+  //     width: 10em;
+  //     color: $fg-strong;
+  //   }
+  // }
+  //
+  // .food {
+  //   border: $border-light;
+  //   box-shadow: $shadow-frame;
+  //   margin: 20px;
+  //   padding: 10px;
+  // }
+}
+
+.report-row {
+  position: relative;
+  border: $border-light;
+  box-shadow: $shadow-frame;
+  margin: 20px;
+  margin-bottom: 30px;
+  padding: 20px;
+  padding-right: 160px;
+  min-height: 130px;
+  background-color: rgba(0,0,0,0.25);
+
+  .top-row { border-bottom: $border-light; }
+  .story-row { margin: 5px 0 20px; }
+
+  .lower-row {
+    padding: 10px 10px 0.1px; // No idea.
+    background-color: $bg-body-darker;
+    border: $border-very-light;
+    box-shadow: $shadow-shallow;
   }
 
-  .report-minion-frame {
-    position: relative;
-    border: $border-light;
-    box-shadow: $shadow-frame;
-    margin: 20px;
-    margin-bottom: 30px;
-    padding: 10px;
-    padding-right: 160px;
-    min-height: 130px;
-    background-color: rgba(0,0,0,0.25);
+  .minion-name {
+    color: $fg-strong;
+    font-size: $fs-big;
   }
+
   .portrait-frame {
     position: absolute;
     right: -10px;
@@ -43,13 +68,6 @@
     box-shadow: $shadow-portrait;
     img { height:150px; width:150px; }
   }
-
-  .minion-name {
-    color: $fg-strong;
-    font-size: $fs-big;
-  }
-
-  .story-row { margin-bottom: 20px; }
 
   .notifications-frame {
     align-self: flex-end;

@@ -1,103 +1,71 @@
 Components.ReportView = (function() {
 
-  function init() {}
-
+  // The ReportView displays the results from the day's work or training phases.
+  // They both display similar minion result rows. The reports should have the
+  // following format:
+  //    minionResults:[]   Array of minion results used to build ReportRows
+  //
+  //
   function build(event, report) {
+    $('#mainContent').empty().append($('<div>',{ id:"reportView", class:`full-page-panel ${report.type}-report` }).append($('#reportTemplate').html()));
+
+    const reportView = $('#reportView');
+    const minionList = reportView.find('.minion-list');
+
+    console.log("Build Report:")
+    console.log(report)
+
+    if (report.minionResults && report.minionResults.length) {
+      minionList.removeClass('hide');
+      each(report.minionResults, result => minionList.append(Components.ReportRow.build(result)));
+    }
+
+    // if (report.project) {
+    //   $('#reportView').find('.projects').removeClass('hide');
+    //   $('#reportView').find('.projects .text').append(report.project.text);
+    // }
+    //
+    // if (report.tasks.length) {
+    //   $('#reportView').find('.tasks').removeClass('hide');
+    //   each(report.tasks, task => {
+    //     $('#reportView').find('.tasks .task-stories').append(buildTaskItem(task));
+    //   });
+    // }
+
+    // if (Object.keys(report.minions).length) {
+    //   $('#reportView').find('.minions').removeClass('hide');
+    //   each(report.minions, minion => {
+    //     // addMinionFrame(minion);
+    //   });
+    // }
+
+    // if (report.incidentals.length) {
+    //   let incidentals = $('#reportView').find('.incidentals').removeClass('hide');
+    //   each(report.incidentals, story => {
+    //     incidentals.append($('<li>').append(story));
+    //   });
+    // }
+    //
+    // if (report.food) {
+    //   $('#reportView').find('.food').removeClass('hide').append(report.food);
+    // }
+
     Elements.reset();
-
-    $('#mainContent').empty().append($('<div>',{ id:"reportView", class:'full-page-panel' }).append($('#reportTemplate').html()));
-
-    if (report.project) {
-      $('#reportView').find('.projects').removeClass('hide');
-      $('#reportView').find('.projects .text').append(report.project.text);
-    }
-
-    if (report.tasks.length) {
-      $('#reportView').find('.tasks').removeClass('hide');
-      each(report.tasks, task => {
-        $('#reportView').find('.tasks .task-stories').append(buildTaskItem(task));
-      });
-    }
-
-    if (Object.keys(report.minions).length) {
-      $('#reportView').find('.minions').removeClass('hide');
-      each(report.minions, minion => {
-        addMinionFrame(minion);
-      });
-    }
-
-    if (report.incidentals.length) {
-      let incidentals = $('#reportView').find('.incidentals').removeClass('hide');
-      each(report.incidentals, story => {
-        incidentals.append($('<li>').append(story));
-      });
-    }
-
-    if (report.food) {
-      $('#reportView').find('.food').removeClass('hide').append(report.food);
-    }
-
     Elements.ScrollingPanel.build($('#reportView .scrolling-panel'));
   }
 
-  function buildTaskItem(task) {
-    return $(`
-      <dt>${task.title}</dt>
-      <dd>${task.text}</dd>
-    `);
-  }
-
-  function addMinionFrame(minion) {
-    if (minion.work == null) { minion.work = {
-      story:`TODO: Whatever this task was needs a work object and a story in the report.`
-    }}
-
-    let portrait = $(`<div class='portrait-frame'><img src='${minion.portrait}'/></div>`)
-    let topRow = $(`<div class='top-row'><div class='minion-name'>${minion.name}</div></div>`);
-    let storyRow = $(`<div class='story-row'><span class='story'>${minion.awayText || minion.work.story}</span></div>`);
-    let lowerRow = $(`<div class='lower-row flex'></div>`);
-
-    if (minion.work.flavors) { lowerRow.append(buildSpoilsRow(minion.work.flavors)); }
-    if (minion.work.notifications) { lowerRow.append(buildNotificationsFrame(minion.work.notifications)); }
-    if (minion.work.injury) { storyRow.append($('<span>',{ class:'injury-story' }).append(` ${minion.work.injury}`)); }
-    if (minion.healed) { storyRow.append($('<span>',{ class:'healed-story' }).append(` ${minion.healed}`)); }
-
-    let minionFrame = $('<li>',{class: 'report-minion-frame' }).
-      append(portrait).
-      append(topRow).
-      append(storyRow).
-      append(lowerRow);
-
-    $('#reportView').find('.minion-list').append(minionFrame);
-  }
-
-  function buildSpoilsRow(flavors) {
-    let frame = $('<div>',{ class:'spoils-frame icon-pit' });
-    let row = $('<div>',{ class:'spoils-row' }).append(frame);
-
-    each(flavors, flavor => {
-      frame.append(Elements.ImageResource.iconElement('flavor', flavor.code, flavor.count));
-    });
-
-    return row;
-  }
-
-  function buildNotificationsFrame(notifications) {
-    let frame = $('<div>',{ class:'notifications-frame' });
-
-    each(notifications, notification => {
-      frame.append(Elements.Badges.buildExperienceNotification(notification));
-      if (notification.gainedLevel) { frame.append(Elements.Badges.buildLevelNotification(notification)); }
-    });
-
-    return frame;
-  }
-
+  // function buildTaskItem(task) {
+  //   return $(`
+  //     <dt>${task.title}</dt>
+  //     <dd>${task.text}</dd>
+  //   `);
+  // }
+  //
 
   function isOpen() {
     return $('#reportView').length > 0;
   }
 
-  return { init, build, isOpen };
+  return { build, isOpen };
 
 })();

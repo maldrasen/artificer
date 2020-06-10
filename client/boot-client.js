@@ -31,7 +31,6 @@ $(document).ready(function() {
   Components.MinionSelectDialog.init();
   Components.PlanView.init();
   Components.PlayerView.init();
-  Components.ReportView.init();
   Components.SavedGames.init();
   Components.SettingsDialog.init();
   Components.TrainingPlan.init();
