@@ -6,15 +6,3 @@ require(`${ROOT}/engine/boot-engine.js`);
 require(`${ROOT}/engine/boot-database.js`);
 
 Environment.init();
-
-ipcMain.on('client.ready', () => {
-  Database.createDatabase(() => {
-    Loader.loadAllData(() => {
-      console.log("\n=== Ready ===\n")
-      Controllers.init();
-      Settings.init();
-      Browser.send('engine.ready');
-      Browser.sendDataToClient();
-    });
-  });
-});

@@ -1,9 +1,4 @@
 
-console.log('> Booting Engine')
-
-global.extend = require('extend');
-global.fs = require('fs');
-global.hash = require('object-hash');
 global.log = (message) => { if (Environment.Debug) { console.log(message); } }
 
 // === Concerns ===
