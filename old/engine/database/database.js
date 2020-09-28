@@ -65,7 +65,7 @@ global.Database = (function() {
   }
 
   function logPath() {
-    return `${ROOT}/log/db.log`;
+    return `${ROOT}/db.log`;
   }
 
   function resetLog() {

@@ -1,11 +1,8 @@
 {
-  "name": "cinnamon",
+  "name": "artificer",
   "version": "0.0.0",
   "description": "The Artificer Project, Book 0",
   "main": "main.js",
-
-  "//": "This is going to be a bit wonkey because we're using the same package.json across two different games. This",
-  "//": "is better than the alternative though. We'll need different file lists for different versions though.",
 
   "build": {
     "appId": "com.maldrasen.artificer",
@@ -28,7 +25,6 @@
     }
   },
 
-  "//": "These scripts are also not correct now.",
   "scripts": {
     "postinstall": "install-app-deps",
     "dist": "electron-builder",

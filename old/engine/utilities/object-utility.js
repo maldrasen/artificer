@@ -1,3 +1,20 @@
+
+// the each() function itterates over an array or an object. I use this so
+// often that I'm just adding the function to the global scope.
+global.each = function(obj, fn) {
+  let keys = [];
+  if (Array.isArray(obj)) {
+    for (let i=0; i<obj.length; i++) {
+      if (fn(obj[i], i, obj) === false) { break; }
+    }
+  } else if (typeof obj === "object" && obj !== null) {
+    keys = Object.keys(obj);
+    for (let i=0; i<keys.length; i++) {
+      if (fn(obj[keys[i]], keys[i], obj) === false) { break; }
+    }
+  }
+};
+
 global.ObjectUtility = {
 
   // The fetch function can be used to dive into an object to get nested

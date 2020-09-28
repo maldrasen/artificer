@@ -4,11 +4,16 @@ global.VERBOSE = process.argv.indexOf('-v') > 0;
 global.ROOT = require('path').normalize(`${__dirname}/..`).replace(/\\/g,"/");
 global.expect = require('chai').expect;
 
-require(`${ROOT}/engine/boot-environment.js`);
 require(`${ROOT}/engine/boot-engine.js`);
 require(`${ROOT}/engine/boot-database.js`);
 require(`${ROOT}/spec/game-helper.js`);
 require(`${ROOT}/spec/spec-helper.js`);
+
+global.Environment = {
+  name: 'spec',
+  debug: false,
+  verbose: false,
+}
 
 global.Settings = {
   Metric: false,
