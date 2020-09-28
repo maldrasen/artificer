@@ -1,2 +1,2 @@
 #!/bin/bash
-node_modules/node-sass/bin/node-sass styles/application.scss --output assets/compiled
+node_modules/node-sass/bin/node-sass artificer/styles/application.scss --output compiled

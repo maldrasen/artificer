@@ -20,17 +20,19 @@ global.Browser = (function() {
     mainWindow = new electron.BrowserWindow({
       width: (Environment.Debug ? 1800 : 1200),
       height: (Environment.Debug ? 1000 : 1000),
-      webPreferences: { nodeIntegration:true },
+      webPreferences: {
+        nodeIntegration: true,
+        // worldSafeExecuteJavaScript: true,
+        // allowRunningInsecureContent: true,
+      },
     });
 
-    mainWindow.loadURL(`file://${ROOT}/${Configuration.get('index-path')}`);
+    mainWindow.loadURL(`file://${ROOT}/artificer/client/views/index.html`);
     mainWindow.setMenu(null);
 
     if (Environment.Debug) {
       mainWindow.webContents.openDevTools();
-      mainWindow.webContents.executeJavaScript('window.DEBUG = true;');
-    } else {
-      mainWindow.webContents.executeJavaScript('window.DEBUG = false;');
+      mainWindow.webContents.send('debug-mode');
     }
 
     mainWindow.on('closed', () => {

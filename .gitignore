@@ -9,7 +9,7 @@ saves/
 !saves/.keep
 settings.json
 
-assets/compiled/
+compiled/
 coverage/
 node_modules/
 
