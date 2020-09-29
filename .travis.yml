@@ -9,7 +9,8 @@ before_install:
 install:
   - yarn install
 script:
-  - ./bin/spec.sh --verbose
+  - chmod +x bin/spec.sh
+  - bin/spec.sh --verbose
 cache:
   yarn: true
 notifications:
