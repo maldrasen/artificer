@@ -25,33 +25,4 @@ describe('Flag', function() {
     expect(Flag.lookup('flag2')).to.equal('two');
   });
 
-  describe("gender preferences", function() {
-
-    function setFlags() {
-      Flag.setAll({
-        'player.fucks-men':'never',
-        'player.fucks-futas':'maybe',
-        'player.fucks-women':'always',
-      });
-    }
-
-    it('gets the "always fuck" gender list', function() {
-      setFlags();
-      expect(Flag.alwaysFuckGenderList()).to.eql(['female']);
-    });
-
-    it('gets the "maybe fuck" gender list', function() {
-      setFlags();
-      expect(Flag.maybeFuckGenderList()).to.eql(['futa']);
-    });
-
-    it('gets the gender preference scores', function() {
-      setFlags();
-      let compiled = Flag.genderPreferenceScores();
-      expect(compiled.male).to.equal(0);
-      expect(compiled.futa).to.equal(1);
-      expect(compiled.female).to.equal(2);
-    });
-  });
-
 });

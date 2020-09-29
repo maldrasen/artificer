@@ -4,18 +4,21 @@ global.Environment = (function() {
     name: 'production',
     debug: false,
     verbose: false,
+    databaseLogging: false,
   };
 
   const DEV = {
     name: 'development',
     debug: true,
     verbose: true,
+    databaseLogging: true,
   };
 
   const TEST = {
     name: 'test',
     debug: false,
     verbose: false,
+    databaseLogging: true,
   }
 
   function init() {

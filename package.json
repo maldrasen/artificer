@@ -29,10 +29,7 @@
   "scripts": {
     "postinstall": "install-app-deps",
     "dist": "electron-builder",
-    "start": "electron . --dev",
-    "spec": "mocha spec/**/*-spec.js --test",
-    "specv": "mocha spec/**/*-spec.js --test -v",
-    "spec-cov": "nyc --reporter=html mocha spec/**/*-spec.js --test -v"
+    "start": "electron . --dev"
   },
 
   "repository": "git@github.com:maldrasen/artificer.git",

@@ -8,11 +8,28 @@ global.Loader = (function() {
   }
 
   function loadPackage(package) {
-    console.log(`  - ${package}`);
+    console.log(`  - Loading ${package} package`);
+
+    loadDirectory(`${ROOT}/packages/${package}/lib`)
+    loadDirectory(`${ROOT}/packages/${package}/data`)
+    loadFile(`${ROOT}/packages/${package}/init.js`)
+  }
+
+  function loadFile(path) {
+    if (fs.existsSync(path)) { require(path); }
   }
 
   function loadDirectory(path) {
-    console.log(`  - ${path}`);
+    if (fs.existsSync(path)) {
+      each(fs.readdirSync(path, { withFileTypes:true }), item => {
+        if (item.isFile() && item.name.match(/\.js$/)) {
+          require(`${path}/${item.name}`);
+        }
+        if (item.isDirectory()) {
+          loadDirectory(`${path}/${item.name}`);
+        }
+      });
+    }
   }
 
   return { loadDirectory, loadScenario };

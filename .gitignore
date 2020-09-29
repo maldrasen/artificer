@@ -3,9 +3,7 @@
 .npm
 
 dist/
-log/
 saves/
-!log/.keep
 !saves/.keep
 settings.json
 
@@ -16,4 +14,5 @@ node_modules/
 data/image-resources/**/_*.png
 data/image-resources/**/_*.jpg
 
+db.log
 npm-debug.log

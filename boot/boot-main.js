@@ -10,8 +10,9 @@ require(`${ROOT}/boot/settings`);
   console.log('=== Booting Main Process ===')
 
   ipcMain.on('client.ready', () => {
-    console.log("Client Ready !")
-    // Database.createDatabase(() => {
+    Database.createDatabase(() => {
+      Database.createModels();
+
     //   Loader.loadAllData(() => {
     //     console.log("\n=== Ready ===\n")
     //     Controllers.init();
@@ -19,7 +20,7 @@ require(`${ROOT}/boot/settings`);
     //     Browser.send('engine.ready');
     //     Browser.sendDataToClient();
     //   });
-    // });
+    });
   });
 
   try {
