@@ -32,7 +32,7 @@ global.Loader = (function() {
     }
   }
 
-  return { loadDirectory, loadScenario };
+  return { loadDirectory, loadPackage, loadScenario };
 
 })();
 

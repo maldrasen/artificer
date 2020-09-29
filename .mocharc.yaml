@@ -1,7 +1,7 @@
 
 color: true
-file:
-  - spec/root.js
 recursive: true
 slow: 1000
 timeout: 2000
+file:
+  - packages/spec/spec-boot.js

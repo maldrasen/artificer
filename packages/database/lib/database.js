@@ -4,7 +4,7 @@ global.Database = (function() {
   let database;
   let persistedModels = [];
 
-  function createDatabase(callback) {
+  async function createDatabase() {
     resetLog();
 
     database = new Sequelize('sqlite://:memory:', {
@@ -13,7 +13,7 @@ global.Database = (function() {
       logging: writeToLog,
     });
 
-    database.sync().then(callback);
+    await database.sync();
   }
 
   function createModels() {
