@@ -23,18 +23,16 @@ try {
   process.exit(1)
 }
 
-before(function() {
-  return new Promise(async resolve => {
+before(async () => {
 
-    // Create the database and database models.
-    if (typeof Database) {
-      await Database.createDatabase()
-      await Database.createModels();
-    }
+  // Create the database and database models if the database module is present.
+  if (typeof Database) {
+    await Database.createDatabase()
+    await Database.createModels();
+  }
 
-    // Seed all of the data objects.
+  // Seed all of the data objects.
 
-  });
 });
 
 // An after each is needed to clean up any models added to the database, and

@@ -67,4 +67,12 @@ global.Form = class Form {
   // Child classes should overwrite this function to validate forms.
   validate() {}
 
+  // Sometimes we need to add a Form to make a spec work, but we don't want to
+  // leave them lying around after the spec. In these cases call this function
+  // to clean up temporary data. This should never actually be called in the
+  // app though.
+  static remove(key) {
+    delete this.instances[key];
+  }
+
 }

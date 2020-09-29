@@ -1,4 +1,3 @@
-
 global.Flag = (function() {
 
   function createModel() {
