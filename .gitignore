@@ -15,4 +15,5 @@ data/image-resources/**/_*.png
 data/image-resources/**/_*.jpg
 
 db.log
+yarn-error.log
 npm-debug.log
