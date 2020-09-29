@@ -1,4 +1,4 @@
-Artificer.Environment = (function() {
+global.Environment = (function() {
 
   const PROD = {
     name: 'production',
@@ -22,7 +22,7 @@ Artificer.Environment = (function() {
     let env = PROD;
     if (process.argv.indexOf('--dev') > -1) { env = DEV; }
     if (process.argv.indexOf('--test') > -1) { env = TEST; }
-    Artificer.Environment = env;
+    global.Environment = env;
   }
 
   return { init }

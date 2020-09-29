@@ -1,8 +1,8 @@
-Artificer.Loader = (function() {
+global.Loader = (function() {
 
   async function load() {
-    console.log(`> Loading ${Artificer.Configuration.scenario}:${Artificer.Configuration.version} (${Artificer.Environment.name})`)
-    Promise.all(Artificer.Configuration.packages.map(async package => {
+    console.log(`> Loading ${Configuration.scenario}:${Configuration.version} (${Environment.name})`)
+    Promise.all(Configuration.packages.map(async package => {
       await loadPackage(package);
     }));
   }

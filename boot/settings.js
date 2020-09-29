@@ -1,4 +1,4 @@
-Artificer.Settings = (function() {
+global.Settings = (function() {
 
   const defaultSettings = {
     metric: false,

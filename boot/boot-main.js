@@ -1,6 +1,5 @@
 
 (function() {
-  global.Artificer = {};
 
   require(`${ROOT}/boot/browser`);
   require(`${ROOT}/boot/configuration`);
@@ -24,10 +23,10 @@
   });
 
   try {
-    Artificer.Configuration.load(require(`${ROOT}/package.json`));
-    Artificer.Environment.init();
-    Artificer.Settings.init();
-    Artificer.Loader.load().then(Artificer.Browser.init);
+    Configuration.load(require(`${ROOT}/package.json`));
+    Environment.init();
+    Settings.init();
+    Loader.load().then(Browser.init);
   } catch(e) {
     console.error("\n!!! Error Booting Main Process !!!\n");
     console.error(e);
