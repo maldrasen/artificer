@@ -1,11 +1,11 @@
 
-(function() {
+require(`${ROOT}/boot/browser`);
+require(`${ROOT}/boot/configuration`);
+require(`${ROOT}/boot/environment`);
+require(`${ROOT}/boot/loader`);
+require(`${ROOT}/boot/settings`);
 
-  require(`${ROOT}/boot/browser`);
-  require(`${ROOT}/boot/configuration`);
-  require(`${ROOT}/boot/environment`);
-  require(`${ROOT}/boot/loader`);
-  require(`${ROOT}/boot/settings`);
+(function() {
 
   console.log('=== Booting Main Process ===')
 
@@ -26,7 +26,8 @@
     Configuration.load(require(`${ROOT}/package.json`));
     Environment.init();
     Settings.init();
-    Loader.load().then(Browser.init);
+    Loader.loadScenario();
+    Browser.init();
   } catch(e) {
     console.error("\n!!! Error Booting Main Process !!!\n");
     console.error(e);
