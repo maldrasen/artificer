@@ -69,34 +69,70 @@ global.Renderer = (function() {
   //     }
   //   }
   // }
-  //
-  // function ready() {
-  //   document.title = `Artificer`
-  //
-  //   let body = $('body');
-  //   body.find('.loading').empty().append('Loading Views...');
-  //   body.append($('<div>',{ id:'mainContent' }));
-  //   body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/layers.html`));
-  //
-  //   each(TEMPLATES, template => {
-  //     body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/${template}.html`));
-  //   });
-  //
-  //   constructView();
-  // }
-  //
-  // // The prepare() function is called when a new game is started. This can be
-  // // used to clean up any state that would persist between games if a new game
-  // // is loaded.
-  // function prepare() {
-  //   Components.Backlog.prepare();
-  // }
-  //
-  // function finishedLoading() {
-  //   $('body').removeClass('main-loading').find('.loading').remove();
-  //   showMainMenu();
-  // }
-  //
+
+
+
+
+
+
+
+  function ready() {
+    document.title = `Artificer`
+
+    let body = $('body');
+    body.find('.loading').empty().append('Loading.....');
+    body.append($('<div>',{ id:'mainContent' }));
+    body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/layers.html`));
+
+    // Hmm, this works for the default templates, but I also need to add
+    // templates from the modules, so need a function that can append them as
+    // well.
+    
+    // each(TEMPLATES, template => {
+    //   body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/${template}.html`));
+    // });
+
+    initializeView();
+  }
+
+  function initializeView() {
+    // if ($('.partial').length > 0) { return renderPartial(); }
+    // finishedLoading();
+    // Elements.PagedContent.build();
+  }
+
+  function renderPartial() {
+    let partial = $($('.partial')[0]);
+    loadFile(partial.data('url'), data => {
+      partial.replaceWith(data);
+      initializeView();
+    });
+  }
+
+  // The prepare() function is called when a new game is started. This can be
+  // used to clean up any state that would persist between games if a new game
+  // is loaded.
+  function prepare() {
+    // Components.Backlog.prepare();
+  }
+
+  function finishedLoading() {
+    $('body').removeClass('main-loading').find('.loading').remove();
+    // showMainMenu();
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
   // // === Views ===
   //
   // function buildMainMenu() {
@@ -153,40 +189,26 @@ global.Renderer = (function() {
   // }
   //
   // function sendCancel() { sendCommand('game.cancel'); }
-  //
-  // // === Rendering ===
-  //
-  // function constructView() {
-  //   if ($('.partial').length > 0) { return renderPartial(); }
-  //   finishedLoading();
-  //   Elements.PagedContent.build();
-  // }
-  //
-  // function renderPartial() {
-  //   let partial = $($('.partial')[0]);
-  //   loadFile(partial.data('url'), (data)=>{
-  //     partial.replaceWith(data);
-  //     constructView();
-  //   });
-  // }
-  //
-  // function loadFile(viewPath, callback) {
-  //   fs.readFile(viewPath, 'utf8', function(err, data) {
-  //     if (err) {
-  //       throw err;
-  //     }
-  //     callback(data.replace(/@ROOT/g,ROOT));
-  //   });
-  // }
-  //
+
+  // === Rendering ===
+
+  function loadFile(viewPath, callback) {
+    fs.readFile(viewPath, 'utf8', function(err, data) {
+      if (err) {
+        throw err;
+      }
+      callback(data.replace(/@ROOT/g,ROOT));
+    });
+  }
+
   // function lock() { $('#viewLock').removeClass('hide'); }
   // function unlock() { $('#viewLock').addClass('hide'); }
-  //
-  // return {
+
+  return {
   //   init,
   //   sendCommand,
   //   sendCancel,
-  //   ready,
+    ready,
   //   prepare,
   //
   //   showCreatePlan,
@@ -204,8 +226,7 @@ global.Renderer = (function() {
   //   lock,
   //   unlock,
   //   removeOverlay,
-  // };
+  };
 
-  return {}
 
 })();

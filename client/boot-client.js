@@ -19,6 +19,7 @@ require(`${ROOT}/boot/settings`);
     Environment.init();
     Settings.init();
     Loader.loadDirectory(`${ROOT}/client/interface`);
+    Loader.loadDirectory(`${ROOT}/scenarios/${Configuration.scenario}/client`);
   } catch(e) {
     console.error("\n!!! Error Booting Client Process !!!\n");
     console.error(e);
@@ -26,7 +27,12 @@ require(`${ROOT}/boot/settings`);
 
 })();
 
+
+
 $(document).ready(function() {
+
+  // The Interface object should be added by the scenario.
+  Interface.init();
 
   // === Init Elements ===
   // Elements.Chooser.init();
@@ -59,6 +65,8 @@ $(document).ready(function() {
   // Renderer.init();
   // RendererCommands.init();
   // Client.init();
+
+  ClientReceiver.init();
 
   // Signal to the main process that the client is fully loaded.
   ipcRenderer.send('client.ready');
