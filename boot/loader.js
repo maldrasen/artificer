@@ -1,18 +1,25 @@
 global.Loader = (function() {
 
   function loadScenario() {
+    const scenarioRoot = `${ROOT}/scenarios/${Configuration.scenario}`;
+
     console.log(`> Loading ${Configuration.scenario}:${Configuration.version} (${Environment.name})`)
+
     each(Configuration.packages, package => {
       loadPackage(package);
     });
+
+    loadDirectory(`${scenarioRoot}/lib`);
+    loadDirectory(`${scenarioRoot}/data`);
+    loadFile(`${scenarioRoot}/init.js`);
   }
 
   function loadPackage(package) {
     console.log(`  - Loading ${package} package`);
 
-    loadDirectory(`${ROOT}/packages/${package}/lib`)
-    loadDirectory(`${ROOT}/packages/${package}/data`)
-    loadFile(`${ROOT}/packages/${package}/init.js`)
+    loadDirectory(`${ROOT}/packages/${package}/lib`);
+    loadDirectory(`${ROOT}/packages/${package}/data`);
+    loadFile(`${ROOT}/packages/${package}/init.js`);
   }
 
   function loadFile(path) {
