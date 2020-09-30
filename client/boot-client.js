@@ -18,6 +18,10 @@ require(`${ROOT}/boot/settings`);
     Configuration.load(require(`${ROOT}/package.json`));
     Environment.init();
     Settings.init();
+
+    require(`${ROOT}/client/elements/elements.js`)
+
+    Loader.loadDirectory(`${ROOT}/client/elements`);
     Loader.loadDirectory(`${ROOT}/client/interface`);
     Loader.loadDirectory(`${ROOT}/scenarios/${Configuration.scenario}/client`);
   } catch(e) {
@@ -62,10 +66,7 @@ $(document).ready(function() {
   // Components.TrainingPlan.init();
 
   // === Init Interface ===
-  // Renderer.init();
-  // RendererCommands.init();
-  // Client.init();
-
+  Renderer.init();
   ClientReceiver.init();
 
   // Signal to the main process that the client is fully loaded.

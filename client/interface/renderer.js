@@ -1,9 +1,4 @@
 global.Renderer = (function() {
-
-  // This will need to be broken up between core renderer components and
-  // views added by scenarios.
-  //
-  // const VIEWS = {
   //   mainMenu:   { template:'#mainMenuTemplate',     build:buildMainMenu },
   //   createPlan: { template:'#planTemplate',         title:"Create Today's Plan" },
   //   inventory:  { template:'#inventoryTemplate',    title:"Inventory",     build:Components.InventoryView.build    },
@@ -13,132 +8,44 @@ global.Renderer = (function() {
   //   player:     { template:'#playerTemplate',       title:"",              build:Components.PlayerView.build       },
   //   loadGame:   { template:'#loadGameTemplate',     title:'Load Game',     build:Components.SavedGames.buildLoad   },
   //   saveGame:   { template:'#saveGameTemplate',     title:'Save Game',     build:Components.SavedGames.buildSave   },
-  // };
-  //
-  // const TEMPLATES = [
-  //   'character-aspects',
-  //   'chooser',
-  //   'dialog',
-  //   'event',
-  //   'inventory',
-  //   'load-game',
-  //   'location',
-  //   'main-menu',
-  //   'manage',
-  //   'map',
-  //   'minion-detail',
-  //   'minion-frame',
-  //   'minion-list',
-  //   'minion-select-dialog',
-  //   'plan',
-  //   'player',
-  //   'recipes',
-  //   'rename-minion-dialog',
-  //   'report',
-  //   'save-game',
-  //   'settings-dialog',
-  //   'training-plan',
-  //   'training-report',
-  // ];
-  //
-  // function init() {
-  //   $(document).on('click', '.send-command', Elements.buttonAction(sendCommandButton));
-  //   $(document).on('click', '.close-overlay', Elements.buttonAction(removeOverlay));
-  //   $(document).on('keydown', handleKeypress);
-  // }
-  //
-  // // Universal escape handler.
-  // function handleKeypress(e) {
-  //   if (e.key == 'Escape') {
-  //     Elements.Tooltip.close();
-  //
-  //     // If a dialog or floating frame nested inside of an overlay is open, it
-  //     // should be closed without closing the parent overlay.
-  //     if (Elements.Dialog.isOpen()) { return Elements.Dialog.close(); }
-  //     if (Elements.FloatingFrame.isOpen()) { return Elements.FloatingFrame.close(); }
-  //     if (Elements.Confirm.isOpen()) { return Elements.Confirm.hideConfirm(); }
-  //     if (Components.MinionSelectDialog.isOpen()) { return Components.MinionSelectDialog.close(); }
-  //     if (Components.Backlog.isOpen()) { return Components.Backlog.close(); }
-  //     if ($('#overlayContent').children().length > 0) { return removeOverlay(); }
-  //
-  //     // A view can only be canceled when the first child of #mainContent has
-  //     // the can-cancel class. This applies to the PlanView, the
-  //     // TrainingPlanView, and the MinionListView.
-  //     if ($($('#mainContent').children()[0]).hasClass('can-cancel')) {
-  //       return sendCancel();
-  //     }
-  //   }
-  // }
 
+  const VIEWS = {
 
+  };
 
-
-
-
+  function init() {
+    // $(document).on('click', '.send-command', Elements.buttonAction(sendCommandButton));
+    // $(document).on('click', '.close-overlay', Elements.buttonAction(removeOverlay));
+  }
 
   function ready() {
-    document.title = `Artificer`
+    document.title = Configuration.title
+    $('body').removeClass('main-loading').find('.loading').remove();
 
-    let body = $('body');
-    body.find('.loading').empty().append('Loading.....');
-    body.append($('<div>',{ id:'mainContent' }));
-    body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/layers.html`));
-
-    // Hmm, this works for the default templates, but I also need to add
-    // templates from the modules, so need a function that can append them as
-    // well.
-    
-    // each(TEMPLATES, template => {
-    //   body.append($('<div>',{ class:'partial' }).data('url',`${ROOT}/client/views/templates/${template}.html`));
-    // });
-
-    initializeView();
-  }
-
-  function initializeView() {
-    // if ($('.partial').length > 0) { return renderPartial(); }
-    // finishedLoading();
-    // Elements.PagedContent.build();
-  }
-
-  function renderPartial() {
-    let partial = $($('.partial')[0]);
-    loadFile(partial.data('url'), data => {
-      partial.replaceWith(data);
-      initializeView();
-    });
+    Templates.installTemplates();
+    Renderer.showView('main-menu');
+    prepare()
   }
 
   // The prepare() function is called when a new game is started. This can be
   // used to clean up any state that would persist between games if a new game
-  // is loaded.
+  // is loaded. It should esentially reset everything in the UI, though only
+  // the backlog really maintains any kind of state right now.
   function prepare() {
     // Components.Backlog.prepare();
   }
 
-  function finishedLoading() {
-    $('body').removeClass('main-loading').find('.loading').remove();
-    // showMainMenu();
-  }
+  // === Views ===
 
 
 
 
 
 
-
-
-
-
-
-
-
-  // // === Views ===
-  //
   // function buildMainMenu() {
   //   if (DEBUG) { $('#mainMenu .debug-game-start').removeClass('hide'); }
   // }
-  //
+
   // function showMainMenu()   { showView(VIEWS.mainMenu);      }
   // function showCreatePlan() { showOverlay(VIEWS.createPlan); }
   // function showInventory()  { showOverlay(VIEWS.inventory);  }
@@ -148,12 +55,26 @@ global.Renderer = (function() {
   // function showLoadGame()   { showOverlay(VIEWS.loadGame);   }
   // function showSaveGame()   { showOverlay(VIEWS.saveGame);   }
   // function showMap()        { showOverlay(VIEWS.map);        }
-  //
-  // function showView(view) {
-  //   $('#mainContent').empty().append($(view.template).html())
-  //   if (view.build) { view.build(); }
-  // }
-  //
+
+  // Add a view to the view registry. This will be called by scenarios to add
+  // new views.
+  function addView(code, view) {
+
+  }
+
+  // Show view will build one of the registered views. A view should have either
+  // a template, which is a selector to its template element, or a path. Views
+  // with paths to an html file will have that html put into the main content
+  // element. A view can also have an optional build function that's called
+  // once the view has been loaded.
+  function showView(viewCode) {
+    let view = VIEWS[viewCode];
+    if (view == null) { throw `There is no view (${viewCode}) in the view registry.` }
+    if (view.template) { $('#mainContent').empty().append($(view.template).html()); }
+    if (view.path) { throw `TODO: Load this html file into the main content` }
+    if (view.build) { view.build(); }
+  }
+
   // function showOverlay(view) {
   //   $('#overlayFrame').removeClass('hide').find('.title').empty().append(view.title);
   //   $('#overlayContent').append($(view.template).html());
@@ -165,15 +86,22 @@ global.Renderer = (function() {
   //   $('#overlayContent').empty();
   // }
   //
-  // // === Shared Button Actions ===
+
+
+
+
+
+
+
+  // === Shared Button Actions ===
+
+  // The standard view link will look something like this:
   //
-  // // The standard view link will look something like this:
-  // //
-  // //   <a href='#' class='send-command' data-command='model.action'>Title</a>
-  // //
-  // // This will send a command down to the main thread. Commands will probably
-  // // also need to support a number of other data attributes that are used as
-  // // arguments. They'll be added as we find them.
+  //   <a href='#' class='send-command' data-command='model.action'>Title</a>
+  //
+  // This will send a command down to the main thread. Commands will probably
+  // also need to support a number of other data attributes that are used as
+  // arguments. They'll be added as we find them.
   // function sendCommandButton() {
   //   let data = $(this).data();
   //   let options = {};
@@ -190,6 +118,10 @@ global.Renderer = (function() {
   //
   // function sendCancel() { sendCommand('game.cancel'); }
 
+
+
+
+
   // === Rendering ===
 
   function loadFile(viewPath, callback) {
@@ -205,27 +137,13 @@ global.Renderer = (function() {
   // function unlock() { $('#viewLock').addClass('hide'); }
 
   return {
-  //   init,
+    init,
+    ready,
+    addView,
+    showView,
+    prepare,
   //   sendCommand,
   //   sendCancel,
-    ready,
-  //   prepare,
-  //
-  //   showCreatePlan,
-  //   showInventory,
-  //   showMainMenu,
-  //   showManage,
-  //   showMinion,
-  //   showPlayer,
-  //   showLoadGame,
-  //   showSaveGame,
-  //   showMap,
-  //
-  //   loadFile,
-  //
-  //   lock,
-  //   unlock,
-  //   removeOverlay,
   };
 
 

@@ -1,6 +1,6 @@
 {
   "name": "artificer",
-  "version": "0.0.0",
+  "version": "0.6.0",
   "scenario": "cinnamon",
   "description": "The Artificer Project, Book 0",
   "main": "main.js",

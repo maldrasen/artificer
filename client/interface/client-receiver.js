@@ -2,7 +2,7 @@ global.ClientReceiver = (function() {
 
   function init() {
     ipcRenderer.on('engine.ready', Renderer.ready);
-    
+
     // ipcRenderer.on('init.icon-library', Elements.ImageResource.initIconLibrary);
     // ipcRenderer.on('init.aspect-library', Aspects.init);
     //
