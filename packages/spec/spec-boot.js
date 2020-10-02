@@ -44,12 +44,21 @@ afterEach(function() {
 });
 
 // We need to load all of the packages required by this spec. Every package
-// should require the engine package and itself, so they can be ommitted from
-// the spec config.
+// should require the database, the engine and itself, so they can be ommitted
+// from the spec config.
 function loadDependencies() {
-  Loader.loadPackage('engine');
-  Loader.loadPackage(packageName);
+  let defaultPackages = ['engine','database','utility'];
+
+  each(defaultPackages, package => {
+    Loader.loadPackage(package);
+  })
+
+  if (ArrayUtility.contains(defaultPackages,packageName) == false) {
+    Loader.loadPackage(packageName);
+  }
+
   // Read loadDependencies out of spec-config.yaml in this package and include them.
+  Loader.initializeScenario();
 }
 
 function loadEnvironment() {

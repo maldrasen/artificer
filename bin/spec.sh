@@ -1,6 +1,7 @@
 #!/bin/bash
 
-packages=(database)
+packages=(database engine)
+# packages=(engine)
 
 echo ""
 echo "=== Running Specs ==="

@@ -37,7 +37,7 @@ global.Flag = (function() {
       if (Flag._cache[code] != null) {
         value = Flag._cache[code];
       }
-      else if (FlagInfo.instances[code] != null) {
+      else if (FlagInfo.instances && FlagInfo.instances[code] != null) {
         value = FlagInfo.instances[code].default
       }
 
@@ -59,7 +59,7 @@ global.Flag = (function() {
         return delete Flag._cache[code];
       }
 
-      let info = FlagInfo.instances[code];
+      let info = FlagInfo.instances && FlagInfo.instances[code];
       if (info) {
         if (info.validateIn != null && info.validateIn.indexOf(value) < 0) { throw `Cannot set flag ${code} to ${value}. Validation failed.` }
         if (info.validateInteger && Number.isInteger(value) == false)      { throw `Cannot set flag ${code} to ${value}. Validation failed.` }
@@ -78,7 +78,6 @@ global.Flag = (function() {
         console.log(`    ${code}  -  ${Flag._cache[code]}`);
       });
     }
-
 
     Flag.clear();
   }

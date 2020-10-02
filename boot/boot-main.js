@@ -26,6 +26,7 @@ require(`${ROOT}/boot/settings`);
     Environment.init();
     Settings.init();
     Loader.loadScenario();
+    Loader.initializeScenario();
     Browser.init();
   } catch(e) {
     console.error("\n!!! Error Booting Main Process !!!\n");

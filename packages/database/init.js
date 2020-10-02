@@ -1,4 +1,5 @@
-
 global.Sequelize = require('sequelize');
 
-Database.addPersistedModel(Flag);
+Loader.onScenarioLoad(() => {
+  Database.addPersistedModel(Flag);
+})

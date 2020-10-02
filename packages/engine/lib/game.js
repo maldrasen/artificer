@@ -9,7 +9,6 @@ global.Game = (function() {
   let _currentEvent;
   let _eventQueues;
 
-
   async function start(debug) {
     clearEventQueues();
 

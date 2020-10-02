@@ -1,4 +1,5 @@
 global.Loader = (function() {
+  let _initFunctions = [];
 
   function loadScenario() {
     const scenarioRoot = `${ROOT}/scenarios/${Configuration.scenario}`;
@@ -39,7 +40,25 @@ global.Loader = (function() {
     }
   }
 
-  return { loadDirectory, loadPackage, loadScenario };
+  // The scenarios can include an init.js file at the scenario root if needed.
+  // The init file can register an init function that is run when all of the
+  // scenario's dependent packages have been loaded.
+
+  function onScenarioLoad(initFunction) {
+    if (typeof initFunction == 'function') { _initFunctions.push(initFunction); }
+  }
+
+  function initializeScenario() {
+    each(_initFunctions, initFunction => { initFunction(); });
+  }
+
+  return {
+    loadDirectory,
+    loadPackage,
+    loadScenario,
+    onScenarioLoad,
+    initializeScenario
+  };
 
 })();
 

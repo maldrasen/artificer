@@ -11,7 +11,7 @@ describe('AvailableEvent', function() {
     Game._instance.phase = 'morning';
   }
 
-  it('can add an event with default values', function(done) {
+  it.only('can add an event with default values', function(done) {
     AvailableEvent.add('looking-outside-1').then(event => {
       expect(event.code).to.equal('looking-outside-1');
       expect(event.eventType).to.equal('location');
