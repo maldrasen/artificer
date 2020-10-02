@@ -67,7 +67,7 @@ $(document).ready(function() {
 
   // === Init Interface ===
   Renderer.init();
-  ClientReceiver.init();
+  Receiver.init();
 
   // Signal to the main process that the client is fully loaded.
   ipcRenderer.send('client.ready');

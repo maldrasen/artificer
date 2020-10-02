@@ -1,5 +1,11 @@
 {
   "title": "Artificer - Book 0 - Cinnamon ",
+
+  "events":{
+    "gameStart":"game-start-1",
+    "debugStart":"debug-create-player"
+  },
+
   "packages": [
     "engine",
     "database"

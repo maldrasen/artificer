@@ -1,14 +1,14 @@
-global.ClientReceiver = (function() {
+global.Receiver = (function() {
 
   function init() {
     ipcRenderer.on('engine.ready', Renderer.ready);
+    ipcRenderer.on('game.prepare', Renderer.prepare);
 
     // ipcRenderer.on('init.icon-library', Elements.ImageResource.initIconLibrary);
     // ipcRenderer.on('init.aspect-library', Aspects.init);
     //
     // ipcRenderer.on('alert', Alerts.showEngineAlert);
     //
-    // ipcRenderer.on('game.prepare', Renderer.prepare);
     // ipcRenderer.on('game.file-list', Components.SavedGames.showSaves);
     // ipcRenderer.on('render.main-menu', Renderer.showMainMenu);
     //

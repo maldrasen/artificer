@@ -2,15 +2,13 @@ global.GameController = (function() {
 
   function init() {
     ipcMain.on('game.start', () => {
-      console.log("Game Start")
-      // Browser.send('game.prepare');
-      // Game.start(false);
+      Browser.send('game.prepare');
+      Game.start(false);
     });
 
     ipcMain.on('game.debug-start', () => {
-      console.log("Game Debug Start")
-      // Browser.send('game.prepare');
-      // Game.start(true);
+      Browser.send('game.prepare');
+      Game.start(true);
     });
 
     ipcMain.on('game.quit', () => {
