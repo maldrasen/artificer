@@ -1,96 +1,68 @@
+// The primary purpose of the Game object is to manage the event queue. Because
+// the implementation of the phased queues is rather complex I want to keep the
+// Game as part of the main engine package. A specific scenario may not use all
+// of the phases and flags and such, but it's better for a scenario to just
+// work around unused phases than to make everything extremely configurable.
+
 global.Game = (function() {
 
   let _currentEvent;
   let _eventQueues;
 
-  // We might as well keep everything working the same as in the Faingorn
-  // game, with the event phases and what not. There was really never any
-  // reason though for game to be a model. Location, food, etc can all just be
-  // flags.
 
-  function start(debug) {
+  async function start(debug) {
     clearEventQueues();
 
-    // Game.addEvent(debugStart ?
-    //   Configuration.events.debugStart:
-    //   Configuration.events.gameStart);
+    setPhase('early');
+    setLocation('basement');
+    setDayNumber(1);
+    setFood(1);
 
-    // await Composer.render();
+    Game.addEvent(debug ?
+      Configuration.events.debugStart:
+      Configuration.events.gameStart);
+
+    await Composer.render();
   }
 
+  async function clear() {
+    clearEventQueues();
+    Flag.clear();
 
+    await Promise.all(Database.getPersistedModels().map(model => {
+      return model.destroy({ where:{}, truncate:true })
+    }));
+  }
 
+  function getCurrentEvent() { return _currentEvent; }
+  function getDayNumber() { return Flag.lookup('game.dayNumber'); }
+  function getFood() { return Flag.lookup('game.food'); }
+  function getLocation() { return Flag.lookup('game.location'); }
+  function getPhase() { return Flag.lookup('game.phase'); }
 
+  function setCurrentEvent(event) { _currentEvent = event; }
+  function setDayNumber(day) { Flag.set('game.dayNumber',day); }
+  function setLocation(code) { Flag.set('game.location',code); }
+  function setFood(food) { Flag.set('game.food',food); }
 
+  // Is this actually a method or was it a property?
+  // time: function() { return Game.EventPhases[Game._instance.phase].label; }
 
-
-
-  // global.Game = Database.instance().define('game', {
-  //   location:                 { type:Sequelize.STRING  },
-  //   dayNumber:                { type:Sequelize.INTEGER },
-  //   phase:                    { type:Sequelize.STRING  },
-  //   food:                     { type:Sequelize.INTEGER },
-  //   currentProject:           { type:Sequelize.STRING  },
-  //   currentProjectProgress:   { type:Sequelize.INTEGER },
-  // },{
-  //   timestamps: false,
-  //   getterMethods: {
-  //     time: function() { return Game.EventPhases[Game._instance.phase].label; }
-  //   }
-  // });
-  //
-  //
-  // Game.instance = function() { return Game._instance; }
-  //
-  // Game.saveGame = async function() {
-  //   await Game._instance.save();
-  // }
-  //
   // Game.loadGame = async function() {
   //   Game.clearEventQueues();
   //   Game._instance = await Game.findByPk(1);
   // }
-  //
-  // Game.start = async function(debugStart) {
-  //   if (Game._instance != null) { throw "Cannot start a new Game. A Game currently exists." }
-  //
-  //   Game.clearEventQueues();
-  //   Game._instance = await Game.create({
-  //     id: 1,
-  //     dayNumber: 1,
-  //     phase: 'early',
-  //     location: 'courtyard',
-  //     food: Configuration.startingFood,
-  //   });
-  //
-  //   debugStart ?
-  //     (await Configuration.onDebugStart()):
-  //     (await Configuration.onStart());
-  //
-  //   await Composer.render();
-  // }
-  //
-  // Game.clear = async function() {
-  //   Game.clearEventQueues();
-  //   Game._instance = null;
-  //   Flag.clear();
-  //
-  //   await Promise.all(Database.getPersistedModels().map(model => {
-  //     return model.destroy({ where:{}, truncate:true })
-  //   }));
-  // }
-  //
+
   // Game.nextDay = async function() {
   //   Game.setDayNumber(Game.dayNumber()+1);
   //   Game.log(`Starting Day ${Game.dayNumber()}`,true);
   //
-  //   await Game.setPhase('wake');
+  //   await setPhase('wake');
   // }
   //
   // // === Short Cut Accessors and Mutators ========================================
   //
   // Game.dayNumber = function() { return Game._instance.dayNumber; }
-  // Game.phase = function() { return Game._instance.phase; }
   // Game.time = function() { return Game._instance.time; }
   // Game.location = function() { return Game._instance.location; }
   // Game.food = function() { return Game._instance.food; }
@@ -117,15 +89,12 @@ global.Game = (function() {
 
   // === Game Event Queues =======================================================
 
-  // Game.log = function(message,header) {
-  //   if (Environment.Verbose) {
-  //     console.log(header ? `\n=== ${message} ===` : `-     ${message}`);
-  //   }
-  // }
-
-  function currentEvent() {
-    return _currentEvent;
+  function log(message,header) {
+    if (Environment.Verbose) {
+      console.log(header ? `\n=== ${message} ===` : `-     ${message}`);
+    }
   }
+
 
   function clearEventQueues() {
     _currentEvent = null;
@@ -152,7 +121,7 @@ global.Game = (function() {
     ensureValidEvent(event);
 
     Game.log(`Event Added [${phase}]  - ${event.code}`);
-    Game._eventQueues[phase].push({ event, state });
+    _eventQueues[phase].push({ event, state });
   }
 
   // // Start a location event. Location events are usually made available in the
@@ -169,7 +138,7 @@ global.Game = (function() {
   //   }
   //
   //   Game.log(`Location Event Started - ${code}`);
-  //   Game._currentEvent = { event:Event.lookup(code), state:state };
+  //   Game.setCurrentEvent({ event:Event.lookup(code), state:state });
   // }
   //
   // // chainEvent() continues the currently running event. The state carries over
@@ -183,7 +152,7 @@ global.Game = (function() {
   // // choices object. If we pass the choices back into the chain though we
   // // automatically fetch the actors from it.
   // Game.chainEvent = function(code, state={}, choices={}) {
-  //   if (Game._currentEvent == null) { throw `Cannot chain event because there is no current event.` }
+  //   if (Game.setCurrentEvent(null)) { throw `Cannot chain event because there is no current event.` }
   //
   //   if (choices.event && choices.event.actorIDs) {
   //     if (state.actors == null) { state.actors = {}; }
@@ -193,8 +162,8 @@ global.Game = (function() {
   //   }
   //
   //   Game.log(`Chained: ${code}`);
-  //   Game._currentEvent.event = Event.lookup(code);
-  //   Game._currentEvent.state = extend(Game._currentEvent.state, state);
+  //   _currentEvent.event = Event.lookup(code);
+  //   _currentEvent.state = extend(_currentEvent.state, state);
   // }
   //
   // // The pullNextEvent() function is used to display the next event that should
@@ -204,13 +173,13 @@ global.Game = (function() {
   // // queue if we advance phases until we reach a control phase we stop and return
   // // null.
   // Game.pullNextEvent = async function() {
-  //   let phase = Game.phase();
+  //   let phase = getPhase();
   //
   //   // There is an event, wonderful. Remove it from the event queue for the
   //   // phase, set it to the current event and return it.
   //   if (Game.checkEvent()) {
-  //     Game._currentEvent = Game._eventQueues[phase].shift();
-  //     return Game._currentEvent;
+  //     setCurrentEvent(_eventQueues[phase].shift());
+  //     return _currentEvent;
   //   }
   //
   //   if (phase == 'wake') {
@@ -261,44 +230,44 @@ global.Game = (function() {
   // // If an event or events have been set for the current game phase then fetch
   // // the first event in the queue, if a queue for this phase exists.
   // Game.checkEvent = function(phase) {
-  //   return (Game._eventQueues[phase||Game.phase()]||[])[0];
+  //   return (_eventQueues[phase||getPhase()]||[])[0];
   // }
-  //
-  // // When the game phase changes we need to add any valid available events that
-  // // may be ready to enqueue.
-  // Game.setPhase = async function(phase) {
-  //   Game._instance.phase = phase;
-  //   Game.log(`[phase change] ${phase}`);
-  //
-  //   let available = (await AvailableEvent.validEvents()).filter(availableEvent => {
-  //     return Random.upTo(100) < availableEvent.chance
-  //   });
-  //
-  //   // If multiple events are available for this single event phase, then just
-  //   // choose one at random. I don't really have any way of knowing which event
-  //   // should take priority over another right now, though that might be a
-  //   // thing I want to add.
-  //   if (available.length > 0 && Game.EventPhases[Game.phase()].type == 'single') {
-  //     available = [Random.from(available)];
-  //   }
-  //
-  //   await Promise.all(available.map(async availableEvent => {
-  //     Game.addEvent(availableEvent.code, availableEvent.state)
-  //     await availableEvent.destroy();
-  //   }));
-  // }
-  //
+
+  // When the game phase changes we need to add any valid available events that
+  // may be ready to enqueue.
+  async function setPhase(phase) {
+    Game.log(`[phase change] ${phase}`);
+    Flag.set('game.phase',phase);
+
+    let available = (await AvailableEvent.validEvents()).filter(availableEvent => {
+      return Random.upTo(100) < availableEvent.chance
+    });
+
+    // If multiple events are available for this single event phase, then just
+    // choose one at random. I don't really have any way of knowing which event
+    // should take priority over another right now, though that might be a
+    // thing I want to add.
+    if (available.length > 0 && Game.EventPhases[getPhase()].type == 'single') {
+      available = [Random.from(available)];
+    }
+
+    await Promise.all(available.map(async availableEvent => {
+      Game.addEvent(availableEvent.code, availableEvent.state)
+      await availableEvent.destroy();
+    }));
+  }
+
   // // Ending an event is a little tricky. If an event is chained it should happen
   // // in the event's onFinish() function. If a new event hasn't been chained we
   // // want to clear the current event.
   // Game.endEvent = async function(choices) {
-  //   if (Game._currentEvent) {
-  //     const startingCode = Game._currentEvent.event.code;
+  //   if (_currentEvent) {
+  //     const startingCode = _currentEvent.event.code;
   //     await Event.onFinish(choices);
   //
-  //     if (startingCode == Game._currentEvent.event.code) {
+  //     if (startingCode == _currentEvent.event.code) {
   //       Game.log(`Ending Event: ${startingCode}`);
-  //       Game._currentEvent = null;
+  //       setCurrentEvent(null);
   //     }
   //   }
   // }
@@ -314,13 +283,13 @@ global.Game = (function() {
   function ensureValidEvent(event) {
     const eventPhase = event.setting.phase;
     const eventPhaseData = Game.EventPhases[eventPhase];
-    const currentPhase = Game._instance.phase;
+    const currentPhase = getPhase();
     const currentPhaseData = Game.EventPhases[currentPhase];
 
     if (ArrayUtility.contains(['single','queue'],eventPhaseData.type) == false) {
       throw `Cannot add ${event.code}. ${eventPhase} has the wrong phase type.`; }
 
-    if (eventPhaseData.type == 'single' && Game._eventQueues[eventPhase].length > 0) {
+    if (eventPhaseData.type == 'single' && _eventQueues[eventPhase].length > 0) {
       throw `Cannot add ${event.code}. An event is already set for ${phase}`; }
 
     if (eventPhaseData.control != currentPhaseData.control) {
@@ -328,7 +297,10 @@ global.Game = (function() {
   }
 
   return {
+    log,
+    getPhase,
     start,
+    addEvent,
   };
 
 })();

@@ -8,6 +8,7 @@
 
   "packages": [
     "engine",
-    "database"
+    "database",
+    "utility"
   ]
 }
