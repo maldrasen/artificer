@@ -1,7 +1,7 @@
 describe('AvailableEvent', function() {
 
   before(async function() {
-    Event.build('game-start-1',     { setting: { phase:'morning', location:'void' }});
+    Event.build('game-start-1',     { setting: { phase:'early', location:'void' }});
     Event.build('location-event-1', { setting: { phase:'morning', location:'courtyard' }});
     Event.build('location-event-2', { setting: { phase:'morning', location:'courtyard' }});
     Event.build('location-event-3', { setting: { phase:'morning', location:'basement' }});
@@ -10,12 +10,14 @@ describe('AvailableEvent', function() {
 
   async function setupLocationEvents() {
     await Game.start();
-    await AvailableEvent.add('location-event-1');
-    await AvailableEvent.add('location-event-2', { requires:'flag.derp' });
-    await AvailableEvent.add('location-event-3');
-
-    Game.setLocation('courtyard');
-    Game._instance.phase = 'morning';
+    console.log("=== OK? ===")
+    // await AvailableEvent.add('location-event-1');
+    // await AvailableEvent.add('location-event-2', { requires:'flag.derp' });
+    // await AvailableEvent.add('location-event-3');
+    //
+    //
+    // Game.setLocation('courtyard');
+    // Game._instance.phase = 'morning';
   }
 
   it('can add an event with default values', function(done) {
@@ -28,7 +30,7 @@ describe('AvailableEvent', function() {
       done()
     });
   });
-  //
+
   // it('can get valid location events for the current location', function(done) {
   //   setupLocationEvents().then(() => {
   //     AvailableEvent.currentLocationEvents('courtyard').then(events => {
@@ -38,7 +40,7 @@ describe('AvailableEvent', function() {
   //     });
   //   });
   // });
-  //
+
   // it('can get all valid location events', function(done) {
   //   setupLocationEvents().then(() => {
   //     AvailableEvent.locationEvents().then(events => {
