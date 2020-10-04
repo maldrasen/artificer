@@ -1,0 +1,37 @@
+input {
+  font-family: roboto;
+  margin: 0;
+  color: $fg-strong;
+  background-color: $bg-input;
+  border: $border-input;
+}
+input:hover {
+  border: $border-input-hover;
+}
+input:focus {
+  border: $border-input-focus;
+}
+
+input[type="text"] {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.inline-fields {
+  margin: 20px 50px;
+
+  .field-row {
+    height: 40px;
+    line-height: 40px;
+  }
+
+  label {
+    display: inline-block;
+    width: 85px;
+    padding-right: 10px;
+  }
+
+  input { width:300px; }
+  input.short { width: 150px; }
+
+}

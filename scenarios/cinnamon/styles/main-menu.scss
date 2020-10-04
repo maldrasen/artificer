@@ -1,0 +1,85 @@
+#mainMenu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(0,0,0);
+  z-index: 10;
+
+  h1 { font-family: roboto-bold; }
+  h3 { font-family: roboto-light; }
+
+  .version {
+    position: relative;
+    top: -17px;
+    left: 44px;
+    font-size: $fs-tiny;
+    font-family: roboto-light;
+    opacity: .5;
+  }
+
+  .dev.version {
+    color: $fg-button-warning;
+  }
+
+  .button-list { margin: 40px 0; }
+  .button-list li { text-align: center; }
+
+  .button-list a {
+    margin-bottom: 5px;
+    width: 200px;
+    text-align: left;
+    background-color: rgba(0,0,0,0.2);
+  }
+
+  .main-image {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat-x: no-repeat;
+    background-repeat-y: no-repeat;
+    background-position: right;
+    background-image: url("../../assets/images/main-menu.jpg");
+    z-index: 20;
+  }
+
+  .left-side {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    z-index: 30;
+  }
+
+  .commands {
+    margin: 20px;
+    padding: 20px;
+    width: 400px;
+    background-color: transparentize($bg-body, 0.2);
+    border: $border-very-light;
+    box-shadow: $shadow-overlay;
+  }
+
+  .notes {
+    margin: 20px;
+    padding: 20px;
+    width: 400px;
+    background-color: transparentize($bg-body, 0.2);
+    border: $border-very-light;
+    box-shadow: $shadow-overlay;
+  }
+}
+
+#settingsDialog {
+  dt {
+    width: 120px;
+    line-height: 40px;
+  }
+  dd {
+    margin-bottom: 5px;
+  }
+}
