@@ -20,6 +20,8 @@ global.Database = (function() {
     await Promise.all(persistedModels.map(async model => {
       await model.createModel();
     }));
+
+    await database.sync();
   }
 
   function logPath() {

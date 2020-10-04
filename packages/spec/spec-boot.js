@@ -23,11 +23,11 @@ try {
   process.exit(1)
 }
 
-before(async () => {
+before(async function() {
 
   // Create the database and database models if the database module is present.
   if (typeof Database) {
-    await Database.createDatabase()
+    await Database.createDatabase();
     await Database.createModels();
   }
 
