@@ -1,0 +1,23 @@
+{
+  "clientFiles":[
+    "views/*"
+  ],
+
+  "sharedFiles":[
+    "configuration"
+  ],
+
+  "engineFiles":[
+    "events/*",
+    "events-missions/*",
+    "flags/*",
+    "hazards/*",
+    "locations/*",
+    "missions/*",
+    "projects/*",
+    "roles/*",
+    "game-stages/*",
+    "task-stories/*",
+    "event-functions"
+  ]
+}

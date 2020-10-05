@@ -1,0 +1,12 @@
+{
+  "clientFiles":[],
+  "sharedFiles":[],
+  "engineFiles":[
+    "configuration",
+    "backgrounds",
+    "choosers",
+    "events",
+    "icons",
+    "portraits"
+  ]
+}

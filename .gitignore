@@ -3,17 +3,17 @@
 .npm
 
 dist/
+log/
 saves/
+!log/.keep
 !saves/.keep
 settings.json
 
-compiled/
+assets/compiled/
 coverage/
 node_modules/
 
 data/image-resources/**/_*.png
 data/image-resources/**/_*.jpg
 
-db.log
-yarn-error.log
 npm-debug.log

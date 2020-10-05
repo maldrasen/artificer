@@ -1,8 +1,7 @@
 global.Elements = (function() {
 
   function reset() {
-    // Also close all windows in window manager I think?
-    // Elements.Tooltip.close();
+    Elements.Tooltip.close();
   }
 
   function clearSelection() {

@@ -1,0 +1,53 @@
+
+.equipment-frame {
+
+  li.slot {
+    display: flex;
+    padding: 5px;
+    margin: 5px;
+    border: $border-very-light;
+    box-shadow: $shadow-shallow;
+
+    &.empty .info-area { color:$fg-very-weak; }
+
+    .button-area {
+      flex-grow: 0;
+      height: 44px;
+    }
+    .info-area {
+      flex-grow: 1;
+      height: 44px;
+      margin-left: 5px;
+    }
+  }
+}
+
+.available-equipment-list {
+  padding: 5px;
+
+  .available-equipment-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    background-color: $bg-body-darker;
+    border: $border-light;
+    box-shadow: $shadow-shallow;
+  }
+  .available-equipment-item:hover {
+    border: $border-normal;
+    cursor: pointer;
+  }
+}
+
+.condition { font-size:$fs-tiny; }
+.condition.condition-excellent { color:$fg-health-healthy;  }
+.condition.condition-good      { color:$fg-health-injured;  }
+.condition.condition-fair      { color:$fg-health-bad;      }
+.condition.condition-bad       { color:$fg-health-horrible; }
+.condition.condition-broken    { color:$fg-health-critical; }
+
+// TODO: use the same values as the health here
+// $fg-health-horrible: rgb(129, 64, 38);
+// $fg-health-bad: rgb(164, 116, 60);
+// $fg-health-injured: rgb(177, 176, 104);

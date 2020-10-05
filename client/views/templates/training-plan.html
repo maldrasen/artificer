@@ -1,0 +1,58 @@
+<div id='trainingPlanTemplate' class='hide'>
+  <ul class='main-area'>
+    <li class='add-minion-item'>
+      <a href='#' class='add-minion-button button-primary'>Train a minion</a>
+    </li>
+  </ul>
+  <div class='plan-footer'>
+    <a href='#' class='training-plan-cancel button'>Cancel</a>
+    <a href='#' class='training-plan-confirm button-primary'>Confirm</a>
+  </div>
+</div>
+
+<div id='trainingMinionPlanTemplate' class='hide'>
+  <li class='minion-plan'>
+    <a href='#' class='cancel-training'>🗙</a>
+
+    <div class='top-row'>
+      <div class='minion-data'>
+        <div class='portrait'></div>
+        <div class='name'></div>
+        <div class='lust'><span class='lust-value'></span> <span class='lust-word'></span></div>
+      </div>
+      <div class='course-tab-buttons tab-buttons'>
+        <a href='#' class='tab-button active' data-tab='.physical-tab'>Physical</a>
+        <a href='#' class='tab-button' data-tab='.social-tab'>Social</a>
+        <a href='#' class='tab-button' data-tab='.sexual-tab'>Sexual</a>
+      </div>
+    </div>
+
+    <div class='course-tab-container tab-container'>
+      <div class='tab active physical-tab' class='hide'>
+        <ul class='flex course-list'></ul>
+      </div>
+
+      <div class='tab social-tab' class='hide'>
+        <ul class='flex course-list'></ul>
+      </div>
+
+      <div class='tab sexual-tab' class='hide'>
+        <ul class='flex course-list'></ul>
+      </div>
+    </div>
+
+    <div class='selected-course hide'></div>
+  </li>
+</div>
+
+<div id='trainingCourseTemplate' class='hide'>
+  <div id='training-course'>
+    <div class='top-row'>
+      <a href='#' class='float-right cancel-course'>❮</a>
+      <span class='name'></span>
+      <span class='consent-span'></span>
+      <div class='description'></div>
+    </div>
+    <div class='style-select hide'></div>
+  </div>
+</div>

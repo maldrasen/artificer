@@ -1,0 +1,36 @@
+<div id='locationTemplate' class='hide'>
+  <div class='location-menu'>
+    <a href='#' class='float-right menu-show-settings'>Settings</a>
+    <a href='#' class='menu-show-save'>Save</a>
+    <a href='#' class='menu-show-load'>Load</a>
+    <a href='#' class='send-command' data-command='game.quick-save'>Quick Save</a>
+    <a href='#' class='send-command' data-command='game.quit'>Quit</a>
+    <a href='#' class='menu-show-map hide'>Map</a>
+    <a href='#' class='menu-show-minions hide'>Minions</a>
+    <a href='#' class='menu-show-player'></a>
+    <a href='#' class='menu-show-inventory hide'>Inventory</a>
+  </div>
+
+  <div class='location'>
+    <div class='location-info panel'>
+      <div class='panel-header'>
+        <span class='location-name enbiggen'></span>
+        <span class='date'></span>
+      </div>
+      <div class='location-description'></div>
+    </div>
+
+    <div class='location-actions panel'>
+      <div class='panel-header margin-bottom'>
+        <span class='enbiggen'>Actions</span>
+      </div>
+      <ul class='actions'>
+        <li class='small-margin-bottom'><a href='#' class='active-event-notification start-location-event button-primary hide'>(!) Event</a></li>
+        <li class='small-margin-bottom'><a href='#' class='send-command create-plan-action button-primary hide' data-command='game.open-plan-view'>Create Today's Plan</a></li>
+        <li class='small-margin-bottom'><a href='#' class='send-command train-action button-primary hide' data-command='game.open-training-view'>Train Minions</a></li>
+        <li class='small-margin-bottom'><a href='#' class='send-command manage-action button-primary hide' data-command='game.open-manage-view'>Keep Management</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>

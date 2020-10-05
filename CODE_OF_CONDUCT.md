@@ -46,7 +46,7 @@ event. Representation of a project may be further defined and clarified by proje
 ## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project lead at
-maldrasen@gmail.com. He's a grouchy old satyr and will review and investigate all complaints, and will respond in a way that he deems appropriate to the circumstances. He is bound by ancient rites to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
+maldrasen@gmail.com. He's a grouchy demonic dragon and will review and investigate all complaints, and will respond in a way that he deems appropriate to the circumstances. He is bound by ancient rites to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
 
 ## Attribution
 

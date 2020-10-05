@@ -1,0 +1,90 @@
+
+$minion-panel-width: 480px;
+
+#minionSelectDialog {
+  position: absolute;
+  top: 10vh;
+  width: 100%;
+  z-index: calc(#{$z-overlay} + 1);
+
+  .minion-select-panel {
+    margin: auto;
+    width: $minion-panel-width;
+    // height: 80vh; // When we have enough minions we should figure out the
+                     // scrolling for this element. Should lock it to 80%
+                     // height and include a scrolling panel, probably.
+    background-color: $bg-overlay-content;
+    border: $border-light;
+    box-shadow: $shadow-overlay;
+    overflow: hidden;
+  }
+
+  .minion-select-title {
+    padding: 5px 10px;
+    margin: 1px;
+    width: calc(#{$minion-panel-width} - 22px);
+    background-color: rgba(0,0,0,0.33);
+  }
+
+  .minion-select-footer {
+    position: absolute;
+    bottom: 1px;
+    margin: 1px;
+    width: calc(#{$minion-panel-width} - 2px);
+    background-color: rgba(0,0,0,0.33);
+
+    .actions {
+      padding: 5px;
+      text-align: right;
+    }
+  }
+
+  .minions {
+    margin: 10px 10px 54px;
+  }
+
+  .minion {
+    display: flex;
+    align-items: center;
+    border: $border-transparent;
+    margin-bottom: 3px;
+    padding-left: 5px;
+    height: 41px;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    img {
+      height: 30px;
+      width: 30px;
+    }
+    .name {
+      margin: 0 10px;
+      font-size: $fs-big;
+      color: $fg-strong;
+    }
+    .attributes {
+      position: relative;
+      top: 2px;
+      font-size: $fs-small;
+      color: $fg-weak;
+    }
+
+  }
+  .minion:last-child {
+    margin-bottom: 0;
+  }
+  .minion.selected {
+    border: $border-normal;
+    background-color: rgba(0,0,0,0.5);
+  }
+}
+
+#minionSelectCover {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $bg-overlay-frame;
+  z-index: $z-overlay;
+}
