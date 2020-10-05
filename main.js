@@ -8,6 +8,6 @@ global.app = electron.app;
 
 global.ROOT = require('path').normalize(`${__dirname}`).replace(/\\/g,"/");
 
-console.log("Once more into the breach.")
+process.exit(0)
 
 // require(`${ROOT}/boot/boot-main`);
