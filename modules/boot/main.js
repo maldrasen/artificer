@@ -3,6 +3,7 @@ global.ROOT = require('path').normalize(`${__dirname}/../..`).replace(/\\/g,"/")
 global.fs = require('fs');
 global.hash = require('object-hash');
 global.each = require('iterate-object');
+global.postal = require('postal');
 
 require(`${ROOT}/modules/boot/lib/configuration`);
 require(`${ROOT}/modules/boot/lib/environment`);
@@ -16,9 +17,7 @@ require(`${ROOT}/modules/boot/lib/settings`);
     Configuration.load(require(`${ROOT}/package.json`));
     Environment.init();
     Settings.init();
-    // Loader.loadScenario();
-    // Loader.initializeScenario();
-    // Browser.init();
+    Loader.loadModule('core');
   } catch(e) {
     console.error("\n!!! Error Booting Main Process !!!\n");
     console.error(e);

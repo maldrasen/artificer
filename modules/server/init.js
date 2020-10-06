@@ -4,7 +4,8 @@ global.ipcMain = electron.ipcMain;
 global.app = electron.app;
 
 ipcMain.on('client.ready', async () => {
-  // These need to be messages now...
+  console.log("Client ready")
+
   // await Database.createDatabase()
   // await Database.createModels();
 
@@ -15,3 +16,5 @@ ipcMain.on('client.ready', async () => {
   // instead of pushing it.
   // Browser.send('engine.ready');
 });
+
+console.log("Starting Server")
