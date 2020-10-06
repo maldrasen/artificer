@@ -29,7 +29,7 @@
     "postinstall": "install-app-deps",
     "dist": "electron-builder",
     "start": "electron . --dev",
-    "spec": "mocha spec/**/*-spec.js --test",
+    "spec": "mocha modules/**/spec/**/*-spec.js --test",
     "specv": "mocha spec/**/*-spec.js --test -v",
     "specc": "nyc --reporter=html mocha spec/**/*-spec.js --test -v"
   },

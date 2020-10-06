@@ -2,7 +2,7 @@ global.Loader = (function() {
   let _initFunctions = [];
 
   function loadModule(mod) {
-    console.log(`  - Loading ${mod} module`);
+    console.log(`- Loading ${mod} module`);
 
     loadDirectory(`${ROOT}/modules/${mod}/lib`);
     loadDirectory(`${ROOT}/modules/${mod}/data`);
