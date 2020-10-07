@@ -31,8 +31,6 @@ require(`${ROOT}/modules/boot/lib/settings`);
 
 })();
 
-
-
 $(document).ready(function() {
 
   // The Interface object should be added by the scenario.
@@ -66,9 +64,9 @@ $(document).ready(function() {
   // Components.TrainingPlan.init();
 
   // === Init Interface ===
-  // Renderer.init();
-  // Receiver.init();
+  Renderer.init();
+  Receiver.init();
 
   // Signal to the main process that the client is fully loaded.
-  // ipcRenderer.send('client.ready');
+  ipcRenderer.send('client.ready');
 });
