@@ -135,6 +135,8 @@ global.Renderer = (function() {
     if (data.id) { options.id = data.id; }
     if (data.code) { options.code = data.code; }
 
+console.log("SENDING:",data.command,options)
+
     sendCommand(data.command, options)
   }
 
