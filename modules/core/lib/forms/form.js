@@ -1,8 +1,6 @@
 global.Form = class Form {
 
   constructor(code, data) {
-    this.instances = {};
-
     Object.defineProperty(this, 'code', {
       get: () => { return code; }
     });
@@ -16,6 +14,7 @@ global.Form = class Form {
 
   static build(code, data) {
     if (this.name == 'Form') { throw "The build() function should only be called on a subclass of Form." }
+    if (this.instances == null) { this.instances = {}; }
     if (code == null) { code = hash(data); }
 
     let instance = new this(code,data);
@@ -24,6 +23,21 @@ global.Form = class Form {
     this.instances[code] = instance;
 
     return instance;
+  }
+
+  // Used exclusivly by the specs to build temporary data objects that can be
+  // removed all at once with the purgeTemp() function.
+  static buildTemp(code, data) {
+    let instance = this.build(code,data);
+    if (this.tempInstances == null) { this.tempInstances = {}; }
+    this.tempInstances[code] = instance;
+  }
+
+  static purgeTemp() {
+    each(this.tempInstances, (form, key) => {
+      delete this.instances[key];
+    });
+    this.tempInstances = {};
   }
 
   static all() {
@@ -54,28 +68,17 @@ global.Form = class Form {
   // normal javascript object with all of the functions stripped out.
   get properties() {
     let props = {};
+
     each(Object.getOwnPropertyNames(this), name => {
       if (typeof this[name] != 'function') {
         props[name] = this[name];
       }
     });
 
-    console.log("Make sure Form.properties() still works:")
-    console.log(this)
-    console.log(props)
-
     return props;
   }
 
   // Child classes should overwrite this function to validate forms.
   validate() {}
-
-  // Sometimes we need to add a Form to make a spec work, but we don't want to
-  // leave them lying around after the spec. In these cases call this function
-  // to clean up temporary data. This should never actually be called in the
-  // app though.
-  static remove(key) {
-    delete this.instances[key];
-  }
 
 }
