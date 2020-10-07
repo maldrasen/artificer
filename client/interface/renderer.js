@@ -42,6 +42,8 @@ global.Renderer = (function() {
 
   function init() {
     $(document).on('click', '.send-command', Elements.buttonAction(sendCommandButton));
+
+    // This should be part of the window manager I think.
     // $(document).on('click', '.close-overlay', Elements.buttonAction(removeOverlay));
   }
 
@@ -50,7 +52,7 @@ global.Renderer = (function() {
     $('body').removeClass('main-loading').find('.loading').remove();
 
     await installTemplates();
-    showView('main-menu');
+    // showView('main-menu');
 
     // Need to check this. Why does page content need to be built when there
     // is no event? This is a one time build function after templates are
