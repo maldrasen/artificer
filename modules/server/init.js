@@ -12,9 +12,9 @@ ipcMain.on('client.ready', async () => {
   // sent to the client here, but I think we should pull reference data
   // instead of pushing it.
 
-  // This is a good place though to finish any kind of inisialization that
-  // needs to happen on server startup.
+  Loader.loadModule(Configuration.scenario);
 
-  Browser.send('engine.ready');
+  Browser.send('server.ready', Environment);
 
+  postal.publish({ channel:"server", topic:"ready" });
 });

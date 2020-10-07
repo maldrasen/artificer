@@ -1,7 +1,8 @@
 global.Receiver = (function() {
 
   function init() {
-    ipcRenderer.on('engine.ready', Renderer.ready);
+    ipcRenderer.on('server.ready', Renderer.ready);
+
     ipcRenderer.on('game.prepare', Renderer.prepare);
 
     // ipcRenderer.on('init.icon-library', Elements.ImageResource.initIconLibrary);

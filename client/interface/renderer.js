@@ -47,12 +47,14 @@ global.Renderer = (function() {
     // $(document).on('click', '.close-overlay', Elements.buttonAction(removeOverlay));
   }
 
-  async function ready() {
+  async function ready(transport, env) {
+    global.Environment = env;
     document.title = Configuration.title
+
     $('body').removeClass('main-loading').find('.loading').remove();
 
     await installTemplates();
-    // showView('main-menu');
+    showView('main-menu');
 
     // Need to check this. Why does page content need to be built when there
     // is no event? This is a one time build function after templates are

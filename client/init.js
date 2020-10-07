@@ -7,23 +7,19 @@ global.fs = require('fs');
 global.ipcRenderer = electron.ipcRenderer;
 
 require(`${ROOT}/modules/boot/lib/configuration`);
-require(`${ROOT}/modules/boot/lib/environment`);
 require(`${ROOT}/modules/boot/lib/loader`);
-require(`${ROOT}/modules/boot/lib/settings`);
 
 (function() {
   console.log('=== Booting Client ===');
 
   try {
     Configuration.load(require(`${ROOT}/package.json`));
-    Environment.init();
-    Settings.init();
 
     require(`${ROOT}/client/elements/elements.js`)
 
     Loader.loadDirectory(`${ROOT}/client/elements`);
     Loader.loadDirectory(`${ROOT}/client/interface`);
-    Loader.loadDirectory(`${ROOT}/scenarios/${Configuration.scenario}/client`);
+    Loader.loadDirectory(`${ROOT}/modules/${Configuration.scenario}/client`);
   } catch(e) {
     console.error("\n!!! Error Booting Client Process !!!\n");
     console.error(e);
@@ -34,7 +30,7 @@ require(`${ROOT}/modules/boot/lib/settings`);
 $(document).ready(function() {
 
   // The Interface object should be added by the scenario.
-  // Interface.init();
+  Interface.init();
 
   // === Init Elements ===
   // Elements.Chooser.init();
