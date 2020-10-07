@@ -1,7 +1,7 @@
 describe('Flag', function() {
 
   before(function() {
-    FlagInfo.buildTemp('flag.with-default',   { default:'Horsecocks' });
+    FlagInfo.buildTemp('flag.with-default', { default:'Horsecocks' });
   });
 
   after(function() {
