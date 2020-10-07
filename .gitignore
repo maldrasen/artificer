@@ -2,14 +2,12 @@
 .nyc_output
 .npm
 
-dist/
-log/
-saves/
-!log/.keep
-!saves/.keep
+saves/*.json
+log/*.log
 settings.json
 
 assets/compiled/
+dist/
 coverage/
 node_modules/
 
