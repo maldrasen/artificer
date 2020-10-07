@@ -14,3 +14,7 @@ before(() => {
     }});
   });
 });
+
+afterEach(() => {
+  Flag.clear();
+});

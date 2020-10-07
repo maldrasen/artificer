@@ -8,4 +8,18 @@
 // Example:
 //   FlagInfo.build('likes.to.slap', { validateIn:['ass','tits','face'] });
 
-global.FlagInfo = class FlagInfo extends Form {}
+global.FlagInfo = class FlagInfo extends Form {
+
+  static validate(code, value) {
+    let info = this.instances && this.instances[code];
+    if (info) {
+      if (info.validateIn != null && info.validateIn.indexOf(value) < 0) { throw `Cannot set flag ${code} to ${value}. Validation failed.` }
+      if (info.validateInteger && Number.isInteger(value) == false)      { throw `Cannot set flag ${code} to ${value}. Validation failed.` }
+    }
+  }
+
+  static defaultValue(code) {
+    return (this.instances && this.instances[code]) ? this.instances[code].default : null
+  }
+
+}

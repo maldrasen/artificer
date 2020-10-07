@@ -34,7 +34,7 @@ global.Form = class Form {
   }
 
   static purgeTemp() {
-    each(this.tempInstances, (form, key) => {
+    each(Object.keys(this.tempInstances), key => {
       delete this.instances[key];
     });
     this.tempInstances = {};
