@@ -20,8 +20,6 @@ global.Game = class Game {
   static setLocation(code) { Flag.set('game.location',code); }
   static setFood(food) { Flag.set('game.food',food); }
 
-
-
   // Clear the entire game from memory. This needs to be done when the main
   // menu is opened so that when another game is loaded the state is clear.
   static async clear() {
@@ -32,7 +30,6 @@ global.Game = class Game {
     //   return model.destroy({ where:{}, truncate:true })
     // }));
   }
-
 
   // Set an event to occur as soon as the game reaches the appropriate phase. If
   // an event cannot be added this will throw an exception. That shouldn't be a
@@ -48,7 +45,6 @@ global.Game = class Game {
     // Game.log(`Event Added [${phase}]  - ${event.code}`);
     // _eventQueues[phase].push({ event, state });
   }
-
 
   // Still on the fence about the event queues and game phases and such. It
   // would be nice if the phases were configurable. That seems like overkill
