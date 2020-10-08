@@ -42,3 +42,19 @@ Elements.WindowManager = (function() {
 
 
 })();
+
+// --- From Renderer ---
+
+// May move the overlays into the window manager, or we at least need to hook
+// it into the overlays
+// function showOverlay(view) {
+//   $('#overlayFrame').removeClass('hide').find('.title').empty().append(view.title);
+//   $('#overlayContent').append($(view.template).html());
+//   if (view.build) { view.build(); }
+// }
+//
+// function removeOverlay() {
+//   $('#overlayFrame').addClass('hide')
+//   $('#overlayContent').empty();
+// }
+//

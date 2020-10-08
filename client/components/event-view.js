@@ -1,11 +1,43 @@
 Components.EventView = (function() {
+  let eventData;
+  let stageIndex;
+  let pageIndex;
+  let choices;
 
   function init() {
 
   }
 
+  // Build an event given all of the event options. All of the event options
+  // should be described in detail on the Wiki now.
   function build(transport, data) {
     console.log("Build:",data)
+
+    Elements.reset();
+
+    // Page? For form views maybe?
+    // Components.EventView.Page = {};
+
+    eventData = data;
+    stageIndex = 0;
+    pageIndex = 0;
+
+    choices = { event:{
+      code: data.code,
+      actorIDs: data.actorIDs
+    }};
+
+    $('#mainContent').empty().append($('<div>',{ id:'currentEvent' }).append($($('#eventTemplate').html())));
+
+    //     if (event.background != null) { setBackground(event.background); }
+    //     if (event.darkenBackground != null) { darkenBackground(event.darkenBackground); }
+    //
+    //     buildStage();
+    //
+    //     if (event.settingCard) {
+    //       showSettingCard(event.settingCard.time, event.settingCard.place);
+    //     }
+
   }
 
   return {
@@ -25,10 +57,6 @@ Components.EventView = (function() {
 //   let skipContinue = false;
 //   let skipRate = 50;
 //
-//   let eventData;
-//   let stageIndex;
-//   let pageIndex;
-//   let choices;
 //
 //   function init() {
 //     Components.EventView.ChooserPage.init();
@@ -37,31 +65,7 @@ Components.EventView = (function() {
 //     $(document).on('click', '#currentEvent .activate-skip', Elements.buttonAction(activateSkip));
 //   }
 //
-//   // Build an event given all of the event options. All of the event options
-//   // are described in detail on the Wiki now.
 //   function build(transport, event) {
-//     Elements.reset();
-//     Components.EventView.Page = {};
-//
-//     eventData = event;
-//     stageIndex = 0;
-//     pageIndex = 0;
-//
-//     choices = { event:{
-//       code: event.code,
-//       actorIDs: event.actorIDs
-//     }};
-//
-//     $('#mainContent').empty().append($('<div>',{ id:'currentEvent' }).append($($('#eventTemplate').html())));
-//
-//     if (event.background != null) { setBackground(event.background); }
-//     if (event.darkenBackground != null) { darkenBackground(event.darkenBackground); }
-//
-//     buildStage();
-//
-//     if (event.settingCard) {
-//       showSettingCard(event.settingCard.time, event.settingCard.place);
-//     }
 //   }
 //
 //   function clickAdvance() {

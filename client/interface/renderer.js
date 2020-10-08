@@ -93,27 +93,15 @@ global.Renderer = (function() {
     if (view.build) { view.build(); }
   }
 
-  // May move the overlays into the window manager, or we at least need to hook
-  // it into the overlays
-  // function showOverlay(view) {
-  //   $('#overlayFrame').removeClass('hide').find('.title').empty().append(view.title);
-  //   $('#overlayContent').append($(view.template).html());
-  //   if (view.build) { view.build(); }
-  // }
-  //
-  // function removeOverlay() {
-  //   $('#overlayFrame').addClass('hide')
-  //   $('#overlayContent').empty();
-  // }
-  //
-
   // === Templates ===
 
-  function addTemplate(path) {
-    TEMPLATES.push(path);
-  }
+  function addTemplate(path) { TEMPLATES.push(path); }
 
   async function installTemplates() {
+    each(await (util.promisify(fs.readdir)(`${ROOT}/client/views/templates`)), filename => {
+      addTemplate(`${ROOT}/client/views/templates/${filename}`);
+    });
+
     await Promise.all(TEMPLATES.map(async path => {
       $('#templates').append($(await loadFile(path)));
     }));
@@ -134,8 +122,6 @@ global.Renderer = (function() {
 
     if (data.id) { options.id = data.id; }
     if (data.code) { options.code = data.code; }
-
-console.log("SENDING:",data.command,options)
 
     sendCommand(data.command, options)
   }
