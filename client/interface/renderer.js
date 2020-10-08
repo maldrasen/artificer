@@ -152,10 +152,10 @@ global.Renderer = (function() {
   return {
     init,
     ready,
+    prepare,
     addView,
     showView,
     addTemplate,
-    prepare,
     sendCommand,
     sendCancel,
   };

@@ -23,6 +23,7 @@ require(`${ROOT}/modules/boot/lib/loader`);
     Loader.loadDirectory(`${ROOT}/client/elements`);
     Loader.loadDirectory(`${ROOT}/client/interface`);
     Loader.loadDirectory(`${ROOT}/modules/${Configuration.scenario}/client`);
+    Loader.loadDirectory(`${ROOT}/modules/${Configuration.scenario}/views`);
   } catch(e) {
     console.error("\n!!! Error Booting Client Process !!!\n");
     console.error(e);

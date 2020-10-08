@@ -29,20 +29,126 @@ Components.EventView = (function() {
 
     $('#mainContent').empty().append($('<div>',{ id:'currentEvent' }).append($($('#eventTemplate').html())));
 
+    // Move into an effects library?
     //     if (event.background != null) { setBackground(event.background); }
     //     if (event.darkenBackground != null) { darkenBackground(event.darkenBackground); }
-    //
-    //     buildStage();
-    //
+
+    buildStage();
+
     //     if (event.settingCard) {
     //       showSettingCard(event.settingCard.time, event.settingCard.place);
     //     }
-
   }
+
+  // We determine the stage type from the stage's data signature, then pass the
+  // stage construction off to the proper handler. A few options are universal
+  // for all stages:
+  //
+  //    background  -  Set the stage background image.
+  //    setChoice   -  A stage can add a choice value to the choices object.
+  //
+  function buildStage() {
+    let stage = currentStage();
+
+    // Stage Building
+    // if (stage.background != null) { setBackground(stage.background); }
+    // if (stage.setChoice) { updateChoices(stage.setChoice); }
+
+    // These views can be skipped through.
+    // if (stage.pages) { return buildPagedView(); }
+
+    // The following views cannot be skipped but skipping should continue
+    // after the choice has been made or the form is submitted or whatever.
+    // if (skipActive) {
+    //   skipActive = false;
+    //   skipContinue = true;
+    // }
+
+    // if (stage.chooserPage)   { return Components.EventView.ChooserPage.build(); }
+    // if (stage.selectionPage) { return Components.EventView.SelectionPage.build(); }
+    if (stage.formPage) { return Components.EventFormPage.load(stage.formPage); }
+
+    throw "Unrecognized Stage Type"
+  }
+
+  function nextStage() {
+    console.log("next stage")
+  //     if (skipContinue) {
+  //       skipActive = true;
+  //       skipContinue = false;
+  //     }
+  //     if (stageIndex < eventData.stages.length-1) {
+  //       closeStage();
+  //       stageIndex += 1;
+  //       validateStage() ? buildStage() : nextStage()
+  //     } else {
+  //       endEvent();
+  //     }
+  }
+
+  //   // Check to see if the current stage is valid. A stage can have a choice
+  //   // object that specifies that this stage should only be shown when a specific
+  //   // choice has been made.
+  //   function validateStage() {
+  //     let stage = currentStage();
+  //     let valid = true;
+  //
+  //     each(Object.keys(stage.choice||{}), key => {
+  //       if (stage.choice[key] != choices[key]) { valid = false; }
+  //     });
+  //
+  //     return valid;
+  //   }
+  //
+  //   function setStage(id) {
+  //     let index = eventData.stages.map(s => { return s.id }).indexOf(id);
+  //     if (index < 0) {
+  //       throw `There is no stage with ID:${id}`;
+  //     }
+  //     stageIndex = index;
+  //     closeStage();
+  //     buildStage();
+  //   }
+  //
+  //   function closeStage() {
+  //     $('#currentEvent .chooser-content').addClass('hide');
+  //     $('#currentEvent .event-text-frame').addClass('hide');
+  //     $('#currentEvent .event-text-actions').addClass('hide');
+  //     $('#currentEvent .click-advance').addClass('hide');
+  //     $('#currentEvent .custom-content').addClass('hide');
+  //   }
+  //
+  //   function nextPage() {
+  //     if (currentStage().pages && pageIndex < currentStage().pages.length-1) {
+  //       pageIndex += 1;
+  //       buildPage();
+  //     } else {
+  //       pageIndex = 0;
+  //       nextStage();
+  //     }
+  //   }
+  //
+
+  function currentStage() {
+    return eventData.stages[stageIndex];
+  }
+
+
+
+
+
+
+
+
+
+
+
+
 
   return {
     init,
-    build
+    build,
+    nextStage,
   };
 
 })();
