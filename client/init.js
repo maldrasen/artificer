@@ -15,8 +15,10 @@ require(`${ROOT}/modules/boot/lib/loader`);
   try {
     Configuration.load(require(`${ROOT}/package.json`));
 
+    require(`${ROOT}/client/components/components.js`);
     require(`${ROOT}/client/elements/elements.js`)
 
+    Loader.loadDirectory(`${ROOT}/client/components`);
     Loader.loadDirectory(`${ROOT}/client/elements`);
     Loader.loadDirectory(`${ROOT}/client/interface`);
     Loader.loadDirectory(`${ROOT}/modules/${Configuration.scenario}/client`);
@@ -44,9 +46,8 @@ $(document).ready(function() {
   // Elements.Tooltip.init();
 
   // === Init Components ===
-  // Components.Backlog.init();
-  // Components.EquipmentFrame.init();
-  // Components.EventView.init();
+  Components.Backlog.init();
+  Components.EventView.init();
   // Components.InventoryView.init();
   // Components.LocationView.init();
   // Components.ManageView.init();

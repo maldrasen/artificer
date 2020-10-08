@@ -48,28 +48,27 @@ global.Event = class Event extends Form {
       }
     }
 
-console.log("Event:",event)
+    const context = new Context();
+    await context.setEventState(eventData.state);
+    await context.setEvent(event);
 
-    // const context = new Context();
-    // await context.setEventState(eventData.state);
-    // await context.setEvent(event);
+    await this.transformEvent(event, eventData.state, context);
 
-    // await Event.transformEvent(event, eventData.state, context);
     return event;
   }
 
   // === Event Transformation  ===
 
-  // static async transformEvent(event, state, context) {
+  static async transformEvent(event, state, context) {
   //   event.stages = await Promise.all(event.stages.map(async stage => {
   //     const valid = await CentralScrutinizer.meetsRequirements(stage.requires, context, { state });
   //     if (valid) { return await Event.transformStage(stage, context); }
   //   }));
-  //
-  //   event.stages = event.stages.filter(stage => {
-  //     return stage != null;
-  //   });
-  //
+
+    // event.stages = event.stages.filter(stage => {
+    //   return stage != null;
+    // });
+
   //   event.actorIDs = {};
   //   each(event.actors, (value, key) => {
   //     event.actorIDs[key] = context.get(key).character.id;
@@ -77,7 +76,7 @@ console.log("Event:",event)
   //   each(state.actors||{}, (id, key) => {
   //     event.actorIDs[key] = context.get(key).character.id;
   //   });
-  // }
+  }
 
   // static async transformStage(stage, context) {
   //   if (stage.pages) { return await Event.transformPages(stage, context); }

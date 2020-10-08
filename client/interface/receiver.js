@@ -12,8 +12,8 @@ global.Receiver = (function() {
     //
     // ipcRenderer.on('game.file-list', Components.SavedGames.showSaves);
     // ipcRenderer.on('render.main-menu', Renderer.showMainMenu);
-    //
-    // ipcRenderer.on('render.event', Components.EventView.build);
+
+    ipcRenderer.on('render.event', Components.EventView.build);
     // ipcRenderer.on('render.inventory', Components.InventoryView.open);
     // ipcRenderer.on('render.location', Components.LocationView.build);
     // ipcRenderer.on('render.manage', Components.ManageView.open);
