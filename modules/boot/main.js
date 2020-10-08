@@ -25,3 +25,7 @@ require(`${ROOT}/modules/boot/lib/settings`);
   }
 
 })();
+
+global.log = function(message) {
+  if (Environment.verbose) { console.log(message) }
+}
