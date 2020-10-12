@@ -18,6 +18,11 @@ global.Database = (function() {
     postal.publish({ channel:'database', topic:'created' });
   }
 
+  // TODO: This needs to delete all of the persisted models.
+  async function clear() {
+
+  }
+
   // Not sure if this is the way models should be created now actually...
   // There should be some way to do it on demand.
 
@@ -52,7 +57,8 @@ global.Database = (function() {
   }
 
   return {
-    createDatabase:     createDatabase,
+    createDatabase,
+    clear,
     // createModels:       createModels,
     // addPersistedModel:  model => { persistedModels.push(model); },
     // getPersistedModels: () => { return persistedModels; },

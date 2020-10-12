@@ -17,6 +17,13 @@ global.Settings = (function() {
     });
   }
 
+  // Should probably only be used by the specs to set everything back to its
+  // default state.
+  function reset() { set(defaultSettings); }
+
+  // Change the settings without updating the settings file. This is used by
+  // the specs to try different settings. The main application however should
+  // always use update()
   function set(data) {
     settings.metric = !! data.metric;
     settings.futaPronouns = (data.futaPronouns == 'she/her') ? 'she/her' : 'shi/hir';
@@ -35,6 +42,8 @@ global.Settings = (function() {
 
   return {
     init,
+    reset,
+    set,
     update,
     fetch,
     metric,
