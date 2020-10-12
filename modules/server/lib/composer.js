@@ -14,25 +14,25 @@ global.Composer = (function() {
     // found or it will return null if there are no events.
     const eventData = await Game.pullNextEvent();
     if (eventData) {
-      log(`Rendering Event: ${eventData.event.code}`);
       return renderEvent(eventData);
     }
 
-    // If there's no active event or anything like that:
-    log(`Rendering Location: ${Game.location()}`);
-    // renderLocation(Game.location());
+    // If there is nothing else to render then we render the current location.
+    renderLocation();
   }
 
   function renderEvent(eventData) {
+    log(`Rendering Event: ${eventData.event.code}`);
     Event.prepare(eventData).then(prepared => {
-      Browser.send('render.event',prepared);
+      Browser.send('render.event', prepared);
     });
   }
 
-  function renderLocation(code) {
-    // Location.lookup(code).buildView().then(view => {
-    //   Browser.send('render.location',view);
-    // });
+  function renderLocation() {
+    log(`Rendering Location: ${Game.getLocation()}`);
+    Location.lookup(Game.getLocation()).render().then(rendered => {
+      Browser.send('render.location', rendered);
+    });
   }
 
   return {
