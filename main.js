@@ -1,13 +1,11 @@
 
-global.fs = require('fs');
-global.hash = require('object-hash');
-global.each = require('iterate-object');
-global.electron = require('electron');
-global.ipcMain = electron.ipcMain;
-global.app = electron.app;
-
 global.ROOT = require('path').normalize(`${__dirname}`).replace(/\\/g,"/");
 
-process.exit(0)
+require(`${ROOT}/modules/boot/main.js`);
 
-// require(`${ROOT}/boot/boot-main`);
+postal.publish({ channel:"database", topic:"start" });
+postal.publish({ channel:"server", topic:"start" });
+
+postal.subscribe({ channel:"database", topic:"ready", callback:() => {
+  console.log("DATABASE READY");
+}});

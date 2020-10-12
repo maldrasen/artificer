@@ -1,6 +1,7 @@
 {
   "name": "artificer",
   "version": "0.12.0",
+  "scenario": "cinnamon",
   "description": "Artificer",
   "main": "main.js",
   "build": {
@@ -28,9 +29,9 @@
     "postinstall": "install-app-deps",
     "dist": "electron-builder",
     "start": "electron . --dev",
-    "spec": "mocha spec/**/*-spec.js --test",
+    "spec": "mocha modules/**/spec/**/*-spec.js --test",
     "specv": "mocha spec/**/*-spec.js --test -v",
-    "spec-cov": "nyc --reporter=html mocha spec/**/*-spec.js --test -v"
+    "specc": "nyc --reporter=html mocha spec/**/*-spec.js --test -v"
   },
   "repository": "git@github.com:maldrasen/artificer.git",
   "keywords": [
@@ -42,6 +43,7 @@
 
   "dependencies": {
     "jquery": "^3.5.1",
+    "postal": "^2.0.5",
     "object-hash": "^2.0.3",
     "sequelize": "^6.3.5",
     "sqlite3": "^5.0.0",

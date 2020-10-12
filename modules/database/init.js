@@ -1,0 +1,2 @@
+
+global.Sequelize = require('sequelize');
