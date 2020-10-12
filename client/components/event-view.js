@@ -1,7 +1,6 @@
 Components.EventView = (function() {
   let eventData;
   let stageIndex;
-  let pageIndex;
   let choices;
 
   let skipActive = false;
@@ -9,22 +8,20 @@ Components.EventView = (function() {
   let skipRate = 50;
 
   function init() {
+    $(document).on('click', '#currentEvent .click-advance', clickAdvance);
+    $(document).on('click', '#currentEvent .activate-skip', Elements.buttonAction(activateSkip));
 
+    // Components.EventView.ChooserPage.init();
+    // Components.EventView.SelectionPage.init();
   }
 
   // Build an event given all of the event options. All of the event options
   // should be described in detail on the Wiki now.
   function build(transport, data) {
-    console.log("Build:",data)
-
     Elements.reset();
-
-    // Page? For form views maybe?
-    // Components.EventView.Page = {};
 
     eventData = data;
     stageIndex = 0;
-    pageIndex = 0;
 
     choices = { event:{
       code: data.code,
@@ -36,6 +33,8 @@ Components.EventView = (function() {
     // Move into an effects library?
     //     if (event.background != null) { setBackground(event.background); }
     //     if (event.darkenBackground != null) { darkenBackground(event.darkenBackground); }
+
+    console.log("Build:",data)
 
     buildStage();
 
@@ -59,14 +58,14 @@ Components.EventView = (function() {
     // if (stage.setChoice) { updateChoices(stage.setChoice); }
 
     // These views can be skipped through.
-    // if (stage.pages) { return buildPagedView(); }
+    if (stage.pages) { return Components.EventPagedView.build(stage); }
 
     // The following views cannot be skipped but skipping should continue
     // after the choice has been made or the form is submitted or whatever.
-    // if (skipActive) {
-    //   skipActive = false;
-    //   skipContinue = true;
-    // }
+    if (skipActive) {
+      skipActive = false;
+      skipContinue = true;
+    }
 
     // if (stage.chooserPage)   { return Components.EventView.ChooserPage.build(); }
     // if (stage.selectionPage) { return Components.EventView.SelectionPage.build(); }
@@ -125,17 +124,6 @@ Components.EventView = (function() {
     $('#currentEvent .custom-content').addClass('hide');
   }
 
-  //   function nextPage() {
-  //     if (currentStage().pages && pageIndex < currentStage().pages.length-1) {
-  //       pageIndex += 1;
-  //       buildPage();
-  //     } else {
-  //       pageIndex = 0;
-  //       nextStage();
-  //     }
-  //   }
-  //
-
   function currentStage() {
     return eventData.stages[stageIndex];
   }
@@ -148,57 +136,62 @@ Components.EventView = (function() {
     Renderer.sendCommand('game.end-event',choices);
   }
 
+  // === Pageing Behavior ===
+
+  function clickAdvance() {
+    skipActive = false;
+    Components.EventPagedView.nextPage();
+  }
+
+  function activateSkip() {
+    skipActive = true;
+    doSkip();
+  }
+
+  function continueSkip() {
+    if (skipContinue) {
+      skipActive = true;
+      skipContinue = false;
+    }
+    if (skipActive) { doSkip(); }
+  }
+
+  function stopSkip() {
+    skipActive = false;
+  }
+
+  function doSkip() {
+    setTimeout(()=>{
+      if (skipActive) {
+        Components.EventPagedView.nextPage();
+        doSkip();
+      }
+    },skipRate);
+  }
+
+  // === Choices ===
+  function getChoices() { return choices; }
+  function setChoice(key,value) { choices[key] = value; }
+  function updateChoices(map) { choices = Object.assign(choices,map); }
+
+  // function getEventData() { return eventData; }
+  // function getActors() { return eventData.actors; }
+  // function isOpen() { return $('#currentEvent').length > 0; }
+
   return {
     init,
     build,
     nextStage,
+    continueSkip,
+    getChoices,
+    setChoice,
+    updateChoices,
   };
 
 })();
 
 
-// The Event view is getting out of hand. This needs to be broken into multiple
-// page vies.
-
-
-// Components.EventView = (function() {
-//   let skipActive = false;
-//   let skipContinue = false;
-//   let skipRate = 50;
 //
-//
-//   function init() {
-//     Components.EventView.ChooserPage.init();
-//     Components.EventView.SelectionPage.init();
-//     $(document).on('click', '#currentEvent .click-advance', clickAdvance);
-//     $(document).on('click', '#currentEvent .activate-skip', Elements.buttonAction(activateSkip));
-//   }
-//
-//   function build(transport, event) {
-//   }
-//
-//   function clickAdvance() {
-//     skipActive = false;
-//     nextPage();
-//   }
-//
-//   function activateSkip() {
-//     skipActive = true;
-//     doSkip();
-//   }
-//
-//   function stopSkip() {
-//     skipActive = false;
-//   }
-//
-//   function doSkip() {
-//     setTimeout(()=>{
-//       if (skipActive) {
-//         nextPage();
-//         doSkip();
-//       }
-//     },skipRate);
-//   }
 //
 //
 //   // Build the next stage from a stage object. There are a whole fuck ton of
@@ -288,9 +281,6 @@ Components.EventView = (function() {
 //     return eventData.stages[stageIndex];
 //   }
 //
-//   function currentPage() {
-//     return (currentStage().pages||[])[pageIndex];
-//   }
 //
 //   function getPageText(stage,page) {
 //     try {
@@ -317,63 +307,6 @@ Components.EventView = (function() {
 //     setTimeout(() => { settingCard.addClass('hide'); },4000);
 //   }
 //
-//   // === Paged View ===
-//
-//   function buildPagedView() {
-//     $('#currentEvent .event-text-frame').removeClass('hide');
-//     $('#currentEvent .event-text-actions').removeClass('hide');
-//     $('#currentEvent .click-advance').removeClass('hide');
-//     buildPage();
-//
-//     if (skipContinue) {
-//       skipActive = true;
-//       skipContinue = false;
-//     }
-//
-//     if (skipActive) { doSkip(); }
-//   }
-//
-//   function buildPage() {
-//     let page = currentPage();
-//     if (page.alert) { Alerts.showAlert(page.alert); }
-//     if (page.background != null) { setBackground(page.background); }
-//     if (page.darkenBackground != null) { darkenBackground(page.darkenBackground); }
-//     if (page.showCenterImage) { showCenterImage(page.showCenterImage); }
-//     if (page.hideCenterImage) { hideCenterImage(); }
-//     if (page.effects) { applyPageEffects(page.effects); }
-//
-//     showSpeaker(page.otherSpeaker, page.playerSpeaker)
-//     appendToBacklog(page);
-//
-//     $('#currentEvent .event-text-frame').empty().append(page.text)
-//
-//     // After the page has been displayed it's possible for the event to make some adjustments to the text, usually in
-//     // response to some choice made within this same event, but not consequential to make it an entire branch. These
-//     // functions have to be referenced by code and kept in the Components.EventView.PageFunctions object because the
-//     // events are defined in the engine, but these functions are called by the client.
-//     if (page.onShow) { Components.EventView.PageFunctions[page.onShow](choices); }
-//   }
-//
-//   function appendToBacklog(page) {
-//     if (page.text && page.text.length > 0) {
-//       let options = {}
-//       if (page.playerSpeaker) { options.player = page.playerSpeaker; }
-//       if (page.otherSpeaker)  { options.actor = page.otherSpeaker;   }
-//       Components.Backlog.append(page.text, options);
-//     }
-//   }
-//
-//   function showSpeaker(otherName, playerName) {
-//     let speaker = $('#currentEvent .event-text-speaker').empty().addClass('hide').removeClass('other').removeClass('player');
-//     if (otherName) { speaker.removeClass('hide').addClass('other').append(otherName); }
-//     if (playerName) { speaker.removeClass('hide').addClass('player').append(playerName); }
-//   }
-//
-//   function applyPageEffects(effects) {
-//     each(effects, strang => {
-//       new Adjustment(strang, eventData.actorIDs).execute();
-//     });
-//   }
 //
 //   // === Effects ===
 //
@@ -426,5 +359,3 @@ Components.EventView = (function() {
 //   };
 //
 // })();
-//
-// Components.EventView.PageFunctions = {};

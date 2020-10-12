@@ -108,16 +108,15 @@ global.Game = class Game {
   // in the event's onFinish() function. If a new event hasn't been chained we
   // want to clear the current event.
   static async endEvent(choices) {
-    console.log("Event Ended. Choices:",choices)
-    // if (Game.getCurrentEvent()) {
-    //   const startingCode = Game._currentEvent.event.code;
-    //   await Event.onFinish(choices);
-    //
-    //   if (startingCode == Game._currentEvent.event.code) {
-    //     Game.log(`Ending Event: ${startingCode}`);
-    //     Game._currentEvent = null;
-    //   }
-    // }
+    if (this._currentEvent) {
+      const startingCode = this._currentEvent.event.code;
+      await Event.onFinish(choices);
+
+      if (startingCode == this._currentEvent.event.code) {
+        log(`Ending Event: ${startingCode}`);
+        this._currentEvent = null;
+      }
+    }
   }
 
 

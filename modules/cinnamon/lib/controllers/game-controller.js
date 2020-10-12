@@ -1,5 +1,8 @@
 (function() {
 
+  // Only scenario specific game events should be implemented in this
+  // controller. General game event handling is done in the core module.
+
   ipcMain.on('game.start', () => {
     Browser.send('game.prepare');
     Game.start({
@@ -19,11 +22,6 @@
       location: 'basement',
     });
 
-    Composer.render();
-  });
-
-  ipcMain.on('game.end-event', async (event, choices) => {
-    Game.endEvent(choices);
     Composer.render();
   });
 

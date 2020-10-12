@@ -16,18 +16,18 @@ global.Event = class Event extends Form {
   //   return map;
   // }
 
-  // static async onFinish(choices) {
-  //   const code = choices.event.code;
-  //   const completedCode = `completed.${code}`;
-  //   const completedValue = Flag.lookup(completedCode) == null ? 1 : Flag.lookup(completedCode) + 1;
-  //
-  //   Flag.set(completedCode, completedValue);
-  //
-  //   let finishFunction = Event.lookup(code).onFinish;
-  //   if (finishFunction) {
-  //     await finishFunction(choices);
-  //   }
-  // }
+  static async onFinish(choices) {
+    const code = choices.event.code;
+    const completedCode = `completed.${code}`;
+    const completedValue = Flag.lookup(completedCode) == null ? 1 : Flag.lookup(completedCode) + 1;
+
+    Flag.set(completedCode, completedValue);
+
+    let finishFunction = Event.lookup(code).onFinish;
+    if (finishFunction) {
+      await finishFunction(choices);
+    }
+  }
 
   // Before an event can be rendered in the browser it needs to be prepared.
   // This function will to all of the token and path replacement in the event
