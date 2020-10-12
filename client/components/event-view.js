@@ -4,6 +4,10 @@ Components.EventView = (function() {
   let pageIndex;
   let choices;
 
+  let skipActive = false;
+  let skipContinue = false;
+  let skipRate = 50;
+
   function init() {
 
   }
@@ -71,35 +75,36 @@ Components.EventView = (function() {
     throw "Unrecognized Stage Type"
   }
 
+  // Once a stage is complete we continue on to the sext stage. If there are no
+  // more stages then the event is ended.
   function nextStage() {
-    console.log("next stage")
-  //     if (skipContinue) {
-  //       skipActive = true;
-  //       skipContinue = false;
-  //     }
-  //     if (stageIndex < eventData.stages.length-1) {
-  //       closeStage();
-  //       stageIndex += 1;
-  //       validateStage() ? buildStage() : nextStage()
-  //     } else {
-  //       endEvent();
-  //     }
+    if (skipContinue) {
+      skipActive = true;
+      skipContinue = false;
+    }
+    if (stageIndex < eventData.stages.length-1) {
+      closeStage();
+      stageIndex += 1;
+      validateStage() ? buildStage() : nextStage()
+    } else {
+      endEvent();
+    }
   }
 
-  //   // Check to see if the current stage is valid. A stage can have a choice
-  //   // object that specifies that this stage should only be shown when a specific
-  //   // choice has been made.
-  //   function validateStage() {
-  //     let stage = currentStage();
-  //     let valid = true;
-  //
-  //     each(Object.keys(stage.choice||{}), key => {
-  //       if (stage.choice[key] != choices[key]) { valid = false; }
-  //     });
-  //
-  //     return valid;
-  //   }
-  //
+  // Check to see if the current stage is valid. A stage can have a choice
+  // object that specifies that this stage should only be shown when a specific
+  // choice has been made.
+  function validateStage() {
+    let stage = currentStage();
+    let valid = true;
+
+    each(Object.keys(stage.choice||{}), key => {
+      if (stage.choice[key] != choices[key]) { valid = false; }
+    });
+
+    return valid;
+  }
+
   //   function setStage(id) {
   //     let index = eventData.stages.map(s => { return s.id }).indexOf(id);
   //     if (index < 0) {
@@ -109,15 +114,17 @@ Components.EventView = (function() {
   //     closeStage();
   //     buildStage();
   //   }
-  //
-  //   function closeStage() {
-  //     $('#currentEvent .chooser-content').addClass('hide');
-  //     $('#currentEvent .event-text-frame').addClass('hide');
-  //     $('#currentEvent .event-text-actions').addClass('hide');
-  //     $('#currentEvent .click-advance').addClass('hide');
-  //     $('#currentEvent .custom-content').addClass('hide');
-  //   }
-  //
+
+  // TODO: I need to verify that all these event elements are being used still.
+  //       Also, why are they being emptied as well as hidden?
+  function closeStage() {
+    $('#currentEvent .chooser-content').addClass('hide');
+    $('#currentEvent .event-text-frame').addClass('hide');
+    $('#currentEvent .event-text-actions').addClass('hide');
+    $('#currentEvent .click-advance').addClass('hide');
+    $('#currentEvent .custom-content').addClass('hide');
+  }
+
   //   function nextPage() {
   //     if (currentStage().pages && pageIndex < currentStage().pages.length-1) {
   //       pageIndex += 1;
@@ -133,17 +140,13 @@ Components.EventView = (function() {
     return eventData.stages[stageIndex];
   }
 
-
-
-
-
-
-
-
-
-
-
-
+  function endEvent() {
+    if (skipActive) {
+      skipActive = false;
+      skipContinue = true;
+    }
+    Renderer.sendCommand('game.end-event',choices);
+  }
 
   return {
     init,
@@ -197,13 +200,6 @@ Components.EventView = (function() {
 //     },skipRate);
 //   }
 //
-//   function endEvent() {
-//     if (skipActive) {
-//       skipActive = false;
-//       skipContinue = true;
-//     }
-//     Renderer.sendCommand('game.end-event',choices);
-//   }
 //
 //   // Build the next stage from a stage object. There are a whole fuck ton of
 //   // page types, each of which have their own options and have to be documented

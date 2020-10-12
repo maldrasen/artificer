@@ -104,6 +104,25 @@ global.Game = class Game {
       throw `Cannot add ${event.code}. The phase is in the wrong control state.`; }
   }
 
+  // Ending an event is a little tricky. If an event is chained it should happen
+  // in the event's onFinish() function. If a new event hasn't been chained we
+  // want to clear the current event.
+  static async endEvent(choices) {
+    console.log("Event Ended. Choices:",choices)
+    // if (Game.getCurrentEvent()) {
+    //   const startingCode = Game._currentEvent.event.code;
+    //   await Event.onFinish(choices);
+    //
+    //   if (startingCode == Game._currentEvent.event.code) {
+    //     Game.log(`Ending Event: ${startingCode}`);
+    //     Game._currentEvent = null;
+    //   }
+    // }
+  }
+
+
+
+
   // === Phase Changes =========================================================
 
   // When the game phase changes we need to add any valid available events that
