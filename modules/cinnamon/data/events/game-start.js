@@ -17,6 +17,9 @@ Event.build('game-start', {
   ],
 
   onFinish: async choices => {
+    // Needs to be an available event?
+    // summon-first-demon
+
     // await Player.forge(choices);
   },
 

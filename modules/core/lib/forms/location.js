@@ -7,6 +7,12 @@ global.Location = class Location extends Form {
   async render() {
     console.log("Rendering this location.")
 
+    // let locationEvent = null;
+    // let locationEvents = await AvailableEvent.currentLocationEvents();
+    // if (locationEvents.length > 0) {
+    //   locationEvent = locationEvents[0].code;
+    // }
+
     return {
       name: this.name,
       description: this.description,
