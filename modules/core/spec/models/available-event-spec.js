@@ -20,7 +20,6 @@ describe('AvailableEvent', function() {
   //   Event.build('location-event-3', { setting: { phase:'morning', location:'basement' }});
   // });
 
-
   // async function setupLocationEvents(done) {
     // await AvailableEvent.add('location-event-1');
     // await AvailableEvent.add('location-event-2', { requires:'flag.derp' });

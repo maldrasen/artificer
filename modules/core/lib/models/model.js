@@ -65,11 +65,7 @@ global.Model = class Model {
 
     each(this.properties, (value, key) => {
       if (key != 'id' && value != null) {
-        if (typeof value == 'string') {
-          string += `${key}:"${value}" `
-        } else {
-          string += `${key}:${value} `
-        }
+        string += (typeof value == 'string') ? `${key}:"${value}" ` : `${key}:${value} `;
       }
     })
 
