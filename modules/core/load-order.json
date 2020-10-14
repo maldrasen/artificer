@@ -1,3 +1,4 @@
 { "first":[
-  "lib/forms/form.js"
+  "lib/forms/form.js",
+  "lib/models/model.js"
 ]}
