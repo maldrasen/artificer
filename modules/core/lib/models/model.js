@@ -32,7 +32,14 @@ global.Model = class Model {
   }
 
   static async findOne(options) {
-    return new this.prototype.constructor(await this.proxy.findOne(options));
+    let instance = await this.proxy.findOne(options)
+    return instance ? new this.prototype.constructor(instance) : null
+  }
+
+  static async findAll(options) {
+    return (await this.proxy.findAll(options)).map(instance => {
+      return new this.prototype.constructor(instance);
+    });
   }
 
   static async destroy(options) {
