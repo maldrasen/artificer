@@ -6,9 +6,6 @@ global.each = require('iterate-object');
 global.postal = require('postal');
 global.util = require('util');
 
-// Install when commands into postal.
-require("postal.when")(postal);
-
 require(`${ROOT}/modules/boot/lib/configuration`);
 require(`${ROOT}/modules/boot/lib/environment`);
 require(`${ROOT}/modules/boot/lib/loader`);

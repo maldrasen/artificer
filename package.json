@@ -44,8 +44,6 @@
   "dependencies": {
     "jquery": "^3.5.1",
     "postal": "^2.0.5",
-    "postal.request-response": "^0.3.1",
-    "postal.when": "^0.2.0",
     "object-hash": "^2.0.3",
     "sequelize": "^6.3.5",
     "sqlite3": "^5.0.0",
