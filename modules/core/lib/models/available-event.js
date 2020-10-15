@@ -17,6 +17,15 @@ global.AvailableEvent = class AvailableEvent extends Model {
   set state(data)    { this.instance.setDataValue('state_json',JSON.stringify(data)) }
   set requires(data) { this.instance.setDataValue('requires_json',JSON.stringify(data)) }
 
+  // Add an event to the currently available events. AvailableEvents are for
+  // location events that are triggered by the player, and events that will
+  // happen as soon as their conditions are met.
+  //
+  // Available events have to have a valid setting. A time and place
+  // esentially. The game class must know at what time they're allowed to
+  // happen. If an event is queued that has a 'control' phase as its time, it's
+  // a location event, otherwise it's a normal event.
+  //
   // Data can have the following attributes, but they're all optional. The
   // requirements and the chance can both be defined on the event itself, but
   // they can be set when enqueued if they're based on some other current value.
@@ -80,9 +89,8 @@ global.AvailableEvent = class AvailableEvent extends Model {
       if (event.setting.phase != Game.getPhase()) { return false; }
     }
 
-    return true;
-    // return (await CentralScrutinizer.meetsRequirements(this.requires)) &&
-    //        (await CentralScrutinizer.meetsRequirements(Event.lookup(this.code).requires))
+    return (await CentralScrutinizer.meetsRequirements(this.requires)) &&
+           (await CentralScrutinizer.meetsRequirements(Event.lookup(this.code).requires))
   }
 }
 
