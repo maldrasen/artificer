@@ -51,18 +51,18 @@ global.AvailableEvent = class AvailableEvent extends Model {
     });
   }
 
-  //     AvailableEvent.remove = async function(code) {
-  //       await AvailableEvent.destroy({ where:{ code }});
-  //     }
-  //
-  //     AvailableEvent.printAll = async function() {
-  //       const events = await AvailableEvent.findAll({ order:[['code', 'ASC']] });
-  //
-  //       console.log("\n=== Printing Available Events ===");
-  //       each(events, async event => {
-  //         console.log(`    ${event.code} - Valid:${await event.isValid()} State:${event.state_json}`);
-  //       });
-  //     }
+  static async remove(code) {
+    await AvailableEvent.destroy({ where:{ code }});
+  }
+
+  static async printAll() {
+    const events = await AvailableEvent.findAll({ order:[['code', 'ASC']] });
+
+    console.log("\n=== Printing Available Events ===");
+    each(events, async event => {
+      console.log(`    ${event.code} - Valid:${await event.isValid()} State:${event.state_json}`);
+    });
+  }
 
   // Get all of the valid location events for this location.
   static async currentLocationEvents() {

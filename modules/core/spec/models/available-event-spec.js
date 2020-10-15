@@ -41,7 +41,16 @@ describe('AvailableEvent', function() {
     });
   });
 
-  // The following need to reimplement the scrutinizer.
+  it('can destroy an available event', function(done) {
+    AvailableEvent.add('location-event-1').then(() => {
+      AvailableEvent.remove('location-event-1').then(() => {
+        AvailableEvent.findOne({ where:{ code:'location-event-1' }}).then(event => {
+          expect(event).to.be.null;
+          done();
+        });
+      });
+    });
+  });
 
   it('can get valid location events for the current location', function(done) {
     setupLocationEvents().then(() => {
