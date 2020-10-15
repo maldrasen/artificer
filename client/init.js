@@ -50,8 +50,8 @@ $(document).ready(function() {
   // === Init Components ===
   Components.Backlog.init();
   Components.EventView.init();
+  Components.LocationView.init();
   // Components.InventoryView.init();
-  // Components.LocationView.init();
   // Components.ManageView.init();
   // Components.MinionListView.init();
   // Components.MinionDetailView.init();

@@ -11,6 +11,7 @@
       location: 'basement',
     });
 
+    AvailableEvent.add('summon-first-demon');
     Composer.render();
   });
 

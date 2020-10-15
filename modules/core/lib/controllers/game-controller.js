@@ -9,4 +9,9 @@ postal.subscribe({ channel:"server", topic:"ready", callback:() => {
     Composer.render();
   });
 
+  ipcMain.on('game.start-location-event', async (event, data) => {
+    await Game.startLocationEvent(data.code);
+    Composer.render();
+  });
+
 }});

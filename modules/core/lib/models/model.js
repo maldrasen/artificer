@@ -42,10 +42,9 @@ global.Model = class Model {
     });
   }
 
-  static async destroy(options) {
-    return await this.proxy.destroy(options);
-  }
+  static async destroy(options) { return await this.proxy.destroy(options); }
 
+  async destroy() { await this.instance.destroy(); }
   async save() { await this.instance.save(); }
 
   // Model objects need to be serialized into plain javascript objects before

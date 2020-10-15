@@ -5,18 +5,21 @@ global.Location = class Location extends Form {
   // those things can go onto the form...
 
   async render() {
-    console.log("Rendering this location.")
 
-    // let locationEvent = null;
-    // let locationEvents = await AvailableEvent.currentLocationEvents();
-    // if (locationEvents.length > 0) {
-    //   locationEvent = locationEvents[0].code;
-    // }
-
-    return {
+    let rendering = {
       name: this.name,
       description: this.description,
     }
+
+    let locationEvent = (await AvailableEvent.currentLocationEvents())[0];
+    if (locationEvent) {
+      rendering.event = {
+        code: locationEvent.code,
+        label: (Event.lookup(locationEvent.code).buttonLabel || '(!) Event')
+      }
+    }
+
+    return rendering;
   }
 
 }

@@ -34,8 +34,6 @@ Components.EventView = (function() {
     //     if (event.background != null) { setBackground(event.background); }
     //     if (event.darkenBackground != null) { darkenBackground(event.darkenBackground); }
 
-    console.log("Build:",data)
-
     buildStage();
 
     //     if (event.settingCard) {

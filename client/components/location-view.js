@@ -7,7 +7,7 @@ Components.LocationView = (function() {
     // $(document).on('click','.menu-show-minions',    Elements.buttonAction(() => { Renderer.sendCommand('location.show-minions');   }));
     // $(document).on('click','.menu-show-inventory',  Elements.buttonAction(() => { Renderer.sendCommand('location.show-inventory'); }));
     // $(document).on('click','.menu-show-player',     Elements.buttonAction(() => { Renderer.sendCommand('location.show-player');    }));
-    // $(document).on('click','.start-location-event', Elements.buttonAction(startLocationEvent));
+    $(document).on('click','.start-location-event', Elements.buttonAction(startLocationEvent));
   }
 
   function build(transport, view) {
@@ -24,10 +24,16 @@ Components.LocationView = (function() {
     // if (view.flags.showMapMenu) { location.find('.menu-show-map').removeClass('hide'); }
     // if (view.flags.showMinionMenu) { location.find('.menu-show-minions').removeClass('hide'); }
     // if (view.flags.showInventoryMenu) { location.find('.menu-show-inventory').removeClass('hide'); }
-    // if (view.activeEvent) { location.find('.active-event-notification').data('code',view.activeEvent).removeClass('hide'); }
     // if (view.flags.showPlanAction) { location.find('.create-plan-action').removeClass('hide'); }
     // if (view.flags.showManageAction) { location.find('.manage-action').removeClass('hide'); }
     // if (view.flags.showTrainAction) { location.find('.train-action').removeClass('hide'); }
+
+    if (view.event) {
+      location.find('.active-event-notification').
+        data('code',view.event.code).
+        removeClass('hide').
+        append(view.event.label);
+    }
 
     $('#mainContent').empty().append(location);
 
@@ -53,11 +59,11 @@ Components.LocationView = (function() {
   //     return datum.eventFlag && !datum.current;
   //   }).length > 0;
   // }
-  //
-  // function startLocationEvent() {
-  //   Renderer.sendCommand('game.start-location-event', { code:$(this).data('code') });
-  // }
-  //
+
+  function startLocationEvent() {
+    Renderer.sendCommand('game.start-location-event', { code:$(this).data('code') });
+  }
+
   // function showMapFlag() {
   //   let position = $('#mainContent .menu-show-map').offset();
   //   let flag = $('<div>',{ class:'map-flag' }).css({ left:position.left-8 });

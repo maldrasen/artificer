@@ -1,4 +1,5 @@
 Event.build('summon-first-demon', {
+  buttonLabel: 'Summon a Demon',
 
   setting: {
     phase: 'morning',

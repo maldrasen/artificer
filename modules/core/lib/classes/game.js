@@ -119,6 +119,30 @@ global.Game = class Game {
     }
   }
 
+  // Start a location event. Location events are usually made available in the
+  // client when an associated available event is added, however they can also be
+  // started directly with an action as is the case with the debug actions, in
+  // which case there will be no available event.
+  static async startLocationEvent(code) {
+    let availableEvent = await AvailableEvent.findOne({ where:{ code:code }});
+    let state = {};
+
+    if (availableEvent) {
+      state = availableEvent.state || {};
+      await availableEvent.destroy();
+    }
+
+    log(`Location Event Started - ${code}`);
+    Game._currentEvent = { event:Event.lookup(code), state:state };
+  }
+
+
+
+
+
+
+
+
 
 
 
