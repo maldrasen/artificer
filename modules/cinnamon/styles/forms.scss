@@ -1,6 +1,25 @@
 
 #incubusOrSuccubus {
 
+  .button {
+    font-family: roboto;
+    line-height: 1.5;
+    white-space: inherit;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: rgba(0,0,0,0.8);
+  }
+
+  .header {
+    margin-bottom: 5px;
+    font-size: $fs-big;
+    border-bottom: $border-light;
+  }
+
+  .header.male { color:rgb(150, 130, 212) !important }
+  .header.futa { color:rgb(175, 130, 212) !important }
+  .header.female { color:rgb(200, 130, 212) !important }
+
 }
 
 #warningFrame {
