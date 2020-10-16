@@ -16,10 +16,9 @@ postal.subscribe({ channel:"server", topic:"ready", callback:() => {
   });
 
   ipcMain.on('game.quick-save', () => {
-    console.log("Quick Save")
-    // Records.saveToFile("Quick Save").then(()=>{
-    //   Browser.send('alert',{ message:'Quick Save Successful.' });
-    // });
+    Records.saveToFile("Quick Save").then(()=>{
+      Browser.send('alert',{ message:'Quick Save Successful.' });
+    });
   });
 
   ipcMain.on('game.load', (event, filename) => {

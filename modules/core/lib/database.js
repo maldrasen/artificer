@@ -80,11 +80,14 @@ global.Database = (function() {
     await database.sync();
   }
 
+
+
   return {
     createDatabase,
     clear,
     registerModel,
     load,
+    getModels: () => { return persistedModels; },
     instance: () => { return database; },
   };
 
