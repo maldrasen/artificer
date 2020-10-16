@@ -16,6 +16,7 @@ Event.build('summon-first-demon', {
   ],
 
   onFinish: async choices => {
+    console.log("Now chain event based on gender...")
     console.log("Choice:",choices);
   },
 

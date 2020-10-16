@@ -14,11 +14,13 @@
     margin-bottom: 5px;
     font-size: $fs-big;
     border-bottom: $border-light;
+
+    .info { opacity: 0.666; }
   }
 
-  .header.male { color:rgb(150, 130, 212) !important }
-  .header.futa { color:rgb(175, 130, 212) !important }
-  .header.female { color:rgb(200, 130, 212) !important }
+  .male .header { color:rgb(150, 130, 212) !important }
+  .futa .header { color:rgb(175, 130, 212) !important }
+  .female .header { color:rgb(200, 130, 212) !important }
 
 }
 
