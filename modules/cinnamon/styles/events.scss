@@ -30,36 +30,6 @@
 //   }
 // }
 
-#warningFrame {
-  margin: 50px auto 0;
-  width: 600px;
-  background-color: rgb(10,5,8);
-  box-sizing: border-box;
-  border: $border-light;
-  box-shadow: $shadow-frame;
-
-  .warning-image {
-    background-image: url("../../assets/images/warning.png");
-    background-position: center;
-    background-size: cover;
-
-    width: 370px;
-    height: 600px;
-    float: left;
-  }
-  .warning-message {
-    padding: 20px;
-    width: 230px;
-    font-size: $fs-body;
-  }
-  .warning-footer {
-    float: right;
-    position: relative;
-    top: -80px;
-    right: 50px;
-  }
-}
-
 // #sexualityFormPage {
 //   .form {
 //     margin: 50px auto;
