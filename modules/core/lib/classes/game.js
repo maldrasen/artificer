@@ -27,16 +27,12 @@ global.Game = class Game {
   static setLocation(code) { Flag.set('game.location',code); }
   static setFood(food) { Flag.set('game.food',food); }
 
-
   // Clear the entire game from memory. This needs to be done when the main
   // menu is opened so that when another game is loaded the state is clear.
   static async clear() {
     Game.clearEventQueues();
     Flag.clear();
-
-    // await Promise.all(Database.getPersistedModels().map(model => {
-    //   return model.destroy({ where:{}, truncate:true })
-    // }));
+    await Database.clear();
   }
 
   // === Event Queues ==========================================================

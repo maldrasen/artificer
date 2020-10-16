@@ -1,13 +1,15 @@
 Components.LocationView = (function() {
 
   function init() {
-    // $(document).on('click','.menu-show-load',       Elements.buttonAction(Renderer.showLoadGame));
-    // $(document).on('click','.menu-show-save',       Elements.buttonAction(Renderer.showSaveGame));
+    $(document).on('click','.menu-show-load',       Elements.buttonAction(Components.PersistenceViews.showLoadGame));
+    $(document).on('click','.menu-show-save',       Elements.buttonAction(Components.PersistenceViews.showSaveGame));
+    $(document).on('click','.menu-quit',            Elements.buttonAction(confirmQuit));
+    $(document).on('click','.start-location-event', Elements.buttonAction(startLocationEvent));
+
     // $(document).on('click','.menu-show-map',        Elements.buttonAction(Renderer.showMap));
     // $(document).on('click','.menu-show-minions',    Elements.buttonAction(() => { Renderer.sendCommand('location.show-minions');   }));
     // $(document).on('click','.menu-show-inventory',  Elements.buttonAction(() => { Renderer.sendCommand('location.show-inventory'); }));
     // $(document).on('click','.menu-show-player',     Elements.buttonAction(() => { Renderer.sendCommand('location.show-player');    }));
-    $(document).on('click','.start-location-event', Elements.buttonAction(startLocationEvent));
   }
 
   function build(transport, view) {
@@ -91,6 +93,16 @@ Components.LocationView = (function() {
   // function isOpen() {
   //   return $('#locationView').length > 0;
   // }
+
+
+  // === Location Menu ===
+
+  function confirmQuit() {
+    Elements.Confirm.showConfirm({
+      message: 'Quit this shit?',
+      yes: () => { Renderer.sendCommand('game.quit'); }
+    })
+  }
 
   return {
     init: init,
