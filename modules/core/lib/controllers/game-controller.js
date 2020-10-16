@@ -22,11 +22,10 @@ postal.subscribe({ channel:"server", topic:"ready", callback:() => {
   });
 
   ipcMain.on('game.load', (event, filename) => {
-    console.log("Game Load")
-    // Browser.send('game.prepare');
-    // Records.loadFromFile(filename).then(()=>{
-    //   Composer.render();
-    // });
+    Browser.send('game.prepare');
+    Records.loadFromFile(filename).then(()=>{
+      Composer.render();
+    });
   });
 
   ipcMain.on('game.list-save-files',() => {

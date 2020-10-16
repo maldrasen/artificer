@@ -31,12 +31,13 @@ global.Flag = class Flag {
     this._cache = {};
   }
 
-  //     Flag.printFlags = async function() {
-  //       console.log("\n=== Printing Flags ===");
-  //       each(Object.keys(Flag._cache).sort(), code => {
-  //         console.log(`    ${code}  -  ${Flag._cache[code]}`);
-  //       });
-  //     }
+  static printFlags() {
+    console.log("\n=== Printing Flags ===");
+    each(Object.keys(Flag._cache).sort(), code => {
+      console.log(`    ${code}  -  ${Flag._cache[code]}`);
+    });
+  }
+
 }
 
 Flag.clear();
