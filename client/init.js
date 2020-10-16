@@ -4,6 +4,7 @@ global.$ = global.jQuery = require('jquery');
 global.each = require('iterate-object');
 global.electron = require('electron');
 global.fs = require('fs');
+global.path = require('path');
 global.util = require('util');
 global.ipcRenderer = electron.ipcRenderer;
 

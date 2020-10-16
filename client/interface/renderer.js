@@ -58,6 +58,8 @@ global.Renderer = (function() {
     // loaded?
     // Elements.PagedContent.build();
 
+    ImageResourceLoader.resolveAll();
+
     prepare();
   }
 

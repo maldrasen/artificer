@@ -1,4 +1,3 @@
-
 // Form Pages are used to render any kind of non-standard page in an event.
 // They're needed because scenarios will sometimes need to display a unique
 // view with it's own javascript that should be run on the page and have
@@ -31,6 +30,9 @@ Components.EventFormPage = (function() {
           element.on('click','a.form-page-submit',Elements.buttonAction(()=> { submit(page, element); }));
 
       $('#currentEvent .event-content').append(element);
+      $.each(element.find('.unresolved-image'), (i,e) => {
+        ImageResourceLoader.resolve($(e));
+      });
 
       if (page.onLoad) { page.onLoad(element); }
     });
