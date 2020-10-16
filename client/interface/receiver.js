@@ -7,7 +7,7 @@ global.Receiver = (function() {
     // ipcRenderer.on('init.aspect-library', Aspects.init);
 
     ipcRenderer.on('game.prepare', Renderer.prepare);
-    // ipcRenderer.on('game.file-list', Components.SavedGames.showSaves);
+    ipcRenderer.on('game.show-save-files', Components.PersistenceViews.showSaveFiles);
 
     ipcRenderer.on('render.event', Components.EventView.build);
     ipcRenderer.on('render.location', Components.LocationView.build);

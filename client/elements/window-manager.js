@@ -1,11 +1,10 @@
 Elements.WindowManager = (function() {
+  let currentOverlay = null;
 
   function init() {
     $(document).on('keydown', handleEscape);
+    $(document).on('click', '.close-overlay', Elements.buttonAction(removeOverlay));
   }
-
-  return { init };
-
 
   // Universal keypress (escape) handler.
   // This needs to be reworked to remove the scenario specific controls. The
@@ -17,9 +16,6 @@ Elements.WindowManager = (function() {
   // responsible for all window opening and closing.
   function handleEscape(e) {
     if (e.key == 'Escape') {
-
-      console.log("(!) Escape")
-
       // Elements.Tooltip.close();
 
       // If a dialog or floating frame nested inside of an overlay is open, it
@@ -29,7 +25,10 @@ Elements.WindowManager = (function() {
       // if (Elements.Confirm.isOpen()) { return Elements.Confirm.hideConfirm(); }
       // if (Components.MinionSelectDialog.isOpen()) { return Components.MinionSelectDialog.close(); }
       // if (Components.Backlog.isOpen()) { return Components.Backlog.close(); }
-      // if ($('#overlayContent').children().length > 0) { return removeOverlay(); }
+
+      if (currentOverlay && currentOverlay.escapable) {
+        return removeOverlay();
+      }
 
       // A view can only be canceled when the first child of #mainContent has
       // the can-cancel class. This applies to the PlanView, the
@@ -40,21 +39,28 @@ Elements.WindowManager = (function() {
     }
   }
 
+  // Add an overlay to be displayed over the current view. There can only be
+  // one overlay active at a time.
+  // Options:
+  //    title:      Title for the overlay frame.
+  //    template:   Template to use for the contents of the overlay.
+  //    build:      Build function to call once the overlay has been shown.
+  //    escapable:  (default true) Pressing escape will close the overlay.
+  function addOverlay(options) {
+    currentOverlay = { escapable:(options.escapable||true) };
+
+    $('#overlayFrame').removeClass('hide').find('.title').empty().append(options.title);
+    $('#overlayContent').append($(options.template).html());
+
+    if (options.build) { options.build(); }
+  }
+
+  function removeOverlay() {
+    currentOverlay = null;
+    $('#overlayFrame').addClass('hide')
+    $('#overlayContent').empty();
+  }
+
+  return { init, addOverlay, removeOverlay };
 
 })();
-
-// --- From Renderer ---
-
-// May move the overlays into the window manager, or we at least need to hook
-// it into the overlays
-// function showOverlay(view) {
-//   $('#overlayFrame').removeClass('hide').find('.title').empty().append(view.title);
-//   $('#overlayContent').append($(view.template).html());
-//   if (view.build) { view.build(); }
-// }
-//
-// function removeOverlay() {
-//   $('#overlayFrame').addClass('hide')
-//   $('#overlayContent').empty();
-// }
-//

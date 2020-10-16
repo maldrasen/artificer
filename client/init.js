@@ -46,6 +46,7 @@ $(document).ready(function() {
   // Elements.ScrollingPanel.init();
   // Elements.Tabs.init();
   // Elements.Tooltip.init();
+  Elements.WindowManager.init();
 
   // === Init Components ===
   Components.Backlog.init();

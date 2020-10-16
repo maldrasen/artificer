@@ -30,10 +30,9 @@ postal.subscribe({ channel:"server", topic:"ready", callback:() => {
   });
 
   ipcMain.on('game.list-save-files',() => {
-    console.log("List Saves")
-    // Records.listSaveFiles().then(fileList => {
-    //   Browser.send('game.file-list', fileList);
-    // });
+    Records.listSaveFiles().then(fileList => {
+      Browser.send('game.show-save-files', fileList);
+    });
   });
 
   ipcMain.on('game.delete-save', (event, filename) => {

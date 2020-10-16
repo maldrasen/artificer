@@ -42,9 +42,6 @@ global.Renderer = (function() {
 
   function init() {
     $(document).on('click', '.send-command', Elements.buttonAction(sendCommandButton));
-
-    // This should be part of the window manager I think.
-    // $(document).on('click', '.close-overlay', Elements.buttonAction(removeOverlay));
   }
 
   async function ready(transport, env) {
