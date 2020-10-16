@@ -9,10 +9,9 @@ postal.subscribe({ channel:"server", topic:"ready", callback:() => {
   // === Save & Load ===
 
   ipcMain.on('game.save', (event, gameName) => {
-    console.log("Game Save")
-    // Records.saveToFile(gameName).then(()=>{
-    //   Browser.send('alert',{ message:'Save Successful.' });
-    // });
+    Records.saveToFile(gameName).then(()=>{
+      Browser.send('alert',{ message:'Save Successful.' });
+    });
   });
 
   ipcMain.on('game.quick-save', () => {
@@ -35,8 +34,7 @@ postal.subscribe({ channel:"server", topic:"ready", callback:() => {
   });
 
   ipcMain.on('game.delete-save', (event, filename) => {
-    console.log("Delete Save")
-    // Records.deleteSaveFile(filename);
+    Records.deleteSaveFile(filename);
   });
 
   // The game.start and game.debug-start events should be implemented in a

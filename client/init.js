@@ -52,16 +52,8 @@ $(document).ready(function() {
   Components.Backlog.init();
   Components.EventView.init();
   Components.LocationView.init();
-  // Components.InventoryView.init();
-  // Components.ManageView.init();
-  // Components.MinionListView.init();
-  // Components.MinionDetailView.init();
-  // Components.MinionSelectDialog.init();
-  // Components.PlanView.init();
-  // Components.PlayerView.init();
-  // Components.SavedGames.init();
+  Components.PersistenceViews.init();
   // Components.SettingsDialog.init();
-  // Components.TrainingPlan.init();
 
   // === Init Interface ===
   Renderer.init();

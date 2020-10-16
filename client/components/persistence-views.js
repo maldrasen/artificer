@@ -2,42 +2,28 @@ Components.PersistenceViews = (function() {
   let mode;
 
   function init() {
-    //     $(document).on('click','.new-save-link', Elements.buttonAction(()=>{
-    //       Renderer.sendCommand('game.save',$('#gameName').val());
-    //       Renderer.removeOverlay();
-    //     }));
+    $(document).on('click','.new-save-link', Elements.buttonAction(()=>{
+      Renderer.sendCommand('game.save',$('#gameName').val());
+      Elements.WindowManager.removeOverlay();
+    }));
   }
 
   function showLoadGame() {
+    mode = 'load';
     Elements.WindowManager.addOverlay({
       title: 'Load Game',
       template: '#loadGameTemplate',
-      build: buildLoad,
+      build: () => { Renderer.sendCommand('game.list-save-files'); },
     });
   }
 
   function showSaveGame() {
+    mode = 'save';
     Elements.WindowManager.addOverlay({
       title: 'Save Game',
       template: '#saveGameTemplate',
-      build: buildSave,
+      build: () => { Renderer.sendCommand('game.list-save-files'); },
     });
-  }
-
-  // It's not unusual for this event to finish before the page is built. This
-  // small delay should be enough to ensure that the view has been rendered.
-  function buildLoad() {
-    setTimeout(() => {
-      mode = 'load';
-      Renderer.sendCommand('game.list-save-files');
-    },10);
-  }
-
-  function buildSave() {
-    setTimeout(() => {
-      mode = 'save';
-      Renderer.sendCommand('game.list-save-files');
-    },10);
   }
 
   function showSaveFiles(event, saves) {
@@ -53,12 +39,16 @@ Components.PersistenceViews = (function() {
     });
   }
 
-  //   function getOverwriteLink(save) {
-  //     return $('<a>',{ href:'#', class:'button-small button-primary' }).append(`${save.playerName} / ${save.gameName}`).on('click',Elements.buttonAction(()=>{
-  //       Renderer.sendCommand('game.save',save.filename);
-  //       Renderer.removeOverlay();
-  //     }));
-  //   }
+  function getOverwriteLink(save) {
+    let action = () => {
+      Renderer.sendCommand('game.save',save.filename);
+      Renderer.removeOverlay();
+    }
+
+    return $('<a>',{ href:'#', class:'button-small button-primary' }).
+      on('click',Elements.buttonAction(action)).
+      append(`${save.playerName} / ${save.gameName}`);
+  }
 
   function getLoadLink(save) {
     let action = () => {
