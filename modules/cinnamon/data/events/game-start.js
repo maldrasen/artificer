@@ -11,16 +11,22 @@ Event.build('game-start', {
       formPage: 'warning-form'
     },{
       pages: [
-        { text:"Game Start Event" }
+        { text:`TODO: Game introduction event.`},
+      ]
+    },{
+      formPage: 'name-and-gender-form'
+    },{
+      formPage: 'sexuality-form'
+    },{
+      pages: [
+        { text:`TODO: Game start.` }
       ]
     }
   ],
 
   onFinish: async choices => {
-    // Needs to be an available event?
-    // summon-first-demon
-
-    // await Player.forge(choices);
+    // Next Big TODO
+    // await Player.build(choices);
   },
 
 });

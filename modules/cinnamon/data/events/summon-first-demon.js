@@ -8,10 +8,14 @@ Event.build('summon-first-demon', {
 
   stages:[{
       pages: [
-        { text:"Now, summon your first demon." }
+        { text:"TODO: Cinnamon describes the what she needs to do to complete the summoing rune." }
       ]
     },{
       formPage: 'incubus-or-succubus'
+    },{
+      pages: [
+        { text:`TODO: Describe the portal opening.` }
+      ]
     }
   ],
 

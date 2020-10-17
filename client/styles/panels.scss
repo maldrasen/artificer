@@ -29,18 +29,17 @@
       margin-right: 10px;
     }
   }
+
+  .panel-footer {
+    margin: -10px;
+    padding: 10px;
+    height: 32px;
+    background-color: rgba(0,0,0,0.2);
+    text-align: right;
+  }
+
 }
 
-.chooser-panel-footer {
-  position: relative;
-  padding: 10px 0 0;
-  height: 48px;
-  .action {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-  }
-}
 
 .form-list {
   white-space: nowrap;
