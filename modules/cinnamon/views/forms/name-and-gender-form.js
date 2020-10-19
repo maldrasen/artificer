@@ -21,11 +21,13 @@ Components.EventFormPage.register('name-and-gender-form', {
     });
   },
 
-  onSubmit: () => {
+  onSubmit: page => {
+
     let choices = {
-      title:     $('#title').val().trim(),
-      firstName: $('#firstName').val().trim(),
-      lastName:  $('#lastName').val().trim(),
+      gender:    page.find('#genderButtons .on').data('value'),
+      title:     page.find('#title').val().trim(),
+      firstName: page.find('#firstName').val().trim(),
+      lastName:  page.find('#lastName').val().trim(),
     };
 
     if (choices.firstName.length > 20 ||

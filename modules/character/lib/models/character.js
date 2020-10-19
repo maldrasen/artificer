@@ -1,53 +1,30 @@
 global.Character = class Character extends Model {
 
+  // get species() { return Species.lookup(this.speciesCode); },
+  // get gender() { return Gender[this.genderCode]; },
+
+  //     singleName()  { return this.forcedName || this.firstName },
+  //     portrait()   { return ImageResource.lookup(this.portraitCode ? this.portraitCode : 'unknown-portrait'); },
+  //     isFurry()    { return this.species.isFurry(this.genderCode); },
+  //     isScalie()     { return this.species.isScalie; },
+  //     portrait()    { return ImageResource.lookup(this.portraitCode || 'unknown-portrait'); },
+  //     hasSkinBody()  { return !this.isFurry && !this.isScalie; },
+  //     hasHair()      { return this.hasSkinBody || this.species.hasHair },
+
+  get isMale()      { return this.genderCode == 'male'; }
+  get isFemale()    { return this.genderCode == 'female'; }
+  get isFuta()      { return this.genderCode == 'futa'; }
+
 
 }
 
+// HasAttributes.isAppliedTo(Player);
+// HasAspects.isAppliedTo(Player);
+// HasBody.isAppliedTo(Player);
+// HasEquipment.isAppliedTo(Player);
+// HasSexSkills.isAppliedTo(Player);
 
-// global.Character = Database.instance().define('character', {
-// },{
-//   timestamps: false,
-//   getterMethods: {
-//     gender()      { return Gender[this.genderCode]; },
-//     species()     { return Species.lookup(this.speciesCode); },
-//     personality() { return Personality.lookup(this.personalityCode); },
-//     portrait()    { return ImageResource.lookup(this.portraitCode || 'unknown-portrait'); },
-//     dutyOptions() { return JSON.parse(this.dutyOptions_json||'{}') },
-//     role()        { return this.currentDuty == 'role' ? this.dutyCode : null; },
-//     isMale()      { return this.genderCode == 'male'; },
-//     isFemale()    { return this.genderCode == 'female'; },
-//     alive()       { return this.status == 'normal' },
-//     singleName()  { return this.forcedName || this.firstName },
-//
-//     isFurry()      { return this.species.isFurry(this.genderCode); },
-//     isScalie()     { return this.species.isScalie; },
-//     hasSkinBody()  { return !this.isFurry && !this.isScalie; },
-//     hasHair()      { return this.hasSkinBody || this.species.hasHair },
-//     isPlayer()     { return false; },
-//     isLoyal()      { return this.loyalty >= 25 },
-//     isAfraid()     { return this.fear >= 25 },
-//     isPregnant()   { return this.pregnantWith != null },
-//     isForager()    { return this.currentDuty == 'role' && this.dutyCode == 'forager' },
-//     isHunter()     { return this.currentDuty == 'role' && this.dutyCode == 'hunter' },
-//
-//     // For a minion to be rebellus they either need to have low fear or low
-//     // loyalty. The more they don't like you, the less fear of you they need
-//     // to betray you.
-//     isRebellious() {
-//       if (this.fear < 7)  { return this.loyalty < 25; }
-//       if (this.fear < 15) { return this.loyalty < 15; }
-//       if (this.fear < 25) { return this.loyalty < 7; }
-//       if (this.fear < 50) { return this.loyalty < 1; }
-//       return false;
-//     },
-//
-//     // Essentially the same as the rebellious but while the rebellious cutoff is
-//     // about fear + loyalty being less than 32, the cutoff for traitorous is 16
-//     isTraitorous() { return (this.fear + this.loyalty) < 16 },
-//
-//     name() {
-//       return this.forcedName || `${this.preName||''} ${this.firstName} ${this.lastName||''}`.trim();
-//     },
+
 //   },
 //   setterMethods: {
 //     dutyOptions(json) { this.setDataValue('dutyOptions_json',JSON.stringify(json)) },

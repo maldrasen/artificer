@@ -11,7 +11,7 @@ Loader.loadModule('character');
 before(() => {
   return new Promise(resolve => {
     postal.subscribe({ channel:"database", topic:"ready", callback:() => {
-      console.log("=== Ready ===");
+      console.log("\n\n=== Test Environment Loaded and Ready ===\n\n");
       resolve();
     }});
   });

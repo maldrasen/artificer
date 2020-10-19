@@ -2,7 +2,10 @@ require('sqlite3').verbose();
 
 global.Database = (function() {
   let database;
+
+  let registeredModels = [];
   let persistedModels = [];
+  let waiting = true;
 
   async function createDatabase() {
     resetLog();
@@ -59,28 +62,34 @@ global.Database = (function() {
   // from the DatabaseDirector. This function takes all of the registered
   // models and creates their schema in the in memory database. That then
   // triggers the data loading if there is any and sends the final ready
-  // message.
-  //
-  // We load all of the models as soon as the database is built, but I think
-  // theoritically a model could be added at any point before it's used. Not
-  // sure if we need to support that now, but if we need to do that in the
-  // future we can rewrite registerModel() to check to see if the database is
-  // ready, creating the model right away if it is, or adding it to the array
-  // to be built if not. We'll need to add a flag and another array if we go
-  // that route though.
-  function registerModel(model) { persistedModels.push(model); }
+  // message. It's also possible for models to be registered at any time after
+  // the database has been created. When that happens the schema for that model
+  // is just created immeadietly.
 
-  async function load() {
-    await Promise.all(persistedModels.map(async model => {
-      await model.createModel();
-    }));
-
-    log('Finished Initializing Database')
-
-    await database.sync();
+  async function registerModel(model) {
+    if (waiting) {
+      registeredModels.push(model);
+    } else {
+      await activateModel(model);
+    }
   }
 
+  async function activateModel(model) {
+    console.log(`  - Activating ${model.name} Model`)
+    await model.createModel();
+    await database.sync();
 
+    persistedModels.push(model);
+  }
+
+  async function load() {
+    await Promise.all(registeredModels.map(async model => {
+      await activateModel(model);
+    }));
+
+    waiting = false;
+    registeredModels = [];
+  }
 
   return {
     createDatabase,

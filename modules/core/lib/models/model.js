@@ -31,9 +31,14 @@ global.Model = class Model {
     return new this.prototype.constructor(await this.proxy.create(options));
   }
 
+  static async lookup(id) {
+    let instance = await this.proxy.findByPk(id);
+    return instance ? new this.prototype.constructor(instance) : null;
+  }
+
   static async findOne(options) {
-    let instance = await this.proxy.findOne(options)
-    return instance ? new this.prototype.constructor(instance) : null
+    let instance = await this.proxy.findOne(options);
+    return instance ? new this.prototype.constructor(instance) : null;
   }
 
   static async findAll(options) {

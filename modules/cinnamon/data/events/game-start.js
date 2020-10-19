@@ -25,8 +25,9 @@ Event.build('game-start', {
   ],
 
   onFinish: async choices => {
-    // Next Big TODO
-    // await Player.build(choices);
+    choices.species = 'human';
+
+    await Player.build(choices);
   },
 
 });
