@@ -27,6 +27,12 @@ Event.build('game-start', {
   onFinish: async choices => {
     choices.species = 'human';
 
+    Flag.setAll({
+      'player.fucks-men'   : choices.men,
+      'player.fucks-women' : choices.women,
+      'player.fucks-futas' : choices.futas
+    });
+
     await Player.build(choices);
   },
 
