@@ -1,0 +1,12 @@
+
+=== Goals ===
+When the game was started we adjusted the character's attributes based on the
+player's current goal. This should still be done, but moved into the scenario's
+player creation event.
+
+if (options.goal == 'conquest')  { player.physical = player.physical + 10; }
+if (options.goal == 'followers') { player.personal = player.personal + 10; }
+if (options.goal == 'knowledge') { player.mental =   player.mental + 10; }
+if (options.goal == 'power')     { player.magical =  player.magical + 10; }
+
+Flag.setAll({ 'player.goal': options.goal });
