@@ -31,7 +31,7 @@ global.Player = class Player extends Character {
     if (options.gender == null) { throw 'Player gender is required'; }
     if (options.species == null) { throw 'Player species is required'; }
 
-    //   let species = Species.lookup(options.species);
+    let species = Species.lookup(options.species);
     //   let gender = Gender.lookup(options.gender);
 
     player = await Player.create({

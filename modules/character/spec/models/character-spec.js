@@ -1,8 +1,6 @@
 describe('Character', function() {
 
-
 });
-
 
 // describe('Character', function() {
 //
