@@ -1,28 +1,10 @@
+global.Character = class Character extends Model {
+
+
+}
+
+
 // global.Character = Database.instance().define('character', {
-//   type:             { type:Sequelize.STRING, validate:{ isIn:[['pending','minion']] }},
-//   status:           { type:Sequelize.STRING, validate:{ isIn:[['normal','missing','dead']] }},
-//   currentDuty:      { type:Sequelize.STRING, validate:{ isIn:[['role','project','mission','task']] }},
-//   dutyCode:         { type:Sequelize.STRING },
-//   dutyOptions_json: { type:Sequelize.STRING },
-//   genderCode:       { type:Sequelize.STRING },
-//   speciesCode:      { type:Sequelize.STRING },
-//   personalityCode:  { type:Sequelize.STRING },
-//   portraitCode:     { type:Sequelize.STRING },
-//   preName:          { type:Sequelize.STRING },
-//   firstName:        { type:Sequelize.STRING },
-//   lastName:         { type:Sequelize.STRING },
-//   forcedName:       { type:Sequelize.STRING },
-//   physical:         { type:Sequelize.INTEGER, validate:{ min:0 }},
-//   mental:           { type:Sequelize.INTEGER, validate:{ min:0 }},
-//   personal:         { type:Sequelize.INTEGER, validate:{ min:0 }},
-//   magical:          { type:Sequelize.INTEGER, validate:{ min:0 }},
-//   energy:           { type:Sequelize.INTEGER, validate:{ min:0, max:2 }},
-//   loyalty:          { type:Sequelize.INTEGER, validate:{ min:0, max:100 }},
-//   fear:             { type:Sequelize.INTEGER, validate:{ min:0, max:100 }},
-//   lust:             { type:Sequelize.INTEGER, validate:{ min:0, max:100 }},
-//   pregnantWith:     { type:Sequelize.STRING  },
-//   pregnantDays:     { type:Sequelize.INTEGER },
-//   pregnantTotal:    { type:Sequelize.INTEGER },
 // },{
 //   timestamps: false,
 //   getterMethods: {

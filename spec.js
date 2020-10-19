@@ -6,6 +6,8 @@ require(`${ROOT}/modules/boot/main.js`);
 
 postal.publish({ channel:"database", topic:"start" });
 
+Loader.loadModule('character');
+
 before(() => {
   return new Promise(resolve => {
     postal.subscribe({ channel:"database", topic:"ready", callback:() => {

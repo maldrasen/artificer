@@ -1,5 +1,5 @@
 { "first":[
   "lib/models/character.js",
   "lib/models/player.js",
-  "lib/models/minion.js",
+  "lib/models/minion.js"
 ]}
