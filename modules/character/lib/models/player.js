@@ -51,7 +51,10 @@ global.Player = class Player extends Character {
     };
 
     await CharacterBuilder.addBody(player, defaultBody);
-    //   await CharacterNamer.execute(player);
+
+    // In progress
+    // await CharacterNamer.execute(player);
+
     //   await CharacterDescriber.updateAll(player);
 
     //   TODO: Add portrait selection

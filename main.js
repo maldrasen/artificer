@@ -5,7 +5,3 @@ require(`${ROOT}/modules/boot/main.js`);
 
 postal.publish({ channel:"database", topic:"start" });
 postal.publish({ channel:"server", topic:"start" });
-
-postal.subscribe({ channel:"database", topic:"ready", callback:() => {
-  console.log("DATABASE READY");
-}});

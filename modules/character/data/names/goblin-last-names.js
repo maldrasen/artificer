@@ -155,6 +155,8 @@ let names = [
   { name:"Weaseltrainer", adjustments:['beast-lover']},
 ];
 
-each(names, (name)=>{
-  Name.add(name, { species:'goblin', position:'last' });
-});
+postal.subscribe({ channel:"database", topic:"load.Name", callback:() => {
+  each(names, (name)=>{
+    Name.add(name, { species:'goblin', position:'last' });
+  });
+}});

@@ -112,6 +112,8 @@ let names = [
   { name:"Vapula" },
 ];
 
-each(names, (name)=>{
-  Name.add(name, { species:'demon', position:'first', restriction:'not-male' });
-});
+postal.subscribe({ channel:"database", topic:"load.Name", callback:() => {
+  each(names, (name)=>{
+    Name.add(name, { species:'demon', position:'first', restriction:'not-male' });
+  });
+}});

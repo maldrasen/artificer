@@ -307,6 +307,8 @@ let names = [
  { name:"Writes-On-Walls" },
 ];
 
-each(names, (name)=>{
-  Name.add(name, { species:'kobold' });
-});
+postal.subscribe({ channel:"database", topic:"load.Name", callback:() => {
+  each(names, (name)=>{
+    Name.add(name, { species:'kobold' });
+  });
+}});

@@ -160,6 +160,8 @@ let names = [
   { name:"Xyzzy", adjustments:['smart','magical']},
 ];
 
-each(names, (name)=>{
-  Name.add(name, { species:'goblin', position:'first', restriction:'male' });
-});
+postal.subscribe({ channel:"database", topic:"load.Name", callback:() => {
+  each(names, (name)=>{
+    Name.add(name, { species:'goblin', position:'first', restriction:'male' });
+  });
+}});

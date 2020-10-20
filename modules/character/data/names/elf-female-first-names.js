@@ -624,6 +624,8 @@ let names = [
   { name:"Zule", adjustments:['magical']},
 ];
 
-each(names, (name)=>{
-  Name.add(name, { species:'elf', position:'first', restriction:'not-male' });
-});
+postal.subscribe({ channel:"database", topic:"load.Name", callback:() => {
+  each(names, (name)=>{
+    Name.add(name, { species:'elf', position:'first', restriction:'not-male' });
+  });
+}});

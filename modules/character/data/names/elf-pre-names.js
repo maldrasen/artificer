@@ -1,7 +1,7 @@
 
 // --- Both Pre Names ---
 
-let names = [
+let allNames = [
   { name:'Blighter' },
   { name:"Clever", adjustments:['smart']},
   { name:"Crazy", adjustments:['stupid']},
@@ -11,13 +11,9 @@ let names = [
   { name:'Stony' },
 ];
 
-each(names, (name)=>{
-  Name.add(name, { species:'elf', position:'pre' });
-});
-
 // --- Female Pre Names ---
 
-names = [
+let femaleNames = [
   { name:'Silken' },
   { name:"Fair", adjustments:['beautiful','light-skin']},
   { name:"Foxy", adjustments:['beautiful','dark-skin']},
@@ -30,12 +26,9 @@ names = [
   { name:"Tiny", adjustments:['short','thin','small-tits']},
 ];
 
-each(names, (name)=>{
-  Name.add(name, { species:'elf', position:'pre', restriction:'not-male' });
-});
-
 // --- Male Pre Names ---
-names = [
+
+let maleNames = [
   { name:"Balls", adjustments:['monster-balls']},
   { name:"Big", adjustments:['tall','strong','thicc','big-cock']},
   { name:"Black", adjustments:['dark-skin','big-cock']},
@@ -64,6 +57,8 @@ names = [
   { name:"Wise Old", adjustments:['smart','ugly']},
 ]
 
-each(names, (name)=>{
-  Name.add(name, { species:'elf', position:'pre', restriction:'male' });
-});
+postal.subscribe({ channel:"database", topic:"load.Name", callback:() => {
+  each([...allNames, ...femaleNames, ...maleNames], (name)=>{
+    Name.add(name, { species:'elf', position:'pre', restriction:'male' });
+  });
+}});

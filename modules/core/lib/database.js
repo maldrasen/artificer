@@ -80,6 +80,8 @@ global.Database = (function() {
     await database.sync();
 
     persistedModels.push(model);
+
+    postal.publish({ channel:"database", topic:`load.${model.name}` });
   }
 
   async function load() {

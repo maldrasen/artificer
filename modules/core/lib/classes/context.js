@@ -4,14 +4,22 @@ global.Context = class Context {
     this._properties = properties || {};
   }
 
-  // get properties() { return this._properties; }
-  // get actors() { return ObjectUtility.select(this._properties, (key, _) => key.length == 1 && key != 'P'); }
-  // get player() { return this.get('P'); }
-  //
-  // get(key) { return this._properties[key]; }
-  // set(key, value) {
-  //   this._properties[key] = value;
-  // }
+  get properties() { return this._properties; }
+
+  get(key) { return this._properties[key]; }
+  set(key, value) { this._properties[key] = value; }
+
+
+  // Hmm, setEvent and setEvent state both reach into the character module. I
+  // think I need to use a postal request and response here in order to keep
+  // the character class out of the core classes. Also, by sending a message
+  // with the context it should be possible for any other module to add stuff
+  // onto the context.
+
+  // Request/response messaging wasn't working though, because of postal's
+  // dependency on lodash. Maybe a different pup/sub library is needed?
+
+  // Hmm, too much to figure out today though.
 
   async setEvent(event) {
     this._event = event;
@@ -32,52 +40,5 @@ global.Context = class Context {
     // }));
   }
 
-  // async addCharacter(key, character) {
-  //   if (key.length != 1) { throw `Actors in the context should have a single letter key.`; }
-  //
-  //   const everything = await character.getCompleteBody();
-  //         everything.body.weight = await everything.body.getWeight();
-  //
-  //   this.set(key, { character, ...everything });
-  // }
-  //
-  // async addPlayer() {
-  //   const player = await Player.instance();
-  //   if (player && this.get('P') == null) { await this.addCharacter('P',player); }
-  // }
-  //
-  // async addActor(key, descriptive) {
-  //   const character = await CharacterAgent.findActor(descriptive);
-  //   if (character) {
-  //     await this.addCharacter(key, character);
-  //   }
-  // }
-  //
-  // // I don't want to include all the minions in the context, but I still
-  // // occationally need various data points, how many minions are doing what,
-  // // that sort of thing.
-  // async addMinionData() {
-  //   if (this.get('minionData') != null) { return; }
-  //
-  //   const minions = await Character.findAll();
-  //
-  //   let data = {
-  //     totalCount: 0,
-  //     freeCount: 0,
-  //     missionCount: 0,
-  //     workingCount: 0,
-  //     taskCount: 0,
-  //   }
-  //
-  //   each(minions, minion => {
-  //     data.totalCount++;
-  //     if (minion.currentDuty == 'role') { data.freeCount++ }
-  //     if (minion.currentDuty == 'mission') { data.missionCount++ }
-  //     if (minion.currentDuty == 'project') { data.workingCount++ }
-  //     if (minion.currentDuty == 'task') { data.taskCount++ }
-  //   });
-  //
-  //   this.set('minionData', data);
-  // }
 
 }

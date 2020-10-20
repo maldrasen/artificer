@@ -101,6 +101,8 @@ let names = [
   { name:"Writ" },
 ];
 
-each(names, (name)=>{
-  Name.add(name, { species:'scaven' });
-});
+postal.subscribe({ channel:"database", topic:"load.Name", callback:() => {
+  each(names, (name)=>{
+    Name.add(name, { species:'scaven' });
+  });
+}});
