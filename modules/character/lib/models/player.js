@@ -50,7 +50,7 @@ global.Player = class Player extends Character {
       defaultBody.pussy = { sizeClass:Random.fromFrequencyMap({ small:2, average:5, big:1 }), condition:'tight' };
     };
 
-    //   await CharacterBuilder.addBody(player, defaultBody);
+    await CharacterBuilder.addBody(player, defaultBody);
     //   await CharacterNamer.execute(player);
     //   await CharacterDescriber.updateAll(player);
 

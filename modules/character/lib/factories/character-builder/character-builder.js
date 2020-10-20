@@ -1,35 +1,35 @@
-// global.CharacterBuilder = (function() {
-//
-//   const defaultAspectFrequencies = {
-//     'anal-averse':  5,
-//     'anal-slut':    9,
-//     'ass-obsessed': 10,
-//     'beast-lover':  3,
-//     'bound':        5,
-//     'breeder':      4,
-//     'cock-lover':   8,
-//     'cum-lover':    6,
-//     'deviant':      3,
-//     'dominant':     5,
-//     'golden':       2,
-//     'masochist':    5,
-//     'masterbator':  10,
-//     'milky':        5,
-//     'oral-lover':   10,
-//     'oral-slut':    8,
-//     'orgy-lover':   6,
-//     'perverted':    4,
-//     'pussy-lover':  10,
-//     'pussy-slut':   9,
-//     'revolting':    1,
-//     'sadist':       7,
-//     'size-queen':   8,
-//     'stretcher':    6,
-//     'submissive':   5,
-//     'tit-lover':    8,
-//     'tit-slut':     7,
-//   };
-//
+global.CharacterBuilder = (function() {
+
+  const defaultAspectFrequencies = {
+    'anal-averse':  5,
+    'anal-slut':    9,
+    'ass-obsessed': 10,
+    'beast-lover':  3,
+    'bound':        5,
+    'breeder':      4,
+    'cock-lover':   8,
+    'cum-lover':    6,
+    'deviant':      3,
+    'dominant':     5,
+    'golden':       2,
+    'masochist':    5,
+    'masterbator':  10,
+    'milky':        5,
+    'oral-lover':   10,
+    'oral-slut':    8,
+    'orgy-lover':   6,
+    'perverted':    4,
+    'pussy-lover':  10,
+    'pussy-slut':   9,
+    'revolting':    1,
+    'sadist':       7,
+    'size-queen':   8,
+    'stretcher':    6,
+    'submissive':   5,
+    'tit-lover':    8,
+    'tit-slut':     7,
+  };
+
 //   // Builds a new standard minion given the options. This function should be
 //   // used over the build() function for most minions, unless it's a character
 //   // with specific needs for some reason. At least the species must be
@@ -91,60 +91,60 @@
 //
 //     return CharacterBuilder.buildStandardMinion(options);
 //   }
-//
-//   // Build a complete Character model with all of the associated body parts.
-//   async function build(options) {
-//     if (options.species == null) { throw 'Species is required'; }
-//
-//     let species = Species.lookup(options.species);
-//     let gender = Gender[options.gender || species.randomGender()];
-//     let params = {
-//       speciesCode:   species.code,
-//       genderCode:    gender.code,
-//       preName:       options.preName,
-//       firstName:     options.firstName,
-//       lastName:      options.lastName,
-//       type:          options.type        || 'minion',
-//       status:        options.status      || 'normal',
-//       currentDuty:   options.currentDuty || 'role',
-//       dutyCode:      options.dutyCode  || Role.defaultRole(),
-//       physical:      options.physical  || species.randomizedAttribute('physical'),
-//       personal:      options.personal  || species.randomizedAttribute('personal'),
-//       mental:        options.mental    || species.randomizedAttribute('mental'),
-//       magical:       options.magical   || species.randomizedAttribute('magical'),
-//       energy:        options.energy    || 2,
-//       loyalty:       options.loyalty   || 10 + Random.upTo(10),
-//       fear:          options.fear      || 10 + Random.upTo(10),
-//       lust:          options.lust != null ? options.lust : 20 + Random.upTo(40),
-//       pregnantWith:  options.pregnantWith  || null,
-//       pregnantDays:  options.pregnantDays  || 0,
-//       pregnantTotal: options.pregnantTotal || 0,
-//       portraitCode:  options.portraitCode,
-//     };
-//
-//     let character = await Character.create(params)
-//     await addBody(character, options)
-//     await character.determinePersonality();
-//
-//     if (character.portraitCode == null) {
-//       await character.update({ portraitCode:(await ImageResource.portraitFor(character)).code });
-//     }
-//
-//     return character;
-//   }
-//
-//   async function addBody(character, options) {
-//     await AnusBuilder.build(character, options);
-//     await BodyBuilder.build(character, options);
-//     await CockBuilder.build(character, options);
-//     await MouthBuilder.build(character, options);
-//     await PussyBuilder.build(character, options);
-//     await NipplesBuilder.build(character, options);
-//     await TitsBuilder.build(character, options);
-//
-//     return character
-//   }
-//
+
+  // Build a complete Character model with all of the associated body parts.
+  // async function build(options) {
+  //   if (options.species == null) { throw 'Species is required'; }
+  //
+  //   let species = Species.lookup(options.species);
+  //   let gender = Gender[options.gender || species.randomGender()];
+  //   let params = {
+  //     speciesCode:   species.code,
+  //     genderCode:    gender.code,
+  //     preName:       options.preName,
+  //     firstName:     options.firstName,
+  //     lastName:      options.lastName,
+  //     type:          options.type        || 'minion',
+  //     status:        options.status      || 'normal',
+  //     currentDuty:   options.currentDuty || 'role',
+  //     dutyCode:      options.dutyCode  || Role.defaultRole(),
+  //     physical:      options.physical  || species.randomizedAttribute('physical'),
+  //     personal:      options.personal  || species.randomizedAttribute('personal'),
+  //     mental:        options.mental    || species.randomizedAttribute('mental'),
+  //     magical:       options.magical   || species.randomizedAttribute('magical'),
+  //     energy:        options.energy    || 2,
+  //     loyalty:       options.loyalty   || 10 + Random.upTo(10),
+  //     fear:          options.fear      || 10 + Random.upTo(10),
+  //     lust:          options.lust != null ? options.lust : 20 + Random.upTo(40),
+  //     pregnantWith:  options.pregnantWith  || null,
+  //     pregnantDays:  options.pregnantDays  || 0,
+  //     pregnantTotal: options.pregnantTotal || 0,
+  //     portraitCode:  options.portraitCode,
+  //   };
+  //
+  //   let character = await Character.create(params)
+  //   await addBody(character, options)
+  //   await character.determinePersonality();
+  //
+  //   if (character.portraitCode == null) {
+  //     await character.update({ portraitCode:(await ImageResource.portraitFor(character)).code });
+  //   }
+  //
+  //   return character;
+  // }
+
+  async function addBody(character, options) {
+    await AnusBuilder.build(character, options);
+    await BodyBuilder.build(character, options);
+    // await CockBuilder.build(character, options);
+    // await MouthBuilder.build(character, options);
+    // await PussyBuilder.build(character, options);
+    // await NipplesBuilder.build(character, options);
+    // await TitsBuilder.build(character, options);
+
+    return character;
+  }
+
 //   // This is usually the second step when creating any character for the game.
 //   // This isn't normally called in the spec though because it's not really
 //   // nessessary and all the randomness can have unexpected results. Androphilic
@@ -209,32 +209,32 @@
 //       }
 //     }
 //   }
-//
-//
-//   // This method is used to baseline options from the options passed to the
-//   // factory, in order to ensure that all expected options have at least a
-//   // default value. The function will first use the specified values in the
-//   // given options, if a value hasn't been specified in the options, but the
-//   // race has a default then that is used. If there is a default value not on
-//   // the race then that is used as the tertiary choice.
-//   function baseline(part, options, species, defaults) {
-//     let params = {};
-//
-//     each(defaults, (defaultValue, key) => {
-//       params[key] = ObjectUtility.fetch(options, part, key) ||
-//                     ObjectUtility.fetch(species, 'bodyOptions', part, key) ||
-//                     defaultValue;
-//     });
-//
-//     return params;
-//   }
-//
-//   return {
-//     build,
-//     buildStandardMinion,
-//     addBody,
-//     addRandomAspects,
-//     baseline,
-//   };
-//
-// })();
+
+
+  // This method is used to baseline options from the options passed to the
+  // factory, in order to ensure that all expected options have at least a
+  // default value. The function will first use the specified values in the
+  // given options, if a value hasn't been specified in the options, but the
+  // race has a default then that is used. If there is a default value not on
+  // the race then that is used as the tertiary choice.
+  function baseline(part, options, species, defaults) {
+    let params = {};
+
+    each(defaults, (defaultValue, key) => {
+      params[key] = ObjectUtility.fetch(options, part, key) ||
+                    ObjectUtility.fetch(species, 'bodyOptions', part, key) ||
+                    defaultValue;
+    });
+
+    return params;
+  }
+
+  return {
+    // build,
+    // buildStandardMinion,
+    addBody,
+    // addRandomAspects,
+    baseline,
+  };
+
+})();
