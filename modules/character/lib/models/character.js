@@ -182,7 +182,7 @@ global.Character = class Character extends Model {
 //
 // HasAspects.isAppliedTo(Character);
 // HasAttributes.isAppliedTo(Character);
-// HasBody.isAppliedTo(Character);
+HasBody.isAppliedTo(Character);
 // HasEquipment.isAppliedTo(Character);
 // HasInjuries.isAppliedTo(Character);
 // HasPersonality.isAppliedTo(Character);
