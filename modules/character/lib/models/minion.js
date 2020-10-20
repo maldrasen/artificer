@@ -48,3 +48,6 @@ global.Minion = class Minion extends Character {
 }
 
 Database.registerModel(Minion);
+
+// HasInjuries.isAppliedTo(Minion);
+// HasPersonality.isAppliedTo(Minion);

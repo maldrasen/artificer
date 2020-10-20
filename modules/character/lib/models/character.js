@@ -14,15 +14,8 @@ global.Character = class Character extends Model {
   get isMale()      { return this.genderCode == 'male'; }
   get isFemale()    { return this.genderCode == 'female'; }
   get isFuta()      { return this.genderCode == 'futa'; }
-
-
 }
 
-// HasAttributes.isAppliedTo(Player);
-// HasAspects.isAppliedTo(Player);
-// HasBody.isAppliedTo(Player);
-// HasEquipment.isAppliedTo(Player);
-// HasSexSkills.isAppliedTo(Player);
 
 
 //   },
@@ -179,12 +172,7 @@ global.Character = class Character extends Model {
 //   await this.completelyRemoveBody();
 //   await this.destroy();
 // }
-//
+
 // HasAspects.isAppliedTo(Character);
 // HasAttributes.isAppliedTo(Character);
 HasBody.isAppliedTo(Character);
-// HasEquipment.isAppliedTo(Character);
-// HasInjuries.isAppliedTo(Character);
-// HasPersonality.isAppliedTo(Character);
-// HasSexHistory.isAppliedTo(Character);
-// HasSexSkills.isAppliedTo(Character);
