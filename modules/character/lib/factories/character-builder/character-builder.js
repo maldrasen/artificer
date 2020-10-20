@@ -136,7 +136,7 @@ global.CharacterBuilder = (function() {
   async function addBody(character, options) {
     await AnusBuilder.build(character, options);
     await BodyBuilder.build(character, options);
-    // await CockBuilder.build(character, options);
+    await CockBuilder.build(character, options);
     // await MouthBuilder.build(character, options);
     // await PussyBuilder.build(character, options);
     // await NipplesBuilder.build(character, options);
