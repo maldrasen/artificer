@@ -38,6 +38,6 @@ global.AnusBuilder = (function() {
       Species.lookup('elf').bodyOptions.anus.conditionMap);
   }
 
-  return { build:build }
+  return { build }
 
 })();

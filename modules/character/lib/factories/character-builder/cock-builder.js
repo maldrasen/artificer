@@ -60,6 +60,6 @@ global.CockBuilder = (function() {
     return Math.round(0.1548712 * cockParams.length * cockParams.widthRatio);
   }
 
-  return { build:build }
+  return { build }
 
 })();
