@@ -22,24 +22,31 @@ global.Messenger = (function() {
   // For this to work modules must still subscribe() to channels that they'll
   // handle.
   //
-  // This function can be called with either:
+  // This function can be called with three distinct signatures:
   //    request(channel, data, response)
   //    request(channel, response)
-  async function request(channel, response) {
+  //    request(channel, data)
+  async function request(channel) {
     let data = {};
+    let responseCallback = null;
     let responses = [];
 
-    if (typeof arguments[2] == 'function') {
-      data = response;
-      response = arguments[2];
+    if (arguments.length == 3) {
+      data = arguments[1];
+      responseCallback = arguments[2];
+    }
+
+    if (arguments.length == 2) {
+      if (typeof arguments[1] == 'function') { responseCallback = arguments[1]; }
+      if (typeof arguments[1] == 'object')   { data = arguments[1]; }
     }
 
     await Promise.all((listeners[channel]||[]).map(async listener => {
       responses.push(await listener.callback(data, { listener_id:listener.id }));
     }));
 
-    if (response) {
-      await response((responses.length > 1) ? responses : responses[0]);
+    if (responseCallback) {
+      await responseCallback((responses.length > 1) ? responses : responses[0]);
     }
   }
 

@@ -4,24 +4,22 @@
 
 (function() {
 
-  // TODO: Need tests for these first...
-  Messenger.subscribe('core.context.set-event', function(data) {
-    console.log("=== TODO: Set Event ===")
-    console.log(data)
-    // await data.context.addPlayer();
-    // await Promise.all(Object.keys(data.context.event.actors||[]).map(async key => {
-    //   await data.context.addActor(key, data.context.event.actors[key]);
-    // }));
+  // When an event is added to the context we add the player to the context as
+  // well as any actors as defined in the event.
+  Messenger.subscribe('core.context.set-event', async function(data) {
+    await data.context.addPlayer();
+    await Promise.all(Object.keys(data.context.event.actors||[]).map(async key => {
+      await data.context.addActor(key, data.context.event.actors[key]);
+    }));
   });
 
-  // Characters can also be added through the event state, for when a
-  // character with a known ID is added to the context.
-  Messenger.subscribe('core.context.set-event-state', function(data) {
-    console.log("=== TODO: Set Event State ===")
-    console.log(data)
-    // await Promise.all(Object.keys(state.actors||[]).map(async key => {
-    //   await this.addCharacter(key,(await Character.lookup(state.actors[key])));
-    // }));
+  // When enqueueing a chained event, the event state may have an actors map,
+  // that maps the character's context key to the character's id. If so we
+  // populate the actors with those IDs when the event state is set.
+  Messenger.subscribe('core.context.set-event-state', async function(data) {
+    await Promise.all(Object.keys(data.state.actors||[]).map(async key => {
+      await data.context.addCharacter(key,(await Character.lookup(data.state.actors[key])));
+    }));
   });
 
   Object.defineProperty(Context, 'actors', {
@@ -46,12 +44,11 @@
     this.set(key, { character, ...everything });
   }
 
-  // TODO: When we reimplement the Character Agent we need to add minions through it.
-  // async addActor(key, descriptive) {
-  //   const character = await CharacterAgent.findActor(descriptive);
-  //   if (character) {
-  //     await this.addCharacter(key, character);
-  //   }
-  // }
+  Context.prototype.addActor = async function(key, descriptive) {
+    const character = await CharacterAgent.findActor(descriptive);
+    if (character) {
+      await this.addCharacter(key, character);
+    }
+  }
 
 })();
