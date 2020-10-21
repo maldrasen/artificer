@@ -5,38 +5,23 @@ global.Context = class Context {
   }
 
   get properties() { return this._properties; }
+  get event() { return this._event; }
 
   get(key) { return this._properties[key]; }
   set(key, value) { this._properties[key] = value; }
 
-
-  // Hmm, setEvent and setEvent state both reach into the character module. I
-  // think I need to use a request and response here in order to keep the
-  // character class out of the core classes. Also, by sending a message with
-  // the context it should be possible for any other module to add stuff onto
-  // the context.
-
+  // The context is part of the core classes, because it's used across modules
+  // to ensapsulate state. When an event is added to the context or when an
+  // event's state is set we send a message informing the other modules that it
+  // can add their own data to the context.
+  
   async setEvent(event) {
     this._event = event;
-
-    // Need to think this through...
-    // await Messenger.request('character.add-player-data',{ context:this });
-
-    // await this.addPlayer();
-    // await this.addMinionData();
-
-    // await Promise.all(Object.keys(event.actors||[]).map(async key => {
-    //   await this.addActor(key, event.actors[key]);
-    // }));
+    await Messenger.request('core.context.set-event',{ context:this, event:event });
   }
 
-  // Characters can also be added through the event state, for when a
-  // character with a known ID is added to the context.
   async setEventState(state) {
-    // await Promise.all(Object.keys(state.actors||[]).map(async key => {
-    //   await this.addCharacter(key,(await Character.lookup(state.actors[key])));
-    // }));
+    await Messenger.request('core.context.set-event-state',{ context:this, state:state });
   }
-
 
 }

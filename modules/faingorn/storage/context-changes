@@ -1,0 +1,37 @@
+
+So when an event is added we also added this minion data. These values were
+used by the scrutinizer for various checks. However, because the duty and role
+information is also included we don't want to add that to the character module.
+
+When we add this back in it should be in it's own listener, subscribed to
+"core.context.set-event"
+
+We might still need generic minion data added by the character module to the
+context, so perhaps the thing to do is move this role data under a different
+context key, that or merge the two minionData objects together.
+
+---
+
+async addMinionData() {
+  if (this.get('minionData') != null) { return; }
+
+  const minions = await Character.findAll();
+
+  let data = {
+    totalCount: 0,
+    freeCount: 0,
+    missionCount: 0,
+    workingCount: 0,
+    taskCount: 0,
+  }
+
+  each(minions, minion => {
+    data.totalCount++;
+    if (minion.currentDuty == 'role') { data.freeCount++ }
+    if (minion.currentDuty == 'mission') { data.missionCount++ }
+    if (minion.currentDuty == 'project') { data.workingCount++ }
+    if (minion.currentDuty == 'task') { data.taskCount++ }
+  });
+
+  this.set('minionData', data);
+}

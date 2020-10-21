@@ -1,5 +1,5 @@
 
-// TODO: Reimplement this. Resources will probably end up in a different module.
+// TODO: Eventually we will have the crafting module and it will need this scrutinizer.
 
 // if (requirement.match(/^resource/))        { return await checkResource(requirement); }
 

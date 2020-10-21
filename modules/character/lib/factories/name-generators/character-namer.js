@@ -48,6 +48,9 @@ global.CharacterNamer = (function() {
 
   async function check(name, context) {
     if (name == null || name.requires == null) { return true }
+
+console.log("Check:",name)
+
     return await CentralScrutinizer.meetsRequirements(name.requires, context);
   }
 

@@ -1,0 +1,44 @@
+
+For Minion Scritinizer
+We have checks for mutiny and betrayal that seem rather scenario specific.
+Roles and jobs and such as well.
+
+// Jobs
+if (requirement.match(/^minions.working-project/)) { return await checkWorkingMinionCount(requirement, context); }
+
+// Loyalty
+if (requirement == 'minions.will-betray')          { return await checkBetray(context); }
+if (requirement == 'minions.will-not-betray')      { return await checkBetray(context) == false; }
+if (requirement == 'minions.will-mutiny')          { return await checkMutiny(context); }
+if (requirement == 'minions.will-not-mutiny')      { return await checkMutiny(context) == false; }
+
+// Roles
+if (requirement.match(/minions\.forager-count/)) { return await checkDutyCount(requirement,'forager') }
+if (requirement.match(/minions\.hunter-count/)) { return await checkDutyCount(requirement,'forager') }
+
+
+// To check how many menions are working on a project. This requirement has the format: "minions.working-project>1"
+async function checkWorkingMinionCount(requirement, context) {
+  await context.addMinionData();
+  let count = context.get('minionData').workingCount;
+  let match = requirement.match(/project(<|<=|=|>=|>)([^<>=]+)/);
+  return CentralScrutinizer.checkComparisonOperation(count,match[1],match[2]);
+}
+
+async function checkDutyCount(requirement,dutyCode) {
+  const characters = await Character.findAll({ where:{ status:'normal', currentDuty:'role', dutyCode:dutyCode }});
+  const match = requirement.match(/count(<|<=|=|>=|>)([^<>=]+)/);
+  return CentralScrutinizer.checkComparisonOperation(characters.length,match[1],match[2]);
+}
+
+async function checkBetray(context) {
+  return (Flag.lookup('minions.traitorous-count') || 0) > 0
+}
+
+// You minions will mutiny if you have more rebellious minions than loyal minions. The minimum number of minions that
+// can mutiny is 4, with 3 rebellious and 1 loyal.
+async function checkMutiny(context) {
+  let loyal =      Flag.lookup('minions.loyal-count') || 0;
+  let rebellious = Flag.lookup('minions.rebellious-count') || 0;
+  return (loyal + rebellious > 3) && (rebellious > loyal);
+}

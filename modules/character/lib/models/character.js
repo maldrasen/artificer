@@ -174,5 +174,5 @@ global.Character = class Character extends Model {
 // }
 
 // HasAspects.isAppliedTo(Character);
-// HasAttributes.isAppliedTo(Character);
+HasAttributes.isAppliedTo(Character);
 HasBody.isAppliedTo(Character);

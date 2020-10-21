@@ -38,7 +38,9 @@ global.Messenger = (function() {
       responses.push(await listener.callback(data, { listener_id:listener.id }));
     }));
 
-    await response((responses.length > 1) ? responses : responses[0]);
+    if (response) {
+      await response((responses.length > 1) ? responses : responses[0]);
+    }
   }
 
   // Unsubscribe a listener given it's channel and id. I'm not sure yet if this

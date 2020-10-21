@@ -57,9 +57,9 @@ global.Body = class Body extends Model {
   get heightIsAverage()  { return ! (this.heightIsShort || this.heightIsTall); }
 
   async getBodyHaver() {
-    if (this.parent_class == 'player')    { return Player.instance(); }
-    if (this.parent_class == 'character') { return Character.lookup(this.parent_id); }
-    if (this.parent_class == 'animal')    { return Animal.findByPk(this.parent_id); }
+    if (this.parent_class == 'Player') { return Player.instance(); }
+    if (this.parent_class == 'Minion') { return Minion.lookup(this.parent_id); }
+    if (this.parent_class == 'Animal') { return Animal.lookup(this.parent_id); }
   }
 
   // In grams, uses the Hamwi formula

@@ -51,6 +51,7 @@ global.Model = class Model {
 
   async destroy() { await this.instance.destroy(); }
   async save() { await this.instance.save(); }
+  async update(values) { await this.instance.update(values); }
 
   // Model objects need to be serialized into plain javascript objects before
   // they're sent to the client. Everything but the instance itself and
