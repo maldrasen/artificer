@@ -13,8 +13,6 @@ ipcMain.on('client.ready', async () => {
   // instead of pushing it.
 
   Loader.loadModule(Configuration.scenario);
-
   Browser.send('server.ready', Environment);
-
-  postal.publish({ channel:"server", topic:"ready" });
+  Messenger.publish('server.ready');
 });

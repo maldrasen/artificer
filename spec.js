@@ -4,16 +4,15 @@ global.expect = require('chai').expect;
 
 require(`${ROOT}/modules/boot/main.js`);
 
-postal.publish({ channel:"database", topic:"start" });
-
+Messenger.publish("database.start");
 Loader.loadModule('character');
 
 before(() => {
   return new Promise(resolve => {
-    postal.subscribe({ channel:"database", topic:"ready", callback:() => {
+    Messenger.subscribe("database.ready", () => {
       console.log("\n\n=== Test Environment Loaded and Ready ===\n\n");
       resolve();
-    }});
+    });
   });
 });
 

@@ -168,8 +168,8 @@ let names = [
   { name:"the Fool", adjustments:['stupid'], requires:'minion(C).is-male'},
 ];
 
-postal.subscribe({ channel:"database", topic:"load.Name", callback:() => {
+Messenger.subscribe("database.load.Name", () => {
   each(names, (name)=>{
     Name.add(name, { species:'elf', position:'last' });
   });
-}});
+});

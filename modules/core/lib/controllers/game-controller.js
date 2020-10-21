@@ -1,4 +1,4 @@
-postal.subscribe({ channel:"server", topic:"ready", callback:() => {
+Messenger.subscribe("server.ready", () => {
 
   ipcMain.on('game.quit', () => {
     Game.clear().then(() => {
@@ -51,4 +51,4 @@ postal.subscribe({ channel:"server", topic:"ready", callback:() => {
     Composer.render();
   });
 
-}});
+});

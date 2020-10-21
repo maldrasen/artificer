@@ -11,18 +11,16 @@ global.Context = class Context {
 
 
   // Hmm, setEvent and setEvent state both reach into the character module. I
-  // think I need to use a postal request and response here in order to keep
-  // the character class out of the core classes. Also, by sending a message
-  // with the context it should be possible for any other module to add stuff
-  // onto the context.
-
-  // Request/response messaging wasn't working though, because of postal's
-  // dependency on lodash. Maybe a different pup/sub library is needed?
-
-  // Hmm, too much to figure out today though.
+  // think I need to use a request and response here in order to keep the
+  // character class out of the core classes. Also, by sending a message with
+  // the context it should be possible for any other module to add stuff onto
+  // the context.
 
   async setEvent(event) {
     this._event = event;
+
+    // Need to think this through...
+    // await Messenger.request('character.add-player-data',{ context:this });
 
     // await this.addPlayer();
     // await this.addMinionData();

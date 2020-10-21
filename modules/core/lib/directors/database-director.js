@@ -1,10 +1,10 @@
 
-postal.subscribe({ channel:"database", topic:"start", callback:() => {
+Messenger.subscribe("database.start", () => {
   Database.createDatabase();
-}});
+});
 
-postal.subscribe({ channel:"database", topic:"created", callback: () => {
+Messenger.subscribe("database.created", () => {
   Database.load().then(() => {
-    postal.publish({ channel:"database", topic:"ready" });
+    Messenger.publish("database.ready");
   });
-}});
+});

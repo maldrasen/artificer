@@ -18,7 +18,7 @@ global.Database = (function() {
 
     await database.sync();
 
-    postal.publish({ channel:'database', topic:'created' });
+    Messenger.publish('database.created');
   }
 
   async function clear() {
@@ -81,7 +81,7 @@ global.Database = (function() {
 
     persistedModels.push(model);
 
-    postal.publish({ channel:"database", topic:`load.${model.name}` });
+    Messenger.publish(`database.load.${model.name}`);
   }
 
   async function load() {

@@ -51,8 +51,6 @@ global.Player = class Player extends Character {
     };
 
     await CharacterBuilder.addBody(player, defaultBody);
-
-    // In progress
     // await CharacterNamer.execute(player);
 
     //   await CharacterDescriber.updateAll(player);

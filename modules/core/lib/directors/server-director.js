@@ -1,5 +1,5 @@
 
-postal.subscribe({ channel:"server", topic:"start", callback:() => {
+Messenger.subscribe("server.start", () => {
   Loader.loadModule('server');
   Browser.init();
-}});
+});

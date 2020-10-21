@@ -112,8 +112,8 @@ let names = [
   { name:"Vapula" },
 ];
 
-postal.subscribe({ channel:"database", topic:"load.Name", callback:() => {
+Messenger.subscribe("database.load.Name", () => {
   each(names, (name)=>{
     Name.add(name, { species:'demon', position:'first', restriction:'not-male' });
   });
-}});
+});

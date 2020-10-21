@@ -3,7 +3,6 @@ global.ROOT = require('path').normalize(`${__dirname}/../..`).replace(/\\/g,"/")
 global.fs = require('fs');
 global.hash = require('object-hash');
 global.each = require('iterate-object');
-global.postal = require('postal');
 global.util = require('util');
 
 require(`${ROOT}/modules/boot/lib/configuration`);

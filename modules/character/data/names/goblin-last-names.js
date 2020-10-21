@@ -155,8 +155,8 @@ let names = [
   { name:"Weaseltrainer", adjustments:['beast-lover']},
 ];
 
-postal.subscribe({ channel:"database", topic:"load.Name", callback:() => {
+Messenger.subscribe("database.load.Name", () => {
   each(names, (name)=>{
     Name.add(name, { species:'goblin', position:'last' });
   });
-}});
+});

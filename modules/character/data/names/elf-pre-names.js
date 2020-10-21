@@ -57,8 +57,8 @@ let maleNames = [
   { name:"Wise Old", adjustments:['smart','ugly']},
 ]
 
-postal.subscribe({ channel:"database", topic:"load.Name", callback:() => {
+Messenger.subscribe("database.load.Name", () => {
   each([...allNames, ...femaleNames, ...maleNames], (name)=>{
     Name.add(name, { species:'elf', position:'pre', restriction:'male' });
   });
-}});
+});
