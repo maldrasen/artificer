@@ -1,57 +1,27 @@
 global.Description = class Description extends Form {
 
-  // static buildAnus(data)        { return super.build(null,extend(data,{ type:'anus'         })); }
-  // static buildBody(data)        { return super.build(null,extend(data,{ type:'body'         })); }
-  // static buildCock(data)        { return super.build(null,extend(data,{ type:'cock'         })); }
-  // static buildFace(data)        { return super.build(null,extend(data,{ type:'face'         })); }
-  // static buildHead(data)        { return super.build(null,extend(data,{ type:'head'         })); }
-  // static buildNipples(data)     { return super.build(null,extend(data,{ type:'nipples'      })); }
-  // static buildPussy(data)       { return super.build(null,extend(data,{ type:'pussy'        })); }
-  // static buildTits(data)        { return super.build(null,extend(data,{ type:'tits'         })); }
-  // static buildAnusInjury(data)  { return super.build(null,extend(data,{ type:'anus-injury'  })); }
-  // static buildBodyInjury(data)  { return super.build(null,extend(data,{ type:'body-injury'  })); }
-  // static buildCockInjury(data)  { return super.build(null,extend(data,{ type:'cock-injury'  })); }
-  // static buildHeadInjury(data)  { return super.build(null,extend(data,{ type:'head-injury'  })); }
-  // static buildPussyInjury(data) { return super.build(null,extend(data,{ type:'pussy-injury' })); }
-  // static buildTitInjury(data)   { return super.build(null,extend(data,{ type:'tit-injury'   })); }
-  //
-  // static async select(part, context) {
-  //   const data = context.get('C');
-  //
-  //   const valid = ArrayUtility.compact(await Promise.all(
-  //     ObjectUtility.values(Description.instances).map(async description => {
-  //       if (description.type != part) { return; }
-  //
-  //       if (part == 'anus') {
-  //         if (description.anusConditionsMet(data) == false) { return; }
-  //       }
-  //       if (part == 'body') {
-  //         if (description.bodyConditionsMet(data) == false) { return; }
-  //       }
-  //       if (part == 'cock') {
-  //         if (description.cockInclusionsValid(data) == false) { return; }
-  //         if (description.cockConditionsMet(data) == false) { return; }
-  //       }
-  //       if (part == 'head') {
-  //         if (description.headConditionsMet(data) == false) { return; }
-  //       }
-  //       if (part == 'tits') {
-  //         if (description.titsConditionsMet(data) == false) { return; }
-  //       }
-  //
-  //       if (await CentralScrutinizer.meetsRequirements(description.requires, context)) {
-  //         return description;
-  //       }
-  //     })
-  //   ));
-  //
-  //   if (valid.length == 0) {
-  //     throw `Cannot find a description for ${part}`;
-  //   }
-  //
-  //   return Random.from(valid);
-  // }
-  //
+  static async select(part, context) {
+    const valid = ArrayUtility.compact(await Promise.all(
+      ObjectUtility.values(this.instances).map(async description => {
+        let gate1 = await description.conditionsMet(context);
+        let gate2 = await CentralScrutinizer.meetsRequirements(description.requires, context);
+        return (gate1 && gate2) ? description : null;
+      })
+    ));
+
+    if (valid.length == 0) {
+      throw `Cannot find a description for ${part}`;
+    }
+
+    return Random.from(valid);
+  }
+
+  // Description subclasses can overwrite the conditionsMet() function to
+  // perform their own unique conditions.
+  async conditionsMet(context) { return true; }
+
+  // TODO: This should also be moved into subclasses.
+
   // static async selectInjury(part, damageType, context) {
   //   const data = context.get('C');
   //
@@ -275,3 +245,23 @@ global.Description = class Description extends Form {
   //   return true;
   // }
 }
+
+global.BodyDescription = class BodyDescription extends Description {}
+global.FaceDescription = class FaceDescription extends Description {}
+global.HeadDescription = class HeadDescription extends Description {}
+
+
+
+    //     if (part == 'anus') {
+    //       if (description.anusConditionsMet(data) == false) { return; }
+    //     }
+    //     if (part == 'body') {
+    //       if (description.bodyConditionsMet(data) == false) { return; }
+    //     }
+    //     if (part == 'cock') {
+    //       if (description.cockInclusionsValid(data) == false) { return; }
+    //       if (description.cockConditionsMet(data) == false) { return; }
+    //     }
+    //     if (part == 'tits') {
+    //       if (description.titsConditionsMet(data) == false) { return; }
+    //     }

@@ -45,9 +45,9 @@ describe.only('Describer: Body', function() {
 //     printFace('Dryad', { species:'dryad' }, done);
 //   });
 
-  it('describes elf faces', function(done) {
-    printFace('Elf', { species:'elf' }, done);
-  });
+  // it('describes elf faces', function(done) {
+  //   printFace('Elf', { species:'elf' }, done);
+  // });
 
 //   it('describes equian faces', function(done) {
 //     printFace('Equian', { species:'equian' }, done);
@@ -76,11 +76,11 @@ describe.only('Describer: Body', function() {
 //   it('describes nymph faces', function(done) {
 //     printFace('Nymph', { species:'nymph' }, done);
 //   });
-//
-//   it('describes scaven faces', function(done) {
-//     printFace('Scaven', { species:'scaven' }, done);
-//   });
-//
+
+  // it('describes scaven faces', function(done) {
+  //   printFace('Scaven', { species:'scaven' }, done);
+  // });
+
 //   it('describes selkie faces', function(done) {
 //     printFace('Selkie', { species:'selkie' }, done);
 //   });

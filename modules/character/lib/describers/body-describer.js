@@ -72,8 +72,8 @@ global.BodyDescriber = class BodyDescriber {
   // printing out a big warning when it happens so I know to add more
   // descriptions.
   async selectFaceAndHead() {
-    const faceDescription = await Description.select('face', this.context);
-    const headDescription = await Description.select('head', this.context);
+    const faceDescription = await FaceDescription.select('face', this.context);
+    const headDescription = await HeadDescription.select('head', this.context);
 
     if (this._tries++ == 10) {
       console.log(`Warning: There doesn't seem to be enough face and head descriptions so this character's`);
