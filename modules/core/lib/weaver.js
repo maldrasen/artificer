@@ -22,7 +22,7 @@ global.Weaver = (function() {
   // looking for {{ templates }} to replace with actual values. The context
   // defines things like which actors are in which position and so forth. If
   // for instance you're having a conversation between three prople the player
-  // may be {{P}}, while the other two actors might be {{1}} and {{2}}.
+  // may be {{P}}, while the other two actors might be {{C}} and {{D}}.
   //
   // Everything that the weaver uses should already be in the context, that way
   // this function can remain synchronous.
