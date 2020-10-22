@@ -25,6 +25,7 @@ global.Environment = (function() {
     let env = PROD;
     if (process.argv.indexOf('--dev') > -1) { env = DEV; }
     if (process.argv.indexOf('--test') > -1) { env = TEST; }
+    if (process.argv.indexOf('-v') > -1) { env.verbose = true; }
     global.Environment = env;
   }
 

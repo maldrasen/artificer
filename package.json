@@ -30,8 +30,8 @@
     "dist": "electron-builder",
     "start": "electron . --dev",
     "spec": "mocha modules/**/spec/**/*-spec.js --test",
-    "specv": "mocha spec/**/*-spec.js --test -v",
-    "specc": "nyc --reporter=html mocha spec/**/*-spec.js --test -v"
+    "specv": "mocha modules/**/spec/**/*-spec.js --test -v",
+    "specc": "nyc --reporter=html mocha modules/**/spec/**/*-spec.js --test -v"
   },
   "repository": "git@github.com:maldrasen/artificer.git",
   "keywords": [

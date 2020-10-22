@@ -3,6 +3,8 @@ global.ROOT = require('path').normalize(`${__dirname}`).replace(/\\/g,"/");
 global.expect = require('chai').expect;
 
 require(`${ROOT}/modules/boot/main.js`);
+require(`${ROOT}/modules/core/spec/helper.js`);
+require(`${ROOT}/modules/character/spec/helper.js`);
 
 Messenger.publish("database.start");
 Loader.loadModule('character');

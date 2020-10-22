@@ -52,8 +52,8 @@ global.Player = class Player extends Character {
 
     await CharacterBuilder.addBody(player, defaultBody);
     await CharacterNamer.execute(player);
-
-    //   await CharacterDescriber.updateAll(player);
+    await CharacterDescriber.updateAll(player);
+    
     //   TODO: Add portrait selection
     //   await player.update({ portraitCode:(await ImageResource.portraitFor(player)).code });
 
