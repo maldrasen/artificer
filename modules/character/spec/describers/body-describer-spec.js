@@ -1,4 +1,4 @@
-describe.only('Describer: Body', function() {
+describe('Describer: Body', function() {
 
   async function buildCharacter(options) {
     const tweeked = Object.assign({}, options, {

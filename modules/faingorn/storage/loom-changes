@@ -1,0 +1,6 @@
+
+Simple loom for the keep name token:
+
+Weaver.registerLoom('simple', 'Faingorn', () => {
+  return Flag.lookup('location.keep-name');
+});

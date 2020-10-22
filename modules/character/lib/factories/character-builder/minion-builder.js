@@ -108,21 +108,9 @@ global.MinionBuilder = (function() {
 
     let minion = await Minion.create(params);
 
-    await addBody(minion, options);
+    await CharacterBuilder.addBody(minion, options);
     await minion.determinePersonality();
     await minion.determinePortrait();
-
-    return minion;
-  }
-
-  async function addBody(minion, options) {
-    await AnusBuilder.build(minion, options);
-    await BodyBuilder.build(minion, options);
-    await CockBuilder.build(minion, options);
-    await MouthBuilder.build(minion, options);
-    await PussyBuilder.build(minion, options);
-    await NipplesBuilder.build(minion, options);
-    await TitsBuilder.build(minion, options);
 
     return minion;
   }
@@ -195,7 +183,6 @@ global.MinionBuilder = (function() {
   return {
     buildMinion,
     buildStandardMinion,
-    addBody,
     addRandomAspects,
   };
 

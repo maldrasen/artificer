@@ -1,5 +1,17 @@
 global.CharacterBuilder = (function() {
 
+  async function addBody(minion, options) {
+    await AnusBuilder.build(minion, options);
+    await BodyBuilder.build(minion, options);
+    await CockBuilder.build(minion, options);
+    await MouthBuilder.build(minion, options);
+    await PussyBuilder.build(minion, options);
+    await NipplesBuilder.build(minion, options);
+    await TitsBuilder.build(minion, options);
+
+    return minion;
+  }
+
   // This method is used to baseline options from the options passed to the
   // factory, in order to ensure that all expected options have at least a
   // default value. The function will first use the specified values in the
@@ -18,6 +30,6 @@ global.CharacterBuilder = (function() {
     return params;
   }
 
-  return { baseline };
+  return { addBody, baseline };
 
 })();
