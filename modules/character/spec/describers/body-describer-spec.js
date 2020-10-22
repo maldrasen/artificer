@@ -46,8 +46,7 @@ describe.only('Describer: Body', function() {
 //   });
 
   it('describes elf faces', function(done) {
-    done();
-    // printFace('Elf', { species:'elf' }, done);
+    printFace('Elf', { species:'elf' }, done);
   });
 
 //   it('describes equian faces', function(done) {

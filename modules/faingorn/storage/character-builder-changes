@@ -1,0 +1,20 @@
+
+When we built a minion character we made these adjustments directly in the
+character builder. Because these are scenario specific though, they should be
+done here somewhere after the character is built. Perhaps the character
+builder can send a message saying that a character was built, something can
+watching for the message and pick up new characters, making these adjustments
+to them?
+
+if (Flag.lookup('player.goal') == 'followers') {
+  await minion.update({ loyalty:(minion.loyalty + 10) });
+}
+
+if (minion.speciesCode == 'scaven') {
+  if (Flag.lookup('player.scaven-reputations.the-butcher')) {
+    await minion.update({ fear:(minion.fear + Random.between(5,10)) });
+  }
+  if (Flag.lookup('player.scaven-reputations.the-seductive')) {
+    await minion.update({ loyalty:(minion.loyalty + Random.between(5,10)) });
+  }
+}

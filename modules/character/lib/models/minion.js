@@ -5,17 +5,17 @@ global.Minion = class Minion extends Character {
       genderCode:       { type:Sequelize.STRING },
       speciesCode:      { type:Sequelize.STRING },
       portraitCode:     { type:Sequelize.STRING },
+      personalityCode:  { type:Sequelize.STRING },
+      preName:          { type:Sequelize.STRING },
       firstName:        { type:Sequelize.STRING },
       lastName:         { type:Sequelize.STRING },
+      forcedName:       { type:Sequelize.STRING },
       physical:         { type:Sequelize.INTEGER, validate:{ min:0 }},
       mental:           { type:Sequelize.INTEGER, validate:{ min:0 }},
       personal:         { type:Sequelize.INTEGER, validate:{ min:0 }},
       magical:          { type:Sequelize.INTEGER, validate:{ min:0 }},
       type:             { type:Sequelize.STRING, validate:{ isIn:[['normal','pending']] }},
       status:           { type:Sequelize.STRING, validate:{ isIn:[['normal','missing','dead']] }},
-      preName:          { type:Sequelize.STRING },
-      forcedName:       { type:Sequelize.STRING },
-      personalityCode:  { type:Sequelize.STRING },
       energy:           { type:Sequelize.INTEGER, validate:{ min:0, max:2 }},
       loyalty:          { type:Sequelize.INTEGER, validate:{ min:0, max:100 }},
       fear:             { type:Sequelize.INTEGER, validate:{ min:0, max:100 }},
@@ -45,9 +45,17 @@ global.Minion = class Minion extends Character {
   //       return this.forcedName || `${this.preName||''} ${this.firstName} ${this.lastName||''}`.trim();
   //     },
 
+  // TODO: Need to actually implement the portraits at some point.
+  async determinePortrait() {
+    // if (minion.portraitCode == null) {
+    //   await minion.update({ portraitCode:(await ImageResource.portraitFor(character)).code });
+    // }
+  }
+
+
 }
 
 Database.registerModel(Minion);
+HasPersonality.isAppliedTo(Minion);
 
 // HasInjuries.isAppliedTo(Minion);
-// HasPersonality.isAppliedTo(Minion);

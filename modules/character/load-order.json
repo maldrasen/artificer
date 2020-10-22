@@ -1,6 +1,7 @@
 { "first":[
   "lib/concerns/has-attributes.js",
   "lib/concerns/has-body.js",
+  "lib/concerns/has-personality.js",
   "lib/forms/description.js",
   "lib/models/character.js",
   "lib/models/player.js",

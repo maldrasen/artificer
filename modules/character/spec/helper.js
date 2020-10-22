@@ -1,25 +1,29 @@
 
 SpecHelper.buildJada = async function(options, adjustments=[]) {
-  const jada = await CharacterBuilder.build(Object.assign({
+  const jada = await MinionBuilder.buildMinion(Object.assign({
     firstName: 'Jada',
     lastName: 'Fire',
     species: 'elf',
     gender: 'futa'
   }, options));
 
-  await CharacterAdjuster.applyAll(jada,adjustments);
+  // TODO: Going to have to reimplement aspects before the adjuster can be reenabled.
+  // await CharacterAdjuster.applyAll(jada,adjustments);
+
   return jada;
 }
 
 SpecHelper.buildRando = async function (options={}, adjustments=[]) {
-  const rando = await CharacterBuilder.build(Object.assign({
+  const rando = await MinionBuilder.buildMinion(Object.assign({
     firstName: 'Rando',
     lastName:  'Random',
     species:   options.species || Random.from(Species.all()).code,
     gender:    options.gender  || Random.from(['male','female','futa']),
   },options));
 
-  await CharacterAdjuster.applyAll(rando,adjustments);
+  // TODO: Going to have to reimplement aspects before the adjuster can be reenabled.
+  // await CharacterAdjuster.applyAll(rando,adjustments);
+
   return rando;
 }
 
