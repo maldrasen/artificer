@@ -112,9 +112,6 @@ global.Weaver = (function() {
   //   if (token.startsWith('species'))   { return Weaver.SpeciesLoom.findValue(subject, token, context); }
   //   if (token.startsWith('tits'))      { return Weaver.TitsLoom.findValue(subject, token, context); }
 
-  // TODO: Maybe change this into a simple loom?
-  //   if (utility.match(/^(inch|foot|feet|yard|yards)/)) { return Weaver.MeasurementLoom.findValue(utility, argument); }
-
   function error(message) {
     return `<span class='weaver-error error'>Error(${message})</span>`;
   }
