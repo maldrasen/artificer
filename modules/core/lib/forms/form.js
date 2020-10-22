@@ -12,10 +12,18 @@ global.Form = class Form {
     });
   }
 
+  // Build an imnmutable form. Most forms will be referenced by their code,
+  // however some forms like the Descriptions are searched through rather than
+  // directly referenced, so they're given unique (hopefully) codes based on a
+  // hash of ther data.
   static build(code, data) {
     if (this.name == 'Form') { throw "The build() function should only be called on a subclass of Form." }
     if (this.instances == null) { this.instances = {}; }
-    if (code == null) { code = hash(data); }
+
+    if (typeof code == 'object') {
+      data = code;
+      code = hash(data);
+    }
 
     let instance = new this(code,data);
         instance.validate();

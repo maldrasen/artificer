@@ -12,7 +12,7 @@ global.BodyBuilder = (function() {
     let params = {
       parent_id:     character.id,
       parent_class:  character.constructor.name,
-      faceType:      bodyOptions.faceType   || Random.from(Body.FACE_TYPES),
+      faceType:      bodyOptions.faceType   || Random.from(Body.FaceTypes),
       height:        bodyOptions.height     || character.species.randomHeight(character.genderCode),
       eyeColor:      bodyOptions.eyeColor   || character.species.random('eye'),
       scaleColor:    bodyOptions.scaleColor || character.species.random('scale'),

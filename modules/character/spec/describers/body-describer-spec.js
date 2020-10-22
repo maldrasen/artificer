@@ -72,10 +72,10 @@ describe('Describer: Body', function() {
 //   it('describes neko faces', function(done) {
 //     printFace('Neko', { species:'neko' }, done);
 //   });
-//
-//   it('describes nymph faces', function(done) {
-//     printFace('Nymph', { species:'nymph' }, done);
-//   });
+
+  // it('describes nymph faces', function(done) {
+  //   printFace('Nymph', { species:'nymph' }, done);
+  // });
 
   // it('describes scaven faces', function(done) {
   //   printFace('Scaven', { species:'scaven' }, done);

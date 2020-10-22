@@ -60,10 +60,16 @@ global.BodyDescriber = class BodyDescriber {
     this.addInclusions(descriptions.face.includes);
     this.addInclusions(descriptions.head.includes);
 
-    return await Weaver.weave(`
-      ${descriptions.face.d} ${this.mythicAdditions()}
-      ${descriptions.head.d} ${this.finishHead()} ${injuries}`,
-    this.context);
+console.log("=== Good so far ===")
+console.log(descriptions.face.d)
+console.log(descriptions.head.d)
+
+    return await Weaver.weave(`TEMP: ${descriptions.face.d} ${descriptions.head.d}`, this.context);
+
+    // return await Weaver.weave(`
+    //   ${descriptions.face.d} ${this.mythicAdditions()}
+    //   ${descriptions.head.d} ${this.finishHead()} ${injuries}`,
+    // this.context);
   }
 
   // This function will randomly select a face and head description. The two

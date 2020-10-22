@@ -1,4 +1,4 @@
-describe.only('Body Loom', function() {
+describe('Body Loom', function() {
 
   function buildContext(options) {
     const context = new Context();
