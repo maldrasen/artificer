@@ -26,15 +26,21 @@ global.BodyDescriber = class BodyDescriber {
   }
 
   async getBodyDescription() {
+
+    // TODO: Reenable Injuries? That might go into a separete module? There
+    //       may not be injuries to deal with at all in Cinnamon. They're
+    //       integral to the body module though. May be better to just work
+    //       around health and injury for the moment...
     // const injuries = await (new BodyInjuryDescriber(this.context)).bodyInjuries();
+    const injuries = '';
+
     const description = await BodyDescription.select(this.context);
 
     this.addInclusions(description.includes);
 
-    // TODO: Finish this =========================
-    // return await Weaver.weave(
-    //   `${description.d} ${injuries} ${this.finishBody()}`
-    // , this.context);
+    return await Weaver.weave(
+      `${description.d} ${injuries} ${this.finishBody()}`,
+      this.context);
   }
 
   // TODO: Right now the body's face type is only used in this function to build
@@ -55,19 +61,18 @@ global.BodyDescriber = class BodyDescriber {
   //       The tone is wrong for a person describing their own face.
   //
   async getfaceDescription() {
+    // TODO: Reimplement Injuries Here as well. I hope there's a spec at least.
     // const injuries = await (new BodyInjuryDescriber(this.context)).headInjuries()
+    const injuries = '';
     const descriptions = await this.selectFaceAndHead();
 
     this.addInclusions(descriptions.face.includes);
     this.addInclusions(descriptions.head.includes);
 
-    return await Weaver.weave(`TEMP: ${descriptions.face.d} ${descriptions.head.d}`, this.context);
-
-    // TODO: Finish this =========================
-    // return await Weaver.weave(`
-    //   ${descriptions.face.d} ${this.mythicAdditions()}
-    //   ${descriptions.head.d} ${this.finishHead()} ${injuries}`,
-    // this.context);
+    return await Weaver.weave(`
+      ${descriptions.face.d} ${this.mythicAdditions()}
+      ${descriptions.head.d} ${this.finishHead()} ${injuries}`,
+    this.context);
   }
 
   // This function will randomly select a face and head description. The two
