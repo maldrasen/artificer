@@ -5,8 +5,8 @@
 // well as any actors as defined in the event.
 Messenger.subscribe('core.context.set-event', async function(data) {
   await data.context.addPlayer();
-  await Promise.all(Object.keys(data.context.event.actors||[]).map(async key => {
-    await data.context.addActor(key, data.context.event.actors[key]);
+  await Promise.all(Object.keys(data.context.event.getActors()||[]).map(async key => {
+    await data.context.addActor(key, data.context.event.getActors()[key]);
   }));
 });
 
@@ -14,22 +14,19 @@ Messenger.subscribe('core.context.set-event', async function(data) {
 // that maps the character's context key to the character's id. If so we
 // populate the actors with those IDs when the event state is set.
 Messenger.subscribe('core.context.set-event-state', async function(data) {
-  await Promise.all(Object.keys(data.state.actors||[]).map(async key => {
-    await data.context.addCharacter(key,(await Character.lookup(data.state.actors[key])));
+  await Promise.all(Object.keys(data.state.getActors()||[]).map(async key => {
+    await data.context.addCharacter(key,(await Character.lookup(data.state.getActors()[key])));
   }));
 });
 
-Object.defineProperty(Context, 'actors', {
-  get: () => { return ObjectUtility.select(this._properties, (key, _) => key.length == 1 && key != 'P'); }
-});
-
-Object.defineProperty(Context, 'player', {
-  get: () => { return this.get('P'); }
-});
 
 Context.prototype.addPlayer = async function() {
   const player = await Player.instance();
   if (player && this.get('P') == null) { await this.addCharacter('P',player); }
+}
+
+Context.prototype.getPlayer = function() {
+  return this.get('P');
 }
 
 Context.prototype.addCharacter = async function(key, character) {
@@ -46,4 +43,8 @@ Context.prototype.addActor = async function(key, descriptive) {
   if (character) {
     await this.addCharacter(key, character);
   }
+}
+
+Context.prototype.getActors = function() {
+  return ObjectUtility.select(this._properties, (key, _) => key.length == 1 && key != 'P');
 }

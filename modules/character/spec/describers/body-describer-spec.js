@@ -1,4 +1,4 @@
-describe('Describer: Body', function() {
+describe.only('Describer: Body', function() {
 
   async function buildCharacter(options) {
     const tweeked = Object.assign({}, options, {
@@ -37,17 +37,17 @@ describe('Describer: Body', function() {
     });
   }
 
-//   it('describes caprien faces', function(done) {
-//     printFace('Caprien', { species:'caprien' }, done);
-//   });
-//
+  // it('describes caprien faces', function(done) {
+  //   printFace('Caprien', { species:'caprien' }, done);
+  // });
+
 //   it('describes dryad faces', function(done) {
 //     printFace('Dryad', { species:'dryad' }, done);
 //   });
 
-  // it('describes elf faces', function(done) {
-  //   printFace('Elf', { species:'elf' }, done);
-  // });
+  it('describes elf faces', function(done) {
+    printFace('Elf', { species:'elf' }, done);
+  });
 
 //   it('describes equian faces', function(done) {
 //     printFace('Equian', { species:'equian' }, done);

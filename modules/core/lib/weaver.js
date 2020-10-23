@@ -96,21 +96,13 @@ global.Weaver = (function() {
   // matching and navigating down into objects, so there are no dependencies
   // on the character classes to worry about.
   function shortcutValue(token, context) {
-    const keys = Object.keys(context.actors);
-    if (keys.length == 1) { return (context.actors[keys[0]]).character.gender[token]; }
-    if (context.actors['C']) { return (context.actors['C']).character.gender[token]; }
+    const keys = Object.keys(context.getActors());
+    const first = context.getActors()[keys[0]];
+
+    if (keys.length == 1) { return first.character.gender[token]; }
+    if (context.actors['C']) { return context.get('C').character.gender[token]; }
     throw `Pronoun shortcuts can only be used when there is only one actor in a scene, or when there is a 'C' actor.`;
   }
-
-  // TODO: Replacing this.
-  //   if (token.startsWith('balls'))     { return Weaver.BallsLoom.findValue(subject, token, context); }
-  //   if (token.startsWith('body'))      { return Weaver.BodyLoom.findValue(subject, token, context); }
-  //   if (token.startsWith('character')) { return Weaver.CharacterLoom.findValue(subject, token, context); }
-  //   if (token.startsWith('cock'))      { return Weaver.CockLoom.findValue(subject, token, context); }
-  //   if (token.startsWith('gender'))    { return Weaver.GenderLoom.findValue(subject, token, context); }
-  //   if (token.startsWith('nipples'))   { return Weaver.NipplesLoom.findValue(subject, token, context); }
-  //   if (token.startsWith('species'))   { return Weaver.SpeciesLoom.findValue(subject, token, context); }
-  //   if (token.startsWith('tits'))      { return Weaver.TitsLoom.findValue(subject, token, context); }
 
   function error(message) {
     return `<span class='weaver-error error'>Error(${message})</span>`;

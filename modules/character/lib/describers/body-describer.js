@@ -26,14 +26,15 @@ global.BodyDescriber = class BodyDescriber {
   }
 
   async getBodyDescription() {
-    const injuries = await (new BodyInjuryDescriber(this.context)).bodyInjuries();
-    const description = await Description.select('body', this.context);
+    // const injuries = await (new BodyInjuryDescriber(this.context)).bodyInjuries();
+    const description = await BodyDescription.select(this.context);
 
     this.addInclusions(description.includes);
 
-    return await Weaver.weave(
-      `${description.d} ${injuries} ${this.finishBody()}`
-    , this.context);
+    // TODO: Finish this =========================
+    // return await Weaver.weave(
+    //   `${description.d} ${injuries} ${this.finishBody()}`
+    // , this.context);
   }
 
   // TODO: Right now the body's face type is only used in this function to build
@@ -54,18 +55,15 @@ global.BodyDescriber = class BodyDescriber {
   //       The tone is wrong for a person describing their own face.
   //
   async getfaceDescription() {
-    const injuries = await (new BodyInjuryDescriber(this.context)).headInjuries()
+    // const injuries = await (new BodyInjuryDescriber(this.context)).headInjuries()
     const descriptions = await this.selectFaceAndHead();
 
     this.addInclusions(descriptions.face.includes);
     this.addInclusions(descriptions.head.includes);
 
-console.log("=== Good so far ===")
-console.log(descriptions.face.d)
-console.log(descriptions.head.d)
-
     return await Weaver.weave(`TEMP: ${descriptions.face.d} ${descriptions.head.d}`, this.context);
 
+    // TODO: Finish this =========================
     // return await Weaver.weave(`
     //   ${descriptions.face.d} ${this.mythicAdditions()}
     //   ${descriptions.head.d} ${this.finishHead()} ${injuries}`,
@@ -78,8 +76,8 @@ console.log(descriptions.head.d)
   // printing out a big warning when it happens so I know to add more
   // descriptions.
   async selectFaceAndHead() {
-    const faceDescription = await FaceDescription.select('face', this.context);
-    const headDescription = await HeadDescription.select('head', this.context);
+    const faceDescription = await FaceDescription.select(this.context);
+    const headDescription = await HeadDescription.select(this.context);
 
     if (this._tries++ == 10) {
       console.log(`Warning: There doesn't seem to be enough face and head descriptions so this character's`);

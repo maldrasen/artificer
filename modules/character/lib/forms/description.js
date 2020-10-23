@@ -1,6 +1,8 @@
 global.Description = class Description extends Form {
 
-  static async select(part, context) {
+  static async select(context) {
+    if (typeof this.instances == 'undefined') { throw `No descriptions found.` }
+
     const valid = ArrayUtility.compact(await Promise.all(
       ObjectUtility.values(this.instances).map(async description => {
         let gate1 = await description.conditionsMet(context);
@@ -38,6 +40,7 @@ global.Description = class Description extends Form {
 
 global.AnusDescription = class AnusDescription extends Description {}
 global.FaceDescription = class FaceDescription extends Description {}
+global.NipplesDescription = class FaceDescription extends Description {}
 
 // Some species have their own species specific body descriptions. The elf
 // races just have average human-like bodies. The 'furry' species are similar
