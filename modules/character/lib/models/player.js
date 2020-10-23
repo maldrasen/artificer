@@ -52,12 +52,10 @@ global.Player = class Player extends Character {
 
     await CharacterBuilder.addBody(player, defaultBody);
     await CharacterNamer.execute(player);
+    await CharacterDescriber.updateAll(player);
 
-    // TODO: Still Working this...
-    // await CharacterDescriber.updateAll(player);
-
-    //   TODO: Add portrait selection
-    //   await player.update({ portraitCode:(await ImageResource.portraitFor(player)).code });
+    // TODO: Add portrait selection
+    // await player.update({ portraitCode:(await ImageResource.portraitFor(player)).code });
 
     Flag.setAll({
       'player.title' : options.title.toLowerCase(),
@@ -74,12 +72,13 @@ global.Player = class Player extends Character {
   static async hasTits()  { return await (await this.instance()).hasTits();  }
 
   get title() { return Flag.lookup('player.title'); }
-  get name() { return `${TextUtility.titlecase(this.title)} ${this.firstName} ${this.lastName}` }
+  get name() { return `${TextUtility.titlecase(this.title)} ${this.firstName} ${this.lastName}`; }
+  get singleName() { return this.firstName; }
 
   static async forClient() {
     const player = await Player.instance();
+    const description = await CharacterDescriber.fullDescription(player);
     // const aspects = await player.getCharacterAspectsForClient();
-    // const description = await CharacterDescriber.fullDescription(player);
 
     return {
       name:         player.name,
@@ -89,12 +88,12 @@ global.Player = class Player extends Character {
       personal:     player.personal,
       mental:       player.mental,
       magical:      player.magical,
-    //   physicalWord: player.getPhysicalWord(),
-    //   personalWord: player.getPersonalWord(),
-    //   mentalWord:   player.getMentalWord(),
-    //   magicalWord:  player.getMagicalWord(),
+      physicalWord: player.getPhysicalWord(),
+      personalWord: player.getPersonalWord(),
+      mentalWord:   player.getMentalWord(),
+      magicalWord:  player.getMagicalWord(),
     //   portrait:     player.portrait.url,
-    //   description,
+      description,
     //   ...aspects,
     };
   }

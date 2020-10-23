@@ -20,9 +20,14 @@ describe('Player', function() {
   });
 
   it('is created with the build() function', function(done) {
-    Player.build(defaultPlayer).then(player => {
-      expect(player.title).to.equal('master');
-      done();
+    Player.build(defaultPlayer).then(() => {
+      Player.forClient().then(player => {
+        expect(player.gender).to.equal('Male');
+        expect(player.species).to.equal('Human');
+        expect(player.name.length).to.above(0);
+        expect(player.description.length).to.above(0);
+        done();
+      });
     });
   });
 
