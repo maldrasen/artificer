@@ -93,6 +93,7 @@ describe('Describer: Body', function() {
     printFace('Mythic', { species:'dragon', personal:Random.between(90,100) }, done);
   });
 
+  // TODO: Body Injuries
   // it('describes injured faces', function(done) {
   //   printFace('Injured', { species:'scaven', _injury:'head.1' }, done);
   // });
@@ -139,6 +140,7 @@ describe('Describer: Body', function() {
     printBody('Selkie', { species:'selkie' }, done);
   });
 
+  // TODO: Body Injuries
   // it('describes injured bodies', function(done) {
   //   printBody('Injured', { species:'elf', _injury:'body.1' }, done);
   // });

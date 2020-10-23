@@ -4,7 +4,7 @@
 // });
 //
 // Description.buildHeadInjury({ damageType:'smash', level:2,
-//   d: `{{He}}'s looking pretty beat up. {{C::gender.His}} eye is swollen and one of {{C::gender.his}} lips has split open.`,
+//   d: `{{He}}'s looking pretty beat up. {{His}} eye is swollen and one of {{his}} lips has split open.`,
 // });
 //
 // Description.buildHeadInjury({ damageType:'smash', level:2,

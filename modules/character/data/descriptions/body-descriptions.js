@@ -97,7 +97,7 @@ BodyDescription.build({ species:'furry', requires:['minion(C).is-male','minion(C
 BodyDescription.build({ species:'caprien', requires:['minion(C).is-male','minion(C).body.physique.below-average'],
   includes:['fur-color','height-weight'],
   d: `The goat man's {{C::body.fiftyPound}}, {{C::body.fiveFootTenInch}} body looks slender and lithe under {{his}}
-      {{C::body.furColor}} fur. A small goat tail rests just above {{C::gender.his}} inviting ass.`
+      {{C::body.furColor}} fur. A small goat tail rests just above {{his}} inviting ass.`
 });
 
 BodyDescription.build({ species:'caprien', requires:['minion(C).is-male','minion(C).body.physique.average'],
