@@ -6,6 +6,7 @@ Species.build('human', {
   personal: 20,
   mental:   20,
   magical:  10,
+  genderRatio: { female:66, male:34 },
 
   violenceAverage: 0,
   violenceRange: 30,

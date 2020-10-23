@@ -22,12 +22,12 @@
 //   }
 //
 //   function lengthMeasure(nipples) {
-//     if (Settings.Metric) { return `${nipples.length} millimeters` }
+//     if (Settings.metric()) { return `${nipples.length} millimeters` }
 //     return EnglishUtility.inchesInEnglish(ConversionUtility.milliToInches(nipples.length),{or:'an'});
 //   }
 //
 //   function widthMeasure(nipples) {
-//     if (Settings.Metric) { return `${nipples.width} millimeters` }
+//     if (Settings.metric()) { return `${nipples.width} millimeters` }
 //     return EnglishUtility.inchesInEnglish(ConversionUtility.milliToInches(nipples.width),{or:'an'});
 //   }
 //

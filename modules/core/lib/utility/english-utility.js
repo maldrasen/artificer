@@ -70,7 +70,7 @@ global.EnglishUtility = {
   // inches or centimeters. This function just puts the converted number into
   // a short English phrase.
   lengthInEnglish(value, plural) {
-    return Settings.Metric ?
+    return Settings.metric() ?
       EnglishUtility.centimetersInEnglish(value, plural):
       EnglishUtility.inchesInEnglish(value, plural);
   },

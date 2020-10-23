@@ -19,7 +19,7 @@ global.Description = class Description extends Form {
     // out what's missing in these situations so I print out the entire context
     // to pick through.
     if (valid.length == 0) {
-      console.error(`\nERROR: Could not find a matching ${this.name}`)
+      console.error(`\nERROR: Could not find a matching ${this.name}`);
       console.error(context.get('C'),'\n');
       return { d:` [ERROR: Could not find a matching ${this.name}] ` }
     }

@@ -14,7 +14,7 @@ global.NipplesDescription = class FaceDescription extends Description {}
 //
 global.BodyDescription = class BodyDescription extends Description {
   conditionsMet(context) {
-    const elfBodied = ['dark-elf','elf','gnome','neko','nymph','sylph','viera','wood-elf'];
+    const elfBodied = ['human','dark-elf','elf','gnome','neko','nymph','sylph','viera','wood-elf'];
     const furryBodied = ['equian','lupin','minotaur'];
     const speciesCode = context.get('C').character.speciesCode;
 

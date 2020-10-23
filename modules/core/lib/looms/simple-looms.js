@@ -19,7 +19,7 @@ Weaver.registerLoom('simple', /^meters/,    () => { return Settings.metric() ? '
 Weaver.registerLoom('simple', /^meter/,     () => { return Settings.metric() ? 'meter' : 'yard' });
 
 // Just for phrases like "every inch of his cock" where there's no actual length value
-Weaver.registerLoom('simple', /^inch/,      () => { return Settings.Metric ? 'centimeter' : 'inch' });
+Weaver.registerLoom('simple', /^inch/,      () => { return Settings.metric() ? 'centimeter' : 'inch' });
 
 // Esentially a thesaurus here.
 Weaver.registerLoom('simple', /^ballsack/,  () => { return Random.from(['ballsack','ballsack','scrotum']); });

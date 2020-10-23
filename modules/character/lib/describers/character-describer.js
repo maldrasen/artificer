@@ -8,13 +8,13 @@ global.CharacterDescriber = (function() {
     await context.addCharacter('C',character);
 
     const bodyDescriber =  new BodyDescriber(context);
-    // const anusDescriber =  new AnusDescriber(context);
+    const anusDescriber =  new AnusDescriber(context);
     // const cockDescriber =  new CockDescriber(context);
     // const pussyDescriber = new PussyDescriber(context);
     // const titsDescriber =  new TitsDescriber(context);
 
     await bodyDescriber.updateDescription();
-    // await anusDescriber.updateDescription();
+    await anusDescriber.updateDescription();
     // await cockDescriber.updateDescription();
     // await pussyDescriber.updateDescription();
     // await titsDescriber.updateDescription();

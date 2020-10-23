@@ -20,7 +20,7 @@ describe('Describer: Body', function() {
   }
 
   function printBody(title, options, done) {
-    Settings.Metric = Random.from([true,false,false]);
+    Settings.set({ metric:Random.from([true,false,false]) });
     SpecHelper.tenTimes(done, async resolve => {
       const c = await buildCharacter(options);
       SpecHelper.print(`${title} (${c.rando.genderCode}/${c.rando.physical}) > ${c.body.bodyDescription}`);
@@ -29,7 +29,7 @@ describe('Describer: Body', function() {
   }
 
   function printFace(title, options, done) {
-    Settings.Metric = Random.from([true,false,false]);
+    Settings.set({ metric:Random.from([true,false,false]) });
     SpecHelper.tenTimes(done, async resolve => {
       const c = await buildCharacter(options);
       SpecHelper.print(`${title} (${c.rando.genderCode}/${c.rando.personal}/${c.body.faceType}) > ${c.body.faceDescription}`);
