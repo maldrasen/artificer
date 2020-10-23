@@ -3,7 +3,6 @@ global.Character = class Character extends Model {
   get species() { return Species.lookup(this.speciesCode); }
   get gender() { return Gender[this.genderCode]; }
 
-  //     singleName()  { return this.forcedName || this.firstName },
   //     portrait()   { return ImageResource.lookup(this.portraitCode ? this.portraitCode : 'unknown-portrait'); },
   //     isFurry()    { return this.species.isFurry(this.genderCode); },
   //     isScalie()     { return this.species.isScalie; },

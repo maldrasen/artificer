@@ -22,6 +22,10 @@ global.Minion = class Minion extends Character {
       lust:             { type:Sequelize.INTEGER, validate:{ min:0, max:100 }},
     });
   }
+
+  get name() { return this.forcedName || `${this.preName||''} ${this.firstName} ${this.lastName||''}`.trim(); }
+  get singleName() { return this.forcedName || this.firstName }
+
   //     get personality() { return Personality.lookup(this.personalityCode); },
   //     get alive()       { return this.status == 'normal' },
   //     get isLoyal()      { return this.loyalty >= 25 },
@@ -40,10 +44,6 @@ global.Minion = class Minion extends Character {
   //     // Essentially the same as the rebellious but while the rebellious cutoff is
   //     // about fear + loyalty being less than 32, the cutoff for traitorous is 16
   //     get isTraitorous() { return (this.fear + this.loyalty) < 16 },
-  //
-  //     get name() {
-  //       return this.forcedName || `${this.preName||''} ${this.firstName} ${this.lastName||''}`.trim();
-  //     },
 
   // TODO: Need to actually implement the portraits at some point.
   async determinePortrait() {
@@ -51,7 +51,6 @@ global.Minion = class Minion extends Character {
     //   await minion.update({ portraitCode:(await ImageResource.portraitFor(character)).code });
     // }
   }
-
 
 }
 
