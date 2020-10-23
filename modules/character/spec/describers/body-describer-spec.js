@@ -1,4 +1,4 @@
-describe.only('Describer: Body', function() {
+describe('Describer: Body', function() {
 
   async function buildCharacter(options) {
     const tweeked = Object.assign({}, options, {
@@ -37,110 +37,110 @@ describe.only('Describer: Body', function() {
     });
   }
 
-  // it('describes caprien faces', function(done) {
-  //   printFace('Caprien', { species:'caprien' }, done);
-  // });
+  it('describes caprien faces', function(done) {
+    printFace('Caprien', { species:'caprien' }, done);
+  });
 
-//   it('describes dryad faces', function(done) {
-//     printFace('Dryad', { species:'dryad' }, done);
-//   });
+  it('describes dryad faces', function(done) {
+    printFace('Dryad', { species:'dryad' }, done);
+  });
 
   it('describes elf faces', function(done) {
     printFace('Elf', { species:'elf' }, done);
   });
 
-//   it('describes equian faces', function(done) {
-//     printFace('Equian', { species:'equian' }, done);
-//   });
-//
-//   it('describes kobold faces', function(done) {
-//     printFace('Kobold', { species:'kobold' }, done);
-//   });
-//
-//   it('describes lupin faces', function(done) {
-//     printFace('Lupin', { species:'lupin' }, done);
-//   });
-//
-//   it('describes minotaur faces', function(done) {
-//     printFace('Minotaur', { species:'minotaur' }, done);
-//   });
-//
-//   it('describes naga faces', function(done) {
-//     printFace('Naga', { species:'naga' }, done);
-//   });
-//
-//   it('describes neko faces', function(done) {
-//     printFace('Neko', { species:'neko' }, done);
-//   });
+  it('describes equian faces', function(done) {
+    printFace('Equian', { species:'equian' }, done);
+  });
 
-  // it('describes nymph faces', function(done) {
-  //   printFace('Nymph', { species:'nymph' }, done);
+  it('describes kobold faces', function(done) {
+    printFace('Kobold', { species:'kobold' }, done);
+  });
+
+  it('describes lupin faces', function(done) {
+    printFace('Lupin', { species:'lupin' }, done);
+  });
+
+  it('describes minotaur faces', function(done) {
+    printFace('Minotaur', { species:'minotaur' }, done);
+  });
+
+  it('describes naga faces', function(done) {
+    printFace('Naga', { species:'naga' }, done);
+  });
+
+  it('describes neko faces', function(done) {
+    printFace('Neko', { species:'neko' }, done);
+  });
+
+  it('describes nymph faces', function(done) {
+    printFace('Nymph', { species:'nymph' }, done);
+  });
+
+  it('describes scaven faces', function(done) {
+    printFace('Scaven', { species:'scaven' }, done);
+  });
+
+  it('describes selkie faces', function(done) {
+    printFace('Selkie', { species:'selkie' }, done);
+  });
+
+  it('describes vieran faces', function(done) {
+    printFace('Viera', { species:'viera' }, done);
+  });
+
+  it('describes mythic faces (~95 personal)', function(done) {
+    printFace('Mythic', { species:'dragon', personal:Random.between(90,100) }, done);
+  });
+
+  // it('describes injured faces', function(done) {
+  //   printFace('Injured', { species:'scaven', _injury:'head.1' }, done);
   // });
 
-  // it('describes scaven faces', function(done) {
-  //   printFace('Scaven', { species:'scaven' }, done);
-  // });
+  // === Bodies ===
 
-//   it('describes selkie faces', function(done) {
-//     printFace('Selkie', { species:'selkie' }, done);
-//   });
-//
-//   it('describes vieran faces', function(done) {
-//     printFace('Viera', { species:'viera' }, done);
-//   });
-//
-//   it('describes mythic faces (~95 personal)', function(done) {
-//     printFace('Mythic', { species:'dragon', personal:Random.between(90,100) }, done);
-//   });
-//
-//   it('describes injured faces', function(done) {
-//     printFace('Injured', { species:'scaven', _injury:'head.1' }, done);
-//   });
-//
-//   // === Bodies ===
-//
-//   it('describes elven bodies', function(done) {
-//     printBody('Elven', { species:'elven' }, done);
-//   });
-//
-//   it('describes furry bodies', function(done) {
-//     printBody('Furry', { species:'furry' }, done);
-//   });
-//
-//   it('describes caprien', function(done) {
-//     printBody('Caprien', { species:'caprien' }, done);
-//   });
-//
-//   it('describes centaur', function(done) {
-//     printBody('Centaur', { species:'centaur' }, done);
-//   });
-//
-//   it('describes dragons', function(done) {
-//     printBody('Dragon', { species:'dragon' }, done);
-//   });
-//
-//   it('describes dryads', function(done) {
-//     printBody('Dryad', { species:'dryad' }, done);
-//   });
-//
-//   it('describes kobold', function(done) {
-//     printBody('Kobold', { species:'kobold' }, done);
-//   });
-//
-//   it('describes naga', function(done) {
-//     printBody('Naga', { species:'naga' }, done);
-//   });
-//
-//   it('describes scaven', function(done) {
-//     printBody('Scaven', { species:'scaven' }, done);
-//   });
-//
-//   it('describes selkie', function(done) {
-//     printBody('Selkie', { species:'selkie' }, done);
-//   });
-//
-//   it('describes injured bodies', function(done) {
-//     printBody('Injured', { species:'elf', _injury:'body.1' }, done);
-//   });
+  it('describes elven bodies', function(done) {
+    printBody('Elven', { species:'elven' }, done);
+  });
+
+  it('describes furry bodies', function(done) {
+    printBody('Furry', { species:'furry' }, done);
+  });
+
+  it('describes caprien', function(done) {
+    printBody('Caprien', { species:'caprien' }, done);
+  });
+
+  it('describes centaur', function(done) {
+    printBody('Centaur', { species:'centaur' }, done);
+  });
+
+  it('describes dragons', function(done) {
+    printBody('Dragon', { species:'dragon' }, done);
+  });
+
+  it('describes dryads', function(done) {
+    printBody('Dryad', { species:'dryad' }, done);
+  });
+
+  it('describes kobold', function(done) {
+    printBody('Kobold', { species:'kobold' }, done);
+  });
+
+  it('describes naga', function(done) {
+    printBody('Naga', { species:'naga' }, done);
+  });
+
+  it('describes scaven', function(done) {
+    printBody('Scaven', { species:'scaven' }, done);
+  });
+
+  it('describes selkie', function(done) {
+    printBody('Selkie', { species:'selkie' }, done);
+  });
+
+  // it('describes injured bodies', function(done) {
+  //   printBody('Injured', { species:'elf', _injury:'body.1' }, done);
+  // });
 
 });
