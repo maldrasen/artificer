@@ -5,6 +5,10 @@ global.ObjectUtility = {
   // function uses the varargs as keys. For instance:
   //   ObjectUtility.fetch({ foo:{ bar:{ yarp:1 }}}, 'foo', 'bar', 'yarp') == 1
   //   ObjectUtility.fetch({ foo:{ bar:{ yarp:1 }}}, 'foo', 'nope', 'wat') == null
+  //
+  // Deprecated: Javascript now supports the elvis operator
+  //     const yarp = obj?.foo?.derp?.yarp;
+  //
   fetch(object) {
     let chain = null;
 
