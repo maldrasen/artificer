@@ -1,4 +1,5 @@
 { "first":[
+  "lib/concerns/has-aspects.js",
   "lib/concerns/has-attributes.js",
   "lib/concerns/has-body.js",
   "lib/concerns/has-personality.js",

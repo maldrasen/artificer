@@ -1,4 +1,4 @@
-// describe('CharacterAspect', function() {
+// describe.only('CharacterAspect', function() {
 //
 //   describe('adjustStrength', function() {
 //     it('adjusts the aspect strength', function(done) {

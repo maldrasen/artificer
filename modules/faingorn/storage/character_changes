@@ -1,0 +1,6 @@
+
+Characters had duty stuff on the character model
+
+   setterMethods: {
+     dutyOptions(json) { this.setDataValue('dutyOptions_json',JSON.stringify(json)) },
+   }
