@@ -6,9 +6,9 @@
   ipcMain.on('game.start', () => {
     Browser.send('game.prepare');
     Game.start({
-      event: 'game-start',
+      event: 'game-start-1',
       phase: 'early',
-      location: 'basement',
+      location: 'summoning-chamber',
     });
 
     AvailableEvent.add('summon-first-demon');
@@ -20,7 +20,7 @@
     Game.start({
       event: 'game-debug-start',
       phase: 'early',
-      location: 'basement',
+      location: 'summoning-chamber',
     });
 
     Composer.render();

@@ -3,7 +3,7 @@ Event.build('summon-first-demon', {
 
   setting: {
     phase: 'morning',
-    location: 'basement'
+    location: 'summoning-chamber'
   },
 
   stages:[{

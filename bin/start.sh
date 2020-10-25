@@ -1,4 +1,4 @@
 #!/bin/bash
 
-# bin/compile_style.sh
+bin/compile_style.sh
 yarn start

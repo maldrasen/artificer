@@ -52,6 +52,31 @@ global.Game = class Game {
     log(`Event Added [${phase}]  - ${event.code}`);
   }
 
+  // chainEvent() continues the currently running event. The state carries over
+  // from the previous event, but if changes are nessessary can be added to the
+  // new state argument and merged into the current state.
+  //
+  // If the original event is queued without the actors already in the state
+  // they're probably being selected after the event starts by the
+  // CharacterAgent. When this is the case we will almost always want to chain
+  // these selected actors to the next event, but their IDs are stashed in the
+  // choices object. If we pass the choices back into the chain though we
+  // automatically fetch the actors from it.
+  static chainEvent(code, state={}, choices={}) {
+    if (this._currentEvent == null) { throw `Cannot chain event because there is no current event.` }
+
+    if (choices.event && choices.event.actorIDs) {
+      if (state.actors == null) { state.actors = {}; }
+      each(Object.keys(choices.event.actorIDs), key => {
+        state.actors[key] = choices.event.actorIDs[key]
+      });
+    }
+
+    log(`Chained: ${code}`);
+    this._currentEvent.event = Event.lookup(code);
+    this._currentEvent.state = Object.assign(this._currentEvent.state, state);
+  }
+
   // Still on the fence about the event queues and game phases and such. It
   // would be nice if the phases were configurable. That seems like overkill
   // though, when they can also be easily worked around. I'll leave them as is
