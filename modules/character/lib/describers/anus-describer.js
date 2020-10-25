@@ -18,16 +18,13 @@ global.AnusDescriber = class AnusDescriber {
   //       this mean though that equipping and unequipping an item changes the
   //       character descriptions? Should clothing obscure certain body part
   //       descriptions? Do we add some text about how the character is
-  //       presenting their asshole for inspection?
+  //       presenting their asshole for inspection? We also need to describe
+  //       injuries, piercings and tattoos here as well.
 
   async getDescription() {
-    // const injuryDescriber = new AnusInjuryDescriber(this.context);
-    // const injury = await injuryDescriber.describeInjuries();
-    const injury = ''
-
     let description = `
       ${(await AnusDescription.select(this.context)).d}
-      ${this.describeProlapse()} ${injury}
+      ${this.describeProlapse()}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
     return await Weaver.weave(description, this.context);

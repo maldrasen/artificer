@@ -109,7 +109,6 @@ global.MinionBuilder = (function() {
     let minion = await Minion.create(params);
 
     await CharacterBuilder.addBody(minion, options);
-    await minion.determinePersonality();
     await minion.determinePortrait();
 
     return minion;

@@ -10,13 +10,6 @@ global.MouthBuilder = (function() {
       tongueShape: 'normal',
       tongueLength: null,
       width: null,
-      smashLevel: 0,
-      smashCount: 0,
-      smashHealing: 0,
-      smashTeethMissing: 0,
-      cutLevel: 0,
-      cutCount: 0,
-      cutHealing: 0,
     });
 
     if (params.throatWidth == null) { params.throatWidth = getThroatWidth(character); }

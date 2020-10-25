@@ -60,6 +60,8 @@ global.CharacterDescriber = (function() {
 
   // TODO: The general description should also include things like the
   //       character's loyality and general attitude towards the player.
+  //       Mostly though the general description needs to include their body
+  //       type. 
   function generalDescription(character,parts) {
     return "TODO: General Description";
   }

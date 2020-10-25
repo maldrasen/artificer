@@ -13,31 +13,24 @@ global.Tits = class Tits extends Model {
       count:           { type:Sequelize.INTEGER },
       lactationLevel:  { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
       lactationFactor: { type:Sequelize.DOUBLE },
-      blightLevel:     { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
-      blightPlace:     { type:Sequelize.STRING, validate:{ isIn:[['left','right','all']] }},
-      blightCount:     { type:Sequelize.INTEGER },
-      blightHealing:   { type:Sequelize.INTEGER },
-      burnLevel:       { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
-      burnPlace:       { type:Sequelize.STRING, validate:{ isIn:[['left','right','all']] }},
-      burnCount:       { type:Sequelize.INTEGER },
-      burnHealing:     { type:Sequelize.INTEGER },
-      smashLevel:      { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
-      smashCount:      { type:Sequelize.INTEGER },
-      smashPlace:      { type:Sequelize.STRING, validate:{ isIn:[['left','right','all']] }},
-      smashHealing:    { type:Sequelize.INTEGER },
-      smashShape:      { type:Sequelize.STRING, validate:{ isIn:[['hoof','hand']] }},
       description:     { type:Sequelize.STRING },
     });
   }
 
+  // TODO: Like the cocks, injuries to the tits can increase their size. We
+  //       need to reimplement the injuries though before we can include these
+  //       size factors back in though.
+  //
+  //         let smash = (this.smashLevel * 0.02)+1;
+  //         let blight = (this.blightLevel * 0.1)+1;
+  //         return Math.round(size * smash * blight * lactation);
+  //
   get size() {
     let range = Tits.SizeRanges[this.sizeClass]
-    let smash = (this.smashLevel * 0.02)+1;
-    let blight = (this.blightLevel * 0.1)+1;
     let lactation = (this.lactationLevel * 0.1)+1;
 
     let size = (this.sizeScale/100)*(range.max-range.min) + range.min
-    return Math.round(size * smash * blight * lactation);
+    return Math.round(size * lactation);
   }
 
   // The size class influences how tits grow in size, the current size though

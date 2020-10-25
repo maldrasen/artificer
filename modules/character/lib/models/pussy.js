@@ -19,15 +19,6 @@ global.Pussy = class Pussy extends Model {
       innerLabiaLength:  { type:Sequelize.INTEGER },
       outerLabiaSize:    { type:Sequelize.INTEGER },
       prolapseLength:    { type:Sequelize.INTEGER },
-      blightLevel:       { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
-      blightCount:       { type:Sequelize.INTEGER },
-      blightHealing:     { type:Sequelize.INTEGER },
-      burnLevel:         { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
-      burnCount:         { type:Sequelize.INTEGER },
-      burnHealing:       { type:Sequelize.INTEGER },
-      smashLevel:        { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
-      smashCount:        { type:Sequelize.INTEGER },
-      smashHealing:      { type:Sequelize.INTEGER },
       description:       { type:Sequelize.STRING },
     });
   }

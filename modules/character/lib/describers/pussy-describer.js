@@ -15,15 +15,7 @@ global.PussyDescriber = class PussyDescriber {
   }
 
   async getDescription() {
-    // const injuryDescriber = new PussyInjuryDescriber(this.context);
-    // const injuries = await injuryDescriber.describeInjuries()
-    const injuries = '';
-
-    let description = `
-      [TODO: Pussy Description] ${injuries}
-    `.replace(/\n/g,'').replace(/\s+/g,' ');
-
-    return await Weaver.weave(description, this.context);
+    return '[TODO: Pussy Description]';
   }
 
 }

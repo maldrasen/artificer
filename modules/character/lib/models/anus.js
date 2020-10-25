@@ -13,10 +13,6 @@ global.Anus = class Anus extends Model {
       sizeScale:       { type:Sequelize.DOUBLE, validate:{ min:0, max:100 }},
       sizeFactor:      { type:Sequelize.DOUBLE  },
       prolapseLength:  { type:Sequelize.INTEGER },
-      smashLevel:      { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
-      smashCount:      { type:Sequelize.INTEGER },
-      smashHealing:    { type:Sequelize.INTEGER },
-      smashShape:      { type:Sequelize.STRING, validate:{ isIn:[['whip','hand']] }},
       description:     { type:Sequelize.STRING },
     });
   }

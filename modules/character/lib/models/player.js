@@ -78,7 +78,7 @@ global.Player = class Player extends Character {
   static async forClient() {
     const player = await Player.instance();
     const description = await CharacterDescriber.fullDescription(player);
-    // const aspects = await player.getCharacterAspectsForClient();
+    const aspects = await player.getCharacterAspectsForClient();
 
     return {
       name:         player.name,
@@ -94,7 +94,7 @@ global.Player = class Player extends Character {
       magicalWord:  player.getMagicalWord(),
     //   portrait:     player.portrait.url,
       description,
-    //   ...aspects,
+      ...aspects,
     };
   }
 

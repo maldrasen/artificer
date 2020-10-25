@@ -21,18 +21,6 @@ global.CockBuilder = (function() {
       minimumWidth:     20,
       ballsSizeFactor:  1,
       internalBalls:    false,
-      blightLevel:      0,
-      blightPlace:      null,
-      blightCount:      0,
-      blightHealing:    0,
-      burnLevel:        0,
-      burnPlace:        null,
-      burnCount:        0,
-      burnHealing:      0,
-      smashLevel:       0,
-      smashCount:       0,
-      smashHealing:     0,
-      smashShape:       null,
       description:      null,
     });
 

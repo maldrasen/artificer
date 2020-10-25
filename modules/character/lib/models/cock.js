@@ -20,18 +20,6 @@ global.Cock = class Cock extends Model {
       spineHeight:       { type:Sequelize.INTEGER },
       ballsSizeFactor:   { type:Sequelize.DOUBLE  },
       internalBalls:     { type:Sequelize.BOOLEAN },
-      blightLevel:       { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
-      blightPlace:       { type:Sequelize.STRING, validate:{ isIn:[['cock','balls','all']] }},
-      blightCount:       { type:Sequelize.INTEGER },
-      blightHealing:     { type:Sequelize.INTEGER },
-      burnLevel:         { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
-      burnPlace:         { type:Sequelize.STRING, validate:{ isIn:[['cock','balls','all']] }},
-      burnCount:         { type:Sequelize.INTEGER },
-      burnHealing:       { type:Sequelize.INTEGER },
-      smashLevel:        { type:Sequelize.INTEGER, validate:{ min:0, max:5 }},
-      smashCount:        { type:Sequelize.INTEGER },
-      smashHealing:      { type:Sequelize.INTEGER },
-      smashShape:        { type:Sequelize.STRING, validate:{ isIn:[['hoof','hand']] }},
       description:       { type:Sequelize.STRING  },
     });
   }
@@ -50,14 +38,19 @@ global.Cock = class Cock extends Model {
     }[shape]
   }
 
+  // TODO: Injuries used to factor into the cock size because of swelling and
+  //       such. I've removed injuries for now, but when we reimplement them,
+  //       we'll loop through the injuries and length depending on the type
+  //       and level of the injury. This is how this used to work:
+  //
+  //         let blight = (this.blightLevel * 0.05)+1;
+  //         let smash = (this.smashLevel * 0.01)+1;
+  //         return Math.round(size * smash * blight)
+  //
   get length() {
     let range = Cock.SizeRanges[this.sizeClass]
-
-    let smash = (this.smashLevel * 0.01)+1;
-    let blight = (this.blightLevel * 0.05)+1;
     let size = this.sizeFactor * ((this.sizeScale/100)*(range.max-range.min) + range.min)
-
-    return Math.round(size * smash * blight)
+    return Math.round(size)
   }
 
   // The size class influences how a cock grow in size, the current length
@@ -130,10 +123,14 @@ global.Cock = class Cock extends Model {
   // calculating the cock width (which the testicleWidth is based on) however
   // we want the balls to swell more than cocks, so the same factors are
   // applied again, essentially doubling the swelling effects on the balls.
+  //
+  // ... or at least it will when the injuries are added back in.
+  //    let smash = (this.smashLevel * 0.01)+1;
+  //    let blight = (this.blightLevel * 0.05)+1;
+  //    return this.width * this.ballsSizeFactor * smash * blight;
+  //
   get testicleWidth() {
-    let smash = (this.smashLevel * 0.01)+1;
-    let blight = (this.blightLevel * 0.05)+1;
-    return this.width * this.ballsSizeFactor * smash * blight;
+    return this.width * this.ballsSizeFactor;
   }
 
   get scrotumWidth()           { return this.testicleWidth*2.5; }

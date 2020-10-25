@@ -18,11 +18,8 @@ global.CockDescriber = class CockDescriber {
     }
   }
 
+  // TODO: Add injury, piercings and tatoos.
   async getDescription() {
-    // const injuryDescriber = new CockInjuryDescriber(this.context);
-    // const injuries = await injuryDescriber.describeInjuries()
-    const injuries = '';
-
     let description = `
       ${await this.cockDescription()}
       ${this.sheathDescription()}
@@ -31,7 +28,6 @@ global.CockDescriber = class CockDescriber {
       ${this.knobsDescription()}
       ${this.spinesDescription()}
       ${this.ballsDescription()}
-      ${injuries}
     `.replace(/\n/g,'').replace(/\s+/g,' ');
 
     return await Weaver.weave(description, this.context);

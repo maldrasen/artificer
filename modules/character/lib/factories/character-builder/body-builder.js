@@ -19,9 +19,6 @@ global.BodyBuilder = (function() {
       tailShape:     bodyOptions.tailShape  || character.species.bodyOptions.tailShape || null,
       hornShape:     bodyOptions.hornShape  || character.species.random('horn'),
       faceShape:     character.species.getFaceShape(character.genderCode),
-      pierceLevel:   0,
-      pierceCount:   0,
-      pierceHealing: 0,
       description:   null,
     }
 

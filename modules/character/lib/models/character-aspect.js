@@ -1,4 +1,3 @@
-
 global.CharacterAspect = class CharacterAspect extends Model {
 
   static async createModel() {
