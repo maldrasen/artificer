@@ -25,4 +25,4 @@ global.Name = class Name extends Model {
   get adjustments() { return JSON.parse(this.adjustments_json||'[]'); }
 }
 
-Database.registerModel(Name);
+Database.registerModel(Name, { immutable:true });

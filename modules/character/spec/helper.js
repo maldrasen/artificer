@@ -7,8 +7,7 @@ SpecHelper.buildJada = async function(options, adjustments=[]) {
     gender: 'futa'
   }, options));
 
-  // TODO: Going to have to reimplement aspects before the adjuster can be reenabled.
-  // await CharacterAdjuster.applyAll(jada,adjustments);
+  await CharacterAdjuster.applyAll(jada,adjustments);
 
   return jada;
 }
@@ -21,8 +20,7 @@ SpecHelper.buildRando = async function (options={}, adjustments=[]) {
     gender:    options.gender  || Random.from(['male','female','futa']),
   },options));
 
-  // TODO: Going to have to reimplement aspects before the adjuster can be reenabled.
-  // await CharacterAdjuster.applyAll(rando,adjustments);
+  await CharacterAdjuster.applyAll(rando,adjustments);
 
   return rando;
 }

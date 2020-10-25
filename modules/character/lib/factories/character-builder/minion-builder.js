@@ -40,7 +40,7 @@ global.MinionBuilder = (function() {
   //   randomAspectCount  Number of random aspects to give this character, can be null for a random number of aspects.
   //
   async function buildStandardMinion(options) {
-    const minion = await CharacterBuilder.buildMinion(options.minion);
+    const minion = await this.buildMinion(options.minion);
 
     try {
       await addRandomAspects(minion,options.randomAspectCount);
@@ -76,7 +76,7 @@ global.MinionBuilder = (function() {
     if (options._try == 10) { throw `A character cannot be created with the options: ${JSON.stringify(options)}`; }
     options._try++;
 
-    return CharacterBuilder.buildStandardMinion(options);
+    return this.buildStandardMinion(options);
   }
 
   // Build a complete Minion model with all of the associated body parts.

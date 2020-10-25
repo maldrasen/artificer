@@ -33,10 +33,9 @@ global.CharacterNamer = (function() {
   // Check to see if a name is valid for this character. This promise should
   // reject on an invalid name.
   async function validate(character, names) {
-    // TODO NOW: Ensure Unique among minions.
-    // if ((await Character.findOne({ where:nameMap(names) })) != null) {
-    //   return "Name is not unique";
-    // }
+    if ((await Minion.findOne({ where:nameMap(names) })) != null) {
+      return "Name is not unique";
+    }
 
     const context = new Context();
     await context.addCharacter('C',character);
@@ -48,8 +47,6 @@ global.CharacterNamer = (function() {
 
   async function check(name, context) {
     if (name == null || name.requires == null) { return true }
-
-console.log("Check:",name)
 
     return await CentralScrutinizer.meetsRequirements(name.requires, context);
   }

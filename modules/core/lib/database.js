@@ -21,15 +21,16 @@ global.Database = (function() {
     Messenger.publish('database.created');
   }
 
+  // Completely clear the database. This is called both by the specs and when
+  // quitting the game. A model can be marked as immutable if, like Name,
+  // this is an immutable data model and shouldn't be cleared between specs.
   async function clear() {
     await Promise.all(persistedModels.map(async model => {
-      return await model.destroy({ where:{}, truncate:true });
+      if (!model.immutable) {
+        return await model.destroy({ where:{}, truncate:true });
+      }
     }));
   }
-
-  // Not sure if this is the way models should be created now actually...
-  // There should be some way to do it on demand.
-
 
   // === Logging ===
 
@@ -66,7 +67,10 @@ global.Database = (function() {
   // the database has been created. When that happens the schema for that model
   // is just created immeadietly.
 
-  async function registerModel(model) {
+  async function registerModel(model, options={}) {
+    if (options.immutable) {
+      model.immutable = true;
+    }
     if (waiting) {
       registeredModels.push(model);
     } else {
