@@ -53,12 +53,19 @@ global.Minion = class Minion extends Character {
     // }
   }
 
+  // Completely remove a character and their dependant models.
+  async completelyRemove(options={}) {
+    await CharacterAspect.destroy({ where:{ parent_class:'Minion', parent_id:this.id }});
+    await this.completelyRemoveBody();
+    await this.destroy();
+  }
+
+
 }
 
 Database.registerModel(Minion);
 HasPersonality.isAppliedTo(Minion);
 // HasInjuries.isAppliedTo(Minion);
-
 
 
 
@@ -196,17 +203,4 @@ HasPersonality.isAppliedTo(Minion);
 //   if (level == 3) { lust = 13 + Random.upTo(8); }
 //
 //   await this.update({ lust });
-// }
-//
-// // Completely remove a character and their dependant models. If for some reason
-// // the destroyed character has equipment it should be removed first, or else
-// // this function will detroy it. This should only ever be called for temporary
-// // minions. If we generate a minion in an event for instance, but then because
-// // of some decision we make we never see them again. Even if a minion dies we
-// // don't want to completely delete the minion's sexual history.
-// Character.prototype.completelyRemove = async function(options={}) {
-//   await CharacterAspect.destroy({ where:{ character_id:this.id }});
-//   await CharacterEquipment.destroy({ where:{ character_id:this.id }});
-//   await this.completelyRemoveBody();
-//   await this.destroy();
 // }

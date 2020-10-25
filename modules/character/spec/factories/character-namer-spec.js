@@ -10,7 +10,6 @@ describe('CharacterNamer', function() {
     });
   }
 
-
   it('names humans',   function(done) { printNames('human'  , done); });
   it('names scaven',   function(done) { printNames('scaven'  , done); });
   it('names kobolds',  function(done) { printNames('kobold'  , done); });
@@ -18,4 +17,5 @@ describe('CharacterNamer', function() {
   it('names incubus',  function(done) { printNames('incubus' , done); });
   it('names succubus', function(done) { printNames('succubus', done); });
   it('names dragons',  function(done) { printNames('dragon'  , done); });
+
 });

@@ -1,0 +1,6 @@
+
+When a minion is destroyed, the equipment needs to listen to the completely
+remove minion message (which will need to be implemented) and destroy any
+associated equipment assignments.
+
+// await CharacterEquipment.destroy({ where:{ character_id:this.id }});
