@@ -5,7 +5,7 @@
 // well as any actors as defined in the event.
 Messenger.subscribe('core.context.set-event', async function(data) {
   await data.context.addPlayer();
-  await Promise.all(Object.keys(data.state.actors||{}).map(async key => {
+  await Promise.all(Object.keys(data?.state?.actors||{}).map(async key => {
     await data.context.addActor(key, data.state.actors[key]);
   }));
 });
@@ -14,7 +14,7 @@ Messenger.subscribe('core.context.set-event', async function(data) {
 // that maps the character's context key to the character's id. If so we
 // populate the actors with those IDs when the event state is set.
 Messenger.subscribe('core.context.set-event-state', async function(data) {
-  await Promise.all(Object.keys(data.state.actors||[]).map(async key => {
+  await Promise.all(Object.keys(data?.state?.actors||{}).map(async key => {
     await data.context.addCharacter(key,(await Character.lookup(data.state.actors[key])));
   }));
 });
