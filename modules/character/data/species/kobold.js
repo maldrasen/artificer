@@ -53,6 +53,6 @@ Species.build('kobold', {
     hunting: 1,
   },
 
-  // nameGenerator: KoboldNameGenerator,
+  nameGenerator: KoboldNameGenerator,
   flags: ['scalie']
 });

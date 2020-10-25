@@ -65,6 +65,6 @@ Species.build('goblin', {
     hunting: 2,
   },
 
-  // nameGenerator: GoblinNameGenerator,
+  nameGenerator: GoblinNameGenerator,
   flags: ['goblin']
 });

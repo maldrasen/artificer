@@ -47,6 +47,6 @@ Species.build('incubus', {
     }}
   },
 
-  // nameGenerator: DemonNameGenerator,
+  nameGenerator: DemonNameGenerator,
   flags: ['demon']
 });

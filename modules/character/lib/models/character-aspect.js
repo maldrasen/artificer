@@ -53,5 +53,6 @@ global.CharacterAspect = class CharacterAspect extends Model {
     if (level == 2) { this.strength = 1000; }
     if (level == 3) { this.strength = 2200; }
   }
-
 }
+
+Database.registerModel(CharacterAspect);

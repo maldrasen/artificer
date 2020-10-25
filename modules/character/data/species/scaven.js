@@ -77,6 +77,6 @@ Species.build('scaven', {
     'size-queen': 15,
   },
 
-  // nameGenerator: ScavenNameGenerator,
+  nameGenerator: ScavenNameGenerator,
   flags: ['furry']
 });

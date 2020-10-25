@@ -6,26 +6,23 @@ global.HasAspects = (function() {
   //
   //  - strength: int
   //  - level: int
-  function addAspect(code, options) {
-    return new Promise((resolve, reject)=>{
-      if (options.strength == null && options.level == null) { reject('Either strength or level is required when adding aspect.'); }
-      if (options.strength && options.strength < 0 || options.strength > 3000) { reject('Strength must be between 0 and 3000'); }
-      if (options.level && options.level < 0 || options.level > 3) { reject('Level must be between 1 and 3'); }
+  async function addAspect(code, options) {
+    if (options.strength == null && options.level == null) { throw 'Either strength or level is required when adding aspect.'; }
+    if (options.strength && options.strength < 0 || options.strength > 3000) { throw 'Strength must be between 0 and 3000'; }
+    if (options.level && options.level < 0 || options.level > 3) { throw 'Level must be between 1 and 3'; }
+    if (await this.canAddAspect(code) == false) { throw `Cannot add aspect ${code}. Character does not meet the requirements.`; }
 
-      this.canAddAspect(code).then(pass => {
-        if (pass == false) { return reject(`Cannot add aspect ${code}. Character does not meet the requirements.`); }
-
-        let aspect = new CharacterAspect({
-          character_id: this.id,
-          code: code,
-        });
-
-        if (options.strength) { aspect.strength = options.strength; }
-        if (options.level) { aspect.setLevel(options.level); }
-
-        aspect.save().then(resolve);
-      });
+    let aspect = await CharacterAspect.create({
+      parent_class: this.constructor.name,
+      parent_id: this.id,
+      code: code,
     });
+
+    if (options.strength) { aspect.strength = options.strength; }
+    if (options.level) { aspect.setLevel(options.level); }
+
+    await aspect.save();
+    return aspect;
   }
 
   // It's possible to change an aspect's strength over time. Aspect strength can
@@ -189,15 +186,15 @@ global.HasAspects = (function() {
   // This only works because character's are the only model with aspects right
   // now, but that may change.
   function getCharacterAspects() {
-    return CharacterAspect.findAll({ where:{ character_id:this.id }});
+    return CharacterAspect.findAll({ where:{ parent_class:this.constructor.name, parent_id:this.id }});
   }
 
   function getCharacterAspect(code) {
-    return CharacterAspect.findOne({ where:{ character_id:this.id, code:code }});
+    return CharacterAspect.findOne({ where:{ parent_class:this.constructor.name, parent_id:this.id, code:code }});
   }
 
   function destroyAllCharacterAspects() {
-    return CharacterAspect.destroy({ where:{ character_id:this.id }});
+    return CharacterAspect.destroy({ where:{ parent_class:this.constructor.name, parent_id:this.id }});
   }
 
   async function getCharacterAspectsForClient() {
