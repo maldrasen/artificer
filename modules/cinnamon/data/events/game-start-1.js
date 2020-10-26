@@ -1,5 +1,6 @@
 Event.build('game-start-1', {
 
+
   noSettingCard: true,
   setting: {
     phase: 'early',
@@ -9,6 +10,7 @@ Event.build('game-start-1', {
   stages:[{
       formPage: 'warning-form'
     },{
+      background:'introduction',
       pages: [
         { text:`Welcome to Artificer, Book One. This game is the prototype version of what will eventually be a larger
             and more story rich game. This version really just focuses on the sex scenes and leaves out most of the

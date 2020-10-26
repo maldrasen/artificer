@@ -30,9 +30,7 @@ Components.EventView = (function() {
 
     $('#mainContent').empty().append($('<div>',{ id:'currentEvent' }).append($($('#eventTemplate').html())));
 
-    // Move into an effects library?
-    //     if (event.background != null) { setBackground(event.background); }
-    //     if (event.darkenBackground != null) { darkenBackground(event.darkenBackground); }
+    Elements.Effects.setBackground(eventData.background);
 
     buildStage();
 
@@ -52,7 +50,7 @@ Components.EventView = (function() {
     let stage = currentStage();
 
     // Stage Building
-    // if (stage.background != null) { setBackground(stage.background); }
+    Elements.Effects.setBackground(stage.background);
     // if (stage.setChoice) { updateChoices(stage.setChoice); }
 
     // These views can be skipped through.
@@ -131,6 +129,7 @@ Components.EventView = (function() {
       skipActive = false;
       skipContinue = true;
     }
+    Elements.Effects.removeBackground();
     Renderer.sendCommand('game.end-event',choices);
   }
 

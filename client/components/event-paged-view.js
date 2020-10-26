@@ -6,8 +6,7 @@ Components.EventPagedView = (function() {
     currentStage = stage;
     pageIndex = 0;
 
-    $('#currentEvent .event-text-frame').removeClass('hide');
-    $('#currentEvent .event-text-actions').removeClass('hide');
+    $('#currentEvent .event-paged-view').removeClass('hide');
     $('#currentEvent .click-advance').removeClass('hide');
 
     buildPage();
@@ -45,11 +44,11 @@ Components.EventPagedView = (function() {
     console.log(page)
 
     //     if (page.alert) { Alerts.showAlert(page.alert); }
-    //     if (page.background != null) { setBackground(page.background); }
-    //     if (page.darkenBackground != null) { darkenBackground(page.darkenBackground); }
+    Elements.Effects.setBackground(page.background);
+    Elements.Effects.applyPageEffects(page.effects);
+
     //     if (page.showCenterImage) { showCenterImage(page.showCenterImage); }
     //     if (page.hideCenterImage) { hideCenterImage(); }
-    //     if (page.effects) { applyPageEffects(page.effects); }
     //
     //     showSpeaker(page.otherSpeaker, page.playerSpeaker)
     //     appendToBacklog(page);
@@ -86,8 +85,3 @@ Components.EventPagedView = (function() {
 //     if (playerName) { speaker.removeClass('hide').addClass('player').append(playerName); }
 //   }
 //
-//   function applyPageEffects(effects) {
-//     each(effects, strang => {
-//       new Adjustment(strang, eventData.actorIDs).execute();
-//     });
-//   }

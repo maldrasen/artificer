@@ -1,5 +1,15 @@
 global.ImageResourceLoader = (function() {
 
+  // The setImage() function is used to set the background image of an element
+  // directly.
+  function setImage(element, code) {
+    element.css({ 'background-image': `url('${lookupResource(code)}')` });
+  }
+
+  function clearImage(element) {
+    element.css('background-image','');
+  }
+
   // The resolveAll() function will resolve all of the elements with the
   // .unresolved-image class.
   function resolveAll() {
@@ -7,6 +17,7 @@ global.ImageResourceLoader = (function() {
       resolve($(element));
     });
   }
+
 
   function resolve(element) {
     let resourceCode = element.data('image-resource');
@@ -42,6 +53,6 @@ global.ImageResourceLoader = (function() {
     }
   }
 
-  return { resolveAll, resolve }
+  return { setImage, clearImage, resolveAll, resolve }
 
 })();
