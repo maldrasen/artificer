@@ -13,6 +13,15 @@
     <div class='loading'>Loading...</div>
 
     <div id='mainContent'></div>
+
+    <div id='pagedView' class='hide'>
+      <div class='click-advance'></div>
+      <ul class='text-frame'></ul>
+      <div class='control-frame'>
+        <a href='#' class='activate-skip'>Skip</a>
+      </div>
+    </div>
+
     <ul id='centerAlerts'></ul>
     <ul id='sideAlerts'></ul>
     <ul id='eventAlerts'></ul>
@@ -20,22 +29,12 @@
     <div id='activeBackground' class='background-image'></div>
     <div id='defaultBackground' class='background-image unresolved-image' data-image-resource='default-background'></div>
 
-    <div id='viewLock' class='hide'></div>
     <div id='overlayFrame' class='hide'>
       <div id='overlayTitle'>
         <a href='#' class='close-overlay'>X</a>
         <h2 class='title'>TITLE</h2>
       </div>
       <div id='overlayContent'></div>
-    </div>
-
-    <div id='backlog' class='hide'>
-      <a href='#' class='close-backlog-button'>X</a>
-      <div class='scrolling-panel track-parent'>
-        <div class='scrolling-panel-content backlog-content'>
-          <ul class='message-list'></ul>
-        </div>
-      </div>
     </div>
 
     <div id='confirmCover' class='hide'></div>

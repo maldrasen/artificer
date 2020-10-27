@@ -50,11 +50,12 @@ $(document).ready(function() {
   Elements.WindowManager.init();
 
   // === Init Components ===
-  Components.Backlog.init();
   Components.EventView.init();
   Components.LocationView.init();
+  Components.PagedView.init();
   Components.PersistenceViews.init();
   // Components.SettingsDialog.init();
+
 
   // === Init Interface ===
   Renderer.init();

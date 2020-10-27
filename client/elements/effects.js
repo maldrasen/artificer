@@ -16,11 +16,7 @@ Elements.Effects = (function() {
   // Otherwise various other effects and filters are added to the background.
   function setBackground(options) {
     if (options) {
-      // Objectify a string argument.
       if (typeof options == 'string') { options = { code:options }; }
-
-      console.log("Set Background:",options);
-
       ImageResourceLoader.setImage($('#activeBackground'), options.code);
     }
   }
@@ -32,3 +28,23 @@ Elements.Effects = (function() {
   return { applyPageEffects, setBackground, removeBackground };
 
 })();
+
+
+// Copied from event view for now.
+
+//   function showCenterImage(url) {
+//     $('#currentEvent .center-image-frame').removeClass('hide');
+//     $('#currentEvent .center-image').css({ "background-image":`url(${url})`, filter:'' });
+//   }
+//
+//   function hideCenterImage() {
+//     $('#currentEvent .center-image-frame').addClass('hide');
+//   }
+//
+//   function setBackground(argument) {
+//     Elements.ImageResource.loadBackground('#currentEvent .full-screen-background',argument);
+//   }
+//
+//   function darkenBackground(value) {
+//     $('#currentEvent .full-screen-background').css({filter:`brightness(${100-value}%)`});
+//   }

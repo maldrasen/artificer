@@ -1,9 +1,10 @@
 
 // Z Indices
 
-$z-event-frame:      100;
-$z-plan-left:        200;
-$z-location-menu:    200;
+$z-paged-view:       100;
+$z-event-frame:      200;
+$z-plan-left:        300;
+$z-location-menu:    400;
 $z-overlay:          1000;
 $z-dialog:           8000;
 $z-confirm:          9000;

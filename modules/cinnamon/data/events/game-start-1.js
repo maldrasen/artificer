@@ -26,6 +26,7 @@ Event.build('game-start-1', {
     },{
       formPage: 'sexuality-form'
     },{
+      background: 'office',
       pages: [
         { text:`I carefully set the raven feathered quill back onto its stand and start to carefully read over the
             infernal contract once again. A careless mistake at this point could be fatal after all. Everything is as

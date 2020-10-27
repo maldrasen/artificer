@@ -1,5 +1,7 @@
 Event.build('game-start-2', {
 
+  background: 'office',
+
   stages:[{
     pages: [
       { text:`When I look up from the conflagration I see a small imp, no more than two feet tall, hovering in the

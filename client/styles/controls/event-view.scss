@@ -1,117 +1,12 @@
 
 .event-content {
   font-size: $fs-big;
-
-  .click-advance {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    cursor: pointer;
-    z-index: calc(#{$z-event-frame} + 10);
-  }
-
 }
 
-//   .setting-card {
-//     position: absolute;
-//     top: 20px;
-//     left: 20px;
-//     opacity: 1;
-//
-//     h1 {
-//       font-family: roboto-light;
-//       font-size: 30px;
-//     }
-//   }
-//
-//   .setting-card.fade-out {
-//     transition-delay: 2000ms;
-//     transition-duration: 1000ms;
-//     transition-property: opacity;
-//     transition-timing-function: ease-out;
-//     opacity: 0;
-//   }
-//
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-  .event-paged-view {
-
-    .active-text-frame {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      right: 10px;
-      height: 100px;
-      min-width: 1000px;
-      padding: 30px 40px;
-      font-size: $fs-bigger;
-      border: $border-light;
-      box-shadow: $shadow-frame;
-      background-color: $bg-panel;
-      z-index: $z-event-frame;
-    }
-
-    .viewed-text-frame {
-    }
-
-    .control-frame {
-      position: absolute;
-      top: 78px;
-      left: 10px;
-      right: 10px;
-      height: 32px;
-      line-height: 30px;
-      text-align: right;
-      z-index: calc(#{$z-event-frame} + 1);
-    }
-
-  }
-
-
-  .event-text-speaker {
-    position: absolute;
-    bottom: 151px;
-    right: 8px;
-    height: 20px;
-    line-height: 21px;
-    padding: 2px 20px;
-    border: $border-normal;
-    background-color: $bg-body;
-    font-family: roboto-bold;
-    z-index: calc(#{$z-event-frame} + 10);
-  }
-  .event-text-speaker.player   { color:$fg-player-quote;   }
-  .event-text-speaker.other    { color:$fg-other-quote;    }
-  .event-text-speaker.narrator { color:$fg-narrator-quote; }
-
-  .event-text-actions {
-    position: absolute;
-    bottom: 12px;
-    left: 12px;
-    right: 12px;
-    height: 20px;
-    min-width: 1068px;
-    line-height: 20px;
-    padding: 0 5px;
-    text-align: right;
-    font-size: $fs-small;
-    background-color: rgba(0, 0, 0, 0.33);
-    z-index: calc(#{$z-event-frame} + 20);
-  }
 
 
 
@@ -213,7 +108,3 @@
 //     box-shadow: $shadow-frame;
 //     border: $border-light;
 //   }
-
-.other-quote    { color:$fg-other-quote;    }
-.player-quote   { color:$fg-player-quote;   }
-.narrator-quote { color:$fg-narrator-quote; }
