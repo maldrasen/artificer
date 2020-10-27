@@ -15,6 +15,9 @@ Elements.Effects = (function() {
   // string, we assume that it's the background code and load it normally.
   // Otherwise various other effects and filters are added to the background.
   function setBackground(options) {
+    if (options === null) {
+      return removeBackground();
+    }
     if (options) {
       if (typeof options == 'string') { options = { code:options }; }
       ImageResourceLoader.setImage($('#activeBackground'), options.code);

@@ -3,14 +3,7 @@ Components.EventView = (function() {
   let stageIndex;
   let choices;
 
-  let skipActive = false;
-  let skipContinue = false;
-  let skipRate = 50;
-
-  function init() {
-    // Components.EventView.ChooserPage.init();
-    // Components.EventView.SelectionPage.init();
-  }
+  function init() {}
 
   // Build an event given all of the event options. All of the event options
   // should be described in detail on the Wiki now.
@@ -43,22 +36,16 @@ Components.EventView = (function() {
   function buildStage() {
     let stage = currentStage();
 
-    // Stage Building
     Elements.Effects.setBackground(stage.background);
-    // if (stage.setChoice) { updateChoices(stage.setChoice); }
 
-    // These views can be skipped through.
+    if (stage.setChoice) { updateChoices(stage.setChoice); }
     if (stage.pages) { return Components.PagedView.open(stage); }
 
-    // The following views cannot be skipped but skipping should continue
-    // after the choice has been made or the form is submitted or whatever.
-    if (skipActive) {
-      skipActive = false;
-      skipContinue = true;
-    }
+    // If this stage isn't a paged view, we stop the page skipping. The
+    // skipping should continue though after the next page though, which will
+    // usually be some kind of form, selection, or other input.
+    Components.PagedView.holdSkip();
 
-    // if (stage.chooserPage)   { return Components.EventView.ChooserPage.build(); }
-    // if (stage.selectionPage) { return Components.EventView.SelectionPage.build(); }
     if (stage.formPage) { return Components.EventFormPage.load(stage.formPage); }
 
     throw "Unrecognized Stage Type"
@@ -67,10 +54,7 @@ Components.EventView = (function() {
   // Once a stage is complete we continue on to the sext stage. If there are no
   // more stages then the event is ended.
   function nextStage() {
-    if (skipContinue) {
-      skipActive = true;
-      skipContinue = false;
-    }
+    Components.PagedView.continueSkip();
     if (stageIndex < eventData.stages.length-1) {
       closeStage();
       stageIndex += 1;
@@ -116,10 +100,7 @@ Components.EventView = (function() {
   }
 
   function endEvent() {
-    if (skipActive) {
-      skipActive = false;
-      skipContinue = true;
-    }
+    Components.PagedView.holdSkip();
     Elements.Effects.removeBackground();
     Renderer.sendCommand('game.end-event',choices);
   }

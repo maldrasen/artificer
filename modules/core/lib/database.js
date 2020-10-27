@@ -79,7 +79,6 @@ global.Database = (function() {
   }
 
   async function activateModel(model) {
-    console.log(`  - Activating ${model.name} Model`)
     await model.createModel();
     await database.sync();
 
