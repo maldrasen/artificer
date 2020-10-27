@@ -101,6 +101,7 @@ Components.EventView = (function() {
 
   function endEvent() {
     Components.PagedView.holdSkip();
+    Components.PagedView.close();
     Elements.Effects.removeBackground();
     Renderer.sendCommand('game.end-event',choices);
   }

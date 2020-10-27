@@ -21,7 +21,7 @@ Components.PagedView = (function() {
     _currentStage = stage;
     _currentPage = 0;
 
-    buildPage();
+    buildPage(true);
     continueSkip();
   }
 
@@ -36,7 +36,7 @@ Components.PagedView = (function() {
   function nextPage() {
     if (_currentStage.pages && _currentPage < _currentStage.pages.length-1) {
       _currentPage += 1;
-      buildPage();
+      buildPage(false);
     } else {
       _currentPage = 0;
       Components.EventView.nextStage();
@@ -52,27 +52,42 @@ Components.PagedView = (function() {
   //       based on a choice that was made. The previous implementation sucked
   //       though. It would be better load and execute a file, calling a
   //       function defined therein with the page element.
-  function buildPage() {
+  function buildPage(firstPage) {
     let page = currentPage();
-    let element = $('<li>',{ class:'page' }).append(page.text);
 
-    $('#pagedView .text-frame').append(element);
+    let textElement = $('<div>',{ class:'text' }).append(page.text)
+    let pageElement = $('<li>',{ class:'page hot' }).append(textElement);
 
-    //     if (page.alert) { Alerts.showAlert(page.alert); }
+    if (firstPage) {
+      console.log("First Page of",currentEvent)
+    }
+
+    $('#pagedView .text-frame').append(pageElement);
+
     Elements.Effects.setBackground(page.background);
     Elements.Effects.applyPageEffects(page.effects);
-    //
-    //   //     if (page.showCenterImage) { showCenterImage(page.showCenterImage); }
-    //   //     if (page.hideCenterImage) { hideCenterImage(); }
-    //
-    //   //     showSpeaker(page.otherSpeaker, page.playerSpeaker)
-    //
+
+    // if (page.alert) { Alerts.showAlert(page.alert); }
+    // if (page.showCenterImage) { showCenterImage(page.showCenterImage); }
+    // if (page.hideCenterImage) { hideCenterImage(); }
+    // showSpeaker(page.otherSpeaker, page.playerSpeaker)
+
+    applyFadeEffect();
+
     setTimeout(() => {
-      console.log("Add Cold")
-      element.addClass('cold');
+      pageElement.removeClass('hot');
     },100);
+  }
 
-
+  function applyFadeEffect() {
+    let pages = $('#pagedView .text-frame .page');
+    for (let i=pages.length-1; i>-1; i--) {
+      if (i < pages.length - 1) {
+        let step = 6 + (pages.length-1) - i;
+        let value = Math.max(0,(100 - (6*step))/100)
+        $(pages[i]).css('opacity',value);
+      }
+    }
   }
 
   // === Pageing And Skipping Behavior ===
