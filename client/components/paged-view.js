@@ -12,11 +12,12 @@ Components.PagedView = (function() {
     $(document).on('click', '#pagedView .activate-skip', Elements.buttonAction(activateSkip));
   }
 
-  function prepare() { console.log('...prepare') }
+  function prepare() {
+    $('#pagedView .text-frame').empty();
+  }
 
   function open(stage) {
     $('#pagedView').removeClass('hide');
-    console.log("Opened.",stage)
 
     _currentStage = stage;
     _currentPage = 0;
@@ -59,7 +60,9 @@ Components.PagedView = (function() {
     let pageElement = $('<li>',{ class:'page hot' }).append(textElement);
 
     if (firstPage) {
-      console.log("First Page of",currentEvent)
+      _skipActive = false;
+      _skipContinue = false;
+      showSetting();
     }
 
     $('#pagedView .text-frame').append(pageElement);
@@ -88,6 +91,19 @@ Components.PagedView = (function() {
         $(pages[i]).css('opacity',value);
       }
     }
+  }
+
+  function showSetting() {
+    if (_currentEvent.noSettingCard) { return; }
+
+    let place = _currentEvent.settingCard.place;
+    let time = _currentEvent.settingCard.time;
+
+    const card = $('<div>',{ class:'setting' }).append(`<h1>${place}, ${time}</h1>`);
+
+    if (Environment.debug) { card.append(`<pre>${_currentEvent.code}</pre>`) }
+
+    $('#pagedView .text-frame').append(card);
   }
 
   // === Pageing And Skipping Behavior ===
@@ -162,28 +178,6 @@ Components.PagedView = (function() {
 //   </div>
 // </div>
 
-
-
-// showSettingCard(event.settingCard.time, event.settingCard.place);
-
-
-//   function showSettingCard(time, place) {
-//     skipActive = false;
-//     skipContinue = false;
-//
-//     const card = $('<div>').append(`<h1>${place}, ${time}</h1>`);
-//     const settingCard = $('#currentEvent .setting-card').removeClass('hide').append(card)
-//
-//     if (DEBUG) { card.append(`<pre>${eventData.code}</pre>`) }
-//
-//     setTimeout(() => { settingCard.addClass('fade-out'); },0);
-//     setTimeout(() => { settingCard.addClass('hide'); },4000);
-//   }
-
-
-
-
-  //
 
 //   function isOpen() {
 //     let element = $('#currentEvent .event-paged-view');

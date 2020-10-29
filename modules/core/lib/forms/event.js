@@ -41,11 +41,18 @@ global.Event = class Event extends Form {
       await eventData.event.onStart(eventData.state);
     }
 
+    // A setting card includes the time and place of the event. These values
+    // can be overridden for some events, but location events need to have the
+    // correct location in the setting in order to be started from that location.
     if (event.setting && event.noSettingCard == null) {
-      event.settingCard = {
-        time: Game.getTime(),
-        // place: Location.lookup(Game.location()).buildName(),
-      }
+      let time = Game.getTime();
+      let place = Location.current().getName();
+
+      if (event.setting.time) { time = event.setting.time; }
+      if (event.setting.place) { place = event.setting.place; }
+      if (event.setting.location) { place = Location.lookup(event.setting.location).getName(); }
+
+      event.settingCard = { time, place };
     }
 
     const context = new Context();

@@ -3,7 +3,6 @@ Event.build('game-start-1', {
   noSettingCard: true,
   setting: {
     phase: 'early',
-    location: 'office'
   },
 
   stages:[{

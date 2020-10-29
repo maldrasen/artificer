@@ -3,7 +3,7 @@ Event.build('game-start-2', {
   background: 'office',
   setting: {
     phase: 'early',
-    location: 'office'
+    place: 'My Office'
   },
 
   stages:[{
